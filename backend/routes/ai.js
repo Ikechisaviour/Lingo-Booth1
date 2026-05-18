@@ -174,6 +174,7 @@ router.post('/conversation', async (req, res) => {
 
     const isClassLessonAction = !!classAction
       || transcript.trim().startsWith('CLASS_LESSON_ACTION');
+    const isClassLessonTurn = !!lessonBrief;
     const outOfPair = isClassLessonAction
       ? null
       : detectOutOfPairLanguage({
@@ -235,7 +236,7 @@ router.post('/conversation', async (req, res) => {
         classAction,
       });
     } catch (providerError) {
-      if (!isClassLessonAction) throw providerError;
+      if (!isClassLessonAction && !isClassLessonTurn) throw providerError;
 
       const fallbackResult = await buildClassLessonFallbackResult({
         transcript: transcript.trim(),

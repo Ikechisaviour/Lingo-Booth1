@@ -1,139 +1,2701 @@
-// Level 1 Unit 5 — Life in Italy (Italian)
-// Functions: describing life as a student/resident in Italy, geographic regions,
-// regional differences, cultural anchors.
-
-const createContentItem = (
-  target,
-  pronunciation,
-  note,
-  type = 'word',
-  example = '',
-  exampleNote = '',
-  breakdown = null,
-  activityIds = [],
-) => ({
-  type,
-  activityIds,
-  targetText: target,
-  romanization: pronunciation,
-  nativeText: note,
-  pronunciation,
-  exampleTarget: example || target,
-  exampleNative: exampleNote || note,
-  korean: target,
-  english: note,
-  example: example || target,
-  exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'it-l1u5-orientation',
-  pronunciation: 'it-l1u5-pronunciation',
-  vocabularyRegions: 'it-l1u5-vocab-regions',
-  vocabularyLife: 'it-l1u5-vocab-life',
-  grammarPiacere: 'it-l1u5-grammar-piacere',
-  grammarComparison: 'it-l1u5-grammar-comparison',
-  grammarMolto: 'it-l1u5-grammar-molto',
-  reading: 'it-l1u5-reading',
-  listening: 'it-l1u5-listening',
-  writing: 'it-l1u5-writing',
-  culture: 'it-l1u5-culture',
-  task: 'it-l1u5-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do', goals: ['Describe what life is like in Italy as a foreign student — daily challenges, things you like, regional contrasts.', 'Use mi piace / mi piacciono correctly with singular and plural subjects.', 'Compare Italian cities and regions: Roma vs Milano, nord vs sud.'], task: 'Picture yourself one month into your Erasmus at UniBo, explaining to your family back home what life is like.' },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Sound traps in region names', goals: ['Pronounce the geminate ss in Toscana? Actually it\'s single — but Lombardia, Sicilia, Sardegna all have distinctive sounds.', 'Apply gn /ɲ/ in Romagna /roˈmaɲ.ɲa/, Sardegna /sarˈdeɲ.ɲa/.'], task: 'Read each region name aloud.' },
-  { id: ACT.vocabularyRegions, section: 'Vocabulary I', title: 'Italian regions and major cities', goals: ['Know 8 of Italy\'s 20 regioni: Lazio (Roma), Lombardia (Milano), Toscana (Firenze), Veneto (Venezia, Verona), Campania (Napoli), Sicilia (Palermo), Emilia-Romagna (Bologna), Piemonte (Torino).', 'Recognize the nord/centro/sud divide and what each part is famous for.'], task: 'Match cities to regions and produce one fact per region.' },
-  { id: ACT.vocabularyLife, section: 'Vocabulary II', title: 'Life-in-Italy vocabulary', goals: ['Memorize: il coinquilino (roommate), l\'affitto (rent), il permesso di soggiorno (residence permit), la carta d\'identità (ID card), l\'Erasmus, la mensa, il dottore, il commercialista.', 'Use abituarsi a (get used to), mancare (miss), piacere (like) idiomatically.'], task: 'Build five sentences combining piacere with life-vocabulary items.' },
-  { id: ACT.grammarPiacere, section: 'Grammar I', title: 'piacere — the reversed verb', goals: ['Use mi piace with a singular subject: mi piace la pasta, mi piace l\'Italia. The thing liked is the GRAMMATICAL SUBJECT; the experiencer is in the indirect object form (mi, ti, gli, le, ci, vi, gli/loro).', 'Use mi piacciono with a plural subject: mi piacciono i gelati, mi piacciono le città italiane.', 'Recognize piacere\'s reversed argument structure — it\'s not "I like X" but "X is pleasing to me".'], task: 'Build 5 piacere sentences with singular and plural subjects, then negate three with non.' },
-  { id: ACT.grammarComparison, section: 'Grammar II', title: 'più / meno + adjective + di — comparisons', goals: ['Form comparatives with più (more) / meno (less) + adjective + di + noun: Roma è più grande di Bologna ("Rome is bigger than Bologna").', 'Recognize irregular comparatives: buono → migliore "better", cattivo → peggiore "worse", grande → maggiore, piccolo → minore.', 'Form equality: tanto…quanto / così…come for "as…as".'], task: 'Compare 5 pairs of cities or things in Italy.' },
-  { id: ACT.grammarMolto, section: 'Grammar III', title: 'molto, tanto, poco — quantifiers', goals: ['Use molto/tanto/poco as adverbs (uninflected) BEFORE adjectives: molto bello, tanto interessante, poco facile.', 'Use them as adjectives (inflected: molto/molta/molti/molte) before nouns: molti studenti, molte persone, molta pasta.'], task: 'Build 6 sentences using each form correctly.' },
-  { id: ACT.reading, section: 'Reading and Speaking', title: 'A letter home from Bologna', goals: ['Read a 10-sentence letter from an Erasmus student to family back home.'], task: 'Read aloud and answer comprehension questions.' },
-  { id: ACT.listening, section: 'Listening and Speaking', title: 'Two students comparing cities', goals: ['Follow a dialogue between students from Roma and Milano about their cities.'], task: 'Reproduce with your own city comparison.' },
-  { id: ACT.writing, section: 'Writing', title: 'Write a postcard from Italy', goals: ['Write a 6-sentence postcard describing one Italian region.'], task: 'Pick one region, describe with comparisons and piacere.' },
-  { id: ACT.culture, section: 'Culture Note', title: 'Italy north vs south', goals: ['Recognize the historical nord-sud divide: industrial north, agricultural/tourist south, with strong regional identities everywhere.', 'Know key festivals: Carnevale (Venezia, Viareggio), Ferragosto (15 August), Pasqua, Natale + Befana (6 January).'], task: 'Compare three differences between nord and sud Italy.' },
-  { id: ACT.task, section: 'Task', title: 'Tell your family about life in Italy', goals: ['Combine vocabulary, piacere, comparisons, and quantifiers into one continuous narrative.'], task: 'Voice-record a 90-second message to your family.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 5: Vivere in Italia — Life in Italy',
-  category: 'cultural-anchor',
-  difficulty: 'beginner',
-  targetLang: 'it',
-  nativeLang: 'en',
-  track: 'textbook',
-  lessonType: 'thematic',
-  activities,
-  expressionPractice: [
-    { id: 'expressing-likes', label: 'Expressing likes', goal: 'Use mi piace / mi piacciono with singular and plural subjects.' },
-    { id: 'comparing-places', label: 'Comparing places', goal: 'Use più…di and meno…di to compare cities, regions, foods.' },
-    { id: 'describing-life', label: 'Describing daily life', goal: 'Narrate life-as-student with mensa, coinquilino, affitto, lezioni.' },
-    { id: 'cultural-observations', label: 'Sharing cultural observations', goal: 'Comment on Italian habits with mi piace, non mi piace, è diverso.' },
+module.exports = {
+  "title": "Level 1 · Unit 5: Vivere in Italia — Life in Italy",
+  "category": "cultural-anchor",
+  "difficulty": "beginner",
+  "targetLang": "it",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "it-level1unit05lifeinitaly-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe what life is like in Italy as a foreign student — daily challenges, things you like, regional contrasts."
+      ],
+      "task": "Voice-record a 90-second message to your family."
+    },
+    {
+      "id": "it-level1unit05lifeinitaly-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Italian double consonants, open-versus-closed vowels, stress, and phrase melody clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "it-level1unit05lifeinitaly-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 5: Vivere in Italia — Life in Italy with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "it-level1unit05lifeinitaly-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 5: Vivere in Italia — Life in Italy sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "it-level1unit05lifeinitaly-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe what life is like in Italy as a foreign student — daily challenges, things you like, regional contrasts."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "it-level1unit05lifeinitaly-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 5: Vivere in Italia — Life in Italy with one nearby Italian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "it-level1unit05lifeinitaly-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "it-level1unit05lifeinitaly-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "it-level1unit05lifeinitaly-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "it-level1unit05lifeinitaly-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the social or regional choice that changes how this Italian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "it-level1unit05lifeinitaly-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Voice-record a 90-second message to your family."
+      ],
+      "task": "Voice-record a 90-second message to your family."
+    }
   ],
-  relatedPools: ['topic-cultural-anchor', 'topic-society'],
-  content: [
-    createContentItem('Vivere in Italia', 'VI-ve-re in i-TA-lja', 'Life in Italy — the umbrella theme of this unit. Encompasses regional differences, daily challenges, foods, festivals, and the small joys of Italian life.', 'word', 'Vivere in Italia è bello ma a volte complicato.', 'Realistic frame: not everything is easy, but a lot is wonderful.', null, [ACT.orientation]),
-    createContentItem('Italia in numeri', 'Italia by the numbers', '20 regioni, ~60 milioni di abitanti, 7600 km di costa, capitale Roma (~3 milioni), centro economico Milano (1.4 milioni), patrimonio UNESCO più grande del mondo (58 siti).', 'word', 'L\'Italia ha venti regioni e ventiquattro siti UNESCO.', 'Numerical orientation.', null, [ACT.orientation]),
-
-    createContentItem('Toscana', '/tosˈkaː.na/', 'Tuscany — central Italy, capital Firenze. Famous for Renaissance art, Chianti wine, rolling cypress-dotted hills, and cities like Siena, Pisa, Lucca.', 'word', 'La Toscana è famosa per il vino Chianti.', 'Italy\'s most visited region after Veneto.', null, [ACT.vocabularyRegions]),
-    createContentItem('Lombardia', '/lom.barˈdiː.a/', 'Lombardy — northern Italy, capital Milano. Italy\'s economic engine, fashion capital, also home to Bergamo, Brescia, the Lake District.', 'word', 'La Lombardia è la regione più ricca d\'Italia.', 'Industrial / financial center of the country.', null, [ACT.vocabularyRegions]),
-    createContentItem('Lazio', '/ˈlat.tsjo/', 'Lazio — central-western Italy, capital Roma. Home to the Vatican, Colosseum, ancient sites.', 'word', 'Il Lazio ospita la capitale, Roma.', 'Region of Rome and Vatican City.', null, [ACT.vocabularyRegions]),
-    createContentItem('Veneto', '/ˈvɛː.ne.to/', 'Veneto — northeastern Italy, capital Venezia. Famous for Venice, Verona, Padova, prosecco wine, and dialects very different from standard Italian.', 'word', 'Il Veneto ha Venezia, Verona e Padova.', 'Tourist heartland of northeastern Italy.', null, [ACT.vocabularyRegions]),
-    createContentItem('Campania', '/kamˈpaː.nja/', 'Campania — southern Italy, capital Napoli. Pompeii, Capri, Amalfi Coast, Mount Vesuvius. Birthplace of pizza margherita.', 'word', 'La Campania è famosa per Napoli e Pompei.', 'Southern food and tourism mecca.', null, [ACT.vocabularyRegions]),
-    createContentItem('Sicilia', '/siˈtʃiː.lja/', 'Sicily — largest island, capital Palermo. Greek temples, baroque churches, Mount Etna, distinctive cuisine (arancini, cannoli, granita).', 'word', 'La Sicilia è la più grande isola del Mediterraneo.', 'Mediterranean island with unique culture.', null, [ACT.vocabularyRegions]),
-    createContentItem('Emilia-Romagna', '/eˈmiː.lja roˈmaɲ.ɲa/', 'Emilia-Romagna — northern Italy, capital Bologna. Home of UniBo, parmigiano cheese, prosciutto di Parma, balsamic vinegar, tagliatelle al ragù. Note gn /ɲ/ in Romagna.', 'word', 'L\'Emilia-Romagna è la regione del cibo: prosciutto, parmigiano, tagliatelle.', 'The "food region" of Italy; home base for this curriculum.', null, [ACT.vocabularyRegions]),
-    createContentItem('Piemonte', '/pjeˈmon.te/', 'Piedmont — northwestern Italy, capital Torino. Italian Alps, Italian-Swiss border, FIAT, slow-food movement, truffles, Barolo wine.', 'word', 'Il Piemonte è la patria del cioccolato e dei tartufi.', 'Confluence of French Alpine and Italian culture.', null, [ACT.vocabularyRegions]),
-
-    createContentItem('il coinquilino / la coinquilina', '/koin.kwiˈliː.no/', 'Roommate (m./f.). Used for sharing apartments — very common for Italian students. Plural i coinquilini / le coinquiline.', 'word', 'Vivo con tre coinquiline in un appartamento.', 'Standard Erasmus / university experience.', null, [ACT.vocabularyLife]),
-    createContentItem("l'affitto", '/lafˈfit.to/', 'Rent (m.s.). Geminate ff and tt. Plural gli affitti.', 'word', 'L\'affitto a Bologna è alto.', 'Bologna and Milan have the highest student rents in Italy.', null, [ACT.vocabularyLife]),
-    createContentItem('il permesso di soggiorno', '/perˈmes.so/', 'Residence permit (m.s.) — required for non-EU students. Geminate ss. Plural i permessi di soggiorno.', 'word', 'Devo rinnovare il permesso di soggiorno.', 'Bureaucratic essential for non-EU students.', null, [ACT.vocabularyLife]),
-    createContentItem("la carta d'identità", 'card-d\'identity', 'ID card (f.s.) — required document for all Italian residents. Apostrophe in d\' = elision of di. Plural le carte d\'identità.', 'word', 'Mostro la carta d\'identità in banca.', 'Used for any official transaction.', null, [ACT.vocabularyLife]),
-    createContentItem("l'Erasmus", '/eˈraz.mus/', 'The Erasmus exchange program (m.). Invariable, used as a noun ("essere in Erasmus") and adjectivally ("studente Erasmus"). Approximately 30,000 foreign students study in Italy via Erasmus each year.', 'word', 'Sono in Erasmus a Bologna per un anno.', 'Erasmus is named after the philosopher Erasmus of Rotterdam (1466-1536) who himself studied at UniBo.', null, [ACT.vocabularyLife]),
-    createContentItem('la mensa', '/la ˈmen.sa/', 'University canteen (f.s.). Pluralized le mense. Italian university mense serve hot meals at heavily subsidized prices.', 'word', 'A pranzo vado in mensa.', 'Often the cheapest student meal option.', null, [ACT.vocabularyLife]),
-    createContentItem('abituarsi a', '/a.bi.twar.si a/', 'To get used to — reflexive verb + preposition a. Mi abituo a / mi sono abituato a + thing.', 'word', 'Mi sto abituando al ritmo italiano.', 'Useful for adaptation talk.', null, [ACT.vocabularyLife]),
-    createContentItem('mancare', '/manˈkaː.re/', 'To miss / to be missing. Same reversed structure as piacere: mi manca la famiglia "I miss my family" (literally "my family is missing to me"). Same conjugation rules apply.', 'word', 'Mi manca la mia famiglia. · Mi mancano gli amici.', 'Reversed-verb structure like piacere.', null, [ACT.vocabularyLife]),
-
-    createContentItem('piacere — il verbo "rovesciato"', 'piacere — the reversed verb', 'Italian piacere is structurally REVERSED compared to English "like". The thing liked is the GRAMMATICAL SUBJECT (which controls the verb form); the experiencer is in the INDIRECT OBJECT form (mi/ti/gli/le/ci/vi/gli). Mi piace la pasta = "Pasta is pleasing to me". Mi piacciono i gelati = "Ice creams are pleasing to me".', 'sentence', 'Mi piace il caffè. (single subj.) · Mi piacciono i biscotti. (plural subj.)', 'Master this structure — piacere governs many other reversed verbs (mancare, servire, occorrere).', [
-      { target: 'mi (1.s. indirect)', note: '"to me" — experiencer' },
-      { target: 'piace / piacciono', note: 'verb agrees with the THING liked, not the person liking' },
-      { target: 'la pasta / i biscotti', note: 'subject — what is pleasing' },
-    ], [ACT.grammarPiacere]),
-    createContentItem('Pronomi indiretti — paradigma', 'indirect object pronouns', 'mi (to me), ti (to you informal), gli (to him), le (to her), Le (to you formal), ci (to us), vi (to you all), gli/loro (to them). Modern Italian increasingly uses gli for "to them"; loro is more formal/written.', 'sentence', 'mi-ti-gli-le-ci-vi-gli (modern) or mi-ti-gli-le-ci-vi-loro (formal)', 'Same pronouns are used for many "experiencer" verbs.', null, [ACT.grammarPiacere]),
-    createContentItem('Negative di piacere', 'piacere negation', 'Negate with non BEFORE the pronoun: non mi piace il pesce, non mi piacciono i film d\'azione.', 'sentence', 'Non mi piace la birra. Non mi piacciono i lunedì mattina.', 'Standard non + pronoun + verb order.', null, [ACT.grammarPiacere]),
-    createContentItem('piacere con altri esperienti', 'piacere with other experiencers', 'Replace mi with another indirect pronoun: ti piace la pizza? "do you like pizza?", a Marco piace il vino "Marco likes wine" (a + name fronted for emphasis).', 'sentence', 'A Marco piace il calcio. A Anna piacciono le canzoni napoletane.', 'Use a + person\'s name to highlight the experiencer.', null, [ACT.grammarPiacere]),
-
-    createContentItem('Comparativo: più di / meno di', 'comparative: more than / less than', 'più (more) / meno (less) + adjective + di + comparison object. Roma è più grande di Bologna. Milano è meno antica di Roma. The adjective AGREES with the subject.', 'sentence', 'Roma è più grande di Bologna. · Bologna è meno costosa di Milano.', 'Standard comparative construction.', [
-      { target: 'più + adj + di', note: '"more X than" — più antico di, più caro di' },
-      { target: 'meno + adj + di', note: '"less X than" — meno costoso di, meno caldo di' },
-      { target: 'adjective agreement', note: 'adjective matches the SUBJECT in gender/number' },
-    ], [ACT.grammarComparison]),
-    createContentItem('Comparativi irregolari', 'irregular comparatives', 'Four irregular comparatives to memorize: buono → migliore (better), cattivo → peggiore (worse), grande → maggiore (greater/older), piccolo → minore (smaller/younger). Each can also use più + base form.', 'sentence', 'La pizza napoletana è migliore della newyorkese. · Mio fratello maggiore ha 28 anni.', 'Migliore/peggiore are very common; the regular forms più buono / più cattivo also exist.', null, [ACT.grammarComparison]),
-    createContentItem('Uguaglianza: tanto…quanto / così…come', 'equality: as…as', 'For equality: tanto + adj + quanto + comparison, or così + adj + come + comparison. Bologna è tanto bella quanto Firenze. Both pairs are equivalent.', 'sentence', 'Bologna è (tanto) bella quanto Firenze. Roma è (così) antica come Atene.', 'Both pairs work; tanto/quanto is slightly more common.', null, [ACT.grammarComparison]),
-
-    createContentItem('molto come avverbio', 'molto as adverb (uninflected)', 'When molto modifies an adjective or verb, it stays UNINFLECTED: molto bello (very beautiful), molto bene (very well), mangio molto (I eat a lot). Same for tanto, poco, troppo when adverbial.', 'sentence', 'L\'Italia è molto bella. Mangio molto. Lavoro molto.', 'Adverbial use — no agreement.', null, [ACT.grammarMolto]),
-    createContentItem('molto come aggettivo', 'molto as adjective (inflected)', 'When molto modifies a noun, it INFLECTS for gender and number: molto (m.s.), molta (f.s.), molti (m.pl.), molte (f.pl.). Molti studenti, molte persone, molta acqua.', 'sentence', 'Ho molti amici. Conosco molte persone. Bevo molta acqua.', 'Adjective use — agreement with the noun.', null, [ACT.grammarMolto]),
-    createContentItem('poco, troppo, tanto', "other quantifiers with same rule", 'Same inflection vs adverb rules for: poco/-a/-i/-e (little/few), troppo/-a/-i/-e (too much/many), tanto/-a/-i/-e (so much/many).', 'sentence', 'Ho poco tempo. · Pochi studenti studiano. · Troppe persone in autobus.', 'Memorize the parallel rule for all four.', null, [ACT.grammarMolto]),
-
-    createContentItem('Lettera dalla Bologna', "a letter from Bologna (reading)", '10-sentence letter from a UniBo Erasmus student to family.', 'sentence', 'Cari mamma e papà, sono a Bologna da un mese. Mi piace molto la città: è più piccola di Roma ma molto vivace per gli studenti. Vivo in un appartamento con tre coinquiline: una è italiana di Napoli, le altre sono francese e spagnola. L\'università è bellissima. Mi piacciono le lezioni di letteratura italiana, ma il latino è più difficile del greco. A pranzo mangio in mensa: il cibo è buono e costa poco. Mi mancano molto la nostra cucina e i nostri amici, ma sto bene. Bologna è famosa per i portici e per il cibo: tagliatelle al ragù, tortellini, mortadella — tutto delizioso. Vi scrivo presto, un abbraccio. Vostra Anna.', 'A realistic letter combining all unit grammar.', null, [ACT.reading]),
-    createContentItem('Domande sulla lettera', 'comprehension on the letter', 'Five comprehension questions that make the learner recover duration, housemates, preferences, absence, and city identity from the letter.', 'sentence', 'D1: Da quanto tempo Anna è a Bologna? D2: Con chi abita? D3: Cosa le piace dell\'università? D4: Cosa le manca? D5: Perché Bologna è famosa?', 'Answering them rehearses `piacere`, `mancare`, and descriptive city language in connected context.', null, [ACT.reading]),
-
-    createContentItem('Roma vs Milano — dialogo', "Roma vs Milano dialogue", 'Two students discussing their cities.', 'conversation', 'Marco (Roma): Milano è più costosa di Roma, no?\nGiulia (Milano): Sì, ma a Milano si trova più lavoro. Roma è bella ma più caotica.\nMarco: Il cibo a Roma è migliore, però — la carbonara, l\'amatriciana.\nGiulia: A Milano abbiamo il risotto, l\'ossobuco. La cucina milanese è meno conosciuta ma altrettanto buona.\nMarco: Vero. Ma a Roma c\'è il Colosseo!\nGiulia: A Milano c\'è il Duomo e la Scala. Entrambe sono belle.', 'Comparative city dialogue using più/meno.', null, [ACT.listening]),
-
-    createContentItem('Cartolina dall\'Italia', "postcard from Italy (writing)", '6-sentence postcard template.', 'sentence', 'Esempio: Sono a Venezia in vacanza. La città è bellissima, più antica di qualsiasi altra città italiana. Mi piacciono le gondole e i ponti. Il cibo è ottimo: tante vongole e pesce fresco. Mi piace anche il dialetto veneziano, anche se è difficile da capire. Un saluto, Anna.', 'Substitute your own city/region.', null, [ACT.writing]),
-
-    createContentItem('Nord vs sud', "north vs south italy", 'Italy is historically divided: nord (Lombardia, Piemonte, Veneto, etc.) is industrialized, more European in tempo; sud (Campania, Sicilia, Puglia, etc.) is more agricultural, more family-centered, with stronger regional identities. The economic divide is real but the cultural richness is balanced.', 'sentence', 'Il nord è più ricco economicamente, ma il sud è più caloroso umanamente.', 'Major cultural axis worth understanding.', [
-      { target: 'nord = ricco, industriale', note: 'Lombardia, Piemonte, Veneto — Italian economic engine' },
-      { target: 'sud = solare, agricolo', note: 'Campania, Sicilia, Puglia — Italian cultural soul' },
-      { target: 'centro = misto', note: 'Toscana, Lazio, Emilia-Romagna — bridge between the two' },
-    ], [ACT.culture]),
-    createContentItem('Feste italiane', "Italian festivals", 'Major festivals: Carnevale (Venezia, Viareggio — February); Pasqua (Easter — March/April); 25 aprile (Liberation Day); 1 maggio (Labor Day); 2 giugno (Republic Day); Ferragosto (15 August — Italy shuts down for vacation); Natale (Christmas); Befana (6 January — old woman brings gifts).', 'sentence', 'Il 15 agosto è Ferragosto: l\'Italia è in vacanza.', 'Critical to plan around these holidays.', null, [ACT.culture]),
-    createContentItem('Aperitivo', "aperitivo culture", 'Aperitivo is the late-afternoon (18-20) social ritual: drinks (spritz, Negroni, prosecco) + buffet/finger food (often free with drink). Milano invented modern aperitivo culture; now standard in every Italian city.', 'sentence', 'Andiamo a fare l\'aperitivo alle sette?', 'Pre-dinner social hour; a signature Italian habit.', null, [ACT.culture]),
-
-    createContentItem('Compito: vita in Italia per la famiglia', "task: tell your family about life in Italy", '90-second narration combining all unit grammar.', 'conversation', 'Mamma: Allora, com\'è la vita in Italia?\nTu: [describe city with comparison]\nMamma: Cosa ti piace?\nTu: [3 piacere sentences with sing. and plural]\nMamma: Cosa ti manca?\nTu: [mancare with 2 different subjects]\nMamma: Ti stai abituando?\nTu: [abituarsi a + 1-2 things]\nMamma: Buon proseguimento!', 'Full integration.', null, [ACT.task]),
-    createContentItem('Sfida — descrivere una regione', "stretch — describe one Italian region", 'Stretch: describe one Italian region in 5+ sentences using comparisons and piacere.', 'sentence', 'Esempio: La Sicilia è la regione più grande d\'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall\'italiano del napoletano.', 'Full integration target.', null, [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "expressing-likes",
+      "label": "Expressing likes",
+      "goal": "Use mi piace / mi piacciono with singular and plural subjects."
+    },
+    {
+      "id": "comparing-places",
+      "label": "Comparing places",
+      "goal": "Use più…di and meno…di to compare cities, regions, foods."
+    },
+    {
+      "id": "describing-life",
+      "label": "Describing daily life",
+      "goal": "Narrate life-as-student with mensa, coinquilino, affitto, lezioni."
+    },
+    {
+      "id": "cultural-observations",
+      "label": "Sharing cultural observations",
+      "goal": "Comment on Italian habits with mi piace, non mi piace, è diverso."
+    }
   ],
+  "relatedPools": [
+    "topic-cultural-anchor",
+    "topic-society"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-orientation"
+      ],
+      "targetText": "obiettivo della lezione",
+      "romanization": "",
+      "nativeText": "Describe what life is like in Italy as a foreign student — daily challenges, things you like, regional contrasts.",
+      "pronunciation": "",
+      "exampleTarget": "obiettivo della lezione",
+      "exampleNative": "The whole lesson is built toward this outcome: Voice-record a 90-second message to your family.",
+      "korean": "obiettivo della lezione",
+      "english": "Describe what life is like in Italy as a foreign student — daily challenges, things you like, regional contrasts.",
+      "example": "obiettivo della lezione",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Voice-record a 90-second message to your family."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-pronunciation"
+      ],
+      "targetText": "controllo dei suoni",
+      "romanization": "",
+      "nativeText": "Keep Italian double consonants, open-versus-closed vowels, stress, and phrase melody clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Vivere in Italia è bello ma a volte complicato.\".",
+      "pronunciation": "",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "controllo dei suoni",
+      "english": "Keep Italian double consonants, open-versus-closed vowels, stress, and phrase melody clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Vivere in Italia è bello ma a volte complicato.\".",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 5: Vivere in Italia — Life in Italy with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Use the key language of Level 1 · Unit 5: Vivere in Italia — Life in Italy with the register and setting that the lesson requires.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-2"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 5: Vivere in Italia — Life in Italy sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 5: Vivere in Italia — Life in Italy sound precise rather than merely understandable.",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Numerical orientation."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-grammar-1"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "",
+      "nativeText": "Describe what life is like in Italy as a foreign student — daily challenges, things you like, regional contrasts.",
+      "pronunciation": "",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Describe what life is like in Italy as a foreign student — daily challenges, things you like, regional contrasts.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-grammar-2"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 5: Vivere in Italia — Life in Italy with one nearby Italian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "Contrast the main pattern in Level 1 · Unit 5: Vivere in Italia — Life in Italy with one nearby Italian form so the learner can avoid literal translation.",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Numerical orientation."
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-reading"
+      ],
+      "targetText": "lettura modello",
+      "romanization": "",
+      "nativeText": "Read the connected model for lettura modello as one message. Notice how \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleNative": "Full integration target.",
+      "korean": "lettura modello",
+      "english": "Read the connected model for lettura modello as one message. Notice how \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleEnglish": "Full integration target."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-listening"
+      ],
+      "targetText": "dialogo modello",
+      "romanization": "",
+      "nativeText": "Hear \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleNative": "Full integration target.",
+      "korean": "dialogo modello",
+      "english": "Hear \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleEnglish": "Full integration target."
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-writing"
+      ],
+      "targetText": "scrittura guidata",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Vivere in Italia è bello ma a volte complicato.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "scrittura guidata",
+      "english": "Write your own version after studying \"Vivere in Italia è bello ma a volte complicato.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-culture"
+      ],
+      "targetText": "uso e contesto",
+      "romanization": "",
+      "nativeText": "Notice the social or regional choice that changes how this Italian is naturally used. Use \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Numerical orientation.",
+      "korean": "uso e contesto",
+      "english": "Notice the social or regional choice that changes how this Italian is naturally used. Use \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" as the social comparison point for this lesson.",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Numerical orientation."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "compito finale",
+      "romanization": "",
+      "nativeText": "Voice-record a 90-second message to your family.",
+      "pronunciation": "",
+      "exampleTarget": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleNative": "Voice-record a 90-second message to your family.",
+      "korean": "compito finale",
+      "english": "Voice-record a 90-second message to your family.",
+      "example": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleEnglish": "Voice-record a 90-second message to your family."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-grammar-2"
+      ],
+      "targetText": "errore frequente",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around gender, agreement, clitics, article choice, and register. Begin by checking \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: Numerical orientation.",
+      "korean": "errore frequente",
+      "english": "Watch for literal-translation mistakes around gender, agreement, clitics, article choice, and register. Begin by checking \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" against the model.",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: Numerical orientation."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-culture"
+      ],
+      "targetText": "registro",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for tu, Lei, a service register, or a more relaxed everyday choice before finalizing the wording. Compare the social fit of \"Vivere in Italia è bello ma a volte complicato.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "registro",
+      "english": "Check whether the setting calls for tu, Lei, a service register, or a more relaxed everyday choice before finalizing the wording. Compare the social fit of \"Vivere in Italia è bello ma a volte complicato.\" before reusing it elsewhere.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "scorrevolezza",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Italian message rather than as separate translated fragments. Aim to carry \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleNative": "Full integration target.",
+      "korean": "scorrevolezza",
+      "english": "Say the idea as one connected Italian message rather than as separate translated fragments. Aim to carry \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\" as one thought.",
+      "example": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleEnglish": "Full integration target."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "trasferimento",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Vivere in Italia è bello ma a volte complicato.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "trasferimento",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Vivere in Italia è bello ma a volte complicato.\" and move it into your own life.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-grammar-1"
+      ],
+      "targetText": "richiamo attivo",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Vivere in Italia\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "Vivere in Italia",
+      "exampleNative": "Life in Italy — the umbrella theme of this unit. Encompasses regional differences, daily challenges, foods, festivals, and the small joys of Italian life.",
+      "korean": "richiamo attivo",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Vivere in Italia\" before looking back.",
+      "example": "Vivere in Italia",
+      "exampleEnglish": "Life in Italy — the umbrella theme of this unit. Encompasses regional differences, daily challenges, foods, festivals, and the small joys of Italian life."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-writing"
+      ],
+      "targetText": "ampliamento",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "ampliamento",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\" rather than restarting from a blank sentence.",
+      "example": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading"
+      ],
+      "targetText": "confronto",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 5: Vivere in Italia — Life in Italy with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Numerical orientation.",
+      "korean": "confronto",
+      "english": "Compare the central form in Level 1 · Unit 5: Vivere in Italia — Life in Italy with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" as the comparison line.",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Numerical orientation."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-pronunciation"
+      ],
+      "targetText": "correzione della pronuncia",
+      "romanization": "",
+      "nativeText": "Keep Italian double consonants, open-versus-closed vowels, stress, and phrase melody clear enough that the sentence remains easy to follow. Use \"Vivere in Italia è bello ma a volte complicato.\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "correzione della pronuncia",
+      "english": "Keep Italian double consonants, open-versus-closed vowels, stress, and phrase melody clear enough that the sentence remains easy to follow. Use \"Vivere in Italia è bello ma a volte complicato.\" as the repair line.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "variazione del dialogo",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\".",
+      "pronunciation": "",
+      "exampleTarget": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleNative": "Full integration target.",
+      "korean": "variazione del dialogo",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\".",
+      "example": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleEnglish": "Full integration target."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-writing"
+      ],
+      "targetText": "costruzione della frase",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Vivere in Italia è bello ma a volte complicato.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "costruzione della frase",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Vivere in Italia è bello ma a volte complicato.\" one layer at a time.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-2"
+      ],
+      "targetText": "verifica rapida",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Numerical orientation.",
+      "korean": "verifica rapida",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" as the deciding example.",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Numerical orientation."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-culture",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "riflessione",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\".",
+      "pronunciation": "",
+      "exampleTarget": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleNative": "Full integration target.",
+      "korean": "riflessione",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.\".",
+      "example": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleEnglish": "Full integration target."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "VI-ve-re in i-TA-lja",
+      "nativeText": "Life in Italy — the umbrella theme of this unit. Encompasses regional differences, daily challenges, foods, festivals, and the small joys of Italian life.",
+      "pronunciation": "VI-ve-re in i-TA-lja",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Life in Italy — the umbrella theme of this unit. Encompasses regional differences, daily challenges, foods, festivals, and the small joys of Italian life.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "Italia by the numbers",
+      "nativeText": "20 regioni, ~60 milioni di abitanti, 7600 km di costa, capitale Roma (~3 milioni), centro economico Milano (1.4 milioni), patrimonio UNESCO più grande del mondo (58 siti).",
+      "pronunciation": "Italia by the numbers",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "20 regioni, ~60 milioni di abitanti, 7600 km di costa, capitale Roma (~3 milioni), centro economico Milano (1.4 milioni), patrimonio UNESCO più grande del mondo (58 siti).",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Numerical orientation."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Toscana",
+      "romanization": "/tosˈkaː.na/",
+      "nativeText": "Tuscany — central Italy, capital Firenze. Famous for Renaissance art, Chianti wine, rolling cypress-dotted hills, and cities like Siena, Pisa, Lucca.",
+      "pronunciation": "/tosˈkaː.na/",
+      "exampleTarget": "La Toscana è famosa per il vino Chianti.",
+      "exampleNative": "Italy's most visited region after Veneto.",
+      "korean": "Toscana",
+      "english": "Tuscany — central Italy, capital Firenze. Famous for Renaissance art, Chianti wine, rolling cypress-dotted hills, and cities like Siena, Pisa, Lucca.",
+      "example": "La Toscana è famosa per il vino Chianti.",
+      "exampleEnglish": "Italy's most visited region after Veneto."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lombardia",
+      "romanization": "/lom.barˈdiː.a/",
+      "nativeText": "Lombardy — northern Italy, capital Milano. Italy's economic engine, fashion capital, also home to Bergamo, Brescia, the Lake District.",
+      "pronunciation": "/lom.barˈdiː.a/",
+      "exampleTarget": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleNative": "Industrial / financial center of the country.",
+      "korean": "Lombardia",
+      "english": "Lombardy — northern Italy, capital Milano. Italy's economic engine, fashion capital, also home to Bergamo, Brescia, the Lake District.",
+      "example": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleEnglish": "Industrial / financial center of the country."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lazio",
+      "romanization": "/ˈlat.tsjo/",
+      "nativeText": "Lazio — central-western Italy, capital Roma. Home to the Vatican, Colosseum, ancient sites.",
+      "pronunciation": "/ˈlat.tsjo/",
+      "exampleTarget": "Il Lazio ospita la capitale, Roma.",
+      "exampleNative": "Region of Rome and Vatican City.",
+      "korean": "Lazio",
+      "english": "Lazio — central-western Italy, capital Roma. Home to the Vatican, Colosseum, ancient sites.",
+      "example": "Il Lazio ospita la capitale, Roma.",
+      "exampleEnglish": "Region of Rome and Vatican City."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Veneto",
+      "romanization": "/ˈvɛː.ne.to/",
+      "nativeText": "Veneto — northeastern Italy, capital Venezia. Famous for Venice, Verona, Padova, prosecco wine, and dialects very different from standard Italian.",
+      "pronunciation": "/ˈvɛː.ne.to/",
+      "exampleTarget": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleNative": "Tourist heartland of northeastern Italy.",
+      "korean": "Veneto",
+      "english": "Veneto — northeastern Italy, capital Venezia. Famous for Venice, Verona, Padova, prosecco wine, and dialects very different from standard Italian.",
+      "example": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleEnglish": "Tourist heartland of northeastern Italy."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Campania",
+      "romanization": "/kamˈpaː.nja/",
+      "nativeText": "Campania — southern Italy, capital Napoli. Pompeii, Capri, Amalfi Coast, Mount Vesuvius. Birthplace of pizza margherita.",
+      "pronunciation": "/kamˈpaː.nja/",
+      "exampleTarget": "La Campania è famosa per Napoli e Pompei.",
+      "exampleNative": "Southern food and tourism mecca.",
+      "korean": "Campania",
+      "english": "Campania — southern Italy, capital Napoli. Pompeii, Capri, Amalfi Coast, Mount Vesuvius. Birthplace of pizza margherita.",
+      "example": "La Campania è famosa per Napoli e Pompei.",
+      "exampleEnglish": "Southern food and tourism mecca."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Sicilia",
+      "romanization": "/siˈtʃiː.lja/",
+      "nativeText": "Sicily — largest island, capital Palermo. Greek temples, baroque churches, Mount Etna, distinctive cuisine (arancini, cannoli, granita).",
+      "pronunciation": "/siˈtʃiː.lja/",
+      "exampleTarget": "La Sicilia è la più grande isola del Mediterraneo.",
+      "exampleNative": "Mediterranean island with unique culture.",
+      "korean": "Sicilia",
+      "english": "Sicily — largest island, capital Palermo. Greek temples, baroque churches, Mount Etna, distinctive cuisine (arancini, cannoli, granita).",
+      "example": "La Sicilia è la più grande isola del Mediterraneo.",
+      "exampleEnglish": "Mediterranean island with unique culture."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Emilia-Romagna",
+      "romanization": "/eˈmiː.lja roˈmaɲ.ɲa/",
+      "nativeText": "Emilia-Romagna — northern Italy, capital Bologna. Home of UniBo, parmigiano cheese, prosciutto di Parma, balsamic vinegar, tagliatelle al ragù. Note gn /ɲ/ in Romagna.",
+      "pronunciation": "/eˈmiː.lja roˈmaɲ.ɲa/",
+      "exampleTarget": "L'Emilia-Romagna è la regione del cibo: prosciutto, parmigiano, tagliatelle.",
+      "exampleNative": "The \"food region\" of Italy; home base for this curriculum.",
+      "korean": "Emilia-Romagna",
+      "english": "Emilia-Romagna — northern Italy, capital Bologna. Home of UniBo, parmigiano cheese, prosciutto di Parma, balsamic vinegar, tagliatelle al ragù. Note gn /ɲ/ in Romagna.",
+      "example": "L'Emilia-Romagna è la regione del cibo: prosciutto, parmigiano, tagliatelle.",
+      "exampleEnglish": "The \"food region\" of Italy; home base for this curriculum."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Piemonte",
+      "romanization": "/pjeˈmon.te/",
+      "nativeText": "Piedmont — northwestern Italy, capital Torino. Italian Alps, Italian-Swiss border, FIAT, slow-food movement, truffles, Barolo wine.",
+      "pronunciation": "/pjeˈmon.te/",
+      "exampleTarget": "Il Piemonte è la patria del cioccolato e dei tartufi.",
+      "exampleNative": "Confluence of French Alpine and Italian culture.",
+      "korean": "Piemonte",
+      "english": "Piedmont — northwestern Italy, capital Torino. Italian Alps, Italian-Swiss border, FIAT, slow-food movement, truffles, Barolo wine.",
+      "example": "Il Piemonte è la patria del cioccolato e dei tartufi.",
+      "exampleEnglish": "Confluence of French Alpine and Italian culture."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "il coinquilino / la coinquilina",
+      "romanization": "/koin.kwiˈliː.no/",
+      "nativeText": "Roommate (m./f.). Used for sharing apartments — very common for Italian students. Plural i coinquilini / le coinquiline.",
+      "pronunciation": "/koin.kwiˈliː.no/",
+      "exampleTarget": "Vivo con tre coinquiline in un appartamento.",
+      "exampleNative": "Standard Erasmus / university experience.",
+      "korean": "il coinquilino / la coinquilina",
+      "english": "Roommate (m./f.). Used for sharing apartments — very common for Italian students. Plural i coinquilini / le coinquiline.",
+      "example": "Vivo con tre coinquiline in un appartamento.",
+      "exampleEnglish": "Standard Erasmus / university experience."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "l'affitto",
+      "romanization": "/lafˈfit.to/",
+      "nativeText": "Rent (m.s.). Geminate ff and tt. Plural gli affitti.",
+      "pronunciation": "/lafˈfit.to/",
+      "exampleTarget": "L'affitto a Bologna è alto.",
+      "exampleNative": "Bologna and Milan have the highest student rents in Italy.",
+      "korean": "l'affitto",
+      "english": "Rent (m.s.). Geminate ff and tt. Plural gli affitti.",
+      "example": "L'affitto a Bologna è alto.",
+      "exampleEnglish": "Bologna and Milan have the highest student rents in Italy."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "il permesso di soggiorno",
+      "romanization": "/perˈmes.so/",
+      "nativeText": "Residence permit (m.s.) — required for non-EU students. Geminate ss. Plural i permessi di soggiorno.",
+      "pronunciation": "/perˈmes.so/",
+      "exampleTarget": "Devo rinnovare il permesso di soggiorno.",
+      "exampleNative": "Bureaucratic essential for non-EU students.",
+      "korean": "il permesso di soggiorno",
+      "english": "Residence permit (m.s.) — required for non-EU students. Geminate ss. Plural i permessi di soggiorno.",
+      "example": "Devo rinnovare il permesso di soggiorno.",
+      "exampleEnglish": "Bureaucratic essential for non-EU students."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "la carta d'identità",
+      "romanization": "card-d'identity",
+      "nativeText": "ID card (f.s.) — required document for all Italian residents. Apostrophe in d' = elision of di. Plural le carte d'identità.",
+      "pronunciation": "card-d'identity",
+      "exampleTarget": "Mostro la carta d'identità in banca.",
+      "exampleNative": "Used for any official transaction.",
+      "korean": "la carta d'identità",
+      "english": "ID card (f.s.) — required document for all Italian residents. Apostrophe in d' = elision of di. Plural le carte d'identità.",
+      "example": "Mostro la carta d'identità in banca.",
+      "exampleEnglish": "Used for any official transaction."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "l'Erasmus",
+      "romanization": "/eˈraz.mus/",
+      "nativeText": "The Erasmus exchange program (m.). Invariable, used as a noun (\"essere in Erasmus\") and adjectivally (\"studente Erasmus\"). Approximately 30,000 foreign students study in Italy via Erasmus each year.",
+      "pronunciation": "/eˈraz.mus/",
+      "exampleTarget": "Sono in Erasmus a Bologna per un anno.",
+      "exampleNative": "Erasmus is named after the philosopher Erasmus of Rotterdam (1466-1536) who himself studied at UniBo.",
+      "korean": "l'Erasmus",
+      "english": "The Erasmus exchange program (m.). Invariable, used as a noun (\"essere in Erasmus\") and adjectivally (\"studente Erasmus\"). Approximately 30,000 foreign students study in Italy via Erasmus each year.",
+      "example": "Sono in Erasmus a Bologna per un anno.",
+      "exampleEnglish": "Erasmus is named after the philosopher Erasmus of Rotterdam (1466-1536) who himself studied at UniBo."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "la mensa",
+      "romanization": "/la ˈmen.sa/",
+      "nativeText": "University canteen (f.s.). Pluralized le mense. Italian university mense serve hot meals at heavily subsidized prices.",
+      "pronunciation": "/la ˈmen.sa/",
+      "exampleTarget": "A pranzo vado in mensa.",
+      "exampleNative": "Often the cheapest student meal option.",
+      "korean": "la mensa",
+      "english": "University canteen (f.s.). Pluralized le mense. Italian university mense serve hot meals at heavily subsidized prices.",
+      "example": "A pranzo vado in mensa.",
+      "exampleEnglish": "Often the cheapest student meal option."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "abituarsi a",
+      "romanization": "/a.bi.twar.si a/",
+      "nativeText": "To get used to — reflexive verb + preposition a. Mi abituo a / mi sono abituato a + thing.",
+      "pronunciation": "/a.bi.twar.si a/",
+      "exampleTarget": "Mi sto abituando al ritmo italiano.",
+      "exampleNative": "Useful for adaptation talk.",
+      "korean": "abituarsi a",
+      "english": "To get used to — reflexive verb + preposition a. Mi abituo a / mi sono abituato a + thing.",
+      "example": "Mi sto abituando al ritmo italiano.",
+      "exampleEnglish": "Useful for adaptation talk."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "mancare",
+      "romanization": "/manˈkaː.re/",
+      "nativeText": "To miss / to be missing. Same reversed structure as piacere: mi manca la famiglia \"I miss my family\" (literally \"my family is missing to me\"). Same conjugation rules apply.",
+      "pronunciation": "/manˈkaː.re/",
+      "exampleTarget": "Mi manca la mia famiglia. · Mi mancano gli amici.",
+      "exampleNative": "Reversed-verb structure like piacere.",
+      "korean": "mancare",
+      "english": "To miss / to be missing. Same reversed structure as piacere: mi manca la famiglia \"I miss my family\" (literally \"my family is missing to me\"). Same conjugation rules apply.",
+      "example": "Mi manca la mia famiglia. · Mi mancano gli amici.",
+      "exampleEnglish": "Reversed-verb structure like piacere."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "piacere — il verbo \"rovesciato\"",
+      "romanization": "piacere — the reversed verb",
+      "nativeText": "Italian piacere is structurally REVERSED compared to English \"like\". The thing liked is the GRAMMATICAL SUBJECT (which controls the verb form); the experiencer is in the INDIRECT OBJECT form (mi/ti/gli/le/ci/vi/gli). Mi piace la pasta = \"Pasta is pleasing to me\". Mi piacciono i gelati = \"Ice creams are pleasing to me\".",
+      "pronunciation": "piacere — the reversed verb",
+      "exampleTarget": "Mi piace il caffè. (single subj.) · Mi piacciono i biscotti. (plural subj.)",
+      "exampleNative": "Master this structure — piacere governs many other reversed verbs (mancare, servire, occorrere).",
+      "korean": "piacere — il verbo \"rovesciato\"",
+      "english": "Italian piacere is structurally REVERSED compared to English \"like\". The thing liked is the GRAMMATICAL SUBJECT (which controls the verb form); the experiencer is in the INDIRECT OBJECT form (mi/ti/gli/le/ci/vi/gli). Mi piace la pasta = \"Pasta is pleasing to me\". Mi piacciono i gelati = \"Ice creams are pleasing to me\".",
+      "example": "Mi piace il caffè. (single subj.) · Mi piacciono i biscotti. (plural subj.)",
+      "exampleEnglish": "Master this structure — piacere governs many other reversed verbs (mancare, servire, occorrere)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Pronomi indiretti — paradigma",
+      "romanization": "indirect object pronouns",
+      "nativeText": "mi (to me), ti (to you informal), gli (to him), le (to her), Le (to you formal), ci (to us), vi (to you all), gli/loro (to them). Modern Italian increasingly uses gli for \"to them\"; loro is more formal/written.",
+      "pronunciation": "indirect object pronouns",
+      "exampleTarget": "mi-ti-gli-le-ci-vi-gli (modern) or mi-ti-gli-le-ci-vi-loro (formal)",
+      "exampleNative": "Same pronouns are used for many \"experiencer\" verbs.",
+      "korean": "Pronomi indiretti — paradigma",
+      "english": "mi (to me), ti (to you informal), gli (to him), le (to her), Le (to you formal), ci (to us), vi (to you all), gli/loro (to them). Modern Italian increasingly uses gli for \"to them\"; loro is more formal/written.",
+      "example": "mi-ti-gli-le-ci-vi-gli (modern) or mi-ti-gli-le-ci-vi-loro (formal)",
+      "exampleEnglish": "Same pronouns are used for many \"experiencer\" verbs."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Negative di piacere",
+      "romanization": "piacere negation",
+      "nativeText": "Negate with non BEFORE the pronoun: non mi piace il pesce, non mi piacciono i film d'azione.",
+      "pronunciation": "piacere negation",
+      "exampleTarget": "Non mi piace la birra. Non mi piacciono i lunedì mattina.",
+      "exampleNative": "Standard non + pronoun + verb order.",
+      "korean": "Negative di piacere",
+      "english": "Negate with non BEFORE the pronoun: non mi piace il pesce, non mi piacciono i film d'azione.",
+      "example": "Non mi piace la birra. Non mi piacciono i lunedì mattina.",
+      "exampleEnglish": "Standard non + pronoun + verb order."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "piacere con altri esperienti",
+      "romanization": "piacere with other experiencers",
+      "nativeText": "Replace mi with another indirect pronoun: ti piace la pizza? \"do you like pizza?\", a Marco piace il vino \"Marco likes wine\" (a + name fronted for emphasis).",
+      "pronunciation": "piacere with other experiencers",
+      "exampleTarget": "A Marco piace il calcio. A Anna piacciono le canzoni napoletane.",
+      "exampleNative": "Use a + person's name to highlight the experiencer.",
+      "korean": "piacere con altri esperienti",
+      "english": "Replace mi with another indirect pronoun: ti piace la pizza? \"do you like pizza?\", a Marco piace il vino \"Marco likes wine\" (a + name fronted for emphasis).",
+      "example": "A Marco piace il calcio. A Anna piacciono le canzoni napoletane.",
+      "exampleEnglish": "Use a + person's name to highlight the experiencer."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Comparativo: più di / meno di",
+      "romanization": "comparative: more than / less than",
+      "nativeText": "più (more) / meno (less) + adjective + di + comparison object. Roma è più grande di Bologna. Milano è meno antica di Roma. The adjective AGREES with the subject.",
+      "pronunciation": "comparative: more than / less than",
+      "exampleTarget": "Roma è più grande di Bologna. · Bologna è meno costosa di Milano.",
+      "exampleNative": "Standard comparative construction.",
+      "korean": "Comparativo: più di / meno di",
+      "english": "più (more) / meno (less) + adjective + di + comparison object. Roma è più grande di Bologna. Milano è meno antica di Roma. The adjective AGREES with the subject.",
+      "example": "Roma è più grande di Bologna. · Bologna è meno costosa di Milano.",
+      "exampleEnglish": "Standard comparative construction."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Comparativi irregolari",
+      "romanization": "irregular comparatives",
+      "nativeText": "Four irregular comparatives to memorize: buono → migliore (better), cattivo → peggiore (worse), grande → maggiore (greater/older), piccolo → minore (smaller/younger). Each can also use più + base form.",
+      "pronunciation": "irregular comparatives",
+      "exampleTarget": "La pizza napoletana è migliore della newyorkese. · Mio fratello maggiore ha 28 anni.",
+      "exampleNative": "Migliore/peggiore are very common; the regular forms più buono / più cattivo also exist.",
+      "korean": "Comparativi irregolari",
+      "english": "Four irregular comparatives to memorize: buono → migliore (better), cattivo → peggiore (worse), grande → maggiore (greater/older), piccolo → minore (smaller/younger). Each can also use più + base form.",
+      "example": "La pizza napoletana è migliore della newyorkese. · Mio fratello maggiore ha 28 anni.",
+      "exampleEnglish": "Migliore/peggiore are very common; the regular forms più buono / più cattivo also exist."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Uguaglianza: tanto…quanto / così…come",
+      "romanization": "equality: as…as",
+      "nativeText": "For equality: tanto + adj + quanto + comparison, or così + adj + come + comparison. Bologna è tanto bella quanto Firenze. Both pairs are equivalent.",
+      "pronunciation": "equality: as…as",
+      "exampleTarget": "Bologna è (tanto) bella quanto Firenze. Roma è (così) antica come Atene.",
+      "exampleNative": "Both pairs work; tanto/quanto is slightly more common.",
+      "korean": "Uguaglianza: tanto…quanto / così…come",
+      "english": "For equality: tanto + adj + quanto + comparison, or così + adj + come + comparison. Bologna è tanto bella quanto Firenze. Both pairs are equivalent.",
+      "example": "Bologna è (tanto) bella quanto Firenze. Roma è (così) antica come Atene.",
+      "exampleEnglish": "Both pairs work; tanto/quanto is slightly more common."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "molto come avverbio",
+      "romanization": "molto as adverb (uninflected)",
+      "nativeText": "When molto modifies an adjective or verb, it stays UNINFLECTED: molto bello (very beautiful), molto bene (very well), mangio molto (I eat a lot). Same for tanto, poco, troppo when adverbial.",
+      "pronunciation": "molto as adverb (uninflected)",
+      "exampleTarget": "L'Italia è molto bella. Mangio molto. Lavoro molto.",
+      "exampleNative": "Adverbial use — no agreement.",
+      "korean": "molto come avverbio",
+      "english": "When molto modifies an adjective or verb, it stays UNINFLECTED: molto bello (very beautiful), molto bene (very well), mangio molto (I eat a lot). Same for tanto, poco, troppo when adverbial.",
+      "example": "L'Italia è molto bella. Mangio molto. Lavoro molto.",
+      "exampleEnglish": "Adverbial use — no agreement."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "molto come aggettivo",
+      "romanization": "molto as adjective (inflected)",
+      "nativeText": "When molto modifies a noun, it INFLECTS for gender and number: molto (m.s.), molta (f.s.), molti (m.pl.), molte (f.pl.). Molti studenti, molte persone, molta acqua.",
+      "pronunciation": "molto as adjective (inflected)",
+      "exampleTarget": "Ho molti amici. Conosco molte persone. Bevo molta acqua.",
+      "exampleNative": "Adjective use — agreement with the noun.",
+      "korean": "molto come aggettivo",
+      "english": "When molto modifies a noun, it INFLECTS for gender and number: molto (m.s.), molta (f.s.), molti (m.pl.), molte (f.pl.). Molti studenti, molte persone, molta acqua.",
+      "example": "Ho molti amici. Conosco molte persone. Bevo molta acqua.",
+      "exampleEnglish": "Adjective use — agreement with the noun."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "poco, troppo, tanto",
+      "romanization": "other quantifiers with same rule",
+      "nativeText": "Same inflection vs adverb rules for: poco/-a/-i/-e (little/few), troppo/-a/-i/-e (too much/many), tanto/-a/-i/-e (so much/many).",
+      "pronunciation": "other quantifiers with same rule",
+      "exampleTarget": "Ho poco tempo. · Pochi studenti studiano. · Troppe persone in autobus.",
+      "exampleNative": "Memorize the parallel rule for all four.",
+      "korean": "poco, troppo, tanto",
+      "english": "Same inflection vs adverb rules for: poco/-a/-i/-e (little/few), troppo/-a/-i/-e (too much/many), tanto/-a/-i/-e (so much/many).",
+      "example": "Ho poco tempo. · Pochi studenti studiano. · Troppe persone in autobus.",
+      "exampleEnglish": "Memorize the parallel rule for all four."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lettera dalla Bologna",
+      "romanization": "a letter from Bologna (reading)",
+      "nativeText": "10-sentence letter from a UniBo Erasmus student to family.",
+      "pronunciation": "a letter from Bologna (reading)",
+      "exampleTarget": "Cari mamma e papà, sono a Bologna da un mese. Mi piace molto la città: è più piccola di Roma ma molto vivace per gli studenti. Vivo in un appartamento con tre coinquiline: una è italiana di Napoli, le altre sono francese e spagnola. L'università è bellissima. Mi piacciono le lezioni di letteratura italiana, ma il latino è più difficile del greco. A pranzo mangio in mensa: il cibo è buono e costa poco. Mi mancano molto la nostra cucina e i nostri amici, ma sto bene. Bologna è famosa per i portici e per il cibo: tagliatelle al ragù, tortellini, mortadella — tutto delizioso. Vi scrivo presto, un abbraccio. Vostra Anna.",
+      "exampleNative": "A realistic letter combining all unit grammar.",
+      "korean": "Lettera dalla Bologna",
+      "english": "10-sentence letter from a UniBo Erasmus student to family.",
+      "example": "Cari mamma e papà, sono a Bologna da un mese. Mi piace molto la città: è più piccola di Roma ma molto vivace per gli studenti. Vivo in un appartamento con tre coinquiline: una è italiana di Napoli, le altre sono francese e spagnola. L'università è bellissima. Mi piacciono le lezioni di letteratura italiana, ma il latino è più difficile del greco. A pranzo mangio in mensa: il cibo è buono e costa poco. Mi mancano molto la nostra cucina e i nostri amici, ma sto bene. Bologna è famosa per i portici e per il cibo: tagliatelle al ragù, tortellini, mortadella — tutto delizioso. Vi scrivo presto, un abbraccio. Vostra Anna.",
+      "exampleEnglish": "A realistic letter combining all unit grammar."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Domande sulla lettera",
+      "romanization": "comprehension on the letter",
+      "nativeText": "Five comprehension questions that make the learner recover duration, housemates, preferences, absence, and city identity from the letter.",
+      "pronunciation": "comprehension on the letter",
+      "exampleTarget": "D1: Da quanto tempo Anna è a Bologna? D2: Con chi abita? D3: Cosa le piace dell'università? D4: Cosa le manca? D5: Perché Bologna è famosa?",
+      "exampleNative": "Answering them rehearses `piacere`, `mancare`, and descriptive city language in connected context.",
+      "korean": "Domande sulla lettera",
+      "english": "Five comprehension questions that make the learner recover duration, housemates, preferences, absence, and city identity from the letter.",
+      "example": "D1: Da quanto tempo Anna è a Bologna? D2: Con chi abita? D3: Cosa le piace dell'università? D4: Cosa le manca? D5: Perché Bologna è famosa?",
+      "exampleEnglish": "Answering them rehearses `piacere`, `mancare`, and descriptive city language in connected context."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Cartolina dall'Italia",
+      "romanization": "postcard from Italy (writing)",
+      "nativeText": "6-sentence postcard template.",
+      "pronunciation": "postcard from Italy (writing)",
+      "exampleTarget": "Esempio: Sono a Venezia in vacanza. La città è bellissima, più antica di qualsiasi altra città italiana. Mi piacciono le gondole e i ponti. Il cibo è ottimo: tante vongole e pesce fresco. Mi piace anche il dialetto veneziano, anche se è difficile da capire. Un saluto, Anna.",
+      "exampleNative": "Substitute your own city/region.",
+      "korean": "Cartolina dall'Italia",
+      "english": "6-sentence postcard template.",
+      "example": "Esempio: Sono a Venezia in vacanza. La città è bellissima, più antica di qualsiasi altra città italiana. Mi piacciono le gondole e i ponti. Il cibo è ottimo: tante vongole e pesce fresco. Mi piace anche il dialetto veneziano, anche se è difficile da capire. Un saluto, Anna.",
+      "exampleEnglish": "Substitute your own city/region."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Nord vs sud",
+      "romanization": "north vs south italy",
+      "nativeText": "Italy is historically divided: nord (Lombardia, Piemonte, Veneto, etc.) is industrialized, more European in tempo; sud (Campania, Sicilia, Puglia, etc.) is more agricultural, more family-centered, with stronger regional identities. The economic divide is real but the cultural richness is balanced.",
+      "pronunciation": "north vs south italy",
+      "exampleTarget": "Il nord è più ricco economicamente, ma il sud è più caloroso umanamente.",
+      "exampleNative": "Major cultural axis worth understanding.",
+      "korean": "Nord vs sud",
+      "english": "Italy is historically divided: nord (Lombardia, Piemonte, Veneto, etc.) is industrialized, more European in tempo; sud (Campania, Sicilia, Puglia, etc.) is more agricultural, more family-centered, with stronger regional identities. The economic divide is real but the cultural richness is balanced.",
+      "example": "Il nord è più ricco economicamente, ma il sud è più caloroso umanamente.",
+      "exampleEnglish": "Major cultural axis worth understanding."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Feste italiane",
+      "romanization": "Italian festivals",
+      "nativeText": "Major festivals: Carnevale (Venezia, Viareggio — February); Pasqua (Easter — March/April); 25 aprile (Liberation Day); 1 maggio (Labor Day); 2 giugno (Republic Day); Ferragosto (15 August — Italy shuts down for vacation); Natale (Christmas); Befana (6 January — old woman brings gifts).",
+      "pronunciation": "Italian festivals",
+      "exampleTarget": "Il 15 agosto è Ferragosto: l'Italia è in vacanza.",
+      "exampleNative": "Critical to plan around these holidays.",
+      "korean": "Feste italiane",
+      "english": "Major festivals: Carnevale (Venezia, Viareggio — February); Pasqua (Easter — March/April); 25 aprile (Liberation Day); 1 maggio (Labor Day); 2 giugno (Republic Day); Ferragosto (15 August — Italy shuts down for vacation); Natale (Christmas); Befana (6 January — old woman brings gifts).",
+      "example": "Il 15 agosto è Ferragosto: l'Italia è in vacanza.",
+      "exampleEnglish": "Critical to plan around these holidays."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Aperitivo",
+      "romanization": "aperitivo culture",
+      "nativeText": "Aperitivo is the late-afternoon (18-20) social ritual: drinks (spritz, Negroni, prosecco) + buffet/finger food (often free with drink). Milano invented modern aperitivo culture; now standard in every Italian city.",
+      "pronunciation": "aperitivo culture",
+      "exampleTarget": "Andiamo a fare l'aperitivo alle sette?",
+      "exampleNative": "Pre-dinner social hour; a signature Italian habit.",
+      "korean": "Aperitivo",
+      "english": "Aperitivo is the late-afternoon (18-20) social ritual: drinks (spritz, Negroni, prosecco) + buffet/finger food (often free with drink). Milano invented modern aperitivo culture; now standard in every Italian city.",
+      "example": "Andiamo a fare l'aperitivo alle sette?",
+      "exampleEnglish": "Pre-dinner social hour; a signature Italian habit."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Sfida — descrivere una regione",
+      "romanization": "stretch — describe one Italian region",
+      "nativeText": "Stretch: describe one Italian region in 5+ sentences using comparisons and piacere.",
+      "pronunciation": "stretch — describe one Italian region",
+      "exampleTarget": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleNative": "Full integration target.",
+      "korean": "Sfida — descrivere una regione",
+      "english": "Stretch: describe one Italian region in 5+ sentences using comparisons and piacere.",
+      "example": "Esempio: La Sicilia è la regione più grande d'Italia. Ha più sole della Lombardia. Mi piacciono molto i cannoli e le arancine. Il dialetto siciliano è difficile, più diverso dall'italiano del napoletano.",
+      "exampleEnglish": "Full integration target."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Vivere in Italia è bello ma a volte complicato.",
+      "romanization": "VI-ve-re in i-TA-lja",
+      "nativeText": "Model use for \"Vivere in Italia\": Life in Italy — the umbrella theme of this unit. Encompasses regional differences, daily challenges, foods, festivals, and the small joys of Italian life.",
+      "pronunciation": "VI-ve-re in i-TA-lja",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia è bello ma a volte complicato.",
+      "english": "Model use for \"Vivere in Italia\": Life in Italy — the umbrella theme of this unit. Encompasses regional differences, daily challenges, foods, festivals, and the small joys of Italian life.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "VI-ve-re in i-TA-lja",
+      "nativeText": "Usage focus for \"Vivere in Italia\": Life in Italy — the umbrella theme of this unit. Encompasses regional differences, daily challenges, foods, festivals, and the small joys of Italian life.",
+      "pronunciation": "VI-ve-re in i-TA-lja",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Notice what the form is doing here: Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Usage focus for \"Vivere in Italia\": Life in Italy — the umbrella theme of this unit. Encompasses regional differences, daily challenges, foods, festivals, and the small joys of Italian life.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Notice what the form is doing here: Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "VI-ve-re in i-TA-lja",
+      "nativeText": "Contrast check for \"Vivere in Italia\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "VI-ve-re in i-TA-lja",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Contrast check for \"Vivere in Italia\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "VI-ve-re in i-TA-lja",
+      "nativeText": "Recall \"Vivere in Italia\" from memory, then explain what would change if a nearby alternative replaced it in \"Vivere in Italia è bello ma a volte complicato.\".",
+      "pronunciation": "VI-ve-re in i-TA-lja",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Self-check against the model before moving on: Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Recall \"Vivere in Italia\" from memory, then explain what would change if a nearby alternative replaced it in \"Vivere in Italia è bello ma a volte complicato.\".",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Self-check against the model before moving on: Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "VI-ve-re in i-TA-lja",
+      "nativeText": "Repair \"Vivere in Italia\" inside \"Vivere in Italia è bello ma a volte complicato.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Life in Italy — the umbrella theme of this unit. Encompasses regional differences, daily challenges, foods, festivals, and the small joys of Italian life.",
+      "pronunciation": "VI-ve-re in i-TA-lja",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Use the model as the repair target: Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Repair \"Vivere in Italia\" inside \"Vivere in Italia è bello ma a volte complicato.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Life in Italy — the umbrella theme of this unit. Encompasses regional differences, daily challenges, foods, festivals, and the small joys of Italian life.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Use the model as the repair target: Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "VI-ve-re in i-TA-lja",
+      "nativeText": "Transfer \"Vivere in Italia\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vivere in Italia è bello ma a volte complicato.\".",
+      "pronunciation": "VI-ve-re in i-TA-lja",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Transfer \"Vivere in Italia\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vivere in Italia è bello ma a volte complicato.\".",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "VI-ve-re in i-TA-lja",
+      "nativeText": "Find one word or phrase that naturally travels with \"Vivere in Italia\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "VI-ve-re in i-TA-lja",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Find one word or phrase that naturally travels with \"Vivere in Italia\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "VI-ve-re in i-TA-lja",
+      "nativeText": "Listen for \"Vivere in Italia\" inside \"Vivere in Italia è bello ma a volte complicato.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "VI-ve-re in i-TA-lja",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Listen for \"Vivere in Italia\" inside \"Vivere in Italia è bello ma a volte complicato.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "VI-ve-re in i-TA-lja",
+      "nativeText": "Write \"Vivere in Italia\" again without looking, then compare the exact written form against \"Vivere in Italia è bello ma a volte complicato.\" before moving on.",
+      "pronunciation": "VI-ve-re in i-TA-lja",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "Use the written model as the final correctness check: Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Write \"Vivere in Italia\" again without looking, then compare the exact written form against \"Vivere in Italia è bello ma a volte complicato.\" before moving on.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "Use the written model as the final correctness check: Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Vivere in Italia",
+      "romanization": "VI-ve-re in i-TA-lja",
+      "nativeText": "Check whether \"Vivere in Italia\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Realistic frame: not everything is easy, but a lot is wonderful.",
+      "pronunciation": "VI-ve-re in i-TA-lja",
+      "exampleTarget": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Realistic frame: not everything is easy, but a lot is wonderful.",
+      "korean": "Vivere in Italia",
+      "english": "Check whether \"Vivere in Italia\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Realistic frame: not everything is easy, but a lot is wonderful.",
+      "example": "Vivere in Italia è bello ma a volte complicato.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Realistic frame: not everything is easy, but a lot is wonderful."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "romanization": "Italia by the numbers",
+      "nativeText": "Model use for \"Italia in numeri\": 20 regioni, ~60 milioni di abitanti, 7600 km di costa, capitale Roma (~3 milioni), centro economico Milano (1.4 milioni), patrimonio UNESCO più grande del mondo (58 siti).",
+      "pronunciation": "Italia by the numbers",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Numerical orientation.",
+      "korean": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "english": "Model use for \"Italia in numeri\": 20 regioni, ~60 milioni di abitanti, 7600 km di costa, capitale Roma (~3 milioni), centro economico Milano (1.4 milioni), patrimonio UNESCO più grande del mondo (58 siti).",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Numerical orientation."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "Italia by the numbers",
+      "nativeText": "Usage focus for \"Italia in numeri\": 20 regioni, ~60 milioni di abitanti, 7600 km di costa, capitale Roma (~3 milioni), centro economico Milano (1.4 milioni), patrimonio UNESCO più grande del mondo (58 siti).",
+      "pronunciation": "Italia by the numbers",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Notice what the form is doing here: Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "Usage focus for \"Italia in numeri\": 20 regioni, ~60 milioni di abitanti, 7600 km di costa, capitale Roma (~3 milioni), centro economico Milano (1.4 milioni), patrimonio UNESCO più grande del mondo (58 siti).",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Notice what the form is doing here: Numerical orientation."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "Italia by the numbers",
+      "nativeText": "Contrast check for \"Italia in numeri\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Italia by the numbers",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "Contrast check for \"Italia in numeri\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Numerical orientation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "Italia by the numbers",
+      "nativeText": "Recall \"Italia in numeri\" from memory, then explain what would change if a nearby alternative replaced it in \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\".",
+      "pronunciation": "Italia by the numbers",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Self-check against the model before moving on: Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "Recall \"Italia in numeri\" from memory, then explain what would change if a nearby alternative replaced it in \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\".",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Self-check against the model before moving on: Numerical orientation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "Italia by the numbers",
+      "nativeText": "Repair \"Italia in numeri\" inside \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: 20 regioni, ~60 milioni di abitanti, 7600 km di costa, capitale Roma (~3 milioni), centro economico Milano (1.4 milioni), patrimonio UNESCO più grande del mondo (58 siti).",
+      "pronunciation": "Italia by the numbers",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Use the model as the repair target: Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "Repair \"Italia in numeri\" inside \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: 20 regioni, ~60 milioni di abitanti, 7600 km di costa, capitale Roma (~3 milioni), centro economico Milano (1.4 milioni), patrimonio UNESCO più grande del mondo (58 siti).",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Use the model as the repair target: Numerical orientation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "Italia by the numbers",
+      "nativeText": "Transfer \"Italia in numeri\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\".",
+      "pronunciation": "Italia by the numbers",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "Transfer \"Italia in numeri\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\".",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Numerical orientation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "Italia by the numbers",
+      "nativeText": "Find one word or phrase that naturally travels with \"Italia in numeri\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Italia by the numbers",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "Find one word or phrase that naturally travels with \"Italia in numeri\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Numerical orientation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "Italia by the numbers",
+      "nativeText": "Listen for \"Italia in numeri\" inside \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Italia by the numbers",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "Listen for \"Italia in numeri\" inside \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Numerical orientation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "Italia by the numbers",
+      "nativeText": "Write \"Italia in numeri\" again without looking, then compare the exact written form against \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" before moving on.",
+      "pronunciation": "Italia by the numbers",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "Use the written model as the final correctness check: Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "Write \"Italia in numeri\" again without looking, then compare the exact written form against \"L'Italia ha venti regioni e ventiquattro siti UNESCO.\" before moving on.",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "Use the written model as the final correctness check: Numerical orientation."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Italia in numeri",
+      "romanization": "Italia by the numbers",
+      "nativeText": "Check whether \"Italia in numeri\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Numerical orientation.",
+      "pronunciation": "Italia by the numbers",
+      "exampleTarget": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Numerical orientation.",
+      "korean": "Italia in numeri",
+      "english": "Check whether \"Italia in numeri\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Numerical orientation.",
+      "example": "L'Italia ha venti regioni e ventiquattro siti UNESCO.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Numerical orientation."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "La Toscana è famosa per il vino Chianti.",
+      "romanization": "/tosˈkaː.na/",
+      "nativeText": "Model use for \"Toscana\": Tuscany — central Italy, capital Firenze. Famous for Renaissance art, Chianti wine, rolling cypress-dotted hills, and cities like Siena, Pisa, Lucca.",
+      "pronunciation": "/tosˈkaː.na/",
+      "exampleTarget": "La Toscana è famosa per il vino Chianti.",
+      "exampleNative": "Italy's most visited region after Veneto.",
+      "korean": "La Toscana è famosa per il vino Chianti.",
+      "english": "Model use for \"Toscana\": Tuscany — central Italy, capital Firenze. Famous for Renaissance art, Chianti wine, rolling cypress-dotted hills, and cities like Siena, Pisa, Lucca.",
+      "example": "La Toscana è famosa per il vino Chianti.",
+      "exampleEnglish": "Italy's most visited region after Veneto."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Toscana",
+      "romanization": "/tosˈkaː.na/",
+      "nativeText": "Usage focus for \"Toscana\": Tuscany — central Italy, capital Firenze. Famous for Renaissance art, Chianti wine, rolling cypress-dotted hills, and cities like Siena, Pisa, Lucca.",
+      "pronunciation": "/tosˈkaː.na/",
+      "exampleTarget": "La Toscana è famosa per il vino Chianti.",
+      "exampleNative": "Notice what the form is doing here: Italy's most visited region after Veneto.",
+      "korean": "Toscana",
+      "english": "Usage focus for \"Toscana\": Tuscany — central Italy, capital Firenze. Famous for Renaissance art, Chianti wine, rolling cypress-dotted hills, and cities like Siena, Pisa, Lucca.",
+      "example": "La Toscana è famosa per il vino Chianti.",
+      "exampleEnglish": "Notice what the form is doing here: Italy's most visited region after Veneto."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Toscana",
+      "romanization": "/tosˈkaː.na/",
+      "nativeText": "Contrast check for \"Toscana\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "/tosˈkaː.na/",
+      "exampleTarget": "La Toscana è famosa per il vino Chianti.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Italy's most visited region after Veneto.",
+      "korean": "Toscana",
+      "english": "Contrast check for \"Toscana\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "La Toscana è famosa per il vino Chianti.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Italy's most visited region after Veneto."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Toscana",
+      "romanization": "/tosˈkaː.na/",
+      "nativeText": "Recall \"Toscana\" from memory, then explain what would change if a nearby alternative replaced it in \"La Toscana è famosa per il vino Chianti.\".",
+      "pronunciation": "/tosˈkaː.na/",
+      "exampleTarget": "La Toscana è famosa per il vino Chianti.",
+      "exampleNative": "Self-check against the model before moving on: Italy's most visited region after Veneto.",
+      "korean": "Toscana",
+      "english": "Recall \"Toscana\" from memory, then explain what would change if a nearby alternative replaced it in \"La Toscana è famosa per il vino Chianti.\".",
+      "example": "La Toscana è famosa per il vino Chianti.",
+      "exampleEnglish": "Self-check against the model before moving on: Italy's most visited region after Veneto."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Toscana",
+      "romanization": "/tosˈkaː.na/",
+      "nativeText": "Repair \"Toscana\" inside \"La Toscana è famosa per il vino Chianti.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Tuscany — central Italy, capital Firenze. Famous for Renaissance art, Chianti wine, rolling cypress-dotted hills, and cities like Siena, Pisa, Lucca.",
+      "pronunciation": "/tosˈkaː.na/",
+      "exampleTarget": "La Toscana è famosa per il vino Chianti.",
+      "exampleNative": "Use the model as the repair target: Italy's most visited region after Veneto.",
+      "korean": "Toscana",
+      "english": "Repair \"Toscana\" inside \"La Toscana è famosa per il vino Chianti.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Tuscany — central Italy, capital Firenze. Famous for Renaissance art, Chianti wine, rolling cypress-dotted hills, and cities like Siena, Pisa, Lucca.",
+      "example": "La Toscana è famosa per il vino Chianti.",
+      "exampleEnglish": "Use the model as the repair target: Italy's most visited region after Veneto."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Toscana",
+      "romanization": "/tosˈkaː.na/",
+      "nativeText": "Transfer \"Toscana\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"La Toscana è famosa per il vino Chianti.\".",
+      "pronunciation": "/tosˈkaː.na/",
+      "exampleTarget": "La Toscana è famosa per il vino Chianti.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Italy's most visited region after Veneto.",
+      "korean": "Toscana",
+      "english": "Transfer \"Toscana\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"La Toscana è famosa per il vino Chianti.\".",
+      "example": "La Toscana è famosa per il vino Chianti.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Italy's most visited region after Veneto."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Toscana",
+      "romanization": "/tosˈkaː.na/",
+      "nativeText": "Find one word or phrase that naturally travels with \"Toscana\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "/tosˈkaː.na/",
+      "exampleTarget": "La Toscana è famosa per il vino Chianti.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Italy's most visited region after Veneto.",
+      "korean": "Toscana",
+      "english": "Find one word or phrase that naturally travels with \"Toscana\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "La Toscana è famosa per il vino Chianti.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Italy's most visited region after Veneto."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Toscana",
+      "romanization": "/tosˈkaː.na/",
+      "nativeText": "Listen for \"Toscana\" inside \"La Toscana è famosa per il vino Chianti.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "/tosˈkaː.na/",
+      "exampleTarget": "La Toscana è famosa per il vino Chianti.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Italy's most visited region after Veneto.",
+      "korean": "Toscana",
+      "english": "Listen for \"Toscana\" inside \"La Toscana è famosa per il vino Chianti.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "La Toscana è famosa per il vino Chianti.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Italy's most visited region after Veneto."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Toscana",
+      "romanization": "/tosˈkaː.na/",
+      "nativeText": "Write \"Toscana\" again without looking, then compare the exact written form against \"La Toscana è famosa per il vino Chianti.\" before moving on.",
+      "pronunciation": "/tosˈkaː.na/",
+      "exampleTarget": "La Toscana è famosa per il vino Chianti.",
+      "exampleNative": "Use the written model as the final correctness check: Italy's most visited region after Veneto.",
+      "korean": "Toscana",
+      "english": "Write \"Toscana\" again without looking, then compare the exact written form against \"La Toscana è famosa per il vino Chianti.\" before moving on.",
+      "example": "La Toscana è famosa per il vino Chianti.",
+      "exampleEnglish": "Use the written model as the final correctness check: Italy's most visited region after Veneto."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Toscana",
+      "romanization": "/tosˈkaː.na/",
+      "nativeText": "Check whether \"Toscana\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Italy's most visited region after Veneto.",
+      "pronunciation": "/tosˈkaː.na/",
+      "exampleTarget": "La Toscana è famosa per il vino Chianti.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Italy's most visited region after Veneto.",
+      "korean": "Toscana",
+      "english": "Check whether \"Toscana\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Italy's most visited region after Veneto.",
+      "example": "La Toscana è famosa per il vino Chianti.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Italy's most visited region after Veneto."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "La Lombardia è la regione più ricca d'Italia.",
+      "romanization": "/lom.barˈdiː.a/",
+      "nativeText": "Model use for \"Lombardia\": Lombardy — northern Italy, capital Milano. Italy's economic engine, fashion capital, also home to Bergamo, Brescia, the Lake District.",
+      "pronunciation": "/lom.barˈdiː.a/",
+      "exampleTarget": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleNative": "Industrial / financial center of the country.",
+      "korean": "La Lombardia è la regione più ricca d'Italia.",
+      "english": "Model use for \"Lombardia\": Lombardy — northern Italy, capital Milano. Italy's economic engine, fashion capital, also home to Bergamo, Brescia, the Lake District.",
+      "example": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleEnglish": "Industrial / financial center of the country."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lombardia",
+      "romanization": "/lom.barˈdiː.a/",
+      "nativeText": "Usage focus for \"Lombardia\": Lombardy — northern Italy, capital Milano. Italy's economic engine, fashion capital, also home to Bergamo, Brescia, the Lake District.",
+      "pronunciation": "/lom.barˈdiː.a/",
+      "exampleTarget": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleNative": "Notice what the form is doing here: Industrial / financial center of the country.",
+      "korean": "Lombardia",
+      "english": "Usage focus for \"Lombardia\": Lombardy — northern Italy, capital Milano. Italy's economic engine, fashion capital, also home to Bergamo, Brescia, the Lake District.",
+      "example": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleEnglish": "Notice what the form is doing here: Industrial / financial center of the country."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lombardia",
+      "romanization": "/lom.barˈdiː.a/",
+      "nativeText": "Contrast check for \"Lombardia\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "/lom.barˈdiː.a/",
+      "exampleTarget": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Industrial / financial center of the country.",
+      "korean": "Lombardia",
+      "english": "Contrast check for \"Lombardia\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Industrial / financial center of the country."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lombardia",
+      "romanization": "/lom.barˈdiː.a/",
+      "nativeText": "Recall \"Lombardia\" from memory, then explain what would change if a nearby alternative replaced it in \"La Lombardia è la regione più ricca d'Italia.\".",
+      "pronunciation": "/lom.barˈdiː.a/",
+      "exampleTarget": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleNative": "Self-check against the model before moving on: Industrial / financial center of the country.",
+      "korean": "Lombardia",
+      "english": "Recall \"Lombardia\" from memory, then explain what would change if a nearby alternative replaced it in \"La Lombardia è la regione più ricca d'Italia.\".",
+      "example": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleEnglish": "Self-check against the model before moving on: Industrial / financial center of the country."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lombardia",
+      "romanization": "/lom.barˈdiː.a/",
+      "nativeText": "Repair \"Lombardia\" inside \"La Lombardia è la regione più ricca d'Italia.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Lombardy — northern Italy, capital Milano. Italy's economic engine, fashion capital, also home to Bergamo, Brescia, the Lake District.",
+      "pronunciation": "/lom.barˈdiː.a/",
+      "exampleTarget": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleNative": "Use the model as the repair target: Industrial / financial center of the country.",
+      "korean": "Lombardia",
+      "english": "Repair \"Lombardia\" inside \"La Lombardia è la regione più ricca d'Italia.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Lombardy — northern Italy, capital Milano. Italy's economic engine, fashion capital, also home to Bergamo, Brescia, the Lake District.",
+      "example": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleEnglish": "Use the model as the repair target: Industrial / financial center of the country."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lombardia",
+      "romanization": "/lom.barˈdiː.a/",
+      "nativeText": "Transfer \"Lombardia\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"La Lombardia è la regione più ricca d'Italia.\".",
+      "pronunciation": "/lom.barˈdiː.a/",
+      "exampleTarget": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Industrial / financial center of the country.",
+      "korean": "Lombardia",
+      "english": "Transfer \"Lombardia\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"La Lombardia è la regione più ricca d'Italia.\".",
+      "example": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Industrial / financial center of the country."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lombardia",
+      "romanization": "/lom.barˈdiː.a/",
+      "nativeText": "Find one word or phrase that naturally travels with \"Lombardia\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "/lom.barˈdiː.a/",
+      "exampleTarget": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Industrial / financial center of the country.",
+      "korean": "Lombardia",
+      "english": "Find one word or phrase that naturally travels with \"Lombardia\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Industrial / financial center of the country."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lombardia",
+      "romanization": "/lom.barˈdiː.a/",
+      "nativeText": "Listen for \"Lombardia\" inside \"La Lombardia è la regione più ricca d'Italia.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "/lom.barˈdiː.a/",
+      "exampleTarget": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Industrial / financial center of the country.",
+      "korean": "Lombardia",
+      "english": "Listen for \"Lombardia\" inside \"La Lombardia è la regione più ricca d'Italia.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Industrial / financial center of the country."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lombardia",
+      "romanization": "/lom.barˈdiː.a/",
+      "nativeText": "Write \"Lombardia\" again without looking, then compare the exact written form against \"La Lombardia è la regione più ricca d'Italia.\" before moving on.",
+      "pronunciation": "/lom.barˈdiː.a/",
+      "exampleTarget": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleNative": "Use the written model as the final correctness check: Industrial / financial center of the country.",
+      "korean": "Lombardia",
+      "english": "Write \"Lombardia\" again without looking, then compare the exact written form against \"La Lombardia è la regione più ricca d'Italia.\" before moving on.",
+      "example": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleEnglish": "Use the written model as the final correctness check: Industrial / financial center of the country."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lombardia",
+      "romanization": "/lom.barˈdiː.a/",
+      "nativeText": "Check whether \"Lombardia\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Industrial / financial center of the country.",
+      "pronunciation": "/lom.barˈdiː.a/",
+      "exampleTarget": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Industrial / financial center of the country.",
+      "korean": "Lombardia",
+      "english": "Check whether \"Lombardia\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Industrial / financial center of the country.",
+      "example": "La Lombardia è la regione più ricca d'Italia.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Industrial / financial center of the country."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Il Lazio ospita la capitale, Roma.",
+      "romanization": "/ˈlat.tsjo/",
+      "nativeText": "Model use for \"Lazio\": Lazio — central-western Italy, capital Roma. Home to the Vatican, Colosseum, ancient sites.",
+      "pronunciation": "/ˈlat.tsjo/",
+      "exampleTarget": "Il Lazio ospita la capitale, Roma.",
+      "exampleNative": "Region of Rome and Vatican City.",
+      "korean": "Il Lazio ospita la capitale, Roma.",
+      "english": "Model use for \"Lazio\": Lazio — central-western Italy, capital Roma. Home to the Vatican, Colosseum, ancient sites.",
+      "example": "Il Lazio ospita la capitale, Roma.",
+      "exampleEnglish": "Region of Rome and Vatican City."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lazio",
+      "romanization": "/ˈlat.tsjo/",
+      "nativeText": "Usage focus for \"Lazio\": Lazio — central-western Italy, capital Roma. Home to the Vatican, Colosseum, ancient sites.",
+      "pronunciation": "/ˈlat.tsjo/",
+      "exampleTarget": "Il Lazio ospita la capitale, Roma.",
+      "exampleNative": "Notice what the form is doing here: Region of Rome and Vatican City.",
+      "korean": "Lazio",
+      "english": "Usage focus for \"Lazio\": Lazio — central-western Italy, capital Roma. Home to the Vatican, Colosseum, ancient sites.",
+      "example": "Il Lazio ospita la capitale, Roma.",
+      "exampleEnglish": "Notice what the form is doing here: Region of Rome and Vatican City."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lazio",
+      "romanization": "/ˈlat.tsjo/",
+      "nativeText": "Contrast check for \"Lazio\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "/ˈlat.tsjo/",
+      "exampleTarget": "Il Lazio ospita la capitale, Roma.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Region of Rome and Vatican City.",
+      "korean": "Lazio",
+      "english": "Contrast check for \"Lazio\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Il Lazio ospita la capitale, Roma.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Region of Rome and Vatican City."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lazio",
+      "romanization": "/ˈlat.tsjo/",
+      "nativeText": "Recall \"Lazio\" from memory, then explain what would change if a nearby alternative replaced it in \"Il Lazio ospita la capitale, Roma.\".",
+      "pronunciation": "/ˈlat.tsjo/",
+      "exampleTarget": "Il Lazio ospita la capitale, Roma.",
+      "exampleNative": "Self-check against the model before moving on: Region of Rome and Vatican City.",
+      "korean": "Lazio",
+      "english": "Recall \"Lazio\" from memory, then explain what would change if a nearby alternative replaced it in \"Il Lazio ospita la capitale, Roma.\".",
+      "example": "Il Lazio ospita la capitale, Roma.",
+      "exampleEnglish": "Self-check against the model before moving on: Region of Rome and Vatican City."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lazio",
+      "romanization": "/ˈlat.tsjo/",
+      "nativeText": "Repair \"Lazio\" inside \"Il Lazio ospita la capitale, Roma.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Lazio — central-western Italy, capital Roma. Home to the Vatican, Colosseum, ancient sites.",
+      "pronunciation": "/ˈlat.tsjo/",
+      "exampleTarget": "Il Lazio ospita la capitale, Roma.",
+      "exampleNative": "Use the model as the repair target: Region of Rome and Vatican City.",
+      "korean": "Lazio",
+      "english": "Repair \"Lazio\" inside \"Il Lazio ospita la capitale, Roma.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Lazio — central-western Italy, capital Roma. Home to the Vatican, Colosseum, ancient sites.",
+      "example": "Il Lazio ospita la capitale, Roma.",
+      "exampleEnglish": "Use the model as the repair target: Region of Rome and Vatican City."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lazio",
+      "romanization": "/ˈlat.tsjo/",
+      "nativeText": "Transfer \"Lazio\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Il Lazio ospita la capitale, Roma.\".",
+      "pronunciation": "/ˈlat.tsjo/",
+      "exampleTarget": "Il Lazio ospita la capitale, Roma.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Region of Rome and Vatican City.",
+      "korean": "Lazio",
+      "english": "Transfer \"Lazio\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Il Lazio ospita la capitale, Roma.\".",
+      "example": "Il Lazio ospita la capitale, Roma.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Region of Rome and Vatican City."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lazio",
+      "romanization": "/ˈlat.tsjo/",
+      "nativeText": "Find one word or phrase that naturally travels with \"Lazio\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "/ˈlat.tsjo/",
+      "exampleTarget": "Il Lazio ospita la capitale, Roma.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Region of Rome and Vatican City.",
+      "korean": "Lazio",
+      "english": "Find one word or phrase that naturally travels with \"Lazio\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Il Lazio ospita la capitale, Roma.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Region of Rome and Vatican City."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lazio",
+      "romanization": "/ˈlat.tsjo/",
+      "nativeText": "Listen for \"Lazio\" inside \"Il Lazio ospita la capitale, Roma.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "/ˈlat.tsjo/",
+      "exampleTarget": "Il Lazio ospita la capitale, Roma.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Region of Rome and Vatican City.",
+      "korean": "Lazio",
+      "english": "Listen for \"Lazio\" inside \"Il Lazio ospita la capitale, Roma.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Il Lazio ospita la capitale, Roma.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Region of Rome and Vatican City."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lazio",
+      "romanization": "/ˈlat.tsjo/",
+      "nativeText": "Write \"Lazio\" again without looking, then compare the exact written form against \"Il Lazio ospita la capitale, Roma.\" before moving on.",
+      "pronunciation": "/ˈlat.tsjo/",
+      "exampleTarget": "Il Lazio ospita la capitale, Roma.",
+      "exampleNative": "Use the written model as the final correctness check: Region of Rome and Vatican City.",
+      "korean": "Lazio",
+      "english": "Write \"Lazio\" again without looking, then compare the exact written form against \"Il Lazio ospita la capitale, Roma.\" before moving on.",
+      "example": "Il Lazio ospita la capitale, Roma.",
+      "exampleEnglish": "Use the written model as the final correctness check: Region of Rome and Vatican City."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Lazio",
+      "romanization": "/ˈlat.tsjo/",
+      "nativeText": "Check whether \"Lazio\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Region of Rome and Vatican City.",
+      "pronunciation": "/ˈlat.tsjo/",
+      "exampleTarget": "Il Lazio ospita la capitale, Roma.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Region of Rome and Vatican City.",
+      "korean": "Lazio",
+      "english": "Check whether \"Lazio\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Region of Rome and Vatican City.",
+      "example": "Il Lazio ospita la capitale, Roma.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Region of Rome and Vatican City."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Il Veneto ha Venezia, Verona e Padova.",
+      "romanization": "/ˈvɛː.ne.to/",
+      "nativeText": "Model use for \"Veneto\": Veneto — northeastern Italy, capital Venezia. Famous for Venice, Verona, Padova, prosecco wine, and dialects very different from standard Italian.",
+      "pronunciation": "/ˈvɛː.ne.to/",
+      "exampleTarget": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleNative": "Tourist heartland of northeastern Italy.",
+      "korean": "Il Veneto ha Venezia, Verona e Padova.",
+      "english": "Model use for \"Veneto\": Veneto — northeastern Italy, capital Venezia. Famous for Venice, Verona, Padova, prosecco wine, and dialects very different from standard Italian.",
+      "example": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleEnglish": "Tourist heartland of northeastern Italy."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Veneto",
+      "romanization": "/ˈvɛː.ne.to/",
+      "nativeText": "Usage focus for \"Veneto\": Veneto — northeastern Italy, capital Venezia. Famous for Venice, Verona, Padova, prosecco wine, and dialects very different from standard Italian.",
+      "pronunciation": "/ˈvɛː.ne.to/",
+      "exampleTarget": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleNative": "Notice what the form is doing here: Tourist heartland of northeastern Italy.",
+      "korean": "Veneto",
+      "english": "Usage focus for \"Veneto\": Veneto — northeastern Italy, capital Venezia. Famous for Venice, Verona, Padova, prosecco wine, and dialects very different from standard Italian.",
+      "example": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleEnglish": "Notice what the form is doing here: Tourist heartland of northeastern Italy."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Veneto",
+      "romanization": "/ˈvɛː.ne.to/",
+      "nativeText": "Contrast check for \"Veneto\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "/ˈvɛː.ne.to/",
+      "exampleTarget": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Tourist heartland of northeastern Italy.",
+      "korean": "Veneto",
+      "english": "Contrast check for \"Veneto\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Tourist heartland of northeastern Italy."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Veneto",
+      "romanization": "/ˈvɛː.ne.to/",
+      "nativeText": "Recall \"Veneto\" from memory, then explain what would change if a nearby alternative replaced it in \"Il Veneto ha Venezia, Verona e Padova.\".",
+      "pronunciation": "/ˈvɛː.ne.to/",
+      "exampleTarget": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleNative": "Self-check against the model before moving on: Tourist heartland of northeastern Italy.",
+      "korean": "Veneto",
+      "english": "Recall \"Veneto\" from memory, then explain what would change if a nearby alternative replaced it in \"Il Veneto ha Venezia, Verona e Padova.\".",
+      "example": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleEnglish": "Self-check against the model before moving on: Tourist heartland of northeastern Italy."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Veneto",
+      "romanization": "/ˈvɛː.ne.to/",
+      "nativeText": "Repair \"Veneto\" inside \"Il Veneto ha Venezia, Verona e Padova.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Veneto — northeastern Italy, capital Venezia. Famous for Venice, Verona, Padova, prosecco wine, and dialects very different from standard Italian.",
+      "pronunciation": "/ˈvɛː.ne.to/",
+      "exampleTarget": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleNative": "Use the model as the repair target: Tourist heartland of northeastern Italy.",
+      "korean": "Veneto",
+      "english": "Repair \"Veneto\" inside \"Il Veneto ha Venezia, Verona e Padova.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Veneto — northeastern Italy, capital Venezia. Famous for Venice, Verona, Padova, prosecco wine, and dialects very different from standard Italian.",
+      "example": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleEnglish": "Use the model as the repair target: Tourist heartland of northeastern Italy."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Veneto",
+      "romanization": "/ˈvɛː.ne.to/",
+      "nativeText": "Transfer \"Veneto\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Il Veneto ha Venezia, Verona e Padova.\".",
+      "pronunciation": "/ˈvɛː.ne.to/",
+      "exampleTarget": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Tourist heartland of northeastern Italy.",
+      "korean": "Veneto",
+      "english": "Transfer \"Veneto\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Il Veneto ha Venezia, Verona e Padova.\".",
+      "example": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Tourist heartland of northeastern Italy."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Veneto",
+      "romanization": "/ˈvɛː.ne.to/",
+      "nativeText": "Find one word or phrase that naturally travels with \"Veneto\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "/ˈvɛː.ne.to/",
+      "exampleTarget": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Tourist heartland of northeastern Italy.",
+      "korean": "Veneto",
+      "english": "Find one word or phrase that naturally travels with \"Veneto\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Tourist heartland of northeastern Italy."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Veneto",
+      "romanization": "/ˈvɛː.ne.to/",
+      "nativeText": "Listen for \"Veneto\" inside \"Il Veneto ha Venezia, Verona e Padova.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "/ˈvɛː.ne.to/",
+      "exampleTarget": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Tourist heartland of northeastern Italy.",
+      "korean": "Veneto",
+      "english": "Listen for \"Veneto\" inside \"Il Veneto ha Venezia, Verona e Padova.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Tourist heartland of northeastern Italy."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Veneto",
+      "romanization": "/ˈvɛː.ne.to/",
+      "nativeText": "Write \"Veneto\" again without looking, then compare the exact written form against \"Il Veneto ha Venezia, Verona e Padova.\" before moving on.",
+      "pronunciation": "/ˈvɛː.ne.to/",
+      "exampleTarget": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleNative": "Use the written model as the final correctness check: Tourist heartland of northeastern Italy.",
+      "korean": "Veneto",
+      "english": "Write \"Veneto\" again without looking, then compare the exact written form against \"Il Veneto ha Venezia, Verona e Padova.\" before moving on.",
+      "example": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleEnglish": "Use the written model as the final correctness check: Tourist heartland of northeastern Italy."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "it-level1unit05lifeinitaly-vocabulary-1",
+        "it-level1unit05lifeinitaly-vocabulary-2",
+        "it-level1unit05lifeinitaly-grammar-1",
+        "it-level1unit05lifeinitaly-grammar-2",
+        "it-level1unit05lifeinitaly-reading",
+        "it-level1unit05lifeinitaly-listening",
+        "it-level1unit05lifeinitaly-writing",
+        "it-level1unit05lifeinitaly-task"
+      ],
+      "targetText": "Veneto",
+      "romanization": "/ˈvɛː.ne.to/",
+      "nativeText": "Check whether \"Veneto\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Tourist heartland of northeastern Italy.",
+      "pronunciation": "/ˈvɛː.ne.to/",
+      "exampleTarget": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Tourist heartland of northeastern Italy.",
+      "korean": "Veneto",
+      "english": "Check whether \"Veneto\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Tourist heartland of northeastern Italy.",
+      "example": "Il Veneto ha Venezia, Verona e Padova.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Tourist heartland of northeastern Italy."
+    }
+  ]
 };
-
-module.exports = lesson;

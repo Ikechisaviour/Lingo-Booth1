@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u12',
-  title: 'Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about completed past activities with Tamil past-tense agreement.',
-  vocabularyGoal: 'Use past-time markers and common activity verbs.',
-  grammarGoal: 'Use gender/person-sensitive past forms such as `போனேன்`, `சாப்பிட்டேன்`, and `படித்தேன்`.',
-  speakingGoal: 'Say what you did yesterday and ask someone else one past question.',
-  task: 'Give a short update about yesterday.',
-  expressionPractice: [
-    practice('stating-past', 'Stating past action', 'Use one past-tense verb.'),
-    practice('sequencing', 'Sequencing', 'Use `பிறகு`.'),
-    practice('asking-past', 'Asking about past', 'Use `நேற்று என்ன செய்தீர்கள்?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit12pastactivities-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about completed past activities with Tamil past-tense agreement."
+      ],
+      "task": "Give a short update about yesterday."
+    },
+    {
+      "id": "ta-level1unit12pastactivities-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit12pastactivities-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit12pastactivities-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit12pastactivities-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about completed past activities with Tamil past-tense agreement."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit12pastactivities-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit12pastactivities-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit12pastactivities-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit12pastactivities-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit12pastactivities-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit12pastactivities-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Give a short update about yesterday."
+      ],
+      "task": "Give a short update about yesterday."
+    }
   ],
-  relatedPools: ['topic-routines', 'topic-time'],
-  items: [
-    item('நான் போனேன்', 'nāṉ pōṉēṉ', '“I went.” The first-person ending shows agreement clearly.', 'நேற்று நான் சந்தைக்கு போனேன்.', '“Yesterday I went to the market.”'),
-    item('நான் சாப்பிட்டேன்', 'nāṉ cāppiṭṭēṉ', '“I ate.” A high-frequency past form.', 'காலை நான் இட்லி சாப்பிட்டேன்.', '“In the morning I ate idli.”'),
-    item('நான் படித்தேன்', 'nāṉ paṭittēṉ', '“I studied.” Another useful first-person past form.', 'நேற்று இரவு நான் படித்தேன்.', '“Yesterday night I studied.”'),
-    item('நான் பார்த்தேன்', 'nāṉ pārttēṉ', '“I watched / saw.” Useful for leisure narratives.', 'நான் ஒரு படம் பார்த்தேன்.', '“I watched a film.”'),
-    item('பிறகு', 'piṟaku', '“Then / afterwards.” A simple sequence connector.', 'பிறகு வீட்டிற்கு வந்தேன்.', '“Afterwards I came home.”'),
-    item('கடந்த வாரம்', 'kaṭanta vāram', '“Last week.” A common past-time phrase.', 'கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.', '“Last week we went to the temple.”'),
-    item('நேற்று என்ன செய்தீர்கள்?', 'nēṟṟu eṉṉa ceytīrkaḷ', '“What did you do yesterday?” Respectful question form.', 'நேற்று என்ன செய்தீர்கள்?', '“What did you do yesterday?”'),
-    item('ஏற்கனவே', 'ēṟkaṉavē', '“Already.” Useful with completed actions.', 'நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.', '“I already ate lunch.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-past",
+      "label": "Stating past action",
+      "goal": "Use one past-tense verb."
+    },
+    {
+      "id": "sequencing",
+      "label": "Sequencing",
+      "goal": "Use `பிறகு`."
+    },
+    {
+      "id": "asking-past",
+      "label": "Asking about past",
+      "goal": "Use `நேற்று என்ன செய்தீர்கள்?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-routines",
+    "topic-time"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Talk about completed past activities with Tamil past-tense agreement.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Give a short update about yesterday.",
+      "korean": "பாட இலக்கு",
+      "english": "Talk about completed past activities with Tamil past-tense agreement.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Give a short update about yesterday."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit12pastactivities-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நேற்று நான் சந்தைக்கு போனேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நேற்று நான் சந்தைக்கு போனேன்.\".",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "Use the key language of Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with the register and setting that the lesson requires.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-2"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "“In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities sound precise rather than merely understandable.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "“In the morning I ate idli.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit12pastactivities-grammar-1"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "",
+      "nativeText": "Talk about completed past activities with Tamil past-tense agreement.",
+      "pronunciation": "",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "Talk about completed past activities with Tamil past-tense agreement.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "“In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "Contrast the main pattern in Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "“In the morning I ate idli.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit12pastactivities-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "“I already ate lunch.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "“I already ate lunch.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit12pastactivities-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "“I already ate lunch.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "“I already ate lunch.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit12pastactivities-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"நேற்று நான் சந்தைக்கு போனேன்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"நேற்று நான் சந்தைக்கு போனேன்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit12pastactivities-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "“In the morning I ate idli.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "“In the morning I ate idli.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Give a short update about yesterday.",
+      "pronunciation": "",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "Give a short update about yesterday.",
+      "korean": "இறுதி செயல்",
+      "english": "Give a short update about yesterday.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "Give a short update about yesterday."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"காலை நான் இட்லி சாப்பிட்டேன்.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “In the morning I ate idli.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"காலை நான் இட்லி சாப்பிட்டேன்.\" against the model.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “In the morning I ate idli.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"நேற்று நான் சந்தைக்கு போனேன்.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"நேற்று நான் சந்தைக்கு போனேன்.\" before reusing it elsewhere.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "“I already ate lunch.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" as one thought.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "“I already ate lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"நேற்று நான் சந்தைக்கு போனேன்.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"நேற்று நான் சந்தைக்கு போனேன்.\" and move it into your own life.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"நான் போனேன்\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "நான் போனேன்",
+      "exampleNative": "“I went.” The first-person ending shows agreement clearly.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"நான் போனேன்\" before looking back.",
+      "example": "நான் போனேன்",
+      "exampleEnglish": "“I went.” The first-person ending shows agreement clearly."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" rather than restarting from a blank sentence.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"காலை நான் இட்லி சாப்பிட்டேன்.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "“In the morning I ate idli.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"காலை நான் இட்லி சாப்பிட்டேன்.\" as the comparison line.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "“In the morning I ate idli.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit12pastactivities-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நேற்று நான் சந்தைக்கு போனேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நேற்று நான் சந்தைக்கு போனேன்.\".",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "“I already ate lunch.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\".",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "“I already ate lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"நேற்று நான் சந்தைக்கு போனேன்.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"நேற்று நான் சந்தைக்கு போனேன்.\" one layer at a time.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"காலை நான் இட்லி சாப்பிட்டேன்.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "“In the morning I ate idli.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"காலை நான் இட்லி சாப்பிட்டேன்.\" as the deciding example.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "“In the morning I ate idli.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-culture",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "“I already ate lunch.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\".",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "“I already ate lunch.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "nāṉ pōṉēṉ",
+      "nativeText": "“I went.” The first-person ending shows agreement clearly.",
+      "pronunciation": "nāṉ pōṉēṉ",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "“I went.” The first-person ending shows agreement clearly.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "romanization": "nāṉ pōṉēṉ",
+      "nativeText": "Model use for \"நேற்று நான் சந்தைக்கு போனேன்.\": “Yesterday I went to the market.”",
+      "pronunciation": "nāṉ pōṉēṉ",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "english": "Model use for \"நேற்று நான் சந்தைக்கு போனேன்.\": “Yesterday I went to the market.”",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "nāṉ pōṉēṉ",
+      "nativeText": "Usage focus for \"நான் போனேன்\": Use the key language of Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "nāṉ pōṉēṉ",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "Usage focus for \"நான் போனேன்\": Use the key language of Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with the register and setting that the lesson requires.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "nāṉ pōṉēṉ",
+      "nativeText": "Contrast check for \"நான் போனேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nāṉ pōṉēṉ",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "Contrast check for \"நான் போனேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "nāṉ pōṉēṉ",
+      "nativeText": "Recall \"நான் போனேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நேற்று நான் சந்தைக்கு போனேன்.\".",
+      "pronunciation": "nāṉ pōṉēṉ",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "Recall \"நான் போனேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நேற்று நான் சந்தைக்கு போனேன்.\".",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "nāṉ pōṉēṉ",
+      "nativeText": "Repair \"நான் போனேன்\" inside \"நேற்று நான் சந்தைக்கு போனேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "nāṉ pōṉēṉ",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "Use the model as the repair target: “Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "Repair \"நான் போனேன்\" inside \"நேற்று நான் சந்தைக்கு போனேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities with the register and setting that the lesson requires.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "nāṉ pōṉēṉ",
+      "nativeText": "Transfer \"நான் போனேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேற்று நான் சந்தைக்கு போனேன்.\".",
+      "pronunciation": "nāṉ pōṉēṉ",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "Transfer \"நான் போனேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேற்று நான் சந்தைக்கு போனேன்.\".",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "nāṉ pōṉēṉ",
+      "nativeText": "Find one word or phrase that naturally travels with \"நான் போனேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nāṉ pōṉēṉ",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "Find one word or phrase that naturally travels with \"நான் போனேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "nāṉ pōṉēṉ",
+      "nativeText": "Listen for \"நான் போனேன்\" inside \"நேற்று நான் சந்தைக்கு போனேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nāṉ pōṉēṉ",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "Listen for \"நான் போனேன்\" inside \"நேற்று நான் சந்தைக்கு போனேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "nāṉ pōṉēṉ",
+      "nativeText": "Write \"நான் போனேன்\" again without looking, then compare the exact written form against \"நேற்று நான் சந்தைக்கு போனேன்.\" before moving on.",
+      "pronunciation": "nāṉ pōṉēṉ",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "Write \"நான் போனேன்\" again without looking, then compare the exact written form against \"நேற்று நான் சந்தைக்கு போனேன்.\" before moving on.",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் போனேன்",
+      "romanization": "nāṉ pōṉēṉ",
+      "nativeText": "Check whether \"நான் போனேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”",
+      "pronunciation": "nāṉ pōṉēṉ",
+      "exampleTarget": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”",
+      "korean": "நான் போனேன்",
+      "english": "Check whether \"நான் போனேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”",
+      "example": "நேற்று நான் சந்தைக்கு போனேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "nāṉ cāppiṭṭēṉ",
+      "nativeText": "“I ate.” A high-frequency past form.",
+      "pronunciation": "nāṉ cāppiṭṭēṉ",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "“In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "“I ate.” A high-frequency past form.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "“In the morning I ate idli.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "romanization": "nāṉ cāppiṭṭēṉ",
+      "nativeText": "Model use for \"காலை நான் இட்லி சாப்பிட்டேன்.\": “In the morning I ate idli.”",
+      "pronunciation": "nāṉ cāppiṭṭēṉ",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "“In the morning I ate idli.”",
+      "korean": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "english": "Model use for \"காலை நான் இட்லி சாப்பிட்டேன்.\": “In the morning I ate idli.”",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "“In the morning I ate idli.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "nāṉ cāppiṭṭēṉ",
+      "nativeText": "Usage focus for \"நான் சாப்பிட்டேன்\": Distinguish the nearby wording choices that make Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "nāṉ cāppiṭṭēṉ",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "Notice what the form is doing here: “In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "Usage focus for \"நான் சாப்பிட்டேன்\": Distinguish the nearby wording choices that make Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities sound precise rather than merely understandable.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “In the morning I ate idli.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "nāṉ cāppiṭṭēṉ",
+      "nativeText": "Contrast check for \"நான் சாப்பிட்டேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nāṉ cāppiṭṭēṉ",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "Contrast check for \"நான் சாப்பிட்டேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In the morning I ate idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "nāṉ cāppiṭṭēṉ",
+      "nativeText": "Recall \"நான் சாப்பிட்டேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை நான் இட்லி சாப்பிட்டேன்.\".",
+      "pronunciation": "nāṉ cāppiṭṭēṉ",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "Self-check against the model before moving on: “In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "Recall \"நான் சாப்பிட்டேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை நான் இட்லி சாப்பிட்டேன்.\".",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “In the morning I ate idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "nāṉ cāppiṭṭēṉ",
+      "nativeText": "Repair \"நான் சாப்பிட்டேன்\" inside \"காலை நான் இட்லி சாப்பிட்டேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "nāṉ cāppiṭṭēṉ",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "Use the model as the repair target: “In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "Repair \"நான் சாப்பிட்டேன்\" inside \"காலை நான் இட்லி சாப்பிட்டேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 12: நேற்று என்ன செய்தீர்கள்? — Past Activities sound precise rather than merely understandable.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "Use the model as the repair target: “In the morning I ate idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "nāṉ cāppiṭṭēṉ",
+      "nativeText": "Transfer \"நான் சாப்பிட்டேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை நான் இட்லி சாப்பிட்டேன்.\".",
+      "pronunciation": "nāṉ cāppiṭṭēṉ",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "Transfer \"நான் சாப்பிட்டேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை நான் இட்லி சாப்பிட்டேன்.\".",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “In the morning I ate idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "nāṉ cāppiṭṭēṉ",
+      "nativeText": "Find one word or phrase that naturally travels with \"நான் சாப்பிட்டேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nāṉ cāppiṭṭēṉ",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "Find one word or phrase that naturally travels with \"நான் சாப்பிட்டேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “In the morning I ate idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "nāṉ cāppiṭṭēṉ",
+      "nativeText": "Listen for \"நான் சாப்பிட்டேன்\" inside \"காலை நான் இட்லி சாப்பிட்டேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nāṉ cāppiṭṭēṉ",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "Listen for \"நான் சாப்பிட்டேன்\" inside \"காலை நான் இட்லி சாப்பிட்டேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In the morning I ate idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "nāṉ cāppiṭṭēṉ",
+      "nativeText": "Write \"நான் சாப்பிட்டேன்\" again without looking, then compare the exact written form against \"காலை நான் இட்லி சாப்பிட்டேன்.\" before moving on.",
+      "pronunciation": "nāṉ cāppiṭṭēṉ",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "Write \"நான் சாப்பிட்டேன்\" again without looking, then compare the exact written form against \"காலை நான் இட்லி சாப்பிட்டேன்.\" before moving on.",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “In the morning I ate idli.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் சாப்பிட்டேன்",
+      "romanization": "nāṉ cāppiṭṭēṉ",
+      "nativeText": "Check whether \"நான் சாப்பிட்டேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In the morning I ate idli.”",
+      "pronunciation": "nāṉ cāppiṭṭēṉ",
+      "exampleTarget": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “In the morning I ate idli.”",
+      "korean": "நான் சாப்பிட்டேன்",
+      "english": "Check whether \"நான் சாப்பிட்டேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In the morning I ate idli.”",
+      "example": "காலை நான் இட்லி சாப்பிட்டேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “In the morning I ate idli.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் படித்தேன்",
+      "romanization": "nāṉ paṭittēṉ",
+      "nativeText": "“I studied.” Another useful first-person past form.",
+      "pronunciation": "nāṉ paṭittēṉ",
+      "exampleTarget": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleNative": "“Yesterday night I studied.”",
+      "korean": "நான் படித்தேன்",
+      "english": "“I studied.” Another useful first-person past form.",
+      "example": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleEnglish": "“Yesterday night I studied.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று இரவு நான் படித்தேன்.",
+      "romanization": "nāṉ paṭittēṉ",
+      "nativeText": "Model use for \"நேற்று இரவு நான் படித்தேன்.\": “Yesterday night I studied.”",
+      "pronunciation": "nāṉ paṭittēṉ",
+      "exampleTarget": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleNative": "“Yesterday night I studied.”",
+      "korean": "நேற்று இரவு நான் படித்தேன்.",
+      "english": "Model use for \"நேற்று இரவு நான் படித்தேன்.\": “Yesterday night I studied.”",
+      "example": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleEnglish": "“Yesterday night I studied.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் படித்தேன்",
+      "romanization": "nāṉ paṭittēṉ",
+      "nativeText": "Usage focus for \"நான் படித்தேன்\": “I studied.” Another useful first-person past form.",
+      "pronunciation": "nāṉ paṭittēṉ",
+      "exampleTarget": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday night I studied.”",
+      "korean": "நான் படித்தேன்",
+      "english": "Usage focus for \"நான் படித்தேன்\": “I studied.” Another useful first-person past form.",
+      "example": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday night I studied.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் படித்தேன்",
+      "romanization": "nāṉ paṭittēṉ",
+      "nativeText": "Contrast check for \"நான் படித்தேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nāṉ paṭittēṉ",
+      "exampleTarget": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday night I studied.”",
+      "korean": "நான் படித்தேன்",
+      "english": "Contrast check for \"நான் படித்தேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் படித்தேன்",
+      "romanization": "nāṉ paṭittēṉ",
+      "nativeText": "Recall \"நான் படித்தேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நேற்று இரவு நான் படித்தேன்.\".",
+      "pronunciation": "nāṉ paṭittēṉ",
+      "exampleTarget": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday night I studied.”",
+      "korean": "நான் படித்தேன்",
+      "english": "Recall \"நான் படித்தேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நேற்று இரவு நான் படித்தேன்.\".",
+      "example": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் படித்தேன்",
+      "romanization": "nāṉ paṭittēṉ",
+      "nativeText": "Repair \"நான் படித்தேன்\" inside \"நேற்று இரவு நான் படித்தேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I studied.” Another useful first-person past form.",
+      "pronunciation": "nāṉ paṭittēṉ",
+      "exampleTarget": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleNative": "Use the model as the repair target: “Yesterday night I studied.”",
+      "korean": "நான் படித்தேன்",
+      "english": "Repair \"நான் படித்தேன்\" inside \"நேற்று இரவு நான் படித்தேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I studied.” Another useful first-person past form.",
+      "example": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் படித்தேன்",
+      "romanization": "nāṉ paṭittēṉ",
+      "nativeText": "Transfer \"நான் படித்தேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேற்று இரவு நான் படித்தேன்.\".",
+      "pronunciation": "nāṉ paṭittēṉ",
+      "exampleTarget": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday night I studied.”",
+      "korean": "நான் படித்தேன்",
+      "english": "Transfer \"நான் படித்தேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேற்று இரவு நான் படித்தேன்.\".",
+      "example": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் படித்தேன்",
+      "romanization": "nāṉ paṭittēṉ",
+      "nativeText": "Find one word or phrase that naturally travels with \"நான் படித்தேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nāṉ paṭittēṉ",
+      "exampleTarget": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday night I studied.”",
+      "korean": "நான் படித்தேன்",
+      "english": "Find one word or phrase that naturally travels with \"நான் படித்தேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் படித்தேன்",
+      "romanization": "nāṉ paṭittēṉ",
+      "nativeText": "Listen for \"நான் படித்தேன்\" inside \"நேற்று இரவு நான் படித்தேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nāṉ paṭittēṉ",
+      "exampleTarget": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday night I studied.”",
+      "korean": "நான் படித்தேன்",
+      "english": "Listen for \"நான் படித்தேன்\" inside \"நேற்று இரவு நான் படித்தேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் படித்தேன்",
+      "romanization": "nāṉ paṭittēṉ",
+      "nativeText": "Write \"நான் படித்தேன்\" again without looking, then compare the exact written form against \"நேற்று இரவு நான் படித்தேன்.\" before moving on.",
+      "pronunciation": "nāṉ paṭittēṉ",
+      "exampleTarget": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday night I studied.”",
+      "korean": "நான் படித்தேன்",
+      "english": "Write \"நான் படித்தேன்\" again without looking, then compare the exact written form against \"நேற்று இரவு நான் படித்தேன்.\" before moving on.",
+      "example": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday night I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் படித்தேன்",
+      "romanization": "nāṉ paṭittēṉ",
+      "nativeText": "Check whether \"நான் படித்தேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday night I studied.”",
+      "pronunciation": "nāṉ paṭittēṉ",
+      "exampleTarget": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday night I studied.”",
+      "korean": "நான் படித்தேன்",
+      "english": "Check whether \"நான் படித்தேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday night I studied.”",
+      "example": "நேற்று இரவு நான் படித்தேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday night I studied.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் பார்த்தேன்",
+      "romanization": "nāṉ pārttēṉ",
+      "nativeText": "“I watched / saw.” Useful for leisure narratives.",
+      "pronunciation": "nāṉ pārttēṉ",
+      "exampleTarget": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleNative": "“I watched a film.”",
+      "korean": "நான் பார்த்தேன்",
+      "english": "“I watched / saw.” Useful for leisure narratives.",
+      "example": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleEnglish": "“I watched a film.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் ஒரு படம் பார்த்தேன்.",
+      "romanization": "nāṉ pārttēṉ",
+      "nativeText": "Model use for \"நான் ஒரு படம் பார்த்தேன்.\": “I watched a film.”",
+      "pronunciation": "nāṉ pārttēṉ",
+      "exampleTarget": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleNative": "“I watched a film.”",
+      "korean": "நான் ஒரு படம் பார்த்தேன்.",
+      "english": "Model use for \"நான் ஒரு படம் பார்த்தேன்.\": “I watched a film.”",
+      "example": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleEnglish": "“I watched a film.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் பார்த்தேன்",
+      "romanization": "nāṉ pārttēṉ",
+      "nativeText": "Usage focus for \"நான் பார்த்தேன்\": “I watched / saw.” Useful for leisure narratives.",
+      "pronunciation": "nāṉ pārttēṉ",
+      "exampleTarget": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleNative": "Notice what the form is doing here: “I watched a film.”",
+      "korean": "நான் பார்த்தேன்",
+      "english": "Usage focus for \"நான் பார்த்தேன்\": “I watched / saw.” Useful for leisure narratives.",
+      "example": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I watched a film.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் பார்த்தேன்",
+      "romanization": "nāṉ pārttēṉ",
+      "nativeText": "Contrast check for \"நான் பார்த்தேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nāṉ pārttēṉ",
+      "exampleTarget": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I watched a film.”",
+      "korean": "நான் பார்த்தேன்",
+      "english": "Contrast check for \"நான் பார்த்தேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் பார்த்தேன்",
+      "romanization": "nāṉ pārttēṉ",
+      "nativeText": "Recall \"நான் பார்த்தேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் ஒரு படம் பார்த்தேன்.\".",
+      "pronunciation": "nāṉ pārttēṉ",
+      "exampleTarget": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I watched a film.”",
+      "korean": "நான் பார்த்தேன்",
+      "english": "Recall \"நான் பார்த்தேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் ஒரு படம் பார்த்தேன்.\".",
+      "example": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் பார்த்தேன்",
+      "romanization": "nāṉ pārttēṉ",
+      "nativeText": "Repair \"நான் பார்த்தேன்\" inside \"நான் ஒரு படம் பார்த்தேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I watched / saw.” Useful for leisure narratives.",
+      "pronunciation": "nāṉ pārttēṉ",
+      "exampleTarget": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleNative": "Use the model as the repair target: “I watched a film.”",
+      "korean": "நான் பார்த்தேன்",
+      "english": "Repair \"நான் பார்த்தேன்\" inside \"நான் ஒரு படம் பார்த்தேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I watched / saw.” Useful for leisure narratives.",
+      "example": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் பார்த்தேன்",
+      "romanization": "nāṉ pārttēṉ",
+      "nativeText": "Transfer \"நான் பார்த்தேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் ஒரு படம் பார்த்தேன்.\".",
+      "pronunciation": "nāṉ pārttēṉ",
+      "exampleTarget": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I watched a film.”",
+      "korean": "நான் பார்த்தேன்",
+      "english": "Transfer \"நான் பார்த்தேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் ஒரு படம் பார்த்தேன்.\".",
+      "example": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் பார்த்தேன்",
+      "romanization": "nāṉ pārttēṉ",
+      "nativeText": "Find one word or phrase that naturally travels with \"நான் பார்த்தேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nāṉ pārttēṉ",
+      "exampleTarget": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I watched a film.”",
+      "korean": "நான் பார்த்தேன்",
+      "english": "Find one word or phrase that naturally travels with \"நான் பார்த்தேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் பார்த்தேன்",
+      "romanization": "nāṉ pārttēṉ",
+      "nativeText": "Listen for \"நான் பார்த்தேன்\" inside \"நான் ஒரு படம் பார்த்தேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nāṉ pārttēṉ",
+      "exampleTarget": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I watched a film.”",
+      "korean": "நான் பார்த்தேன்",
+      "english": "Listen for \"நான் பார்த்தேன்\" inside \"நான் ஒரு படம் பார்த்தேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் பார்த்தேன்",
+      "romanization": "nāṉ pārttēṉ",
+      "nativeText": "Write \"நான் பார்த்தேன்\" again without looking, then compare the exact written form against \"நான் ஒரு படம் பார்த்தேன்.\" before moving on.",
+      "pronunciation": "nāṉ pārttēṉ",
+      "exampleTarget": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I watched a film.”",
+      "korean": "நான் பார்த்தேன்",
+      "english": "Write \"நான் பார்த்தேன்\" again without looking, then compare the exact written form against \"நான் ஒரு படம் பார்த்தேன்.\" before moving on.",
+      "example": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் பார்த்தேன்",
+      "romanization": "nāṉ pārttēṉ",
+      "nativeText": "Check whether \"நான் பார்த்தேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I watched a film.”",
+      "pronunciation": "nāṉ pārttēṉ",
+      "exampleTarget": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I watched a film.”",
+      "korean": "நான் பார்த்தேன்",
+      "english": "Check whether \"நான் பார்த்தேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I watched a film.”",
+      "example": "நான் ஒரு படம் பார்த்தேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I watched a film.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பிறகு",
+      "romanization": "piṟaku",
+      "nativeText": "“Then / afterwards.” A simple sequence connector.",
+      "pronunciation": "piṟaku",
+      "exampleTarget": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleNative": "“Afterwards I came home.”",
+      "korean": "பிறகு",
+      "english": "“Then / afterwards.” A simple sequence connector.",
+      "example": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleEnglish": "“Afterwards I came home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "romanization": "piṟaku",
+      "nativeText": "Model use for \"பிறகு வீட்டிற்கு வந்தேன்.\": “Afterwards I came home.”",
+      "pronunciation": "piṟaku",
+      "exampleTarget": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleNative": "“Afterwards I came home.”",
+      "korean": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "english": "Model use for \"பிறகு வீட்டிற்கு வந்தேன்.\": “Afterwards I came home.”",
+      "example": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleEnglish": "“Afterwards I came home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பிறகு",
+      "romanization": "piṟaku",
+      "nativeText": "Usage focus for \"பிறகு\": “Then / afterwards.” A simple sequence connector.",
+      "pronunciation": "piṟaku",
+      "exampleTarget": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleNative": "Notice what the form is doing here: “Afterwards I came home.”",
+      "korean": "பிறகு",
+      "english": "Usage focus for \"பிறகு\": “Then / afterwards.” A simple sequence connector.",
+      "example": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “Afterwards I came home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பிறகு",
+      "romanization": "piṟaku",
+      "nativeText": "Contrast check for \"பிறகு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "piṟaku",
+      "exampleTarget": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Afterwards I came home.”",
+      "korean": "பிறகு",
+      "english": "Contrast check for \"பிறகு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Afterwards I came home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பிறகு",
+      "romanization": "piṟaku",
+      "nativeText": "Recall \"பிறகு\" from memory, then explain what would change if a nearby alternative replaced it in \"பிறகு வீட்டிற்கு வந்தேன்.\".",
+      "pronunciation": "piṟaku",
+      "exampleTarget": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleNative": "Self-check against the model before moving on: “Afterwards I came home.”",
+      "korean": "பிறகு",
+      "english": "Recall \"பிறகு\" from memory, then explain what would change if a nearby alternative replaced it in \"பிறகு வீட்டிற்கு வந்தேன்.\".",
+      "example": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Afterwards I came home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பிறகு",
+      "romanization": "piṟaku",
+      "nativeText": "Repair \"பிறகு\" inside \"பிறகு வீட்டிற்கு வந்தேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / afterwards.” A simple sequence connector.",
+      "pronunciation": "piṟaku",
+      "exampleTarget": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleNative": "Use the model as the repair target: “Afterwards I came home.”",
+      "korean": "பிறகு",
+      "english": "Repair \"பிறகு\" inside \"பிறகு வீட்டிற்கு வந்தேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / afterwards.” A simple sequence connector.",
+      "example": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleEnglish": "Use the model as the repair target: “Afterwards I came home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பிறகு",
+      "romanization": "piṟaku",
+      "nativeText": "Transfer \"பிறகு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பிறகு வீட்டிற்கு வந்தேன்.\".",
+      "pronunciation": "piṟaku",
+      "exampleTarget": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Afterwards I came home.”",
+      "korean": "பிறகு",
+      "english": "Transfer \"பிறகு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பிறகு வீட்டிற்கு வந்தேன்.\".",
+      "example": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Afterwards I came home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பிறகு",
+      "romanization": "piṟaku",
+      "nativeText": "Find one word or phrase that naturally travels with \"பிறகு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "piṟaku",
+      "exampleTarget": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Afterwards I came home.”",
+      "korean": "பிறகு",
+      "english": "Find one word or phrase that naturally travels with \"பிறகு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Afterwards I came home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பிறகு",
+      "romanization": "piṟaku",
+      "nativeText": "Listen for \"பிறகு\" inside \"பிறகு வீட்டிற்கு வந்தேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "piṟaku",
+      "exampleTarget": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Afterwards I came home.”",
+      "korean": "பிறகு",
+      "english": "Listen for \"பிறகு\" inside \"பிறகு வீட்டிற்கு வந்தேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Afterwards I came home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பிறகு",
+      "romanization": "piṟaku",
+      "nativeText": "Write \"பிறகு\" again without looking, then compare the exact written form against \"பிறகு வீட்டிற்கு வந்தேன்.\" before moving on.",
+      "pronunciation": "piṟaku",
+      "exampleTarget": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “Afterwards I came home.”",
+      "korean": "பிறகு",
+      "english": "Write \"பிறகு\" again without looking, then compare the exact written form against \"பிறகு வீட்டிற்கு வந்தேன்.\" before moving on.",
+      "example": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Afterwards I came home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "பிறகு",
+      "romanization": "piṟaku",
+      "nativeText": "Check whether \"பிறகு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Afterwards I came home.”",
+      "pronunciation": "piṟaku",
+      "exampleTarget": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Afterwards I came home.”",
+      "korean": "பிறகு",
+      "english": "Check whether \"பிறகு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Afterwards I came home.”",
+      "example": "பிறகு வீட்டிற்கு வந்தேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Afterwards I came home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "கடந்த வாரம்",
+      "romanization": "kaṭanta vāram",
+      "nativeText": "“Last week.” A common past-time phrase.",
+      "pronunciation": "kaṭanta vāram",
+      "exampleTarget": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleNative": "“Last week we went to the temple.”",
+      "korean": "கடந்த வாரம்",
+      "english": "“Last week.” A common past-time phrase.",
+      "example": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleEnglish": "“Last week we went to the temple.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "romanization": "kaṭanta vāram",
+      "nativeText": "Model use for \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\": “Last week we went to the temple.”",
+      "pronunciation": "kaṭanta vāram",
+      "exampleTarget": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleNative": "“Last week we went to the temple.”",
+      "korean": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "english": "Model use for \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\": “Last week we went to the temple.”",
+      "example": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleEnglish": "“Last week we went to the temple.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "கடந்த வாரம்",
+      "romanization": "kaṭanta vāram",
+      "nativeText": "Usage focus for \"கடந்த வாரம்\": “Last week.” A common past-time phrase.",
+      "pronunciation": "kaṭanta vāram",
+      "exampleTarget": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleNative": "Notice what the form is doing here: “Last week we went to the temple.”",
+      "korean": "கடந்த வாரம்",
+      "english": "Usage focus for \"கடந்த வாரம்\": “Last week.” A common past-time phrase.",
+      "example": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleEnglish": "Notice what the form is doing here: “Last week we went to the temple.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "கடந்த வாரம்",
+      "romanization": "kaṭanta vāram",
+      "nativeText": "Contrast check for \"கடந்த வாரம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kaṭanta vāram",
+      "exampleTarget": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last week we went to the temple.”",
+      "korean": "கடந்த வாரம்",
+      "english": "Contrast check for \"கடந்த வாரம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last week we went to the temple.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "கடந்த வாரம்",
+      "romanization": "kaṭanta vāram",
+      "nativeText": "Recall \"கடந்த வாரம்\" from memory, then explain what would change if a nearby alternative replaced it in \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\".",
+      "pronunciation": "kaṭanta vāram",
+      "exampleTarget": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleNative": "Self-check against the model before moving on: “Last week we went to the temple.”",
+      "korean": "கடந்த வாரம்",
+      "english": "Recall \"கடந்த வாரம்\" from memory, then explain what would change if a nearby alternative replaced it in \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\".",
+      "example": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Last week we went to the temple.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "கடந்த வாரம்",
+      "romanization": "kaṭanta vāram",
+      "nativeText": "Repair \"கடந்த வாரம்\" inside \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Last week.” A common past-time phrase.",
+      "pronunciation": "kaṭanta vāram",
+      "exampleTarget": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleNative": "Use the model as the repair target: “Last week we went to the temple.”",
+      "korean": "கடந்த வாரம்",
+      "english": "Repair \"கடந்த வாரம்\" inside \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Last week.” A common past-time phrase.",
+      "example": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleEnglish": "Use the model as the repair target: “Last week we went to the temple.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "கடந்த வாரம்",
+      "romanization": "kaṭanta vāram",
+      "nativeText": "Transfer \"கடந்த வாரம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\".",
+      "pronunciation": "kaṭanta vāram",
+      "exampleTarget": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last week we went to the temple.”",
+      "korean": "கடந்த வாரம்",
+      "english": "Transfer \"கடந்த வாரம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\".",
+      "example": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last week we went to the temple.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "கடந்த வாரம்",
+      "romanization": "kaṭanta vāram",
+      "nativeText": "Find one word or phrase that naturally travels with \"கடந்த வாரம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kaṭanta vāram",
+      "exampleTarget": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Last week we went to the temple.”",
+      "korean": "கடந்த வாரம்",
+      "english": "Find one word or phrase that naturally travels with \"கடந்த வாரம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Last week we went to the temple.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "கடந்த வாரம்",
+      "romanization": "kaṭanta vāram",
+      "nativeText": "Listen for \"கடந்த வாரம்\" inside \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kaṭanta vāram",
+      "exampleTarget": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last week we went to the temple.”",
+      "korean": "கடந்த வாரம்",
+      "english": "Listen for \"கடந்த வாரம்\" inside \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last week we went to the temple.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "கடந்த வாரம்",
+      "romanization": "kaṭanta vāram",
+      "nativeText": "Write \"கடந்த வாரம்\" again without looking, then compare the exact written form against \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\" before moving on.",
+      "pronunciation": "kaṭanta vāram",
+      "exampleTarget": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleNative": "Use the written model as the final correctness check: “Last week we went to the temple.”",
+      "korean": "கடந்த வாரம்",
+      "english": "Write \"கடந்த வாரம்\" again without looking, then compare the exact written form against \"கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.\" before moving on.",
+      "example": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Last week we went to the temple.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "கடந்த வாரம்",
+      "romanization": "kaṭanta vāram",
+      "nativeText": "Check whether \"கடந்த வாரம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last week we went to the temple.”",
+      "pronunciation": "kaṭanta vāram",
+      "exampleTarget": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Last week we went to the temple.”",
+      "korean": "கடந்த வாரம்",
+      "english": "Check whether \"கடந்த வாரம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last week we went to the temple.”",
+      "example": "கடந்த வாரம் நாங்கள் கோவிலுக்கு போனோம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Last week we went to the temple.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று என்ன செய்தீர்கள்?",
+      "romanization": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "nativeText": "“What did you do yesterday?” Respectful question form.",
+      "pronunciation": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "exampleTarget": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "நேற்று என்ன செய்தீர்கள்?",
+      "english": "“What did you do yesterday?” Respectful question form.",
+      "example": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று என்ன செய்தீர்கள்?",
+      "romanization": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "nativeText": "Model use for \"நேற்று என்ன செய்தீர்கள்?\": “What did you do yesterday?” Respectful question form.",
+      "pronunciation": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "exampleTarget": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "நேற்று என்ன செய்தீர்கள்?",
+      "english": "Model use for \"நேற்று என்ன செய்தீர்கள்?\": “What did you do yesterday?” Respectful question form.",
+      "example": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று என்ன செய்தீர்கள்?",
+      "romanization": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "nativeText": "Usage focus for \"நேற்று என்ன செய்தீர்கள்?\": “What did you do yesterday?” Respectful question form.",
+      "pronunciation": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "exampleTarget": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleNative": "Notice what the form is doing here: “What did you do yesterday?”",
+      "korean": "நேற்று என்ன செய்தீர்கள்?",
+      "english": "Usage focus for \"நேற்று என்ன செய்தீர்கள்?\": “What did you do yesterday?” Respectful question form.",
+      "example": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleEnglish": "Notice what the form is doing here: “What did you do yesterday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று என்ன செய்தீர்கள்?",
+      "romanization": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "nativeText": "Contrast check for \"நேற்று என்ன செய்தீர்கள்?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "exampleTarget": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What did you do yesterday?”",
+      "korean": "நேற்று என்ன செய்தீர்கள்?",
+      "english": "Contrast check for \"நேற்று என்ன செய்தீர்கள்?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று என்ன செய்தீர்கள்?",
+      "romanization": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "nativeText": "Recall \"நேற்று என்ன செய்தீர்கள்?\" from memory, then explain what would change if a nearby alternative replaced it in \"நேற்று என்ன செய்தீர்கள்?\".",
+      "pronunciation": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "exampleTarget": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleNative": "Self-check against the model before moving on: “What did you do yesterday?”",
+      "korean": "நேற்று என்ன செய்தீர்கள்?",
+      "english": "Recall \"நேற்று என்ன செய்தீர்கள்?\" from memory, then explain what would change if a nearby alternative replaced it in \"நேற்று என்ன செய்தீர்கள்?\".",
+      "example": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleEnglish": "Self-check against the model before moving on: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று என்ன செய்தீர்கள்?",
+      "romanization": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "nativeText": "Repair \"நேற்று என்ன செய்தீர்கள்?\" inside \"நேற்று என்ன செய்தீர்கள்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What did you do yesterday?” Respectful question form.",
+      "pronunciation": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "exampleTarget": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleNative": "Use the model as the repair target: “What did you do yesterday?”",
+      "korean": "நேற்று என்ன செய்தீர்கள்?",
+      "english": "Repair \"நேற்று என்ன செய்தீர்கள்?\" inside \"நேற்று என்ன செய்தீர்கள்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What did you do yesterday?” Respectful question form.",
+      "example": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleEnglish": "Use the model as the repair target: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று என்ன செய்தீர்கள்?",
+      "romanization": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "nativeText": "Transfer \"நேற்று என்ன செய்தீர்கள்?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேற்று என்ன செய்தீர்கள்?\".",
+      "pronunciation": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "exampleTarget": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What did you do yesterday?”",
+      "korean": "நேற்று என்ன செய்தீர்கள்?",
+      "english": "Transfer \"நேற்று என்ன செய்தீர்கள்?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேற்று என்ன செய்தீர்கள்?\".",
+      "example": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று என்ன செய்தீர்கள்?",
+      "romanization": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"நேற்று என்ன செய்தீர்கள்?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "exampleTarget": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What did you do yesterday?”",
+      "korean": "நேற்று என்ன செய்தீர்கள்?",
+      "english": "Find one word or phrase that naturally travels with \"நேற்று என்ன செய்தீர்கள்?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று என்ன செய்தீர்கள்?",
+      "romanization": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "nativeText": "Listen for \"நேற்று என்ன செய்தீர்கள்?\" inside \"நேற்று என்ன செய்தீர்கள்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "exampleTarget": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What did you do yesterday?”",
+      "korean": "நேற்று என்ன செய்தீர்கள்?",
+      "english": "Listen for \"நேற்று என்ன செய்தீர்கள்?\" inside \"நேற்று என்ன செய்தீர்கள்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று என்ன செய்தீர்கள்?",
+      "romanization": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "nativeText": "Write \"நேற்று என்ன செய்தீர்கள்?\" again without looking, then compare the exact written form against \"நேற்று என்ன செய்தீர்கள்?\" before moving on.",
+      "pronunciation": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "exampleTarget": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleNative": "Use the written model as the final correctness check: “What did you do yesterday?”",
+      "korean": "நேற்று என்ன செய்தீர்கள்?",
+      "english": "Write \"நேற்று என்ன செய்தீர்கள்?\" again without looking, then compare the exact written form against \"நேற்று என்ன செய்தீர்கள்?\" before moving on.",
+      "example": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நேற்று என்ன செய்தீர்கள்?",
+      "romanization": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "nativeText": "Check whether \"நேற்று என்ன செய்தீர்கள்?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "pronunciation": "nēṟṟu eṉṉa ceytīrkaḷ",
+      "exampleTarget": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "korean": "நேற்று என்ன செய்தீர்கள்?",
+      "english": "Check whether \"நேற்று என்ன செய்தீர்கள்?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "example": "நேற்று என்ன செய்தீர்கள்?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "ஏற்கனவே",
+      "romanization": "ēṟkaṉavē",
+      "nativeText": "“Already.” Useful with completed actions.",
+      "pronunciation": "ēṟkaṉavē",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "“I already ate lunch.”",
+      "korean": "ஏற்கனவே",
+      "english": "“Already.” Useful with completed actions.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "“I already ate lunch.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "romanization": "ēṟkaṉavē",
+      "nativeText": "Model use for \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\": “I already ate lunch.”",
+      "pronunciation": "ēṟkaṉavē",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "“I already ate lunch.”",
+      "korean": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "english": "Model use for \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\": “I already ate lunch.”",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "“I already ate lunch.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "ஏற்கனவே",
+      "romanization": "ēṟkaṉavē",
+      "nativeText": "Usage focus for \"ஏற்கனவே\": “Already.” Useful with completed actions.",
+      "pronunciation": "ēṟkaṉavē",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "Notice what the form is doing here: “I already ate lunch.”",
+      "korean": "ஏற்கனவே",
+      "english": "Usage focus for \"ஏற்கனவே\": “Already.” Useful with completed actions.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I already ate lunch.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "ஏற்கனவே",
+      "romanization": "ēṟkaṉavē",
+      "nativeText": "Contrast check for \"ஏற்கனவே\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ēṟkaṉavē",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I already ate lunch.”",
+      "korean": "ஏற்கனவே",
+      "english": "Contrast check for \"ஏற்கனவே\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I already ate lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "ஏற்கனவே",
+      "romanization": "ēṟkaṉavē",
+      "nativeText": "Recall \"ஏற்கனவே\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\".",
+      "pronunciation": "ēṟkaṉavē",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I already ate lunch.”",
+      "korean": "ஏற்கனவே",
+      "english": "Recall \"ஏற்கனவே\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\".",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I already ate lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "ஏற்கனவே",
+      "romanization": "ēṟkaṉavē",
+      "nativeText": "Repair \"ஏற்கனவே\" inside \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Already.” Useful with completed actions.",
+      "pronunciation": "ēṟkaṉavē",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "Use the model as the repair target: “I already ate lunch.”",
+      "korean": "ஏற்கனவே",
+      "english": "Repair \"ஏற்கனவே\" inside \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Already.” Useful with completed actions.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I already ate lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "ஏற்கனவே",
+      "romanization": "ēṟkaṉavē",
+      "nativeText": "Transfer \"ஏற்கனவே\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\".",
+      "pronunciation": "ēṟkaṉavē",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I already ate lunch.”",
+      "korean": "ஏற்கனவே",
+      "english": "Transfer \"ஏற்கனவே\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\".",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I already ate lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "ஏற்கனவே",
+      "romanization": "ēṟkaṉavē",
+      "nativeText": "Find one word or phrase that naturally travels with \"ஏற்கனவே\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ēṟkaṉavē",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I already ate lunch.”",
+      "korean": "ஏற்கனவே",
+      "english": "Find one word or phrase that naturally travels with \"ஏற்கனவே\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I already ate lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "ஏற்கனவே",
+      "romanization": "ēṟkaṉavē",
+      "nativeText": "Listen for \"ஏற்கனவே\" inside \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ēṟkaṉavē",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I already ate lunch.”",
+      "korean": "ஏற்கனவே",
+      "english": "Listen for \"ஏற்கனவே\" inside \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I already ate lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "ஏற்கனவே",
+      "romanization": "ēṟkaṉavē",
+      "nativeText": "Write \"ஏற்கனவே\" again without looking, then compare the exact written form against \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" before moving on.",
+      "pronunciation": "ēṟkaṉavē",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I already ate lunch.”",
+      "korean": "ஏற்கனவே",
+      "english": "Write \"ஏற்கனவே\" again without looking, then compare the exact written form against \"நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.\" before moving on.",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I already ate lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit12pastactivities-vocabulary-1",
+        "ta-level1unit12pastactivities-vocabulary-2",
+        "ta-level1unit12pastactivities-grammar-1",
+        "ta-level1unit12pastactivities-grammar-2",
+        "ta-level1unit12pastactivities-reading",
+        "ta-level1unit12pastactivities-listening",
+        "ta-level1unit12pastactivities-writing",
+        "ta-level1unit12pastactivities-task"
+      ],
+      "targetText": "ஏற்கனவே",
+      "romanization": "ēṟkaṉavē",
+      "nativeText": "Check whether \"ஏற்கனவே\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I already ate lunch.”",
+      "pronunciation": "ēṟkaṉavē",
+      "exampleTarget": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I already ate lunch.”",
+      "korean": "ஏற்கனவே",
+      "english": "Check whether \"ஏற்கனவே\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I already ate lunch.”",
+      "example": "நான் ஏற்கனவே மதிய உணவு சாப்பிட்டேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I already ate lunch.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

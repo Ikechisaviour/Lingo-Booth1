@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u5',
-  title: 'Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands',
-  category: 'culture',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe everyday Dutch life through weather, bikes, food, and city routines.',
-  vocabularyGoal: 'Use words for country, city, bike, canal, weather, and daily culture.',
-  grammarGoal: 'Use `er is/er zijn`, basic adjective order, and `de/het` awareness in practical descriptions.',
-  speakingGoal: 'Describe one thing about Dutch daily life and compare it with your own.',
-  task: 'Introduce daily life in the Netherlands to a visiting friend.',
-  expressionPractice: [
-    practice('describing-country', 'Describing country', 'Use one `er is/er zijn` sentence.'),
-    practice('describing-routine', 'Describing routine', 'Use one culture word and one adjective.'),
-    practice('comparing', 'Comparing', 'Use `meer` or `minder`.'),
+module.exports = {
+  "title": "Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands",
+  "category": "culture",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit05lifeinthenetherlands-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe everyday Dutch life through weather, bikes, food, and city routines."
+      ],
+      "task": "Introduce daily life in the Netherlands to a visiting friend."
+    },
+    {
+      "id": "nl-level1unit05lifeinthenetherlands-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit05lifeinthenetherlands-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe everyday Dutch life through weather, bikes, food, and city routines."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit05lifeinthenetherlands-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit05lifeinthenetherlands-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit05lifeinthenetherlands-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit05lifeinthenetherlands-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit05lifeinthenetherlands-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit05lifeinthenetherlands-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Introduce daily life in the Netherlands to a visiting friend."
+      ],
+      "task": "Introduce daily life in the Netherlands to a visiting friend."
+    }
   ],
-  relatedPools: ['topic-culture', 'topic-city'],
-  items: [
-    item('Nederland', 'NAY-der-lant', '“The Netherlands.” The country name itself is singular even though English often imagines many “lands.”', 'Nederland heeft veel fietspaden.', '“The Netherlands has many bike lanes.”'),
-    item('de fiets', 'də FEETS', '“The bicycle.” Cycling is practical daily transport, not only recreation.', 'Ik ga vaak met de fiets naar school.', '“I often go to school by bike.”'),
-    item('de gracht', 'də GRAKHT', '“Canal.” A city-life word especially visible in Amsterdam and Utrecht.', 'Er is een gracht naast het museum.', '“There is a canal next to the museum.”'),
-    item('regen', 'RAY-ghen', '“Rain.” Weather talk is genuinely everyday in Dutch life.', 'Er is vandaag veel regen.', '“There is a lot of rain today.”'),
-    item('gezellig', 'khə-ZEL-likh', 'A culturally dense word meaning cozy, pleasant, or socially warm depending on context.', 'Het café is heel gezellig.', '“The cafe is very cozy / pleasant.”'),
-    item('brood', 'BROHT', '“Bread.” Lunches are often simple bread-based meals, which makes this a very practical culture noun.', 'Veel mensen eten brood als lunch.', '“Many people eat bread for lunch.”'),
-    item('er is / er zijn', 'er is / er zeyn', '“There is / there are.” Dutch uses `er` heavily when introducing what exists somewhere.', 'Er zijn veel fietsen in Amsterdam.', '“There are many bicycles in Amsterdam.”'),
-    item('meer dan', 'meer dan', '“More than.” A useful early comparison frame.', 'Er zijn meer fietsen dan auto’s.', '“There are more bicycles than cars.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-country",
+      "label": "Describing country",
+      "goal": "Use one `er is/er zijn` sentence."
+    },
+    {
+      "id": "describing-routine",
+      "label": "Describing routine",
+      "goal": "Use one culture word and one adjective."
+    },
+    {
+      "id": "comparing",
+      "label": "Comparing",
+      "goal": "Use `meer` or `minder`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-culture",
+    "topic-city"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Describe everyday Dutch life through weather, bikes, food, and city routines.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Introduce daily life in the Netherlands to a visiting friend.",
+      "korean": "lesdoel",
+      "english": "Describe everyday Dutch life through weather, bikes, food, and city routines.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Introduce daily life in the Netherlands to a visiting friend."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Nederland heeft veel fietspaden.\".",
+      "pronunciation": "",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "“The Netherlands has many bike lanes.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Nederland heeft veel fietspaden.\".",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "“The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1"
+      ],
+      "targetText": "Nederland",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "“The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "Use the key language of Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with the register and setting that the lesson requires.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "“The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2"
+      ],
+      "targetText": "de fiets",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "“I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands sound precise rather than merely understandable.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "“I often go to school by bike.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-grammar-1"
+      ],
+      "targetText": "Nederland",
+      "romanization": "",
+      "nativeText": "Describe everyday Dutch life through weather, bikes, food, and city routines.",
+      "pronunciation": "",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "“The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "Describe everyday Dutch life through weather, bikes, food, and city routines.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "“The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-grammar-2"
+      ],
+      "targetText": "de fiets",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "“I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "Contrast the main pattern in Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "“I often go to school by bike.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Er zijn meer fietsen dan auto’s.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "“There are more bicycles than cars.”",
+      "korean": "leesmodel",
+      "english": "Read \"Er zijn meer fietsen dan auto’s.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "“There are more bicycles than cars.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Er zijn meer fietsen dan auto’s.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "“There are more bicycles than cars.”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Er zijn meer fietsen dan auto’s.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "“There are more bicycles than cars.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Nederland heeft veel fietspaden.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Nederland heeft veel fietspaden.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "“I often go to school by bike.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "“I often go to school by bike.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Introduce daily life in the Netherlands to a visiting friend.",
+      "pronunciation": "",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "Introduce daily life in the Netherlands to a visiting friend.",
+      "korean": "eindtaak",
+      "english": "Introduce daily life in the Netherlands to a visiting friend.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "Introduce daily life in the Netherlands to a visiting friend."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik ga vaak met de fiets naar school.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I often go to school by bike.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik ga vaak met de fiets naar school.\" against the model.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I often go to school by bike.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Nederland heeft veel fietspaden.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "“The Netherlands has many bike lanes.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Nederland heeft veel fietspaden.\" before reusing it elsewhere.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "“The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Er zijn meer fietsen dan auto’s.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "“There are more bicycles than cars.”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Er zijn meer fietsen dan auto’s.\" as one thought.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "“There are more bicycles than cars.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Nederland heeft veel fietspaden.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Nederland heeft veel fietspaden.\" and move it into your own life.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Nederland\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "Nederland",
+      "exampleNative": "“The Netherlands.” The country name itself is singular even though English often imagines many “lands.”",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Nederland\" before looking back.",
+      "example": "Nederland",
+      "exampleEnglish": "“The Netherlands.” The country name itself is singular even though English often imagines many “lands.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Er zijn meer fietsen dan auto’s.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Er zijn meer fietsen dan auto’s.\" rather than restarting from a blank sentence.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik ga vaak met de fiets naar school.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "“I often go to school by bike.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik ga vaak met de fiets naar school.\" as the comparison line.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "“I often go to school by bike.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Nederland heeft veel fietspaden.\".",
+      "pronunciation": "",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "“The Netherlands has many bike lanes.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Nederland heeft veel fietspaden.\".",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "“The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Er zijn meer fietsen dan auto’s.\".",
+      "pronunciation": "",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "“There are more bicycles than cars.”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Er zijn meer fietsen dan auto’s.\".",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "“There are more bicycles than cars.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Nederland heeft veel fietspaden.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "“The Netherlands has many bike lanes.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Nederland heeft veel fietspaden.\" one layer at a time.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "“The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik ga vaak met de fiets naar school.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "“I often go to school by bike.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik ga vaak met de fiets naar school.\" as the deciding example.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "“I often go to school by bike.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-culture",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Er zijn meer fietsen dan auto’s.\".",
+      "pronunciation": "",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "“There are more bicycles than cars.”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Er zijn meer fietsen dan auto’s.\".",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "“There are more bicycles than cars.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Nederland",
+      "romanization": "NAY-der-lant",
+      "nativeText": "“The Netherlands.” The country name itself is singular even though English often imagines many “lands.”",
+      "pronunciation": "NAY-der-lant",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "“The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "“The Netherlands.” The country name itself is singular even though English often imagines many “lands.”",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "“The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Nederland heeft veel fietspaden.",
+      "romanization": "NAY-der-lant",
+      "nativeText": "Model use for \"Nederland heeft veel fietspaden.\": “The Netherlands has many bike lanes.”",
+      "pronunciation": "NAY-der-lant",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "“The Netherlands has many bike lanes.”",
+      "korean": "Nederland heeft veel fietspaden.",
+      "english": "Model use for \"Nederland heeft veel fietspaden.\": “The Netherlands has many bike lanes.”",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "“The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Nederland",
+      "romanization": "NAY-der-lant",
+      "nativeText": "Usage focus for \"Nederland\": Use the key language of Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with the register and setting that the lesson requires.",
+      "pronunciation": "NAY-der-lant",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "Notice what the form is doing here: “The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "Usage focus for \"Nederland\": Use the key language of Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with the register and setting that the lesson requires.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "Notice what the form is doing here: “The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Nederland",
+      "romanization": "NAY-der-lant",
+      "nativeText": "Contrast check for \"Nederland\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "NAY-der-lant",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "Contrast check for \"Nederland\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Nederland",
+      "romanization": "NAY-der-lant",
+      "nativeText": "Recall \"Nederland\" from memory, then explain what would change if a nearby alternative replaced it in \"Nederland heeft veel fietspaden.\".",
+      "pronunciation": "NAY-der-lant",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "Self-check against the model before moving on: “The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "Recall \"Nederland\" from memory, then explain what would change if a nearby alternative replaced it in \"Nederland heeft veel fietspaden.\".",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "Self-check against the model before moving on: “The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Nederland",
+      "romanization": "NAY-der-lant",
+      "nativeText": "Repair \"Nederland\" inside \"Nederland heeft veel fietspaden.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with the register and setting that the lesson requires.",
+      "pronunciation": "NAY-der-lant",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "Use the model as the repair target: “The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "Repair \"Nederland\" inside \"Nederland heeft veel fietspaden.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands with the register and setting that the lesson requires.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "Use the model as the repair target: “The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Nederland",
+      "romanization": "NAY-der-lant",
+      "nativeText": "Transfer \"Nederland\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Nederland heeft veel fietspaden.\".",
+      "pronunciation": "NAY-der-lant",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "Transfer \"Nederland\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Nederland heeft veel fietspaden.\".",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Nederland",
+      "romanization": "NAY-der-lant",
+      "nativeText": "Find one word or phrase that naturally travels with \"Nederland\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "NAY-der-lant",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "Find one word or phrase that naturally travels with \"Nederland\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Nederland",
+      "romanization": "NAY-der-lant",
+      "nativeText": "Listen for \"Nederland\" inside \"Nederland heeft veel fietspaden.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "NAY-der-lant",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "Listen for \"Nederland\" inside \"Nederland heeft veel fietspaden.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Nederland",
+      "romanization": "NAY-der-lant",
+      "nativeText": "Write \"Nederland\" again without looking, then compare the exact written form against \"Nederland heeft veel fietspaden.\" before moving on.",
+      "pronunciation": "NAY-der-lant",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "Use the written model as the final correctness check: “The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "Write \"Nederland\" again without looking, then compare the exact written form against \"Nederland heeft veel fietspaden.\" before moving on.",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Nederland",
+      "romanization": "NAY-der-lant",
+      "nativeText": "Check whether \"Nederland\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The Netherlands has many bike lanes.”",
+      "pronunciation": "NAY-der-lant",
+      "exampleTarget": "Nederland heeft veel fietspaden.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The Netherlands has many bike lanes.”",
+      "korean": "Nederland",
+      "english": "Check whether \"Nederland\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The Netherlands has many bike lanes.”",
+      "example": "Nederland heeft veel fietspaden.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The Netherlands has many bike lanes.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de fiets",
+      "romanization": "də FEETS",
+      "nativeText": "“The bicycle.” Cycling is practical daily transport, not only recreation.",
+      "pronunciation": "də FEETS",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "“I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "“The bicycle.” Cycling is practical daily transport, not only recreation.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "“I often go to school by bike.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Ik ga vaak met de fiets naar school.",
+      "romanization": "də FEETS",
+      "nativeText": "Model use for \"Ik ga vaak met de fiets naar school.\": “I often go to school by bike.”",
+      "pronunciation": "də FEETS",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "“I often go to school by bike.”",
+      "korean": "Ik ga vaak met de fiets naar school.",
+      "english": "Model use for \"Ik ga vaak met de fiets naar school.\": “I often go to school by bike.”",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "“I often go to school by bike.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de fiets",
+      "romanization": "də FEETS",
+      "nativeText": "Usage focus for \"de fiets\": Distinguish the nearby wording choices that make Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands sound precise rather than merely understandable.",
+      "pronunciation": "də FEETS",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "Notice what the form is doing here: “I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "Usage focus for \"de fiets\": Distinguish the nearby wording choices that make Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands sound precise rather than merely understandable.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "Notice what the form is doing here: “I often go to school by bike.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de fiets",
+      "romanization": "də FEETS",
+      "nativeText": "Contrast check for \"de fiets\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "də FEETS",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "Contrast check for \"de fiets\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I often go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de fiets",
+      "romanization": "də FEETS",
+      "nativeText": "Recall \"de fiets\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik ga vaak met de fiets naar school.\".",
+      "pronunciation": "də FEETS",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "Self-check against the model before moving on: “I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "Recall \"de fiets\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik ga vaak met de fiets naar school.\".",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "Self-check against the model before moving on: “I often go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de fiets",
+      "romanization": "də FEETS",
+      "nativeText": "Repair \"de fiets\" inside \"Ik ga vaak met de fiets naar school.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands sound precise rather than merely understandable.",
+      "pronunciation": "də FEETS",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "Use the model as the repair target: “I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "Repair \"de fiets\" inside \"Ik ga vaak met de fiets naar school.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 5: Leven in Nederland — Life in the Netherlands sound precise rather than merely understandable.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "Use the model as the repair target: “I often go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de fiets",
+      "romanization": "də FEETS",
+      "nativeText": "Transfer \"de fiets\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik ga vaak met de fiets naar school.\".",
+      "pronunciation": "də FEETS",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "Transfer \"de fiets\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik ga vaak met de fiets naar school.\".",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I often go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de fiets",
+      "romanization": "də FEETS",
+      "nativeText": "Find one word or phrase that naturally travels with \"de fiets\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "də FEETS",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "Find one word or phrase that naturally travels with \"de fiets\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I often go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de fiets",
+      "romanization": "də FEETS",
+      "nativeText": "Listen for \"de fiets\" inside \"Ik ga vaak met de fiets naar school.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "də FEETS",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "Listen for \"de fiets\" inside \"Ik ga vaak met de fiets naar school.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I often go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de fiets",
+      "romanization": "də FEETS",
+      "nativeText": "Write \"de fiets\" again without looking, then compare the exact written form against \"Ik ga vaak met de fiets naar school.\" before moving on.",
+      "pronunciation": "də FEETS",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "Use the written model as the final correctness check: “I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "Write \"de fiets\" again without looking, then compare the exact written form against \"Ik ga vaak met de fiets naar school.\" before moving on.",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I often go to school by bike.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de fiets",
+      "romanization": "də FEETS",
+      "nativeText": "Check whether \"de fiets\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I often go to school by bike.”",
+      "pronunciation": "də FEETS",
+      "exampleTarget": "Ik ga vaak met de fiets naar school.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I often go to school by bike.”",
+      "korean": "de fiets",
+      "english": "Check whether \"de fiets\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I often go to school by bike.”",
+      "example": "Ik ga vaak met de fiets naar school.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I often go to school by bike.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de gracht",
+      "romanization": "də GRAKHT",
+      "nativeText": "“Canal.” A city-life word especially visible in Amsterdam and Utrecht.",
+      "pronunciation": "də GRAKHT",
+      "exampleTarget": "Er is een gracht naast het museum.",
+      "exampleNative": "“There is a canal next to the museum.”",
+      "korean": "de gracht",
+      "english": "“Canal.” A city-life word especially visible in Amsterdam and Utrecht.",
+      "example": "Er is een gracht naast het museum.",
+      "exampleEnglish": "“There is a canal next to the museum.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Er is een gracht naast het museum.",
+      "romanization": "də GRAKHT",
+      "nativeText": "Model use for \"Er is een gracht naast het museum.\": “There is a canal next to the museum.”",
+      "pronunciation": "də GRAKHT",
+      "exampleTarget": "Er is een gracht naast het museum.",
+      "exampleNative": "“There is a canal next to the museum.”",
+      "korean": "Er is een gracht naast het museum.",
+      "english": "Model use for \"Er is een gracht naast het museum.\": “There is a canal next to the museum.”",
+      "example": "Er is een gracht naast het museum.",
+      "exampleEnglish": "“There is a canal next to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de gracht",
+      "romanization": "də GRAKHT",
+      "nativeText": "Usage focus for \"de gracht\": “Canal.” A city-life word especially visible in Amsterdam and Utrecht.",
+      "pronunciation": "də GRAKHT",
+      "exampleTarget": "Er is een gracht naast het museum.",
+      "exampleNative": "Notice what the form is doing here: “There is a canal next to the museum.”",
+      "korean": "de gracht",
+      "english": "Usage focus for \"de gracht\": “Canal.” A city-life word especially visible in Amsterdam and Utrecht.",
+      "example": "Er is een gracht naast het museum.",
+      "exampleEnglish": "Notice what the form is doing here: “There is a canal next to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de gracht",
+      "romanization": "də GRAKHT",
+      "nativeText": "Contrast check for \"de gracht\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "də GRAKHT",
+      "exampleTarget": "Er is een gracht naast het museum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “There is a canal next to the museum.”",
+      "korean": "de gracht",
+      "english": "Contrast check for \"de gracht\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Er is een gracht naast het museum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “There is a canal next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de gracht",
+      "romanization": "də GRAKHT",
+      "nativeText": "Recall \"de gracht\" from memory, then explain what would change if a nearby alternative replaced it in \"Er is een gracht naast het museum.\".",
+      "pronunciation": "də GRAKHT",
+      "exampleTarget": "Er is een gracht naast het museum.",
+      "exampleNative": "Self-check against the model before moving on: “There is a canal next to the museum.”",
+      "korean": "de gracht",
+      "english": "Recall \"de gracht\" from memory, then explain what would change if a nearby alternative replaced it in \"Er is een gracht naast het museum.\".",
+      "example": "Er is een gracht naast het museum.",
+      "exampleEnglish": "Self-check against the model before moving on: “There is a canal next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de gracht",
+      "romanization": "də GRAKHT",
+      "nativeText": "Repair \"de gracht\" inside \"Er is een gracht naast het museum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Canal.” A city-life word especially visible in Amsterdam and Utrecht.",
+      "pronunciation": "də GRAKHT",
+      "exampleTarget": "Er is een gracht naast het museum.",
+      "exampleNative": "Use the model as the repair target: “There is a canal next to the museum.”",
+      "korean": "de gracht",
+      "english": "Repair \"de gracht\" inside \"Er is een gracht naast het museum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Canal.” A city-life word especially visible in Amsterdam and Utrecht.",
+      "example": "Er is een gracht naast het museum.",
+      "exampleEnglish": "Use the model as the repair target: “There is a canal next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de gracht",
+      "romanization": "də GRAKHT",
+      "nativeText": "Transfer \"de gracht\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Er is een gracht naast het museum.\".",
+      "pronunciation": "də GRAKHT",
+      "exampleTarget": "Er is een gracht naast het museum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “There is a canal next to the museum.”",
+      "korean": "de gracht",
+      "english": "Transfer \"de gracht\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Er is een gracht naast het museum.\".",
+      "example": "Er is een gracht naast het museum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “There is a canal next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de gracht",
+      "romanization": "də GRAKHT",
+      "nativeText": "Find one word or phrase that naturally travels with \"de gracht\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "də GRAKHT",
+      "exampleTarget": "Er is een gracht naast het museum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “There is a canal next to the museum.”",
+      "korean": "de gracht",
+      "english": "Find one word or phrase that naturally travels with \"de gracht\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Er is een gracht naast het museum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “There is a canal next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de gracht",
+      "romanization": "də GRAKHT",
+      "nativeText": "Listen for \"de gracht\" inside \"Er is een gracht naast het museum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "də GRAKHT",
+      "exampleTarget": "Er is een gracht naast het museum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “There is a canal next to the museum.”",
+      "korean": "de gracht",
+      "english": "Listen for \"de gracht\" inside \"Er is een gracht naast het museum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Er is een gracht naast het museum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “There is a canal next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de gracht",
+      "romanization": "də GRAKHT",
+      "nativeText": "Write \"de gracht\" again without looking, then compare the exact written form against \"Er is een gracht naast het museum.\" before moving on.",
+      "pronunciation": "də GRAKHT",
+      "exampleTarget": "Er is een gracht naast het museum.",
+      "exampleNative": "Use the written model as the final correctness check: “There is a canal next to the museum.”",
+      "korean": "de gracht",
+      "english": "Write \"de gracht\" again without looking, then compare the exact written form against \"Er is een gracht naast het museum.\" before moving on.",
+      "example": "Er is een gracht naast het museum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “There is a canal next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "de gracht",
+      "romanization": "də GRAKHT",
+      "nativeText": "Check whether \"de gracht\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “There is a canal next to the museum.”",
+      "pronunciation": "də GRAKHT",
+      "exampleTarget": "Er is een gracht naast het museum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “There is a canal next to the museum.”",
+      "korean": "de gracht",
+      "english": "Check whether \"de gracht\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “There is a canal next to the museum.”",
+      "example": "Er is een gracht naast het museum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “There is a canal next to the museum.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "regen",
+      "romanization": "RAY-ghen",
+      "nativeText": "“Rain.” Weather talk is genuinely everyday in Dutch life.",
+      "pronunciation": "RAY-ghen",
+      "exampleTarget": "Er is vandaag veel regen.",
+      "exampleNative": "“There is a lot of rain today.”",
+      "korean": "regen",
+      "english": "“Rain.” Weather talk is genuinely everyday in Dutch life.",
+      "example": "Er is vandaag veel regen.",
+      "exampleEnglish": "“There is a lot of rain today.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Er is vandaag veel regen.",
+      "romanization": "RAY-ghen",
+      "nativeText": "Model use for \"Er is vandaag veel regen.\": “There is a lot of rain today.”",
+      "pronunciation": "RAY-ghen",
+      "exampleTarget": "Er is vandaag veel regen.",
+      "exampleNative": "“There is a lot of rain today.”",
+      "korean": "Er is vandaag veel regen.",
+      "english": "Model use for \"Er is vandaag veel regen.\": “There is a lot of rain today.”",
+      "example": "Er is vandaag veel regen.",
+      "exampleEnglish": "“There is a lot of rain today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "regen",
+      "romanization": "RAY-ghen",
+      "nativeText": "Usage focus for \"regen\": “Rain.” Weather talk is genuinely everyday in Dutch life.",
+      "pronunciation": "RAY-ghen",
+      "exampleTarget": "Er is vandaag veel regen.",
+      "exampleNative": "Notice what the form is doing here: “There is a lot of rain today.”",
+      "korean": "regen",
+      "english": "Usage focus for \"regen\": “Rain.” Weather talk is genuinely everyday in Dutch life.",
+      "example": "Er is vandaag veel regen.",
+      "exampleEnglish": "Notice what the form is doing here: “There is a lot of rain today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "regen",
+      "romanization": "RAY-ghen",
+      "nativeText": "Contrast check for \"regen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "RAY-ghen",
+      "exampleTarget": "Er is vandaag veel regen.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “There is a lot of rain today.”",
+      "korean": "regen",
+      "english": "Contrast check for \"regen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Er is vandaag veel regen.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “There is a lot of rain today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "regen",
+      "romanization": "RAY-ghen",
+      "nativeText": "Recall \"regen\" from memory, then explain what would change if a nearby alternative replaced it in \"Er is vandaag veel regen.\".",
+      "pronunciation": "RAY-ghen",
+      "exampleTarget": "Er is vandaag veel regen.",
+      "exampleNative": "Self-check against the model before moving on: “There is a lot of rain today.”",
+      "korean": "regen",
+      "english": "Recall \"regen\" from memory, then explain what would change if a nearby alternative replaced it in \"Er is vandaag veel regen.\".",
+      "example": "Er is vandaag veel regen.",
+      "exampleEnglish": "Self-check against the model before moving on: “There is a lot of rain today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "regen",
+      "romanization": "RAY-ghen",
+      "nativeText": "Repair \"regen\" inside \"Er is vandaag veel regen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Rain.” Weather talk is genuinely everyday in Dutch life.",
+      "pronunciation": "RAY-ghen",
+      "exampleTarget": "Er is vandaag veel regen.",
+      "exampleNative": "Use the model as the repair target: “There is a lot of rain today.”",
+      "korean": "regen",
+      "english": "Repair \"regen\" inside \"Er is vandaag veel regen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Rain.” Weather talk is genuinely everyday in Dutch life.",
+      "example": "Er is vandaag veel regen.",
+      "exampleEnglish": "Use the model as the repair target: “There is a lot of rain today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "regen",
+      "romanization": "RAY-ghen",
+      "nativeText": "Transfer \"regen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Er is vandaag veel regen.\".",
+      "pronunciation": "RAY-ghen",
+      "exampleTarget": "Er is vandaag veel regen.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “There is a lot of rain today.”",
+      "korean": "regen",
+      "english": "Transfer \"regen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Er is vandaag veel regen.\".",
+      "example": "Er is vandaag veel regen.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “There is a lot of rain today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "regen",
+      "romanization": "RAY-ghen",
+      "nativeText": "Find one word or phrase that naturally travels with \"regen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "RAY-ghen",
+      "exampleTarget": "Er is vandaag veel regen.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “There is a lot of rain today.”",
+      "korean": "regen",
+      "english": "Find one word or phrase that naturally travels with \"regen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Er is vandaag veel regen.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “There is a lot of rain today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "regen",
+      "romanization": "RAY-ghen",
+      "nativeText": "Listen for \"regen\" inside \"Er is vandaag veel regen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "RAY-ghen",
+      "exampleTarget": "Er is vandaag veel regen.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “There is a lot of rain today.”",
+      "korean": "regen",
+      "english": "Listen for \"regen\" inside \"Er is vandaag veel regen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Er is vandaag veel regen.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “There is a lot of rain today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "regen",
+      "romanization": "RAY-ghen",
+      "nativeText": "Write \"regen\" again without looking, then compare the exact written form against \"Er is vandaag veel regen.\" before moving on.",
+      "pronunciation": "RAY-ghen",
+      "exampleTarget": "Er is vandaag veel regen.",
+      "exampleNative": "Use the written model as the final correctness check: “There is a lot of rain today.”",
+      "korean": "regen",
+      "english": "Write \"regen\" again without looking, then compare the exact written form against \"Er is vandaag veel regen.\" before moving on.",
+      "example": "Er is vandaag veel regen.",
+      "exampleEnglish": "Use the written model as the final correctness check: “There is a lot of rain today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "regen",
+      "romanization": "RAY-ghen",
+      "nativeText": "Check whether \"regen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “There is a lot of rain today.”",
+      "pronunciation": "RAY-ghen",
+      "exampleTarget": "Er is vandaag veel regen.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “There is a lot of rain today.”",
+      "korean": "regen",
+      "english": "Check whether \"regen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “There is a lot of rain today.”",
+      "example": "Er is vandaag veel regen.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “There is a lot of rain today.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "gezellig",
+      "romanization": "khə-ZEL-likh",
+      "nativeText": "A culturally dense word meaning cozy, pleasant, or socially warm depending on context.",
+      "pronunciation": "khə-ZEL-likh",
+      "exampleTarget": "Het café is heel gezellig.",
+      "exampleNative": "“The cafe is very cozy / pleasant.”",
+      "korean": "gezellig",
+      "english": "A culturally dense word meaning cozy, pleasant, or socially warm depending on context.",
+      "example": "Het café is heel gezellig.",
+      "exampleEnglish": "“The cafe is very cozy / pleasant.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Het café is heel gezellig.",
+      "romanization": "khə-ZEL-likh",
+      "nativeText": "Model use for \"Het café is heel gezellig.\": “The cafe is very cozy / pleasant.”",
+      "pronunciation": "khə-ZEL-likh",
+      "exampleTarget": "Het café is heel gezellig.",
+      "exampleNative": "“The cafe is very cozy / pleasant.”",
+      "korean": "Het café is heel gezellig.",
+      "english": "Model use for \"Het café is heel gezellig.\": “The cafe is very cozy / pleasant.”",
+      "example": "Het café is heel gezellig.",
+      "exampleEnglish": "“The cafe is very cozy / pleasant.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "gezellig",
+      "romanization": "khə-ZEL-likh",
+      "nativeText": "Usage focus for \"gezellig\": A culturally dense word meaning cozy, pleasant, or socially warm depending on context.",
+      "pronunciation": "khə-ZEL-likh",
+      "exampleTarget": "Het café is heel gezellig.",
+      "exampleNative": "Notice what the form is doing here: “The cafe is very cozy / pleasant.”",
+      "korean": "gezellig",
+      "english": "Usage focus for \"gezellig\": A culturally dense word meaning cozy, pleasant, or socially warm depending on context.",
+      "example": "Het café is heel gezellig.",
+      "exampleEnglish": "Notice what the form is doing here: “The cafe is very cozy / pleasant.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "gezellig",
+      "romanization": "khə-ZEL-likh",
+      "nativeText": "Contrast check for \"gezellig\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "khə-ZEL-likh",
+      "exampleTarget": "Het café is heel gezellig.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is very cozy / pleasant.”",
+      "korean": "gezellig",
+      "english": "Contrast check for \"gezellig\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Het café is heel gezellig.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is very cozy / pleasant.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "gezellig",
+      "romanization": "khə-ZEL-likh",
+      "nativeText": "Recall \"gezellig\" from memory, then explain what would change if a nearby alternative replaced it in \"Het café is heel gezellig.\".",
+      "pronunciation": "khə-ZEL-likh",
+      "exampleTarget": "Het café is heel gezellig.",
+      "exampleNative": "Self-check against the model before moving on: “The cafe is very cozy / pleasant.”",
+      "korean": "gezellig",
+      "english": "Recall \"gezellig\" from memory, then explain what would change if a nearby alternative replaced it in \"Het café is heel gezellig.\".",
+      "example": "Het café is heel gezellig.",
+      "exampleEnglish": "Self-check against the model before moving on: “The cafe is very cozy / pleasant.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "gezellig",
+      "romanization": "khə-ZEL-likh",
+      "nativeText": "Repair \"gezellig\" inside \"Het café is heel gezellig.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A culturally dense word meaning cozy, pleasant, or socially warm depending on context.",
+      "pronunciation": "khə-ZEL-likh",
+      "exampleTarget": "Het café is heel gezellig.",
+      "exampleNative": "Use the model as the repair target: “The cafe is very cozy / pleasant.”",
+      "korean": "gezellig",
+      "english": "Repair \"gezellig\" inside \"Het café is heel gezellig.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A culturally dense word meaning cozy, pleasant, or socially warm depending on context.",
+      "example": "Het café is heel gezellig.",
+      "exampleEnglish": "Use the model as the repair target: “The cafe is very cozy / pleasant.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "gezellig",
+      "romanization": "khə-ZEL-likh",
+      "nativeText": "Transfer \"gezellig\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Het café is heel gezellig.\".",
+      "pronunciation": "khə-ZEL-likh",
+      "exampleTarget": "Het café is heel gezellig.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is very cozy / pleasant.”",
+      "korean": "gezellig",
+      "english": "Transfer \"gezellig\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Het café is heel gezellig.\".",
+      "example": "Het café is heel gezellig.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is very cozy / pleasant.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "gezellig",
+      "romanization": "khə-ZEL-likh",
+      "nativeText": "Find one word or phrase that naturally travels with \"gezellig\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "khə-ZEL-likh",
+      "exampleTarget": "Het café is heel gezellig.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The cafe is very cozy / pleasant.”",
+      "korean": "gezellig",
+      "english": "Find one word or phrase that naturally travels with \"gezellig\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Het café is heel gezellig.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The cafe is very cozy / pleasant.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "gezellig",
+      "romanization": "khə-ZEL-likh",
+      "nativeText": "Listen for \"gezellig\" inside \"Het café is heel gezellig.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "khə-ZEL-likh",
+      "exampleTarget": "Het café is heel gezellig.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is very cozy / pleasant.”",
+      "korean": "gezellig",
+      "english": "Listen for \"gezellig\" inside \"Het café is heel gezellig.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Het café is heel gezellig.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is very cozy / pleasant.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "gezellig",
+      "romanization": "khə-ZEL-likh",
+      "nativeText": "Write \"gezellig\" again without looking, then compare the exact written form against \"Het café is heel gezellig.\" before moving on.",
+      "pronunciation": "khə-ZEL-likh",
+      "exampleTarget": "Het café is heel gezellig.",
+      "exampleNative": "Use the written model as the final correctness check: “The cafe is very cozy / pleasant.”",
+      "korean": "gezellig",
+      "english": "Write \"gezellig\" again without looking, then compare the exact written form against \"Het café is heel gezellig.\" before moving on.",
+      "example": "Het café is heel gezellig.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The cafe is very cozy / pleasant.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "gezellig",
+      "romanization": "khə-ZEL-likh",
+      "nativeText": "Check whether \"gezellig\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is very cozy / pleasant.”",
+      "pronunciation": "khə-ZEL-likh",
+      "exampleTarget": "Het café is heel gezellig.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The cafe is very cozy / pleasant.”",
+      "korean": "gezellig",
+      "english": "Check whether \"gezellig\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is very cozy / pleasant.”",
+      "example": "Het café is heel gezellig.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The cafe is very cozy / pleasant.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "brood",
+      "romanization": "BROHT",
+      "nativeText": "“Bread.” Lunches are often simple bread-based meals, which makes this a very practical culture noun.",
+      "pronunciation": "BROHT",
+      "exampleTarget": "Veel mensen eten brood als lunch.",
+      "exampleNative": "“Many people eat bread for lunch.”",
+      "korean": "brood",
+      "english": "“Bread.” Lunches are often simple bread-based meals, which makes this a very practical culture noun.",
+      "example": "Veel mensen eten brood als lunch.",
+      "exampleEnglish": "“Many people eat bread for lunch.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Veel mensen eten brood als lunch.",
+      "romanization": "BROHT",
+      "nativeText": "Model use for \"Veel mensen eten brood als lunch.\": “Many people eat bread for lunch.”",
+      "pronunciation": "BROHT",
+      "exampleTarget": "Veel mensen eten brood als lunch.",
+      "exampleNative": "“Many people eat bread for lunch.”",
+      "korean": "Veel mensen eten brood als lunch.",
+      "english": "Model use for \"Veel mensen eten brood als lunch.\": “Many people eat bread for lunch.”",
+      "example": "Veel mensen eten brood als lunch.",
+      "exampleEnglish": "“Many people eat bread for lunch.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "brood",
+      "romanization": "BROHT",
+      "nativeText": "Usage focus for \"brood\": “Bread.” Lunches are often simple bread-based meals, which makes this a very practical culture noun.",
+      "pronunciation": "BROHT",
+      "exampleTarget": "Veel mensen eten brood als lunch.",
+      "exampleNative": "Notice what the form is doing here: “Many people eat bread for lunch.”",
+      "korean": "brood",
+      "english": "Usage focus for \"brood\": “Bread.” Lunches are often simple bread-based meals, which makes this a very practical culture noun.",
+      "example": "Veel mensen eten brood als lunch.",
+      "exampleEnglish": "Notice what the form is doing here: “Many people eat bread for lunch.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "brood",
+      "romanization": "BROHT",
+      "nativeText": "Contrast check for \"brood\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "BROHT",
+      "exampleTarget": "Veel mensen eten brood als lunch.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Many people eat bread for lunch.”",
+      "korean": "brood",
+      "english": "Contrast check for \"brood\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Veel mensen eten brood als lunch.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Many people eat bread for lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "brood",
+      "romanization": "BROHT",
+      "nativeText": "Recall \"brood\" from memory, then explain what would change if a nearby alternative replaced it in \"Veel mensen eten brood als lunch.\".",
+      "pronunciation": "BROHT",
+      "exampleTarget": "Veel mensen eten brood als lunch.",
+      "exampleNative": "Self-check against the model before moving on: “Many people eat bread for lunch.”",
+      "korean": "brood",
+      "english": "Recall \"brood\" from memory, then explain what would change if a nearby alternative replaced it in \"Veel mensen eten brood als lunch.\".",
+      "example": "Veel mensen eten brood als lunch.",
+      "exampleEnglish": "Self-check against the model before moving on: “Many people eat bread for lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "brood",
+      "romanization": "BROHT",
+      "nativeText": "Repair \"brood\" inside \"Veel mensen eten brood als lunch.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Bread.” Lunches are often simple bread-based meals, which makes this a very practical culture noun.",
+      "pronunciation": "BROHT",
+      "exampleTarget": "Veel mensen eten brood als lunch.",
+      "exampleNative": "Use the model as the repair target: “Many people eat bread for lunch.”",
+      "korean": "brood",
+      "english": "Repair \"brood\" inside \"Veel mensen eten brood als lunch.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Bread.” Lunches are often simple bread-based meals, which makes this a very practical culture noun.",
+      "example": "Veel mensen eten brood als lunch.",
+      "exampleEnglish": "Use the model as the repair target: “Many people eat bread for lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "brood",
+      "romanization": "BROHT",
+      "nativeText": "Transfer \"brood\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Veel mensen eten brood als lunch.\".",
+      "pronunciation": "BROHT",
+      "exampleTarget": "Veel mensen eten brood als lunch.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Many people eat bread for lunch.”",
+      "korean": "brood",
+      "english": "Transfer \"brood\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Veel mensen eten brood als lunch.\".",
+      "example": "Veel mensen eten brood als lunch.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Many people eat bread for lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "brood",
+      "romanization": "BROHT",
+      "nativeText": "Find one word or phrase that naturally travels with \"brood\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "BROHT",
+      "exampleTarget": "Veel mensen eten brood als lunch.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Many people eat bread for lunch.”",
+      "korean": "brood",
+      "english": "Find one word or phrase that naturally travels with \"brood\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Veel mensen eten brood als lunch.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Many people eat bread for lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "brood",
+      "romanization": "BROHT",
+      "nativeText": "Listen for \"brood\" inside \"Veel mensen eten brood als lunch.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "BROHT",
+      "exampleTarget": "Veel mensen eten brood als lunch.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Many people eat bread for lunch.”",
+      "korean": "brood",
+      "english": "Listen for \"brood\" inside \"Veel mensen eten brood als lunch.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Veel mensen eten brood als lunch.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Many people eat bread for lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "brood",
+      "romanization": "BROHT",
+      "nativeText": "Write \"brood\" again without looking, then compare the exact written form against \"Veel mensen eten brood als lunch.\" before moving on.",
+      "pronunciation": "BROHT",
+      "exampleTarget": "Veel mensen eten brood als lunch.",
+      "exampleNative": "Use the written model as the final correctness check: “Many people eat bread for lunch.”",
+      "korean": "brood",
+      "english": "Write \"brood\" again without looking, then compare the exact written form against \"Veel mensen eten brood als lunch.\" before moving on.",
+      "example": "Veel mensen eten brood als lunch.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Many people eat bread for lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "brood",
+      "romanization": "BROHT",
+      "nativeText": "Check whether \"brood\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Many people eat bread for lunch.”",
+      "pronunciation": "BROHT",
+      "exampleTarget": "Veel mensen eten brood als lunch.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Many people eat bread for lunch.”",
+      "korean": "brood",
+      "english": "Check whether \"brood\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Many people eat bread for lunch.”",
+      "example": "Veel mensen eten brood als lunch.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Many people eat bread for lunch.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "er is / er zijn",
+      "romanization": "er is / er zeyn",
+      "nativeText": "“There is / there are.” Dutch uses `er` heavily when introducing what exists somewhere.",
+      "pronunciation": "er is / er zeyn",
+      "exampleTarget": "Er zijn veel fietsen in Amsterdam.",
+      "exampleNative": "“There are many bicycles in Amsterdam.”",
+      "korean": "er is / er zijn",
+      "english": "“There is / there are.” Dutch uses `er` heavily when introducing what exists somewhere.",
+      "example": "Er zijn veel fietsen in Amsterdam.",
+      "exampleEnglish": "“There are many bicycles in Amsterdam.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Er zijn veel fietsen in Amsterdam.",
+      "romanization": "er is / er zeyn",
+      "nativeText": "Model use for \"Er zijn veel fietsen in Amsterdam.\": “There are many bicycles in Amsterdam.”",
+      "pronunciation": "er is / er zeyn",
+      "exampleTarget": "Er zijn veel fietsen in Amsterdam.",
+      "exampleNative": "“There are many bicycles in Amsterdam.”",
+      "korean": "Er zijn veel fietsen in Amsterdam.",
+      "english": "Model use for \"Er zijn veel fietsen in Amsterdam.\": “There are many bicycles in Amsterdam.”",
+      "example": "Er zijn veel fietsen in Amsterdam.",
+      "exampleEnglish": "“There are many bicycles in Amsterdam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "er is / er zijn",
+      "romanization": "er is / er zeyn",
+      "nativeText": "Usage focus for \"er is / er zijn\": “There is / there are.” Dutch uses `er` heavily when introducing what exists somewhere.",
+      "pronunciation": "er is / er zeyn",
+      "exampleTarget": "Er zijn veel fietsen in Amsterdam.",
+      "exampleNative": "Notice what the form is doing here: “There are many bicycles in Amsterdam.”",
+      "korean": "er is / er zijn",
+      "english": "Usage focus for \"er is / er zijn\": “There is / there are.” Dutch uses `er` heavily when introducing what exists somewhere.",
+      "example": "Er zijn veel fietsen in Amsterdam.",
+      "exampleEnglish": "Notice what the form is doing here: “There are many bicycles in Amsterdam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "er is / er zijn",
+      "romanization": "er is / er zeyn",
+      "nativeText": "Contrast check for \"er is / er zijn\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "er is / er zeyn",
+      "exampleTarget": "Er zijn veel fietsen in Amsterdam.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “There are many bicycles in Amsterdam.”",
+      "korean": "er is / er zijn",
+      "english": "Contrast check for \"er is / er zijn\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Er zijn veel fietsen in Amsterdam.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “There are many bicycles in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "er is / er zijn",
+      "romanization": "er is / er zeyn",
+      "nativeText": "Recall \"er is / er zijn\" from memory, then explain what would change if a nearby alternative replaced it in \"Er zijn veel fietsen in Amsterdam.\".",
+      "pronunciation": "er is / er zeyn",
+      "exampleTarget": "Er zijn veel fietsen in Amsterdam.",
+      "exampleNative": "Self-check against the model before moving on: “There are many bicycles in Amsterdam.”",
+      "korean": "er is / er zijn",
+      "english": "Recall \"er is / er zijn\" from memory, then explain what would change if a nearby alternative replaced it in \"Er zijn veel fietsen in Amsterdam.\".",
+      "example": "Er zijn veel fietsen in Amsterdam.",
+      "exampleEnglish": "Self-check against the model before moving on: “There are many bicycles in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "er is / er zijn",
+      "romanization": "er is / er zeyn",
+      "nativeText": "Repair \"er is / er zijn\" inside \"Er zijn veel fietsen in Amsterdam.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “There is / there are.” Dutch uses `er` heavily when introducing what exists somewhere.",
+      "pronunciation": "er is / er zeyn",
+      "exampleTarget": "Er zijn veel fietsen in Amsterdam.",
+      "exampleNative": "Use the model as the repair target: “There are many bicycles in Amsterdam.”",
+      "korean": "er is / er zijn",
+      "english": "Repair \"er is / er zijn\" inside \"Er zijn veel fietsen in Amsterdam.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “There is / there are.” Dutch uses `er` heavily when introducing what exists somewhere.",
+      "example": "Er zijn veel fietsen in Amsterdam.",
+      "exampleEnglish": "Use the model as the repair target: “There are many bicycles in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "er is / er zijn",
+      "romanization": "er is / er zeyn",
+      "nativeText": "Transfer \"er is / er zijn\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Er zijn veel fietsen in Amsterdam.\".",
+      "pronunciation": "er is / er zeyn",
+      "exampleTarget": "Er zijn veel fietsen in Amsterdam.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “There are many bicycles in Amsterdam.”",
+      "korean": "er is / er zijn",
+      "english": "Transfer \"er is / er zijn\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Er zijn veel fietsen in Amsterdam.\".",
+      "example": "Er zijn veel fietsen in Amsterdam.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “There are many bicycles in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "er is / er zijn",
+      "romanization": "er is / er zeyn",
+      "nativeText": "Find one word or phrase that naturally travels with \"er is / er zijn\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "er is / er zeyn",
+      "exampleTarget": "Er zijn veel fietsen in Amsterdam.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “There are many bicycles in Amsterdam.”",
+      "korean": "er is / er zijn",
+      "english": "Find one word or phrase that naturally travels with \"er is / er zijn\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Er zijn veel fietsen in Amsterdam.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “There are many bicycles in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "er is / er zijn",
+      "romanization": "er is / er zeyn",
+      "nativeText": "Listen for \"er is / er zijn\" inside \"Er zijn veel fietsen in Amsterdam.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "er is / er zeyn",
+      "exampleTarget": "Er zijn veel fietsen in Amsterdam.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “There are many bicycles in Amsterdam.”",
+      "korean": "er is / er zijn",
+      "english": "Listen for \"er is / er zijn\" inside \"Er zijn veel fietsen in Amsterdam.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Er zijn veel fietsen in Amsterdam.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “There are many bicycles in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "er is / er zijn",
+      "romanization": "er is / er zeyn",
+      "nativeText": "Write \"er is / er zijn\" again without looking, then compare the exact written form against \"Er zijn veel fietsen in Amsterdam.\" before moving on.",
+      "pronunciation": "er is / er zeyn",
+      "exampleTarget": "Er zijn veel fietsen in Amsterdam.",
+      "exampleNative": "Use the written model as the final correctness check: “There are many bicycles in Amsterdam.”",
+      "korean": "er is / er zijn",
+      "english": "Write \"er is / er zijn\" again without looking, then compare the exact written form against \"Er zijn veel fietsen in Amsterdam.\" before moving on.",
+      "example": "Er zijn veel fietsen in Amsterdam.",
+      "exampleEnglish": "Use the written model as the final correctness check: “There are many bicycles in Amsterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "er is / er zijn",
+      "romanization": "er is / er zeyn",
+      "nativeText": "Check whether \"er is / er zijn\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “There are many bicycles in Amsterdam.”",
+      "pronunciation": "er is / er zeyn",
+      "exampleTarget": "Er zijn veel fietsen in Amsterdam.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “There are many bicycles in Amsterdam.”",
+      "korean": "er is / er zijn",
+      "english": "Check whether \"er is / er zijn\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “There are many bicycles in Amsterdam.”",
+      "example": "Er zijn veel fietsen in Amsterdam.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “There are many bicycles in Amsterdam.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "meer dan",
+      "romanization": "meer dan",
+      "nativeText": "“More than.” A useful early comparison frame.",
+      "pronunciation": "meer dan",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "“There are more bicycles than cars.”",
+      "korean": "meer dan",
+      "english": "“More than.” A useful early comparison frame.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "“There are more bicycles than cars.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "Er zijn meer fietsen dan auto’s.",
+      "romanization": "meer dan",
+      "nativeText": "Model use for \"Er zijn meer fietsen dan auto’s.\": “There are more bicycles than cars.”",
+      "pronunciation": "meer dan",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "“There are more bicycles than cars.”",
+      "korean": "Er zijn meer fietsen dan auto’s.",
+      "english": "Model use for \"Er zijn meer fietsen dan auto’s.\": “There are more bicycles than cars.”",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "“There are more bicycles than cars.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "meer dan",
+      "romanization": "meer dan",
+      "nativeText": "Usage focus for \"meer dan\": “More than.” A useful early comparison frame.",
+      "pronunciation": "meer dan",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "Notice what the form is doing here: “There are more bicycles than cars.”",
+      "korean": "meer dan",
+      "english": "Usage focus for \"meer dan\": “More than.” A useful early comparison frame.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "Notice what the form is doing here: “There are more bicycles than cars.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "meer dan",
+      "romanization": "meer dan",
+      "nativeText": "Contrast check for \"meer dan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "meer dan",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “There are more bicycles than cars.”",
+      "korean": "meer dan",
+      "english": "Contrast check for \"meer dan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “There are more bicycles than cars.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "meer dan",
+      "romanization": "meer dan",
+      "nativeText": "Recall \"meer dan\" from memory, then explain what would change if a nearby alternative replaced it in \"Er zijn meer fietsen dan auto’s.\".",
+      "pronunciation": "meer dan",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "Self-check against the model before moving on: “There are more bicycles than cars.”",
+      "korean": "meer dan",
+      "english": "Recall \"meer dan\" from memory, then explain what would change if a nearby alternative replaced it in \"Er zijn meer fietsen dan auto’s.\".",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "Self-check against the model before moving on: “There are more bicycles than cars.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "meer dan",
+      "romanization": "meer dan",
+      "nativeText": "Repair \"meer dan\" inside \"Er zijn meer fietsen dan auto’s.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “More than.” A useful early comparison frame.",
+      "pronunciation": "meer dan",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "Use the model as the repair target: “There are more bicycles than cars.”",
+      "korean": "meer dan",
+      "english": "Repair \"meer dan\" inside \"Er zijn meer fietsen dan auto’s.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “More than.” A useful early comparison frame.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "Use the model as the repair target: “There are more bicycles than cars.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "meer dan",
+      "romanization": "meer dan",
+      "nativeText": "Transfer \"meer dan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Er zijn meer fietsen dan auto’s.\".",
+      "pronunciation": "meer dan",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “There are more bicycles than cars.”",
+      "korean": "meer dan",
+      "english": "Transfer \"meer dan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Er zijn meer fietsen dan auto’s.\".",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “There are more bicycles than cars.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "meer dan",
+      "romanization": "meer dan",
+      "nativeText": "Find one word or phrase that naturally travels with \"meer dan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "meer dan",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “There are more bicycles than cars.”",
+      "korean": "meer dan",
+      "english": "Find one word or phrase that naturally travels with \"meer dan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “There are more bicycles than cars.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "meer dan",
+      "romanization": "meer dan",
+      "nativeText": "Listen for \"meer dan\" inside \"Er zijn meer fietsen dan auto’s.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "meer dan",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “There are more bicycles than cars.”",
+      "korean": "meer dan",
+      "english": "Listen for \"meer dan\" inside \"Er zijn meer fietsen dan auto’s.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “There are more bicycles than cars.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "meer dan",
+      "romanization": "meer dan",
+      "nativeText": "Write \"meer dan\" again without looking, then compare the exact written form against \"Er zijn meer fietsen dan auto’s.\" before moving on.",
+      "pronunciation": "meer dan",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "Use the written model as the final correctness check: “There are more bicycles than cars.”",
+      "korean": "meer dan",
+      "english": "Write \"meer dan\" again without looking, then compare the exact written form against \"Er zijn meer fietsen dan auto’s.\" before moving on.",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "Use the written model as the final correctness check: “There are more bicycles than cars.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit05lifeinthenetherlands-vocabulary-1",
+        "nl-level1unit05lifeinthenetherlands-vocabulary-2",
+        "nl-level1unit05lifeinthenetherlands-grammar-1",
+        "nl-level1unit05lifeinthenetherlands-grammar-2",
+        "nl-level1unit05lifeinthenetherlands-reading",
+        "nl-level1unit05lifeinthenetherlands-listening",
+        "nl-level1unit05lifeinthenetherlands-writing",
+        "nl-level1unit05lifeinthenetherlands-task"
+      ],
+      "targetText": "meer dan",
+      "romanization": "meer dan",
+      "nativeText": "Check whether \"meer dan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “There are more bicycles than cars.”",
+      "pronunciation": "meer dan",
+      "exampleTarget": "Er zijn meer fietsen dan auto’s.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “There are more bicycles than cars.”",
+      "korean": "meer dan",
+      "english": "Check whether \"meer dan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “There are more bicycles than cars.”",
+      "example": "Er zijn meer fietsen dan auto’s.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “There are more bicycles than cars.”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u20',
-  title: 'Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans',
-  category: 'planning',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Make friendly suggestions, respond to them, and settle on a plan.',
-  vocabularyGoal: 'Use suggestion, plan, and response phrases.',
-  grammarGoal: 'Use inclusive suggestion forms such as `போகலாம்`, soft questions, and polite refusals.',
-  speakingGoal: 'Suggest one activity, respond to one suggestion, and agree on a plan.',
-  task: 'Plan a simple weekend outing.',
-  expressionPractice: [
-    practice('making-suggestion', 'Making suggestion', 'Use one `-லாம்` form.'),
-    practice('accepting', 'Accepting suggestion', 'Use one positive response plus detail.'),
-    practice('declining-softly', 'Declining softly', 'Give a reason and another option.'),
+module.exports = {
+  "title": "Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans",
+  "category": "planning",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit20suggestions-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Make friendly suggestions, respond to them, and settle on a plan."
+      ],
+      "task": "Plan a simple weekend outing."
+    },
+    {
+      "id": "ta-level1unit20suggestions-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit20suggestions-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit20suggestions-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit20suggestions-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Make friendly suggestions, respond to them, and settle on a plan."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit20suggestions-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit20suggestions-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit20suggestions-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit20suggestions-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit20suggestions-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit20suggestions-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Plan a simple weekend outing."
+      ],
+      "task": "Plan a simple weekend outing."
+    }
   ],
-  relatedPools: ['topic-planning', 'topic-leisure'],
-  items: [
-    item('போகலாம்', 'pōkalām', '“Let’s go / we can go.” The `-லாம்` form is a key suggestion tool.', 'வார இறுதியில் கடற்கரைக்கு போகலாம்.', '“Let’s go to the beach on the weekend.”'),
-    item('காபி குடிக்கலாமா?', 'kāpi kuṭikkalāmā', '“Shall we drink coffee?” A friendly suggestion question.', 'வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?', '“Shall we drink coffee after class?”'),
-    item('நல்ல யோசனை', 'nalla yōcaṉai', '“Good idea.” A quick positive response.', 'அது நல்ல யோசனை.', '“That is a good idea.”'),
-    item('சரி', 'cari', '“Okay.” A compact acceptance word.', 'சரி, சனிக்கிழமை போகலாம்.', '“Okay, let’s go on Saturday.”'),
-    item('மன்னிக்கவும், வர முடியாது', 'maṉṉikkavum vara muṭiyātu', '“Sorry, I cannot come.” A soft refusal.', 'மன்னிக்கவும், சனிக்கிழமை வர முடியாது.', '“Sorry, I cannot come on Saturday.”'),
-    item('ஒருவேளை', 'oruvēḷai', '“Maybe.” Useful when the speaker is uncertain.', 'ஒருவேளை ஞாயிறு நல்லது.', '“Maybe Sunday is better.”'),
-    item('நன்றாக இருக்கும்', 'naṉṟāka irukkum', '“It will be good / better.” Useful in comparing plans.', 'காலையில் போனால் நன்றாக இருக்கும்.', '“It would be good if we go in the morning.”'),
-    item('அப்படியானால்', 'appaṭiyāṉāl', '“In that case.” A natural pivot after new information.', 'அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.', '“In that case, let’s meet at five.”'),
+  "expressionPractice": [
+    {
+      "id": "making-suggestion",
+      "label": "Making suggestion",
+      "goal": "Use one `-லாம்` form."
+    },
+    {
+      "id": "accepting",
+      "label": "Accepting suggestion",
+      "goal": "Use one positive response plus detail."
+    },
+    {
+      "id": "declining-softly",
+      "label": "Declining softly",
+      "goal": "Give a reason and another option."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-planning",
+    "topic-leisure"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Plan a simple weekend outing.",
+      "korean": "பாட இலக்கு",
+      "english": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Plan a simple weekend outing."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit20suggestions-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\".",
+      "pronunciation": "",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "“Let’s go to the beach on the weekend.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\".",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "“Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "“Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "Use the key language of Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "“Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-2"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit20suggestions-grammar-1"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "",
+      "nativeText": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "pronunciation": "",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "“Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "“Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "Contrast the main pattern in Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit20suggestions-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“In that case, let’s meet at five.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“In that case, let’s meet at five.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit20suggestions-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“In that case, let’s meet at five.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“In that case, let’s meet at five.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit20suggestions-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit20suggestions-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Plan a simple weekend outing.",
+      "pronunciation": "",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Plan a simple weekend outing.",
+      "korean": "இறுதி செயல்",
+      "english": "Plan a simple weekend outing.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Plan a simple weekend outing."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Shall we drink coffee after class?”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" against the model.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "“Let’s go to the beach on the weekend.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" before reusing it elsewhere.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "“Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“In that case, let’s meet at five.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" as one thought.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“In that case, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" and move it into your own life.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"போகலாம்\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "போகலாம்",
+      "exampleNative": "“Let’s go / we can go.” The `-லாம்` form is a key suggestion tool.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"போகலாம்\" before looking back.",
+      "example": "போகலாம்",
+      "exampleEnglish": "“Let’s go / we can go.” The `-லாம்` form is a key suggestion tool."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" rather than restarting from a blank sentence.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" as the comparison line.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit20suggestions-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\".",
+      "pronunciation": "",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "“Let’s go to the beach on the weekend.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\".",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "“Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "pronunciation": "",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“In that case, let’s meet at five.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“In that case, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "“Let’s go to the beach on the weekend.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" one layer at a time.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "“Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" as the deciding example.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-culture",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "pronunciation": "",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“In that case, let’s meet at five.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“In that case, let’s meet at five.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "pōkalām",
+      "nativeText": "“Let’s go / we can go.” The `-லாம்` form is a key suggestion tool.",
+      "pronunciation": "pōkalām",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "“Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "“Let’s go / we can go.” The `-லாம்` form is a key suggestion tool.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "“Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "romanization": "pōkalām",
+      "nativeText": "Model use for \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\": “Let’s go to the beach on the weekend.”",
+      "pronunciation": "pōkalām",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "“Let’s go to the beach on the weekend.”",
+      "korean": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "english": "Model use for \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\": “Let’s go to the beach on the weekend.”",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "“Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "pōkalām",
+      "nativeText": "Usage focus for \"போகலாம்\": Use the key language of Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "pōkalām",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "Notice what the form is doing here: “Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "Usage focus for \"போகலாம்\": Use the key language of Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "Notice what the form is doing here: “Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "pōkalām",
+      "nativeText": "Contrast check for \"போகலாம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pōkalām",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "Contrast check for \"போகலாம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "pōkalām",
+      "nativeText": "Recall \"போகலாம்\" from memory, then explain what would change if a nearby alternative replaced it in \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\".",
+      "pronunciation": "pōkalām",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "Self-check against the model before moving on: “Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "Recall \"போகலாம்\" from memory, then explain what would change if a nearby alternative replaced it in \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\".",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "pōkalām",
+      "nativeText": "Repair \"போகலாம்\" inside \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "pōkalām",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "Use the model as the repair target: “Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "Repair \"போகலாம்\" inside \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "Use the model as the repair target: “Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "pōkalām",
+      "nativeText": "Transfer \"போகலாம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\".",
+      "pronunciation": "pōkalām",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "Transfer \"போகலாம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\".",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "pōkalām",
+      "nativeText": "Find one word or phrase that naturally travels with \"போகலாம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pōkalām",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "Find one word or phrase that naturally travels with \"போகலாம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "pōkalām",
+      "nativeText": "Listen for \"போகலாம்\" inside \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pōkalām",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "Listen for \"போகலாம்\" inside \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "pōkalām",
+      "nativeText": "Write \"போகலாம்\" again without looking, then compare the exact written form against \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" before moving on.",
+      "pronunciation": "pōkalām",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "Use the written model as the final correctness check: “Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "Write \"போகலாம்\" again without looking, then compare the exact written form against \"வார இறுதியில் கடற்கரைக்கு போகலாம்.\" before moving on.",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "போகலாம்",
+      "romanization": "pōkalām",
+      "nativeText": "Check whether \"போகலாம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s go to the beach on the weekend.”",
+      "pronunciation": "pōkalām",
+      "exampleTarget": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Let’s go to the beach on the weekend.”",
+      "korean": "போகலாம்",
+      "english": "Check whether \"போகலாம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s go to the beach on the weekend.”",
+      "example": "வார இறுதியில் கடற்கரைக்கு போகலாம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Let’s go to the beach on the weekend.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "kāpi kuṭikkalāmā",
+      "nativeText": "“Shall we drink coffee?” A friendly suggestion question.",
+      "pronunciation": "kāpi kuṭikkalāmā",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "“Shall we drink coffee?” A friendly suggestion question.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "romanization": "kāpi kuṭikkalāmā",
+      "nativeText": "Model use for \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\": “Shall we drink coffee after class?”",
+      "pronunciation": "kāpi kuṭikkalāmā",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "“Shall we drink coffee after class?”",
+      "korean": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "english": "Model use for \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\": “Shall we drink coffee after class?”",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "“Shall we drink coffee after class?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "kāpi kuṭikkalāmā",
+      "nativeText": "Usage focus for \"காபி குடிக்கலாமா?\": Distinguish the nearby wording choices that make Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "kāpi kuṭikkalāmā",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "Notice what the form is doing here: “Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "Usage focus for \"காபி குடிக்கலாமா?\": Distinguish the nearby wording choices that make Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "Notice what the form is doing here: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "kāpi kuṭikkalāmā",
+      "nativeText": "Contrast check for \"காபி குடிக்கலாமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kāpi kuṭikkalāmā",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "Contrast check for \"காபி குடிக்கலாமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "kāpi kuṭikkalāmā",
+      "nativeText": "Recall \"காபி குடிக்கலாமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\".",
+      "pronunciation": "kāpi kuṭikkalāmā",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "Self-check against the model before moving on: “Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "Recall \"காபி குடிக்கலாமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\".",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "Self-check against the model before moving on: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "kāpi kuṭikkalāmā",
+      "nativeText": "Repair \"காபி குடிக்கலாமா?\" inside \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "kāpi kuṭikkalāmā",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "Use the model as the repair target: “Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "Repair \"காபி குடிக்கலாமா?\" inside \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 20: பரிந்துரைகள் மற்றும் திட்டங்கள் — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "Use the model as the repair target: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "kāpi kuṭikkalāmā",
+      "nativeText": "Transfer \"காபி குடிக்கலாமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\".",
+      "pronunciation": "kāpi kuṭikkalāmā",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "Transfer \"காபி குடிக்கலாமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\".",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "kāpi kuṭikkalāmā",
+      "nativeText": "Find one word or phrase that naturally travels with \"காபி குடிக்கலாமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kāpi kuṭikkalāmā",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "Find one word or phrase that naturally travels with \"காபி குடிக்கலாமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "kāpi kuṭikkalāmā",
+      "nativeText": "Listen for \"காபி குடிக்கலாமா?\" inside \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kāpi kuṭikkalāmā",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "Listen for \"காபி குடிக்கலாமா?\" inside \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "kāpi kuṭikkalāmā",
+      "nativeText": "Write \"காபி குடிக்கலாமா?\" again without looking, then compare the exact written form against \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" before moving on.",
+      "pronunciation": "kāpi kuṭikkalāmā",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "Use the written model as the final correctness check: “Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "Write \"காபி குடிக்கலாமா?\" again without looking, then compare the exact written form against \"வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?\" before moving on.",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "காபி குடிக்கலாமா?",
+      "romanization": "kāpi kuṭikkalāmā",
+      "nativeText": "Check whether \"காபி குடிக்கலாமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we drink coffee after class?”",
+      "pronunciation": "kāpi kuṭikkalāmā",
+      "exampleTarget": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Shall we drink coffee after class?”",
+      "korean": "காபி குடிக்கலாமா?",
+      "english": "Check whether \"காபி குடிக்கலாமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we drink coffee after class?”",
+      "example": "வகுப்புக்குப் பிறகு காபி குடிக்கலாமா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Shall we drink coffee after class?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நல்ல யோசனை",
+      "romanization": "nalla yōcaṉai",
+      "nativeText": "“Good idea.” A quick positive response.",
+      "pronunciation": "nalla yōcaṉai",
+      "exampleTarget": "அது நல்ல யோசனை.",
+      "exampleNative": "“That is a good idea.”",
+      "korean": "நல்ல யோசனை",
+      "english": "“Good idea.” A quick positive response.",
+      "example": "அது நல்ல யோசனை.",
+      "exampleEnglish": "“That is a good idea.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அது நல்ல யோசனை.",
+      "romanization": "nalla yōcaṉai",
+      "nativeText": "Model use for \"அது நல்ல யோசனை.\": “That is a good idea.”",
+      "pronunciation": "nalla yōcaṉai",
+      "exampleTarget": "அது நல்ல யோசனை.",
+      "exampleNative": "“That is a good idea.”",
+      "korean": "அது நல்ல யோசனை.",
+      "english": "Model use for \"அது நல்ல யோசனை.\": “That is a good idea.”",
+      "example": "அது நல்ல யோசனை.",
+      "exampleEnglish": "“That is a good idea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நல்ல யோசனை",
+      "romanization": "nalla yōcaṉai",
+      "nativeText": "Usage focus for \"நல்ல யோசனை\": “Good idea.” A quick positive response.",
+      "pronunciation": "nalla yōcaṉai",
+      "exampleTarget": "அது நல்ல யோசனை.",
+      "exampleNative": "Notice what the form is doing here: “That is a good idea.”",
+      "korean": "நல்ல யோசனை",
+      "english": "Usage focus for \"நல்ல யோசனை\": “Good idea.” A quick positive response.",
+      "example": "அது நல்ல யோசனை.",
+      "exampleEnglish": "Notice what the form is doing here: “That is a good idea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நல்ல யோசனை",
+      "romanization": "nalla yōcaṉai",
+      "nativeText": "Contrast check for \"நல்ல யோசனை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nalla yōcaṉai",
+      "exampleTarget": "அது நல்ல யோசனை.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is a good idea.”",
+      "korean": "நல்ல யோசனை",
+      "english": "Contrast check for \"நல்ல யோசனை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "அது நல்ல யோசனை.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நல்ல யோசனை",
+      "romanization": "nalla yōcaṉai",
+      "nativeText": "Recall \"நல்ல யோசனை\" from memory, then explain what would change if a nearby alternative replaced it in \"அது நல்ல யோசனை.\".",
+      "pronunciation": "nalla yōcaṉai",
+      "exampleTarget": "அது நல்ல யோசனை.",
+      "exampleNative": "Self-check against the model before moving on: “That is a good idea.”",
+      "korean": "நல்ல யோசனை",
+      "english": "Recall \"நல்ல யோசனை\" from memory, then explain what would change if a nearby alternative replaced it in \"அது நல்ல யோசனை.\".",
+      "example": "அது நல்ல யோசனை.",
+      "exampleEnglish": "Self-check against the model before moving on: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நல்ல யோசனை",
+      "romanization": "nalla yōcaṉai",
+      "nativeText": "Repair \"நல்ல யோசனை\" inside \"அது நல்ல யோசனை.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Good idea.” A quick positive response.",
+      "pronunciation": "nalla yōcaṉai",
+      "exampleTarget": "அது நல்ல யோசனை.",
+      "exampleNative": "Use the model as the repair target: “That is a good idea.”",
+      "korean": "நல்ல யோசனை",
+      "english": "Repair \"நல்ல யோசனை\" inside \"அது நல்ல யோசனை.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Good idea.” A quick positive response.",
+      "example": "அது நல்ல யோசனை.",
+      "exampleEnglish": "Use the model as the repair target: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நல்ல யோசனை",
+      "romanization": "nalla yōcaṉai",
+      "nativeText": "Transfer \"நல்ல யோசனை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அது நல்ல யோசனை.\".",
+      "pronunciation": "nalla yōcaṉai",
+      "exampleTarget": "அது நல்ல யோசனை.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is a good idea.”",
+      "korean": "நல்ல யோசனை",
+      "english": "Transfer \"நல்ல யோசனை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அது நல்ல யோசனை.\".",
+      "example": "அது நல்ல யோசனை.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நல்ல யோசனை",
+      "romanization": "nalla yōcaṉai",
+      "nativeText": "Find one word or phrase that naturally travels with \"நல்ல யோசனை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nalla yōcaṉai",
+      "exampleTarget": "அது நல்ல யோசனை.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “That is a good idea.”",
+      "korean": "நல்ல யோசனை",
+      "english": "Find one word or phrase that naturally travels with \"நல்ல யோசனை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "அது நல்ல யோசனை.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நல்ல யோசனை",
+      "romanization": "nalla yōcaṉai",
+      "nativeText": "Listen for \"நல்ல யோசனை\" inside \"அது நல்ல யோசனை.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nalla yōcaṉai",
+      "exampleTarget": "அது நல்ல யோசனை.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is a good idea.”",
+      "korean": "நல்ல யோசனை",
+      "english": "Listen for \"நல்ல யோசனை\" inside \"அது நல்ல யோசனை.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "அது நல்ல யோசனை.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நல்ல யோசனை",
+      "romanization": "nalla yōcaṉai",
+      "nativeText": "Write \"நல்ல யோசனை\" again without looking, then compare the exact written form against \"அது நல்ல யோசனை.\" before moving on.",
+      "pronunciation": "nalla yōcaṉai",
+      "exampleTarget": "அது நல்ல யோசனை.",
+      "exampleNative": "Use the written model as the final correctness check: “That is a good idea.”",
+      "korean": "நல்ல யோசனை",
+      "english": "Write \"நல்ல யோசனை\" again without looking, then compare the exact written form against \"அது நல்ல யோசனை.\" before moving on.",
+      "example": "அது நல்ல யோசனை.",
+      "exampleEnglish": "Use the written model as the final correctness check: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நல்ல யோசனை",
+      "romanization": "nalla yōcaṉai",
+      "nativeText": "Check whether \"நல்ல யோசனை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "pronunciation": "nalla yōcaṉai",
+      "exampleTarget": "அது நல்ல யோசனை.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "korean": "நல்ல யோசனை",
+      "english": "Check whether \"நல்ல யோசனை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "example": "அது நல்ல யோசனை.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “That is a good idea.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "“Okay.” A compact acceptance word.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleNative": "“Okay, let’s go on Saturday.”",
+      "korean": "சரி",
+      "english": "“Okay.” A compact acceptance word.",
+      "example": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleEnglish": "“Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரி, சனிக்கிழமை போகலாம்.",
+      "romanization": "cari",
+      "nativeText": "Model use for \"சரி, சனிக்கிழமை போகலாம்.\": “Okay, let’s go on Saturday.”",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleNative": "“Okay, let’s go on Saturday.”",
+      "korean": "சரி, சனிக்கிழமை போகலாம்.",
+      "english": "Model use for \"சரி, சனிக்கிழமை போகலாம்.\": “Okay, let’s go on Saturday.”",
+      "example": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleEnglish": "“Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Usage focus for \"சரி\": “Okay.” A compact acceptance word.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleNative": "Notice what the form is doing here: “Okay, let’s go on Saturday.”",
+      "korean": "சரி",
+      "english": "Usage focus for \"சரி\": “Okay.” A compact acceptance word.",
+      "example": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleEnglish": "Notice what the form is doing here: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Contrast check for \"சரி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, let’s go on Saturday.”",
+      "korean": "சரி",
+      "english": "Contrast check for \"சரி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Recall \"சரி\" from memory, then explain what would change if a nearby alternative replaced it in \"சரி, சனிக்கிழமை போகலாம்.\".",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleNative": "Self-check against the model before moving on: “Okay, let’s go on Saturday.”",
+      "korean": "சரி",
+      "english": "Recall \"சரி\" from memory, then explain what would change if a nearby alternative replaced it in \"சரி, சனிக்கிழமை போகலாம்.\".",
+      "example": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Repair \"சரி\" inside \"சரி, சனிக்கிழமை போகலாம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay.” A compact acceptance word.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleNative": "Use the model as the repair target: “Okay, let’s go on Saturday.”",
+      "korean": "சரி",
+      "english": "Repair \"சரி\" inside \"சரி, சனிக்கிழமை போகலாம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay.” A compact acceptance word.",
+      "example": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleEnglish": "Use the model as the repair target: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Transfer \"சரி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சரி, சனிக்கிழமை போகலாம்.\".",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, let’s go on Saturday.”",
+      "korean": "சரி",
+      "english": "Transfer \"சரி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சரி, சனிக்கிழமை போகலாம்.\".",
+      "example": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Find one word or phrase that naturally travels with \"சரி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Okay, let’s go on Saturday.”",
+      "korean": "சரி",
+      "english": "Find one word or phrase that naturally travels with \"சரி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Listen for \"சரி\" inside \"சரி, சனிக்கிழமை போகலாம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, let’s go on Saturday.”",
+      "korean": "சரி",
+      "english": "Listen for \"சரி\" inside \"சரி, சனிக்கிழமை போகலாம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Write \"சரி\" again without looking, then compare the exact written form against \"சரி, சனிக்கிழமை போகலாம்.\" before moving on.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleNative": "Use the written model as the final correctness check: “Okay, let’s go on Saturday.”",
+      "korean": "சரி",
+      "english": "Write \"சரி\" again without looking, then compare the exact written form against \"சரி, சனிக்கிழமை போகலாம்.\" before moving on.",
+      "example": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Check whether \"சரி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, let’s go on Saturday.”",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Okay, let’s go on Saturday.”",
+      "korean": "சரி",
+      "english": "Check whether \"சரி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, let’s go on Saturday.”",
+      "example": "சரி, சனிக்கிழமை போகலாம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மன்னிக்கவும், வர முடியாது",
+      "romanization": "maṉṉikkavum vara muṭiyātu",
+      "nativeText": "“Sorry, I cannot come.” A soft refusal.",
+      "pronunciation": "maṉṉikkavum vara muṭiyātu",
+      "exampleTarget": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleNative": "“Sorry, I cannot come on Saturday.”",
+      "korean": "மன்னிக்கவும், வர முடியாது",
+      "english": "“Sorry, I cannot come.” A soft refusal.",
+      "example": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleEnglish": "“Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "romanization": "maṉṉikkavum vara muṭiyātu",
+      "nativeText": "Model use for \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\": “Sorry, I cannot come on Saturday.”",
+      "pronunciation": "maṉṉikkavum vara muṭiyātu",
+      "exampleTarget": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleNative": "“Sorry, I cannot come on Saturday.”",
+      "korean": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "english": "Model use for \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\": “Sorry, I cannot come on Saturday.”",
+      "example": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleEnglish": "“Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மன்னிக்கவும், வர முடியாது",
+      "romanization": "maṉṉikkavum vara muṭiyātu",
+      "nativeText": "Usage focus for \"மன்னிக்கவும், வர முடியாது\": “Sorry, I cannot come.” A soft refusal.",
+      "pronunciation": "maṉṉikkavum vara muṭiyātu",
+      "exampleTarget": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleNative": "Notice what the form is doing here: “Sorry, I cannot come on Saturday.”",
+      "korean": "மன்னிக்கவும், வர முடியாது",
+      "english": "Usage focus for \"மன்னிக்கவும், வர முடியாது\": “Sorry, I cannot come.” A soft refusal.",
+      "example": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleEnglish": "Notice what the form is doing here: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மன்னிக்கவும், வர முடியாது",
+      "romanization": "maṉṉikkavum vara muṭiyātu",
+      "nativeText": "Contrast check for \"மன்னிக்கவும், வர முடியாது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "maṉṉikkavum vara muṭiyātu",
+      "exampleTarget": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sorry, I cannot come on Saturday.”",
+      "korean": "மன்னிக்கவும், வர முடியாது",
+      "english": "Contrast check for \"மன்னிக்கவும், வர முடியாது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மன்னிக்கவும், வர முடியாது",
+      "romanization": "maṉṉikkavum vara muṭiyātu",
+      "nativeText": "Recall \"மன்னிக்கவும், வர முடியாது\" from memory, then explain what would change if a nearby alternative replaced it in \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\".",
+      "pronunciation": "maṉṉikkavum vara muṭiyātu",
+      "exampleTarget": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleNative": "Self-check against the model before moving on: “Sorry, I cannot come on Saturday.”",
+      "korean": "மன்னிக்கவும், வர முடியாது",
+      "english": "Recall \"மன்னிக்கவும், வர முடியாது\" from memory, then explain what would change if a nearby alternative replaced it in \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\".",
+      "example": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleEnglish": "Self-check against the model before moving on: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மன்னிக்கவும், வர முடியாது",
+      "romanization": "maṉṉikkavum vara muṭiyātu",
+      "nativeText": "Repair \"மன்னிக்கவும், வர முடியாது\" inside \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sorry, I cannot come.” A soft refusal.",
+      "pronunciation": "maṉṉikkavum vara muṭiyātu",
+      "exampleTarget": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleNative": "Use the model as the repair target: “Sorry, I cannot come on Saturday.”",
+      "korean": "மன்னிக்கவும், வர முடியாது",
+      "english": "Repair \"மன்னிக்கவும், வர முடியாது\" inside \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sorry, I cannot come.” A soft refusal.",
+      "example": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleEnglish": "Use the model as the repair target: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மன்னிக்கவும், வர முடியாது",
+      "romanization": "maṉṉikkavum vara muṭiyātu",
+      "nativeText": "Transfer \"மன்னிக்கவும், வர முடியாது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\".",
+      "pronunciation": "maṉṉikkavum vara muṭiyātu",
+      "exampleTarget": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sorry, I cannot come on Saturday.”",
+      "korean": "மன்னிக்கவும், வர முடியாது",
+      "english": "Transfer \"மன்னிக்கவும், வர முடியாது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\".",
+      "example": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மன்னிக்கவும், வர முடியாது",
+      "romanization": "maṉṉikkavum vara muṭiyātu",
+      "nativeText": "Find one word or phrase that naturally travels with \"மன்னிக்கவும், வர முடியாது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "maṉṉikkavum vara muṭiyātu",
+      "exampleTarget": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Sorry, I cannot come on Saturday.”",
+      "korean": "மன்னிக்கவும், வர முடியாது",
+      "english": "Find one word or phrase that naturally travels with \"மன்னிக்கவும், வர முடியாது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மன்னிக்கவும், வர முடியாது",
+      "romanization": "maṉṉikkavum vara muṭiyātu",
+      "nativeText": "Listen for \"மன்னிக்கவும், வர முடியாது\" inside \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "maṉṉikkavum vara muṭiyātu",
+      "exampleTarget": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sorry, I cannot come on Saturday.”",
+      "korean": "மன்னிக்கவும், வர முடியாது",
+      "english": "Listen for \"மன்னிக்கவும், வர முடியாது\" inside \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மன்னிக்கவும், வர முடியாது",
+      "romanization": "maṉṉikkavum vara muṭiyātu",
+      "nativeText": "Write \"மன்னிக்கவும், வர முடியாது\" again without looking, then compare the exact written form against \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\" before moving on.",
+      "pronunciation": "maṉṉikkavum vara muṭiyātu",
+      "exampleTarget": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleNative": "Use the written model as the final correctness check: “Sorry, I cannot come on Saturday.”",
+      "korean": "மன்னிக்கவும், வர முடியாது",
+      "english": "Write \"மன்னிக்கவும், வர முடியாது\" again without looking, then compare the exact written form against \"மன்னிக்கவும், சனிக்கிழமை வர முடியாது.\" before moving on.",
+      "example": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "மன்னிக்கவும், வர முடியாது",
+      "romanization": "maṉṉikkavum vara muṭiyātu",
+      "nativeText": "Check whether \"மன்னிக்கவும், வர முடியாது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot come on Saturday.”",
+      "pronunciation": "maṉṉikkavum vara muṭiyātu",
+      "exampleTarget": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot come on Saturday.”",
+      "korean": "மன்னிக்கவும், வர முடியாது",
+      "english": "Check whether \"மன்னிக்கவும், வர முடியாது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot come on Saturday.”",
+      "example": "மன்னிக்கவும், சனிக்கிழமை வர முடியாது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "ஒருவேளை",
+      "romanization": "oruvēḷai",
+      "nativeText": "“Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "oruvēḷai",
+      "exampleTarget": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleNative": "“Maybe Sunday is better.”",
+      "korean": "ஒருவேளை",
+      "english": "“Maybe.” Useful when the speaker is uncertain.",
+      "example": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleEnglish": "“Maybe Sunday is better.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "ஒருவேளை ஞாயிறு நல்லது.",
+      "romanization": "oruvēḷai",
+      "nativeText": "Model use for \"ஒருவேளை ஞாயிறு நல்லது.\": “Maybe Sunday is better.”",
+      "pronunciation": "oruvēḷai",
+      "exampleTarget": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleNative": "“Maybe Sunday is better.”",
+      "korean": "ஒருவேளை ஞாயிறு நல்லது.",
+      "english": "Model use for \"ஒருவேளை ஞாயிறு நல்லது.\": “Maybe Sunday is better.”",
+      "example": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleEnglish": "“Maybe Sunday is better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "ஒருவேளை",
+      "romanization": "oruvēḷai",
+      "nativeText": "Usage focus for \"ஒருவேளை\": “Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "oruvēḷai",
+      "exampleTarget": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleNative": "Notice what the form is doing here: “Maybe Sunday is better.”",
+      "korean": "ஒருவேளை",
+      "english": "Usage focus for \"ஒருவேளை\": “Maybe.” Useful when the speaker is uncertain.",
+      "example": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleEnglish": "Notice what the form is doing here: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "ஒருவேளை",
+      "romanization": "oruvēḷai",
+      "nativeText": "Contrast check for \"ஒருவேளை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "oruvēḷai",
+      "exampleTarget": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe Sunday is better.”",
+      "korean": "ஒருவேளை",
+      "english": "Contrast check for \"ஒருவேளை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "ஒருவேளை",
+      "romanization": "oruvēḷai",
+      "nativeText": "Recall \"ஒருவேளை\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒருவேளை ஞாயிறு நல்லது.\".",
+      "pronunciation": "oruvēḷai",
+      "exampleTarget": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleNative": "Self-check against the model before moving on: “Maybe Sunday is better.”",
+      "korean": "ஒருவேளை",
+      "english": "Recall \"ஒருவேளை\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒருவேளை ஞாயிறு நல்லது.\".",
+      "example": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleEnglish": "Self-check against the model before moving on: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "ஒருவேளை",
+      "romanization": "oruvēḷai",
+      "nativeText": "Repair \"ஒருவேளை\" inside \"ஒருவேளை ஞாயிறு நல்லது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "oruvēḷai",
+      "exampleTarget": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleNative": "Use the model as the repair target: “Maybe Sunday is better.”",
+      "korean": "ஒருவேளை",
+      "english": "Repair \"ஒருவேளை\" inside \"ஒருவேளை ஞாயிறு நல்லது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Maybe.” Useful when the speaker is uncertain.",
+      "example": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleEnglish": "Use the model as the repair target: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "ஒருவேளை",
+      "romanization": "oruvēḷai",
+      "nativeText": "Transfer \"ஒருவேளை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒருவேளை ஞாயிறு நல்லது.\".",
+      "pronunciation": "oruvēḷai",
+      "exampleTarget": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe Sunday is better.”",
+      "korean": "ஒருவேளை",
+      "english": "Transfer \"ஒருவேளை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒருவேளை ஞாயிறு நல்லது.\".",
+      "example": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "ஒருவேளை",
+      "romanization": "oruvēḷai",
+      "nativeText": "Find one word or phrase that naturally travels with \"ஒருவேளை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "oruvēḷai",
+      "exampleTarget": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Maybe Sunday is better.”",
+      "korean": "ஒருவேளை",
+      "english": "Find one word or phrase that naturally travels with \"ஒருவேளை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "ஒருவேளை",
+      "romanization": "oruvēḷai",
+      "nativeText": "Listen for \"ஒருவேளை\" inside \"ஒருவேளை ஞாயிறு நல்லது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "oruvēḷai",
+      "exampleTarget": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe Sunday is better.”",
+      "korean": "ஒருவேளை",
+      "english": "Listen for \"ஒருவேளை\" inside \"ஒருவேளை ஞாயிறு நல்லது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "ஒருவேளை",
+      "romanization": "oruvēḷai",
+      "nativeText": "Write \"ஒருவேளை\" again without looking, then compare the exact written form against \"ஒருவேளை ஞாயிறு நல்லது.\" before moving on.",
+      "pronunciation": "oruvēḷai",
+      "exampleTarget": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleNative": "Use the written model as the final correctness check: “Maybe Sunday is better.”",
+      "korean": "ஒருவேளை",
+      "english": "Write \"ஒருவேளை\" again without looking, then compare the exact written form against \"ஒருவேளை ஞாயிறு நல்லது.\" before moving on.",
+      "example": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "ஒருவேளை",
+      "romanization": "oruvēḷai",
+      "nativeText": "Check whether \"ஒருவேளை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "pronunciation": "oruvēḷai",
+      "exampleTarget": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "korean": "ஒருவேளை",
+      "english": "Check whether \"ஒருவேளை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "example": "ஒருவேளை ஞாயிறு நல்லது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நன்றாக இருக்கும்",
+      "romanization": "naṉṟāka irukkum",
+      "nativeText": "“It will be good / better.” Useful in comparing plans.",
+      "pronunciation": "naṉṟāka irukkum",
+      "exampleTarget": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleNative": "“It would be good if we go in the morning.”",
+      "korean": "நன்றாக இருக்கும்",
+      "english": "“It will be good / better.” Useful in comparing plans.",
+      "example": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleEnglish": "“It would be good if we go in the morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "romanization": "naṉṟāka irukkum",
+      "nativeText": "Model use for \"காலையில் போனால் நன்றாக இருக்கும்.\": “It would be good if we go in the morning.”",
+      "pronunciation": "naṉṟāka irukkum",
+      "exampleTarget": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleNative": "“It would be good if we go in the morning.”",
+      "korean": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "english": "Model use for \"காலையில் போனால் நன்றாக இருக்கும்.\": “It would be good if we go in the morning.”",
+      "example": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleEnglish": "“It would be good if we go in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நன்றாக இருக்கும்",
+      "romanization": "naṉṟāka irukkum",
+      "nativeText": "Usage focus for \"நன்றாக இருக்கும்\": “It will be good / better.” Useful in comparing plans.",
+      "pronunciation": "naṉṟāka irukkum",
+      "exampleTarget": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleNative": "Notice what the form is doing here: “It would be good if we go in the morning.”",
+      "korean": "நன்றாக இருக்கும்",
+      "english": "Usage focus for \"நன்றாக இருக்கும்\": “It will be good / better.” Useful in comparing plans.",
+      "example": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleEnglish": "Notice what the form is doing here: “It would be good if we go in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நன்றாக இருக்கும்",
+      "romanization": "naṉṟāka irukkum",
+      "nativeText": "Contrast check for \"நன்றாக இருக்கும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "naṉṟāka irukkum",
+      "exampleTarget": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It would be good if we go in the morning.”",
+      "korean": "நன்றாக இருக்கும்",
+      "english": "Contrast check for \"நன்றாக இருக்கும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It would be good if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நன்றாக இருக்கும்",
+      "romanization": "naṉṟāka irukkum",
+      "nativeText": "Recall \"நன்றாக இருக்கும்\" from memory, then explain what would change if a nearby alternative replaced it in \"காலையில் போனால் நன்றாக இருக்கும்.\".",
+      "pronunciation": "naṉṟāka irukkum",
+      "exampleTarget": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleNative": "Self-check against the model before moving on: “It would be good if we go in the morning.”",
+      "korean": "நன்றாக இருக்கும்",
+      "english": "Recall \"நன்றாக இருக்கும்\" from memory, then explain what would change if a nearby alternative replaced it in \"காலையில் போனால் நன்றாக இருக்கும்.\".",
+      "example": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “It would be good if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நன்றாக இருக்கும்",
+      "romanization": "naṉṟāka irukkum",
+      "nativeText": "Repair \"நன்றாக இருக்கும்\" inside \"காலையில் போனால் நன்றாக இருக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “It will be good / better.” Useful in comparing plans.",
+      "pronunciation": "naṉṟāka irukkum",
+      "exampleTarget": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleNative": "Use the model as the repair target: “It would be good if we go in the morning.”",
+      "korean": "நன்றாக இருக்கும்",
+      "english": "Repair \"நன்றாக இருக்கும்\" inside \"காலையில் போனால் நன்றாக இருக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “It will be good / better.” Useful in comparing plans.",
+      "example": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleEnglish": "Use the model as the repair target: “It would be good if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நன்றாக இருக்கும்",
+      "romanization": "naṉṟāka irukkum",
+      "nativeText": "Transfer \"நன்றாக இருக்கும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலையில் போனால் நன்றாக இருக்கும்.\".",
+      "pronunciation": "naṉṟāka irukkum",
+      "exampleTarget": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “It would be good if we go in the morning.”",
+      "korean": "நன்றாக இருக்கும்",
+      "english": "Transfer \"நன்றாக இருக்கும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலையில் போனால் நன்றாக இருக்கும்.\".",
+      "example": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “It would be good if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நன்றாக இருக்கும்",
+      "romanization": "naṉṟāka irukkum",
+      "nativeText": "Find one word or phrase that naturally travels with \"நன்றாக இருக்கும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "naṉṟāka irukkum",
+      "exampleTarget": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “It would be good if we go in the morning.”",
+      "korean": "நன்றாக இருக்கும்",
+      "english": "Find one word or phrase that naturally travels with \"நன்றாக இருக்கும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “It would be good if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நன்றாக இருக்கும்",
+      "romanization": "naṉṟāka irukkum",
+      "nativeText": "Listen for \"நன்றாக இருக்கும்\" inside \"காலையில் போனால் நன்றாக இருக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "naṉṟāka irukkum",
+      "exampleTarget": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It would be good if we go in the morning.”",
+      "korean": "நன்றாக இருக்கும்",
+      "english": "Listen for \"நன்றாக இருக்கும்\" inside \"காலையில் போனால் நன்றாக இருக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It would be good if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நன்றாக இருக்கும்",
+      "romanization": "naṉṟāka irukkum",
+      "nativeText": "Write \"நன்றாக இருக்கும்\" again without looking, then compare the exact written form against \"காலையில் போனால் நன்றாக இருக்கும்.\" before moving on.",
+      "pronunciation": "naṉṟāka irukkum",
+      "exampleTarget": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleNative": "Use the written model as the final correctness check: “It would be good if we go in the morning.”",
+      "korean": "நன்றாக இருக்கும்",
+      "english": "Write \"நன்றாக இருக்கும்\" again without looking, then compare the exact written form against \"காலையில் போனால் நன்றாக இருக்கும்.\" before moving on.",
+      "example": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “It would be good if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "நன்றாக இருக்கும்",
+      "romanization": "naṉṟāka irukkum",
+      "nativeText": "Check whether \"நன்றாக இருக்கும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It would be good if we go in the morning.”",
+      "pronunciation": "naṉṟāka irukkum",
+      "exampleTarget": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “It would be good if we go in the morning.”",
+      "korean": "நன்றாக இருக்கும்",
+      "english": "Check whether \"நன்றாக இருக்கும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It would be good if we go in the morning.”",
+      "example": "காலையில் போனால் நன்றாக இருக்கும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “It would be good if we go in the morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அப்படியானால்",
+      "romanization": "appaṭiyāṉāl",
+      "nativeText": "“In that case.” A natural pivot after new information.",
+      "pronunciation": "appaṭiyāṉāl",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“In that case, let’s meet at five.”",
+      "korean": "அப்படியானால்",
+      "english": "“In that case.” A natural pivot after new information.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“In that case, let’s meet at five.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "romanization": "appaṭiyāṉāl",
+      "nativeText": "Model use for \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\": “In that case, let’s meet at five.”",
+      "pronunciation": "appaṭiyāṉāl",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“In that case, let’s meet at five.”",
+      "korean": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "english": "Model use for \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\": “In that case, let’s meet at five.”",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“In that case, let’s meet at five.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அப்படியானால்",
+      "romanization": "appaṭiyāṉāl",
+      "nativeText": "Usage focus for \"அப்படியானால்\": “In that case.” A natural pivot after new information.",
+      "pronunciation": "appaṭiyāṉāl",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Notice what the form is doing here: “In that case, let’s meet at five.”",
+      "korean": "அப்படியானால்",
+      "english": "Usage focus for \"அப்படியானால்\": “In that case.” A natural pivot after new information.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Notice what the form is doing here: “In that case, let’s meet at five.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அப்படியானால்",
+      "romanization": "appaṭiyāṉāl",
+      "nativeText": "Contrast check for \"அப்படியானால்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "appaṭiyāṉāl",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In that case, let’s meet at five.”",
+      "korean": "அப்படியானால்",
+      "english": "Contrast check for \"அப்படியானால்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In that case, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அப்படியானால்",
+      "romanization": "appaṭiyāṉāl",
+      "nativeText": "Recall \"அப்படியானால்\" from memory, then explain what would change if a nearby alternative replaced it in \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "pronunciation": "appaṭiyāṉāl",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Self-check against the model before moving on: “In that case, let’s meet at five.”",
+      "korean": "அப்படியானால்",
+      "english": "Recall \"அப்படியானால்\" from memory, then explain what would change if a nearby alternative replaced it in \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “In that case, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அப்படியானால்",
+      "romanization": "appaṭiyāṉāl",
+      "nativeText": "Repair \"அப்படியானால்\" inside \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “In that case.” A natural pivot after new information.",
+      "pronunciation": "appaṭiyāṉāl",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Use the model as the repair target: “In that case, let’s meet at five.”",
+      "korean": "அப்படியானால்",
+      "english": "Repair \"அப்படியானால்\" inside \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “In that case.” A natural pivot after new information.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Use the model as the repair target: “In that case, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அப்படியானால்",
+      "romanization": "appaṭiyāṉāl",
+      "nativeText": "Transfer \"அப்படியானால்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "pronunciation": "appaṭiyāṉāl",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “In that case, let’s meet at five.”",
+      "korean": "அப்படியானால்",
+      "english": "Transfer \"அப்படியானால்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “In that case, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அப்படியானால்",
+      "romanization": "appaṭiyāṉāl",
+      "nativeText": "Find one word or phrase that naturally travels with \"அப்படியானால்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "appaṭiyāṉāl",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “In that case, let’s meet at five.”",
+      "korean": "அப்படியானால்",
+      "english": "Find one word or phrase that naturally travels with \"அப்படியானால்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “In that case, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அப்படியானால்",
+      "romanization": "appaṭiyāṉāl",
+      "nativeText": "Listen for \"அப்படியானால்\" inside \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "appaṭiyāṉāl",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In that case, let’s meet at five.”",
+      "korean": "அப்படியானால்",
+      "english": "Listen for \"அப்படியானால்\" inside \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In that case, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அப்படியானால்",
+      "romanization": "appaṭiyāṉāl",
+      "nativeText": "Write \"அப்படியானால்\" again without looking, then compare the exact written form against \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" before moving on.",
+      "pronunciation": "appaṭiyāṉāl",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Use the written model as the final correctness check: “In that case, let’s meet at five.”",
+      "korean": "அப்படியானால்",
+      "english": "Write \"அப்படியானால்\" again without looking, then compare the exact written form against \"அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.\" before moving on.",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “In that case, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit20suggestions-vocabulary-1",
+        "ta-level1unit20suggestions-vocabulary-2",
+        "ta-level1unit20suggestions-grammar-1",
+        "ta-level1unit20suggestions-grammar-2",
+        "ta-level1unit20suggestions-reading",
+        "ta-level1unit20suggestions-listening",
+        "ta-level1unit20suggestions-writing",
+        "ta-level1unit20suggestions-task"
+      ],
+      "targetText": "அப்படியானால்",
+      "romanization": "appaṭiyāṉāl",
+      "nativeText": "Check whether \"அப்படியானால்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In that case, let’s meet at five.”",
+      "pronunciation": "appaṭiyāṉāl",
+      "exampleTarget": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “In that case, let’s meet at five.”",
+      "korean": "அப்படியானால்",
+      "english": "Check whether \"அப்படியானால்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In that case, let’s meet at five.”",
+      "example": "அப்படியானால் ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “In that case, let’s meet at five.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

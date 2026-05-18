@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "이 항목을 다른 곳에서 연습해 보세요",
     "practiceEverywhere": "어디서나 이것을 실천하세요.",
     "saveReply": "답글 저장",
-    "selfTestReason": "빠른 자체 테스트를 위해 수업에서 저장되었습니다."
+    "selfTestReason": "빠른 자체 테스트를 위해 수업에서 저장되었습니다.",
+    "hideOutline": "개요 숨기기",
+    "showOutline": "개요 표시"
   },
   "classList": {
     "heroAriaLabel": "수업",
@@ -1009,7 +1011,10 @@
       "professionalSubtitle": "업무, 서비스, 주거, 안전, 공식 상황에 필요한 표현을 연습합니다.",
       "grammarTitle": "레벨 {{level}} · 고급 문법",
       "grammarSubtitle": "생각을 더 정확하게 연결하도록 도와주는 문형 묶음입니다."
-    }
+    },
+    "retry": "다시 시도하세요",
+    "progressAriaLabel": "수업 진행",
+    "progressCaption": "{{percent}}% 완료 · {{total}} 항목 중 {{completed}}개"
   },
   "contextPractice": {
     "title": "당신을 중심으로 형성된 수업",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "잘 된 일",
     "recapUsefulPhrases": "유용한 문구",
     "recapReview": "다음 검토",
-    "recapReviewFallback": "하나의 문구를 저장하고 다른 연습 모드에서 재사용하세요."
+    "recapReviewFallback": "하나의 문구를 저장하고 다른 연습 모드에서 재사용하세요.",
+    "hideSetup": "설정 숨기기",
+    "showSetup": "설정 표시"
   },
   "exerciseHub": {
     "ariaLabel": "연습",
@@ -1187,7 +1194,9 @@
     "saveForReview": "더 연습하기",
     "markCompleteNext": "완료하고 다음으로",
     "savedReason": "다른 패스를 위한 작문 연습에서 저장되었습니다.",
-    "selfTestReason": "빠른 자가 테스트를 위해 글쓰기 연습을 저장했습니다."
+    "selfTestReason": "빠른 자가 테스트를 위해 글쓰기 연습을 저장했습니다.",
+    "hideNotebook": "노트북 숨기기",
+    "showNotebook": "노트북 표시"
   },
   "institution": {
     "kicker": "기관",

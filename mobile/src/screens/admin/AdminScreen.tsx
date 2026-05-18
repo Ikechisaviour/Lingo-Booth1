@@ -18,22 +18,11 @@ import speechService from '../../services/speechService';
 import { useAppColors, type AppColors } from '../../config/theme';
 import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLanguageDisplayName } from '../../config/languages';
+import AdminFailureQueue from './AdminFailureQueue';
+import AdminContactMessages from './AdminContactMessages';
 
-type Tab = 'dashboard' | 'users' | 'guests' | 'demo';
-
-const difficultyOptions = [
-  { value: 'casual beginner', label: 'Beginner' },
-  { value: 'balanced', label: 'Balanced' },
-  { value: 'more natural', label: 'Natural' },
-  { value: 'challenge me', label: 'Challenge' },
-];
-
-const demoScenarios = [
-  'Friendly chat',
-  'Talking with a cafe worker',
-  'Asking a taxi driver for help',
-  'Meeting someone new',
-];
+type Tab = 'dashboard' | 'users' | 'guests' | 'failures' | 'messages' | 'demo';
+type SenderFilter = 'all' | 'registered' | 'guest';
 
 type SpeechPart = {
   language?: string;
@@ -47,6 +36,26 @@ const AdminScreen: React.FC = () => {
     label: getLanguageDisplayName(value, t),
     speech: language.ttsLocale,
   })), [t]);
+  const difficultyOptions = useMemo(() => [
+    { value: 'casual beginner', label: t('admin.demoDifficulty.beginner', 'Beginner') },
+    { value: 'balanced', label: t('admin.demoDifficulty.balanced', 'Balanced') },
+    { value: 'more natural', label: t('admin.demoDifficulty.natural', 'Natural') },
+    { value: 'challenge me', label: t('admin.demoDifficulty.challenge', 'Challenge') },
+  ], [t]);
+  const demoScenarios = useMemo(() => [
+    t('admin.demoScenarios.friendlyChat', 'Friendly chat'),
+    t('admin.demoScenarios.cafeWorker', 'Talking with a cafe worker'),
+    t('admin.demoScenarios.taxiDriver', 'Asking a taxi driver for help'),
+    t('admin.demoScenarios.meetingNew', 'Meeting someone new'),
+  ], [t]);
+  const statusLabel = useCallback((value?: string) => {
+    if (value === 'active') return t('admin.active', 'Active');
+    if (value === 'suspended') return t('admin.suspended', 'Suspended');
+    return value || t('admin.unknown', 'Unknown');
+  }, [t]);
+  const roleLabel = useCallback((value?: string) => (
+    value === 'admin' ? t('admin.adminRole', 'Admin') : t('admin.userRole', 'User')
+  ), [t]);
   const colors = useAppColors();
   const preferredVoice = useSettingsStore((state) => state.preferredVoice);
   const preferredVoices = useSettingsStore((state) => state.preferredVoices);
@@ -57,17 +66,39 @@ const AdminScreen: React.FC = () => {
   const [guests, setGuests] = useState<any>(null);
   const [guestsPage, setGuestsPage] = useState(1);
   const [loadingGuests, setLoadingGuests] = useState(false);
+  const [errorReports, setErrorReports] = useState<any>({
+    reports: [],
+    total: 0,
+    page: 1,
+    totalPages: 1,
+    openCount: 0,
+    criticalOpenCount: 0,
+  });
+  const [errorReportsLoading, setErrorReportsLoading] = useState(false);
+  const [errorReportsClearing, setErrorReportsClearing] = useState(false);
+  const [contactMessages, setContactMessages] = useState<any>({
+    messages: [],
+    total: 0,
+    page: 1,
+    totalPages: 1,
+    openCount: 0,
+    registeredCount: 0,
+    guestCount: 0,
+  });
+  const [contactMessagesLoading, setContactMessagesLoading] = useState(false);
+  const [contactMessagesClearing, setContactMessagesClearing] = useState(false);
+  const [contactSenderFilter, setContactSenderFilter] = useState<SenderFilter>('all');
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [suspendModal, setSuspendModal] = useState<{ userId: string; username: string } | null>(null);
   const [suspendReason, setSuspendReason] = useState('');
-  const [demoScenario, setDemoScenario] = useState(demoScenarios[0]);
+  const [demoScenario, setDemoScenario] = useState(() => demoScenarios[0]);
   const [demoTurn, setDemoTurn] = useState('');
   const [demoTranscript, setDemoTranscript] = useState('');
-  const [demoReply, setDemoReply] = useState('The practice partner response will appear here.');
-  const [demoTip, setDemoTip] = useState('Ask in either selected language. You can change topic, ask for meanings, or request easier wording.');
+  const [demoReply, setDemoReply] = useState(() => t('admin.demoReplyPlaceholder', 'The practice partner response will appear here.'));
+  const [demoTip, setDemoTip] = useState(() => t('admin.demoTipPlaceholder', 'Ask in either selected language. You can change topic, ask for meanings, or request easier wording.'));
   const [demoLoading, setDemoLoading] = useState(false);
   const [demoTargetLanguage, setDemoTargetLanguage] = useState('ko');
   const [demoNativeLanguage, setDemoNativeLanguage] = useState('en');
@@ -106,6 +137,26 @@ const AdminScreen: React.FC = () => {
     }
   }, []);
 
+  const fetchErrorReports = useCallback(async (page = 1) => {
+    try {
+      setErrorReportsLoading(true);
+      const res = await adminService.getErrorReports({ page, status: 'open' });
+      setErrorReports(res.data);
+    } catch {} finally {
+      setErrorReportsLoading(false);
+    }
+  }, []);
+
+  const fetchContactMessages = useCallback(async (page = 1, senderType: SenderFilter = contactSenderFilter) => {
+    try {
+      setContactMessagesLoading(true);
+      const res = await adminService.getContactMessages({ page, status: 'open', senderType });
+      setContactMessages(res.data);
+    } catch {} finally {
+      setContactMessagesLoading(false);
+    }
+  }, [contactSenderFilter]);
+
   const fetchAll = useCallback(async () => {
     setLoading(true);
     await Promise.all([fetchStats(), fetchUsers()]);
@@ -116,17 +167,29 @@ const AdminScreen: React.FC = () => {
     fetchAll();
   }, [fetchAll]);
 
+  useEffect(() => {
+    setDemoScenario((current) => (demoScenarios.includes(current) ? current : demoScenarios[0]));
+  }, [demoScenarios]);
+
   // Fetch guests when tab selected
   useEffect(() => {
     if (activeTab === 'guests' && !guests) {
       fetchGuests(1);
     }
-  }, [activeTab]);
+    if (activeTab === 'failures' && errorReports.reports.length === 0) {
+      fetchErrorReports(1);
+    }
+    if (activeTab === 'messages' && contactMessages.messages.length === 0) {
+      fetchContactMessages(1);
+    }
+  }, [activeTab, contactMessages.messages.length, errorReports.reports.length, fetchContactMessages, fetchErrorReports, fetchGuests, guests]);
 
   const onRefresh = async () => {
     setRefreshing(true);
     await fetchAll();
     if (activeTab === 'guests') await fetchGuests(1);
+    if (activeTab === 'failures') await fetchErrorReports(errorReports.page || 1);
+    if (activeTab === 'messages') await fetchContactMessages(contactMessages.page || 1);
     setRefreshing(false);
   };
 
@@ -166,12 +229,12 @@ const AdminScreen: React.FC = () => {
 
   const handlePromote = (userId: string, username: string) => {
     Alert.alert(
-      'Promote to Admin',
-      `Make ${username} an admin?`,
+      t('admin.promoteToAdmin', 'Promote to Admin'),
+      t('admin.promoteConfirmShort', { username, defaultValue: 'Make {{username}} an admin?' }),
       [
-        { text: 'Cancel', style: 'cancel' },
+        { text: t('common.cancel', 'Cancel'), style: 'cancel' },
         {
-          text: 'Promote',
+          text: t('admin.promote', 'Promote'),
           onPress: async () => {
             try {
               await adminService.updateUserRole(userId, 'admin');
@@ -184,10 +247,10 @@ const AdminScreen: React.FC = () => {
   };
 
   const handleDelete = (userId: string, username: string) => {
-    Alert.alert('Delete User', `Permanently delete ${username}? This cannot be undone.`, [
-      { text: 'Cancel', style: 'cancel' },
+    Alert.alert(t('admin.deleteUserTitle', 'Delete User'), t('admin.deleteUserConfirmShort', { username, defaultValue: 'Permanently delete {{username}}? This cannot be undone.' }), [
+      { text: t('common.cancel', 'Cancel'), style: 'cancel' },
       {
-        text: 'Delete',
+        text: t('admin.deleteUser', 'Delete'),
         style: 'destructive',
         onPress: async () => {
           try {
@@ -197,6 +260,83 @@ const AdminScreen: React.FC = () => {
         },
       },
     ]);
+  };
+
+  const acknowledgeErrorReport = async (reportId: string) => {
+    try {
+      await adminService.acknowledgeErrorReport(reportId);
+      setErrorReports((current: any) => ({
+        ...current,
+        reports: current.reports.filter((report: any) => report._id !== reportId),
+        openCount: Math.max(0, (current.openCount || 0) - 1),
+      }));
+    } catch {}
+  };
+
+  const clearOpenErrorReports = () => {
+    Alert.alert(
+      t('admin.clearFailuresTitle', 'Clear open failures?'),
+      t('admin.clearFailuresBody', { count: errorReports.openCount || 0, defaultValue: 'Mark all {{count}} open failures as acknowledged?' }),
+      [
+        { text: t('common.cancel', 'Cancel'), style: 'cancel' },
+        {
+          text: t('common.clearAll', 'Clear All'),
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              setErrorReportsClearing(true);
+              await adminService.clearOpenErrorReports();
+              await fetchErrorReports(1);
+            } catch {} finally {
+              setErrorReportsClearing(false);
+            }
+          },
+        },
+      ],
+    );
+  };
+
+  const acknowledgeContactMessage = async (messageId: string) => {
+    try {
+      const message = contactMessages.messages.find((item: any) => item._id === messageId);
+      await adminService.acknowledgeContactMessage(messageId);
+      setContactMessages((current: any) => ({
+        ...current,
+        messages: current.messages.filter((item: any) => item._id !== messageId),
+        openCount: Math.max(0, (current.openCount || 0) - 1),
+        registeredCount: message?.session?.isGuest ? current.registeredCount : Math.max(0, (current.registeredCount || 0) - 1),
+        guestCount: message?.session?.isGuest ? Math.max(0, (current.guestCount || 0) - 1) : current.guestCount,
+      }));
+    } catch {}
+  };
+
+  const clearOpenContactMessages = () => {
+    Alert.alert(
+      t('admin.clearMessagesTitle', 'Clear unread messages?'),
+      t('admin.clearMessagesBody', { count: contactMessages.openCount || 0, defaultValue: 'Mark all {{count}} unread contact messages as read?' }),
+      [
+        { text: t('common.cancel', 'Cancel'), style: 'cancel' },
+        {
+          text: t('common.clearAll', 'Clear All'),
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              setContactMessagesClearing(true);
+              await adminService.clearOpenContactMessages();
+              await fetchContactMessages(1);
+            } catch {} finally {
+              setContactMessagesClearing(false);
+            }
+          },
+        },
+      ],
+    );
+  };
+
+  const handleContactSenderFilterChange = (filter: SenderFilter) => {
+    setContactSenderFilter(filter);
+    setContactMessages((current: any) => ({ ...current, messages: [], page: 1 }));
+    fetchContactMessages(1, filter);
   };
 
   const filteredUsers = users
@@ -215,8 +355,8 @@ const AdminScreen: React.FC = () => {
   const resetDemo = () => {
     setDemoHistory([]);
     setDemoTranscript('');
-    setDemoReply('The practice partner response will appear here.');
-    setDemoTip('Conversation reset.');
+    setDemoReply(t('admin.demoReplyPlaceholder', 'The practice partner response will appear here.'));
+    setDemoTip(t('admin.demoReset', 'Conversation reset.'));
   };
 
   const voiceForDemoLanguage = (languageId?: string) => (
@@ -272,8 +412,8 @@ const AdminScreen: React.FC = () => {
       });
       const data = response.data || {};
       const reply = data.reply || '';
-      setDemoReply(reply || 'No reply returned.');
-      setDemoTip(data.coachingTip || 'No coaching note.');
+      setDemoReply(reply || t('admin.demoNoReply', 'No reply returned.'));
+      setDemoTip(data.coachingTip || t('admin.demoNoCoachingNote', 'No coaching note.'));
       setDemoHistory((prev) => [
         ...prev.slice(-6),
         { role: 'user', content: text },
@@ -281,8 +421,8 @@ const AdminScreen: React.FC = () => {
       ]);
       await speakDemoReply(data, reply);
     } catch (error: any) {
-      setDemoReply('I could not respond this time. Please try again.');
-      setDemoTip(error.response?.data?.message || 'Connection issue. Try again in a moment.');
+      setDemoReply(t('admin.demoResponseFailed', 'I could not respond this time. Please try again.'));
+      setDemoTip(error.response?.data?.message || t('admin.demoConnectionIssue', 'Connection issue. Try again in a moment.'));
     } finally {
       setDemoLoading(false);
     }
@@ -320,6 +460,12 @@ const AdminScreen: React.FC = () => {
         </Chip>
         <Chip selected={activeTab === 'guests'} onPress={() => setActiveTab('guests')} style={styles.tabChip}>
           {t('admin.guests', 'Guests')}
+        </Chip>
+        <Chip selected={activeTab === 'failures'} onPress={() => setActiveTab('failures')} style={styles.tabChip}>
+          {t('admin.failures', 'Failures')} ({errorReports.openCount || stats?.overview?.openErrorReports || 0})
+        </Chip>
+        <Chip selected={activeTab === 'messages'} onPress={() => setActiveTab('messages')} style={styles.tabChip}>
+          {t('admin.messages', 'Messages')} ({contactMessages.openCount || stats?.overview?.openContactMessages || 0})
         </Chip>
         <Chip selected={activeTab === 'demo'} onPress={() => setActiveTab('demo')} style={styles.tabChip}>
           {t('admin.demo', 'Demo')}
@@ -445,7 +591,13 @@ const AdminScreen: React.FC = () => {
             <View style={styles.filterRow}>
               {['all', 'active', 'suspended', 'admin'].map((f) => (
                 <Chip key={f} selected={statusFilter === f} onPress={() => setStatusFilter(f)} style={styles.filterChip}>
-                  {f === 'all' ? t('admin.all', 'All') : f.charAt(0).toUpperCase() + f.slice(1)}
+                  {f === 'all'
+                    ? t('admin.all', 'All')
+                    : f === 'active'
+                      ? t('admin.active', 'Active')
+                      : f === 'suspended'
+                        ? t('admin.suspended', 'Suspended')
+                        : t('admin.admins', 'Admins')}
                 </Chip>
               ))}
             </View>
@@ -464,12 +616,12 @@ const AdminScreen: React.FC = () => {
                         <Text style={styles.userEmail}>{user.email}</Text>
                       </View>
                       <View style={[styles.statusBadge, user.status === 'suspended' ? styles.badgeSuspended : styles.badgeActive]}>
-                        <Text style={styles.statusText}>{user.status}</Text>
+                        <Text style={styles.statusText}>{statusLabel(user.status)}</Text>
                       </View>
                     </View>
                     <View style={styles.userMeta}>
                       <Text style={styles.metaItem}>⚡ {user.totalXP || 0} XP</Text>
-                      <Text style={styles.metaItem}>{user.role === 'admin' ? '👑 Admin' : '👤 User'}</Text>
+                      <Text style={styles.metaItem}>{roleLabel(user.role)}</Text>
                       <Text style={styles.metaItem}>{user.xpDecayEnabled ? '🔥' : '🌿'}</Text>
                     </View>
                     {user.role !== 'admin' && (
@@ -481,22 +633,22 @@ const AdminScreen: React.FC = () => {
                             textColor={colors.error}
                             onPress={(e) => { e.stopPropagation?.(); setSuspendModal({ userId: user._id, username: user.username }); }}
                           >
-                            Suspend
+                            {t('admin.suspendButton', 'Suspend User')}
                           </Button>
                         ) : (
                           <Button mode="outlined" compact textColor={colors.accentGreen} onPress={() => handleUnsuspend(user._id)}>
-                            Unsuspend
+                            {t('admin.unsuspend', 'Unsuspend')}
                           </Button>
                         )}
                         <Button mode="outlined" compact onPress={() => handlePromote(user._id, user.username)}>
-                          Promote
+                          {t('admin.promote', 'Promote')}
                         </Button>
                         <Button mode="outlined" compact textColor={colors.error} onPress={() => handleDelete(user._id, user.username)}>
-                          Delete
+                          {t('admin.deleteUser', 'Delete')}
                         </Button>
                       </View>
                     )}
-                    <Text style={styles.tapHint}>Tap for details →</Text>
+                    <Text style={styles.tapHint}>{t('admin.tapForDetails', 'Tap for details')}</Text>
                   </Card.Content>
                 </Card>
               </TouchableOpacity>
@@ -520,25 +672,25 @@ const AdminScreen: React.FC = () => {
                       <Card style={styles.statCard}>
                         <Card.Content style={styles.statContent}>
                           <Text style={styles.statNumber}>{guests.stats.activeToday || 0}</Text>
-                          <Text style={styles.statLabel}>Active Today</Text>
+                          <Text style={styles.statLabel}>{t('admin.activeToday', 'Active Today')}</Text>
                         </Card.Content>
                       </Card>
                       <Card style={styles.statCard}>
                         <Card.Content style={styles.statContent}>
                           <Text style={styles.statNumber}>{guests.stats.activeWeek || 0}</Text>
-                          <Text style={styles.statLabel}>Active 7d</Text>
+                          <Text style={styles.statLabel}>{t('admin.activeWeek', 'Active 7d')}</Text>
                         </Card.Content>
                       </Card>
                       <Card style={styles.statCard}>
                         <Card.Content style={styles.statContent}>
                           <Text style={styles.statNumber}>{guests.stats.uniqueCountries || 0}</Text>
-                          <Text style={styles.statLabel}>Countries</Text>
+                          <Text style={styles.statLabel}>{t('admin.countries', 'Countries')}</Text>
                         </Card.Content>
                       </Card>
                       <Card style={styles.statCard}>
                         <Card.Content style={styles.statContent}>
                           <Text style={[styles.statNumber, { fontSize: 20 }]}>{guests.stats.conversionRate != null ? `${guests.stats.conversionRate}%` : '—'}</Text>
-                          <Text style={styles.statLabel}>Conversion</Text>
+                          <Text style={styles.statLabel}>{t('admin.conversion', 'Conversion')}</Text>
                         </Card.Content>
                       </Card>
                     </View>
@@ -546,12 +698,12 @@ const AdminScreen: React.FC = () => {
                     {/* Aggregate metrics */}
                     <Card style={styles.card}>
                       <Card.Content>
-                        <Text variant="titleMedium" style={styles.cardTitle}>Engagement</Text>
+                        <Text variant="titleMedium" style={styles.cardTitle}>{t('admin.engagement', 'Engagement')}</Text>
                         {[
-                          { label: 'Avg Time Spent', value: `${guests.stats.avgTimeSpent || 0}m` },
-                          { label: 'Total Cards Studied', value: guests.stats.totalCardsStudied || 0 },
-                          { label: 'Total Audio Plays', value: guests.stats.totalAudioPlays || 0 },
-                          { label: 'Lessons Viewed', value: guests.stats.totalLessonsViewed || 0 },
+                          { label: t('admin.avgTimeSpent', 'Avg. Time Spent'), value: `${guests.stats.avgTimeSpent || 0}m` },
+                          { label: t('admin.totalCardsStudied', 'Total Cards Studied'), value: guests.stats.totalCardsStudied || 0 },
+                          { label: t('admin.totalAudioPlays', 'Total Audio Plays'), value: guests.stats.totalAudioPlays || 0 },
+                          { label: t('admin.lessonsViewed', 'Lessons Viewed'), value: guests.stats.totalLessonsViewed || 0 },
                         ].map((item) => (
                           <View key={item.label} style={styles.contentRow}>
                             <Text style={styles.contentLabel}>{item.label}</Text>
@@ -565,13 +717,13 @@ const AdminScreen: React.FC = () => {
                     {guests.stats.topLanguagePairs?.length > 0 && (
                       <Card style={styles.card}>
                         <Card.Content>
-                          <Text variant="titleMedium" style={styles.cardTitle}>Top Language Pairs</Text>
+                          <Text variant="titleMedium" style={styles.cardTitle}>{t('admin.topLanguagePairs', 'Top Language Pairs')}</Text>
                           {guests.stats.topLanguagePairs.slice(0, 5).map((pair: any, i: number) => (
                             <View key={i} style={styles.contentRow}>
                               <Text style={styles.contentLabel}>
                                 {pair._id?.nativeLang || '?'} → {pair._id?.targetLang || '?'}
                               </Text>
-                              <Text style={styles.contentValue}>{pair.count} sessions</Text>
+                              <Text style={styles.contentValue}>{t('admin.sessionsCount', { count: pair.count, defaultValue: '{{count}} sessions' })}</Text>
                             </View>
                           ))}
                         </Card.Content>
@@ -582,7 +734,7 @@ const AdminScreen: React.FC = () => {
                     {guests.stats.deviceBreakdown && (
                       <Card style={styles.card}>
                         <Card.Content>
-                          <Text variant="titleMedium" style={styles.cardTitle}>Device Breakdown</Text>
+                          <Text variant="titleMedium" style={styles.cardTitle}>{t('admin.deviceBreakdown', 'Device Breakdown')}</Text>
                           {Object.entries(guests.stats.deviceBreakdown).map(([device, count]) => (
                             <View key={device} style={styles.contentRow}>
                               <Text style={styles.contentLabel}>{device}</Text>
@@ -600,7 +752,7 @@ const AdminScreen: React.FC = () => {
                   <Card style={styles.card}>
                     <Card.Content>
                       <Text variant="titleMedium" style={styles.cardTitle}>
-                        Recent Sessions ({guests.total || guests.sessions.length})
+                        {t('admin.recentSessions', { count: guests.total || guests.sessions.length, defaultValue: 'Recent Sessions ({{count}})' })}
                       </Text>
                       {guests.sessions.map((session: any, i: number) => (
                         <View key={session._id || i} style={styles.sessionRow}>
@@ -614,7 +766,7 @@ const AdminScreen: React.FC = () => {
                             </Text>
                           </View>
                           <View style={{ alignItems: 'flex-end' }}>
-                            <Text style={styles.sessionStat}>📝 {session.cardsStudied || 0} cards</Text>
+                            <Text style={styles.sessionStat}>{t('admin.cardsStudiedCount', { count: session.cardsStudied || 0, defaultValue: '{{count}} cards' })}</Text>
                             <Text style={styles.sessionStat}>⏱ {session.timeSpent || 0}m</Text>
                           </View>
                         </View>
@@ -632,41 +784,67 @@ const AdminScreen: React.FC = () => {
                       disabled={guestsPage <= 1}
                       compact
                     >
-                      ← Prev
+                      {t('classLesson.previous', 'Previous')}
                     </Button>
-                    <Text style={styles.pageText}>Page {guestsPage}</Text>
+                    <Text style={styles.pageText}>{t('admin.pageNumber', { page: guestsPage, defaultValue: 'Page {{page}}' })}</Text>
                     <Button
                       mode="outlined"
                       onPress={() => fetchGuests(guestsPage + 1)}
                       disabled={!guests.sessions || guests.sessions.length < 20}
                       compact
                     >
-                      Next →
+                      {t('classLesson.next', 'Next')}
                     </Button>
                   </View>
                 )}
               </>
             ) : (
               <View style={styles.centered}>
-                <Text style={styles.emptyText}>No guest data available</Text>
+                <Text style={styles.emptyText}>{t('admin.noGuestData', 'No guest data available')}</Text>
                 <Button mode="contained" onPress={() => fetchGuests(1)} style={{ marginTop: 12 }}>
-                  Load Data
+                  {t('admin.loadData', 'Load Data')}
                 </Button>
               </View>
             )}
           </>
         )}
 
+        {activeTab === 'failures' && (
+          <AdminFailureQueue
+            reports={errorReports}
+            loading={errorReportsLoading}
+            clearing={errorReportsClearing}
+            onRefresh={() => fetchErrorReports(errorReports.page || 1)}
+            onClearAll={clearOpenErrorReports}
+            onAcknowledge={acknowledgeErrorReport}
+            onPageChange={fetchErrorReports}
+          />
+        )}
+
+        {activeTab === 'messages' && (
+          <AdminContactMessages
+            messages={contactMessages}
+            loading={contactMessagesLoading}
+            clearing={contactMessagesClearing}
+            senderFilter={contactSenderFilter}
+            onRefresh={() => fetchContactMessages(contactMessages.page || 1)}
+            onClearAll={clearOpenContactMessages}
+            onAcknowledge={acknowledgeContactMessage}
+            onPageChange={(page) => fetchContactMessages(page)}
+            onSenderFilterChange={handleContactSenderFilterChange}
+          />
+        )}
+
         {activeTab === 'demo' && (
           <>
             <Card style={styles.card}>
               <Card.Content>
-                <Text variant="titleMedium" style={styles.cardTitle}>Speaking Demo</Text>
+                <Text variant="titleMedium" style={styles.cardTitle}>{t('admin.speakingDemo', 'Speaking Demo')}</Text>
                 <Text style={styles.demoIntro}>
-                  Admin-only conversation preview. It does not save audio or learner progress.
+                  {t('admin.demoIntro', 'Admin-only conversation preview. It does not save audio or learner progress.')}
                 </Text>
 
-                <Text style={styles.demoLabel}>Scenario</Text>
+                <Text style={styles.demoLabel}>{t('admin.scenario', 'Scenario')}</Text>
                 <SegmentedButtons
                   value={demoScenario}
                   onValueChange={(value) => {
@@ -681,14 +859,14 @@ const AdminScreen: React.FC = () => {
                 />
 
                 <TextInput
-                  label="Custom scenario"
+                  label={t('admin.customScenario', 'Custom scenario')}
                   value={demoScenario}
                   onChangeText={setDemoScenario}
                   mode="outlined"
                   style={styles.input}
                 />
 
-                <Text style={styles.demoLabel}>Learning language</Text>
+                <Text style={styles.demoLabel}>{t('admin.learningLanguage', 'Learning language')}</Text>
                 <SegmentedButtons
                   value={demoTargetLanguage}
                   onValueChange={setDemoTargetLanguage}
@@ -696,7 +874,7 @@ const AdminScreen: React.FC = () => {
                   style={styles.segmented}
                 />
 
-                <Text style={styles.demoLabel}>Native language</Text>
+                <Text style={styles.demoLabel}>{t('admin.nativeLanguage', 'Native language')}</Text>
                 <SegmentedButtons
                   value={demoNativeLanguage}
                   onValueChange={setDemoNativeLanguage}
@@ -704,7 +882,7 @@ const AdminScreen: React.FC = () => {
                   style={styles.segmented}
                 />
 
-                <Text style={styles.demoLabel}>Listen for</Text>
+                <Text style={styles.demoLabel}>{t('admin.listenFor', 'Listen for')}</Text>
                 <SegmentedButtons
                   value={demoInputLanguage}
                   onValueChange={setDemoInputLanguage}
@@ -712,7 +890,7 @@ const AdminScreen: React.FC = () => {
                   style={styles.segmented}
                 />
 
-                <Text style={styles.demoLabel}>Difficulty</Text>
+                <Text style={styles.demoLabel}>{t('admin.difficulty', 'Difficulty')}</Text>
                 <SegmentedButtons
                   value={demoDifficulty}
                   onValueChange={setDemoDifficulty}
@@ -721,7 +899,7 @@ const AdminScreen: React.FC = () => {
                 />
 
                 <TextInput
-                  label="Type or paste what the learner said"
+                  label={t('admin.learnerTurnInput', 'Type or paste what the learner said')}
                   value={demoTurn}
                   onChangeText={setDemoTurn}
                   mode="outlined"
@@ -732,13 +910,13 @@ const AdminScreen: React.FC = () => {
 
                 <View style={styles.demoActions}>
                   <Button mode="contained" loading={demoLoading} disabled={!demoTurn.trim() || demoLoading} onPress={sendDemoTurn}>
-                    Send
+                    {t('classLesson.send', 'Send')}
                   </Button>
                   <Button mode="outlined" onPress={() => speechService.cancel()}>
-                    Interrupt
+                    {t('admin.interrupt', 'Interrupt')}
                   </Button>
                   <Button mode="outlined" onPress={resetDemo}>
-                    Reset
+                    {t('common.reset', 'Reset')}
                   </Button>
                 </View>
               </Card.Content>
@@ -746,12 +924,12 @@ const AdminScreen: React.FC = () => {
 
             <Card style={styles.card}>
               <Card.Content>
-                <Text variant="titleMedium" style={styles.cardTitle}>Conversation State</Text>
-                <Text style={styles.demoLabel}>Last learner turn</Text>
-                <Text style={styles.demoBox}>{demoTranscript || 'No turn sent yet.'}</Text>
-                <Text style={styles.demoLabel}>Practice partner response</Text>
+                <Text variant="titleMedium" style={styles.cardTitle}>{t('admin.conversationState', 'Conversation State')}</Text>
+                <Text style={styles.demoLabel}>{t('admin.lastLearnerTurn', 'Last learner turn')}</Text>
+                <Text style={styles.demoBox}>{demoTranscript || t('admin.noTurnSentYet', 'No turn sent yet.')}</Text>
+                <Text style={styles.demoLabel}>{t('admin.practicePartnerResponse', 'Practice partner response')}</Text>
                 <Text style={styles.demoBox}>{demoReply}</Text>
-                <Text style={styles.demoLabel}>Coach note</Text>
+                <Text style={styles.demoLabel}>{t('admin.coachNote', 'Coach note')}</Text>
                 <Text style={styles.demoBox}>{demoTip}</Text>
               </Card.Content>
             </Card>
@@ -765,10 +943,10 @@ const AdminScreen: React.FC = () => {
           <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
           <View style={styles.modalContent}>
             <Text variant="titleMedium" style={styles.modalTitle}>
-              Suspend {suspendModal?.username}?
+              {t('admin.suspendConfirm', { username: suspendModal?.username, defaultValue: 'Are you sure you want to suspend {{username}}?' })}
             </Text>
             <TextInput
-              label="Reason (optional)"
+              label={t('admin.suspendReason', 'Reason for suspension (optional)')}
               value={suspendReason}
               onChangeText={setSuspendReason}
               mode="outlined"
@@ -777,9 +955,9 @@ const AdminScreen: React.FC = () => {
               style={styles.input}
             />
             <View style={styles.modalActions}>
-              <Button onPress={() => { setSuspendModal(null); setSuspendReason(''); }}>Cancel</Button>
+              <Button onPress={() => { setSuspendModal(null); setSuspendReason(''); }}>{t('common.cancel', 'Cancel')}</Button>
               <Button mode="contained" buttonColor={colors.error} onPress={handleSuspend}>
-                Suspend
+                {t('admin.suspendButton', 'Suspend User')}
               </Button>
             </View>
           </View>
@@ -792,7 +970,7 @@ const AdminScreen: React.FC = () => {
         <View style={styles.modalOverlay}>
           <View style={[styles.modalContent, { maxHeight: '80%' }]}>
             <View style={styles.detailHeader}>
-              <Text variant="titleMedium" style={styles.modalTitle}>User Details</Text>
+              <Text variant="titleMedium" style={styles.modalTitle}>{t('admin.userDetails', 'User Details')}</Text>
               <Button mode="text" compact onPress={() => setShowUserDetail(false)}>✕</Button>
             </View>
             {loadingDetail ? (
@@ -800,65 +978,65 @@ const AdminScreen: React.FC = () => {
             ) : userDetail ? (
               <ScrollView>
                 <View style={styles.detailSection}>
-                  <Text style={styles.detailLabel}>Username</Text>
+                  <Text style={styles.detailLabel}>{t('admin.username', 'Username')}</Text>
                   <Text style={styles.detailValue}>{userDetail.username}</Text>
                 </View>
                 <View style={styles.detailSection}>
-                  <Text style={styles.detailLabel}>Email</Text>
+                  <Text style={styles.detailLabel}>{t('admin.email', 'Email')}</Text>
                   <Text style={styles.detailValue}>{userDetail.email}</Text>
                 </View>
                 <View style={styles.detailSection}>
-                  <Text style={styles.detailLabel}>Role</Text>
-                  <Text style={styles.detailValue}>{userDetail.role === 'admin' ? '👑 Admin' : '👤 User'}</Text>
+                  <Text style={styles.detailLabel}>{t('admin.role', 'Role')}</Text>
+                  <Text style={styles.detailValue}>{roleLabel(userDetail.role)}</Text>
                 </View>
                 <View style={styles.detailSection}>
-                  <Text style={styles.detailLabel}>Status</Text>
+                  <Text style={styles.detailLabel}>{t('admin.status', 'Status')}</Text>
                   <Text style={[styles.detailValue, { color: userDetail.status === 'active' ? colors.accentGreen : colors.error }]}>
-                    {userDetail.status}
+                    {statusLabel(userDetail.status)}
                   </Text>
                 </View>
                 <View style={styles.detailSection}>
-                  <Text style={styles.detailLabel}>Total XP</Text>
+                  <Text style={styles.detailLabel}>{t('admin.totalXp', 'Total XP')}</Text>
                   <Text style={styles.detailValue}>⚡ {userDetail.totalXP || 0}</Text>
                 </View>
                 <View style={styles.detailSection}>
-                  <Text style={styles.detailLabel}>Study Mode</Text>
-                  <Text style={styles.detailValue}>{userDetail.xpDecayEnabled ? '🔥 Challenge' : '🌿 Relaxed'}</Text>
+                  <Text style={styles.detailLabel}>{t('admin.studyMode', 'Study Mode')}</Text>
+                  <Text style={styles.detailValue}>{userDetail.xpDecayEnabled ? t('admin.challenge', 'Challenge') : t('admin.relaxed', 'Relaxed')}</Text>
                 </View>
                 <View style={styles.detailSection}>
-                  <Text style={styles.detailLabel}>Languages</Text>
+                  <Text style={styles.detailLabel}>{t('admin.languages', 'Languages')}</Text>
                   <Text style={styles.detailValue}>
                     {userDetail.nativeLanguage || '?'} → {userDetail.targetLanguage || '?'}
                   </Text>
                 </View>
                 <View style={styles.detailSection}>
-                  <Text style={styles.detailLabel}>Login Count</Text>
+                  <Text style={styles.detailLabel}>{t('admin.loginCount', 'Login Count')}</Text>
                   <Text style={styles.detailValue}>{userDetail.loginCount || 0}</Text>
                 </View>
                 <View style={styles.detailSection}>
-                  <Text style={styles.detailLabel}>Member Since</Text>
+                  <Text style={styles.detailLabel}>{t('admin.memberSince', 'Member Since')}</Text>
                   <Text style={styles.detailValue}>
                     {userDetail.createdAt ? new Date(userDetail.createdAt).toLocaleDateString() : '—'}
                   </Text>
                 </View>
                 <View style={styles.detailSection}>
-                  <Text style={styles.detailLabel}>Last Active</Text>
+                  <Text style={styles.detailLabel}>{t('admin.lastActive', 'Last Active')}</Text>
                   <Text style={styles.detailValue}>
                     {userDetail.lastActiveAt ? new Date(userDetail.lastActiveAt).toLocaleDateString() : '—'}
                   </Text>
                 </View>
                 {userDetail.status === 'suspended' && userDetail.suspendReason && (
                   <View style={[styles.detailSection, { backgroundColor: '#fef2f2', borderRadius: 8, padding: 12 }]}>
-                    <Text style={[styles.detailLabel, { color: colors.error }]}>Suspend Reason</Text>
+                    <Text style={[styles.detailLabel, { color: colors.error }]}>{t('admin.suspendReasonLabel', 'Suspend Reason')}</Text>
                     <Text style={[styles.detailValue, { color: colors.error }]}>{userDetail.suspendReason}</Text>
                   </View>
                 )}
               </ScrollView>
             ) : (
-              <Text style={styles.emptyText}>Could not load user details</Text>
+              <Text style={styles.emptyText}>{t('admin.userDetailsLoadFailed', 'Could not load user details')}</Text>
             )}
             <Button mode="contained" onPress={() => setShowUserDetail(false)} style={{ marginTop: 16 }}>
-              Close
+              {t('common.close', 'Close')}
             </Button>
           </View>
         </View>

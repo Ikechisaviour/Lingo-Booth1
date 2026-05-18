@@ -23,7 +23,8 @@
     "saving": "절약...",
     "search": "찾다",
     "notSet": "설정되지 않음",
-    "all": "모두"
+    "all": "모두",
+    "reset": "다시 놓기"
   },
   "languages": {
     "en": "영어",
@@ -218,7 +219,8 @@
       "fri": "금",
       "sat": "토",
       "sun": "일"
-    }
+    },
+    "contactDesc": "질문, 피드백 또는 보고할 문제"
   },
   "lessons": {
     "title": "{{language}} 레슨",
@@ -738,7 +740,102 @@
     "modeBreakdown": "모드 분류",
     "searchUsers": "사용자 검색...",
     "all": "전체",
-    "demo": "데모"
+    "demo": "데모",
+    "failures": "실패",
+    "messages": "메시지",
+    "userFailures": "사용자측 오류",
+    "openFailures": "{{count}} 공개 실패",
+    "criticalFailures": "{{count}} 심각",
+    "clearing": "청산...",
+    "loadingFailures": "로드 실패...",
+    "noOpenFailures": "열린 사용자 측 오류가 없습니다.",
+    "acknowledge": "인정하다",
+    "page": "페이지",
+    "device": "장치",
+    "languagePair": "언어 쌍",
+    "clientStatus": "고객",
+    "pageOf": "{{total}} 페이지 중 {{page}}페이지",
+    "guestUser": "게스트 사용자",
+    "unknownUser": "알 수 없는 사용자",
+    "unknown": "알려지지 않은",
+    "clearFailuresTitle": "미해결 오류를 삭제하시겠습니까?",
+    "clearFailuresBody": "모든 {{count}} 공개 실패를 확인됨으로 표시하시겠습니까?",
+    "contactMessages": "연락처 메시지",
+    "unreadMessages": "{{count}} 읽지 않은 메시지",
+    "allMessages": "모든 메시지",
+    "registeredUsers": "등록된 사용자",
+    "guestUsers": "게스트 사용자",
+    "loadingMessages": "메시지 로드 중...",
+    "noUnreadMessages": "읽지 않은 연락처 메시지가 없습니다.",
+    "registeredUser": "등록된 사용자",
+    "contactMessage": "연락처 메시지",
+    "markRead": "읽은 것으로 표시",
+    "name": "이름",
+    "accountTier": "계정 계층",
+    "clearMessagesTitle": "읽지 않은 메시지를 삭제하시겠습니까?",
+    "clearMessagesBody": "모든 {{count}} 읽지 않은 연락처 메시지를 읽음으로 표시하시겠습니까?",
+    "demoDifficulty": {
+      "beginner": "초보자",
+      "balanced": "균형 잡힌",
+      "natural": "자연스러운",
+      "challenge": "도전"
+    },
+    "demoScenarios": {
+      "friendlyChat": "친절한 채팅",
+      "cafeWorker": "카페 직원과 대화하기",
+      "taxiDriver": "택시기사에게 도움을 요청하기",
+      "meetingNew": "새로운 사람을 만나다"
+    },
+    "demoReplyPlaceholder": "연습 파트너 응답이 여기에 표시됩니다.",
+    "demoTipPlaceholder": "선택한 언어로 질문하세요. 주제를 바꾸거나, 의미를 묻거나, 더 쉬운 표현을 요청할 수 있습니다.",
+    "promoteConfirmShort": "{{username}}을 관리자로 지정하시겠습니까?",
+    "promote": "홍보하다",
+    "deleteUserTitle": "사용자 삭제",
+    "deleteUserConfirmShort": "{{username}}을 영구적으로 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+    "demoReset": "대화 재설정.",
+    "demoNoReply": "응답이 반환되지 않았습니다.",
+    "demoNoCoachingNote": "코칭노트가 없습니다.",
+    "demoResponseFailed": "이번에는 대답하지 못했습니다. 다시 시도해 주세요.",
+    "demoConnectionIssue": "연결 문제. 잠시 후에 다시 시도해 보세요.",
+    "tapForDetails": "세부정보를 보려면 탭하세요.",
+    "activeWeek": "활성 7일",
+    "countries": "국가",
+    "conversion": "변환",
+    "engagement": "약혼",
+    "totalCardsStudied": "연구된 총 카드",
+    "totalAudioPlays": "총 오디오 재생 횟수",
+    "lessonsViewed": "본 강의",
+    "topLanguagePairs": "상위 언어 쌍",
+    "sessionsCount": "{{count}} 세션",
+    "deviceBreakdown": "장치 고장",
+    "recentSessions": "최근 세션({{count}})",
+    "cardsStudiedCount": "{{count}} 카드",
+    "pageNumber": "페이지 {{page}}",
+    "noGuestData": "이용 가능한 손님 데이터가 없습니다",
+    "loadData": "데이터 로드",
+    "speakingDemo": "말하기 데모",
+    "demoIntro": "관리자 전용 대화 미리보기. 오디오나 학습자 진행 상황은 저장되지 않습니다.",
+    "scenario": "대본",
+    "customScenario": "맞춤형 시나리오",
+    "learningLanguage": "언어 학습",
+    "nativeLanguage": "모국어",
+    "listenFor": "듣기",
+    "difficulty": "어려움",
+    "learnerTurnInput": "학습자가 말한 내용을 입력하거나 붙여넣으세요.",
+    "interrupt": "방해하다",
+    "conversationState": "대화 상태",
+    "lastLearnerTurn": "마지막 학습자 차례",
+    "noTurnSentYet": "아직 차례가 전송되지 않았습니다.",
+    "practicePartnerResponse": "파트너 응답 연습",
+    "coachNote": "코치 노트",
+    "userDetails": "사용자 세부정보",
+    "totalXp": "총 XP",
+    "studyMode": "학습 모드",
+    "languages": "언어",
+    "loginCount": "로그인 횟수",
+    "memberSince": "회원가입 이후",
+    "suspendReasonLabel": "정지 사유",
+    "userDetailsLoadFailed": "사용자 세부정보를 로드할 수 없습니다."
   },
   "pricing": {
     "kicker": "계획",
@@ -820,7 +917,9 @@
     "discountCode": "할인 코드",
     "discountPlaceholder": "선택적 코드",
     "discountUnavailable": "이 플랜에서는 해당 할인 코드를 사용할 수 없습니다.",
-    "automaticDiscountApplied": "자동 {{discount}} 할인이 적용됨"
+    "automaticDiscountApplied": "자동 {{discount}} 할인이 적용됨",
+    "signInToChooseTitle": "계속하려면 계정을 만드세요",
+    "signInToChooseBody": "유료 요금제를 선택하기 전에 계정을 만들거나 로그인하면 액세스 권한이 귀하에게 연결될 수 있습니다."
   },
   "billing": {
     "kicker": "청구",
@@ -975,7 +1074,8 @@
       "professionalSubtitle": "업무, 서비스, 주거, 안전, 공식 상황에 필요한 표현을 연습합니다.",
       "grammarTitle": "레벨 {{level}} · 고급 문법",
       "grammarSubtitle": "생각을 더 정확하게 연결하도록 도와주는 문형 묶음입니다."
-    }
+    },
+    "retry": "다시 시도하세요"
   },
   "classLesson": {
     "loading": "수업 로드 중...",
@@ -1114,7 +1214,10 @@
     "saveReply": "답글 저장",
     "saveExample": "예시 저장",
     "practiceEverywhere": "어디서나 이것을 실천하세요.",
-    "selfTestReason": "빠른 자체 테스트를 위해 수업에서 저장되었습니다."
+    "selfTestReason": "빠른 자체 테스트를 위해 수업에서 저장되었습니다.",
+    "previous": "이전의",
+    "lessonGuide": "레슨 가이드",
+    "activityXOfY": "{{total}} 중 {{current}} 활동"
   },
   "exercise": {
     "kicker": "연습",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "유용한 문구",
     "recapReview": "다음 검토",
     "recapReviewFallback": "하나의 문구를 저장하고 다른 연습 모드에서 재사용하세요.",
-    "practiceLabel": "회화 연습"
+    "practiceLabel": "회화 연습",
+    "practiceSetup": "연습 설정"
   },
   "context": {
     "backToProfile": "프로필로 돌아가기",
@@ -1304,7 +1408,10 @@
       "memory": "기억해서 썼어요"
     },
     "savedReason": "다른 패스를 위한 작문 연습에서 저장되었습니다.",
-    "selfTestReason": "빠른 자가 테스트를 위해 글쓰기 연습을 저장했습니다."
+    "selfTestReason": "빠른 자가 테스트를 위해 글쓰기 연습을 저장했습니다.",
+    "hideNotebook": "노트북 숨기기",
+    "showNotebook": "노트북 표시",
+    "hideAddPanel": "추가 패널 숨기기"
   },
   "certificates": {
     "kicker": "자격증",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "어제 본 모습으로 한 번 돌아가면 첫 번째 항목이 달라붙기 시작합니다.",
     "firstThreeDaySpeakBody": "짧은 말하기 순서를 사용하면 언어가 페이지에서 일찍 빠져나갑니다.",
     "firstThreeDayLearnBody": "두 사람이 명확한 출발점을 가질 수 있도록 하나의 작은 안내 레슨으로 시작하십시오."
+  },
+  "resetPassword": {
+    "title": "비밀번호 재설정",
+    "subtitle": "새 비밀번호를 입력하세요.",
+    "error": "비밀번호를 재설정하지 못했습니다. 다시 시도해 주세요.",
+    "invalidLink": "이 재설정 링크는 유효하지 않거나 만료되었습니다.",
+    "noToken": "재설정 토큰이 없습니다. 새 재설정 링크를 요청하세요.",
+    "requestNew": "새 재설정 링크 요청",
+    "success": "비밀번호가 성공적으로 재설정되었습니다.",
+    "goToLogin": "로그인으로 이동",
+    "newPasswordPlaceholder": "새 비밀번호",
+    "resetButton": "비밀번호 재설정",
+    "failed": "비밀번호를 재설정할 수 없습니다. 다시 시도해 주세요.",
+    "kicker": "비밀번호 재설정",
+    "missingToken": "이 재설정 링크가 누락되었거나 유효하지 않습니다.",
+    "newPassword": "새 비밀번호",
+    "confirmPassword": "비밀번호 확인",
+    "submit": "비밀번호 재설정"
+  },
+  "contact": {
+    "navLabel": "문의",
+    "kicker": "문의하기",
+    "title": "필요한 내용을 알려주세요",
+    "subtitle": "질문, 문제 신고, 피드백을 보내 주세요. 필요한 경우 확인 후 답변드리겠습니다.",
+    "infoTitle": "함께 듣고 있습니다",
+    "infoText": "보내신 메시지는 계정 정보와 함께 안전하게 저장되어 문제를 더 빠르게 이해하고 도울 수 있게 합니다.",
+    "name": "이름",
+    "namePlaceholder": "이름을 입력하세요",
+    "email": "이메일",
+    "emailPlaceholder": "you@example.com",
+    "subject": "제목",
+    "subjectPlaceholder": "무엇에 관한 내용인가요?",
+    "message": "메시지",
+    "messagePlaceholder": "메시지를 입력하세요...",
+    "send": "메시지 보내기",
+    "success": "감사합니다. 메시지를 받았습니다.",
+    "error": "지금은 메시지를 보낼 수 없습니다. 다시 시도해 주세요.",
+    "companyTrap": "회사",
+    "profileHint": "이 장치에서 질문을 보내고, 문제를 보고하고, 피드백을 공유하세요."
   }
 }

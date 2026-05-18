@@ -190,6 +190,11 @@ export const authService = {
     api.post('/auth/resend-verification'),
 };
 
+export const contactService = {
+  sendMessage: (message: Record<string, any>) =>
+    api.post('/contact', { ...message, source: message.source || 'mobile' }, { timeout: 30000 }),
+};
+
 export const quizService = {
   getQuizzes: (category?: string, difficulty?: string) => {
     const { targetLang, nativeLang } = currentLanguageParams();
@@ -316,6 +321,8 @@ export const learningHubService = {
 export const certificateService = {
   list: () =>
     api.get('/certificates'),
+  verify: (certificateId: string) =>
+    api.get(`/certificates/verify/${certificateId}`),
   getClassLessonStatus: (classLessonId: string) => {
     const { targetLang, nativeLang } = currentLanguageParams();
     return api.get(`/certificates/class-lessons/${classLessonId}/status`, {
@@ -531,6 +538,18 @@ export const adminService = {
     api.delete(`/admin/flashcards/${flashcardId}`),
   getGuests: (page = 1) =>
     api.get(`/admin/guests?page=${page}`),
+  getErrorReports: ({ page = 1, status = 'open', severity = '', source = '' } = {}) =>
+    api.get('/admin/error-reports', { params: { page, status, severity, source } }),
+  acknowledgeErrorReport: (reportId: string) =>
+    api.put(`/admin/error-reports/${reportId}/acknowledge`),
+  clearOpenErrorReports: () =>
+    api.put('/admin/error-reports/clear-open'),
+  getContactMessages: ({ page = 1, status = 'open', senderType = 'all' } = {}) =>
+    api.get('/admin/contact-messages', { params: { page, status, senderType } }),
+  acknowledgeContactMessage: (messageId: string) =>
+    api.put(`/admin/contact-messages/${messageId}/acknowledge`),
+  clearOpenContactMessages: () =>
+    api.put('/admin/contact-messages/clear-open'),
   sendSpeakingDemoTurn: (data: object) =>
     api.post('/admin/speaking-demo/conversation', data, { timeout: 60000 }),
   sendLocalSpeakingDemoTurn: (data: object) =>

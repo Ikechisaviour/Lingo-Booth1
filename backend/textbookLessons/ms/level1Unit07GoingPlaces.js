@@ -1,113 +1,2811 @@
-// Level 1 Unit 7 — Going Places (Bahasa Melayu)
-// Functions: travel verbs, transportation, asking about routes, expressing
-// purpose with "untuk".
-
-const createContentItem = (target, pinyin, note, type = 'word', example = '', exampleNote = '', breakdown = null, activityIds = []) => ({
-  type, activityIds, targetText: target, romanization: pinyin, nativeText: note, pronunciation: pinyin,
-  exampleTarget: example || target, exampleNative: exampleNote || note,
-  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'ms-l1u7-orientation', pronunciation: 'ms-l1u7-pronunciation',
-  vocabularyVerbs: 'ms-l1u7-vocab-verbs', vocabularyTransport: 'ms-l1u7-vocab-transport',
-  grammarUntuk: 'ms-l1u7-grammar-untuk', grammarMaude: 'ms-l1u7-grammar-mau-nak',
-  grammarPergi: 'ms-l1u7-grammar-pergi',
-  reading: 'ms-l1u7-reading', listening: 'ms-l1u7-listening',
-  writing: 'ms-l1u7-writing', culture: 'ms-l1u7-culture', task: 'ms-l1u7-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'Going somewhere in Malaysia', goals: ['Use the verb PERGI (go) and 8 motion verbs to describe travel.', 'Choose transport: kereta, LRT, MRT, bas, basikal, Grab.', 'Express purpose with UNTUK + verb/noun.'], task: 'Picture planning a day trip from KL to Melaka. By the end you can describe each leg of the trip.' },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Transport words', goals: ['Pronounce loan transport names: lif, eskalator, LRT, MRT, monorel, bas, teksi.', 'Distinguish "kereta" (car) from "keretapi" (train, archaic but in "KTM Keretapi Tanah Melayu").'], task: 'Read each aloud.' },
-  { id: ACT.vocabularyVerbs, section: 'Vocabulary I', title: 'Motion verbs', goals: ['Memorize 8 motion verbs: pergi, balik, datang, naik, turun, sampai, tiba, berlepas.'], task: 'Use each in one short sentence.' },
-  { id: ACT.vocabularyTransport, section: 'Vocabulary II', title: 'Transport modes', goals: ['Memorize transport names: kereta, motosikal, basikal, bas, LRT, MRT, monorel, teksi, Grab, kereta api, kapal terbang.'], task: 'Match each transport to its primary use case.' },
-  { id: ACT.grammarUntuk, section: 'Grammar I', title: 'untuk — for / in order to', goals: ['Use UNTUK before a noun ("hadiah untuk awak" = "gift for you") and before a verb ("Saya pergi UNTUK belajar" = "I go to study").'], task: 'Make six untuk sentences.' },
-  { id: ACT.grammarMaude, section: 'Grammar II', title: 'mahu / nak / hendak — want / will', goals: ['MAHU (formal "want") / NAK (casual "want") / HENDAK (formal-written "will/want") — three registers of the same verb.'], task: 'State three things you want with each form.' },
-  { id: ACT.grammarPergi, section: 'Grammar III', title: 'pergi ke + place / pergi dengan + transport', goals: ['Combine "pergi ke X" (go to X) with "dengan Y" (by Y / with Y): "Saya pergi KE KLCC DENGAN LRT".'], task: 'Describe four journeys.' },
-  { id: ACT.reading, section: 'Reading', title: 'A Melaka day trip', goals: ['Read an itinerary paragraph and identify transport modes.'], task: 'Read and answer.' },
-  { id: ACT.listening, section: 'Listening', title: 'Booking a Grab', goals: ['Follow a Grab booking dialogue.'], task: 'Perform the dialogue.' },
-  { id: ACT.writing, section: 'Writing', title: 'Plan a weekend trip', goals: ['Write 6 sentences planning a weekend trip from KL.'], task: 'Write and read aloud.' },
-  { id: ACT.culture, section: 'Culture', title: 'Klang Valley public transport', goals: ['Understand the KL transport system: LRT (Kelana Jaya, Ampang/Sri Petaling lines), MRT (Kajang, Putrajaya lines), Monorail, KTM Komuter, RapidKL buses.', 'Recognize that intercity travel is dominated by Grab, AirAsia, KTM ETS (electric train), and PLUS Expressway buses.', 'Note that "balik kampung" (going home to the village) for Hari Raya creates the world\'s largest annual road exodus in Malaysia.'], task: 'Plan an LRT-MRT route across KL.' },
-  { id: ACT.task, section: 'Task', title: 'Plan a trip together', goals: ['Roleplay planning a Penang weekend with a friend, deciding transport and stops.'], task: 'Roleplay 6 turns.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 7: Pergi Tempat — Going Places',
-  category: 'travel',
-  difficulty: 'beginner', targetLang: 'ms', nativeLang: 'en', track: 'textbook', lessonType: 'thematic',
-  activities,
-  expressionPractice: [
-    { id: 'stating-destination', label: 'Stating destination', goal: 'Use "pergi ke …".' },
-    { id: 'choosing-transport', label: 'Choosing transport', goal: 'Use "dengan …" for the means of travel.' },
-    { id: 'stating-purpose', label: 'Stating purpose', goal: 'Use "untuk …".' },
+module.exports = {
+  "title": "Level 1 · Unit 7: Pergi Tempat — Going Places",
+  "category": "travel",
+  "difficulty": "beginner",
+  "targetLang": "ms",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ms-level1unit07goingplaces-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Use the verb PERGI (go) and 8 motion verbs to describe travel."
+      ],
+      "task": "Roleplay 6 turns."
+    },
+    {
+      "id": "ms-level1unit07goingplaces-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Malay vowels, syllable rhythm, and borrowed-word pronunciation clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ms-level1unit07goingplaces-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 7: Pergi Tempat — Going Places with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ms-level1unit07goingplaces-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 7: Pergi Tempat — Going Places sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ms-level1unit07goingplaces-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Use the verb PERGI (go) and 8 motion verbs to describe travel."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ms-level1unit07goingplaces-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 7: Pergi Tempat — Going Places with one nearby Malay form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ms-level1unit07goingplaces-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ms-level1unit07goingplaces-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ms-level1unit07goingplaces-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ms-level1unit07goingplaces-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the social setting, multilingual context, or politeness choice that changes how this Malay is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ms-level1unit07goingplaces-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay 6 turns."
+      ],
+      "task": "Roleplay 6 turns."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-transport'],
-  content: [
-    createContentItem('perjalanan', 'pər.dʒa.la.nan', 'JOURNEY / TRIP. ber- + jalan + -an. The general word for any trip.', 'word', 'Perjalanan KL ke Melaka dua jam.', '"The KL-Melaka journey is two hours".', null, [ACT.orientation]),
-
-    // Pronunciation
-    createContentItem('kereta', 'kə.re.ta', 'CAR. MY-specific; ID uses "mobil". Schwa in ke-, full /re/, /ta/.', 'word', 'Kereta saya Proton Saga.', '"My car is a Proton Saga" — Malaysia\'s national car brand.', null, [ACT.pronunciation]),
-    createContentItem('LRT / MRT', 'el.ar.ti / em.ar.ti', 'Klang Valley urban rail — LRT (Light Rail Transit, opened 1996) and MRT (Mass Rapid Transit, opened 2017). Backbone of KL commuting.', 'word', 'LRT ke KLCC paling laju.', '"LRT to KLCC is fastest".', null, [ACT.pronunciation]),
-    createContentItem('Grab', 'greb', 'GRAB — SE Asian ride-hailing app (formerly MyTeksi). The dominant taxi app in Malaysia, replacing traditional teksi.', 'word', 'Tempah Grab dari aplikasi.', '"Book Grab from the app".', null, [ACT.pronunciation]),
-
-    // Motion verbs
-    createContentItem('pergi', 'pər.gi', 'GO. The all-purpose motion verb. "Saya pergi ke pasar" = "I go to the market".', 'word', 'Pergi ke kerja.', '"Go to work".', null, [ACT.vocabularyVerbs]),
-    createContentItem('balik', 'ba.liʔ', 'RETURN / GO BACK. Distinct from "pulang" (return — slightly more formal).', 'word', 'Balik kampung untuk Hari Raya.', '"Return to the village for Hari Raya".', null, [ACT.vocabularyVerbs]),
-    createContentItem('datang', 'da.taŋ', 'COME / ARRIVE.', 'word', 'Datang ke majlis kahwin saya.', '"Come to my wedding".', null, [ACT.vocabularyVerbs]),
-    createContentItem('naik', 'na.iʔ', 'GO UP / BOARD / RIDE. Used both for vertical motion AND for boarding transport: "naik LRT" = take the LRT.', 'word', 'Naik LRT ke Pasar Seni.', '"Take LRT to Pasar Seni".', null, [ACT.vocabularyVerbs]),
-    createContentItem('turun', 'tu.run', 'GO DOWN / GET OFF. Inverse of naik: "Turun di stesen KLCC" = "Get off at KLCC".', 'word', 'Turun di stesen seterusnya.', '"Get off at the next station".', null, [ACT.vocabularyVerbs]),
-    createContentItem('sampai', 'sam.pai', 'ARRIVE / REACH. "Saya sampai di lapangan terbang pukul 10".', 'word', 'Sampai pukul tiga petang.', '"Arrive at 3 PM".', null, [ACT.vocabularyVerbs]),
-    createContentItem('tiba', 'ti.ba', 'ARRIVE (formal-written). "Tiba di KLIA" = "arrive at KLIA". Used in airport announcements, formal writing.', 'word', 'Pesawat tiba di KLIA pukul 8.', '"The plane arrives at KLIA at 8".', null, [ACT.vocabularyVerbs]),
-    createContentItem('berlepas', 'bər.lə.pas', 'DEPART. Used in flight/train announcements.', 'word', 'Penerbangan berlepas pukul 10.', '"Flight departs at 10".', null, [ACT.vocabularyVerbs]),
-
-    // Transport
-    createContentItem('kereta', 'kə.re.ta', 'CAR. MY-specific; ID uses "mobil". Proton and Perodua are national brands.', 'word', 'Saya pandu kereta sendiri.', '"I drive my own car".', null, [ACT.vocabularyTransport]),
-    createContentItem('motosikal', 'mo.to.si.kal', 'MOTORCYCLE. Very common in Malaysia for traffic-busting. Mat rempit (illegal motorcycle racers) is a subculture.', 'word', 'Motosikal lebih cepat dalam trafik KL.', '"Motorcycle is faster in KL traffic".', null, [ACT.vocabularyTransport]),
-    createContentItem('basikal', 'ba.si.kal', 'BICYCLE. From English. ID uses "sepeda".', 'word', 'Basikal di taman.', '"Bicycle in the park".', null, [ACT.vocabularyTransport]),
-    createContentItem('bas', 'bas', 'BUS. RapidKL is the main KL operator; intercity bus via PLUS Expressway is huge.', 'word', 'Bas RapidKL ke Bukit Bintang.', '"RapidKL bus to Bukit Bintang".', null, [ACT.vocabularyTransport]),
-    createContentItem('LRT', 'el.ar.ti', 'LIGHT RAIL TRANSIT. Two lines in KL: Kelana Jaya (purple) and Ampang/Sri Petaling (orange/red).', 'word', 'Stesen LRT Pasar Seni sentiasa sibuk.', '"Pasar Seni LRT station is always busy".', null, [ACT.vocabularyTransport]),
-    createContentItem('MRT', 'em.ar.ti', 'MASS RAPID TRANSIT. Newer (2017+). Kajang line (green) and Putrajaya line (yellow).', 'word', 'MRT lebih senyap daripada LRT.', '"MRT is quieter than LRT".', null, [ACT.vocabularyTransport]),
-    createContentItem('monorel', 'mo.no.rel', 'KL MONORAIL. Connects KL Sentral, Bukit Bintang, Titiwangsa. Short line, popular with tourists.', 'word', 'Monorel ke Bukit Bintang.', '"Monorail to Bukit Bintang".', null, [ACT.vocabularyTransport]),
-    createContentItem('teksi', 'tek.si', 'TAXI. Traditional taxis (Comfort, Public, Sunlight) largely displaced by Grab.', 'word', 'Tempah teksi.', '"Book a taxi".', null, [ACT.vocabularyTransport]),
-    createContentItem('Grab', 'greb', 'GRAB — ride-hailing app. Now also food delivery (GrabFood) and groceries (GrabMart).', 'word', 'Saya Grab ke KLIA.', '"I Grab to KLIA" — verbed in Manglish.', null, [ACT.vocabularyTransport]),
-    createContentItem('kereta api / KTM', 'kə.re.ta a.pi / ke.te.em', 'TRAIN / KTM. "Keretapi Tanah Melayu Berhad" — the national rail. ETS (Electric Train Service) connects KL-Ipoh-Padang Besar.', 'word', 'KTM ETS dari KL ke Ipoh.', '"KTM ETS from KL to Ipoh".', null, [ACT.vocabularyTransport]),
-    createContentItem('kapal terbang / pesawat', 'ka.pal tər.baŋ / pə.sa.wat', 'AIRPLANE. "Kapal terbang" (literal "flying ship") is everyday; "pesawat" is formal/technical.', 'word', 'Naik kapal terbang ke Sabah.', '"Take a plane to Sabah".', null, [ACT.vocabularyTransport]),
-
-    // Grammar untuk
-    createContentItem('untuk + noun', 'un.tuʔ + noun', 'UNTUK + noun = "for (someone/something)". "Hadiah untuk awak" = "gift for you".', 'sentence', 'Hadiah untuk awak.', '"Gift for you".', null, [ACT.grammarUntuk]),
-    createContentItem('untuk + verb', 'un.tuʔ + verb', 'UNTUK + verb = "in order to / to". "Saya pergi UNTUK belajar" = "I go to study".', 'sentence', 'Saya datang ke UM untuk belajar Sains Komputer.', '"I came to UM to study Computer Science".', null, [ACT.grammarUntuk]),
-    createContentItem('demi — for the sake of', 'de.mi', 'DEMI = "for the sake of" — more emotional/formal than untuk.', 'sentence', 'Saya bekerja keras demi keluarga.', '"I work hard for the family\'s sake".', null, [ACT.grammarUntuk]),
-
-    // mau / nak / hendak
-    createContentItem('mahu', 'ma.hu', 'WANT (formal). "Saya MAHU pergi ke Melaka" = "I want to go to Melaka". The textbook form.', 'sentence', 'Saya mahu makan nasi lemak.', '"I want to eat nasi lemak".', null, [ACT.grammarMaude]),
-    createContentItem('nak', 'naʔ', 'WANT (casual). The everyday spoken version of "mahu". "Saya NAK pergi pasar" = "I wanna go to the market".', 'sentence', 'Nak pergi mana?', '"Where you wanna go?" — casual.', null, [ACT.grammarMaude]),
-    createContentItem('hendak', 'hən.daʔ', 'WANT / WILL (formal-written). Used in laws, contracts, formal documents.', 'sentence', 'Saya hendak menyatakan bahawa…', '"I would like to state that…" — formal opener.', null, [ACT.grammarMaude]),
-    createContentItem('akan — will', 'a.kan', 'AKAN = future marker "will". "Saya AKAN pergi" = "I will go". Distinct from mahu (want).', 'sentence', 'Saya akan datang esok.', '"I will come tomorrow".', null, [ACT.grammarMaude]),
-
-    // pergi ke / dengan
-    createContentItem('pergi ke + dengan', 'pər.gi kə + də.ŋan', 'JOURNEY FRAME: "Saya PERGI KE [place] DENGAN [transport]". "Saya pergi ke KLCC dengan LRT".', 'sentence', 'Saya pergi ke pejabat dengan motosikal.', '"I go to the office by motorcycle".', null, [ACT.grammarPergi]),
-    createContentItem('dari … ke …', 'da.ri … kə …', 'FROM-TO. "Dari UM ke KLCC ambil 30 minit dengan LRT" = "From UM to KLCC takes 30 minutes by LRT".', 'sentence', 'Dari KL ke Penang naik kapal terbang ambil sejam.', '"From KL to Penang by plane takes an hour".', null, [ACT.grammarPergi]),
-
-    // Reading
-    createContentItem('Itinerari Melaka', 'i.ti.nə.ra.ri mə.la.ka', 'Day-trip itinerary KL → Melaka.', 'sentence', 'Kami berlepas dari KL Sentral pukul 8 pagi dengan bas ekspres. Selepas dua jam perjalanan, kami sampai di stesen bas Melaka Sentral. Kami naik teksi ke A\'Famosa untuk melawat kubu lama Portugis. Selepas itu kami berjalan kaki ke Jonker Street untuk makan tengah hari — nasi ayam Hainan dan cendol. Petang kami pulang ke KL dengan bas yang sama.', 'A Melaka day-trip narrative.', null, [ACT.reading]),
-    createContentItem('Soalan kefahaman', 'so.a.lan kə.fa.ha.man', 'Trip questions that make the learner recover departure time, transport, meal location, and duration from the itinerary.', 'sentence', 'Q1: Mereka berlepas pukul berapa? Q2: Dengan apa mereka pergi ke A\'Famosa? Q3: Di mana mereka makan? Q4: Berapa lama perjalanan?', 'Answering in complete sentences rehearses the same travel grammar needed for real planning conversations.', null, [ACT.reading]),
-
-    // Listening
-    createContentItem('Dialog: tempah Grab', 'di.a.log: təm.pah greb', 'Booking a Grab via the app.', 'sentence', 'Sarah: Helo, abang. Saya nak ke KL Sentral.\nPemandu Grab: OK, dari mana? Lokasi pickup awak?\nSarah: Saya di hadapan Hotel Mandarin Oriental KLCC.\nPemandu: Baik, saya akan sampai dalam lima minit. Kereta Honda City warna putih.\nSarah: Baik, terima kasih.', '5-turn Grab booking dialogue.', null, [ACT.listening]),
-
-    // Writing
-    createContentItem('Tulis: rancangan perjalanan', 'tu.lis: ran.tʃa.ŋan pər.dʒa.la.nan', 'Weekend trip plan template.', 'sentence', 'Template: Hujung minggu ini saya ___. Saya akan pergi dengan ___. Pertama, saya akan ___. Kemudian ___. Akhirnya saya balik ___. Tujuan saya ialah untuk ___.', 'Use sequence + untuk.', null, [ACT.writing]),
-
-    // Culture
-    createContentItem('Sistem LRT/MRT Lembah Klang', 'sis.tem el.ar.ti em.ar.ti', 'KL urban rail: LRT Kelana Jaya line (1998), LRT Ampang/Sri Petaling (1996), KL Monorail (2003), MRT Kajang (2017), MRT Putrajaya (2022). Plus KTM Komuter and ETS. Now one of SE Asia\'s most extensive networks.', 'sentence', 'Lembah Klang ada rangkaian rel yang lengkap.', '"The Klang Valley has a comprehensive rail network".', null, [ACT.culture]),
-    createContentItem('Balik kampung', 'ba.liʔ kam.puŋ', 'During Hari Raya (and CNY/Deepavali), millions of urban Malaysians "balik kampung" — return to their rural hometowns. PLUS Expressway becomes massively congested; the federal government issues special holiday advisories. The world\'s largest annual road exodus on a population-percentage basis.', 'sentence', 'Saya balik kampung di Kelantan setiap Hari Raya.', '"I return to my village in Kelantan every Hari Raya".', null, [ACT.culture]),
-    createContentItem('AirAsia — Borneo bridge', 'air.a.si.a', 'AirAsia (founded 2001 in KL) made domestic air travel affordable, connecting KL to Sabah/Sarawak. Before AirAsia, only the rich flew to Borneo. Now ordinary Malaysians visit easily.', 'sentence', 'Saya terbang ke Kuching dengan AirAsia.', '"I fly to Kuching with AirAsia".', null, [ACT.culture]),
-
-    // Task
-    createContentItem('Tugasan: rancang Penang trip', 'tu.ga.san: ran.tʃaŋ pi.naŋ trip', 'Roleplay planning a Penang weekend.', 'sentence', 'Scene: Awak dan kawan nak ke Penang hujung minggu.', 'Use transport modes, ke/dari/untuk, mahu/nak.', null, [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "stating-destination",
+      "label": "Stating destination",
+      "goal": "Use \"pergi ke …\"."
+    },
+    {
+      "id": "choosing-transport",
+      "label": "Choosing transport",
+      "goal": "Use \"dengan …\" for the means of travel."
+    },
+    {
+      "id": "stating-purpose",
+      "label": "Stating purpose",
+      "goal": "Use \"untuk …\"."
+    }
   ],
+  "relatedPools": [
+    "topic-travel",
+    "topic-transport"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-orientation"
+      ],
+      "targetText": "matlamat pelajaran",
+      "romanization": "",
+      "nativeText": "Use the verb PERGI (go) and 8 motion verbs to describe travel.",
+      "pronunciation": "",
+      "exampleTarget": "matlamat pelajaran",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay 6 turns.",
+      "korean": "matlamat pelajaran",
+      "english": "Use the verb PERGI (go) and 8 motion verbs to describe travel.",
+      "example": "matlamat pelajaran",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay 6 turns."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ms-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "semakan bunyi",
+      "romanization": "",
+      "nativeText": "Keep Malay vowels, syllable rhythm, and borrowed-word pronunciation clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Perjalanan KL ke Melaka dua jam.\".",
+      "pronunciation": "",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "\"The KL-Melaka journey is two hours\".",
+      "korean": "semakan bunyi",
+      "english": "Keep Malay vowels, syllable rhythm, and borrowed-word pronunciation clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Perjalanan KL ke Melaka dua jam.\".",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "\"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 7: Pergi Tempat — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "\"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "Use the key language of Level 1 · Unit 7: Pergi Tempat — Going Places with the register and setting that the lesson requires.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "\"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-2"
+      ],
+      "targetText": "kereta",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 7: Pergi Tempat — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "\"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 7: Pergi Tempat — Going Places sound precise rather than merely understandable.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "\"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ms-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "",
+      "nativeText": "Use the verb PERGI (go) and 8 motion verbs to describe travel.",
+      "pronunciation": "",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "\"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "Use the verb PERGI (go) and 8 motion verbs to describe travel.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "\"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ms-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "kereta",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 7: Pergi Tempat — Going Places with one nearby Malay form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "\"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "Contrast the main pattern in Level 1 · Unit 7: Pergi Tempat — Going Places with one nearby Malay form so the learner can avoid literal translation.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "\"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ms-level1unit07goingplaces-reading"
+      ],
+      "targetText": "model bacaan",
+      "romanization": "",
+      "nativeText": "Read the connected model for model bacaan as one message. Notice how \"Scene: Awak dan kawan nak ke Penang hujung minggu.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleNative": "Use transport modes, ke/dari/untuk, mahu/nak.",
+      "korean": "model bacaan",
+      "english": "Read the connected model for model bacaan as one message. Notice how \"Scene: Awak dan kawan nak ke Penang hujung minggu.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleEnglish": "Use transport modes, ke/dari/untuk, mahu/nak."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ms-level1unit07goingplaces-listening"
+      ],
+      "targetText": "model dialog",
+      "romanization": "",
+      "nativeText": "Hear \"Scene: Awak dan kawan nak ke Penang hujung minggu.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleNative": "Use transport modes, ke/dari/untuk, mahu/nak.",
+      "korean": "model dialog",
+      "english": "Hear \"Scene: Awak dan kawan nak ke Penang hujung minggu.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleEnglish": "Use transport modes, ke/dari/untuk, mahu/nak."
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ms-level1unit07goingplaces-writing"
+      ],
+      "targetText": "latihan menulis",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Perjalanan KL ke Melaka dua jam.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "latihan menulis",
+      "english": "Write your own version after studying \"Perjalanan KL ke Melaka dua jam.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ms-level1unit07goingplaces-culture"
+      ],
+      "targetText": "penggunaan dan konteks",
+      "romanization": "",
+      "nativeText": "Notice the social setting, multilingual context, or politeness choice that changes how this Malay is naturally used. Use \"Kereta saya Proton Saga.\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "\"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "penggunaan dan konteks",
+      "english": "Notice the social setting, multilingual context, or politeness choice that changes how this Malay is naturally used. Use \"Kereta saya Proton Saga.\" as the social comparison point for this lesson.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "\"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "tugasan akhir",
+      "romanization": "",
+      "nativeText": "Roleplay 6 turns.",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleNative": "Roleplay 6 turns.",
+      "korean": "tugasan akhir",
+      "english": "Roleplay 6 turns.",
+      "example": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleEnglish": "Roleplay 6 turns."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "kesilapan biasa",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around word order, particles, classifiers, and polite forms that make a sentence understandable but not yet natural. Begin by checking \"Kereta saya Proton Saga.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kesilapan biasa",
+      "english": "Watch for literal-translation mistakes around word order, particles, classifiers, and polite forms that make a sentence understandable but not yet natural. Begin by checking \"Kereta saya Proton Saga.\" against the model.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: \"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-culture"
+      ],
+      "targetText": "laras bahasa",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for neutral standard Malay, a polite service tone, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Perjalanan KL ke Melaka dua jam.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "\"The KL-Melaka journey is two hours\".",
+      "korean": "laras bahasa",
+      "english": "Check whether the setting calls for neutral standard Malay, a polite service tone, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Perjalanan KL ke Melaka dua jam.\" before reusing it elsewhere.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "\"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kelancaran",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Malay message rather than as separate translated fragments. Aim to carry \"Scene: Awak dan kawan nak ke Penang hujung minggu.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleNative": "Use transport modes, ke/dari/untuk, mahu/nak.",
+      "korean": "kelancaran",
+      "english": "Say the idea as one connected Malay message rather than as separate translated fragments. Aim to carry \"Scene: Awak dan kawan nak ke Penang hujung minggu.\" as one thought.",
+      "example": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleEnglish": "Use transport modes, ke/dari/untuk, mahu/nak."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "aplikasi",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Perjalanan KL ke Melaka dua jam.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "aplikasi",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Perjalanan KL ke Melaka dua jam.\" and move it into your own life.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "ingat semula",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"perjalanan\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "perjalanan",
+      "exampleNative": "JOURNEY / TRIP. ber- + jalan + -an. The general word for any trip.",
+      "korean": "ingat semula",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"perjalanan\" before looking back.",
+      "example": "perjalanan",
+      "exampleEnglish": "JOURNEY / TRIP. ber- + jalan + -an. The general word for any trip."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-writing"
+      ],
+      "targetText": "pengembangan",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Scene: Awak dan kawan nak ke Penang hujung minggu.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "pengembangan",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Scene: Awak dan kawan nak ke Penang hujung minggu.\" rather than restarting from a blank sentence.",
+      "example": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading"
+      ],
+      "targetText": "perbandingan",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 7: Pergi Tempat — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Kereta saya Proton Saga.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "\"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "perbandingan",
+      "english": "Compare the central form in Level 1 · Unit 7: Pergi Tempat — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Kereta saya Proton Saga.\" as the comparison line.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "\"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ms-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "pembaikan sebutan",
+      "romanization": "",
+      "nativeText": "Keep Malay vowels, syllable rhythm, and borrowed-word pronunciation clear enough that the sentence remains easy to follow. Use \"Perjalanan KL ke Melaka dua jam.\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "\"The KL-Melaka journey is two hours\".",
+      "korean": "pembaikan sebutan",
+      "english": "Keep Malay vowels, syllable rhythm, and borrowed-word pronunciation clear enough that the sentence remains easy to follow. Use \"Perjalanan KL ke Melaka dua jam.\" as the repair line.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "\"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "variasi dialog",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Scene: Awak dan kawan nak ke Penang hujung minggu.\".",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleNative": "Use transport modes, ke/dari/untuk, mahu/nak.",
+      "korean": "variasi dialog",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Scene: Awak dan kawan nak ke Penang hujung minggu.\".",
+      "example": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleEnglish": "Use transport modes, ke/dari/untuk, mahu/nak."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-writing"
+      ],
+      "targetText": "bina ayat",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Perjalanan KL ke Melaka dua jam.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "\"The KL-Melaka journey is two hours\".",
+      "korean": "bina ayat",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Perjalanan KL ke Melaka dua jam.\" one layer at a time.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "\"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "semakan pantas",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Kereta saya Proton Saga.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "\"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "semakan pantas",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Kereta saya Proton Saga.\" as the deciding example.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "\"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-culture",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "renungan",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Scene: Awak dan kawan nak ke Penang hujung minggu.\".",
+      "pronunciation": "",
+      "exampleTarget": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleNative": "Use transport modes, ke/dari/untuk, mahu/nak.",
+      "korean": "renungan",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Scene: Awak dan kawan nak ke Penang hujung minggu.\".",
+      "example": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleEnglish": "Use transport modes, ke/dari/untuk, mahu/nak."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "pər.dʒa.la.nan",
+      "nativeText": "JOURNEY / TRIP. ber- + jalan + -an. The general word for any trip.",
+      "pronunciation": "pər.dʒa.la.nan",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "\"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "JOURNEY / TRIP. ber- + jalan + -an. The general word for any trip.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "\"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta",
+      "romanization": "kə.re.ta",
+      "nativeText": "CAR. MY-specific; ID uses \"mobil\". Schwa in ke-, full /re/, /ta/.",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "\"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "CAR. MY-specific; ID uses \"mobil\". Schwa in ke-, full /re/, /ta/.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "\"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT / MRT",
+      "romanization": "el.ar.ti / em.ar.ti",
+      "nativeText": "Klang Valley urban rail — LRT (Light Rail Transit, opened 1996) and MRT (Mass Rapid Transit, opened 2017). Backbone of KL commuting.",
+      "pronunciation": "el.ar.ti / em.ar.ti",
+      "exampleTarget": "LRT ke KLCC paling laju.",
+      "exampleNative": "\"LRT to KLCC is fastest\".",
+      "korean": "LRT / MRT",
+      "english": "Klang Valley urban rail — LRT (Light Rail Transit, opened 1996) and MRT (Mass Rapid Transit, opened 2017). Backbone of KL commuting.",
+      "example": "LRT ke KLCC paling laju.",
+      "exampleEnglish": "\"LRT to KLCC is fastest\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Grab",
+      "romanization": "greb",
+      "nativeText": "GRAB — SE Asian ride-hailing app (formerly MyTeksi). The dominant taxi app in Malaysia, replacing traditional teksi.",
+      "pronunciation": "greb",
+      "exampleTarget": "Tempah Grab dari aplikasi.",
+      "exampleNative": "\"Book Grab from the app\".",
+      "korean": "Grab",
+      "english": "GRAB — SE Asian ride-hailing app (formerly MyTeksi). The dominant taxi app in Malaysia, replacing traditional teksi.",
+      "example": "Tempah Grab dari aplikasi.",
+      "exampleEnglish": "\"Book Grab from the app\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "pergi",
+      "romanization": "pər.gi",
+      "nativeText": "GO. The all-purpose motion verb. \"Saya pergi ke pasar\" = \"I go to the market\".",
+      "pronunciation": "pər.gi",
+      "exampleTarget": "Pergi ke kerja.",
+      "exampleNative": "\"Go to work\".",
+      "korean": "pergi",
+      "english": "GO. The all-purpose motion verb. \"Saya pergi ke pasar\" = \"I go to the market\".",
+      "example": "Pergi ke kerja.",
+      "exampleEnglish": "\"Go to work\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "balik",
+      "romanization": "ba.liʔ",
+      "nativeText": "RETURN / GO BACK. Distinct from \"pulang\" (return — slightly more formal).",
+      "pronunciation": "ba.liʔ",
+      "exampleTarget": "Balik kampung untuk Hari Raya.",
+      "exampleNative": "\"Return to the village for Hari Raya\".",
+      "korean": "balik",
+      "english": "RETURN / GO BACK. Distinct from \"pulang\" (return — slightly more formal).",
+      "example": "Balik kampung untuk Hari Raya.",
+      "exampleEnglish": "\"Return to the village for Hari Raya\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "datang",
+      "romanization": "da.taŋ",
+      "nativeText": "COME / ARRIVE.",
+      "pronunciation": "da.taŋ",
+      "exampleTarget": "Datang ke majlis kahwin saya.",
+      "exampleNative": "\"Come to my wedding\".",
+      "korean": "datang",
+      "english": "COME / ARRIVE.",
+      "example": "Datang ke majlis kahwin saya.",
+      "exampleEnglish": "\"Come to my wedding\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "naik",
+      "romanization": "na.iʔ",
+      "nativeText": "GO UP / BOARD / RIDE. Used both for vertical motion AND for boarding transport: \"naik LRT\" = take the LRT.",
+      "pronunciation": "na.iʔ",
+      "exampleTarget": "Naik LRT ke Pasar Seni.",
+      "exampleNative": "\"Take LRT to Pasar Seni\".",
+      "korean": "naik",
+      "english": "GO UP / BOARD / RIDE. Used both for vertical motion AND for boarding transport: \"naik LRT\" = take the LRT.",
+      "example": "Naik LRT ke Pasar Seni.",
+      "exampleEnglish": "\"Take LRT to Pasar Seni\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "turun",
+      "romanization": "tu.run",
+      "nativeText": "GO DOWN / GET OFF. Inverse of naik: \"Turun di stesen KLCC\" = \"Get off at KLCC\".",
+      "pronunciation": "tu.run",
+      "exampleTarget": "Turun di stesen seterusnya.",
+      "exampleNative": "\"Get off at the next station\".",
+      "korean": "turun",
+      "english": "GO DOWN / GET OFF. Inverse of naik: \"Turun di stesen KLCC\" = \"Get off at KLCC\".",
+      "example": "Turun di stesen seterusnya.",
+      "exampleEnglish": "\"Get off at the next station\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "sampai",
+      "romanization": "sam.pai",
+      "nativeText": "ARRIVE / REACH. \"Saya sampai di lapangan terbang pukul 10\".",
+      "pronunciation": "sam.pai",
+      "exampleTarget": "Sampai pukul tiga petang.",
+      "exampleNative": "\"Arrive at 3 PM\".",
+      "korean": "sampai",
+      "english": "ARRIVE / REACH. \"Saya sampai di lapangan terbang pukul 10\".",
+      "example": "Sampai pukul tiga petang.",
+      "exampleEnglish": "\"Arrive at 3 PM\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "tiba",
+      "romanization": "ti.ba",
+      "nativeText": "ARRIVE (formal-written). \"Tiba di KLIA\" = \"arrive at KLIA\". Used in airport announcements, formal writing.",
+      "pronunciation": "ti.ba",
+      "exampleTarget": "Pesawat tiba di KLIA pukul 8.",
+      "exampleNative": "\"The plane arrives at KLIA at 8\".",
+      "korean": "tiba",
+      "english": "ARRIVE (formal-written). \"Tiba di KLIA\" = \"arrive at KLIA\". Used in airport announcements, formal writing.",
+      "example": "Pesawat tiba di KLIA pukul 8.",
+      "exampleEnglish": "\"The plane arrives at KLIA at 8\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "berlepas",
+      "romanization": "bər.lə.pas",
+      "nativeText": "DEPART. Used in flight/train announcements.",
+      "pronunciation": "bər.lə.pas",
+      "exampleTarget": "Penerbangan berlepas pukul 10.",
+      "exampleNative": "\"Flight departs at 10\".",
+      "korean": "berlepas",
+      "english": "DEPART. Used in flight/train announcements.",
+      "example": "Penerbangan berlepas pukul 10.",
+      "exampleEnglish": "\"Flight departs at 10\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta",
+      "romanization": "kə.re.ta",
+      "nativeText": "CAR. MY-specific; ID uses \"mobil\". Proton and Perodua are national brands.",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Saya pandu kereta sendiri.",
+      "exampleNative": "\"I drive my own car\".",
+      "korean": "kereta",
+      "english": "CAR. MY-specific; ID uses \"mobil\". Proton and Perodua are national brands.",
+      "example": "Saya pandu kereta sendiri.",
+      "exampleEnglish": "\"I drive my own car\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "motosikal",
+      "romanization": "mo.to.si.kal",
+      "nativeText": "MOTORCYCLE. Very common in Malaysia for traffic-busting. Mat rempit (illegal motorcycle racers) is a subculture.",
+      "pronunciation": "mo.to.si.kal",
+      "exampleTarget": "Motosikal lebih cepat dalam trafik KL.",
+      "exampleNative": "\"Motorcycle is faster in KL traffic\".",
+      "korean": "motosikal",
+      "english": "MOTORCYCLE. Very common in Malaysia for traffic-busting. Mat rempit (illegal motorcycle racers) is a subculture.",
+      "example": "Motosikal lebih cepat dalam trafik KL.",
+      "exampleEnglish": "\"Motorcycle is faster in KL traffic\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "basikal",
+      "romanization": "ba.si.kal",
+      "nativeText": "BICYCLE. From English. ID uses \"sepeda\".",
+      "pronunciation": "ba.si.kal",
+      "exampleTarget": "Basikal di taman.",
+      "exampleNative": "\"Bicycle in the park\".",
+      "korean": "basikal",
+      "english": "BICYCLE. From English. ID uses \"sepeda\".",
+      "example": "Basikal di taman.",
+      "exampleEnglish": "\"Bicycle in the park\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "bas",
+      "romanization": "bas",
+      "nativeText": "BUS. RapidKL is the main KL operator; intercity bus via PLUS Expressway is huge.",
+      "pronunciation": "bas",
+      "exampleTarget": "Bas RapidKL ke Bukit Bintang.",
+      "exampleNative": "\"RapidKL bus to Bukit Bintang\".",
+      "korean": "bas",
+      "english": "BUS. RapidKL is the main KL operator; intercity bus via PLUS Expressway is huge.",
+      "example": "Bas RapidKL ke Bukit Bintang.",
+      "exampleEnglish": "\"RapidKL bus to Bukit Bintang\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT",
+      "romanization": "el.ar.ti",
+      "nativeText": "LIGHT RAIL TRANSIT. Two lines in KL: Kelana Jaya (purple) and Ampang/Sri Petaling (orange/red).",
+      "pronunciation": "el.ar.ti",
+      "exampleTarget": "Stesen LRT Pasar Seni sentiasa sibuk.",
+      "exampleNative": "\"Pasar Seni LRT station is always busy\".",
+      "korean": "LRT",
+      "english": "LIGHT RAIL TRANSIT. Two lines in KL: Kelana Jaya (purple) and Ampang/Sri Petaling (orange/red).",
+      "example": "Stesen LRT Pasar Seni sentiasa sibuk.",
+      "exampleEnglish": "\"Pasar Seni LRT station is always busy\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "MRT",
+      "romanization": "em.ar.ti",
+      "nativeText": "MASS RAPID TRANSIT. Newer (2017+). Kajang line (green) and Putrajaya line (yellow).",
+      "pronunciation": "em.ar.ti",
+      "exampleTarget": "MRT lebih senyap daripada LRT.",
+      "exampleNative": "\"MRT is quieter than LRT\".",
+      "korean": "MRT",
+      "english": "MASS RAPID TRANSIT. Newer (2017+). Kajang line (green) and Putrajaya line (yellow).",
+      "example": "MRT lebih senyap daripada LRT.",
+      "exampleEnglish": "\"MRT is quieter than LRT\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "monorel",
+      "romanization": "mo.no.rel",
+      "nativeText": "KL MONORAIL. Connects KL Sentral, Bukit Bintang, Titiwangsa. Short line, popular with tourists.",
+      "pronunciation": "mo.no.rel",
+      "exampleTarget": "Monorel ke Bukit Bintang.",
+      "exampleNative": "\"Monorail to Bukit Bintang\".",
+      "korean": "monorel",
+      "english": "KL MONORAIL. Connects KL Sentral, Bukit Bintang, Titiwangsa. Short line, popular with tourists.",
+      "example": "Monorel ke Bukit Bintang.",
+      "exampleEnglish": "\"Monorail to Bukit Bintang\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "teksi",
+      "romanization": "tek.si",
+      "nativeText": "TAXI. Traditional taxis (Comfort, Public, Sunlight) largely displaced by Grab.",
+      "pronunciation": "tek.si",
+      "exampleTarget": "Tempah teksi.",
+      "exampleNative": "\"Book a taxi\".",
+      "korean": "teksi",
+      "english": "TAXI. Traditional taxis (Comfort, Public, Sunlight) largely displaced by Grab.",
+      "example": "Tempah teksi.",
+      "exampleEnglish": "\"Book a taxi\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Grab",
+      "romanization": "greb",
+      "nativeText": "GRAB — ride-hailing app. Now also food delivery (GrabFood) and groceries (GrabMart).",
+      "pronunciation": "greb",
+      "exampleTarget": "Saya Grab ke KLIA.",
+      "exampleNative": "\"I Grab to KLIA\" — verbed in Manglish.",
+      "korean": "Grab",
+      "english": "GRAB — ride-hailing app. Now also food delivery (GrabFood) and groceries (GrabMart).",
+      "example": "Saya Grab ke KLIA.",
+      "exampleEnglish": "\"I Grab to KLIA\" — verbed in Manglish."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta api / KTM",
+      "romanization": "kə.re.ta a.pi / ke.te.em",
+      "nativeText": "TRAIN / KTM. \"Keretapi Tanah Melayu Berhad\" — the national rail. ETS (Electric Train Service) connects KL-Ipoh-Padang Besar.",
+      "pronunciation": "kə.re.ta a.pi / ke.te.em",
+      "exampleTarget": "KTM ETS dari KL ke Ipoh.",
+      "exampleNative": "\"KTM ETS from KL to Ipoh\".",
+      "korean": "kereta api / KTM",
+      "english": "TRAIN / KTM. \"Keretapi Tanah Melayu Berhad\" — the national rail. ETS (Electric Train Service) connects KL-Ipoh-Padang Besar.",
+      "example": "KTM ETS dari KL ke Ipoh.",
+      "exampleEnglish": "\"KTM ETS from KL to Ipoh\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kapal terbang / pesawat",
+      "romanization": "ka.pal tər.baŋ / pə.sa.wat",
+      "nativeText": "AIRPLANE. \"Kapal terbang\" (literal \"flying ship\") is everyday; \"pesawat\" is formal/technical.",
+      "pronunciation": "ka.pal tər.baŋ / pə.sa.wat",
+      "exampleTarget": "Naik kapal terbang ke Sabah.",
+      "exampleNative": "\"Take a plane to Sabah\".",
+      "korean": "kapal terbang / pesawat",
+      "english": "AIRPLANE. \"Kapal terbang\" (literal \"flying ship\") is everyday; \"pesawat\" is formal/technical.",
+      "example": "Naik kapal terbang ke Sabah.",
+      "exampleEnglish": "\"Take a plane to Sabah\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "untuk + noun",
+      "romanization": "un.tuʔ + noun",
+      "nativeText": "UNTUK + noun = \"for (someone/something)\". \"Hadiah untuk awak\" = \"gift for you\".",
+      "pronunciation": "un.tuʔ + noun",
+      "exampleTarget": "Hadiah untuk awak.",
+      "exampleNative": "\"Gift for you\".",
+      "korean": "untuk + noun",
+      "english": "UNTUK + noun = \"for (someone/something)\". \"Hadiah untuk awak\" = \"gift for you\".",
+      "example": "Hadiah untuk awak.",
+      "exampleEnglish": "\"Gift for you\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "untuk + verb",
+      "romanization": "un.tuʔ + verb",
+      "nativeText": "UNTUK + verb = \"in order to / to\". \"Saya pergi UNTUK belajar\" = \"I go to study\".",
+      "pronunciation": "un.tuʔ + verb",
+      "exampleTarget": "Saya datang ke UM untuk belajar Sains Komputer.",
+      "exampleNative": "\"I came to UM to study Computer Science\".",
+      "korean": "untuk + verb",
+      "english": "UNTUK + verb = \"in order to / to\". \"Saya pergi UNTUK belajar\" = \"I go to study\".",
+      "example": "Saya datang ke UM untuk belajar Sains Komputer.",
+      "exampleEnglish": "\"I came to UM to study Computer Science\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "demi — for the sake of",
+      "romanization": "de.mi",
+      "nativeText": "DEMI = \"for the sake of\" — more emotional/formal than untuk.",
+      "pronunciation": "de.mi",
+      "exampleTarget": "Saya bekerja keras demi keluarga.",
+      "exampleNative": "\"I work hard for the family's sake\".",
+      "korean": "demi — for the sake of",
+      "english": "DEMI = \"for the sake of\" — more emotional/formal than untuk.",
+      "example": "Saya bekerja keras demi keluarga.",
+      "exampleEnglish": "\"I work hard for the family's sake\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "mahu",
+      "romanization": "ma.hu",
+      "nativeText": "WANT (formal). \"Saya MAHU pergi ke Melaka\" = \"I want to go to Melaka\". The textbook form.",
+      "pronunciation": "ma.hu",
+      "exampleTarget": "Saya mahu makan nasi lemak.",
+      "exampleNative": "\"I want to eat nasi lemak\".",
+      "korean": "mahu",
+      "english": "WANT (formal). \"Saya MAHU pergi ke Melaka\" = \"I want to go to Melaka\". The textbook form.",
+      "example": "Saya mahu makan nasi lemak.",
+      "exampleEnglish": "\"I want to eat nasi lemak\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "nak",
+      "romanization": "naʔ",
+      "nativeText": "WANT (casual). The everyday spoken version of \"mahu\". \"Saya NAK pergi pasar\" = \"I wanna go to the market\".",
+      "pronunciation": "naʔ",
+      "exampleTarget": "Nak pergi mana?",
+      "exampleNative": "\"Where you wanna go?\" — casual.",
+      "korean": "nak",
+      "english": "WANT (casual). The everyday spoken version of \"mahu\". \"Saya NAK pergi pasar\" = \"I wanna go to the market\".",
+      "example": "Nak pergi mana?",
+      "exampleEnglish": "\"Where you wanna go?\" — casual."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "hendak",
+      "romanization": "hən.daʔ",
+      "nativeText": "WANT / WILL (formal-written). Used in laws, contracts, formal documents.",
+      "pronunciation": "hən.daʔ",
+      "exampleTarget": "Saya hendak menyatakan bahawa…",
+      "exampleNative": "\"I would like to state that…\" — formal opener.",
+      "korean": "hendak",
+      "english": "WANT / WILL (formal-written). Used in laws, contracts, formal documents.",
+      "example": "Saya hendak menyatakan bahawa…",
+      "exampleEnglish": "\"I would like to state that…\" — formal opener."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "akan — will",
+      "romanization": "a.kan",
+      "nativeText": "AKAN = future marker \"will\". \"Saya AKAN pergi\" = \"I will go\". Distinct from mahu (want).",
+      "pronunciation": "a.kan",
+      "exampleTarget": "Saya akan datang esok.",
+      "exampleNative": "\"I will come tomorrow\".",
+      "korean": "akan — will",
+      "english": "AKAN = future marker \"will\". \"Saya AKAN pergi\" = \"I will go\". Distinct from mahu (want).",
+      "example": "Saya akan datang esok.",
+      "exampleEnglish": "\"I will come tomorrow\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "pergi ke + dengan",
+      "romanization": "pər.gi kə + də.ŋan",
+      "nativeText": "JOURNEY FRAME: \"Saya PERGI KE [place] DENGAN [transport]\". \"Saya pergi ke KLCC dengan LRT\".",
+      "pronunciation": "pər.gi kə + də.ŋan",
+      "exampleTarget": "Saya pergi ke pejabat dengan motosikal.",
+      "exampleNative": "\"I go to the office by motorcycle\".",
+      "korean": "pergi ke + dengan",
+      "english": "JOURNEY FRAME: \"Saya PERGI KE [place] DENGAN [transport]\". \"Saya pergi ke KLCC dengan LRT\".",
+      "example": "Saya pergi ke pejabat dengan motosikal.",
+      "exampleEnglish": "\"I go to the office by motorcycle\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "dari … ke …",
+      "romanization": "da.ri … kə …",
+      "nativeText": "FROM-TO. \"Dari UM ke KLCC ambil 30 minit dengan LRT\" = \"From UM to KLCC takes 30 minutes by LRT\".",
+      "pronunciation": "da.ri … kə …",
+      "exampleTarget": "Dari KL ke Penang naik kapal terbang ambil sejam.",
+      "exampleNative": "\"From KL to Penang by plane takes an hour\".",
+      "korean": "dari … ke …",
+      "english": "FROM-TO. \"Dari UM ke KLCC ambil 30 minit dengan LRT\" = \"From UM to KLCC takes 30 minutes by LRT\".",
+      "example": "Dari KL ke Penang naik kapal terbang ambil sejam.",
+      "exampleEnglish": "\"From KL to Penang by plane takes an hour\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Itinerari Melaka",
+      "romanization": "i.ti.nə.ra.ri mə.la.ka",
+      "nativeText": "Day-trip itinerary KL → Melaka.",
+      "pronunciation": "i.ti.nə.ra.ri mə.la.ka",
+      "exampleTarget": "Kami berlepas dari KL Sentral pukul 8 pagi dengan bas ekspres. Selepas dua jam perjalanan, kami sampai di stesen bas Melaka Sentral. Kami naik teksi ke A'Famosa untuk melawat kubu lama Portugis. Selepas itu kami berjalan kaki ke Jonker Street untuk makan tengah hari — nasi ayam Hainan dan cendol. Petang kami pulang ke KL dengan bas yang sama.",
+      "exampleNative": "A Melaka day-trip narrative.",
+      "korean": "Itinerari Melaka",
+      "english": "Day-trip itinerary KL → Melaka.",
+      "example": "Kami berlepas dari KL Sentral pukul 8 pagi dengan bas ekspres. Selepas dua jam perjalanan, kami sampai di stesen bas Melaka Sentral. Kami naik teksi ke A'Famosa untuk melawat kubu lama Portugis. Selepas itu kami berjalan kaki ke Jonker Street untuk makan tengah hari — nasi ayam Hainan dan cendol. Petang kami pulang ke KL dengan bas yang sama.",
+      "exampleEnglish": "A Melaka day-trip narrative."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Soalan kefahaman",
+      "romanization": "so.a.lan kə.fa.ha.man",
+      "nativeText": "Trip questions that make the learner recover departure time, transport, meal location, and duration from the itinerary.",
+      "pronunciation": "so.a.lan kə.fa.ha.man",
+      "exampleTarget": "Q1: Mereka berlepas pukul berapa? Q2: Dengan apa mereka pergi ke A'Famosa? Q3: Di mana mereka makan? Q4: Berapa lama perjalanan?",
+      "exampleNative": "Answering in complete sentences rehearses the same travel grammar needed for real planning conversations.",
+      "korean": "Soalan kefahaman",
+      "english": "Trip questions that make the learner recover departure time, transport, meal location, and duration from the itinerary.",
+      "example": "Q1: Mereka berlepas pukul berapa? Q2: Dengan apa mereka pergi ke A'Famosa? Q3: Di mana mereka makan? Q4: Berapa lama perjalanan?",
+      "exampleEnglish": "Answering in complete sentences rehearses the same travel grammar needed for real planning conversations."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Dialog: tempah Grab",
+      "romanization": "di.a.log: təm.pah greb",
+      "nativeText": "Booking a Grab via the app.",
+      "pronunciation": "di.a.log: təm.pah greb",
+      "exampleTarget": "Sarah: Helo, abang. Saya nak ke KL Sentral.\nPemandu Grab: OK, dari mana? Lokasi pickup awak?\nSarah: Saya di hadapan Hotel Mandarin Oriental KLCC.\nPemandu: Baik, saya akan sampai dalam lima minit. Kereta Honda City warna putih.\nSarah: Baik, terima kasih.",
+      "exampleNative": "5-turn Grab booking dialogue.",
+      "korean": "Dialog: tempah Grab",
+      "english": "Booking a Grab via the app.",
+      "example": "Sarah: Helo, abang. Saya nak ke KL Sentral.\nPemandu Grab: OK, dari mana? Lokasi pickup awak?\nSarah: Saya di hadapan Hotel Mandarin Oriental KLCC.\nPemandu: Baik, saya akan sampai dalam lima minit. Kereta Honda City warna putih.\nSarah: Baik, terima kasih.",
+      "exampleEnglish": "5-turn Grab booking dialogue."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Tulis: rancangan perjalanan",
+      "romanization": "tu.lis: ran.tʃa.ŋan pər.dʒa.la.nan",
+      "nativeText": "Weekend trip plan template.",
+      "pronunciation": "tu.lis: ran.tʃa.ŋan pər.dʒa.la.nan",
+      "exampleTarget": "Template: Hujung minggu ini saya ___. Saya akan pergi dengan ___. Pertama, saya akan ___. Kemudian ___. Akhirnya saya balik ___. Tujuan saya ialah untuk ___.",
+      "exampleNative": "Use sequence + untuk.",
+      "korean": "Tulis: rancangan perjalanan",
+      "english": "Weekend trip plan template.",
+      "example": "Template: Hujung minggu ini saya ___. Saya akan pergi dengan ___. Pertama, saya akan ___. Kemudian ___. Akhirnya saya balik ___. Tujuan saya ialah untuk ___.",
+      "exampleEnglish": "Use sequence + untuk."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Sistem LRT/MRT Lembah Klang",
+      "romanization": "sis.tem el.ar.ti em.ar.ti",
+      "nativeText": "KL urban rail: LRT Kelana Jaya line (1998), LRT Ampang/Sri Petaling (1996), KL Monorail (2003), MRT Kajang (2017), MRT Putrajaya (2022). Plus KTM Komuter and ETS. Now one of SE Asia's most extensive networks.",
+      "pronunciation": "sis.tem el.ar.ti em.ar.ti",
+      "exampleTarget": "Lembah Klang ada rangkaian rel yang lengkap.",
+      "exampleNative": "\"The Klang Valley has a comprehensive rail network\".",
+      "korean": "Sistem LRT/MRT Lembah Klang",
+      "english": "KL urban rail: LRT Kelana Jaya line (1998), LRT Ampang/Sri Petaling (1996), KL Monorail (2003), MRT Kajang (2017), MRT Putrajaya (2022). Plus KTM Komuter and ETS. Now one of SE Asia's most extensive networks.",
+      "example": "Lembah Klang ada rangkaian rel yang lengkap.",
+      "exampleEnglish": "\"The Klang Valley has a comprehensive rail network\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Balik kampung",
+      "romanization": "ba.liʔ kam.puŋ",
+      "nativeText": "During Hari Raya (and CNY/Deepavali), millions of urban Malaysians \"balik kampung\" — return to their rural hometowns. PLUS Expressway becomes massively congested; the federal government issues special holiday advisories. The world's largest annual road exodus on a population-percentage basis.",
+      "pronunciation": "ba.liʔ kam.puŋ",
+      "exampleTarget": "Saya balik kampung di Kelantan setiap Hari Raya.",
+      "exampleNative": "\"I return to my village in Kelantan every Hari Raya\".",
+      "korean": "Balik kampung",
+      "english": "During Hari Raya (and CNY/Deepavali), millions of urban Malaysians \"balik kampung\" — return to their rural hometowns. PLUS Expressway becomes massively congested; the federal government issues special holiday advisories. The world's largest annual road exodus on a population-percentage basis.",
+      "example": "Saya balik kampung di Kelantan setiap Hari Raya.",
+      "exampleEnglish": "\"I return to my village in Kelantan every Hari Raya\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "AirAsia — Borneo bridge",
+      "romanization": "air.a.si.a",
+      "nativeText": "AirAsia (founded 2001 in KL) made domestic air travel affordable, connecting KL to Sabah/Sarawak. Before AirAsia, only the rich flew to Borneo. Now ordinary Malaysians visit easily.",
+      "pronunciation": "air.a.si.a",
+      "exampleTarget": "Saya terbang ke Kuching dengan AirAsia.",
+      "exampleNative": "\"I fly to Kuching with AirAsia\".",
+      "korean": "AirAsia — Borneo bridge",
+      "english": "AirAsia (founded 2001 in KL) made domestic air travel affordable, connecting KL to Sabah/Sarawak. Before AirAsia, only the rich flew to Borneo. Now ordinary Malaysians visit easily.",
+      "example": "Saya terbang ke Kuching dengan AirAsia.",
+      "exampleEnglish": "\"I fly to Kuching with AirAsia\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Tugasan: rancang Penang trip",
+      "romanization": "tu.ga.san: ran.tʃaŋ pi.naŋ trip",
+      "nativeText": "Roleplay planning a Penang weekend.",
+      "pronunciation": "tu.ga.san: ran.tʃaŋ pi.naŋ trip",
+      "exampleTarget": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleNative": "Use transport modes, ke/dari/untuk, mahu/nak.",
+      "korean": "Tugasan: rancang Penang trip",
+      "english": "Roleplay planning a Penang weekend.",
+      "example": "Scene: Awak dan kawan nak ke Penang hujung minggu.",
+      "exampleEnglish": "Use transport modes, ke/dari/untuk, mahu/nak."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Perjalanan KL ke Melaka dua jam.",
+      "romanization": "pər.dʒa.la.nan",
+      "nativeText": "Model use for \"perjalanan\": JOURNEY / TRIP. ber- + jalan + -an. The general word for any trip.",
+      "pronunciation": "pər.dʒa.la.nan",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "\"The KL-Melaka journey is two hours\".",
+      "korean": "Perjalanan KL ke Melaka dua jam.",
+      "english": "Model use for \"perjalanan\": JOURNEY / TRIP. ber- + jalan + -an. The general word for any trip.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "\"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "pər.dʒa.la.nan",
+      "nativeText": "Usage focus for \"perjalanan\": JOURNEY / TRIP. ber- + jalan + -an. The general word for any trip.",
+      "pronunciation": "pər.dʒa.la.nan",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "Notice what the form is doing here: \"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "Usage focus for \"perjalanan\": JOURNEY / TRIP. ber- + jalan + -an. The general word for any trip.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "Notice what the form is doing here: \"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "pər.dʒa.la.nan",
+      "nativeText": "Contrast check for \"perjalanan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pər.dʒa.la.nan",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "Contrast check for \"perjalanan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "pər.dʒa.la.nan",
+      "nativeText": "Recall \"perjalanan\" from memory, then explain what would change if a nearby alternative replaced it in \"Perjalanan KL ke Melaka dua jam.\".",
+      "pronunciation": "pər.dʒa.la.nan",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "Self-check against the model before moving on: \"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "Recall \"perjalanan\" from memory, then explain what would change if a nearby alternative replaced it in \"Perjalanan KL ke Melaka dua jam.\".",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "Self-check against the model before moving on: \"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "pər.dʒa.la.nan",
+      "nativeText": "Repair \"perjalanan\" inside \"Perjalanan KL ke Melaka dua jam.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: JOURNEY / TRIP. ber- + jalan + -an. The general word for any trip.",
+      "pronunciation": "pər.dʒa.la.nan",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "Use the model as the repair target: \"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "Repair \"perjalanan\" inside \"Perjalanan KL ke Melaka dua jam.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: JOURNEY / TRIP. ber- + jalan + -an. The general word for any trip.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "Use the model as the repair target: \"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "pər.dʒa.la.nan",
+      "nativeText": "Transfer \"perjalanan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Perjalanan KL ke Melaka dua jam.\".",
+      "pronunciation": "pər.dʒa.la.nan",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "Transfer \"perjalanan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Perjalanan KL ke Melaka dua jam.\".",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "pər.dʒa.la.nan",
+      "nativeText": "Find one word or phrase that naturally travels with \"perjalanan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pər.dʒa.la.nan",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "Find one word or phrase that naturally travels with \"perjalanan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "pər.dʒa.la.nan",
+      "nativeText": "Listen for \"perjalanan\" inside \"Perjalanan KL ke Melaka dua jam.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pər.dʒa.la.nan",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "Listen for \"perjalanan\" inside \"Perjalanan KL ke Melaka dua jam.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "pər.dʒa.la.nan",
+      "nativeText": "Write \"perjalanan\" again without looking, then compare the exact written form against \"Perjalanan KL ke Melaka dua jam.\" before moving on.",
+      "pronunciation": "pər.dʒa.la.nan",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "Use the written model as the final correctness check: \"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "Write \"perjalanan\" again without looking, then compare the exact written form against \"Perjalanan KL ke Melaka dua jam.\" before moving on.",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "perjalanan",
+      "romanization": "pər.dʒa.la.nan",
+      "nativeText": "Check whether \"perjalanan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The KL-Melaka journey is two hours\".",
+      "pronunciation": "pər.dʒa.la.nan",
+      "exampleTarget": "Perjalanan KL ke Melaka dua jam.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"The KL-Melaka journey is two hours\".",
+      "korean": "perjalanan",
+      "english": "Check whether \"perjalanan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The KL-Melaka journey is two hours\".",
+      "example": "Perjalanan KL ke Melaka dua jam.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"The KL-Melaka journey is two hours\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Kereta saya Proton Saga.",
+      "romanization": "kə.re.ta",
+      "nativeText": "Model use for \"kereta\": CAR. MY-specific; ID uses \"mobil\". Schwa in ke-, full /re/, /ta/.",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "\"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "Kereta saya Proton Saga.",
+      "english": "Model use for \"kereta\": CAR. MY-specific; ID uses \"mobil\". Schwa in ke-, full /re/, /ta/.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "\"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta",
+      "romanization": "kə.re.ta",
+      "nativeText": "Usage focus for \"kereta\": CAR. MY-specific; ID uses \"mobil\". Schwa in ke-, full /re/, /ta/.",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "Notice what the form is doing here: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "Usage focus for \"kereta\": CAR. MY-specific; ID uses \"mobil\". Schwa in ke-, full /re/, /ta/.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "Notice what the form is doing here: \"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta",
+      "romanization": "kə.re.ta",
+      "nativeText": "Contrast check for \"kereta\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "Contrast check for \"kereta\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta",
+      "romanization": "kə.re.ta",
+      "nativeText": "Recall \"kereta\" from memory, then explain what would change if a nearby alternative replaced it in \"Kereta saya Proton Saga.\".",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "Self-check against the model before moving on: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "Recall \"kereta\" from memory, then explain what would change if a nearby alternative replaced it in \"Kereta saya Proton Saga.\".",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "Self-check against the model before moving on: \"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta",
+      "romanization": "kə.re.ta",
+      "nativeText": "Repair \"kereta\" inside \"Kereta saya Proton Saga.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: CAR. MY-specific; ID uses \"mobil\". Schwa in ke-, full /re/, /ta/.",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "Use the model as the repair target: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "Repair \"kereta\" inside \"Kereta saya Proton Saga.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: CAR. MY-specific; ID uses \"mobil\". Schwa in ke-, full /re/, /ta/.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "Use the model as the repair target: \"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta",
+      "romanization": "kə.re.ta",
+      "nativeText": "Transfer \"kereta\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kereta saya Proton Saga.\".",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "Transfer \"kereta\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kereta saya Proton Saga.\".",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta",
+      "romanization": "kə.re.ta",
+      "nativeText": "Find one word or phrase that naturally travels with \"kereta\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "Find one word or phrase that naturally travels with \"kereta\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta",
+      "romanization": "kə.re.ta",
+      "nativeText": "Listen for \"kereta\" inside \"Kereta saya Proton Saga.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "Listen for \"kereta\" inside \"Kereta saya Proton Saga.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta",
+      "romanization": "kə.re.ta",
+      "nativeText": "Write \"kereta\" again without looking, then compare the exact written form against \"Kereta saya Proton Saga.\" before moving on.",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "Use the written model as the final correctness check: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "Write \"kereta\" again without looking, then compare the exact written form against \"Kereta saya Proton Saga.\" before moving on.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "kereta",
+      "romanization": "kə.re.ta",
+      "nativeText": "Check whether \"kereta\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "pronunciation": "kə.re.ta",
+      "exampleTarget": "Kereta saya Proton Saga.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "korean": "kereta",
+      "english": "Check whether \"kereta\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"My car is a Proton Saga\" — Malaysia's national car brand.",
+      "example": "Kereta saya Proton Saga.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"My car is a Proton Saga\" — Malaysia's national car brand."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT ke KLCC paling laju.",
+      "romanization": "el.ar.ti / em.ar.ti",
+      "nativeText": "Model use for \"LRT / MRT\": Klang Valley urban rail — LRT (Light Rail Transit, opened 1996) and MRT (Mass Rapid Transit, opened 2017). Backbone of KL commuting.",
+      "pronunciation": "el.ar.ti / em.ar.ti",
+      "exampleTarget": "LRT ke KLCC paling laju.",
+      "exampleNative": "\"LRT to KLCC is fastest\".",
+      "korean": "LRT ke KLCC paling laju.",
+      "english": "Model use for \"LRT / MRT\": Klang Valley urban rail — LRT (Light Rail Transit, opened 1996) and MRT (Mass Rapid Transit, opened 2017). Backbone of KL commuting.",
+      "example": "LRT ke KLCC paling laju.",
+      "exampleEnglish": "\"LRT to KLCC is fastest\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT / MRT",
+      "romanization": "el.ar.ti / em.ar.ti",
+      "nativeText": "Usage focus for \"LRT / MRT\": Klang Valley urban rail — LRT (Light Rail Transit, opened 1996) and MRT (Mass Rapid Transit, opened 2017). Backbone of KL commuting.",
+      "pronunciation": "el.ar.ti / em.ar.ti",
+      "exampleTarget": "LRT ke KLCC paling laju.",
+      "exampleNative": "Notice what the form is doing here: \"LRT to KLCC is fastest\".",
+      "korean": "LRT / MRT",
+      "english": "Usage focus for \"LRT / MRT\": Klang Valley urban rail — LRT (Light Rail Transit, opened 1996) and MRT (Mass Rapid Transit, opened 2017). Backbone of KL commuting.",
+      "example": "LRT ke KLCC paling laju.",
+      "exampleEnglish": "Notice what the form is doing here: \"LRT to KLCC is fastest\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT / MRT",
+      "romanization": "el.ar.ti / em.ar.ti",
+      "nativeText": "Contrast check for \"LRT / MRT\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "el.ar.ti / em.ar.ti",
+      "exampleTarget": "LRT ke KLCC paling laju.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"LRT to KLCC is fastest\".",
+      "korean": "LRT / MRT",
+      "english": "Contrast check for \"LRT / MRT\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "LRT ke KLCC paling laju.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"LRT to KLCC is fastest\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT / MRT",
+      "romanization": "el.ar.ti / em.ar.ti",
+      "nativeText": "Recall \"LRT / MRT\" from memory, then explain what would change if a nearby alternative replaced it in \"LRT ke KLCC paling laju.\".",
+      "pronunciation": "el.ar.ti / em.ar.ti",
+      "exampleTarget": "LRT ke KLCC paling laju.",
+      "exampleNative": "Self-check against the model before moving on: \"LRT to KLCC is fastest\".",
+      "korean": "LRT / MRT",
+      "english": "Recall \"LRT / MRT\" from memory, then explain what would change if a nearby alternative replaced it in \"LRT ke KLCC paling laju.\".",
+      "example": "LRT ke KLCC paling laju.",
+      "exampleEnglish": "Self-check against the model before moving on: \"LRT to KLCC is fastest\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT / MRT",
+      "romanization": "el.ar.ti / em.ar.ti",
+      "nativeText": "Repair \"LRT / MRT\" inside \"LRT ke KLCC paling laju.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Klang Valley urban rail — LRT (Light Rail Transit, opened 1996) and MRT (Mass Rapid Transit, opened 2017). Backbone of KL commuting.",
+      "pronunciation": "el.ar.ti / em.ar.ti",
+      "exampleTarget": "LRT ke KLCC paling laju.",
+      "exampleNative": "Use the model as the repair target: \"LRT to KLCC is fastest\".",
+      "korean": "LRT / MRT",
+      "english": "Repair \"LRT / MRT\" inside \"LRT ke KLCC paling laju.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Klang Valley urban rail — LRT (Light Rail Transit, opened 1996) and MRT (Mass Rapid Transit, opened 2017). Backbone of KL commuting.",
+      "example": "LRT ke KLCC paling laju.",
+      "exampleEnglish": "Use the model as the repair target: \"LRT to KLCC is fastest\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT / MRT",
+      "romanization": "el.ar.ti / em.ar.ti",
+      "nativeText": "Transfer \"LRT / MRT\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"LRT ke KLCC paling laju.\".",
+      "pronunciation": "el.ar.ti / em.ar.ti",
+      "exampleTarget": "LRT ke KLCC paling laju.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"LRT to KLCC is fastest\".",
+      "korean": "LRT / MRT",
+      "english": "Transfer \"LRT / MRT\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"LRT ke KLCC paling laju.\".",
+      "example": "LRT ke KLCC paling laju.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"LRT to KLCC is fastest\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT / MRT",
+      "romanization": "el.ar.ti / em.ar.ti",
+      "nativeText": "Find one word or phrase that naturally travels with \"LRT / MRT\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "el.ar.ti / em.ar.ti",
+      "exampleTarget": "LRT ke KLCC paling laju.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"LRT to KLCC is fastest\".",
+      "korean": "LRT / MRT",
+      "english": "Find one word or phrase that naturally travels with \"LRT / MRT\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "LRT ke KLCC paling laju.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"LRT to KLCC is fastest\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT / MRT",
+      "romanization": "el.ar.ti / em.ar.ti",
+      "nativeText": "Listen for \"LRT / MRT\" inside \"LRT ke KLCC paling laju.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "el.ar.ti / em.ar.ti",
+      "exampleTarget": "LRT ke KLCC paling laju.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"LRT to KLCC is fastest\".",
+      "korean": "LRT / MRT",
+      "english": "Listen for \"LRT / MRT\" inside \"LRT ke KLCC paling laju.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "LRT ke KLCC paling laju.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"LRT to KLCC is fastest\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT / MRT",
+      "romanization": "el.ar.ti / em.ar.ti",
+      "nativeText": "Write \"LRT / MRT\" again without looking, then compare the exact written form against \"LRT ke KLCC paling laju.\" before moving on.",
+      "pronunciation": "el.ar.ti / em.ar.ti",
+      "exampleTarget": "LRT ke KLCC paling laju.",
+      "exampleNative": "Use the written model as the final correctness check: \"LRT to KLCC is fastest\".",
+      "korean": "LRT / MRT",
+      "english": "Write \"LRT / MRT\" again without looking, then compare the exact written form against \"LRT ke KLCC paling laju.\" before moving on.",
+      "example": "LRT ke KLCC paling laju.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"LRT to KLCC is fastest\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "LRT / MRT",
+      "romanization": "el.ar.ti / em.ar.ti",
+      "nativeText": "Check whether \"LRT / MRT\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"LRT to KLCC is fastest\".",
+      "pronunciation": "el.ar.ti / em.ar.ti",
+      "exampleTarget": "LRT ke KLCC paling laju.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"LRT to KLCC is fastest\".",
+      "korean": "LRT / MRT",
+      "english": "Check whether \"LRT / MRT\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"LRT to KLCC is fastest\".",
+      "example": "LRT ke KLCC paling laju.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"LRT to KLCC is fastest\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Tempah Grab dari aplikasi.",
+      "romanization": "greb",
+      "nativeText": "Model use for \"Grab\": GRAB — SE Asian ride-hailing app (formerly MyTeksi). The dominant taxi app in Malaysia, replacing traditional teksi.",
+      "pronunciation": "greb",
+      "exampleTarget": "Tempah Grab dari aplikasi.",
+      "exampleNative": "\"Book Grab from the app\".",
+      "korean": "Tempah Grab dari aplikasi.",
+      "english": "Model use for \"Grab\": GRAB — SE Asian ride-hailing app (formerly MyTeksi). The dominant taxi app in Malaysia, replacing traditional teksi.",
+      "example": "Tempah Grab dari aplikasi.",
+      "exampleEnglish": "\"Book Grab from the app\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Grab",
+      "romanization": "greb",
+      "nativeText": "Usage focus for \"Grab\": GRAB — SE Asian ride-hailing app (formerly MyTeksi). The dominant taxi app in Malaysia, replacing traditional teksi.",
+      "pronunciation": "greb",
+      "exampleTarget": "Tempah Grab dari aplikasi.",
+      "exampleNative": "Notice what the form is doing here: \"Book Grab from the app\".",
+      "korean": "Grab",
+      "english": "Usage focus for \"Grab\": GRAB — SE Asian ride-hailing app (formerly MyTeksi). The dominant taxi app in Malaysia, replacing traditional teksi.",
+      "example": "Tempah Grab dari aplikasi.",
+      "exampleEnglish": "Notice what the form is doing here: \"Book Grab from the app\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Grab",
+      "romanization": "greb",
+      "nativeText": "Contrast check for \"Grab\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "greb",
+      "exampleTarget": "Tempah Grab dari aplikasi.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Book Grab from the app\".",
+      "korean": "Grab",
+      "english": "Contrast check for \"Grab\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Tempah Grab dari aplikasi.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Book Grab from the app\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Grab",
+      "romanization": "greb",
+      "nativeText": "Recall \"Grab\" from memory, then explain what would change if a nearby alternative replaced it in \"Tempah Grab dari aplikasi.\".",
+      "pronunciation": "greb",
+      "exampleTarget": "Tempah Grab dari aplikasi.",
+      "exampleNative": "Self-check against the model before moving on: \"Book Grab from the app\".",
+      "korean": "Grab",
+      "english": "Recall \"Grab\" from memory, then explain what would change if a nearby alternative replaced it in \"Tempah Grab dari aplikasi.\".",
+      "example": "Tempah Grab dari aplikasi.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Book Grab from the app\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Grab",
+      "romanization": "greb",
+      "nativeText": "Repair \"Grab\" inside \"Tempah Grab dari aplikasi.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: GRAB — SE Asian ride-hailing app (formerly MyTeksi). The dominant taxi app in Malaysia, replacing traditional teksi.",
+      "pronunciation": "greb",
+      "exampleTarget": "Tempah Grab dari aplikasi.",
+      "exampleNative": "Use the model as the repair target: \"Book Grab from the app\".",
+      "korean": "Grab",
+      "english": "Repair \"Grab\" inside \"Tempah Grab dari aplikasi.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: GRAB — SE Asian ride-hailing app (formerly MyTeksi). The dominant taxi app in Malaysia, replacing traditional teksi.",
+      "example": "Tempah Grab dari aplikasi.",
+      "exampleEnglish": "Use the model as the repair target: \"Book Grab from the app\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Grab",
+      "romanization": "greb",
+      "nativeText": "Transfer \"Grab\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Tempah Grab dari aplikasi.\".",
+      "pronunciation": "greb",
+      "exampleTarget": "Tempah Grab dari aplikasi.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Book Grab from the app\".",
+      "korean": "Grab",
+      "english": "Transfer \"Grab\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Tempah Grab dari aplikasi.\".",
+      "example": "Tempah Grab dari aplikasi.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Book Grab from the app\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Grab",
+      "romanization": "greb",
+      "nativeText": "Find one word or phrase that naturally travels with \"Grab\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "greb",
+      "exampleTarget": "Tempah Grab dari aplikasi.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Book Grab from the app\".",
+      "korean": "Grab",
+      "english": "Find one word or phrase that naturally travels with \"Grab\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Tempah Grab dari aplikasi.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Book Grab from the app\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Grab",
+      "romanization": "greb",
+      "nativeText": "Listen for \"Grab\" inside \"Tempah Grab dari aplikasi.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "greb",
+      "exampleTarget": "Tempah Grab dari aplikasi.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Book Grab from the app\".",
+      "korean": "Grab",
+      "english": "Listen for \"Grab\" inside \"Tempah Grab dari aplikasi.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Tempah Grab dari aplikasi.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Book Grab from the app\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Grab",
+      "romanization": "greb",
+      "nativeText": "Write \"Grab\" again without looking, then compare the exact written form against \"Tempah Grab dari aplikasi.\" before moving on.",
+      "pronunciation": "greb",
+      "exampleTarget": "Tempah Grab dari aplikasi.",
+      "exampleNative": "Use the written model as the final correctness check: \"Book Grab from the app\".",
+      "korean": "Grab",
+      "english": "Write \"Grab\" again without looking, then compare the exact written form against \"Tempah Grab dari aplikasi.\" before moving on.",
+      "example": "Tempah Grab dari aplikasi.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Book Grab from the app\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Grab",
+      "romanization": "greb",
+      "nativeText": "Check whether \"Grab\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Book Grab from the app\".",
+      "pronunciation": "greb",
+      "exampleTarget": "Tempah Grab dari aplikasi.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Book Grab from the app\".",
+      "korean": "Grab",
+      "english": "Check whether \"Grab\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Book Grab from the app\".",
+      "example": "Tempah Grab dari aplikasi.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Book Grab from the app\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Pergi ke kerja.",
+      "romanization": "pər.gi",
+      "nativeText": "Model use for \"pergi\": GO. The all-purpose motion verb. \"Saya pergi ke pasar\" = \"I go to the market\".",
+      "pronunciation": "pər.gi",
+      "exampleTarget": "Pergi ke kerja.",
+      "exampleNative": "\"Go to work\".",
+      "korean": "Pergi ke kerja.",
+      "english": "Model use for \"pergi\": GO. The all-purpose motion verb. \"Saya pergi ke pasar\" = \"I go to the market\".",
+      "example": "Pergi ke kerja.",
+      "exampleEnglish": "\"Go to work\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "pergi",
+      "romanization": "pər.gi",
+      "nativeText": "Usage focus for \"pergi\": GO. The all-purpose motion verb. \"Saya pergi ke pasar\" = \"I go to the market\".",
+      "pronunciation": "pər.gi",
+      "exampleTarget": "Pergi ke kerja.",
+      "exampleNative": "Notice what the form is doing here: \"Go to work\".",
+      "korean": "pergi",
+      "english": "Usage focus for \"pergi\": GO. The all-purpose motion verb. \"Saya pergi ke pasar\" = \"I go to the market\".",
+      "example": "Pergi ke kerja.",
+      "exampleEnglish": "Notice what the form is doing here: \"Go to work\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "pergi",
+      "romanization": "pər.gi",
+      "nativeText": "Contrast check for \"pergi\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pər.gi",
+      "exampleTarget": "Pergi ke kerja.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Go to work\".",
+      "korean": "pergi",
+      "english": "Contrast check for \"pergi\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Pergi ke kerja.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Go to work\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "pergi",
+      "romanization": "pər.gi",
+      "nativeText": "Recall \"pergi\" from memory, then explain what would change if a nearby alternative replaced it in \"Pergi ke kerja.\".",
+      "pronunciation": "pər.gi",
+      "exampleTarget": "Pergi ke kerja.",
+      "exampleNative": "Self-check against the model before moving on: \"Go to work\".",
+      "korean": "pergi",
+      "english": "Recall \"pergi\" from memory, then explain what would change if a nearby alternative replaced it in \"Pergi ke kerja.\".",
+      "example": "Pergi ke kerja.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Go to work\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "pergi",
+      "romanization": "pər.gi",
+      "nativeText": "Repair \"pergi\" inside \"Pergi ke kerja.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: GO. The all-purpose motion verb. \"Saya pergi ke pasar\" = \"I go to the market\".",
+      "pronunciation": "pər.gi",
+      "exampleTarget": "Pergi ke kerja.",
+      "exampleNative": "Use the model as the repair target: \"Go to work\".",
+      "korean": "pergi",
+      "english": "Repair \"pergi\" inside \"Pergi ke kerja.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: GO. The all-purpose motion verb. \"Saya pergi ke pasar\" = \"I go to the market\".",
+      "example": "Pergi ke kerja.",
+      "exampleEnglish": "Use the model as the repair target: \"Go to work\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "pergi",
+      "romanization": "pər.gi",
+      "nativeText": "Transfer \"pergi\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pergi ke kerja.\".",
+      "pronunciation": "pər.gi",
+      "exampleTarget": "Pergi ke kerja.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Go to work\".",
+      "korean": "pergi",
+      "english": "Transfer \"pergi\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pergi ke kerja.\".",
+      "example": "Pergi ke kerja.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Go to work\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "pergi",
+      "romanization": "pər.gi",
+      "nativeText": "Find one word or phrase that naturally travels with \"pergi\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pər.gi",
+      "exampleTarget": "Pergi ke kerja.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Go to work\".",
+      "korean": "pergi",
+      "english": "Find one word or phrase that naturally travels with \"pergi\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Pergi ke kerja.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Go to work\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "pergi",
+      "romanization": "pər.gi",
+      "nativeText": "Listen for \"pergi\" inside \"Pergi ke kerja.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pər.gi",
+      "exampleTarget": "Pergi ke kerja.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Go to work\".",
+      "korean": "pergi",
+      "english": "Listen for \"pergi\" inside \"Pergi ke kerja.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Pergi ke kerja.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Go to work\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "pergi",
+      "romanization": "pər.gi",
+      "nativeText": "Write \"pergi\" again without looking, then compare the exact written form against \"Pergi ke kerja.\" before moving on.",
+      "pronunciation": "pər.gi",
+      "exampleTarget": "Pergi ke kerja.",
+      "exampleNative": "Use the written model as the final correctness check: \"Go to work\".",
+      "korean": "pergi",
+      "english": "Write \"pergi\" again without looking, then compare the exact written form against \"Pergi ke kerja.\" before moving on.",
+      "example": "Pergi ke kerja.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Go to work\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "pergi",
+      "romanization": "pər.gi",
+      "nativeText": "Check whether \"pergi\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Go to work\".",
+      "pronunciation": "pər.gi",
+      "exampleTarget": "Pergi ke kerja.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Go to work\".",
+      "korean": "pergi",
+      "english": "Check whether \"pergi\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Go to work\".",
+      "example": "Pergi ke kerja.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Go to work\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "Balik kampung untuk Hari Raya.",
+      "romanization": "ba.liʔ",
+      "nativeText": "Model use for \"balik\": RETURN / GO BACK. Distinct from \"pulang\" (return — slightly more formal).",
+      "pronunciation": "ba.liʔ",
+      "exampleTarget": "Balik kampung untuk Hari Raya.",
+      "exampleNative": "\"Return to the village for Hari Raya\".",
+      "korean": "Balik kampung untuk Hari Raya.",
+      "english": "Model use for \"balik\": RETURN / GO BACK. Distinct from \"pulang\" (return — slightly more formal).",
+      "example": "Balik kampung untuk Hari Raya.",
+      "exampleEnglish": "\"Return to the village for Hari Raya\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "balik",
+      "romanization": "ba.liʔ",
+      "nativeText": "Usage focus for \"balik\": RETURN / GO BACK. Distinct from \"pulang\" (return — slightly more formal).",
+      "pronunciation": "ba.liʔ",
+      "exampleTarget": "Balik kampung untuk Hari Raya.",
+      "exampleNative": "Notice what the form is doing here: \"Return to the village for Hari Raya\".",
+      "korean": "balik",
+      "english": "Usage focus for \"balik\": RETURN / GO BACK. Distinct from \"pulang\" (return — slightly more formal).",
+      "example": "Balik kampung untuk Hari Raya.",
+      "exampleEnglish": "Notice what the form is doing here: \"Return to the village for Hari Raya\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "balik",
+      "romanization": "ba.liʔ",
+      "nativeText": "Contrast check for \"balik\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ba.liʔ",
+      "exampleTarget": "Balik kampung untuk Hari Raya.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Return to the village for Hari Raya\".",
+      "korean": "balik",
+      "english": "Contrast check for \"balik\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Balik kampung untuk Hari Raya.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Return to the village for Hari Raya\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "balik",
+      "romanization": "ba.liʔ",
+      "nativeText": "Recall \"balik\" from memory, then explain what would change if a nearby alternative replaced it in \"Balik kampung untuk Hari Raya.\".",
+      "pronunciation": "ba.liʔ",
+      "exampleTarget": "Balik kampung untuk Hari Raya.",
+      "exampleNative": "Self-check against the model before moving on: \"Return to the village for Hari Raya\".",
+      "korean": "balik",
+      "english": "Recall \"balik\" from memory, then explain what would change if a nearby alternative replaced it in \"Balik kampung untuk Hari Raya.\".",
+      "example": "Balik kampung untuk Hari Raya.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Return to the village for Hari Raya\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "balik",
+      "romanization": "ba.liʔ",
+      "nativeText": "Repair \"balik\" inside \"Balik kampung untuk Hari Raya.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: RETURN / GO BACK. Distinct from \"pulang\" (return — slightly more formal).",
+      "pronunciation": "ba.liʔ",
+      "exampleTarget": "Balik kampung untuk Hari Raya.",
+      "exampleNative": "Use the model as the repair target: \"Return to the village for Hari Raya\".",
+      "korean": "balik",
+      "english": "Repair \"balik\" inside \"Balik kampung untuk Hari Raya.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: RETURN / GO BACK. Distinct from \"pulang\" (return — slightly more formal).",
+      "example": "Balik kampung untuk Hari Raya.",
+      "exampleEnglish": "Use the model as the repair target: \"Return to the village for Hari Raya\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "balik",
+      "romanization": "ba.liʔ",
+      "nativeText": "Transfer \"balik\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Balik kampung untuk Hari Raya.\".",
+      "pronunciation": "ba.liʔ",
+      "exampleTarget": "Balik kampung untuk Hari Raya.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Return to the village for Hari Raya\".",
+      "korean": "balik",
+      "english": "Transfer \"balik\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Balik kampung untuk Hari Raya.\".",
+      "example": "Balik kampung untuk Hari Raya.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Return to the village for Hari Raya\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "balik",
+      "romanization": "ba.liʔ",
+      "nativeText": "Find one word or phrase that naturally travels with \"balik\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ba.liʔ",
+      "exampleTarget": "Balik kampung untuk Hari Raya.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Return to the village for Hari Raya\".",
+      "korean": "balik",
+      "english": "Find one word or phrase that naturally travels with \"balik\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Balik kampung untuk Hari Raya.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Return to the village for Hari Raya\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "balik",
+      "romanization": "ba.liʔ",
+      "nativeText": "Listen for \"balik\" inside \"Balik kampung untuk Hari Raya.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ba.liʔ",
+      "exampleTarget": "Balik kampung untuk Hari Raya.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Return to the village for Hari Raya\".",
+      "korean": "balik",
+      "english": "Listen for \"balik\" inside \"Balik kampung untuk Hari Raya.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Balik kampung untuk Hari Raya.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Return to the village for Hari Raya\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "balik",
+      "romanization": "ba.liʔ",
+      "nativeText": "Write \"balik\" again without looking, then compare the exact written form against \"Balik kampung untuk Hari Raya.\" before moving on.",
+      "pronunciation": "ba.liʔ",
+      "exampleTarget": "Balik kampung untuk Hari Raya.",
+      "exampleNative": "Use the written model as the final correctness check: \"Return to the village for Hari Raya\".",
+      "korean": "balik",
+      "english": "Write \"balik\" again without looking, then compare the exact written form against \"Balik kampung untuk Hari Raya.\" before moving on.",
+      "example": "Balik kampung untuk Hari Raya.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Return to the village for Hari Raya\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ms-level1unit07goingplaces-vocabulary-1",
+        "ms-level1unit07goingplaces-vocabulary-2",
+        "ms-level1unit07goingplaces-grammar-1",
+        "ms-level1unit07goingplaces-grammar-2",
+        "ms-level1unit07goingplaces-reading",
+        "ms-level1unit07goingplaces-listening",
+        "ms-level1unit07goingplaces-writing",
+        "ms-level1unit07goingplaces-task"
+      ],
+      "targetText": "balik",
+      "romanization": "ba.liʔ",
+      "nativeText": "Check whether \"balik\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Return to the village for Hari Raya\".",
+      "pronunciation": "ba.liʔ",
+      "exampleTarget": "Balik kampung untuk Hari Raya.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Return to the village for Hari Raya\".",
+      "korean": "balik",
+      "english": "Check whether \"balik\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Return to the village for Hari Raya\".",
+      "example": "Balik kampung untuk Hari Raya.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Return to the village for Hari Raya\"."
+    }
+  ]
 };
-
-module.exports = lesson;

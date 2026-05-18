@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u11',
-  title: 'Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling',
-  category: 'time',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Arrange meetings, talk about availability, and change plans politely.',
-  vocabularyGoal: 'Use meeting, schedule, clock-time, and availability words.',
-  grammarGoal: 'Use `-de/-da` for time, `uygun`, and proposal frames with `... mi?`.',
-  speakingGoal: 'Propose a time, accept or reject it, and offer another option.',
-  task: 'Schedule a study meeting with a classmate.',
-  expressionPractice: [
-    practice('proposing-time', 'Proposing time', 'Use one time plus question.'),
-    practice('accepting', 'Accepting', 'Use `uygun`.'),
-    practice('rescheduling', 'Rescheduling', 'Use `uygun değil` plus another option.'),
+module.exports = {
+  "title": "Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling",
+  "category": "time",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit11scheduling-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Arrange meetings, talk about availability, and change plans politely."
+      ],
+      "task": "Schedule a study meeting with a classmate."
+    },
+    {
+      "id": "tr-level1unit11scheduling-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit11scheduling-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit11scheduling-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit11scheduling-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Arrange meetings, talk about availability, and change plans politely."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit11scheduling-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit11scheduling-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit11scheduling-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit11scheduling-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit11scheduling-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit11scheduling-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Schedule a study meeting with a classmate."
+      ],
+      "task": "Schedule a study meeting with a classmate."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-planning'],
-  items: [
-    item('buluşma', 'bu-luş-MA', '“Meeting / get-together.” A common everyday noun.', 'Yarın bir buluşmam var.', '“Tomorrow I have a meeting.”'),
-    item('program', 'prog-RAM', '“Schedule / plan.” A useful everyday loanword.', 'Programım bugün dolu.', '“My schedule is full today.”'),
-    item('saat üçte', 'sa-AT üç-TE', '“At three o’clock.” The locative suffix follows vowel harmony and consonant voicing rules.', 'Ders saat üçte başlıyor.', '“Class starts at three.”'),
-    item('uygun', 'uy-GUN', '“Suitable / available.” A key scheduling adjective.', 'Akşam benim için uygun.', '“Evening works for me.”'),
-    item('uygun değilim', 'uy-GUN de-Ğİ-lim', '“I am not available.” A concise polite refusal.', 'Sabah uygun değilim.', '“I am not available in the morning.”'),
-    item('yarın görüşelim mi?', 'ya-RIN gö-rü-şe-LİM mi', '“Shall we meet tomorrow?” The question particle remains separate in writing.', 'Yarın görüşelim mi?', '“Shall we meet tomorrow?”'),
-    item('saati değiştirebilir miyiz?', 'sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ', '“Can we change the time?” Ability suffix plus question particle in a real task.', 'Saati değiştirebilir miyiz?', '“Can we change the time?”'),
-    item('tamam, anlaştık', 'ta-MAM an-laş-TIK', '“Okay, agreed.” A natural way to close the plan.', 'Tamam, anlaştık.', '“Okay, agreed.”'),
+  "expressionPractice": [
+    {
+      "id": "proposing-time",
+      "label": "Proposing time",
+      "goal": "Use one time plus question."
+    },
+    {
+      "id": "accepting",
+      "label": "Accepting",
+      "goal": "Use `uygun`."
+    },
+    {
+      "id": "rescheduling",
+      "label": "Rescheduling",
+      "goal": "Use `uygun değil` plus another option."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-time",
+    "topic-planning"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Arrange meetings, talk about availability, and change plans politely.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Schedule a study meeting with a classmate.",
+      "korean": "ders hedefi",
+      "english": "Arrange meetings, talk about availability, and change plans politely.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Schedule a study meeting with a classmate."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit11scheduling-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Yarın bir buluşmam var.\".",
+      "pronunciation": "",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Yarın bir buluşmam var.\".",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1"
+      ],
+      "targetText": "buluşma",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "Use the key language of Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with the register and setting that the lesson requires.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-2"
+      ],
+      "targetText": "program",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "program",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling sound precise rather than merely understandable.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit11scheduling-grammar-1"
+      ],
+      "targetText": "buluşma",
+      "romanization": "",
+      "nativeText": "Arrange meetings, talk about availability, and change plans politely.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "Arrange meetings, talk about availability, and change plans politely.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "program",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "program",
+      "english": "Contrast the main pattern in Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit11scheduling-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Tamam, anlaştık.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "“Okay, agreed.”",
+      "korean": "okuma modeli",
+      "english": "Read \"Tamam, anlaştık.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "“Okay, agreed.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit11scheduling-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Tamam, anlaştık.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "“Okay, agreed.”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Tamam, anlaştık.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "“Okay, agreed.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit11scheduling-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Yarın bir buluşmam var.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Yarın bir buluşmam var.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit11scheduling-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Schedule a study meeting with a classmate.",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "Schedule a study meeting with a classmate.",
+      "korean": "son görev",
+      "english": "Schedule a study meeting with a classmate.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "Schedule a study meeting with a classmate."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Programım bugün dolu.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “My schedule is full today.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Programım bugün dolu.\" against the model.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “My schedule is full today.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Yarın bir buluşmam var.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Yarın bir buluşmam var.\" before reusing it elsewhere.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Tamam, anlaştık.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "“Okay, agreed.”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Tamam, anlaştık.\" as one thought.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "“Okay, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Yarın bir buluşmam var.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Yarın bir buluşmam var.\" and move it into your own life.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"buluşma\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "buluşma",
+      "exampleNative": "“Meeting / get-together.” A common everyday noun.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"buluşma\" before looking back.",
+      "example": "buluşma",
+      "exampleEnglish": "“Meeting / get-together.” A common everyday noun."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Tamam, anlaştık.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Tamam, anlaştık.\" rather than restarting from a blank sentence.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Programım bugün dolu.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Programım bugün dolu.\" as the comparison line.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit11scheduling-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Yarın bir buluşmam var.\".",
+      "pronunciation": "",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Yarın bir buluşmam var.\".",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Tamam, anlaştık.\".",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "“Okay, agreed.”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Tamam, anlaştık.\".",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "“Okay, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Yarın bir buluşmam var.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Yarın bir buluşmam var.\" one layer at a time.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Programım bugün dolu.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Programım bugün dolu.\" as the deciding example.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-culture",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Tamam, anlaştık.\".",
+      "pronunciation": "",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "“Okay, agreed.”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Tamam, anlaştık.\".",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "“Okay, agreed.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "buluşma",
+      "romanization": "bu-luş-MA",
+      "nativeText": "“Meeting / get-together.” A common everyday noun.",
+      "pronunciation": "bu-luş-MA",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "“Meeting / get-together.” A common everyday noun.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "Yarın bir buluşmam var.",
+      "romanization": "bu-luş-MA",
+      "nativeText": "Model use for \"Yarın bir buluşmam var.\": “Tomorrow I have a meeting.”",
+      "pronunciation": "bu-luş-MA",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "Yarın bir buluşmam var.",
+      "english": "Model use for \"Yarın bir buluşmam var.\": “Tomorrow I have a meeting.”",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "buluşma",
+      "romanization": "bu-luş-MA",
+      "nativeText": "Usage focus for \"buluşma\": Use the key language of Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "bu-luş-MA",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "Notice what the form is doing here: “Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "Usage focus for \"buluşma\": Use the key language of Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with the register and setting that the lesson requires.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "Notice what the form is doing here: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "buluşma",
+      "romanization": "bu-luş-MA",
+      "nativeText": "Contrast check for \"buluşma\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bu-luş-MA",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "Contrast check for \"buluşma\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "buluşma",
+      "romanization": "bu-luş-MA",
+      "nativeText": "Recall \"buluşma\" from memory, then explain what would change if a nearby alternative replaced it in \"Yarın bir buluşmam var.\".",
+      "pronunciation": "bu-luş-MA",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "Self-check against the model before moving on: “Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "Recall \"buluşma\" from memory, then explain what would change if a nearby alternative replaced it in \"Yarın bir buluşmam var.\".",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "Self-check against the model before moving on: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "buluşma",
+      "romanization": "bu-luş-MA",
+      "nativeText": "Repair \"buluşma\" inside \"Yarın bir buluşmam var.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "bu-luş-MA",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "Use the model as the repair target: “Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "Repair \"buluşma\" inside \"Yarın bir buluşmam var.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling with the register and setting that the lesson requires.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "Use the model as the repair target: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "buluşma",
+      "romanization": "bu-luş-MA",
+      "nativeText": "Transfer \"buluşma\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Yarın bir buluşmam var.\".",
+      "pronunciation": "bu-luş-MA",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "Transfer \"buluşma\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Yarın bir buluşmam var.\".",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "buluşma",
+      "romanization": "bu-luş-MA",
+      "nativeText": "Find one word or phrase that naturally travels with \"buluşma\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bu-luş-MA",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "Find one word or phrase that naturally travels with \"buluşma\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "buluşma",
+      "romanization": "bu-luş-MA",
+      "nativeText": "Listen for \"buluşma\" inside \"Yarın bir buluşmam var.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bu-luş-MA",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "Listen for \"buluşma\" inside \"Yarın bir buluşmam var.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "buluşma",
+      "romanization": "bu-luş-MA",
+      "nativeText": "Write \"buluşma\" again without looking, then compare the exact written form against \"Yarın bir buluşmam var.\" before moving on.",
+      "pronunciation": "bu-luş-MA",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "Use the written model as the final correctness check: “Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "Write \"buluşma\" again without looking, then compare the exact written form against \"Yarın bir buluşmam var.\" before moving on.",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "buluşma",
+      "romanization": "bu-luş-MA",
+      "nativeText": "Check whether \"buluşma\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a meeting.”",
+      "pronunciation": "bu-luş-MA",
+      "exampleTarget": "Yarın bir buluşmam var.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a meeting.”",
+      "korean": "buluşma",
+      "english": "Check whether \"buluşma\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a meeting.”",
+      "example": "Yarın bir buluşmam var.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "program",
+      "romanization": "prog-RAM",
+      "nativeText": "“Schedule / plan.” A useful everyday loanword.",
+      "pronunciation": "prog-RAM",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "program",
+      "english": "“Schedule / plan.” A useful everyday loanword.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "Programım bugün dolu.",
+      "romanization": "prog-RAM",
+      "nativeText": "Model use for \"Programım bugün dolu.\": “My schedule is full today.”",
+      "pronunciation": "prog-RAM",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "Programım bugün dolu.",
+      "english": "Model use for \"Programım bugün dolu.\": “My schedule is full today.”",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "program",
+      "romanization": "prog-RAM",
+      "nativeText": "Usage focus for \"program\": Distinguish the nearby wording choices that make Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "prog-RAM",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "Notice what the form is doing here: “My schedule is full today.”",
+      "korean": "program",
+      "english": "Usage focus for \"program\": Distinguish the nearby wording choices that make Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling sound precise rather than merely understandable.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "Notice what the form is doing here: “My schedule is full today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "program",
+      "romanization": "prog-RAM",
+      "nativeText": "Contrast check for \"program\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "prog-RAM",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My schedule is full today.”",
+      "korean": "program",
+      "english": "Contrast check for \"program\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "program",
+      "romanization": "prog-RAM",
+      "nativeText": "Recall \"program\" from memory, then explain what would change if a nearby alternative replaced it in \"Programım bugün dolu.\".",
+      "pronunciation": "prog-RAM",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "Self-check against the model before moving on: “My schedule is full today.”",
+      "korean": "program",
+      "english": "Recall \"program\" from memory, then explain what would change if a nearby alternative replaced it in \"Programım bugün dolu.\".",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "Self-check against the model before moving on: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "program",
+      "romanization": "prog-RAM",
+      "nativeText": "Repair \"program\" inside \"Programım bugün dolu.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "prog-RAM",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "Use the model as the repair target: “My schedule is full today.”",
+      "korean": "program",
+      "english": "Repair \"program\" inside \"Programım bugün dolu.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 11: Buluşmalar ve Programlar — Scheduling sound precise rather than merely understandable.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "Use the model as the repair target: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "program",
+      "romanization": "prog-RAM",
+      "nativeText": "Transfer \"program\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Programım bugün dolu.\".",
+      "pronunciation": "prog-RAM",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My schedule is full today.”",
+      "korean": "program",
+      "english": "Transfer \"program\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Programım bugün dolu.\".",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "program",
+      "romanization": "prog-RAM",
+      "nativeText": "Find one word or phrase that naturally travels with \"program\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "prog-RAM",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My schedule is full today.”",
+      "korean": "program",
+      "english": "Find one word or phrase that naturally travels with \"program\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "program",
+      "romanization": "prog-RAM",
+      "nativeText": "Listen for \"program\" inside \"Programım bugün dolu.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "prog-RAM",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My schedule is full today.”",
+      "korean": "program",
+      "english": "Listen for \"program\" inside \"Programım bugün dolu.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "program",
+      "romanization": "prog-RAM",
+      "nativeText": "Write \"program\" again without looking, then compare the exact written form against \"Programım bugün dolu.\" before moving on.",
+      "pronunciation": "prog-RAM",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "Use the written model as the final correctness check: “My schedule is full today.”",
+      "korean": "program",
+      "english": "Write \"program\" again without looking, then compare the exact written form against \"Programım bugün dolu.\" before moving on.",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "program",
+      "romanization": "prog-RAM",
+      "nativeText": "Check whether \"program\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”",
+      "pronunciation": "prog-RAM",
+      "exampleTarget": "Programım bugün dolu.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”",
+      "korean": "program",
+      "english": "Check whether \"program\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”",
+      "example": "Programım bugün dolu.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saat üçte",
+      "romanization": "sa-AT üç-TE",
+      "nativeText": "“At three o’clock.” The locative suffix follows vowel harmony and consonant voicing rules.",
+      "pronunciation": "sa-AT üç-TE",
+      "exampleTarget": "Ders saat üçte başlıyor.",
+      "exampleNative": "“Class starts at three.”",
+      "korean": "saat üçte",
+      "english": "“At three o’clock.” The locative suffix follows vowel harmony and consonant voicing rules.",
+      "example": "Ders saat üçte başlıyor.",
+      "exampleEnglish": "“Class starts at three.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "Ders saat üçte başlıyor.",
+      "romanization": "sa-AT üç-TE",
+      "nativeText": "Model use for \"Ders saat üçte başlıyor.\": “Class starts at three.”",
+      "pronunciation": "sa-AT üç-TE",
+      "exampleTarget": "Ders saat üçte başlıyor.",
+      "exampleNative": "“Class starts at three.”",
+      "korean": "Ders saat üçte başlıyor.",
+      "english": "Model use for \"Ders saat üçte başlıyor.\": “Class starts at three.”",
+      "example": "Ders saat üçte başlıyor.",
+      "exampleEnglish": "“Class starts at three.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saat üçte",
+      "romanization": "sa-AT üç-TE",
+      "nativeText": "Usage focus for \"saat üçte\": “At three o’clock.” The locative suffix follows vowel harmony and consonant voicing rules.",
+      "pronunciation": "sa-AT üç-TE",
+      "exampleTarget": "Ders saat üçte başlıyor.",
+      "exampleNative": "Notice what the form is doing here: “Class starts at three.”",
+      "korean": "saat üçte",
+      "english": "Usage focus for \"saat üçte\": “At three o’clock.” The locative suffix follows vowel harmony and consonant voicing rules.",
+      "example": "Ders saat üçte başlıyor.",
+      "exampleEnglish": "Notice what the form is doing here: “Class starts at three.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saat üçte",
+      "romanization": "sa-AT üç-TE",
+      "nativeText": "Contrast check for \"saat üçte\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "sa-AT üç-TE",
+      "exampleTarget": "Ders saat üçte başlıyor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Class starts at three.”",
+      "korean": "saat üçte",
+      "english": "Contrast check for \"saat üçte\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ders saat üçte başlıyor.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Class starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saat üçte",
+      "romanization": "sa-AT üç-TE",
+      "nativeText": "Recall \"saat üçte\" from memory, then explain what would change if a nearby alternative replaced it in \"Ders saat üçte başlıyor.\".",
+      "pronunciation": "sa-AT üç-TE",
+      "exampleTarget": "Ders saat üçte başlıyor.",
+      "exampleNative": "Self-check against the model before moving on: “Class starts at three.”",
+      "korean": "saat üçte",
+      "english": "Recall \"saat üçte\" from memory, then explain what would change if a nearby alternative replaced it in \"Ders saat üçte başlıyor.\".",
+      "example": "Ders saat üçte başlıyor.",
+      "exampleEnglish": "Self-check against the model before moving on: “Class starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saat üçte",
+      "romanization": "sa-AT üç-TE",
+      "nativeText": "Repair \"saat üçte\" inside \"Ders saat üçte başlıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “At three o’clock.” The locative suffix follows vowel harmony and consonant voicing rules.",
+      "pronunciation": "sa-AT üç-TE",
+      "exampleTarget": "Ders saat üçte başlıyor.",
+      "exampleNative": "Use the model as the repair target: “Class starts at three.”",
+      "korean": "saat üçte",
+      "english": "Repair \"saat üçte\" inside \"Ders saat üçte başlıyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “At three o’clock.” The locative suffix follows vowel harmony and consonant voicing rules.",
+      "example": "Ders saat üçte başlıyor.",
+      "exampleEnglish": "Use the model as the repair target: “Class starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saat üçte",
+      "romanization": "sa-AT üç-TE",
+      "nativeText": "Transfer \"saat üçte\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ders saat üçte başlıyor.\".",
+      "pronunciation": "sa-AT üç-TE",
+      "exampleTarget": "Ders saat üçte başlıyor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Class starts at three.”",
+      "korean": "saat üçte",
+      "english": "Transfer \"saat üçte\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ders saat üçte başlıyor.\".",
+      "example": "Ders saat üçte başlıyor.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Class starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saat üçte",
+      "romanization": "sa-AT üç-TE",
+      "nativeText": "Find one word or phrase that naturally travels with \"saat üçte\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "sa-AT üç-TE",
+      "exampleTarget": "Ders saat üçte başlıyor.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Class starts at three.”",
+      "korean": "saat üçte",
+      "english": "Find one word or phrase that naturally travels with \"saat üçte\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ders saat üçte başlıyor.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Class starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saat üçte",
+      "romanization": "sa-AT üç-TE",
+      "nativeText": "Listen for \"saat üçte\" inside \"Ders saat üçte başlıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "sa-AT üç-TE",
+      "exampleTarget": "Ders saat üçte başlıyor.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Class starts at three.”",
+      "korean": "saat üçte",
+      "english": "Listen for \"saat üçte\" inside \"Ders saat üçte başlıyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ders saat üçte başlıyor.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Class starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saat üçte",
+      "romanization": "sa-AT üç-TE",
+      "nativeText": "Write \"saat üçte\" again without looking, then compare the exact written form against \"Ders saat üçte başlıyor.\" before moving on.",
+      "pronunciation": "sa-AT üç-TE",
+      "exampleTarget": "Ders saat üçte başlıyor.",
+      "exampleNative": "Use the written model as the final correctness check: “Class starts at three.”",
+      "korean": "saat üçte",
+      "english": "Write \"saat üçte\" again without looking, then compare the exact written form against \"Ders saat üçte başlıyor.\" before moving on.",
+      "example": "Ders saat üçte başlıyor.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Class starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saat üçte",
+      "romanization": "sa-AT üç-TE",
+      "nativeText": "Check whether \"saat üçte\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Class starts at three.”",
+      "pronunciation": "sa-AT üç-TE",
+      "exampleTarget": "Ders saat üçte başlıyor.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Class starts at three.”",
+      "korean": "saat üçte",
+      "english": "Check whether \"saat üçte\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Class starts at three.”",
+      "example": "Ders saat üçte başlıyor.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Class starts at three.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun",
+      "romanization": "uy-GUN",
+      "nativeText": "“Suitable / available.” A key scheduling adjective.",
+      "pronunciation": "uy-GUN",
+      "exampleTarget": "Akşam benim için uygun.",
+      "exampleNative": "“Evening works for me.”",
+      "korean": "uygun",
+      "english": "“Suitable / available.” A key scheduling adjective.",
+      "example": "Akşam benim için uygun.",
+      "exampleEnglish": "“Evening works for me.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "Akşam benim için uygun.",
+      "romanization": "uy-GUN",
+      "nativeText": "Model use for \"Akşam benim için uygun.\": “Evening works for me.”",
+      "pronunciation": "uy-GUN",
+      "exampleTarget": "Akşam benim için uygun.",
+      "exampleNative": "“Evening works for me.”",
+      "korean": "Akşam benim için uygun.",
+      "english": "Model use for \"Akşam benim için uygun.\": “Evening works for me.”",
+      "example": "Akşam benim için uygun.",
+      "exampleEnglish": "“Evening works for me.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun",
+      "romanization": "uy-GUN",
+      "nativeText": "Usage focus for \"uygun\": “Suitable / available.” A key scheduling adjective.",
+      "pronunciation": "uy-GUN",
+      "exampleTarget": "Akşam benim için uygun.",
+      "exampleNative": "Notice what the form is doing here: “Evening works for me.”",
+      "korean": "uygun",
+      "english": "Usage focus for \"uygun\": “Suitable / available.” A key scheduling adjective.",
+      "example": "Akşam benim için uygun.",
+      "exampleEnglish": "Notice what the form is doing here: “Evening works for me.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun",
+      "romanization": "uy-GUN",
+      "nativeText": "Contrast check for \"uygun\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "uy-GUN",
+      "exampleTarget": "Akşam benim için uygun.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Evening works for me.”",
+      "korean": "uygun",
+      "english": "Contrast check for \"uygun\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Akşam benim için uygun.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun",
+      "romanization": "uy-GUN",
+      "nativeText": "Recall \"uygun\" from memory, then explain what would change if a nearby alternative replaced it in \"Akşam benim için uygun.\".",
+      "pronunciation": "uy-GUN",
+      "exampleTarget": "Akşam benim için uygun.",
+      "exampleNative": "Self-check against the model before moving on: “Evening works for me.”",
+      "korean": "uygun",
+      "english": "Recall \"uygun\" from memory, then explain what would change if a nearby alternative replaced it in \"Akşam benim için uygun.\".",
+      "example": "Akşam benim için uygun.",
+      "exampleEnglish": "Self-check against the model before moving on: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun",
+      "romanization": "uy-GUN",
+      "nativeText": "Repair \"uygun\" inside \"Akşam benim için uygun.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Suitable / available.” A key scheduling adjective.",
+      "pronunciation": "uy-GUN",
+      "exampleTarget": "Akşam benim için uygun.",
+      "exampleNative": "Use the model as the repair target: “Evening works for me.”",
+      "korean": "uygun",
+      "english": "Repair \"uygun\" inside \"Akşam benim için uygun.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Suitable / available.” A key scheduling adjective.",
+      "example": "Akşam benim için uygun.",
+      "exampleEnglish": "Use the model as the repair target: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun",
+      "romanization": "uy-GUN",
+      "nativeText": "Transfer \"uygun\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Akşam benim için uygun.\".",
+      "pronunciation": "uy-GUN",
+      "exampleTarget": "Akşam benim için uygun.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Evening works for me.”",
+      "korean": "uygun",
+      "english": "Transfer \"uygun\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Akşam benim için uygun.\".",
+      "example": "Akşam benim için uygun.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun",
+      "romanization": "uy-GUN",
+      "nativeText": "Find one word or phrase that naturally travels with \"uygun\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "uy-GUN",
+      "exampleTarget": "Akşam benim için uygun.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Evening works for me.”",
+      "korean": "uygun",
+      "english": "Find one word or phrase that naturally travels with \"uygun\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Akşam benim için uygun.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun",
+      "romanization": "uy-GUN",
+      "nativeText": "Listen for \"uygun\" inside \"Akşam benim için uygun.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "uy-GUN",
+      "exampleTarget": "Akşam benim için uygun.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Evening works for me.”",
+      "korean": "uygun",
+      "english": "Listen for \"uygun\" inside \"Akşam benim için uygun.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Akşam benim için uygun.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun",
+      "romanization": "uy-GUN",
+      "nativeText": "Write \"uygun\" again without looking, then compare the exact written form against \"Akşam benim için uygun.\" before moving on.",
+      "pronunciation": "uy-GUN",
+      "exampleTarget": "Akşam benim için uygun.",
+      "exampleNative": "Use the written model as the final correctness check: “Evening works for me.”",
+      "korean": "uygun",
+      "english": "Write \"uygun\" again without looking, then compare the exact written form against \"Akşam benim için uygun.\" before moving on.",
+      "example": "Akşam benim için uygun.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun",
+      "romanization": "uy-GUN",
+      "nativeText": "Check whether \"uygun\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Evening works for me.”",
+      "pronunciation": "uy-GUN",
+      "exampleTarget": "Akşam benim için uygun.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Evening works for me.”",
+      "korean": "uygun",
+      "english": "Check whether \"uygun\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Evening works for me.”",
+      "example": "Akşam benim için uygun.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Evening works for me.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun değilim",
+      "romanization": "uy-GUN de-Ğİ-lim",
+      "nativeText": "“I am not available.” A concise polite refusal.",
+      "pronunciation": "uy-GUN de-Ğİ-lim",
+      "exampleTarget": "Sabah uygun değilim.",
+      "exampleNative": "“I am not available in the morning.”",
+      "korean": "uygun değilim",
+      "english": "“I am not available.” A concise polite refusal.",
+      "example": "Sabah uygun değilim.",
+      "exampleEnglish": "“I am not available in the morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "Sabah uygun değilim.",
+      "romanization": "uy-GUN de-Ğİ-lim",
+      "nativeText": "Model use for \"Sabah uygun değilim.\": “I am not available in the morning.”",
+      "pronunciation": "uy-GUN de-Ğİ-lim",
+      "exampleTarget": "Sabah uygun değilim.",
+      "exampleNative": "“I am not available in the morning.”",
+      "korean": "Sabah uygun değilim.",
+      "english": "Model use for \"Sabah uygun değilim.\": “I am not available in the morning.”",
+      "example": "Sabah uygun değilim.",
+      "exampleEnglish": "“I am not available in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun değilim",
+      "romanization": "uy-GUN de-Ğİ-lim",
+      "nativeText": "Usage focus for \"uygun değilim\": “I am not available.” A concise polite refusal.",
+      "pronunciation": "uy-GUN de-Ğİ-lim",
+      "exampleTarget": "Sabah uygun değilim.",
+      "exampleNative": "Notice what the form is doing here: “I am not available in the morning.”",
+      "korean": "uygun değilim",
+      "english": "Usage focus for \"uygun değilim\": “I am not available.” A concise polite refusal.",
+      "example": "Sabah uygun değilim.",
+      "exampleEnglish": "Notice what the form is doing here: “I am not available in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun değilim",
+      "romanization": "uy-GUN de-Ğİ-lim",
+      "nativeText": "Contrast check for \"uygun değilim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "uy-GUN de-Ğİ-lim",
+      "exampleTarget": "Sabah uygun değilim.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am not available in the morning.”",
+      "korean": "uygun değilim",
+      "english": "Contrast check for \"uygun değilim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Sabah uygun değilim.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am not available in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun değilim",
+      "romanization": "uy-GUN de-Ğİ-lim",
+      "nativeText": "Recall \"uygun değilim\" from memory, then explain what would change if a nearby alternative replaced it in \"Sabah uygun değilim.\".",
+      "pronunciation": "uy-GUN de-Ğİ-lim",
+      "exampleTarget": "Sabah uygun değilim.",
+      "exampleNative": "Self-check against the model before moving on: “I am not available in the morning.”",
+      "korean": "uygun değilim",
+      "english": "Recall \"uygun değilim\" from memory, then explain what would change if a nearby alternative replaced it in \"Sabah uygun değilim.\".",
+      "example": "Sabah uygun değilim.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am not available in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun değilim",
+      "romanization": "uy-GUN de-Ğİ-lim",
+      "nativeText": "Repair \"uygun değilim\" inside \"Sabah uygun değilim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I am not available.” A concise polite refusal.",
+      "pronunciation": "uy-GUN de-Ğİ-lim",
+      "exampleTarget": "Sabah uygun değilim.",
+      "exampleNative": "Use the model as the repair target: “I am not available in the morning.”",
+      "korean": "uygun değilim",
+      "english": "Repair \"uygun değilim\" inside \"Sabah uygun değilim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I am not available.” A concise polite refusal.",
+      "example": "Sabah uygun değilim.",
+      "exampleEnglish": "Use the model as the repair target: “I am not available in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun değilim",
+      "romanization": "uy-GUN de-Ğİ-lim",
+      "nativeText": "Transfer \"uygun değilim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sabah uygun değilim.\".",
+      "pronunciation": "uy-GUN de-Ğİ-lim",
+      "exampleTarget": "Sabah uygun değilim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am not available in the morning.”",
+      "korean": "uygun değilim",
+      "english": "Transfer \"uygun değilim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sabah uygun değilim.\".",
+      "example": "Sabah uygun değilim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am not available in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun değilim",
+      "romanization": "uy-GUN de-Ğİ-lim",
+      "nativeText": "Find one word or phrase that naturally travels with \"uygun değilim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "uy-GUN de-Ğİ-lim",
+      "exampleTarget": "Sabah uygun değilim.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am not available in the morning.”",
+      "korean": "uygun değilim",
+      "english": "Find one word or phrase that naturally travels with \"uygun değilim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Sabah uygun değilim.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am not available in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun değilim",
+      "romanization": "uy-GUN de-Ğİ-lim",
+      "nativeText": "Listen for \"uygun değilim\" inside \"Sabah uygun değilim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "uy-GUN de-Ğİ-lim",
+      "exampleTarget": "Sabah uygun değilim.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am not available in the morning.”",
+      "korean": "uygun değilim",
+      "english": "Listen for \"uygun değilim\" inside \"Sabah uygun değilim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Sabah uygun değilim.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am not available in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun değilim",
+      "romanization": "uy-GUN de-Ğİ-lim",
+      "nativeText": "Write \"uygun değilim\" again without looking, then compare the exact written form against \"Sabah uygun değilim.\" before moving on.",
+      "pronunciation": "uy-GUN de-Ğİ-lim",
+      "exampleTarget": "Sabah uygun değilim.",
+      "exampleNative": "Use the written model as the final correctness check: “I am not available in the morning.”",
+      "korean": "uygun değilim",
+      "english": "Write \"uygun değilim\" again without looking, then compare the exact written form against \"Sabah uygun değilim.\" before moving on.",
+      "example": "Sabah uygun değilim.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am not available in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "uygun değilim",
+      "romanization": "uy-GUN de-Ğİ-lim",
+      "nativeText": "Check whether \"uygun değilim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am not available in the morning.”",
+      "pronunciation": "uy-GUN de-Ğİ-lim",
+      "exampleTarget": "Sabah uygun değilim.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am not available in the morning.”",
+      "korean": "uygun değilim",
+      "english": "Check whether \"uygun değilim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am not available in the morning.”",
+      "example": "Sabah uygun değilim.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am not available in the morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "yarın görüşelim mi?",
+      "romanization": "ya-RIN gö-rü-şe-LİM mi",
+      "nativeText": "“Shall we meet tomorrow?” The question particle remains separate in writing.",
+      "pronunciation": "ya-RIN gö-rü-şe-LİM mi",
+      "exampleTarget": "Yarın görüşelim mi?",
+      "exampleNative": "“Shall we meet tomorrow?”",
+      "korean": "yarın görüşelim mi?",
+      "english": "“Shall we meet tomorrow?” The question particle remains separate in writing.",
+      "example": "Yarın görüşelim mi?",
+      "exampleEnglish": "“Shall we meet tomorrow?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "Yarın görüşelim mi?",
+      "romanization": "ya-RIN gö-rü-şe-LİM mi",
+      "nativeText": "Model use for \"Yarın görüşelim mi?\": “Shall we meet tomorrow?”",
+      "pronunciation": "ya-RIN gö-rü-şe-LİM mi",
+      "exampleTarget": "Yarın görüşelim mi?",
+      "exampleNative": "“Shall we meet tomorrow?”",
+      "korean": "Yarın görüşelim mi?",
+      "english": "Model use for \"Yarın görüşelim mi?\": “Shall we meet tomorrow?”",
+      "example": "Yarın görüşelim mi?",
+      "exampleEnglish": "“Shall we meet tomorrow?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "yarın görüşelim mi?",
+      "romanization": "ya-RIN gö-rü-şe-LİM mi",
+      "nativeText": "Usage focus for \"yarın görüşelim mi?\": “Shall we meet tomorrow?” The question particle remains separate in writing.",
+      "pronunciation": "ya-RIN gö-rü-şe-LİM mi",
+      "exampleTarget": "Yarın görüşelim mi?",
+      "exampleNative": "Notice what the form is doing here: “Shall we meet tomorrow?”",
+      "korean": "yarın görüşelim mi?",
+      "english": "Usage focus for \"yarın görüşelim mi?\": “Shall we meet tomorrow?” The question particle remains separate in writing.",
+      "example": "Yarın görüşelim mi?",
+      "exampleEnglish": "Notice what the form is doing here: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "yarın görüşelim mi?",
+      "romanization": "ya-RIN gö-rü-şe-LİM mi",
+      "nativeText": "Contrast check for \"yarın görüşelim mi?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya-RIN gö-rü-şe-LİM mi",
+      "exampleTarget": "Yarın görüşelim mi?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we meet tomorrow?”",
+      "korean": "yarın görüşelim mi?",
+      "english": "Contrast check for \"yarın görüşelim mi?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Yarın görüşelim mi?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "yarın görüşelim mi?",
+      "romanization": "ya-RIN gö-rü-şe-LİM mi",
+      "nativeText": "Recall \"yarın görüşelim mi?\" from memory, then explain what would change if a nearby alternative replaced it in \"Yarın görüşelim mi?\".",
+      "pronunciation": "ya-RIN gö-rü-şe-LİM mi",
+      "exampleTarget": "Yarın görüşelim mi?",
+      "exampleNative": "Self-check against the model before moving on: “Shall we meet tomorrow?”",
+      "korean": "yarın görüşelim mi?",
+      "english": "Recall \"yarın görüşelim mi?\" from memory, then explain what would change if a nearby alternative replaced it in \"Yarın görüşelim mi?\".",
+      "example": "Yarın görüşelim mi?",
+      "exampleEnglish": "Self-check against the model before moving on: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "yarın görüşelim mi?",
+      "romanization": "ya-RIN gö-rü-şe-LİM mi",
+      "nativeText": "Repair \"yarın görüşelim mi?\" inside \"Yarın görüşelim mi?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shall we meet tomorrow?” The question particle remains separate in writing.",
+      "pronunciation": "ya-RIN gö-rü-şe-LİM mi",
+      "exampleTarget": "Yarın görüşelim mi?",
+      "exampleNative": "Use the model as the repair target: “Shall we meet tomorrow?”",
+      "korean": "yarın görüşelim mi?",
+      "english": "Repair \"yarın görüşelim mi?\" inside \"Yarın görüşelim mi?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shall we meet tomorrow?” The question particle remains separate in writing.",
+      "example": "Yarın görüşelim mi?",
+      "exampleEnglish": "Use the model as the repair target: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "yarın görüşelim mi?",
+      "romanization": "ya-RIN gö-rü-şe-LİM mi",
+      "nativeText": "Transfer \"yarın görüşelim mi?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Yarın görüşelim mi?\".",
+      "pronunciation": "ya-RIN gö-rü-şe-LİM mi",
+      "exampleTarget": "Yarın görüşelim mi?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we meet tomorrow?”",
+      "korean": "yarın görüşelim mi?",
+      "english": "Transfer \"yarın görüşelim mi?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Yarın görüşelim mi?\".",
+      "example": "Yarın görüşelim mi?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "yarın görüşelim mi?",
+      "romanization": "ya-RIN gö-rü-şe-LİM mi",
+      "nativeText": "Find one word or phrase that naturally travels with \"yarın görüşelim mi?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya-RIN gö-rü-şe-LİM mi",
+      "exampleTarget": "Yarın görüşelim mi?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Shall we meet tomorrow?”",
+      "korean": "yarın görüşelim mi?",
+      "english": "Find one word or phrase that naturally travels with \"yarın görüşelim mi?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Yarın görüşelim mi?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "yarın görüşelim mi?",
+      "romanization": "ya-RIN gö-rü-şe-LİM mi",
+      "nativeText": "Listen for \"yarın görüşelim mi?\" inside \"Yarın görüşelim mi?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya-RIN gö-rü-şe-LİM mi",
+      "exampleTarget": "Yarın görüşelim mi?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we meet tomorrow?”",
+      "korean": "yarın görüşelim mi?",
+      "english": "Listen for \"yarın görüşelim mi?\" inside \"Yarın görüşelim mi?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Yarın görüşelim mi?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "yarın görüşelim mi?",
+      "romanization": "ya-RIN gö-rü-şe-LİM mi",
+      "nativeText": "Write \"yarın görüşelim mi?\" again without looking, then compare the exact written form against \"Yarın görüşelim mi?\" before moving on.",
+      "pronunciation": "ya-RIN gö-rü-şe-LİM mi",
+      "exampleTarget": "Yarın görüşelim mi?",
+      "exampleNative": "Use the written model as the final correctness check: “Shall we meet tomorrow?”",
+      "korean": "yarın görüşelim mi?",
+      "english": "Write \"yarın görüşelim mi?\" again without looking, then compare the exact written form against \"Yarın görüşelim mi?\" before moving on.",
+      "example": "Yarın görüşelim mi?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "yarın görüşelim mi?",
+      "romanization": "ya-RIN gö-rü-şe-LİM mi",
+      "nativeText": "Check whether \"yarın görüşelim mi?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”",
+      "pronunciation": "ya-RIN gö-rü-şe-LİM mi",
+      "exampleTarget": "Yarın görüşelim mi?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”",
+      "korean": "yarın görüşelim mi?",
+      "english": "Check whether \"yarın görüşelim mi?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”",
+      "example": "Yarın görüşelim mi?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saati değiştirebilir miyiz?",
+      "romanization": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "nativeText": "“Can we change the time?” Ability suffix plus question particle in a real task.",
+      "pronunciation": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "exampleTarget": "Saati değiştirebilir miyiz?",
+      "exampleNative": "“Can we change the time?”",
+      "korean": "saati değiştirebilir miyiz?",
+      "english": "“Can we change the time?” Ability suffix plus question particle in a real task.",
+      "example": "Saati değiştirebilir miyiz?",
+      "exampleEnglish": "“Can we change the time?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "Saati değiştirebilir miyiz?",
+      "romanization": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "nativeText": "Model use for \"Saati değiştirebilir miyiz?\": “Can we change the time?”",
+      "pronunciation": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "exampleTarget": "Saati değiştirebilir miyiz?",
+      "exampleNative": "“Can we change the time?”",
+      "korean": "Saati değiştirebilir miyiz?",
+      "english": "Model use for \"Saati değiştirebilir miyiz?\": “Can we change the time?”",
+      "example": "Saati değiştirebilir miyiz?",
+      "exampleEnglish": "“Can we change the time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saati değiştirebilir miyiz?",
+      "romanization": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "nativeText": "Usage focus for \"saati değiştirebilir miyiz?\": “Can we change the time?” Ability suffix plus question particle in a real task.",
+      "pronunciation": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "exampleTarget": "Saati değiştirebilir miyiz?",
+      "exampleNative": "Notice what the form is doing here: “Can we change the time?”",
+      "korean": "saati değiştirebilir miyiz?",
+      "english": "Usage focus for \"saati değiştirebilir miyiz?\": “Can we change the time?” Ability suffix plus question particle in a real task.",
+      "example": "Saati değiştirebilir miyiz?",
+      "exampleEnglish": "Notice what the form is doing here: “Can we change the time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saati değiştirebilir miyiz?",
+      "romanization": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "nativeText": "Contrast check for \"saati değiştirebilir miyiz?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "exampleTarget": "Saati değiştirebilir miyiz?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can we change the time?”",
+      "korean": "saati değiştirebilir miyiz?",
+      "english": "Contrast check for \"saati değiştirebilir miyiz?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Saati değiştirebilir miyiz?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saati değiştirebilir miyiz?",
+      "romanization": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "nativeText": "Recall \"saati değiştirebilir miyiz?\" from memory, then explain what would change if a nearby alternative replaced it in \"Saati değiştirebilir miyiz?\".",
+      "pronunciation": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "exampleTarget": "Saati değiştirebilir miyiz?",
+      "exampleNative": "Self-check against the model before moving on: “Can we change the time?”",
+      "korean": "saati değiştirebilir miyiz?",
+      "english": "Recall \"saati değiştirebilir miyiz?\" from memory, then explain what would change if a nearby alternative replaced it in \"Saati değiştirebilir miyiz?\".",
+      "example": "Saati değiştirebilir miyiz?",
+      "exampleEnglish": "Self-check against the model before moving on: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saati değiştirebilir miyiz?",
+      "romanization": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "nativeText": "Repair \"saati değiştirebilir miyiz?\" inside \"Saati değiştirebilir miyiz?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Can we change the time?” Ability suffix plus question particle in a real task.",
+      "pronunciation": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "exampleTarget": "Saati değiştirebilir miyiz?",
+      "exampleNative": "Use the model as the repair target: “Can we change the time?”",
+      "korean": "saati değiştirebilir miyiz?",
+      "english": "Repair \"saati değiştirebilir miyiz?\" inside \"Saati değiştirebilir miyiz?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Can we change the time?” Ability suffix plus question particle in a real task.",
+      "example": "Saati değiştirebilir miyiz?",
+      "exampleEnglish": "Use the model as the repair target: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saati değiştirebilir miyiz?",
+      "romanization": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "nativeText": "Transfer \"saati değiştirebilir miyiz?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Saati değiştirebilir miyiz?\".",
+      "pronunciation": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "exampleTarget": "Saati değiştirebilir miyiz?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can we change the time?”",
+      "korean": "saati değiştirebilir miyiz?",
+      "english": "Transfer \"saati değiştirebilir miyiz?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Saati değiştirebilir miyiz?\".",
+      "example": "Saati değiştirebilir miyiz?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saati değiştirebilir miyiz?",
+      "romanization": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "nativeText": "Find one word or phrase that naturally travels with \"saati değiştirebilir miyiz?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "exampleTarget": "Saati değiştirebilir miyiz?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Can we change the time?”",
+      "korean": "saati değiştirebilir miyiz?",
+      "english": "Find one word or phrase that naturally travels with \"saati değiştirebilir miyiz?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Saati değiştirebilir miyiz?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saati değiştirebilir miyiz?",
+      "romanization": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "nativeText": "Listen for \"saati değiştirebilir miyiz?\" inside \"Saati değiştirebilir miyiz?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "exampleTarget": "Saati değiştirebilir miyiz?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can we change the time?”",
+      "korean": "saati değiştirebilir miyiz?",
+      "english": "Listen for \"saati değiştirebilir miyiz?\" inside \"Saati değiştirebilir miyiz?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Saati değiştirebilir miyiz?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saati değiştirebilir miyiz?",
+      "romanization": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "nativeText": "Write \"saati değiştirebilir miyiz?\" again without looking, then compare the exact written form against \"Saati değiştirebilir miyiz?\" before moving on.",
+      "pronunciation": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "exampleTarget": "Saati değiştirebilir miyiz?",
+      "exampleNative": "Use the written model as the final correctness check: “Can we change the time?”",
+      "korean": "saati değiştirebilir miyiz?",
+      "english": "Write \"saati değiştirebilir miyiz?\" again without looking, then compare the exact written form against \"Saati değiştirebilir miyiz?\" before moving on.",
+      "example": "Saati değiştirebilir miyiz?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "saati değiştirebilir miyiz?",
+      "romanization": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "nativeText": "Check whether \"saati değiştirebilir miyiz?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can we change the time?”",
+      "pronunciation": "sa-a-Tİ de-ğiş-ti-re-bi-LİR mi-YİZ",
+      "exampleTarget": "Saati değiştirebilir miyiz?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Can we change the time?”",
+      "korean": "saati değiştirebilir miyiz?",
+      "english": "Check whether \"saati değiştirebilir miyiz?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can we change the time?”",
+      "example": "Saati değiştirebilir miyiz?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Can we change the time?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "tamam, anlaştık",
+      "romanization": "ta-MAM an-laş-TIK",
+      "nativeText": "“Okay, agreed.” A natural way to close the plan.",
+      "pronunciation": "ta-MAM an-laş-TIK",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "“Okay, agreed.”",
+      "korean": "tamam, anlaştık",
+      "english": "“Okay, agreed.” A natural way to close the plan.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "“Okay, agreed.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "Tamam, anlaştık.",
+      "romanization": "ta-MAM an-laş-TIK",
+      "nativeText": "Model use for \"Tamam, anlaştık.\": “Okay, agreed.”",
+      "pronunciation": "ta-MAM an-laş-TIK",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "“Okay, agreed.”",
+      "korean": "Tamam, anlaştık.",
+      "english": "Model use for \"Tamam, anlaştık.\": “Okay, agreed.”",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "“Okay, agreed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "tamam, anlaştık",
+      "romanization": "ta-MAM an-laş-TIK",
+      "nativeText": "Usage focus for \"tamam, anlaştık\": “Okay, agreed.” A natural way to close the plan.",
+      "pronunciation": "ta-MAM an-laş-TIK",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "Notice what the form is doing here: “Okay, agreed.”",
+      "korean": "tamam, anlaştık",
+      "english": "Usage focus for \"tamam, anlaştık\": “Okay, agreed.” A natural way to close the plan.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "Notice what the form is doing here: “Okay, agreed.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "tamam, anlaştık",
+      "romanization": "ta-MAM an-laş-TIK",
+      "nativeText": "Contrast check for \"tamam, anlaştık\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ta-MAM an-laş-TIK",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, agreed.”",
+      "korean": "tamam, anlaştık",
+      "english": "Contrast check for \"tamam, anlaştık\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "tamam, anlaştık",
+      "romanization": "ta-MAM an-laş-TIK",
+      "nativeText": "Recall \"tamam, anlaştık\" from memory, then explain what would change if a nearby alternative replaced it in \"Tamam, anlaştık.\".",
+      "pronunciation": "ta-MAM an-laş-TIK",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "Self-check against the model before moving on: “Okay, agreed.”",
+      "korean": "tamam, anlaştık",
+      "english": "Recall \"tamam, anlaştık\" from memory, then explain what would change if a nearby alternative replaced it in \"Tamam, anlaştık.\".",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "Self-check against the model before moving on: “Okay, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "tamam, anlaştık",
+      "romanization": "ta-MAM an-laş-TIK",
+      "nativeText": "Repair \"tamam, anlaştık\" inside \"Tamam, anlaştık.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay, agreed.” A natural way to close the plan.",
+      "pronunciation": "ta-MAM an-laş-TIK",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "Use the model as the repair target: “Okay, agreed.”",
+      "korean": "tamam, anlaştık",
+      "english": "Repair \"tamam, anlaştık\" inside \"Tamam, anlaştık.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay, agreed.” A natural way to close the plan.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "Use the model as the repair target: “Okay, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "tamam, anlaştık",
+      "romanization": "ta-MAM an-laş-TIK",
+      "nativeText": "Transfer \"tamam, anlaştık\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Tamam, anlaştık.\".",
+      "pronunciation": "ta-MAM an-laş-TIK",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, agreed.”",
+      "korean": "tamam, anlaştık",
+      "english": "Transfer \"tamam, anlaştık\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Tamam, anlaştık.\".",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "tamam, anlaştık",
+      "romanization": "ta-MAM an-laş-TIK",
+      "nativeText": "Find one word or phrase that naturally travels with \"tamam, anlaştık\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ta-MAM an-laş-TIK",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Okay, agreed.”",
+      "korean": "tamam, anlaştık",
+      "english": "Find one word or phrase that naturally travels with \"tamam, anlaştık\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Okay, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "tamam, anlaştık",
+      "romanization": "ta-MAM an-laş-TIK",
+      "nativeText": "Listen for \"tamam, anlaştık\" inside \"Tamam, anlaştık.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ta-MAM an-laş-TIK",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, agreed.”",
+      "korean": "tamam, anlaştık",
+      "english": "Listen for \"tamam, anlaştık\" inside \"Tamam, anlaştık.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "tamam, anlaştık",
+      "romanization": "ta-MAM an-laş-TIK",
+      "nativeText": "Write \"tamam, anlaştık\" again without looking, then compare the exact written form against \"Tamam, anlaştık.\" before moving on.",
+      "pronunciation": "ta-MAM an-laş-TIK",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "Use the written model as the final correctness check: “Okay, agreed.”",
+      "korean": "tamam, anlaştık",
+      "english": "Write \"tamam, anlaştık\" again without looking, then compare the exact written form against \"Tamam, anlaştık.\" before moving on.",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Okay, agreed.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit11scheduling-vocabulary-1",
+        "tr-level1unit11scheduling-vocabulary-2",
+        "tr-level1unit11scheduling-grammar-1",
+        "tr-level1unit11scheduling-grammar-2",
+        "tr-level1unit11scheduling-reading",
+        "tr-level1unit11scheduling-listening",
+        "tr-level1unit11scheduling-writing",
+        "tr-level1unit11scheduling-task"
+      ],
+      "targetText": "tamam, anlaştık",
+      "romanization": "ta-MAM an-laş-TIK",
+      "nativeText": "Check whether \"tamam, anlaştık\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, agreed.”",
+      "pronunciation": "ta-MAM an-laş-TIK",
+      "exampleTarget": "Tamam, anlaştık.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Okay, agreed.”",
+      "korean": "tamam, anlaştık",
+      "english": "Check whether \"tamam, anlaştık\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, agreed.”",
+      "example": "Tamam, anlaştık.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Okay, agreed.”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u7',
-  title: 'Level 1 · Unit 7: Waar Ga Je Heen? — Going Places',
-  category: 'travel',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Say where you are, where you are going, and ask for simple directions.',
-  vocabularyGoal: 'Use common destinations, route words, and direction phrases.',
-  grammarGoal: 'Use `naar` for destinations, `in/op/bij` for locations, and keep V2 order in route sentences.',
-  speakingGoal: 'Say where you are, ask how to get somewhere, and give one short route.',
-  task: 'Guide a visitor from the station to a cafe.',
-  expressionPractice: [
-    practice('stating-location', 'Stating location', 'Use one location preposition.'),
-    practice('stating-destination', 'Stating destination', 'Use `naar`.'),
-    practice('asking-route', 'Asking route', 'Use `hoe kom ik bij ...?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 7: Waar Ga Je Heen? — Going Places",
+  "category": "travel",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit07goingplaces-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Say where you are, where you are going, and ask for simple directions."
+      ],
+      "task": "Guide a visitor from the station to a cafe."
+    },
+    {
+      "id": "nl-level1unit07goingplaces-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit07goingplaces-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit07goingplaces-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 7: Waar Ga Je Heen? — Going Places sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit07goingplaces-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Say where you are, where you are going, and ask for simple directions."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit07goingplaces-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit07goingplaces-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit07goingplaces-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit07goingplaces-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit07goingplaces-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit07goingplaces-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Guide a visitor from the station to a cafe."
+      ],
+      "task": "Guide a visitor from the station to a cafe."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-directions'],
-  items: [
-    item('ik ben op de universiteit', 'ik ben op də oo-nee-ver-see-TAYT', '“I am at the university.” `Op` is idiomatic with institutions such as school and university.', 'Nu ben ik op de universiteit.', '“Now I am at the university.”'),
-    item('ik ga naar de bibliotheek', 'ik kha na:r də bee-blee-o-TAYK', '“I am going to the library.” `Naar` marks destination.', 'Na de les ga ik naar de bibliotheek.', '“After class I go to the library.”'),
-    item('ik kom uit huis', 'ik kom oyt hœys', '“I come from home.” `Uit` marks movement out of a place.', 'Ik kom net uit huis.', '“I just came from home.”'),
-    item('ga linksaf', 'kha LINKS-af', '“Turn left.” This is a separable-verb shape learners will keep meeting.', 'Bij het stoplicht ga je linksaf.', '“At the traffic light you turn left.”'),
-    item('ga rechtdoor', 'kha REKHT-dor', '“Go straight ahead.” A common complete route instruction.', 'Ga rechtdoor tot de brug.', '“Go straight until the bridge.”'),
-    item('dichtbij / ver weg', 'DIKHT-bey / fer vekh', '“Nearby / far away.” Practical distance expressions.', 'Het station is dichtbij.', '“The station is nearby.”'),
-    item('hoe kom ik bij ...?', 'hoo kom ik bey', '“How do I get to ...?” A full real-life directions question.', 'Hoe kom ik bij het museum?', '“How do I get to the museum?”'),
-    item('naast', 'nahst', '“Next to.” A compact landmark preposition.', 'Het café is naast de bank.', '“The cafe is next to the bank.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-location",
+      "label": "Stating location",
+      "goal": "Use one location preposition."
+    },
+    {
+      "id": "stating-destination",
+      "label": "Stating destination",
+      "goal": "Use `naar`."
+    },
+    {
+      "id": "asking-route",
+      "label": "Asking route",
+      "goal": "Use `hoe kom ik bij ...?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-travel",
+    "topic-directions"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Say where you are, where you are going, and ask for simple directions.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Guide a visitor from the station to a cafe.",
+      "korean": "lesdoel",
+      "english": "Say where you are, where you are going, and ask for simple directions.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Guide a visitor from the station to a cafe."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Nu ben ik op de universiteit.\".",
+      "pronunciation": "",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "“Now I am at the university.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Nu ben ik op de universiteit.\".",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "“Now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "“Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "Use the key language of Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with the register and setting that the lesson requires.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "“Now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-2"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 7: Waar Ga Je Heen? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "“After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 7: Waar Ga Je Heen? — Going Places sound precise rather than merely understandable.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "“After class I go to the library.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "",
+      "nativeText": "Say where you are, where you are going, and ask for simple directions.",
+      "pronunciation": "",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "“Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "Say where you are, where you are going, and ask for simple directions.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "“Now I am at the university.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "“After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "Contrast the main pattern in Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "“After class I go to the library.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit07goingplaces-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Het café is naast de bank.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "leesmodel",
+      "english": "Read \"Het café is naast de bank.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit07goingplaces-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Het café is naast de bank.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Het café is naast de bank.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit07goingplaces-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Nu ben ik op de universiteit.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Nu ben ik op de universiteit.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit07goingplaces-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "“After class I go to the library.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "“After class I go to the library.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Guide a visitor from the station to a cafe.",
+      "pronunciation": "",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "Guide a visitor from the station to a cafe.",
+      "korean": "eindtaak",
+      "english": "Guide a visitor from the station to a cafe.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "Guide a visitor from the station to a cafe."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Na de les ga ik naar de bibliotheek.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “After class I go to the library.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Na de les ga ik naar de bibliotheek.\" against the model.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “After class I go to the library.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Nu ben ik op de universiteit.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "“Now I am at the university.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Nu ben ik op de universiteit.\" before reusing it elsewhere.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "“Now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Het café is naast de bank.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Het café is naast de bank.\" as one thought.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Nu ben ik op de universiteit.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Nu ben ik op de universiteit.\" and move it into your own life.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ik ben op de universiteit\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "ik ben op de universiteit",
+      "exampleNative": "“I am at the university.” `Op` is idiomatic with institutions such as school and university.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ik ben op de universiteit\" before looking back.",
+      "example": "ik ben op de universiteit",
+      "exampleEnglish": "“I am at the university.” `Op` is idiomatic with institutions such as school and university."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Het café is naast de bank.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Het café is naast de bank.\" rather than restarting from a blank sentence.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Na de les ga ik naar de bibliotheek.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "“After class I go to the library.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Na de les ga ik naar de bibliotheek.\" as the comparison line.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "“After class I go to the library.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Nu ben ik op de universiteit.\".",
+      "pronunciation": "",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "“Now I am at the university.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Nu ben ik op de universiteit.\".",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "“Now I am at the university.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Het café is naast de bank.\".",
+      "pronunciation": "",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Het café is naast de bank.\".",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Nu ben ik op de universiteit.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "“Now I am at the university.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Nu ben ik op de universiteit.\" one layer at a time.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "“Now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Na de les ga ik naar de bibliotheek.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "“After class I go to the library.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Na de les ga ik naar de bibliotheek.\" as the deciding example.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "“After class I go to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-culture",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Het café is naast de bank.\".",
+      "pronunciation": "",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Het café is naast de bank.\".",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "ik ben op də oo-nee-ver-see-TAYT",
+      "nativeText": "“I am at the university.” `Op` is idiomatic with institutions such as school and university.",
+      "pronunciation": "ik ben op də oo-nee-ver-see-TAYT",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "“Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "“I am at the university.” `Op` is idiomatic with institutions such as school and university.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "“Now I am at the university.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "Nu ben ik op de universiteit.",
+      "romanization": "ik ben op də oo-nee-ver-see-TAYT",
+      "nativeText": "Model use for \"Nu ben ik op de universiteit.\": “Now I am at the university.”",
+      "pronunciation": "ik ben op də oo-nee-ver-see-TAYT",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "“Now I am at the university.”",
+      "korean": "Nu ben ik op de universiteit.",
+      "english": "Model use for \"Nu ben ik op de universiteit.\": “Now I am at the university.”",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "“Now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "ik ben op də oo-nee-ver-see-TAYT",
+      "nativeText": "Usage focus for \"ik ben op de universiteit\": Use the key language of Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "ik ben op də oo-nee-ver-see-TAYT",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "Notice what the form is doing here: “Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "Usage focus for \"ik ben op de universiteit\": Use the key language of Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with the register and setting that the lesson requires.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "Notice what the form is doing here: “Now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "ik ben op də oo-nee-ver-see-TAYT",
+      "nativeText": "Contrast check for \"ik ben op de universiteit\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik ben op də oo-nee-ver-see-TAYT",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "Contrast check for \"ik ben op de universiteit\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "ik ben op də oo-nee-ver-see-TAYT",
+      "nativeText": "Recall \"ik ben op de universiteit\" from memory, then explain what would change if a nearby alternative replaced it in \"Nu ben ik op de universiteit.\".",
+      "pronunciation": "ik ben op də oo-nee-ver-see-TAYT",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "Self-check against the model before moving on: “Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "Recall \"ik ben op de universiteit\" from memory, then explain what would change if a nearby alternative replaced it in \"Nu ben ik op de universiteit.\".",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "Self-check against the model before moving on: “Now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "ik ben op də oo-nee-ver-see-TAYT",
+      "nativeText": "Repair \"ik ben op de universiteit\" inside \"Nu ben ik op de universiteit.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "ik ben op də oo-nee-ver-see-TAYT",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "Use the model as the repair target: “Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "Repair \"ik ben op de universiteit\" inside \"Nu ben ik op de universiteit.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: Waar Ga Je Heen? — Going Places with the register and setting that the lesson requires.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "Use the model as the repair target: “Now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "ik ben op də oo-nee-ver-see-TAYT",
+      "nativeText": "Transfer \"ik ben op de universiteit\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Nu ben ik op de universiteit.\".",
+      "pronunciation": "ik ben op də oo-nee-ver-see-TAYT",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "Transfer \"ik ben op de universiteit\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Nu ben ik op de universiteit.\".",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "ik ben op də oo-nee-ver-see-TAYT",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik ben op de universiteit\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik ben op də oo-nee-ver-see-TAYT",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "Find one word or phrase that naturally travels with \"ik ben op de universiteit\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "ik ben op də oo-nee-ver-see-TAYT",
+      "nativeText": "Listen for \"ik ben op de universiteit\" inside \"Nu ben ik op de universiteit.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik ben op də oo-nee-ver-see-TAYT",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "Listen for \"ik ben op de universiteit\" inside \"Nu ben ik op de universiteit.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "ik ben op də oo-nee-ver-see-TAYT",
+      "nativeText": "Write \"ik ben op de universiteit\" again without looking, then compare the exact written form against \"Nu ben ik op de universiteit.\" before moving on.",
+      "pronunciation": "ik ben op də oo-nee-ver-see-TAYT",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "Use the written model as the final correctness check: “Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "Write \"ik ben op de universiteit\" again without looking, then compare the exact written form against \"Nu ben ik op de universiteit.\" before moving on.",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ben op de universiteit",
+      "romanization": "ik ben op də oo-nee-ver-see-TAYT",
+      "nativeText": "Check whether \"ik ben op de universiteit\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Now I am at the university.”",
+      "pronunciation": "ik ben op də oo-nee-ver-see-TAYT",
+      "exampleTarget": "Nu ben ik op de universiteit.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Now I am at the university.”",
+      "korean": "ik ben op de universiteit",
+      "english": "Check whether \"ik ben op de universiteit\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Now I am at the university.”",
+      "example": "Nu ben ik op de universiteit.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Now I am at the university.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "ik kha na:r də bee-blee-o-TAYK",
+      "nativeText": "“I am going to the library.” `Naar` marks destination.",
+      "pronunciation": "ik kha na:r də bee-blee-o-TAYK",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "“After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "“I am going to the library.” `Naar` marks destination.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "“After class I go to the library.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "Na de les ga ik naar de bibliotheek.",
+      "romanization": "ik kha na:r də bee-blee-o-TAYK",
+      "nativeText": "Model use for \"Na de les ga ik naar de bibliotheek.\": “After class I go to the library.”",
+      "pronunciation": "ik kha na:r də bee-blee-o-TAYK",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "“After class I go to the library.”",
+      "korean": "Na de les ga ik naar de bibliotheek.",
+      "english": "Model use for \"Na de les ga ik naar de bibliotheek.\": “After class I go to the library.”",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "“After class I go to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "ik kha na:r də bee-blee-o-TAYK",
+      "nativeText": "Usage focus for \"ik ga naar de bibliotheek\": Distinguish the nearby wording choices that make Level 1 · Unit 7: Waar Ga Je Heen? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "ik kha na:r də bee-blee-o-TAYK",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "Notice what the form is doing here: “After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "Usage focus for \"ik ga naar de bibliotheek\": Distinguish the nearby wording choices that make Level 1 · Unit 7: Waar Ga Je Heen? — Going Places sound precise rather than merely understandable.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "Notice what the form is doing here: “After class I go to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "ik kha na:r də bee-blee-o-TAYK",
+      "nativeText": "Contrast check for \"ik ga naar de bibliotheek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik kha na:r də bee-blee-o-TAYK",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "Contrast check for \"ik ga naar de bibliotheek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After class I go to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "ik kha na:r də bee-blee-o-TAYK",
+      "nativeText": "Recall \"ik ga naar de bibliotheek\" from memory, then explain what would change if a nearby alternative replaced it in \"Na de les ga ik naar de bibliotheek.\".",
+      "pronunciation": "ik kha na:r də bee-blee-o-TAYK",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "Self-check against the model before moving on: “After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "Recall \"ik ga naar de bibliotheek\" from memory, then explain what would change if a nearby alternative replaced it in \"Na de les ga ik naar de bibliotheek.\".",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "Self-check against the model before moving on: “After class I go to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "ik kha na:r də bee-blee-o-TAYK",
+      "nativeText": "Repair \"ik ga naar de bibliotheek\" inside \"Na de les ga ik naar de bibliotheek.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: Waar Ga Je Heen? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "ik kha na:r də bee-blee-o-TAYK",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "Use the model as the repair target: “After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "Repair \"ik ga naar de bibliotheek\" inside \"Na de les ga ik naar de bibliotheek.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: Waar Ga Je Heen? — Going Places sound precise rather than merely understandable.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "Use the model as the repair target: “After class I go to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "ik kha na:r də bee-blee-o-TAYK",
+      "nativeText": "Transfer \"ik ga naar de bibliotheek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Na de les ga ik naar de bibliotheek.\".",
+      "pronunciation": "ik kha na:r də bee-blee-o-TAYK",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "Transfer \"ik ga naar de bibliotheek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Na de les ga ik naar de bibliotheek.\".",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “After class I go to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "ik kha na:r də bee-blee-o-TAYK",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik ga naar de bibliotheek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik kha na:r də bee-blee-o-TAYK",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "Find one word or phrase that naturally travels with \"ik ga naar de bibliotheek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “After class I go to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "ik kha na:r də bee-blee-o-TAYK",
+      "nativeText": "Listen for \"ik ga naar de bibliotheek\" inside \"Na de les ga ik naar de bibliotheek.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik kha na:r də bee-blee-o-TAYK",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "Listen for \"ik ga naar de bibliotheek\" inside \"Na de les ga ik naar de bibliotheek.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After class I go to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "ik kha na:r də bee-blee-o-TAYK",
+      "nativeText": "Write \"ik ga naar de bibliotheek\" again without looking, then compare the exact written form against \"Na de les ga ik naar de bibliotheek.\" before moving on.",
+      "pronunciation": "ik kha na:r də bee-blee-o-TAYK",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "Use the written model as the final correctness check: “After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "Write \"ik ga naar de bibliotheek\" again without looking, then compare the exact written form against \"Na de les ga ik naar de bibliotheek.\" before moving on.",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "Use the written model as the final correctness check: “After class I go to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik ga naar de bibliotheek",
+      "romanization": "ik kha na:r də bee-blee-o-TAYK",
+      "nativeText": "Check whether \"ik ga naar de bibliotheek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After class I go to the library.”",
+      "pronunciation": "ik kha na:r də bee-blee-o-TAYK",
+      "exampleTarget": "Na de les ga ik naar de bibliotheek.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “After class I go to the library.”",
+      "korean": "ik ga naar de bibliotheek",
+      "english": "Check whether \"ik ga naar de bibliotheek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After class I go to the library.”",
+      "example": "Na de les ga ik naar de bibliotheek.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “After class I go to the library.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik kom uit huis",
+      "romanization": "ik kom oyt hœys",
+      "nativeText": "“I come from home.” `Uit` marks movement out of a place.",
+      "pronunciation": "ik kom oyt hœys",
+      "exampleTarget": "Ik kom net uit huis.",
+      "exampleNative": "“I just came from home.”",
+      "korean": "ik kom uit huis",
+      "english": "“I come from home.” `Uit` marks movement out of a place.",
+      "example": "Ik kom net uit huis.",
+      "exampleEnglish": "“I just came from home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "Ik kom net uit huis.",
+      "romanization": "ik kom oyt hœys",
+      "nativeText": "Model use for \"Ik kom net uit huis.\": “I just came from home.”",
+      "pronunciation": "ik kom oyt hœys",
+      "exampleTarget": "Ik kom net uit huis.",
+      "exampleNative": "“I just came from home.”",
+      "korean": "Ik kom net uit huis.",
+      "english": "Model use for \"Ik kom net uit huis.\": “I just came from home.”",
+      "example": "Ik kom net uit huis.",
+      "exampleEnglish": "“I just came from home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik kom uit huis",
+      "romanization": "ik kom oyt hœys",
+      "nativeText": "Usage focus for \"ik kom uit huis\": “I come from home.” `Uit` marks movement out of a place.",
+      "pronunciation": "ik kom oyt hœys",
+      "exampleTarget": "Ik kom net uit huis.",
+      "exampleNative": "Notice what the form is doing here: “I just came from home.”",
+      "korean": "ik kom uit huis",
+      "english": "Usage focus for \"ik kom uit huis\": “I come from home.” `Uit` marks movement out of a place.",
+      "example": "Ik kom net uit huis.",
+      "exampleEnglish": "Notice what the form is doing here: “I just came from home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik kom uit huis",
+      "romanization": "ik kom oyt hœys",
+      "nativeText": "Contrast check for \"ik kom uit huis\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik kom oyt hœys",
+      "exampleTarget": "Ik kom net uit huis.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I just came from home.”",
+      "korean": "ik kom uit huis",
+      "english": "Contrast check for \"ik kom uit huis\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik kom net uit huis.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I just came from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik kom uit huis",
+      "romanization": "ik kom oyt hœys",
+      "nativeText": "Recall \"ik kom uit huis\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik kom net uit huis.\".",
+      "pronunciation": "ik kom oyt hœys",
+      "exampleTarget": "Ik kom net uit huis.",
+      "exampleNative": "Self-check against the model before moving on: “I just came from home.”",
+      "korean": "ik kom uit huis",
+      "english": "Recall \"ik kom uit huis\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik kom net uit huis.\".",
+      "example": "Ik kom net uit huis.",
+      "exampleEnglish": "Self-check against the model before moving on: “I just came from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik kom uit huis",
+      "romanization": "ik kom oyt hœys",
+      "nativeText": "Repair \"ik kom uit huis\" inside \"Ik kom net uit huis.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I come from home.” `Uit` marks movement out of a place.",
+      "pronunciation": "ik kom oyt hœys",
+      "exampleTarget": "Ik kom net uit huis.",
+      "exampleNative": "Use the model as the repair target: “I just came from home.”",
+      "korean": "ik kom uit huis",
+      "english": "Repair \"ik kom uit huis\" inside \"Ik kom net uit huis.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I come from home.” `Uit` marks movement out of a place.",
+      "example": "Ik kom net uit huis.",
+      "exampleEnglish": "Use the model as the repair target: “I just came from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik kom uit huis",
+      "romanization": "ik kom oyt hœys",
+      "nativeText": "Transfer \"ik kom uit huis\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik kom net uit huis.\".",
+      "pronunciation": "ik kom oyt hœys",
+      "exampleTarget": "Ik kom net uit huis.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I just came from home.”",
+      "korean": "ik kom uit huis",
+      "english": "Transfer \"ik kom uit huis\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik kom net uit huis.\".",
+      "example": "Ik kom net uit huis.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I just came from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik kom uit huis",
+      "romanization": "ik kom oyt hœys",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik kom uit huis\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik kom oyt hœys",
+      "exampleTarget": "Ik kom net uit huis.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I just came from home.”",
+      "korean": "ik kom uit huis",
+      "english": "Find one word or phrase that naturally travels with \"ik kom uit huis\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik kom net uit huis.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I just came from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik kom uit huis",
+      "romanization": "ik kom oyt hœys",
+      "nativeText": "Listen for \"ik kom uit huis\" inside \"Ik kom net uit huis.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik kom oyt hœys",
+      "exampleTarget": "Ik kom net uit huis.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I just came from home.”",
+      "korean": "ik kom uit huis",
+      "english": "Listen for \"ik kom uit huis\" inside \"Ik kom net uit huis.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik kom net uit huis.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I just came from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik kom uit huis",
+      "romanization": "ik kom oyt hœys",
+      "nativeText": "Write \"ik kom uit huis\" again without looking, then compare the exact written form against \"Ik kom net uit huis.\" before moving on.",
+      "pronunciation": "ik kom oyt hœys",
+      "exampleTarget": "Ik kom net uit huis.",
+      "exampleNative": "Use the written model as the final correctness check: “I just came from home.”",
+      "korean": "ik kom uit huis",
+      "english": "Write \"ik kom uit huis\" again without looking, then compare the exact written form against \"Ik kom net uit huis.\" before moving on.",
+      "example": "Ik kom net uit huis.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I just came from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ik kom uit huis",
+      "romanization": "ik kom oyt hœys",
+      "nativeText": "Check whether \"ik kom uit huis\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I just came from home.”",
+      "pronunciation": "ik kom oyt hœys",
+      "exampleTarget": "Ik kom net uit huis.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I just came from home.”",
+      "korean": "ik kom uit huis",
+      "english": "Check whether \"ik kom uit huis\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I just came from home.”",
+      "example": "Ik kom net uit huis.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I just came from home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga linksaf",
+      "romanization": "kha LINKS-af",
+      "nativeText": "“Turn left.” This is a separable-verb shape learners will keep meeting.",
+      "pronunciation": "kha LINKS-af",
+      "exampleTarget": "Bij het stoplicht ga je linksaf.",
+      "exampleNative": "“At the traffic light you turn left.”",
+      "korean": "ga linksaf",
+      "english": "“Turn left.” This is a separable-verb shape learners will keep meeting.",
+      "example": "Bij het stoplicht ga je linksaf.",
+      "exampleEnglish": "“At the traffic light you turn left.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "Bij het stoplicht ga je linksaf.",
+      "romanization": "kha LINKS-af",
+      "nativeText": "Model use for \"Bij het stoplicht ga je linksaf.\": “At the traffic light you turn left.”",
+      "pronunciation": "kha LINKS-af",
+      "exampleTarget": "Bij het stoplicht ga je linksaf.",
+      "exampleNative": "“At the traffic light you turn left.”",
+      "korean": "Bij het stoplicht ga je linksaf.",
+      "english": "Model use for \"Bij het stoplicht ga je linksaf.\": “At the traffic light you turn left.”",
+      "example": "Bij het stoplicht ga je linksaf.",
+      "exampleEnglish": "“At the traffic light you turn left.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga linksaf",
+      "romanization": "kha LINKS-af",
+      "nativeText": "Usage focus for \"ga linksaf\": “Turn left.” This is a separable-verb shape learners will keep meeting.",
+      "pronunciation": "kha LINKS-af",
+      "exampleTarget": "Bij het stoplicht ga je linksaf.",
+      "exampleNative": "Notice what the form is doing here: “At the traffic light you turn left.”",
+      "korean": "ga linksaf",
+      "english": "Usage focus for \"ga linksaf\": “Turn left.” This is a separable-verb shape learners will keep meeting.",
+      "example": "Bij het stoplicht ga je linksaf.",
+      "exampleEnglish": "Notice what the form is doing here: “At the traffic light you turn left.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga linksaf",
+      "romanization": "kha LINKS-af",
+      "nativeText": "Contrast check for \"ga linksaf\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kha LINKS-af",
+      "exampleTarget": "Bij het stoplicht ga je linksaf.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At the traffic light you turn left.”",
+      "korean": "ga linksaf",
+      "english": "Contrast check for \"ga linksaf\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bij het stoplicht ga je linksaf.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At the traffic light you turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga linksaf",
+      "romanization": "kha LINKS-af",
+      "nativeText": "Recall \"ga linksaf\" from memory, then explain what would change if a nearby alternative replaced it in \"Bij het stoplicht ga je linksaf.\".",
+      "pronunciation": "kha LINKS-af",
+      "exampleTarget": "Bij het stoplicht ga je linksaf.",
+      "exampleNative": "Self-check against the model before moving on: “At the traffic light you turn left.”",
+      "korean": "ga linksaf",
+      "english": "Recall \"ga linksaf\" from memory, then explain what would change if a nearby alternative replaced it in \"Bij het stoplicht ga je linksaf.\".",
+      "example": "Bij het stoplicht ga je linksaf.",
+      "exampleEnglish": "Self-check against the model before moving on: “At the traffic light you turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga linksaf",
+      "romanization": "kha LINKS-af",
+      "nativeText": "Repair \"ga linksaf\" inside \"Bij het stoplicht ga je linksaf.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Turn left.” This is a separable-verb shape learners will keep meeting.",
+      "pronunciation": "kha LINKS-af",
+      "exampleTarget": "Bij het stoplicht ga je linksaf.",
+      "exampleNative": "Use the model as the repair target: “At the traffic light you turn left.”",
+      "korean": "ga linksaf",
+      "english": "Repair \"ga linksaf\" inside \"Bij het stoplicht ga je linksaf.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Turn left.” This is a separable-verb shape learners will keep meeting.",
+      "example": "Bij het stoplicht ga je linksaf.",
+      "exampleEnglish": "Use the model as the repair target: “At the traffic light you turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga linksaf",
+      "romanization": "kha LINKS-af",
+      "nativeText": "Transfer \"ga linksaf\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bij het stoplicht ga je linksaf.\".",
+      "pronunciation": "kha LINKS-af",
+      "exampleTarget": "Bij het stoplicht ga je linksaf.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At the traffic light you turn left.”",
+      "korean": "ga linksaf",
+      "english": "Transfer \"ga linksaf\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bij het stoplicht ga je linksaf.\".",
+      "example": "Bij het stoplicht ga je linksaf.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At the traffic light you turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga linksaf",
+      "romanization": "kha LINKS-af",
+      "nativeText": "Find one word or phrase that naturally travels with \"ga linksaf\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kha LINKS-af",
+      "exampleTarget": "Bij het stoplicht ga je linksaf.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At the traffic light you turn left.”",
+      "korean": "ga linksaf",
+      "english": "Find one word or phrase that naturally travels with \"ga linksaf\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bij het stoplicht ga je linksaf.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At the traffic light you turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga linksaf",
+      "romanization": "kha LINKS-af",
+      "nativeText": "Listen for \"ga linksaf\" inside \"Bij het stoplicht ga je linksaf.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kha LINKS-af",
+      "exampleTarget": "Bij het stoplicht ga je linksaf.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At the traffic light you turn left.”",
+      "korean": "ga linksaf",
+      "english": "Listen for \"ga linksaf\" inside \"Bij het stoplicht ga je linksaf.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bij het stoplicht ga je linksaf.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At the traffic light you turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga linksaf",
+      "romanization": "kha LINKS-af",
+      "nativeText": "Write \"ga linksaf\" again without looking, then compare the exact written form against \"Bij het stoplicht ga je linksaf.\" before moving on.",
+      "pronunciation": "kha LINKS-af",
+      "exampleTarget": "Bij het stoplicht ga je linksaf.",
+      "exampleNative": "Use the written model as the final correctness check: “At the traffic light you turn left.”",
+      "korean": "ga linksaf",
+      "english": "Write \"ga linksaf\" again without looking, then compare the exact written form against \"Bij het stoplicht ga je linksaf.\" before moving on.",
+      "example": "Bij het stoplicht ga je linksaf.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At the traffic light you turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga linksaf",
+      "romanization": "kha LINKS-af",
+      "nativeText": "Check whether \"ga linksaf\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At the traffic light you turn left.”",
+      "pronunciation": "kha LINKS-af",
+      "exampleTarget": "Bij het stoplicht ga je linksaf.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At the traffic light you turn left.”",
+      "korean": "ga linksaf",
+      "english": "Check whether \"ga linksaf\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At the traffic light you turn left.”",
+      "example": "Bij het stoplicht ga je linksaf.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At the traffic light you turn left.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga rechtdoor",
+      "romanization": "kha REKHT-dor",
+      "nativeText": "“Go straight ahead.” A common complete route instruction.",
+      "pronunciation": "kha REKHT-dor",
+      "exampleTarget": "Ga rechtdoor tot de brug.",
+      "exampleNative": "“Go straight until the bridge.”",
+      "korean": "ga rechtdoor",
+      "english": "“Go straight ahead.” A common complete route instruction.",
+      "example": "Ga rechtdoor tot de brug.",
+      "exampleEnglish": "“Go straight until the bridge.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "Ga rechtdoor tot de brug.",
+      "romanization": "kha REKHT-dor",
+      "nativeText": "Model use for \"Ga rechtdoor tot de brug.\": “Go straight until the bridge.”",
+      "pronunciation": "kha REKHT-dor",
+      "exampleTarget": "Ga rechtdoor tot de brug.",
+      "exampleNative": "“Go straight until the bridge.”",
+      "korean": "Ga rechtdoor tot de brug.",
+      "english": "Model use for \"Ga rechtdoor tot de brug.\": “Go straight until the bridge.”",
+      "example": "Ga rechtdoor tot de brug.",
+      "exampleEnglish": "“Go straight until the bridge.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga rechtdoor",
+      "romanization": "kha REKHT-dor",
+      "nativeText": "Usage focus for \"ga rechtdoor\": “Go straight ahead.” A common complete route instruction.",
+      "pronunciation": "kha REKHT-dor",
+      "exampleTarget": "Ga rechtdoor tot de brug.",
+      "exampleNative": "Notice what the form is doing here: “Go straight until the bridge.”",
+      "korean": "ga rechtdoor",
+      "english": "Usage focus for \"ga rechtdoor\": “Go straight ahead.” A common complete route instruction.",
+      "example": "Ga rechtdoor tot de brug.",
+      "exampleEnglish": "Notice what the form is doing here: “Go straight until the bridge.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga rechtdoor",
+      "romanization": "kha REKHT-dor",
+      "nativeText": "Contrast check for \"ga rechtdoor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kha REKHT-dor",
+      "exampleTarget": "Ga rechtdoor tot de brug.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Go straight until the bridge.”",
+      "korean": "ga rechtdoor",
+      "english": "Contrast check for \"ga rechtdoor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ga rechtdoor tot de brug.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Go straight until the bridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga rechtdoor",
+      "romanization": "kha REKHT-dor",
+      "nativeText": "Recall \"ga rechtdoor\" from memory, then explain what would change if a nearby alternative replaced it in \"Ga rechtdoor tot de brug.\".",
+      "pronunciation": "kha REKHT-dor",
+      "exampleTarget": "Ga rechtdoor tot de brug.",
+      "exampleNative": "Self-check against the model before moving on: “Go straight until the bridge.”",
+      "korean": "ga rechtdoor",
+      "english": "Recall \"ga rechtdoor\" from memory, then explain what would change if a nearby alternative replaced it in \"Ga rechtdoor tot de brug.\".",
+      "example": "Ga rechtdoor tot de brug.",
+      "exampleEnglish": "Self-check against the model before moving on: “Go straight until the bridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga rechtdoor",
+      "romanization": "kha REKHT-dor",
+      "nativeText": "Repair \"ga rechtdoor\" inside \"Ga rechtdoor tot de brug.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Go straight ahead.” A common complete route instruction.",
+      "pronunciation": "kha REKHT-dor",
+      "exampleTarget": "Ga rechtdoor tot de brug.",
+      "exampleNative": "Use the model as the repair target: “Go straight until the bridge.”",
+      "korean": "ga rechtdoor",
+      "english": "Repair \"ga rechtdoor\" inside \"Ga rechtdoor tot de brug.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Go straight ahead.” A common complete route instruction.",
+      "example": "Ga rechtdoor tot de brug.",
+      "exampleEnglish": "Use the model as the repair target: “Go straight until the bridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga rechtdoor",
+      "romanization": "kha REKHT-dor",
+      "nativeText": "Transfer \"ga rechtdoor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ga rechtdoor tot de brug.\".",
+      "pronunciation": "kha REKHT-dor",
+      "exampleTarget": "Ga rechtdoor tot de brug.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Go straight until the bridge.”",
+      "korean": "ga rechtdoor",
+      "english": "Transfer \"ga rechtdoor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ga rechtdoor tot de brug.\".",
+      "example": "Ga rechtdoor tot de brug.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Go straight until the bridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga rechtdoor",
+      "romanization": "kha REKHT-dor",
+      "nativeText": "Find one word or phrase that naturally travels with \"ga rechtdoor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kha REKHT-dor",
+      "exampleTarget": "Ga rechtdoor tot de brug.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Go straight until the bridge.”",
+      "korean": "ga rechtdoor",
+      "english": "Find one word or phrase that naturally travels with \"ga rechtdoor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ga rechtdoor tot de brug.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Go straight until the bridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga rechtdoor",
+      "romanization": "kha REKHT-dor",
+      "nativeText": "Listen for \"ga rechtdoor\" inside \"Ga rechtdoor tot de brug.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kha REKHT-dor",
+      "exampleTarget": "Ga rechtdoor tot de brug.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Go straight until the bridge.”",
+      "korean": "ga rechtdoor",
+      "english": "Listen for \"ga rechtdoor\" inside \"Ga rechtdoor tot de brug.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ga rechtdoor tot de brug.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Go straight until the bridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga rechtdoor",
+      "romanization": "kha REKHT-dor",
+      "nativeText": "Write \"ga rechtdoor\" again without looking, then compare the exact written form against \"Ga rechtdoor tot de brug.\" before moving on.",
+      "pronunciation": "kha REKHT-dor",
+      "exampleTarget": "Ga rechtdoor tot de brug.",
+      "exampleNative": "Use the written model as the final correctness check: “Go straight until the bridge.”",
+      "korean": "ga rechtdoor",
+      "english": "Write \"ga rechtdoor\" again without looking, then compare the exact written form against \"Ga rechtdoor tot de brug.\" before moving on.",
+      "example": "Ga rechtdoor tot de brug.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Go straight until the bridge.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "ga rechtdoor",
+      "romanization": "kha REKHT-dor",
+      "nativeText": "Check whether \"ga rechtdoor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Go straight until the bridge.”",
+      "pronunciation": "kha REKHT-dor",
+      "exampleTarget": "Ga rechtdoor tot de brug.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Go straight until the bridge.”",
+      "korean": "ga rechtdoor",
+      "english": "Check whether \"ga rechtdoor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Go straight until the bridge.”",
+      "example": "Ga rechtdoor tot de brug.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Go straight until the bridge.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "dichtbij / ver weg",
+      "romanization": "DIKHT-bey / fer vekh",
+      "nativeText": "“Nearby / far away.” Practical distance expressions.",
+      "pronunciation": "DIKHT-bey / fer vekh",
+      "exampleTarget": "Het station is dichtbij.",
+      "exampleNative": "“The station is nearby.”",
+      "korean": "dichtbij / ver weg",
+      "english": "“Nearby / far away.” Practical distance expressions.",
+      "example": "Het station is dichtbij.",
+      "exampleEnglish": "“The station is nearby.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "Het station is dichtbij.",
+      "romanization": "DIKHT-bey / fer vekh",
+      "nativeText": "Model use for \"Het station is dichtbij.\": “The station is nearby.”",
+      "pronunciation": "DIKHT-bey / fer vekh",
+      "exampleTarget": "Het station is dichtbij.",
+      "exampleNative": "“The station is nearby.”",
+      "korean": "Het station is dichtbij.",
+      "english": "Model use for \"Het station is dichtbij.\": “The station is nearby.”",
+      "example": "Het station is dichtbij.",
+      "exampleEnglish": "“The station is nearby.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "dichtbij / ver weg",
+      "romanization": "DIKHT-bey / fer vekh",
+      "nativeText": "Usage focus for \"dichtbij / ver weg\": “Nearby / far away.” Practical distance expressions.",
+      "pronunciation": "DIKHT-bey / fer vekh",
+      "exampleTarget": "Het station is dichtbij.",
+      "exampleNative": "Notice what the form is doing here: “The station is nearby.”",
+      "korean": "dichtbij / ver weg",
+      "english": "Usage focus for \"dichtbij / ver weg\": “Nearby / far away.” Practical distance expressions.",
+      "example": "Het station is dichtbij.",
+      "exampleEnglish": "Notice what the form is doing here: “The station is nearby.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "dichtbij / ver weg",
+      "romanization": "DIKHT-bey / fer vekh",
+      "nativeText": "Contrast check for \"dichtbij / ver weg\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "DIKHT-bey / fer vekh",
+      "exampleTarget": "Het station is dichtbij.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The station is nearby.”",
+      "korean": "dichtbij / ver weg",
+      "english": "Contrast check for \"dichtbij / ver weg\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Het station is dichtbij.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "dichtbij / ver weg",
+      "romanization": "DIKHT-bey / fer vekh",
+      "nativeText": "Recall \"dichtbij / ver weg\" from memory, then explain what would change if a nearby alternative replaced it in \"Het station is dichtbij.\".",
+      "pronunciation": "DIKHT-bey / fer vekh",
+      "exampleTarget": "Het station is dichtbij.",
+      "exampleNative": "Self-check against the model before moving on: “The station is nearby.”",
+      "korean": "dichtbij / ver weg",
+      "english": "Recall \"dichtbij / ver weg\" from memory, then explain what would change if a nearby alternative replaced it in \"Het station is dichtbij.\".",
+      "example": "Het station is dichtbij.",
+      "exampleEnglish": "Self-check against the model before moving on: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "dichtbij / ver weg",
+      "romanization": "DIKHT-bey / fer vekh",
+      "nativeText": "Repair \"dichtbij / ver weg\" inside \"Het station is dichtbij.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Nearby / far away.” Practical distance expressions.",
+      "pronunciation": "DIKHT-bey / fer vekh",
+      "exampleTarget": "Het station is dichtbij.",
+      "exampleNative": "Use the model as the repair target: “The station is nearby.”",
+      "korean": "dichtbij / ver weg",
+      "english": "Repair \"dichtbij / ver weg\" inside \"Het station is dichtbij.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Nearby / far away.” Practical distance expressions.",
+      "example": "Het station is dichtbij.",
+      "exampleEnglish": "Use the model as the repair target: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "dichtbij / ver weg",
+      "romanization": "DIKHT-bey / fer vekh",
+      "nativeText": "Transfer \"dichtbij / ver weg\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Het station is dichtbij.\".",
+      "pronunciation": "DIKHT-bey / fer vekh",
+      "exampleTarget": "Het station is dichtbij.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The station is nearby.”",
+      "korean": "dichtbij / ver weg",
+      "english": "Transfer \"dichtbij / ver weg\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Het station is dichtbij.\".",
+      "example": "Het station is dichtbij.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "dichtbij / ver weg",
+      "romanization": "DIKHT-bey / fer vekh",
+      "nativeText": "Find one word or phrase that naturally travels with \"dichtbij / ver weg\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "DIKHT-bey / fer vekh",
+      "exampleTarget": "Het station is dichtbij.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The station is nearby.”",
+      "korean": "dichtbij / ver weg",
+      "english": "Find one word or phrase that naturally travels with \"dichtbij / ver weg\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Het station is dichtbij.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "dichtbij / ver weg",
+      "romanization": "DIKHT-bey / fer vekh",
+      "nativeText": "Listen for \"dichtbij / ver weg\" inside \"Het station is dichtbij.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "DIKHT-bey / fer vekh",
+      "exampleTarget": "Het station is dichtbij.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The station is nearby.”",
+      "korean": "dichtbij / ver weg",
+      "english": "Listen for \"dichtbij / ver weg\" inside \"Het station is dichtbij.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Het station is dichtbij.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "dichtbij / ver weg",
+      "romanization": "DIKHT-bey / fer vekh",
+      "nativeText": "Write \"dichtbij / ver weg\" again without looking, then compare the exact written form against \"Het station is dichtbij.\" before moving on.",
+      "pronunciation": "DIKHT-bey / fer vekh",
+      "exampleTarget": "Het station is dichtbij.",
+      "exampleNative": "Use the written model as the final correctness check: “The station is nearby.”",
+      "korean": "dichtbij / ver weg",
+      "english": "Write \"dichtbij / ver weg\" again without looking, then compare the exact written form against \"Het station is dichtbij.\" before moving on.",
+      "example": "Het station is dichtbij.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The station is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "dichtbij / ver weg",
+      "romanization": "DIKHT-bey / fer vekh",
+      "nativeText": "Check whether \"dichtbij / ver weg\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The station is nearby.”",
+      "pronunciation": "DIKHT-bey / fer vekh",
+      "exampleTarget": "Het station is dichtbij.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The station is nearby.”",
+      "korean": "dichtbij / ver weg",
+      "english": "Check whether \"dichtbij / ver weg\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The station is nearby.”",
+      "example": "Het station is dichtbij.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The station is nearby.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "hoe kom ik bij ...?",
+      "romanization": "hoo kom ik bey",
+      "nativeText": "“How do I get to ...?” A full real-life directions question.",
+      "pronunciation": "hoo kom ik bey",
+      "exampleTarget": "Hoe kom ik bij het museum?",
+      "exampleNative": "“How do I get to the museum?”",
+      "korean": "hoe kom ik bij ...?",
+      "english": "“How do I get to ...?” A full real-life directions question.",
+      "example": "Hoe kom ik bij het museum?",
+      "exampleEnglish": "“How do I get to the museum?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "Hoe kom ik bij het museum?",
+      "romanization": "hoo kom ik bey",
+      "nativeText": "Model use for \"Hoe kom ik bij het museum?\": “How do I get to the museum?”",
+      "pronunciation": "hoo kom ik bey",
+      "exampleTarget": "Hoe kom ik bij het museum?",
+      "exampleNative": "“How do I get to the museum?”",
+      "korean": "Hoe kom ik bij het museum?",
+      "english": "Model use for \"Hoe kom ik bij het museum?\": “How do I get to the museum?”",
+      "example": "Hoe kom ik bij het museum?",
+      "exampleEnglish": "“How do I get to the museum?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "hoe kom ik bij ...?",
+      "romanization": "hoo kom ik bey",
+      "nativeText": "Usage focus for \"hoe kom ik bij ...?\": “How do I get to ...?” A full real-life directions question.",
+      "pronunciation": "hoo kom ik bey",
+      "exampleTarget": "Hoe kom ik bij het museum?",
+      "exampleNative": "Notice what the form is doing here: “How do I get to the museum?”",
+      "korean": "hoe kom ik bij ...?",
+      "english": "Usage focus for \"hoe kom ik bij ...?\": “How do I get to ...?” A full real-life directions question.",
+      "example": "Hoe kom ik bij het museum?",
+      "exampleEnglish": "Notice what the form is doing here: “How do I get to the museum?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "hoe kom ik bij ...?",
+      "romanization": "hoo kom ik bey",
+      "nativeText": "Contrast check for \"hoe kom ik bij ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hoo kom ik bey",
+      "exampleTarget": "Hoe kom ik bij het museum?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to the museum?”",
+      "korean": "hoe kom ik bij ...?",
+      "english": "Contrast check for \"hoe kom ik bij ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hoe kom ik bij het museum?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "hoe kom ik bij ...?",
+      "romanization": "hoo kom ik bey",
+      "nativeText": "Recall \"hoe kom ik bij ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoe kom ik bij het museum?\".",
+      "pronunciation": "hoo kom ik bey",
+      "exampleTarget": "Hoe kom ik bij het museum?",
+      "exampleNative": "Self-check against the model before moving on: “How do I get to the museum?”",
+      "korean": "hoe kom ik bij ...?",
+      "english": "Recall \"hoe kom ik bij ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoe kom ik bij het museum?\".",
+      "example": "Hoe kom ik bij het museum?",
+      "exampleEnglish": "Self-check against the model before moving on: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "hoe kom ik bij ...?",
+      "romanization": "hoo kom ik bey",
+      "nativeText": "Repair \"hoe kom ik bij ...?\" inside \"Hoe kom ik bij het museum?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get to ...?” A full real-life directions question.",
+      "pronunciation": "hoo kom ik bey",
+      "exampleTarget": "Hoe kom ik bij het museum?",
+      "exampleNative": "Use the model as the repair target: “How do I get to the museum?”",
+      "korean": "hoe kom ik bij ...?",
+      "english": "Repair \"hoe kom ik bij ...?\" inside \"Hoe kom ik bij het museum?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get to ...?” A full real-life directions question.",
+      "example": "Hoe kom ik bij het museum?",
+      "exampleEnglish": "Use the model as the repair target: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "hoe kom ik bij ...?",
+      "romanization": "hoo kom ik bey",
+      "nativeText": "Transfer \"hoe kom ik bij ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoe kom ik bij het museum?\".",
+      "pronunciation": "hoo kom ik bey",
+      "exampleTarget": "Hoe kom ik bij het museum?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to the museum?”",
+      "korean": "hoe kom ik bij ...?",
+      "english": "Transfer \"hoe kom ik bij ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoe kom ik bij het museum?\".",
+      "example": "Hoe kom ik bij het museum?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "hoe kom ik bij ...?",
+      "romanization": "hoo kom ik bey",
+      "nativeText": "Find one word or phrase that naturally travels with \"hoe kom ik bij ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hoo kom ik bey",
+      "exampleTarget": "Hoe kom ik bij het museum?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How do I get to the museum?”",
+      "korean": "hoe kom ik bij ...?",
+      "english": "Find one word or phrase that naturally travels with \"hoe kom ik bij ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hoe kom ik bij het museum?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "hoe kom ik bij ...?",
+      "romanization": "hoo kom ik bey",
+      "nativeText": "Listen for \"hoe kom ik bij ...?\" inside \"Hoe kom ik bij het museum?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hoo kom ik bey",
+      "exampleTarget": "Hoe kom ik bij het museum?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to the museum?”",
+      "korean": "hoe kom ik bij ...?",
+      "english": "Listen for \"hoe kom ik bij ...?\" inside \"Hoe kom ik bij het museum?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hoe kom ik bij het museum?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "hoe kom ik bij ...?",
+      "romanization": "hoo kom ik bey",
+      "nativeText": "Write \"hoe kom ik bij ...?\" again without looking, then compare the exact written form against \"Hoe kom ik bij het museum?\" before moving on.",
+      "pronunciation": "hoo kom ik bey",
+      "exampleTarget": "Hoe kom ik bij het museum?",
+      "exampleNative": "Use the written model as the final correctness check: “How do I get to the museum?”",
+      "korean": "hoe kom ik bij ...?",
+      "english": "Write \"hoe kom ik bij ...?\" again without looking, then compare the exact written form against \"Hoe kom ik bij het museum?\" before moving on.",
+      "example": "Hoe kom ik bij het museum?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "hoe kom ik bij ...?",
+      "romanization": "hoo kom ik bey",
+      "nativeText": "Check whether \"hoe kom ik bij ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”",
+      "pronunciation": "hoo kom ik bey",
+      "exampleTarget": "Hoe kom ik bij het museum?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”",
+      "korean": "hoe kom ik bij ...?",
+      "english": "Check whether \"hoe kom ik bij ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”",
+      "example": "Hoe kom ik bij het museum?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "naast",
+      "romanization": "nahst",
+      "nativeText": "“Next to.” A compact landmark preposition.",
+      "pronunciation": "nahst",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "naast",
+      "english": "“Next to.” A compact landmark preposition.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "Het café is naast de bank.",
+      "romanization": "nahst",
+      "nativeText": "Model use for \"Het café is naast de bank.\": “The cafe is next to the bank.”",
+      "pronunciation": "nahst",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "“The cafe is next to the bank.”",
+      "korean": "Het café is naast de bank.",
+      "english": "Model use for \"Het café is naast de bank.\": “The cafe is next to the bank.”",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "“The cafe is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "naast",
+      "romanization": "nahst",
+      "nativeText": "Usage focus for \"naast\": “Next to.” A compact landmark preposition.",
+      "pronunciation": "nahst",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "Notice what the form is doing here: “The cafe is next to the bank.”",
+      "korean": "naast",
+      "english": "Usage focus for \"naast\": “Next to.” A compact landmark preposition.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "Notice what the form is doing here: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "naast",
+      "romanization": "nahst",
+      "nativeText": "Contrast check for \"naast\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nahst",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is next to the bank.”",
+      "korean": "naast",
+      "english": "Contrast check for \"naast\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "naast",
+      "romanization": "nahst",
+      "nativeText": "Recall \"naast\" from memory, then explain what would change if a nearby alternative replaced it in \"Het café is naast de bank.\".",
+      "pronunciation": "nahst",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "Self-check against the model before moving on: “The cafe is next to the bank.”",
+      "korean": "naast",
+      "english": "Recall \"naast\" from memory, then explain what would change if a nearby alternative replaced it in \"Het café is naast de bank.\".",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "Self-check against the model before moving on: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "naast",
+      "romanization": "nahst",
+      "nativeText": "Repair \"naast\" inside \"Het café is naast de bank.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next to.” A compact landmark preposition.",
+      "pronunciation": "nahst",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "Use the model as the repair target: “The cafe is next to the bank.”",
+      "korean": "naast",
+      "english": "Repair \"naast\" inside \"Het café is naast de bank.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next to.” A compact landmark preposition.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "Use the model as the repair target: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "naast",
+      "romanization": "nahst",
+      "nativeText": "Transfer \"naast\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Het café is naast de bank.\".",
+      "pronunciation": "nahst",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is next to the bank.”",
+      "korean": "naast",
+      "english": "Transfer \"naast\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Het café is naast de bank.\".",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "naast",
+      "romanization": "nahst",
+      "nativeText": "Find one word or phrase that naturally travels with \"naast\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nahst",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The cafe is next to the bank.”",
+      "korean": "naast",
+      "english": "Find one word or phrase that naturally travels with \"naast\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "naast",
+      "romanization": "nahst",
+      "nativeText": "Listen for \"naast\" inside \"Het café is naast de bank.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nahst",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is next to the bank.”",
+      "korean": "naast",
+      "english": "Listen for \"naast\" inside \"Het café is naast de bank.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "naast",
+      "romanization": "nahst",
+      "nativeText": "Write \"naast\" again without looking, then compare the exact written form against \"Het café is naast de bank.\" before moving on.",
+      "pronunciation": "nahst",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "Use the written model as the final correctness check: “The cafe is next to the bank.”",
+      "korean": "naast",
+      "english": "Write \"naast\" again without looking, then compare the exact written form against \"Het café is naast de bank.\" before moving on.",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The cafe is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit07goingplaces-vocabulary-1",
+        "nl-level1unit07goingplaces-vocabulary-2",
+        "nl-level1unit07goingplaces-grammar-1",
+        "nl-level1unit07goingplaces-grammar-2",
+        "nl-level1unit07goingplaces-reading",
+        "nl-level1unit07goingplaces-listening",
+        "nl-level1unit07goingplaces-writing",
+        "nl-level1unit07goingplaces-task"
+      ],
+      "targetText": "naast",
+      "romanization": "nahst",
+      "nativeText": "Check whether \"naast\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is next to the bank.”",
+      "pronunciation": "nahst",
+      "exampleTarget": "Het café is naast de bank.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The cafe is next to the bank.”",
+      "korean": "naast",
+      "english": "Check whether \"naast\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is next to the bank.”",
+      "example": "Het café is naast de bank.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The cafe is next to the bank.”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

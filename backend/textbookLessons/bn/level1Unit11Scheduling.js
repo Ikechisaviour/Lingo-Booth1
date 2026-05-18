@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u11',
-  title: 'Level 1 · Unit 11: সময় ও দেখা করা — Scheduling',
-  category: 'time',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Arrange meetings, talk about availability, and change plans politely.',
-  vocabularyGoal: 'Use meeting, schedule, clock-time, and availability words.',
-  grammarGoal: 'Use future forms with `করব`, possibility with `পারব`, and polite scheduling questions.',
-  speakingGoal: 'Propose a time, accept or reject it, and offer another option.',
-  task: 'Schedule a study meeting with a classmate.',
-  expressionPractice: [
-    practice('proposing-time', 'Proposing time', 'Use `দেখা করব?`.'),
-    practice('accepting', 'Accepting', 'Use `পারব`.'),
-    practice('rescheduling', 'Rescheduling', 'Use `পারব না` plus another option.'),
+module.exports = {
+  "title": "Level 1 · Unit 11: সময় ও দেখা করা — Scheduling",
+  "category": "time",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit11scheduling-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Arrange meetings, talk about availability, and change plans politely."
+      ],
+      "task": "Schedule a study meeting with a classmate."
+    },
+    {
+      "id": "bn-level1unit11scheduling-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit11scheduling-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit11scheduling-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 11: সময় ও দেখা করা — Scheduling sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit11scheduling-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Arrange meetings, talk about availability, and change plans politely."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit11scheduling-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit11scheduling-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit11scheduling-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit11scheduling-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit11scheduling-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit11scheduling-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Schedule a study meeting with a classmate."
+      ],
+      "task": "Schedule a study meeting with a classmate."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-planning'],
-  items: [
-    item('দেখা', 'dekha', '“Meeting / seeing.” Often used with `করা` for “to meet.”', 'আগামীকাল একটা দেখা আছে।', '“Tomorrow there is a meeting.”'),
-    item('সময়সূচি', 'shomoysuchi', '“Schedule / timetable.” Useful for school and work contexts.', 'আজ আমার সময়সূচি ভরা।', '“Today my schedule is full.”'),
-    item('তিনটায়', 'tintay', '“At three o’clock.” Time expressions often take this compact ending.', 'মিটিং তিনটায় শুরু হবে।', '“The meeting will start at three.”'),
-    item('আমি পারব', 'ami parbo', '“I can / I will be able to.” Useful for availability.', 'আমি সন্ধ্যায় পারব।', '“I can do evening.”'),
-    item('আমি পারব না', 'ami parbo na', '“I cannot.” Add an alternative to sound cooperative.', 'আমি সকালে পারব না।', '“I cannot in the morning.”'),
-    item('আগামীকাল দেখা করব?', 'agamikal dekha korbo', '“Shall we meet tomorrow?” A natural proposal.', 'আগামীকাল দেখা করব?', '“Shall we meet tomorrow?”'),
-    item('সময় বদলানো যাবে?', 'shomoy bodlano jabe', '“Can the time be changed?” A useful rescheduling frame.', 'সময় বদলানো যাবে?', '“Can the time be changed?”'),
-    item('ঠিক আছে', 'thik achhe', '“Okay / alright.” A compact acceptance phrase.', 'ঠিক আছে, পাঁচটায় দেখা হবে।', '“Okay, we will meet at five.”'),
+  "expressionPractice": [
+    {
+      "id": "proposing-time",
+      "label": "Proposing time",
+      "goal": "Use `দেখা করব?`."
+    },
+    {
+      "id": "accepting",
+      "label": "Accepting",
+      "goal": "Use `পারব`."
+    },
+    {
+      "id": "rescheduling",
+      "label": "Rescheduling",
+      "goal": "Use `পারব না` plus another option."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-time",
+    "topic-planning"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Arrange meetings, talk about availability, and change plans politely.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Schedule a study meeting with a classmate.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Arrange meetings, talk about availability, and change plans politely.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Schedule a study meeting with a classmate."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit11scheduling-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আগামীকাল একটা দেখা আছে।\".",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "“Tomorrow there is a meeting.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আগামীকাল একটা দেখা আছে।\".",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "“Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1"
+      ],
+      "targetText": "দেখা",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "“Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "Use the key language of Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with the register and setting that the lesson requires.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "“Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-2"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 11: সময় ও দেখা করা — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "“Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 11: সময় ও দেখা করা — Scheduling sound precise rather than merely understandable.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "“Today my schedule is full.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit11scheduling-grammar-1"
+      ],
+      "targetText": "দেখা",
+      "romanization": "",
+      "nativeText": "Arrange meetings, talk about availability, and change plans politely.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "“Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "Arrange meetings, talk about availability, and change plans politely.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "“Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "“Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "Contrast the main pattern in Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "“Today my schedule is full.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit11scheduling-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"ঠিক আছে, পাঁচটায় দেখা হবে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "“Okay, we will meet at five.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"ঠিক আছে, পাঁচটায় দেখা হবে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "“Okay, we will meet at five.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit11scheduling-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"ঠিক আছে, পাঁচটায় দেখা হবে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "“Okay, we will meet at five.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"ঠিক আছে, পাঁচটায় দেখা হবে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "“Okay, we will meet at five.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit11scheduling-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"আগামীকাল একটা দেখা আছে।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"আগামীকাল একটা দেখা আছে।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit11scheduling-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "“Today my schedule is full.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "“Today my schedule is full.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Schedule a study meeting with a classmate.",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "Schedule a study meeting with a classmate.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Schedule a study meeting with a classmate.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "Schedule a study meeting with a classmate."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আজ আমার সময়সূচি ভরা।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Today my schedule is full.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আজ আমার সময়সূচি ভরা।\" against the model.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Today my schedule is full.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আগামীকাল একটা দেখা আছে।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "“Tomorrow there is a meeting.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আগামীকাল একটা দেখা আছে।\" before reusing it elsewhere.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "“Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"ঠিক আছে, পাঁচটায় দেখা হবে।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "“Okay, we will meet at five.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"ঠিক আছে, পাঁচটায় দেখা হবে।\" as one thought.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "“Okay, we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আগামীকাল একটা দেখা আছে।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আগামীকাল একটা দেখা আছে।\" and move it into your own life.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"দেখা\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "দেখা",
+      "exampleNative": "“Meeting / seeing.” Often used with `করা` for “to meet.”",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"দেখা\" before looking back.",
+      "example": "দেখা",
+      "exampleEnglish": "“Meeting / seeing.” Often used with `করা` for “to meet.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"ঠিক আছে, পাঁচটায় দেখা হবে।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"ঠিক আছে, পাঁচটায় দেখা হবে।\" rather than restarting from a blank sentence.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আজ আমার সময়সূচি ভরা।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "“Today my schedule is full.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আজ আমার সময়সূচি ভরা।\" as the comparison line.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "“Today my schedule is full.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit11scheduling-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আগামীকাল একটা দেখা আছে।\".",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "“Tomorrow there is a meeting.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আগামীকাল একটা দেখা আছে।\".",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "“Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"ঠিক আছে, পাঁচটায় দেখা হবে।\".",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "“Okay, we will meet at five.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"ঠিক আছে, পাঁচটায় দেখা হবে।\".",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "“Okay, we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আগামীকাল একটা দেখা আছে।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "“Tomorrow there is a meeting.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আগামীকাল একটা দেখা আছে।\" one layer at a time.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "“Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আজ আমার সময়সূচি ভরা।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "“Today my schedule is full.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আজ আমার সময়সূচি ভরা।\" as the deciding example.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "“Today my schedule is full.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-culture",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"ঠিক আছে, পাঁচটায় দেখা হবে।\".",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "“Okay, we will meet at five.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"ঠিক আছে, পাঁচটায় দেখা হবে।\".",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "“Okay, we will meet at five.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "দেখা",
+      "romanization": "dekha",
+      "nativeText": "“Meeting / seeing.” Often used with `করা` for “to meet.”",
+      "pronunciation": "dekha",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "“Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "“Meeting / seeing.” Often used with `করা` for “to meet.”",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "“Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল একটা দেখা আছে।",
+      "romanization": "dekha",
+      "nativeText": "Model use for \"আগামীকাল একটা দেখা আছে।\": “Tomorrow there is a meeting.”",
+      "pronunciation": "dekha",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "“Tomorrow there is a meeting.”",
+      "korean": "আগামীকাল একটা দেখা আছে।",
+      "english": "Model use for \"আগামীকাল একটা দেখা আছে।\": “Tomorrow there is a meeting.”",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "“Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "দেখা",
+      "romanization": "dekha",
+      "nativeText": "Usage focus for \"দেখা\": Use the key language of Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "dekha",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "Notice what the form is doing here: “Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "Usage focus for \"দেখা\": Use the key language of Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with the register and setting that the lesson requires.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "Notice what the form is doing here: “Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "দেখা",
+      "romanization": "dekha",
+      "nativeText": "Contrast check for \"দেখা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dekha",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "Contrast check for \"দেখা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "দেখা",
+      "romanization": "dekha",
+      "nativeText": "Recall \"দেখা\" from memory, then explain what would change if a nearby alternative replaced it in \"আগামীকাল একটা দেখা আছে।\".",
+      "pronunciation": "dekha",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "Self-check against the model before moving on: “Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "Recall \"দেখা\" from memory, then explain what would change if a nearby alternative replaced it in \"আগামীকাল একটা দেখা আছে।\".",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "Self-check against the model before moving on: “Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "দেখা",
+      "romanization": "dekha",
+      "nativeText": "Repair \"দেখা\" inside \"আগামীকাল একটা দেখা আছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "dekha",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "Use the model as the repair target: “Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "Repair \"দেখা\" inside \"আগামীকাল একটা দেখা আছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 11: সময় ও দেখা করা — Scheduling with the register and setting that the lesson requires.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "Use the model as the repair target: “Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "দেখা",
+      "romanization": "dekha",
+      "nativeText": "Transfer \"দেখা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আগামীকাল একটা দেখা আছে।\".",
+      "pronunciation": "dekha",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "Transfer \"দেখা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আগামীকাল একটা দেখা আছে।\".",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "দেখা",
+      "romanization": "dekha",
+      "nativeText": "Find one word or phrase that naturally travels with \"দেখা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dekha",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "Find one word or phrase that naturally travels with \"দেখা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "দেখা",
+      "romanization": "dekha",
+      "nativeText": "Listen for \"দেখা\" inside \"আগামীকাল একটা দেখা আছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dekha",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "Listen for \"দেখা\" inside \"আগামীকাল একটা দেখা আছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "দেখা",
+      "romanization": "dekha",
+      "nativeText": "Write \"দেখা\" again without looking, then compare the exact written form against \"আগামীকাল একটা দেখা আছে।\" before moving on.",
+      "pronunciation": "dekha",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "Use the written model as the final correctness check: “Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "Write \"দেখা\" again without looking, then compare the exact written form against \"আগামীকাল একটা দেখা আছে।\" before moving on.",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "দেখা",
+      "romanization": "dekha",
+      "nativeText": "Check whether \"দেখা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow there is a meeting.”",
+      "pronunciation": "dekha",
+      "exampleTarget": "আগামীকাল একটা দেখা আছে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Tomorrow there is a meeting.”",
+      "korean": "দেখা",
+      "english": "Check whether \"দেখা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow there is a meeting.”",
+      "example": "আগামীকাল একটা দেখা আছে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Tomorrow there is a meeting.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "shomoysuchi",
+      "nativeText": "“Schedule / timetable.” Useful for school and work contexts.",
+      "pronunciation": "shomoysuchi",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "“Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "“Schedule / timetable.” Useful for school and work contexts.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "“Today my schedule is full.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আজ আমার সময়সূচি ভরা।",
+      "romanization": "shomoysuchi",
+      "nativeText": "Model use for \"আজ আমার সময়সূচি ভরা।\": “Today my schedule is full.”",
+      "pronunciation": "shomoysuchi",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "“Today my schedule is full.”",
+      "korean": "আজ আমার সময়সূচি ভরা।",
+      "english": "Model use for \"আজ আমার সময়সূচি ভরা।\": “Today my schedule is full.”",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "“Today my schedule is full.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "shomoysuchi",
+      "nativeText": "Usage focus for \"সময়সূচি\": Distinguish the nearby wording choices that make Level 1 · Unit 11: সময় ও দেখা করা — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "shomoysuchi",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "Notice what the form is doing here: “Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "Usage focus for \"সময়সূচি\": Distinguish the nearby wording choices that make Level 1 · Unit 11: সময় ও দেখা করা — Scheduling sound precise rather than merely understandable.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "Notice what the form is doing here: “Today my schedule is full.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "shomoysuchi",
+      "nativeText": "Contrast check for \"সময়সূচি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shomoysuchi",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "Contrast check for \"সময়সূচি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today my schedule is full.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "shomoysuchi",
+      "nativeText": "Recall \"সময়সূচি\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ আমার সময়সূচি ভরা।\".",
+      "pronunciation": "shomoysuchi",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "Self-check against the model before moving on: “Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "Recall \"সময়সূচি\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ আমার সময়সূচি ভরা।\".",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "Self-check against the model before moving on: “Today my schedule is full.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "shomoysuchi",
+      "nativeText": "Repair \"সময়সূচি\" inside \"আজ আমার সময়সূচি ভরা।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 11: সময় ও দেখা করা — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "shomoysuchi",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "Use the model as the repair target: “Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "Repair \"সময়সূচি\" inside \"আজ আমার সময়সূচি ভরা।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 11: সময় ও দেখা করা — Scheduling sound precise rather than merely understandable.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "Use the model as the repair target: “Today my schedule is full.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "shomoysuchi",
+      "nativeText": "Transfer \"সময়সূচি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ আমার সময়সূচি ভরা।\".",
+      "pronunciation": "shomoysuchi",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "Transfer \"সময়সূচি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ আমার সময়সূচি ভরা।\".",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today my schedule is full.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "shomoysuchi",
+      "nativeText": "Find one word or phrase that naturally travels with \"সময়সূচি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shomoysuchi",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "Find one word or phrase that naturally travels with \"সময়সূচি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today my schedule is full.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "shomoysuchi",
+      "nativeText": "Listen for \"সময়সূচি\" inside \"আজ আমার সময়সূচি ভরা।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shomoysuchi",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "Listen for \"সময়সূচি\" inside \"আজ আমার সময়সূচি ভরা।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today my schedule is full.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "shomoysuchi",
+      "nativeText": "Write \"সময়সূচি\" again without looking, then compare the exact written form against \"আজ আমার সময়সূচি ভরা।\" before moving on.",
+      "pronunciation": "shomoysuchi",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "Use the written model as the final correctness check: “Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "Write \"সময়সূচি\" again without looking, then compare the exact written form against \"আজ আমার সময়সূচি ভরা।\" before moving on.",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today my schedule is full.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময়সূচি",
+      "romanization": "shomoysuchi",
+      "nativeText": "Check whether \"সময়সূচি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today my schedule is full.”",
+      "pronunciation": "shomoysuchi",
+      "exampleTarget": "আজ আমার সময়সূচি ভরা।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today my schedule is full.”",
+      "korean": "সময়সূচি",
+      "english": "Check whether \"সময়সূচি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today my schedule is full.”",
+      "example": "আজ আমার সময়সূচি ভরা।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today my schedule is full.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "তিনটায়",
+      "romanization": "tintay",
+      "nativeText": "“At three o’clock.” Time expressions often take this compact ending.",
+      "pronunciation": "tintay",
+      "exampleTarget": "মিটিং তিনটায় শুরু হবে।",
+      "exampleNative": "“The meeting will start at three.”",
+      "korean": "তিনটায়",
+      "english": "“At three o’clock.” Time expressions often take this compact ending.",
+      "example": "মিটিং তিনটায় শুরু হবে।",
+      "exampleEnglish": "“The meeting will start at three.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "মিটিং তিনটায় শুরু হবে।",
+      "romanization": "tintay",
+      "nativeText": "Model use for \"মিটিং তিনটায় শুরু হবে।\": “The meeting will start at three.”",
+      "pronunciation": "tintay",
+      "exampleTarget": "মিটিং তিনটায় শুরু হবে।",
+      "exampleNative": "“The meeting will start at three.”",
+      "korean": "মিটিং তিনটায় শুরু হবে।",
+      "english": "Model use for \"মিটিং তিনটায় শুরু হবে।\": “The meeting will start at three.”",
+      "example": "মিটিং তিনটায় শুরু হবে।",
+      "exampleEnglish": "“The meeting will start at three.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "তিনটায়",
+      "romanization": "tintay",
+      "nativeText": "Usage focus for \"তিনটায়\": “At three o’clock.” Time expressions often take this compact ending.",
+      "pronunciation": "tintay",
+      "exampleTarget": "মিটিং তিনটায় শুরু হবে।",
+      "exampleNative": "Notice what the form is doing here: “The meeting will start at three.”",
+      "korean": "তিনটায়",
+      "english": "Usage focus for \"তিনটায়\": “At three o’clock.” Time expressions often take this compact ending.",
+      "example": "মিটিং তিনটায় শুরু হবে।",
+      "exampleEnglish": "Notice what the form is doing here: “The meeting will start at three.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "তিনটায়",
+      "romanization": "tintay",
+      "nativeText": "Contrast check for \"তিনটায়\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tintay",
+      "exampleTarget": "মিটিং তিনটায় শুরু হবে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The meeting will start at three.”",
+      "korean": "তিনটায়",
+      "english": "Contrast check for \"তিনটায়\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "মিটিং তিনটায় শুরু হবে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The meeting will start at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "তিনটায়",
+      "romanization": "tintay",
+      "nativeText": "Recall \"তিনটায়\" from memory, then explain what would change if a nearby alternative replaced it in \"মিটিং তিনটায় শুরু হবে।\".",
+      "pronunciation": "tintay",
+      "exampleTarget": "মিটিং তিনটায় শুরু হবে।",
+      "exampleNative": "Self-check against the model before moving on: “The meeting will start at three.”",
+      "korean": "তিনটায়",
+      "english": "Recall \"তিনটায়\" from memory, then explain what would change if a nearby alternative replaced it in \"মিটিং তিনটায় শুরু হবে।\".",
+      "example": "মিটিং তিনটায় শুরু হবে।",
+      "exampleEnglish": "Self-check against the model before moving on: “The meeting will start at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "তিনটায়",
+      "romanization": "tintay",
+      "nativeText": "Repair \"তিনটায়\" inside \"মিটিং তিনটায় শুরু হবে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “At three o’clock.” Time expressions often take this compact ending.",
+      "pronunciation": "tintay",
+      "exampleTarget": "মিটিং তিনটায় শুরু হবে।",
+      "exampleNative": "Use the model as the repair target: “The meeting will start at three.”",
+      "korean": "তিনটায়",
+      "english": "Repair \"তিনটায়\" inside \"মিটিং তিনটায় শুরু হবে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “At three o’clock.” Time expressions often take this compact ending.",
+      "example": "মিটিং তিনটায় শুরু হবে।",
+      "exampleEnglish": "Use the model as the repair target: “The meeting will start at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "তিনটায়",
+      "romanization": "tintay",
+      "nativeText": "Transfer \"তিনটায়\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"মিটিং তিনটায় শুরু হবে।\".",
+      "pronunciation": "tintay",
+      "exampleTarget": "মিটিং তিনটায় শুরু হবে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The meeting will start at three.”",
+      "korean": "তিনটায়",
+      "english": "Transfer \"তিনটায়\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"মিটিং তিনটায় শুরু হবে।\".",
+      "example": "মিটিং তিনটায় শুরু হবে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The meeting will start at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "তিনটায়",
+      "romanization": "tintay",
+      "nativeText": "Find one word or phrase that naturally travels with \"তিনটায়\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tintay",
+      "exampleTarget": "মিটিং তিনটায় শুরু হবে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The meeting will start at three.”",
+      "korean": "তিনটায়",
+      "english": "Find one word or phrase that naturally travels with \"তিনটায়\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "মিটিং তিনটায় শুরু হবে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The meeting will start at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "তিনটায়",
+      "romanization": "tintay",
+      "nativeText": "Listen for \"তিনটায়\" inside \"মিটিং তিনটায় শুরু হবে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tintay",
+      "exampleTarget": "মিটিং তিনটায় শুরু হবে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The meeting will start at three.”",
+      "korean": "তিনটায়",
+      "english": "Listen for \"তিনটায়\" inside \"মিটিং তিনটায় শুরু হবে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "মিটিং তিনটায় শুরু হবে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The meeting will start at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "তিনটায়",
+      "romanization": "tintay",
+      "nativeText": "Write \"তিনটায়\" again without looking, then compare the exact written form against \"মিটিং তিনটায় শুরু হবে।\" before moving on.",
+      "pronunciation": "tintay",
+      "exampleTarget": "মিটিং তিনটায় শুরু হবে।",
+      "exampleNative": "Use the written model as the final correctness check: “The meeting will start at three.”",
+      "korean": "তিনটায়",
+      "english": "Write \"তিনটায়\" again without looking, then compare the exact written form against \"মিটিং তিনটায় শুরু হবে।\" before moving on.",
+      "example": "মিটিং তিনটায় শুরু হবে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “The meeting will start at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "তিনটায়",
+      "romanization": "tintay",
+      "nativeText": "Check whether \"তিনটায়\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The meeting will start at three.”",
+      "pronunciation": "tintay",
+      "exampleTarget": "মিটিং তিনটায় শুরু হবে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The meeting will start at three.”",
+      "korean": "তিনটায়",
+      "english": "Check whether \"তিনটায়\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The meeting will start at three.”",
+      "example": "মিটিং তিনটায় শুরু হবে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The meeting will start at three.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব",
+      "romanization": "ami parbo",
+      "nativeText": "“I can / I will be able to.” Useful for availability.",
+      "pronunciation": "ami parbo",
+      "exampleTarget": "আমি সন্ধ্যায় পারব।",
+      "exampleNative": "“I can do evening.”",
+      "korean": "আমি পারব",
+      "english": "“I can / I will be able to.” Useful for availability.",
+      "example": "আমি সন্ধ্যায় পারব।",
+      "exampleEnglish": "“I can do evening.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি সন্ধ্যায় পারব।",
+      "romanization": "ami parbo",
+      "nativeText": "Model use for \"আমি সন্ধ্যায় পারব।\": “I can do evening.”",
+      "pronunciation": "ami parbo",
+      "exampleTarget": "আমি সন্ধ্যায় পারব।",
+      "exampleNative": "“I can do evening.”",
+      "korean": "আমি সন্ধ্যায় পারব।",
+      "english": "Model use for \"আমি সন্ধ্যায় পারব।\": “I can do evening.”",
+      "example": "আমি সন্ধ্যায় পারব।",
+      "exampleEnglish": "“I can do evening.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব",
+      "romanization": "ami parbo",
+      "nativeText": "Usage focus for \"আমি পারব\": “I can / I will be able to.” Useful for availability.",
+      "pronunciation": "ami parbo",
+      "exampleTarget": "আমি সন্ধ্যায় পারব।",
+      "exampleNative": "Notice what the form is doing here: “I can do evening.”",
+      "korean": "আমি পারব",
+      "english": "Usage focus for \"আমি পারব\": “I can / I will be able to.” Useful for availability.",
+      "example": "আমি সন্ধ্যায় পারব।",
+      "exampleEnglish": "Notice what the form is doing here: “I can do evening.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব",
+      "romanization": "ami parbo",
+      "nativeText": "Contrast check for \"আমি পারব\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ami parbo",
+      "exampleTarget": "আমি সন্ধ্যায় পারব।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can do evening.”",
+      "korean": "আমি পারব",
+      "english": "Contrast check for \"আমি পারব\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি সন্ধ্যায় পারব।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can do evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব",
+      "romanization": "ami parbo",
+      "nativeText": "Recall \"আমি পারব\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সন্ধ্যায় পারব।\".",
+      "pronunciation": "ami parbo",
+      "exampleTarget": "আমি সন্ধ্যায় পারব।",
+      "exampleNative": "Self-check against the model before moving on: “I can do evening.”",
+      "korean": "আমি পারব",
+      "english": "Recall \"আমি পারব\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সন্ধ্যায় পারব।\".",
+      "example": "আমি সন্ধ্যায় পারব।",
+      "exampleEnglish": "Self-check against the model before moving on: “I can do evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব",
+      "romanization": "ami parbo",
+      "nativeText": "Repair \"আমি পারব\" inside \"আমি সন্ধ্যায় পারব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can / I will be able to.” Useful for availability.",
+      "pronunciation": "ami parbo",
+      "exampleTarget": "আমি সন্ধ্যায় পারব।",
+      "exampleNative": "Use the model as the repair target: “I can do evening.”",
+      "korean": "আমি পারব",
+      "english": "Repair \"আমি পারব\" inside \"আমি সন্ধ্যায় পারব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can / I will be able to.” Useful for availability.",
+      "example": "আমি সন্ধ্যায় পারব।",
+      "exampleEnglish": "Use the model as the repair target: “I can do evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব",
+      "romanization": "ami parbo",
+      "nativeText": "Transfer \"আমি পারব\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সন্ধ্যায় পারব।\".",
+      "pronunciation": "ami parbo",
+      "exampleTarget": "আমি সন্ধ্যায় পারব।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can do evening.”",
+      "korean": "আমি পারব",
+      "english": "Transfer \"আমি পারব\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সন্ধ্যায় পারব।\".",
+      "example": "আমি সন্ধ্যায় পারব।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can do evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব",
+      "romanization": "ami parbo",
+      "nativeText": "Find one word or phrase that naturally travels with \"আমি পারব\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ami parbo",
+      "exampleTarget": "আমি সন্ধ্যায় পারব।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I can do evening.”",
+      "korean": "আমি পারব",
+      "english": "Find one word or phrase that naturally travels with \"আমি পারব\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি সন্ধ্যায় পারব।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I can do evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব",
+      "romanization": "ami parbo",
+      "nativeText": "Listen for \"আমি পারব\" inside \"আমি সন্ধ্যায় পারব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ami parbo",
+      "exampleTarget": "আমি সন্ধ্যায় পারব।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can do evening.”",
+      "korean": "আমি পারব",
+      "english": "Listen for \"আমি পারব\" inside \"আমি সন্ধ্যায় পারব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি সন্ধ্যায় পারব।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can do evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব",
+      "romanization": "ami parbo",
+      "nativeText": "Write \"আমি পারব\" again without looking, then compare the exact written form against \"আমি সন্ধ্যায় পারব।\" before moving on.",
+      "pronunciation": "ami parbo",
+      "exampleTarget": "আমি সন্ধ্যায় পারব।",
+      "exampleNative": "Use the written model as the final correctness check: “I can do evening.”",
+      "korean": "আমি পারব",
+      "english": "Write \"আমি পারব\" again without looking, then compare the exact written form against \"আমি সন্ধ্যায় পারব।\" before moving on.",
+      "example": "আমি সন্ধ্যায় পারব।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I can do evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব",
+      "romanization": "ami parbo",
+      "nativeText": "Check whether \"আমি পারব\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can do evening.”",
+      "pronunciation": "ami parbo",
+      "exampleTarget": "আমি সন্ধ্যায় পারব।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I can do evening.”",
+      "korean": "আমি পারব",
+      "english": "Check whether \"আমি পারব\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can do evening.”",
+      "example": "আমি সন্ধ্যায় পারব।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I can do evening.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব না",
+      "romanization": "ami parbo na",
+      "nativeText": "“I cannot.” Add an alternative to sound cooperative.",
+      "pronunciation": "ami parbo na",
+      "exampleTarget": "আমি সকালে পারব না।",
+      "exampleNative": "“I cannot in the morning.”",
+      "korean": "আমি পারব না",
+      "english": "“I cannot.” Add an alternative to sound cooperative.",
+      "example": "আমি সকালে পারব না।",
+      "exampleEnglish": "“I cannot in the morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি সকালে পারব না।",
+      "romanization": "ami parbo na",
+      "nativeText": "Model use for \"আমি সকালে পারব না।\": “I cannot in the morning.”",
+      "pronunciation": "ami parbo na",
+      "exampleTarget": "আমি সকালে পারব না।",
+      "exampleNative": "“I cannot in the morning.”",
+      "korean": "আমি সকালে পারব না।",
+      "english": "Model use for \"আমি সকালে পারব না।\": “I cannot in the morning.”",
+      "example": "আমি সকালে পারব না।",
+      "exampleEnglish": "“I cannot in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব না",
+      "romanization": "ami parbo na",
+      "nativeText": "Usage focus for \"আমি পারব না\": “I cannot.” Add an alternative to sound cooperative.",
+      "pronunciation": "ami parbo na",
+      "exampleTarget": "আমি সকালে পারব না।",
+      "exampleNative": "Notice what the form is doing here: “I cannot in the morning.”",
+      "korean": "আমি পারব না",
+      "english": "Usage focus for \"আমি পারব না\": “I cannot.” Add an alternative to sound cooperative.",
+      "example": "আমি সকালে পারব না।",
+      "exampleEnglish": "Notice what the form is doing here: “I cannot in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব না",
+      "romanization": "ami parbo na",
+      "nativeText": "Contrast check for \"আমি পারব না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ami parbo na",
+      "exampleTarget": "আমি সকালে পারব না।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I cannot in the morning.”",
+      "korean": "আমি পারব না",
+      "english": "Contrast check for \"আমি পারব না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি সকালে পারব না।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I cannot in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব না",
+      "romanization": "ami parbo na",
+      "nativeText": "Recall \"আমি পারব না\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সকালে পারব না।\".",
+      "pronunciation": "ami parbo na",
+      "exampleTarget": "আমি সকালে পারব না।",
+      "exampleNative": "Self-check against the model before moving on: “I cannot in the morning.”",
+      "korean": "আমি পারব না",
+      "english": "Recall \"আমি পারব না\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সকালে পারব না।\".",
+      "example": "আমি সকালে পারব না।",
+      "exampleEnglish": "Self-check against the model before moving on: “I cannot in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব না",
+      "romanization": "ami parbo na",
+      "nativeText": "Repair \"আমি পারব না\" inside \"আমি সকালে পারব না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I cannot.” Add an alternative to sound cooperative.",
+      "pronunciation": "ami parbo na",
+      "exampleTarget": "আমি সকালে পারব না।",
+      "exampleNative": "Use the model as the repair target: “I cannot in the morning.”",
+      "korean": "আমি পারব না",
+      "english": "Repair \"আমি পারব না\" inside \"আমি সকালে পারব না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I cannot.” Add an alternative to sound cooperative.",
+      "example": "আমি সকালে পারব না।",
+      "exampleEnglish": "Use the model as the repair target: “I cannot in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব না",
+      "romanization": "ami parbo na",
+      "nativeText": "Transfer \"আমি পারব না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সকালে পারব না।\".",
+      "pronunciation": "ami parbo na",
+      "exampleTarget": "আমি সকালে পারব না।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I cannot in the morning.”",
+      "korean": "আমি পারব না",
+      "english": "Transfer \"আমি পারব না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সকালে পারব না।\".",
+      "example": "আমি সকালে পারব না।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I cannot in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব না",
+      "romanization": "ami parbo na",
+      "nativeText": "Find one word or phrase that naturally travels with \"আমি পারব না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ami parbo na",
+      "exampleTarget": "আমি সকালে পারব না।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I cannot in the morning.”",
+      "korean": "আমি পারব না",
+      "english": "Find one word or phrase that naturally travels with \"আমি পারব না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি সকালে পারব না।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I cannot in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব না",
+      "romanization": "ami parbo na",
+      "nativeText": "Listen for \"আমি পারব না\" inside \"আমি সকালে পারব না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ami parbo na",
+      "exampleTarget": "আমি সকালে পারব না।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I cannot in the morning.”",
+      "korean": "আমি পারব না",
+      "english": "Listen for \"আমি পারব না\" inside \"আমি সকালে পারব না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি সকালে পারব না।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I cannot in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব না",
+      "romanization": "ami parbo na",
+      "nativeText": "Write \"আমি পারব না\" again without looking, then compare the exact written form against \"আমি সকালে পারব না।\" before moving on.",
+      "pronunciation": "ami parbo na",
+      "exampleTarget": "আমি সকালে পারব না।",
+      "exampleNative": "Use the written model as the final correctness check: “I cannot in the morning.”",
+      "korean": "আমি পারব না",
+      "english": "Write \"আমি পারব না\" again without looking, then compare the exact written form against \"আমি সকালে পারব না।\" before moving on.",
+      "example": "আমি সকালে পারব না।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I cannot in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আমি পারব না",
+      "romanization": "ami parbo na",
+      "nativeText": "Check whether \"আমি পারব না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I cannot in the morning.”",
+      "pronunciation": "ami parbo na",
+      "exampleTarget": "আমি সকালে পারব না।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I cannot in the morning.”",
+      "korean": "আমি পারব না",
+      "english": "Check whether \"আমি পারব না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I cannot in the morning.”",
+      "example": "আমি সকালে পারব না।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I cannot in the morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল দেখা করব?",
+      "romanization": "agamikal dekha korbo",
+      "nativeText": "“Shall we meet tomorrow?” A natural proposal.",
+      "pronunciation": "agamikal dekha korbo",
+      "exampleTarget": "আগামীকাল দেখা করব?",
+      "exampleNative": "“Shall we meet tomorrow?”",
+      "korean": "আগামীকাল দেখা করব?",
+      "english": "“Shall we meet tomorrow?” A natural proposal.",
+      "example": "আগামীকাল দেখা করব?",
+      "exampleEnglish": "“Shall we meet tomorrow?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল দেখা করব?",
+      "romanization": "agamikal dekha korbo",
+      "nativeText": "Model use for \"আগামীকাল দেখা করব?\": “Shall we meet tomorrow?” A natural proposal.",
+      "pronunciation": "agamikal dekha korbo",
+      "exampleTarget": "আগামীকাল দেখা করব?",
+      "exampleNative": "“Shall we meet tomorrow?”",
+      "korean": "আগামীকাল দেখা করব?",
+      "english": "Model use for \"আগামীকাল দেখা করব?\": “Shall we meet tomorrow?” A natural proposal.",
+      "example": "আগামীকাল দেখা করব?",
+      "exampleEnglish": "“Shall we meet tomorrow?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল দেখা করব?",
+      "romanization": "agamikal dekha korbo",
+      "nativeText": "Usage focus for \"আগামীকাল দেখা করব?\": “Shall we meet tomorrow?” A natural proposal.",
+      "pronunciation": "agamikal dekha korbo",
+      "exampleTarget": "আগামীকাল দেখা করব?",
+      "exampleNative": "Notice what the form is doing here: “Shall we meet tomorrow?”",
+      "korean": "আগামীকাল দেখা করব?",
+      "english": "Usage focus for \"আগামীকাল দেখা করব?\": “Shall we meet tomorrow?” A natural proposal.",
+      "example": "আগামীকাল দেখা করব?",
+      "exampleEnglish": "Notice what the form is doing here: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল দেখা করব?",
+      "romanization": "agamikal dekha korbo",
+      "nativeText": "Contrast check for \"আগামীকাল দেখা করব?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "agamikal dekha korbo",
+      "exampleTarget": "আগামীকাল দেখা করব?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we meet tomorrow?”",
+      "korean": "আগামীকাল দেখা করব?",
+      "english": "Contrast check for \"আগামীকাল দেখা করব?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আগামীকাল দেখা করব?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল দেখা করব?",
+      "romanization": "agamikal dekha korbo",
+      "nativeText": "Recall \"আগামীকাল দেখা করব?\" from memory, then explain what would change if a nearby alternative replaced it in \"আগামীকাল দেখা করব?\".",
+      "pronunciation": "agamikal dekha korbo",
+      "exampleTarget": "আগামীকাল দেখা করব?",
+      "exampleNative": "Self-check against the model before moving on: “Shall we meet tomorrow?”",
+      "korean": "আগামীকাল দেখা করব?",
+      "english": "Recall \"আগামীকাল দেখা করব?\" from memory, then explain what would change if a nearby alternative replaced it in \"আগামীকাল দেখা করব?\".",
+      "example": "আগামীকাল দেখা করব?",
+      "exampleEnglish": "Self-check against the model before moving on: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল দেখা করব?",
+      "romanization": "agamikal dekha korbo",
+      "nativeText": "Repair \"আগামীকাল দেখা করব?\" inside \"আগামীকাল দেখা করব?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shall we meet tomorrow?” A natural proposal.",
+      "pronunciation": "agamikal dekha korbo",
+      "exampleTarget": "আগামীকাল দেখা করব?",
+      "exampleNative": "Use the model as the repair target: “Shall we meet tomorrow?”",
+      "korean": "আগামীকাল দেখা করব?",
+      "english": "Repair \"আগামীকাল দেখা করব?\" inside \"আগামীকাল দেখা করব?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shall we meet tomorrow?” A natural proposal.",
+      "example": "আগামীকাল দেখা করব?",
+      "exampleEnglish": "Use the model as the repair target: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল দেখা করব?",
+      "romanization": "agamikal dekha korbo",
+      "nativeText": "Transfer \"আগামীকাল দেখা করব?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আগামীকাল দেখা করব?\".",
+      "pronunciation": "agamikal dekha korbo",
+      "exampleTarget": "আগামীকাল দেখা করব?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we meet tomorrow?”",
+      "korean": "আগামীকাল দেখা করব?",
+      "english": "Transfer \"আগামীকাল দেখা করব?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আগামীকাল দেখা করব?\".",
+      "example": "আগামীকাল দেখা করব?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল দেখা করব?",
+      "romanization": "agamikal dekha korbo",
+      "nativeText": "Find one word or phrase that naturally travels with \"আগামীকাল দেখা করব?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "agamikal dekha korbo",
+      "exampleTarget": "আগামীকাল দেখা করব?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Shall we meet tomorrow?”",
+      "korean": "আগামীকাল দেখা করব?",
+      "english": "Find one word or phrase that naturally travels with \"আগামীকাল দেখা করব?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আগামীকাল দেখা করব?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল দেখা করব?",
+      "romanization": "agamikal dekha korbo",
+      "nativeText": "Listen for \"আগামীকাল দেখা করব?\" inside \"আগামীকাল দেখা করব?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "agamikal dekha korbo",
+      "exampleTarget": "আগামীকাল দেখা করব?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we meet tomorrow?”",
+      "korean": "আগামীকাল দেখা করব?",
+      "english": "Listen for \"আগামীকাল দেখা করব?\" inside \"আগামীকাল দেখা করব?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আগামীকাল দেখা করব?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল দেখা করব?",
+      "romanization": "agamikal dekha korbo",
+      "nativeText": "Write \"আগামীকাল দেখা করব?\" again without looking, then compare the exact written form against \"আগামীকাল দেখা করব?\" before moving on.",
+      "pronunciation": "agamikal dekha korbo",
+      "exampleTarget": "আগামীকাল দেখা করব?",
+      "exampleNative": "Use the written model as the final correctness check: “Shall we meet tomorrow?”",
+      "korean": "আগামীকাল দেখা করব?",
+      "english": "Write \"আগামীকাল দেখা করব?\" again without looking, then compare the exact written form against \"আগামীকাল দেখা করব?\" before moving on.",
+      "example": "আগামীকাল দেখা করব?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "আগামীকাল দেখা করব?",
+      "romanization": "agamikal dekha korbo",
+      "nativeText": "Check whether \"আগামীকাল দেখা করব?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”",
+      "pronunciation": "agamikal dekha korbo",
+      "exampleTarget": "আগামীকাল দেখা করব?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”",
+      "korean": "আগামীকাল দেখা করব?",
+      "english": "Check whether \"আগামীকাল দেখা করব?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”",
+      "example": "আগামীকাল দেখা করব?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময় বদলানো যাবে?",
+      "romanization": "shomoy bodlano jabe",
+      "nativeText": "“Can the time be changed?” A useful rescheduling frame.",
+      "pronunciation": "shomoy bodlano jabe",
+      "exampleTarget": "সময় বদলানো যাবে?",
+      "exampleNative": "“Can the time be changed?”",
+      "korean": "সময় বদলানো যাবে?",
+      "english": "“Can the time be changed?” A useful rescheduling frame.",
+      "example": "সময় বদলানো যাবে?",
+      "exampleEnglish": "“Can the time be changed?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময় বদলানো যাবে?",
+      "romanization": "shomoy bodlano jabe",
+      "nativeText": "Model use for \"সময় বদলানো যাবে?\": “Can the time be changed?” A useful rescheduling frame.",
+      "pronunciation": "shomoy bodlano jabe",
+      "exampleTarget": "সময় বদলানো যাবে?",
+      "exampleNative": "“Can the time be changed?”",
+      "korean": "সময় বদলানো যাবে?",
+      "english": "Model use for \"সময় বদলানো যাবে?\": “Can the time be changed?” A useful rescheduling frame.",
+      "example": "সময় বদলানো যাবে?",
+      "exampleEnglish": "“Can the time be changed?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময় বদলানো যাবে?",
+      "romanization": "shomoy bodlano jabe",
+      "nativeText": "Usage focus for \"সময় বদলানো যাবে?\": “Can the time be changed?” A useful rescheduling frame.",
+      "pronunciation": "shomoy bodlano jabe",
+      "exampleTarget": "সময় বদলানো যাবে?",
+      "exampleNative": "Notice what the form is doing here: “Can the time be changed?”",
+      "korean": "সময় বদলানো যাবে?",
+      "english": "Usage focus for \"সময় বদলানো যাবে?\": “Can the time be changed?” A useful rescheduling frame.",
+      "example": "সময় বদলানো যাবে?",
+      "exampleEnglish": "Notice what the form is doing here: “Can the time be changed?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময় বদলানো যাবে?",
+      "romanization": "shomoy bodlano jabe",
+      "nativeText": "Contrast check for \"সময় বদলানো যাবে?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shomoy bodlano jabe",
+      "exampleTarget": "সময় বদলানো যাবে?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can the time be changed?”",
+      "korean": "সময় বদলানো যাবে?",
+      "english": "Contrast check for \"সময় বদলানো যাবে?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সময় বদলানো যাবে?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can the time be changed?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময় বদলানো যাবে?",
+      "romanization": "shomoy bodlano jabe",
+      "nativeText": "Recall \"সময় বদলানো যাবে?\" from memory, then explain what would change if a nearby alternative replaced it in \"সময় বদলানো যাবে?\".",
+      "pronunciation": "shomoy bodlano jabe",
+      "exampleTarget": "সময় বদলানো যাবে?",
+      "exampleNative": "Self-check against the model before moving on: “Can the time be changed?”",
+      "korean": "সময় বদলানো যাবে?",
+      "english": "Recall \"সময় বদলানো যাবে?\" from memory, then explain what would change if a nearby alternative replaced it in \"সময় বদলানো যাবে?\".",
+      "example": "সময় বদলানো যাবে?",
+      "exampleEnglish": "Self-check against the model before moving on: “Can the time be changed?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময় বদলানো যাবে?",
+      "romanization": "shomoy bodlano jabe",
+      "nativeText": "Repair \"সময় বদলানো যাবে?\" inside \"সময় বদলানো যাবে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Can the time be changed?” A useful rescheduling frame.",
+      "pronunciation": "shomoy bodlano jabe",
+      "exampleTarget": "সময় বদলানো যাবে?",
+      "exampleNative": "Use the model as the repair target: “Can the time be changed?”",
+      "korean": "সময় বদলানো যাবে?",
+      "english": "Repair \"সময় বদলানো যাবে?\" inside \"সময় বদলানো যাবে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Can the time be changed?” A useful rescheduling frame.",
+      "example": "সময় বদলানো যাবে?",
+      "exampleEnglish": "Use the model as the repair target: “Can the time be changed?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময় বদলানো যাবে?",
+      "romanization": "shomoy bodlano jabe",
+      "nativeText": "Transfer \"সময় বদলানো যাবে?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সময় বদলানো যাবে?\".",
+      "pronunciation": "shomoy bodlano jabe",
+      "exampleTarget": "সময় বদলানো যাবে?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can the time be changed?”",
+      "korean": "সময় বদলানো যাবে?",
+      "english": "Transfer \"সময় বদলানো যাবে?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সময় বদলানো যাবে?\".",
+      "example": "সময় বদলানো যাবে?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can the time be changed?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময় বদলানো যাবে?",
+      "romanization": "shomoy bodlano jabe",
+      "nativeText": "Find one word or phrase that naturally travels with \"সময় বদলানো যাবে?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shomoy bodlano jabe",
+      "exampleTarget": "সময় বদলানো যাবে?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Can the time be changed?”",
+      "korean": "সময় বদলানো যাবে?",
+      "english": "Find one word or phrase that naturally travels with \"সময় বদলানো যাবে?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সময় বদলানো যাবে?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Can the time be changed?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময় বদলানো যাবে?",
+      "romanization": "shomoy bodlano jabe",
+      "nativeText": "Listen for \"সময় বদলানো যাবে?\" inside \"সময় বদলানো যাবে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shomoy bodlano jabe",
+      "exampleTarget": "সময় বদলানো যাবে?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can the time be changed?”",
+      "korean": "সময় বদলানো যাবে?",
+      "english": "Listen for \"সময় বদলানো যাবে?\" inside \"সময় বদলানো যাবে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সময় বদলানো যাবে?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can the time be changed?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময় বদলানো যাবে?",
+      "romanization": "shomoy bodlano jabe",
+      "nativeText": "Write \"সময় বদলানো যাবে?\" again without looking, then compare the exact written form against \"সময় বদলানো যাবে?\" before moving on.",
+      "pronunciation": "shomoy bodlano jabe",
+      "exampleTarget": "সময় বদলানো যাবে?",
+      "exampleNative": "Use the written model as the final correctness check: “Can the time be changed?”",
+      "korean": "সময় বদলানো যাবে?",
+      "english": "Write \"সময় বদলানো যাবে?\" again without looking, then compare the exact written form against \"সময় বদলানো যাবে?\" before moving on.",
+      "example": "সময় বদলানো যাবে?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Can the time be changed?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "সময় বদলানো যাবে?",
+      "romanization": "shomoy bodlano jabe",
+      "nativeText": "Check whether \"সময় বদলানো যাবে?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can the time be changed?”",
+      "pronunciation": "shomoy bodlano jabe",
+      "exampleTarget": "সময় বদলানো যাবে?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Can the time be changed?”",
+      "korean": "সময় বদলানো যাবে?",
+      "english": "Check whether \"সময় বদলানো যাবে?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can the time be changed?”",
+      "example": "সময় বদলানো যাবে?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Can the time be changed?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "“Okay / alright.” A compact acceptance phrase.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "“Okay, we will meet at five.”",
+      "korean": "ঠিক আছে",
+      "english": "“Okay / alright.” A compact acceptance phrase.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "“Okay, we will meet at five.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "romanization": "thik achhe",
+      "nativeText": "Model use for \"ঠিক আছে, পাঁচটায় দেখা হবে।\": “Okay, we will meet at five.”",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "“Okay, we will meet at five.”",
+      "korean": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "english": "Model use for \"ঠিক আছে, পাঁচটায় দেখা হবে।\": “Okay, we will meet at five.”",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "“Okay, we will meet at five.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Usage focus for \"ঠিক আছে\": “Okay / alright.” A compact acceptance phrase.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "Notice what the form is doing here: “Okay, we will meet at five.”",
+      "korean": "ঠিক আছে",
+      "english": "Usage focus for \"ঠিক আছে\": “Okay / alright.” A compact acceptance phrase.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "Notice what the form is doing here: “Okay, we will meet at five.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Contrast check for \"ঠিক আছে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, we will meet at five.”",
+      "korean": "ঠিক আছে",
+      "english": "Contrast check for \"ঠিক আছে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Recall \"ঠিক আছে\" from memory, then explain what would change if a nearby alternative replaced it in \"ঠিক আছে, পাঁচটায় দেখা হবে।\".",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "Self-check against the model before moving on: “Okay, we will meet at five.”",
+      "korean": "ঠিক আছে",
+      "english": "Recall \"ঠিক আছে\" from memory, then explain what would change if a nearby alternative replaced it in \"ঠিক আছে, পাঁচটায় দেখা হবে।\".",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "Self-check against the model before moving on: “Okay, we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Repair \"ঠিক আছে\" inside \"ঠিক আছে, পাঁচটায় দেখা হবে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay / alright.” A compact acceptance phrase.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "Use the model as the repair target: “Okay, we will meet at five.”",
+      "korean": "ঠিক আছে",
+      "english": "Repair \"ঠিক আছে\" inside \"ঠিক আছে, পাঁচটায় দেখা হবে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay / alright.” A compact acceptance phrase.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "Use the model as the repair target: “Okay, we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Transfer \"ঠিক আছে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঠিক আছে, পাঁচটায় দেখা হবে।\".",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, we will meet at five.”",
+      "korean": "ঠিক আছে",
+      "english": "Transfer \"ঠিক আছে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঠিক আছে, পাঁচটায় দেখা হবে।\".",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Find one word or phrase that naturally travels with \"ঠিক আছে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Okay, we will meet at five.”",
+      "korean": "ঠিক আছে",
+      "english": "Find one word or phrase that naturally travels with \"ঠিক আছে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Okay, we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Listen for \"ঠিক আছে\" inside \"ঠিক আছে, পাঁচটায় দেখা হবে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, we will meet at five.”",
+      "korean": "ঠিক আছে",
+      "english": "Listen for \"ঠিক আছে\" inside \"ঠিক আছে, পাঁচটায় দেখা হবে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Write \"ঠিক আছে\" again without looking, then compare the exact written form against \"ঠিক আছে, পাঁচটায় দেখা হবে।\" before moving on.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "Use the written model as the final correctness check: “Okay, we will meet at five.”",
+      "korean": "ঠিক আছে",
+      "english": "Write \"ঠিক আছে\" again without looking, then compare the exact written form against \"ঠিক আছে, পাঁচটায় দেখা হবে।\" before moving on.",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Okay, we will meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit11scheduling-vocabulary-1",
+        "bn-level1unit11scheduling-vocabulary-2",
+        "bn-level1unit11scheduling-grammar-1",
+        "bn-level1unit11scheduling-grammar-2",
+        "bn-level1unit11scheduling-reading",
+        "bn-level1unit11scheduling-listening",
+        "bn-level1unit11scheduling-writing",
+        "bn-level1unit11scheduling-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Check whether \"ঠিক আছে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, we will meet at five.”",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Okay, we will meet at five.”",
+      "korean": "ঠিক আছে",
+      "english": "Check whether \"ঠিক আছে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, we will meet at five.”",
+      "example": "ঠিক আছে, পাঁচটায় দেখা হবে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Okay, we will meet at five.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

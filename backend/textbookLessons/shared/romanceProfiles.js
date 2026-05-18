@@ -1,3 +1,5 @@
+const { selectProfileCoreItems } = require('./richCurriculumFactory');
+
 const defaultExpressionPractice = (slug) => [
   { id: `${slug}-main`, label: 'Using the main pattern', goal: 'Use the central pattern naturally in a personally relevant answer.' },
   { id: `${slug}-extend`, label: 'Extending the answer', goal: 'Add one reason, contrast, or example so the answer sounds lived-in rather than memorized.' },
@@ -118,9 +120,11 @@ const featureLibraries = {
 
 const makeProfile = (lang, lessonId, lesson) => {
   const slug = `${lang}-${lessonId.toLowerCase()}`;
-  const first = lesson.content?.[0] || {};
-  const second = lesson.content?.[1] || first;
-  const last = lesson.content?.[lesson.content.length - 1] || second;
+  const {
+    first,
+    second,
+    last,
+  } = selectProfileCoreItems(lesson);
   const overview = lesson.activities?.[0]?.goals?.[0]
     || lesson.nativeText
     || `Use the core language of ${lesson.title} accurately in context.`;

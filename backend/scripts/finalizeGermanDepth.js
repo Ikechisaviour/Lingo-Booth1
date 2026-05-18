@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const { makeGermanProfile } = require('../textbookLessons/shared/germanProfiles');
+const { mergeDuplicateContentItems } = require('../textbookLessons/shared/richCurriculumFactory');
 
 const ROOT = path.join(__dirname, '..', 'textbookLessons', 'de');
 const create = (target, note, example, exampleNote, type, activityIds) => ({
@@ -52,7 +53,10 @@ for (const name of fs.readdirSync(ROOT).filter((file) => /^level.*\.js$/.test(fi
       create('Gesamtszene', 'Handle one longer scene that forces vocabulary from several previous lessons to appear together.', profile.taskExample, profile.taskExampleNote, 'conversation', [ids.Task]),
     );
   }
-  lesson.content.push(...additions.filter((entry) => entry.activityIds.every(Boolean)));
+  lesson.content = mergeDuplicateContentItems([
+    ...(lesson.content || []),
+    ...additions.filter((entry) => entry.activityIds.every(Boolean)),
+  ]);
   fs.writeFileSync(file, `module.exports = ${JSON.stringify(lesson, null, 2)};\n`, 'utf8');
 }
 

@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u6',
-  title: 'Level 1 · Unit 6: Data en Kalender — Dates and Calendar',
-  category: 'time',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about days, dates, and short plans using Dutch calendar expressions.',
-  vocabularyGoal: 'Use weekdays, months, today/tomorrow/yesterday, and date questions.',
-  grammarGoal: 'Keep Dutch V2 order when a time expression begins the sentence.',
-  speakingGoal: 'Say today’s date, ask when something happens, and answer with one plan.',
-  task: 'Arrange a simple study meeting on a calendar.',
-  expressionPractice: [
-    practice('asking-date', 'Asking the date', 'Use `welke datum is het vandaag?`.'),
-    practice('stating-date', 'Stating a date', 'Use one weekday and one numbered date.'),
-    practice('making-plan', 'Making a plan', 'Use `volgende week` and maintain V2 order.'),
+module.exports = {
+  "title": "Level 1 · Unit 6: Data en Kalender — Dates and Calendar",
+  "category": "time",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit06datescalendar-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about days, dates, and short plans using Dutch calendar expressions."
+      ],
+      "task": "Arrange a simple study meeting on a calendar."
+    },
+    {
+      "id": "nl-level1unit06datescalendar-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit06datescalendar-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 6: Data en Kalender — Dates and Calendar with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit06datescalendar-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 6: Data en Kalender — Dates and Calendar sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit06datescalendar-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about days, dates, and short plans using Dutch calendar expressions."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit06datescalendar-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 6: Data en Kalender — Dates and Calendar with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit06datescalendar-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit06datescalendar-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit06datescalendar-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit06datescalendar-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit06datescalendar-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Arrange a simple study meeting on a calendar."
+      ],
+      "task": "Arrange a simple study meeting on a calendar."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-calendar'],
-  items: [
-    item('vandaag', 'van-DAKH', '“Today.” If it starts the sentence, the verb still stays second.', 'Vandaag heb ik les.', '“Today I have class.”'),
-    item('morgen', 'MOR-ghen', '“Tomorrow.” A basic future-planning word.', 'Morgen ga ik naar de bibliotheek.', '“Tomorrow I am going to the library.”'),
-    item('gisteren', 'KHIS-te-ren', '“Yesterday.” It pairs naturally with the perfect tense later.', 'Gisteren had ik geen tijd.', '“Yesterday I had no time.”'),
-    item('maandag', 'MAHN-dakh', '“Monday.” Weekdays do not need a preposition in many ordinary time answers.', 'De toets is maandag.', '“The test is on Monday.”'),
-    item('welke datum is het vandaag?', 'wel-kə DAH-tum is hət van-DAKH', '“What date is it today?” A practical full question.', 'Welke datum is het vandaag?', '“What date is it today?”'),
-    item('vijf mei', 'veyf mey', '“May fifth.” Dutch places the day number before the month.', 'De cursus begint op vijf mei.', '“The course begins on May fifth.”'),
-    item('volgende week', 'VOL-ghen-də vayk', '“Next week.” A useful near-future phrase.', 'Volgende week hebben we vakantie.', '“Next week we have vacation.”'),
-    item('wanneer?', 'va-NEER', '“When?” A compact question word for time and plans.', 'Wanneer begint de vergadering?', '“When does the meeting begin?”'),
+  "expressionPractice": [
+    {
+      "id": "asking-date",
+      "label": "Asking the date",
+      "goal": "Use `welke datum is het vandaag?`."
+    },
+    {
+      "id": "stating-date",
+      "label": "Stating a date",
+      "goal": "Use one weekday and one numbered date."
+    },
+    {
+      "id": "making-plan",
+      "label": "Making a plan",
+      "goal": "Use `volgende week` and maintain V2 order."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-time",
+    "topic-calendar"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Talk about days, dates, and short plans using Dutch calendar expressions.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Arrange a simple study meeting on a calendar.",
+      "korean": "lesdoel",
+      "english": "Talk about days, dates, and short plans using Dutch calendar expressions.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Arrange a simple study meeting on a calendar."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Vandaag heb ik les.\".",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "“Today I have class.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Vandaag heb ik les.\".",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "“Today I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1"
+      ],
+      "targetText": "vandaag",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 6: Data en Kalender — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "“Today I have class.”",
+      "korean": "vandaag",
+      "english": "Use the key language of Level 1 · Unit 6: Data en Kalender — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "“Today I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-2"
+      ],
+      "targetText": "morgen",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 6: Data en Kalender — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "“Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 6: Data en Kalender — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "“Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "vandaag",
+      "romanization": "",
+      "nativeText": "Talk about days, dates, and short plans using Dutch calendar expressions.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "“Today I have class.”",
+      "korean": "vandaag",
+      "english": "Talk about days, dates, and short plans using Dutch calendar expressions.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "“Today I have class.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "morgen",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 6: Data en Kalender — Dates and Calendar with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "“Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "Contrast the main pattern in Level 1 · Unit 6: Data en Kalender — Dates and Calendar with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "“Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit06datescalendar-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Wanneer begint de vergadering?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "“When does the meeting begin?”",
+      "korean": "leesmodel",
+      "english": "Read \"Wanneer begint de vergadering?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "“When does the meeting begin?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit06datescalendar-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Wanneer begint de vergadering?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "“When does the meeting begin?”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Wanneer begint de vergadering?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "“When does the meeting begin?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit06datescalendar-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Vandaag heb ik les.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Vandaag heb ik les.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit06datescalendar-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "“Tomorrow I am going to the library.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "“Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Arrange a simple study meeting on a calendar.",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "Arrange a simple study meeting on a calendar.",
+      "korean": "eindtaak",
+      "english": "Arrange a simple study meeting on a calendar.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "Arrange a simple study meeting on a calendar."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Morgen ga ik naar de bibliotheek.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Tomorrow I am going to the library.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Morgen ga ik naar de bibliotheek.\" against the model.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Vandaag heb ik les.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "“Today I have class.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Vandaag heb ik les.\" before reusing it elsewhere.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "“Today I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Wanneer begint de vergadering?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "“When does the meeting begin?”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Wanneer begint de vergadering?\" as one thought.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "“When does the meeting begin?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Vandaag heb ik les.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Vandaag heb ik les.\" and move it into your own life.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"vandaag\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "vandaag",
+      "exampleNative": "“Today.” If it starts the sentence, the verb still stays second.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"vandaag\" before looking back.",
+      "example": "vandaag",
+      "exampleEnglish": "“Today.” If it starts the sentence, the verb still stays second."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Wanneer begint de vergadering?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Wanneer begint de vergadering?\" rather than restarting from a blank sentence.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 6: Data en Kalender — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Morgen ga ik naar de bibliotheek.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "“Tomorrow I am going to the library.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 6: Data en Kalender — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Morgen ga ik naar de bibliotheek.\" as the comparison line.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "“Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Vandaag heb ik les.\".",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "“Today I have class.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Vandaag heb ik les.\".",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "“Today I have class.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Wanneer begint de vergadering?\".",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "“When does the meeting begin?”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Wanneer begint de vergadering?\".",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "“When does the meeting begin?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Vandaag heb ik les.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "“Today I have class.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Vandaag heb ik les.\" one layer at a time.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "“Today I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Morgen ga ik naar de bibliotheek.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "“Tomorrow I am going to the library.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Morgen ga ik naar de bibliotheek.\" as the deciding example.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "“Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-culture",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Wanneer begint de vergadering?\".",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "“When does the meeting begin?”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Wanneer begint de vergadering?\".",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "“When does the meeting begin?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vandaag",
+      "romanization": "van-DAKH",
+      "nativeText": "“Today.” If it starts the sentence, the verb still stays second.",
+      "pronunciation": "van-DAKH",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "“Today I have class.”",
+      "korean": "vandaag",
+      "english": "“Today.” If it starts the sentence, the verb still stays second.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "“Today I have class.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "Vandaag heb ik les.",
+      "romanization": "van-DAKH",
+      "nativeText": "Model use for \"Vandaag heb ik les.\": “Today I have class.”",
+      "pronunciation": "van-DAKH",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "“Today I have class.”",
+      "korean": "Vandaag heb ik les.",
+      "english": "Model use for \"Vandaag heb ik les.\": “Today I have class.”",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "“Today I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vandaag",
+      "romanization": "van-DAKH",
+      "nativeText": "Usage focus for \"vandaag\": Use the key language of Level 1 · Unit 6: Data en Kalender — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "van-DAKH",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "Notice what the form is doing here: “Today I have class.”",
+      "korean": "vandaag",
+      "english": "Usage focus for \"vandaag\": Use the key language of Level 1 · Unit 6: Data en Kalender — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "Notice what the form is doing here: “Today I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vandaag",
+      "romanization": "van-DAKH",
+      "nativeText": "Contrast check for \"vandaag\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "van-DAKH",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today I have class.”",
+      "korean": "vandaag",
+      "english": "Contrast check for \"vandaag\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vandaag",
+      "romanization": "van-DAKH",
+      "nativeText": "Recall \"vandaag\" from memory, then explain what would change if a nearby alternative replaced it in \"Vandaag heb ik les.\".",
+      "pronunciation": "van-DAKH",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "Self-check against the model before moving on: “Today I have class.”",
+      "korean": "vandaag",
+      "english": "Recall \"vandaag\" from memory, then explain what would change if a nearby alternative replaced it in \"Vandaag heb ik les.\".",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "Self-check against the model before moving on: “Today I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vandaag",
+      "romanization": "van-DAKH",
+      "nativeText": "Repair \"vandaag\" inside \"Vandaag heb ik les.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: Data en Kalender — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "van-DAKH",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "Use the model as the repair target: “Today I have class.”",
+      "korean": "vandaag",
+      "english": "Repair \"vandaag\" inside \"Vandaag heb ik les.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: Data en Kalender — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "Use the model as the repair target: “Today I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vandaag",
+      "romanization": "van-DAKH",
+      "nativeText": "Transfer \"vandaag\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vandaag heb ik les.\".",
+      "pronunciation": "van-DAKH",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today I have class.”",
+      "korean": "vandaag",
+      "english": "Transfer \"vandaag\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vandaag heb ik les.\".",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vandaag",
+      "romanization": "van-DAKH",
+      "nativeText": "Find one word or phrase that naturally travels with \"vandaag\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "van-DAKH",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today I have class.”",
+      "korean": "vandaag",
+      "english": "Find one word or phrase that naturally travels with \"vandaag\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vandaag",
+      "romanization": "van-DAKH",
+      "nativeText": "Listen for \"vandaag\" inside \"Vandaag heb ik les.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "van-DAKH",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today I have class.”",
+      "korean": "vandaag",
+      "english": "Listen for \"vandaag\" inside \"Vandaag heb ik les.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vandaag",
+      "romanization": "van-DAKH",
+      "nativeText": "Write \"vandaag\" again without looking, then compare the exact written form against \"Vandaag heb ik les.\" before moving on.",
+      "pronunciation": "van-DAKH",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "Use the written model as the final correctness check: “Today I have class.”",
+      "korean": "vandaag",
+      "english": "Write \"vandaag\" again without looking, then compare the exact written form against \"Vandaag heb ik les.\" before moving on.",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vandaag",
+      "romanization": "van-DAKH",
+      "nativeText": "Check whether \"vandaag\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today I have class.”",
+      "pronunciation": "van-DAKH",
+      "exampleTarget": "Vandaag heb ik les.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today I have class.”",
+      "korean": "vandaag",
+      "english": "Check whether \"vandaag\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today I have class.”",
+      "example": "Vandaag heb ik les.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today I have class.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "morgen",
+      "romanization": "MOR-ghen",
+      "nativeText": "“Tomorrow.” A basic future-planning word.",
+      "pronunciation": "MOR-ghen",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "“Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "“Tomorrow.” A basic future-planning word.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "“Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "Morgen ga ik naar de bibliotheek.",
+      "romanization": "MOR-ghen",
+      "nativeText": "Model use for \"Morgen ga ik naar de bibliotheek.\": “Tomorrow I am going to the library.”",
+      "pronunciation": "MOR-ghen",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "“Tomorrow I am going to the library.”",
+      "korean": "Morgen ga ik naar de bibliotheek.",
+      "english": "Model use for \"Morgen ga ik naar de bibliotheek.\": “Tomorrow I am going to the library.”",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "“Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "morgen",
+      "romanization": "MOR-ghen",
+      "nativeText": "Usage focus for \"morgen\": Distinguish the nearby wording choices that make Level 1 · Unit 6: Data en Kalender — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "MOR-ghen",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "Notice what the form is doing here: “Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "Usage focus for \"morgen\": Distinguish the nearby wording choices that make Level 1 · Unit 6: Data en Kalender — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "Notice what the form is doing here: “Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "morgen",
+      "romanization": "MOR-ghen",
+      "nativeText": "Contrast check for \"morgen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "MOR-ghen",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "Contrast check for \"morgen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "morgen",
+      "romanization": "MOR-ghen",
+      "nativeText": "Recall \"morgen\" from memory, then explain what would change if a nearby alternative replaced it in \"Morgen ga ik naar de bibliotheek.\".",
+      "pronunciation": "MOR-ghen",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "Self-check against the model before moving on: “Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "Recall \"morgen\" from memory, then explain what would change if a nearby alternative replaced it in \"Morgen ga ik naar de bibliotheek.\".",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "Self-check against the model before moving on: “Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "morgen",
+      "romanization": "MOR-ghen",
+      "nativeText": "Repair \"morgen\" inside \"Morgen ga ik naar de bibliotheek.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: Data en Kalender — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "MOR-ghen",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "Use the model as the repair target: “Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "Repair \"morgen\" inside \"Morgen ga ik naar de bibliotheek.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: Data en Kalender — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "Use the model as the repair target: “Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "morgen",
+      "romanization": "MOR-ghen",
+      "nativeText": "Transfer \"morgen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Morgen ga ik naar de bibliotheek.\".",
+      "pronunciation": "MOR-ghen",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "Transfer \"morgen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Morgen ga ik naar de bibliotheek.\".",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "morgen",
+      "romanization": "MOR-ghen",
+      "nativeText": "Find one word or phrase that naturally travels with \"morgen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "MOR-ghen",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "Find one word or phrase that naturally travels with \"morgen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "morgen",
+      "romanization": "MOR-ghen",
+      "nativeText": "Listen for \"morgen\" inside \"Morgen ga ik naar de bibliotheek.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "MOR-ghen",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "Listen for \"morgen\" inside \"Morgen ga ik naar de bibliotheek.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "morgen",
+      "romanization": "MOR-ghen",
+      "nativeText": "Write \"morgen\" again without looking, then compare the exact written form against \"Morgen ga ik naar de bibliotheek.\" before moving on.",
+      "pronunciation": "MOR-ghen",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "Use the written model as the final correctness check: “Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "Write \"morgen\" again without looking, then compare the exact written form against \"Morgen ga ik naar de bibliotheek.\" before moving on.",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "morgen",
+      "romanization": "MOR-ghen",
+      "nativeText": "Check whether \"morgen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I am going to the library.”",
+      "pronunciation": "MOR-ghen",
+      "exampleTarget": "Morgen ga ik naar de bibliotheek.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I am going to the library.”",
+      "korean": "morgen",
+      "english": "Check whether \"morgen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I am going to the library.”",
+      "example": "Morgen ga ik naar de bibliotheek.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I am going to the library.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "gisteren",
+      "romanization": "KHIS-te-ren",
+      "nativeText": "“Yesterday.” It pairs naturally with the perfect tense later.",
+      "pronunciation": "KHIS-te-ren",
+      "exampleTarget": "Gisteren had ik geen tijd.",
+      "exampleNative": "“Yesterday I had no time.”",
+      "korean": "gisteren",
+      "english": "“Yesterday.” It pairs naturally with the perfect tense later.",
+      "example": "Gisteren had ik geen tijd.",
+      "exampleEnglish": "“Yesterday I had no time.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "Gisteren had ik geen tijd.",
+      "romanization": "KHIS-te-ren",
+      "nativeText": "Model use for \"Gisteren had ik geen tijd.\": “Yesterday I had no time.”",
+      "pronunciation": "KHIS-te-ren",
+      "exampleTarget": "Gisteren had ik geen tijd.",
+      "exampleNative": "“Yesterday I had no time.”",
+      "korean": "Gisteren had ik geen tijd.",
+      "english": "Model use for \"Gisteren had ik geen tijd.\": “Yesterday I had no time.”",
+      "example": "Gisteren had ik geen tijd.",
+      "exampleEnglish": "“Yesterday I had no time.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "gisteren",
+      "romanization": "KHIS-te-ren",
+      "nativeText": "Usage focus for \"gisteren\": “Yesterday.” It pairs naturally with the perfect tense later.",
+      "pronunciation": "KHIS-te-ren",
+      "exampleTarget": "Gisteren had ik geen tijd.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I had no time.”",
+      "korean": "gisteren",
+      "english": "Usage focus for \"gisteren\": “Yesterday.” It pairs naturally with the perfect tense later.",
+      "example": "Gisteren had ik geen tijd.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I had no time.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "gisteren",
+      "romanization": "KHIS-te-ren",
+      "nativeText": "Contrast check for \"gisteren\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "KHIS-te-ren",
+      "exampleTarget": "Gisteren had ik geen tijd.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I had no time.”",
+      "korean": "gisteren",
+      "english": "Contrast check for \"gisteren\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Gisteren had ik geen tijd.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I had no time.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "gisteren",
+      "romanization": "KHIS-te-ren",
+      "nativeText": "Recall \"gisteren\" from memory, then explain what would change if a nearby alternative replaced it in \"Gisteren had ik geen tijd.\".",
+      "pronunciation": "KHIS-te-ren",
+      "exampleTarget": "Gisteren had ik geen tijd.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I had no time.”",
+      "korean": "gisteren",
+      "english": "Recall \"gisteren\" from memory, then explain what would change if a nearby alternative replaced it in \"Gisteren had ik geen tijd.\".",
+      "example": "Gisteren had ik geen tijd.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I had no time.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "gisteren",
+      "romanization": "KHIS-te-ren",
+      "nativeText": "Repair \"gisteren\" inside \"Gisteren had ik geen tijd.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Yesterday.” It pairs naturally with the perfect tense later.",
+      "pronunciation": "KHIS-te-ren",
+      "exampleTarget": "Gisteren had ik geen tijd.",
+      "exampleNative": "Use the model as the repair target: “Yesterday I had no time.”",
+      "korean": "gisteren",
+      "english": "Repair \"gisteren\" inside \"Gisteren had ik geen tijd.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Yesterday.” It pairs naturally with the perfect tense later.",
+      "example": "Gisteren had ik geen tijd.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I had no time.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "gisteren",
+      "romanization": "KHIS-te-ren",
+      "nativeText": "Transfer \"gisteren\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Gisteren had ik geen tijd.\".",
+      "pronunciation": "KHIS-te-ren",
+      "exampleTarget": "Gisteren had ik geen tijd.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I had no time.”",
+      "korean": "gisteren",
+      "english": "Transfer \"gisteren\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Gisteren had ik geen tijd.\".",
+      "example": "Gisteren had ik geen tijd.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I had no time.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "gisteren",
+      "romanization": "KHIS-te-ren",
+      "nativeText": "Find one word or phrase that naturally travels with \"gisteren\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "KHIS-te-ren",
+      "exampleTarget": "Gisteren had ik geen tijd.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I had no time.”",
+      "korean": "gisteren",
+      "english": "Find one word or phrase that naturally travels with \"gisteren\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Gisteren had ik geen tijd.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I had no time.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "gisteren",
+      "romanization": "KHIS-te-ren",
+      "nativeText": "Listen for \"gisteren\" inside \"Gisteren had ik geen tijd.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "KHIS-te-ren",
+      "exampleTarget": "Gisteren had ik geen tijd.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I had no time.”",
+      "korean": "gisteren",
+      "english": "Listen for \"gisteren\" inside \"Gisteren had ik geen tijd.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Gisteren had ik geen tijd.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I had no time.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "gisteren",
+      "romanization": "KHIS-te-ren",
+      "nativeText": "Write \"gisteren\" again without looking, then compare the exact written form against \"Gisteren had ik geen tijd.\" before moving on.",
+      "pronunciation": "KHIS-te-ren",
+      "exampleTarget": "Gisteren had ik geen tijd.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I had no time.”",
+      "korean": "gisteren",
+      "english": "Write \"gisteren\" again without looking, then compare the exact written form against \"Gisteren had ik geen tijd.\" before moving on.",
+      "example": "Gisteren had ik geen tijd.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I had no time.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "gisteren",
+      "romanization": "KHIS-te-ren",
+      "nativeText": "Check whether \"gisteren\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I had no time.”",
+      "pronunciation": "KHIS-te-ren",
+      "exampleTarget": "Gisteren had ik geen tijd.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I had no time.”",
+      "korean": "gisteren",
+      "english": "Check whether \"gisteren\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I had no time.”",
+      "example": "Gisteren had ik geen tijd.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I had no time.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "maandag",
+      "romanization": "MAHN-dakh",
+      "nativeText": "“Monday.” Weekdays do not need a preposition in many ordinary time answers.",
+      "pronunciation": "MAHN-dakh",
+      "exampleTarget": "De toets is maandag.",
+      "exampleNative": "“The test is on Monday.”",
+      "korean": "maandag",
+      "english": "“Monday.” Weekdays do not need a preposition in many ordinary time answers.",
+      "example": "De toets is maandag.",
+      "exampleEnglish": "“The test is on Monday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "De toets is maandag.",
+      "romanization": "MAHN-dakh",
+      "nativeText": "Model use for \"De toets is maandag.\": “The test is on Monday.”",
+      "pronunciation": "MAHN-dakh",
+      "exampleTarget": "De toets is maandag.",
+      "exampleNative": "“The test is on Monday.”",
+      "korean": "De toets is maandag.",
+      "english": "Model use for \"De toets is maandag.\": “The test is on Monday.”",
+      "example": "De toets is maandag.",
+      "exampleEnglish": "“The test is on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "maandag",
+      "romanization": "MAHN-dakh",
+      "nativeText": "Usage focus for \"maandag\": “Monday.” Weekdays do not need a preposition in many ordinary time answers.",
+      "pronunciation": "MAHN-dakh",
+      "exampleTarget": "De toets is maandag.",
+      "exampleNative": "Notice what the form is doing here: “The test is on Monday.”",
+      "korean": "maandag",
+      "english": "Usage focus for \"maandag\": “Monday.” Weekdays do not need a preposition in many ordinary time answers.",
+      "example": "De toets is maandag.",
+      "exampleEnglish": "Notice what the form is doing here: “The test is on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "maandag",
+      "romanization": "MAHN-dakh",
+      "nativeText": "Contrast check for \"maandag\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "MAHN-dakh",
+      "exampleTarget": "De toets is maandag.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The test is on Monday.”",
+      "korean": "maandag",
+      "english": "Contrast check for \"maandag\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "De toets is maandag.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The test is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "maandag",
+      "romanization": "MAHN-dakh",
+      "nativeText": "Recall \"maandag\" from memory, then explain what would change if a nearby alternative replaced it in \"De toets is maandag.\".",
+      "pronunciation": "MAHN-dakh",
+      "exampleTarget": "De toets is maandag.",
+      "exampleNative": "Self-check against the model before moving on: “The test is on Monday.”",
+      "korean": "maandag",
+      "english": "Recall \"maandag\" from memory, then explain what would change if a nearby alternative replaced it in \"De toets is maandag.\".",
+      "example": "De toets is maandag.",
+      "exampleEnglish": "Self-check against the model before moving on: “The test is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "maandag",
+      "romanization": "MAHN-dakh",
+      "nativeText": "Repair \"maandag\" inside \"De toets is maandag.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Monday.” Weekdays do not need a preposition in many ordinary time answers.",
+      "pronunciation": "MAHN-dakh",
+      "exampleTarget": "De toets is maandag.",
+      "exampleNative": "Use the model as the repair target: “The test is on Monday.”",
+      "korean": "maandag",
+      "english": "Repair \"maandag\" inside \"De toets is maandag.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Monday.” Weekdays do not need a preposition in many ordinary time answers.",
+      "example": "De toets is maandag.",
+      "exampleEnglish": "Use the model as the repair target: “The test is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "maandag",
+      "romanization": "MAHN-dakh",
+      "nativeText": "Transfer \"maandag\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De toets is maandag.\".",
+      "pronunciation": "MAHN-dakh",
+      "exampleTarget": "De toets is maandag.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The test is on Monday.”",
+      "korean": "maandag",
+      "english": "Transfer \"maandag\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De toets is maandag.\".",
+      "example": "De toets is maandag.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The test is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "maandag",
+      "romanization": "MAHN-dakh",
+      "nativeText": "Find one word or phrase that naturally travels with \"maandag\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "MAHN-dakh",
+      "exampleTarget": "De toets is maandag.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The test is on Monday.”",
+      "korean": "maandag",
+      "english": "Find one word or phrase that naturally travels with \"maandag\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "De toets is maandag.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The test is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "maandag",
+      "romanization": "MAHN-dakh",
+      "nativeText": "Listen for \"maandag\" inside \"De toets is maandag.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "MAHN-dakh",
+      "exampleTarget": "De toets is maandag.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The test is on Monday.”",
+      "korean": "maandag",
+      "english": "Listen for \"maandag\" inside \"De toets is maandag.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "De toets is maandag.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The test is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "maandag",
+      "romanization": "MAHN-dakh",
+      "nativeText": "Write \"maandag\" again without looking, then compare the exact written form against \"De toets is maandag.\" before moving on.",
+      "pronunciation": "MAHN-dakh",
+      "exampleTarget": "De toets is maandag.",
+      "exampleNative": "Use the written model as the final correctness check: “The test is on Monday.”",
+      "korean": "maandag",
+      "english": "Write \"maandag\" again without looking, then compare the exact written form against \"De toets is maandag.\" before moving on.",
+      "example": "De toets is maandag.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The test is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "maandag",
+      "romanization": "MAHN-dakh",
+      "nativeText": "Check whether \"maandag\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The test is on Monday.”",
+      "pronunciation": "MAHN-dakh",
+      "exampleTarget": "De toets is maandag.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The test is on Monday.”",
+      "korean": "maandag",
+      "english": "Check whether \"maandag\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The test is on Monday.”",
+      "example": "De toets is maandag.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The test is on Monday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "welke datum is het vandaag?",
+      "romanization": "wel-kə DAH-tum is hət van-DAKH",
+      "nativeText": "“What date is it today?” A practical full question.",
+      "pronunciation": "wel-kə DAH-tum is hət van-DAKH",
+      "exampleTarget": "Welke datum is het vandaag?",
+      "exampleNative": "“What date is it today?”",
+      "korean": "welke datum is het vandaag?",
+      "english": "“What date is it today?” A practical full question.",
+      "example": "Welke datum is het vandaag?",
+      "exampleEnglish": "“What date is it today?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "Welke datum is het vandaag?",
+      "romanization": "wel-kə DAH-tum is hət van-DAKH",
+      "nativeText": "Model use for \"Welke datum is het vandaag?\": “What date is it today?”",
+      "pronunciation": "wel-kə DAH-tum is hət van-DAKH",
+      "exampleTarget": "Welke datum is het vandaag?",
+      "exampleNative": "“What date is it today?”",
+      "korean": "Welke datum is het vandaag?",
+      "english": "Model use for \"Welke datum is het vandaag?\": “What date is it today?”",
+      "example": "Welke datum is het vandaag?",
+      "exampleEnglish": "“What date is it today?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "welke datum is het vandaag?",
+      "romanization": "wel-kə DAH-tum is hət van-DAKH",
+      "nativeText": "Usage focus for \"welke datum is het vandaag?\": “What date is it today?” A practical full question.",
+      "pronunciation": "wel-kə DAH-tum is hət van-DAKH",
+      "exampleTarget": "Welke datum is het vandaag?",
+      "exampleNative": "Notice what the form is doing here: “What date is it today?”",
+      "korean": "welke datum is het vandaag?",
+      "english": "Usage focus for \"welke datum is het vandaag?\": “What date is it today?” A practical full question.",
+      "example": "Welke datum is het vandaag?",
+      "exampleEnglish": "Notice what the form is doing here: “What date is it today?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "welke datum is het vandaag?",
+      "romanization": "wel-kə DAH-tum is hət van-DAKH",
+      "nativeText": "Contrast check for \"welke datum is het vandaag?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "wel-kə DAH-tum is hət van-DAKH",
+      "exampleTarget": "Welke datum is het vandaag?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What date is it today?”",
+      "korean": "welke datum is het vandaag?",
+      "english": "Contrast check for \"welke datum is het vandaag?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Welke datum is het vandaag?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What date is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "welke datum is het vandaag?",
+      "romanization": "wel-kə DAH-tum is hət van-DAKH",
+      "nativeText": "Recall \"welke datum is het vandaag?\" from memory, then explain what would change if a nearby alternative replaced it in \"Welke datum is het vandaag?\".",
+      "pronunciation": "wel-kə DAH-tum is hət van-DAKH",
+      "exampleTarget": "Welke datum is het vandaag?",
+      "exampleNative": "Self-check against the model before moving on: “What date is it today?”",
+      "korean": "welke datum is het vandaag?",
+      "english": "Recall \"welke datum is het vandaag?\" from memory, then explain what would change if a nearby alternative replaced it in \"Welke datum is het vandaag?\".",
+      "example": "Welke datum is het vandaag?",
+      "exampleEnglish": "Self-check against the model before moving on: “What date is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "welke datum is het vandaag?",
+      "romanization": "wel-kə DAH-tum is hət van-DAKH",
+      "nativeText": "Repair \"welke datum is het vandaag?\" inside \"Welke datum is het vandaag?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What date is it today?” A practical full question.",
+      "pronunciation": "wel-kə DAH-tum is hət van-DAKH",
+      "exampleTarget": "Welke datum is het vandaag?",
+      "exampleNative": "Use the model as the repair target: “What date is it today?”",
+      "korean": "welke datum is het vandaag?",
+      "english": "Repair \"welke datum is het vandaag?\" inside \"Welke datum is het vandaag?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What date is it today?” A practical full question.",
+      "example": "Welke datum is het vandaag?",
+      "exampleEnglish": "Use the model as the repair target: “What date is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "welke datum is het vandaag?",
+      "romanization": "wel-kə DAH-tum is hət van-DAKH",
+      "nativeText": "Transfer \"welke datum is het vandaag?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Welke datum is het vandaag?\".",
+      "pronunciation": "wel-kə DAH-tum is hət van-DAKH",
+      "exampleTarget": "Welke datum is het vandaag?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What date is it today?”",
+      "korean": "welke datum is het vandaag?",
+      "english": "Transfer \"welke datum is het vandaag?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Welke datum is het vandaag?\".",
+      "example": "Welke datum is het vandaag?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What date is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "welke datum is het vandaag?",
+      "romanization": "wel-kə DAH-tum is hət van-DAKH",
+      "nativeText": "Find one word or phrase that naturally travels with \"welke datum is het vandaag?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "wel-kə DAH-tum is hət van-DAKH",
+      "exampleTarget": "Welke datum is het vandaag?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What date is it today?”",
+      "korean": "welke datum is het vandaag?",
+      "english": "Find one word or phrase that naturally travels with \"welke datum is het vandaag?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Welke datum is het vandaag?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What date is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "welke datum is het vandaag?",
+      "romanization": "wel-kə DAH-tum is hət van-DAKH",
+      "nativeText": "Listen for \"welke datum is het vandaag?\" inside \"Welke datum is het vandaag?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "wel-kə DAH-tum is hət van-DAKH",
+      "exampleTarget": "Welke datum is het vandaag?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What date is it today?”",
+      "korean": "welke datum is het vandaag?",
+      "english": "Listen for \"welke datum is het vandaag?\" inside \"Welke datum is het vandaag?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Welke datum is het vandaag?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What date is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "welke datum is het vandaag?",
+      "romanization": "wel-kə DAH-tum is hət van-DAKH",
+      "nativeText": "Write \"welke datum is het vandaag?\" again without looking, then compare the exact written form against \"Welke datum is het vandaag?\" before moving on.",
+      "pronunciation": "wel-kə DAH-tum is hət van-DAKH",
+      "exampleTarget": "Welke datum is het vandaag?",
+      "exampleNative": "Use the written model as the final correctness check: “What date is it today?”",
+      "korean": "welke datum is het vandaag?",
+      "english": "Write \"welke datum is het vandaag?\" again without looking, then compare the exact written form against \"Welke datum is het vandaag?\" before moving on.",
+      "example": "Welke datum is het vandaag?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What date is it today?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "welke datum is het vandaag?",
+      "romanization": "wel-kə DAH-tum is hət van-DAKH",
+      "nativeText": "Check whether \"welke datum is het vandaag?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What date is it today?”",
+      "pronunciation": "wel-kə DAH-tum is hət van-DAKH",
+      "exampleTarget": "Welke datum is het vandaag?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What date is it today?”",
+      "korean": "welke datum is het vandaag?",
+      "english": "Check whether \"welke datum is het vandaag?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What date is it today?”",
+      "example": "Welke datum is het vandaag?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What date is it today?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vijf mei",
+      "romanization": "veyf mey",
+      "nativeText": "“May fifth.” Dutch places the day number before the month.",
+      "pronunciation": "veyf mey",
+      "exampleTarget": "De cursus begint op vijf mei.",
+      "exampleNative": "“The course begins on May fifth.”",
+      "korean": "vijf mei",
+      "english": "“May fifth.” Dutch places the day number before the month.",
+      "example": "De cursus begint op vijf mei.",
+      "exampleEnglish": "“The course begins on May fifth.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "De cursus begint op vijf mei.",
+      "romanization": "veyf mey",
+      "nativeText": "Model use for \"De cursus begint op vijf mei.\": “The course begins on May fifth.”",
+      "pronunciation": "veyf mey",
+      "exampleTarget": "De cursus begint op vijf mei.",
+      "exampleNative": "“The course begins on May fifth.”",
+      "korean": "De cursus begint op vijf mei.",
+      "english": "Model use for \"De cursus begint op vijf mei.\": “The course begins on May fifth.”",
+      "example": "De cursus begint op vijf mei.",
+      "exampleEnglish": "“The course begins on May fifth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vijf mei",
+      "romanization": "veyf mey",
+      "nativeText": "Usage focus for \"vijf mei\": “May fifth.” Dutch places the day number before the month.",
+      "pronunciation": "veyf mey",
+      "exampleTarget": "De cursus begint op vijf mei.",
+      "exampleNative": "Notice what the form is doing here: “The course begins on May fifth.”",
+      "korean": "vijf mei",
+      "english": "Usage focus for \"vijf mei\": “May fifth.” Dutch places the day number before the month.",
+      "example": "De cursus begint op vijf mei.",
+      "exampleEnglish": "Notice what the form is doing here: “The course begins on May fifth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vijf mei",
+      "romanization": "veyf mey",
+      "nativeText": "Contrast check for \"vijf mei\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "veyf mey",
+      "exampleTarget": "De cursus begint op vijf mei.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The course begins on May fifth.”",
+      "korean": "vijf mei",
+      "english": "Contrast check for \"vijf mei\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "De cursus begint op vijf mei.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The course begins on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vijf mei",
+      "romanization": "veyf mey",
+      "nativeText": "Recall \"vijf mei\" from memory, then explain what would change if a nearby alternative replaced it in \"De cursus begint op vijf mei.\".",
+      "pronunciation": "veyf mey",
+      "exampleTarget": "De cursus begint op vijf mei.",
+      "exampleNative": "Self-check against the model before moving on: “The course begins on May fifth.”",
+      "korean": "vijf mei",
+      "english": "Recall \"vijf mei\" from memory, then explain what would change if a nearby alternative replaced it in \"De cursus begint op vijf mei.\".",
+      "example": "De cursus begint op vijf mei.",
+      "exampleEnglish": "Self-check against the model before moving on: “The course begins on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vijf mei",
+      "romanization": "veyf mey",
+      "nativeText": "Repair \"vijf mei\" inside \"De cursus begint op vijf mei.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May fifth.” Dutch places the day number before the month.",
+      "pronunciation": "veyf mey",
+      "exampleTarget": "De cursus begint op vijf mei.",
+      "exampleNative": "Use the model as the repair target: “The course begins on May fifth.”",
+      "korean": "vijf mei",
+      "english": "Repair \"vijf mei\" inside \"De cursus begint op vijf mei.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May fifth.” Dutch places the day number before the month.",
+      "example": "De cursus begint op vijf mei.",
+      "exampleEnglish": "Use the model as the repair target: “The course begins on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vijf mei",
+      "romanization": "veyf mey",
+      "nativeText": "Transfer \"vijf mei\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De cursus begint op vijf mei.\".",
+      "pronunciation": "veyf mey",
+      "exampleTarget": "De cursus begint op vijf mei.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The course begins on May fifth.”",
+      "korean": "vijf mei",
+      "english": "Transfer \"vijf mei\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De cursus begint op vijf mei.\".",
+      "example": "De cursus begint op vijf mei.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The course begins on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vijf mei",
+      "romanization": "veyf mey",
+      "nativeText": "Find one word or phrase that naturally travels with \"vijf mei\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "veyf mey",
+      "exampleTarget": "De cursus begint op vijf mei.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The course begins on May fifth.”",
+      "korean": "vijf mei",
+      "english": "Find one word or phrase that naturally travels with \"vijf mei\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "De cursus begint op vijf mei.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The course begins on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vijf mei",
+      "romanization": "veyf mey",
+      "nativeText": "Listen for \"vijf mei\" inside \"De cursus begint op vijf mei.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "veyf mey",
+      "exampleTarget": "De cursus begint op vijf mei.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The course begins on May fifth.”",
+      "korean": "vijf mei",
+      "english": "Listen for \"vijf mei\" inside \"De cursus begint op vijf mei.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "De cursus begint op vijf mei.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The course begins on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vijf mei",
+      "romanization": "veyf mey",
+      "nativeText": "Write \"vijf mei\" again without looking, then compare the exact written form against \"De cursus begint op vijf mei.\" before moving on.",
+      "pronunciation": "veyf mey",
+      "exampleTarget": "De cursus begint op vijf mei.",
+      "exampleNative": "Use the written model as the final correctness check: “The course begins on May fifth.”",
+      "korean": "vijf mei",
+      "english": "Write \"vijf mei\" again without looking, then compare the exact written form against \"De cursus begint op vijf mei.\" before moving on.",
+      "example": "De cursus begint op vijf mei.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The course begins on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "vijf mei",
+      "romanization": "veyf mey",
+      "nativeText": "Check whether \"vijf mei\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The course begins on May fifth.”",
+      "pronunciation": "veyf mey",
+      "exampleTarget": "De cursus begint op vijf mei.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The course begins on May fifth.”",
+      "korean": "vijf mei",
+      "english": "Check whether \"vijf mei\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The course begins on May fifth.”",
+      "example": "De cursus begint op vijf mei.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The course begins on May fifth.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "volgende week",
+      "romanization": "VOL-ghen-də vayk",
+      "nativeText": "“Next week.” A useful near-future phrase.",
+      "pronunciation": "VOL-ghen-də vayk",
+      "exampleTarget": "Volgende week hebben we vakantie.",
+      "exampleNative": "“Next week we have vacation.”",
+      "korean": "volgende week",
+      "english": "“Next week.” A useful near-future phrase.",
+      "example": "Volgende week hebben we vakantie.",
+      "exampleEnglish": "“Next week we have vacation.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "Volgende week hebben we vakantie.",
+      "romanization": "VOL-ghen-də vayk",
+      "nativeText": "Model use for \"Volgende week hebben we vakantie.\": “Next week we have vacation.”",
+      "pronunciation": "VOL-ghen-də vayk",
+      "exampleTarget": "Volgende week hebben we vakantie.",
+      "exampleNative": "“Next week we have vacation.”",
+      "korean": "Volgende week hebben we vakantie.",
+      "english": "Model use for \"Volgende week hebben we vakantie.\": “Next week we have vacation.”",
+      "example": "Volgende week hebben we vakantie.",
+      "exampleEnglish": "“Next week we have vacation.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "volgende week",
+      "romanization": "VOL-ghen-də vayk",
+      "nativeText": "Usage focus for \"volgende week\": “Next week.” A useful near-future phrase.",
+      "pronunciation": "VOL-ghen-də vayk",
+      "exampleTarget": "Volgende week hebben we vakantie.",
+      "exampleNative": "Notice what the form is doing here: “Next week we have vacation.”",
+      "korean": "volgende week",
+      "english": "Usage focus for \"volgende week\": “Next week.” A useful near-future phrase.",
+      "example": "Volgende week hebben we vakantie.",
+      "exampleEnglish": "Notice what the form is doing here: “Next week we have vacation.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "volgende week",
+      "romanization": "VOL-ghen-də vayk",
+      "nativeText": "Contrast check for \"volgende week\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "VOL-ghen-də vayk",
+      "exampleTarget": "Volgende week hebben we vakantie.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Next week we have vacation.”",
+      "korean": "volgende week",
+      "english": "Contrast check for \"volgende week\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Volgende week hebben we vakantie.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Next week we have vacation.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "volgende week",
+      "romanization": "VOL-ghen-də vayk",
+      "nativeText": "Recall \"volgende week\" from memory, then explain what would change if a nearby alternative replaced it in \"Volgende week hebben we vakantie.\".",
+      "pronunciation": "VOL-ghen-də vayk",
+      "exampleTarget": "Volgende week hebben we vakantie.",
+      "exampleNative": "Self-check against the model before moving on: “Next week we have vacation.”",
+      "korean": "volgende week",
+      "english": "Recall \"volgende week\" from memory, then explain what would change if a nearby alternative replaced it in \"Volgende week hebben we vakantie.\".",
+      "example": "Volgende week hebben we vakantie.",
+      "exampleEnglish": "Self-check against the model before moving on: “Next week we have vacation.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "volgende week",
+      "romanization": "VOL-ghen-də vayk",
+      "nativeText": "Repair \"volgende week\" inside \"Volgende week hebben we vakantie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.” A useful near-future phrase.",
+      "pronunciation": "VOL-ghen-də vayk",
+      "exampleTarget": "Volgende week hebben we vakantie.",
+      "exampleNative": "Use the model as the repair target: “Next week we have vacation.”",
+      "korean": "volgende week",
+      "english": "Repair \"volgende week\" inside \"Volgende week hebben we vakantie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.” A useful near-future phrase.",
+      "example": "Volgende week hebben we vakantie.",
+      "exampleEnglish": "Use the model as the repair target: “Next week we have vacation.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "volgende week",
+      "romanization": "VOL-ghen-də vayk",
+      "nativeText": "Transfer \"volgende week\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Volgende week hebben we vakantie.\".",
+      "pronunciation": "VOL-ghen-də vayk",
+      "exampleTarget": "Volgende week hebben we vakantie.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Next week we have vacation.”",
+      "korean": "volgende week",
+      "english": "Transfer \"volgende week\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Volgende week hebben we vakantie.\".",
+      "example": "Volgende week hebben we vakantie.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Next week we have vacation.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "volgende week",
+      "romanization": "VOL-ghen-də vayk",
+      "nativeText": "Find one word or phrase that naturally travels with \"volgende week\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "VOL-ghen-də vayk",
+      "exampleTarget": "Volgende week hebben we vakantie.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Next week we have vacation.”",
+      "korean": "volgende week",
+      "english": "Find one word or phrase that naturally travels with \"volgende week\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Volgende week hebben we vakantie.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Next week we have vacation.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "volgende week",
+      "romanization": "VOL-ghen-də vayk",
+      "nativeText": "Listen for \"volgende week\" inside \"Volgende week hebben we vakantie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "VOL-ghen-də vayk",
+      "exampleTarget": "Volgende week hebben we vakantie.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Next week we have vacation.”",
+      "korean": "volgende week",
+      "english": "Listen for \"volgende week\" inside \"Volgende week hebben we vakantie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Volgende week hebben we vakantie.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Next week we have vacation.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "volgende week",
+      "romanization": "VOL-ghen-də vayk",
+      "nativeText": "Write \"volgende week\" again without looking, then compare the exact written form against \"Volgende week hebben we vakantie.\" before moving on.",
+      "pronunciation": "VOL-ghen-də vayk",
+      "exampleTarget": "Volgende week hebben we vakantie.",
+      "exampleNative": "Use the written model as the final correctness check: “Next week we have vacation.”",
+      "korean": "volgende week",
+      "english": "Write \"volgende week\" again without looking, then compare the exact written form against \"Volgende week hebben we vakantie.\" before moving on.",
+      "example": "Volgende week hebben we vakantie.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Next week we have vacation.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "volgende week",
+      "romanization": "VOL-ghen-də vayk",
+      "nativeText": "Check whether \"volgende week\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Next week we have vacation.”",
+      "pronunciation": "VOL-ghen-də vayk",
+      "exampleTarget": "Volgende week hebben we vakantie.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Next week we have vacation.”",
+      "korean": "volgende week",
+      "english": "Check whether \"volgende week\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Next week we have vacation.”",
+      "example": "Volgende week hebben we vakantie.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Next week we have vacation.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "wanneer?",
+      "romanization": "va-NEER",
+      "nativeText": "“When?” A compact question word for time and plans.",
+      "pronunciation": "va-NEER",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "“When does the meeting begin?”",
+      "korean": "wanneer?",
+      "english": "“When?” A compact question word for time and plans.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "“When does the meeting begin?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "Wanneer begint de vergadering?",
+      "romanization": "va-NEER",
+      "nativeText": "Model use for \"Wanneer begint de vergadering?\": “When does the meeting begin?”",
+      "pronunciation": "va-NEER",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "“When does the meeting begin?”",
+      "korean": "Wanneer begint de vergadering?",
+      "english": "Model use for \"Wanneer begint de vergadering?\": “When does the meeting begin?”",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "“When does the meeting begin?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "wanneer?",
+      "romanization": "va-NEER",
+      "nativeText": "Usage focus for \"wanneer?\": “When?” A compact question word for time and plans.",
+      "pronunciation": "va-NEER",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "Notice what the form is doing here: “When does the meeting begin?”",
+      "korean": "wanneer?",
+      "english": "Usage focus for \"wanneer?\": “When?” A compact question word for time and plans.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "Notice what the form is doing here: “When does the meeting begin?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "wanneer?",
+      "romanization": "va-NEER",
+      "nativeText": "Contrast check for \"wanneer?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "va-NEER",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When does the meeting begin?”",
+      "korean": "wanneer?",
+      "english": "Contrast check for \"wanneer?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When does the meeting begin?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "wanneer?",
+      "romanization": "va-NEER",
+      "nativeText": "Recall \"wanneer?\" from memory, then explain what would change if a nearby alternative replaced it in \"Wanneer begint de vergadering?\".",
+      "pronunciation": "va-NEER",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "Self-check against the model before moving on: “When does the meeting begin?”",
+      "korean": "wanneer?",
+      "english": "Recall \"wanneer?\" from memory, then explain what would change if a nearby alternative replaced it in \"Wanneer begint de vergadering?\".",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "Self-check against the model before moving on: “When does the meeting begin?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "wanneer?",
+      "romanization": "va-NEER",
+      "nativeText": "Repair \"wanneer?\" inside \"Wanneer begint de vergadering?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?” A compact question word for time and plans.",
+      "pronunciation": "va-NEER",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "Use the model as the repair target: “When does the meeting begin?”",
+      "korean": "wanneer?",
+      "english": "Repair \"wanneer?\" inside \"Wanneer begint de vergadering?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?” A compact question word for time and plans.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "Use the model as the repair target: “When does the meeting begin?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "wanneer?",
+      "romanization": "va-NEER",
+      "nativeText": "Transfer \"wanneer?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wanneer begint de vergadering?\".",
+      "pronunciation": "va-NEER",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When does the meeting begin?”",
+      "korean": "wanneer?",
+      "english": "Transfer \"wanneer?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wanneer begint de vergadering?\".",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When does the meeting begin?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "wanneer?",
+      "romanization": "va-NEER",
+      "nativeText": "Find one word or phrase that naturally travels with \"wanneer?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "va-NEER",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When does the meeting begin?”",
+      "korean": "wanneer?",
+      "english": "Find one word or phrase that naturally travels with \"wanneer?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When does the meeting begin?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "wanneer?",
+      "romanization": "va-NEER",
+      "nativeText": "Listen for \"wanneer?\" inside \"Wanneer begint de vergadering?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "va-NEER",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When does the meeting begin?”",
+      "korean": "wanneer?",
+      "english": "Listen for \"wanneer?\" inside \"Wanneer begint de vergadering?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When does the meeting begin?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "wanneer?",
+      "romanization": "va-NEER",
+      "nativeText": "Write \"wanneer?\" again without looking, then compare the exact written form against \"Wanneer begint de vergadering?\" before moving on.",
+      "pronunciation": "va-NEER",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "Use the written model as the final correctness check: “When does the meeting begin?”",
+      "korean": "wanneer?",
+      "english": "Write \"wanneer?\" again without looking, then compare the exact written form against \"Wanneer begint de vergadering?\" before moving on.",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When does the meeting begin?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit06datescalendar-vocabulary-1",
+        "nl-level1unit06datescalendar-vocabulary-2",
+        "nl-level1unit06datescalendar-grammar-1",
+        "nl-level1unit06datescalendar-grammar-2",
+        "nl-level1unit06datescalendar-reading",
+        "nl-level1unit06datescalendar-listening",
+        "nl-level1unit06datescalendar-writing",
+        "nl-level1unit06datescalendar-task"
+      ],
+      "targetText": "wanneer?",
+      "romanization": "va-NEER",
+      "nativeText": "Check whether \"wanneer?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When does the meeting begin?”",
+      "pronunciation": "va-NEER",
+      "exampleTarget": "Wanneer begint de vergadering?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When does the meeting begin?”",
+      "korean": "wanneer?",
+      "english": "Check whether \"wanneer?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When does the meeting begin?”",
+      "example": "Wanneer begint de vergadering?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When does the meeting begin?”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

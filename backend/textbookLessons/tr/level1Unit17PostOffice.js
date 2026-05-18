@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u17',
-  title: 'Level 1 · Unit 17: Postanede — Post Office',
-  category: 'service',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Handle simple postal tasks such as sending letters, parcels, and asking about delivery.',
-  vocabularyGoal: 'Use letter, parcel, stamp, address, and delivery words.',
-  grammarGoal: 'Use `göndermek`, destination suffixes, and polite service questions.',
-  speakingGoal: 'Say what you want to send, where it goes, and ask when it arrives.',
-  task: 'Send one parcel at a post office counter.',
-  expressionPractice: [
-    practice('service-need', 'Stating service need', 'Use `göndermek istiyorum`.'),
-    practice('destination', 'Giving destination', 'Use a dative destination.'),
-    practice('asking-arrival', 'Asking arrival', 'Use `ne zaman ulaşır?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 17: Postanede — Post Office",
+  "category": "service",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit17postoffice-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Handle simple postal tasks such as sending letters, parcels, and asking about delivery."
+      ],
+      "task": "Send one parcel at a post office counter."
+    },
+    {
+      "id": "tr-level1unit17postoffice-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit17postoffice-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 17: Postanede — Post Office with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit17postoffice-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 17: Postanede — Post Office sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit17postoffice-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Handle simple postal tasks such as sending letters, parcels, and asking about delivery."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit17postoffice-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 17: Postanede — Post Office with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit17postoffice-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit17postoffice-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit17postoffice-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit17postoffice-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit17postoffice-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Send one parcel at a post office counter."
+      ],
+      "task": "Send one parcel at a post office counter."
+    }
   ],
-  relatedPools: ['topic-service', 'topic-travel'],
-  items: [
-    item('postane', 'pos-ta-NE', '“Post office.” A familiar service-location word.', 'Postane bankanın yanında.', '“The post office is next to the bank.”'),
-    item('mektup', 'mek-TUP', '“Letter.” Useful for documents and formal mail.', 'Bir mektup göndermek istiyorum.', '“I want to send a letter.”'),
-    item('paket', 'pa-KET', '“Package / parcel.” Practical in postal and delivery contexts.', 'Bu paket İzmir’e gidiyor.', '“This package is going to Izmir.”'),
-    item('pul', 'PUL', '“Stamp.” A small but important postal noun.', 'İki pul istiyorum.', '“I want two stamps.”'),
-    item('adres', 'ad-RES', '“Address.” Essential for service interactions.', 'Lütfen tam adresi yazın.', '“Please write the full address.”'),
-    item('göndermek istiyorum', 'gön-der-MEK is-ti-YO-rum', '“I want to send.” A natural counter opening.', 'Bu paketi Ankara’ya göndermek istiyorum.', '“I want to send this package to Ankara.”'),
-    item('kargo ücreti', 'kar-GO üc-RE-ti', '“Shipping fee.” A practical service phrase.', 'Kargo ücreti ne kadar?', '“How much is the shipping fee?”'),
-    item('ne zaman ulaşır?', 'ne za-MAN u-la-ŞIR', '“When will it arrive?” A concise delivery question.', 'Paket ne zaman ulaşır?', '“When will the package arrive?”'),
+  "expressionPractice": [
+    {
+      "id": "service-need",
+      "label": "Stating service need",
+      "goal": "Use `göndermek istiyorum`."
+    },
+    {
+      "id": "destination",
+      "label": "Giving destination",
+      "goal": "Use a dative destination."
+    },
+    {
+      "id": "asking-arrival",
+      "label": "Asking arrival",
+      "goal": "Use `ne zaman ulaşır?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-service",
+    "topic-travel"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Send one parcel at a post office counter.",
+      "korean": "ders hedefi",
+      "english": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Send one parcel at a post office counter."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit17postoffice-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Postane bankanın yanında.\".",
+      "pronunciation": "",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Postane bankanın yanında.\".",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1"
+      ],
+      "targetText": "postane",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 17: Postanede — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "Use the key language of Level 1 · Unit 17: Postanede — Post Office with the register and setting that the lesson requires.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-2"
+      ],
+      "targetText": "mektup",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 17: Postanede — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "mektup",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 17: Postanede — Post Office sound precise rather than merely understandable.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit17postoffice-grammar-1"
+      ],
+      "targetText": "postane",
+      "romanization": "",
+      "nativeText": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "pronunciation": "",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "mektup",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 17: Postanede — Post Office with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "mektup",
+      "english": "Contrast the main pattern in Level 1 · Unit 17: Postanede — Post Office with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit17postoffice-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Paket ne zaman ulaşır?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "“When will the package arrive?”",
+      "korean": "okuma modeli",
+      "english": "Read \"Paket ne zaman ulaşır?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "“When will the package arrive?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit17postoffice-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Paket ne zaman ulaşır?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "“When will the package arrive?”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Paket ne zaman ulaşır?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "“When will the package arrive?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit17postoffice-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Postane bankanın yanında.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Postane bankanın yanında.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit17postoffice-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Send one parcel at a post office counter.",
+      "pronunciation": "",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "Send one parcel at a post office counter.",
+      "korean": "son görev",
+      "english": "Send one parcel at a post office counter.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "Send one parcel at a post office counter."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Bir mektup göndermek istiyorum.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I want to send a letter.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Bir mektup göndermek istiyorum.\" against the model.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I want to send a letter.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Postane bankanın yanında.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Postane bankanın yanında.\" before reusing it elsewhere.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Paket ne zaman ulaşır?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "“When will the package arrive?”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Paket ne zaman ulaşır?\" as one thought.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "“When will the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Postane bankanın yanında.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Postane bankanın yanında.\" and move it into your own life.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"postane\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "postane",
+      "exampleNative": "“Post office.” A familiar service-location word.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"postane\" before looking back.",
+      "example": "postane",
+      "exampleEnglish": "“Post office.” A familiar service-location word."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Paket ne zaman ulaşır?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Paket ne zaman ulaşır?\" rather than restarting from a blank sentence.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 17: Postanede — Post Office with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Bir mektup göndermek istiyorum.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 17: Postanede — Post Office with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Bir mektup göndermek istiyorum.\" as the comparison line.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit17postoffice-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Postane bankanın yanında.\".",
+      "pronunciation": "",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Postane bankanın yanında.\".",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Paket ne zaman ulaşır?\".",
+      "pronunciation": "",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "“When will the package arrive?”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Paket ne zaman ulaşır?\".",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "“When will the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Postane bankanın yanında.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Postane bankanın yanında.\" one layer at a time.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Bir mektup göndermek istiyorum.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Bir mektup göndermek istiyorum.\" as the deciding example.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-culture",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Paket ne zaman ulaşır?\".",
+      "pronunciation": "",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "“When will the package arrive?”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Paket ne zaman ulaşır?\".",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "“When will the package arrive?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "postane",
+      "romanization": "pos-ta-NE",
+      "nativeText": "“Post office.” A familiar service-location word.",
+      "pronunciation": "pos-ta-NE",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "“Post office.” A familiar service-location word.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "Postane bankanın yanında.",
+      "romanization": "pos-ta-NE",
+      "nativeText": "Model use for \"Postane bankanın yanında.\": “The post office is next to the bank.”",
+      "pronunciation": "pos-ta-NE",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "Postane bankanın yanında.",
+      "english": "Model use for \"Postane bankanın yanında.\": “The post office is next to the bank.”",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "postane",
+      "romanization": "pos-ta-NE",
+      "nativeText": "Usage focus for \"postane\": Use the key language of Level 1 · Unit 17: Postanede — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "pos-ta-NE",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "Notice what the form is doing here: “The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "Usage focus for \"postane\": Use the key language of Level 1 · Unit 17: Postanede — Post Office with the register and setting that the lesson requires.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "Notice what the form is doing here: “The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "postane",
+      "romanization": "pos-ta-NE",
+      "nativeText": "Contrast check for \"postane\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pos-ta-NE",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "Contrast check for \"postane\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "postane",
+      "romanization": "pos-ta-NE",
+      "nativeText": "Recall \"postane\" from memory, then explain what would change if a nearby alternative replaced it in \"Postane bankanın yanında.\".",
+      "pronunciation": "pos-ta-NE",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "Self-check against the model before moving on: “The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "Recall \"postane\" from memory, then explain what would change if a nearby alternative replaced it in \"Postane bankanın yanında.\".",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "Self-check against the model before moving on: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "postane",
+      "romanization": "pos-ta-NE",
+      "nativeText": "Repair \"postane\" inside \"Postane bankanın yanında.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 17: Postanede — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "pos-ta-NE",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "Use the model as the repair target: “The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "Repair \"postane\" inside \"Postane bankanın yanında.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 17: Postanede — Post Office with the register and setting that the lesson requires.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "Use the model as the repair target: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "postane",
+      "romanization": "pos-ta-NE",
+      "nativeText": "Transfer \"postane\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Postane bankanın yanında.\".",
+      "pronunciation": "pos-ta-NE",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "Transfer \"postane\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Postane bankanın yanında.\".",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "postane",
+      "romanization": "pos-ta-NE",
+      "nativeText": "Find one word or phrase that naturally travels with \"postane\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pos-ta-NE",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "Find one word or phrase that naturally travels with \"postane\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "postane",
+      "romanization": "pos-ta-NE",
+      "nativeText": "Listen for \"postane\" inside \"Postane bankanın yanında.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pos-ta-NE",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "Listen for \"postane\" inside \"Postane bankanın yanında.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "postane",
+      "romanization": "pos-ta-NE",
+      "nativeText": "Write \"postane\" again without looking, then compare the exact written form against \"Postane bankanın yanında.\" before moving on.",
+      "pronunciation": "pos-ta-NE",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "Use the written model as the final correctness check: “The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "Write \"postane\" again without looking, then compare the exact written form against \"Postane bankanın yanında.\" before moving on.",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "postane",
+      "romanization": "pos-ta-NE",
+      "nativeText": "Check whether \"postane\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "pronunciation": "pos-ta-NE",
+      "exampleTarget": "Postane bankanın yanında.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "korean": "postane",
+      "english": "Check whether \"postane\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "example": "Postane bankanın yanında.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "mektup",
+      "romanization": "mek-TUP",
+      "nativeText": "“Letter.” Useful for documents and formal mail.",
+      "pronunciation": "mek-TUP",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "mektup",
+      "english": "“Letter.” Useful for documents and formal mail.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "Bir mektup göndermek istiyorum.",
+      "romanization": "mek-TUP",
+      "nativeText": "Model use for \"Bir mektup göndermek istiyorum.\": “I want to send a letter.”",
+      "pronunciation": "mek-TUP",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "Bir mektup göndermek istiyorum.",
+      "english": "Model use for \"Bir mektup göndermek istiyorum.\": “I want to send a letter.”",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "mektup",
+      "romanization": "mek-TUP",
+      "nativeText": "Usage focus for \"mektup\": Distinguish the nearby wording choices that make Level 1 · Unit 17: Postanede — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "mek-TUP",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I want to send a letter.”",
+      "korean": "mektup",
+      "english": "Usage focus for \"mektup\": Distinguish the nearby wording choices that make Level 1 · Unit 17: Postanede — Post Office sound precise rather than merely understandable.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "mektup",
+      "romanization": "mek-TUP",
+      "nativeText": "Contrast check for \"mektup\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mek-TUP",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send a letter.”",
+      "korean": "mektup",
+      "english": "Contrast check for \"mektup\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "mektup",
+      "romanization": "mek-TUP",
+      "nativeText": "Recall \"mektup\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir mektup göndermek istiyorum.\".",
+      "pronunciation": "mek-TUP",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I want to send a letter.”",
+      "korean": "mektup",
+      "english": "Recall \"mektup\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir mektup göndermek istiyorum.\".",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "mektup",
+      "romanization": "mek-TUP",
+      "nativeText": "Repair \"mektup\" inside \"Bir mektup göndermek istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 17: Postanede — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "mek-TUP",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "Use the model as the repair target: “I want to send a letter.”",
+      "korean": "mektup",
+      "english": "Repair \"mektup\" inside \"Bir mektup göndermek istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 17: Postanede — Post Office sound precise rather than merely understandable.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "mektup",
+      "romanization": "mek-TUP",
+      "nativeText": "Transfer \"mektup\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir mektup göndermek istiyorum.\".",
+      "pronunciation": "mek-TUP",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send a letter.”",
+      "korean": "mektup",
+      "english": "Transfer \"mektup\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir mektup göndermek istiyorum.\".",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "mektup",
+      "romanization": "mek-TUP",
+      "nativeText": "Find one word or phrase that naturally travels with \"mektup\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mek-TUP",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to send a letter.”",
+      "korean": "mektup",
+      "english": "Find one word or phrase that naturally travels with \"mektup\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "mektup",
+      "romanization": "mek-TUP",
+      "nativeText": "Listen for \"mektup\" inside \"Bir mektup göndermek istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mek-TUP",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send a letter.”",
+      "korean": "mektup",
+      "english": "Listen for \"mektup\" inside \"Bir mektup göndermek istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "mektup",
+      "romanization": "mek-TUP",
+      "nativeText": "Write \"mektup\" again without looking, then compare the exact written form against \"Bir mektup göndermek istiyorum.\" before moving on.",
+      "pronunciation": "mek-TUP",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to send a letter.”",
+      "korean": "mektup",
+      "english": "Write \"mektup\" again without looking, then compare the exact written form against \"Bir mektup göndermek istiyorum.\" before moving on.",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "mektup",
+      "romanization": "mek-TUP",
+      "nativeText": "Check whether \"mektup\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”",
+      "pronunciation": "mek-TUP",
+      "exampleTarget": "Bir mektup göndermek istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”",
+      "korean": "mektup",
+      "english": "Check whether \"mektup\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”",
+      "example": "Bir mektup göndermek istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "“Package / parcel.” Practical in postal and delivery contexts.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bu paket İzmir’e gidiyor.",
+      "exampleNative": "“This package is going to Izmir.”",
+      "korean": "paket",
+      "english": "“Package / parcel.” Practical in postal and delivery contexts.",
+      "example": "Bu paket İzmir’e gidiyor.",
+      "exampleEnglish": "“This package is going to Izmir.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "Bu paket İzmir’e gidiyor.",
+      "romanization": "pa-KET",
+      "nativeText": "Model use for \"Bu paket İzmir’e gidiyor.\": “This package is going to Izmir.”",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bu paket İzmir’e gidiyor.",
+      "exampleNative": "“This package is going to Izmir.”",
+      "korean": "Bu paket İzmir’e gidiyor.",
+      "english": "Model use for \"Bu paket İzmir’e gidiyor.\": “This package is going to Izmir.”",
+      "example": "Bu paket İzmir’e gidiyor.",
+      "exampleEnglish": "“This package is going to Izmir.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Usage focus for \"paket\": “Package / parcel.” Practical in postal and delivery contexts.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bu paket İzmir’e gidiyor.",
+      "exampleNative": "Notice what the form is doing here: “This package is going to Izmir.”",
+      "korean": "paket",
+      "english": "Usage focus for \"paket\": “Package / parcel.” Practical in postal and delivery contexts.",
+      "example": "Bu paket İzmir’e gidiyor.",
+      "exampleEnglish": "Notice what the form is doing here: “This package is going to Izmir.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Contrast check for \"paket\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bu paket İzmir’e gidiyor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This package is going to Izmir.”",
+      "korean": "paket",
+      "english": "Contrast check for \"paket\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bu paket İzmir’e gidiyor.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This package is going to Izmir.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Recall \"paket\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu paket İzmir’e gidiyor.\".",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bu paket İzmir’e gidiyor.",
+      "exampleNative": "Self-check against the model before moving on: “This package is going to Izmir.”",
+      "korean": "paket",
+      "english": "Recall \"paket\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu paket İzmir’e gidiyor.\".",
+      "example": "Bu paket İzmir’e gidiyor.",
+      "exampleEnglish": "Self-check against the model before moving on: “This package is going to Izmir.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Repair \"paket\" inside \"Bu paket İzmir’e gidiyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Package / parcel.” Practical in postal and delivery contexts.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bu paket İzmir’e gidiyor.",
+      "exampleNative": "Use the model as the repair target: “This package is going to Izmir.”",
+      "korean": "paket",
+      "english": "Repair \"paket\" inside \"Bu paket İzmir’e gidiyor.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Package / parcel.” Practical in postal and delivery contexts.",
+      "example": "Bu paket İzmir’e gidiyor.",
+      "exampleEnglish": "Use the model as the repair target: “This package is going to Izmir.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Transfer \"paket\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu paket İzmir’e gidiyor.\".",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bu paket İzmir’e gidiyor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This package is going to Izmir.”",
+      "korean": "paket",
+      "english": "Transfer \"paket\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu paket İzmir’e gidiyor.\".",
+      "example": "Bu paket İzmir’e gidiyor.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This package is going to Izmir.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Find one word or phrase that naturally travels with \"paket\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bu paket İzmir’e gidiyor.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This package is going to Izmir.”",
+      "korean": "paket",
+      "english": "Find one word or phrase that naturally travels with \"paket\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bu paket İzmir’e gidiyor.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This package is going to Izmir.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Listen for \"paket\" inside \"Bu paket İzmir’e gidiyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bu paket İzmir’e gidiyor.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This package is going to Izmir.”",
+      "korean": "paket",
+      "english": "Listen for \"paket\" inside \"Bu paket İzmir’e gidiyor.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bu paket İzmir’e gidiyor.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This package is going to Izmir.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Write \"paket\" again without looking, then compare the exact written form against \"Bu paket İzmir’e gidiyor.\" before moving on.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bu paket İzmir’e gidiyor.",
+      "exampleNative": "Use the written model as the final correctness check: “This package is going to Izmir.”",
+      "korean": "paket",
+      "english": "Write \"paket\" again without looking, then compare the exact written form against \"Bu paket İzmir’e gidiyor.\" before moving on.",
+      "example": "Bu paket İzmir’e gidiyor.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This package is going to Izmir.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "paket",
+      "romanization": "pa-KET",
+      "nativeText": "Check whether \"paket\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This package is going to Izmir.”",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Bu paket İzmir’e gidiyor.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This package is going to Izmir.”",
+      "korean": "paket",
+      "english": "Check whether \"paket\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This package is going to Izmir.”",
+      "example": "Bu paket İzmir’e gidiyor.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This package is going to Izmir.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "pul",
+      "romanization": "PUL",
+      "nativeText": "“Stamp.” A small but important postal noun.",
+      "pronunciation": "PUL",
+      "exampleTarget": "İki pul istiyorum.",
+      "exampleNative": "“I want two stamps.”",
+      "korean": "pul",
+      "english": "“Stamp.” A small but important postal noun.",
+      "example": "İki pul istiyorum.",
+      "exampleEnglish": "“I want two stamps.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "İki pul istiyorum.",
+      "romanization": "PUL",
+      "nativeText": "Model use for \"İki pul istiyorum.\": “I want two stamps.”",
+      "pronunciation": "PUL",
+      "exampleTarget": "İki pul istiyorum.",
+      "exampleNative": "“I want two stamps.”",
+      "korean": "İki pul istiyorum.",
+      "english": "Model use for \"İki pul istiyorum.\": “I want two stamps.”",
+      "example": "İki pul istiyorum.",
+      "exampleEnglish": "“I want two stamps.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "pul",
+      "romanization": "PUL",
+      "nativeText": "Usage focus for \"pul\": “Stamp.” A small but important postal noun.",
+      "pronunciation": "PUL",
+      "exampleTarget": "İki pul istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I want two stamps.”",
+      "korean": "pul",
+      "english": "Usage focus for \"pul\": “Stamp.” A small but important postal noun.",
+      "example": "İki pul istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I want two stamps.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "pul",
+      "romanization": "PUL",
+      "nativeText": "Contrast check for \"pul\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "PUL",
+      "exampleTarget": "İki pul istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want two stamps.”",
+      "korean": "pul",
+      "english": "Contrast check for \"pul\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "İki pul istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "pul",
+      "romanization": "PUL",
+      "nativeText": "Recall \"pul\" from memory, then explain what would change if a nearby alternative replaced it in \"İki pul istiyorum.\".",
+      "pronunciation": "PUL",
+      "exampleTarget": "İki pul istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I want two stamps.”",
+      "korean": "pul",
+      "english": "Recall \"pul\" from memory, then explain what would change if a nearby alternative replaced it in \"İki pul istiyorum.\".",
+      "example": "İki pul istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "pul",
+      "romanization": "PUL",
+      "nativeText": "Repair \"pul\" inside \"İki pul istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stamp.” A small but important postal noun.",
+      "pronunciation": "PUL",
+      "exampleTarget": "İki pul istiyorum.",
+      "exampleNative": "Use the model as the repair target: “I want two stamps.”",
+      "korean": "pul",
+      "english": "Repair \"pul\" inside \"İki pul istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stamp.” A small but important postal noun.",
+      "example": "İki pul istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "pul",
+      "romanization": "PUL",
+      "nativeText": "Transfer \"pul\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"İki pul istiyorum.\".",
+      "pronunciation": "PUL",
+      "exampleTarget": "İki pul istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want two stamps.”",
+      "korean": "pul",
+      "english": "Transfer \"pul\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"İki pul istiyorum.\".",
+      "example": "İki pul istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "pul",
+      "romanization": "PUL",
+      "nativeText": "Find one word or phrase that naturally travels with \"pul\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "PUL",
+      "exampleTarget": "İki pul istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want two stamps.”",
+      "korean": "pul",
+      "english": "Find one word or phrase that naturally travels with \"pul\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "İki pul istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "pul",
+      "romanization": "PUL",
+      "nativeText": "Listen for \"pul\" inside \"İki pul istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "PUL",
+      "exampleTarget": "İki pul istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want two stamps.”",
+      "korean": "pul",
+      "english": "Listen for \"pul\" inside \"İki pul istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "İki pul istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "pul",
+      "romanization": "PUL",
+      "nativeText": "Write \"pul\" again without looking, then compare the exact written form against \"İki pul istiyorum.\" before moving on.",
+      "pronunciation": "PUL",
+      "exampleTarget": "İki pul istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I want two stamps.”",
+      "korean": "pul",
+      "english": "Write \"pul\" again without looking, then compare the exact written form against \"İki pul istiyorum.\" before moving on.",
+      "example": "İki pul istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "pul",
+      "romanization": "PUL",
+      "nativeText": "Check whether \"pul\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want two stamps.”",
+      "pronunciation": "PUL",
+      "exampleTarget": "İki pul istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want two stamps.”",
+      "korean": "pul",
+      "english": "Check whether \"pul\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want two stamps.”",
+      "example": "İki pul istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want two stamps.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "ad-RES",
+      "nativeText": "“Address.” Essential for service interactions.",
+      "pronunciation": "ad-RES",
+      "exampleTarget": "Lütfen tam adresi yazın.",
+      "exampleNative": "“Please write the full address.”",
+      "korean": "adres",
+      "english": "“Address.” Essential for service interactions.",
+      "example": "Lütfen tam adresi yazın.",
+      "exampleEnglish": "“Please write the full address.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "Lütfen tam adresi yazın.",
+      "romanization": "ad-RES",
+      "nativeText": "Model use for \"Lütfen tam adresi yazın.\": “Please write the full address.”",
+      "pronunciation": "ad-RES",
+      "exampleTarget": "Lütfen tam adresi yazın.",
+      "exampleNative": "“Please write the full address.”",
+      "korean": "Lütfen tam adresi yazın.",
+      "english": "Model use for \"Lütfen tam adresi yazın.\": “Please write the full address.”",
+      "example": "Lütfen tam adresi yazın.",
+      "exampleEnglish": "“Please write the full address.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "ad-RES",
+      "nativeText": "Usage focus for \"adres\": “Address.” Essential for service interactions.",
+      "pronunciation": "ad-RES",
+      "exampleTarget": "Lütfen tam adresi yazın.",
+      "exampleNative": "Notice what the form is doing here: “Please write the full address.”",
+      "korean": "adres",
+      "english": "Usage focus for \"adres\": “Address.” Essential for service interactions.",
+      "example": "Lütfen tam adresi yazın.",
+      "exampleEnglish": "Notice what the form is doing here: “Please write the full address.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "ad-RES",
+      "nativeText": "Contrast check for \"adres\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ad-RES",
+      "exampleTarget": "Lütfen tam adresi yazın.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please write the full address.”",
+      "korean": "adres",
+      "english": "Contrast check for \"adres\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Lütfen tam adresi yazın.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "ad-RES",
+      "nativeText": "Recall \"adres\" from memory, then explain what would change if a nearby alternative replaced it in \"Lütfen tam adresi yazın.\".",
+      "pronunciation": "ad-RES",
+      "exampleTarget": "Lütfen tam adresi yazın.",
+      "exampleNative": "Self-check against the model before moving on: “Please write the full address.”",
+      "korean": "adres",
+      "english": "Recall \"adres\" from memory, then explain what would change if a nearby alternative replaced it in \"Lütfen tam adresi yazın.\".",
+      "example": "Lütfen tam adresi yazın.",
+      "exampleEnglish": "Self-check against the model before moving on: “Please write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "ad-RES",
+      "nativeText": "Repair \"adres\" inside \"Lütfen tam adresi yazın.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Address.” Essential for service interactions.",
+      "pronunciation": "ad-RES",
+      "exampleTarget": "Lütfen tam adresi yazın.",
+      "exampleNative": "Use the model as the repair target: “Please write the full address.”",
+      "korean": "adres",
+      "english": "Repair \"adres\" inside \"Lütfen tam adresi yazın.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Address.” Essential for service interactions.",
+      "example": "Lütfen tam adresi yazın.",
+      "exampleEnglish": "Use the model as the repair target: “Please write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "ad-RES",
+      "nativeText": "Transfer \"adres\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Lütfen tam adresi yazın.\".",
+      "pronunciation": "ad-RES",
+      "exampleTarget": "Lütfen tam adresi yazın.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please write the full address.”",
+      "korean": "adres",
+      "english": "Transfer \"adres\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Lütfen tam adresi yazın.\".",
+      "example": "Lütfen tam adresi yazın.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "ad-RES",
+      "nativeText": "Find one word or phrase that naturally travels with \"adres\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ad-RES",
+      "exampleTarget": "Lütfen tam adresi yazın.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Please write the full address.”",
+      "korean": "adres",
+      "english": "Find one word or phrase that naturally travels with \"adres\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Lütfen tam adresi yazın.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Please write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "ad-RES",
+      "nativeText": "Listen for \"adres\" inside \"Lütfen tam adresi yazın.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ad-RES",
+      "exampleTarget": "Lütfen tam adresi yazın.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please write the full address.”",
+      "korean": "adres",
+      "english": "Listen for \"adres\" inside \"Lütfen tam adresi yazın.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Lütfen tam adresi yazın.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "ad-RES",
+      "nativeText": "Write \"adres\" again without looking, then compare the exact written form against \"Lütfen tam adresi yazın.\" before moving on.",
+      "pronunciation": "ad-RES",
+      "exampleTarget": "Lütfen tam adresi yazın.",
+      "exampleNative": "Use the written model as the final correctness check: “Please write the full address.”",
+      "korean": "adres",
+      "english": "Write \"adres\" again without looking, then compare the exact written form against \"Lütfen tam adresi yazın.\" before moving on.",
+      "example": "Lütfen tam adresi yazın.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Please write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "ad-RES",
+      "nativeText": "Check whether \"adres\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please write the full address.”",
+      "pronunciation": "ad-RES",
+      "exampleTarget": "Lütfen tam adresi yazın.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Please write the full address.”",
+      "korean": "adres",
+      "english": "Check whether \"adres\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please write the full address.”",
+      "example": "Lütfen tam adresi yazın.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Please write the full address.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "göndermek istiyorum",
+      "romanization": "gön-der-MEK is-ti-YO-rum",
+      "nativeText": "“I want to send.” A natural counter opening.",
+      "pronunciation": "gön-der-MEK is-ti-YO-rum",
+      "exampleTarget": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleNative": "“I want to send this package to Ankara.”",
+      "korean": "göndermek istiyorum",
+      "english": "“I want to send.” A natural counter opening.",
+      "example": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleEnglish": "“I want to send this package to Ankara.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "romanization": "gön-der-MEK is-ti-YO-rum",
+      "nativeText": "Model use for \"Bu paketi Ankara’ya göndermek istiyorum.\": “I want to send this package to Ankara.”",
+      "pronunciation": "gön-der-MEK is-ti-YO-rum",
+      "exampleTarget": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleNative": "“I want to send this package to Ankara.”",
+      "korean": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "english": "Model use for \"Bu paketi Ankara’ya göndermek istiyorum.\": “I want to send this package to Ankara.”",
+      "example": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleEnglish": "“I want to send this package to Ankara.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "göndermek istiyorum",
+      "romanization": "gön-der-MEK is-ti-YO-rum",
+      "nativeText": "Usage focus for \"göndermek istiyorum\": “I want to send.” A natural counter opening.",
+      "pronunciation": "gön-der-MEK is-ti-YO-rum",
+      "exampleTarget": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I want to send this package to Ankara.”",
+      "korean": "göndermek istiyorum",
+      "english": "Usage focus for \"göndermek istiyorum\": “I want to send.” A natural counter opening.",
+      "example": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to send this package to Ankara.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "göndermek istiyorum",
+      "romanization": "gön-der-MEK is-ti-YO-rum",
+      "nativeText": "Contrast check for \"göndermek istiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "gön-der-MEK is-ti-YO-rum",
+      "exampleTarget": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send this package to Ankara.”",
+      "korean": "göndermek istiyorum",
+      "english": "Contrast check for \"göndermek istiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send this package to Ankara.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "göndermek istiyorum",
+      "romanization": "gön-der-MEK is-ti-YO-rum",
+      "nativeText": "Recall \"göndermek istiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu paketi Ankara’ya göndermek istiyorum.\".",
+      "pronunciation": "gön-der-MEK is-ti-YO-rum",
+      "exampleTarget": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I want to send this package to Ankara.”",
+      "korean": "göndermek istiyorum",
+      "english": "Recall \"göndermek istiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu paketi Ankara’ya göndermek istiyorum.\".",
+      "example": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to send this package to Ankara.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "göndermek istiyorum",
+      "romanization": "gön-der-MEK is-ti-YO-rum",
+      "nativeText": "Repair \"göndermek istiyorum\" inside \"Bu paketi Ankara’ya göndermek istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want to send.” A natural counter opening.",
+      "pronunciation": "gön-der-MEK is-ti-YO-rum",
+      "exampleTarget": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleNative": "Use the model as the repair target: “I want to send this package to Ankara.”",
+      "korean": "göndermek istiyorum",
+      "english": "Repair \"göndermek istiyorum\" inside \"Bu paketi Ankara’ya göndermek istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want to send.” A natural counter opening.",
+      "example": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I want to send this package to Ankara.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "göndermek istiyorum",
+      "romanization": "gön-der-MEK is-ti-YO-rum",
+      "nativeText": "Transfer \"göndermek istiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu paketi Ankara’ya göndermek istiyorum.\".",
+      "pronunciation": "gön-der-MEK is-ti-YO-rum",
+      "exampleTarget": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send this package to Ankara.”",
+      "korean": "göndermek istiyorum",
+      "english": "Transfer \"göndermek istiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu paketi Ankara’ya göndermek istiyorum.\".",
+      "example": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send this package to Ankara.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "göndermek istiyorum",
+      "romanization": "gön-der-MEK is-ti-YO-rum",
+      "nativeText": "Find one word or phrase that naturally travels with \"göndermek istiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "gön-der-MEK is-ti-YO-rum",
+      "exampleTarget": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to send this package to Ankara.”",
+      "korean": "göndermek istiyorum",
+      "english": "Find one word or phrase that naturally travels with \"göndermek istiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to send this package to Ankara.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "göndermek istiyorum",
+      "romanization": "gön-der-MEK is-ti-YO-rum",
+      "nativeText": "Listen for \"göndermek istiyorum\" inside \"Bu paketi Ankara’ya göndermek istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "gön-der-MEK is-ti-YO-rum",
+      "exampleTarget": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send this package to Ankara.”",
+      "korean": "göndermek istiyorum",
+      "english": "Listen for \"göndermek istiyorum\" inside \"Bu paketi Ankara’ya göndermek istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send this package to Ankara.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "göndermek istiyorum",
+      "romanization": "gön-der-MEK is-ti-YO-rum",
+      "nativeText": "Write \"göndermek istiyorum\" again without looking, then compare the exact written form against \"Bu paketi Ankara’ya göndermek istiyorum.\" before moving on.",
+      "pronunciation": "gön-der-MEK is-ti-YO-rum",
+      "exampleTarget": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to send this package to Ankara.”",
+      "korean": "göndermek istiyorum",
+      "english": "Write \"göndermek istiyorum\" again without looking, then compare the exact written form against \"Bu paketi Ankara’ya göndermek istiyorum.\" before moving on.",
+      "example": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to send this package to Ankara.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "göndermek istiyorum",
+      "romanization": "gön-der-MEK is-ti-YO-rum",
+      "nativeText": "Check whether \"göndermek istiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send this package to Ankara.”",
+      "pronunciation": "gön-der-MEK is-ti-YO-rum",
+      "exampleTarget": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to send this package to Ankara.”",
+      "korean": "göndermek istiyorum",
+      "english": "Check whether \"göndermek istiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send this package to Ankara.”",
+      "example": "Bu paketi Ankara’ya göndermek istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to send this package to Ankara.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "kargo ücreti",
+      "romanization": "kar-GO üc-RE-ti",
+      "nativeText": "“Shipping fee.” A practical service phrase.",
+      "pronunciation": "kar-GO üc-RE-ti",
+      "exampleTarget": "Kargo ücreti ne kadar?",
+      "exampleNative": "“How much is the shipping fee?”",
+      "korean": "kargo ücreti",
+      "english": "“Shipping fee.” A practical service phrase.",
+      "example": "Kargo ücreti ne kadar?",
+      "exampleEnglish": "“How much is the shipping fee?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "Kargo ücreti ne kadar?",
+      "romanization": "kar-GO üc-RE-ti",
+      "nativeText": "Model use for \"Kargo ücreti ne kadar?\": “How much is the shipping fee?”",
+      "pronunciation": "kar-GO üc-RE-ti",
+      "exampleTarget": "Kargo ücreti ne kadar?",
+      "exampleNative": "“How much is the shipping fee?”",
+      "korean": "Kargo ücreti ne kadar?",
+      "english": "Model use for \"Kargo ücreti ne kadar?\": “How much is the shipping fee?”",
+      "example": "Kargo ücreti ne kadar?",
+      "exampleEnglish": "“How much is the shipping fee?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "kargo ücreti",
+      "romanization": "kar-GO üc-RE-ti",
+      "nativeText": "Usage focus for \"kargo ücreti\": “Shipping fee.” A practical service phrase.",
+      "pronunciation": "kar-GO üc-RE-ti",
+      "exampleTarget": "Kargo ücreti ne kadar?",
+      "exampleNative": "Notice what the form is doing here: “How much is the shipping fee?”",
+      "korean": "kargo ücreti",
+      "english": "Usage focus for \"kargo ücreti\": “Shipping fee.” A practical service phrase.",
+      "example": "Kargo ücreti ne kadar?",
+      "exampleEnglish": "Notice what the form is doing here: “How much is the shipping fee?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "kargo ücreti",
+      "romanization": "kar-GO üc-RE-ti",
+      "nativeText": "Contrast check for \"kargo ücreti\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kar-GO üc-RE-ti",
+      "exampleTarget": "Kargo ücreti ne kadar?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is the shipping fee?”",
+      "korean": "kargo ücreti",
+      "english": "Contrast check for \"kargo ücreti\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kargo ücreti ne kadar?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is the shipping fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "kargo ücreti",
+      "romanization": "kar-GO üc-RE-ti",
+      "nativeText": "Recall \"kargo ücreti\" from memory, then explain what would change if a nearby alternative replaced it in \"Kargo ücreti ne kadar?\".",
+      "pronunciation": "kar-GO üc-RE-ti",
+      "exampleTarget": "Kargo ücreti ne kadar?",
+      "exampleNative": "Self-check against the model before moving on: “How much is the shipping fee?”",
+      "korean": "kargo ücreti",
+      "english": "Recall \"kargo ücreti\" from memory, then explain what would change if a nearby alternative replaced it in \"Kargo ücreti ne kadar?\".",
+      "example": "Kargo ücreti ne kadar?",
+      "exampleEnglish": "Self-check against the model before moving on: “How much is the shipping fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "kargo ücreti",
+      "romanization": "kar-GO üc-RE-ti",
+      "nativeText": "Repair \"kargo ücreti\" inside \"Kargo ücreti ne kadar?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shipping fee.” A practical service phrase.",
+      "pronunciation": "kar-GO üc-RE-ti",
+      "exampleTarget": "Kargo ücreti ne kadar?",
+      "exampleNative": "Use the model as the repair target: “How much is the shipping fee?”",
+      "korean": "kargo ücreti",
+      "english": "Repair \"kargo ücreti\" inside \"Kargo ücreti ne kadar?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shipping fee.” A practical service phrase.",
+      "example": "Kargo ücreti ne kadar?",
+      "exampleEnglish": "Use the model as the repair target: “How much is the shipping fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "kargo ücreti",
+      "romanization": "kar-GO üc-RE-ti",
+      "nativeText": "Transfer \"kargo ücreti\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kargo ücreti ne kadar?\".",
+      "pronunciation": "kar-GO üc-RE-ti",
+      "exampleTarget": "Kargo ücreti ne kadar?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is the shipping fee?”",
+      "korean": "kargo ücreti",
+      "english": "Transfer \"kargo ücreti\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kargo ücreti ne kadar?\".",
+      "example": "Kargo ücreti ne kadar?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is the shipping fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "kargo ücreti",
+      "romanization": "kar-GO üc-RE-ti",
+      "nativeText": "Find one word or phrase that naturally travels with \"kargo ücreti\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kar-GO üc-RE-ti",
+      "exampleTarget": "Kargo ücreti ne kadar?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How much is the shipping fee?”",
+      "korean": "kargo ücreti",
+      "english": "Find one word or phrase that naturally travels with \"kargo ücreti\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kargo ücreti ne kadar?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How much is the shipping fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "kargo ücreti",
+      "romanization": "kar-GO üc-RE-ti",
+      "nativeText": "Listen for \"kargo ücreti\" inside \"Kargo ücreti ne kadar?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kar-GO üc-RE-ti",
+      "exampleTarget": "Kargo ücreti ne kadar?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is the shipping fee?”",
+      "korean": "kargo ücreti",
+      "english": "Listen for \"kargo ücreti\" inside \"Kargo ücreti ne kadar?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kargo ücreti ne kadar?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is the shipping fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "kargo ücreti",
+      "romanization": "kar-GO üc-RE-ti",
+      "nativeText": "Write \"kargo ücreti\" again without looking, then compare the exact written form against \"Kargo ücreti ne kadar?\" before moving on.",
+      "pronunciation": "kar-GO üc-RE-ti",
+      "exampleTarget": "Kargo ücreti ne kadar?",
+      "exampleNative": "Use the written model as the final correctness check: “How much is the shipping fee?”",
+      "korean": "kargo ücreti",
+      "english": "Write \"kargo ücreti\" again without looking, then compare the exact written form against \"Kargo ücreti ne kadar?\" before moving on.",
+      "example": "Kargo ücreti ne kadar?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How much is the shipping fee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "kargo ücreti",
+      "romanization": "kar-GO üc-RE-ti",
+      "nativeText": "Check whether \"kargo ücreti\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is the shipping fee?”",
+      "pronunciation": "kar-GO üc-RE-ti",
+      "exampleTarget": "Kargo ücreti ne kadar?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How much is the shipping fee?”",
+      "korean": "kargo ücreti",
+      "english": "Check whether \"kargo ücreti\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is the shipping fee?”",
+      "example": "Kargo ücreti ne kadar?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How much is the shipping fee?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "ne zaman ulaşır?",
+      "romanization": "ne za-MAN u-la-ŞIR",
+      "nativeText": "“When will it arrive?” A concise delivery question.",
+      "pronunciation": "ne za-MAN u-la-ŞIR",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "“When will the package arrive?”",
+      "korean": "ne zaman ulaşır?",
+      "english": "“When will it arrive?” A concise delivery question.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "“When will the package arrive?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "Paket ne zaman ulaşır?",
+      "romanization": "ne za-MAN u-la-ŞIR",
+      "nativeText": "Model use for \"Paket ne zaman ulaşır?\": “When will the package arrive?”",
+      "pronunciation": "ne za-MAN u-la-ŞIR",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "“When will the package arrive?”",
+      "korean": "Paket ne zaman ulaşır?",
+      "english": "Model use for \"Paket ne zaman ulaşır?\": “When will the package arrive?”",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "“When will the package arrive?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "ne zaman ulaşır?",
+      "romanization": "ne za-MAN u-la-ŞIR",
+      "nativeText": "Usage focus for \"ne zaman ulaşır?\": “When will it arrive?” A concise delivery question.",
+      "pronunciation": "ne za-MAN u-la-ŞIR",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "Notice what the form is doing here: “When will the package arrive?”",
+      "korean": "ne zaman ulaşır?",
+      "english": "Usage focus for \"ne zaman ulaşır?\": “When will it arrive?” A concise delivery question.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "Notice what the form is doing here: “When will the package arrive?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "ne zaman ulaşır?",
+      "romanization": "ne za-MAN u-la-ŞIR",
+      "nativeText": "Contrast check for \"ne zaman ulaşır?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ne za-MAN u-la-ŞIR",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When will the package arrive?”",
+      "korean": "ne zaman ulaşır?",
+      "english": "Contrast check for \"ne zaman ulaşır?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When will the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "ne zaman ulaşır?",
+      "romanization": "ne za-MAN u-la-ŞIR",
+      "nativeText": "Recall \"ne zaman ulaşır?\" from memory, then explain what would change if a nearby alternative replaced it in \"Paket ne zaman ulaşır?\".",
+      "pronunciation": "ne za-MAN u-la-ŞIR",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "Self-check against the model before moving on: “When will the package arrive?”",
+      "korean": "ne zaman ulaşır?",
+      "english": "Recall \"ne zaman ulaşır?\" from memory, then explain what would change if a nearby alternative replaced it in \"Paket ne zaman ulaşır?\".",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "Self-check against the model before moving on: “When will the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "ne zaman ulaşır?",
+      "romanization": "ne za-MAN u-la-ŞIR",
+      "nativeText": "Repair \"ne zaman ulaşır?\" inside \"Paket ne zaman ulaşır?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When will it arrive?” A concise delivery question.",
+      "pronunciation": "ne za-MAN u-la-ŞIR",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "Use the model as the repair target: “When will the package arrive?”",
+      "korean": "ne zaman ulaşır?",
+      "english": "Repair \"ne zaman ulaşır?\" inside \"Paket ne zaman ulaşır?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When will it arrive?” A concise delivery question.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "Use the model as the repair target: “When will the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "ne zaman ulaşır?",
+      "romanization": "ne za-MAN u-la-ŞIR",
+      "nativeText": "Transfer \"ne zaman ulaşır?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Paket ne zaman ulaşır?\".",
+      "pronunciation": "ne za-MAN u-la-ŞIR",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When will the package arrive?”",
+      "korean": "ne zaman ulaşır?",
+      "english": "Transfer \"ne zaman ulaşır?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Paket ne zaman ulaşır?\".",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When will the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "ne zaman ulaşır?",
+      "romanization": "ne za-MAN u-la-ŞIR",
+      "nativeText": "Find one word or phrase that naturally travels with \"ne zaman ulaşır?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ne za-MAN u-la-ŞIR",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When will the package arrive?”",
+      "korean": "ne zaman ulaşır?",
+      "english": "Find one word or phrase that naturally travels with \"ne zaman ulaşır?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When will the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "ne zaman ulaşır?",
+      "romanization": "ne za-MAN u-la-ŞIR",
+      "nativeText": "Listen for \"ne zaman ulaşır?\" inside \"Paket ne zaman ulaşır?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ne za-MAN u-la-ŞIR",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When will the package arrive?”",
+      "korean": "ne zaman ulaşır?",
+      "english": "Listen for \"ne zaman ulaşır?\" inside \"Paket ne zaman ulaşır?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When will the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "ne zaman ulaşır?",
+      "romanization": "ne za-MAN u-la-ŞIR",
+      "nativeText": "Write \"ne zaman ulaşır?\" again without looking, then compare the exact written form against \"Paket ne zaman ulaşır?\" before moving on.",
+      "pronunciation": "ne za-MAN u-la-ŞIR",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "Use the written model as the final correctness check: “When will the package arrive?”",
+      "korean": "ne zaman ulaşır?",
+      "english": "Write \"ne zaman ulaşır?\" again without looking, then compare the exact written form against \"Paket ne zaman ulaşır?\" before moving on.",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When will the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit17postoffice-vocabulary-1",
+        "tr-level1unit17postoffice-vocabulary-2",
+        "tr-level1unit17postoffice-grammar-1",
+        "tr-level1unit17postoffice-grammar-2",
+        "tr-level1unit17postoffice-reading",
+        "tr-level1unit17postoffice-listening",
+        "tr-level1unit17postoffice-writing",
+        "tr-level1unit17postoffice-task"
+      ],
+      "targetText": "ne zaman ulaşır?",
+      "romanization": "ne za-MAN u-la-ŞIR",
+      "nativeText": "Check whether \"ne zaman ulaşır?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When will the package arrive?”",
+      "pronunciation": "ne za-MAN u-la-ŞIR",
+      "exampleTarget": "Paket ne zaman ulaşır?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When will the package arrive?”",
+      "korean": "ne zaman ulaşır?",
+      "english": "Check whether \"ne zaman ulaşır?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When will the package arrive?”",
+      "example": "Paket ne zaman ulaşır?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When will the package arrive?”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

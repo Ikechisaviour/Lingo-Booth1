@@ -23,7 +23,8 @@
     "saving": "保存中...",
     "search": "検索",
     "notSet": "未設定",
-    "all": "全て"
+    "all": "全て",
+    "reset": "リセット"
   },
   "languages": {
     "en": "英語",
@@ -218,7 +219,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "contactDesc": "質問、フィードバック、または報告すべき問題"
   },
   "lessons": {
     "title": "{{language}} レッスン",
@@ -738,7 +740,102 @@
     "modeBreakdown": "モード内訳",
     "searchUsers": "ユーザーを検索...",
     "all": "すべて",
-    "demo": "デモ"
+    "demo": "デモ",
+    "failures": "失敗",
+    "messages": "メッセージ",
+    "userFailures": "ユーザー側の障害",
+    "openFailures": "{{count}} オープン失敗",
+    "criticalFailures": "{{count}} クリティカル",
+    "clearing": "クリア中...",
+    "loadingFailures": "読み込みに失敗しています...",
+    "noOpenFailures": "未解決のユーザー側の障害はありません。",
+    "acknowledge": "認める",
+    "page": "ページ",
+    "device": "デバイス",
+    "languagePair": "言語ペア",
+    "clientStatus": "クライアント",
+    "pageOf": "{{total}} の {{page}} ページ",
+    "guestUser": "ゲストユーザー",
+    "unknownUser": "不明なユーザー",
+    "unknown": "未知",
+    "clearFailuresTitle": "オープン失敗をクリアしますか?",
+    "clearFailuresBody": "すべての {{count}} オープン失敗を承認済みとしてマークしますか?",
+    "contactMessages": "連絡先メッセージ",
+    "unreadMessages": "{{count}} 未読メッセージ",
+    "allMessages": "すべてのメッセージ",
+    "registeredUsers": "登録ユーザー",
+    "guestUsers": "ゲストユーザー",
+    "loadingMessages": "メッセージを読み込んでいます...",
+    "noUnreadMessages": "未読の連絡メッセージはありません。",
+    "registeredUser": "登録ユーザー",
+    "contactMessage": "連絡メッセージ",
+    "markRead": "既読マークを付ける",
+    "name": "名前",
+    "accountTier": "アカウント階層",
+    "clearMessagesTitle": "未読メッセージを消去しますか?",
+    "clearMessagesBody": "{{count}} の未読の連絡先メッセージをすべて既読としてマークしますか?",
+    "demoDifficulty": {
+      "beginner": "初心者",
+      "balanced": "バランスの取れた",
+      "natural": "自然",
+      "challenge": "チャレンジ"
+    },
+    "demoScenarios": {
+      "friendlyChat": "談笑",
+      "cafeWorker": "カフェ店員と話す",
+      "taxiDriver": "タクシー運転手に助けを求める",
+      "meetingNew": "新しい人との出会い"
+    },
+    "demoReplyPlaceholder": "練習パートナーの応答がここに表示されます。",
+    "demoTipPlaceholder": "選択した言語のいずれかで質問してください。 トピックを変更したり、意味を尋ねたり、より簡単な言葉遣いを要求したりすることができます。",
+    "promoteConfirmShort": "{{username}} を管理者にしますか?",
+    "promote": "推進する",
+    "deleteUserTitle": "ユーザーの削除",
+    "deleteUserConfirmShort": "{{username}} を完全に削除しますか? これを元に戻すことはできません。",
+    "demoReset": "会話がリセットされました。",
+    "demoNoReply": "返事は返ってこない。",
+    "demoNoCoachingNote": "コーチングノートはありません。",
+    "demoResponseFailed": "今回はお返事できませんでした。 もう一度試してください。",
+    "demoConnectionIssue": "接続の問題。 しばらくしてからもう一度試してください。",
+    "tapForDetails": "タップすると詳細が表示されます",
+    "activeWeek": "アクティブ7d",
+    "countries": "国",
+    "conversion": "変換",
+    "engagement": "婚約",
+    "totalCardsStudied": "調査したカードの合計数",
+    "totalAudioPlays": "合計オーディオ再生数",
+    "lessonsViewed": "閲覧したレッスン",
+    "topLanguagePairs": "上位の言語ペア",
+    "sessionsCount": "{{count}} セッション",
+    "deviceBreakdown": "デバイスの故障",
+    "recentSessions": "最近のセッション ({{count}})",
+    "cardsStudiedCount": "{{count}} カード",
+    "pageNumber": "ページ{{page}}",
+    "noGuestData": "利用可能なゲストデータがありません",
+    "loadData": "データのロード",
+    "speakingDemo": "スピーキングデモ",
+    "demoIntro": "管理者専用の会話プレビュー。 音声や学習者の進行状況は保存されません。",
+    "scenario": "シナリオ",
+    "customScenario": "カスタムシナリオ",
+    "learningLanguage": "言語の学習",
+    "nativeLanguage": "母国語",
+    "listenFor": "聞いてください",
+    "difficulty": "困難",
+    "learnerTurnInput": "学習者が言ったことを入力または貼り付けます",
+    "interrupt": "割り込み",
+    "conversationState": "会話状態",
+    "lastLearnerTurn": "最後の学習者のターン",
+    "noTurnSentYet": "まだターンは送信されていません。",
+    "practicePartnerResponse": "パートナーの対応を練習する",
+    "coachNote": "コーチノート",
+    "userDetails": "ユーザーの詳細",
+    "totalXp": "合計XP",
+    "studyMode": "学習モード",
+    "languages": "言語",
+    "loginCount": "ログイン数",
+    "memberSince": "メンバー歴",
+    "suspendReasonLabel": "一時停止の理由",
+    "userDetailsLoadFailed": "ユーザーの詳細を読み込めませんでした"
   },
   "pricing": {
     "kicker": "予定",
@@ -820,7 +917,9 @@
     "discountCode": "割引コード",
     "discountPlaceholder": "オプションコード",
     "discountUnavailable": "このプランではその割引コードは利用できません。",
-    "automaticDiscountApplied": "{{discount}} の自動割引が適用されました"
+    "automaticDiscountApplied": "{{discount}} の自動割引が適用されました",
+    "signInToChooseTitle": "続行するにはアカウントを作成してください",
+    "signInToChooseBody": "有料プランを選択する前にアカウントを作成するかサインインして、アクセス権を付与できるようにしてください。"
   },
   "billing": {
     "kicker": "請求する",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "レベル {{level}} · ユニット {{unit}}: {{title}}"
-    }
+    },
+    "retry": "もう一度やり直してください"
   },
   "classLesson": {
     "loading": "クラスレッスンを読み込み中...",
@@ -1114,7 +1214,10 @@
     "saveReply": "返信を保存する",
     "saveExample": "保存例",
     "practiceEverywhere": "どこでもこれを実践してください",
-    "selfTestReason": "簡単なセルフテストのためにクラスから保存されました。"
+    "selfTestReason": "簡単なセルフテストのためにクラスから保存されました。",
+    "previous": "前の",
+    "lessonGuide": "レッスンガイド",
+    "activityXOfY": "アクティビティ {{current}}/{{total}}"
   },
   "exercise": {
     "kicker": "エクササイズ",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "便利なフレーズ",
     "recapReview": "次にレビューします",
     "recapReviewFallback": "1 つのフレーズを保存し、別の練習モードで再利用します。",
-    "practiceLabel": "会話練習"
+    "practiceLabel": "会話練習",
+    "practiceSetup": "練習のセットアップ"
   },
   "context": {
     "backToProfile": "プロフィールに戻る",
@@ -1304,7 +1408,10 @@
       "memory": "記憶から"
     },
     "savedReason": "別の合格のために書く練習から救われました。",
-    "selfTestReason": "簡単な自己テストのためのライティング練習から保存されました。"
+    "selfTestReason": "簡単な自己テストのためのライティング練習から保存されました。",
+    "hideNotebook": "ノートを隠す",
+    "showNotebook": "ノートブックを表示",
+    "hideAddPanel": "追加パネルを非表示にする"
   },
   "certificates": {
     "kicker": "証明書",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "昨日見たものに一度戻ると、最初のアイテムが定着し始めます。",
     "firstThreeDaySpeakBody": "言語がページから早く離れるように、話す順番を短くします。",
     "firstThreeDayLearnBody": "ペアが明確な出発点を持てるように、1 つの小さなガイド付きレッスンから始めます。"
+  },
+  "resetPassword": {
+    "title": "パスワードをリセット",
+    "subtitle": "新しいパスワードを入力してください。",
+    "error": "パスワードのリセットに失敗しました。もう一度お試しください。",
+    "invalidLink": "このリセットリンクは無効または期限切れです。",
+    "noToken": "リセットトークンがありません。新しいリセットリンクをリクエストしてください。",
+    "requestNew": "新しいリセットリンクをリクエスト",
+    "success": "パスワードが正常にリセットされました。",
+    "goToLogin": "ログインへ",
+    "newPasswordPlaceholder": "新しいパスワード",
+    "resetButton": "パスワードをリセット",
+    "failed": "パスワードをリセットできませんでした。 もう一度試してください。",
+    "kicker": "パスワードをリセットする",
+    "missingToken": "このリセット リンクが見つからないか無効です。",
+    "newPassword": "新しいパスワード",
+    "confirmPassword": "パスワードを認証する",
+    "submit": "パスワードをリセットする"
+  },
+  "contact": {
+    "navLabel": "接触",
+    "kicker": "お問い合わせ",
+    "title": "必要なものを教えてください",
+    "subtitle": "質問を送信したり、問題を報告したり、フィードバックを共有したりできます。 いただいたメッセージを確認し、必要に応じて返信させていただきます。",
+    "infoTitle": "私たちは聞いています",
+    "infoText": "このフォームからのメッセージは、利用可能な場合はアカウントのコンテキストとともに安全に保存されるため、何が起こったのかを理解し、迅速に対応することができます。",
+    "name": "??",
+    "namePlaceholder": "あなたの名前",
+    "email": "電子メール",
+    "emailPlaceholder": "you@example.com",
+    "subject": "??",
+    "subjectPlaceholder": "これは何についてですか?",
+    "message": "メッセージ",
+    "messagePlaceholder": "ここにメッセージを書いてください...",
+    "send": "メッセージを送信する",
+    "success": "ありがとう。 あなたのメッセージは受信されました。",
+    "error": "現在メッセージを送信できませんでした。 もう一度試してください。",
+    "companyTrap": "会社",
+    "profileHint": "このデバイスから質問を送信したり、問題を報告したり、フィードバックを共有したりできます。"
   }
 }

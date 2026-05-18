@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u17',
-  title: 'Level 1 · Unit 17: ডাকঘরে — Post Office',
-  category: 'service',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Handle simple postal tasks such as sending letters, parcels, and asking about delivery.',
-  vocabularyGoal: 'Use letter, parcel, stamp, address, and delivery words.',
-  grammarGoal: 'Use object phrases, destination postpositions, and polite counter requests.',
-  speakingGoal: 'Say what you want to send, where it goes, and ask when it arrives.',
-  task: 'Send one parcel at a post office counter.',
-  expressionPractice: [
-    practice('service-need', 'Stating service need', 'Use `পাঠাতে চাই`.'),
-    practice('destination', 'Giving destination', 'Use one destination phrase.'),
-    practice('asking-arrival', 'Asking arrival', 'Use `কখন পৌঁছাবে?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 17: ডাকঘরে — Post Office",
+  "category": "service",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit17postoffice-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Handle simple postal tasks such as sending letters, parcels, and asking about delivery."
+      ],
+      "task": "Send one parcel at a post office counter."
+    },
+    {
+      "id": "bn-level1unit17postoffice-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit17postoffice-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 17: ডাকঘরে — Post Office with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit17postoffice-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 17: ডাকঘরে — Post Office sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit17postoffice-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Handle simple postal tasks such as sending letters, parcels, and asking about delivery."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit17postoffice-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 17: ডাকঘরে — Post Office with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit17postoffice-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit17postoffice-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit17postoffice-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit17postoffice-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit17postoffice-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Send one parcel at a post office counter."
+      ],
+      "task": "Send one parcel at a post office counter."
+    }
   ],
-  relatedPools: ['topic-service', 'topic-travel'],
-  items: [
-    item('ডাকঘর', 'dakghor', '“Post office.” A useful service-location noun.', 'ডাকঘর ব্যাংকের পাশে।', '“The post office is next to the bank.”'),
-    item('চিঠি', 'chithi', '“Letter.” Practical for formal mail.', 'আমি একটা চিঠি পাঠাতে চাই।', '“I want to send a letter.”'),
-    item('পার্সেল', 'parcel', '“Parcel.” A common loanword in service contexts.', 'এই পার্সেলটা খুলনায় যাবে।', '“This parcel will go to Khulna.”'),
-    item('স্ট্যাম্প', 'stamp', '“Stamp.” A common loanword for postage.', 'দুইটা স্ট্যাম্প চাই।', '“I want two stamps.”'),
-    item('ঠিকানা', 'thikana', '“Address.” Essential in service interactions.', 'পূর্ণ ঠিকানা লিখুন।', '“Write the full address.”'),
-    item('পাঠাতে চাই', 'pathate chai', '“I want to send.” A natural counter-opening frame.', 'এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।', '“I want to send this parcel to Chattogram.”'),
-    item('খরচ কত?', 'khoroch koto', '“How much is the cost?” A compact shipping question.', 'পাঠানোর খরচ কত?', '“How much is the sending cost?”'),
-    item('কখন পৌঁছাবে?', 'kokhon pouchhabe', '“When will it arrive?” A concise delivery question.', 'পার্সেলটা কখন পৌঁছাবে?', '“When will the parcel arrive?”'),
+  "expressionPractice": [
+    {
+      "id": "service-need",
+      "label": "Stating service need",
+      "goal": "Use `পাঠাতে চাই`."
+    },
+    {
+      "id": "destination",
+      "label": "Giving destination",
+      "goal": "Use one destination phrase."
+    },
+    {
+      "id": "asking-arrival",
+      "label": "Asking arrival",
+      "goal": "Use `কখন পৌঁছাবে?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-service",
+    "topic-travel"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Send one parcel at a post office counter.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Send one parcel at a post office counter."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit17postoffice-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"ডাকঘর ব্যাংকের পাশে।\".",
+      "pronunciation": "",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"ডাকঘর ব্যাংকের পাশে।\".",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 17: ডাকঘরে — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "Use the key language of Level 1 · Unit 17: ডাকঘরে — Post Office with the register and setting that the lesson requires.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-2"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 17: ডাকঘরে — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 17: ডাকঘরে — Post Office sound precise rather than merely understandable.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit17postoffice-grammar-1"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "",
+      "nativeText": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "pronunciation": "",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 17: ডাকঘরে — Post Office with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "Contrast the main pattern in Level 1 · Unit 17: ডাকঘরে — Post Office with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit17postoffice-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"পার্সেলটা কখন পৌঁছাবে?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"পার্সেলটা কখন পৌঁছাবে?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit17postoffice-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"পার্সেলটা কখন পৌঁছাবে?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"পার্সেলটা কখন পৌঁছাবে?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit17postoffice-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"ডাকঘর ব্যাংকের পাশে।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"ডাকঘর ব্যাংকের পাশে।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit17postoffice-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Send one parcel at a post office counter.",
+      "pronunciation": "",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "Send one parcel at a post office counter.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Send one parcel at a post office counter.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "Send one parcel at a post office counter."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আমি একটা চিঠি পাঠাতে চাই।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I want to send a letter.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আমি একটা চিঠি পাঠাতে চাই।\" against the model.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I want to send a letter.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"ডাকঘর ব্যাংকের পাশে।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"ডাকঘর ব্যাংকের পাশে।\" before reusing it elsewhere.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"পার্সেলটা কখন পৌঁছাবে?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"পার্সেলটা কখন পৌঁছাবে?\" as one thought.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"ডাকঘর ব্যাংকের পাশে।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"ডাকঘর ব্যাংকের পাশে।\" and move it into your own life.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ডাকঘর\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "ডাকঘর",
+      "exampleNative": "“Post office.” A useful service-location noun.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ডাকঘর\" before looking back.",
+      "example": "ডাকঘর",
+      "exampleEnglish": "“Post office.” A useful service-location noun."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"পার্সেলটা কখন পৌঁছাবে?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"পার্সেলটা কখন পৌঁছাবে?\" rather than restarting from a blank sentence.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 17: ডাকঘরে — Post Office with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আমি একটা চিঠি পাঠাতে চাই।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 17: ডাকঘরে — Post Office with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আমি একটা চিঠি পাঠাতে চাই।\" as the comparison line.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit17postoffice-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"ডাকঘর ব্যাংকের পাশে।\".",
+      "pronunciation": "",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"ডাকঘর ব্যাংকের পাশে।\".",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"পার্সেলটা কখন পৌঁছাবে?\".",
+      "pronunciation": "",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"পার্সেলটা কখন পৌঁছাবে?\".",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"ডাকঘর ব্যাংকের পাশে।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"ডাকঘর ব্যাংকের পাশে।\" one layer at a time.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আমি একটা চিঠি পাঠাতে চাই।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আমি একটা চিঠি পাঠাতে চাই।\" as the deciding example.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-culture",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"পার্সেলটা কখন পৌঁছাবে?\".",
+      "pronunciation": "",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"পার্সেলটা কখন পৌঁছাবে?\".",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "dakghor",
+      "nativeText": "“Post office.” A useful service-location noun.",
+      "pronunciation": "dakghor",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "“Post office.” A useful service-location noun.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ডাকঘর ব্যাংকের পাশে।",
+      "romanization": "dakghor",
+      "nativeText": "Model use for \"ডাকঘর ব্যাংকের পাশে।\": “The post office is next to the bank.”",
+      "pronunciation": "dakghor",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "ডাকঘর ব্যাংকের পাশে।",
+      "english": "Model use for \"ডাকঘর ব্যাংকের পাশে।\": “The post office is next to the bank.”",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "dakghor",
+      "nativeText": "Usage focus for \"ডাকঘর\": Use the key language of Level 1 · Unit 17: ডাকঘরে — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "dakghor",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "Notice what the form is doing here: “The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "Usage focus for \"ডাকঘর\": Use the key language of Level 1 · Unit 17: ডাকঘরে — Post Office with the register and setting that the lesson requires.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "Notice what the form is doing here: “The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "dakghor",
+      "nativeText": "Contrast check for \"ডাকঘর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dakghor",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "Contrast check for \"ডাকঘর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "dakghor",
+      "nativeText": "Recall \"ডাকঘর\" from memory, then explain what would change if a nearby alternative replaced it in \"ডাকঘর ব্যাংকের পাশে।\".",
+      "pronunciation": "dakghor",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "Self-check against the model before moving on: “The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "Recall \"ডাকঘর\" from memory, then explain what would change if a nearby alternative replaced it in \"ডাকঘর ব্যাংকের পাশে।\".",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "Self-check against the model before moving on: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "dakghor",
+      "nativeText": "Repair \"ডাকঘর\" inside \"ডাকঘর ব্যাংকের পাশে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 17: ডাকঘরে — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "dakghor",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "Use the model as the repair target: “The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "Repair \"ডাকঘর\" inside \"ডাকঘর ব্যাংকের পাশে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 17: ডাকঘরে — Post Office with the register and setting that the lesson requires.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "Use the model as the repair target: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "dakghor",
+      "nativeText": "Transfer \"ডাকঘর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ডাকঘর ব্যাংকের পাশে।\".",
+      "pronunciation": "dakghor",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "Transfer \"ডাকঘর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ডাকঘর ব্যাংকের পাশে।\".",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "dakghor",
+      "nativeText": "Find one word or phrase that naturally travels with \"ডাকঘর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dakghor",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "Find one word or phrase that naturally travels with \"ডাকঘর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "dakghor",
+      "nativeText": "Listen for \"ডাকঘর\" inside \"ডাকঘর ব্যাংকের পাশে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dakghor",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "Listen for \"ডাকঘর\" inside \"ডাকঘর ব্যাংকের পাশে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "dakghor",
+      "nativeText": "Write \"ডাকঘর\" again without looking, then compare the exact written form against \"ডাকঘর ব্যাংকের পাশে।\" before moving on.",
+      "pronunciation": "dakghor",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "Use the written model as the final correctness check: “The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "Write \"ডাকঘর\" again without looking, then compare the exact written form against \"ডাকঘর ব্যাংকের পাশে।\" before moving on.",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ডাকঘর",
+      "romanization": "dakghor",
+      "nativeText": "Check whether \"ডাকঘর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "pronunciation": "dakghor",
+      "exampleTarget": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "korean": "ডাকঘর",
+      "english": "Check whether \"ডাকঘর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "example": "ডাকঘর ব্যাংকের পাশে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "chithi",
+      "nativeText": "“Letter.” Practical for formal mail.",
+      "pronunciation": "chithi",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "“Letter.” Practical for formal mail.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "আমি একটা চিঠি পাঠাতে চাই।",
+      "romanization": "chithi",
+      "nativeText": "Model use for \"আমি একটা চিঠি পাঠাতে চাই।\": “I want to send a letter.”",
+      "pronunciation": "chithi",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "“I want to send a letter.”",
+      "korean": "আমি একটা চিঠি পাঠাতে চাই।",
+      "english": "Model use for \"আমি একটা চিঠি পাঠাতে চাই।\": “I want to send a letter.”",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "“I want to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "chithi",
+      "nativeText": "Usage focus for \"চিঠি\": Distinguish the nearby wording choices that make Level 1 · Unit 17: ডাকঘরে — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "chithi",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "Notice what the form is doing here: “I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "Usage focus for \"চিঠি\": Distinguish the nearby wording choices that make Level 1 · Unit 17: ডাকঘরে — Post Office sound precise rather than merely understandable.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I want to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "chithi",
+      "nativeText": "Contrast check for \"চিঠি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "chithi",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "Contrast check for \"চিঠি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "chithi",
+      "nativeText": "Recall \"চিঠি\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি একটা চিঠি পাঠাতে চাই।\".",
+      "pronunciation": "chithi",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "Self-check against the model before moving on: “I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "Recall \"চিঠি\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি একটা চিঠি পাঠাতে চাই।\".",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "chithi",
+      "nativeText": "Repair \"চিঠি\" inside \"আমি একটা চিঠি পাঠাতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 17: ডাকঘরে — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "chithi",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "Use the model as the repair target: “I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "Repair \"চিঠি\" inside \"আমি একটা চিঠি পাঠাতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 17: ডাকঘরে — Post Office sound precise rather than merely understandable.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "Use the model as the repair target: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "chithi",
+      "nativeText": "Transfer \"চিঠি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি একটা চিঠি পাঠাতে চাই।\".",
+      "pronunciation": "chithi",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "Transfer \"চিঠি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি একটা চিঠি পাঠাতে চাই।\".",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "chithi",
+      "nativeText": "Find one word or phrase that naturally travels with \"চিঠি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "chithi",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "Find one word or phrase that naturally travels with \"চিঠি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "chithi",
+      "nativeText": "Listen for \"চিঠি\" inside \"আমি একটা চিঠি পাঠাতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "chithi",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "Listen for \"চিঠি\" inside \"আমি একটা চিঠি পাঠাতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "chithi",
+      "nativeText": "Write \"চিঠি\" again without looking, then compare the exact written form against \"আমি একটা চিঠি পাঠাতে চাই।\" before moving on.",
+      "pronunciation": "chithi",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "Write \"চিঠি\" again without looking, then compare the exact written form against \"আমি একটা চিঠি পাঠাতে চাই।\" before moving on.",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "চিঠি",
+      "romanization": "chithi",
+      "nativeText": "Check whether \"চিঠি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”",
+      "pronunciation": "chithi",
+      "exampleTarget": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”",
+      "korean": "চিঠি",
+      "english": "Check whether \"চিঠি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”",
+      "example": "আমি একটা চিঠি পাঠাতে চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to send a letter.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পার্সেল",
+      "romanization": "parcel",
+      "nativeText": "“Parcel.” A common loanword in service contexts.",
+      "pronunciation": "parcel",
+      "exampleTarget": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleNative": "“This parcel will go to Khulna.”",
+      "korean": "পার্সেল",
+      "english": "“Parcel.” A common loanword in service contexts.",
+      "example": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleEnglish": "“This parcel will go to Khulna.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "এই পার্সেলটা খুলনায় যাবে।",
+      "romanization": "parcel",
+      "nativeText": "Model use for \"এই পার্সেলটা খুলনায় যাবে।\": “This parcel will go to Khulna.”",
+      "pronunciation": "parcel",
+      "exampleTarget": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleNative": "“This parcel will go to Khulna.”",
+      "korean": "এই পার্সেলটা খুলনায় যাবে।",
+      "english": "Model use for \"এই পার্সেলটা খুলনায় যাবে।\": “This parcel will go to Khulna.”",
+      "example": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleEnglish": "“This parcel will go to Khulna.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পার্সেল",
+      "romanization": "parcel",
+      "nativeText": "Usage focus for \"পার্সেল\": “Parcel.” A common loanword in service contexts.",
+      "pronunciation": "parcel",
+      "exampleTarget": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleNative": "Notice what the form is doing here: “This parcel will go to Khulna.”",
+      "korean": "পার্সেল",
+      "english": "Usage focus for \"পার্সেল\": “Parcel.” A common loanword in service contexts.",
+      "example": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleEnglish": "Notice what the form is doing here: “This parcel will go to Khulna.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পার্সেল",
+      "romanization": "parcel",
+      "nativeText": "Contrast check for \"পার্সেল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "parcel",
+      "exampleTarget": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This parcel will go to Khulna.”",
+      "korean": "পার্সেল",
+      "english": "Contrast check for \"পার্সেল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This parcel will go to Khulna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পার্সেল",
+      "romanization": "parcel",
+      "nativeText": "Recall \"পার্সেল\" from memory, then explain what would change if a nearby alternative replaced it in \"এই পার্সেলটা খুলনায় যাবে।\".",
+      "pronunciation": "parcel",
+      "exampleTarget": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleNative": "Self-check against the model before moving on: “This parcel will go to Khulna.”",
+      "korean": "পার্সেল",
+      "english": "Recall \"পার্সেল\" from memory, then explain what would change if a nearby alternative replaced it in \"এই পার্সেলটা খুলনায় যাবে।\".",
+      "example": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleEnglish": "Self-check against the model before moving on: “This parcel will go to Khulna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পার্সেল",
+      "romanization": "parcel",
+      "nativeText": "Repair \"পার্সেল\" inside \"এই পার্সেলটা খুলনায় যাবে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Parcel.” A common loanword in service contexts.",
+      "pronunciation": "parcel",
+      "exampleTarget": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleNative": "Use the model as the repair target: “This parcel will go to Khulna.”",
+      "korean": "পার্সেল",
+      "english": "Repair \"পার্সেল\" inside \"এই পার্সেলটা খুলনায় যাবে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Parcel.” A common loanword in service contexts.",
+      "example": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleEnglish": "Use the model as the repair target: “This parcel will go to Khulna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পার্সেল",
+      "romanization": "parcel",
+      "nativeText": "Transfer \"পার্সেল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এই পার্সেলটা খুলনায় যাবে।\".",
+      "pronunciation": "parcel",
+      "exampleTarget": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This parcel will go to Khulna.”",
+      "korean": "পার্সেল",
+      "english": "Transfer \"পার্সেল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এই পার্সেলটা খুলনায় যাবে।\".",
+      "example": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This parcel will go to Khulna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পার্সেল",
+      "romanization": "parcel",
+      "nativeText": "Find one word or phrase that naturally travels with \"পার্সেল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "parcel",
+      "exampleTarget": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This parcel will go to Khulna.”",
+      "korean": "পার্সেল",
+      "english": "Find one word or phrase that naturally travels with \"পার্সেল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This parcel will go to Khulna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পার্সেল",
+      "romanization": "parcel",
+      "nativeText": "Listen for \"পার্সেল\" inside \"এই পার্সেলটা খুলনায় যাবে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "parcel",
+      "exampleTarget": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This parcel will go to Khulna.”",
+      "korean": "পার্সেল",
+      "english": "Listen for \"পার্সেল\" inside \"এই পার্সেলটা খুলনায় যাবে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This parcel will go to Khulna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পার্সেল",
+      "romanization": "parcel",
+      "nativeText": "Write \"পার্সেল\" again without looking, then compare the exact written form against \"এই পার্সেলটা খুলনায় যাবে।\" before moving on.",
+      "pronunciation": "parcel",
+      "exampleTarget": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleNative": "Use the written model as the final correctness check: “This parcel will go to Khulna.”",
+      "korean": "পার্সেল",
+      "english": "Write \"পার্সেল\" again without looking, then compare the exact written form against \"এই পার্সেলটা খুলনায় যাবে।\" before moving on.",
+      "example": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “This parcel will go to Khulna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পার্সেল",
+      "romanization": "parcel",
+      "nativeText": "Check whether \"পার্সেল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This parcel will go to Khulna.”",
+      "pronunciation": "parcel",
+      "exampleTarget": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This parcel will go to Khulna.”",
+      "korean": "পার্সেল",
+      "english": "Check whether \"পার্সেল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This parcel will go to Khulna.”",
+      "example": "এই পার্সেলটা খুলনায় যাবে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This parcel will go to Khulna.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "স্ট্যাম্প",
+      "romanization": "stamp",
+      "nativeText": "“Stamp.” A common loanword for postage.",
+      "pronunciation": "stamp",
+      "exampleTarget": "দুইটা স্ট্যাম্প চাই।",
+      "exampleNative": "“I want two stamps.”",
+      "korean": "স্ট্যাম্প",
+      "english": "“Stamp.” A common loanword for postage.",
+      "example": "দুইটা স্ট্যাম্প চাই।",
+      "exampleEnglish": "“I want two stamps.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "দুইটা স্ট্যাম্প চাই।",
+      "romanization": "stamp",
+      "nativeText": "Model use for \"দুইটা স্ট্যাম্প চাই।\": “I want two stamps.”",
+      "pronunciation": "stamp",
+      "exampleTarget": "দুইটা স্ট্যাম্প চাই।",
+      "exampleNative": "“I want two stamps.”",
+      "korean": "দুইটা স্ট্যাম্প চাই।",
+      "english": "Model use for \"দুইটা স্ট্যাম্প চাই।\": “I want two stamps.”",
+      "example": "দুইটা স্ট্যাম্প চাই।",
+      "exampleEnglish": "“I want two stamps.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "স্ট্যাম্প",
+      "romanization": "stamp",
+      "nativeText": "Usage focus for \"স্ট্যাম্প\": “Stamp.” A common loanword for postage.",
+      "pronunciation": "stamp",
+      "exampleTarget": "দুইটা স্ট্যাম্প চাই।",
+      "exampleNative": "Notice what the form is doing here: “I want two stamps.”",
+      "korean": "স্ট্যাম্প",
+      "english": "Usage focus for \"স্ট্যাম্প\": “Stamp.” A common loanword for postage.",
+      "example": "দুইটা স্ট্যাম্প চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I want two stamps.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "স্ট্যাম্প",
+      "romanization": "stamp",
+      "nativeText": "Contrast check for \"স্ট্যাম্প\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "stamp",
+      "exampleTarget": "দুইটা স্ট্যাম্প চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want two stamps.”",
+      "korean": "স্ট্যাম্প",
+      "english": "Contrast check for \"স্ট্যাম্প\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "দুইটা স্ট্যাম্প চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "স্ট্যাম্প",
+      "romanization": "stamp",
+      "nativeText": "Recall \"স্ট্যাম্প\" from memory, then explain what would change if a nearby alternative replaced it in \"দুইটা স্ট্যাম্প চাই।\".",
+      "pronunciation": "stamp",
+      "exampleTarget": "দুইটা স্ট্যাম্প চাই।",
+      "exampleNative": "Self-check against the model before moving on: “I want two stamps.”",
+      "korean": "স্ট্যাম্প",
+      "english": "Recall \"স্ট্যাম্প\" from memory, then explain what would change if a nearby alternative replaced it in \"দুইটা স্ট্যাম্প চাই।\".",
+      "example": "দুইটা স্ট্যাম্প চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "স্ট্যাম্প",
+      "romanization": "stamp",
+      "nativeText": "Repair \"স্ট্যাম্প\" inside \"দুইটা স্ট্যাম্প চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stamp.” A common loanword for postage.",
+      "pronunciation": "stamp",
+      "exampleTarget": "দুইটা স্ট্যাম্প চাই।",
+      "exampleNative": "Use the model as the repair target: “I want two stamps.”",
+      "korean": "স্ট্যাম্প",
+      "english": "Repair \"স্ট্যাম্প\" inside \"দুইটা স্ট্যাম্প চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stamp.” A common loanword for postage.",
+      "example": "দুইটা স্ট্যাম্প চাই।",
+      "exampleEnglish": "Use the model as the repair target: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "স্ট্যাম্প",
+      "romanization": "stamp",
+      "nativeText": "Transfer \"স্ট্যাম্প\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"দুইটা স্ট্যাম্প চাই।\".",
+      "pronunciation": "stamp",
+      "exampleTarget": "দুইটা স্ট্যাম্প চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want two stamps.”",
+      "korean": "স্ট্যাম্প",
+      "english": "Transfer \"স্ট্যাম্প\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"দুইটা স্ট্যাম্প চাই।\".",
+      "example": "দুইটা স্ট্যাম্প চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "স্ট্যাম্প",
+      "romanization": "stamp",
+      "nativeText": "Find one word or phrase that naturally travels with \"স্ট্যাম্প\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "stamp",
+      "exampleTarget": "দুইটা স্ট্যাম্প চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want two stamps.”",
+      "korean": "স্ট্যাম্প",
+      "english": "Find one word or phrase that naturally travels with \"স্ট্যাম্প\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "দুইটা স্ট্যাম্প চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "স্ট্যাম্প",
+      "romanization": "stamp",
+      "nativeText": "Listen for \"স্ট্যাম্প\" inside \"দুইটা স্ট্যাম্প চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "stamp",
+      "exampleTarget": "দুইটা স্ট্যাম্প চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want two stamps.”",
+      "korean": "স্ট্যাম্প",
+      "english": "Listen for \"স্ট্যাম্প\" inside \"দুইটা স্ট্যাম্প চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "দুইটা স্ট্যাম্প চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "স্ট্যাম্প",
+      "romanization": "stamp",
+      "nativeText": "Write \"স্ট্যাম্প\" again without looking, then compare the exact written form against \"দুইটা স্ট্যাম্প চাই।\" before moving on.",
+      "pronunciation": "stamp",
+      "exampleTarget": "দুইটা স্ট্যাম্প চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I want two stamps.”",
+      "korean": "স্ট্যাম্প",
+      "english": "Write \"স্ট্যাম্প\" again without looking, then compare the exact written form against \"দুইটা স্ট্যাম্প চাই।\" before moving on.",
+      "example": "দুইটা স্ট্যাম্প চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "স্ট্যাম্প",
+      "romanization": "stamp",
+      "nativeText": "Check whether \"স্ট্যাম্প\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want two stamps.”",
+      "pronunciation": "stamp",
+      "exampleTarget": "দুইটা স্ট্যাম্প চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want two stamps.”",
+      "korean": "স্ট্যাম্প",
+      "english": "Check whether \"স্ট্যাম্প\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want two stamps.”",
+      "example": "দুইটা স্ট্যাম্প চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want two stamps.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ঠিকানা",
+      "romanization": "thikana",
+      "nativeText": "“Address.” Essential in service interactions.",
+      "pronunciation": "thikana",
+      "exampleTarget": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleNative": "“Write the full address.”",
+      "korean": "ঠিকানা",
+      "english": "“Address.” Essential in service interactions.",
+      "example": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleEnglish": "“Write the full address.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পূর্ণ ঠিকানা লিখুন।",
+      "romanization": "thikana",
+      "nativeText": "Model use for \"পূর্ণ ঠিকানা লিখুন।\": “Write the full address.”",
+      "pronunciation": "thikana",
+      "exampleTarget": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleNative": "“Write the full address.”",
+      "korean": "পূর্ণ ঠিকানা লিখুন।",
+      "english": "Model use for \"পূর্ণ ঠিকানা লিখুন।\": “Write the full address.”",
+      "example": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleEnglish": "“Write the full address.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ঠিকানা",
+      "romanization": "thikana",
+      "nativeText": "Usage focus for \"ঠিকানা\": “Address.” Essential in service interactions.",
+      "pronunciation": "thikana",
+      "exampleTarget": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleNative": "Notice what the form is doing here: “Write the full address.”",
+      "korean": "ঠিকানা",
+      "english": "Usage focus for \"ঠিকানা\": “Address.” Essential in service interactions.",
+      "example": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleEnglish": "Notice what the form is doing here: “Write the full address.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ঠিকানা",
+      "romanization": "thikana",
+      "nativeText": "Contrast check for \"ঠিকানা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "thikana",
+      "exampleTarget": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Write the full address.”",
+      "korean": "ঠিকানা",
+      "english": "Contrast check for \"ঠিকানা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ঠিকানা",
+      "romanization": "thikana",
+      "nativeText": "Recall \"ঠিকানা\" from memory, then explain what would change if a nearby alternative replaced it in \"পূর্ণ ঠিকানা লিখুন।\".",
+      "pronunciation": "thikana",
+      "exampleTarget": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleNative": "Self-check against the model before moving on: “Write the full address.”",
+      "korean": "ঠিকানা",
+      "english": "Recall \"ঠিকানা\" from memory, then explain what would change if a nearby alternative replaced it in \"পূর্ণ ঠিকানা লিখুন।\".",
+      "example": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleEnglish": "Self-check against the model before moving on: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ঠিকানা",
+      "romanization": "thikana",
+      "nativeText": "Repair \"ঠিকানা\" inside \"পূর্ণ ঠিকানা লিখুন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Address.” Essential in service interactions.",
+      "pronunciation": "thikana",
+      "exampleTarget": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleNative": "Use the model as the repair target: “Write the full address.”",
+      "korean": "ঠিকানা",
+      "english": "Repair \"ঠিকানা\" inside \"পূর্ণ ঠিকানা লিখুন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Address.” Essential in service interactions.",
+      "example": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleEnglish": "Use the model as the repair target: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ঠিকানা",
+      "romanization": "thikana",
+      "nativeText": "Transfer \"ঠিকানা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পূর্ণ ঠিকানা লিখুন।\".",
+      "pronunciation": "thikana",
+      "exampleTarget": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Write the full address.”",
+      "korean": "ঠিকানা",
+      "english": "Transfer \"ঠিকানা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পূর্ণ ঠিকানা লিখুন।\".",
+      "example": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ঠিকানা",
+      "romanization": "thikana",
+      "nativeText": "Find one word or phrase that naturally travels with \"ঠিকানা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "thikana",
+      "exampleTarget": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Write the full address.”",
+      "korean": "ঠিকানা",
+      "english": "Find one word or phrase that naturally travels with \"ঠিকানা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ঠিকানা",
+      "romanization": "thikana",
+      "nativeText": "Listen for \"ঠিকানা\" inside \"পূর্ণ ঠিকানা লিখুন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "thikana",
+      "exampleTarget": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Write the full address.”",
+      "korean": "ঠিকানা",
+      "english": "Listen for \"ঠিকানা\" inside \"পূর্ণ ঠিকানা লিখুন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ঠিকানা",
+      "romanization": "thikana",
+      "nativeText": "Write \"ঠিকানা\" again without looking, then compare the exact written form against \"পূর্ণ ঠিকানা লিখুন।\" before moving on.",
+      "pronunciation": "thikana",
+      "exampleTarget": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleNative": "Use the written model as the final correctness check: “Write the full address.”",
+      "korean": "ঠিকানা",
+      "english": "Write \"ঠিকানা\" again without looking, then compare the exact written form against \"পূর্ণ ঠিকানা লিখুন।\" before moving on.",
+      "example": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Write the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "ঠিকানা",
+      "romanization": "thikana",
+      "nativeText": "Check whether \"ঠিকানা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Write the full address.”",
+      "pronunciation": "thikana",
+      "exampleTarget": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Write the full address.”",
+      "korean": "ঠিকানা",
+      "english": "Check whether \"ঠিকানা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Write the full address.”",
+      "example": "পূর্ণ ঠিকানা লিখুন।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Write the full address.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পাঠাতে চাই",
+      "romanization": "pathate chai",
+      "nativeText": "“I want to send.” A natural counter-opening frame.",
+      "pronunciation": "pathate chai",
+      "exampleTarget": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleNative": "“I want to send this parcel to Chattogram.”",
+      "korean": "পাঠাতে চাই",
+      "english": "“I want to send.” A natural counter-opening frame.",
+      "example": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleEnglish": "“I want to send this parcel to Chattogram.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "romanization": "pathate chai",
+      "nativeText": "Model use for \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\": “I want to send this parcel to Chattogram.”",
+      "pronunciation": "pathate chai",
+      "exampleTarget": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleNative": "“I want to send this parcel to Chattogram.”",
+      "korean": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "english": "Model use for \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\": “I want to send this parcel to Chattogram.”",
+      "example": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleEnglish": "“I want to send this parcel to Chattogram.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পাঠাতে চাই",
+      "romanization": "pathate chai",
+      "nativeText": "Usage focus for \"পাঠাতে চাই\": “I want to send.” A natural counter-opening frame.",
+      "pronunciation": "pathate chai",
+      "exampleTarget": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleNative": "Notice what the form is doing here: “I want to send this parcel to Chattogram.”",
+      "korean": "পাঠাতে চাই",
+      "english": "Usage focus for \"পাঠাতে চাই\": “I want to send.” A natural counter-opening frame.",
+      "example": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I want to send this parcel to Chattogram.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পাঠাতে চাই",
+      "romanization": "pathate chai",
+      "nativeText": "Contrast check for \"পাঠাতে চাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pathate chai",
+      "exampleTarget": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send this parcel to Chattogram.”",
+      "korean": "পাঠাতে চাই",
+      "english": "Contrast check for \"পাঠাতে চাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send this parcel to Chattogram.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পাঠাতে চাই",
+      "romanization": "pathate chai",
+      "nativeText": "Recall \"পাঠাতে চাই\" from memory, then explain what would change if a nearby alternative replaced it in \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\".",
+      "pronunciation": "pathate chai",
+      "exampleTarget": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleNative": "Self-check against the model before moving on: “I want to send this parcel to Chattogram.”",
+      "korean": "পাঠাতে চাই",
+      "english": "Recall \"পাঠাতে চাই\" from memory, then explain what would change if a nearby alternative replaced it in \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\".",
+      "example": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to send this parcel to Chattogram.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পাঠাতে চাই",
+      "romanization": "pathate chai",
+      "nativeText": "Repair \"পাঠাতে চাই\" inside \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want to send.” A natural counter-opening frame.",
+      "pronunciation": "pathate chai",
+      "exampleTarget": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleNative": "Use the model as the repair target: “I want to send this parcel to Chattogram.”",
+      "korean": "পাঠাতে চাই",
+      "english": "Repair \"পাঠাতে চাই\" inside \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want to send.” A natural counter-opening frame.",
+      "example": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleEnglish": "Use the model as the repair target: “I want to send this parcel to Chattogram.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পাঠাতে চাই",
+      "romanization": "pathate chai",
+      "nativeText": "Transfer \"পাঠাতে চাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\".",
+      "pronunciation": "pathate chai",
+      "exampleTarget": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send this parcel to Chattogram.”",
+      "korean": "পাঠাতে চাই",
+      "english": "Transfer \"পাঠাতে চাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\".",
+      "example": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send this parcel to Chattogram.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পাঠাতে চাই",
+      "romanization": "pathate chai",
+      "nativeText": "Find one word or phrase that naturally travels with \"পাঠাতে চাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pathate chai",
+      "exampleTarget": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to send this parcel to Chattogram.”",
+      "korean": "পাঠাতে চাই",
+      "english": "Find one word or phrase that naturally travels with \"পাঠাতে চাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to send this parcel to Chattogram.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পাঠাতে চাই",
+      "romanization": "pathate chai",
+      "nativeText": "Listen for \"পাঠাতে চাই\" inside \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pathate chai",
+      "exampleTarget": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send this parcel to Chattogram.”",
+      "korean": "পাঠাতে চাই",
+      "english": "Listen for \"পাঠাতে চাই\" inside \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send this parcel to Chattogram.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পাঠাতে চাই",
+      "romanization": "pathate chai",
+      "nativeText": "Write \"পাঠাতে চাই\" again without looking, then compare the exact written form against \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\" before moving on.",
+      "pronunciation": "pathate chai",
+      "exampleTarget": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I want to send this parcel to Chattogram.”",
+      "korean": "পাঠাতে চাই",
+      "english": "Write \"পাঠাতে চাই\" again without looking, then compare the exact written form against \"এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।\" before moving on.",
+      "example": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to send this parcel to Chattogram.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পাঠাতে চাই",
+      "romanization": "pathate chai",
+      "nativeText": "Check whether \"পাঠাতে চাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send this parcel to Chattogram.”",
+      "pronunciation": "pathate chai",
+      "exampleTarget": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to send this parcel to Chattogram.”",
+      "korean": "পাঠাতে চাই",
+      "english": "Check whether \"পাঠাতে চাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send this parcel to Chattogram.”",
+      "example": "এই পার্সেলটা চট্টগ্রামে পাঠাতে চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to send this parcel to Chattogram.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "খরচ কত?",
+      "romanization": "khoroch koto",
+      "nativeText": "“How much is the cost?” A compact shipping question.",
+      "pronunciation": "khoroch koto",
+      "exampleTarget": "পাঠানোর খরচ কত?",
+      "exampleNative": "“How much is the sending cost?”",
+      "korean": "খরচ কত?",
+      "english": "“How much is the cost?” A compact shipping question.",
+      "example": "পাঠানোর খরচ কত?",
+      "exampleEnglish": "“How much is the sending cost?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পাঠানোর খরচ কত?",
+      "romanization": "khoroch koto",
+      "nativeText": "Model use for \"পাঠানোর খরচ কত?\": “How much is the sending cost?”",
+      "pronunciation": "khoroch koto",
+      "exampleTarget": "পাঠানোর খরচ কত?",
+      "exampleNative": "“How much is the sending cost?”",
+      "korean": "পাঠানোর খরচ কত?",
+      "english": "Model use for \"পাঠানোর খরচ কত?\": “How much is the sending cost?”",
+      "example": "পাঠানোর খরচ কত?",
+      "exampleEnglish": "“How much is the sending cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "খরচ কত?",
+      "romanization": "khoroch koto",
+      "nativeText": "Usage focus for \"খরচ কত?\": “How much is the cost?” A compact shipping question.",
+      "pronunciation": "khoroch koto",
+      "exampleTarget": "পাঠানোর খরচ কত?",
+      "exampleNative": "Notice what the form is doing here: “How much is the sending cost?”",
+      "korean": "খরচ কত?",
+      "english": "Usage focus for \"খরচ কত?\": “How much is the cost?” A compact shipping question.",
+      "example": "পাঠানোর খরচ কত?",
+      "exampleEnglish": "Notice what the form is doing here: “How much is the sending cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "খরচ কত?",
+      "romanization": "khoroch koto",
+      "nativeText": "Contrast check for \"খরচ কত?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "khoroch koto",
+      "exampleTarget": "পাঠানোর খরচ কত?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is the sending cost?”",
+      "korean": "খরচ কত?",
+      "english": "Contrast check for \"খরচ কত?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "পাঠানোর খরচ কত?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is the sending cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "খরচ কত?",
+      "romanization": "khoroch koto",
+      "nativeText": "Recall \"খরচ কত?\" from memory, then explain what would change if a nearby alternative replaced it in \"পাঠানোর খরচ কত?\".",
+      "pronunciation": "khoroch koto",
+      "exampleTarget": "পাঠানোর খরচ কত?",
+      "exampleNative": "Self-check against the model before moving on: “How much is the sending cost?”",
+      "korean": "খরচ কত?",
+      "english": "Recall \"খরচ কত?\" from memory, then explain what would change if a nearby alternative replaced it in \"পাঠানোর খরচ কত?\".",
+      "example": "পাঠানোর খরচ কত?",
+      "exampleEnglish": "Self-check against the model before moving on: “How much is the sending cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "খরচ কত?",
+      "romanization": "khoroch koto",
+      "nativeText": "Repair \"খরচ কত?\" inside \"পাঠানোর খরচ কত?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How much is the cost?” A compact shipping question.",
+      "pronunciation": "khoroch koto",
+      "exampleTarget": "পাঠানোর খরচ কত?",
+      "exampleNative": "Use the model as the repair target: “How much is the sending cost?”",
+      "korean": "খরচ কত?",
+      "english": "Repair \"খরচ কত?\" inside \"পাঠানোর খরচ কত?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How much is the cost?” A compact shipping question.",
+      "example": "পাঠানোর খরচ কত?",
+      "exampleEnglish": "Use the model as the repair target: “How much is the sending cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "খরচ কত?",
+      "romanization": "khoroch koto",
+      "nativeText": "Transfer \"খরচ কত?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পাঠানোর খরচ কত?\".",
+      "pronunciation": "khoroch koto",
+      "exampleTarget": "পাঠানোর খরচ কত?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is the sending cost?”",
+      "korean": "খরচ কত?",
+      "english": "Transfer \"খরচ কত?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পাঠানোর খরচ কত?\".",
+      "example": "পাঠানোর খরচ কত?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is the sending cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "খরচ কত?",
+      "romanization": "khoroch koto",
+      "nativeText": "Find one word or phrase that naturally travels with \"খরচ কত?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "khoroch koto",
+      "exampleTarget": "পাঠানোর খরচ কত?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How much is the sending cost?”",
+      "korean": "খরচ কত?",
+      "english": "Find one word or phrase that naturally travels with \"খরচ কত?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "পাঠানোর খরচ কত?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How much is the sending cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "খরচ কত?",
+      "romanization": "khoroch koto",
+      "nativeText": "Listen for \"খরচ কত?\" inside \"পাঠানোর খরচ কত?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "khoroch koto",
+      "exampleTarget": "পাঠানোর খরচ কত?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is the sending cost?”",
+      "korean": "খরচ কত?",
+      "english": "Listen for \"খরচ কত?\" inside \"পাঠানোর খরচ কত?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "পাঠানোর খরচ কত?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is the sending cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "খরচ কত?",
+      "romanization": "khoroch koto",
+      "nativeText": "Write \"খরচ কত?\" again without looking, then compare the exact written form against \"পাঠানোর খরচ কত?\" before moving on.",
+      "pronunciation": "khoroch koto",
+      "exampleTarget": "পাঠানোর খরচ কত?",
+      "exampleNative": "Use the written model as the final correctness check: “How much is the sending cost?”",
+      "korean": "খরচ কত?",
+      "english": "Write \"খরচ কত?\" again without looking, then compare the exact written form against \"পাঠানোর খরচ কত?\" before moving on.",
+      "example": "পাঠানোর খরচ কত?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How much is the sending cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "খরচ কত?",
+      "romanization": "khoroch koto",
+      "nativeText": "Check whether \"খরচ কত?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is the sending cost?”",
+      "pronunciation": "khoroch koto",
+      "exampleTarget": "পাঠানোর খরচ কত?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How much is the sending cost?”",
+      "korean": "খরচ কত?",
+      "english": "Check whether \"খরচ কত?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is the sending cost?”",
+      "example": "পাঠানোর খরচ কত?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How much is the sending cost?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "কখন পৌঁছাবে?",
+      "romanization": "kokhon pouchhabe",
+      "nativeText": "“When will it arrive?” A concise delivery question.",
+      "pronunciation": "kokhon pouchhabe",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "কখন পৌঁছাবে?",
+      "english": "“When will it arrive?” A concise delivery question.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "পার্সেলটা কখন পৌঁছাবে?",
+      "romanization": "kokhon pouchhabe",
+      "nativeText": "Model use for \"পার্সেলটা কখন পৌঁছাবে?\": “When will the parcel arrive?”",
+      "pronunciation": "kokhon pouchhabe",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "“When will the parcel arrive?”",
+      "korean": "পার্সেলটা কখন পৌঁছাবে?",
+      "english": "Model use for \"পার্সেলটা কখন পৌঁছাবে?\": “When will the parcel arrive?”",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "“When will the parcel arrive?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "কখন পৌঁছাবে?",
+      "romanization": "kokhon pouchhabe",
+      "nativeText": "Usage focus for \"কখন পৌঁছাবে?\": “When will it arrive?” A concise delivery question.",
+      "pronunciation": "kokhon pouchhabe",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "Notice what the form is doing here: “When will the parcel arrive?”",
+      "korean": "কখন পৌঁছাবে?",
+      "english": "Usage focus for \"কখন পৌঁছাবে?\": “When will it arrive?” A concise delivery question.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "Notice what the form is doing here: “When will the parcel arrive?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "কখন পৌঁছাবে?",
+      "romanization": "kokhon pouchhabe",
+      "nativeText": "Contrast check for \"কখন পৌঁছাবে?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kokhon pouchhabe",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When will the parcel arrive?”",
+      "korean": "কখন পৌঁছাবে?",
+      "english": "Contrast check for \"কখন পৌঁছাবে?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "কখন পৌঁছাবে?",
+      "romanization": "kokhon pouchhabe",
+      "nativeText": "Recall \"কখন পৌঁছাবে?\" from memory, then explain what would change if a nearby alternative replaced it in \"পার্সেলটা কখন পৌঁছাবে?\".",
+      "pronunciation": "kokhon pouchhabe",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "Self-check against the model before moving on: “When will the parcel arrive?”",
+      "korean": "কখন পৌঁছাবে?",
+      "english": "Recall \"কখন পৌঁছাবে?\" from memory, then explain what would change if a nearby alternative replaced it in \"পার্সেলটা কখন পৌঁছাবে?\".",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "Self-check against the model before moving on: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "কখন পৌঁছাবে?",
+      "romanization": "kokhon pouchhabe",
+      "nativeText": "Repair \"কখন পৌঁছাবে?\" inside \"পার্সেলটা কখন পৌঁছাবে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When will it arrive?” A concise delivery question.",
+      "pronunciation": "kokhon pouchhabe",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "Use the model as the repair target: “When will the parcel arrive?”",
+      "korean": "কখন পৌঁছাবে?",
+      "english": "Repair \"কখন পৌঁছাবে?\" inside \"পার্সেলটা কখন পৌঁছাবে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When will it arrive?” A concise delivery question.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "Use the model as the repair target: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "কখন পৌঁছাবে?",
+      "romanization": "kokhon pouchhabe",
+      "nativeText": "Transfer \"কখন পৌঁছাবে?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পার্সেলটা কখন পৌঁছাবে?\".",
+      "pronunciation": "kokhon pouchhabe",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When will the parcel arrive?”",
+      "korean": "কখন পৌঁছাবে?",
+      "english": "Transfer \"কখন পৌঁছাবে?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পার্সেলটা কখন পৌঁছাবে?\".",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "কখন পৌঁছাবে?",
+      "romanization": "kokhon pouchhabe",
+      "nativeText": "Find one word or phrase that naturally travels with \"কখন পৌঁছাবে?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kokhon pouchhabe",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When will the parcel arrive?”",
+      "korean": "কখন পৌঁছাবে?",
+      "english": "Find one word or phrase that naturally travels with \"কখন পৌঁছাবে?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "কখন পৌঁছাবে?",
+      "romanization": "kokhon pouchhabe",
+      "nativeText": "Listen for \"কখন পৌঁছাবে?\" inside \"পার্সেলটা কখন পৌঁছাবে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kokhon pouchhabe",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When will the parcel arrive?”",
+      "korean": "কখন পৌঁছাবে?",
+      "english": "Listen for \"কখন পৌঁছাবে?\" inside \"পার্সেলটা কখন পৌঁছাবে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "কখন পৌঁছাবে?",
+      "romanization": "kokhon pouchhabe",
+      "nativeText": "Write \"কখন পৌঁছাবে?\" again without looking, then compare the exact written form against \"পার্সেলটা কখন পৌঁছাবে?\" before moving on.",
+      "pronunciation": "kokhon pouchhabe",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "Use the written model as the final correctness check: “When will the parcel arrive?”",
+      "korean": "কখন পৌঁছাবে?",
+      "english": "Write \"কখন পৌঁছাবে?\" again without looking, then compare the exact written form against \"পার্সেলটা কখন পৌঁছাবে?\" before moving on.",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When will the parcel arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit17postoffice-vocabulary-1",
+        "bn-level1unit17postoffice-vocabulary-2",
+        "bn-level1unit17postoffice-grammar-1",
+        "bn-level1unit17postoffice-grammar-2",
+        "bn-level1unit17postoffice-reading",
+        "bn-level1unit17postoffice-listening",
+        "bn-level1unit17postoffice-writing",
+        "bn-level1unit17postoffice-task"
+      ],
+      "targetText": "কখন পৌঁছাবে?",
+      "romanization": "kokhon pouchhabe",
+      "nativeText": "Check whether \"কখন পৌঁছাবে?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”",
+      "pronunciation": "kokhon pouchhabe",
+      "exampleTarget": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”",
+      "korean": "কখন পৌঁছাবে?",
+      "english": "Check whether \"কখন পৌঁছাবে?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”",
+      "example": "পার্সেলটা কখন পৌঁছাবে?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When will the parcel arrive?”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

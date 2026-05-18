@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Üben Sie diesen Gegenstand woanders",
     "practiceEverywhere": "Üben Sie dies überall",
     "saveReply": "Antwort speichern",
-    "selfTestReason": "Für einen schnellen Selbsttest aus dem Unterricht gerettet."
+    "selfTestReason": "Für einen schnellen Selbsttest aus dem Unterricht gerettet.",
+    "hideOutline": "Umriss ausblenden",
+    "showOutline": "Gliederung anzeigen"
   },
   "classList": {
     "heroAriaLabel": "Klasse",
@@ -994,7 +996,7 @@
     "guidedTutor": "Geführter Tutor",
     "startClass": "Unterricht beginnen",
     "classFallback": "Klasse",
-    "loadError": "Klassenlektionen konnten nicht geladen werden. Stellen Sie sicher, dass das Backend läuft und geseedet ist.",
+    "loadError": "Wir konnten Ihre Lektionen momentan nicht laden. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
     "tracks": {
       "foundationTitle": "Level {{level}} – Stiftung",
       "foundationSubtitle": "Beginnen Sie hier mit dem Ton- und Schreibsystem für {{language}}.",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "Level {{level}} · Einheit {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Versuchen Sie es erneut",
+    "progressAriaLabel": "Klassenfortschritt",
+    "progressCaption": "{{percent}} % abgeschlossen · {{completed}} von {{total}} Artikeln"
   },
   "contextPractice": {
     "title": "Der Unterricht ist auf Sie zugeschnitten",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "Was gut gelaufen ist",
     "recapUsefulPhrases": "Nützliche Sätze",
     "recapReview": "Überprüfen Sie als Nächstes",
-    "recapReviewFallback": "Speichern Sie eine Phrase und verwenden Sie sie in einem anderen Übungsmodus wieder."
+    "recapReviewFallback": "Speichern Sie eine Phrase und verwenden Sie sie in einem anderen Übungsmodus wieder.",
+    "hideSetup": "Setup ausblenden",
+    "showSetup": "Setup anzeigen"
   },
   "exerciseHub": {
     "ariaLabel": "Übung",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: Kopieren Sie die Form und schreiben Sie sie dann aus dem Speicher."
     },
     "savedReason": "Für einen weiteren Durchgang vor der Schreibübung bewahrt.",
-    "selfTestReason": "Aus der Schreibpraxis für einen schnellen Selbsttest gerettet."
+    "selfTestReason": "Aus der Schreibpraxis für einen schnellen Selbsttest gerettet.",
+    "hideNotebook": "Notizbuch ausblenden",
+    "showNotebook": "Notizbuch anzeigen"
   },
   "institution": {
     "kicker": "Institution",

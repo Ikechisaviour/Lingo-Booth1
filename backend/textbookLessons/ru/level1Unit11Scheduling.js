@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u11',
-  title: 'Level 1 · Unit 11: Встречи и расписание — Scheduling',
-  category: 'time',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Arrange meetings, talk about availability, and change plans politely.',
-  vocabularyGoal: 'Use appointment, schedule, time, and availability words.',
-  grammarGoal: 'Use `можно`, `сможешь`, and time phrases with `в` for clock times.',
-  speakingGoal: 'Propose a time, accept or reject it, and offer another option.',
-  task: 'Schedule a study meeting with a classmate.',
-  expressionPractice: [
-    practice('proposing-time', 'Proposing time', 'Use `давай` or `может быть`.'),
-    practice('accepting', 'Accepting', 'Use `могу` or `подходит`.'),
-    practice('rescheduling', 'Rescheduling', 'Use `не могу` plus another option.'),
+module.exports = {
+  "title": "Level 1 · Unit 11: Встречи и расписание — Scheduling",
+  "category": "time",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit11scheduling-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Arrange meetings, talk about availability, and change plans politely."
+      ],
+      "task": "Schedule a study meeting with a classmate."
+    },
+    {
+      "id": "ru-level1unit11scheduling-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit11scheduling-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 11: Встречи и расписание — Scheduling with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit11scheduling-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 11: Встречи и расписание — Scheduling sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit11scheduling-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Arrange meetings, talk about availability, and change plans politely."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit11scheduling-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 11: Встречи и расписание — Scheduling with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit11scheduling-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit11scheduling-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit11scheduling-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit11scheduling-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit11scheduling-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Schedule a study meeting with a classmate."
+      ],
+      "task": "Schedule a study meeting with a classmate."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-planning'],
-  items: [
-    item('встреча', 'vstrecha', '“Meeting.” It is the everyday noun for many appointments.', 'У меня встреча завтра.', '“I have a meeting tomorrow.”'),
-    item('расписание', 'raspisaniye', '“Schedule.” Useful for school timetables and personal planning.', 'Моё расписание занято.', '“My schedule is busy.”'),
-    item('в три часа', 'v tri chasa', '“At three o’clock.” Clock time follows `в`.', 'Встреча будет в три часа.', '“The meeting will be at three.”'),
-    item('я могу', 'ya mogu', '“I can / I am available.” Context gives the scheduling meaning.', 'Я могу вечером.', '“I am available in the evening.”'),
-    item('я не могу', 'ya ne mogu', '“I cannot.” Add another suggestion to sound cooperative.', 'Я не могу утром, но могу после обеда.', '“I cannot in the morning, but I can after lunch.”'),
-    item('давай встретимся', 'davay vstretimsya', '“Let’s meet.” Friendly and natural with peers.', 'Давай встретимся в пятницу.', '“Let’s meet on Friday.”'),
-    item('тебе подходит?', 'tebe podkhodit', '“Does that suit you?” A practical check after proposing a time.', 'Пять часов тебе подходит?', '“Does five o’clock suit you?”'),
-    item('перенести встречу', 'perenesti vstrechu', '“Reschedule the meeting.” A useful phrase once plans change.', 'Можно перенести встречу?', '“Can we reschedule the meeting?”'),
+  "expressionPractice": [
+    {
+      "id": "proposing-time",
+      "label": "Proposing time",
+      "goal": "Use `давай` or `может быть`."
+    },
+    {
+      "id": "accepting",
+      "label": "Accepting",
+      "goal": "Use `могу` or `подходит`."
+    },
+    {
+      "id": "rescheduling",
+      "label": "Rescheduling",
+      "goal": "Use `не могу` plus another option."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-time",
+    "topic-planning"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Arrange meetings, talk about availability, and change plans politely.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Schedule a study meeting with a classmate.",
+      "korean": "цель урока",
+      "english": "Arrange meetings, talk about availability, and change plans politely.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Schedule a study meeting with a classmate."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit11scheduling-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"У меня встреча завтра.\".",
+      "pronunciation": "",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "“I have a meeting tomorrow.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"У меня встреча завтра.\".",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "“I have a meeting tomorrow.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1"
+      ],
+      "targetText": "встреча",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 11: Встречи и расписание — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "“I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "Use the key language of Level 1 · Unit 11: Встречи и расписание — Scheduling with the register and setting that the lesson requires.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "“I have a meeting tomorrow.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-2"
+      ],
+      "targetText": "расписание",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 11: Встречи и расписание — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "“My schedule is busy.”",
+      "korean": "расписание",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 11: Встречи и расписание — Scheduling sound precise rather than merely understandable.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "“My schedule is busy.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit11scheduling-grammar-1"
+      ],
+      "targetText": "встреча",
+      "romanization": "",
+      "nativeText": "Arrange meetings, talk about availability, and change plans politely.",
+      "pronunciation": "",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "“I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "Arrange meetings, talk about availability, and change plans politely.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "“I have a meeting tomorrow.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "расписание",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 11: Встречи и расписание — Scheduling with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "“My schedule is busy.”",
+      "korean": "расписание",
+      "english": "Contrast the main pattern in Level 1 · Unit 11: Встречи и расписание — Scheduling with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "“My schedule is busy.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit11scheduling-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Можно перенести встречу?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "“Can we reschedule the meeting?”",
+      "korean": "модель чтения",
+      "english": "Read \"Можно перенести встречу?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "“Can we reschedule the meeting?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit11scheduling-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Можно перенести встречу?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "“Can we reschedule the meeting?”",
+      "korean": "модель диалога",
+      "english": "Hear \"Можно перенести встречу?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "“Can we reschedule the meeting?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit11scheduling-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"У меня встреча завтра.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"У меня встреча завтра.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit11scheduling-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "“My schedule is busy.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "“My schedule is busy.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Schedule a study meeting with a classmate.",
+      "pronunciation": "",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "Schedule a study meeting with a classmate.",
+      "korean": "итоговое задание",
+      "english": "Schedule a study meeting with a classmate.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "Schedule a study meeting with a classmate."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Моё расписание занято.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “My schedule is busy.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Моё расписание занято.\" against the model.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “My schedule is busy.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"У меня встреча завтра.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "“I have a meeting tomorrow.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"У меня встреча завтра.\" before reusing it elsewhere.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "“I have a meeting tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Можно перенести встречу?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "“Can we reschedule the meeting?”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Можно перенести встречу?\" as one thought.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "“Can we reschedule the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"У меня встреча завтра.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"У меня встреча завтра.\" and move it into your own life.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"встреча\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "встреча",
+      "exampleNative": "“Meeting.” It is the everyday noun for many appointments.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"встреча\" before looking back.",
+      "example": "встреча",
+      "exampleEnglish": "“Meeting.” It is the everyday noun for many appointments."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Можно перенести встречу?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Можно перенести встречу?\" rather than restarting from a blank sentence.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 11: Встречи и расписание — Scheduling with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Моё расписание занято.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "“My schedule is busy.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 11: Встречи и расписание — Scheduling with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Моё расписание занято.\" as the comparison line.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "“My schedule is busy.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit11scheduling-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"У меня встреча завтра.\".",
+      "pronunciation": "",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "“I have a meeting tomorrow.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"У меня встреча завтра.\".",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "“I have a meeting tomorrow.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Можно перенести встречу?\".",
+      "pronunciation": "",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "“Can we reschedule the meeting?”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Можно перенести встречу?\".",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "“Can we reschedule the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"У меня встреча завтра.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "“I have a meeting tomorrow.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"У меня встреча завтра.\" one layer at a time.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "“I have a meeting tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Моё расписание занято.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "“My schedule is busy.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Моё расписание занято.\" as the deciding example.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "“My schedule is busy.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-culture",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Можно перенести встречу?\".",
+      "pronunciation": "",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "“Can we reschedule the meeting?”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Можно перенести встречу?\".",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "“Can we reschedule the meeting?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "встреча",
+      "romanization": "vstrecha",
+      "nativeText": "“Meeting.” It is the everyday noun for many appointments.",
+      "pronunciation": "vstrecha",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "“I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "“Meeting.” It is the everyday noun for many appointments.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "“I have a meeting tomorrow.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "У меня встреча завтра.",
+      "romanization": "vstrecha",
+      "nativeText": "Model use for \"У меня встреча завтра.\": “I have a meeting tomorrow.”",
+      "pronunciation": "vstrecha",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "“I have a meeting tomorrow.”",
+      "korean": "У меня встреча завтра.",
+      "english": "Model use for \"У меня встреча завтра.\": “I have a meeting tomorrow.”",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "“I have a meeting tomorrow.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "встреча",
+      "romanization": "vstrecha",
+      "nativeText": "Usage focus for \"встреча\": Use the key language of Level 1 · Unit 11: Встречи и расписание — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "vstrecha",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "Notice what the form is doing here: “I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "Usage focus for \"встреча\": Use the key language of Level 1 · Unit 11: Встречи и расписание — Scheduling with the register and setting that the lesson requires.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "Notice what the form is doing here: “I have a meeting tomorrow.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "встреча",
+      "romanization": "vstrecha",
+      "nativeText": "Contrast check for \"встреча\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vstrecha",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "Contrast check for \"встреча\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a meeting tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "встреча",
+      "romanization": "vstrecha",
+      "nativeText": "Recall \"встреча\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня встреча завтра.\".",
+      "pronunciation": "vstrecha",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "Self-check against the model before moving on: “I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "Recall \"встреча\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня встреча завтра.\".",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have a meeting tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "встреча",
+      "romanization": "vstrecha",
+      "nativeText": "Repair \"встреча\" inside \"У меня встреча завтра.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 11: Встречи и расписание — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "vstrecha",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "Use the model as the repair target: “I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "Repair \"встреча\" inside \"У меня встреча завтра.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 11: Встречи и расписание — Scheduling with the register and setting that the lesson requires.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "Use the model as the repair target: “I have a meeting tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "встреча",
+      "romanization": "vstrecha",
+      "nativeText": "Transfer \"встреча\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня встреча завтра.\".",
+      "pronunciation": "vstrecha",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "Transfer \"встреча\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня встреча завтра.\".",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a meeting tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "встреча",
+      "romanization": "vstrecha",
+      "nativeText": "Find one word or phrase that naturally travels with \"встреча\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vstrecha",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "Find one word or phrase that naturally travels with \"встреча\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have a meeting tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "встреча",
+      "romanization": "vstrecha",
+      "nativeText": "Listen for \"встреча\" inside \"У меня встреча завтра.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vstrecha",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "Listen for \"встреча\" inside \"У меня встреча завтра.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a meeting tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "встреча",
+      "romanization": "vstrecha",
+      "nativeText": "Write \"встреча\" again without looking, then compare the exact written form against \"У меня встреча завтра.\" before moving on.",
+      "pronunciation": "vstrecha",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "Use the written model as the final correctness check: “I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "Write \"встреча\" again without looking, then compare the exact written form against \"У меня встреча завтра.\" before moving on.",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have a meeting tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "встреча",
+      "romanization": "vstrecha",
+      "nativeText": "Check whether \"встреча\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a meeting tomorrow.”",
+      "pronunciation": "vstrecha",
+      "exampleTarget": "У меня встреча завтра.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have a meeting tomorrow.”",
+      "korean": "встреча",
+      "english": "Check whether \"встреча\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a meeting tomorrow.”",
+      "example": "У меня встреча завтра.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have a meeting tomorrow.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "расписание",
+      "romanization": "raspisaniye",
+      "nativeText": "“Schedule.” Useful for school timetables and personal planning.",
+      "pronunciation": "raspisaniye",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "“My schedule is busy.”",
+      "korean": "расписание",
+      "english": "“Schedule.” Useful for school timetables and personal planning.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "“My schedule is busy.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "Моё расписание занято.",
+      "romanization": "raspisaniye",
+      "nativeText": "Model use for \"Моё расписание занято.\": “My schedule is busy.”",
+      "pronunciation": "raspisaniye",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "“My schedule is busy.”",
+      "korean": "Моё расписание занято.",
+      "english": "Model use for \"Моё расписание занято.\": “My schedule is busy.”",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "“My schedule is busy.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "расписание",
+      "romanization": "raspisaniye",
+      "nativeText": "Usage focus for \"расписание\": Distinguish the nearby wording choices that make Level 1 · Unit 11: Встречи и расписание — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "raspisaniye",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "Notice what the form is doing here: “My schedule is busy.”",
+      "korean": "расписание",
+      "english": "Usage focus for \"расписание\": Distinguish the nearby wording choices that make Level 1 · Unit 11: Встречи и расписание — Scheduling sound precise rather than merely understandable.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "Notice what the form is doing here: “My schedule is busy.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "расписание",
+      "romanization": "raspisaniye",
+      "nativeText": "Contrast check for \"расписание\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "raspisaniye",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My schedule is busy.”",
+      "korean": "расписание",
+      "english": "Contrast check for \"расписание\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My schedule is busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "расписание",
+      "romanization": "raspisaniye",
+      "nativeText": "Recall \"расписание\" from memory, then explain what would change if a nearby alternative replaced it in \"Моё расписание занято.\".",
+      "pronunciation": "raspisaniye",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "Self-check against the model before moving on: “My schedule is busy.”",
+      "korean": "расписание",
+      "english": "Recall \"расписание\" from memory, then explain what would change if a nearby alternative replaced it in \"Моё расписание занято.\".",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "Self-check against the model before moving on: “My schedule is busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "расписание",
+      "romanization": "raspisaniye",
+      "nativeText": "Repair \"расписание\" inside \"Моё расписание занято.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 11: Встречи и расписание — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "raspisaniye",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "Use the model as the repair target: “My schedule is busy.”",
+      "korean": "расписание",
+      "english": "Repair \"расписание\" inside \"Моё расписание занято.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 11: Встречи и расписание — Scheduling sound precise rather than merely understandable.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "Use the model as the repair target: “My schedule is busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "расписание",
+      "romanization": "raspisaniye",
+      "nativeText": "Transfer \"расписание\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Моё расписание занято.\".",
+      "pronunciation": "raspisaniye",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My schedule is busy.”",
+      "korean": "расписание",
+      "english": "Transfer \"расписание\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Моё расписание занято.\".",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My schedule is busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "расписание",
+      "romanization": "raspisaniye",
+      "nativeText": "Find one word or phrase that naturally travels with \"расписание\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "raspisaniye",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My schedule is busy.”",
+      "korean": "расписание",
+      "english": "Find one word or phrase that naturally travels with \"расписание\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My schedule is busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "расписание",
+      "romanization": "raspisaniye",
+      "nativeText": "Listen for \"расписание\" inside \"Моё расписание занято.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "raspisaniye",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My schedule is busy.”",
+      "korean": "расписание",
+      "english": "Listen for \"расписание\" inside \"Моё расписание занято.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My schedule is busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "расписание",
+      "romanization": "raspisaniye",
+      "nativeText": "Write \"расписание\" again without looking, then compare the exact written form against \"Моё расписание занято.\" before moving on.",
+      "pronunciation": "raspisaniye",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "Use the written model as the final correctness check: “My schedule is busy.”",
+      "korean": "расписание",
+      "english": "Write \"расписание\" again without looking, then compare the exact written form against \"Моё расписание занято.\" before moving on.",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My schedule is busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "расписание",
+      "romanization": "raspisaniye",
+      "nativeText": "Check whether \"расписание\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My schedule is busy.”",
+      "pronunciation": "raspisaniye",
+      "exampleTarget": "Моё расписание занято.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My schedule is busy.”",
+      "korean": "расписание",
+      "english": "Check whether \"расписание\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My schedule is busy.”",
+      "example": "Моё расписание занято.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My schedule is busy.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "в три часа",
+      "romanization": "v tri chasa",
+      "nativeText": "“At three o’clock.” Clock time follows `в`.",
+      "pronunciation": "v tri chasa",
+      "exampleTarget": "Встреча будет в три часа.",
+      "exampleNative": "“The meeting will be at three.”",
+      "korean": "в три часа",
+      "english": "“At three o’clock.” Clock time follows `в`.",
+      "example": "Встреча будет в три часа.",
+      "exampleEnglish": "“The meeting will be at three.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "Встреча будет в три часа.",
+      "romanization": "v tri chasa",
+      "nativeText": "Model use for \"Встреча будет в три часа.\": “The meeting will be at three.”",
+      "pronunciation": "v tri chasa",
+      "exampleTarget": "Встреча будет в три часа.",
+      "exampleNative": "“The meeting will be at three.”",
+      "korean": "Встреча будет в три часа.",
+      "english": "Model use for \"Встреча будет в три часа.\": “The meeting will be at three.”",
+      "example": "Встреча будет в три часа.",
+      "exampleEnglish": "“The meeting will be at three.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "в три часа",
+      "romanization": "v tri chasa",
+      "nativeText": "Usage focus for \"в три часа\": “At three o’clock.” Clock time follows `в`.",
+      "pronunciation": "v tri chasa",
+      "exampleTarget": "Встреча будет в три часа.",
+      "exampleNative": "Notice what the form is doing here: “The meeting will be at three.”",
+      "korean": "в три часа",
+      "english": "Usage focus for \"в три часа\": “At three o’clock.” Clock time follows `в`.",
+      "example": "Встреча будет в три часа.",
+      "exampleEnglish": "Notice what the form is doing here: “The meeting will be at three.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "в три часа",
+      "romanization": "v tri chasa",
+      "nativeText": "Contrast check for \"в три часа\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "v tri chasa",
+      "exampleTarget": "Встреча будет в три часа.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The meeting will be at three.”",
+      "korean": "в три часа",
+      "english": "Contrast check for \"в три часа\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Встреча будет в три часа.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The meeting will be at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "в три часа",
+      "romanization": "v tri chasa",
+      "nativeText": "Recall \"в три часа\" from memory, then explain what would change if a nearby alternative replaced it in \"Встреча будет в три часа.\".",
+      "pronunciation": "v tri chasa",
+      "exampleTarget": "Встреча будет в три часа.",
+      "exampleNative": "Self-check against the model before moving on: “The meeting will be at three.”",
+      "korean": "в три часа",
+      "english": "Recall \"в три часа\" from memory, then explain what would change if a nearby alternative replaced it in \"Встреча будет в три часа.\".",
+      "example": "Встреча будет в три часа.",
+      "exampleEnglish": "Self-check against the model before moving on: “The meeting will be at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "в три часа",
+      "romanization": "v tri chasa",
+      "nativeText": "Repair \"в три часа\" inside \"Встреча будет в три часа.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “At three o’clock.” Clock time follows `в`.",
+      "pronunciation": "v tri chasa",
+      "exampleTarget": "Встреча будет в три часа.",
+      "exampleNative": "Use the model as the repair target: “The meeting will be at three.”",
+      "korean": "в три часа",
+      "english": "Repair \"в три часа\" inside \"Встреча будет в три часа.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “At three o’clock.” Clock time follows `в`.",
+      "example": "Встреча будет в три часа.",
+      "exampleEnglish": "Use the model as the repair target: “The meeting will be at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "в три часа",
+      "romanization": "v tri chasa",
+      "nativeText": "Transfer \"в три часа\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Встреча будет в три часа.\".",
+      "pronunciation": "v tri chasa",
+      "exampleTarget": "Встреча будет в три часа.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The meeting will be at three.”",
+      "korean": "в три часа",
+      "english": "Transfer \"в три часа\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Встреча будет в три часа.\".",
+      "example": "Встреча будет в три часа.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The meeting will be at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "в три часа",
+      "romanization": "v tri chasa",
+      "nativeText": "Find one word or phrase that naturally travels with \"в три часа\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "v tri chasa",
+      "exampleTarget": "Встреча будет в три часа.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The meeting will be at three.”",
+      "korean": "в три часа",
+      "english": "Find one word or phrase that naturally travels with \"в три часа\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Встреча будет в три часа.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The meeting will be at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "в три часа",
+      "romanization": "v tri chasa",
+      "nativeText": "Listen for \"в три часа\" inside \"Встреча будет в три часа.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "v tri chasa",
+      "exampleTarget": "Встреча будет в три часа.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The meeting will be at three.”",
+      "korean": "в три часа",
+      "english": "Listen for \"в три часа\" inside \"Встреча будет в три часа.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Встреча будет в три часа.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The meeting will be at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "в три часа",
+      "romanization": "v tri chasa",
+      "nativeText": "Write \"в три часа\" again without looking, then compare the exact written form against \"Встреча будет в три часа.\" before moving on.",
+      "pronunciation": "v tri chasa",
+      "exampleTarget": "Встреча будет в три часа.",
+      "exampleNative": "Use the written model as the final correctness check: “The meeting will be at three.”",
+      "korean": "в три часа",
+      "english": "Write \"в три часа\" again without looking, then compare the exact written form against \"Встреча будет в три часа.\" before moving on.",
+      "example": "Встреча будет в три часа.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The meeting will be at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "в три часа",
+      "romanization": "v tri chasa",
+      "nativeText": "Check whether \"в три часа\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The meeting will be at three.”",
+      "pronunciation": "v tri chasa",
+      "exampleTarget": "Встреча будет в три часа.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The meeting will be at three.”",
+      "korean": "в три часа",
+      "english": "Check whether \"в три часа\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The meeting will be at three.”",
+      "example": "Встреча будет в три часа.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The meeting will be at three.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "“I can / I am available.” Context gives the scheduling meaning.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу вечером.",
+      "exampleNative": "“I am available in the evening.”",
+      "korean": "я могу",
+      "english": "“I can / I am available.” Context gives the scheduling meaning.",
+      "example": "Я могу вечером.",
+      "exampleEnglish": "“I am available in the evening.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "Я могу вечером.",
+      "romanization": "ya mogu",
+      "nativeText": "Model use for \"Я могу вечером.\": “I am available in the evening.”",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу вечером.",
+      "exampleNative": "“I am available in the evening.”",
+      "korean": "Я могу вечером.",
+      "english": "Model use for \"Я могу вечером.\": “I am available in the evening.”",
+      "example": "Я могу вечером.",
+      "exampleEnglish": "“I am available in the evening.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Usage focus for \"я могу\": “I can / I am available.” Context gives the scheduling meaning.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу вечером.",
+      "exampleNative": "Notice what the form is doing here: “I am available in the evening.”",
+      "korean": "я могу",
+      "english": "Usage focus for \"я могу\": “I can / I am available.” Context gives the scheduling meaning.",
+      "example": "Я могу вечером.",
+      "exampleEnglish": "Notice what the form is doing here: “I am available in the evening.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Contrast check for \"я могу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу вечером.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am available in the evening.”",
+      "korean": "я могу",
+      "english": "Contrast check for \"я могу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я могу вечером.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am available in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Recall \"я могу\" from memory, then explain what would change if a nearby alternative replaced it in \"Я могу вечером.\".",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу вечером.",
+      "exampleNative": "Self-check against the model before moving on: “I am available in the evening.”",
+      "korean": "я могу",
+      "english": "Recall \"я могу\" from memory, then explain what would change if a nearby alternative replaced it in \"Я могу вечером.\".",
+      "example": "Я могу вечером.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am available in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Repair \"я могу\" inside \"Я могу вечером.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can / I am available.” Context gives the scheduling meaning.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу вечером.",
+      "exampleNative": "Use the model as the repair target: “I am available in the evening.”",
+      "korean": "я могу",
+      "english": "Repair \"я могу\" inside \"Я могу вечером.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can / I am available.” Context gives the scheduling meaning.",
+      "example": "Я могу вечером.",
+      "exampleEnglish": "Use the model as the repair target: “I am available in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Transfer \"я могу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я могу вечером.\".",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу вечером.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am available in the evening.”",
+      "korean": "я могу",
+      "english": "Transfer \"я могу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я могу вечером.\".",
+      "example": "Я могу вечером.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am available in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Find one word or phrase that naturally travels with \"я могу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу вечером.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am available in the evening.”",
+      "korean": "я могу",
+      "english": "Find one word or phrase that naturally travels with \"я могу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я могу вечером.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am available in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Listen for \"я могу\" inside \"Я могу вечером.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу вечером.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am available in the evening.”",
+      "korean": "я могу",
+      "english": "Listen for \"я могу\" inside \"Я могу вечером.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я могу вечером.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am available in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Write \"я могу\" again without looking, then compare the exact written form against \"Я могу вечером.\" before moving on.",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу вечером.",
+      "exampleNative": "Use the written model as the final correctness check: “I am available in the evening.”",
+      "korean": "я могу",
+      "english": "Write \"я могу\" again without looking, then compare the exact written form against \"Я могу вечером.\" before moving on.",
+      "example": "Я могу вечером.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am available in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я могу",
+      "romanization": "ya mogu",
+      "nativeText": "Check whether \"я могу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am available in the evening.”",
+      "pronunciation": "ya mogu",
+      "exampleTarget": "Я могу вечером.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am available in the evening.”",
+      "korean": "я могу",
+      "english": "Check whether \"я могу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am available in the evening.”",
+      "example": "Я могу вечером.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am available in the evening.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я не могу",
+      "romanization": "ya ne mogu",
+      "nativeText": "“I cannot.” Add another suggestion to sound cooperative.",
+      "pronunciation": "ya ne mogu",
+      "exampleTarget": "Я не могу утром, но могу после обеда.",
+      "exampleNative": "“I cannot in the morning, but I can after lunch.”",
+      "korean": "я не могу",
+      "english": "“I cannot.” Add another suggestion to sound cooperative.",
+      "example": "Я не могу утром, но могу после обеда.",
+      "exampleEnglish": "“I cannot in the morning, but I can after lunch.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "Я не могу утром, но могу после обеда.",
+      "romanization": "ya ne mogu",
+      "nativeText": "Model use for \"Я не могу утром, но могу после обеда.\": “I cannot in the morning, but I can after lunch.”",
+      "pronunciation": "ya ne mogu",
+      "exampleTarget": "Я не могу утром, но могу после обеда.",
+      "exampleNative": "“I cannot in the morning, but I can after lunch.”",
+      "korean": "Я не могу утром, но могу после обеда.",
+      "english": "Model use for \"Я не могу утром, но могу после обеда.\": “I cannot in the morning, but I can after lunch.”",
+      "example": "Я не могу утром, но могу после обеда.",
+      "exampleEnglish": "“I cannot in the morning, but I can after lunch.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я не могу",
+      "romanization": "ya ne mogu",
+      "nativeText": "Usage focus for \"я не могу\": “I cannot.” Add another suggestion to sound cooperative.",
+      "pronunciation": "ya ne mogu",
+      "exampleTarget": "Я не могу утром, но могу после обеда.",
+      "exampleNative": "Notice what the form is doing here: “I cannot in the morning, but I can after lunch.”",
+      "korean": "я не могу",
+      "english": "Usage focus for \"я не могу\": “I cannot.” Add another suggestion to sound cooperative.",
+      "example": "Я не могу утром, но могу после обеда.",
+      "exampleEnglish": "Notice what the form is doing here: “I cannot in the morning, but I can after lunch.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я не могу",
+      "romanization": "ya ne mogu",
+      "nativeText": "Contrast check for \"я не могу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya ne mogu",
+      "exampleTarget": "Я не могу утром, но могу после обеда.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I cannot in the morning, but I can after lunch.”",
+      "korean": "я не могу",
+      "english": "Contrast check for \"я не могу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я не могу утром, но могу после обеда.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I cannot in the morning, but I can after lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я не могу",
+      "romanization": "ya ne mogu",
+      "nativeText": "Recall \"я не могу\" from memory, then explain what would change if a nearby alternative replaced it in \"Я не могу утром, но могу после обеда.\".",
+      "pronunciation": "ya ne mogu",
+      "exampleTarget": "Я не могу утром, но могу после обеда.",
+      "exampleNative": "Self-check against the model before moving on: “I cannot in the morning, but I can after lunch.”",
+      "korean": "я не могу",
+      "english": "Recall \"я не могу\" from memory, then explain what would change if a nearby alternative replaced it in \"Я не могу утром, но могу после обеда.\".",
+      "example": "Я не могу утром, но могу после обеда.",
+      "exampleEnglish": "Self-check against the model before moving on: “I cannot in the morning, but I can after lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я не могу",
+      "romanization": "ya ne mogu",
+      "nativeText": "Repair \"я не могу\" inside \"Я не могу утром, но могу после обеда.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I cannot.” Add another suggestion to sound cooperative.",
+      "pronunciation": "ya ne mogu",
+      "exampleTarget": "Я не могу утром, но могу после обеда.",
+      "exampleNative": "Use the model as the repair target: “I cannot in the morning, but I can after lunch.”",
+      "korean": "я не могу",
+      "english": "Repair \"я не могу\" inside \"Я не могу утром, но могу после обеда.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I cannot.” Add another suggestion to sound cooperative.",
+      "example": "Я не могу утром, но могу после обеда.",
+      "exampleEnglish": "Use the model as the repair target: “I cannot in the morning, but I can after lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я не могу",
+      "romanization": "ya ne mogu",
+      "nativeText": "Transfer \"я не могу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я не могу утром, но могу после обеда.\".",
+      "pronunciation": "ya ne mogu",
+      "exampleTarget": "Я не могу утром, но могу после обеда.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I cannot in the morning, but I can after lunch.”",
+      "korean": "я не могу",
+      "english": "Transfer \"я не могу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я не могу утром, но могу после обеда.\".",
+      "example": "Я не могу утром, но могу после обеда.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I cannot in the morning, but I can after lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я не могу",
+      "romanization": "ya ne mogu",
+      "nativeText": "Find one word or phrase that naturally travels with \"я не могу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya ne mogu",
+      "exampleTarget": "Я не могу утром, но могу после обеда.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I cannot in the morning, but I can after lunch.”",
+      "korean": "я не могу",
+      "english": "Find one word or phrase that naturally travels with \"я не могу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я не могу утром, но могу после обеда.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I cannot in the morning, but I can after lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я не могу",
+      "romanization": "ya ne mogu",
+      "nativeText": "Listen for \"я не могу\" inside \"Я не могу утром, но могу после обеда.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya ne mogu",
+      "exampleTarget": "Я не могу утром, но могу после обеда.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I cannot in the morning, but I can after lunch.”",
+      "korean": "я не могу",
+      "english": "Listen for \"я не могу\" inside \"Я не могу утром, но могу после обеда.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я не могу утром, но могу после обеда.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I cannot in the morning, but I can after lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я не могу",
+      "romanization": "ya ne mogu",
+      "nativeText": "Write \"я не могу\" again without looking, then compare the exact written form against \"Я не могу утром, но могу после обеда.\" before moving on.",
+      "pronunciation": "ya ne mogu",
+      "exampleTarget": "Я не могу утром, но могу после обеда.",
+      "exampleNative": "Use the written model as the final correctness check: “I cannot in the morning, but I can after lunch.”",
+      "korean": "я не могу",
+      "english": "Write \"я не могу\" again without looking, then compare the exact written form against \"Я не могу утром, но могу после обеда.\" before moving on.",
+      "example": "Я не могу утром, но могу после обеда.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I cannot in the morning, but I can after lunch.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "я не могу",
+      "romanization": "ya ne mogu",
+      "nativeText": "Check whether \"я не могу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I cannot in the morning, but I can after lunch.”",
+      "pronunciation": "ya ne mogu",
+      "exampleTarget": "Я не могу утром, но могу после обеда.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I cannot in the morning, but I can after lunch.”",
+      "korean": "я не могу",
+      "english": "Check whether \"я не могу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I cannot in the morning, but I can after lunch.”",
+      "example": "Я не могу утром, но могу после обеда.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I cannot in the morning, but I can after lunch.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "давай встретимся",
+      "romanization": "davay vstretimsya",
+      "nativeText": "“Let’s meet.” Friendly and natural with peers.",
+      "pronunciation": "davay vstretimsya",
+      "exampleTarget": "Давай встретимся в пятницу.",
+      "exampleNative": "“Let’s meet on Friday.”",
+      "korean": "давай встретимся",
+      "english": "“Let’s meet.” Friendly and natural with peers.",
+      "example": "Давай встретимся в пятницу.",
+      "exampleEnglish": "“Let’s meet on Friday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "Давай встретимся в пятницу.",
+      "romanization": "davay vstretimsya",
+      "nativeText": "Model use for \"Давай встретимся в пятницу.\": “Let’s meet on Friday.”",
+      "pronunciation": "davay vstretimsya",
+      "exampleTarget": "Давай встретимся в пятницу.",
+      "exampleNative": "“Let’s meet on Friday.”",
+      "korean": "Давай встретимся в пятницу.",
+      "english": "Model use for \"Давай встретимся в пятницу.\": “Let’s meet on Friday.”",
+      "example": "Давай встретимся в пятницу.",
+      "exampleEnglish": "“Let’s meet on Friday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "давай встретимся",
+      "romanization": "davay vstretimsya",
+      "nativeText": "Usage focus for \"давай встретимся\": “Let’s meet.” Friendly and natural with peers.",
+      "pronunciation": "davay vstretimsya",
+      "exampleTarget": "Давай встретимся в пятницу.",
+      "exampleNative": "Notice what the form is doing here: “Let’s meet on Friday.”",
+      "korean": "давай встретимся",
+      "english": "Usage focus for \"давай встретимся\": “Let’s meet.” Friendly and natural with peers.",
+      "example": "Давай встретимся в пятницу.",
+      "exampleEnglish": "Notice what the form is doing here: “Let’s meet on Friday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "давай встретимся",
+      "romanization": "davay vstretimsya",
+      "nativeText": "Contrast check for \"давай встретимся\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "davay vstretimsya",
+      "exampleTarget": "Давай встретимся в пятницу.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s meet on Friday.”",
+      "korean": "давай встретимся",
+      "english": "Contrast check for \"давай встретимся\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Давай встретимся в пятницу.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s meet on Friday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "давай встретимся",
+      "romanization": "davay vstretimsya",
+      "nativeText": "Recall \"давай встретимся\" from memory, then explain what would change if a nearby alternative replaced it in \"Давай встретимся в пятницу.\".",
+      "pronunciation": "davay vstretimsya",
+      "exampleTarget": "Давай встретимся в пятницу.",
+      "exampleNative": "Self-check against the model before moving on: “Let’s meet on Friday.”",
+      "korean": "давай встретимся",
+      "english": "Recall \"давай встретимся\" from memory, then explain what would change if a nearby alternative replaced it in \"Давай встретимся в пятницу.\".",
+      "example": "Давай встретимся в пятницу.",
+      "exampleEnglish": "Self-check against the model before moving on: “Let’s meet on Friday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "давай встретимся",
+      "romanization": "davay vstretimsya",
+      "nativeText": "Repair \"давай встретимся\" inside \"Давай встретимся в пятницу.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Let’s meet.” Friendly and natural with peers.",
+      "pronunciation": "davay vstretimsya",
+      "exampleTarget": "Давай встретимся в пятницу.",
+      "exampleNative": "Use the model as the repair target: “Let’s meet on Friday.”",
+      "korean": "давай встретимся",
+      "english": "Repair \"давай встретимся\" inside \"Давай встретимся в пятницу.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Let’s meet.” Friendly and natural with peers.",
+      "example": "Давай встретимся в пятницу.",
+      "exampleEnglish": "Use the model as the repair target: “Let’s meet on Friday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "давай встретимся",
+      "romanization": "davay vstretimsya",
+      "nativeText": "Transfer \"давай встретимся\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Давай встретимся в пятницу.\".",
+      "pronunciation": "davay vstretimsya",
+      "exampleTarget": "Давай встретимся в пятницу.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s meet on Friday.”",
+      "korean": "давай встретимся",
+      "english": "Transfer \"давай встретимся\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Давай встретимся в пятницу.\".",
+      "example": "Давай встретимся в пятницу.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s meet on Friday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "давай встретимся",
+      "romanization": "davay vstretimsya",
+      "nativeText": "Find one word or phrase that naturally travels with \"давай встретимся\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "davay vstretimsya",
+      "exampleTarget": "Давай встретимся в пятницу.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Let’s meet on Friday.”",
+      "korean": "давай встретимся",
+      "english": "Find one word or phrase that naturally travels with \"давай встретимся\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Давай встретимся в пятницу.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Let’s meet on Friday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "давай встретимся",
+      "romanization": "davay vstretimsya",
+      "nativeText": "Listen for \"давай встретимся\" inside \"Давай встретимся в пятницу.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "davay vstretimsya",
+      "exampleTarget": "Давай встретимся в пятницу.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s meet on Friday.”",
+      "korean": "давай встретимся",
+      "english": "Listen for \"давай встретимся\" inside \"Давай встретимся в пятницу.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Давай встретимся в пятницу.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s meet on Friday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "давай встретимся",
+      "romanization": "davay vstretimsya",
+      "nativeText": "Write \"давай встретимся\" again without looking, then compare the exact written form against \"Давай встретимся в пятницу.\" before moving on.",
+      "pronunciation": "davay vstretimsya",
+      "exampleTarget": "Давай встретимся в пятницу.",
+      "exampleNative": "Use the written model as the final correctness check: “Let’s meet on Friday.”",
+      "korean": "давай встретимся",
+      "english": "Write \"давай встретимся\" again without looking, then compare the exact written form against \"Давай встретимся в пятницу.\" before moving on.",
+      "example": "Давай встретимся в пятницу.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Let’s meet on Friday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "давай встретимся",
+      "romanization": "davay vstretimsya",
+      "nativeText": "Check whether \"давай встретимся\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s meet on Friday.”",
+      "pronunciation": "davay vstretimsya",
+      "exampleTarget": "Давай встретимся в пятницу.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Let’s meet on Friday.”",
+      "korean": "давай встретимся",
+      "english": "Check whether \"давай встретимся\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s meet on Friday.”",
+      "example": "Давай встретимся в пятницу.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Let’s meet on Friday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "тебе подходит?",
+      "romanization": "tebe podkhodit",
+      "nativeText": "“Does that suit you?” A practical check after proposing a time.",
+      "pronunciation": "tebe podkhodit",
+      "exampleTarget": "Пять часов тебе подходит?",
+      "exampleNative": "“Does five o’clock suit you?”",
+      "korean": "тебе подходит?",
+      "english": "“Does that suit you?” A practical check after proposing a time.",
+      "example": "Пять часов тебе подходит?",
+      "exampleEnglish": "“Does five o’clock suit you?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "Пять часов тебе подходит?",
+      "romanization": "tebe podkhodit",
+      "nativeText": "Model use for \"Пять часов тебе подходит?\": “Does five o’clock suit you?”",
+      "pronunciation": "tebe podkhodit",
+      "exampleTarget": "Пять часов тебе подходит?",
+      "exampleNative": "“Does five o’clock suit you?”",
+      "korean": "Пять часов тебе подходит?",
+      "english": "Model use for \"Пять часов тебе подходит?\": “Does five o’clock suit you?”",
+      "example": "Пять часов тебе подходит?",
+      "exampleEnglish": "“Does five o’clock suit you?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "тебе подходит?",
+      "romanization": "tebe podkhodit",
+      "nativeText": "Usage focus for \"тебе подходит?\": “Does that suit you?” A practical check after proposing a time.",
+      "pronunciation": "tebe podkhodit",
+      "exampleTarget": "Пять часов тебе подходит?",
+      "exampleNative": "Notice what the form is doing here: “Does five o’clock suit you?”",
+      "korean": "тебе подходит?",
+      "english": "Usage focus for \"тебе подходит?\": “Does that suit you?” A practical check after proposing a time.",
+      "example": "Пять часов тебе подходит?",
+      "exampleEnglish": "Notice what the form is doing here: “Does five o’clock suit you?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "тебе подходит?",
+      "romanization": "tebe podkhodit",
+      "nativeText": "Contrast check for \"тебе подходит?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tebe podkhodit",
+      "exampleTarget": "Пять часов тебе подходит?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Does five o’clock suit you?”",
+      "korean": "тебе подходит?",
+      "english": "Contrast check for \"тебе подходит?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Пять часов тебе подходит?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Does five o’clock suit you?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "тебе подходит?",
+      "romanization": "tebe podkhodit",
+      "nativeText": "Recall \"тебе подходит?\" from memory, then explain what would change if a nearby alternative replaced it in \"Пять часов тебе подходит?\".",
+      "pronunciation": "tebe podkhodit",
+      "exampleTarget": "Пять часов тебе подходит?",
+      "exampleNative": "Self-check against the model before moving on: “Does five o’clock suit you?”",
+      "korean": "тебе подходит?",
+      "english": "Recall \"тебе подходит?\" from memory, then explain what would change if a nearby alternative replaced it in \"Пять часов тебе подходит?\".",
+      "example": "Пять часов тебе подходит?",
+      "exampleEnglish": "Self-check against the model before moving on: “Does five o’clock suit you?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "тебе подходит?",
+      "romanization": "tebe podkhodit",
+      "nativeText": "Repair \"тебе подходит?\" inside \"Пять часов тебе подходит?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Does that suit you?” A practical check after proposing a time.",
+      "pronunciation": "tebe podkhodit",
+      "exampleTarget": "Пять часов тебе подходит?",
+      "exampleNative": "Use the model as the repair target: “Does five o’clock suit you?”",
+      "korean": "тебе подходит?",
+      "english": "Repair \"тебе подходит?\" inside \"Пять часов тебе подходит?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Does that suit you?” A practical check after proposing a time.",
+      "example": "Пять часов тебе подходит?",
+      "exampleEnglish": "Use the model as the repair target: “Does five o’clock suit you?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "тебе подходит?",
+      "romanization": "tebe podkhodit",
+      "nativeText": "Transfer \"тебе подходит?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Пять часов тебе подходит?\".",
+      "pronunciation": "tebe podkhodit",
+      "exampleTarget": "Пять часов тебе подходит?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Does five o’clock suit you?”",
+      "korean": "тебе подходит?",
+      "english": "Transfer \"тебе подходит?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Пять часов тебе подходит?\".",
+      "example": "Пять часов тебе подходит?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Does five o’clock suit you?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "тебе подходит?",
+      "romanization": "tebe podkhodit",
+      "nativeText": "Find one word or phrase that naturally travels with \"тебе подходит?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tebe podkhodit",
+      "exampleTarget": "Пять часов тебе подходит?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Does five o’clock suit you?”",
+      "korean": "тебе подходит?",
+      "english": "Find one word or phrase that naturally travels with \"тебе подходит?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Пять часов тебе подходит?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Does five o’clock suit you?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "тебе подходит?",
+      "romanization": "tebe podkhodit",
+      "nativeText": "Listen for \"тебе подходит?\" inside \"Пять часов тебе подходит?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tebe podkhodit",
+      "exampleTarget": "Пять часов тебе подходит?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Does five o’clock suit you?”",
+      "korean": "тебе подходит?",
+      "english": "Listen for \"тебе подходит?\" inside \"Пять часов тебе подходит?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Пять часов тебе подходит?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Does five o’clock suit you?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "тебе подходит?",
+      "romanization": "tebe podkhodit",
+      "nativeText": "Write \"тебе подходит?\" again without looking, then compare the exact written form against \"Пять часов тебе подходит?\" before moving on.",
+      "pronunciation": "tebe podkhodit",
+      "exampleTarget": "Пять часов тебе подходит?",
+      "exampleNative": "Use the written model as the final correctness check: “Does five o’clock suit you?”",
+      "korean": "тебе подходит?",
+      "english": "Write \"тебе подходит?\" again without looking, then compare the exact written form against \"Пять часов тебе подходит?\" before moving on.",
+      "example": "Пять часов тебе подходит?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Does five o’clock suit you?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "тебе подходит?",
+      "romanization": "tebe podkhodit",
+      "nativeText": "Check whether \"тебе подходит?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Does five o’clock suit you?”",
+      "pronunciation": "tebe podkhodit",
+      "exampleTarget": "Пять часов тебе подходит?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Does five o’clock suit you?”",
+      "korean": "тебе подходит?",
+      "english": "Check whether \"тебе подходит?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Does five o’clock suit you?”",
+      "example": "Пять часов тебе подходит?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Does five o’clock suit you?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "перенести встречу",
+      "romanization": "perenesti vstrechu",
+      "nativeText": "“Reschedule the meeting.” A useful phrase once plans change.",
+      "pronunciation": "perenesti vstrechu",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "“Can we reschedule the meeting?”",
+      "korean": "перенести встречу",
+      "english": "“Reschedule the meeting.” A useful phrase once plans change.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "“Can we reschedule the meeting?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "Можно перенести встречу?",
+      "romanization": "perenesti vstrechu",
+      "nativeText": "Model use for \"Можно перенести встречу?\": “Can we reschedule the meeting?”",
+      "pronunciation": "perenesti vstrechu",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "“Can we reschedule the meeting?”",
+      "korean": "Можно перенести встречу?",
+      "english": "Model use for \"Можно перенести встречу?\": “Can we reschedule the meeting?”",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "“Can we reschedule the meeting?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "перенести встречу",
+      "romanization": "perenesti vstrechu",
+      "nativeText": "Usage focus for \"перенести встречу\": “Reschedule the meeting.” A useful phrase once plans change.",
+      "pronunciation": "perenesti vstrechu",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "Notice what the form is doing here: “Can we reschedule the meeting?”",
+      "korean": "перенести встречу",
+      "english": "Usage focus for \"перенести встречу\": “Reschedule the meeting.” A useful phrase once plans change.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "Notice what the form is doing here: “Can we reschedule the meeting?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "перенести встречу",
+      "romanization": "perenesti vstrechu",
+      "nativeText": "Contrast check for \"перенести встречу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "perenesti vstrechu",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can we reschedule the meeting?”",
+      "korean": "перенести встречу",
+      "english": "Contrast check for \"перенести встречу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can we reschedule the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "перенести встречу",
+      "romanization": "perenesti vstrechu",
+      "nativeText": "Recall \"перенести встречу\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно перенести встречу?\".",
+      "pronunciation": "perenesti vstrechu",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "Self-check against the model before moving on: “Can we reschedule the meeting?”",
+      "korean": "перенести встречу",
+      "english": "Recall \"перенести встречу\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно перенести встречу?\".",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "Self-check against the model before moving on: “Can we reschedule the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "перенести встречу",
+      "romanization": "perenesti vstrechu",
+      "nativeText": "Repair \"перенести встречу\" inside \"Можно перенести встречу?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Reschedule the meeting.” A useful phrase once plans change.",
+      "pronunciation": "perenesti vstrechu",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "Use the model as the repair target: “Can we reschedule the meeting?”",
+      "korean": "перенести встречу",
+      "english": "Repair \"перенести встречу\" inside \"Можно перенести встречу?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Reschedule the meeting.” A useful phrase once plans change.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "Use the model as the repair target: “Can we reschedule the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "перенести встречу",
+      "romanization": "perenesti vstrechu",
+      "nativeText": "Transfer \"перенести встречу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно перенести встречу?\".",
+      "pronunciation": "perenesti vstrechu",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can we reschedule the meeting?”",
+      "korean": "перенести встречу",
+      "english": "Transfer \"перенести встречу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно перенести встречу?\".",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can we reschedule the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "перенести встречу",
+      "romanization": "perenesti vstrechu",
+      "nativeText": "Find one word or phrase that naturally travels with \"перенести встречу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "perenesti vstrechu",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Can we reschedule the meeting?”",
+      "korean": "перенести встречу",
+      "english": "Find one word or phrase that naturally travels with \"перенести встречу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Can we reschedule the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "перенести встречу",
+      "romanization": "perenesti vstrechu",
+      "nativeText": "Listen for \"перенести встречу\" inside \"Можно перенести встречу?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "perenesti vstrechu",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can we reschedule the meeting?”",
+      "korean": "перенести встречу",
+      "english": "Listen for \"перенести встречу\" inside \"Можно перенести встречу?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can we reschedule the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "перенести встречу",
+      "romanization": "perenesti vstrechu",
+      "nativeText": "Write \"перенести встречу\" again without looking, then compare the exact written form against \"Можно перенести встречу?\" before moving on.",
+      "pronunciation": "perenesti vstrechu",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "Use the written model as the final correctness check: “Can we reschedule the meeting?”",
+      "korean": "перенести встречу",
+      "english": "Write \"перенести встречу\" again without looking, then compare the exact written form against \"Можно перенести встречу?\" before moving on.",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Can we reschedule the meeting?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit11scheduling-vocabulary-1",
+        "ru-level1unit11scheduling-vocabulary-2",
+        "ru-level1unit11scheduling-grammar-1",
+        "ru-level1unit11scheduling-grammar-2",
+        "ru-level1unit11scheduling-reading",
+        "ru-level1unit11scheduling-listening",
+        "ru-level1unit11scheduling-writing",
+        "ru-level1unit11scheduling-task"
+      ],
+      "targetText": "перенести встречу",
+      "romanization": "perenesti vstrechu",
+      "nativeText": "Check whether \"перенести встречу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can we reschedule the meeting?”",
+      "pronunciation": "perenesti vstrechu",
+      "exampleTarget": "Можно перенести встречу?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Can we reschedule the meeting?”",
+      "korean": "перенести встречу",
+      "english": "Check whether \"перенести встречу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can we reschedule the meeting?”",
+      "example": "Можно перенести встречу?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Can we reschedule the meeting?”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

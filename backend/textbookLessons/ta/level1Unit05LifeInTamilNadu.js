@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u5',
-  title: 'Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu',
-  category: 'culture',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe everyday life in Tamil Nadu through food, city life, family, and language register.',
-  vocabularyGoal: 'Use culture, food, city, and family words tied to daily Tamil life.',
-  grammarGoal: 'Notice respectful plural forms and the gap between formal written Tamil and everyday spoken Tamil.',
-  speakingGoal: 'Describe one feature of Tamil daily life and compare it with your own.',
-  task: 'Introduce daily life in Tamil Nadu to a visiting friend.',
-  expressionPractice: [
-    practice('describing-place', 'Describing place', 'Use one city or culture noun.'),
-    practice('describing-routine', 'Describing routine', 'Use one food or family expression.'),
-    practice('noticing-register', 'Noticing register', 'Recognize one respectful form.'),
+module.exports = {
+  "title": "Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu",
+  "category": "culture",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit05lifeintamilnadu-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe everyday life in Tamil Nadu through food, city life, family, and language register."
+      ],
+      "task": "Introduce daily life in Tamil Nadu to a visiting friend."
+    },
+    {
+      "id": "ta-level1unit05lifeintamilnadu-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit05lifeintamilnadu-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit05lifeintamilnadu-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit05lifeintamilnadu-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe everyday life in Tamil Nadu through food, city life, family, and language register."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit05lifeintamilnadu-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit05lifeintamilnadu-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit05lifeintamilnadu-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit05lifeintamilnadu-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit05lifeintamilnadu-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit05lifeintamilnadu-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Introduce daily life in Tamil Nadu to a visiting friend."
+      ],
+      "task": "Introduce daily life in Tamil Nadu to a visiting friend."
+    }
   ],
-  relatedPools: ['topic-culture', 'topic-city'],
-  items: [
-    item('தமிழ்நாடு', 'tamiḻnāḍu', '“Tamil Nadu.” The name literally means “Tamil land,” and regional identity is central to the language.', 'தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.', '“People speak Tamil in Tamil Nadu.”'),
-    item('சென்னை', 'ceṉṉai', '“Chennai.” The state capital and a practical urban anchor for beginner examples.', 'சென்னை பெரிய நகரம்.', '“Chennai is a big city.”'),
-    item('சாப்பாடு', 'cāppāḍu', '“Meal / food.” It is a core everyday noun, especially in South Indian mealtime talk.', 'எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.', '“I like Tamil food.”'),
-    item('காலை காபி', 'kālai kāpi', '“Morning coffee.” Filter coffee is a real daily-life touchstone in many Tamil households.', 'காலை காபி மிகவும் பிரபலமானது.', '“Morning coffee is very popular.”'),
-    item('குடும்பம்', 'kuṭumpam', '“Family.” Family terms and respect markers matter heavily in Tamil interaction.', 'என் குடும்பம் சென்னைலில் இருக்கிறது.', '“My family is in Chennai.”'),
-    item('நீங்கள்', 'nīṅkaḷ', 'Respectful “you.” The plural form also serves as the polite singular address.', 'நீங்கள் எப்படி இருக்கிறீர்கள்?', '“How are you?” polite.'),
-    item('பேச்சுத்தமிழ்', 'pēccuttamiḻ', '“Spoken Tamil.” Learners need to know that everyday speech differs from formal written forms.', 'பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.', '“Spoken Tamil and written Tamil differ.”'),
-    item('மிகவும்', 'mikavum', '“Very.” A useful intensifier in descriptive sentences.', 'இந்த நகரம் மிகவும் பிஸியாக உள்ளது.', '“This city is very busy.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-place",
+      "label": "Describing place",
+      "goal": "Use one city or culture noun."
+    },
+    {
+      "id": "describing-routine",
+      "label": "Describing routine",
+      "goal": "Use one food or family expression."
+    },
+    {
+      "id": "noticing-register",
+      "label": "Noticing register",
+      "goal": "Recognize one respectful form."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-culture",
+    "topic-city"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Describe everyday life in Tamil Nadu through food, city life, family, and language register.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Introduce daily life in Tamil Nadu to a visiting friend.",
+      "korean": "பாட இலக்கு",
+      "english": "Describe everyday life in Tamil Nadu through food, city life, family, and language register.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Introduce daily life in Tamil Nadu to a visiting friend."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\".",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "“People speak Tamil in Tamil Nadu.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\".",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "“People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "“People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "Use the key language of Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with the register and setting that the lesson requires.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "“People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-2"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "“Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu sound precise rather than merely understandable.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "“Chennai is a big city.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-grammar-1"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "",
+      "nativeText": "Describe everyday life in Tamil Nadu through food, city life, family, and language register.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "“People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "Describe everyday life in Tamil Nadu through food, city life, family, and language register.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "“People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-grammar-2"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "“Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "Contrast the main pattern in Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "“Chennai is a big city.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "“This city is very busy.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "“This city is very busy.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "“This city is very busy.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "“This city is very busy.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "“Chennai is a big city.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "“Chennai is a big city.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Introduce daily life in Tamil Nadu to a visiting friend.",
+      "pronunciation": "",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "Introduce daily life in Tamil Nadu to a visiting friend.",
+      "korean": "இறுதி செயல்",
+      "english": "Introduce daily life in Tamil Nadu to a visiting friend.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "Introduce daily life in Tamil Nadu to a visiting friend."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"சென்னை பெரிய நகரம்.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Chennai is a big city.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"சென்னை பெரிய நகரம்.\" against the model.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Chennai is a big city.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "“People speak Tamil in Tamil Nadu.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" before reusing it elsewhere.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "“People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "“This city is very busy.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" as one thought.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "“This city is very busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" and move it into your own life.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"தமிழ்நாடு\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ்நாடு",
+      "exampleNative": "“Tamil Nadu.” The name literally means “Tamil land,” and regional identity is central to the language.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"தமிழ்நாடு\" before looking back.",
+      "example": "தமிழ்நாடு",
+      "exampleEnglish": "“Tamil Nadu.” The name literally means “Tamil land,” and regional identity is central to the language."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" rather than restarting from a blank sentence.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"சென்னை பெரிய நகரம்.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "“Chennai is a big city.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"சென்னை பெரிய நகரம்.\" as the comparison line.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "“Chennai is a big city.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\".",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "“People speak Tamil in Tamil Nadu.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\".",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "“People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\".",
+      "pronunciation": "",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "“This city is very busy.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\".",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "“This city is very busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "“People speak Tamil in Tamil Nadu.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" one layer at a time.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "“People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"சென்னை பெரிய நகரம்.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "“Chennai is a big city.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"சென்னை பெரிய நகரம்.\" as the deciding example.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "“Chennai is a big city.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-culture",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\".",
+      "pronunciation": "",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "“This city is very busy.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\".",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "“This city is very busy.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "tamiḻnāḍu",
+      "nativeText": "“Tamil Nadu.” The name literally means “Tamil land,” and regional identity is central to the language.",
+      "pronunciation": "tamiḻnāḍu",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "“People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "“Tamil Nadu.” The name literally means “Tamil land,” and regional identity is central to the language.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "“People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "romanization": "tamiḻnāḍu",
+      "nativeText": "Model use for \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\": “People speak Tamil in Tamil Nadu.”",
+      "pronunciation": "tamiḻnāḍu",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "“People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "english": "Model use for \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\": “People speak Tamil in Tamil Nadu.”",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "“People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "tamiḻnāḍu",
+      "nativeText": "Usage focus for \"தமிழ்நாடு\": Use the key language of Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with the register and setting that the lesson requires.",
+      "pronunciation": "tamiḻnāḍu",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "Notice what the form is doing here: “People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "Usage focus for \"தமிழ்நாடு\": Use the key language of Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with the register and setting that the lesson requires.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "Notice what the form is doing here: “People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "tamiḻnāḍu",
+      "nativeText": "Contrast check for \"தமிழ்நாடு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tamiḻnāḍu",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "Contrast check for \"தமிழ்நாடு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "tamiḻnāḍu",
+      "nativeText": "Recall \"தமிழ்நாடு\" from memory, then explain what would change if a nearby alternative replaced it in \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\".",
+      "pronunciation": "tamiḻnāḍu",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "Self-check against the model before moving on: “People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "Recall \"தமிழ்நாடு\" from memory, then explain what would change if a nearby alternative replaced it in \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\".",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "Self-check against the model before moving on: “People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "tamiḻnāḍu",
+      "nativeText": "Repair \"தமிழ்நாடு\" inside \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with the register and setting that the lesson requires.",
+      "pronunciation": "tamiḻnāḍu",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "Use the model as the repair target: “People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "Repair \"தமிழ்நாடு\" inside \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu with the register and setting that the lesson requires.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "Use the model as the repair target: “People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "tamiḻnāḍu",
+      "nativeText": "Transfer \"தமிழ்நாடு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\".",
+      "pronunciation": "tamiḻnāḍu",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "Transfer \"தமிழ்நாடு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\".",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "tamiḻnāḍu",
+      "nativeText": "Find one word or phrase that naturally travels with \"தமிழ்நாடு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tamiḻnāḍu",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "Find one word or phrase that naturally travels with \"தமிழ்நாடு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "tamiḻnāḍu",
+      "nativeText": "Listen for \"தமிழ்நாடு\" inside \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tamiḻnāḍu",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "Listen for \"தமிழ்நாடு\" inside \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "tamiḻnāḍu",
+      "nativeText": "Write \"தமிழ்நாடு\" again without looking, then compare the exact written form against \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" before moving on.",
+      "pronunciation": "tamiḻnāḍu",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "Use the written model as the final correctness check: “People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "Write \"தமிழ்நாடு\" again without looking, then compare the exact written form against \"தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.\" before moving on.",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "தமிழ்நாடு",
+      "romanization": "tamiḻnāḍu",
+      "nativeText": "Check whether \"தமிழ்நாடு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “People speak Tamil in Tamil Nadu.”",
+      "pronunciation": "tamiḻnāḍu",
+      "exampleTarget": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “People speak Tamil in Tamil Nadu.”",
+      "korean": "தமிழ்நாடு",
+      "english": "Check whether \"தமிழ்நாடு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “People speak Tamil in Tamil Nadu.”",
+      "example": "தமிழ்நாட்டில் தமிழ் பேசுகிறார்கள்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “People speak Tamil in Tamil Nadu.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "ceṉṉai",
+      "nativeText": "“Chennai.” The state capital and a practical urban anchor for beginner examples.",
+      "pronunciation": "ceṉṉai",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "“Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "“Chennai.” The state capital and a practical urban anchor for beginner examples.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "“Chennai is a big city.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சென்னை பெரிய நகரம்.",
+      "romanization": "ceṉṉai",
+      "nativeText": "Model use for \"சென்னை பெரிய நகரம்.\": “Chennai is a big city.”",
+      "pronunciation": "ceṉṉai",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "“Chennai is a big city.”",
+      "korean": "சென்னை பெரிய நகரம்.",
+      "english": "Model use for \"சென்னை பெரிய நகரம்.\": “Chennai is a big city.”",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "“Chennai is a big city.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "ceṉṉai",
+      "nativeText": "Usage focus for \"சென்னை\": Distinguish the nearby wording choices that make Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu sound precise rather than merely understandable.",
+      "pronunciation": "ceṉṉai",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "Notice what the form is doing here: “Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "Usage focus for \"சென்னை\": Distinguish the nearby wording choices that make Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu sound precise rather than merely understandable.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "Notice what the form is doing here: “Chennai is a big city.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "ceṉṉai",
+      "nativeText": "Contrast check for \"சென்னை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ceṉṉai",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "Contrast check for \"சென்னை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Chennai is a big city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "ceṉṉai",
+      "nativeText": "Recall \"சென்னை\" from memory, then explain what would change if a nearby alternative replaced it in \"சென்னை பெரிய நகரம்.\".",
+      "pronunciation": "ceṉṉai",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "Self-check against the model before moving on: “Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "Recall \"சென்னை\" from memory, then explain what would change if a nearby alternative replaced it in \"சென்னை பெரிய நகரம்.\".",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Chennai is a big city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "ceṉṉai",
+      "nativeText": "Repair \"சென்னை\" inside \"சென்னை பெரிய நகரம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu sound precise rather than merely understandable.",
+      "pronunciation": "ceṉṉai",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "Use the model as the repair target: “Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "Repair \"சென்னை\" inside \"சென்னை பெரிய நகரம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 5: தமிழ்நாட்டில் வாழ்க்கை — Life in Tamil Nadu sound precise rather than merely understandable.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "Use the model as the repair target: “Chennai is a big city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "ceṉṉai",
+      "nativeText": "Transfer \"சென்னை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சென்னை பெரிய நகரம்.\".",
+      "pronunciation": "ceṉṉai",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "Transfer \"சென்னை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சென்னை பெரிய நகரம்.\".",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Chennai is a big city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "ceṉṉai",
+      "nativeText": "Find one word or phrase that naturally travels with \"சென்னை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ceṉṉai",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "Find one word or phrase that naturally travels with \"சென்னை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Chennai is a big city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "ceṉṉai",
+      "nativeText": "Listen for \"சென்னை\" inside \"சென்னை பெரிய நகரம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ceṉṉai",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "Listen for \"சென்னை\" inside \"சென்னை பெரிய நகரம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Chennai is a big city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "ceṉṉai",
+      "nativeText": "Write \"சென்னை\" again without looking, then compare the exact written form against \"சென்னை பெரிய நகரம்.\" before moving on.",
+      "pronunciation": "ceṉṉai",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "Use the written model as the final correctness check: “Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "Write \"சென்னை\" again without looking, then compare the exact written form against \"சென்னை பெரிய நகரம்.\" before moving on.",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Chennai is a big city.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சென்னை",
+      "romanization": "ceṉṉai",
+      "nativeText": "Check whether \"சென்னை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Chennai is a big city.”",
+      "pronunciation": "ceṉṉai",
+      "exampleTarget": "சென்னை பெரிய நகரம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Chennai is a big city.”",
+      "korean": "சென்னை",
+      "english": "Check whether \"சென்னை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Chennai is a big city.”",
+      "example": "சென்னை பெரிய நகரம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Chennai is a big city.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சாப்பாடு",
+      "romanization": "cāppāḍu",
+      "nativeText": "“Meal / food.” It is a core everyday noun, especially in South Indian mealtime talk.",
+      "pronunciation": "cāppāḍu",
+      "exampleTarget": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleNative": "“I like Tamil food.”",
+      "korean": "சாப்பாடு",
+      "english": "“Meal / food.” It is a core everyday noun, especially in South Indian mealtime talk.",
+      "example": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleEnglish": "“I like Tamil food.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "romanization": "cāppāḍu",
+      "nativeText": "Model use for \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\": “I like Tamil food.”",
+      "pronunciation": "cāppāḍu",
+      "exampleTarget": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleNative": "“I like Tamil food.”",
+      "korean": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "english": "Model use for \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\": “I like Tamil food.”",
+      "example": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleEnglish": "“I like Tamil food.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சாப்பாடு",
+      "romanization": "cāppāḍu",
+      "nativeText": "Usage focus for \"சாப்பாடு\": “Meal / food.” It is a core everyday noun, especially in South Indian mealtime talk.",
+      "pronunciation": "cāppāḍu",
+      "exampleTarget": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleNative": "Notice what the form is doing here: “I like Tamil food.”",
+      "korean": "சாப்பாடு",
+      "english": "Usage focus for \"சாப்பாடு\": “Meal / food.” It is a core everyday noun, especially in South Indian mealtime talk.",
+      "example": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I like Tamil food.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சாப்பாடு",
+      "romanization": "cāppāḍu",
+      "nativeText": "Contrast check for \"சாப்பாடு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "cāppāḍu",
+      "exampleTarget": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like Tamil food.”",
+      "korean": "சாப்பாடு",
+      "english": "Contrast check for \"சாப்பாடு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like Tamil food.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சாப்பாடு",
+      "romanization": "cāppāḍu",
+      "nativeText": "Recall \"சாப்பாடு\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\".",
+      "pronunciation": "cāppāḍu",
+      "exampleTarget": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleNative": "Self-check against the model before moving on: “I like Tamil food.”",
+      "korean": "சாப்பாடு",
+      "english": "Recall \"சாப்பாடு\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\".",
+      "example": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like Tamil food.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சாப்பாடு",
+      "romanization": "cāppāḍu",
+      "nativeText": "Repair \"சாப்பாடு\" inside \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Meal / food.” It is a core everyday noun, especially in South Indian mealtime talk.",
+      "pronunciation": "cāppāḍu",
+      "exampleTarget": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleNative": "Use the model as the repair target: “I like Tamil food.”",
+      "korean": "சாப்பாடு",
+      "english": "Repair \"சாப்பாடு\" inside \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Meal / food.” It is a core everyday noun, especially in South Indian mealtime talk.",
+      "example": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleEnglish": "Use the model as the repair target: “I like Tamil food.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சாப்பாடு",
+      "romanization": "cāppāḍu",
+      "nativeText": "Transfer \"சாப்பாடு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\".",
+      "pronunciation": "cāppāḍu",
+      "exampleTarget": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like Tamil food.”",
+      "korean": "சாப்பாடு",
+      "english": "Transfer \"சாப்பாடு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\".",
+      "example": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like Tamil food.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சாப்பாடு",
+      "romanization": "cāppāḍu",
+      "nativeText": "Find one word or phrase that naturally travels with \"சாப்பாடு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "cāppāḍu",
+      "exampleTarget": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like Tamil food.”",
+      "korean": "சாப்பாடு",
+      "english": "Find one word or phrase that naturally travels with \"சாப்பாடு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like Tamil food.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சாப்பாடு",
+      "romanization": "cāppāḍu",
+      "nativeText": "Listen for \"சாப்பாடு\" inside \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "cāppāḍu",
+      "exampleTarget": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like Tamil food.”",
+      "korean": "சாப்பாடு",
+      "english": "Listen for \"சாப்பாடு\" inside \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like Tamil food.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சாப்பாடு",
+      "romanization": "cāppāḍu",
+      "nativeText": "Write \"சாப்பாடு\" again without looking, then compare the exact written form against \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\" before moving on.",
+      "pronunciation": "cāppāḍu",
+      "exampleTarget": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I like Tamil food.”",
+      "korean": "சாப்பாடு",
+      "english": "Write \"சாப்பாடு\" again without looking, then compare the exact written form against \"எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.\" before moving on.",
+      "example": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like Tamil food.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "சாப்பாடு",
+      "romanization": "cāppāḍu",
+      "nativeText": "Check whether \"சாப்பாடு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like Tamil food.”",
+      "pronunciation": "cāppāḍu",
+      "exampleTarget": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like Tamil food.”",
+      "korean": "சாப்பாடு",
+      "english": "Check whether \"சாப்பாடு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like Tamil food.”",
+      "example": "எனக்கு தமிழ் சாப்பாடு பிடிக்கும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like Tamil food.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "காலை காபி",
+      "romanization": "kālai kāpi",
+      "nativeText": "“Morning coffee.” Filter coffee is a real daily-life touchstone in many Tamil households.",
+      "pronunciation": "kālai kāpi",
+      "exampleTarget": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleNative": "“Morning coffee is very popular.”",
+      "korean": "காலை காபி",
+      "english": "“Morning coffee.” Filter coffee is a real daily-life touchstone in many Tamil households.",
+      "example": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleEnglish": "“Morning coffee is very popular.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "காலை காபி மிகவும் பிரபலமானது.",
+      "romanization": "kālai kāpi",
+      "nativeText": "Model use for \"காலை காபி மிகவும் பிரபலமானது.\": “Morning coffee is very popular.”",
+      "pronunciation": "kālai kāpi",
+      "exampleTarget": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleNative": "“Morning coffee is very popular.”",
+      "korean": "காலை காபி மிகவும் பிரபலமானது.",
+      "english": "Model use for \"காலை காபி மிகவும் பிரபலமானது.\": “Morning coffee is very popular.”",
+      "example": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleEnglish": "“Morning coffee is very popular.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "காலை காபி",
+      "romanization": "kālai kāpi",
+      "nativeText": "Usage focus for \"காலை காபி\": “Morning coffee.” Filter coffee is a real daily-life touchstone in many Tamil households.",
+      "pronunciation": "kālai kāpi",
+      "exampleTarget": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleNative": "Notice what the form is doing here: “Morning coffee is very popular.”",
+      "korean": "காலை காபி",
+      "english": "Usage focus for \"காலை காபி\": “Morning coffee.” Filter coffee is a real daily-life touchstone in many Tamil households.",
+      "example": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleEnglish": "Notice what the form is doing here: “Morning coffee is very popular.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "காலை காபி",
+      "romanization": "kālai kāpi",
+      "nativeText": "Contrast check for \"காலை காபி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kālai kāpi",
+      "exampleTarget": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Morning coffee is very popular.”",
+      "korean": "காலை காபி",
+      "english": "Contrast check for \"காலை காபி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Morning coffee is very popular.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "காலை காபி",
+      "romanization": "kālai kāpi",
+      "nativeText": "Recall \"காலை காபி\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை காபி மிகவும் பிரபலமானது.\".",
+      "pronunciation": "kālai kāpi",
+      "exampleTarget": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleNative": "Self-check against the model before moving on: “Morning coffee is very popular.”",
+      "korean": "காலை காபி",
+      "english": "Recall \"காலை காபி\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை காபி மிகவும் பிரபலமானது.\".",
+      "example": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleEnglish": "Self-check against the model before moving on: “Morning coffee is very popular.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "காலை காபி",
+      "romanization": "kālai kāpi",
+      "nativeText": "Repair \"காலை காபி\" inside \"காலை காபி மிகவும் பிரபலமானது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Morning coffee.” Filter coffee is a real daily-life touchstone in many Tamil households.",
+      "pronunciation": "kālai kāpi",
+      "exampleTarget": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleNative": "Use the model as the repair target: “Morning coffee is very popular.”",
+      "korean": "காலை காபி",
+      "english": "Repair \"காலை காபி\" inside \"காலை காபி மிகவும் பிரபலமானது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Morning coffee.” Filter coffee is a real daily-life touchstone in many Tamil households.",
+      "example": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleEnglish": "Use the model as the repair target: “Morning coffee is very popular.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "காலை காபி",
+      "romanization": "kālai kāpi",
+      "nativeText": "Transfer \"காலை காபி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை காபி மிகவும் பிரபலமானது.\".",
+      "pronunciation": "kālai kāpi",
+      "exampleTarget": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Morning coffee is very popular.”",
+      "korean": "காலை காபி",
+      "english": "Transfer \"காலை காபி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை காபி மிகவும் பிரபலமானது.\".",
+      "example": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Morning coffee is very popular.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "காலை காபி",
+      "romanization": "kālai kāpi",
+      "nativeText": "Find one word or phrase that naturally travels with \"காலை காபி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kālai kāpi",
+      "exampleTarget": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Morning coffee is very popular.”",
+      "korean": "காலை காபி",
+      "english": "Find one word or phrase that naturally travels with \"காலை காபி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Morning coffee is very popular.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "காலை காபி",
+      "romanization": "kālai kāpi",
+      "nativeText": "Listen for \"காலை காபி\" inside \"காலை காபி மிகவும் பிரபலமானது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kālai kāpi",
+      "exampleTarget": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Morning coffee is very popular.”",
+      "korean": "காலை காபி",
+      "english": "Listen for \"காலை காபி\" inside \"காலை காபி மிகவும் பிரபலமானது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Morning coffee is very popular.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "காலை காபி",
+      "romanization": "kālai kāpi",
+      "nativeText": "Write \"காலை காபி\" again without looking, then compare the exact written form against \"காலை காபி மிகவும் பிரபலமானது.\" before moving on.",
+      "pronunciation": "kālai kāpi",
+      "exampleTarget": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleNative": "Use the written model as the final correctness check: “Morning coffee is very popular.”",
+      "korean": "காலை காபி",
+      "english": "Write \"காலை காபி\" again without looking, then compare the exact written form against \"காலை காபி மிகவும் பிரபலமானது.\" before moving on.",
+      "example": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Morning coffee is very popular.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "காலை காபி",
+      "romanization": "kālai kāpi",
+      "nativeText": "Check whether \"காலை காபி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Morning coffee is very popular.”",
+      "pronunciation": "kālai kāpi",
+      "exampleTarget": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Morning coffee is very popular.”",
+      "korean": "காலை காபி",
+      "english": "Check whether \"காலை காபி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Morning coffee is very popular.”",
+      "example": "காலை காபி மிகவும் பிரபலமானது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Morning coffee is very popular.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "குடும்பம்",
+      "romanization": "kuṭumpam",
+      "nativeText": "“Family.” Family terms and respect markers matter heavily in Tamil interaction.",
+      "pronunciation": "kuṭumpam",
+      "exampleTarget": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleNative": "“My family is in Chennai.”",
+      "korean": "குடும்பம்",
+      "english": "“Family.” Family terms and respect markers matter heavily in Tamil interaction.",
+      "example": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleEnglish": "“My family is in Chennai.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "romanization": "kuṭumpam",
+      "nativeText": "Model use for \"என் குடும்பம் சென்னைலில் இருக்கிறது.\": “My family is in Chennai.”",
+      "pronunciation": "kuṭumpam",
+      "exampleTarget": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleNative": "“My family is in Chennai.”",
+      "korean": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "english": "Model use for \"என் குடும்பம் சென்னைலில் இருக்கிறது.\": “My family is in Chennai.”",
+      "example": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleEnglish": "“My family is in Chennai.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "குடும்பம்",
+      "romanization": "kuṭumpam",
+      "nativeText": "Usage focus for \"குடும்பம்\": “Family.” Family terms and respect markers matter heavily in Tamil interaction.",
+      "pronunciation": "kuṭumpam",
+      "exampleTarget": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleNative": "Notice what the form is doing here: “My family is in Chennai.”",
+      "korean": "குடும்பம்",
+      "english": "Usage focus for \"குடும்பம்\": “Family.” Family terms and respect markers matter heavily in Tamil interaction.",
+      "example": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleEnglish": "Notice what the form is doing here: “My family is in Chennai.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "குடும்பம்",
+      "romanization": "kuṭumpam",
+      "nativeText": "Contrast check for \"குடும்பம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kuṭumpam",
+      "exampleTarget": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My family is in Chennai.”",
+      "korean": "குடும்பம்",
+      "english": "Contrast check for \"குடும்பம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My family is in Chennai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "குடும்பம்",
+      "romanization": "kuṭumpam",
+      "nativeText": "Recall \"குடும்பம்\" from memory, then explain what would change if a nearby alternative replaced it in \"என் குடும்பம் சென்னைலில் இருக்கிறது.\".",
+      "pronunciation": "kuṭumpam",
+      "exampleTarget": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleNative": "Self-check against the model before moving on: “My family is in Chennai.”",
+      "korean": "குடும்பம்",
+      "english": "Recall \"குடும்பம்\" from memory, then explain what would change if a nearby alternative replaced it in \"என் குடும்பம் சென்னைலில் இருக்கிறது.\".",
+      "example": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleEnglish": "Self-check against the model before moving on: “My family is in Chennai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "குடும்பம்",
+      "romanization": "kuṭumpam",
+      "nativeText": "Repair \"குடும்பம்\" inside \"என் குடும்பம் சென்னைலில் இருக்கிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Family.” Family terms and respect markers matter heavily in Tamil interaction.",
+      "pronunciation": "kuṭumpam",
+      "exampleTarget": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleNative": "Use the model as the repair target: “My family is in Chennai.”",
+      "korean": "குடும்பம்",
+      "english": "Repair \"குடும்பம்\" inside \"என் குடும்பம் சென்னைலில் இருக்கிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Family.” Family terms and respect markers matter heavily in Tamil interaction.",
+      "example": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleEnglish": "Use the model as the repair target: “My family is in Chennai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "குடும்பம்",
+      "romanization": "kuṭumpam",
+      "nativeText": "Transfer \"குடும்பம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் குடும்பம் சென்னைலில் இருக்கிறது.\".",
+      "pronunciation": "kuṭumpam",
+      "exampleTarget": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My family is in Chennai.”",
+      "korean": "குடும்பம்",
+      "english": "Transfer \"குடும்பம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் குடும்பம் சென்னைலில் இருக்கிறது.\".",
+      "example": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My family is in Chennai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "குடும்பம்",
+      "romanization": "kuṭumpam",
+      "nativeText": "Find one word or phrase that naturally travels with \"குடும்பம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kuṭumpam",
+      "exampleTarget": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My family is in Chennai.”",
+      "korean": "குடும்பம்",
+      "english": "Find one word or phrase that naturally travels with \"குடும்பம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My family is in Chennai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "குடும்பம்",
+      "romanization": "kuṭumpam",
+      "nativeText": "Listen for \"குடும்பம்\" inside \"என் குடும்பம் சென்னைலில் இருக்கிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kuṭumpam",
+      "exampleTarget": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My family is in Chennai.”",
+      "korean": "குடும்பம்",
+      "english": "Listen for \"குடும்பம்\" inside \"என் குடும்பம் சென்னைலில் இருக்கிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My family is in Chennai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "குடும்பம்",
+      "romanization": "kuṭumpam",
+      "nativeText": "Write \"குடும்பம்\" again without looking, then compare the exact written form against \"என் குடும்பம் சென்னைலில் இருக்கிறது.\" before moving on.",
+      "pronunciation": "kuṭumpam",
+      "exampleTarget": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleNative": "Use the written model as the final correctness check: “My family is in Chennai.”",
+      "korean": "குடும்பம்",
+      "english": "Write \"குடும்பம்\" again without looking, then compare the exact written form against \"என் குடும்பம் சென்னைலில் இருக்கிறது.\" before moving on.",
+      "example": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My family is in Chennai.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "குடும்பம்",
+      "romanization": "kuṭumpam",
+      "nativeText": "Check whether \"குடும்பம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My family is in Chennai.”",
+      "pronunciation": "kuṭumpam",
+      "exampleTarget": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My family is in Chennai.”",
+      "korean": "குடும்பம்",
+      "english": "Check whether \"குடும்பம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My family is in Chennai.”",
+      "example": "என் குடும்பம் சென்னைலில் இருக்கிறது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My family is in Chennai.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "நீங்கள்",
+      "romanization": "nīṅkaḷ",
+      "nativeText": "Respectful “you.” The plural form also serves as the polite singular address.",
+      "pronunciation": "nīṅkaḷ",
+      "exampleTarget": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleNative": "“How are you?” polite.",
+      "korean": "நீங்கள்",
+      "english": "Respectful “you.” The plural form also serves as the polite singular address.",
+      "example": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleEnglish": "“How are you?” polite."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "romanization": "nīṅkaḷ",
+      "nativeText": "Model use for \"நீங்கள் எப்படி இருக்கிறீர்கள்?\": “How are you?” polite.",
+      "pronunciation": "nīṅkaḷ",
+      "exampleTarget": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleNative": "“How are you?” polite.",
+      "korean": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "english": "Model use for \"நீங்கள் எப்படி இருக்கிறீர்கள்?\": “How are you?” polite.",
+      "example": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleEnglish": "“How are you?” polite."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "நீங்கள்",
+      "romanization": "nīṅkaḷ",
+      "nativeText": "Usage focus for \"நீங்கள்\": Respectful “you.” The plural form also serves as the polite singular address.",
+      "pronunciation": "nīṅkaḷ",
+      "exampleTarget": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleNative": "Notice what the form is doing here: “How are you?” polite.",
+      "korean": "நீங்கள்",
+      "english": "Usage focus for \"நீங்கள்\": Respectful “you.” The plural form also serves as the polite singular address.",
+      "example": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleEnglish": "Notice what the form is doing here: “How are you?” polite."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "நீங்கள்",
+      "romanization": "nīṅkaḷ",
+      "nativeText": "Contrast check for \"நீங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nīṅkaḷ",
+      "exampleTarget": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How are you?” polite.",
+      "korean": "நீங்கள்",
+      "english": "Contrast check for \"நீங்கள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How are you?” polite."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "நீங்கள்",
+      "romanization": "nīṅkaḷ",
+      "nativeText": "Recall \"நீங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"நீங்கள் எப்படி இருக்கிறீர்கள்?\".",
+      "pronunciation": "nīṅkaḷ",
+      "exampleTarget": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleNative": "Self-check against the model before moving on: “How are you?” polite.",
+      "korean": "நீங்கள்",
+      "english": "Recall \"நீங்கள்\" from memory, then explain what would change if a nearby alternative replaced it in \"நீங்கள் எப்படி இருக்கிறீர்கள்?\".",
+      "example": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleEnglish": "Self-check against the model before moving on: “How are you?” polite."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "நீங்கள்",
+      "romanization": "nīṅkaḷ",
+      "nativeText": "Repair \"நீங்கள்\" inside \"நீங்கள் எப்படி இருக்கிறீர்கள்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Respectful “you.” The plural form also serves as the polite singular address.",
+      "pronunciation": "nīṅkaḷ",
+      "exampleTarget": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleNative": "Use the model as the repair target: “How are you?” polite.",
+      "korean": "நீங்கள்",
+      "english": "Repair \"நீங்கள்\" inside \"நீங்கள் எப்படி இருக்கிறீர்கள்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Respectful “you.” The plural form also serves as the polite singular address.",
+      "example": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleEnglish": "Use the model as the repair target: “How are you?” polite."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "நீங்கள்",
+      "romanization": "nīṅkaḷ",
+      "nativeText": "Transfer \"நீங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நீங்கள் எப்படி இருக்கிறீர்கள்?\".",
+      "pronunciation": "nīṅkaḷ",
+      "exampleTarget": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How are you?” polite.",
+      "korean": "நீங்கள்",
+      "english": "Transfer \"நீங்கள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நீங்கள் எப்படி இருக்கிறீர்கள்?\".",
+      "example": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How are you?” polite."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "நீங்கள்",
+      "romanization": "nīṅkaḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"நீங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nīṅkaḷ",
+      "exampleTarget": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How are you?” polite.",
+      "korean": "நீங்கள்",
+      "english": "Find one word or phrase that naturally travels with \"நீங்கள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How are you?” polite."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "நீங்கள்",
+      "romanization": "nīṅkaḷ",
+      "nativeText": "Listen for \"நீங்கள்\" inside \"நீங்கள் எப்படி இருக்கிறீர்கள்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nīṅkaḷ",
+      "exampleTarget": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How are you?” polite.",
+      "korean": "நீங்கள்",
+      "english": "Listen for \"நீங்கள்\" inside \"நீங்கள் எப்படி இருக்கிறீர்கள்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How are you?” polite."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "நீங்கள்",
+      "romanization": "nīṅkaḷ",
+      "nativeText": "Write \"நீங்கள்\" again without looking, then compare the exact written form against \"நீங்கள் எப்படி இருக்கிறீர்கள்?\" before moving on.",
+      "pronunciation": "nīṅkaḷ",
+      "exampleTarget": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleNative": "Use the written model as the final correctness check: “How are you?” polite.",
+      "korean": "நீங்கள்",
+      "english": "Write \"நீங்கள்\" again without looking, then compare the exact written form against \"நீங்கள் எப்படி இருக்கிறீர்கள்?\" before moving on.",
+      "example": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How are you?” polite."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "நீங்கள்",
+      "romanization": "nīṅkaḷ",
+      "nativeText": "Check whether \"நீங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How are you?” polite.",
+      "pronunciation": "nīṅkaḷ",
+      "exampleTarget": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How are you?” polite.",
+      "korean": "நீங்கள்",
+      "english": "Check whether \"நீங்கள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How are you?” polite.",
+      "example": "நீங்கள் எப்படி இருக்கிறீர்கள்?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How are you?” polite."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பேச்சுத்தமிழ்",
+      "romanization": "pēccuttamiḻ",
+      "nativeText": "“Spoken Tamil.” Learners need to know that everyday speech differs from formal written forms.",
+      "pronunciation": "pēccuttamiḻ",
+      "exampleTarget": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleNative": "“Spoken Tamil and written Tamil differ.”",
+      "korean": "பேச்சுத்தமிழ்",
+      "english": "“Spoken Tamil.” Learners need to know that everyday speech differs from formal written forms.",
+      "example": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleEnglish": "“Spoken Tamil and written Tamil differ.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "romanization": "pēccuttamiḻ",
+      "nativeText": "Model use for \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\": “Spoken Tamil and written Tamil differ.”",
+      "pronunciation": "pēccuttamiḻ",
+      "exampleTarget": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleNative": "“Spoken Tamil and written Tamil differ.”",
+      "korean": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "english": "Model use for \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\": “Spoken Tamil and written Tamil differ.”",
+      "example": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleEnglish": "“Spoken Tamil and written Tamil differ.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பேச்சுத்தமிழ்",
+      "romanization": "pēccuttamiḻ",
+      "nativeText": "Usage focus for \"பேச்சுத்தமிழ்\": “Spoken Tamil.” Learners need to know that everyday speech differs from formal written forms.",
+      "pronunciation": "pēccuttamiḻ",
+      "exampleTarget": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleNative": "Notice what the form is doing here: “Spoken Tamil and written Tamil differ.”",
+      "korean": "பேச்சுத்தமிழ்",
+      "english": "Usage focus for \"பேச்சுத்தமிழ்\": “Spoken Tamil.” Learners need to know that everyday speech differs from formal written forms.",
+      "example": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleEnglish": "Notice what the form is doing here: “Spoken Tamil and written Tamil differ.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பேச்சுத்தமிழ்",
+      "romanization": "pēccuttamiḻ",
+      "nativeText": "Contrast check for \"பேச்சுத்தமிழ்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pēccuttamiḻ",
+      "exampleTarget": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Spoken Tamil and written Tamil differ.”",
+      "korean": "பேச்சுத்தமிழ்",
+      "english": "Contrast check for \"பேச்சுத்தமிழ்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Spoken Tamil and written Tamil differ.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பேச்சுத்தமிழ்",
+      "romanization": "pēccuttamiḻ",
+      "nativeText": "Recall \"பேச்சுத்தமிழ்\" from memory, then explain what would change if a nearby alternative replaced it in \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\".",
+      "pronunciation": "pēccuttamiḻ",
+      "exampleTarget": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleNative": "Self-check against the model before moving on: “Spoken Tamil and written Tamil differ.”",
+      "korean": "பேச்சுத்தமிழ்",
+      "english": "Recall \"பேச்சுத்தமிழ்\" from memory, then explain what would change if a nearby alternative replaced it in \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\".",
+      "example": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Spoken Tamil and written Tamil differ.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பேச்சுத்தமிழ்",
+      "romanization": "pēccuttamiḻ",
+      "nativeText": "Repair \"பேச்சுத்தமிழ்\" inside \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Spoken Tamil.” Learners need to know that everyday speech differs from formal written forms.",
+      "pronunciation": "pēccuttamiḻ",
+      "exampleTarget": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleNative": "Use the model as the repair target: “Spoken Tamil and written Tamil differ.”",
+      "korean": "பேச்சுத்தமிழ்",
+      "english": "Repair \"பேச்சுத்தமிழ்\" inside \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Spoken Tamil.” Learners need to know that everyday speech differs from formal written forms.",
+      "example": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleEnglish": "Use the model as the repair target: “Spoken Tamil and written Tamil differ.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பேச்சுத்தமிழ்",
+      "romanization": "pēccuttamiḻ",
+      "nativeText": "Transfer \"பேச்சுத்தமிழ்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\".",
+      "pronunciation": "pēccuttamiḻ",
+      "exampleTarget": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Spoken Tamil and written Tamil differ.”",
+      "korean": "பேச்சுத்தமிழ்",
+      "english": "Transfer \"பேச்சுத்தமிழ்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\".",
+      "example": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Spoken Tamil and written Tamil differ.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பேச்சுத்தமிழ்",
+      "romanization": "pēccuttamiḻ",
+      "nativeText": "Find one word or phrase that naturally travels with \"பேச்சுத்தமிழ்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pēccuttamiḻ",
+      "exampleTarget": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Spoken Tamil and written Tamil differ.”",
+      "korean": "பேச்சுத்தமிழ்",
+      "english": "Find one word or phrase that naturally travels with \"பேச்சுத்தமிழ்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Spoken Tamil and written Tamil differ.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பேச்சுத்தமிழ்",
+      "romanization": "pēccuttamiḻ",
+      "nativeText": "Listen for \"பேச்சுத்தமிழ்\" inside \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pēccuttamiḻ",
+      "exampleTarget": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Spoken Tamil and written Tamil differ.”",
+      "korean": "பேச்சுத்தமிழ்",
+      "english": "Listen for \"பேச்சுத்தமிழ்\" inside \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Spoken Tamil and written Tamil differ.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பேச்சுத்தமிழ்",
+      "romanization": "pēccuttamiḻ",
+      "nativeText": "Write \"பேச்சுத்தமிழ்\" again without looking, then compare the exact written form against \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\" before moving on.",
+      "pronunciation": "pēccuttamiḻ",
+      "exampleTarget": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleNative": "Use the written model as the final correctness check: “Spoken Tamil and written Tamil differ.”",
+      "korean": "பேச்சுத்தமிழ்",
+      "english": "Write \"பேச்சுத்தமிழ்\" again without looking, then compare the exact written form against \"பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.\" before moving on.",
+      "example": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Spoken Tamil and written Tamil differ.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "பேச்சுத்தமிழ்",
+      "romanization": "pēccuttamiḻ",
+      "nativeText": "Check whether \"பேச்சுத்தமிழ்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Spoken Tamil and written Tamil differ.”",
+      "pronunciation": "pēccuttamiḻ",
+      "exampleTarget": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Spoken Tamil and written Tamil differ.”",
+      "korean": "பேச்சுத்தமிழ்",
+      "english": "Check whether \"பேச்சுத்தமிழ்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Spoken Tamil and written Tamil differ.”",
+      "example": "பேச்சுத்தமிழ் மற்றும் எழுத்துத்தமிழ் வேறுபடும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Spoken Tamil and written Tamil differ.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "மிகவும்",
+      "romanization": "mikavum",
+      "nativeText": "“Very.” A useful intensifier in descriptive sentences.",
+      "pronunciation": "mikavum",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "“This city is very busy.”",
+      "korean": "மிகவும்",
+      "english": "“Very.” A useful intensifier in descriptive sentences.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "“This city is very busy.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "romanization": "mikavum",
+      "nativeText": "Model use for \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\": “This city is very busy.”",
+      "pronunciation": "mikavum",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "“This city is very busy.”",
+      "korean": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "english": "Model use for \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\": “This city is very busy.”",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "“This city is very busy.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "மிகவும்",
+      "romanization": "mikavum",
+      "nativeText": "Usage focus for \"மிகவும்\": “Very.” A useful intensifier in descriptive sentences.",
+      "pronunciation": "mikavum",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "Notice what the form is doing here: “This city is very busy.”",
+      "korean": "மிகவும்",
+      "english": "Usage focus for \"மிகவும்\": “Very.” A useful intensifier in descriptive sentences.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "Notice what the form is doing here: “This city is very busy.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "மிகவும்",
+      "romanization": "mikavum",
+      "nativeText": "Contrast check for \"மிகவும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mikavum",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This city is very busy.”",
+      "korean": "மிகவும்",
+      "english": "Contrast check for \"மிகவும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This city is very busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "மிகவும்",
+      "romanization": "mikavum",
+      "nativeText": "Recall \"மிகவும்\" from memory, then explain what would change if a nearby alternative replaced it in \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\".",
+      "pronunciation": "mikavum",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "Self-check against the model before moving on: “This city is very busy.”",
+      "korean": "மிகவும்",
+      "english": "Recall \"மிகவும்\" from memory, then explain what would change if a nearby alternative replaced it in \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\".",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "Self-check against the model before moving on: “This city is very busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "மிகவும்",
+      "romanization": "mikavum",
+      "nativeText": "Repair \"மிகவும்\" inside \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Very.” A useful intensifier in descriptive sentences.",
+      "pronunciation": "mikavum",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "Use the model as the repair target: “This city is very busy.”",
+      "korean": "மிகவும்",
+      "english": "Repair \"மிகவும்\" inside \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Very.” A useful intensifier in descriptive sentences.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "Use the model as the repair target: “This city is very busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "மிகவும்",
+      "romanization": "mikavum",
+      "nativeText": "Transfer \"மிகவும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\".",
+      "pronunciation": "mikavum",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This city is very busy.”",
+      "korean": "மிகவும்",
+      "english": "Transfer \"மிகவும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\".",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This city is very busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "மிகவும்",
+      "romanization": "mikavum",
+      "nativeText": "Find one word or phrase that naturally travels with \"மிகவும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mikavum",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This city is very busy.”",
+      "korean": "மிகவும்",
+      "english": "Find one word or phrase that naturally travels with \"மிகவும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This city is very busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "மிகவும்",
+      "romanization": "mikavum",
+      "nativeText": "Listen for \"மிகவும்\" inside \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mikavum",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This city is very busy.”",
+      "korean": "மிகவும்",
+      "english": "Listen for \"மிகவும்\" inside \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This city is very busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "மிகவும்",
+      "romanization": "mikavum",
+      "nativeText": "Write \"மிகவும்\" again without looking, then compare the exact written form against \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" before moving on.",
+      "pronunciation": "mikavum",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "Use the written model as the final correctness check: “This city is very busy.”",
+      "korean": "மிகவும்",
+      "english": "Write \"மிகவும்\" again without looking, then compare the exact written form against \"இந்த நகரம் மிகவும் பிஸியாக உள்ளது.\" before moving on.",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This city is very busy.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit05lifeintamilnadu-vocabulary-1",
+        "ta-level1unit05lifeintamilnadu-vocabulary-2",
+        "ta-level1unit05lifeintamilnadu-grammar-1",
+        "ta-level1unit05lifeintamilnadu-grammar-2",
+        "ta-level1unit05lifeintamilnadu-reading",
+        "ta-level1unit05lifeintamilnadu-listening",
+        "ta-level1unit05lifeintamilnadu-writing",
+        "ta-level1unit05lifeintamilnadu-task"
+      ],
+      "targetText": "மிகவும்",
+      "romanization": "mikavum",
+      "nativeText": "Check whether \"மிகவும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This city is very busy.”",
+      "pronunciation": "mikavum",
+      "exampleTarget": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This city is very busy.”",
+      "korean": "மிகவும்",
+      "english": "Check whether \"மிகவும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This city is very busy.”",
+      "example": "இந்த நகரம் மிகவும் பிஸியாக உள்ளது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This city is very busy.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

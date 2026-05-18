@@ -148,6 +148,12 @@
   font-weight: 800;
 }
 
+.class-hero-meter-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .class-hero-meter {
   height: 10px;
   overflow: hidden;
@@ -160,6 +166,14 @@
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, var(--primary), var(--primary-gradient-end));
+  transition: width 0.4s ease;
+}
+
+.class-hero-meter-caption {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 .class-overview-strip {
@@ -231,7 +245,27 @@
 }
 
 .class-error {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
   color: var(--accent-red);
+}
+
+.class-error-retry {
+  padding: 8px 18px;
+  border: 1px solid var(--accent-red);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--accent-red);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.class-error-retry:hover,
+.class-error-retry:focus {
+  background: var(--accent-red);
+  color: #fff;
 }
 
 .class-track {

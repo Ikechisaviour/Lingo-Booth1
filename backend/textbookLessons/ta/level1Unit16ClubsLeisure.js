@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u16',
-  title: 'Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure',
-  category: 'leisure',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about hobbies, clubs, and what you do in your free time.',
-  vocabularyGoal: 'Use hobby words, club words, and frequency expressions.',
-  grammarGoal: 'Use verbal nouns with `பிடிக்கும்` and simple frequency adverbs.',
-  speakingGoal: 'Describe one hobby, ask about another person’s hobby, and recommend a club.',
-  task: 'Introduce your hobby and choose one campus club.',
-  expressionPractice: [
-    practice('stating-hobby', 'Stating hobby', 'Use one activity plus `பிடிக்கும்`.'),
-    practice('frequency', 'Talking frequency', 'Use `அடிக்கடி` or `சில நேரங்களில்`.'),
-    practice('recommending', 'Recommending club', 'Give one reason with `ஏனெனில்`.'),
+module.exports = {
+  "title": "Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure",
+  "category": "leisure",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit16clubsleisure-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about hobbies, clubs, and what you do in your free time."
+      ],
+      "task": "Introduce your hobby and choose one campus club."
+    },
+    {
+      "id": "ta-level1unit16clubsleisure-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit16clubsleisure-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit16clubsleisure-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit16clubsleisure-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about hobbies, clubs, and what you do in your free time."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit16clubsleisure-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit16clubsleisure-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit16clubsleisure-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit16clubsleisure-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit16clubsleisure-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit16clubsleisure-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Introduce your hobby and choose one campus club."
+      ],
+      "task": "Introduce your hobby and choose one campus club."
+    }
   ],
-  relatedPools: ['topic-leisure', 'topic-campus'],
-  items: [
-    item('பொழுதுபோக்கு', 'poḻutupōkku', '“Hobby / pastime.” A useful general noun.', 'என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.', '“My hobby is taking photos.”'),
-    item('கழகம்', 'kaḻakam', '“Club / association.” A common institutional noun.', 'நான் நாடகக் கழகத்தில் சேர்கிறேன்.', '“I am joining the drama club.”'),
-    item('படிப்பது பிடிக்கும்', 'paṭippatu piṭikkum', '“I like reading.” Verbal noun plus liking construction.', 'எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.', '“I like reading novels.”'),
-    item('கிதார் வாசிப்பது', 'kitār vācippatu', '“Playing guitar.”', 'அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.', '“She likes playing guitar.”'),
-    item('விளையாட்டு', 'viḷaiyāṭṭu', '“Sport / game.” Useful for campus leisure talk.', 'நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.', '“I play sports three times a week.”'),
-    item('அடிக்கடி', 'aṭikkaṭi', '“Often.” A common frequency word.', 'நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.', '“We often watch films.”'),
-    item('சில நேரங்களில்', 'cila nēraṅkaḷil', '“Sometimes.” Literally “at some times.”', 'சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.', '“Sometimes I cook at home.”'),
-    item('ஓய்வு நேரம்', 'ōyvu nēram', '“Free time.” A useful hobby-question frame.', 'ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?', '“What do you do in your free time?”'),
+  "expressionPractice": [
+    {
+      "id": "stating-hobby",
+      "label": "Stating hobby",
+      "goal": "Use one activity plus `பிடிக்கும்`."
+    },
+    {
+      "id": "frequency",
+      "label": "Talking frequency",
+      "goal": "Use `அடிக்கடி` or `சில நேரங்களில்`."
+    },
+    {
+      "id": "recommending",
+      "label": "Recommending club",
+      "goal": "Give one reason with `ஏனெனில்`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-leisure",
+    "topic-campus"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Talk about hobbies, clubs, and what you do in your free time.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Introduce your hobby and choose one campus club.",
+      "korean": "பாட இலக்கு",
+      "english": "Talk about hobbies, clubs, and what you do in your free time.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Introduce your hobby and choose one campus club."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\".",
+      "pronunciation": "",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\".",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "Use the key language of Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-2"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-grammar-1"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "",
+      "nativeText": "Talk about hobbies, clubs, and what you do in your free time.",
+      "pronunciation": "",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "Talk about hobbies, clubs, and what you do in your free time.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "Contrast the main pattern in Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Introduce your hobby and choose one campus club.",
+      "pronunciation": "",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "Introduce your hobby and choose one campus club.",
+      "korean": "இறுதி செயல்",
+      "english": "Introduce your hobby and choose one campus club.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "Introduce your hobby and choose one campus club."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I am joining the drama club.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" against the model.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I am joining the drama club.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" before reusing it elsewhere.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" as one thought.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" and move it into your own life.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"பொழுதுபோக்கு\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "பொழுதுபோக்கு",
+      "exampleNative": "“Hobby / pastime.” A useful general noun.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"பொழுதுபோக்கு\" before looking back.",
+      "example": "பொழுதுபோக்கு",
+      "exampleEnglish": "“Hobby / pastime.” A useful general noun."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" rather than restarting from a blank sentence.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" as the comparison line.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\".",
+      "pronunciation": "",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\".",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\".",
+      "pronunciation": "",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\".",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" one layer at a time.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" as the deciding example.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-culture",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\".",
+      "pronunciation": "",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\".",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "poḻutupōkku",
+      "nativeText": "“Hobby / pastime.” A useful general noun.",
+      "pronunciation": "poḻutupōkku",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "“Hobby / pastime.” A useful general noun.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "romanization": "poḻutupōkku",
+      "nativeText": "Model use for \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\": “My hobby is taking photos.”",
+      "pronunciation": "poḻutupōkku",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "“My hobby is taking photos.”",
+      "korean": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "english": "Model use for \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\": “My hobby is taking photos.”",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "“My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "poḻutupōkku",
+      "nativeText": "Usage focus for \"பொழுதுபோக்கு\": Use the key language of Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "poḻutupōkku",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "Notice what the form is doing here: “My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "Usage focus for \"பொழுதுபோக்கு\": Use the key language of Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "Notice what the form is doing here: “My hobby is taking photos.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "poḻutupōkku",
+      "nativeText": "Contrast check for \"பொழுதுபோக்கு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "poḻutupōkku",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "Contrast check for \"பொழுதுபோக்கு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "poḻutupōkku",
+      "nativeText": "Recall \"பொழுதுபோக்கு\" from memory, then explain what would change if a nearby alternative replaced it in \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\".",
+      "pronunciation": "poḻutupōkku",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "Self-check against the model before moving on: “My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "Recall \"பொழுதுபோக்கு\" from memory, then explain what would change if a nearby alternative replaced it in \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\".",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "Self-check against the model before moving on: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "poḻutupōkku",
+      "nativeText": "Repair \"பொழுதுபோக்கு\" inside \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "poḻutupōkku",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "Use the model as the repair target: “My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "Repair \"பொழுதுபோக்கு\" inside \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "Use the model as the repair target: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "poḻutupōkku",
+      "nativeText": "Transfer \"பொழுதுபோக்கு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\".",
+      "pronunciation": "poḻutupōkku",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "Transfer \"பொழுதுபோக்கு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\".",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "poḻutupōkku",
+      "nativeText": "Find one word or phrase that naturally travels with \"பொழுதுபோக்கு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "poḻutupōkku",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "Find one word or phrase that naturally travels with \"பொழுதுபோக்கு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "poḻutupōkku",
+      "nativeText": "Listen for \"பொழுதுபோக்கு\" inside \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "poḻutupōkku",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "Listen for \"பொழுதுபோக்கு\" inside \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "poḻutupōkku",
+      "nativeText": "Write \"பொழுதுபோக்கு\" again without looking, then compare the exact written form against \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" before moving on.",
+      "pronunciation": "poḻutupōkku",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "Use the written model as the final correctness check: “My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "Write \"பொழுதுபோக்கு\" again without looking, then compare the exact written form against \"என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.\" before moving on.",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My hobby is taking photos.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "பொழுதுபோக்கு",
+      "romanization": "poḻutupōkku",
+      "nativeText": "Check whether \"பொழுதுபோக்கு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”",
+      "pronunciation": "poḻutupōkku",
+      "exampleTarget": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”",
+      "korean": "பொழுதுபோக்கு",
+      "english": "Check whether \"பொழுதுபோக்கு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”",
+      "example": "என் பொழுதுபோக்கு புகைப்படம் எடுப்பது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My hobby is taking photos.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "kaḻakam",
+      "nativeText": "“Club / association.” A common institutional noun.",
+      "pronunciation": "kaḻakam",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "“Club / association.” A common institutional noun.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "romanization": "kaḻakam",
+      "nativeText": "Model use for \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\": “I am joining the drama club.”",
+      "pronunciation": "kaḻakam",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "“I am joining the drama club.”",
+      "korean": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "english": "Model use for \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\": “I am joining the drama club.”",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "“I am joining the drama club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "kaḻakam",
+      "nativeText": "Usage focus for \"கழகம்\": Distinguish the nearby wording choices that make Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "kaḻakam",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "Usage focus for \"கழகம்\": Distinguish the nearby wording choices that make Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I am joining the drama club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "kaḻakam",
+      "nativeText": "Contrast check for \"கழகம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kaḻakam",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "Contrast check for \"கழகம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "kaḻakam",
+      "nativeText": "Recall \"கழகம்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\".",
+      "pronunciation": "kaḻakam",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "Recall \"கழகம்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\".",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "kaḻakam",
+      "nativeText": "Repair \"கழகம்\" inside \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "kaḻakam",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "Use the model as the repair target: “I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "Repair \"கழகம்\" inside \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 16: கழகங்கள் மற்றும் ஓய்வு நேரம் — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "kaḻakam",
+      "nativeText": "Transfer \"கழகம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\".",
+      "pronunciation": "kaḻakam",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "Transfer \"கழகம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\".",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "kaḻakam",
+      "nativeText": "Find one word or phrase that naturally travels with \"கழகம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kaḻakam",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "Find one word or phrase that naturally travels with \"கழகம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "kaḻakam",
+      "nativeText": "Listen for \"கழகம்\" inside \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kaḻakam",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "Listen for \"கழகம்\" inside \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "kaḻakam",
+      "nativeText": "Write \"கழகம்\" again without looking, then compare the exact written form against \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" before moving on.",
+      "pronunciation": "kaḻakam",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "Write \"கழகம்\" again without looking, then compare the exact written form against \"நான் நாடகக் கழகத்தில் சேர்கிறேன்.\" before moving on.",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am joining the drama club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கழகம்",
+      "romanization": "kaḻakam",
+      "nativeText": "Check whether \"கழகம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am joining the drama club.”",
+      "pronunciation": "kaḻakam",
+      "exampleTarget": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am joining the drama club.”",
+      "korean": "கழகம்",
+      "english": "Check whether \"கழகம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am joining the drama club.”",
+      "example": "நான் நாடகக் கழகத்தில் சேர்கிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am joining the drama club.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "படிப்பது பிடிக்கும்",
+      "romanization": "paṭippatu piṭikkum",
+      "nativeText": "“I like reading.” Verbal noun plus liking construction.",
+      "pronunciation": "paṭippatu piṭikkum",
+      "exampleTarget": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleNative": "“I like reading novels.”",
+      "korean": "படிப்பது பிடிக்கும்",
+      "english": "“I like reading.” Verbal noun plus liking construction.",
+      "example": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleEnglish": "“I like reading novels.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "romanization": "paṭippatu piṭikkum",
+      "nativeText": "Model use for \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\": “I like reading novels.”",
+      "pronunciation": "paṭippatu piṭikkum",
+      "exampleTarget": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleNative": "“I like reading novels.”",
+      "korean": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "english": "Model use for \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\": “I like reading novels.”",
+      "example": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleEnglish": "“I like reading novels.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "படிப்பது பிடிக்கும்",
+      "romanization": "paṭippatu piṭikkum",
+      "nativeText": "Usage focus for \"படிப்பது பிடிக்கும்\": “I like reading.” Verbal noun plus liking construction.",
+      "pronunciation": "paṭippatu piṭikkum",
+      "exampleTarget": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleNative": "Notice what the form is doing here: “I like reading novels.”",
+      "korean": "படிப்பது பிடிக்கும்",
+      "english": "Usage focus for \"படிப்பது பிடிக்கும்\": “I like reading.” Verbal noun plus liking construction.",
+      "example": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I like reading novels.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "படிப்பது பிடிக்கும்",
+      "romanization": "paṭippatu piṭikkum",
+      "nativeText": "Contrast check for \"படிப்பது பிடிக்கும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "paṭippatu piṭikkum",
+      "exampleTarget": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like reading novels.”",
+      "korean": "படிப்பது பிடிக்கும்",
+      "english": "Contrast check for \"படிப்பது பிடிக்கும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "படிப்பது பிடிக்கும்",
+      "romanization": "paṭippatu piṭikkum",
+      "nativeText": "Recall \"படிப்பது பிடிக்கும்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\".",
+      "pronunciation": "paṭippatu piṭikkum",
+      "exampleTarget": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleNative": "Self-check against the model before moving on: “I like reading novels.”",
+      "korean": "படிப்பது பிடிக்கும்",
+      "english": "Recall \"படிப்பது பிடிக்கும்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\".",
+      "example": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "படிப்பது பிடிக்கும்",
+      "romanization": "paṭippatu piṭikkum",
+      "nativeText": "Repair \"படிப்பது பிடிக்கும்\" inside \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like reading.” Verbal noun plus liking construction.",
+      "pronunciation": "paṭippatu piṭikkum",
+      "exampleTarget": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleNative": "Use the model as the repair target: “I like reading novels.”",
+      "korean": "படிப்பது பிடிக்கும்",
+      "english": "Repair \"படிப்பது பிடிக்கும்\" inside \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like reading.” Verbal noun plus liking construction.",
+      "example": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleEnglish": "Use the model as the repair target: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "படிப்பது பிடிக்கும்",
+      "romanization": "paṭippatu piṭikkum",
+      "nativeText": "Transfer \"படிப்பது பிடிக்கும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\".",
+      "pronunciation": "paṭippatu piṭikkum",
+      "exampleTarget": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like reading novels.”",
+      "korean": "படிப்பது பிடிக்கும்",
+      "english": "Transfer \"படிப்பது பிடிக்கும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\".",
+      "example": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "படிப்பது பிடிக்கும்",
+      "romanization": "paṭippatu piṭikkum",
+      "nativeText": "Find one word or phrase that naturally travels with \"படிப்பது பிடிக்கும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "paṭippatu piṭikkum",
+      "exampleTarget": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like reading novels.”",
+      "korean": "படிப்பது பிடிக்கும்",
+      "english": "Find one word or phrase that naturally travels with \"படிப்பது பிடிக்கும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "படிப்பது பிடிக்கும்",
+      "romanization": "paṭippatu piṭikkum",
+      "nativeText": "Listen for \"படிப்பது பிடிக்கும்\" inside \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "paṭippatu piṭikkum",
+      "exampleTarget": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like reading novels.”",
+      "korean": "படிப்பது பிடிக்கும்",
+      "english": "Listen for \"படிப்பது பிடிக்கும்\" inside \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "படிப்பது பிடிக்கும்",
+      "romanization": "paṭippatu piṭikkum",
+      "nativeText": "Write \"படிப்பது பிடிக்கும்\" again without looking, then compare the exact written form against \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\" before moving on.",
+      "pronunciation": "paṭippatu piṭikkum",
+      "exampleTarget": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I like reading novels.”",
+      "korean": "படிப்பது பிடிக்கும்",
+      "english": "Write \"படிப்பது பிடிக்கும்\" again without looking, then compare the exact written form against \"எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.\" before moving on.",
+      "example": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "படிப்பது பிடிக்கும்",
+      "romanization": "paṭippatu piṭikkum",
+      "nativeText": "Check whether \"படிப்பது பிடிக்கும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like reading novels.”",
+      "pronunciation": "paṭippatu piṭikkum",
+      "exampleTarget": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like reading novels.”",
+      "korean": "படிப்பது பிடிக்கும்",
+      "english": "Check whether \"படிப்பது பிடிக்கும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like reading novels.”",
+      "example": "எனக்கு நாவல்கள் படிப்பது பிடிக்கும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like reading novels.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கிதார் வாசிப்பது",
+      "romanization": "kitār vācippatu",
+      "nativeText": "“Playing guitar.”",
+      "pronunciation": "kitār vācippatu",
+      "exampleTarget": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleNative": "“She likes playing guitar.”",
+      "korean": "கிதார் வாசிப்பது",
+      "english": "“Playing guitar.”",
+      "example": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleEnglish": "“She likes playing guitar.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "romanization": "kitār vācippatu",
+      "nativeText": "Model use for \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\": “She likes playing guitar.”",
+      "pronunciation": "kitār vācippatu",
+      "exampleTarget": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleNative": "“She likes playing guitar.”",
+      "korean": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "english": "Model use for \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\": “She likes playing guitar.”",
+      "example": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleEnglish": "“She likes playing guitar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கிதார் வாசிப்பது",
+      "romanization": "kitār vācippatu",
+      "nativeText": "Usage focus for \"கிதார் வாசிப்பது\": “Playing guitar.”",
+      "pronunciation": "kitār vācippatu",
+      "exampleTarget": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleNative": "Notice what the form is doing here: “She likes playing guitar.”",
+      "korean": "கிதார் வாசிப்பது",
+      "english": "Usage focus for \"கிதார் வாசிப்பது\": “Playing guitar.”",
+      "example": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleEnglish": "Notice what the form is doing here: “She likes playing guitar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கிதார் வாசிப்பது",
+      "romanization": "kitār vācippatu",
+      "nativeText": "Contrast check for \"கிதார் வாசிப்பது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kitār vācippatu",
+      "exampleTarget": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “She likes playing guitar.”",
+      "korean": "கிதார் வாசிப்பது",
+      "english": "Contrast check for \"கிதார் வாசிப்பது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கிதார் வாசிப்பது",
+      "romanization": "kitār vācippatu",
+      "nativeText": "Recall \"கிதார் வாசிப்பது\" from memory, then explain what would change if a nearby alternative replaced it in \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\".",
+      "pronunciation": "kitār vācippatu",
+      "exampleTarget": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleNative": "Self-check against the model before moving on: “She likes playing guitar.”",
+      "korean": "கிதார் வாசிப்பது",
+      "english": "Recall \"கிதார் வாசிப்பது\" from memory, then explain what would change if a nearby alternative replaced it in \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\".",
+      "example": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கிதார் வாசிப்பது",
+      "romanization": "kitār vācippatu",
+      "nativeText": "Repair \"கிதார் வாசிப்பது\" inside \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Playing guitar.”",
+      "pronunciation": "kitār vācippatu",
+      "exampleTarget": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleNative": "Use the model as the repair target: “She likes playing guitar.”",
+      "korean": "கிதார் வாசிப்பது",
+      "english": "Repair \"கிதார் வாசிப்பது\" inside \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Playing guitar.”",
+      "example": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleEnglish": "Use the model as the repair target: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கிதார் வாசிப்பது",
+      "romanization": "kitār vācippatu",
+      "nativeText": "Transfer \"கிதார் வாசிப்பது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\".",
+      "pronunciation": "kitār vācippatu",
+      "exampleTarget": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “She likes playing guitar.”",
+      "korean": "கிதார் வாசிப்பது",
+      "english": "Transfer \"கிதார் வாசிப்பது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\".",
+      "example": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கிதார் வாசிப்பது",
+      "romanization": "kitār vācippatu",
+      "nativeText": "Find one word or phrase that naturally travels with \"கிதார் வாசிப்பது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kitār vācippatu",
+      "exampleTarget": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “She likes playing guitar.”",
+      "korean": "கிதார் வாசிப்பது",
+      "english": "Find one word or phrase that naturally travels with \"கிதார் வாசிப்பது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கிதார் வாசிப்பது",
+      "romanization": "kitār vācippatu",
+      "nativeText": "Listen for \"கிதார் வாசிப்பது\" inside \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kitār vācippatu",
+      "exampleTarget": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “She likes playing guitar.”",
+      "korean": "கிதார் வாசிப்பது",
+      "english": "Listen for \"கிதார் வாசிப்பது\" inside \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கிதார் வாசிப்பது",
+      "romanization": "kitār vācippatu",
+      "nativeText": "Write \"கிதார் வாசிப்பது\" again without looking, then compare the exact written form against \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\" before moving on.",
+      "pronunciation": "kitār vācippatu",
+      "exampleTarget": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleNative": "Use the written model as the final correctness check: “She likes playing guitar.”",
+      "korean": "கிதார் வாசிப்பது",
+      "english": "Write \"கிதார் வாசிப்பது\" again without looking, then compare the exact written form against \"அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.\" before moving on.",
+      "example": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “She likes playing guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "கிதார் வாசிப்பது",
+      "romanization": "kitār vācippatu",
+      "nativeText": "Check whether \"கிதார் வாசிப்பது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”",
+      "pronunciation": "kitār vācippatu",
+      "exampleTarget": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”",
+      "korean": "கிதார் வாசிப்பது",
+      "english": "Check whether \"கிதார் வாசிப்பது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”",
+      "example": "அவளுக்கு கிதார் வாசிப்பது பிடிக்கும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “She likes playing guitar.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "விளையாட்டு",
+      "romanization": "viḷaiyāṭṭu",
+      "nativeText": "“Sport / game.” Useful for campus leisure talk.",
+      "pronunciation": "viḷaiyāṭṭu",
+      "exampleTarget": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleNative": "“I play sports three times a week.”",
+      "korean": "விளையாட்டு",
+      "english": "“Sport / game.” Useful for campus leisure talk.",
+      "example": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleEnglish": "“I play sports three times a week.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "romanization": "viḷaiyāṭṭu",
+      "nativeText": "Model use for \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\": “I play sports three times a week.”",
+      "pronunciation": "viḷaiyāṭṭu",
+      "exampleTarget": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleNative": "“I play sports three times a week.”",
+      "korean": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "english": "Model use for \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\": “I play sports three times a week.”",
+      "example": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleEnglish": "“I play sports three times a week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "விளையாட்டு",
+      "romanization": "viḷaiyāṭṭu",
+      "nativeText": "Usage focus for \"விளையாட்டு\": “Sport / game.” Useful for campus leisure talk.",
+      "pronunciation": "viḷaiyāṭṭu",
+      "exampleTarget": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “I play sports three times a week.”",
+      "korean": "விளையாட்டு",
+      "english": "Usage focus for \"விளையாட்டு\": “Sport / game.” Useful for campus leisure talk.",
+      "example": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I play sports three times a week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "விளையாட்டு",
+      "romanization": "viḷaiyāṭṭu",
+      "nativeText": "Contrast check for \"விளையாட்டு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "viḷaiyāṭṭu",
+      "exampleTarget": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I play sports three times a week.”",
+      "korean": "விளையாட்டு",
+      "english": "Contrast check for \"விளையாட்டு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I play sports three times a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "விளையாட்டு",
+      "romanization": "viḷaiyāṭṭu",
+      "nativeText": "Recall \"விளையாட்டு\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\".",
+      "pronunciation": "viḷaiyāṭṭu",
+      "exampleTarget": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I play sports three times a week.”",
+      "korean": "விளையாட்டு",
+      "english": "Recall \"விளையாட்டு\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\".",
+      "example": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I play sports three times a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "விளையாட்டு",
+      "romanization": "viḷaiyāṭṭu",
+      "nativeText": "Repair \"விளையாட்டு\" inside \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sport / game.” Useful for campus leisure talk.",
+      "pronunciation": "viḷaiyāṭṭu",
+      "exampleTarget": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleNative": "Use the model as the repair target: “I play sports three times a week.”",
+      "korean": "விளையாட்டு",
+      "english": "Repair \"விளையாட்டு\" inside \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sport / game.” Useful for campus leisure talk.",
+      "example": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I play sports three times a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "விளையாட்டு",
+      "romanization": "viḷaiyāṭṭu",
+      "nativeText": "Transfer \"விளையாட்டு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\".",
+      "pronunciation": "viḷaiyāṭṭu",
+      "exampleTarget": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I play sports three times a week.”",
+      "korean": "விளையாட்டு",
+      "english": "Transfer \"விளையாட்டு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\".",
+      "example": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I play sports three times a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "விளையாட்டு",
+      "romanization": "viḷaiyāṭṭu",
+      "nativeText": "Find one word or phrase that naturally travels with \"விளையாட்டு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "viḷaiyāṭṭu",
+      "exampleTarget": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I play sports three times a week.”",
+      "korean": "விளையாட்டு",
+      "english": "Find one word or phrase that naturally travels with \"விளையாட்டு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I play sports three times a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "விளையாட்டு",
+      "romanization": "viḷaiyāṭṭu",
+      "nativeText": "Listen for \"விளையாட்டு\" inside \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "viḷaiyāṭṭu",
+      "exampleTarget": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I play sports three times a week.”",
+      "korean": "விளையாட்டு",
+      "english": "Listen for \"விளையாட்டு\" inside \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I play sports three times a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "விளையாட்டு",
+      "romanization": "viḷaiyāṭṭu",
+      "nativeText": "Write \"விளையாட்டு\" again without looking, then compare the exact written form against \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\" before moving on.",
+      "pronunciation": "viḷaiyāṭṭu",
+      "exampleTarget": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I play sports three times a week.”",
+      "korean": "விளையாட்டு",
+      "english": "Write \"விளையாட்டு\" again without looking, then compare the exact written form against \"நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.\" before moving on.",
+      "example": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I play sports three times a week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "விளையாட்டு",
+      "romanization": "viḷaiyāṭṭu",
+      "nativeText": "Check whether \"விளையாட்டு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I play sports three times a week.”",
+      "pronunciation": "viḷaiyāṭṭu",
+      "exampleTarget": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I play sports three times a week.”",
+      "korean": "விளையாட்டு",
+      "english": "Check whether \"விளையாட்டு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I play sports three times a week.”",
+      "example": "நான் வாரத்திற்கு மூன்று முறை விளையாடுகிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I play sports three times a week.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "அடிக்கடி",
+      "romanization": "aṭikkaṭi",
+      "nativeText": "“Often.” A common frequency word.",
+      "pronunciation": "aṭikkaṭi",
+      "exampleTarget": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleNative": "“We often watch films.”",
+      "korean": "அடிக்கடி",
+      "english": "“Often.” A common frequency word.",
+      "example": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleEnglish": "“We often watch films.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "romanization": "aṭikkaṭi",
+      "nativeText": "Model use for \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\": “We often watch films.”",
+      "pronunciation": "aṭikkaṭi",
+      "exampleTarget": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleNative": "“We often watch films.”",
+      "korean": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "english": "Model use for \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\": “We often watch films.”",
+      "example": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleEnglish": "“We often watch films.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "அடிக்கடி",
+      "romanization": "aṭikkaṭi",
+      "nativeText": "Usage focus for \"அடிக்கடி\": “Often.” A common frequency word.",
+      "pronunciation": "aṭikkaṭi",
+      "exampleTarget": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleNative": "Notice what the form is doing here: “We often watch films.”",
+      "korean": "அடிக்கடி",
+      "english": "Usage focus for \"அடிக்கடி\": “Often.” A common frequency word.",
+      "example": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleEnglish": "Notice what the form is doing here: “We often watch films.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "அடிக்கடி",
+      "romanization": "aṭikkaṭi",
+      "nativeText": "Contrast check for \"அடிக்கடி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "aṭikkaṭi",
+      "exampleTarget": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We often watch films.”",
+      "korean": "அடிக்கடி",
+      "english": "Contrast check for \"அடிக்கடி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "அடிக்கடி",
+      "romanization": "aṭikkaṭi",
+      "nativeText": "Recall \"அடிக்கடி\" from memory, then explain what would change if a nearby alternative replaced it in \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\".",
+      "pronunciation": "aṭikkaṭi",
+      "exampleTarget": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleNative": "Self-check against the model before moving on: “We often watch films.”",
+      "korean": "அடிக்கடி",
+      "english": "Recall \"அடிக்கடி\" from memory, then explain what would change if a nearby alternative replaced it in \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\".",
+      "example": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "அடிக்கடி",
+      "romanization": "aṭikkaṭi",
+      "nativeText": "Repair \"அடிக்கடி\" inside \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Often.” A common frequency word.",
+      "pronunciation": "aṭikkaṭi",
+      "exampleTarget": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleNative": "Use the model as the repair target: “We often watch films.”",
+      "korean": "அடிக்கடி",
+      "english": "Repair \"அடிக்கடி\" inside \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Often.” A common frequency word.",
+      "example": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleEnglish": "Use the model as the repair target: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "அடிக்கடி",
+      "romanization": "aṭikkaṭi",
+      "nativeText": "Transfer \"அடிக்கடி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\".",
+      "pronunciation": "aṭikkaṭi",
+      "exampleTarget": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “We often watch films.”",
+      "korean": "அடிக்கடி",
+      "english": "Transfer \"அடிக்கடி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\".",
+      "example": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "அடிக்கடி",
+      "romanization": "aṭikkaṭi",
+      "nativeText": "Find one word or phrase that naturally travels with \"அடிக்கடி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "aṭikkaṭi",
+      "exampleTarget": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “We often watch films.”",
+      "korean": "அடிக்கடி",
+      "english": "Find one word or phrase that naturally travels with \"அடிக்கடி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "அடிக்கடி",
+      "romanization": "aṭikkaṭi",
+      "nativeText": "Listen for \"அடிக்கடி\" inside \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "aṭikkaṭi",
+      "exampleTarget": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We often watch films.”",
+      "korean": "அடிக்கடி",
+      "english": "Listen for \"அடிக்கடி\" inside \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "அடிக்கடி",
+      "romanization": "aṭikkaṭi",
+      "nativeText": "Write \"அடிக்கடி\" again without looking, then compare the exact written form against \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\" before moving on.",
+      "pronunciation": "aṭikkaṭi",
+      "exampleTarget": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleNative": "Use the written model as the final correctness check: “We often watch films.”",
+      "korean": "அடிக்கடி",
+      "english": "Write \"அடிக்கடி\" again without looking, then compare the exact written form against \"நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.\" before moving on.",
+      "example": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "அடிக்கடி",
+      "romanization": "aṭikkaṭi",
+      "nativeText": "Check whether \"அடிக்கடி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We often watch films.”",
+      "pronunciation": "aṭikkaṭi",
+      "exampleTarget": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “We often watch films.”",
+      "korean": "அடிக்கடி",
+      "english": "Check whether \"அடிக்கடி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We often watch films.”",
+      "example": "நாங்கள் அடிக்கடி படம் பார்க்கிறோம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “We often watch films.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சில நேரங்களில்",
+      "romanization": "cila nēraṅkaḷil",
+      "nativeText": "“Sometimes.” Literally “at some times.”",
+      "pronunciation": "cila nēraṅkaḷil",
+      "exampleTarget": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleNative": "“Sometimes I cook at home.”",
+      "korean": "சில நேரங்களில்",
+      "english": "“Sometimes.” Literally “at some times.”",
+      "example": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleEnglish": "“Sometimes I cook at home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "romanization": "cila nēraṅkaḷil",
+      "nativeText": "Model use for \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\": “Sometimes I cook at home.”",
+      "pronunciation": "cila nēraṅkaḷil",
+      "exampleTarget": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleNative": "“Sometimes I cook at home.”",
+      "korean": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "english": "Model use for \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\": “Sometimes I cook at home.”",
+      "example": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleEnglish": "“Sometimes I cook at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சில நேரங்களில்",
+      "romanization": "cila nēraṅkaḷil",
+      "nativeText": "Usage focus for \"சில நேரங்களில்\": “Sometimes.” Literally “at some times.”",
+      "pronunciation": "cila nēraṅkaḷil",
+      "exampleTarget": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “Sometimes I cook at home.”",
+      "korean": "சில நேரங்களில்",
+      "english": "Usage focus for \"சில நேரங்களில்\": “Sometimes.” Literally “at some times.”",
+      "example": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சில நேரங்களில்",
+      "romanization": "cila nēraṅkaḷil",
+      "nativeText": "Contrast check for \"சில நேரங்களில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "cila nēraṅkaḷil",
+      "exampleTarget": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sometimes I cook at home.”",
+      "korean": "சில நேரங்களில்",
+      "english": "Contrast check for \"சில நேரங்களில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சில நேரங்களில்",
+      "romanization": "cila nēraṅkaḷil",
+      "nativeText": "Recall \"சில நேரங்களில்\" from memory, then explain what would change if a nearby alternative replaced it in \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\".",
+      "pronunciation": "cila nēraṅkaḷil",
+      "exampleTarget": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “Sometimes I cook at home.”",
+      "korean": "சில நேரங்களில்",
+      "english": "Recall \"சில நேரங்களில்\" from memory, then explain what would change if a nearby alternative replaced it in \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\".",
+      "example": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சில நேரங்களில்",
+      "romanization": "cila nēraṅkaḷil",
+      "nativeText": "Repair \"சில நேரங்களில்\" inside \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sometimes.” Literally “at some times.”",
+      "pronunciation": "cila nēraṅkaḷil",
+      "exampleTarget": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleNative": "Use the model as the repair target: “Sometimes I cook at home.”",
+      "korean": "சில நேரங்களில்",
+      "english": "Repair \"சில நேரங்களில்\" inside \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sometimes.” Literally “at some times.”",
+      "example": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சில நேரங்களில்",
+      "romanization": "cila nēraṅkaḷil",
+      "nativeText": "Transfer \"சில நேரங்களில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\".",
+      "pronunciation": "cila nēraṅkaḷil",
+      "exampleTarget": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sometimes I cook at home.”",
+      "korean": "சில நேரங்களில்",
+      "english": "Transfer \"சில நேரங்களில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\".",
+      "example": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சில நேரங்களில்",
+      "romanization": "cila nēraṅkaḷil",
+      "nativeText": "Find one word or phrase that naturally travels with \"சில நேரங்களில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "cila nēraṅkaḷil",
+      "exampleTarget": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Sometimes I cook at home.”",
+      "korean": "சில நேரங்களில்",
+      "english": "Find one word or phrase that naturally travels with \"சில நேரங்களில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சில நேரங்களில்",
+      "romanization": "cila nēraṅkaḷil",
+      "nativeText": "Listen for \"சில நேரங்களில்\" inside \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "cila nēraṅkaḷil",
+      "exampleTarget": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sometimes I cook at home.”",
+      "korean": "சில நேரங்களில்",
+      "english": "Listen for \"சில நேரங்களில்\" inside \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சில நேரங்களில்",
+      "romanization": "cila nēraṅkaḷil",
+      "nativeText": "Write \"சில நேரங்களில்\" again without looking, then compare the exact written form against \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\" before moving on.",
+      "pronunciation": "cila nēraṅkaḷil",
+      "exampleTarget": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “Sometimes I cook at home.”",
+      "korean": "சில நேரங்களில்",
+      "english": "Write \"சில நேரங்களில்\" again without looking, then compare the exact written form against \"சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.\" before moving on.",
+      "example": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "சில நேரங்களில்",
+      "romanization": "cila nēraṅkaḷil",
+      "nativeText": "Check whether \"சில நேரங்களில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”",
+      "pronunciation": "cila nēraṅkaḷil",
+      "exampleTarget": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”",
+      "korean": "சில நேரங்களில்",
+      "english": "Check whether \"சில நேரங்களில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”",
+      "example": "சில நேரங்களில் நான் வீட்டில் சமைக்கிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ஓய்வு நேரம்",
+      "romanization": "ōyvu nēram",
+      "nativeText": "“Free time.” A useful hobby-question frame.",
+      "pronunciation": "ōyvu nēram",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "ஓய்வு நேரம்",
+      "english": "“Free time.” A useful hobby-question frame.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "romanization": "ōyvu nēram",
+      "nativeText": "Model use for \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\": “What do you do in your free time?”",
+      "pronunciation": "ōyvu nēram",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "english": "Model use for \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\": “What do you do in your free time?”",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ஓய்வு நேரம்",
+      "romanization": "ōyvu nēram",
+      "nativeText": "Usage focus for \"ஓய்வு நேரம்\": “Free time.” A useful hobby-question frame.",
+      "pronunciation": "ōyvu nēram",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "Notice what the form is doing here: “What do you do in your free time?”",
+      "korean": "ஓய்வு நேரம்",
+      "english": "Usage focus for \"ஓய்வு நேரம்\": “Free time.” A useful hobby-question frame.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "Notice what the form is doing here: “What do you do in your free time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ஓய்வு நேரம்",
+      "romanization": "ōyvu nēram",
+      "nativeText": "Contrast check for \"ஓய்வு நேரம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ōyvu nēram",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What do you do in your free time?”",
+      "korean": "ஓய்வு நேரம்",
+      "english": "Contrast check for \"ஓய்வு நேரம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ஓய்வு நேரம்",
+      "romanization": "ōyvu nēram",
+      "nativeText": "Recall \"ஓய்வு நேரம்\" from memory, then explain what would change if a nearby alternative replaced it in \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\".",
+      "pronunciation": "ōyvu nēram",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "Self-check against the model before moving on: “What do you do in your free time?”",
+      "korean": "ஓய்வு நேரம்",
+      "english": "Recall \"ஓய்வு நேரம்\" from memory, then explain what would change if a nearby alternative replaced it in \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\".",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "Self-check against the model before moving on: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ஓய்வு நேரம்",
+      "romanization": "ōyvu nēram",
+      "nativeText": "Repair \"ஓய்வு நேரம்\" inside \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Free time.” A useful hobby-question frame.",
+      "pronunciation": "ōyvu nēram",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "Use the model as the repair target: “What do you do in your free time?”",
+      "korean": "ஓய்வு நேரம்",
+      "english": "Repair \"ஓய்வு நேரம்\" inside \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Free time.” A useful hobby-question frame.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "Use the model as the repair target: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ஓய்வு நேரம்",
+      "romanization": "ōyvu nēram",
+      "nativeText": "Transfer \"ஓய்வு நேரம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\".",
+      "pronunciation": "ōyvu nēram",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What do you do in your free time?”",
+      "korean": "ஓய்வு நேரம்",
+      "english": "Transfer \"ஓய்வு நேரம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\".",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ஓய்வு நேரம்",
+      "romanization": "ōyvu nēram",
+      "nativeText": "Find one word or phrase that naturally travels with \"ஓய்வு நேரம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ōyvu nēram",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What do you do in your free time?”",
+      "korean": "ஓய்வு நேரம்",
+      "english": "Find one word or phrase that naturally travels with \"ஓய்வு நேரம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ஓய்வு நேரம்",
+      "romanization": "ōyvu nēram",
+      "nativeText": "Listen for \"ஓய்வு நேரம்\" inside \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ōyvu nēram",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What do you do in your free time?”",
+      "korean": "ஓய்வு நேரம்",
+      "english": "Listen for \"ஓய்வு நேரம்\" inside \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ஓய்வு நேரம்",
+      "romanization": "ōyvu nēram",
+      "nativeText": "Write \"ஓய்வு நேரம்\" again without looking, then compare the exact written form against \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" before moving on.",
+      "pronunciation": "ōyvu nēram",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "Use the written model as the final correctness check: “What do you do in your free time?”",
+      "korean": "ஓய்வு நேரம்",
+      "english": "Write \"ஓய்வு நேரம்\" again without looking, then compare the exact written form against \"ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?\" before moving on.",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit16clubsleisure-vocabulary-1",
+        "ta-level1unit16clubsleisure-vocabulary-2",
+        "ta-level1unit16clubsleisure-grammar-1",
+        "ta-level1unit16clubsleisure-grammar-2",
+        "ta-level1unit16clubsleisure-reading",
+        "ta-level1unit16clubsleisure-listening",
+        "ta-level1unit16clubsleisure-writing",
+        "ta-level1unit16clubsleisure-task"
+      ],
+      "targetText": "ஓய்வு நேரம்",
+      "romanization": "ōyvu nēram",
+      "nativeText": "Check whether \"ஓய்வு நேரம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "pronunciation": "ōyvu nēram",
+      "exampleTarget": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "korean": "ஓய்வு நேரம்",
+      "english": "Check whether \"ஓய்வு நேரம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "example": "ஓய்வு நேரத்தில் நீங்கள் என்ன செய்கிறீர்கள்?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

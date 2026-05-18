@@ -1689,6 +1689,16 @@ function ConversationPage() {
             </div>
           </div>
           <div className="conversation-badges" aria-label={t('conversation.planMemoryStatus', 'Plan and memory status')}>
+            <button
+              type="button"
+              className="conversation-header-setup-toggle"
+              onClick={() => setSetupOpen((open) => !open)}
+              aria-expanded={setupOpen}
+            >
+              {setupOpen
+                ? t('conversation.hideSetup', 'Hide setup')
+                : t('conversation.showSetup', 'Show setup')}
+            </button>
             <span className={`conversation-plan ${tier} ${memoryScope}`}>{tier.toUpperCase()}</span>
             <span className={`conversation-memory ${memoryScope}`}>
               <FiShield aria-hidden="true" />
@@ -1702,7 +1712,7 @@ function ConversationPage() {
           </div>
         </header>
 
-        <div className="conversation-body">
+        <div className={`conversation-body ${setupOpen ? 'setup-open' : 'setup-closed'}`}>
           <aside className={`conversation-side ${setupOpen ? 'open' : ''}`} aria-label={t('conversation.practiceSetup', 'Practice setup')}>
             <button
               type="button"

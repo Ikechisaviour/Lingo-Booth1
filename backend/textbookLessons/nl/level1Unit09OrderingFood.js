@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u9',
-  title: 'Level 1 · Unit 9: Eten Bestellen — Ordering Food',
-  category: 'food',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Order food and drinks politely in a cafe or lunchroom.',
-  vocabularyGoal: 'Use food, drink, portion, and service words.',
-  grammarGoal: 'Use polite frames with `ik wil graag`, `mag ik`, and `zonder`.',
-  speakingGoal: 'Place a full order, change one detail, and ask for the bill.',
-  task: 'Roleplay ordering lunch in a cafe.',
-  expressionPractice: [
-    practice('ordering-politely', 'Ordering politely', 'Use `ik wil graag` or `mag ik`.'),
-    practice('customizing', 'Customizing', 'Use `zonder`.'),
-    practice('closing-order', 'Closing order', 'Ask for the bill naturally.'),
+module.exports = {
+  "title": "Level 1 · Unit 9: Eten Bestellen — Ordering Food",
+  "category": "food",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit09orderingfood-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Order food and drinks politely in a cafe or lunchroom."
+      ],
+      "task": "Roleplay ordering lunch in a cafe."
+    },
+    {
+      "id": "nl-level1unit09orderingfood-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit09orderingfood-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 9: Eten Bestellen — Ordering Food with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit09orderingfood-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 9: Eten Bestellen — Ordering Food sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit09orderingfood-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Order food and drinks politely in a cafe or lunchroom."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit09orderingfood-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 9: Eten Bestellen — Ordering Food with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit09orderingfood-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit09orderingfood-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit09orderingfood-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit09orderingfood-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit09orderingfood-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay ordering lunch in a cafe."
+      ],
+      "task": "Roleplay ordering lunch in a cafe."
+    }
   ],
-  relatedPools: ['topic-food', 'topic-service'],
-  items: [
-    item('ik wil graag', 'ik vil khrahkh', '“I would like.” `Graag` makes the request warmer than a bare `ik wil`.', 'Ik wil graag een koffie.', '“I would like a coffee.”'),
-    item('mag ik ...?', 'makh ik', '“May I have ...?” A very useful polite ordering frame.', 'Mag ik een broodje kaas?', '“May I have a cheese sandwich?”'),
-    item('zonder suiker', 'ZON-der SOY-ker', '“Without sugar.” A direct customization phrase.', 'Een thee zonder suiker, alstublieft.', '“A tea without sugar, please.”'),
-    item('weinig ijs', 'VAY-nikh eys', '“Little ice.” Useful for drink preferences.', 'Ik wil weinig ijs in mijn drankje.', '“I want little ice in my drink.”'),
-    item('dagmenu', 'DAKH-meh-NY', '“Daily menu.” Common in cafes and lunch places.', 'Wat is het dagmenu?', '“What is the daily menu?”'),
-    item('hier eten / meenemen', 'heer AY-ten / MAY-neh-men', '“Eat here / take away.” `Meenemen` is a separable-looking compound learners will keep seeing.', 'Wilt u hier eten of meenemen?', '“Would you like to eat here or take away?”'),
-    item('een portie', 'ən POR-see', '“One portion.” A useful serving noun.', 'Een portie friet, alstublieft.', '“One portion of fries, please.”'),
-    item('de rekening, alstublieft', 'də RAY-ke-ning al-stu-BLEEFT', '“The bill, please.” A complete must-know phrase.', 'De rekening, alstublieft.', '“The bill, please.”'),
+  "expressionPractice": [
+    {
+      "id": "ordering-politely",
+      "label": "Ordering politely",
+      "goal": "Use `ik wil graag` or `mag ik`."
+    },
+    {
+      "id": "customizing",
+      "label": "Customizing",
+      "goal": "Use `zonder`."
+    },
+    {
+      "id": "closing-order",
+      "label": "Closing order",
+      "goal": "Ask for the bill naturally."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-food",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Order food and drinks politely in a cafe or lunchroom.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay ordering lunch in a cafe.",
+      "korean": "lesdoel",
+      "english": "Order food and drinks politely in a cafe or lunchroom.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay ordering lunch in a cafe."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit09orderingfood-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik wil graag een koffie.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "“I would like a coffee.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik wil graag een koffie.\".",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "“I would like a coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 9: Eten Bestellen — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "“I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "Use the key language of Level 1 · Unit 9: Eten Bestellen — Ordering Food with the register and setting that the lesson requires.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "“I would like a coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-2"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 9: Eten Bestellen — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "“May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 9: Eten Bestellen — Ordering Food sound precise rather than merely understandable.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "“May I have a cheese sandwich?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit09orderingfood-grammar-1"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "",
+      "nativeText": "Order food and drinks politely in a cafe or lunchroom.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "“I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "Order food and drinks politely in a cafe or lunchroom.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "“I would like a coffee.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 9: Eten Bestellen — Ordering Food with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "“May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "Contrast the main pattern in Level 1 · Unit 9: Eten Bestellen — Ordering Food with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "“May I have a cheese sandwich?”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit09orderingfood-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"De rekening, alstublieft.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "leesmodel",
+      "english": "Read \"De rekening, alstublieft.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit09orderingfood-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"De rekening, alstublieft.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"De rekening, alstublieft.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit09orderingfood-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Ik wil graag een koffie.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Ik wil graag een koffie.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit09orderingfood-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "“May I have a cheese sandwich?”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "“May I have a cheese sandwich?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Roleplay ordering lunch in a cafe.",
+      "pronunciation": "",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "Roleplay ordering lunch in a cafe.",
+      "korean": "eindtaak",
+      "english": "Roleplay ordering lunch in a cafe.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "Roleplay ordering lunch in a cafe."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Mag ik een broodje kaas?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “May I have a cheese sandwich?”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Mag ik een broodje kaas?\" against the model.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “May I have a cheese sandwich?”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik wil graag een koffie.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "“I would like a coffee.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik wil graag een koffie.\" before reusing it elsewhere.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "“I would like a coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"De rekening, alstublieft.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"De rekening, alstublieft.\" as one thought.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik wil graag een koffie.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik wil graag een koffie.\" and move it into your own life.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ik wil graag\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "ik wil graag",
+      "exampleNative": "“I would like.” `Graag` makes the request warmer than a bare `ik wil`.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"ik wil graag\" before looking back.",
+      "example": "ik wil graag",
+      "exampleEnglish": "“I would like.” `Graag` makes the request warmer than a bare `ik wil`."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"De rekening, alstublieft.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"De rekening, alstublieft.\" rather than restarting from a blank sentence.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 9: Eten Bestellen — Ordering Food with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Mag ik een broodje kaas?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "“May I have a cheese sandwich?”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 9: Eten Bestellen — Ordering Food with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Mag ik een broodje kaas?\" as the comparison line.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "“May I have a cheese sandwich?”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit09orderingfood-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik wil graag een koffie.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "“I would like a coffee.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik wil graag een koffie.\".",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "“I would like a coffee.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"De rekening, alstublieft.\".",
+      "pronunciation": "",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"De rekening, alstublieft.\".",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik wil graag een koffie.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "“I would like a coffee.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik wil graag een koffie.\" one layer at a time.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "“I would like a coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Mag ik een broodje kaas?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "“May I have a cheese sandwich?”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Mag ik een broodje kaas?\" as the deciding example.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "“May I have a cheese sandwich?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-culture",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"De rekening, alstublieft.\".",
+      "pronunciation": "",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"De rekening, alstublieft.\".",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "ik vil khrahkh",
+      "nativeText": "“I would like.” `Graag` makes the request warmer than a bare `ik wil`.",
+      "pronunciation": "ik vil khrahkh",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "“I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "“I would like.” `Graag` makes the request warmer than a bare `ik wil`.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "“I would like a coffee.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "Ik wil graag een koffie.",
+      "romanization": "ik vil khrahkh",
+      "nativeText": "Model use for \"Ik wil graag een koffie.\": “I would like a coffee.”",
+      "pronunciation": "ik vil khrahkh",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "“I would like a coffee.”",
+      "korean": "Ik wil graag een koffie.",
+      "english": "Model use for \"Ik wil graag een koffie.\": “I would like a coffee.”",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "“I would like a coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "ik vil khrahkh",
+      "nativeText": "Usage focus for \"ik wil graag\": Use the key language of Level 1 · Unit 9: Eten Bestellen — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "ik vil khrahkh",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "Notice what the form is doing here: “I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "Usage focus for \"ik wil graag\": Use the key language of Level 1 · Unit 9: Eten Bestellen — Ordering Food with the register and setting that the lesson requires.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "Notice what the form is doing here: “I would like a coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "ik vil khrahkh",
+      "nativeText": "Contrast check for \"ik wil graag\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik vil khrahkh",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "Contrast check for \"ik wil graag\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I would like a coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "ik vil khrahkh",
+      "nativeText": "Recall \"ik wil graag\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil graag een koffie.\".",
+      "pronunciation": "ik vil khrahkh",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "Self-check against the model before moving on: “I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "Recall \"ik wil graag\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil graag een koffie.\".",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "Self-check against the model before moving on: “I would like a coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "ik vil khrahkh",
+      "nativeText": "Repair \"ik wil graag\" inside \"Ik wil graag een koffie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 9: Eten Bestellen — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "ik vil khrahkh",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "Use the model as the repair target: “I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "Repair \"ik wil graag\" inside \"Ik wil graag een koffie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 9: Eten Bestellen — Ordering Food with the register and setting that the lesson requires.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "Use the model as the repair target: “I would like a coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "ik vil khrahkh",
+      "nativeText": "Transfer \"ik wil graag\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil graag een koffie.\".",
+      "pronunciation": "ik vil khrahkh",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "Transfer \"ik wil graag\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil graag een koffie.\".",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I would like a coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "ik vil khrahkh",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik wil graag\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik vil khrahkh",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "Find one word or phrase that naturally travels with \"ik wil graag\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I would like a coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "ik vil khrahkh",
+      "nativeText": "Listen for \"ik wil graag\" inside \"Ik wil graag een koffie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik vil khrahkh",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "Listen for \"ik wil graag\" inside \"Ik wil graag een koffie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I would like a coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "ik vil khrahkh",
+      "nativeText": "Write \"ik wil graag\" again without looking, then compare the exact written form against \"Ik wil graag een koffie.\" before moving on.",
+      "pronunciation": "ik vil khrahkh",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "Use the written model as the final correctness check: “I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "Write \"ik wil graag\" again without looking, then compare the exact written form against \"Ik wil graag een koffie.\" before moving on.",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I would like a coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "ik wil graag",
+      "romanization": "ik vil khrahkh",
+      "nativeText": "Check whether \"ik wil graag\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I would like a coffee.”",
+      "pronunciation": "ik vil khrahkh",
+      "exampleTarget": "Ik wil graag een koffie.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I would like a coffee.”",
+      "korean": "ik wil graag",
+      "english": "Check whether \"ik wil graag\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I would like a coffee.”",
+      "example": "Ik wil graag een koffie.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I would like a coffee.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "“May I have ...?” A very useful polite ordering frame.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "“May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "“May I have ...?” A very useful polite ordering frame.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "“May I have a cheese sandwich?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "Mag ik een broodje kaas?",
+      "romanization": "makh ik",
+      "nativeText": "Model use for \"Mag ik een broodje kaas?\": “May I have a cheese sandwich?”",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "“May I have a cheese sandwich?”",
+      "korean": "Mag ik een broodje kaas?",
+      "english": "Model use for \"Mag ik een broodje kaas?\": “May I have a cheese sandwich?”",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "“May I have a cheese sandwich?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Usage focus for \"mag ik ...?\": Distinguish the nearby wording choices that make Level 1 · Unit 9: Eten Bestellen — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "Notice what the form is doing here: “May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "Usage focus for \"mag ik ...?\": Distinguish the nearby wording choices that make Level 1 · Unit 9: Eten Bestellen — Ordering Food sound precise rather than merely understandable.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "Notice what the form is doing here: “May I have a cheese sandwich?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Contrast check for \"mag ik ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "Contrast check for \"mag ik ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I have a cheese sandwich?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Recall \"mag ik ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Mag ik een broodje kaas?\".",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "Self-check against the model before moving on: “May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "Recall \"mag ik ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Mag ik een broodje kaas?\".",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I have a cheese sandwich?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Repair \"mag ik ...?\" inside \"Mag ik een broodje kaas?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 9: Eten Bestellen — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "Use the model as the repair target: “May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "Repair \"mag ik ...?\" inside \"Mag ik een broodje kaas?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 9: Eten Bestellen — Ordering Food sound precise rather than merely understandable.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "Use the model as the repair target: “May I have a cheese sandwich?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Transfer \"mag ik ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mag ik een broodje kaas?\".",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "Transfer \"mag ik ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mag ik een broodje kaas?\".",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I have a cheese sandwich?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Find one word or phrase that naturally travels with \"mag ik ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "Find one word or phrase that naturally travels with \"mag ik ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I have a cheese sandwich?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Listen for \"mag ik ...?\" inside \"Mag ik een broodje kaas?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "Listen for \"mag ik ...?\" inside \"Mag ik een broodje kaas?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I have a cheese sandwich?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Write \"mag ik ...?\" again without looking, then compare the exact written form against \"Mag ik een broodje kaas?\" before moving on.",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "Use the written model as the final correctness check: “May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "Write \"mag ik ...?\" again without looking, then compare the exact written form against \"Mag ik een broodje kaas?\" before moving on.",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I have a cheese sandwich?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "mag ik ...?",
+      "romanization": "makh ik",
+      "nativeText": "Check whether \"mag ik ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I have a cheese sandwich?”",
+      "pronunciation": "makh ik",
+      "exampleTarget": "Mag ik een broodje kaas?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I have a cheese sandwich?”",
+      "korean": "mag ik ...?",
+      "english": "Check whether \"mag ik ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I have a cheese sandwich?”",
+      "example": "Mag ik een broodje kaas?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I have a cheese sandwich?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "zonder suiker",
+      "romanization": "ZON-der SOY-ker",
+      "nativeText": "“Without sugar.” A direct customization phrase.",
+      "pronunciation": "ZON-der SOY-ker",
+      "exampleTarget": "Een thee zonder suiker, alstublieft.",
+      "exampleNative": "“A tea without sugar, please.”",
+      "korean": "zonder suiker",
+      "english": "“Without sugar.” A direct customization phrase.",
+      "example": "Een thee zonder suiker, alstublieft.",
+      "exampleEnglish": "“A tea without sugar, please.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "Een thee zonder suiker, alstublieft.",
+      "romanization": "ZON-der SOY-ker",
+      "nativeText": "Model use for \"Een thee zonder suiker, alstublieft.\": “A tea without sugar, please.”",
+      "pronunciation": "ZON-der SOY-ker",
+      "exampleTarget": "Een thee zonder suiker, alstublieft.",
+      "exampleNative": "“A tea without sugar, please.”",
+      "korean": "Een thee zonder suiker, alstublieft.",
+      "english": "Model use for \"Een thee zonder suiker, alstublieft.\": “A tea without sugar, please.”",
+      "example": "Een thee zonder suiker, alstublieft.",
+      "exampleEnglish": "“A tea without sugar, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "zonder suiker",
+      "romanization": "ZON-der SOY-ker",
+      "nativeText": "Usage focus for \"zonder suiker\": “Without sugar.” A direct customization phrase.",
+      "pronunciation": "ZON-der SOY-ker",
+      "exampleTarget": "Een thee zonder suiker, alstublieft.",
+      "exampleNative": "Notice what the form is doing here: “A tea without sugar, please.”",
+      "korean": "zonder suiker",
+      "english": "Usage focus for \"zonder suiker\": “Without sugar.” A direct customization phrase.",
+      "example": "Een thee zonder suiker, alstublieft.",
+      "exampleEnglish": "Notice what the form is doing here: “A tea without sugar, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "zonder suiker",
+      "romanization": "ZON-der SOY-ker",
+      "nativeText": "Contrast check for \"zonder suiker\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ZON-der SOY-ker",
+      "exampleTarget": "Een thee zonder suiker, alstublieft.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “A tea without sugar, please.”",
+      "korean": "zonder suiker",
+      "english": "Contrast check for \"zonder suiker\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Een thee zonder suiker, alstublieft.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “A tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "zonder suiker",
+      "romanization": "ZON-der SOY-ker",
+      "nativeText": "Recall \"zonder suiker\" from memory, then explain what would change if a nearby alternative replaced it in \"Een thee zonder suiker, alstublieft.\".",
+      "pronunciation": "ZON-der SOY-ker",
+      "exampleTarget": "Een thee zonder suiker, alstublieft.",
+      "exampleNative": "Self-check against the model before moving on: “A tea without sugar, please.”",
+      "korean": "zonder suiker",
+      "english": "Recall \"zonder suiker\" from memory, then explain what would change if a nearby alternative replaced it in \"Een thee zonder suiker, alstublieft.\".",
+      "example": "Een thee zonder suiker, alstublieft.",
+      "exampleEnglish": "Self-check against the model before moving on: “A tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "zonder suiker",
+      "romanization": "ZON-der SOY-ker",
+      "nativeText": "Repair \"zonder suiker\" inside \"Een thee zonder suiker, alstublieft.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Without sugar.” A direct customization phrase.",
+      "pronunciation": "ZON-der SOY-ker",
+      "exampleTarget": "Een thee zonder suiker, alstublieft.",
+      "exampleNative": "Use the model as the repair target: “A tea without sugar, please.”",
+      "korean": "zonder suiker",
+      "english": "Repair \"zonder suiker\" inside \"Een thee zonder suiker, alstublieft.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Without sugar.” A direct customization phrase.",
+      "example": "Een thee zonder suiker, alstublieft.",
+      "exampleEnglish": "Use the model as the repair target: “A tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "zonder suiker",
+      "romanization": "ZON-der SOY-ker",
+      "nativeText": "Transfer \"zonder suiker\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Een thee zonder suiker, alstublieft.\".",
+      "pronunciation": "ZON-der SOY-ker",
+      "exampleTarget": "Een thee zonder suiker, alstublieft.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “A tea without sugar, please.”",
+      "korean": "zonder suiker",
+      "english": "Transfer \"zonder suiker\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Een thee zonder suiker, alstublieft.\".",
+      "example": "Een thee zonder suiker, alstublieft.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “A tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "zonder suiker",
+      "romanization": "ZON-der SOY-ker",
+      "nativeText": "Find one word or phrase that naturally travels with \"zonder suiker\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ZON-der SOY-ker",
+      "exampleTarget": "Een thee zonder suiker, alstublieft.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “A tea without sugar, please.”",
+      "korean": "zonder suiker",
+      "english": "Find one word or phrase that naturally travels with \"zonder suiker\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Een thee zonder suiker, alstublieft.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “A tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "zonder suiker",
+      "romanization": "ZON-der SOY-ker",
+      "nativeText": "Listen for \"zonder suiker\" inside \"Een thee zonder suiker, alstublieft.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ZON-der SOY-ker",
+      "exampleTarget": "Een thee zonder suiker, alstublieft.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “A tea without sugar, please.”",
+      "korean": "zonder suiker",
+      "english": "Listen for \"zonder suiker\" inside \"Een thee zonder suiker, alstublieft.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Een thee zonder suiker, alstublieft.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “A tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "zonder suiker",
+      "romanization": "ZON-der SOY-ker",
+      "nativeText": "Write \"zonder suiker\" again without looking, then compare the exact written form against \"Een thee zonder suiker, alstublieft.\" before moving on.",
+      "pronunciation": "ZON-der SOY-ker",
+      "exampleTarget": "Een thee zonder suiker, alstublieft.",
+      "exampleNative": "Use the written model as the final correctness check: “A tea without sugar, please.”",
+      "korean": "zonder suiker",
+      "english": "Write \"zonder suiker\" again without looking, then compare the exact written form against \"Een thee zonder suiker, alstublieft.\" before moving on.",
+      "example": "Een thee zonder suiker, alstublieft.",
+      "exampleEnglish": "Use the written model as the final correctness check: “A tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "zonder suiker",
+      "romanization": "ZON-der SOY-ker",
+      "nativeText": "Check whether \"zonder suiker\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “A tea without sugar, please.”",
+      "pronunciation": "ZON-der SOY-ker",
+      "exampleTarget": "Een thee zonder suiker, alstublieft.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “A tea without sugar, please.”",
+      "korean": "zonder suiker",
+      "english": "Check whether \"zonder suiker\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “A tea without sugar, please.”",
+      "example": "Een thee zonder suiker, alstublieft.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “A tea without sugar, please.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "weinig ijs",
+      "romanization": "VAY-nikh eys",
+      "nativeText": "“Little ice.” Useful for drink preferences.",
+      "pronunciation": "VAY-nikh eys",
+      "exampleTarget": "Ik wil weinig ijs in mijn drankje.",
+      "exampleNative": "“I want little ice in my drink.”",
+      "korean": "weinig ijs",
+      "english": "“Little ice.” Useful for drink preferences.",
+      "example": "Ik wil weinig ijs in mijn drankje.",
+      "exampleEnglish": "“I want little ice in my drink.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "Ik wil weinig ijs in mijn drankje.",
+      "romanization": "VAY-nikh eys",
+      "nativeText": "Model use for \"Ik wil weinig ijs in mijn drankje.\": “I want little ice in my drink.”",
+      "pronunciation": "VAY-nikh eys",
+      "exampleTarget": "Ik wil weinig ijs in mijn drankje.",
+      "exampleNative": "“I want little ice in my drink.”",
+      "korean": "Ik wil weinig ijs in mijn drankje.",
+      "english": "Model use for \"Ik wil weinig ijs in mijn drankje.\": “I want little ice in my drink.”",
+      "example": "Ik wil weinig ijs in mijn drankje.",
+      "exampleEnglish": "“I want little ice in my drink.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "weinig ijs",
+      "romanization": "VAY-nikh eys",
+      "nativeText": "Usage focus for \"weinig ijs\": “Little ice.” Useful for drink preferences.",
+      "pronunciation": "VAY-nikh eys",
+      "exampleTarget": "Ik wil weinig ijs in mijn drankje.",
+      "exampleNative": "Notice what the form is doing here: “I want little ice in my drink.”",
+      "korean": "weinig ijs",
+      "english": "Usage focus for \"weinig ijs\": “Little ice.” Useful for drink preferences.",
+      "example": "Ik wil weinig ijs in mijn drankje.",
+      "exampleEnglish": "Notice what the form is doing here: “I want little ice in my drink.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "weinig ijs",
+      "romanization": "VAY-nikh eys",
+      "nativeText": "Contrast check for \"weinig ijs\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "VAY-nikh eys",
+      "exampleTarget": "Ik wil weinig ijs in mijn drankje.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want little ice in my drink.”",
+      "korean": "weinig ijs",
+      "english": "Contrast check for \"weinig ijs\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik wil weinig ijs in mijn drankje.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want little ice in my drink.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "weinig ijs",
+      "romanization": "VAY-nikh eys",
+      "nativeText": "Recall \"weinig ijs\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil weinig ijs in mijn drankje.\".",
+      "pronunciation": "VAY-nikh eys",
+      "exampleTarget": "Ik wil weinig ijs in mijn drankje.",
+      "exampleNative": "Self-check against the model before moving on: “I want little ice in my drink.”",
+      "korean": "weinig ijs",
+      "english": "Recall \"weinig ijs\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil weinig ijs in mijn drankje.\".",
+      "example": "Ik wil weinig ijs in mijn drankje.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want little ice in my drink.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "weinig ijs",
+      "romanization": "VAY-nikh eys",
+      "nativeText": "Repair \"weinig ijs\" inside \"Ik wil weinig ijs in mijn drankje.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Little ice.” Useful for drink preferences.",
+      "pronunciation": "VAY-nikh eys",
+      "exampleTarget": "Ik wil weinig ijs in mijn drankje.",
+      "exampleNative": "Use the model as the repair target: “I want little ice in my drink.”",
+      "korean": "weinig ijs",
+      "english": "Repair \"weinig ijs\" inside \"Ik wil weinig ijs in mijn drankje.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Little ice.” Useful for drink preferences.",
+      "example": "Ik wil weinig ijs in mijn drankje.",
+      "exampleEnglish": "Use the model as the repair target: “I want little ice in my drink.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "weinig ijs",
+      "romanization": "VAY-nikh eys",
+      "nativeText": "Transfer \"weinig ijs\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil weinig ijs in mijn drankje.\".",
+      "pronunciation": "VAY-nikh eys",
+      "exampleTarget": "Ik wil weinig ijs in mijn drankje.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want little ice in my drink.”",
+      "korean": "weinig ijs",
+      "english": "Transfer \"weinig ijs\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil weinig ijs in mijn drankje.\".",
+      "example": "Ik wil weinig ijs in mijn drankje.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want little ice in my drink.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "weinig ijs",
+      "romanization": "VAY-nikh eys",
+      "nativeText": "Find one word or phrase that naturally travels with \"weinig ijs\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "VAY-nikh eys",
+      "exampleTarget": "Ik wil weinig ijs in mijn drankje.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want little ice in my drink.”",
+      "korean": "weinig ijs",
+      "english": "Find one word or phrase that naturally travels with \"weinig ijs\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik wil weinig ijs in mijn drankje.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want little ice in my drink.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "weinig ijs",
+      "romanization": "VAY-nikh eys",
+      "nativeText": "Listen for \"weinig ijs\" inside \"Ik wil weinig ijs in mijn drankje.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "VAY-nikh eys",
+      "exampleTarget": "Ik wil weinig ijs in mijn drankje.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want little ice in my drink.”",
+      "korean": "weinig ijs",
+      "english": "Listen for \"weinig ijs\" inside \"Ik wil weinig ijs in mijn drankje.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik wil weinig ijs in mijn drankje.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want little ice in my drink.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "weinig ijs",
+      "romanization": "VAY-nikh eys",
+      "nativeText": "Write \"weinig ijs\" again without looking, then compare the exact written form against \"Ik wil weinig ijs in mijn drankje.\" before moving on.",
+      "pronunciation": "VAY-nikh eys",
+      "exampleTarget": "Ik wil weinig ijs in mijn drankje.",
+      "exampleNative": "Use the written model as the final correctness check: “I want little ice in my drink.”",
+      "korean": "weinig ijs",
+      "english": "Write \"weinig ijs\" again without looking, then compare the exact written form against \"Ik wil weinig ijs in mijn drankje.\" before moving on.",
+      "example": "Ik wil weinig ijs in mijn drankje.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want little ice in my drink.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "weinig ijs",
+      "romanization": "VAY-nikh eys",
+      "nativeText": "Check whether \"weinig ijs\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want little ice in my drink.”",
+      "pronunciation": "VAY-nikh eys",
+      "exampleTarget": "Ik wil weinig ijs in mijn drankje.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want little ice in my drink.”",
+      "korean": "weinig ijs",
+      "english": "Check whether \"weinig ijs\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want little ice in my drink.”",
+      "example": "Ik wil weinig ijs in mijn drankje.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want little ice in my drink.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "dagmenu",
+      "romanization": "DAKH-meh-NY",
+      "nativeText": "“Daily menu.” Common in cafes and lunch places.",
+      "pronunciation": "DAKH-meh-NY",
+      "exampleTarget": "Wat is het dagmenu?",
+      "exampleNative": "“What is the daily menu?”",
+      "korean": "dagmenu",
+      "english": "“Daily menu.” Common in cafes and lunch places.",
+      "example": "Wat is het dagmenu?",
+      "exampleEnglish": "“What is the daily menu?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "Wat is het dagmenu?",
+      "romanization": "DAKH-meh-NY",
+      "nativeText": "Model use for \"Wat is het dagmenu?\": “What is the daily menu?”",
+      "pronunciation": "DAKH-meh-NY",
+      "exampleTarget": "Wat is het dagmenu?",
+      "exampleNative": "“What is the daily menu?”",
+      "korean": "Wat is het dagmenu?",
+      "english": "Model use for \"Wat is het dagmenu?\": “What is the daily menu?”",
+      "example": "Wat is het dagmenu?",
+      "exampleEnglish": "“What is the daily menu?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "dagmenu",
+      "romanization": "DAKH-meh-NY",
+      "nativeText": "Usage focus for \"dagmenu\": “Daily menu.” Common in cafes and lunch places.",
+      "pronunciation": "DAKH-meh-NY",
+      "exampleTarget": "Wat is het dagmenu?",
+      "exampleNative": "Notice what the form is doing here: “What is the daily menu?”",
+      "korean": "dagmenu",
+      "english": "Usage focus for \"dagmenu\": “Daily menu.” Common in cafes and lunch places.",
+      "example": "Wat is het dagmenu?",
+      "exampleEnglish": "Notice what the form is doing here: “What is the daily menu?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "dagmenu",
+      "romanization": "DAKH-meh-NY",
+      "nativeText": "Contrast check for \"dagmenu\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "DAKH-meh-NY",
+      "exampleTarget": "Wat is het dagmenu?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is the daily menu?”",
+      "korean": "dagmenu",
+      "english": "Contrast check for \"dagmenu\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Wat is het dagmenu?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is the daily menu?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "dagmenu",
+      "romanization": "DAKH-meh-NY",
+      "nativeText": "Recall \"dagmenu\" from memory, then explain what would change if a nearby alternative replaced it in \"Wat is het dagmenu?\".",
+      "pronunciation": "DAKH-meh-NY",
+      "exampleTarget": "Wat is het dagmenu?",
+      "exampleNative": "Self-check against the model before moving on: “What is the daily menu?”",
+      "korean": "dagmenu",
+      "english": "Recall \"dagmenu\" from memory, then explain what would change if a nearby alternative replaced it in \"Wat is het dagmenu?\".",
+      "example": "Wat is het dagmenu?",
+      "exampleEnglish": "Self-check against the model before moving on: “What is the daily menu?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "dagmenu",
+      "romanization": "DAKH-meh-NY",
+      "nativeText": "Repair \"dagmenu\" inside \"Wat is het dagmenu?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Daily menu.” Common in cafes and lunch places.",
+      "pronunciation": "DAKH-meh-NY",
+      "exampleTarget": "Wat is het dagmenu?",
+      "exampleNative": "Use the model as the repair target: “What is the daily menu?”",
+      "korean": "dagmenu",
+      "english": "Repair \"dagmenu\" inside \"Wat is het dagmenu?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Daily menu.” Common in cafes and lunch places.",
+      "example": "Wat is het dagmenu?",
+      "exampleEnglish": "Use the model as the repair target: “What is the daily menu?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "dagmenu",
+      "romanization": "DAKH-meh-NY",
+      "nativeText": "Transfer \"dagmenu\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wat is het dagmenu?\".",
+      "pronunciation": "DAKH-meh-NY",
+      "exampleTarget": "Wat is het dagmenu?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is the daily menu?”",
+      "korean": "dagmenu",
+      "english": "Transfer \"dagmenu\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wat is het dagmenu?\".",
+      "example": "Wat is het dagmenu?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is the daily menu?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "dagmenu",
+      "romanization": "DAKH-meh-NY",
+      "nativeText": "Find one word or phrase that naturally travels with \"dagmenu\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "DAKH-meh-NY",
+      "exampleTarget": "Wat is het dagmenu?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What is the daily menu?”",
+      "korean": "dagmenu",
+      "english": "Find one word or phrase that naturally travels with \"dagmenu\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Wat is het dagmenu?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What is the daily menu?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "dagmenu",
+      "romanization": "DAKH-meh-NY",
+      "nativeText": "Listen for \"dagmenu\" inside \"Wat is het dagmenu?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "DAKH-meh-NY",
+      "exampleTarget": "Wat is het dagmenu?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is the daily menu?”",
+      "korean": "dagmenu",
+      "english": "Listen for \"dagmenu\" inside \"Wat is het dagmenu?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Wat is het dagmenu?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is the daily menu?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "dagmenu",
+      "romanization": "DAKH-meh-NY",
+      "nativeText": "Write \"dagmenu\" again without looking, then compare the exact written form against \"Wat is het dagmenu?\" before moving on.",
+      "pronunciation": "DAKH-meh-NY",
+      "exampleTarget": "Wat is het dagmenu?",
+      "exampleNative": "Use the written model as the final correctness check: “What is the daily menu?”",
+      "korean": "dagmenu",
+      "english": "Write \"dagmenu\" again without looking, then compare the exact written form against \"Wat is het dagmenu?\" before moving on.",
+      "example": "Wat is het dagmenu?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What is the daily menu?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "dagmenu",
+      "romanization": "DAKH-meh-NY",
+      "nativeText": "Check whether \"dagmenu\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is the daily menu?”",
+      "pronunciation": "DAKH-meh-NY",
+      "exampleTarget": "Wat is het dagmenu?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What is the daily menu?”",
+      "korean": "dagmenu",
+      "english": "Check whether \"dagmenu\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is the daily menu?”",
+      "example": "Wat is het dagmenu?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What is the daily menu?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "hier eten / meenemen",
+      "romanization": "heer AY-ten / MAY-neh-men",
+      "nativeText": "“Eat here / take away.” `Meenemen` is a separable-looking compound learners will keep seeing.",
+      "pronunciation": "heer AY-ten / MAY-neh-men",
+      "exampleTarget": "Wilt u hier eten of meenemen?",
+      "exampleNative": "“Would you like to eat here or take away?”",
+      "korean": "hier eten / meenemen",
+      "english": "“Eat here / take away.” `Meenemen` is a separable-looking compound learners will keep seeing.",
+      "example": "Wilt u hier eten of meenemen?",
+      "exampleEnglish": "“Would you like to eat here or take away?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "Wilt u hier eten of meenemen?",
+      "romanization": "heer AY-ten / MAY-neh-men",
+      "nativeText": "Model use for \"Wilt u hier eten of meenemen?\": “Would you like to eat here or take away?”",
+      "pronunciation": "heer AY-ten / MAY-neh-men",
+      "exampleTarget": "Wilt u hier eten of meenemen?",
+      "exampleNative": "“Would you like to eat here or take away?”",
+      "korean": "Wilt u hier eten of meenemen?",
+      "english": "Model use for \"Wilt u hier eten of meenemen?\": “Would you like to eat here or take away?”",
+      "example": "Wilt u hier eten of meenemen?",
+      "exampleEnglish": "“Would you like to eat here or take away?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "hier eten / meenemen",
+      "romanization": "heer AY-ten / MAY-neh-men",
+      "nativeText": "Usage focus for \"hier eten / meenemen\": “Eat here / take away.” `Meenemen` is a separable-looking compound learners will keep seeing.",
+      "pronunciation": "heer AY-ten / MAY-neh-men",
+      "exampleTarget": "Wilt u hier eten of meenemen?",
+      "exampleNative": "Notice what the form is doing here: “Would you like to eat here or take away?”",
+      "korean": "hier eten / meenemen",
+      "english": "Usage focus for \"hier eten / meenemen\": “Eat here / take away.” `Meenemen` is a separable-looking compound learners will keep seeing.",
+      "example": "Wilt u hier eten of meenemen?",
+      "exampleEnglish": "Notice what the form is doing here: “Would you like to eat here or take away?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "hier eten / meenemen",
+      "romanization": "heer AY-ten / MAY-neh-men",
+      "nativeText": "Contrast check for \"hier eten / meenemen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "heer AY-ten / MAY-neh-men",
+      "exampleTarget": "Wilt u hier eten of meenemen?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Would you like to eat here or take away?”",
+      "korean": "hier eten / meenemen",
+      "english": "Contrast check for \"hier eten / meenemen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Wilt u hier eten of meenemen?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Would you like to eat here or take away?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "hier eten / meenemen",
+      "romanization": "heer AY-ten / MAY-neh-men",
+      "nativeText": "Recall \"hier eten / meenemen\" from memory, then explain what would change if a nearby alternative replaced it in \"Wilt u hier eten of meenemen?\".",
+      "pronunciation": "heer AY-ten / MAY-neh-men",
+      "exampleTarget": "Wilt u hier eten of meenemen?",
+      "exampleNative": "Self-check against the model before moving on: “Would you like to eat here or take away?”",
+      "korean": "hier eten / meenemen",
+      "english": "Recall \"hier eten / meenemen\" from memory, then explain what would change if a nearby alternative replaced it in \"Wilt u hier eten of meenemen?\".",
+      "example": "Wilt u hier eten of meenemen?",
+      "exampleEnglish": "Self-check against the model before moving on: “Would you like to eat here or take away?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "hier eten / meenemen",
+      "romanization": "heer AY-ten / MAY-neh-men",
+      "nativeText": "Repair \"hier eten / meenemen\" inside \"Wilt u hier eten of meenemen?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Eat here / take away.” `Meenemen` is a separable-looking compound learners will keep seeing.",
+      "pronunciation": "heer AY-ten / MAY-neh-men",
+      "exampleTarget": "Wilt u hier eten of meenemen?",
+      "exampleNative": "Use the model as the repair target: “Would you like to eat here or take away?”",
+      "korean": "hier eten / meenemen",
+      "english": "Repair \"hier eten / meenemen\" inside \"Wilt u hier eten of meenemen?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Eat here / take away.” `Meenemen` is a separable-looking compound learners will keep seeing.",
+      "example": "Wilt u hier eten of meenemen?",
+      "exampleEnglish": "Use the model as the repair target: “Would you like to eat here or take away?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "hier eten / meenemen",
+      "romanization": "heer AY-ten / MAY-neh-men",
+      "nativeText": "Transfer \"hier eten / meenemen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wilt u hier eten of meenemen?\".",
+      "pronunciation": "heer AY-ten / MAY-neh-men",
+      "exampleTarget": "Wilt u hier eten of meenemen?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Would you like to eat here or take away?”",
+      "korean": "hier eten / meenemen",
+      "english": "Transfer \"hier eten / meenemen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wilt u hier eten of meenemen?\".",
+      "example": "Wilt u hier eten of meenemen?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Would you like to eat here or take away?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "hier eten / meenemen",
+      "romanization": "heer AY-ten / MAY-neh-men",
+      "nativeText": "Find one word or phrase that naturally travels with \"hier eten / meenemen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "heer AY-ten / MAY-neh-men",
+      "exampleTarget": "Wilt u hier eten of meenemen?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Would you like to eat here or take away?”",
+      "korean": "hier eten / meenemen",
+      "english": "Find one word or phrase that naturally travels with \"hier eten / meenemen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Wilt u hier eten of meenemen?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Would you like to eat here or take away?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "hier eten / meenemen",
+      "romanization": "heer AY-ten / MAY-neh-men",
+      "nativeText": "Listen for \"hier eten / meenemen\" inside \"Wilt u hier eten of meenemen?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "heer AY-ten / MAY-neh-men",
+      "exampleTarget": "Wilt u hier eten of meenemen?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Would you like to eat here or take away?”",
+      "korean": "hier eten / meenemen",
+      "english": "Listen for \"hier eten / meenemen\" inside \"Wilt u hier eten of meenemen?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Wilt u hier eten of meenemen?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Would you like to eat here or take away?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "hier eten / meenemen",
+      "romanization": "heer AY-ten / MAY-neh-men",
+      "nativeText": "Write \"hier eten / meenemen\" again without looking, then compare the exact written form against \"Wilt u hier eten of meenemen?\" before moving on.",
+      "pronunciation": "heer AY-ten / MAY-neh-men",
+      "exampleTarget": "Wilt u hier eten of meenemen?",
+      "exampleNative": "Use the written model as the final correctness check: “Would you like to eat here or take away?”",
+      "korean": "hier eten / meenemen",
+      "english": "Write \"hier eten / meenemen\" again without looking, then compare the exact written form against \"Wilt u hier eten of meenemen?\" before moving on.",
+      "example": "Wilt u hier eten of meenemen?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Would you like to eat here or take away?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "hier eten / meenemen",
+      "romanization": "heer AY-ten / MAY-neh-men",
+      "nativeText": "Check whether \"hier eten / meenemen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Would you like to eat here or take away?”",
+      "pronunciation": "heer AY-ten / MAY-neh-men",
+      "exampleTarget": "Wilt u hier eten of meenemen?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Would you like to eat here or take away?”",
+      "korean": "hier eten / meenemen",
+      "english": "Check whether \"hier eten / meenemen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Would you like to eat here or take away?”",
+      "example": "Wilt u hier eten of meenemen?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Would you like to eat here or take away?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "een portie",
+      "romanization": "ən POR-see",
+      "nativeText": "“One portion.” A useful serving noun.",
+      "pronunciation": "ən POR-see",
+      "exampleTarget": "Een portie friet, alstublieft.",
+      "exampleNative": "“One portion of fries, please.”",
+      "korean": "een portie",
+      "english": "“One portion.” A useful serving noun.",
+      "example": "Een portie friet, alstublieft.",
+      "exampleEnglish": "“One portion of fries, please.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "Een portie friet, alstublieft.",
+      "romanization": "ən POR-see",
+      "nativeText": "Model use for \"Een portie friet, alstublieft.\": “One portion of fries, please.”",
+      "pronunciation": "ən POR-see",
+      "exampleTarget": "Een portie friet, alstublieft.",
+      "exampleNative": "“One portion of fries, please.”",
+      "korean": "Een portie friet, alstublieft.",
+      "english": "Model use for \"Een portie friet, alstublieft.\": “One portion of fries, please.”",
+      "example": "Een portie friet, alstublieft.",
+      "exampleEnglish": "“One portion of fries, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "een portie",
+      "romanization": "ən POR-see",
+      "nativeText": "Usage focus for \"een portie\": “One portion.” A useful serving noun.",
+      "pronunciation": "ən POR-see",
+      "exampleTarget": "Een portie friet, alstublieft.",
+      "exampleNative": "Notice what the form is doing here: “One portion of fries, please.”",
+      "korean": "een portie",
+      "english": "Usage focus for \"een portie\": “One portion.” A useful serving noun.",
+      "example": "Een portie friet, alstublieft.",
+      "exampleEnglish": "Notice what the form is doing here: “One portion of fries, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "een portie",
+      "romanization": "ən POR-see",
+      "nativeText": "Contrast check for \"een portie\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ən POR-see",
+      "exampleTarget": "Een portie friet, alstublieft.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “One portion of fries, please.”",
+      "korean": "een portie",
+      "english": "Contrast check for \"een portie\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Een portie friet, alstublieft.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “One portion of fries, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "een portie",
+      "romanization": "ən POR-see",
+      "nativeText": "Recall \"een portie\" from memory, then explain what would change if a nearby alternative replaced it in \"Een portie friet, alstublieft.\".",
+      "pronunciation": "ən POR-see",
+      "exampleTarget": "Een portie friet, alstublieft.",
+      "exampleNative": "Self-check against the model before moving on: “One portion of fries, please.”",
+      "korean": "een portie",
+      "english": "Recall \"een portie\" from memory, then explain what would change if a nearby alternative replaced it in \"Een portie friet, alstublieft.\".",
+      "example": "Een portie friet, alstublieft.",
+      "exampleEnglish": "Self-check against the model before moving on: “One portion of fries, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "een portie",
+      "romanization": "ən POR-see",
+      "nativeText": "Repair \"een portie\" inside \"Een portie friet, alstublieft.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One portion.” A useful serving noun.",
+      "pronunciation": "ən POR-see",
+      "exampleTarget": "Een portie friet, alstublieft.",
+      "exampleNative": "Use the model as the repair target: “One portion of fries, please.”",
+      "korean": "een portie",
+      "english": "Repair \"een portie\" inside \"Een portie friet, alstublieft.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One portion.” A useful serving noun.",
+      "example": "Een portie friet, alstublieft.",
+      "exampleEnglish": "Use the model as the repair target: “One portion of fries, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "een portie",
+      "romanization": "ən POR-see",
+      "nativeText": "Transfer \"een portie\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Een portie friet, alstublieft.\".",
+      "pronunciation": "ən POR-see",
+      "exampleTarget": "Een portie friet, alstublieft.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “One portion of fries, please.”",
+      "korean": "een portie",
+      "english": "Transfer \"een portie\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Een portie friet, alstublieft.\".",
+      "example": "Een portie friet, alstublieft.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “One portion of fries, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "een portie",
+      "romanization": "ən POR-see",
+      "nativeText": "Find one word or phrase that naturally travels with \"een portie\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ən POR-see",
+      "exampleTarget": "Een portie friet, alstublieft.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “One portion of fries, please.”",
+      "korean": "een portie",
+      "english": "Find one word or phrase that naturally travels with \"een portie\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Een portie friet, alstublieft.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “One portion of fries, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "een portie",
+      "romanization": "ən POR-see",
+      "nativeText": "Listen for \"een portie\" inside \"Een portie friet, alstublieft.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ən POR-see",
+      "exampleTarget": "Een portie friet, alstublieft.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “One portion of fries, please.”",
+      "korean": "een portie",
+      "english": "Listen for \"een portie\" inside \"Een portie friet, alstublieft.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Een portie friet, alstublieft.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “One portion of fries, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "een portie",
+      "romanization": "ən POR-see",
+      "nativeText": "Write \"een portie\" again without looking, then compare the exact written form against \"Een portie friet, alstublieft.\" before moving on.",
+      "pronunciation": "ən POR-see",
+      "exampleTarget": "Een portie friet, alstublieft.",
+      "exampleNative": "Use the written model as the final correctness check: “One portion of fries, please.”",
+      "korean": "een portie",
+      "english": "Write \"een portie\" again without looking, then compare the exact written form against \"Een portie friet, alstublieft.\" before moving on.",
+      "example": "Een portie friet, alstublieft.",
+      "exampleEnglish": "Use the written model as the final correctness check: “One portion of fries, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "een portie",
+      "romanization": "ən POR-see",
+      "nativeText": "Check whether \"een portie\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “One portion of fries, please.”",
+      "pronunciation": "ən POR-see",
+      "exampleTarget": "Een portie friet, alstublieft.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “One portion of fries, please.”",
+      "korean": "een portie",
+      "english": "Check whether \"een portie\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “One portion of fries, please.”",
+      "example": "Een portie friet, alstublieft.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “One portion of fries, please.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "de rekening, alstublieft",
+      "romanization": "də RAY-ke-ning al-stu-BLEEFT",
+      "nativeText": "“The bill, please.” A complete must-know phrase.",
+      "pronunciation": "də RAY-ke-ning al-stu-BLEEFT",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "de rekening, alstublieft",
+      "english": "“The bill, please.” A complete must-know phrase.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "De rekening, alstublieft.",
+      "romanization": "də RAY-ke-ning al-stu-BLEEFT",
+      "nativeText": "Model use for \"De rekening, alstublieft.\": “The bill, please.”",
+      "pronunciation": "də RAY-ke-ning al-stu-BLEEFT",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "De rekening, alstublieft.",
+      "english": "Model use for \"De rekening, alstublieft.\": “The bill, please.”",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "de rekening, alstublieft",
+      "romanization": "də RAY-ke-ning al-stu-BLEEFT",
+      "nativeText": "Usage focus for \"de rekening, alstublieft\": “The bill, please.” A complete must-know phrase.",
+      "pronunciation": "də RAY-ke-ning al-stu-BLEEFT",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "Notice what the form is doing here: “The bill, please.”",
+      "korean": "de rekening, alstublieft",
+      "english": "Usage focus for \"de rekening, alstublieft\": “The bill, please.” A complete must-know phrase.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "Notice what the form is doing here: “The bill, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "de rekening, alstublieft",
+      "romanization": "də RAY-ke-ning al-stu-BLEEFT",
+      "nativeText": "Contrast check for \"de rekening, alstublieft\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "də RAY-ke-ning al-stu-BLEEFT",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bill, please.”",
+      "korean": "de rekening, alstublieft",
+      "english": "Contrast check for \"de rekening, alstublieft\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "de rekening, alstublieft",
+      "romanization": "də RAY-ke-ning al-stu-BLEEFT",
+      "nativeText": "Recall \"de rekening, alstublieft\" from memory, then explain what would change if a nearby alternative replaced it in \"De rekening, alstublieft.\".",
+      "pronunciation": "də RAY-ke-ning al-stu-BLEEFT",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "Self-check against the model before moving on: “The bill, please.”",
+      "korean": "de rekening, alstublieft",
+      "english": "Recall \"de rekening, alstublieft\" from memory, then explain what would change if a nearby alternative replaced it in \"De rekening, alstublieft.\".",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "Self-check against the model before moving on: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "de rekening, alstublieft",
+      "romanization": "də RAY-ke-ning al-stu-BLEEFT",
+      "nativeText": "Repair \"de rekening, alstublieft\" inside \"De rekening, alstublieft.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The bill, please.” A complete must-know phrase.",
+      "pronunciation": "də RAY-ke-ning al-stu-BLEEFT",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "Use the model as the repair target: “The bill, please.”",
+      "korean": "de rekening, alstublieft",
+      "english": "Repair \"de rekening, alstublieft\" inside \"De rekening, alstublieft.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The bill, please.” A complete must-know phrase.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "Use the model as the repair target: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "de rekening, alstublieft",
+      "romanization": "də RAY-ke-ning al-stu-BLEEFT",
+      "nativeText": "Transfer \"de rekening, alstublieft\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De rekening, alstublieft.\".",
+      "pronunciation": "də RAY-ke-ning al-stu-BLEEFT",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bill, please.”",
+      "korean": "de rekening, alstublieft",
+      "english": "Transfer \"de rekening, alstublieft\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De rekening, alstublieft.\".",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "de rekening, alstublieft",
+      "romanization": "də RAY-ke-ning al-stu-BLEEFT",
+      "nativeText": "Find one word or phrase that naturally travels with \"de rekening, alstublieft\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "də RAY-ke-ning al-stu-BLEEFT",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The bill, please.”",
+      "korean": "de rekening, alstublieft",
+      "english": "Find one word or phrase that naturally travels with \"de rekening, alstublieft\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "de rekening, alstublieft",
+      "romanization": "də RAY-ke-ning al-stu-BLEEFT",
+      "nativeText": "Listen for \"de rekening, alstublieft\" inside \"De rekening, alstublieft.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "də RAY-ke-ning al-stu-BLEEFT",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bill, please.”",
+      "korean": "de rekening, alstublieft",
+      "english": "Listen for \"de rekening, alstublieft\" inside \"De rekening, alstublieft.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "de rekening, alstublieft",
+      "romanization": "də RAY-ke-ning al-stu-BLEEFT",
+      "nativeText": "Write \"de rekening, alstublieft\" again without looking, then compare the exact written form against \"De rekening, alstublieft.\" before moving on.",
+      "pronunciation": "də RAY-ke-ning al-stu-BLEEFT",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "Use the written model as the final correctness check: “The bill, please.”",
+      "korean": "de rekening, alstublieft",
+      "english": "Write \"de rekening, alstublieft\" again without looking, then compare the exact written form against \"De rekening, alstublieft.\" before moving on.",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit09orderingfood-vocabulary-1",
+        "nl-level1unit09orderingfood-vocabulary-2",
+        "nl-level1unit09orderingfood-grammar-1",
+        "nl-level1unit09orderingfood-grammar-2",
+        "nl-level1unit09orderingfood-reading",
+        "nl-level1unit09orderingfood-listening",
+        "nl-level1unit09orderingfood-writing",
+        "nl-level1unit09orderingfood-task"
+      ],
+      "targetText": "de rekening, alstublieft",
+      "romanization": "də RAY-ke-ning al-stu-BLEEFT",
+      "nativeText": "Check whether \"de rekening, alstublieft\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bill, please.”",
+      "pronunciation": "də RAY-ke-ning al-stu-BLEEFT",
+      "exampleTarget": "De rekening, alstublieft.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The bill, please.”",
+      "korean": "de rekening, alstublieft",
+      "english": "Check whether \"de rekening, alstublieft\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bill, please.”",
+      "example": "De rekening, alstublieft.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The bill, please.”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

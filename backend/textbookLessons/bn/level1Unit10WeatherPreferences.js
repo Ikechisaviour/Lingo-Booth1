@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u10',
-  title: 'Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe weather and say what you like or prefer.',
-  vocabularyGoal: 'Use weather words, seasons, and preference phrases.',
-  grammarGoal: 'Use `ভালো লাগে`, `পছন্দ করি`, and comparison phrases naturally.',
-  speakingGoal: 'Describe today’s weather and compare two simple preferences.',
-  task: 'Choose a weekend plan based on the weather.',
-  expressionPractice: [
-    practice('describing-weather', 'Describing weather', 'Use one weather sentence.'),
-    practice('stating-like', 'Stating like', 'Use `ভালো লাগে` or `পছন্দ করি`.'),
-    practice('stating-preference', 'Stating preference', 'Use `এর চেয়ে`.'),
+module.exports = {
+  "title": "Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit10weatherpreferences-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe weather and say what you like or prefer."
+      ],
+      "task": "Choose a weekend plan based on the weather."
+    },
+    {
+      "id": "bn-level1unit10weatherpreferences-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit10weatherpreferences-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit10weatherpreferences-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit10weatherpreferences-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe weather and say what you like or prefer."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit10weatherpreferences-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit10weatherpreferences-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit10weatherpreferences-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit10weatherpreferences-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit10weatherpreferences-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit10weatherpreferences-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Choose a weekend plan based on the weather."
+      ],
+      "task": "Choose a weekend plan based on the weather."
+    }
   ],
-  relatedPools: ['topic-weather', 'topic-preferences'],
-  items: [
-    item('আজ গরম', 'aj gorom', '“Today it is hot.” Bengali can state weather very compactly.', 'আজ খুব গরম।', '“Today it is very hot.”'),
-    item('বৃষ্টি হচ্ছে', 'brishti hochchhe', '“It is raining.” A common progressive weather phrase.', 'এখন বৃষ্টি হচ্ছে।', '“It is raining now.”'),
-    item('শীত', 'sheet', '“Cold / winter.” Context tells whether it means the sensation or the season.', 'সকালে একটু শীত লাগে।', '“It feels a little cold in the morning.”'),
-    item('বর্ষা / গ্রীষ্ম', 'borsha / grishsho', '“Monsoon / summer.” South Asian seasonal talk is more useful than a generic four-season template.', 'আমার বর্ষা ভালো লাগে।', '“I like the monsoon season.”'),
-    item('আমার ভালো লাগে', 'amar bhalo lage', '“I like.” Literally “it feels good to me.”', 'আমার ঠান্ডা আবহাওয়া ভালো লাগে।', '“I like cool weather.”'),
-    item('আমি পছন্দ করি না', 'ami pochhondo kori na', '“I do not like / prefer.” Another common preference frame.', 'আমি খুব গরম পছন্দ করি না।', '“I do not like extreme heat.”'),
-    item('এর চেয়ে', 'er cheye', '“Than this / compared with this.” Useful in preferences.', 'গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।', '“I like the monsoon more than summer.”'),
-    item('কারণ', 'karon', '“Because.” It lets the learner explain a preference.', 'বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।', '“I like the monsoon because the air stays cool.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-weather",
+      "label": "Describing weather",
+      "goal": "Use one weather sentence."
+    },
+    {
+      "id": "stating-like",
+      "label": "Stating like",
+      "goal": "Use `ভালো লাগে` or `পছন্দ করি`."
+    },
+    {
+      "id": "stating-preference",
+      "label": "Stating preference",
+      "goal": "Use `এর চেয়ে`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-weather",
+    "topic-preferences"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Describe weather and say what you like or prefer.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Choose a weekend plan based on the weather.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Describe weather and say what you like or prefer.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Choose a weekend plan based on the weather."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আজ খুব গরম।\".",
+      "pronunciation": "",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "“Today it is very hot.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আজ খুব গরম।\".",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "“Today it is very hot.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "“Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "Use the key language of Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "“Today it is very hot.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-2"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "“It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-grammar-1"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "",
+      "nativeText": "Describe weather and say what you like or prefer.",
+      "pronunciation": "",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "“Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "Describe weather and say what you like or prefer.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "“Today it is very hot.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "“It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "Contrast the main pattern in Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "“I like the monsoon because the air stays cool.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "“I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "“I like the monsoon because the air stays cool.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "“I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"আজ খুব গরম।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"আজ খুব গরম।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "“It is raining now.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Choose a weekend plan based on the weather.",
+      "pronunciation": "",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "Choose a weekend plan based on the weather.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Choose a weekend plan based on the weather.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "Choose a weekend plan based on the weather."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"এখন বৃষ্টি হচ্ছে।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “It is raining now.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"এখন বৃষ্টি হচ্ছে।\" against the model.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “It is raining now.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আজ খুব গরম।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "“Today it is very hot.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আজ খুব গরম।\" before reusing it elsewhere.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "“Today it is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "“I like the monsoon because the air stays cool.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" as one thought.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "“I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আজ খুব গরম।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আজ খুব গরম।\" and move it into your own life.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"আজ গরম\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "আজ গরম",
+      "exampleNative": "“Today it is hot.” Bengali can state weather very compactly.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"আজ গরম\" before looking back.",
+      "example": "আজ গরম",
+      "exampleEnglish": "“Today it is hot.” Bengali can state weather very compactly."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" rather than restarting from a blank sentence.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"এখন বৃষ্টি হচ্ছে।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "“It is raining now.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"এখন বৃষ্টি হচ্ছে।\" as the comparison line.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আজ খুব গরম।\".",
+      "pronunciation": "",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "“Today it is very hot.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আজ খুব গরম।\".",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "“Today it is very hot.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\".",
+      "pronunciation": "",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "“I like the monsoon because the air stays cool.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\".",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "“I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আজ খুব গরম।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "“Today it is very hot.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আজ খুব গরম।\" one layer at a time.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "“Today it is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"এখন বৃষ্টি হচ্ছে।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "“It is raining now.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"এখন বৃষ্টি হচ্ছে।\" as the deciding example.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-culture",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\".",
+      "pronunciation": "",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "“I like the monsoon because the air stays cool.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\".",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "“I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "aj gorom",
+      "nativeText": "“Today it is hot.” Bengali can state weather very compactly.",
+      "pronunciation": "aj gorom",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "“Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "“Today it is hot.” Bengali can state weather very compactly.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "“Today it is very hot.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আজ খুব গরম।",
+      "romanization": "aj gorom",
+      "nativeText": "Model use for \"আজ খুব গরম।\": “Today it is very hot.”",
+      "pronunciation": "aj gorom",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "“Today it is very hot.”",
+      "korean": "আজ খুব গরম।",
+      "english": "Model use for \"আজ খুব গরম।\": “Today it is very hot.”",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "“Today it is very hot.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "aj gorom",
+      "nativeText": "Usage focus for \"আজ গরম\": Use the key language of Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "aj gorom",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "Notice what the form is doing here: “Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "Usage focus for \"আজ গরম\": Use the key language of Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "Notice what the form is doing here: “Today it is very hot.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "aj gorom",
+      "nativeText": "Contrast check for \"আজ গরম\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "aj gorom",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "Contrast check for \"আজ গরম\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today it is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "aj gorom",
+      "nativeText": "Recall \"আজ গরম\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ খুব গরম।\".",
+      "pronunciation": "aj gorom",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "Self-check against the model before moving on: “Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "Recall \"আজ গরম\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ খুব গরম।\".",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "Self-check against the model before moving on: “Today it is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "aj gorom",
+      "nativeText": "Repair \"আজ গরম\" inside \"আজ খুব গরম।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "aj gorom",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "Use the model as the repair target: “Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "Repair \"আজ গরম\" inside \"আজ খুব গরম।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "Use the model as the repair target: “Today it is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "aj gorom",
+      "nativeText": "Transfer \"আজ গরম\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ খুব গরম।\".",
+      "pronunciation": "aj gorom",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "Transfer \"আজ গরম\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ খুব গরম।\".",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today it is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "aj gorom",
+      "nativeText": "Find one word or phrase that naturally travels with \"আজ গরম\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "aj gorom",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "Find one word or phrase that naturally travels with \"আজ গরম\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today it is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "aj gorom",
+      "nativeText": "Listen for \"আজ গরম\" inside \"আজ খুব গরম।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "aj gorom",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "Listen for \"আজ গরম\" inside \"আজ খুব গরম।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today it is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "aj gorom",
+      "nativeText": "Write \"আজ গরম\" again without looking, then compare the exact written form against \"আজ খুব গরম।\" before moving on.",
+      "pronunciation": "aj gorom",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "Use the written model as the final correctness check: “Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "Write \"আজ গরম\" again without looking, then compare the exact written form against \"আজ খুব গরম।\" before moving on.",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today it is very hot.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আজ গরম",
+      "romanization": "aj gorom",
+      "nativeText": "Check whether \"আজ গরম\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today it is very hot.”",
+      "pronunciation": "aj gorom",
+      "exampleTarget": "আজ খুব গরম।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today it is very hot.”",
+      "korean": "আজ গরম",
+      "english": "Check whether \"আজ গরম\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today it is very hot.”",
+      "example": "আজ খুব গরম।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today it is very hot.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "brishti hochchhe",
+      "nativeText": "“It is raining.” A common progressive weather phrase.",
+      "pronunciation": "brishti hochchhe",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "“It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "“It is raining.” A common progressive weather phrase.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "এখন বৃষ্টি হচ্ছে।",
+      "romanization": "brishti hochchhe",
+      "nativeText": "Model use for \"এখন বৃষ্টি হচ্ছে।\": “It is raining now.”",
+      "pronunciation": "brishti hochchhe",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "“It is raining now.”",
+      "korean": "এখন বৃষ্টি হচ্ছে।",
+      "english": "Model use for \"এখন বৃষ্টি হচ্ছে।\": “It is raining now.”",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "brishti hochchhe",
+      "nativeText": "Usage focus for \"বৃষ্টি হচ্ছে\": Distinguish the nearby wording choices that make Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "brishti hochchhe",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "Notice what the form is doing here: “It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "Usage focus for \"বৃষ্টি হচ্ছে\": Distinguish the nearby wording choices that make Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "Notice what the form is doing here: “It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "brishti hochchhe",
+      "nativeText": "Contrast check for \"বৃষ্টি হচ্ছে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "brishti hochchhe",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "Contrast check for \"বৃষ্টি হচ্ছে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "brishti hochchhe",
+      "nativeText": "Recall \"বৃষ্টি হচ্ছে\" from memory, then explain what would change if a nearby alternative replaced it in \"এখন বৃষ্টি হচ্ছে।\".",
+      "pronunciation": "brishti hochchhe",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "Self-check against the model before moving on: “It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "Recall \"বৃষ্টি হচ্ছে\" from memory, then explain what would change if a nearby alternative replaced it in \"এখন বৃষ্টি হচ্ছে।\".",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "Self-check against the model before moving on: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "brishti hochchhe",
+      "nativeText": "Repair \"বৃষ্টি হচ্ছে\" inside \"এখন বৃষ্টি হচ্ছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "brishti hochchhe",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "Use the model as the repair target: “It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "Repair \"বৃষ্টি হচ্ছে\" inside \"এখন বৃষ্টি হচ্ছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 10: আবহাওয়া ও পছন্দ — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "Use the model as the repair target: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "brishti hochchhe",
+      "nativeText": "Transfer \"বৃষ্টি হচ্ছে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এখন বৃষ্টি হচ্ছে।\".",
+      "pronunciation": "brishti hochchhe",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "Transfer \"বৃষ্টি হচ্ছে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এখন বৃষ্টি হচ্ছে।\".",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "brishti hochchhe",
+      "nativeText": "Find one word or phrase that naturally travels with \"বৃষ্টি হচ্ছে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "brishti hochchhe",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "Find one word or phrase that naturally travels with \"বৃষ্টি হচ্ছে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "brishti hochchhe",
+      "nativeText": "Listen for \"বৃষ্টি হচ্ছে\" inside \"এখন বৃষ্টি হচ্ছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "brishti hochchhe",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "Listen for \"বৃষ্টি হচ্ছে\" inside \"এখন বৃষ্টি হচ্ছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "brishti hochchhe",
+      "nativeText": "Write \"বৃষ্টি হচ্ছে\" again without looking, then compare the exact written form against \"এখন বৃষ্টি হচ্ছে।\" before moving on.",
+      "pronunciation": "brishti hochchhe",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "Use the written model as the final correctness check: “It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "Write \"বৃষ্টি হচ্ছে\" again without looking, then compare the exact written form against \"এখন বৃষ্টি হচ্ছে।\" before moving on.",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বৃষ্টি হচ্ছে",
+      "romanization": "brishti hochchhe",
+      "nativeText": "Check whether \"বৃষ্টি হচ্ছে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "pronunciation": "brishti hochchhe",
+      "exampleTarget": "এখন বৃষ্টি হচ্ছে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "korean": "বৃষ্টি হচ্ছে",
+      "english": "Check whether \"বৃষ্টি হচ্ছে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "example": "এখন বৃষ্টি হচ্ছে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “It is raining now.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "শীত",
+      "romanization": "sheet",
+      "nativeText": "“Cold / winter.” Context tells whether it means the sensation or the season.",
+      "pronunciation": "sheet",
+      "exampleTarget": "সকালে একটু শীত লাগে।",
+      "exampleNative": "“It feels a little cold in the morning.”",
+      "korean": "শীত",
+      "english": "“Cold / winter.” Context tells whether it means the sensation or the season.",
+      "example": "সকালে একটু শীত লাগে।",
+      "exampleEnglish": "“It feels a little cold in the morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "সকালে একটু শীত লাগে।",
+      "romanization": "sheet",
+      "nativeText": "Model use for \"সকালে একটু শীত লাগে।\": “It feels a little cold in the morning.”",
+      "pronunciation": "sheet",
+      "exampleTarget": "সকালে একটু শীত লাগে।",
+      "exampleNative": "“It feels a little cold in the morning.”",
+      "korean": "সকালে একটু শীত লাগে।",
+      "english": "Model use for \"সকালে একটু শীত লাগে।\": “It feels a little cold in the morning.”",
+      "example": "সকালে একটু শীত লাগে।",
+      "exampleEnglish": "“It feels a little cold in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "শীত",
+      "romanization": "sheet",
+      "nativeText": "Usage focus for \"শীত\": “Cold / winter.” Context tells whether it means the sensation or the season.",
+      "pronunciation": "sheet",
+      "exampleTarget": "সকালে একটু শীত লাগে।",
+      "exampleNative": "Notice what the form is doing here: “It feels a little cold in the morning.”",
+      "korean": "শীত",
+      "english": "Usage focus for \"শীত\": “Cold / winter.” Context tells whether it means the sensation or the season.",
+      "example": "সকালে একটু শীত লাগে।",
+      "exampleEnglish": "Notice what the form is doing here: “It feels a little cold in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "শীত",
+      "romanization": "sheet",
+      "nativeText": "Contrast check for \"শীত\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "sheet",
+      "exampleTarget": "সকালে একটু শীত লাগে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It feels a little cold in the morning.”",
+      "korean": "শীত",
+      "english": "Contrast check for \"শীত\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সকালে একটু শীত লাগে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It feels a little cold in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "শীত",
+      "romanization": "sheet",
+      "nativeText": "Recall \"শীত\" from memory, then explain what would change if a nearby alternative replaced it in \"সকালে একটু শীত লাগে।\".",
+      "pronunciation": "sheet",
+      "exampleTarget": "সকালে একটু শীত লাগে।",
+      "exampleNative": "Self-check against the model before moving on: “It feels a little cold in the morning.”",
+      "korean": "শীত",
+      "english": "Recall \"শীত\" from memory, then explain what would change if a nearby alternative replaced it in \"সকালে একটু শীত লাগে।\".",
+      "example": "সকালে একটু শীত লাগে।",
+      "exampleEnglish": "Self-check against the model before moving on: “It feels a little cold in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "শীত",
+      "romanization": "sheet",
+      "nativeText": "Repair \"শীত\" inside \"সকালে একটু শীত লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cold / winter.” Context tells whether it means the sensation or the season.",
+      "pronunciation": "sheet",
+      "exampleTarget": "সকালে একটু শীত লাগে।",
+      "exampleNative": "Use the model as the repair target: “It feels a little cold in the morning.”",
+      "korean": "শীত",
+      "english": "Repair \"শীত\" inside \"সকালে একটু শীত লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cold / winter.” Context tells whether it means the sensation or the season.",
+      "example": "সকালে একটু শীত লাগে।",
+      "exampleEnglish": "Use the model as the repair target: “It feels a little cold in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "শীত",
+      "romanization": "sheet",
+      "nativeText": "Transfer \"শীত\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সকালে একটু শীত লাগে।\".",
+      "pronunciation": "sheet",
+      "exampleTarget": "সকালে একটু শীত লাগে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “It feels a little cold in the morning.”",
+      "korean": "শীত",
+      "english": "Transfer \"শীত\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সকালে একটু শীত লাগে।\".",
+      "example": "সকালে একটু শীত লাগে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “It feels a little cold in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "শীত",
+      "romanization": "sheet",
+      "nativeText": "Find one word or phrase that naturally travels with \"শীত\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "sheet",
+      "exampleTarget": "সকালে একটু শীত লাগে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “It feels a little cold in the morning.”",
+      "korean": "শীত",
+      "english": "Find one word or phrase that naturally travels with \"শীত\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সকালে একটু শীত লাগে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “It feels a little cold in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "শীত",
+      "romanization": "sheet",
+      "nativeText": "Listen for \"শীত\" inside \"সকালে একটু শীত লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "sheet",
+      "exampleTarget": "সকালে একটু শীত লাগে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It feels a little cold in the morning.”",
+      "korean": "শীত",
+      "english": "Listen for \"শীত\" inside \"সকালে একটু শীত লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সকালে একটু শীত লাগে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It feels a little cold in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "শীত",
+      "romanization": "sheet",
+      "nativeText": "Write \"শীত\" again without looking, then compare the exact written form against \"সকালে একটু শীত লাগে।\" before moving on.",
+      "pronunciation": "sheet",
+      "exampleTarget": "সকালে একটু শীত লাগে।",
+      "exampleNative": "Use the written model as the final correctness check: “It feels a little cold in the morning.”",
+      "korean": "শীত",
+      "english": "Write \"শীত\" again without looking, then compare the exact written form against \"সকালে একটু শীত লাগে।\" before moving on.",
+      "example": "সকালে একটু শীত লাগে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “It feels a little cold in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "শীত",
+      "romanization": "sheet",
+      "nativeText": "Check whether \"শীত\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It feels a little cold in the morning.”",
+      "pronunciation": "sheet",
+      "exampleTarget": "সকালে একটু শীত লাগে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “It feels a little cold in the morning.”",
+      "korean": "শীত",
+      "english": "Check whether \"শীত\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It feels a little cold in the morning.”",
+      "example": "সকালে একটু শীত লাগে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “It feels a little cold in the morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বর্ষা / গ্রীষ্ম",
+      "romanization": "borsha / grishsho",
+      "nativeText": "“Monsoon / summer.” South Asian seasonal talk is more useful than a generic four-season template.",
+      "pronunciation": "borsha / grishsho",
+      "exampleTarget": "আমার বর্ষা ভালো লাগে।",
+      "exampleNative": "“I like the monsoon season.”",
+      "korean": "বর্ষা / গ্রীষ্ম",
+      "english": "“Monsoon / summer.” South Asian seasonal talk is more useful than a generic four-season template.",
+      "example": "আমার বর্ষা ভালো লাগে।",
+      "exampleEnglish": "“I like the monsoon season.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার বর্ষা ভালো লাগে।",
+      "romanization": "borsha / grishsho",
+      "nativeText": "Model use for \"আমার বর্ষা ভালো লাগে।\": “I like the monsoon season.”",
+      "pronunciation": "borsha / grishsho",
+      "exampleTarget": "আমার বর্ষা ভালো লাগে।",
+      "exampleNative": "“I like the monsoon season.”",
+      "korean": "আমার বর্ষা ভালো লাগে।",
+      "english": "Model use for \"আমার বর্ষা ভালো লাগে।\": “I like the monsoon season.”",
+      "example": "আমার বর্ষা ভালো লাগে।",
+      "exampleEnglish": "“I like the monsoon season.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বর্ষা / গ্রীষ্ম",
+      "romanization": "borsha / grishsho",
+      "nativeText": "Usage focus for \"বর্ষা / গ্রীষ্ম\": “Monsoon / summer.” South Asian seasonal talk is more useful than a generic four-season template.",
+      "pronunciation": "borsha / grishsho",
+      "exampleTarget": "আমার বর্ষা ভালো লাগে।",
+      "exampleNative": "Notice what the form is doing here: “I like the monsoon season.”",
+      "korean": "বর্ষা / গ্রীষ্ম",
+      "english": "Usage focus for \"বর্ষা / গ্রীষ্ম\": “Monsoon / summer.” South Asian seasonal talk is more useful than a generic four-season template.",
+      "example": "আমার বর্ষা ভালো লাগে।",
+      "exampleEnglish": "Notice what the form is doing here: “I like the monsoon season.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বর্ষা / গ্রীষ্ম",
+      "romanization": "borsha / grishsho",
+      "nativeText": "Contrast check for \"বর্ষা / গ্রীষ্ম\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "borsha / grishsho",
+      "exampleTarget": "আমার বর্ষা ভালো লাগে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the monsoon season.”",
+      "korean": "বর্ষা / গ্রীষ্ম",
+      "english": "Contrast check for \"বর্ষা / গ্রীষ্ম\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমার বর্ষা ভালো লাগে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the monsoon season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বর্ষা / গ্রীষ্ম",
+      "romanization": "borsha / grishsho",
+      "nativeText": "Recall \"বর্ষা / গ্রীষ্ম\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার বর্ষা ভালো লাগে।\".",
+      "pronunciation": "borsha / grishsho",
+      "exampleTarget": "আমার বর্ষা ভালো লাগে।",
+      "exampleNative": "Self-check against the model before moving on: “I like the monsoon season.”",
+      "korean": "বর্ষা / গ্রীষ্ম",
+      "english": "Recall \"বর্ষা / গ্রীষ্ম\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার বর্ষা ভালো লাগে।\".",
+      "example": "আমার বর্ষা ভালো লাগে।",
+      "exampleEnglish": "Self-check against the model before moving on: “I like the monsoon season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বর্ষা / গ্রীষ্ম",
+      "romanization": "borsha / grishsho",
+      "nativeText": "Repair \"বর্ষা / গ্রীষ্ম\" inside \"আমার বর্ষা ভালো লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Monsoon / summer.” South Asian seasonal talk is more useful than a generic four-season template.",
+      "pronunciation": "borsha / grishsho",
+      "exampleTarget": "আমার বর্ষা ভালো লাগে।",
+      "exampleNative": "Use the model as the repair target: “I like the monsoon season.”",
+      "korean": "বর্ষা / গ্রীষ্ম",
+      "english": "Repair \"বর্ষা / গ্রীষ্ম\" inside \"আমার বর্ষা ভালো লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Monsoon / summer.” South Asian seasonal talk is more useful than a generic four-season template.",
+      "example": "আমার বর্ষা ভালো লাগে।",
+      "exampleEnglish": "Use the model as the repair target: “I like the monsoon season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বর্ষা / গ্রীষ্ম",
+      "romanization": "borsha / grishsho",
+      "nativeText": "Transfer \"বর্ষা / গ্রীষ্ম\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার বর্ষা ভালো লাগে।\".",
+      "pronunciation": "borsha / grishsho",
+      "exampleTarget": "আমার বর্ষা ভালো লাগে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the monsoon season.”",
+      "korean": "বর্ষা / গ্রীষ্ম",
+      "english": "Transfer \"বর্ষা / গ্রীষ্ম\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার বর্ষা ভালো লাগে।\".",
+      "example": "আমার বর্ষা ভালো লাগে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the monsoon season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বর্ষা / গ্রীষ্ম",
+      "romanization": "borsha / grishsho",
+      "nativeText": "Find one word or phrase that naturally travels with \"বর্ষা / গ্রীষ্ম\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "borsha / grishsho",
+      "exampleTarget": "আমার বর্ষা ভালো লাগে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like the monsoon season.”",
+      "korean": "বর্ষা / গ্রীষ্ম",
+      "english": "Find one word or phrase that naturally travels with \"বর্ষা / গ্রীষ্ম\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমার বর্ষা ভালো লাগে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like the monsoon season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বর্ষা / গ্রীষ্ম",
+      "romanization": "borsha / grishsho",
+      "nativeText": "Listen for \"বর্ষা / গ্রীষ্ম\" inside \"আমার বর্ষা ভালো লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "borsha / grishsho",
+      "exampleTarget": "আমার বর্ষা ভালো লাগে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the monsoon season.”",
+      "korean": "বর্ষা / গ্রীষ্ম",
+      "english": "Listen for \"বর্ষা / গ্রীষ্ম\" inside \"আমার বর্ষা ভালো লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমার বর্ষা ভালো লাগে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the monsoon season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বর্ষা / গ্রীষ্ম",
+      "romanization": "borsha / grishsho",
+      "nativeText": "Write \"বর্ষা / গ্রীষ্ম\" again without looking, then compare the exact written form against \"আমার বর্ষা ভালো লাগে।\" before moving on.",
+      "pronunciation": "borsha / grishsho",
+      "exampleTarget": "আমার বর্ষা ভালো লাগে।",
+      "exampleNative": "Use the written model as the final correctness check: “I like the monsoon season.”",
+      "korean": "বর্ষা / গ্রীষ্ম",
+      "english": "Write \"বর্ষা / গ্রীষ্ম\" again without looking, then compare the exact written form against \"আমার বর্ষা ভালো লাগে।\" before moving on.",
+      "example": "আমার বর্ষা ভালো লাগে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like the monsoon season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বর্ষা / গ্রীষ্ম",
+      "romanization": "borsha / grishsho",
+      "nativeText": "Check whether \"বর্ষা / গ্রীষ্ম\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the monsoon season.”",
+      "pronunciation": "borsha / grishsho",
+      "exampleTarget": "আমার বর্ষা ভালো লাগে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like the monsoon season.”",
+      "korean": "বর্ষা / গ্রীষ্ম",
+      "english": "Check whether \"বর্ষা / গ্রীষ্ম\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the monsoon season.”",
+      "example": "আমার বর্ষা ভালো লাগে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like the monsoon season.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার ভালো লাগে",
+      "romanization": "amar bhalo lage",
+      "nativeText": "“I like.” Literally “it feels good to me.”",
+      "pronunciation": "amar bhalo lage",
+      "exampleTarget": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleNative": "“I like cool weather.”",
+      "korean": "আমার ভালো লাগে",
+      "english": "“I like.” Literally “it feels good to me.”",
+      "example": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleEnglish": "“I like cool weather.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "romanization": "amar bhalo lage",
+      "nativeText": "Model use for \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\": “I like cool weather.”",
+      "pronunciation": "amar bhalo lage",
+      "exampleTarget": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleNative": "“I like cool weather.”",
+      "korean": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "english": "Model use for \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\": “I like cool weather.”",
+      "example": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleEnglish": "“I like cool weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার ভালো লাগে",
+      "romanization": "amar bhalo lage",
+      "nativeText": "Usage focus for \"আমার ভালো লাগে\": “I like.” Literally “it feels good to me.”",
+      "pronunciation": "amar bhalo lage",
+      "exampleTarget": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleNative": "Notice what the form is doing here: “I like cool weather.”",
+      "korean": "আমার ভালো লাগে",
+      "english": "Usage focus for \"আমার ভালো লাগে\": “I like.” Literally “it feels good to me.”",
+      "example": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleEnglish": "Notice what the form is doing here: “I like cool weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার ভালো লাগে",
+      "romanization": "amar bhalo lage",
+      "nativeText": "Contrast check for \"আমার ভালো লাগে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "amar bhalo lage",
+      "exampleTarget": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like cool weather.”",
+      "korean": "আমার ভালো লাগে",
+      "english": "Contrast check for \"আমার ভালো লাগে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার ভালো লাগে",
+      "romanization": "amar bhalo lage",
+      "nativeText": "Recall \"আমার ভালো লাগে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\".",
+      "pronunciation": "amar bhalo lage",
+      "exampleTarget": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleNative": "Self-check against the model before moving on: “I like cool weather.”",
+      "korean": "আমার ভালো লাগে",
+      "english": "Recall \"আমার ভালো লাগে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\".",
+      "example": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleEnglish": "Self-check against the model before moving on: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার ভালো লাগে",
+      "romanization": "amar bhalo lage",
+      "nativeText": "Repair \"আমার ভালো লাগে\" inside \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like.” Literally “it feels good to me.”",
+      "pronunciation": "amar bhalo lage",
+      "exampleTarget": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleNative": "Use the model as the repair target: “I like cool weather.”",
+      "korean": "আমার ভালো লাগে",
+      "english": "Repair \"আমার ভালো লাগে\" inside \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like.” Literally “it feels good to me.”",
+      "example": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleEnglish": "Use the model as the repair target: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার ভালো লাগে",
+      "romanization": "amar bhalo lage",
+      "nativeText": "Transfer \"আমার ভালো লাগে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\".",
+      "pronunciation": "amar bhalo lage",
+      "exampleTarget": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like cool weather.”",
+      "korean": "আমার ভালো লাগে",
+      "english": "Transfer \"আমার ভালো লাগে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\".",
+      "example": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার ভালো লাগে",
+      "romanization": "amar bhalo lage",
+      "nativeText": "Find one word or phrase that naturally travels with \"আমার ভালো লাগে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "amar bhalo lage",
+      "exampleTarget": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like cool weather.”",
+      "korean": "আমার ভালো লাগে",
+      "english": "Find one word or phrase that naturally travels with \"আমার ভালো লাগে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার ভালো লাগে",
+      "romanization": "amar bhalo lage",
+      "nativeText": "Listen for \"আমার ভালো লাগে\" inside \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "amar bhalo lage",
+      "exampleTarget": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like cool weather.”",
+      "korean": "আমার ভালো লাগে",
+      "english": "Listen for \"আমার ভালো লাগে\" inside \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার ভালো লাগে",
+      "romanization": "amar bhalo lage",
+      "nativeText": "Write \"আমার ভালো লাগে\" again without looking, then compare the exact written form against \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\" before moving on.",
+      "pronunciation": "amar bhalo lage",
+      "exampleTarget": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleNative": "Use the written model as the final correctness check: “I like cool weather.”",
+      "korean": "আমার ভালো লাগে",
+      "english": "Write \"আমার ভালো লাগে\" again without looking, then compare the exact written form against \"আমার ঠান্ডা আবহাওয়া ভালো লাগে।\" before moving on.",
+      "example": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমার ভালো লাগে",
+      "romanization": "amar bhalo lage",
+      "nativeText": "Check whether \"আমার ভালো লাগে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like cool weather.”",
+      "pronunciation": "amar bhalo lage",
+      "exampleTarget": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like cool weather.”",
+      "korean": "আমার ভালো লাগে",
+      "english": "Check whether \"আমার ভালো লাগে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like cool weather.”",
+      "example": "আমার ঠান্ডা আবহাওয়া ভালো লাগে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like cool weather.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমি পছন্দ করি না",
+      "romanization": "ami pochhondo kori na",
+      "nativeText": "“I do not like / prefer.” Another common preference frame.",
+      "pronunciation": "ami pochhondo kori na",
+      "exampleTarget": "আমি খুব গরম পছন্দ করি না।",
+      "exampleNative": "“I do not like extreme heat.”",
+      "korean": "আমি পছন্দ করি না",
+      "english": "“I do not like / prefer.” Another common preference frame.",
+      "example": "আমি খুব গরম পছন্দ করি না।",
+      "exampleEnglish": "“I do not like extreme heat.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমি খুব গরম পছন্দ করি না।",
+      "romanization": "ami pochhondo kori na",
+      "nativeText": "Model use for \"আমি খুব গরম পছন্দ করি না।\": “I do not like extreme heat.”",
+      "pronunciation": "ami pochhondo kori na",
+      "exampleTarget": "আমি খুব গরম পছন্দ করি না।",
+      "exampleNative": "“I do not like extreme heat.”",
+      "korean": "আমি খুব গরম পছন্দ করি না।",
+      "english": "Model use for \"আমি খুব গরম পছন্দ করি না।\": “I do not like extreme heat.”",
+      "example": "আমি খুব গরম পছন্দ করি না।",
+      "exampleEnglish": "“I do not like extreme heat.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমি পছন্দ করি না",
+      "romanization": "ami pochhondo kori na",
+      "nativeText": "Usage focus for \"আমি পছন্দ করি না\": “I do not like / prefer.” Another common preference frame.",
+      "pronunciation": "ami pochhondo kori na",
+      "exampleTarget": "আমি খুব গরম পছন্দ করি না।",
+      "exampleNative": "Notice what the form is doing here: “I do not like extreme heat.”",
+      "korean": "আমি পছন্দ করি না",
+      "english": "Usage focus for \"আমি পছন্দ করি না\": “I do not like / prefer.” Another common preference frame.",
+      "example": "আমি খুব গরম পছন্দ করি না।",
+      "exampleEnglish": "Notice what the form is doing here: “I do not like extreme heat.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমি পছন্দ করি না",
+      "romanization": "ami pochhondo kori na",
+      "nativeText": "Contrast check for \"আমি পছন্দ করি না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ami pochhondo kori na",
+      "exampleTarget": "আমি খুব গরম পছন্দ করি না।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do not like extreme heat.”",
+      "korean": "আমি পছন্দ করি না",
+      "english": "Contrast check for \"আমি পছন্দ করি না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি খুব গরম পছন্দ করি না।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do not like extreme heat.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমি পছন্দ করি না",
+      "romanization": "ami pochhondo kori na",
+      "nativeText": "Recall \"আমি পছন্দ করি না\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি খুব গরম পছন্দ করি না।\".",
+      "pronunciation": "ami pochhondo kori na",
+      "exampleTarget": "আমি খুব গরম পছন্দ করি না।",
+      "exampleNative": "Self-check against the model before moving on: “I do not like extreme heat.”",
+      "korean": "আমি পছন্দ করি না",
+      "english": "Recall \"আমি পছন্দ করি না\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি খুব গরম পছন্দ করি না।\".",
+      "example": "আমি খুব গরম পছন্দ করি না।",
+      "exampleEnglish": "Self-check against the model before moving on: “I do not like extreme heat.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমি পছন্দ করি না",
+      "romanization": "ami pochhondo kori na",
+      "nativeText": "Repair \"আমি পছন্দ করি না\" inside \"আমি খুব গরম পছন্দ করি না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I do not like / prefer.” Another common preference frame.",
+      "pronunciation": "ami pochhondo kori na",
+      "exampleTarget": "আমি খুব গরম পছন্দ করি না।",
+      "exampleNative": "Use the model as the repair target: “I do not like extreme heat.”",
+      "korean": "আমি পছন্দ করি না",
+      "english": "Repair \"আমি পছন্দ করি না\" inside \"আমি খুব গরম পছন্দ করি না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I do not like / prefer.” Another common preference frame.",
+      "example": "আমি খুব গরম পছন্দ করি না।",
+      "exampleEnglish": "Use the model as the repair target: “I do not like extreme heat.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমি পছন্দ করি না",
+      "romanization": "ami pochhondo kori na",
+      "nativeText": "Transfer \"আমি পছন্দ করি না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি খুব গরম পছন্দ করি না।\".",
+      "pronunciation": "ami pochhondo kori na",
+      "exampleTarget": "আমি খুব গরম পছন্দ করি না।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do not like extreme heat.”",
+      "korean": "আমি পছন্দ করি না",
+      "english": "Transfer \"আমি পছন্দ করি না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি খুব গরম পছন্দ করি না।\".",
+      "example": "আমি খুব গরম পছন্দ করি না।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do not like extreme heat.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমি পছন্দ করি না",
+      "romanization": "ami pochhondo kori na",
+      "nativeText": "Find one word or phrase that naturally travels with \"আমি পছন্দ করি না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ami pochhondo kori na",
+      "exampleTarget": "আমি খুব গরম পছন্দ করি না।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I do not like extreme heat.”",
+      "korean": "আমি পছন্দ করি না",
+      "english": "Find one word or phrase that naturally travels with \"আমি পছন্দ করি না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি খুব গরম পছন্দ করি না।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I do not like extreme heat.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমি পছন্দ করি না",
+      "romanization": "ami pochhondo kori na",
+      "nativeText": "Listen for \"আমি পছন্দ করি না\" inside \"আমি খুব গরম পছন্দ করি না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ami pochhondo kori na",
+      "exampleTarget": "আমি খুব গরম পছন্দ করি না।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do not like extreme heat.”",
+      "korean": "আমি পছন্দ করি না",
+      "english": "Listen for \"আমি পছন্দ করি না\" inside \"আমি খুব গরম পছন্দ করি না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি খুব গরম পছন্দ করি না।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do not like extreme heat.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমি পছন্দ করি না",
+      "romanization": "ami pochhondo kori na",
+      "nativeText": "Write \"আমি পছন্দ করি না\" again without looking, then compare the exact written form against \"আমি খুব গরম পছন্দ করি না।\" before moving on.",
+      "pronunciation": "ami pochhondo kori na",
+      "exampleTarget": "আমি খুব গরম পছন্দ করি না।",
+      "exampleNative": "Use the written model as the final correctness check: “I do not like extreme heat.”",
+      "korean": "আমি পছন্দ করি না",
+      "english": "Write \"আমি পছন্দ করি না\" again without looking, then compare the exact written form against \"আমি খুব গরম পছন্দ করি না।\" before moving on.",
+      "example": "আমি খুব গরম পছন্দ করি না।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I do not like extreme heat.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "আমি পছন্দ করি না",
+      "romanization": "ami pochhondo kori na",
+      "nativeText": "Check whether \"আমি পছন্দ করি না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do not like extreme heat.”",
+      "pronunciation": "ami pochhondo kori na",
+      "exampleTarget": "আমি খুব গরম পছন্দ করি না।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I do not like extreme heat.”",
+      "korean": "আমি পছন্দ করি না",
+      "english": "Check whether \"আমি পছন্দ করি না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do not like extreme heat.”",
+      "example": "আমি খুব গরম পছন্দ করি না।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I do not like extreme heat.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "এর চেয়ে",
+      "romanization": "er cheye",
+      "nativeText": "“Than this / compared with this.” Useful in preferences.",
+      "pronunciation": "er cheye",
+      "exampleTarget": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleNative": "“I like the monsoon more than summer.”",
+      "korean": "এর চেয়ে",
+      "english": "“Than this / compared with this.” Useful in preferences.",
+      "example": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleEnglish": "“I like the monsoon more than summer.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "romanization": "er cheye",
+      "nativeText": "Model use for \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\": “I like the monsoon more than summer.”",
+      "pronunciation": "er cheye",
+      "exampleTarget": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleNative": "“I like the monsoon more than summer.”",
+      "korean": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "english": "Model use for \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\": “I like the monsoon more than summer.”",
+      "example": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleEnglish": "“I like the monsoon more than summer.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "এর চেয়ে",
+      "romanization": "er cheye",
+      "nativeText": "Usage focus for \"এর চেয়ে\": “Than this / compared with this.” Useful in preferences.",
+      "pronunciation": "er cheye",
+      "exampleTarget": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleNative": "Notice what the form is doing here: “I like the monsoon more than summer.”",
+      "korean": "এর চেয়ে",
+      "english": "Usage focus for \"এর চেয়ে\": “Than this / compared with this.” Useful in preferences.",
+      "example": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleEnglish": "Notice what the form is doing here: “I like the monsoon more than summer.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "এর চেয়ে",
+      "romanization": "er cheye",
+      "nativeText": "Contrast check for \"এর চেয়ে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "er cheye",
+      "exampleTarget": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the monsoon more than summer.”",
+      "korean": "এর চেয়ে",
+      "english": "Contrast check for \"এর চেয়ে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the monsoon more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "এর চেয়ে",
+      "romanization": "er cheye",
+      "nativeText": "Recall \"এর চেয়ে\" from memory, then explain what would change if a nearby alternative replaced it in \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\".",
+      "pronunciation": "er cheye",
+      "exampleTarget": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleNative": "Self-check against the model before moving on: “I like the monsoon more than summer.”",
+      "korean": "এর চেয়ে",
+      "english": "Recall \"এর চেয়ে\" from memory, then explain what would change if a nearby alternative replaced it in \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\".",
+      "example": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleEnglish": "Self-check against the model before moving on: “I like the monsoon more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "এর চেয়ে",
+      "romanization": "er cheye",
+      "nativeText": "Repair \"এর চেয়ে\" inside \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Than this / compared with this.” Useful in preferences.",
+      "pronunciation": "er cheye",
+      "exampleTarget": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleNative": "Use the model as the repair target: “I like the monsoon more than summer.”",
+      "korean": "এর চেয়ে",
+      "english": "Repair \"এর চেয়ে\" inside \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Than this / compared with this.” Useful in preferences.",
+      "example": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleEnglish": "Use the model as the repair target: “I like the monsoon more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "এর চেয়ে",
+      "romanization": "er cheye",
+      "nativeText": "Transfer \"এর চেয়ে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\".",
+      "pronunciation": "er cheye",
+      "exampleTarget": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the monsoon more than summer.”",
+      "korean": "এর চেয়ে",
+      "english": "Transfer \"এর চেয়ে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\".",
+      "example": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the monsoon more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "এর চেয়ে",
+      "romanization": "er cheye",
+      "nativeText": "Find one word or phrase that naturally travels with \"এর চেয়ে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "er cheye",
+      "exampleTarget": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like the monsoon more than summer.”",
+      "korean": "এর চেয়ে",
+      "english": "Find one word or phrase that naturally travels with \"এর চেয়ে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like the monsoon more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "এর চেয়ে",
+      "romanization": "er cheye",
+      "nativeText": "Listen for \"এর চেয়ে\" inside \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "er cheye",
+      "exampleTarget": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the monsoon more than summer.”",
+      "korean": "এর চেয়ে",
+      "english": "Listen for \"এর চেয়ে\" inside \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the monsoon more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "এর চেয়ে",
+      "romanization": "er cheye",
+      "nativeText": "Write \"এর চেয়ে\" again without looking, then compare the exact written form against \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\" before moving on.",
+      "pronunciation": "er cheye",
+      "exampleTarget": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleNative": "Use the written model as the final correctness check: “I like the monsoon more than summer.”",
+      "korean": "এর চেয়ে",
+      "english": "Write \"এর চেয়ে\" again without looking, then compare the exact written form against \"গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।\" before moving on.",
+      "example": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like the monsoon more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "এর চেয়ে",
+      "romanization": "er cheye",
+      "nativeText": "Check whether \"এর চেয়ে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the monsoon more than summer.”",
+      "pronunciation": "er cheye",
+      "exampleTarget": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like the monsoon more than summer.”",
+      "korean": "এর চেয়ে",
+      "english": "Check whether \"এর চেয়ে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the monsoon more than summer.”",
+      "example": "গ্রীষ্মের চেয়ে বর্ষা ভালো লাগে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like the monsoon more than summer.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "কারণ",
+      "romanization": "karon",
+      "nativeText": "“Because.” It lets the learner explain a preference.",
+      "pronunciation": "karon",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "“I like the monsoon because the air stays cool.”",
+      "korean": "কারণ",
+      "english": "“Because.” It lets the learner explain a preference.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "“I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "romanization": "karon",
+      "nativeText": "Model use for \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\": “I like the monsoon because the air stays cool.”",
+      "pronunciation": "karon",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "“I like the monsoon because the air stays cool.”",
+      "korean": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "english": "Model use for \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\": “I like the monsoon because the air stays cool.”",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "“I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "কারণ",
+      "romanization": "karon",
+      "nativeText": "Usage focus for \"কারণ\": “Because.” It lets the learner explain a preference.",
+      "pronunciation": "karon",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "Notice what the form is doing here: “I like the monsoon because the air stays cool.”",
+      "korean": "কারণ",
+      "english": "Usage focus for \"কারণ\": “Because.” It lets the learner explain a preference.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "Notice what the form is doing here: “I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "কারণ",
+      "romanization": "karon",
+      "nativeText": "Contrast check for \"কারণ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "karon",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the monsoon because the air stays cool.”",
+      "korean": "কারণ",
+      "english": "Contrast check for \"কারণ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "কারণ",
+      "romanization": "karon",
+      "nativeText": "Recall \"কারণ\" from memory, then explain what would change if a nearby alternative replaced it in \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\".",
+      "pronunciation": "karon",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "Self-check against the model before moving on: “I like the monsoon because the air stays cool.”",
+      "korean": "কারণ",
+      "english": "Recall \"কারণ\" from memory, then explain what would change if a nearby alternative replaced it in \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\".",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "Self-check against the model before moving on: “I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "কারণ",
+      "romanization": "karon",
+      "nativeText": "Repair \"কারণ\" inside \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Because.” It lets the learner explain a preference.",
+      "pronunciation": "karon",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "Use the model as the repair target: “I like the monsoon because the air stays cool.”",
+      "korean": "কারণ",
+      "english": "Repair \"কারণ\" inside \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Because.” It lets the learner explain a preference.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "Use the model as the repair target: “I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "কারণ",
+      "romanization": "karon",
+      "nativeText": "Transfer \"কারণ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\".",
+      "pronunciation": "karon",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the monsoon because the air stays cool.”",
+      "korean": "কারণ",
+      "english": "Transfer \"কারণ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\".",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "কারণ",
+      "romanization": "karon",
+      "nativeText": "Find one word or phrase that naturally travels with \"কারণ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "karon",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like the monsoon because the air stays cool.”",
+      "korean": "কারণ",
+      "english": "Find one word or phrase that naturally travels with \"কারণ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "কারণ",
+      "romanization": "karon",
+      "nativeText": "Listen for \"কারণ\" inside \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "karon",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the monsoon because the air stays cool.”",
+      "korean": "কারণ",
+      "english": "Listen for \"কারণ\" inside \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "কারণ",
+      "romanization": "karon",
+      "nativeText": "Write \"কারণ\" again without looking, then compare the exact written form against \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" before moving on.",
+      "pronunciation": "karon",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "Use the written model as the final correctness check: “I like the monsoon because the air stays cool.”",
+      "korean": "কারণ",
+      "english": "Write \"কারণ\" again without looking, then compare the exact written form against \"বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।\" before moving on.",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like the monsoon because the air stays cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit10weatherpreferences-vocabulary-1",
+        "bn-level1unit10weatherpreferences-vocabulary-2",
+        "bn-level1unit10weatherpreferences-grammar-1",
+        "bn-level1unit10weatherpreferences-grammar-2",
+        "bn-level1unit10weatherpreferences-reading",
+        "bn-level1unit10weatherpreferences-listening",
+        "bn-level1unit10weatherpreferences-writing",
+        "bn-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "কারণ",
+      "romanization": "karon",
+      "nativeText": "Check whether \"কারণ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the monsoon because the air stays cool.”",
+      "pronunciation": "karon",
+      "exampleTarget": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like the monsoon because the air stays cool.”",
+      "korean": "কারণ",
+      "english": "Check whether \"কারণ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the monsoon because the air stays cool.”",
+      "example": "বর্ষা ভালো লাগে কারণ বাতাস ঠান্ডা থাকে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like the monsoon because the air stays cool.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

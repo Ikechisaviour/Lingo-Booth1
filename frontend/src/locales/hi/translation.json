@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "इस आइटम का अन्यत्र अभ्यास करें",
     "practiceEverywhere": "इसका अभ्यास हर जगह करें",
     "saveReply": "उत्तर सहेजें",
-    "selfTestReason": "त्वरित आत्म-परीक्षण के लिए कक्षा से बचाया गया।"
+    "selfTestReason": "त्वरित आत्म-परीक्षण के लिए कक्षा से बचाया गया।",
+    "hideOutline": "रूपरेखा छिपाएँ",
+    "showOutline": "रूपरेखा दिखाएँ"
   },
   "classList": {
     "heroAriaLabel": "कक्षा",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "स्तर {{level}} · इकाई {{unit}}: {{title}}"
-    }
+    },
+    "retry": "पुनः प्रयास करें",
+    "progressAriaLabel": "कक्षा प्रगति",
+    "progressCaption": "{{percent}}% पूर्ण · {{total}} आइटम में से {{completed}}"
   },
   "contextPractice": {
     "title": "पाठ आपके चारों ओर आकार लेते हैं",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "क्या ठीक रहा",
     "recapUsefulPhrases": "उपयोगी वाक्यांश",
     "recapReview": "आगे समीक्षा करें",
-    "recapReviewFallback": "एक वाक्यांश सहेजें और इसे दूसरे अभ्यास मोड में पुन: उपयोग करें।"
+    "recapReviewFallback": "एक वाक्यांश सहेजें और इसे दूसरे अभ्यास मोड में पुन: उपयोग करें।",
+    "hideSetup": "सेटअप छिपाएँ",
+    "showSetup": "सेटअप दिखाएँ"
   },
   "exerciseHub": {
     "ariaLabel": "व्यायाम",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: आकृति को कॉपी करें, फिर उसे मेमोरी से लिखें।"
     },
     "savedReason": "दूसरे पास के लिए लेखन अभ्यास से बचाया गया।",
-    "selfTestReason": "त्वरित आत्म-परीक्षण के लिए लेखन अभ्यास से बचाया गया।"
+    "selfTestReason": "त्वरित आत्म-परीक्षण के लिए लेखन अभ्यास से बचाया गया।",
+    "hideNotebook": "नोटबुक छिपाएँ",
+    "showNotebook": "नोटबुक दिखाएँ"
   },
   "institution": {
     "kicker": "संस्था",

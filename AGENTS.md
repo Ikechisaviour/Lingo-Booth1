@@ -71,6 +71,23 @@ This project ships two parallel UI surfaces: **web** (`frontend/`, React) and **
 
 **Agents:** parity is not optional. Auto-include the counterpart in your plan. If you implement on one side and pause for review, say explicitly which surface is done and which is pending — do not let the user discover the omission.
 
+## Device Coverage And Responsive Layout
+
+Device coverage is non-optional for every user-facing layout change.
+
+- The web app must support **desktop, tablet, and phone** layouts. Do not treat desktop as the only real web target or allow tablet/mobile views to become cramped, clipped, overlapping, or unusable.
+- The mobile apps must support **phones, Android tablets, and iPads**. Do not ship handset-only layouts that merely stretch across larger screens; tablet layouts should make deliberate use of the extra space while remaining touch-friendly.
+- A user-facing change is incomplete if it works only at one screen size, only in portrait phone view, or only on web while the equivalent mobile surface breaks on tablet/iPad.
+- Prefer responsive primitives, adaptive grids, content reflow, min/max constraints, and breakpoint-aware layouts over fixed widths/heights that assume one device class.
+- Dense desktop compositions must collapse intelligently on smaller web screens. Phone-first mobile screens must expand intelligently on tablets and iPads instead of leaving awkward empty space or oversized controls.
+- When changing navigation, headers, sidebars, chat/tutor threads, forms, cards, media, tables, or repeated grids, explicitly check that content remains reachable and readable at:
+  - web phone width
+  - web tablet width
+  - web desktop width
+  - mobile phone
+  - mobile tablet/iPad
+- Tablet/iPad support is part of mobile parity. If a screen exists on mobile, supporting only phones is not enough.
+
 ## Shared Policies
 
 - Use shared utilities for language-pair behavior instead of repeating `if English/Korean` checks inside components.
@@ -152,9 +169,15 @@ Why this matters: the gloss is the seed for the translation pipeline. EN→Spani
 
 ## Pre-Final Checklist
 
+- Before finalizing any task, explicitly ask yourself: **"Can I genuinely say yes to the question: have I done everything thoroughly and to a great quality?"**
+- Every final response must include the visible answer to that check in this exact form:
+  - `Quality check: Yes.` only when the work genuinely meets that standard.
+  - `Quality check: No.` when anything material remains incomplete, weak, unverified, or below the requested standard, followed by the reason.
+- Do not use `Quality check: Yes.` as a courtesy phrase. It is a claim that the implementation, verification, parity, localization, and task scope have genuinely been completed to a high standard.
 - Run `npm run audit:all` from the repo root before finalizing any user-facing change. This is the required combined gate for backend, frontend, mobile, all supported languages, and parity.
 - Run `npm run audit:guardrails` from `frontend` before finalizing frontend changes.
 - Run `npm run build` from `frontend` before finalizing frontend changes.
 - If backend quiz/flashcard data changes, run backend concept and pronunciation audits.
 - Web/mobile parity check: for every UI/UX change, confirm both `frontend/` and `mobile/` have been updated (or document why one was deliberately skipped). See the **Web/Mobile Parity** section.
+- Device coverage check: for every user-facing layout change, verify web behavior at phone/tablet/desktop sizes and mobile behavior on phone plus tablet/iPad form factors. See the **Device Coverage And Responsive Layout** section.
 - Gloss richness check: for every new or edited class-lesson seed, scan that no `nativeText` / `exampleNative` / `breakdown[].native` is a bare definition or one-word gloss. See the **Gloss Richness** section.

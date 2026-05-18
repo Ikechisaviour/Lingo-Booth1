@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u19',
-  title: 'Level 1 · Unit 19: Праздники и традиции — Cultural Holidays',
-  category: 'culture',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about major Russian holidays, family customs, and seasonal traditions.',
-  vocabularyGoal: 'Use holiday, family, greeting, and celebration words.',
-  grammarGoal: 'Use `обычно`, `будем`, and simple holiday descriptions.',
-  speakingGoal: 'Describe one holiday, say what people usually do, and give an appropriate greeting.',
-  task: 'Explain one Russian holiday to a visitor.',
-  expressionPractice: [
-    practice('naming-holiday', 'Naming holiday', 'Introduce one celebration clearly.'),
-    practice('describing-custom', 'Describing custom', 'Use `обычно` plus one action.'),
-    practice('giving-greeting', 'Giving greeting', 'Use the formula that fits the occasion.'),
+module.exports = {
+  "title": "Level 1 · Unit 19: Праздники и традиции — Cultural Holidays",
+  "category": "culture",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit19culturalholidays-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about major Russian holidays, family customs, and seasonal traditions."
+      ],
+      "task": "Explain one Russian holiday to a visitor."
+    },
+    {
+      "id": "ru-level1unit19culturalholidays-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit19culturalholidays-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit19culturalholidays-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 19: Праздники и традиции — Cultural Holidays sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit19culturalholidays-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about major Russian holidays, family customs, and seasonal traditions."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit19culturalholidays-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit19culturalholidays-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit19culturalholidays-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit19culturalholidays-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit19culturalholidays-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit19culturalholidays-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Explain one Russian holiday to a visitor."
+      ],
+      "task": "Explain one Russian holiday to a visitor."
+    }
   ],
-  relatedPools: ['topic-culture', 'topic-family'],
-  items: [
-    item('Новый год', 'novyy god', '“New Year.” In Russia this is often the biggest family holiday of the year.', 'На Новый год семьи собираются вместе.', '“At New Year families gather together.”'),
-    item('Рождество', 'rozhdestvo', '“Christmas.” In Russia it is celebrated on January 7 in the Orthodox tradition.', 'Рождество отмечают седьмого января.', '“Christmas is celebrated on January seventh.”'),
-    item('Масленица', 'maslenitsa', 'A pre-Lenten festival associated with pancakes, late winter, and seeing off the cold season.', 'На Масленицу едят блины.', '“At Maslenitsa people eat blini.”'),
-    item('День Победы', 'den pobedy', '“Victory Day,” May 9, a major public remembrance holiday in Russia.', 'День Победы отмечают девятого мая.', '“Victory Day is celebrated on May ninth.”'),
-    item('обычно', 'obychno', '“Usually.” A key word for describing customs.', 'Обычно мы украшаем ёлку дома.', '“Usually we decorate a tree at home.”'),
-    item('поздравлять', 'pozdravlyat', '“To congratulate / greet for an occasion.” Russian greetings often use this verb.', 'Мы поздравляем друзей с праздником.', '“We greet friends for the holiday.”'),
-    item('С Новым годом!', 's novym godom', '“Happy New Year!” Literally “with the New Year,” using instrumental.', 'С Новым годом вас!', '“Happy New Year to you!”'),
-    item('традиция', 'traditsiya', '“Tradition.” A useful bridge noun for cultural explanations.', 'Это важная семейная традиция.', '“This is an important family tradition.”'),
+  "expressionPractice": [
+    {
+      "id": "naming-holiday",
+      "label": "Naming holiday",
+      "goal": "Introduce one celebration clearly."
+    },
+    {
+      "id": "describing-custom",
+      "label": "Describing custom",
+      "goal": "Use `обычно` plus one action."
+    },
+    {
+      "id": "giving-greeting",
+      "label": "Giving greeting",
+      "goal": "Use the formula that fits the occasion."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-culture",
+    "topic-family"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Talk about major Russian holidays, family customs, and seasonal traditions.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Explain one Russian holiday to a visitor.",
+      "korean": "цель урока",
+      "english": "Talk about major Russian holidays, family customs, and seasonal traditions.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Explain one Russian holiday to a visitor."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"На Новый год семьи собираются вместе.\".",
+      "pronunciation": "",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "“At New Year families gather together.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"На Новый год семьи собираются вместе.\".",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "“At New Year families gather together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1"
+      ],
+      "targetText": "Новый год",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "“At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "Use the key language of Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "“At New Year families gather together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-2"
+      ],
+      "targetText": "Рождество",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 19: Праздники и традиции — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "“Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 19: Праздники и традиции — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "“Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-grammar-1"
+      ],
+      "targetText": "Новый год",
+      "romanization": "",
+      "nativeText": "Talk about major Russian holidays, family customs, and seasonal traditions.",
+      "pronunciation": "",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "“At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "Talk about major Russian holidays, family customs, and seasonal traditions.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "“At New Year families gather together.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "Рождество",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "“Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "Contrast the main pattern in Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "“Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Это важная семейная традиция.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "“This is an important family tradition.”",
+      "korean": "модель чтения",
+      "english": "Read \"Это важная семейная традиция.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "“This is an important family tradition.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Это важная семейная традиция.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "“This is an important family tradition.”",
+      "korean": "модель диалога",
+      "english": "Hear \"Это важная семейная традиция.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "“This is an important family tradition.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"На Новый год семьи собираются вместе.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"На Новый год семьи собираются вместе.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "“Christmas is celebrated on January seventh.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "“Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Explain one Russian holiday to a visitor.",
+      "pronunciation": "",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "Explain one Russian holiday to a visitor.",
+      "korean": "итоговое задание",
+      "english": "Explain one Russian holiday to a visitor.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "Explain one Russian holiday to a visitor."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Рождество отмечают седьмого января.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Christmas is celebrated on January seventh.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Рождество отмечают седьмого января.\" against the model.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"На Новый год семьи собираются вместе.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "“At New Year families gather together.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"На Новый год семьи собираются вместе.\" before reusing it elsewhere.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "“At New Year families gather together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Это важная семейная традиция.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "“This is an important family tradition.”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Это важная семейная традиция.\" as one thought.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "“This is an important family tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"На Новый год семьи собираются вместе.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"На Новый год семьи собираются вместе.\" and move it into your own life.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Новый год\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "Новый год",
+      "exampleNative": "“New Year.” In Russia this is often the biggest family holiday of the year.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Новый год\" before looking back.",
+      "example": "Новый год",
+      "exampleEnglish": "“New Year.” In Russia this is often the biggest family holiday of the year."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Это важная семейная традиция.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Это важная семейная традиция.\" rather than restarting from a blank sentence.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Рождество отмечают седьмого января.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "“Christmas is celebrated on January seventh.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Рождество отмечают седьмого января.\" as the comparison line.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "“Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"На Новый год семьи собираются вместе.\".",
+      "pronunciation": "",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "“At New Year families gather together.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"На Новый год семьи собираются вместе.\".",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "“At New Year families gather together.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Это важная семейная традиция.\".",
+      "pronunciation": "",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "“This is an important family tradition.”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Это важная семейная традиция.\".",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "“This is an important family tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"На Новый год семьи собираются вместе.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "“At New Year families gather together.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"На Новый год семьи собираются вместе.\" one layer at a time.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "“At New Year families gather together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Рождество отмечают седьмого января.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "“Christmas is celebrated on January seventh.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Рождество отмечают седьмого января.\" as the deciding example.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "“Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-culture",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Это важная семейная традиция.\".",
+      "pronunciation": "",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "“This is an important family tradition.”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Это важная семейная традиция.\".",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "“This is an important family tradition.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Новый год",
+      "romanization": "novyy god",
+      "nativeText": "“New Year.” In Russia this is often the biggest family holiday of the year.",
+      "pronunciation": "novyy god",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "“At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "“New Year.” In Russia this is often the biggest family holiday of the year.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "“At New Year families gather together.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "На Новый год семьи собираются вместе.",
+      "romanization": "novyy god",
+      "nativeText": "Model use for \"На Новый год семьи собираются вместе.\": “At New Year families gather together.”",
+      "pronunciation": "novyy god",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "“At New Year families gather together.”",
+      "korean": "На Новый год семьи собираются вместе.",
+      "english": "Model use for \"На Новый год семьи собираются вместе.\": “At New Year families gather together.”",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "“At New Year families gather together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Новый год",
+      "romanization": "novyy god",
+      "nativeText": "Usage focus for \"Новый год\": Use the key language of Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "novyy god",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "Notice what the form is doing here: “At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "Usage focus for \"Новый год\": Use the key language of Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "Notice what the form is doing here: “At New Year families gather together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Новый год",
+      "romanization": "novyy god",
+      "nativeText": "Contrast check for \"Новый год\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "novyy god",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "Contrast check for \"Новый год\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At New Year families gather together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Новый год",
+      "romanization": "novyy god",
+      "nativeText": "Recall \"Новый год\" from memory, then explain what would change if a nearby alternative replaced it in \"На Новый год семьи собираются вместе.\".",
+      "pronunciation": "novyy god",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "Self-check against the model before moving on: “At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "Recall \"Новый год\" from memory, then explain what would change if a nearby alternative replaced it in \"На Новый год семьи собираются вместе.\".",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "Self-check against the model before moving on: “At New Year families gather together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Новый год",
+      "romanization": "novyy god",
+      "nativeText": "Repair \"Новый год\" inside \"На Новый год семьи собираются вместе.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "novyy god",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "Use the model as the repair target: “At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "Repair \"Новый год\" inside \"На Новый год семьи собираются вместе.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 19: Праздники и традиции — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "Use the model as the repair target: “At New Year families gather together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Новый год",
+      "romanization": "novyy god",
+      "nativeText": "Transfer \"Новый год\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"На Новый год семьи собираются вместе.\".",
+      "pronunciation": "novyy god",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "Transfer \"Новый год\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"На Новый год семьи собираются вместе.\".",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At New Year families gather together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Новый год",
+      "romanization": "novyy god",
+      "nativeText": "Find one word or phrase that naturally travels with \"Новый год\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "novyy god",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "Find one word or phrase that naturally travels with \"Новый год\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At New Year families gather together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Новый год",
+      "romanization": "novyy god",
+      "nativeText": "Listen for \"Новый год\" inside \"На Новый год семьи собираются вместе.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "novyy god",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "Listen for \"Новый год\" inside \"На Новый год семьи собираются вместе.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At New Year families gather together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Новый год",
+      "romanization": "novyy god",
+      "nativeText": "Write \"Новый год\" again without looking, then compare the exact written form against \"На Новый год семьи собираются вместе.\" before moving on.",
+      "pronunciation": "novyy god",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "Use the written model as the final correctness check: “At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "Write \"Новый год\" again without looking, then compare the exact written form against \"На Новый год семьи собираются вместе.\" before moving on.",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At New Year families gather together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Новый год",
+      "romanization": "novyy god",
+      "nativeText": "Check whether \"Новый год\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At New Year families gather together.”",
+      "pronunciation": "novyy god",
+      "exampleTarget": "На Новый год семьи собираются вместе.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At New Year families gather together.”",
+      "korean": "Новый год",
+      "english": "Check whether \"Новый год\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At New Year families gather together.”",
+      "example": "На Новый год семьи собираются вместе.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At New Year families gather together.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Рождество",
+      "romanization": "rozhdestvo",
+      "nativeText": "“Christmas.” In Russia it is celebrated on January 7 in the Orthodox tradition.",
+      "pronunciation": "rozhdestvo",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "“Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "“Christmas.” In Russia it is celebrated on January 7 in the Orthodox tradition.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "“Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Рождество отмечают седьмого января.",
+      "romanization": "rozhdestvo",
+      "nativeText": "Model use for \"Рождество отмечают седьмого января.\": “Christmas is celebrated on January seventh.”",
+      "pronunciation": "rozhdestvo",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "“Christmas is celebrated on January seventh.”",
+      "korean": "Рождество отмечают седьмого января.",
+      "english": "Model use for \"Рождество отмечают седьмого января.\": “Christmas is celebrated on January seventh.”",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "“Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Рождество",
+      "romanization": "rozhdestvo",
+      "nativeText": "Usage focus for \"Рождество\": Distinguish the nearby wording choices that make Level 1 · Unit 19: Праздники и традиции — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "rozhdestvo",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "Notice what the form is doing here: “Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "Usage focus for \"Рождество\": Distinguish the nearby wording choices that make Level 1 · Unit 19: Праздники и традиции — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "Notice what the form is doing here: “Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Рождество",
+      "romanization": "rozhdestvo",
+      "nativeText": "Contrast check for \"Рождество\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "rozhdestvo",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "Contrast check for \"Рождество\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Рождество",
+      "romanization": "rozhdestvo",
+      "nativeText": "Recall \"Рождество\" from memory, then explain what would change if a nearby alternative replaced it in \"Рождество отмечают седьмого января.\".",
+      "pronunciation": "rozhdestvo",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "Self-check against the model before moving on: “Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "Recall \"Рождество\" from memory, then explain what would change if a nearby alternative replaced it in \"Рождество отмечают седьмого января.\".",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "Self-check against the model before moving on: “Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Рождество",
+      "romanization": "rozhdestvo",
+      "nativeText": "Repair \"Рождество\" inside \"Рождество отмечают седьмого января.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 19: Праздники и традиции — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "rozhdestvo",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "Use the model as the repair target: “Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "Repair \"Рождество\" inside \"Рождество отмечают седьмого января.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 19: Праздники и традиции — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "Use the model as the repair target: “Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Рождество",
+      "romanization": "rozhdestvo",
+      "nativeText": "Transfer \"Рождество\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Рождество отмечают седьмого января.\".",
+      "pronunciation": "rozhdestvo",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "Transfer \"Рождество\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Рождество отмечают седьмого января.\".",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Рождество",
+      "romanization": "rozhdestvo",
+      "nativeText": "Find one word or phrase that naturally travels with \"Рождество\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "rozhdestvo",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "Find one word or phrase that naturally travels with \"Рождество\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Рождество",
+      "romanization": "rozhdestvo",
+      "nativeText": "Listen for \"Рождество\" inside \"Рождество отмечают седьмого января.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "rozhdestvo",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "Listen for \"Рождество\" inside \"Рождество отмечают седьмого января.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Рождество",
+      "romanization": "rozhdestvo",
+      "nativeText": "Write \"Рождество\" again without looking, then compare the exact written form against \"Рождество отмечают седьмого января.\" before moving on.",
+      "pronunciation": "rozhdestvo",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "Use the written model as the final correctness check: “Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "Write \"Рождество\" again without looking, then compare the exact written form against \"Рождество отмечают седьмого января.\" before moving on.",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Рождество",
+      "romanization": "rozhdestvo",
+      "nativeText": "Check whether \"Рождество\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Christmas is celebrated on January seventh.”",
+      "pronunciation": "rozhdestvo",
+      "exampleTarget": "Рождество отмечают седьмого января.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Christmas is celebrated on January seventh.”",
+      "korean": "Рождество",
+      "english": "Check whether \"Рождество\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Christmas is celebrated on January seventh.”",
+      "example": "Рождество отмечают седьмого января.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Christmas is celebrated on January seventh.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Масленица",
+      "romanization": "maslenitsa",
+      "nativeText": "A pre-Lenten festival associated with pancakes, late winter, and seeing off the cold season.",
+      "pronunciation": "maslenitsa",
+      "exampleTarget": "На Масленицу едят блины.",
+      "exampleNative": "“At Maslenitsa people eat blini.”",
+      "korean": "Масленица",
+      "english": "A pre-Lenten festival associated with pancakes, late winter, and seeing off the cold season.",
+      "example": "На Масленицу едят блины.",
+      "exampleEnglish": "“At Maslenitsa people eat blini.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "На Масленицу едят блины.",
+      "romanization": "maslenitsa",
+      "nativeText": "Model use for \"На Масленицу едят блины.\": “At Maslenitsa people eat blini.”",
+      "pronunciation": "maslenitsa",
+      "exampleTarget": "На Масленицу едят блины.",
+      "exampleNative": "“At Maslenitsa people eat blini.”",
+      "korean": "На Масленицу едят блины.",
+      "english": "Model use for \"На Масленицу едят блины.\": “At Maslenitsa people eat blini.”",
+      "example": "На Масленицу едят блины.",
+      "exampleEnglish": "“At Maslenitsa people eat blini.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Масленица",
+      "romanization": "maslenitsa",
+      "nativeText": "Usage focus for \"Масленица\": A pre-Lenten festival associated with pancakes, late winter, and seeing off the cold season.",
+      "pronunciation": "maslenitsa",
+      "exampleTarget": "На Масленицу едят блины.",
+      "exampleNative": "Notice what the form is doing here: “At Maslenitsa people eat blini.”",
+      "korean": "Масленица",
+      "english": "Usage focus for \"Масленица\": A pre-Lenten festival associated with pancakes, late winter, and seeing off the cold season.",
+      "example": "На Масленицу едят блины.",
+      "exampleEnglish": "Notice what the form is doing here: “At Maslenitsa people eat blini.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Масленица",
+      "romanization": "maslenitsa",
+      "nativeText": "Contrast check for \"Масленица\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "maslenitsa",
+      "exampleTarget": "На Масленицу едят блины.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Maslenitsa people eat blini.”",
+      "korean": "Масленица",
+      "english": "Contrast check for \"Масленица\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "На Масленицу едят блины.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Maslenitsa people eat blini.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Масленица",
+      "romanization": "maslenitsa",
+      "nativeText": "Recall \"Масленица\" from memory, then explain what would change if a nearby alternative replaced it in \"На Масленицу едят блины.\".",
+      "pronunciation": "maslenitsa",
+      "exampleTarget": "На Масленицу едят блины.",
+      "exampleNative": "Self-check against the model before moving on: “At Maslenitsa people eat blini.”",
+      "korean": "Масленица",
+      "english": "Recall \"Масленица\" from memory, then explain what would change if a nearby alternative replaced it in \"На Масленицу едят блины.\".",
+      "example": "На Масленицу едят блины.",
+      "exampleEnglish": "Self-check against the model before moving on: “At Maslenitsa people eat blini.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Масленица",
+      "romanization": "maslenitsa",
+      "nativeText": "Repair \"Масленица\" inside \"На Масленицу едят блины.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A pre-Lenten festival associated with pancakes, late winter, and seeing off the cold season.",
+      "pronunciation": "maslenitsa",
+      "exampleTarget": "На Масленицу едят блины.",
+      "exampleNative": "Use the model as the repair target: “At Maslenitsa people eat blini.”",
+      "korean": "Масленица",
+      "english": "Repair \"Масленица\" inside \"На Масленицу едят блины.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A pre-Lenten festival associated with pancakes, late winter, and seeing off the cold season.",
+      "example": "На Масленицу едят блины.",
+      "exampleEnglish": "Use the model as the repair target: “At Maslenitsa people eat blini.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Масленица",
+      "romanization": "maslenitsa",
+      "nativeText": "Transfer \"Масленица\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"На Масленицу едят блины.\".",
+      "pronunciation": "maslenitsa",
+      "exampleTarget": "На Масленицу едят блины.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Maslenitsa people eat blini.”",
+      "korean": "Масленица",
+      "english": "Transfer \"Масленица\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"На Масленицу едят блины.\".",
+      "example": "На Масленицу едят блины.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Maslenitsa people eat blini.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Масленица",
+      "romanization": "maslenitsa",
+      "nativeText": "Find one word or phrase that naturally travels with \"Масленица\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "maslenitsa",
+      "exampleTarget": "На Масленицу едят блины.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At Maslenitsa people eat blini.”",
+      "korean": "Масленица",
+      "english": "Find one word or phrase that naturally travels with \"Масленица\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "На Масленицу едят блины.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At Maslenitsa people eat blini.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Масленица",
+      "romanization": "maslenitsa",
+      "nativeText": "Listen for \"Масленица\" inside \"На Масленицу едят блины.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "maslenitsa",
+      "exampleTarget": "На Масленицу едят блины.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Maslenitsa people eat blini.”",
+      "korean": "Масленица",
+      "english": "Listen for \"Масленица\" inside \"На Масленицу едят блины.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "На Масленицу едят блины.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Maslenitsa people eat blini.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Масленица",
+      "romanization": "maslenitsa",
+      "nativeText": "Write \"Масленица\" again without looking, then compare the exact written form against \"На Масленицу едят блины.\" before moving on.",
+      "pronunciation": "maslenitsa",
+      "exampleTarget": "На Масленицу едят блины.",
+      "exampleNative": "Use the written model as the final correctness check: “At Maslenitsa people eat blini.”",
+      "korean": "Масленица",
+      "english": "Write \"Масленица\" again without looking, then compare the exact written form against \"На Масленицу едят блины.\" before moving on.",
+      "example": "На Масленицу едят блины.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At Maslenitsa people eat blini.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Масленица",
+      "romanization": "maslenitsa",
+      "nativeText": "Check whether \"Масленица\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Maslenitsa people eat blini.”",
+      "pronunciation": "maslenitsa",
+      "exampleTarget": "На Масленицу едят блины.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At Maslenitsa people eat blini.”",
+      "korean": "Масленица",
+      "english": "Check whether \"Масленица\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Maslenitsa people eat blini.”",
+      "example": "На Масленицу едят блины.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At Maslenitsa people eat blini.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "День Победы",
+      "romanization": "den pobedy",
+      "nativeText": "“Victory Day,” May 9, a major public remembrance holiday in Russia.",
+      "pronunciation": "den pobedy",
+      "exampleTarget": "День Победы отмечают девятого мая.",
+      "exampleNative": "“Victory Day is celebrated on May ninth.”",
+      "korean": "День Победы",
+      "english": "“Victory Day,” May 9, a major public remembrance holiday in Russia.",
+      "example": "День Победы отмечают девятого мая.",
+      "exampleEnglish": "“Victory Day is celebrated on May ninth.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "День Победы отмечают девятого мая.",
+      "romanization": "den pobedy",
+      "nativeText": "Model use for \"День Победы отмечают девятого мая.\": “Victory Day is celebrated on May ninth.”",
+      "pronunciation": "den pobedy",
+      "exampleTarget": "День Победы отмечают девятого мая.",
+      "exampleNative": "“Victory Day is celebrated on May ninth.”",
+      "korean": "День Победы отмечают девятого мая.",
+      "english": "Model use for \"День Победы отмечают девятого мая.\": “Victory Day is celebrated on May ninth.”",
+      "example": "День Победы отмечают девятого мая.",
+      "exampleEnglish": "“Victory Day is celebrated on May ninth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "День Победы",
+      "romanization": "den pobedy",
+      "nativeText": "Usage focus for \"День Победы\": “Victory Day,” May 9, a major public remembrance holiday in Russia.",
+      "pronunciation": "den pobedy",
+      "exampleTarget": "День Победы отмечают девятого мая.",
+      "exampleNative": "Notice what the form is doing here: “Victory Day is celebrated on May ninth.”",
+      "korean": "День Победы",
+      "english": "Usage focus for \"День Победы\": “Victory Day,” May 9, a major public remembrance holiday in Russia.",
+      "example": "День Победы отмечают девятого мая.",
+      "exampleEnglish": "Notice what the form is doing here: “Victory Day is celebrated on May ninth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "День Победы",
+      "romanization": "den pobedy",
+      "nativeText": "Contrast check for \"День Победы\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "den pobedy",
+      "exampleTarget": "День Победы отмечают девятого мая.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Victory Day is celebrated on May ninth.”",
+      "korean": "День Победы",
+      "english": "Contrast check for \"День Победы\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "День Победы отмечают девятого мая.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Victory Day is celebrated on May ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "День Победы",
+      "romanization": "den pobedy",
+      "nativeText": "Recall \"День Победы\" from memory, then explain what would change if a nearby alternative replaced it in \"День Победы отмечают девятого мая.\".",
+      "pronunciation": "den pobedy",
+      "exampleTarget": "День Победы отмечают девятого мая.",
+      "exampleNative": "Self-check against the model before moving on: “Victory Day is celebrated on May ninth.”",
+      "korean": "День Победы",
+      "english": "Recall \"День Победы\" from memory, then explain what would change if a nearby alternative replaced it in \"День Победы отмечают девятого мая.\".",
+      "example": "День Победы отмечают девятого мая.",
+      "exampleEnglish": "Self-check against the model before moving on: “Victory Day is celebrated on May ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "День Победы",
+      "romanization": "den pobedy",
+      "nativeText": "Repair \"День Победы\" inside \"День Победы отмечают девятого мая.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Victory Day,” May 9, a major public remembrance holiday in Russia.",
+      "pronunciation": "den pobedy",
+      "exampleTarget": "День Победы отмечают девятого мая.",
+      "exampleNative": "Use the model as the repair target: “Victory Day is celebrated on May ninth.”",
+      "korean": "День Победы",
+      "english": "Repair \"День Победы\" inside \"День Победы отмечают девятого мая.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Victory Day,” May 9, a major public remembrance holiday in Russia.",
+      "example": "День Победы отмечают девятого мая.",
+      "exampleEnglish": "Use the model as the repair target: “Victory Day is celebrated on May ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "День Победы",
+      "romanization": "den pobedy",
+      "nativeText": "Transfer \"День Победы\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"День Победы отмечают девятого мая.\".",
+      "pronunciation": "den pobedy",
+      "exampleTarget": "День Победы отмечают девятого мая.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Victory Day is celebrated on May ninth.”",
+      "korean": "День Победы",
+      "english": "Transfer \"День Победы\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"День Победы отмечают девятого мая.\".",
+      "example": "День Победы отмечают девятого мая.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Victory Day is celebrated on May ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "День Победы",
+      "romanization": "den pobedy",
+      "nativeText": "Find one word or phrase that naturally travels with \"День Победы\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "den pobedy",
+      "exampleTarget": "День Победы отмечают девятого мая.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Victory Day is celebrated on May ninth.”",
+      "korean": "День Победы",
+      "english": "Find one word or phrase that naturally travels with \"День Победы\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "День Победы отмечают девятого мая.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Victory Day is celebrated on May ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "День Победы",
+      "romanization": "den pobedy",
+      "nativeText": "Listen for \"День Победы\" inside \"День Победы отмечают девятого мая.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "den pobedy",
+      "exampleTarget": "День Победы отмечают девятого мая.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Victory Day is celebrated on May ninth.”",
+      "korean": "День Победы",
+      "english": "Listen for \"День Победы\" inside \"День Победы отмечают девятого мая.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "День Победы отмечают девятого мая.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Victory Day is celebrated on May ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "День Победы",
+      "romanization": "den pobedy",
+      "nativeText": "Write \"День Победы\" again without looking, then compare the exact written form against \"День Победы отмечают девятого мая.\" before moving on.",
+      "pronunciation": "den pobedy",
+      "exampleTarget": "День Победы отмечают девятого мая.",
+      "exampleNative": "Use the written model as the final correctness check: “Victory Day is celebrated on May ninth.”",
+      "korean": "День Победы",
+      "english": "Write \"День Победы\" again without looking, then compare the exact written form against \"День Победы отмечают девятого мая.\" before moving on.",
+      "example": "День Победы отмечают девятого мая.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Victory Day is celebrated on May ninth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "День Победы",
+      "romanization": "den pobedy",
+      "nativeText": "Check whether \"День Победы\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Victory Day is celebrated on May ninth.”",
+      "pronunciation": "den pobedy",
+      "exampleTarget": "День Победы отмечают девятого мая.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Victory Day is celebrated on May ninth.”",
+      "korean": "День Победы",
+      "english": "Check whether \"День Победы\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Victory Day is celebrated on May ninth.”",
+      "example": "День Победы отмечают девятого мая.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Victory Day is celebrated on May ninth.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "обычно",
+      "romanization": "obychno",
+      "nativeText": "“Usually.” A key word for describing customs.",
+      "pronunciation": "obychno",
+      "exampleTarget": "Обычно мы украшаем ёлку дома.",
+      "exampleNative": "“Usually we decorate a tree at home.”",
+      "korean": "обычно",
+      "english": "“Usually.” A key word for describing customs.",
+      "example": "Обычно мы украшаем ёлку дома.",
+      "exampleEnglish": "“Usually we decorate a tree at home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Обычно мы украшаем ёлку дома.",
+      "romanization": "obychno",
+      "nativeText": "Model use for \"Обычно мы украшаем ёлку дома.\": “Usually we decorate a tree at home.”",
+      "pronunciation": "obychno",
+      "exampleTarget": "Обычно мы украшаем ёлку дома.",
+      "exampleNative": "“Usually we decorate a tree at home.”",
+      "korean": "Обычно мы украшаем ёлку дома.",
+      "english": "Model use for \"Обычно мы украшаем ёлку дома.\": “Usually we decorate a tree at home.”",
+      "example": "Обычно мы украшаем ёлку дома.",
+      "exampleEnglish": "“Usually we decorate a tree at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "обычно",
+      "romanization": "obychno",
+      "nativeText": "Usage focus for \"обычно\": “Usually.” A key word for describing customs.",
+      "pronunciation": "obychno",
+      "exampleTarget": "Обычно мы украшаем ёлку дома.",
+      "exampleNative": "Notice what the form is doing here: “Usually we decorate a tree at home.”",
+      "korean": "обычно",
+      "english": "Usage focus for \"обычно\": “Usually.” A key word for describing customs.",
+      "example": "Обычно мы украшаем ёлку дома.",
+      "exampleEnglish": "Notice what the form is doing here: “Usually we decorate a tree at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "обычно",
+      "romanization": "obychno",
+      "nativeText": "Contrast check for \"обычно\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "obychno",
+      "exampleTarget": "Обычно мы украшаем ёлку дома.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Usually we decorate a tree at home.”",
+      "korean": "обычно",
+      "english": "Contrast check for \"обычно\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Обычно мы украшаем ёлку дома.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Usually we decorate a tree at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "обычно",
+      "romanization": "obychno",
+      "nativeText": "Recall \"обычно\" from memory, then explain what would change if a nearby alternative replaced it in \"Обычно мы украшаем ёлку дома.\".",
+      "pronunciation": "obychno",
+      "exampleTarget": "Обычно мы украшаем ёлку дома.",
+      "exampleNative": "Self-check against the model before moving on: “Usually we decorate a tree at home.”",
+      "korean": "обычно",
+      "english": "Recall \"обычно\" from memory, then explain what would change if a nearby alternative replaced it in \"Обычно мы украшаем ёлку дома.\".",
+      "example": "Обычно мы украшаем ёлку дома.",
+      "exampleEnglish": "Self-check against the model before moving on: “Usually we decorate a tree at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "обычно",
+      "romanization": "obychno",
+      "nativeText": "Repair \"обычно\" inside \"Обычно мы украшаем ёлку дома.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Usually.” A key word for describing customs.",
+      "pronunciation": "obychno",
+      "exampleTarget": "Обычно мы украшаем ёлку дома.",
+      "exampleNative": "Use the model as the repair target: “Usually we decorate a tree at home.”",
+      "korean": "обычно",
+      "english": "Repair \"обычно\" inside \"Обычно мы украшаем ёлку дома.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Usually.” A key word for describing customs.",
+      "example": "Обычно мы украшаем ёлку дома.",
+      "exampleEnglish": "Use the model as the repair target: “Usually we decorate a tree at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "обычно",
+      "romanization": "obychno",
+      "nativeText": "Transfer \"обычно\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Обычно мы украшаем ёлку дома.\".",
+      "pronunciation": "obychno",
+      "exampleTarget": "Обычно мы украшаем ёлку дома.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Usually we decorate a tree at home.”",
+      "korean": "обычно",
+      "english": "Transfer \"обычно\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Обычно мы украшаем ёлку дома.\".",
+      "example": "Обычно мы украшаем ёлку дома.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Usually we decorate a tree at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "обычно",
+      "romanization": "obychno",
+      "nativeText": "Find one word or phrase that naturally travels with \"обычно\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "obychno",
+      "exampleTarget": "Обычно мы украшаем ёлку дома.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Usually we decorate a tree at home.”",
+      "korean": "обычно",
+      "english": "Find one word or phrase that naturally travels with \"обычно\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Обычно мы украшаем ёлку дома.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Usually we decorate a tree at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "обычно",
+      "romanization": "obychno",
+      "nativeText": "Listen for \"обычно\" inside \"Обычно мы украшаем ёлку дома.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "obychno",
+      "exampleTarget": "Обычно мы украшаем ёлку дома.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Usually we decorate a tree at home.”",
+      "korean": "обычно",
+      "english": "Listen for \"обычно\" inside \"Обычно мы украшаем ёлку дома.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Обычно мы украшаем ёлку дома.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Usually we decorate a tree at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "обычно",
+      "romanization": "obychno",
+      "nativeText": "Write \"обычно\" again without looking, then compare the exact written form against \"Обычно мы украшаем ёлку дома.\" before moving on.",
+      "pronunciation": "obychno",
+      "exampleTarget": "Обычно мы украшаем ёлку дома.",
+      "exampleNative": "Use the written model as the final correctness check: “Usually we decorate a tree at home.”",
+      "korean": "обычно",
+      "english": "Write \"обычно\" again without looking, then compare the exact written form against \"Обычно мы украшаем ёлку дома.\" before moving on.",
+      "example": "Обычно мы украшаем ёлку дома.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Usually we decorate a tree at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "обычно",
+      "romanization": "obychno",
+      "nativeText": "Check whether \"обычно\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Usually we decorate a tree at home.”",
+      "pronunciation": "obychno",
+      "exampleTarget": "Обычно мы украшаем ёлку дома.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Usually we decorate a tree at home.”",
+      "korean": "обычно",
+      "english": "Check whether \"обычно\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Usually we decorate a tree at home.”",
+      "example": "Обычно мы украшаем ёлку дома.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Usually we decorate a tree at home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "поздравлять",
+      "romanization": "pozdravlyat",
+      "nativeText": "“To congratulate / greet for an occasion.” Russian greetings often use this verb.",
+      "pronunciation": "pozdravlyat",
+      "exampleTarget": "Мы поздравляем друзей с праздником.",
+      "exampleNative": "“We greet friends for the holiday.”",
+      "korean": "поздравлять",
+      "english": "“To congratulate / greet for an occasion.” Russian greetings often use this verb.",
+      "example": "Мы поздравляем друзей с праздником.",
+      "exampleEnglish": "“We greet friends for the holiday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Мы поздравляем друзей с праздником.",
+      "romanization": "pozdravlyat",
+      "nativeText": "Model use for \"Мы поздравляем друзей с праздником.\": “We greet friends for the holiday.”",
+      "pronunciation": "pozdravlyat",
+      "exampleTarget": "Мы поздравляем друзей с праздником.",
+      "exampleNative": "“We greet friends for the holiday.”",
+      "korean": "Мы поздравляем друзей с праздником.",
+      "english": "Model use for \"Мы поздравляем друзей с праздником.\": “We greet friends for the holiday.”",
+      "example": "Мы поздравляем друзей с праздником.",
+      "exampleEnglish": "“We greet friends for the holiday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "поздравлять",
+      "romanization": "pozdravlyat",
+      "nativeText": "Usage focus for \"поздравлять\": “To congratulate / greet for an occasion.” Russian greetings often use this verb.",
+      "pronunciation": "pozdravlyat",
+      "exampleTarget": "Мы поздравляем друзей с праздником.",
+      "exampleNative": "Notice what the form is doing here: “We greet friends for the holiday.”",
+      "korean": "поздравлять",
+      "english": "Usage focus for \"поздравлять\": “To congratulate / greet for an occasion.” Russian greetings often use this verb.",
+      "example": "Мы поздравляем друзей с праздником.",
+      "exampleEnglish": "Notice what the form is doing here: “We greet friends for the holiday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "поздравлять",
+      "romanization": "pozdravlyat",
+      "nativeText": "Contrast check for \"поздравлять\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pozdravlyat",
+      "exampleTarget": "Мы поздравляем друзей с праздником.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We greet friends for the holiday.”",
+      "korean": "поздравлять",
+      "english": "Contrast check for \"поздравлять\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мы поздравляем друзей с праздником.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We greet friends for the holiday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "поздравлять",
+      "romanization": "pozdravlyat",
+      "nativeText": "Recall \"поздравлять\" from memory, then explain what would change if a nearby alternative replaced it in \"Мы поздравляем друзей с праздником.\".",
+      "pronunciation": "pozdravlyat",
+      "exampleTarget": "Мы поздравляем друзей с праздником.",
+      "exampleNative": "Self-check against the model before moving on: “We greet friends for the holiday.”",
+      "korean": "поздравлять",
+      "english": "Recall \"поздравлять\" from memory, then explain what would change if a nearby alternative replaced it in \"Мы поздравляем друзей с праздником.\".",
+      "example": "Мы поздравляем друзей с праздником.",
+      "exampleEnglish": "Self-check against the model before moving on: “We greet friends for the holiday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "поздравлять",
+      "romanization": "pozdravlyat",
+      "nativeText": "Repair \"поздравлять\" inside \"Мы поздравляем друзей с праздником.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To congratulate / greet for an occasion.” Russian greetings often use this verb.",
+      "pronunciation": "pozdravlyat",
+      "exampleTarget": "Мы поздравляем друзей с праздником.",
+      "exampleNative": "Use the model as the repair target: “We greet friends for the holiday.”",
+      "korean": "поздравлять",
+      "english": "Repair \"поздравлять\" inside \"Мы поздравляем друзей с праздником.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To congratulate / greet for an occasion.” Russian greetings often use this verb.",
+      "example": "Мы поздравляем друзей с праздником.",
+      "exampleEnglish": "Use the model as the repair target: “We greet friends for the holiday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "поздравлять",
+      "romanization": "pozdravlyat",
+      "nativeText": "Transfer \"поздравлять\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мы поздравляем друзей с праздником.\".",
+      "pronunciation": "pozdravlyat",
+      "exampleTarget": "Мы поздравляем друзей с праздником.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “We greet friends for the holiday.”",
+      "korean": "поздравлять",
+      "english": "Transfer \"поздравлять\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мы поздравляем друзей с праздником.\".",
+      "example": "Мы поздравляем друзей с праздником.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “We greet friends for the holiday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "поздравлять",
+      "romanization": "pozdravlyat",
+      "nativeText": "Find one word or phrase that naturally travels with \"поздравлять\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pozdravlyat",
+      "exampleTarget": "Мы поздравляем друзей с праздником.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “We greet friends for the holiday.”",
+      "korean": "поздравлять",
+      "english": "Find one word or phrase that naturally travels with \"поздравлять\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мы поздравляем друзей с праздником.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “We greet friends for the holiday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "поздравлять",
+      "romanization": "pozdravlyat",
+      "nativeText": "Listen for \"поздравлять\" inside \"Мы поздравляем друзей с праздником.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pozdravlyat",
+      "exampleTarget": "Мы поздравляем друзей с праздником.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We greet friends for the holiday.”",
+      "korean": "поздравлять",
+      "english": "Listen for \"поздравлять\" inside \"Мы поздравляем друзей с праздником.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мы поздравляем друзей с праздником.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We greet friends for the holiday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "поздравлять",
+      "romanization": "pozdravlyat",
+      "nativeText": "Write \"поздравлять\" again without looking, then compare the exact written form against \"Мы поздравляем друзей с праздником.\" before moving on.",
+      "pronunciation": "pozdravlyat",
+      "exampleTarget": "Мы поздравляем друзей с праздником.",
+      "exampleNative": "Use the written model as the final correctness check: “We greet friends for the holiday.”",
+      "korean": "поздравлять",
+      "english": "Write \"поздравлять\" again without looking, then compare the exact written form against \"Мы поздравляем друзей с праздником.\" before moving on.",
+      "example": "Мы поздравляем друзей с праздником.",
+      "exampleEnglish": "Use the written model as the final correctness check: “We greet friends for the holiday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "поздравлять",
+      "romanization": "pozdravlyat",
+      "nativeText": "Check whether \"поздравлять\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We greet friends for the holiday.”",
+      "pronunciation": "pozdravlyat",
+      "exampleTarget": "Мы поздравляем друзей с праздником.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “We greet friends for the holiday.”",
+      "korean": "поздравлять",
+      "english": "Check whether \"поздравлять\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We greet friends for the holiday.”",
+      "example": "Мы поздравляем друзей с праздником.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “We greet friends for the holiday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "С Новым годом!",
+      "romanization": "s novym godom",
+      "nativeText": "“Happy New Year!” Literally “with the New Year,” using instrumental.",
+      "pronunciation": "s novym godom",
+      "exampleTarget": "С Новым годом вас!",
+      "exampleNative": "“Happy New Year to you!”",
+      "korean": "С Новым годом!",
+      "english": "“Happy New Year!” Literally “with the New Year,” using instrumental.",
+      "example": "С Новым годом вас!",
+      "exampleEnglish": "“Happy New Year to you!”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "С Новым годом вас!",
+      "romanization": "s novym godom",
+      "nativeText": "Model use for \"С Новым годом вас!\": “Happy New Year to you!”",
+      "pronunciation": "s novym godom",
+      "exampleTarget": "С Новым годом вас!",
+      "exampleNative": "“Happy New Year to you!”",
+      "korean": "С Новым годом вас!",
+      "english": "Model use for \"С Новым годом вас!\": “Happy New Year to you!”",
+      "example": "С Новым годом вас!",
+      "exampleEnglish": "“Happy New Year to you!”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "С Новым годом!",
+      "romanization": "s novym godom",
+      "nativeText": "Usage focus for \"С Новым годом!\": “Happy New Year!” Literally “with the New Year,” using instrumental.",
+      "pronunciation": "s novym godom",
+      "exampleTarget": "С Новым годом вас!",
+      "exampleNative": "Notice what the form is doing here: “Happy New Year to you!”",
+      "korean": "С Новым годом!",
+      "english": "Usage focus for \"С Новым годом!\": “Happy New Year!” Literally “with the New Year,” using instrumental.",
+      "example": "С Новым годом вас!",
+      "exampleEnglish": "Notice what the form is doing here: “Happy New Year to you!”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "С Новым годом!",
+      "romanization": "s novym godom",
+      "nativeText": "Contrast check for \"С Новым годом!\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "s novym godom",
+      "exampleTarget": "С Новым годом вас!",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Happy New Year to you!”",
+      "korean": "С Новым годом!",
+      "english": "Contrast check for \"С Новым годом!\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "С Новым годом вас!",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Happy New Year to you!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "С Новым годом!",
+      "romanization": "s novym godom",
+      "nativeText": "Recall \"С Новым годом!\" from memory, then explain what would change if a nearby alternative replaced it in \"С Новым годом вас!\".",
+      "pronunciation": "s novym godom",
+      "exampleTarget": "С Новым годом вас!",
+      "exampleNative": "Self-check against the model before moving on: “Happy New Year to you!”",
+      "korean": "С Новым годом!",
+      "english": "Recall \"С Новым годом!\" from memory, then explain what would change if a nearby alternative replaced it in \"С Новым годом вас!\".",
+      "example": "С Новым годом вас!",
+      "exampleEnglish": "Self-check against the model before moving on: “Happy New Year to you!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "С Новым годом!",
+      "romanization": "s novym godom",
+      "nativeText": "Repair \"С Новым годом!\" inside \"С Новым годом вас!\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Happy New Year!” Literally “with the New Year,” using instrumental.",
+      "pronunciation": "s novym godom",
+      "exampleTarget": "С Новым годом вас!",
+      "exampleNative": "Use the model as the repair target: “Happy New Year to you!”",
+      "korean": "С Новым годом!",
+      "english": "Repair \"С Новым годом!\" inside \"С Новым годом вас!\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Happy New Year!” Literally “with the New Year,” using instrumental.",
+      "example": "С Новым годом вас!",
+      "exampleEnglish": "Use the model as the repair target: “Happy New Year to you!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "С Новым годом!",
+      "romanization": "s novym godom",
+      "nativeText": "Transfer \"С Новым годом!\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"С Новым годом вас!\".",
+      "pronunciation": "s novym godom",
+      "exampleTarget": "С Новым годом вас!",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Happy New Year to you!”",
+      "korean": "С Новым годом!",
+      "english": "Transfer \"С Новым годом!\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"С Новым годом вас!\".",
+      "example": "С Новым годом вас!",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Happy New Year to you!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "С Новым годом!",
+      "romanization": "s novym godom",
+      "nativeText": "Find one word or phrase that naturally travels with \"С Новым годом!\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "s novym godom",
+      "exampleTarget": "С Новым годом вас!",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Happy New Year to you!”",
+      "korean": "С Новым годом!",
+      "english": "Find one word or phrase that naturally travels with \"С Новым годом!\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "С Новым годом вас!",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Happy New Year to you!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "С Новым годом!",
+      "romanization": "s novym godom",
+      "nativeText": "Listen for \"С Новым годом!\" inside \"С Новым годом вас!\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "s novym godom",
+      "exampleTarget": "С Новым годом вас!",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Happy New Year to you!”",
+      "korean": "С Новым годом!",
+      "english": "Listen for \"С Новым годом!\" inside \"С Новым годом вас!\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "С Новым годом вас!",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Happy New Year to you!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "С Новым годом!",
+      "romanization": "s novym godom",
+      "nativeText": "Write \"С Новым годом!\" again without looking, then compare the exact written form against \"С Новым годом вас!\" before moving on.",
+      "pronunciation": "s novym godom",
+      "exampleTarget": "С Новым годом вас!",
+      "exampleNative": "Use the written model as the final correctness check: “Happy New Year to you!”",
+      "korean": "С Новым годом!",
+      "english": "Write \"С Новым годом!\" again without looking, then compare the exact written form against \"С Новым годом вас!\" before moving on.",
+      "example": "С Новым годом вас!",
+      "exampleEnglish": "Use the written model as the final correctness check: “Happy New Year to you!”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "С Новым годом!",
+      "romanization": "s novym godom",
+      "nativeText": "Check whether \"С Новым годом!\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Happy New Year to you!”",
+      "pronunciation": "s novym godom",
+      "exampleTarget": "С Новым годом вас!",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Happy New Year to you!”",
+      "korean": "С Новым годом!",
+      "english": "Check whether \"С Новым годом!\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Happy New Year to you!”",
+      "example": "С Новым годом вас!",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Happy New Year to you!”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "традиция",
+      "romanization": "traditsiya",
+      "nativeText": "“Tradition.” A useful bridge noun for cultural explanations.",
+      "pronunciation": "traditsiya",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "“This is an important family tradition.”",
+      "korean": "традиция",
+      "english": "“Tradition.” A useful bridge noun for cultural explanations.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "“This is an important family tradition.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Это важная семейная традиция.",
+      "romanization": "traditsiya",
+      "nativeText": "Model use for \"Это важная семейная традиция.\": “This is an important family tradition.”",
+      "pronunciation": "traditsiya",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "“This is an important family tradition.”",
+      "korean": "Это важная семейная традиция.",
+      "english": "Model use for \"Это важная семейная традиция.\": “This is an important family tradition.”",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "“This is an important family tradition.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "традиция",
+      "romanization": "traditsiya",
+      "nativeText": "Usage focus for \"традиция\": “Tradition.” A useful bridge noun for cultural explanations.",
+      "pronunciation": "traditsiya",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "Notice what the form is doing here: “This is an important family tradition.”",
+      "korean": "традиция",
+      "english": "Usage focus for \"традиция\": “Tradition.” A useful bridge noun for cultural explanations.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "Notice what the form is doing here: “This is an important family tradition.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "традиция",
+      "romanization": "traditsiya",
+      "nativeText": "Contrast check for \"традиция\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "traditsiya",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This is an important family tradition.”",
+      "korean": "традиция",
+      "english": "Contrast check for \"традиция\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This is an important family tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "традиция",
+      "romanization": "traditsiya",
+      "nativeText": "Recall \"традиция\" from memory, then explain what would change if a nearby alternative replaced it in \"Это важная семейная традиция.\".",
+      "pronunciation": "traditsiya",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "Self-check against the model before moving on: “This is an important family tradition.”",
+      "korean": "традиция",
+      "english": "Recall \"традиция\" from memory, then explain what would change if a nearby alternative replaced it in \"Это важная семейная традиция.\".",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "Self-check against the model before moving on: “This is an important family tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "традиция",
+      "romanization": "traditsiya",
+      "nativeText": "Repair \"традиция\" inside \"Это важная семейная традиция.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Tradition.” A useful bridge noun for cultural explanations.",
+      "pronunciation": "traditsiya",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "Use the model as the repair target: “This is an important family tradition.”",
+      "korean": "традиция",
+      "english": "Repair \"традиция\" inside \"Это важная семейная традиция.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Tradition.” A useful bridge noun for cultural explanations.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "Use the model as the repair target: “This is an important family tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "традиция",
+      "romanization": "traditsiya",
+      "nativeText": "Transfer \"традиция\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Это важная семейная традиция.\".",
+      "pronunciation": "traditsiya",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This is an important family tradition.”",
+      "korean": "традиция",
+      "english": "Transfer \"традиция\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Это важная семейная традиция.\".",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This is an important family tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "традиция",
+      "romanization": "traditsiya",
+      "nativeText": "Find one word or phrase that naturally travels with \"традиция\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "traditsiya",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This is an important family tradition.”",
+      "korean": "традиция",
+      "english": "Find one word or phrase that naturally travels with \"традиция\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This is an important family tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "традиция",
+      "romanization": "traditsiya",
+      "nativeText": "Listen for \"традиция\" inside \"Это важная семейная традиция.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "traditsiya",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This is an important family tradition.”",
+      "korean": "традиция",
+      "english": "Listen for \"традиция\" inside \"Это важная семейная традиция.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This is an important family tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "традиция",
+      "romanization": "traditsiya",
+      "nativeText": "Write \"традиция\" again without looking, then compare the exact written form against \"Это важная семейная традиция.\" before moving on.",
+      "pronunciation": "traditsiya",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "Use the written model as the final correctness check: “This is an important family tradition.”",
+      "korean": "традиция",
+      "english": "Write \"традиция\" again without looking, then compare the exact written form against \"Это важная семейная традиция.\" before moving on.",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This is an important family tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit19culturalholidays-vocabulary-1",
+        "ru-level1unit19culturalholidays-vocabulary-2",
+        "ru-level1unit19culturalholidays-grammar-1",
+        "ru-level1unit19culturalholidays-grammar-2",
+        "ru-level1unit19culturalholidays-reading",
+        "ru-level1unit19culturalholidays-listening",
+        "ru-level1unit19culturalholidays-writing",
+        "ru-level1unit19culturalholidays-task"
+      ],
+      "targetText": "традиция",
+      "romanization": "traditsiya",
+      "nativeText": "Check whether \"традиция\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This is an important family tradition.”",
+      "pronunciation": "traditsiya",
+      "exampleTarget": "Это важная семейная традиция.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This is an important family tradition.”",
+      "korean": "традиция",
+      "english": "Check whether \"традиция\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This is an important family tradition.”",
+      "example": "Это важная семейная традиция.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This is an important family tradition.”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

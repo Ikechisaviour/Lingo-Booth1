@@ -23,7 +23,8 @@
     "saving": "Sparen...",
     "search": "Suchen",
     "notSet": "Nicht festgelegt",
-    "all": "Alle"
+    "all": "Alle",
+    "reset": "Zurücksetzen"
   },
   "languages": {
     "en": "Englisch",
@@ -218,7 +219,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "contactDesc": "Fragen, Feedback oder ein zu meldendes Problem"
   },
   "lessons": {
     "title": "{{language}} Lektionen",
@@ -738,7 +740,102 @@
     "modeBreakdown": "Modusverteilung",
     "searchUsers": "Benutzer suchen...",
     "all": "Alle",
-    "demo": "Demo"
+    "demo": "Demo",
+    "failures": "Misserfolge",
+    "messages": "Nachrichten",
+    "userFailures": "Fehler auf Benutzerseite",
+    "openFailures": "{{count}} offene Fehler",
+    "criticalFailures": "{{count}} kritisch",
+    "clearing": "Clearing...",
+    "loadingFailures": "Fehler beim Laden...",
+    "noOpenFailures": "Keine offenen benutzerseitigen Fehler.",
+    "acknowledge": "Anerkennen",
+    "page": "Seite",
+    "device": "Gerät",
+    "languagePair": "Sprachpaar",
+    "clientStatus": "Kunde",
+    "pageOf": "Seite {{page}} von {{total}}",
+    "guestUser": "Gastbenutzer",
+    "unknownUser": "Unbekannter Benutzer",
+    "unknown": "Unbekannt",
+    "clearFailuresTitle": "Offene Fehler löschen?",
+    "clearFailuresBody": "Alle {{count}} offenen Fehler als bestätigt markieren?",
+    "contactMessages": "Kontaktnachrichten",
+    "unreadMessages": "{{count}} ungelesene Nachrichten",
+    "allMessages": "Alle Nachrichten",
+    "registeredUsers": "Registrierte Benutzer",
+    "guestUsers": "Gastbenutzer",
+    "loadingMessages": "Nachrichten werden geladen...",
+    "noUnreadMessages": "Keine ungelesenen Kontaktnachrichten.",
+    "registeredUser": "Registrierter Benutzer",
+    "contactMessage": "Kontaktnachricht",
+    "markRead": "Mark hat gelesen",
+    "name": "Name",
+    "accountTier": "Kontoebene",
+    "clearMessagesTitle": "Ungelesene Nachrichten löschen?",
+    "clearMessagesBody": "Alle {{count}} ungelesenen Kontaktnachrichten als gelesen markieren?",
+    "demoDifficulty": {
+      "beginner": "Anfängerin",
+      "balanced": "Ausgewogen",
+      "natural": "Natürlich",
+      "challenge": "Herausforderung"
+    },
+    "demoScenarios": {
+      "friendlyChat": "Freundlicher Chat",
+      "cafeWorker": "Gespräch mit einem Café-Mitarbeiter",
+      "taxiDriver": "Einen Taxifahrer um Hilfe bitten",
+      "meetingNew": "Jemand neues kennenlernen"
+    },
+    "demoReplyPlaceholder": "Die Antwort des Praxispartners erscheint hier.",
+    "demoTipPlaceholder": "Fragen Sie in einer der ausgewählten Sprachen. Sie können das Thema ändern, nach Bedeutungen fragen oder eine einfachere Formulierung anfordern.",
+    "promoteConfirmShort": "{{username}} zum Administrator machen?",
+    "promote": "Fördern",
+    "deleteUserTitle": "Benutzer löschen",
+    "deleteUserConfirmShort": "{{username}} dauerhaft löschen? Dies kann nicht rückgängig gemacht werden.",
+    "demoReset": "Konversation zurückgesetzt.",
+    "demoNoReply": "Es wurde keine Antwort zurückgegeben.",
+    "demoNoCoachingNote": "Keine Trainernotiz.",
+    "demoResponseFailed": "Diesmal konnte ich nicht antworten. Bitte versuchen Sie es erneut.",
+    "demoConnectionIssue": "Verbindungsproblem. Versuchen Sie es gleich noch einmal.",
+    "tapForDetails": "Für Details tippen",
+    "activeWeek": "Aktiv 7d",
+    "countries": "Länder",
+    "conversion": "Konvertierung",
+    "engagement": "Engagement",
+    "totalCardsStudied": "Insgesamt untersuchte Karten",
+    "totalAudioPlays": "Gesamtzahl der Hörspiele",
+    "lessonsViewed": "Angesehene Lektionen",
+    "topLanguagePairs": "Top-Sprachpaare",
+    "sessionsCount": "{{count}} Sitzungen",
+    "deviceBreakdown": "Geräteausfall",
+    "recentSessions": "Letzte Sitzungen ({{count}})",
+    "cardsStudiedCount": "{{count}} Karten",
+    "pageNumber": "Seite {{page}}",
+    "noGuestData": "Keine Gastdaten verfügbar",
+    "loadData": "Daten laden",
+    "speakingDemo": "Sprechende Demo",
+    "demoIntro": "Konversationsvorschau nur für Administratoren. Audioinhalte oder Lernfortschritte werden nicht gespeichert.",
+    "scenario": "Szenario",
+    "customScenario": "Benutzerdefiniertes Szenario",
+    "learningLanguage": "Sprache lernen",
+    "nativeLanguage": "Muttersprache",
+    "listenFor": "Hören Sie zu",
+    "difficulty": "Schwierigkeit",
+    "learnerTurnInput": "Geben oder fügen Sie ein, was der Lernende gesagt hat",
+    "interrupt": "Unterbrechen",
+    "conversationState": "Gesprächszustand",
+    "lastLearnerTurn": "Letzter Lernender ist an der Reihe",
+    "noTurnSentYet": "Noch kein Zug gesendet.",
+    "practicePartnerResponse": "Üben Sie die Reaktion Ihres Partners",
+    "coachNote": "Trainernotiz",
+    "userDetails": "Benutzerdetails",
+    "totalXp": "Gesamt-XP",
+    "studyMode": "Lernmodus",
+    "languages": "Sprachen",
+    "loginCount": "Anzahl der Anmeldungen",
+    "memberSince": "Mitglied seit",
+    "suspendReasonLabel": "Suspendierungsgrund",
+    "userDetailsLoadFailed": "Benutzerdetails konnten nicht geladen werden"
   },
   "pricing": {
     "kicker": "Pläne",
@@ -820,7 +917,9 @@
     "discountCode": "Rabattcode",
     "discountPlaceholder": "Optionaler Code",
     "discountUnavailable": "Dieser Rabattcode ist für diesen Plan nicht verfügbar.",
-    "automaticDiscountApplied": "Automatischer Rabatt von {{discount}} angewendet"
+    "automaticDiscountApplied": "Automatischer Rabatt von {{discount}} angewendet",
+    "signInToChooseTitle": "Erstellen Sie ein Konto, um fortzufahren",
+    "signInToChooseBody": "Erstellen Sie ein Konto oder melden Sie sich an, bevor Sie sich für einen kostenpflichtigen Plan entscheiden, damit Ihnen Ihr Zugang zugeordnet werden kann."
   },
   "billing": {
     "kicker": "Abrechnung",
@@ -960,7 +1059,7 @@
     "untitled": "Lektion ohne Titel",
     "cardStats": "{{vocab}} Vokabeln / {{sentences}} Beispiele / {{conversations}} Dialoge",
     "classFallback": "Klasse",
-    "loadError": "Klassenlektionen konnten nicht geladen werden. Stellen Sie sicher, dass das Backend läuft und geseedet ist.",
+    "loadError": "Wir konnten Ihre Lektionen momentan nicht laden. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
     "tracks": {
       "foundationTitle": "Level {{level}} – Stiftung",
       "foundationSubtitle": "Beginnen Sie hier mit dem Ton- und Schreibsystem für {{language}}.",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "Level {{level}} · Einheit {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Versuchen Sie es erneut"
   },
   "classLesson": {
     "loading": "Klassenstunde wird geladen...",
@@ -1114,7 +1214,10 @@
     "saveReply": "Antwort speichern",
     "saveExample": "Beispiel speichern",
     "practiceEverywhere": "Üben Sie dies überall",
-    "selfTestReason": "Für einen schnellen Selbsttest aus dem Unterricht gerettet."
+    "selfTestReason": "Für einen schnellen Selbsttest aus dem Unterricht gerettet.",
+    "previous": "Vorherige",
+    "lessonGuide": "Unterrichtsführer",
+    "activityXOfY": "Aktivität {{current}} von {{total}}"
   },
   "exercise": {
     "kicker": "Übung",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "Nützliche Sätze",
     "recapReview": "Überprüfen Sie als Nächstes",
     "recapReviewFallback": "Speichern Sie eine Phrase und verwenden Sie sie in einem anderen Übungsmodus wieder.",
-    "practiceLabel": "Konversationspraxis"
+    "practiceLabel": "Konversationspraxis",
+    "practiceSetup": "Übungsaufbau"
   },
   "context": {
     "backToProfile": "Zurück zum Profil",
@@ -1304,7 +1408,10 @@
       "memory": "Aus der Erinnerung"
     },
     "savedReason": "Für einen weiteren Durchgang vor der Schreibübung bewahrt.",
-    "selfTestReason": "Aus der Schreibpraxis für einen schnellen Selbsttest gerettet."
+    "selfTestReason": "Aus der Schreibpraxis für einen schnellen Selbsttest gerettet.",
+    "hideNotebook": "Notizbuch ausblenden",
+    "showNotebook": "Notizbuch anzeigen",
+    "hideAddPanel": "Hinzufügen-Panel ausblenden"
   },
   "certificates": {
     "kicker": "Zertifikat",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "Kehren Sie noch einmal zu dem zurück, was Sie gestern gesehen haben, damit die ersten Gegenstände haften bleiben.",
     "firstThreeDaySpeakBody": "Verwenden Sie eine kurze Sprechrunde, damit die Sprache frühzeitig die Seite verlässt.",
     "firstThreeDayLearnBody": "Beginnen Sie mit einer kleinen geführten Lektion, damit das Paar einen klaren Ausgangspunkt hat."
+  },
+  "resetPassword": {
+    "title": "Passwort zurücksetzen",
+    "subtitle": "Geben Sie Ihr neues Passwort ein.",
+    "error": "Das Passwort konnte nicht zurückgesetzt werden. Bitte versuchen Sie es erneut.",
+    "invalidLink": "Dieser Link ist ungültig oder abgelaufen.",
+    "noToken": "Kein Token vorhanden. Bitte fordern Sie einen neuen Link an.",
+    "requestNew": "Neuen Link anfordern",
+    "success": "Ihr Passwort wurde erfolgreich zurückgesetzt.",
+    "goToLogin": "Zur Anmeldung",
+    "newPasswordPlaceholder": "Neues Passwort",
+    "resetButton": "Passwort zurücksetzen",
+    "failed": "Das Passwort konnte nicht zurückgesetzt werden. Bitte versuchen Sie es erneut.",
+    "kicker": "Passwort zurücksetzen",
+    "missingToken": "Dieser Reset-Link fehlt oder ist ungültig.",
+    "newPassword": "Neues Passwort",
+    "confirmPassword": "Passwort bestätigen",
+    "submit": "Passwort zurücksetzen"
+  },
+  "contact": {
+    "navLabel": "Kontakt",
+    "kicker": "Kontakt aufnehmen",
+    "title": "Sagen Sie uns, was Sie brauchen",
+    "subtitle": "Sende eine Frage, melde ein Problem oder teile Feedback. Wir pr?fen deine Nachricht und antworten bei Bedarf.",
+    "infoTitle": "Wir h?ren zu",
+    "infoText": "Nachrichten aus diesem Formular werden sicher mit verf?gbarem Kontokontext gespeichert, damit wir schneller verstehen und helfen k?nnen.",
+    "name": "Name",
+    "namePlaceholder": "Ihr Name",
+    "email": "E-Mail",
+    "emailPlaceholder": "sie@beispiel.com",
+    "subject": "Betreff",
+    "subjectPlaceholder": "Worum geht es?",
+    "message": "Nachricht",
+    "messagePlaceholder": "Schreiben Sie Ihre Nachricht hier...",
+    "send": "Nachricht senden",
+    "success": "Danke. Deine Nachricht wurde empfangen.",
+    "error": "Ihre Nachricht konnte gerade nicht gesendet werden. Bitte versuchen Sie es erneut.",
+    "companyTrap": "Unternehmen",
+    "profileHint": "Senden Sie eine Frage, melden Sie ein Problem oder teilen Sie Feedback zu diesem Gerät."
   }
 }

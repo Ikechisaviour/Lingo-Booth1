@@ -23,7 +23,8 @@
     "saving": "Nagse-save...",
     "search": "Maghanap",
     "notSet": "Hindi nakatakda",
-    "all": "Lahat"
+    "all": "Lahat",
+    "reset": "I-reset"
   },
   "languages": {
     "en": "Ingles",
@@ -218,7 +219,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "contactDesc": "Mga tanong, feedback, o problemang iuulat"
   },
   "lessons": {
     "title": "Mga Aralin sa {{language}}",
@@ -798,7 +800,102 @@
     "recentActive": "Aktibo kamakailan",
     "modeBreakdown": "Mode ng Pag-aaral",
     "searchUsers": "Maghanap ng mga user...",
-    "demo": "Demo"
+    "demo": "Demo",
+    "failures": "Mga kabiguan",
+    "messages": "Mga mensahe",
+    "userFailures": "Mga pagkabigo sa panig ng gumagamit",
+    "openFailures": "{{count}} bukas na mga pagkabigo",
+    "criticalFailures": "{{count}} kritikal",
+    "clearing": "Nililinis...",
+    "loadingFailures": "Mga pagkabigo sa paglo-load...",
+    "noOpenFailures": "Walang bukas na mga pagkabigo sa panig ng gumagamit.",
+    "acknowledge": "Kilalanin",
+    "page": "Pahina",
+    "device": "Device",
+    "languagePair": "Pares ng Wika",
+    "clientStatus": "Kliyente",
+    "pageOf": "Pahina {{page}} ng {{total}}",
+    "guestUser": "Guest user",
+    "unknownUser": "Hindi kilalang user",
+    "unknown": "Hindi alam",
+    "clearFailuresTitle": "I-clear ang mga bukas na pagkabigo?",
+    "clearFailuresBody": "Markahan ang lahat ng {{count}} bukas na pagkabigo bilang kinikilala?",
+    "contactMessages": "Mga mensahe sa pakikipag-ugnayan",
+    "unreadMessages": "{{count}} mga hindi pa nababasang mensahe",
+    "allMessages": "Lahat ng mensahe",
+    "registeredUsers": "Mga rehistradong gumagamit",
+    "guestUsers": "Mga bisitang gumagamit",
+    "loadingMessages": "Naglo-load ng mga mensahe...",
+    "noUnreadMessages": "Walang hindi pa nababasang mga contact message.",
+    "registeredUser": "Nakarehistrong user",
+    "contactMessage": "Mensahe ng contact",
+    "markRead": "Binasa ni Mark",
+    "name": "Pangalan",
+    "accountTier": "Tier ng Account",
+    "clearMessagesTitle": "I-clear ang mga hindi pa nababasang mensahe?",
+    "clearMessagesBody": "Markahan ang lahat ng {{count}} hindi pa nababasang mga contact message bilang nabasa na?",
+    "demoDifficulty": {
+      "beginner": "Baguhan",
+      "balanced": "Balanseng",
+      "natural": "Natural",
+      "challenge": "Hamon"
+    },
+    "demoScenarios": {
+      "friendlyChat": "Friendly chat",
+      "cafeWorker": "Nakikipag-usap sa isang manggagawa sa cafe",
+      "taxiDriver": "Humihingi ng tulong sa isang taxi driver",
+      "meetingNew": "May nakilalang bago"
+    },
+    "demoReplyPlaceholder": "Lalabas dito ang tugon ng kasama sa pagsasanay.",
+    "demoTipPlaceholder": "Magtanong sa alinmang piniling wika. Maaari mong baguhin ang paksa, humingi ng mga kahulugan, o humiling ng mas madaling salita.",
+    "promoteConfirmShort": "Gawing admin si {{username}}?",
+    "promote": "I-promote",
+    "deleteUserTitle": "Tanggalin ang User",
+    "deleteUserConfirmShort": "Permanenteng tanggalin ang {{username}}? Hindi na ito maaaring bawiin.",
+    "demoReset": "I-reset ang pag-uusap.",
+    "demoNoReply": "Walang ibinalik na tugon.",
+    "demoNoCoachingNote": "Walang coaching note.",
+    "demoResponseFailed": "Hindi ako makasagot sa pagkakataong ito. Pakisubukang muli.",
+    "demoConnectionIssue": "Isyu sa koneksyon. Subukan muli sa isang sandali.",
+    "tapForDetails": "I-tap para sa mga detalye",
+    "activeWeek": "Aktibo 7d",
+    "countries": "Mga bansa",
+    "conversion": "Pagbabalik-loob",
+    "engagement": "Pakikipag-ugnayan",
+    "totalCardsStudied": "Kabuuang Mga Card na Pinag-aralan",
+    "totalAudioPlays": "Kabuuang Pag-play ng Audio",
+    "lessonsViewed": "Mga Lessons Viewed",
+    "topLanguagePairs": "Nangungunang Mga Pares ng Wika",
+    "sessionsCount": "{{count}} session",
+    "deviceBreakdown": "Pagkasira ng Device",
+    "recentSessions": "Mga Kamakailang Session ({{count}})",
+    "cardsStudiedCount": "{{count}} card",
+    "pageNumber": "Pahina {{page}}",
+    "noGuestData": "Walang available na data ng bisita",
+    "loadData": "Mag-load ng Data",
+    "speakingDemo": "Demo na nagsasalita",
+    "demoIntro": "Preview ng pag-uusap na pang-administrator lamang. Hindi ito nagse-save ng audio o pag-unlad ng mag-aaral.",
+    "scenario": "Sitwasyon",
+    "customScenario": "Custom na senaryo",
+    "learningLanguage": "Pag-aaral ng wika",
+    "nativeLanguage": "katutubong wika",
+    "listenFor": "Makinig para sa",
+    "difficulty": "Kahirapan",
+    "learnerTurnInput": "I-type o i-paste ang sinabi ng nag-aaral",
+    "interrupt": "Makagambala",
+    "conversationState": "Estado ng Pag-uusap",
+    "lastLearnerTurn": "Last learner turn",
+    "noTurnSentYet": "Wala pang turn na ipinadala.",
+    "practicePartnerResponse": "Magsanay sa pagtugon ng kapareha",
+    "coachNote": "Tala ng coach",
+    "userDetails": "Mga Detalye ng User",
+    "totalXp": "Kabuuang XP",
+    "studyMode": "Mode ng Pag-aaral",
+    "languages": "Mga wika",
+    "loginCount": "Bilang ng Pag-login",
+    "memberSince": "Member Since",
+    "suspendReasonLabel": "Suspindihin ang Dahilan",
+    "userDetailsLoadFailed": "Hindi ma-load ang mga detalye ng user"
   },
   "pricing": {
     "kicker": "Mga plano",
@@ -880,7 +977,9 @@
     "discountCode": "Discount code",
     "discountPlaceholder": "Opsyonal na code",
     "discountUnavailable": "Hindi available ang discount code na iyon para sa planong ito.",
-    "automaticDiscountApplied": "Awtomatikong {{discount}} diskwento ang nailapat"
+    "automaticDiscountApplied": "Awtomatikong {{discount}} diskwento ang nailapat",
+    "signInToChooseTitle": "Gumawa ng account para magpatuloy",
+    "signInToChooseBody": "Gumawa ng account o mag-sign in bago pumili ng bayad na plano para mai-attach sa iyo ang iyong access."
   },
   "billing": {
     "kicker": "Pagsingil",
@@ -1020,7 +1119,7 @@
     "untitled": "Walang pamagat na aralin",
     "cardStats": "{{vocab}} bokabularyo / {{sentences}} mga halimbawa / {{conversations}} mga diyalogo",
     "classFallback": "Klase",
-    "loadError": "Hindi ma-load ang mga aralin sa klase. Siguraduhin na ang backend ay tumatakbo at seeded.",
+    "loadError": "Hindi namin ma-load ang iyong mga aralin sa ngayon. Pakisuri ang iyong koneksyon at subukang muli.",
     "tracks": {
       "foundationTitle": "Level {{level}} - Foundation",
       "foundationSubtitle": "Magsimula dito sa sound at writing system para sa {{language}}.",
@@ -1035,7 +1134,8 @@
     },
     "titlePrefix": {
       "unit": "Level {{level}} · Unit {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Subukan muli"
   },
   "classLesson": {
     "loading": "Nilo-load ang aralin sa klase...",
@@ -1174,7 +1274,10 @@
     "saveReply": "I-save ang tugon",
     "saveExample": "I-save ang halimbawa",
     "practiceEverywhere": "Sanayin ito kahit saan",
-    "selfTestReason": "Na-save mula sa klase para sa isang mabilis na self-test."
+    "selfTestReason": "Na-save mula sa klase para sa isang mabilis na self-test.",
+    "previous": "Nakaraang",
+    "lessonGuide": "Gabay sa aralin",
+    "activityXOfY": "Aktibidad {{current}} ng {{total}}"
   },
   "exercise": {
     "kicker": "Mag-ehersisyo",
@@ -1242,7 +1345,8 @@
     "recapUsefulPhrases": "Mga kapaki-pakinabang na parirala",
     "recapReview": "Susunod na suriin",
     "recapReviewFallback": "I-save ang isang parirala at muling gamitin ito sa ibang practice mode.",
-    "practiceLabel": "Pagsasanay sa pag-uusap"
+    "practiceLabel": "Pagsasanay sa pag-uusap",
+    "practiceSetup": "Magsanay sa pag-setup"
   },
   "context": {
     "backToProfile": "Bumalik sa Profile",
@@ -1364,7 +1468,10 @@
       "memory": "Mula sa alaala"
     },
     "savedReason": "Na-save mula sa pagsasanay sa pagsulat para sa isa pang pass.",
-    "selfTestReason": "Na-save mula sa pagsasanay sa pagsulat para sa isang mabilis na pagsubok sa sarili."
+    "selfTestReason": "Na-save mula sa pagsasanay sa pagsulat para sa isang mabilis na pagsubok sa sarili.",
+    "hideNotebook": "Itago ang notebook",
+    "showNotebook": "Ipakita ang kuwaderno",
+    "hideAddPanel": "Itago ang add panel"
   },
   "certificates": {
     "kicker": "Sertipiko",
@@ -1532,5 +1639,44 @@
     "firstThreeDayReviewBody": "Bumalik ng isang beses sa nakita mo kahapon para magsimulang dumikit ang mga unang item.",
     "firstThreeDaySpeakBody": "Gumamit ng maikling pagsasalita upang ang wika ay umalis nang maaga sa pahina.",
     "firstThreeDayLearnBody": "Magsimula sa isang maliit na may gabay na aralin upang ang pares ay may malinaw na panimulang punto."
+  },
+  "resetPassword": {
+    "title": "I-reset ang password",
+    "subtitle": "Ilagay ang iyong bagong password.",
+    "error": "Hindi ma-reset ang password. Pakisubukang muli.",
+    "invalidLink": "Ang reset link na ito ay hindi wasto o expired na.",
+    "noToken": "Walang reset token. Mangyaring humiling ng bagong link.",
+    "requestNew": "Humiling ng bagong link",
+    "success": "Matagumpay na na-reset ang iyong password.",
+    "goToLogin": "Pumunta sa login",
+    "newPasswordPlaceholder": "Bagong password",
+    "resetButton": "I-reset ang password",
+    "failed": "Hindi ma-reset ang password. Pakisubukang muli.",
+    "kicker": "I-reset ang password",
+    "missingToken": "Nawawala o hindi wasto ang link sa pag-reset na ito.",
+    "newPassword": "Bagong password",
+    "confirmPassword": "Kumpirmahin ang password",
+    "submit": "I-reset ang password"
+  },
+  "contact": {
+    "navLabel": "Makipag-ugnayan",
+    "kicker": "Makipag-ugnayan sa amin",
+    "title": "Sabihin sa amin ang kailangan mo",
+    "subtitle": "Magpadala ng tanong, mag-ulat ng problema, o magbahagi ng feedback. Susuriin namin ang iyong mensahe at sasagot kapag kailangan.",
+    "infoTitle": "Nakikinig kami",
+    "infoText": "Ang mga mensahe mula sa form na ito ay ligtas na sine-save kasama ang account context kapag available, para mas mabilis naming maunawaan at matulungan ka.",
+    "name": "Pangalan",
+    "namePlaceholder": "Iyong pangalan",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "subject": "Paksa",
+    "subjectPlaceholder": "Tungkol saan ito?",
+    "message": "Mensahe",
+    "messagePlaceholder": "Isulat ang iyong mensahe dito...",
+    "send": "Ipadala ang mensahe",
+    "success": "Salamat. Natanggap na ang iyong mensahe.",
+    "error": "Hindi namin maipadala ang iyong mensahe ngayon. Subukan muli.",
+    "companyTrap": "kumpanya",
+    "profileHint": "Magpadala ng tanong, mag-ulat ng problema, o magbahagi ng feedback mula sa device na ito."
   }
 }

@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u15',
-  title: 'Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages',
-  category: 'communication',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Make short calls, leave messages, and ask for repetition.',
-  vocabularyGoal: 'Use phone, message, number, and callback vocabulary.',
-  grammarGoal: 'Use polite questions with `kan ik`, `kunt u`, and separable verbs such as `terugbellen`.',
-  speakingGoal: 'Open a call, ask for someone, leave a message, and confirm a number.',
-  task: 'Leave a clear message for a classmate.',
-  expressionPractice: [
-    practice('opening-call', 'Opening call', 'Use a phone greeting and identify yourself.'),
-    practice('leaving-message', 'Leaving message', 'Use `kan ik een bericht achterlaten?`.'),
-    practice('asking-repeat', 'Asking repetition', 'Use `kunt u dat herhalen?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages",
+  "category": "communication",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit15phonemessages-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Make short calls, leave messages, and ask for repetition."
+      ],
+      "task": "Leave a clear message for a classmate."
+    },
+    {
+      "id": "nl-level1unit15phonemessages-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit15phonemessages-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit15phonemessages-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit15phonemessages-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Make short calls, leave messages, and ask for repetition."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit15phonemessages-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit15phonemessages-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit15phonemessages-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit15phonemessages-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit15phonemessages-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit15phonemessages-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Leave a clear message for a classmate."
+      ],
+      "task": "Leave a clear message for a classmate."
+    }
   ],
-  relatedPools: ['topic-communication', 'topic-service'],
-  items: [
-    item('hallo', 'ha-LOH', 'The ordinary Dutch phone greeting.', 'Hallo, met Eva.', '“Hello, this is Eva.”'),
-    item('kan ik met ... spreken?', 'kan ik met ... SPRAY-khen', '“May I speak with ...?” A natural phone request.', 'Kan ik met meneer De Vries spreken?', '“May I speak with Mr. De Vries?”'),
-    item('hij is er nu niet', 'hey is er ny neet', '“He is not here now.” A common status phrase.', 'Hij is er nu niet.', '“He is not here now.”'),
-    item('een bericht', 'ən bə-RIKHT', '“A message.” Useful for phone and text contexts.', 'Kan ik een bericht achterlaten?', '“May I leave a message?”'),
-    item('wilt u zeggen dat ik heb gebeld?', 'vilt y ZEG-ghen dat ik hep khə-BELT', '“Would you say that I called?” A polite relay request.', 'Wilt u zeggen dat ik heb gebeld?', '“Would you say that I called?”'),
-    item('telefoonnummer', 'tay-lə-FOHN-num-mer', '“Phone number.” A transparent compound.', 'Wat is uw telefoonnummer?', '“What is your phone number?”'),
-    item('kunt u dat herhalen?', 'kunt y dat her-HAH-len', '“Could you repeat that?” A crucial repair phrase.', 'Kunt u dat nummer herhalen?', '“Could you repeat that number?”'),
-    item('ik bel later terug', 'ik bel LAH-ter tə-RUKH', '“I will call back later.” The separable prefix moves to the end.', 'Goed, ik bel later terug.', '“Okay, I will call back later.”'),
+  "expressionPractice": [
+    {
+      "id": "opening-call",
+      "label": "Opening call",
+      "goal": "Use a phone greeting and identify yourself."
+    },
+    {
+      "id": "leaving-message",
+      "label": "Leaving message",
+      "goal": "Use `kan ik een bericht achterlaten?`."
+    },
+    {
+      "id": "asking-repeat",
+      "label": "Asking repetition",
+      "goal": "Use `kunt u dat herhalen?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-communication",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Make short calls, leave messages, and ask for repetition.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Leave a clear message for a classmate.",
+      "korean": "lesdoel",
+      "english": "Make short calls, leave messages, and ask for repetition.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Leave a clear message for a classmate."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit15phonemessages-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Hallo, met Eva.\".",
+      "pronunciation": "",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "“Hello, this is Eva.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Hallo, met Eva.\".",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "“Hello, this is Eva.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1"
+      ],
+      "targetText": "hallo",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "“Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "Use the key language of Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "“Hello, this is Eva.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-2"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "“May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "“May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit15phonemessages-grammar-1"
+      ],
+      "targetText": "hallo",
+      "romanization": "",
+      "nativeText": "Make short calls, leave messages, and ask for repetition.",
+      "pronunciation": "",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "“Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "Make short calls, leave messages, and ask for repetition.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "“Hello, this is Eva.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "“May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "Contrast the main pattern in Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "“May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit15phonemessages-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Goed, ik bel later terug.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "“Okay, I will call back later.”",
+      "korean": "leesmodel",
+      "english": "Read \"Goed, ik bel later terug.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "“Okay, I will call back later.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit15phonemessages-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Goed, ik bel later terug.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "“Okay, I will call back later.”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Goed, ik bel later terug.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "“Okay, I will call back later.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit15phonemessages-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Hallo, met Eva.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Hallo, met Eva.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit15phonemessages-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "“May I speak with Mr. De Vries?”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "“May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Leave a clear message for a classmate.",
+      "pronunciation": "",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "Leave a clear message for a classmate.",
+      "korean": "eindtaak",
+      "english": "Leave a clear message for a classmate.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "Leave a clear message for a classmate."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Kan ik met meneer De Vries spreken?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “May I speak with Mr. De Vries?”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Kan ik met meneer De Vries spreken?\" against the model.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Hallo, met Eva.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "“Hello, this is Eva.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Hallo, met Eva.\" before reusing it elsewhere.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "“Hello, this is Eva.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Goed, ik bel later terug.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "“Okay, I will call back later.”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Goed, ik bel later terug.\" as one thought.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "“Okay, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Hallo, met Eva.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Hallo, met Eva.\" and move it into your own life.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"hallo\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "hallo",
+      "exampleNative": "The ordinary Dutch phone greeting.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"hallo\" before looking back.",
+      "example": "hallo",
+      "exampleEnglish": "The ordinary Dutch phone greeting."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Goed, ik bel later terug.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Goed, ik bel later terug.\" rather than restarting from a blank sentence.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Kan ik met meneer De Vries spreken?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "“May I speak with Mr. De Vries?”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Kan ik met meneer De Vries spreken?\" as the comparison line.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "“May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit15phonemessages-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Hallo, met Eva.\".",
+      "pronunciation": "",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "“Hello, this is Eva.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Hallo, met Eva.\".",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "“Hello, this is Eva.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Goed, ik bel later terug.\".",
+      "pronunciation": "",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "“Okay, I will call back later.”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Goed, ik bel later terug.\".",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "“Okay, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Hallo, met Eva.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "“Hello, this is Eva.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Hallo, met Eva.\" one layer at a time.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "“Hello, this is Eva.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Kan ik met meneer De Vries spreken?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "“May I speak with Mr. De Vries?”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Kan ik met meneer De Vries spreken?\" as the deciding example.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "“May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-culture",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Goed, ik bel later terug.\".",
+      "pronunciation": "",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "“Okay, I will call back later.”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Goed, ik bel later terug.\".",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "“Okay, I will call back later.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hallo",
+      "romanization": "ha-LOH",
+      "nativeText": "The ordinary Dutch phone greeting.",
+      "pronunciation": "ha-LOH",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "“Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "The ordinary Dutch phone greeting.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "“Hello, this is Eva.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "Hallo, met Eva.",
+      "romanization": "ha-LOH",
+      "nativeText": "Model use for \"Hallo, met Eva.\": “Hello, this is Eva.”",
+      "pronunciation": "ha-LOH",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "“Hello, this is Eva.”",
+      "korean": "Hallo, met Eva.",
+      "english": "Model use for \"Hallo, met Eva.\": “Hello, this is Eva.”",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "“Hello, this is Eva.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hallo",
+      "romanization": "ha-LOH",
+      "nativeText": "Usage focus for \"hallo\": Use the key language of Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "ha-LOH",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "Notice what the form is doing here: “Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "Usage focus for \"hallo\": Use the key language of Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "Notice what the form is doing here: “Hello, this is Eva.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hallo",
+      "romanization": "ha-LOH",
+      "nativeText": "Contrast check for \"hallo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ha-LOH",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "Contrast check for \"hallo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Hello, this is Eva.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hallo",
+      "romanization": "ha-LOH",
+      "nativeText": "Recall \"hallo\" from memory, then explain what would change if a nearby alternative replaced it in \"Hallo, met Eva.\".",
+      "pronunciation": "ha-LOH",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "Self-check against the model before moving on: “Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "Recall \"hallo\" from memory, then explain what would change if a nearby alternative replaced it in \"Hallo, met Eva.\".",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "Self-check against the model before moving on: “Hello, this is Eva.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hallo",
+      "romanization": "ha-LOH",
+      "nativeText": "Repair \"hallo\" inside \"Hallo, met Eva.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "ha-LOH",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "Use the model as the repair target: “Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "Repair \"hallo\" inside \"Hallo, met Eva.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "Use the model as the repair target: “Hello, this is Eva.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hallo",
+      "romanization": "ha-LOH",
+      "nativeText": "Transfer \"hallo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hallo, met Eva.\".",
+      "pronunciation": "ha-LOH",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "Transfer \"hallo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hallo, met Eva.\".",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Hello, this is Eva.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hallo",
+      "romanization": "ha-LOH",
+      "nativeText": "Find one word or phrase that naturally travels with \"hallo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ha-LOH",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "Find one word or phrase that naturally travels with \"hallo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Hello, this is Eva.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hallo",
+      "romanization": "ha-LOH",
+      "nativeText": "Listen for \"hallo\" inside \"Hallo, met Eva.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ha-LOH",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "Listen for \"hallo\" inside \"Hallo, met Eva.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Hello, this is Eva.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hallo",
+      "romanization": "ha-LOH",
+      "nativeText": "Write \"hallo\" again without looking, then compare the exact written form against \"Hallo, met Eva.\" before moving on.",
+      "pronunciation": "ha-LOH",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "Use the written model as the final correctness check: “Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "Write \"hallo\" again without looking, then compare the exact written form against \"Hallo, met Eva.\" before moving on.",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Hello, this is Eva.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hallo",
+      "romanization": "ha-LOH",
+      "nativeText": "Check whether \"hallo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Hello, this is Eva.”",
+      "pronunciation": "ha-LOH",
+      "exampleTarget": "Hallo, met Eva.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Hello, this is Eva.”",
+      "korean": "hallo",
+      "english": "Check whether \"hallo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Hello, this is Eva.”",
+      "example": "Hallo, met Eva.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Hello, this is Eva.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "kan ik met ... SPRAY-khen",
+      "nativeText": "“May I speak with ...?” A natural phone request.",
+      "pronunciation": "kan ik met ... SPRAY-khen",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "“May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "“May I speak with ...?” A natural phone request.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "“May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "Kan ik met meneer De Vries spreken?",
+      "romanization": "kan ik met ... SPRAY-khen",
+      "nativeText": "Model use for \"Kan ik met meneer De Vries spreken?\": “May I speak with Mr. De Vries?”",
+      "pronunciation": "kan ik met ... SPRAY-khen",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "“May I speak with Mr. De Vries?”",
+      "korean": "Kan ik met meneer De Vries spreken?",
+      "english": "Model use for \"Kan ik met meneer De Vries spreken?\": “May I speak with Mr. De Vries?”",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "“May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "kan ik met ... SPRAY-khen",
+      "nativeText": "Usage focus for \"kan ik met ... spreken?\": Distinguish the nearby wording choices that make Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "kan ik met ... SPRAY-khen",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "Notice what the form is doing here: “May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "Usage focus for \"kan ik met ... spreken?\": Distinguish the nearby wording choices that make Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "Notice what the form is doing here: “May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "kan ik met ... SPRAY-khen",
+      "nativeText": "Contrast check for \"kan ik met ... spreken?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kan ik met ... SPRAY-khen",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "Contrast check for \"kan ik met ... spreken?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "kan ik met ... SPRAY-khen",
+      "nativeText": "Recall \"kan ik met ... spreken?\" from memory, then explain what would change if a nearby alternative replaced it in \"Kan ik met meneer De Vries spreken?\".",
+      "pronunciation": "kan ik met ... SPRAY-khen",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "Self-check against the model before moving on: “May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "Recall \"kan ik met ... spreken?\" from memory, then explain what would change if a nearby alternative replaced it in \"Kan ik met meneer De Vries spreken?\".",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "kan ik met ... SPRAY-khen",
+      "nativeText": "Repair \"kan ik met ... spreken?\" inside \"Kan ik met meneer De Vries spreken?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "kan ik met ... SPRAY-khen",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "Use the model as the repair target: “May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "Repair \"kan ik met ... spreken?\" inside \"Kan ik met meneer De Vries spreken?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 15: Bellen en Berichten — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "Use the model as the repair target: “May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "kan ik met ... SPRAY-khen",
+      "nativeText": "Transfer \"kan ik met ... spreken?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kan ik met meneer De Vries spreken?\".",
+      "pronunciation": "kan ik met ... SPRAY-khen",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "Transfer \"kan ik met ... spreken?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kan ik met meneer De Vries spreken?\".",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "kan ik met ... SPRAY-khen",
+      "nativeText": "Find one word or phrase that naturally travels with \"kan ik met ... spreken?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kan ik met ... SPRAY-khen",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "Find one word or phrase that naturally travels with \"kan ik met ... spreken?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "kan ik met ... SPRAY-khen",
+      "nativeText": "Listen for \"kan ik met ... spreken?\" inside \"Kan ik met meneer De Vries spreken?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kan ik met ... SPRAY-khen",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "Listen for \"kan ik met ... spreken?\" inside \"Kan ik met meneer De Vries spreken?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "kan ik met ... SPRAY-khen",
+      "nativeText": "Write \"kan ik met ... spreken?\" again without looking, then compare the exact written form against \"Kan ik met meneer De Vries spreken?\" before moving on.",
+      "pronunciation": "kan ik met ... SPRAY-khen",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "Use the written model as the final correctness check: “May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "Write \"kan ik met ... spreken?\" again without looking, then compare the exact written form against \"Kan ik met meneer De Vries spreken?\" before moving on.",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kan ik met ... spreken?",
+      "romanization": "kan ik met ... SPRAY-khen",
+      "nativeText": "Check whether \"kan ik met ... spreken?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I speak with Mr. De Vries?”",
+      "pronunciation": "kan ik met ... SPRAY-khen",
+      "exampleTarget": "Kan ik met meneer De Vries spreken?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I speak with Mr. De Vries?”",
+      "korean": "kan ik met ... spreken?",
+      "english": "Check whether \"kan ik met ... spreken?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I speak with Mr. De Vries?”",
+      "example": "Kan ik met meneer De Vries spreken?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I speak with Mr. De Vries?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hij is er nu niet",
+      "romanization": "hey is er ny neet",
+      "nativeText": "“He is not here now.” A common status phrase.",
+      "pronunciation": "hey is er ny neet",
+      "exampleTarget": "Hij is er nu niet.",
+      "exampleNative": "“He is not here now.”",
+      "korean": "hij is er nu niet",
+      "english": "“He is not here now.” A common status phrase.",
+      "example": "Hij is er nu niet.",
+      "exampleEnglish": "“He is not here now.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "Hij is er nu niet.",
+      "romanization": "hey is er ny neet",
+      "nativeText": "Model use for \"Hij is er nu niet.\": “He is not here now.”",
+      "pronunciation": "hey is er ny neet",
+      "exampleTarget": "Hij is er nu niet.",
+      "exampleNative": "“He is not here now.”",
+      "korean": "Hij is er nu niet.",
+      "english": "Model use for \"Hij is er nu niet.\": “He is not here now.”",
+      "example": "Hij is er nu niet.",
+      "exampleEnglish": "“He is not here now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hij is er nu niet",
+      "romanization": "hey is er ny neet",
+      "nativeText": "Usage focus for \"hij is er nu niet\": “He is not here now.” A common status phrase.",
+      "pronunciation": "hey is er ny neet",
+      "exampleTarget": "Hij is er nu niet.",
+      "exampleNative": "Notice what the form is doing here: “He is not here now.”",
+      "korean": "hij is er nu niet",
+      "english": "Usage focus for \"hij is er nu niet\": “He is not here now.” A common status phrase.",
+      "example": "Hij is er nu niet.",
+      "exampleEnglish": "Notice what the form is doing here: “He is not here now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hij is er nu niet",
+      "romanization": "hey is er ny neet",
+      "nativeText": "Contrast check for \"hij is er nu niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hey is er ny neet",
+      "exampleTarget": "Hij is er nu niet.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “He is not here now.”",
+      "korean": "hij is er nu niet",
+      "english": "Contrast check for \"hij is er nu niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hij is er nu niet.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “He is not here now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hij is er nu niet",
+      "romanization": "hey is er ny neet",
+      "nativeText": "Recall \"hij is er nu niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Hij is er nu niet.\".",
+      "pronunciation": "hey is er ny neet",
+      "exampleTarget": "Hij is er nu niet.",
+      "exampleNative": "Self-check against the model before moving on: “He is not here now.”",
+      "korean": "hij is er nu niet",
+      "english": "Recall \"hij is er nu niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Hij is er nu niet.\".",
+      "example": "Hij is er nu niet.",
+      "exampleEnglish": "Self-check against the model before moving on: “He is not here now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hij is er nu niet",
+      "romanization": "hey is er ny neet",
+      "nativeText": "Repair \"hij is er nu niet\" inside \"Hij is er nu niet.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “He is not here now.” A common status phrase.",
+      "pronunciation": "hey is er ny neet",
+      "exampleTarget": "Hij is er nu niet.",
+      "exampleNative": "Use the model as the repair target: “He is not here now.”",
+      "korean": "hij is er nu niet",
+      "english": "Repair \"hij is er nu niet\" inside \"Hij is er nu niet.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “He is not here now.” A common status phrase.",
+      "example": "Hij is er nu niet.",
+      "exampleEnglish": "Use the model as the repair target: “He is not here now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hij is er nu niet",
+      "romanization": "hey is er ny neet",
+      "nativeText": "Transfer \"hij is er nu niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hij is er nu niet.\".",
+      "pronunciation": "hey is er ny neet",
+      "exampleTarget": "Hij is er nu niet.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “He is not here now.”",
+      "korean": "hij is er nu niet",
+      "english": "Transfer \"hij is er nu niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hij is er nu niet.\".",
+      "example": "Hij is er nu niet.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “He is not here now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hij is er nu niet",
+      "romanization": "hey is er ny neet",
+      "nativeText": "Find one word or phrase that naturally travels with \"hij is er nu niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hey is er ny neet",
+      "exampleTarget": "Hij is er nu niet.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “He is not here now.”",
+      "korean": "hij is er nu niet",
+      "english": "Find one word or phrase that naturally travels with \"hij is er nu niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hij is er nu niet.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “He is not here now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hij is er nu niet",
+      "romanization": "hey is er ny neet",
+      "nativeText": "Listen for \"hij is er nu niet\" inside \"Hij is er nu niet.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hey is er ny neet",
+      "exampleTarget": "Hij is er nu niet.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “He is not here now.”",
+      "korean": "hij is er nu niet",
+      "english": "Listen for \"hij is er nu niet\" inside \"Hij is er nu niet.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hij is er nu niet.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “He is not here now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hij is er nu niet",
+      "romanization": "hey is er ny neet",
+      "nativeText": "Write \"hij is er nu niet\" again without looking, then compare the exact written form against \"Hij is er nu niet.\" before moving on.",
+      "pronunciation": "hey is er ny neet",
+      "exampleTarget": "Hij is er nu niet.",
+      "exampleNative": "Use the written model as the final correctness check: “He is not here now.”",
+      "korean": "hij is er nu niet",
+      "english": "Write \"hij is er nu niet\" again without looking, then compare the exact written form against \"Hij is er nu niet.\" before moving on.",
+      "example": "Hij is er nu niet.",
+      "exampleEnglish": "Use the written model as the final correctness check: “He is not here now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "hij is er nu niet",
+      "romanization": "hey is er ny neet",
+      "nativeText": "Check whether \"hij is er nu niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “He is not here now.”",
+      "pronunciation": "hey is er ny neet",
+      "exampleTarget": "Hij is er nu niet.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “He is not here now.”",
+      "korean": "hij is er nu niet",
+      "english": "Check whether \"hij is er nu niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “He is not here now.”",
+      "example": "Hij is er nu niet.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “He is not here now.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "een bericht",
+      "romanization": "ən bə-RIKHT",
+      "nativeText": "“A message.” Useful for phone and text contexts.",
+      "pronunciation": "ən bə-RIKHT",
+      "exampleTarget": "Kan ik een bericht achterlaten?",
+      "exampleNative": "“May I leave a message?”",
+      "korean": "een bericht",
+      "english": "“A message.” Useful for phone and text contexts.",
+      "example": "Kan ik een bericht achterlaten?",
+      "exampleEnglish": "“May I leave a message?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "Kan ik een bericht achterlaten?",
+      "romanization": "ən bə-RIKHT",
+      "nativeText": "Model use for \"Kan ik een bericht achterlaten?\": “May I leave a message?”",
+      "pronunciation": "ən bə-RIKHT",
+      "exampleTarget": "Kan ik een bericht achterlaten?",
+      "exampleNative": "“May I leave a message?”",
+      "korean": "Kan ik een bericht achterlaten?",
+      "english": "Model use for \"Kan ik een bericht achterlaten?\": “May I leave a message?”",
+      "example": "Kan ik een bericht achterlaten?",
+      "exampleEnglish": "“May I leave a message?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "een bericht",
+      "romanization": "ən bə-RIKHT",
+      "nativeText": "Usage focus for \"een bericht\": “A message.” Useful for phone and text contexts.",
+      "pronunciation": "ən bə-RIKHT",
+      "exampleTarget": "Kan ik een bericht achterlaten?",
+      "exampleNative": "Notice what the form is doing here: “May I leave a message?”",
+      "korean": "een bericht",
+      "english": "Usage focus for \"een bericht\": “A message.” Useful for phone and text contexts.",
+      "example": "Kan ik een bericht achterlaten?",
+      "exampleEnglish": "Notice what the form is doing here: “May I leave a message?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "een bericht",
+      "romanization": "ən bə-RIKHT",
+      "nativeText": "Contrast check for \"een bericht\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ən bə-RIKHT",
+      "exampleTarget": "Kan ik een bericht achterlaten?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I leave a message?”",
+      "korean": "een bericht",
+      "english": "Contrast check for \"een bericht\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kan ik een bericht achterlaten?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "een bericht",
+      "romanization": "ən bə-RIKHT",
+      "nativeText": "Recall \"een bericht\" from memory, then explain what would change if a nearby alternative replaced it in \"Kan ik een bericht achterlaten?\".",
+      "pronunciation": "ən bə-RIKHT",
+      "exampleTarget": "Kan ik een bericht achterlaten?",
+      "exampleNative": "Self-check against the model before moving on: “May I leave a message?”",
+      "korean": "een bericht",
+      "english": "Recall \"een bericht\" from memory, then explain what would change if a nearby alternative replaced it in \"Kan ik een bericht achterlaten?\".",
+      "example": "Kan ik een bericht achterlaten?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "een bericht",
+      "romanization": "ən bə-RIKHT",
+      "nativeText": "Repair \"een bericht\" inside \"Kan ik een bericht achterlaten?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “A message.” Useful for phone and text contexts.",
+      "pronunciation": "ən bə-RIKHT",
+      "exampleTarget": "Kan ik een bericht achterlaten?",
+      "exampleNative": "Use the model as the repair target: “May I leave a message?”",
+      "korean": "een bericht",
+      "english": "Repair \"een bericht\" inside \"Kan ik een bericht achterlaten?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “A message.” Useful for phone and text contexts.",
+      "example": "Kan ik een bericht achterlaten?",
+      "exampleEnglish": "Use the model as the repair target: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "een bericht",
+      "romanization": "ən bə-RIKHT",
+      "nativeText": "Transfer \"een bericht\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kan ik een bericht achterlaten?\".",
+      "pronunciation": "ən bə-RIKHT",
+      "exampleTarget": "Kan ik een bericht achterlaten?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I leave a message?”",
+      "korean": "een bericht",
+      "english": "Transfer \"een bericht\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kan ik een bericht achterlaten?\".",
+      "example": "Kan ik een bericht achterlaten?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "een bericht",
+      "romanization": "ən bə-RIKHT",
+      "nativeText": "Find one word or phrase that naturally travels with \"een bericht\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ən bə-RIKHT",
+      "exampleTarget": "Kan ik een bericht achterlaten?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I leave a message?”",
+      "korean": "een bericht",
+      "english": "Find one word or phrase that naturally travels with \"een bericht\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kan ik een bericht achterlaten?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "een bericht",
+      "romanization": "ən bə-RIKHT",
+      "nativeText": "Listen for \"een bericht\" inside \"Kan ik een bericht achterlaten?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ən bə-RIKHT",
+      "exampleTarget": "Kan ik een bericht achterlaten?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I leave a message?”",
+      "korean": "een bericht",
+      "english": "Listen for \"een bericht\" inside \"Kan ik een bericht achterlaten?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kan ik een bericht achterlaten?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "een bericht",
+      "romanization": "ən bə-RIKHT",
+      "nativeText": "Write \"een bericht\" again without looking, then compare the exact written form against \"Kan ik een bericht achterlaten?\" before moving on.",
+      "pronunciation": "ən bə-RIKHT",
+      "exampleTarget": "Kan ik een bericht achterlaten?",
+      "exampleNative": "Use the written model as the final correctness check: “May I leave a message?”",
+      "korean": "een bericht",
+      "english": "Write \"een bericht\" again without looking, then compare the exact written form against \"Kan ik een bericht achterlaten?\" before moving on.",
+      "example": "Kan ik een bericht achterlaten?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "een bericht",
+      "romanization": "ən bə-RIKHT",
+      "nativeText": "Check whether \"een bericht\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "pronunciation": "ən bə-RIKHT",
+      "exampleTarget": "Kan ik een bericht achterlaten?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "korean": "een bericht",
+      "english": "Check whether \"een bericht\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "example": "Kan ik een bericht achterlaten?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I leave a message?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "wilt u zeggen dat ik heb gebeld?",
+      "romanization": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "nativeText": "“Would you say that I called?” A polite relay request.",
+      "pronunciation": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "exampleTarget": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleNative": "“Would you say that I called?”",
+      "korean": "wilt u zeggen dat ik heb gebeld?",
+      "english": "“Would you say that I called?” A polite relay request.",
+      "example": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleEnglish": "“Would you say that I called?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "Wilt u zeggen dat ik heb gebeld?",
+      "romanization": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "nativeText": "Model use for \"Wilt u zeggen dat ik heb gebeld?\": “Would you say that I called?”",
+      "pronunciation": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "exampleTarget": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleNative": "“Would you say that I called?”",
+      "korean": "Wilt u zeggen dat ik heb gebeld?",
+      "english": "Model use for \"Wilt u zeggen dat ik heb gebeld?\": “Would you say that I called?”",
+      "example": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleEnglish": "“Would you say that I called?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "wilt u zeggen dat ik heb gebeld?",
+      "romanization": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "nativeText": "Usage focus for \"wilt u zeggen dat ik heb gebeld?\": “Would you say that I called?” A polite relay request.",
+      "pronunciation": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "exampleTarget": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleNative": "Notice what the form is doing here: “Would you say that I called?”",
+      "korean": "wilt u zeggen dat ik heb gebeld?",
+      "english": "Usage focus for \"wilt u zeggen dat ik heb gebeld?\": “Would you say that I called?” A polite relay request.",
+      "example": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleEnglish": "Notice what the form is doing here: “Would you say that I called?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "wilt u zeggen dat ik heb gebeld?",
+      "romanization": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "nativeText": "Contrast check for \"wilt u zeggen dat ik heb gebeld?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "exampleTarget": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Would you say that I called?”",
+      "korean": "wilt u zeggen dat ik heb gebeld?",
+      "english": "Contrast check for \"wilt u zeggen dat ik heb gebeld?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Would you say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "wilt u zeggen dat ik heb gebeld?",
+      "romanization": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "nativeText": "Recall \"wilt u zeggen dat ik heb gebeld?\" from memory, then explain what would change if a nearby alternative replaced it in \"Wilt u zeggen dat ik heb gebeld?\".",
+      "pronunciation": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "exampleTarget": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleNative": "Self-check against the model before moving on: “Would you say that I called?”",
+      "korean": "wilt u zeggen dat ik heb gebeld?",
+      "english": "Recall \"wilt u zeggen dat ik heb gebeld?\" from memory, then explain what would change if a nearby alternative replaced it in \"Wilt u zeggen dat ik heb gebeld?\".",
+      "example": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleEnglish": "Self-check against the model before moving on: “Would you say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "wilt u zeggen dat ik heb gebeld?",
+      "romanization": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "nativeText": "Repair \"wilt u zeggen dat ik heb gebeld?\" inside \"Wilt u zeggen dat ik heb gebeld?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Would you say that I called?” A polite relay request.",
+      "pronunciation": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "exampleTarget": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleNative": "Use the model as the repair target: “Would you say that I called?”",
+      "korean": "wilt u zeggen dat ik heb gebeld?",
+      "english": "Repair \"wilt u zeggen dat ik heb gebeld?\" inside \"Wilt u zeggen dat ik heb gebeld?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Would you say that I called?” A polite relay request.",
+      "example": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleEnglish": "Use the model as the repair target: “Would you say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "wilt u zeggen dat ik heb gebeld?",
+      "romanization": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "nativeText": "Transfer \"wilt u zeggen dat ik heb gebeld?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wilt u zeggen dat ik heb gebeld?\".",
+      "pronunciation": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "exampleTarget": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Would you say that I called?”",
+      "korean": "wilt u zeggen dat ik heb gebeld?",
+      "english": "Transfer \"wilt u zeggen dat ik heb gebeld?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wilt u zeggen dat ik heb gebeld?\".",
+      "example": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Would you say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "wilt u zeggen dat ik heb gebeld?",
+      "romanization": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "nativeText": "Find one word or phrase that naturally travels with \"wilt u zeggen dat ik heb gebeld?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "exampleTarget": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Would you say that I called?”",
+      "korean": "wilt u zeggen dat ik heb gebeld?",
+      "english": "Find one word or phrase that naturally travels with \"wilt u zeggen dat ik heb gebeld?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Would you say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "wilt u zeggen dat ik heb gebeld?",
+      "romanization": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "nativeText": "Listen for \"wilt u zeggen dat ik heb gebeld?\" inside \"Wilt u zeggen dat ik heb gebeld?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "exampleTarget": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Would you say that I called?”",
+      "korean": "wilt u zeggen dat ik heb gebeld?",
+      "english": "Listen for \"wilt u zeggen dat ik heb gebeld?\" inside \"Wilt u zeggen dat ik heb gebeld?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Would you say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "wilt u zeggen dat ik heb gebeld?",
+      "romanization": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "nativeText": "Write \"wilt u zeggen dat ik heb gebeld?\" again without looking, then compare the exact written form against \"Wilt u zeggen dat ik heb gebeld?\" before moving on.",
+      "pronunciation": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "exampleTarget": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleNative": "Use the written model as the final correctness check: “Would you say that I called?”",
+      "korean": "wilt u zeggen dat ik heb gebeld?",
+      "english": "Write \"wilt u zeggen dat ik heb gebeld?\" again without looking, then compare the exact written form against \"Wilt u zeggen dat ik heb gebeld?\" before moving on.",
+      "example": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Would you say that I called?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "wilt u zeggen dat ik heb gebeld?",
+      "romanization": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "nativeText": "Check whether \"wilt u zeggen dat ik heb gebeld?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Would you say that I called?”",
+      "pronunciation": "vilt y ZEG-ghen dat ik hep khə-BELT",
+      "exampleTarget": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Would you say that I called?”",
+      "korean": "wilt u zeggen dat ik heb gebeld?",
+      "english": "Check whether \"wilt u zeggen dat ik heb gebeld?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Would you say that I called?”",
+      "example": "Wilt u zeggen dat ik heb gebeld?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Would you say that I called?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefoonnummer",
+      "romanization": "tay-lə-FOHN-num-mer",
+      "nativeText": "“Phone number.” A transparent compound.",
+      "pronunciation": "tay-lə-FOHN-num-mer",
+      "exampleTarget": "Wat is uw telefoonnummer?",
+      "exampleNative": "“What is your phone number?”",
+      "korean": "telefoonnummer",
+      "english": "“Phone number.” A transparent compound.",
+      "example": "Wat is uw telefoonnummer?",
+      "exampleEnglish": "“What is your phone number?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "Wat is uw telefoonnummer?",
+      "romanization": "tay-lə-FOHN-num-mer",
+      "nativeText": "Model use for \"Wat is uw telefoonnummer?\": “What is your phone number?”",
+      "pronunciation": "tay-lə-FOHN-num-mer",
+      "exampleTarget": "Wat is uw telefoonnummer?",
+      "exampleNative": "“What is your phone number?”",
+      "korean": "Wat is uw telefoonnummer?",
+      "english": "Model use for \"Wat is uw telefoonnummer?\": “What is your phone number?”",
+      "example": "Wat is uw telefoonnummer?",
+      "exampleEnglish": "“What is your phone number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefoonnummer",
+      "romanization": "tay-lə-FOHN-num-mer",
+      "nativeText": "Usage focus for \"telefoonnummer\": “Phone number.” A transparent compound.",
+      "pronunciation": "tay-lə-FOHN-num-mer",
+      "exampleTarget": "Wat is uw telefoonnummer?",
+      "exampleNative": "Notice what the form is doing here: “What is your phone number?”",
+      "korean": "telefoonnummer",
+      "english": "Usage focus for \"telefoonnummer\": “Phone number.” A transparent compound.",
+      "example": "Wat is uw telefoonnummer?",
+      "exampleEnglish": "Notice what the form is doing here: “What is your phone number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefoonnummer",
+      "romanization": "tay-lə-FOHN-num-mer",
+      "nativeText": "Contrast check for \"telefoonnummer\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tay-lə-FOHN-num-mer",
+      "exampleTarget": "Wat is uw telefoonnummer?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is your phone number?”",
+      "korean": "telefoonnummer",
+      "english": "Contrast check for \"telefoonnummer\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Wat is uw telefoonnummer?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefoonnummer",
+      "romanization": "tay-lə-FOHN-num-mer",
+      "nativeText": "Recall \"telefoonnummer\" from memory, then explain what would change if a nearby alternative replaced it in \"Wat is uw telefoonnummer?\".",
+      "pronunciation": "tay-lə-FOHN-num-mer",
+      "exampleTarget": "Wat is uw telefoonnummer?",
+      "exampleNative": "Self-check against the model before moving on: “What is your phone number?”",
+      "korean": "telefoonnummer",
+      "english": "Recall \"telefoonnummer\" from memory, then explain what would change if a nearby alternative replaced it in \"Wat is uw telefoonnummer?\".",
+      "example": "Wat is uw telefoonnummer?",
+      "exampleEnglish": "Self-check against the model before moving on: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefoonnummer",
+      "romanization": "tay-lə-FOHN-num-mer",
+      "nativeText": "Repair \"telefoonnummer\" inside \"Wat is uw telefoonnummer?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Phone number.” A transparent compound.",
+      "pronunciation": "tay-lə-FOHN-num-mer",
+      "exampleTarget": "Wat is uw telefoonnummer?",
+      "exampleNative": "Use the model as the repair target: “What is your phone number?”",
+      "korean": "telefoonnummer",
+      "english": "Repair \"telefoonnummer\" inside \"Wat is uw telefoonnummer?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Phone number.” A transparent compound.",
+      "example": "Wat is uw telefoonnummer?",
+      "exampleEnglish": "Use the model as the repair target: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefoonnummer",
+      "romanization": "tay-lə-FOHN-num-mer",
+      "nativeText": "Transfer \"telefoonnummer\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wat is uw telefoonnummer?\".",
+      "pronunciation": "tay-lə-FOHN-num-mer",
+      "exampleTarget": "Wat is uw telefoonnummer?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is your phone number?”",
+      "korean": "telefoonnummer",
+      "english": "Transfer \"telefoonnummer\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wat is uw telefoonnummer?\".",
+      "example": "Wat is uw telefoonnummer?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefoonnummer",
+      "romanization": "tay-lə-FOHN-num-mer",
+      "nativeText": "Find one word or phrase that naturally travels with \"telefoonnummer\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tay-lə-FOHN-num-mer",
+      "exampleTarget": "Wat is uw telefoonnummer?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What is your phone number?”",
+      "korean": "telefoonnummer",
+      "english": "Find one word or phrase that naturally travels with \"telefoonnummer\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Wat is uw telefoonnummer?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefoonnummer",
+      "romanization": "tay-lə-FOHN-num-mer",
+      "nativeText": "Listen for \"telefoonnummer\" inside \"Wat is uw telefoonnummer?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tay-lə-FOHN-num-mer",
+      "exampleTarget": "Wat is uw telefoonnummer?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is your phone number?”",
+      "korean": "telefoonnummer",
+      "english": "Listen for \"telefoonnummer\" inside \"Wat is uw telefoonnummer?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Wat is uw telefoonnummer?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefoonnummer",
+      "romanization": "tay-lə-FOHN-num-mer",
+      "nativeText": "Write \"telefoonnummer\" again without looking, then compare the exact written form against \"Wat is uw telefoonnummer?\" before moving on.",
+      "pronunciation": "tay-lə-FOHN-num-mer",
+      "exampleTarget": "Wat is uw telefoonnummer?",
+      "exampleNative": "Use the written model as the final correctness check: “What is your phone number?”",
+      "korean": "telefoonnummer",
+      "english": "Write \"telefoonnummer\" again without looking, then compare the exact written form against \"Wat is uw telefoonnummer?\" before moving on.",
+      "example": "Wat is uw telefoonnummer?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "telefoonnummer",
+      "romanization": "tay-lə-FOHN-num-mer",
+      "nativeText": "Check whether \"telefoonnummer\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "pronunciation": "tay-lə-FOHN-num-mer",
+      "exampleTarget": "Wat is uw telefoonnummer?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "korean": "telefoonnummer",
+      "english": "Check whether \"telefoonnummer\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "example": "Wat is uw telefoonnummer?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What is your phone number?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kunt u dat herhalen?",
+      "romanization": "kunt y dat her-HAH-len",
+      "nativeText": "“Could you repeat that?” A crucial repair phrase.",
+      "pronunciation": "kunt y dat her-HAH-len",
+      "exampleTarget": "Kunt u dat nummer herhalen?",
+      "exampleNative": "“Could you repeat that number?”",
+      "korean": "kunt u dat herhalen?",
+      "english": "“Could you repeat that?” A crucial repair phrase.",
+      "example": "Kunt u dat nummer herhalen?",
+      "exampleEnglish": "“Could you repeat that number?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "Kunt u dat nummer herhalen?",
+      "romanization": "kunt y dat her-HAH-len",
+      "nativeText": "Model use for \"Kunt u dat nummer herhalen?\": “Could you repeat that number?”",
+      "pronunciation": "kunt y dat her-HAH-len",
+      "exampleTarget": "Kunt u dat nummer herhalen?",
+      "exampleNative": "“Could you repeat that number?”",
+      "korean": "Kunt u dat nummer herhalen?",
+      "english": "Model use for \"Kunt u dat nummer herhalen?\": “Could you repeat that number?”",
+      "example": "Kunt u dat nummer herhalen?",
+      "exampleEnglish": "“Could you repeat that number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kunt u dat herhalen?",
+      "romanization": "kunt y dat her-HAH-len",
+      "nativeText": "Usage focus for \"kunt u dat herhalen?\": “Could you repeat that?” A crucial repair phrase.",
+      "pronunciation": "kunt y dat her-HAH-len",
+      "exampleTarget": "Kunt u dat nummer herhalen?",
+      "exampleNative": "Notice what the form is doing here: “Could you repeat that number?”",
+      "korean": "kunt u dat herhalen?",
+      "english": "Usage focus for \"kunt u dat herhalen?\": “Could you repeat that?” A crucial repair phrase.",
+      "example": "Kunt u dat nummer herhalen?",
+      "exampleEnglish": "Notice what the form is doing here: “Could you repeat that number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kunt u dat herhalen?",
+      "romanization": "kunt y dat her-HAH-len",
+      "nativeText": "Contrast check for \"kunt u dat herhalen?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kunt y dat her-HAH-len",
+      "exampleTarget": "Kunt u dat nummer herhalen?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you repeat that number?”",
+      "korean": "kunt u dat herhalen?",
+      "english": "Contrast check for \"kunt u dat herhalen?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kunt u dat nummer herhalen?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Could you repeat that number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kunt u dat herhalen?",
+      "romanization": "kunt y dat her-HAH-len",
+      "nativeText": "Recall \"kunt u dat herhalen?\" from memory, then explain what would change if a nearby alternative replaced it in \"Kunt u dat nummer herhalen?\".",
+      "pronunciation": "kunt y dat her-HAH-len",
+      "exampleTarget": "Kunt u dat nummer herhalen?",
+      "exampleNative": "Self-check against the model before moving on: “Could you repeat that number?”",
+      "korean": "kunt u dat herhalen?",
+      "english": "Recall \"kunt u dat herhalen?\" from memory, then explain what would change if a nearby alternative replaced it in \"Kunt u dat nummer herhalen?\".",
+      "example": "Kunt u dat nummer herhalen?",
+      "exampleEnglish": "Self-check against the model before moving on: “Could you repeat that number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kunt u dat herhalen?",
+      "romanization": "kunt y dat her-HAH-len",
+      "nativeText": "Repair \"kunt u dat herhalen?\" inside \"Kunt u dat nummer herhalen?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Could you repeat that?” A crucial repair phrase.",
+      "pronunciation": "kunt y dat her-HAH-len",
+      "exampleTarget": "Kunt u dat nummer herhalen?",
+      "exampleNative": "Use the model as the repair target: “Could you repeat that number?”",
+      "korean": "kunt u dat herhalen?",
+      "english": "Repair \"kunt u dat herhalen?\" inside \"Kunt u dat nummer herhalen?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Could you repeat that?” A crucial repair phrase.",
+      "example": "Kunt u dat nummer herhalen?",
+      "exampleEnglish": "Use the model as the repair target: “Could you repeat that number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kunt u dat herhalen?",
+      "romanization": "kunt y dat her-HAH-len",
+      "nativeText": "Transfer \"kunt u dat herhalen?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kunt u dat nummer herhalen?\".",
+      "pronunciation": "kunt y dat her-HAH-len",
+      "exampleTarget": "Kunt u dat nummer herhalen?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you repeat that number?”",
+      "korean": "kunt u dat herhalen?",
+      "english": "Transfer \"kunt u dat herhalen?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kunt u dat nummer herhalen?\".",
+      "example": "Kunt u dat nummer herhalen?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Could you repeat that number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kunt u dat herhalen?",
+      "romanization": "kunt y dat her-HAH-len",
+      "nativeText": "Find one word or phrase that naturally travels with \"kunt u dat herhalen?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kunt y dat her-HAH-len",
+      "exampleTarget": "Kunt u dat nummer herhalen?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Could you repeat that number?”",
+      "korean": "kunt u dat herhalen?",
+      "english": "Find one word or phrase that naturally travels with \"kunt u dat herhalen?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kunt u dat nummer herhalen?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Could you repeat that number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kunt u dat herhalen?",
+      "romanization": "kunt y dat her-HAH-len",
+      "nativeText": "Listen for \"kunt u dat herhalen?\" inside \"Kunt u dat nummer herhalen?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kunt y dat her-HAH-len",
+      "exampleTarget": "Kunt u dat nummer herhalen?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you repeat that number?”",
+      "korean": "kunt u dat herhalen?",
+      "english": "Listen for \"kunt u dat herhalen?\" inside \"Kunt u dat nummer herhalen?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kunt u dat nummer herhalen?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Could you repeat that number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kunt u dat herhalen?",
+      "romanization": "kunt y dat her-HAH-len",
+      "nativeText": "Write \"kunt u dat herhalen?\" again without looking, then compare the exact written form against \"Kunt u dat nummer herhalen?\" before moving on.",
+      "pronunciation": "kunt y dat her-HAH-len",
+      "exampleTarget": "Kunt u dat nummer herhalen?",
+      "exampleNative": "Use the written model as the final correctness check: “Could you repeat that number?”",
+      "korean": "kunt u dat herhalen?",
+      "english": "Write \"kunt u dat herhalen?\" again without looking, then compare the exact written form against \"Kunt u dat nummer herhalen?\" before moving on.",
+      "example": "Kunt u dat nummer herhalen?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Could you repeat that number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "kunt u dat herhalen?",
+      "romanization": "kunt y dat her-HAH-len",
+      "nativeText": "Check whether \"kunt u dat herhalen?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you repeat that number?”",
+      "pronunciation": "kunt y dat her-HAH-len",
+      "exampleTarget": "Kunt u dat nummer herhalen?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Could you repeat that number?”",
+      "korean": "kunt u dat herhalen?",
+      "english": "Check whether \"kunt u dat herhalen?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Could you repeat that number?”",
+      "example": "Kunt u dat nummer herhalen?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Could you repeat that number?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "ik bel later terug",
+      "romanization": "ik bel LAH-ter tə-RUKH",
+      "nativeText": "“I will call back later.” The separable prefix moves to the end.",
+      "pronunciation": "ik bel LAH-ter tə-RUKH",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "“Okay, I will call back later.”",
+      "korean": "ik bel later terug",
+      "english": "“I will call back later.” The separable prefix moves to the end.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "“Okay, I will call back later.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "Goed, ik bel later terug.",
+      "romanization": "ik bel LAH-ter tə-RUKH",
+      "nativeText": "Model use for \"Goed, ik bel later terug.\": “Okay, I will call back later.”",
+      "pronunciation": "ik bel LAH-ter tə-RUKH",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "“Okay, I will call back later.”",
+      "korean": "Goed, ik bel later terug.",
+      "english": "Model use for \"Goed, ik bel later terug.\": “Okay, I will call back later.”",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "“Okay, I will call back later.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "ik bel later terug",
+      "romanization": "ik bel LAH-ter tə-RUKH",
+      "nativeText": "Usage focus for \"ik bel later terug\": “I will call back later.” The separable prefix moves to the end.",
+      "pronunciation": "ik bel LAH-ter tə-RUKH",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "Notice what the form is doing here: “Okay, I will call back later.”",
+      "korean": "ik bel later terug",
+      "english": "Usage focus for \"ik bel later terug\": “I will call back later.” The separable prefix moves to the end.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "Notice what the form is doing here: “Okay, I will call back later.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "ik bel later terug",
+      "romanization": "ik bel LAH-ter tə-RUKH",
+      "nativeText": "Contrast check for \"ik bel later terug\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik bel LAH-ter tə-RUKH",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, I will call back later.”",
+      "korean": "ik bel later terug",
+      "english": "Contrast check for \"ik bel later terug\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "ik bel later terug",
+      "romanization": "ik bel LAH-ter tə-RUKH",
+      "nativeText": "Recall \"ik bel later terug\" from memory, then explain what would change if a nearby alternative replaced it in \"Goed, ik bel later terug.\".",
+      "pronunciation": "ik bel LAH-ter tə-RUKH",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "Self-check against the model before moving on: “Okay, I will call back later.”",
+      "korean": "ik bel later terug",
+      "english": "Recall \"ik bel later terug\" from memory, then explain what would change if a nearby alternative replaced it in \"Goed, ik bel later terug.\".",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "Self-check against the model before moving on: “Okay, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "ik bel later terug",
+      "romanization": "ik bel LAH-ter tə-RUKH",
+      "nativeText": "Repair \"ik bel later terug\" inside \"Goed, ik bel later terug.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will call back later.” The separable prefix moves to the end.",
+      "pronunciation": "ik bel LAH-ter tə-RUKH",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "Use the model as the repair target: “Okay, I will call back later.”",
+      "korean": "ik bel later terug",
+      "english": "Repair \"ik bel later terug\" inside \"Goed, ik bel later terug.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will call back later.” The separable prefix moves to the end.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "Use the model as the repair target: “Okay, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "ik bel later terug",
+      "romanization": "ik bel LAH-ter tə-RUKH",
+      "nativeText": "Transfer \"ik bel later terug\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Goed, ik bel later terug.\".",
+      "pronunciation": "ik bel LAH-ter tə-RUKH",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, I will call back later.”",
+      "korean": "ik bel later terug",
+      "english": "Transfer \"ik bel later terug\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Goed, ik bel later terug.\".",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "ik bel later terug",
+      "romanization": "ik bel LAH-ter tə-RUKH",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik bel later terug\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik bel LAH-ter tə-RUKH",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Okay, I will call back later.”",
+      "korean": "ik bel later terug",
+      "english": "Find one word or phrase that naturally travels with \"ik bel later terug\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Okay, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "ik bel later terug",
+      "romanization": "ik bel LAH-ter tə-RUKH",
+      "nativeText": "Listen for \"ik bel later terug\" inside \"Goed, ik bel later terug.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik bel LAH-ter tə-RUKH",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, I will call back later.”",
+      "korean": "ik bel later terug",
+      "english": "Listen for \"ik bel later terug\" inside \"Goed, ik bel later terug.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "ik bel later terug",
+      "romanization": "ik bel LAH-ter tə-RUKH",
+      "nativeText": "Write \"ik bel later terug\" again without looking, then compare the exact written form against \"Goed, ik bel later terug.\" before moving on.",
+      "pronunciation": "ik bel LAH-ter tə-RUKH",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "Use the written model as the final correctness check: “Okay, I will call back later.”",
+      "korean": "ik bel later terug",
+      "english": "Write \"ik bel later terug\" again without looking, then compare the exact written form against \"Goed, ik bel later terug.\" before moving on.",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Okay, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit15phonemessages-vocabulary-1",
+        "nl-level1unit15phonemessages-vocabulary-2",
+        "nl-level1unit15phonemessages-grammar-1",
+        "nl-level1unit15phonemessages-grammar-2",
+        "nl-level1unit15phonemessages-reading",
+        "nl-level1unit15phonemessages-listening",
+        "nl-level1unit15phonemessages-writing",
+        "nl-level1unit15phonemessages-task"
+      ],
+      "targetText": "ik bel later terug",
+      "romanization": "ik bel LAH-ter tə-RUKH",
+      "nativeText": "Check whether \"ik bel later terug\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, I will call back later.”",
+      "pronunciation": "ik bel LAH-ter tə-RUKH",
+      "exampleTarget": "Goed, ik bel later terug.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Okay, I will call back later.”",
+      "korean": "ik bel later terug",
+      "english": "Check whether \"ik bel later terug\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, I will call back later.”",
+      "example": "Goed, ik bel later terug.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Okay, I will call back later.”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

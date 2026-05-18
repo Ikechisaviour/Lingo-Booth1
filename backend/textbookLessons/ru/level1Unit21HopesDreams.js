@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u21',
-  title: 'Level 1 · Unit 21: Планы и мечты — Hopes and Dreams',
-  category: 'future',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about future plans, hopes, and longer-term dreams.',
-  vocabularyGoal: 'Use future, study, work, travel, and aspiration words.',
-  grammarGoal: 'Use `я хочу`, `я буду`, and `я надеюсь` for desire, future action, and hope.',
-  speakingGoal: 'Describe one realistic plan and one longer dream with a reason.',
-  task: 'Give a short future-self introduction.',
-  expressionPractice: [
-    practice('stating-desire', 'Stating desire', 'Use `я хочу`.'),
-    practice('stating-plan', 'Stating plan', 'Use `я буду` plus infinitive.'),
-    practice('stating-hope', 'Stating hope', 'Use `я надеюсь`.'),
+module.exports = {
+  "title": "Level 1 · Unit 21: Планы и мечты — Hopes and Dreams",
+  "category": "future",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit21hopesdreams-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about future plans, hopes, and longer-term dreams."
+      ],
+      "task": "Give a short future-self introduction."
+    },
+    {
+      "id": "ru-level1unit21hopesdreams-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit21hopesdreams-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit21hopesdreams-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 21: Планы и мечты — Hopes and Dreams sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit21hopesdreams-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about future plans, hopes, and longer-term dreams."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit21hopesdreams-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit21hopesdreams-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit21hopesdreams-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit21hopesdreams-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit21hopesdreams-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit21hopesdreams-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Give a short future-self introduction."
+      ],
+      "task": "Give a short future-self introduction."
+    }
   ],
-  relatedPools: ['topic-future', 'topic-goals'],
-  items: [
-    item('будущее', 'budushcheye', '“Future.” A high-value abstract noun for goals and plans.', 'Я думаю о своём будущем.', '“I think about my future.”'),
-    item('мечта', 'mechta', '“Dream / aspiration.” It is common in personal goal talk.', 'Моя мечта — стать врачом.', '“My dream is to become a doctor.”'),
-    item('я хочу', 'ya khochu', '“I want.” A direct expression of desire.', 'Я хочу хорошо говорить по-русски.', '“I want to speak Russian well.”'),
-    item('я буду учиться', 'ya budu uchitsya', '“I will study.” Russian future with imperfective verbs often uses `быть` plus infinitive.', 'Я буду учиться в университете.', '“I will study at university.”'),
-    item('я надеюсь', 'ya nadeyus', '“I hope.” It often introduces a clause or infinitive-like idea.', 'Я надеюсь поехать в Петербург.', '“I hope to go to Saint Petersburg.”'),
-    item('стать', 'stat', '“To become.” This perfective infinitive is central in career dreams.', 'Я хочу стать учителем.', '“I want to become a teacher.”'),
-    item('если будет возможность', 'yesli budet vozmozhnost', '“If there is an opportunity.” A natural condition around future plans.', 'Если будет возможность, я буду работать за границей.', '“If there is an opportunity, I will work abroad.”'),
-    item('когда-нибудь', 'kogda-nibud', '“Someday.” A compact word for distant dreams.', 'Когда-нибудь я напишу книгу.', '“Someday I will write a book.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-desire",
+      "label": "Stating desire",
+      "goal": "Use `я хочу`."
+    },
+    {
+      "id": "stating-plan",
+      "label": "Stating plan",
+      "goal": "Use `я буду` plus infinitive."
+    },
+    {
+      "id": "stating-hope",
+      "label": "Stating hope",
+      "goal": "Use `я надеюсь`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-future",
+    "topic-goals"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Talk about future plans, hopes, and longer-term dreams.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Give a short future-self introduction.",
+      "korean": "цель урока",
+      "english": "Talk about future plans, hopes, and longer-term dreams.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Give a short future-self introduction."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я думаю о своём будущем.\".",
+      "pronunciation": "",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я думаю о своём будущем.\".",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1"
+      ],
+      "targetText": "будущее",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "будущее",
+      "english": "Use the key language of Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-2"
+      ],
+      "targetText": "мечта",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 21: Планы и мечты — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 21: Планы и мечты — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-grammar-1"
+      ],
+      "targetText": "будущее",
+      "romanization": "",
+      "nativeText": "Talk about future plans, hopes, and longer-term dreams.",
+      "pronunciation": "",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "будущее",
+      "english": "Talk about future plans, hopes, and longer-term dreams.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "мечта",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "Contrast the main pattern in Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Когда-нибудь я напишу книгу.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "“Someday I will write a book.”",
+      "korean": "модель чтения",
+      "english": "Read \"Когда-нибудь я напишу книгу.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "“Someday I will write a book.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Когда-нибудь я напишу книгу.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "“Someday I will write a book.”",
+      "korean": "модель диалога",
+      "english": "Hear \"Когда-нибудь я напишу книгу.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "“Someday I will write a book.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Я думаю о своём будущем.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Я думаю о своём будущем.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Give a short future-self introduction.",
+      "pronunciation": "",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "Give a short future-self introduction.",
+      "korean": "итоговое задание",
+      "english": "Give a short future-self introduction.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "Give a short future-self introduction."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Моя мечта — стать врачом.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “My dream is to become a doctor.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Моя мечта — стать врачом.\" against the model.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Я думаю о своём будущем.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Я думаю о своём будущем.\" before reusing it elsewhere.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Когда-нибудь я напишу книгу.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "“Someday I will write a book.”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Когда-нибудь я напишу книгу.\" as one thought.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "“Someday I will write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Я думаю о своём будущем.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Я думаю о своём будущем.\" and move it into your own life.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"будущее\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "будущее",
+      "exampleNative": "“Future.” A high-value abstract noun for goals and plans.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"будущее\" before looking back.",
+      "example": "будущее",
+      "exampleEnglish": "“Future.” A high-value abstract noun for goals and plans."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Когда-нибудь я напишу книгу.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Когда-нибудь я напишу книгу.\" rather than restarting from a blank sentence.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Моя мечта — стать врачом.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Моя мечта — стать врачом.\" as the comparison line.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я думаю о своём будущем.\".",
+      "pronunciation": "",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я думаю о своём будущем.\".",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Когда-нибудь я напишу книгу.\".",
+      "pronunciation": "",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "“Someday I will write a book.”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Когда-нибудь я напишу книгу.\".",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "“Someday I will write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Я думаю о своём будущем.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Я думаю о своём будущем.\" one layer at a time.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Моя мечта — стать врачом.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Моя мечта — стать врачом.\" as the deciding example.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-culture",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Когда-нибудь я напишу книгу.\".",
+      "pronunciation": "",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "“Someday I will write a book.”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Когда-нибудь я напишу книгу.\".",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "“Someday I will write a book.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "будущее",
+      "romanization": "budushcheye",
+      "nativeText": "“Future.” A high-value abstract noun for goals and plans.",
+      "pronunciation": "budushcheye",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "будущее",
+      "english": "“Future.” A high-value abstract noun for goals and plans.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Я думаю о своём будущем.",
+      "romanization": "budushcheye",
+      "nativeText": "Model use for \"Я думаю о своём будущем.\": “I think about my future.”",
+      "pronunciation": "budushcheye",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "“I think about my future.”",
+      "korean": "Я думаю о своём будущем.",
+      "english": "Model use for \"Я думаю о своём будущем.\": “I think about my future.”",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "“I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "будущее",
+      "romanization": "budushcheye",
+      "nativeText": "Usage focus for \"будущее\": Use the key language of Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "budushcheye",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "Notice what the form is doing here: “I think about my future.”",
+      "korean": "будущее",
+      "english": "Usage focus for \"будущее\": Use the key language of Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "Notice what the form is doing here: “I think about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "будущее",
+      "romanization": "budushcheye",
+      "nativeText": "Contrast check for \"будущее\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "budushcheye",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I think about my future.”",
+      "korean": "будущее",
+      "english": "Contrast check for \"будущее\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "будущее",
+      "romanization": "budushcheye",
+      "nativeText": "Recall \"будущее\" from memory, then explain what would change if a nearby alternative replaced it in \"Я думаю о своём будущем.\".",
+      "pronunciation": "budushcheye",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "Self-check against the model before moving on: “I think about my future.”",
+      "korean": "будущее",
+      "english": "Recall \"будущее\" from memory, then explain what would change if a nearby alternative replaced it in \"Я думаю о своём будущем.\".",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "Self-check against the model before moving on: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "будущее",
+      "romanization": "budushcheye",
+      "nativeText": "Repair \"будущее\" inside \"Я думаю о своём будущем.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "budushcheye",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "Use the model as the repair target: “I think about my future.”",
+      "korean": "будущее",
+      "english": "Repair \"будущее\" inside \"Я думаю о своём будущем.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 21: Планы и мечты — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "Use the model as the repair target: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "будущее",
+      "romanization": "budushcheye",
+      "nativeText": "Transfer \"будущее\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я думаю о своём будущем.\".",
+      "pronunciation": "budushcheye",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I think about my future.”",
+      "korean": "будущее",
+      "english": "Transfer \"будущее\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я думаю о своём будущем.\".",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "будущее",
+      "romanization": "budushcheye",
+      "nativeText": "Find one word or phrase that naturally travels with \"будущее\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "budushcheye",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I think about my future.”",
+      "korean": "будущее",
+      "english": "Find one word or phrase that naturally travels with \"будущее\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "будущее",
+      "romanization": "budushcheye",
+      "nativeText": "Listen for \"будущее\" inside \"Я думаю о своём будущем.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "budushcheye",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I think about my future.”",
+      "korean": "будущее",
+      "english": "Listen for \"будущее\" inside \"Я думаю о своём будущем.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "будущее",
+      "romanization": "budushcheye",
+      "nativeText": "Write \"будущее\" again without looking, then compare the exact written form against \"Я думаю о своём будущем.\" before moving on.",
+      "pronunciation": "budushcheye",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "Use the written model as the final correctness check: “I think about my future.”",
+      "korean": "будущее",
+      "english": "Write \"будущее\" again without looking, then compare the exact written form against \"Я думаю о своём будущем.\" before moving on.",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I think about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "будущее",
+      "romanization": "budushcheye",
+      "nativeText": "Check whether \"будущее\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I think about my future.”",
+      "pronunciation": "budushcheye",
+      "exampleTarget": "Я думаю о своём будущем.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I think about my future.”",
+      "korean": "будущее",
+      "english": "Check whether \"будущее\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I think about my future.”",
+      "example": "Я думаю о своём будущем.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I think about my future.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "мечта",
+      "romanization": "mechta",
+      "nativeText": "“Dream / aspiration.” It is common in personal goal talk.",
+      "pronunciation": "mechta",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "“Dream / aspiration.” It is common in personal goal talk.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Моя мечта — стать врачом.",
+      "romanization": "mechta",
+      "nativeText": "Model use for \"Моя мечта — стать врачом.\": “My dream is to become a doctor.”",
+      "pronunciation": "mechta",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "Моя мечта — стать врачом.",
+      "english": "Model use for \"Моя мечта — стать врачом.\": “My dream is to become a doctor.”",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "мечта",
+      "romanization": "mechta",
+      "nativeText": "Usage focus for \"мечта\": Distinguish the nearby wording choices that make Level 1 · Unit 21: Планы и мечты — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "mechta",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "Notice what the form is doing here: “My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "Usage focus for \"мечта\": Distinguish the nearby wording choices that make Level 1 · Unit 21: Планы и мечты — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "Notice what the form is doing here: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "мечта",
+      "romanization": "mechta",
+      "nativeText": "Contrast check for \"мечта\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mechta",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "Contrast check for \"мечта\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "мечта",
+      "romanization": "mechta",
+      "nativeText": "Recall \"мечта\" from memory, then explain what would change if a nearby alternative replaced it in \"Моя мечта — стать врачом.\".",
+      "pronunciation": "mechta",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "Self-check against the model before moving on: “My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "Recall \"мечта\" from memory, then explain what would change if a nearby alternative replaced it in \"Моя мечта — стать врачом.\".",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "Self-check against the model before moving on: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "мечта",
+      "romanization": "mechta",
+      "nativeText": "Repair \"мечта\" inside \"Моя мечта — стать врачом.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 21: Планы и мечты — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "mechta",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "Use the model as the repair target: “My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "Repair \"мечта\" inside \"Моя мечта — стать врачом.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 21: Планы и мечты — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "Use the model as the repair target: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "мечта",
+      "romanization": "mechta",
+      "nativeText": "Transfer \"мечта\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Моя мечта — стать врачом.\".",
+      "pronunciation": "mechta",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "Transfer \"мечта\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Моя мечта — стать врачом.\".",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "мечта",
+      "romanization": "mechta",
+      "nativeText": "Find one word or phrase that naturally travels with \"мечта\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mechta",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "Find one word or phrase that naturally travels with \"мечта\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "мечта",
+      "romanization": "mechta",
+      "nativeText": "Listen for \"мечта\" inside \"Моя мечта — стать врачом.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mechta",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "Listen for \"мечта\" inside \"Моя мечта — стать врачом.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "мечта",
+      "romanization": "mechta",
+      "nativeText": "Write \"мечта\" again without looking, then compare the exact written form against \"Моя мечта — стать врачом.\" before moving on.",
+      "pronunciation": "mechta",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "Use the written model as the final correctness check: “My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "Write \"мечта\" again without looking, then compare the exact written form against \"Моя мечта — стать врачом.\" before moving on.",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "мечта",
+      "romanization": "mechta",
+      "nativeText": "Check whether \"мечта\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "pronunciation": "mechta",
+      "exampleTarget": "Моя мечта — стать врачом.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "korean": "мечта",
+      "english": "Check whether \"мечта\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "example": "Моя мечта — стать врачом.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я хочу",
+      "romanization": "ya khochu",
+      "nativeText": "“I want.” A direct expression of desire.",
+      "pronunciation": "ya khochu",
+      "exampleTarget": "Я хочу хорошо говорить по-русски.",
+      "exampleNative": "“I want to speak Russian well.”",
+      "korean": "я хочу",
+      "english": "“I want.” A direct expression of desire.",
+      "example": "Я хочу хорошо говорить по-русски.",
+      "exampleEnglish": "“I want to speak Russian well.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Я хочу хорошо говорить по-русски.",
+      "romanization": "ya khochu",
+      "nativeText": "Model use for \"Я хочу хорошо говорить по-русски.\": “I want to speak Russian well.”",
+      "pronunciation": "ya khochu",
+      "exampleTarget": "Я хочу хорошо говорить по-русски.",
+      "exampleNative": "“I want to speak Russian well.”",
+      "korean": "Я хочу хорошо говорить по-русски.",
+      "english": "Model use for \"Я хочу хорошо говорить по-русски.\": “I want to speak Russian well.”",
+      "example": "Я хочу хорошо говорить по-русски.",
+      "exampleEnglish": "“I want to speak Russian well.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я хочу",
+      "romanization": "ya khochu",
+      "nativeText": "Usage focus for \"я хочу\": “I want.” A direct expression of desire.",
+      "pronunciation": "ya khochu",
+      "exampleTarget": "Я хочу хорошо говорить по-русски.",
+      "exampleNative": "Notice what the form is doing here: “I want to speak Russian well.”",
+      "korean": "я хочу",
+      "english": "Usage focus for \"я хочу\": “I want.” A direct expression of desire.",
+      "example": "Я хочу хорошо говорить по-русски.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to speak Russian well.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я хочу",
+      "romanization": "ya khochu",
+      "nativeText": "Contrast check for \"я хочу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya khochu",
+      "exampleTarget": "Я хочу хорошо говорить по-русски.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to speak Russian well.”",
+      "korean": "я хочу",
+      "english": "Contrast check for \"я хочу\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я хочу хорошо говорить по-русски.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to speak Russian well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я хочу",
+      "romanization": "ya khochu",
+      "nativeText": "Recall \"я хочу\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хочу хорошо говорить по-русски.\".",
+      "pronunciation": "ya khochu",
+      "exampleTarget": "Я хочу хорошо говорить по-русски.",
+      "exampleNative": "Self-check against the model before moving on: “I want to speak Russian well.”",
+      "korean": "я хочу",
+      "english": "Recall \"я хочу\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хочу хорошо говорить по-русски.\".",
+      "example": "Я хочу хорошо говорить по-русски.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to speak Russian well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я хочу",
+      "romanization": "ya khochu",
+      "nativeText": "Repair \"я хочу\" inside \"Я хочу хорошо говорить по-русски.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want.” A direct expression of desire.",
+      "pronunciation": "ya khochu",
+      "exampleTarget": "Я хочу хорошо говорить по-русски.",
+      "exampleNative": "Use the model as the repair target: “I want to speak Russian well.”",
+      "korean": "я хочу",
+      "english": "Repair \"я хочу\" inside \"Я хочу хорошо говорить по-русски.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want.” A direct expression of desire.",
+      "example": "Я хочу хорошо говорить по-русски.",
+      "exampleEnglish": "Use the model as the repair target: “I want to speak Russian well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я хочу",
+      "romanization": "ya khochu",
+      "nativeText": "Transfer \"я хочу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хочу хорошо говорить по-русски.\".",
+      "pronunciation": "ya khochu",
+      "exampleTarget": "Я хочу хорошо говорить по-русски.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to speak Russian well.”",
+      "korean": "я хочу",
+      "english": "Transfer \"я хочу\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хочу хорошо говорить по-русски.\".",
+      "example": "Я хочу хорошо говорить по-русски.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to speak Russian well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я хочу",
+      "romanization": "ya khochu",
+      "nativeText": "Find one word or phrase that naturally travels with \"я хочу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya khochu",
+      "exampleTarget": "Я хочу хорошо говорить по-русски.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to speak Russian well.”",
+      "korean": "я хочу",
+      "english": "Find one word or phrase that naturally travels with \"я хочу\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я хочу хорошо говорить по-русски.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to speak Russian well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я хочу",
+      "romanization": "ya khochu",
+      "nativeText": "Listen for \"я хочу\" inside \"Я хочу хорошо говорить по-русски.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya khochu",
+      "exampleTarget": "Я хочу хорошо говорить по-русски.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to speak Russian well.”",
+      "korean": "я хочу",
+      "english": "Listen for \"я хочу\" inside \"Я хочу хорошо говорить по-русски.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я хочу хорошо говорить по-русски.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to speak Russian well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я хочу",
+      "romanization": "ya khochu",
+      "nativeText": "Write \"я хочу\" again without looking, then compare the exact written form against \"Я хочу хорошо говорить по-русски.\" before moving on.",
+      "pronunciation": "ya khochu",
+      "exampleTarget": "Я хочу хорошо говорить по-русски.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to speak Russian well.”",
+      "korean": "я хочу",
+      "english": "Write \"я хочу\" again without looking, then compare the exact written form against \"Я хочу хорошо говорить по-русски.\" before moving on.",
+      "example": "Я хочу хорошо говорить по-русски.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to speak Russian well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я хочу",
+      "romanization": "ya khochu",
+      "nativeText": "Check whether \"я хочу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to speak Russian well.”",
+      "pronunciation": "ya khochu",
+      "exampleTarget": "Я хочу хорошо говорить по-русски.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to speak Russian well.”",
+      "korean": "я хочу",
+      "english": "Check whether \"я хочу\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to speak Russian well.”",
+      "example": "Я хочу хорошо говорить по-русски.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to speak Russian well.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я буду учиться",
+      "romanization": "ya budu uchitsya",
+      "nativeText": "“I will study.” Russian future with imperfective verbs often uses `быть` plus infinitive.",
+      "pronunciation": "ya budu uchitsya",
+      "exampleTarget": "Я буду учиться в университете.",
+      "exampleNative": "“I will study at university.”",
+      "korean": "я буду учиться",
+      "english": "“I will study.” Russian future with imperfective verbs often uses `быть` plus infinitive.",
+      "example": "Я буду учиться в университете.",
+      "exampleEnglish": "“I will study at university.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Я буду учиться в университете.",
+      "romanization": "ya budu uchitsya",
+      "nativeText": "Model use for \"Я буду учиться в университете.\": “I will study at university.”",
+      "pronunciation": "ya budu uchitsya",
+      "exampleTarget": "Я буду учиться в университете.",
+      "exampleNative": "“I will study at university.”",
+      "korean": "Я буду учиться в университете.",
+      "english": "Model use for \"Я буду учиться в университете.\": “I will study at university.”",
+      "example": "Я буду учиться в университете.",
+      "exampleEnglish": "“I will study at university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я буду учиться",
+      "romanization": "ya budu uchitsya",
+      "nativeText": "Usage focus for \"я буду учиться\": “I will study.” Russian future with imperfective verbs often uses `быть` plus infinitive.",
+      "pronunciation": "ya budu uchitsya",
+      "exampleTarget": "Я буду учиться в университете.",
+      "exampleNative": "Notice what the form is doing here: “I will study at university.”",
+      "korean": "я буду учиться",
+      "english": "Usage focus for \"я буду учиться\": “I will study.” Russian future with imperfective verbs often uses `быть` plus infinitive.",
+      "example": "Я буду учиться в университете.",
+      "exampleEnglish": "Notice what the form is doing here: “I will study at university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я буду учиться",
+      "romanization": "ya budu uchitsya",
+      "nativeText": "Contrast check for \"я буду учиться\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya budu uchitsya",
+      "exampleTarget": "Я буду учиться в университете.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will study at university.”",
+      "korean": "я буду учиться",
+      "english": "Contrast check for \"я буду учиться\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я буду учиться в университете.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я буду учиться",
+      "romanization": "ya budu uchitsya",
+      "nativeText": "Recall \"я буду учиться\" from memory, then explain what would change if a nearby alternative replaced it in \"Я буду учиться в университете.\".",
+      "pronunciation": "ya budu uchitsya",
+      "exampleTarget": "Я буду учиться в университете.",
+      "exampleNative": "Self-check against the model before moving on: “I will study at university.”",
+      "korean": "я буду учиться",
+      "english": "Recall \"я буду учиться\" from memory, then explain what would change if a nearby alternative replaced it in \"Я буду учиться в университете.\".",
+      "example": "Я буду учиться в университете.",
+      "exampleEnglish": "Self-check against the model before moving on: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я буду учиться",
+      "romanization": "ya budu uchitsya",
+      "nativeText": "Repair \"я буду учиться\" inside \"Я буду учиться в университете.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will study.” Russian future with imperfective verbs often uses `быть` plus infinitive.",
+      "pronunciation": "ya budu uchitsya",
+      "exampleTarget": "Я буду учиться в университете.",
+      "exampleNative": "Use the model as the repair target: “I will study at university.”",
+      "korean": "я буду учиться",
+      "english": "Repair \"я буду учиться\" inside \"Я буду учиться в университете.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will study.” Russian future with imperfective verbs often uses `быть` plus infinitive.",
+      "example": "Я буду учиться в университете.",
+      "exampleEnglish": "Use the model as the repair target: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я буду учиться",
+      "romanization": "ya budu uchitsya",
+      "nativeText": "Transfer \"я буду учиться\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я буду учиться в университете.\".",
+      "pronunciation": "ya budu uchitsya",
+      "exampleTarget": "Я буду учиться в университете.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will study at university.”",
+      "korean": "я буду учиться",
+      "english": "Transfer \"я буду учиться\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я буду учиться в университете.\".",
+      "example": "Я буду учиться в университете.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я буду учиться",
+      "romanization": "ya budu uchitsya",
+      "nativeText": "Find one word or phrase that naturally travels with \"я буду учиться\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya budu uchitsya",
+      "exampleTarget": "Я буду учиться в университете.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I will study at university.”",
+      "korean": "я буду учиться",
+      "english": "Find one word or phrase that naturally travels with \"я буду учиться\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я буду учиться в университете.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я буду учиться",
+      "romanization": "ya budu uchitsya",
+      "nativeText": "Listen for \"я буду учиться\" inside \"Я буду учиться в университете.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya budu uchitsya",
+      "exampleTarget": "Я буду учиться в университете.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will study at university.”",
+      "korean": "я буду учиться",
+      "english": "Listen for \"я буду учиться\" inside \"Я буду учиться в университете.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я буду учиться в университете.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я буду учиться",
+      "romanization": "ya budu uchitsya",
+      "nativeText": "Write \"я буду учиться\" again without looking, then compare the exact written form against \"Я буду учиться в университете.\" before moving on.",
+      "pronunciation": "ya budu uchitsya",
+      "exampleTarget": "Я буду учиться в университете.",
+      "exampleNative": "Use the written model as the final correctness check: “I will study at university.”",
+      "korean": "я буду учиться",
+      "english": "Write \"я буду учиться\" again without looking, then compare the exact written form against \"Я буду учиться в университете.\" before moving on.",
+      "example": "Я буду учиться в университете.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я буду учиться",
+      "romanization": "ya budu uchitsya",
+      "nativeText": "Check whether \"я буду учиться\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will study at university.”",
+      "pronunciation": "ya budu uchitsya",
+      "exampleTarget": "Я буду учиться в университете.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I will study at university.”",
+      "korean": "я буду учиться",
+      "english": "Check whether \"я буду учиться\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will study at university.”",
+      "example": "Я буду учиться в университете.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I will study at university.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я надеюсь",
+      "romanization": "ya nadeyus",
+      "nativeText": "“I hope.” It often introduces a clause or infinitive-like idea.",
+      "pronunciation": "ya nadeyus",
+      "exampleTarget": "Я надеюсь поехать в Петербург.",
+      "exampleNative": "“I hope to go to Saint Petersburg.”",
+      "korean": "я надеюсь",
+      "english": "“I hope.” It often introduces a clause or infinitive-like idea.",
+      "example": "Я надеюсь поехать в Петербург.",
+      "exampleEnglish": "“I hope to go to Saint Petersburg.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Я надеюсь поехать в Петербург.",
+      "romanization": "ya nadeyus",
+      "nativeText": "Model use for \"Я надеюсь поехать в Петербург.\": “I hope to go to Saint Petersburg.”",
+      "pronunciation": "ya nadeyus",
+      "exampleTarget": "Я надеюсь поехать в Петербург.",
+      "exampleNative": "“I hope to go to Saint Petersburg.”",
+      "korean": "Я надеюсь поехать в Петербург.",
+      "english": "Model use for \"Я надеюсь поехать в Петербург.\": “I hope to go to Saint Petersburg.”",
+      "example": "Я надеюсь поехать в Петербург.",
+      "exampleEnglish": "“I hope to go to Saint Petersburg.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я надеюсь",
+      "romanization": "ya nadeyus",
+      "nativeText": "Usage focus for \"я надеюсь\": “I hope.” It often introduces a clause or infinitive-like idea.",
+      "pronunciation": "ya nadeyus",
+      "exampleTarget": "Я надеюсь поехать в Петербург.",
+      "exampleNative": "Notice what the form is doing here: “I hope to go to Saint Petersburg.”",
+      "korean": "я надеюсь",
+      "english": "Usage focus for \"я надеюсь\": “I hope.” It often introduces a clause or infinitive-like idea.",
+      "example": "Я надеюсь поехать в Петербург.",
+      "exampleEnglish": "Notice what the form is doing here: “I hope to go to Saint Petersburg.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я надеюсь",
+      "romanization": "ya nadeyus",
+      "nativeText": "Contrast check for \"я надеюсь\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya nadeyus",
+      "exampleTarget": "Я надеюсь поехать в Петербург.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I hope to go to Saint Petersburg.”",
+      "korean": "я надеюсь",
+      "english": "Contrast check for \"я надеюсь\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я надеюсь поехать в Петербург.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I hope to go to Saint Petersburg.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я надеюсь",
+      "romanization": "ya nadeyus",
+      "nativeText": "Recall \"я надеюсь\" from memory, then explain what would change if a nearby alternative replaced it in \"Я надеюсь поехать в Петербург.\".",
+      "pronunciation": "ya nadeyus",
+      "exampleTarget": "Я надеюсь поехать в Петербург.",
+      "exampleNative": "Self-check against the model before moving on: “I hope to go to Saint Petersburg.”",
+      "korean": "я надеюсь",
+      "english": "Recall \"я надеюсь\" from memory, then explain what would change if a nearby alternative replaced it in \"Я надеюсь поехать в Петербург.\".",
+      "example": "Я надеюсь поехать в Петербург.",
+      "exampleEnglish": "Self-check against the model before moving on: “I hope to go to Saint Petersburg.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я надеюсь",
+      "romanization": "ya nadeyus",
+      "nativeText": "Repair \"я надеюсь\" inside \"Я надеюсь поехать в Петербург.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I hope.” It often introduces a clause or infinitive-like idea.",
+      "pronunciation": "ya nadeyus",
+      "exampleTarget": "Я надеюсь поехать в Петербург.",
+      "exampleNative": "Use the model as the repair target: “I hope to go to Saint Petersburg.”",
+      "korean": "я надеюсь",
+      "english": "Repair \"я надеюсь\" inside \"Я надеюсь поехать в Петербург.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I hope.” It often introduces a clause or infinitive-like idea.",
+      "example": "Я надеюсь поехать в Петербург.",
+      "exampleEnglish": "Use the model as the repair target: “I hope to go to Saint Petersburg.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я надеюсь",
+      "romanization": "ya nadeyus",
+      "nativeText": "Transfer \"я надеюсь\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я надеюсь поехать в Петербург.\".",
+      "pronunciation": "ya nadeyus",
+      "exampleTarget": "Я надеюсь поехать в Петербург.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I hope to go to Saint Petersburg.”",
+      "korean": "я надеюсь",
+      "english": "Transfer \"я надеюсь\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я надеюсь поехать в Петербург.\".",
+      "example": "Я надеюсь поехать в Петербург.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I hope to go to Saint Petersburg.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я надеюсь",
+      "romanization": "ya nadeyus",
+      "nativeText": "Find one word or phrase that naturally travels with \"я надеюсь\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya nadeyus",
+      "exampleTarget": "Я надеюсь поехать в Петербург.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I hope to go to Saint Petersburg.”",
+      "korean": "я надеюсь",
+      "english": "Find one word or phrase that naturally travels with \"я надеюсь\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я надеюсь поехать в Петербург.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I hope to go to Saint Petersburg.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я надеюсь",
+      "romanization": "ya nadeyus",
+      "nativeText": "Listen for \"я надеюсь\" inside \"Я надеюсь поехать в Петербург.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya nadeyus",
+      "exampleTarget": "Я надеюсь поехать в Петербург.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I hope to go to Saint Petersburg.”",
+      "korean": "я надеюсь",
+      "english": "Listen for \"я надеюсь\" inside \"Я надеюсь поехать в Петербург.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я надеюсь поехать в Петербург.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I hope to go to Saint Petersburg.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я надеюсь",
+      "romanization": "ya nadeyus",
+      "nativeText": "Write \"я надеюсь\" again without looking, then compare the exact written form against \"Я надеюсь поехать в Петербург.\" before moving on.",
+      "pronunciation": "ya nadeyus",
+      "exampleTarget": "Я надеюсь поехать в Петербург.",
+      "exampleNative": "Use the written model as the final correctness check: “I hope to go to Saint Petersburg.”",
+      "korean": "я надеюсь",
+      "english": "Write \"я надеюсь\" again without looking, then compare the exact written form against \"Я надеюсь поехать в Петербург.\" before moving on.",
+      "example": "Я надеюсь поехать в Петербург.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I hope to go to Saint Petersburg.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "я надеюсь",
+      "romanization": "ya nadeyus",
+      "nativeText": "Check whether \"я надеюсь\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I hope to go to Saint Petersburg.”",
+      "pronunciation": "ya nadeyus",
+      "exampleTarget": "Я надеюсь поехать в Петербург.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I hope to go to Saint Petersburg.”",
+      "korean": "я надеюсь",
+      "english": "Check whether \"я надеюсь\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I hope to go to Saint Petersburg.”",
+      "example": "Я надеюсь поехать в Петербург.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I hope to go to Saint Petersburg.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "стать",
+      "romanization": "stat",
+      "nativeText": "“To become.” This perfective infinitive is central in career dreams.",
+      "pronunciation": "stat",
+      "exampleTarget": "Я хочу стать учителем.",
+      "exampleNative": "“I want to become a teacher.”",
+      "korean": "стать",
+      "english": "“To become.” This perfective infinitive is central in career dreams.",
+      "example": "Я хочу стать учителем.",
+      "exampleEnglish": "“I want to become a teacher.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Я хочу стать учителем.",
+      "romanization": "stat",
+      "nativeText": "Model use for \"Я хочу стать учителем.\": “I want to become a teacher.”",
+      "pronunciation": "stat",
+      "exampleTarget": "Я хочу стать учителем.",
+      "exampleNative": "“I want to become a teacher.”",
+      "korean": "Я хочу стать учителем.",
+      "english": "Model use for \"Я хочу стать учителем.\": “I want to become a teacher.”",
+      "example": "Я хочу стать учителем.",
+      "exampleEnglish": "“I want to become a teacher.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "стать",
+      "romanization": "stat",
+      "nativeText": "Usage focus for \"стать\": “To become.” This perfective infinitive is central in career dreams.",
+      "pronunciation": "stat",
+      "exampleTarget": "Я хочу стать учителем.",
+      "exampleNative": "Notice what the form is doing here: “I want to become a teacher.”",
+      "korean": "стать",
+      "english": "Usage focus for \"стать\": “To become.” This perfective infinitive is central in career dreams.",
+      "example": "Я хочу стать учителем.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to become a teacher.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "стать",
+      "romanization": "stat",
+      "nativeText": "Contrast check for \"стать\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "stat",
+      "exampleTarget": "Я хочу стать учителем.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to become a teacher.”",
+      "korean": "стать",
+      "english": "Contrast check for \"стать\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я хочу стать учителем.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "стать",
+      "romanization": "stat",
+      "nativeText": "Recall \"стать\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хочу стать учителем.\".",
+      "pronunciation": "stat",
+      "exampleTarget": "Я хочу стать учителем.",
+      "exampleNative": "Self-check against the model before moving on: “I want to become a teacher.”",
+      "korean": "стать",
+      "english": "Recall \"стать\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хочу стать учителем.\".",
+      "example": "Я хочу стать учителем.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "стать",
+      "romanization": "stat",
+      "nativeText": "Repair \"стать\" inside \"Я хочу стать учителем.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To become.” This perfective infinitive is central in career dreams.",
+      "pronunciation": "stat",
+      "exampleTarget": "Я хочу стать учителем.",
+      "exampleNative": "Use the model as the repair target: “I want to become a teacher.”",
+      "korean": "стать",
+      "english": "Repair \"стать\" inside \"Я хочу стать учителем.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To become.” This perfective infinitive is central in career dreams.",
+      "example": "Я хочу стать учителем.",
+      "exampleEnglish": "Use the model as the repair target: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "стать",
+      "romanization": "stat",
+      "nativeText": "Transfer \"стать\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хочу стать учителем.\".",
+      "pronunciation": "stat",
+      "exampleTarget": "Я хочу стать учителем.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to become a teacher.”",
+      "korean": "стать",
+      "english": "Transfer \"стать\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хочу стать учителем.\".",
+      "example": "Я хочу стать учителем.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "стать",
+      "romanization": "stat",
+      "nativeText": "Find one word or phrase that naturally travels with \"стать\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "stat",
+      "exampleTarget": "Я хочу стать учителем.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to become a teacher.”",
+      "korean": "стать",
+      "english": "Find one word or phrase that naturally travels with \"стать\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я хочу стать учителем.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "стать",
+      "romanization": "stat",
+      "nativeText": "Listen for \"стать\" inside \"Я хочу стать учителем.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "stat",
+      "exampleTarget": "Я хочу стать учителем.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to become a teacher.”",
+      "korean": "стать",
+      "english": "Listen for \"стать\" inside \"Я хочу стать учителем.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я хочу стать учителем.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "стать",
+      "romanization": "stat",
+      "nativeText": "Write \"стать\" again without looking, then compare the exact written form against \"Я хочу стать учителем.\" before moving on.",
+      "pronunciation": "stat",
+      "exampleTarget": "Я хочу стать учителем.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to become a teacher.”",
+      "korean": "стать",
+      "english": "Write \"стать\" again without looking, then compare the exact written form against \"Я хочу стать учителем.\" before moving on.",
+      "example": "Я хочу стать учителем.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "стать",
+      "romanization": "stat",
+      "nativeText": "Check whether \"стать\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "pronunciation": "stat",
+      "exampleTarget": "Я хочу стать учителем.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "korean": "стать",
+      "english": "Check whether \"стать\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "example": "Я хочу стать учителем.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "если будет возможность",
+      "romanization": "yesli budet vozmozhnost",
+      "nativeText": "“If there is an opportunity.” A natural condition around future plans.",
+      "pronunciation": "yesli budet vozmozhnost",
+      "exampleTarget": "Если будет возможность, я буду работать за границей.",
+      "exampleNative": "“If there is an opportunity, I will work abroad.”",
+      "korean": "если будет возможность",
+      "english": "“If there is an opportunity.” A natural condition around future plans.",
+      "example": "Если будет возможность, я буду работать за границей.",
+      "exampleEnglish": "“If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Если будет возможность, я буду работать за границей.",
+      "romanization": "yesli budet vozmozhnost",
+      "nativeText": "Model use for \"Если будет возможность, я буду работать за границей.\": “If there is an opportunity, I will work abroad.”",
+      "pronunciation": "yesli budet vozmozhnost",
+      "exampleTarget": "Если будет возможность, я буду работать за границей.",
+      "exampleNative": "“If there is an opportunity, I will work abroad.”",
+      "korean": "Если будет возможность, я буду работать за границей.",
+      "english": "Model use for \"Если будет возможность, я буду работать за границей.\": “If there is an opportunity, I will work abroad.”",
+      "example": "Если будет возможность, я буду работать за границей.",
+      "exampleEnglish": "“If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "если будет возможность",
+      "romanization": "yesli budet vozmozhnost",
+      "nativeText": "Usage focus for \"если будет возможность\": “If there is an opportunity.” A natural condition around future plans.",
+      "pronunciation": "yesli budet vozmozhnost",
+      "exampleTarget": "Если будет возможность, я буду работать за границей.",
+      "exampleNative": "Notice what the form is doing here: “If there is an opportunity, I will work abroad.”",
+      "korean": "если будет возможность",
+      "english": "Usage focus for \"если будет возможность\": “If there is an opportunity.” A natural condition around future plans.",
+      "example": "Если будет возможность, я буду работать за границей.",
+      "exampleEnglish": "Notice what the form is doing here: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "если будет возможность",
+      "romanization": "yesli budet vozmozhnost",
+      "nativeText": "Contrast check for \"если будет возможность\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "yesli budet vozmozhnost",
+      "exampleTarget": "Если будет возможность, я буду работать за границей.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If there is an opportunity, I will work abroad.”",
+      "korean": "если будет возможность",
+      "english": "Contrast check for \"если будет возможность\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Если будет возможность, я буду работать за границей.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "если будет возможность",
+      "romanization": "yesli budet vozmozhnost",
+      "nativeText": "Recall \"если будет возможность\" from memory, then explain what would change if a nearby alternative replaced it in \"Если будет возможность, я буду работать за границей.\".",
+      "pronunciation": "yesli budet vozmozhnost",
+      "exampleTarget": "Если будет возможность, я буду работать за границей.",
+      "exampleNative": "Self-check against the model before moving on: “If there is an opportunity, I will work abroad.”",
+      "korean": "если будет возможность",
+      "english": "Recall \"если будет возможность\" from memory, then explain what would change if a nearby alternative replaced it in \"Если будет возможность, я буду работать за границей.\".",
+      "example": "Если будет возможность, я буду работать за границей.",
+      "exampleEnglish": "Self-check against the model before moving on: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "если будет возможность",
+      "romanization": "yesli budet vozmozhnost",
+      "nativeText": "Repair \"если будет возможность\" inside \"Если будет возможность, я буду работать за границей.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “If there is an opportunity.” A natural condition around future plans.",
+      "pronunciation": "yesli budet vozmozhnost",
+      "exampleTarget": "Если будет возможность, я буду работать за границей.",
+      "exampleNative": "Use the model as the repair target: “If there is an opportunity, I will work abroad.”",
+      "korean": "если будет возможность",
+      "english": "Repair \"если будет возможность\" inside \"Если будет возможность, я буду работать за границей.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “If there is an opportunity.” A natural condition around future plans.",
+      "example": "Если будет возможность, я буду работать за границей.",
+      "exampleEnglish": "Use the model as the repair target: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "если будет возможность",
+      "romanization": "yesli budet vozmozhnost",
+      "nativeText": "Transfer \"если будет возможность\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Если будет возможность, я буду работать за границей.\".",
+      "pronunciation": "yesli budet vozmozhnost",
+      "exampleTarget": "Если будет возможность, я буду работать за границей.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “If there is an opportunity, I will work abroad.”",
+      "korean": "если будет возможность",
+      "english": "Transfer \"если будет возможность\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Если будет возможность, я буду работать за границей.\".",
+      "example": "Если будет возможность, я буду работать за границей.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "если будет возможность",
+      "romanization": "yesli budet vozmozhnost",
+      "nativeText": "Find one word or phrase that naturally travels with \"если будет возможность\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "yesli budet vozmozhnost",
+      "exampleTarget": "Если будет возможность, я буду работать за границей.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “If there is an opportunity, I will work abroad.”",
+      "korean": "если будет возможность",
+      "english": "Find one word or phrase that naturally travels with \"если будет возможность\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Если будет возможность, я буду работать за границей.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "если будет возможность",
+      "romanization": "yesli budet vozmozhnost",
+      "nativeText": "Listen for \"если будет возможность\" inside \"Если будет возможность, я буду работать за границей.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "yesli budet vozmozhnost",
+      "exampleTarget": "Если будет возможность, я буду работать за границей.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If there is an opportunity, I will work abroad.”",
+      "korean": "если будет возможность",
+      "english": "Listen for \"если будет возможность\" inside \"Если будет возможность, я буду работать за границей.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Если будет возможность, я буду работать за границей.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "если будет возможность",
+      "romanization": "yesli budet vozmozhnost",
+      "nativeText": "Write \"если будет возможность\" again without looking, then compare the exact written form against \"Если будет возможность, я буду работать за границей.\" before moving on.",
+      "pronunciation": "yesli budet vozmozhnost",
+      "exampleTarget": "Если будет возможность, я буду работать за границей.",
+      "exampleNative": "Use the written model as the final correctness check: “If there is an opportunity, I will work abroad.”",
+      "korean": "если будет возможность",
+      "english": "Write \"если будет возможность\" again without looking, then compare the exact written form against \"Если будет возможность, я буду работать за границей.\" before moving on.",
+      "example": "Если будет возможность, я буду работать за границей.",
+      "exampleEnglish": "Use the written model as the final correctness check: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "если будет возможность",
+      "romanization": "yesli budet vozmozhnost",
+      "nativeText": "Check whether \"если будет возможность\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”",
+      "pronunciation": "yesli budet vozmozhnost",
+      "exampleTarget": "Если будет возможность, я буду работать за границей.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”",
+      "korean": "если будет возможность",
+      "english": "Check whether \"если будет возможность\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”",
+      "example": "Если будет возможность, я буду работать за границей.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "когда-нибудь",
+      "romanization": "kogda-nibud",
+      "nativeText": "“Someday.” A compact word for distant dreams.",
+      "pronunciation": "kogda-nibud",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "“Someday I will write a book.”",
+      "korean": "когда-нибудь",
+      "english": "“Someday.” A compact word for distant dreams.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "“Someday I will write a book.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Когда-нибудь я напишу книгу.",
+      "romanization": "kogda-nibud",
+      "nativeText": "Model use for \"Когда-нибудь я напишу книгу.\": “Someday I will write a book.”",
+      "pronunciation": "kogda-nibud",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "“Someday I will write a book.”",
+      "korean": "Когда-нибудь я напишу книгу.",
+      "english": "Model use for \"Когда-нибудь я напишу книгу.\": “Someday I will write a book.”",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "“Someday I will write a book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "когда-нибудь",
+      "romanization": "kogda-nibud",
+      "nativeText": "Usage focus for \"когда-нибудь\": “Someday.” A compact word for distant dreams.",
+      "pronunciation": "kogda-nibud",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "Notice what the form is doing here: “Someday I will write a book.”",
+      "korean": "когда-нибудь",
+      "english": "Usage focus for \"когда-нибудь\": “Someday.” A compact word for distant dreams.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "Notice what the form is doing here: “Someday I will write a book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "когда-нибудь",
+      "romanization": "kogda-nibud",
+      "nativeText": "Contrast check for \"когда-нибудь\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kogda-nibud",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Someday I will write a book.”",
+      "korean": "когда-нибудь",
+      "english": "Contrast check for \"когда-нибудь\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Someday I will write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "когда-нибудь",
+      "romanization": "kogda-nibud",
+      "nativeText": "Recall \"когда-нибудь\" from memory, then explain what would change if a nearby alternative replaced it in \"Когда-нибудь я напишу книгу.\".",
+      "pronunciation": "kogda-nibud",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "Self-check against the model before moving on: “Someday I will write a book.”",
+      "korean": "когда-нибудь",
+      "english": "Recall \"когда-нибудь\" from memory, then explain what would change if a nearby alternative replaced it in \"Когда-нибудь я напишу книгу.\".",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "Self-check against the model before moving on: “Someday I will write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "когда-нибудь",
+      "romanization": "kogda-nibud",
+      "nativeText": "Repair \"когда-нибудь\" inside \"Когда-нибудь я напишу книгу.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Someday.” A compact word for distant dreams.",
+      "pronunciation": "kogda-nibud",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "Use the model as the repair target: “Someday I will write a book.”",
+      "korean": "когда-нибудь",
+      "english": "Repair \"когда-нибудь\" inside \"Когда-нибудь я напишу книгу.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Someday.” A compact word for distant dreams.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "Use the model as the repair target: “Someday I will write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "когда-нибудь",
+      "romanization": "kogda-nibud",
+      "nativeText": "Transfer \"когда-нибудь\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Когда-нибудь я напишу книгу.\".",
+      "pronunciation": "kogda-nibud",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Someday I will write a book.”",
+      "korean": "когда-нибудь",
+      "english": "Transfer \"когда-нибудь\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Когда-нибудь я напишу книгу.\".",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Someday I will write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "когда-нибудь",
+      "romanization": "kogda-nibud",
+      "nativeText": "Find one word or phrase that naturally travels with \"когда-нибудь\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kogda-nibud",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Someday I will write a book.”",
+      "korean": "когда-нибудь",
+      "english": "Find one word or phrase that naturally travels with \"когда-нибудь\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Someday I will write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "когда-нибудь",
+      "romanization": "kogda-nibud",
+      "nativeText": "Listen for \"когда-нибудь\" inside \"Когда-нибудь я напишу книгу.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kogda-nibud",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Someday I will write a book.”",
+      "korean": "когда-нибудь",
+      "english": "Listen for \"когда-нибудь\" inside \"Когда-нибудь я напишу книгу.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Someday I will write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "когда-нибудь",
+      "romanization": "kogda-nibud",
+      "nativeText": "Write \"когда-нибудь\" again without looking, then compare the exact written form against \"Когда-нибудь я напишу книгу.\" before moving on.",
+      "pronunciation": "kogda-nibud",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "Use the written model as the final correctness check: “Someday I will write a book.”",
+      "korean": "когда-нибудь",
+      "english": "Write \"когда-нибудь\" again without looking, then compare the exact written form against \"Когда-нибудь я напишу книгу.\" before moving on.",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Someday I will write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit21hopesdreams-vocabulary-1",
+        "ru-level1unit21hopesdreams-vocabulary-2",
+        "ru-level1unit21hopesdreams-grammar-1",
+        "ru-level1unit21hopesdreams-grammar-2",
+        "ru-level1unit21hopesdreams-reading",
+        "ru-level1unit21hopesdreams-listening",
+        "ru-level1unit21hopesdreams-writing",
+        "ru-level1unit21hopesdreams-task"
+      ],
+      "targetText": "когда-нибудь",
+      "romanization": "kogda-nibud",
+      "nativeText": "Check whether \"когда-нибудь\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Someday I will write a book.”",
+      "pronunciation": "kogda-nibud",
+      "exampleTarget": "Когда-нибудь я напишу книгу.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Someday I will write a book.”",
+      "korean": "когда-нибудь",
+      "english": "Check whether \"когда-нибудь\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Someday I will write a book.”",
+      "example": "Когда-нибудь я напишу книгу.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Someday I will write a book.”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

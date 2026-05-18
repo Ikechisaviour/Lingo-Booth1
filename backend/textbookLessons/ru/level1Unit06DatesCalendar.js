@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u6',
-  title: 'Level 1 · Unit 6: Даты и календарь — Dates and Calendar',
-  category: 'time',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about weekdays, dates, and simple plans using Russian calendar forms.',
-  vocabularyGoal: 'Use weekdays, months, today/tomorrow/yesterday, and date questions.',
-  grammarGoal: 'Notice that full dates use ordinal forms and that weekdays often appear with `в` plus the accusative.',
-  speakingGoal: 'Say today’s date, ask when something happens, and answer with one plan.',
-  task: 'Arrange a short study meeting on a calendar.',
-  expressionPractice: [
-    practice('asking-date', 'Asking the date', 'Use `какое сегодня число?` and `когда?`.'),
-    practice('stating-date', 'Stating a date', 'Use one weekday and one calendar date.'),
-    practice('making-plan', 'Making a plan', 'Use `в понедельник` or `на следующей неделе`.'),
+module.exports = {
+  "title": "Level 1 · Unit 6: Даты и календарь — Dates and Calendar",
+  "category": "time",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit06datescalendar-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about weekdays, dates, and simple plans using Russian calendar forms."
+      ],
+      "task": "Arrange a short study meeting on a calendar."
+    },
+    {
+      "id": "ru-level1unit06datescalendar-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit06datescalendar-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 6: Даты и календарь — Dates and Calendar with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit06datescalendar-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 6: Даты и календарь — Dates and Calendar sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit06datescalendar-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about weekdays, dates, and simple plans using Russian calendar forms."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit06datescalendar-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 6: Даты и календарь — Dates and Calendar with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit06datescalendar-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit06datescalendar-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit06datescalendar-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit06datescalendar-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit06datescalendar-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Arrange a short study meeting on a calendar."
+      ],
+      "task": "Arrange a short study meeting on a calendar."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-calendar'],
-  items: [
-    item('сегодня', 'segodnya', '“Today.” It often opens the sentence when the time frame matters.', 'Сегодня понедельник.', '“Today is Monday.”'),
-    item('завтра', 'zavtra', '“Tomorrow.” A high-frequency planning word with no case change required.', 'Завтра у меня урок.', '“Tomorrow I have a lesson.”'),
-    item('вчера', 'vchera', '“Yesterday.” It sets past time while the verb carries gendered past agreement.', 'Вчера я учился дома.', '“Yesterday I studied at home.”'),
-    item('в понедельник', 'v ponedelnik', '“On Monday.” Weekdays commonly use `в` plus the accusative form.', 'Экзамен будет в понедельник.', '“The exam will be on Monday.”'),
-    item('какое сегодня число?', 'kakoye segodnya chislo', '“What is today’s date?” Literally “what number is today?”', 'Какое сегодня число?', '“What is today’s date?”'),
-    item('пятого мая', 'pyatogo maya', '“On the fifth of May.” Russian dates use ordinal genitive forms for both day and month.', 'Занятия начинаются пятого мая.', '“Classes begin on May fifth.”'),
-    item('на следующей неделе', 'na sleduyushchey nedele', '“Next week.” This fixed phrase introduces a near-future period.', 'Мы встретимся на следующей неделе.', '“We will meet next week.”'),
-    item('когда?', 'kogda', '“When?” A compact question word for dates and times.', 'Когда начинается встреча?', '“When does the meeting start?”'),
+  "expressionPractice": [
+    {
+      "id": "asking-date",
+      "label": "Asking the date",
+      "goal": "Use `какое сегодня число?` and `когда?`."
+    },
+    {
+      "id": "stating-date",
+      "label": "Stating a date",
+      "goal": "Use one weekday and one calendar date."
+    },
+    {
+      "id": "making-plan",
+      "label": "Making a plan",
+      "goal": "Use `в понедельник` or `на следующей неделе`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-time",
+    "topic-calendar"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Talk about weekdays, dates, and simple plans using Russian calendar forms.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Arrange a short study meeting on a calendar.",
+      "korean": "цель урока",
+      "english": "Talk about weekdays, dates, and simple plans using Russian calendar forms.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Arrange a short study meeting on a calendar."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сегодня понедельник.\".",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сегодня понедельник.\".",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1"
+      ],
+      "targetText": "сегодня",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 6: Даты и календарь — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "сегодня",
+      "english": "Use the key language of Level 1 · Unit 6: Даты и календарь — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-2"
+      ],
+      "targetText": "завтра",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 6: Даты и календарь — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "“Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 6: Даты и календарь — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "“Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "сегодня",
+      "romanization": "",
+      "nativeText": "Talk about weekdays, dates, and simple plans using Russian calendar forms.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "сегодня",
+      "english": "Talk about weekdays, dates, and simple plans using Russian calendar forms.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "завтра",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 6: Даты и календарь — Dates and Calendar with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "“Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "Contrast the main pattern in Level 1 · Unit 6: Даты и календарь — Dates and Calendar with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "“Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit06datescalendar-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Когда начинается встреча?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "модель чтения",
+      "english": "Read \"Когда начинается встреча?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit06datescalendar-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Когда начинается встреча?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "модель диалога",
+      "english": "Hear \"Когда начинается встреча?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit06datescalendar-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Сегодня понедельник.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Сегодня понедельник.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit06datescalendar-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "“Tomorrow I have a lesson.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "“Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Arrange a short study meeting on a calendar.",
+      "pronunciation": "",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "Arrange a short study meeting on a calendar.",
+      "korean": "итоговое задание",
+      "english": "Arrange a short study meeting on a calendar.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "Arrange a short study meeting on a calendar."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Завтра у меня урок.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Tomorrow I have a lesson.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Завтра у меня урок.\" against the model.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Сегодня понедельник.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Сегодня понедельник.\" before reusing it elsewhere.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Когда начинается встреча?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Когда начинается встреча?\" as one thought.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Сегодня понедельник.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Сегодня понедельник.\" and move it into your own life.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"сегодня\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "сегодня",
+      "exampleNative": "“Today.” It often opens the sentence when the time frame matters.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"сегодня\" before looking back.",
+      "example": "сегодня",
+      "exampleEnglish": "“Today.” It often opens the sentence when the time frame matters."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Когда начинается встреча?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Когда начинается встреча?\" rather than restarting from a blank sentence.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 6: Даты и календарь — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Завтра у меня урок.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "“Tomorrow I have a lesson.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 6: Даты и календарь — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Завтра у меня урок.\" as the comparison line.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "“Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сегодня понедельник.\".",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сегодня понедельник.\".",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Когда начинается встреча?\".",
+      "pronunciation": "",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Когда начинается встреча?\".",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Сегодня понедельник.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Сегодня понедельник.\" one layer at a time.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Завтра у меня урок.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "“Tomorrow I have a lesson.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Завтра у меня урок.\" as the deciding example.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "“Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-culture",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Когда начинается встреча?\".",
+      "pronunciation": "",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Когда начинается встреча?\".",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "сегодня",
+      "romanization": "segodnya",
+      "nativeText": "“Today.” It often opens the sentence when the time frame matters.",
+      "pronunciation": "segodnya",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "сегодня",
+      "english": "“Today.” It often opens the sentence when the time frame matters.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "Сегодня понедельник.",
+      "romanization": "segodnya",
+      "nativeText": "Model use for \"Сегодня понедельник.\": “Today is Monday.”",
+      "pronunciation": "segodnya",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "Сегодня понедельник.",
+      "english": "Model use for \"Сегодня понедельник.\": “Today is Monday.”",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "сегодня",
+      "romanization": "segodnya",
+      "nativeText": "Usage focus for \"сегодня\": Use the key language of Level 1 · Unit 6: Даты и календарь — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "segodnya",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "Notice what the form is doing here: “Today is Monday.”",
+      "korean": "сегодня",
+      "english": "Usage focus for \"сегодня\": Use the key language of Level 1 · Unit 6: Даты и календарь — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "Notice what the form is doing here: “Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "сегодня",
+      "romanization": "segodnya",
+      "nativeText": "Contrast check for \"сегодня\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "segodnya",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today is Monday.”",
+      "korean": "сегодня",
+      "english": "Contrast check for \"сегодня\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "сегодня",
+      "romanization": "segodnya",
+      "nativeText": "Recall \"сегодня\" from memory, then explain what would change if a nearby alternative replaced it in \"Сегодня понедельник.\".",
+      "pronunciation": "segodnya",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "Self-check against the model before moving on: “Today is Monday.”",
+      "korean": "сегодня",
+      "english": "Recall \"сегодня\" from memory, then explain what would change if a nearby alternative replaced it in \"Сегодня понедельник.\".",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "Self-check against the model before moving on: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "сегодня",
+      "romanization": "segodnya",
+      "nativeText": "Repair \"сегодня\" inside \"Сегодня понедельник.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: Даты и календарь — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "segodnya",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "Use the model as the repair target: “Today is Monday.”",
+      "korean": "сегодня",
+      "english": "Repair \"сегодня\" inside \"Сегодня понедельник.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: Даты и календарь — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "Use the model as the repair target: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "сегодня",
+      "romanization": "segodnya",
+      "nativeText": "Transfer \"сегодня\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сегодня понедельник.\".",
+      "pronunciation": "segodnya",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today is Monday.”",
+      "korean": "сегодня",
+      "english": "Transfer \"сегодня\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сегодня понедельник.\".",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "сегодня",
+      "romanization": "segodnya",
+      "nativeText": "Find one word or phrase that naturally travels with \"сегодня\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "segodnya",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today is Monday.”",
+      "korean": "сегодня",
+      "english": "Find one word or phrase that naturally travels with \"сегодня\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "сегодня",
+      "romanization": "segodnya",
+      "nativeText": "Listen for \"сегодня\" inside \"Сегодня понедельник.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "segodnya",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today is Monday.”",
+      "korean": "сегодня",
+      "english": "Listen for \"сегодня\" inside \"Сегодня понедельник.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "сегодня",
+      "romanization": "segodnya",
+      "nativeText": "Write \"сегодня\" again without looking, then compare the exact written form against \"Сегодня понедельник.\" before moving on.",
+      "pronunciation": "segodnya",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "Use the written model as the final correctness check: “Today is Monday.”",
+      "korean": "сегодня",
+      "english": "Write \"сегодня\" again without looking, then compare the exact written form against \"Сегодня понедельник.\" before moving on.",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "сегодня",
+      "romanization": "segodnya",
+      "nativeText": "Check whether \"сегодня\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "pronunciation": "segodnya",
+      "exampleTarget": "Сегодня понедельник.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "korean": "сегодня",
+      "english": "Check whether \"сегодня\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "example": "Сегодня понедельник.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today is Monday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "завтра",
+      "romanization": "zavtra",
+      "nativeText": "“Tomorrow.” A high-frequency planning word with no case change required.",
+      "pronunciation": "zavtra",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "“Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "“Tomorrow.” A high-frequency planning word with no case change required.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "“Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "Завтра у меня урок.",
+      "romanization": "zavtra",
+      "nativeText": "Model use for \"Завтра у меня урок.\": “Tomorrow I have a lesson.”",
+      "pronunciation": "zavtra",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "“Tomorrow I have a lesson.”",
+      "korean": "Завтра у меня урок.",
+      "english": "Model use for \"Завтра у меня урок.\": “Tomorrow I have a lesson.”",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "“Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "завтра",
+      "romanization": "zavtra",
+      "nativeText": "Usage focus for \"завтра\": Distinguish the nearby wording choices that make Level 1 · Unit 6: Даты и календарь — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "zavtra",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "Notice what the form is doing here: “Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "Usage focus for \"завтра\": Distinguish the nearby wording choices that make Level 1 · Unit 6: Даты и календарь — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "Notice what the form is doing here: “Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "завтра",
+      "romanization": "zavtra",
+      "nativeText": "Contrast check for \"завтра\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "zavtra",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "Contrast check for \"завтра\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "завтра",
+      "romanization": "zavtra",
+      "nativeText": "Recall \"завтра\" from memory, then explain what would change if a nearby alternative replaced it in \"Завтра у меня урок.\".",
+      "pronunciation": "zavtra",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "Self-check against the model before moving on: “Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "Recall \"завтра\" from memory, then explain what would change if a nearby alternative replaced it in \"Завтра у меня урок.\".",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "Self-check against the model before moving on: “Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "завтра",
+      "romanization": "zavtra",
+      "nativeText": "Repair \"завтра\" inside \"Завтра у меня урок.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: Даты и календарь — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "zavtra",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "Use the model as the repair target: “Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "Repair \"завтра\" inside \"Завтра у меня урок.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: Даты и календарь — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "Use the model as the repair target: “Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "завтра",
+      "romanization": "zavtra",
+      "nativeText": "Transfer \"завтра\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Завтра у меня урок.\".",
+      "pronunciation": "zavtra",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "Transfer \"завтра\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Завтра у меня урок.\".",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "завтра",
+      "romanization": "zavtra",
+      "nativeText": "Find one word or phrase that naturally travels with \"завтра\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "zavtra",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "Find one word or phrase that naturally travels with \"завтра\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "завтра",
+      "romanization": "zavtra",
+      "nativeText": "Listen for \"завтра\" inside \"Завтра у меня урок.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "zavtra",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "Listen for \"завтра\" inside \"Завтра у меня урок.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "завтра",
+      "romanization": "zavtra",
+      "nativeText": "Write \"завтра\" again without looking, then compare the exact written form against \"Завтра у меня урок.\" before moving on.",
+      "pronunciation": "zavtra",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "Use the written model as the final correctness check: “Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "Write \"завтра\" again without looking, then compare the exact written form against \"Завтра у меня урок.\" before moving on.",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "завтра",
+      "romanization": "zavtra",
+      "nativeText": "Check whether \"завтра\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a lesson.”",
+      "pronunciation": "zavtra",
+      "exampleTarget": "Завтра у меня урок.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a lesson.”",
+      "korean": "завтра",
+      "english": "Check whether \"завтра\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a lesson.”",
+      "example": "Завтра у меня урок.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a lesson.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "вчера",
+      "romanization": "vchera",
+      "nativeText": "“Yesterday.” It sets past time while the verb carries gendered past agreement.",
+      "pronunciation": "vchera",
+      "exampleTarget": "Вчера я учился дома.",
+      "exampleNative": "“Yesterday I studied at home.”",
+      "korean": "вчера",
+      "english": "“Yesterday.” It sets past time while the verb carries gendered past agreement.",
+      "example": "Вчера я учился дома.",
+      "exampleEnglish": "“Yesterday I studied at home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "Вчера я учился дома.",
+      "romanization": "vchera",
+      "nativeText": "Model use for \"Вчера я учился дома.\": “Yesterday I studied at home.”",
+      "pronunciation": "vchera",
+      "exampleTarget": "Вчера я учился дома.",
+      "exampleNative": "“Yesterday I studied at home.”",
+      "korean": "Вчера я учился дома.",
+      "english": "Model use for \"Вчера я учился дома.\": “Yesterday I studied at home.”",
+      "example": "Вчера я учился дома.",
+      "exampleEnglish": "“Yesterday I studied at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "вчера",
+      "romanization": "vchera",
+      "nativeText": "Usage focus for \"вчера\": “Yesterday.” It sets past time while the verb carries gendered past agreement.",
+      "pronunciation": "vchera",
+      "exampleTarget": "Вчера я учился дома.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I studied at home.”",
+      "korean": "вчера",
+      "english": "Usage focus for \"вчера\": “Yesterday.” It sets past time while the verb carries gendered past agreement.",
+      "example": "Вчера я учился дома.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I studied at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "вчера",
+      "romanization": "vchera",
+      "nativeText": "Contrast check for \"вчера\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vchera",
+      "exampleTarget": "Вчера я учился дома.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I studied at home.”",
+      "korean": "вчера",
+      "english": "Contrast check for \"вчера\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Вчера я учился дома.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I studied at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "вчера",
+      "romanization": "vchera",
+      "nativeText": "Recall \"вчера\" from memory, then explain what would change if a nearby alternative replaced it in \"Вчера я учился дома.\".",
+      "pronunciation": "vchera",
+      "exampleTarget": "Вчера я учился дома.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I studied at home.”",
+      "korean": "вчера",
+      "english": "Recall \"вчера\" from memory, then explain what would change if a nearby alternative replaced it in \"Вчера я учился дома.\".",
+      "example": "Вчера я учился дома.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I studied at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "вчера",
+      "romanization": "vchera",
+      "nativeText": "Repair \"вчера\" inside \"Вчера я учился дома.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Yesterday.” It sets past time while the verb carries gendered past agreement.",
+      "pronunciation": "vchera",
+      "exampleTarget": "Вчера я учился дома.",
+      "exampleNative": "Use the model as the repair target: “Yesterday I studied at home.”",
+      "korean": "вчера",
+      "english": "Repair \"вчера\" inside \"Вчера я учился дома.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Yesterday.” It sets past time while the verb carries gendered past agreement.",
+      "example": "Вчера я учился дома.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I studied at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "вчера",
+      "romanization": "vchera",
+      "nativeText": "Transfer \"вчера\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Вчера я учился дома.\".",
+      "pronunciation": "vchera",
+      "exampleTarget": "Вчера я учился дома.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I studied at home.”",
+      "korean": "вчера",
+      "english": "Transfer \"вчера\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Вчера я учился дома.\".",
+      "example": "Вчера я учился дома.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I studied at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "вчера",
+      "romanization": "vchera",
+      "nativeText": "Find one word or phrase that naturally travels with \"вчера\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vchera",
+      "exampleTarget": "Вчера я учился дома.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I studied at home.”",
+      "korean": "вчера",
+      "english": "Find one word or phrase that naturally travels with \"вчера\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Вчера я учился дома.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I studied at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "вчера",
+      "romanization": "vchera",
+      "nativeText": "Listen for \"вчера\" inside \"Вчера я учился дома.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vchera",
+      "exampleTarget": "Вчера я учился дома.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I studied at home.”",
+      "korean": "вчера",
+      "english": "Listen for \"вчера\" inside \"Вчера я учился дома.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Вчера я учился дома.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I studied at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "вчера",
+      "romanization": "vchera",
+      "nativeText": "Write \"вчера\" again without looking, then compare the exact written form against \"Вчера я учился дома.\" before moving on.",
+      "pronunciation": "vchera",
+      "exampleTarget": "Вчера я учился дома.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I studied at home.”",
+      "korean": "вчера",
+      "english": "Write \"вчера\" again without looking, then compare the exact written form against \"Вчера я учился дома.\" before moving on.",
+      "example": "Вчера я учился дома.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I studied at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "вчера",
+      "romanization": "vchera",
+      "nativeText": "Check whether \"вчера\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I studied at home.”",
+      "pronunciation": "vchera",
+      "exampleTarget": "Вчера я учился дома.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I studied at home.”",
+      "korean": "вчера",
+      "english": "Check whether \"вчера\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I studied at home.”",
+      "example": "Вчера я учился дома.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I studied at home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "в понедельник",
+      "romanization": "v ponedelnik",
+      "nativeText": "“On Monday.” Weekdays commonly use `в` plus the accusative form.",
+      "pronunciation": "v ponedelnik",
+      "exampleTarget": "Экзамен будет в понедельник.",
+      "exampleNative": "“The exam will be on Monday.”",
+      "korean": "в понедельник",
+      "english": "“On Monday.” Weekdays commonly use `в` plus the accusative form.",
+      "example": "Экзамен будет в понедельник.",
+      "exampleEnglish": "“The exam will be on Monday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "Экзамен будет в понедельник.",
+      "romanization": "v ponedelnik",
+      "nativeText": "Model use for \"Экзамен будет в понедельник.\": “The exam will be on Monday.”",
+      "pronunciation": "v ponedelnik",
+      "exampleTarget": "Экзамен будет в понедельник.",
+      "exampleNative": "“The exam will be on Monday.”",
+      "korean": "Экзамен будет в понедельник.",
+      "english": "Model use for \"Экзамен будет в понедельник.\": “The exam will be on Monday.”",
+      "example": "Экзамен будет в понедельник.",
+      "exampleEnglish": "“The exam will be on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "в понедельник",
+      "romanization": "v ponedelnik",
+      "nativeText": "Usage focus for \"в понедельник\": “On Monday.” Weekdays commonly use `в` plus the accusative form.",
+      "pronunciation": "v ponedelnik",
+      "exampleTarget": "Экзамен будет в понедельник.",
+      "exampleNative": "Notice what the form is doing here: “The exam will be on Monday.”",
+      "korean": "в понедельник",
+      "english": "Usage focus for \"в понедельник\": “On Monday.” Weekdays commonly use `в` plus the accusative form.",
+      "example": "Экзамен будет в понедельник.",
+      "exampleEnglish": "Notice what the form is doing here: “The exam will be on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "в понедельник",
+      "romanization": "v ponedelnik",
+      "nativeText": "Contrast check for \"в понедельник\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "v ponedelnik",
+      "exampleTarget": "Экзамен будет в понедельник.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The exam will be on Monday.”",
+      "korean": "в понедельник",
+      "english": "Contrast check for \"в понедельник\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Экзамен будет в понедельник.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The exam will be on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "в понедельник",
+      "romanization": "v ponedelnik",
+      "nativeText": "Recall \"в понедельник\" from memory, then explain what would change if a nearby alternative replaced it in \"Экзамен будет в понедельник.\".",
+      "pronunciation": "v ponedelnik",
+      "exampleTarget": "Экзамен будет в понедельник.",
+      "exampleNative": "Self-check against the model before moving on: “The exam will be on Monday.”",
+      "korean": "в понедельник",
+      "english": "Recall \"в понедельник\" from memory, then explain what would change if a nearby alternative replaced it in \"Экзамен будет в понедельник.\".",
+      "example": "Экзамен будет в понедельник.",
+      "exampleEnglish": "Self-check against the model before moving on: “The exam will be on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "в понедельник",
+      "romanization": "v ponedelnik",
+      "nativeText": "Repair \"в понедельник\" inside \"Экзамен будет в понедельник.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “On Monday.” Weekdays commonly use `в` plus the accusative form.",
+      "pronunciation": "v ponedelnik",
+      "exampleTarget": "Экзамен будет в понедельник.",
+      "exampleNative": "Use the model as the repair target: “The exam will be on Monday.”",
+      "korean": "в понедельник",
+      "english": "Repair \"в понедельник\" inside \"Экзамен будет в понедельник.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “On Monday.” Weekdays commonly use `в` plus the accusative form.",
+      "example": "Экзамен будет в понедельник.",
+      "exampleEnglish": "Use the model as the repair target: “The exam will be on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "в понедельник",
+      "romanization": "v ponedelnik",
+      "nativeText": "Transfer \"в понедельник\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Экзамен будет в понедельник.\".",
+      "pronunciation": "v ponedelnik",
+      "exampleTarget": "Экзамен будет в понедельник.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The exam will be on Monday.”",
+      "korean": "в понедельник",
+      "english": "Transfer \"в понедельник\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Экзамен будет в понедельник.\".",
+      "example": "Экзамен будет в понедельник.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The exam will be on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "в понедельник",
+      "romanization": "v ponedelnik",
+      "nativeText": "Find one word or phrase that naturally travels with \"в понедельник\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "v ponedelnik",
+      "exampleTarget": "Экзамен будет в понедельник.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The exam will be on Monday.”",
+      "korean": "в понедельник",
+      "english": "Find one word or phrase that naturally travels with \"в понедельник\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Экзамен будет в понедельник.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The exam will be on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "в понедельник",
+      "romanization": "v ponedelnik",
+      "nativeText": "Listen for \"в понедельник\" inside \"Экзамен будет в понедельник.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "v ponedelnik",
+      "exampleTarget": "Экзамен будет в понедельник.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The exam will be on Monday.”",
+      "korean": "в понедельник",
+      "english": "Listen for \"в понедельник\" inside \"Экзамен будет в понедельник.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Экзамен будет в понедельник.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The exam will be on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "в понедельник",
+      "romanization": "v ponedelnik",
+      "nativeText": "Write \"в понедельник\" again without looking, then compare the exact written form against \"Экзамен будет в понедельник.\" before moving on.",
+      "pronunciation": "v ponedelnik",
+      "exampleTarget": "Экзамен будет в понедельник.",
+      "exampleNative": "Use the written model as the final correctness check: “The exam will be on Monday.”",
+      "korean": "в понедельник",
+      "english": "Write \"в понедельник\" again without looking, then compare the exact written form against \"Экзамен будет в понедельник.\" before moving on.",
+      "example": "Экзамен будет в понедельник.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The exam will be on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "в понедельник",
+      "romanization": "v ponedelnik",
+      "nativeText": "Check whether \"в понедельник\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The exam will be on Monday.”",
+      "pronunciation": "v ponedelnik",
+      "exampleTarget": "Экзамен будет в понедельник.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The exam will be on Monday.”",
+      "korean": "в понедельник",
+      "english": "Check whether \"в понедельник\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The exam will be on Monday.”",
+      "example": "Экзамен будет в понедельник.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The exam will be on Monday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "какое сегодня число?",
+      "romanization": "kakoye segodnya chislo",
+      "nativeText": "“What is today’s date?” Literally “what number is today?”",
+      "pronunciation": "kakoye segodnya chislo",
+      "exampleTarget": "Какое сегодня число?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "какое сегодня число?",
+      "english": "“What is today’s date?” Literally “what number is today?”",
+      "example": "Какое сегодня число?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "Какое сегодня число?",
+      "romanization": "kakoye segodnya chislo",
+      "nativeText": "Model use for \"Какое сегодня число?\": “What is today’s date?”",
+      "pronunciation": "kakoye segodnya chislo",
+      "exampleTarget": "Какое сегодня число?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "Какое сегодня число?",
+      "english": "Model use for \"Какое сегодня число?\": “What is today’s date?”",
+      "example": "Какое сегодня число?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "какое сегодня число?",
+      "romanization": "kakoye segodnya chislo",
+      "nativeText": "Usage focus for \"какое сегодня число?\": “What is today’s date?” Literally “what number is today?”",
+      "pronunciation": "kakoye segodnya chislo",
+      "exampleTarget": "Какое сегодня число?",
+      "exampleNative": "Notice what the form is doing here: “What is today’s date?”",
+      "korean": "какое сегодня число?",
+      "english": "Usage focus for \"какое сегодня число?\": “What is today’s date?” Literally “what number is today?”",
+      "example": "Какое сегодня число?",
+      "exampleEnglish": "Notice what the form is doing here: “What is today’s date?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "какое сегодня число?",
+      "romanization": "kakoye segodnya chislo",
+      "nativeText": "Contrast check for \"какое сегодня число?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kakoye segodnya chislo",
+      "exampleTarget": "Какое сегодня число?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is today’s date?”",
+      "korean": "какое сегодня число?",
+      "english": "Contrast check for \"какое сегодня число?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Какое сегодня число?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "какое сегодня число?",
+      "romanization": "kakoye segodnya chislo",
+      "nativeText": "Recall \"какое сегодня число?\" from memory, then explain what would change if a nearby alternative replaced it in \"Какое сегодня число?\".",
+      "pronunciation": "kakoye segodnya chislo",
+      "exampleTarget": "Какое сегодня число?",
+      "exampleNative": "Self-check against the model before moving on: “What is today’s date?”",
+      "korean": "какое сегодня число?",
+      "english": "Recall \"какое сегодня число?\" from memory, then explain what would change if a nearby alternative replaced it in \"Какое сегодня число?\".",
+      "example": "Какое сегодня число?",
+      "exampleEnglish": "Self-check against the model before moving on: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "какое сегодня число?",
+      "romanization": "kakoye segodnya chislo",
+      "nativeText": "Repair \"какое сегодня число?\" inside \"Какое сегодня число?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What is today’s date?” Literally “what number is today?”",
+      "pronunciation": "kakoye segodnya chislo",
+      "exampleTarget": "Какое сегодня число?",
+      "exampleNative": "Use the model as the repair target: “What is today’s date?”",
+      "korean": "какое сегодня число?",
+      "english": "Repair \"какое сегодня число?\" inside \"Какое сегодня число?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What is today’s date?” Literally “what number is today?”",
+      "example": "Какое сегодня число?",
+      "exampleEnglish": "Use the model as the repair target: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "какое сегодня число?",
+      "romanization": "kakoye segodnya chislo",
+      "nativeText": "Transfer \"какое сегодня число?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Какое сегодня число?\".",
+      "pronunciation": "kakoye segodnya chislo",
+      "exampleTarget": "Какое сегодня число?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is today’s date?”",
+      "korean": "какое сегодня число?",
+      "english": "Transfer \"какое сегодня число?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Какое сегодня число?\".",
+      "example": "Какое сегодня число?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "какое сегодня число?",
+      "romanization": "kakoye segodnya chislo",
+      "nativeText": "Find one word or phrase that naturally travels with \"какое сегодня число?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kakoye segodnya chislo",
+      "exampleTarget": "Какое сегодня число?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What is today’s date?”",
+      "korean": "какое сегодня число?",
+      "english": "Find one word or phrase that naturally travels with \"какое сегодня число?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Какое сегодня число?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "какое сегодня число?",
+      "romanization": "kakoye segodnya chislo",
+      "nativeText": "Listen for \"какое сегодня число?\" inside \"Какое сегодня число?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kakoye segodnya chislo",
+      "exampleTarget": "Какое сегодня число?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is today’s date?”",
+      "korean": "какое сегодня число?",
+      "english": "Listen for \"какое сегодня число?\" inside \"Какое сегодня число?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Какое сегодня число?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "какое сегодня число?",
+      "romanization": "kakoye segodnya chislo",
+      "nativeText": "Write \"какое сегодня число?\" again without looking, then compare the exact written form against \"Какое сегодня число?\" before moving on.",
+      "pronunciation": "kakoye segodnya chislo",
+      "exampleTarget": "Какое сегодня число?",
+      "exampleNative": "Use the written model as the final correctness check: “What is today’s date?”",
+      "korean": "какое сегодня число?",
+      "english": "Write \"какое сегодня число?\" again without looking, then compare the exact written form against \"Какое сегодня число?\" before moving on.",
+      "example": "Какое сегодня число?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "какое сегодня число?",
+      "romanization": "kakoye segodnya chislo",
+      "nativeText": "Check whether \"какое сегодня число?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "pronunciation": "kakoye segodnya chislo",
+      "exampleTarget": "Какое сегодня число?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "korean": "какое сегодня число?",
+      "english": "Check whether \"какое сегодня число?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "example": "Какое сегодня число?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What is today’s date?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "пятого мая",
+      "romanization": "pyatogo maya",
+      "nativeText": "“On the fifth of May.” Russian dates use ordinal genitive forms for both day and month.",
+      "pronunciation": "pyatogo maya",
+      "exampleTarget": "Занятия начинаются пятого мая.",
+      "exampleNative": "“Classes begin on May fifth.”",
+      "korean": "пятого мая",
+      "english": "“On the fifth of May.” Russian dates use ordinal genitive forms for both day and month.",
+      "example": "Занятия начинаются пятого мая.",
+      "exampleEnglish": "“Classes begin on May fifth.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "Занятия начинаются пятого мая.",
+      "romanization": "pyatogo maya",
+      "nativeText": "Model use for \"Занятия начинаются пятого мая.\": “Classes begin on May fifth.”",
+      "pronunciation": "pyatogo maya",
+      "exampleTarget": "Занятия начинаются пятого мая.",
+      "exampleNative": "“Classes begin on May fifth.”",
+      "korean": "Занятия начинаются пятого мая.",
+      "english": "Model use for \"Занятия начинаются пятого мая.\": “Classes begin on May fifth.”",
+      "example": "Занятия начинаются пятого мая.",
+      "exampleEnglish": "“Classes begin on May fifth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "пятого мая",
+      "romanization": "pyatogo maya",
+      "nativeText": "Usage focus for \"пятого мая\": “On the fifth of May.” Russian dates use ordinal genitive forms for both day and month.",
+      "pronunciation": "pyatogo maya",
+      "exampleTarget": "Занятия начинаются пятого мая.",
+      "exampleNative": "Notice what the form is doing here: “Classes begin on May fifth.”",
+      "korean": "пятого мая",
+      "english": "Usage focus for \"пятого мая\": “On the fifth of May.” Russian dates use ordinal genitive forms for both day and month.",
+      "example": "Занятия начинаются пятого мая.",
+      "exampleEnglish": "Notice what the form is doing here: “Classes begin on May fifth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "пятого мая",
+      "romanization": "pyatogo maya",
+      "nativeText": "Contrast check for \"пятого мая\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pyatogo maya",
+      "exampleTarget": "Занятия начинаются пятого мая.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Classes begin on May fifth.”",
+      "korean": "пятого мая",
+      "english": "Contrast check for \"пятого мая\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Занятия начинаются пятого мая.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Classes begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "пятого мая",
+      "romanization": "pyatogo maya",
+      "nativeText": "Recall \"пятого мая\" from memory, then explain what would change if a nearby alternative replaced it in \"Занятия начинаются пятого мая.\".",
+      "pronunciation": "pyatogo maya",
+      "exampleTarget": "Занятия начинаются пятого мая.",
+      "exampleNative": "Self-check against the model before moving on: “Classes begin on May fifth.”",
+      "korean": "пятого мая",
+      "english": "Recall \"пятого мая\" from memory, then explain what would change if a nearby alternative replaced it in \"Занятия начинаются пятого мая.\".",
+      "example": "Занятия начинаются пятого мая.",
+      "exampleEnglish": "Self-check against the model before moving on: “Classes begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "пятого мая",
+      "romanization": "pyatogo maya",
+      "nativeText": "Repair \"пятого мая\" inside \"Занятия начинаются пятого мая.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “On the fifth of May.” Russian dates use ordinal genitive forms for both day and month.",
+      "pronunciation": "pyatogo maya",
+      "exampleTarget": "Занятия начинаются пятого мая.",
+      "exampleNative": "Use the model as the repair target: “Classes begin on May fifth.”",
+      "korean": "пятого мая",
+      "english": "Repair \"пятого мая\" inside \"Занятия начинаются пятого мая.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “On the fifth of May.” Russian dates use ordinal genitive forms for both day and month.",
+      "example": "Занятия начинаются пятого мая.",
+      "exampleEnglish": "Use the model as the repair target: “Classes begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "пятого мая",
+      "romanization": "pyatogo maya",
+      "nativeText": "Transfer \"пятого мая\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Занятия начинаются пятого мая.\".",
+      "pronunciation": "pyatogo maya",
+      "exampleTarget": "Занятия начинаются пятого мая.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Classes begin on May fifth.”",
+      "korean": "пятого мая",
+      "english": "Transfer \"пятого мая\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Занятия начинаются пятого мая.\".",
+      "example": "Занятия начинаются пятого мая.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Classes begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "пятого мая",
+      "romanization": "pyatogo maya",
+      "nativeText": "Find one word or phrase that naturally travels with \"пятого мая\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pyatogo maya",
+      "exampleTarget": "Занятия начинаются пятого мая.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Classes begin on May fifth.”",
+      "korean": "пятого мая",
+      "english": "Find one word or phrase that naturally travels with \"пятого мая\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Занятия начинаются пятого мая.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Classes begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "пятого мая",
+      "romanization": "pyatogo maya",
+      "nativeText": "Listen for \"пятого мая\" inside \"Занятия начинаются пятого мая.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pyatogo maya",
+      "exampleTarget": "Занятия начинаются пятого мая.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Classes begin on May fifth.”",
+      "korean": "пятого мая",
+      "english": "Listen for \"пятого мая\" inside \"Занятия начинаются пятого мая.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Занятия начинаются пятого мая.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Classes begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "пятого мая",
+      "romanization": "pyatogo maya",
+      "nativeText": "Write \"пятого мая\" again without looking, then compare the exact written form against \"Занятия начинаются пятого мая.\" before moving on.",
+      "pronunciation": "pyatogo maya",
+      "exampleTarget": "Занятия начинаются пятого мая.",
+      "exampleNative": "Use the written model as the final correctness check: “Classes begin on May fifth.”",
+      "korean": "пятого мая",
+      "english": "Write \"пятого мая\" again without looking, then compare the exact written form against \"Занятия начинаются пятого мая.\" before moving on.",
+      "example": "Занятия начинаются пятого мая.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Classes begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "пятого мая",
+      "romanization": "pyatogo maya",
+      "nativeText": "Check whether \"пятого мая\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Classes begin on May fifth.”",
+      "pronunciation": "pyatogo maya",
+      "exampleTarget": "Занятия начинаются пятого мая.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Classes begin on May fifth.”",
+      "korean": "пятого мая",
+      "english": "Check whether \"пятого мая\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Classes begin on May fifth.”",
+      "example": "Занятия начинаются пятого мая.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Classes begin on May fifth.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "на следующей неделе",
+      "romanization": "na sleduyushchey nedele",
+      "nativeText": "“Next week.” This fixed phrase introduces a near-future period.",
+      "pronunciation": "na sleduyushchey nedele",
+      "exampleTarget": "Мы встретимся на следующей неделе.",
+      "exampleNative": "“We will meet next week.”",
+      "korean": "на следующей неделе",
+      "english": "“Next week.” This fixed phrase introduces a near-future period.",
+      "example": "Мы встретимся на следующей неделе.",
+      "exampleEnglish": "“We will meet next week.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "Мы встретимся на следующей неделе.",
+      "romanization": "na sleduyushchey nedele",
+      "nativeText": "Model use for \"Мы встретимся на следующей неделе.\": “We will meet next week.”",
+      "pronunciation": "na sleduyushchey nedele",
+      "exampleTarget": "Мы встретимся на следующей неделе.",
+      "exampleNative": "“We will meet next week.”",
+      "korean": "Мы встретимся на следующей неделе.",
+      "english": "Model use for \"Мы встретимся на следующей неделе.\": “We will meet next week.”",
+      "example": "Мы встретимся на следующей неделе.",
+      "exampleEnglish": "“We will meet next week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "на следующей неделе",
+      "romanization": "na sleduyushchey nedele",
+      "nativeText": "Usage focus for \"на следующей неделе\": “Next week.” This fixed phrase introduces a near-future period.",
+      "pronunciation": "na sleduyushchey nedele",
+      "exampleTarget": "Мы встретимся на следующей неделе.",
+      "exampleNative": "Notice what the form is doing here: “We will meet next week.”",
+      "korean": "на следующей неделе",
+      "english": "Usage focus for \"на следующей неделе\": “Next week.” This fixed phrase introduces a near-future period.",
+      "example": "Мы встретимся на следующей неделе.",
+      "exampleEnglish": "Notice what the form is doing here: “We will meet next week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "на следующей неделе",
+      "romanization": "na sleduyushchey nedele",
+      "nativeText": "Contrast check for \"на следующей неделе\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "na sleduyushchey nedele",
+      "exampleTarget": "Мы встретимся на следующей неделе.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We will meet next week.”",
+      "korean": "на следующей неделе",
+      "english": "Contrast check for \"на следующей неделе\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мы встретимся на следующей неделе.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "на следующей неделе",
+      "romanization": "na sleduyushchey nedele",
+      "nativeText": "Recall \"на следующей неделе\" from memory, then explain what would change if a nearby alternative replaced it in \"Мы встретимся на следующей неделе.\".",
+      "pronunciation": "na sleduyushchey nedele",
+      "exampleTarget": "Мы встретимся на следующей неделе.",
+      "exampleNative": "Self-check against the model before moving on: “We will meet next week.”",
+      "korean": "на следующей неделе",
+      "english": "Recall \"на следующей неделе\" from memory, then explain what would change if a nearby alternative replaced it in \"Мы встретимся на следующей неделе.\".",
+      "example": "Мы встретимся на следующей неделе.",
+      "exampleEnglish": "Self-check against the model before moving on: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "на следующей неделе",
+      "romanization": "na sleduyushchey nedele",
+      "nativeText": "Repair \"на следующей неделе\" inside \"Мы встретимся на следующей неделе.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.” This fixed phrase introduces a near-future period.",
+      "pronunciation": "na sleduyushchey nedele",
+      "exampleTarget": "Мы встретимся на следующей неделе.",
+      "exampleNative": "Use the model as the repair target: “We will meet next week.”",
+      "korean": "на следующей неделе",
+      "english": "Repair \"на следующей неделе\" inside \"Мы встретимся на следующей неделе.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.” This fixed phrase introduces a near-future period.",
+      "example": "Мы встретимся на следующей неделе.",
+      "exampleEnglish": "Use the model as the repair target: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "на следующей неделе",
+      "romanization": "na sleduyushchey nedele",
+      "nativeText": "Transfer \"на следующей неделе\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мы встретимся на следующей неделе.\".",
+      "pronunciation": "na sleduyushchey nedele",
+      "exampleTarget": "Мы встретимся на следующей неделе.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “We will meet next week.”",
+      "korean": "на следующей неделе",
+      "english": "Transfer \"на следующей неделе\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мы встретимся на следующей неделе.\".",
+      "example": "Мы встретимся на следующей неделе.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "на следующей неделе",
+      "romanization": "na sleduyushchey nedele",
+      "nativeText": "Find one word or phrase that naturally travels with \"на следующей неделе\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "na sleduyushchey nedele",
+      "exampleTarget": "Мы встретимся на следующей неделе.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “We will meet next week.”",
+      "korean": "на следующей неделе",
+      "english": "Find one word or phrase that naturally travels with \"на следующей неделе\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мы встретимся на следующей неделе.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "на следующей неделе",
+      "romanization": "na sleduyushchey nedele",
+      "nativeText": "Listen for \"на следующей неделе\" inside \"Мы встретимся на следующей неделе.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "na sleduyushchey nedele",
+      "exampleTarget": "Мы встретимся на следующей неделе.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We will meet next week.”",
+      "korean": "на следующей неделе",
+      "english": "Listen for \"на следующей неделе\" inside \"Мы встретимся на следующей неделе.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мы встретимся на следующей неделе.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "на следующей неделе",
+      "romanization": "na sleduyushchey nedele",
+      "nativeText": "Write \"на следующей неделе\" again without looking, then compare the exact written form against \"Мы встретимся на следующей неделе.\" before moving on.",
+      "pronunciation": "na sleduyushchey nedele",
+      "exampleTarget": "Мы встретимся на следующей неделе.",
+      "exampleNative": "Use the written model as the final correctness check: “We will meet next week.”",
+      "korean": "на следующей неделе",
+      "english": "Write \"на следующей неделе\" again without looking, then compare the exact written form against \"Мы встретимся на следующей неделе.\" before moving on.",
+      "example": "Мы встретимся на следующей неделе.",
+      "exampleEnglish": "Use the written model as the final correctness check: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "на следующей неделе",
+      "romanization": "na sleduyushchey nedele",
+      "nativeText": "Check whether \"на следующей неделе\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We will meet next week.”",
+      "pronunciation": "na sleduyushchey nedele",
+      "exampleTarget": "Мы встретимся на следующей неделе.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “We will meet next week.”",
+      "korean": "на следующей неделе",
+      "english": "Check whether \"на следующей неделе\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We will meet next week.”",
+      "example": "Мы встретимся на следующей неделе.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “We will meet next week.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "когда?",
+      "romanization": "kogda",
+      "nativeText": "“When?” A compact question word for dates and times.",
+      "pronunciation": "kogda",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "когда?",
+      "english": "“When?” A compact question word for dates and times.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "Когда начинается встреча?",
+      "romanization": "kogda",
+      "nativeText": "Model use for \"Когда начинается встреча?\": “When does the meeting start?”",
+      "pronunciation": "kogda",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "Когда начинается встреча?",
+      "english": "Model use for \"Когда начинается встреча?\": “When does the meeting start?”",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "когда?",
+      "romanization": "kogda",
+      "nativeText": "Usage focus for \"когда?\": “When?” A compact question word for dates and times.",
+      "pronunciation": "kogda",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "Notice what the form is doing here: “When does the meeting start?”",
+      "korean": "когда?",
+      "english": "Usage focus for \"когда?\": “When?” A compact question word for dates and times.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "Notice what the form is doing here: “When does the meeting start?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "когда?",
+      "romanization": "kogda",
+      "nativeText": "Contrast check for \"когда?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kogda",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When does the meeting start?”",
+      "korean": "когда?",
+      "english": "Contrast check for \"когда?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "когда?",
+      "romanization": "kogda",
+      "nativeText": "Recall \"когда?\" from memory, then explain what would change if a nearby alternative replaced it in \"Когда начинается встреча?\".",
+      "pronunciation": "kogda",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "Self-check against the model before moving on: “When does the meeting start?”",
+      "korean": "когда?",
+      "english": "Recall \"когда?\" from memory, then explain what would change if a nearby alternative replaced it in \"Когда начинается встреча?\".",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "Self-check against the model before moving on: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "когда?",
+      "romanization": "kogda",
+      "nativeText": "Repair \"когда?\" inside \"Когда начинается встреча?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?” A compact question word for dates and times.",
+      "pronunciation": "kogda",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "Use the model as the repair target: “When does the meeting start?”",
+      "korean": "когда?",
+      "english": "Repair \"когда?\" inside \"Когда начинается встреча?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?” A compact question word for dates and times.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "Use the model as the repair target: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "когда?",
+      "romanization": "kogda",
+      "nativeText": "Transfer \"когда?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Когда начинается встреча?\".",
+      "pronunciation": "kogda",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When does the meeting start?”",
+      "korean": "когда?",
+      "english": "Transfer \"когда?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Когда начинается встреча?\".",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "когда?",
+      "romanization": "kogda",
+      "nativeText": "Find one word or phrase that naturally travels with \"когда?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kogda",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When does the meeting start?”",
+      "korean": "когда?",
+      "english": "Find one word or phrase that naturally travels with \"когда?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "когда?",
+      "romanization": "kogda",
+      "nativeText": "Listen for \"когда?\" inside \"Когда начинается встреча?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kogda",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When does the meeting start?”",
+      "korean": "когда?",
+      "english": "Listen for \"когда?\" inside \"Когда начинается встреча?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "когда?",
+      "romanization": "kogda",
+      "nativeText": "Write \"когда?\" again without looking, then compare the exact written form against \"Когда начинается встреча?\" before moving on.",
+      "pronunciation": "kogda",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "Use the written model as the final correctness check: “When does the meeting start?”",
+      "korean": "когда?",
+      "english": "Write \"когда?\" again without looking, then compare the exact written form against \"Когда начинается встреча?\" before moving on.",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit06datescalendar-vocabulary-1",
+        "ru-level1unit06datescalendar-vocabulary-2",
+        "ru-level1unit06datescalendar-grammar-1",
+        "ru-level1unit06datescalendar-grammar-2",
+        "ru-level1unit06datescalendar-reading",
+        "ru-level1unit06datescalendar-listening",
+        "ru-level1unit06datescalendar-writing",
+        "ru-level1unit06datescalendar-task"
+      ],
+      "targetText": "когда?",
+      "romanization": "kogda",
+      "nativeText": "Check whether \"когда?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When does the meeting start?”",
+      "pronunciation": "kogda",
+      "exampleTarget": "Когда начинается встреча?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When does the meeting start?”",
+      "korean": "когда?",
+      "english": "Check whether \"когда?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When does the meeting start?”",
+      "example": "Когда начинается встреча?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When does the meeting start?”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

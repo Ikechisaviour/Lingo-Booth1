@@ -96,7 +96,11 @@ function defaultActivityPlan(t) {
 
 const itemTarget = (item = {}) => firstText(item.targetText, item.korean);
 const itemNative = (item = {}) => firstText(item.nativeText, item.english);
-const itemExampleTarget = (item = {}) => firstText(item.exampleTarget, item.example);
+const normalizeStudyText = (value = '') => String(value || '').trim().toLowerCase();
+const itemExampleTarget = (item = {}) => {
+  const example = firstText(item.exampleTarget, item.example);
+  return normalizeStudyText(example) === normalizeStudyText(itemTarget(item)) ? '' : example;
+};
 const itemExampleNative = (item = {}) => firstText(item.exampleNative, item.exampleEnglish);
 
 function itemSection(item = {}) {
@@ -494,6 +498,7 @@ function ClassLessonPage() {
   const [status, setStatus] = useState(() => t('classLesson.status.ready', 'Ready'));
   const [audioUnlocked, setAudioUnlocked] = useState(() => speechService.isAudioUnlocked());
   const [showVoicePicker, setShowVoicePicker] = useState(false);
+  const [agendaOpen, setAgendaOpen] = useState(false);
   // Per-session set of example groups that have already played their intro cue.
   // Reset when the page mounts so the first example each visit still gets cued.
   const exampleCueShownRef = useRef(new Set());
@@ -1056,7 +1061,7 @@ function ClassLessonPage() {
       const rawReply = String(data.reply || '').trim();
       const reply = rawReply === FORMATTING_FALLBACK_REPLY
         ? lessonActionFallback(selectedItem, selectedActivity, targetLanguage, nativeLanguage, t)
-        : rawReply || 'Let us continue with the next part of the lesson.';
+        : rawReply || t('classLesson.fallback.continue', 'Let us continue with the next part of the lesson.');
       const assistantTurn = makeTutorTurn('assistant', reply, {
         coachingTip: data.coachingTip || '',
         speechParts: Array.isArray(data.speechParts) ? data.speechParts : [],
@@ -1545,9 +1550,21 @@ function ClassLessonPage() {
           <h1>{lesson.title}</h1>
           <p>{nativeName} -> {targetName}</p>
         </div>
-        <div className="class-progress">
-          <strong>{progressPercent}%</strong>
-          <span>{t('classLesson.complete', 'complete')}</span>
+        <div className="class-header-tools">
+          <button
+            type="button"
+            className="class-outline-toggle"
+            onClick={() => setAgendaOpen((open) => !open)}
+            aria-expanded={agendaOpen}
+          >
+            {agendaOpen
+              ? t('classLesson.hideOutline', 'Hide outline')
+              : t('classLesson.showOutline', 'Show outline')}
+          </button>
+          <div className="class-progress">
+            <strong>{progressPercent}%</strong>
+            <span>{t('classLesson.complete', 'complete')}</span>
+          </div>
         </div>
       </header>
 
@@ -1612,8 +1629,8 @@ function ClassLessonPage() {
         </section>
       )}
 
-      <main className="class-lesson-shell">
-        <aside className="class-agenda" aria-label={t('classLesson.agendaAriaLabel', 'Lesson agenda')}>
+      <main className={`class-lesson-shell ${agendaOpen ? 'agenda-open' : 'agenda-closed'}`}>
+        <aside className={`class-agenda ${agendaOpen ? 'open' : 'collapsed'}`} aria-label={t('classLesson.agendaAriaLabel', 'Lesson agenda')}>
           <div className="class-agenda-summary">
             <span>{t('classLesson.textbookActivities', { count: activityPlan.length, defaultValue: '{{count}} textbook activities' })}</span>
             <span>{t('classLesson.unitSequence', 'Unit sequence')}</span>
@@ -1709,7 +1726,7 @@ function ClassLessonPage() {
             {activityItemIndices.length === 0 ? (
               <div className="class-item-strip" aria-label={t('classLesson.lessonMaterialAriaLabel', 'Lesson material')}>
                 <p className="class-item-strip-empty">
-                  {t('classLesson.noItemsTagged', 'No items are tagged for this activity yet. Pick another activity, or seed reading/listening/pronunciation/culture content for this section.')}
+                  {t('classLesson.noItemsTagged', 'Nothing in this section yet. Try another activity to keep going.')}
                 </p>
               </div>
             ) : (() => {

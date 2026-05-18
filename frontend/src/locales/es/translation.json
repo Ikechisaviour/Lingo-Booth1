@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Practica este artículo en otro lugar",
     "practiceEverywhere": "Practica esto en todas partes",
     "saveReply": "Guardar respuesta",
-    "selfTestReason": "Guardado de clase para una autoevaluación rápida."
+    "selfTestReason": "Guardado de clase para una autoevaluación rápida.",
+    "hideOutline": "Ocultar esquema",
+    "showOutline": "Mostrar esquema"
   },
   "classList": {
     "heroAriaLabel": "Clase",
@@ -994,7 +996,7 @@
     "guidedTutor": "tutor guiado",
     "startClass": "Empezar clase",
     "classFallback": "Clase",
-    "loadError": "No se pudieron cargar las clases. Asegúrate de que el backend esté funcionando y tenga datos cargados.",
+    "loadError": "No pudimos cargar tus lecciones en este momento. Por favor verifique su conexión e inténtelo nuevamente.",
     "tracks": {
       "foundationTitle": "Nivel {{level}} - Fundamentos",
       "foundationSubtitle": "Empieza aquí con el sistema de sonidos y escritura de {{language}}.",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "Nivel {{level}} · Unidad {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Intentar otra vez",
+    "progressAriaLabel": "Progreso de clase",
+    "progressCaption": "{{percent}}% completo · {{completed}} de {{total}} elementos"
   },
   "contextPractice": {
     "title": "Lecciones formadas a tu alrededor",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "lo que salió bien",
     "recapUsefulPhrases": "Frases útiles",
     "recapReview": "Revisar siguiente",
-    "recapReviewFallback": "Guarda una frase y reutilízala en otro modo de práctica."
+    "recapReviewFallback": "Guarda una frase y reutilízala en otro modo de práctica.",
+    "hideSetup": "Ocultar configuración",
+    "showSetup": "Mostrar configuración"
   },
   "exerciseHub": {
     "ariaLabel": "Ejercicio",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: copia la forma y luego escríbela de memoria."
     },
     "savedReason": "Guardado de la práctica de escritura para otro pase.",
-    "selfTestReason": "Guardado de la práctica de escritura para una autoevaluación rápida."
+    "selfTestReason": "Guardado de la práctica de escritura para una autoevaluación rápida.",
+    "hideNotebook": "Ocultar cuaderno",
+    "showNotebook": "Mostrar cuaderno"
   },
   "institution": {
     "kicker": "Institución",

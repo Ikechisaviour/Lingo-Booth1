@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u11',
-  title: 'Level 1 · Unit 11: Afspraken en Planning — Scheduling',
-  category: 'time',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Arrange meetings, talk about availability, and change plans politely.',
-  vocabularyGoal: 'Use appointment, schedule, clock-time, and availability words.',
-  grammarGoal: 'Use modal verbs such as `kunnen` and keep V2 order in time-first sentences.',
-  speakingGoal: 'Propose a time, accept or reject it, and offer another option.',
-  task: 'Schedule a study meeting with a classmate.',
-  expressionPractice: [
-    practice('proposing-time', 'Proposing time', 'Use `zullen we ...?`.'),
-    practice('accepting', 'Accepting', 'Use `dat kan`.'),
-    practice('rescheduling', 'Rescheduling', 'Use `ik kan niet` plus another option.'),
+module.exports = {
+  "title": "Level 1 · Unit 11: Afspraken en Planning — Scheduling",
+  "category": "time",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit11scheduling-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Arrange meetings, talk about availability, and change plans politely."
+      ],
+      "task": "Schedule a study meeting with a classmate."
+    },
+    {
+      "id": "nl-level1unit11scheduling-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit11scheduling-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 11: Afspraken en Planning — Scheduling with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit11scheduling-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 11: Afspraken en Planning — Scheduling sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit11scheduling-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Arrange meetings, talk about availability, and change plans politely."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit11scheduling-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 11: Afspraken en Planning — Scheduling with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit11scheduling-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit11scheduling-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit11scheduling-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit11scheduling-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit11scheduling-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Schedule a study meeting with a classmate."
+      ],
+      "task": "Schedule a study meeting with a classmate."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-planning'],
-  items: [
-    item('afspraak', 'AF-sprahk', '“Appointment / agreement.” A very useful everyday noun.', 'Ik heb morgen een afspraak.', '“I have an appointment tomorrow.”'),
-    item('agenda', 'a-KHEN-da', '“Calendar / planner.” Common in scheduling talk.', 'Mijn agenda is vandaag vol.', '“My schedule is full today.”'),
-    item('om drie uur', 'om dree yr', '“At three o’clock.” `Om` marks clock time.', 'De vergadering begint om drie uur.', '“The meeting starts at three.”'),
-    item('ik kan', 'ik kan', '“I can / I am available.” Context supplies the scheduling meaning.', 'Ik kan vanavond.', '“I am available tonight.”'),
-    item('ik kan niet', 'ik kan neet', '“I cannot.” Add an alternative to stay cooperative.', 'Ik kan niet in de ochtend, maar wel in de avond.', '“I cannot in the morning, but I can in the evening.”'),
-    item('zullen we ...?', 'ZUL-len və', '“Shall we ...?” A natural proposal frame.', 'Zullen we vrijdag afspreken?', '“Shall we meet on Friday?”'),
-    item('dat kan', 'dat kan', '“That works.” A concise acceptance.', 'Vijf uur? Ja, dat kan.', '“Five o’clock? Yes, that works.”'),
-    item('verzetten', 'fer-ZET-ten', '“To reschedule / move.” Common for changing appointments.', 'Kunnen we de afspraak verzetten?', '“Can we reschedule the appointment?”'),
+  "expressionPractice": [
+    {
+      "id": "proposing-time",
+      "label": "Proposing time",
+      "goal": "Use `zullen we ...?`."
+    },
+    {
+      "id": "accepting",
+      "label": "Accepting",
+      "goal": "Use `dat kan`."
+    },
+    {
+      "id": "rescheduling",
+      "label": "Rescheduling",
+      "goal": "Use `ik kan niet` plus another option."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-time",
+    "topic-planning"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Arrange meetings, talk about availability, and change plans politely.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Schedule a study meeting with a classmate.",
+      "korean": "lesdoel",
+      "english": "Arrange meetings, talk about availability, and change plans politely.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Schedule a study meeting with a classmate."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit11scheduling-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik heb morgen een afspraak.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "“I have an appointment tomorrow.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik heb morgen een afspraak.\".",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "“I have an appointment tomorrow.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1"
+      ],
+      "targetText": "afspraak",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 11: Afspraken en Planning — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "“I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "Use the key language of Level 1 · Unit 11: Afspraken en Planning — Scheduling with the register and setting that the lesson requires.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "“I have an appointment tomorrow.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-2"
+      ],
+      "targetText": "agenda",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 11: Afspraken en Planning — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "agenda",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 11: Afspraken en Planning — Scheduling sound precise rather than merely understandable.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit11scheduling-grammar-1"
+      ],
+      "targetText": "afspraak",
+      "romanization": "",
+      "nativeText": "Arrange meetings, talk about availability, and change plans politely.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "“I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "Arrange meetings, talk about availability, and change plans politely.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "“I have an appointment tomorrow.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "agenda",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 11: Afspraken en Planning — Scheduling with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "agenda",
+      "english": "Contrast the main pattern in Level 1 · Unit 11: Afspraken en Planning — Scheduling with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit11scheduling-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Kunnen we de afspraak verzetten?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "“Can we reschedule the appointment?”",
+      "korean": "leesmodel",
+      "english": "Read \"Kunnen we de afspraak verzetten?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "“Can we reschedule the appointment?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit11scheduling-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Kunnen we de afspraak verzetten?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "“Can we reschedule the appointment?”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Kunnen we de afspraak verzetten?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "“Can we reschedule the appointment?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit11scheduling-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Ik heb morgen een afspraak.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Ik heb morgen een afspraak.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit11scheduling-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Schedule a study meeting with a classmate.",
+      "pronunciation": "",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "Schedule a study meeting with a classmate.",
+      "korean": "eindtaak",
+      "english": "Schedule a study meeting with a classmate.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "Schedule a study meeting with a classmate."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Mijn agenda is vandaag vol.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “My schedule is full today.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Mijn agenda is vandaag vol.\" against the model.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “My schedule is full today.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik heb morgen een afspraak.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "“I have an appointment tomorrow.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Ik heb morgen een afspraak.\" before reusing it elsewhere.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "“I have an appointment tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Kunnen we de afspraak verzetten?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "“Can we reschedule the appointment?”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Kunnen we de afspraak verzetten?\" as one thought.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "“Can we reschedule the appointment?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik heb morgen een afspraak.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Ik heb morgen een afspraak.\" and move it into your own life.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"afspraak\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "afspraak",
+      "exampleNative": "“Appointment / agreement.” A very useful everyday noun.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"afspraak\" before looking back.",
+      "example": "afspraak",
+      "exampleEnglish": "“Appointment / agreement.” A very useful everyday noun."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Kunnen we de afspraak verzetten?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Kunnen we de afspraak verzetten?\" rather than restarting from a blank sentence.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 11: Afspraken en Planning — Scheduling with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Mijn agenda is vandaag vol.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 11: Afspraken en Planning — Scheduling with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Mijn agenda is vandaag vol.\" as the comparison line.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit11scheduling-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik heb morgen een afspraak.\".",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "“I have an appointment tomorrow.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Ik heb morgen een afspraak.\".",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "“I have an appointment tomorrow.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Kunnen we de afspraak verzetten?\".",
+      "pronunciation": "",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "“Can we reschedule the appointment?”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Kunnen we de afspraak verzetten?\".",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "“Can we reschedule the appointment?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik heb morgen een afspraak.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "“I have an appointment tomorrow.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Ik heb morgen een afspraak.\" one layer at a time.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "“I have an appointment tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Mijn agenda is vandaag vol.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Mijn agenda is vandaag vol.\" as the deciding example.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-culture",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Kunnen we de afspraak verzetten?\".",
+      "pronunciation": "",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "“Can we reschedule the appointment?”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Kunnen we de afspraak verzetten?\".",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "“Can we reschedule the appointment?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "afspraak",
+      "romanization": "AF-sprahk",
+      "nativeText": "“Appointment / agreement.” A very useful everyday noun.",
+      "pronunciation": "AF-sprahk",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "“I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "“Appointment / agreement.” A very useful everyday noun.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "“I have an appointment tomorrow.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "Ik heb morgen een afspraak.",
+      "romanization": "AF-sprahk",
+      "nativeText": "Model use for \"Ik heb morgen een afspraak.\": “I have an appointment tomorrow.”",
+      "pronunciation": "AF-sprahk",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "“I have an appointment tomorrow.”",
+      "korean": "Ik heb morgen een afspraak.",
+      "english": "Model use for \"Ik heb morgen een afspraak.\": “I have an appointment tomorrow.”",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "“I have an appointment tomorrow.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "afspraak",
+      "romanization": "AF-sprahk",
+      "nativeText": "Usage focus for \"afspraak\": Use the key language of Level 1 · Unit 11: Afspraken en Planning — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "AF-sprahk",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "Notice what the form is doing here: “I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "Usage focus for \"afspraak\": Use the key language of Level 1 · Unit 11: Afspraken en Planning — Scheduling with the register and setting that the lesson requires.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "Notice what the form is doing here: “I have an appointment tomorrow.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "afspraak",
+      "romanization": "AF-sprahk",
+      "nativeText": "Contrast check for \"afspraak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "AF-sprahk",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "Contrast check for \"afspraak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have an appointment tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "afspraak",
+      "romanization": "AF-sprahk",
+      "nativeText": "Recall \"afspraak\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb morgen een afspraak.\".",
+      "pronunciation": "AF-sprahk",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "Self-check against the model before moving on: “I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "Recall \"afspraak\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb morgen een afspraak.\".",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have an appointment tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "afspraak",
+      "romanization": "AF-sprahk",
+      "nativeText": "Repair \"afspraak\" inside \"Ik heb morgen een afspraak.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 11: Afspraken en Planning — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "AF-sprahk",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "Use the model as the repair target: “I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "Repair \"afspraak\" inside \"Ik heb morgen een afspraak.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 11: Afspraken en Planning — Scheduling with the register and setting that the lesson requires.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "Use the model as the repair target: “I have an appointment tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "afspraak",
+      "romanization": "AF-sprahk",
+      "nativeText": "Transfer \"afspraak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb morgen een afspraak.\".",
+      "pronunciation": "AF-sprahk",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "Transfer \"afspraak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb morgen een afspraak.\".",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have an appointment tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "afspraak",
+      "romanization": "AF-sprahk",
+      "nativeText": "Find one word or phrase that naturally travels with \"afspraak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "AF-sprahk",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "Find one word or phrase that naturally travels with \"afspraak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have an appointment tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "afspraak",
+      "romanization": "AF-sprahk",
+      "nativeText": "Listen for \"afspraak\" inside \"Ik heb morgen een afspraak.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "AF-sprahk",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "Listen for \"afspraak\" inside \"Ik heb morgen een afspraak.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have an appointment tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "afspraak",
+      "romanization": "AF-sprahk",
+      "nativeText": "Write \"afspraak\" again without looking, then compare the exact written form against \"Ik heb morgen een afspraak.\" before moving on.",
+      "pronunciation": "AF-sprahk",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "Use the written model as the final correctness check: “I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "Write \"afspraak\" again without looking, then compare the exact written form against \"Ik heb morgen een afspraak.\" before moving on.",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have an appointment tomorrow.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "afspraak",
+      "romanization": "AF-sprahk",
+      "nativeText": "Check whether \"afspraak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have an appointment tomorrow.”",
+      "pronunciation": "AF-sprahk",
+      "exampleTarget": "Ik heb morgen een afspraak.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have an appointment tomorrow.”",
+      "korean": "afspraak",
+      "english": "Check whether \"afspraak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have an appointment tomorrow.”",
+      "example": "Ik heb morgen een afspraak.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have an appointment tomorrow.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "agenda",
+      "romanization": "a-KHEN-da",
+      "nativeText": "“Calendar / planner.” Common in scheduling talk.",
+      "pronunciation": "a-KHEN-da",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "agenda",
+      "english": "“Calendar / planner.” Common in scheduling talk.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "Mijn agenda is vandaag vol.",
+      "romanization": "a-KHEN-da",
+      "nativeText": "Model use for \"Mijn agenda is vandaag vol.\": “My schedule is full today.”",
+      "pronunciation": "a-KHEN-da",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "Mijn agenda is vandaag vol.",
+      "english": "Model use for \"Mijn agenda is vandaag vol.\": “My schedule is full today.”",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "agenda",
+      "romanization": "a-KHEN-da",
+      "nativeText": "Usage focus for \"agenda\": Distinguish the nearby wording choices that make Level 1 · Unit 11: Afspraken en Planning — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "a-KHEN-da",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "Notice what the form is doing here: “My schedule is full today.”",
+      "korean": "agenda",
+      "english": "Usage focus for \"agenda\": Distinguish the nearby wording choices that make Level 1 · Unit 11: Afspraken en Planning — Scheduling sound precise rather than merely understandable.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "Notice what the form is doing here: “My schedule is full today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "agenda",
+      "romanization": "a-KHEN-da",
+      "nativeText": "Contrast check for \"agenda\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "a-KHEN-da",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My schedule is full today.”",
+      "korean": "agenda",
+      "english": "Contrast check for \"agenda\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "agenda",
+      "romanization": "a-KHEN-da",
+      "nativeText": "Recall \"agenda\" from memory, then explain what would change if a nearby alternative replaced it in \"Mijn agenda is vandaag vol.\".",
+      "pronunciation": "a-KHEN-da",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "Self-check against the model before moving on: “My schedule is full today.”",
+      "korean": "agenda",
+      "english": "Recall \"agenda\" from memory, then explain what would change if a nearby alternative replaced it in \"Mijn agenda is vandaag vol.\".",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "Self-check against the model before moving on: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "agenda",
+      "romanization": "a-KHEN-da",
+      "nativeText": "Repair \"agenda\" inside \"Mijn agenda is vandaag vol.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 11: Afspraken en Planning — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "a-KHEN-da",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "Use the model as the repair target: “My schedule is full today.”",
+      "korean": "agenda",
+      "english": "Repair \"agenda\" inside \"Mijn agenda is vandaag vol.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 11: Afspraken en Planning — Scheduling sound precise rather than merely understandable.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "Use the model as the repair target: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "agenda",
+      "romanization": "a-KHEN-da",
+      "nativeText": "Transfer \"agenda\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mijn agenda is vandaag vol.\".",
+      "pronunciation": "a-KHEN-da",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My schedule is full today.”",
+      "korean": "agenda",
+      "english": "Transfer \"agenda\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Mijn agenda is vandaag vol.\".",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "agenda",
+      "romanization": "a-KHEN-da",
+      "nativeText": "Find one word or phrase that naturally travels with \"agenda\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "a-KHEN-da",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My schedule is full today.”",
+      "korean": "agenda",
+      "english": "Find one word or phrase that naturally travels with \"agenda\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "agenda",
+      "romanization": "a-KHEN-da",
+      "nativeText": "Listen for \"agenda\" inside \"Mijn agenda is vandaag vol.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "a-KHEN-da",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My schedule is full today.”",
+      "korean": "agenda",
+      "english": "Listen for \"agenda\" inside \"Mijn agenda is vandaag vol.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "agenda",
+      "romanization": "a-KHEN-da",
+      "nativeText": "Write \"agenda\" again without looking, then compare the exact written form against \"Mijn agenda is vandaag vol.\" before moving on.",
+      "pronunciation": "a-KHEN-da",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "Use the written model as the final correctness check: “My schedule is full today.”",
+      "korean": "agenda",
+      "english": "Write \"agenda\" again without looking, then compare the exact written form against \"Mijn agenda is vandaag vol.\" before moving on.",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "agenda",
+      "romanization": "a-KHEN-da",
+      "nativeText": "Check whether \"agenda\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”",
+      "pronunciation": "a-KHEN-da",
+      "exampleTarget": "Mijn agenda is vandaag vol.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”",
+      "korean": "agenda",
+      "english": "Check whether \"agenda\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”",
+      "example": "Mijn agenda is vandaag vol.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "om drie uur",
+      "romanization": "om dree yr",
+      "nativeText": "“At three o’clock.” `Om` marks clock time.",
+      "pronunciation": "om dree yr",
+      "exampleTarget": "De vergadering begint om drie uur.",
+      "exampleNative": "“The meeting starts at three.”",
+      "korean": "om drie uur",
+      "english": "“At three o’clock.” `Om` marks clock time.",
+      "example": "De vergadering begint om drie uur.",
+      "exampleEnglish": "“The meeting starts at three.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "De vergadering begint om drie uur.",
+      "romanization": "om dree yr",
+      "nativeText": "Model use for \"De vergadering begint om drie uur.\": “The meeting starts at three.”",
+      "pronunciation": "om dree yr",
+      "exampleTarget": "De vergadering begint om drie uur.",
+      "exampleNative": "“The meeting starts at three.”",
+      "korean": "De vergadering begint om drie uur.",
+      "english": "Model use for \"De vergadering begint om drie uur.\": “The meeting starts at three.”",
+      "example": "De vergadering begint om drie uur.",
+      "exampleEnglish": "“The meeting starts at three.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "om drie uur",
+      "romanization": "om dree yr",
+      "nativeText": "Usage focus for \"om drie uur\": “At three o’clock.” `Om` marks clock time.",
+      "pronunciation": "om dree yr",
+      "exampleTarget": "De vergadering begint om drie uur.",
+      "exampleNative": "Notice what the form is doing here: “The meeting starts at three.”",
+      "korean": "om drie uur",
+      "english": "Usage focus for \"om drie uur\": “At three o’clock.” `Om` marks clock time.",
+      "example": "De vergadering begint om drie uur.",
+      "exampleEnglish": "Notice what the form is doing here: “The meeting starts at three.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "om drie uur",
+      "romanization": "om dree yr",
+      "nativeText": "Contrast check for \"om drie uur\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "om dree yr",
+      "exampleTarget": "De vergadering begint om drie uur.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The meeting starts at three.”",
+      "korean": "om drie uur",
+      "english": "Contrast check for \"om drie uur\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "De vergadering begint om drie uur.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "om drie uur",
+      "romanization": "om dree yr",
+      "nativeText": "Recall \"om drie uur\" from memory, then explain what would change if a nearby alternative replaced it in \"De vergadering begint om drie uur.\".",
+      "pronunciation": "om dree yr",
+      "exampleTarget": "De vergadering begint om drie uur.",
+      "exampleNative": "Self-check against the model before moving on: “The meeting starts at three.”",
+      "korean": "om drie uur",
+      "english": "Recall \"om drie uur\" from memory, then explain what would change if a nearby alternative replaced it in \"De vergadering begint om drie uur.\".",
+      "example": "De vergadering begint om drie uur.",
+      "exampleEnglish": "Self-check against the model before moving on: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "om drie uur",
+      "romanization": "om dree yr",
+      "nativeText": "Repair \"om drie uur\" inside \"De vergadering begint om drie uur.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “At three o’clock.” `Om` marks clock time.",
+      "pronunciation": "om dree yr",
+      "exampleTarget": "De vergadering begint om drie uur.",
+      "exampleNative": "Use the model as the repair target: “The meeting starts at three.”",
+      "korean": "om drie uur",
+      "english": "Repair \"om drie uur\" inside \"De vergadering begint om drie uur.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “At three o’clock.” `Om` marks clock time.",
+      "example": "De vergadering begint om drie uur.",
+      "exampleEnglish": "Use the model as the repair target: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "om drie uur",
+      "romanization": "om dree yr",
+      "nativeText": "Transfer \"om drie uur\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De vergadering begint om drie uur.\".",
+      "pronunciation": "om dree yr",
+      "exampleTarget": "De vergadering begint om drie uur.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The meeting starts at three.”",
+      "korean": "om drie uur",
+      "english": "Transfer \"om drie uur\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"De vergadering begint om drie uur.\".",
+      "example": "De vergadering begint om drie uur.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "om drie uur",
+      "romanization": "om dree yr",
+      "nativeText": "Find one word or phrase that naturally travels with \"om drie uur\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "om dree yr",
+      "exampleTarget": "De vergadering begint om drie uur.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The meeting starts at three.”",
+      "korean": "om drie uur",
+      "english": "Find one word or phrase that naturally travels with \"om drie uur\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "De vergadering begint om drie uur.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "om drie uur",
+      "romanization": "om dree yr",
+      "nativeText": "Listen for \"om drie uur\" inside \"De vergadering begint om drie uur.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "om dree yr",
+      "exampleTarget": "De vergadering begint om drie uur.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The meeting starts at three.”",
+      "korean": "om drie uur",
+      "english": "Listen for \"om drie uur\" inside \"De vergadering begint om drie uur.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "De vergadering begint om drie uur.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "om drie uur",
+      "romanization": "om dree yr",
+      "nativeText": "Write \"om drie uur\" again without looking, then compare the exact written form against \"De vergadering begint om drie uur.\" before moving on.",
+      "pronunciation": "om dree yr",
+      "exampleTarget": "De vergadering begint om drie uur.",
+      "exampleNative": "Use the written model as the final correctness check: “The meeting starts at three.”",
+      "korean": "om drie uur",
+      "english": "Write \"om drie uur\" again without looking, then compare the exact written form against \"De vergadering begint om drie uur.\" before moving on.",
+      "example": "De vergadering begint om drie uur.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "om drie uur",
+      "romanization": "om dree yr",
+      "nativeText": "Check whether \"om drie uur\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The meeting starts at three.”",
+      "pronunciation": "om dree yr",
+      "exampleTarget": "De vergadering begint om drie uur.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The meeting starts at three.”",
+      "korean": "om drie uur",
+      "english": "Check whether \"om drie uur\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The meeting starts at three.”",
+      "example": "De vergadering begint om drie uur.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The meeting starts at three.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "“I can / I am available.” Context supplies the scheduling meaning.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan vanavond.",
+      "exampleNative": "“I am available tonight.”",
+      "korean": "ik kan",
+      "english": "“I can / I am available.” Context supplies the scheduling meaning.",
+      "example": "Ik kan vanavond.",
+      "exampleEnglish": "“I am available tonight.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "Ik kan vanavond.",
+      "romanization": "ik kan",
+      "nativeText": "Model use for \"Ik kan vanavond.\": “I am available tonight.”",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan vanavond.",
+      "exampleNative": "“I am available tonight.”",
+      "korean": "Ik kan vanavond.",
+      "english": "Model use for \"Ik kan vanavond.\": “I am available tonight.”",
+      "example": "Ik kan vanavond.",
+      "exampleEnglish": "“I am available tonight.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Usage focus for \"ik kan\": “I can / I am available.” Context supplies the scheduling meaning.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan vanavond.",
+      "exampleNative": "Notice what the form is doing here: “I am available tonight.”",
+      "korean": "ik kan",
+      "english": "Usage focus for \"ik kan\": “I can / I am available.” Context supplies the scheduling meaning.",
+      "example": "Ik kan vanavond.",
+      "exampleEnglish": "Notice what the form is doing here: “I am available tonight.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Contrast check for \"ik kan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan vanavond.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am available tonight.”",
+      "korean": "ik kan",
+      "english": "Contrast check for \"ik kan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik kan vanavond.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am available tonight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Recall \"ik kan\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik kan vanavond.\".",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan vanavond.",
+      "exampleNative": "Self-check against the model before moving on: “I am available tonight.”",
+      "korean": "ik kan",
+      "english": "Recall \"ik kan\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik kan vanavond.\".",
+      "example": "Ik kan vanavond.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am available tonight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Repair \"ik kan\" inside \"Ik kan vanavond.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can / I am available.” Context supplies the scheduling meaning.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan vanavond.",
+      "exampleNative": "Use the model as the repair target: “I am available tonight.”",
+      "korean": "ik kan",
+      "english": "Repair \"ik kan\" inside \"Ik kan vanavond.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can / I am available.” Context supplies the scheduling meaning.",
+      "example": "Ik kan vanavond.",
+      "exampleEnglish": "Use the model as the repair target: “I am available tonight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Transfer \"ik kan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik kan vanavond.\".",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan vanavond.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am available tonight.”",
+      "korean": "ik kan",
+      "english": "Transfer \"ik kan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik kan vanavond.\".",
+      "example": "Ik kan vanavond.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am available tonight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik kan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan vanavond.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am available tonight.”",
+      "korean": "ik kan",
+      "english": "Find one word or phrase that naturally travels with \"ik kan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik kan vanavond.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am available tonight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Listen for \"ik kan\" inside \"Ik kan vanavond.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan vanavond.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am available tonight.”",
+      "korean": "ik kan",
+      "english": "Listen for \"ik kan\" inside \"Ik kan vanavond.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik kan vanavond.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am available tonight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Write \"ik kan\" again without looking, then compare the exact written form against \"Ik kan vanavond.\" before moving on.",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan vanavond.",
+      "exampleNative": "Use the written model as the final correctness check: “I am available tonight.”",
+      "korean": "ik kan",
+      "english": "Write \"ik kan\" again without looking, then compare the exact written form against \"Ik kan vanavond.\" before moving on.",
+      "example": "Ik kan vanavond.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am available tonight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan",
+      "romanization": "ik kan",
+      "nativeText": "Check whether \"ik kan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am available tonight.”",
+      "pronunciation": "ik kan",
+      "exampleTarget": "Ik kan vanavond.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am available tonight.”",
+      "korean": "ik kan",
+      "english": "Check whether \"ik kan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am available tonight.”",
+      "example": "Ik kan vanavond.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am available tonight.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "“I cannot.” Add an alternative to stay cooperative.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleNative": "“I cannot in the morning, but I can in the evening.”",
+      "korean": "ik kan niet",
+      "english": "“I cannot.” Add an alternative to stay cooperative.",
+      "example": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleEnglish": "“I cannot in the morning, but I can in the evening.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "romanization": "ik kan neet",
+      "nativeText": "Model use for \"Ik kan niet in de ochtend, maar wel in de avond.\": “I cannot in the morning, but I can in the evening.”",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleNative": "“I cannot in the morning, but I can in the evening.”",
+      "korean": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "english": "Model use for \"Ik kan niet in de ochtend, maar wel in de avond.\": “I cannot in the morning, but I can in the evening.”",
+      "example": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleEnglish": "“I cannot in the morning, but I can in the evening.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Usage focus for \"ik kan niet\": “I cannot.” Add an alternative to stay cooperative.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleNative": "Notice what the form is doing here: “I cannot in the morning, but I can in the evening.”",
+      "korean": "ik kan niet",
+      "english": "Usage focus for \"ik kan niet\": “I cannot.” Add an alternative to stay cooperative.",
+      "example": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleEnglish": "Notice what the form is doing here: “I cannot in the morning, but I can in the evening.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Contrast check for \"ik kan niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I cannot in the morning, but I can in the evening.”",
+      "korean": "ik kan niet",
+      "english": "Contrast check for \"ik kan niet\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I cannot in the morning, but I can in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Recall \"ik kan niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik kan niet in de ochtend, maar wel in de avond.\".",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleNative": "Self-check against the model before moving on: “I cannot in the morning, but I can in the evening.”",
+      "korean": "ik kan niet",
+      "english": "Recall \"ik kan niet\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik kan niet in de ochtend, maar wel in de avond.\".",
+      "example": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleEnglish": "Self-check against the model before moving on: “I cannot in the morning, but I can in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Repair \"ik kan niet\" inside \"Ik kan niet in de ochtend, maar wel in de avond.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I cannot.” Add an alternative to stay cooperative.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleNative": "Use the model as the repair target: “I cannot in the morning, but I can in the evening.”",
+      "korean": "ik kan niet",
+      "english": "Repair \"ik kan niet\" inside \"Ik kan niet in de ochtend, maar wel in de avond.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I cannot.” Add an alternative to stay cooperative.",
+      "example": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleEnglish": "Use the model as the repair target: “I cannot in the morning, but I can in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Transfer \"ik kan niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik kan niet in de ochtend, maar wel in de avond.\".",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I cannot in the morning, but I can in the evening.”",
+      "korean": "ik kan niet",
+      "english": "Transfer \"ik kan niet\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik kan niet in de ochtend, maar wel in de avond.\".",
+      "example": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I cannot in the morning, but I can in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Find one word or phrase that naturally travels with \"ik kan niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I cannot in the morning, but I can in the evening.”",
+      "korean": "ik kan niet",
+      "english": "Find one word or phrase that naturally travels with \"ik kan niet\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I cannot in the morning, but I can in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Listen for \"ik kan niet\" inside \"Ik kan niet in de ochtend, maar wel in de avond.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I cannot in the morning, but I can in the evening.”",
+      "korean": "ik kan niet",
+      "english": "Listen for \"ik kan niet\" inside \"Ik kan niet in de ochtend, maar wel in de avond.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I cannot in the morning, but I can in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Write \"ik kan niet\" again without looking, then compare the exact written form against \"Ik kan niet in de ochtend, maar wel in de avond.\" before moving on.",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleNative": "Use the written model as the final correctness check: “I cannot in the morning, but I can in the evening.”",
+      "korean": "ik kan niet",
+      "english": "Write \"ik kan niet\" again without looking, then compare the exact written form against \"Ik kan niet in de ochtend, maar wel in de avond.\" before moving on.",
+      "example": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I cannot in the morning, but I can in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "ik kan niet",
+      "romanization": "ik kan neet",
+      "nativeText": "Check whether \"ik kan niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I cannot in the morning, but I can in the evening.”",
+      "pronunciation": "ik kan neet",
+      "exampleTarget": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I cannot in the morning, but I can in the evening.”",
+      "korean": "ik kan niet",
+      "english": "Check whether \"ik kan niet\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I cannot in the morning, but I can in the evening.”",
+      "example": "Ik kan niet in de ochtend, maar wel in de avond.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I cannot in the morning, but I can in the evening.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "“Shall we ...?” A natural proposal frame.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we vrijdag afspreken?",
+      "exampleNative": "“Shall we meet on Friday?”",
+      "korean": "zullen we ...?",
+      "english": "“Shall we ...?” A natural proposal frame.",
+      "example": "Zullen we vrijdag afspreken?",
+      "exampleEnglish": "“Shall we meet on Friday?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "Zullen we vrijdag afspreken?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Model use for \"Zullen we vrijdag afspreken?\": “Shall we meet on Friday?”",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we vrijdag afspreken?",
+      "exampleNative": "“Shall we meet on Friday?”",
+      "korean": "Zullen we vrijdag afspreken?",
+      "english": "Model use for \"Zullen we vrijdag afspreken?\": “Shall we meet on Friday?”",
+      "example": "Zullen we vrijdag afspreken?",
+      "exampleEnglish": "“Shall we meet on Friday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Usage focus for \"zullen we ...?\": “Shall we ...?” A natural proposal frame.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we vrijdag afspreken?",
+      "exampleNative": "Notice what the form is doing here: “Shall we meet on Friday?”",
+      "korean": "zullen we ...?",
+      "english": "Usage focus for \"zullen we ...?\": “Shall we ...?” A natural proposal frame.",
+      "example": "Zullen we vrijdag afspreken?",
+      "exampleEnglish": "Notice what the form is doing here: “Shall we meet on Friday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Contrast check for \"zullen we ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we vrijdag afspreken?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we meet on Friday?”",
+      "korean": "zullen we ...?",
+      "english": "Contrast check for \"zullen we ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Zullen we vrijdag afspreken?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we meet on Friday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Recall \"zullen we ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Zullen we vrijdag afspreken?\".",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we vrijdag afspreken?",
+      "exampleNative": "Self-check against the model before moving on: “Shall we meet on Friday?”",
+      "korean": "zullen we ...?",
+      "english": "Recall \"zullen we ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Zullen we vrijdag afspreken?\".",
+      "example": "Zullen we vrijdag afspreken?",
+      "exampleEnglish": "Self-check against the model before moving on: “Shall we meet on Friday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Repair \"zullen we ...?\" inside \"Zullen we vrijdag afspreken?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shall we ...?” A natural proposal frame.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we vrijdag afspreken?",
+      "exampleNative": "Use the model as the repair target: “Shall we meet on Friday?”",
+      "korean": "zullen we ...?",
+      "english": "Repair \"zullen we ...?\" inside \"Zullen we vrijdag afspreken?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shall we ...?” A natural proposal frame.",
+      "example": "Zullen we vrijdag afspreken?",
+      "exampleEnglish": "Use the model as the repair target: “Shall we meet on Friday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Transfer \"zullen we ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Zullen we vrijdag afspreken?\".",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we vrijdag afspreken?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we meet on Friday?”",
+      "korean": "zullen we ...?",
+      "english": "Transfer \"zullen we ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Zullen we vrijdag afspreken?\".",
+      "example": "Zullen we vrijdag afspreken?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we meet on Friday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Find one word or phrase that naturally travels with \"zullen we ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we vrijdag afspreken?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Shall we meet on Friday?”",
+      "korean": "zullen we ...?",
+      "english": "Find one word or phrase that naturally travels with \"zullen we ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Zullen we vrijdag afspreken?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Shall we meet on Friday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Listen for \"zullen we ...?\" inside \"Zullen we vrijdag afspreken?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we vrijdag afspreken?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we meet on Friday?”",
+      "korean": "zullen we ...?",
+      "english": "Listen for \"zullen we ...?\" inside \"Zullen we vrijdag afspreken?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Zullen we vrijdag afspreken?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we meet on Friday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Write \"zullen we ...?\" again without looking, then compare the exact written form against \"Zullen we vrijdag afspreken?\" before moving on.",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we vrijdag afspreken?",
+      "exampleNative": "Use the written model as the final correctness check: “Shall we meet on Friday?”",
+      "korean": "zullen we ...?",
+      "english": "Write \"zullen we ...?\" again without looking, then compare the exact written form against \"Zullen we vrijdag afspreken?\" before moving on.",
+      "example": "Zullen we vrijdag afspreken?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Shall we meet on Friday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "zullen we ...?",
+      "romanization": "ZUL-len və",
+      "nativeText": "Check whether \"zullen we ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we meet on Friday?”",
+      "pronunciation": "ZUL-len və",
+      "exampleTarget": "Zullen we vrijdag afspreken?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Shall we meet on Friday?”",
+      "korean": "zullen we ...?",
+      "english": "Check whether \"zullen we ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we meet on Friday?”",
+      "example": "Zullen we vrijdag afspreken?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Shall we meet on Friday?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "dat kan",
+      "romanization": "dat kan",
+      "nativeText": "“That works.” A concise acceptance.",
+      "pronunciation": "dat kan",
+      "exampleTarget": "Vijf uur? Ja, dat kan.",
+      "exampleNative": "“Five o’clock? Yes, that works.”",
+      "korean": "dat kan",
+      "english": "“That works.” A concise acceptance.",
+      "example": "Vijf uur? Ja, dat kan.",
+      "exampleEnglish": "“Five o’clock? Yes, that works.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "Vijf uur? Ja, dat kan.",
+      "romanization": "dat kan",
+      "nativeText": "Model use for \"Vijf uur? Ja, dat kan.\": “Five o’clock? Yes, that works.”",
+      "pronunciation": "dat kan",
+      "exampleTarget": "Vijf uur? Ja, dat kan.",
+      "exampleNative": "“Five o’clock? Yes, that works.”",
+      "korean": "Vijf uur? Ja, dat kan.",
+      "english": "Model use for \"Vijf uur? Ja, dat kan.\": “Five o’clock? Yes, that works.”",
+      "example": "Vijf uur? Ja, dat kan.",
+      "exampleEnglish": "“Five o’clock? Yes, that works.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "dat kan",
+      "romanization": "dat kan",
+      "nativeText": "Usage focus for \"dat kan\": “That works.” A concise acceptance.",
+      "pronunciation": "dat kan",
+      "exampleTarget": "Vijf uur? Ja, dat kan.",
+      "exampleNative": "Notice what the form is doing here: “Five o’clock? Yes, that works.”",
+      "korean": "dat kan",
+      "english": "Usage focus for \"dat kan\": “That works.” A concise acceptance.",
+      "example": "Vijf uur? Ja, dat kan.",
+      "exampleEnglish": "Notice what the form is doing here: “Five o’clock? Yes, that works.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "dat kan",
+      "romanization": "dat kan",
+      "nativeText": "Contrast check for \"dat kan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dat kan",
+      "exampleTarget": "Vijf uur? Ja, dat kan.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Five o’clock? Yes, that works.”",
+      "korean": "dat kan",
+      "english": "Contrast check for \"dat kan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Vijf uur? Ja, dat kan.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Five o’clock? Yes, that works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "dat kan",
+      "romanization": "dat kan",
+      "nativeText": "Recall \"dat kan\" from memory, then explain what would change if a nearby alternative replaced it in \"Vijf uur? Ja, dat kan.\".",
+      "pronunciation": "dat kan",
+      "exampleTarget": "Vijf uur? Ja, dat kan.",
+      "exampleNative": "Self-check against the model before moving on: “Five o’clock? Yes, that works.”",
+      "korean": "dat kan",
+      "english": "Recall \"dat kan\" from memory, then explain what would change if a nearby alternative replaced it in \"Vijf uur? Ja, dat kan.\".",
+      "example": "Vijf uur? Ja, dat kan.",
+      "exampleEnglish": "Self-check against the model before moving on: “Five o’clock? Yes, that works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "dat kan",
+      "romanization": "dat kan",
+      "nativeText": "Repair \"dat kan\" inside \"Vijf uur? Ja, dat kan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “That works.” A concise acceptance.",
+      "pronunciation": "dat kan",
+      "exampleTarget": "Vijf uur? Ja, dat kan.",
+      "exampleNative": "Use the model as the repair target: “Five o’clock? Yes, that works.”",
+      "korean": "dat kan",
+      "english": "Repair \"dat kan\" inside \"Vijf uur? Ja, dat kan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “That works.” A concise acceptance.",
+      "example": "Vijf uur? Ja, dat kan.",
+      "exampleEnglish": "Use the model as the repair target: “Five o’clock? Yes, that works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "dat kan",
+      "romanization": "dat kan",
+      "nativeText": "Transfer \"dat kan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vijf uur? Ja, dat kan.\".",
+      "pronunciation": "dat kan",
+      "exampleTarget": "Vijf uur? Ja, dat kan.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Five o’clock? Yes, that works.”",
+      "korean": "dat kan",
+      "english": "Transfer \"dat kan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Vijf uur? Ja, dat kan.\".",
+      "example": "Vijf uur? Ja, dat kan.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Five o’clock? Yes, that works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "dat kan",
+      "romanization": "dat kan",
+      "nativeText": "Find one word or phrase that naturally travels with \"dat kan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dat kan",
+      "exampleTarget": "Vijf uur? Ja, dat kan.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Five o’clock? Yes, that works.”",
+      "korean": "dat kan",
+      "english": "Find one word or phrase that naturally travels with \"dat kan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Vijf uur? Ja, dat kan.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Five o’clock? Yes, that works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "dat kan",
+      "romanization": "dat kan",
+      "nativeText": "Listen for \"dat kan\" inside \"Vijf uur? Ja, dat kan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dat kan",
+      "exampleTarget": "Vijf uur? Ja, dat kan.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Five o’clock? Yes, that works.”",
+      "korean": "dat kan",
+      "english": "Listen for \"dat kan\" inside \"Vijf uur? Ja, dat kan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Vijf uur? Ja, dat kan.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Five o’clock? Yes, that works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "dat kan",
+      "romanization": "dat kan",
+      "nativeText": "Write \"dat kan\" again without looking, then compare the exact written form against \"Vijf uur? Ja, dat kan.\" before moving on.",
+      "pronunciation": "dat kan",
+      "exampleTarget": "Vijf uur? Ja, dat kan.",
+      "exampleNative": "Use the written model as the final correctness check: “Five o’clock? Yes, that works.”",
+      "korean": "dat kan",
+      "english": "Write \"dat kan\" again without looking, then compare the exact written form against \"Vijf uur? Ja, dat kan.\" before moving on.",
+      "example": "Vijf uur? Ja, dat kan.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Five o’clock? Yes, that works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "dat kan",
+      "romanization": "dat kan",
+      "nativeText": "Check whether \"dat kan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Five o’clock? Yes, that works.”",
+      "pronunciation": "dat kan",
+      "exampleTarget": "Vijf uur? Ja, dat kan.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Five o’clock? Yes, that works.”",
+      "korean": "dat kan",
+      "english": "Check whether \"dat kan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Five o’clock? Yes, that works.”",
+      "example": "Vijf uur? Ja, dat kan.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Five o’clock? Yes, that works.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "verzetten",
+      "romanization": "fer-ZET-ten",
+      "nativeText": "“To reschedule / move.” Common for changing appointments.",
+      "pronunciation": "fer-ZET-ten",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "“Can we reschedule the appointment?”",
+      "korean": "verzetten",
+      "english": "“To reschedule / move.” Common for changing appointments.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "“Can we reschedule the appointment?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "Kunnen we de afspraak verzetten?",
+      "romanization": "fer-ZET-ten",
+      "nativeText": "Model use for \"Kunnen we de afspraak verzetten?\": “Can we reschedule the appointment?”",
+      "pronunciation": "fer-ZET-ten",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "“Can we reschedule the appointment?”",
+      "korean": "Kunnen we de afspraak verzetten?",
+      "english": "Model use for \"Kunnen we de afspraak verzetten?\": “Can we reschedule the appointment?”",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "“Can we reschedule the appointment?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "verzetten",
+      "romanization": "fer-ZET-ten",
+      "nativeText": "Usage focus for \"verzetten\": “To reschedule / move.” Common for changing appointments.",
+      "pronunciation": "fer-ZET-ten",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "Notice what the form is doing here: “Can we reschedule the appointment?”",
+      "korean": "verzetten",
+      "english": "Usage focus for \"verzetten\": “To reschedule / move.” Common for changing appointments.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "Notice what the form is doing here: “Can we reschedule the appointment?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "verzetten",
+      "romanization": "fer-ZET-ten",
+      "nativeText": "Contrast check for \"verzetten\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "fer-ZET-ten",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can we reschedule the appointment?”",
+      "korean": "verzetten",
+      "english": "Contrast check for \"verzetten\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can we reschedule the appointment?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "verzetten",
+      "romanization": "fer-ZET-ten",
+      "nativeText": "Recall \"verzetten\" from memory, then explain what would change if a nearby alternative replaced it in \"Kunnen we de afspraak verzetten?\".",
+      "pronunciation": "fer-ZET-ten",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "Self-check against the model before moving on: “Can we reschedule the appointment?”",
+      "korean": "verzetten",
+      "english": "Recall \"verzetten\" from memory, then explain what would change if a nearby alternative replaced it in \"Kunnen we de afspraak verzetten?\".",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "Self-check against the model before moving on: “Can we reschedule the appointment?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "verzetten",
+      "romanization": "fer-ZET-ten",
+      "nativeText": "Repair \"verzetten\" inside \"Kunnen we de afspraak verzetten?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To reschedule / move.” Common for changing appointments.",
+      "pronunciation": "fer-ZET-ten",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "Use the model as the repair target: “Can we reschedule the appointment?”",
+      "korean": "verzetten",
+      "english": "Repair \"verzetten\" inside \"Kunnen we de afspraak verzetten?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To reschedule / move.” Common for changing appointments.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "Use the model as the repair target: “Can we reschedule the appointment?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "verzetten",
+      "romanization": "fer-ZET-ten",
+      "nativeText": "Transfer \"verzetten\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kunnen we de afspraak verzetten?\".",
+      "pronunciation": "fer-ZET-ten",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can we reschedule the appointment?”",
+      "korean": "verzetten",
+      "english": "Transfer \"verzetten\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kunnen we de afspraak verzetten?\".",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can we reschedule the appointment?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "verzetten",
+      "romanization": "fer-ZET-ten",
+      "nativeText": "Find one word or phrase that naturally travels with \"verzetten\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "fer-ZET-ten",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Can we reschedule the appointment?”",
+      "korean": "verzetten",
+      "english": "Find one word or phrase that naturally travels with \"verzetten\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Can we reschedule the appointment?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "verzetten",
+      "romanization": "fer-ZET-ten",
+      "nativeText": "Listen for \"verzetten\" inside \"Kunnen we de afspraak verzetten?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "fer-ZET-ten",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can we reschedule the appointment?”",
+      "korean": "verzetten",
+      "english": "Listen for \"verzetten\" inside \"Kunnen we de afspraak verzetten?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can we reschedule the appointment?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "verzetten",
+      "romanization": "fer-ZET-ten",
+      "nativeText": "Write \"verzetten\" again without looking, then compare the exact written form against \"Kunnen we de afspraak verzetten?\" before moving on.",
+      "pronunciation": "fer-ZET-ten",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "Use the written model as the final correctness check: “Can we reschedule the appointment?”",
+      "korean": "verzetten",
+      "english": "Write \"verzetten\" again without looking, then compare the exact written form against \"Kunnen we de afspraak verzetten?\" before moving on.",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Can we reschedule the appointment?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit11scheduling-vocabulary-1",
+        "nl-level1unit11scheduling-vocabulary-2",
+        "nl-level1unit11scheduling-grammar-1",
+        "nl-level1unit11scheduling-grammar-2",
+        "nl-level1unit11scheduling-reading",
+        "nl-level1unit11scheduling-listening",
+        "nl-level1unit11scheduling-writing",
+        "nl-level1unit11scheduling-task"
+      ],
+      "targetText": "verzetten",
+      "romanization": "fer-ZET-ten",
+      "nativeText": "Check whether \"verzetten\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can we reschedule the appointment?”",
+      "pronunciation": "fer-ZET-ten",
+      "exampleTarget": "Kunnen we de afspraak verzetten?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Can we reschedule the appointment?”",
+      "korean": "verzetten",
+      "english": "Check whether \"verzetten\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can we reschedule the appointment?”",
+      "example": "Kunnen we de afspraak verzetten?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Can we reschedule the appointment?”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

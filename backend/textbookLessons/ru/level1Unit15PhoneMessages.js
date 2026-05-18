@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u15',
-  title: 'Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages',
-  category: 'communication',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Make short calls, leave messages, and ask for repetition.',
-  vocabularyGoal: 'Use phone, message, number, and callback vocabulary.',
-  grammarGoal: 'Use polite requests with `можно`, `передайте`, and `повторите`.',
-  speakingGoal: 'Open a call, ask for someone, leave a message, and confirm a number.',
-  task: 'Leave a clear message for a classmate.',
-  expressionPractice: [
-    practice('opening-call', 'Opening call', 'Use one phone greeting and identify yourself.'),
-    practice('leaving-message', 'Leaving message', 'Use `передайте, пожалуйста`.'),
-    practice('asking-repeat', 'Asking repetition', 'Use `повторите, пожалуйста`.'),
+module.exports = {
+  "title": "Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages",
+  "category": "communication",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit15phonemessages-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Make short calls, leave messages, and ask for repetition."
+      ],
+      "task": "Leave a clear message for a classmate."
+    },
+    {
+      "id": "ru-level1unit15phonemessages-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit15phonemessages-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit15phonemessages-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit15phonemessages-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Make short calls, leave messages, and ask for repetition."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit15phonemessages-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit15phonemessages-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit15phonemessages-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit15phonemessages-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit15phonemessages-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit15phonemessages-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Leave a clear message for a classmate."
+      ],
+      "task": "Leave a clear message for a classmate."
+    }
   ],
-  relatedPools: ['topic-communication', 'topic-service'],
-  items: [
-    item('алло', 'allo', 'The standard Russian phone greeting.', 'Алло, это Анна.', '“Hello, this is Anna.”'),
-    item('можно поговорить с ...?', 'mozhno pogovorit s', '“May I speak with ...?” A polite phone request with instrumental after `с`.', 'Можно поговорить с Иваном?', '“May I speak with Ivan?”'),
-    item('его сейчас нет', 'yego seychas net', '“He is not here now.” The genitive after `нет` is part of the phrase.', 'Его сейчас нет на месте.', '“He is not at his desk right now.”'),
-    item('сообщение', 'soobshcheniye', '“Message.” Useful for phone and text contexts.', 'Можно оставить сообщение?', '“May I leave a message?”'),
-    item('передайте, пожалуйста', 'peredayte pozhaluysta', '“Please pass on / tell them.” A polite service request.', 'Передайте, пожалуйста, что я звонил.', '“Please tell them that I called.”'),
-    item('номер телефона', 'nomer telefona', '“Phone number.” The second noun appears in genitive form.', 'Какой у вас номер телефона?', '“What is your phone number?”'),
-    item('повторите, пожалуйста', 'povtorite pozhaluysta', '“Please repeat.” A core repair phrase for learners.', 'Повторите номер, пожалуйста.', '“Please repeat the number.”'),
-    item('я перезвоню позже', 'ya perezvonyu pozzhe', '“I will call back later.” A natural call-ending promise.', 'Хорошо, я перезвоню позже.', '“Alright, I will call back later.”'),
+  "expressionPractice": [
+    {
+      "id": "opening-call",
+      "label": "Opening call",
+      "goal": "Use one phone greeting and identify yourself."
+    },
+    {
+      "id": "leaving-message",
+      "label": "Leaving message",
+      "goal": "Use `передайте, пожалуйста`."
+    },
+    {
+      "id": "asking-repeat",
+      "label": "Asking repetition",
+      "goal": "Use `повторите, пожалуйста`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-communication",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Make short calls, leave messages, and ask for repetition.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Leave a clear message for a classmate.",
+      "korean": "цель урока",
+      "english": "Make short calls, leave messages, and ask for repetition.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Leave a clear message for a classmate."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit15phonemessages-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Алло, это Анна.\".",
+      "pronunciation": "",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "“Hello, this is Anna.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Алло, это Анна.\".",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "“Hello, this is Anna.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1"
+      ],
+      "targetText": "алло",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "“Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "Use the key language of Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "“Hello, this is Anna.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-2"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "“May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "“May I speak with Ivan?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit15phonemessages-grammar-1"
+      ],
+      "targetText": "алло",
+      "romanization": "",
+      "nativeText": "Make short calls, leave messages, and ask for repetition.",
+      "pronunciation": "",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "“Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "Make short calls, leave messages, and ask for repetition.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "“Hello, this is Anna.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "“May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "Contrast the main pattern in Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "“May I speak with Ivan?”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit15phonemessages-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Хорошо, я перезвоню позже.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "“Alright, I will call back later.”",
+      "korean": "модель чтения",
+      "english": "Read \"Хорошо, я перезвоню позже.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "“Alright, I will call back later.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit15phonemessages-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Хорошо, я перезвоню позже.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "“Alright, I will call back later.”",
+      "korean": "модель диалога",
+      "english": "Hear \"Хорошо, я перезвоню позже.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "“Alright, I will call back later.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit15phonemessages-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Алло, это Анна.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Алло, это Анна.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit15phonemessages-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "“May I speak with Ivan?”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "“May I speak with Ivan?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Leave a clear message for a classmate.",
+      "pronunciation": "",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "Leave a clear message for a classmate.",
+      "korean": "итоговое задание",
+      "english": "Leave a clear message for a classmate.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "Leave a clear message for a classmate."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Можно поговорить с Иваном?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “May I speak with Ivan?”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Можно поговорить с Иваном?\" against the model.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “May I speak with Ivan?”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Алло, это Анна.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "“Hello, this is Anna.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Алло, это Анна.\" before reusing it elsewhere.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "“Hello, this is Anna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Хорошо, я перезвоню позже.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "“Alright, I will call back later.”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Хорошо, я перезвоню позже.\" as one thought.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "“Alright, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Алло, это Анна.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Алло, это Анна.\" and move it into your own life.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"алло\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "алло",
+      "exampleNative": "The standard Russian phone greeting.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"алло\" before looking back.",
+      "example": "алло",
+      "exampleEnglish": "The standard Russian phone greeting."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Хорошо, я перезвоню позже.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Хорошо, я перезвоню позже.\" rather than restarting from a blank sentence.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Можно поговорить с Иваном?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "“May I speak with Ivan?”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Можно поговорить с Иваном?\" as the comparison line.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "“May I speak with Ivan?”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit15phonemessages-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Алло, это Анна.\".",
+      "pronunciation": "",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "“Hello, this is Anna.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Алло, это Анна.\".",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "“Hello, this is Anna.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Хорошо, я перезвоню позже.\".",
+      "pronunciation": "",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "“Alright, I will call back later.”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Хорошо, я перезвоню позже.\".",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "“Alright, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Алло, это Анна.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "“Hello, this is Anna.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Алло, это Анна.\" one layer at a time.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "“Hello, this is Anna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Можно поговорить с Иваном?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "“May I speak with Ivan?”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Можно поговорить с Иваном?\" as the deciding example.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "“May I speak with Ivan?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-culture",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Хорошо, я перезвоню позже.\".",
+      "pronunciation": "",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "“Alright, I will call back later.”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Хорошо, я перезвоню позже.\".",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "“Alright, I will call back later.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "алло",
+      "romanization": "allo",
+      "nativeText": "The standard Russian phone greeting.",
+      "pronunciation": "allo",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "“Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "The standard Russian phone greeting.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "“Hello, this is Anna.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "Алло, это Анна.",
+      "romanization": "allo",
+      "nativeText": "Model use for \"Алло, это Анна.\": “Hello, this is Anna.”",
+      "pronunciation": "allo",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "“Hello, this is Anna.”",
+      "korean": "Алло, это Анна.",
+      "english": "Model use for \"Алло, это Анна.\": “Hello, this is Anna.”",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "“Hello, this is Anna.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "алло",
+      "romanization": "allo",
+      "nativeText": "Usage focus for \"алло\": Use the key language of Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "allo",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "Notice what the form is doing here: “Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "Usage focus for \"алло\": Use the key language of Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "Notice what the form is doing here: “Hello, this is Anna.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "алло",
+      "romanization": "allo",
+      "nativeText": "Contrast check for \"алло\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "allo",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "Contrast check for \"алло\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Hello, this is Anna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "алло",
+      "romanization": "allo",
+      "nativeText": "Recall \"алло\" from memory, then explain what would change if a nearby alternative replaced it in \"Алло, это Анна.\".",
+      "pronunciation": "allo",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "Self-check against the model before moving on: “Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "Recall \"алло\" from memory, then explain what would change if a nearby alternative replaced it in \"Алло, это Анна.\".",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "Self-check against the model before moving on: “Hello, this is Anna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "алло",
+      "romanization": "allo",
+      "nativeText": "Repair \"алло\" inside \"Алло, это Анна.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "allo",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "Use the model as the repair target: “Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "Repair \"алло\" inside \"Алло, это Анна.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "Use the model as the repair target: “Hello, this is Anna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "алло",
+      "romanization": "allo",
+      "nativeText": "Transfer \"алло\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Алло, это Анна.\".",
+      "pronunciation": "allo",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "Transfer \"алло\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Алло, это Анна.\".",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Hello, this is Anna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "алло",
+      "romanization": "allo",
+      "nativeText": "Find one word or phrase that naturally travels with \"алло\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "allo",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "Find one word or phrase that naturally travels with \"алло\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Hello, this is Anna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "алло",
+      "romanization": "allo",
+      "nativeText": "Listen for \"алло\" inside \"Алло, это Анна.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "allo",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "Listen for \"алло\" inside \"Алло, это Анна.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Hello, this is Anna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "алло",
+      "romanization": "allo",
+      "nativeText": "Write \"алло\" again without looking, then compare the exact written form against \"Алло, это Анна.\" before moving on.",
+      "pronunciation": "allo",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "Use the written model as the final correctness check: “Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "Write \"алло\" again without looking, then compare the exact written form against \"Алло, это Анна.\" before moving on.",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Hello, this is Anna.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "алло",
+      "romanization": "allo",
+      "nativeText": "Check whether \"алло\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Hello, this is Anna.”",
+      "pronunciation": "allo",
+      "exampleTarget": "Алло, это Анна.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Hello, this is Anna.”",
+      "korean": "алло",
+      "english": "Check whether \"алло\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Hello, this is Anna.”",
+      "example": "Алло, это Анна.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Hello, this is Anna.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "mozhno pogovorit s",
+      "nativeText": "“May I speak with ...?” A polite phone request with instrumental after `с`.",
+      "pronunciation": "mozhno pogovorit s",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "“May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "“May I speak with ...?” A polite phone request with instrumental after `с`.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "“May I speak with Ivan?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "Можно поговорить с Иваном?",
+      "romanization": "mozhno pogovorit s",
+      "nativeText": "Model use for \"Можно поговорить с Иваном?\": “May I speak with Ivan?”",
+      "pronunciation": "mozhno pogovorit s",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "“May I speak with Ivan?”",
+      "korean": "Можно поговорить с Иваном?",
+      "english": "Model use for \"Можно поговорить с Иваном?\": “May I speak with Ivan?”",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "“May I speak with Ivan?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "mozhno pogovorit s",
+      "nativeText": "Usage focus for \"можно поговорить с ...?\": Distinguish the nearby wording choices that make Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "mozhno pogovorit s",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "Notice what the form is doing here: “May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "Usage focus for \"можно поговорить с ...?\": Distinguish the nearby wording choices that make Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "Notice what the form is doing here: “May I speak with Ivan?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "mozhno pogovorit s",
+      "nativeText": "Contrast check for \"можно поговорить с ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mozhno pogovorit s",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "Contrast check for \"можно поговорить с ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I speak with Ivan?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "mozhno pogovorit s",
+      "nativeText": "Recall \"можно поговорить с ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно поговорить с Иваном?\".",
+      "pronunciation": "mozhno pogovorit s",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "Self-check against the model before moving on: “May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "Recall \"можно поговорить с ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно поговорить с Иваном?\".",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I speak with Ivan?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "mozhno pogovorit s",
+      "nativeText": "Repair \"можно поговорить с ...?\" inside \"Можно поговорить с Иваном?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "mozhno pogovorit s",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "Use the model as the repair target: “May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "Repair \"можно поговорить с ...?\" inside \"Можно поговорить с Иваном?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 15: Телефон и сообщения — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "Use the model as the repair target: “May I speak with Ivan?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "mozhno pogovorit s",
+      "nativeText": "Transfer \"можно поговорить с ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно поговорить с Иваном?\".",
+      "pronunciation": "mozhno pogovorit s",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "Transfer \"можно поговорить с ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно поговорить с Иваном?\".",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I speak with Ivan?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "mozhno pogovorit s",
+      "nativeText": "Find one word or phrase that naturally travels with \"можно поговорить с ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mozhno pogovorit s",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "Find one word or phrase that naturally travels with \"можно поговорить с ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I speak with Ivan?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "mozhno pogovorit s",
+      "nativeText": "Listen for \"можно поговорить с ...?\" inside \"Можно поговорить с Иваном?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mozhno pogovorit s",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "Listen for \"можно поговорить с ...?\" inside \"Можно поговорить с Иваном?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I speak with Ivan?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "mozhno pogovorit s",
+      "nativeText": "Write \"можно поговорить с ...?\" again without looking, then compare the exact written form against \"Можно поговорить с Иваном?\" before moving on.",
+      "pronunciation": "mozhno pogovorit s",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "Use the written model as the final correctness check: “May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "Write \"можно поговорить с ...?\" again without looking, then compare the exact written form against \"Можно поговорить с Иваном?\" before moving on.",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I speak with Ivan?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "можно поговорить с ...?",
+      "romanization": "mozhno pogovorit s",
+      "nativeText": "Check whether \"можно поговорить с ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I speak with Ivan?”",
+      "pronunciation": "mozhno pogovorit s",
+      "exampleTarget": "Можно поговорить с Иваном?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I speak with Ivan?”",
+      "korean": "можно поговорить с ...?",
+      "english": "Check whether \"можно поговорить с ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I speak with Ivan?”",
+      "example": "Можно поговорить с Иваном?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I speak with Ivan?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "его сейчас нет",
+      "romanization": "yego seychas net",
+      "nativeText": "“He is not here now.” The genitive after `нет` is part of the phrase.",
+      "pronunciation": "yego seychas net",
+      "exampleTarget": "Его сейчас нет на месте.",
+      "exampleNative": "“He is not at his desk right now.”",
+      "korean": "его сейчас нет",
+      "english": "“He is not here now.” The genitive after `нет` is part of the phrase.",
+      "example": "Его сейчас нет на месте.",
+      "exampleEnglish": "“He is not at his desk right now.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "Его сейчас нет на месте.",
+      "romanization": "yego seychas net",
+      "nativeText": "Model use for \"Его сейчас нет на месте.\": “He is not at his desk right now.”",
+      "pronunciation": "yego seychas net",
+      "exampleTarget": "Его сейчас нет на месте.",
+      "exampleNative": "“He is not at his desk right now.”",
+      "korean": "Его сейчас нет на месте.",
+      "english": "Model use for \"Его сейчас нет на месте.\": “He is not at his desk right now.”",
+      "example": "Его сейчас нет на месте.",
+      "exampleEnglish": "“He is not at his desk right now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "его сейчас нет",
+      "romanization": "yego seychas net",
+      "nativeText": "Usage focus for \"его сейчас нет\": “He is not here now.” The genitive after `нет` is part of the phrase.",
+      "pronunciation": "yego seychas net",
+      "exampleTarget": "Его сейчас нет на месте.",
+      "exampleNative": "Notice what the form is doing here: “He is not at his desk right now.”",
+      "korean": "его сейчас нет",
+      "english": "Usage focus for \"его сейчас нет\": “He is not here now.” The genitive after `нет` is part of the phrase.",
+      "example": "Его сейчас нет на месте.",
+      "exampleEnglish": "Notice what the form is doing here: “He is not at his desk right now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "его сейчас нет",
+      "romanization": "yego seychas net",
+      "nativeText": "Contrast check for \"его сейчас нет\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "yego seychas net",
+      "exampleTarget": "Его сейчас нет на месте.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “He is not at his desk right now.”",
+      "korean": "его сейчас нет",
+      "english": "Contrast check for \"его сейчас нет\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Его сейчас нет на месте.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “He is not at his desk right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "его сейчас нет",
+      "romanization": "yego seychas net",
+      "nativeText": "Recall \"его сейчас нет\" from memory, then explain what would change if a nearby alternative replaced it in \"Его сейчас нет на месте.\".",
+      "pronunciation": "yego seychas net",
+      "exampleTarget": "Его сейчас нет на месте.",
+      "exampleNative": "Self-check against the model before moving on: “He is not at his desk right now.”",
+      "korean": "его сейчас нет",
+      "english": "Recall \"его сейчас нет\" from memory, then explain what would change if a nearby alternative replaced it in \"Его сейчас нет на месте.\".",
+      "example": "Его сейчас нет на месте.",
+      "exampleEnglish": "Self-check against the model before moving on: “He is not at his desk right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "его сейчас нет",
+      "romanization": "yego seychas net",
+      "nativeText": "Repair \"его сейчас нет\" inside \"Его сейчас нет на месте.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “He is not here now.” The genitive after `нет` is part of the phrase.",
+      "pronunciation": "yego seychas net",
+      "exampleTarget": "Его сейчас нет на месте.",
+      "exampleNative": "Use the model as the repair target: “He is not at his desk right now.”",
+      "korean": "его сейчас нет",
+      "english": "Repair \"его сейчас нет\" inside \"Его сейчас нет на месте.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “He is not here now.” The genitive after `нет` is part of the phrase.",
+      "example": "Его сейчас нет на месте.",
+      "exampleEnglish": "Use the model as the repair target: “He is not at his desk right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "его сейчас нет",
+      "romanization": "yego seychas net",
+      "nativeText": "Transfer \"его сейчас нет\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Его сейчас нет на месте.\".",
+      "pronunciation": "yego seychas net",
+      "exampleTarget": "Его сейчас нет на месте.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “He is not at his desk right now.”",
+      "korean": "его сейчас нет",
+      "english": "Transfer \"его сейчас нет\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Его сейчас нет на месте.\".",
+      "example": "Его сейчас нет на месте.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “He is not at his desk right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "его сейчас нет",
+      "romanization": "yego seychas net",
+      "nativeText": "Find one word or phrase that naturally travels with \"его сейчас нет\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "yego seychas net",
+      "exampleTarget": "Его сейчас нет на месте.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “He is not at his desk right now.”",
+      "korean": "его сейчас нет",
+      "english": "Find one word or phrase that naturally travels with \"его сейчас нет\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Его сейчас нет на месте.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “He is not at his desk right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "его сейчас нет",
+      "romanization": "yego seychas net",
+      "nativeText": "Listen for \"его сейчас нет\" inside \"Его сейчас нет на месте.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "yego seychas net",
+      "exampleTarget": "Его сейчас нет на месте.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “He is not at his desk right now.”",
+      "korean": "его сейчас нет",
+      "english": "Listen for \"его сейчас нет\" inside \"Его сейчас нет на месте.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Его сейчас нет на месте.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “He is not at his desk right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "его сейчас нет",
+      "romanization": "yego seychas net",
+      "nativeText": "Write \"его сейчас нет\" again without looking, then compare the exact written form against \"Его сейчас нет на месте.\" before moving on.",
+      "pronunciation": "yego seychas net",
+      "exampleTarget": "Его сейчас нет на месте.",
+      "exampleNative": "Use the written model as the final correctness check: “He is not at his desk right now.”",
+      "korean": "его сейчас нет",
+      "english": "Write \"его сейчас нет\" again without looking, then compare the exact written form against \"Его сейчас нет на месте.\" before moving on.",
+      "example": "Его сейчас нет на месте.",
+      "exampleEnglish": "Use the written model as the final correctness check: “He is not at his desk right now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "его сейчас нет",
+      "romanization": "yego seychas net",
+      "nativeText": "Check whether \"его сейчас нет\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “He is not at his desk right now.”",
+      "pronunciation": "yego seychas net",
+      "exampleTarget": "Его сейчас нет на месте.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “He is not at his desk right now.”",
+      "korean": "его сейчас нет",
+      "english": "Check whether \"его сейчас нет\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “He is not at his desk right now.”",
+      "example": "Его сейчас нет на месте.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “He is not at his desk right now.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "сообщение",
+      "romanization": "soobshcheniye",
+      "nativeText": "“Message.” Useful for phone and text contexts.",
+      "pronunciation": "soobshcheniye",
+      "exampleTarget": "Можно оставить сообщение?",
+      "exampleNative": "“May I leave a message?”",
+      "korean": "сообщение",
+      "english": "“Message.” Useful for phone and text contexts.",
+      "example": "Можно оставить сообщение?",
+      "exampleEnglish": "“May I leave a message?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "Можно оставить сообщение?",
+      "romanization": "soobshcheniye",
+      "nativeText": "Model use for \"Можно оставить сообщение?\": “May I leave a message?”",
+      "pronunciation": "soobshcheniye",
+      "exampleTarget": "Можно оставить сообщение?",
+      "exampleNative": "“May I leave a message?”",
+      "korean": "Можно оставить сообщение?",
+      "english": "Model use for \"Можно оставить сообщение?\": “May I leave a message?”",
+      "example": "Можно оставить сообщение?",
+      "exampleEnglish": "“May I leave a message?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "сообщение",
+      "romanization": "soobshcheniye",
+      "nativeText": "Usage focus for \"сообщение\": “Message.” Useful for phone and text contexts.",
+      "pronunciation": "soobshcheniye",
+      "exampleTarget": "Можно оставить сообщение?",
+      "exampleNative": "Notice what the form is doing here: “May I leave a message?”",
+      "korean": "сообщение",
+      "english": "Usage focus for \"сообщение\": “Message.” Useful for phone and text contexts.",
+      "example": "Можно оставить сообщение?",
+      "exampleEnglish": "Notice what the form is doing here: “May I leave a message?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "сообщение",
+      "romanization": "soobshcheniye",
+      "nativeText": "Contrast check for \"сообщение\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "soobshcheniye",
+      "exampleTarget": "Можно оставить сообщение?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I leave a message?”",
+      "korean": "сообщение",
+      "english": "Contrast check for \"сообщение\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Можно оставить сообщение?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "сообщение",
+      "romanization": "soobshcheniye",
+      "nativeText": "Recall \"сообщение\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно оставить сообщение?\".",
+      "pronunciation": "soobshcheniye",
+      "exampleTarget": "Можно оставить сообщение?",
+      "exampleNative": "Self-check against the model before moving on: “May I leave a message?”",
+      "korean": "сообщение",
+      "english": "Recall \"сообщение\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно оставить сообщение?\".",
+      "example": "Можно оставить сообщение?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "сообщение",
+      "romanization": "soobshcheniye",
+      "nativeText": "Repair \"сообщение\" inside \"Можно оставить сообщение?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Message.” Useful for phone and text contexts.",
+      "pronunciation": "soobshcheniye",
+      "exampleTarget": "Можно оставить сообщение?",
+      "exampleNative": "Use the model as the repair target: “May I leave a message?”",
+      "korean": "сообщение",
+      "english": "Repair \"сообщение\" inside \"Можно оставить сообщение?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Message.” Useful for phone and text contexts.",
+      "example": "Можно оставить сообщение?",
+      "exampleEnglish": "Use the model as the repair target: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "сообщение",
+      "romanization": "soobshcheniye",
+      "nativeText": "Transfer \"сообщение\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно оставить сообщение?\".",
+      "pronunciation": "soobshcheniye",
+      "exampleTarget": "Можно оставить сообщение?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I leave a message?”",
+      "korean": "сообщение",
+      "english": "Transfer \"сообщение\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно оставить сообщение?\".",
+      "example": "Можно оставить сообщение?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "сообщение",
+      "romanization": "soobshcheniye",
+      "nativeText": "Find one word or phrase that naturally travels with \"сообщение\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "soobshcheniye",
+      "exampleTarget": "Можно оставить сообщение?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I leave a message?”",
+      "korean": "сообщение",
+      "english": "Find one word or phrase that naturally travels with \"сообщение\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Можно оставить сообщение?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "сообщение",
+      "romanization": "soobshcheniye",
+      "nativeText": "Listen for \"сообщение\" inside \"Можно оставить сообщение?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "soobshcheniye",
+      "exampleTarget": "Можно оставить сообщение?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I leave a message?”",
+      "korean": "сообщение",
+      "english": "Listen for \"сообщение\" inside \"Можно оставить сообщение?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Можно оставить сообщение?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "сообщение",
+      "romanization": "soobshcheniye",
+      "nativeText": "Write \"сообщение\" again without looking, then compare the exact written form against \"Можно оставить сообщение?\" before moving on.",
+      "pronunciation": "soobshcheniye",
+      "exampleTarget": "Можно оставить сообщение?",
+      "exampleNative": "Use the written model as the final correctness check: “May I leave a message?”",
+      "korean": "сообщение",
+      "english": "Write \"сообщение\" again without looking, then compare the exact written form against \"Можно оставить сообщение?\" before moving on.",
+      "example": "Можно оставить сообщение?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "сообщение",
+      "romanization": "soobshcheniye",
+      "nativeText": "Check whether \"сообщение\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "pronunciation": "soobshcheniye",
+      "exampleTarget": "Можно оставить сообщение?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "korean": "сообщение",
+      "english": "Check whether \"сообщение\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "example": "Можно оставить сообщение?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I leave a message?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "передайте, пожалуйста",
+      "romanization": "peredayte pozhaluysta",
+      "nativeText": "“Please pass on / tell them.” A polite service request.",
+      "pronunciation": "peredayte pozhaluysta",
+      "exampleTarget": "Передайте, пожалуйста, что я звонил.",
+      "exampleNative": "“Please tell them that I called.”",
+      "korean": "передайте, пожалуйста",
+      "english": "“Please pass on / tell them.” A polite service request.",
+      "example": "Передайте, пожалуйста, что я звонил.",
+      "exampleEnglish": "“Please tell them that I called.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "Передайте, пожалуйста, что я звонил.",
+      "romanization": "peredayte pozhaluysta",
+      "nativeText": "Model use for \"Передайте, пожалуйста, что я звонил.\": “Please tell them that I called.”",
+      "pronunciation": "peredayte pozhaluysta",
+      "exampleTarget": "Передайте, пожалуйста, что я звонил.",
+      "exampleNative": "“Please tell them that I called.”",
+      "korean": "Передайте, пожалуйста, что я звонил.",
+      "english": "Model use for \"Передайте, пожалуйста, что я звонил.\": “Please tell them that I called.”",
+      "example": "Передайте, пожалуйста, что я звонил.",
+      "exampleEnglish": "“Please tell them that I called.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "передайте, пожалуйста",
+      "romanization": "peredayte pozhaluysta",
+      "nativeText": "Usage focus for \"передайте, пожалуйста\": “Please pass on / tell them.” A polite service request.",
+      "pronunciation": "peredayte pozhaluysta",
+      "exampleTarget": "Передайте, пожалуйста, что я звонил.",
+      "exampleNative": "Notice what the form is doing here: “Please tell them that I called.”",
+      "korean": "передайте, пожалуйста",
+      "english": "Usage focus for \"передайте, пожалуйста\": “Please pass on / tell them.” A polite service request.",
+      "example": "Передайте, пожалуйста, что я звонил.",
+      "exampleEnglish": "Notice what the form is doing here: “Please tell them that I called.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "передайте, пожалуйста",
+      "romanization": "peredayte pozhaluysta",
+      "nativeText": "Contrast check for \"передайте, пожалуйста\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "peredayte pozhaluysta",
+      "exampleTarget": "Передайте, пожалуйста, что я звонил.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please tell them that I called.”",
+      "korean": "передайте, пожалуйста",
+      "english": "Contrast check for \"передайте, пожалуйста\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Передайте, пожалуйста, что я звонил.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please tell them that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "передайте, пожалуйста",
+      "romanization": "peredayte pozhaluysta",
+      "nativeText": "Recall \"передайте, пожалуйста\" from memory, then explain what would change if a nearby alternative replaced it in \"Передайте, пожалуйста, что я звонил.\".",
+      "pronunciation": "peredayte pozhaluysta",
+      "exampleTarget": "Передайте, пожалуйста, что я звонил.",
+      "exampleNative": "Self-check against the model before moving on: “Please tell them that I called.”",
+      "korean": "передайте, пожалуйста",
+      "english": "Recall \"передайте, пожалуйста\" from memory, then explain what would change if a nearby alternative replaced it in \"Передайте, пожалуйста, что я звонил.\".",
+      "example": "Передайте, пожалуйста, что я звонил.",
+      "exampleEnglish": "Self-check against the model before moving on: “Please tell them that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "передайте, пожалуйста",
+      "romanization": "peredayte pozhaluysta",
+      "nativeText": "Repair \"передайте, пожалуйста\" inside \"Передайте, пожалуйста, что я звонил.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please pass on / tell them.” A polite service request.",
+      "pronunciation": "peredayte pozhaluysta",
+      "exampleTarget": "Передайте, пожалуйста, что я звонил.",
+      "exampleNative": "Use the model as the repair target: “Please tell them that I called.”",
+      "korean": "передайте, пожалуйста",
+      "english": "Repair \"передайте, пожалуйста\" inside \"Передайте, пожалуйста, что я звонил.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please pass on / tell them.” A polite service request.",
+      "example": "Передайте, пожалуйста, что я звонил.",
+      "exampleEnglish": "Use the model as the repair target: “Please tell them that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "передайте, пожалуйста",
+      "romanization": "peredayte pozhaluysta",
+      "nativeText": "Transfer \"передайте, пожалуйста\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Передайте, пожалуйста, что я звонил.\".",
+      "pronunciation": "peredayte pozhaluysta",
+      "exampleTarget": "Передайте, пожалуйста, что я звонил.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please tell them that I called.”",
+      "korean": "передайте, пожалуйста",
+      "english": "Transfer \"передайте, пожалуйста\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Передайте, пожалуйста, что я звонил.\".",
+      "example": "Передайте, пожалуйста, что я звонил.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please tell them that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "передайте, пожалуйста",
+      "romanization": "peredayte pozhaluysta",
+      "nativeText": "Find one word or phrase that naturally travels with \"передайте, пожалуйста\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "peredayte pozhaluysta",
+      "exampleTarget": "Передайте, пожалуйста, что я звонил.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Please tell them that I called.”",
+      "korean": "передайте, пожалуйста",
+      "english": "Find one word or phrase that naturally travels with \"передайте, пожалуйста\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Передайте, пожалуйста, что я звонил.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Please tell them that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "передайте, пожалуйста",
+      "romanization": "peredayte pozhaluysta",
+      "nativeText": "Listen for \"передайте, пожалуйста\" inside \"Передайте, пожалуйста, что я звонил.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "peredayte pozhaluysta",
+      "exampleTarget": "Передайте, пожалуйста, что я звонил.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please tell them that I called.”",
+      "korean": "передайте, пожалуйста",
+      "english": "Listen for \"передайте, пожалуйста\" inside \"Передайте, пожалуйста, что я звонил.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Передайте, пожалуйста, что я звонил.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please tell them that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "передайте, пожалуйста",
+      "romanization": "peredayte pozhaluysta",
+      "nativeText": "Write \"передайте, пожалуйста\" again without looking, then compare the exact written form against \"Передайте, пожалуйста, что я звонил.\" before moving on.",
+      "pronunciation": "peredayte pozhaluysta",
+      "exampleTarget": "Передайте, пожалуйста, что я звонил.",
+      "exampleNative": "Use the written model as the final correctness check: “Please tell them that I called.”",
+      "korean": "передайте, пожалуйста",
+      "english": "Write \"передайте, пожалуйста\" again without looking, then compare the exact written form against \"Передайте, пожалуйста, что я звонил.\" before moving on.",
+      "example": "Передайте, пожалуйста, что я звонил.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Please tell them that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "передайте, пожалуйста",
+      "romanization": "peredayte pozhaluysta",
+      "nativeText": "Check whether \"передайте, пожалуйста\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please tell them that I called.”",
+      "pronunciation": "peredayte pozhaluysta",
+      "exampleTarget": "Передайте, пожалуйста, что я звонил.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Please tell them that I called.”",
+      "korean": "передайте, пожалуйста",
+      "english": "Check whether \"передайте, пожалуйста\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please tell them that I called.”",
+      "example": "Передайте, пожалуйста, что я звонил.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Please tell them that I called.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "номер телефона",
+      "romanization": "nomer telefona",
+      "nativeText": "“Phone number.” The second noun appears in genitive form.",
+      "pronunciation": "nomer telefona",
+      "exampleTarget": "Какой у вас номер телефона?",
+      "exampleNative": "“What is your phone number?”",
+      "korean": "номер телефона",
+      "english": "“Phone number.” The second noun appears in genitive form.",
+      "example": "Какой у вас номер телефона?",
+      "exampleEnglish": "“What is your phone number?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "Какой у вас номер телефона?",
+      "romanization": "nomer telefona",
+      "nativeText": "Model use for \"Какой у вас номер телефона?\": “What is your phone number?”",
+      "pronunciation": "nomer telefona",
+      "exampleTarget": "Какой у вас номер телефона?",
+      "exampleNative": "“What is your phone number?”",
+      "korean": "Какой у вас номер телефона?",
+      "english": "Model use for \"Какой у вас номер телефона?\": “What is your phone number?”",
+      "example": "Какой у вас номер телефона?",
+      "exampleEnglish": "“What is your phone number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "номер телефона",
+      "romanization": "nomer telefona",
+      "nativeText": "Usage focus for \"номер телефона\": “Phone number.” The second noun appears in genitive form.",
+      "pronunciation": "nomer telefona",
+      "exampleTarget": "Какой у вас номер телефона?",
+      "exampleNative": "Notice what the form is doing here: “What is your phone number?”",
+      "korean": "номер телефона",
+      "english": "Usage focus for \"номер телефона\": “Phone number.” The second noun appears in genitive form.",
+      "example": "Какой у вас номер телефона?",
+      "exampleEnglish": "Notice what the form is doing here: “What is your phone number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "номер телефона",
+      "romanization": "nomer telefona",
+      "nativeText": "Contrast check for \"номер телефона\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nomer telefona",
+      "exampleTarget": "Какой у вас номер телефона?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is your phone number?”",
+      "korean": "номер телефона",
+      "english": "Contrast check for \"номер телефона\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Какой у вас номер телефона?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "номер телефона",
+      "romanization": "nomer telefona",
+      "nativeText": "Recall \"номер телефона\" from memory, then explain what would change if a nearby alternative replaced it in \"Какой у вас номер телефона?\".",
+      "pronunciation": "nomer telefona",
+      "exampleTarget": "Какой у вас номер телефона?",
+      "exampleNative": "Self-check against the model before moving on: “What is your phone number?”",
+      "korean": "номер телефона",
+      "english": "Recall \"номер телефона\" from memory, then explain what would change if a nearby alternative replaced it in \"Какой у вас номер телефона?\".",
+      "example": "Какой у вас номер телефона?",
+      "exampleEnglish": "Self-check against the model before moving on: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "номер телефона",
+      "romanization": "nomer telefona",
+      "nativeText": "Repair \"номер телефона\" inside \"Какой у вас номер телефона?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Phone number.” The second noun appears in genitive form.",
+      "pronunciation": "nomer telefona",
+      "exampleTarget": "Какой у вас номер телефона?",
+      "exampleNative": "Use the model as the repair target: “What is your phone number?”",
+      "korean": "номер телефона",
+      "english": "Repair \"номер телефона\" inside \"Какой у вас номер телефона?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Phone number.” The second noun appears in genitive form.",
+      "example": "Какой у вас номер телефона?",
+      "exampleEnglish": "Use the model as the repair target: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "номер телефона",
+      "romanization": "nomer telefona",
+      "nativeText": "Transfer \"номер телефона\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Какой у вас номер телефона?\".",
+      "pronunciation": "nomer telefona",
+      "exampleTarget": "Какой у вас номер телефона?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is your phone number?”",
+      "korean": "номер телефона",
+      "english": "Transfer \"номер телефона\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Какой у вас номер телефона?\".",
+      "example": "Какой у вас номер телефона?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "номер телефона",
+      "romanization": "nomer telefona",
+      "nativeText": "Find one word or phrase that naturally travels with \"номер телефона\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nomer telefona",
+      "exampleTarget": "Какой у вас номер телефона?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What is your phone number?”",
+      "korean": "номер телефона",
+      "english": "Find one word or phrase that naturally travels with \"номер телефона\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Какой у вас номер телефона?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "номер телефона",
+      "romanization": "nomer telefona",
+      "nativeText": "Listen for \"номер телефона\" inside \"Какой у вас номер телефона?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nomer telefona",
+      "exampleTarget": "Какой у вас номер телефона?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is your phone number?”",
+      "korean": "номер телефона",
+      "english": "Listen for \"номер телефона\" inside \"Какой у вас номер телефона?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Какой у вас номер телефона?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "номер телефона",
+      "romanization": "nomer telefona",
+      "nativeText": "Write \"номер телефона\" again without looking, then compare the exact written form against \"Какой у вас номер телефона?\" before moving on.",
+      "pronunciation": "nomer telefona",
+      "exampleTarget": "Какой у вас номер телефона?",
+      "exampleNative": "Use the written model as the final correctness check: “What is your phone number?”",
+      "korean": "номер телефона",
+      "english": "Write \"номер телефона\" again without looking, then compare the exact written form against \"Какой у вас номер телефона?\" before moving on.",
+      "example": "Какой у вас номер телефона?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "номер телефона",
+      "romanization": "nomer telefona",
+      "nativeText": "Check whether \"номер телефона\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "pronunciation": "nomer telefona",
+      "exampleTarget": "Какой у вас номер телефона?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "korean": "номер телефона",
+      "english": "Check whether \"номер телефона\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "example": "Какой у вас номер телефона?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What is your phone number?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "повторите, пожалуйста",
+      "romanization": "povtorite pozhaluysta",
+      "nativeText": "“Please repeat.” A core repair phrase for learners.",
+      "pronunciation": "povtorite pozhaluysta",
+      "exampleTarget": "Повторите номер, пожалуйста.",
+      "exampleNative": "“Please repeat the number.”",
+      "korean": "повторите, пожалуйста",
+      "english": "“Please repeat.” A core repair phrase for learners.",
+      "example": "Повторите номер, пожалуйста.",
+      "exampleEnglish": "“Please repeat the number.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "Повторите номер, пожалуйста.",
+      "romanization": "povtorite pozhaluysta",
+      "nativeText": "Model use for \"Повторите номер, пожалуйста.\": “Please repeat the number.”",
+      "pronunciation": "povtorite pozhaluysta",
+      "exampleTarget": "Повторите номер, пожалуйста.",
+      "exampleNative": "“Please repeat the number.”",
+      "korean": "Повторите номер, пожалуйста.",
+      "english": "Model use for \"Повторите номер, пожалуйста.\": “Please repeat the number.”",
+      "example": "Повторите номер, пожалуйста.",
+      "exampleEnglish": "“Please repeat the number.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "повторите, пожалуйста",
+      "romanization": "povtorite pozhaluysta",
+      "nativeText": "Usage focus for \"повторите, пожалуйста\": “Please repeat.” A core repair phrase for learners.",
+      "pronunciation": "povtorite pozhaluysta",
+      "exampleTarget": "Повторите номер, пожалуйста.",
+      "exampleNative": "Notice what the form is doing here: “Please repeat the number.”",
+      "korean": "повторите, пожалуйста",
+      "english": "Usage focus for \"повторите, пожалуйста\": “Please repeat.” A core repair phrase for learners.",
+      "example": "Повторите номер, пожалуйста.",
+      "exampleEnglish": "Notice what the form is doing here: “Please repeat the number.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "повторите, пожалуйста",
+      "romanization": "povtorite pozhaluysta",
+      "nativeText": "Contrast check for \"повторите, пожалуйста\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "povtorite pozhaluysta",
+      "exampleTarget": "Повторите номер, пожалуйста.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please repeat the number.”",
+      "korean": "повторите, пожалуйста",
+      "english": "Contrast check for \"повторите, пожалуйста\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Повторите номер, пожалуйста.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please repeat the number.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "повторите, пожалуйста",
+      "romanization": "povtorite pozhaluysta",
+      "nativeText": "Recall \"повторите, пожалуйста\" from memory, then explain what would change if a nearby alternative replaced it in \"Повторите номер, пожалуйста.\".",
+      "pronunciation": "povtorite pozhaluysta",
+      "exampleTarget": "Повторите номер, пожалуйста.",
+      "exampleNative": "Self-check against the model before moving on: “Please repeat the number.”",
+      "korean": "повторите, пожалуйста",
+      "english": "Recall \"повторите, пожалуйста\" from memory, then explain what would change if a nearby alternative replaced it in \"Повторите номер, пожалуйста.\".",
+      "example": "Повторите номер, пожалуйста.",
+      "exampleEnglish": "Self-check against the model before moving on: “Please repeat the number.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "повторите, пожалуйста",
+      "romanization": "povtorite pozhaluysta",
+      "nativeText": "Repair \"повторите, пожалуйста\" inside \"Повторите номер, пожалуйста.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please repeat.” A core repair phrase for learners.",
+      "pronunciation": "povtorite pozhaluysta",
+      "exampleTarget": "Повторите номер, пожалуйста.",
+      "exampleNative": "Use the model as the repair target: “Please repeat the number.”",
+      "korean": "повторите, пожалуйста",
+      "english": "Repair \"повторите, пожалуйста\" inside \"Повторите номер, пожалуйста.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please repeat.” A core repair phrase for learners.",
+      "example": "Повторите номер, пожалуйста.",
+      "exampleEnglish": "Use the model as the repair target: “Please repeat the number.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "повторите, пожалуйста",
+      "romanization": "povtorite pozhaluysta",
+      "nativeText": "Transfer \"повторите, пожалуйста\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Повторите номер, пожалуйста.\".",
+      "pronunciation": "povtorite pozhaluysta",
+      "exampleTarget": "Повторите номер, пожалуйста.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please repeat the number.”",
+      "korean": "повторите, пожалуйста",
+      "english": "Transfer \"повторите, пожалуйста\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Повторите номер, пожалуйста.\".",
+      "example": "Повторите номер, пожалуйста.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please repeat the number.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "повторите, пожалуйста",
+      "romanization": "povtorite pozhaluysta",
+      "nativeText": "Find one word or phrase that naturally travels with \"повторите, пожалуйста\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "povtorite pozhaluysta",
+      "exampleTarget": "Повторите номер, пожалуйста.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Please repeat the number.”",
+      "korean": "повторите, пожалуйста",
+      "english": "Find one word or phrase that naturally travels with \"повторите, пожалуйста\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Повторите номер, пожалуйста.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Please repeat the number.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "повторите, пожалуйста",
+      "romanization": "povtorite pozhaluysta",
+      "nativeText": "Listen for \"повторите, пожалуйста\" inside \"Повторите номер, пожалуйста.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "povtorite pozhaluysta",
+      "exampleTarget": "Повторите номер, пожалуйста.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please repeat the number.”",
+      "korean": "повторите, пожалуйста",
+      "english": "Listen for \"повторите, пожалуйста\" inside \"Повторите номер, пожалуйста.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Повторите номер, пожалуйста.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please repeat the number.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "повторите, пожалуйста",
+      "romanization": "povtorite pozhaluysta",
+      "nativeText": "Write \"повторите, пожалуйста\" again without looking, then compare the exact written form against \"Повторите номер, пожалуйста.\" before moving on.",
+      "pronunciation": "povtorite pozhaluysta",
+      "exampleTarget": "Повторите номер, пожалуйста.",
+      "exampleNative": "Use the written model as the final correctness check: “Please repeat the number.”",
+      "korean": "повторите, пожалуйста",
+      "english": "Write \"повторите, пожалуйста\" again without looking, then compare the exact written form against \"Повторите номер, пожалуйста.\" before moving on.",
+      "example": "Повторите номер, пожалуйста.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Please repeat the number.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "повторите, пожалуйста",
+      "romanization": "povtorite pozhaluysta",
+      "nativeText": "Check whether \"повторите, пожалуйста\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please repeat the number.”",
+      "pronunciation": "povtorite pozhaluysta",
+      "exampleTarget": "Повторите номер, пожалуйста.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Please repeat the number.”",
+      "korean": "повторите, пожалуйста",
+      "english": "Check whether \"повторите, пожалуйста\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please repeat the number.”",
+      "example": "Повторите номер, пожалуйста.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Please repeat the number.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "я перезвоню позже",
+      "romanization": "ya perezvonyu pozzhe",
+      "nativeText": "“I will call back later.” A natural call-ending promise.",
+      "pronunciation": "ya perezvonyu pozzhe",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "“Alright, I will call back later.”",
+      "korean": "я перезвоню позже",
+      "english": "“I will call back later.” A natural call-ending promise.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "“Alright, I will call back later.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "Хорошо, я перезвоню позже.",
+      "romanization": "ya perezvonyu pozzhe",
+      "nativeText": "Model use for \"Хорошо, я перезвоню позже.\": “Alright, I will call back later.”",
+      "pronunciation": "ya perezvonyu pozzhe",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "“Alright, I will call back later.”",
+      "korean": "Хорошо, я перезвоню позже.",
+      "english": "Model use for \"Хорошо, я перезвоню позже.\": “Alright, I will call back later.”",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "“Alright, I will call back later.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "я перезвоню позже",
+      "romanization": "ya perezvonyu pozzhe",
+      "nativeText": "Usage focus for \"я перезвоню позже\": “I will call back later.” A natural call-ending promise.",
+      "pronunciation": "ya perezvonyu pozzhe",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "Notice what the form is doing here: “Alright, I will call back later.”",
+      "korean": "я перезвоню позже",
+      "english": "Usage focus for \"я перезвоню позже\": “I will call back later.” A natural call-ending promise.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "Notice what the form is doing here: “Alright, I will call back later.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "я перезвоню позже",
+      "romanization": "ya perezvonyu pozzhe",
+      "nativeText": "Contrast check for \"я перезвоню позже\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya perezvonyu pozzhe",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Alright, I will call back later.”",
+      "korean": "я перезвоню позже",
+      "english": "Contrast check for \"я перезвоню позже\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Alright, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "я перезвоню позже",
+      "romanization": "ya perezvonyu pozzhe",
+      "nativeText": "Recall \"я перезвоню позже\" from memory, then explain what would change if a nearby alternative replaced it in \"Хорошо, я перезвоню позже.\".",
+      "pronunciation": "ya perezvonyu pozzhe",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "Self-check against the model before moving on: “Alright, I will call back later.”",
+      "korean": "я перезвоню позже",
+      "english": "Recall \"я перезвоню позже\" from memory, then explain what would change if a nearby alternative replaced it in \"Хорошо, я перезвоню позже.\".",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "Self-check against the model before moving on: “Alright, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "я перезвоню позже",
+      "romanization": "ya perezvonyu pozzhe",
+      "nativeText": "Repair \"я перезвоню позже\" inside \"Хорошо, я перезвоню позже.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will call back later.” A natural call-ending promise.",
+      "pronunciation": "ya perezvonyu pozzhe",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "Use the model as the repair target: “Alright, I will call back later.”",
+      "korean": "я перезвоню позже",
+      "english": "Repair \"я перезвоню позже\" inside \"Хорошо, я перезвоню позже.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will call back later.” A natural call-ending promise.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "Use the model as the repair target: “Alright, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "я перезвоню позже",
+      "romanization": "ya perezvonyu pozzhe",
+      "nativeText": "Transfer \"я перезвоню позже\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Хорошо, я перезвоню позже.\".",
+      "pronunciation": "ya perezvonyu pozzhe",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Alright, I will call back later.”",
+      "korean": "я перезвоню позже",
+      "english": "Transfer \"я перезвоню позже\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Хорошо, я перезвоню позже.\".",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Alright, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "я перезвоню позже",
+      "romanization": "ya perezvonyu pozzhe",
+      "nativeText": "Find one word or phrase that naturally travels with \"я перезвоню позже\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya perezvonyu pozzhe",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Alright, I will call back later.”",
+      "korean": "я перезвоню позже",
+      "english": "Find one word or phrase that naturally travels with \"я перезвоню позже\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Alright, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "я перезвоню позже",
+      "romanization": "ya perezvonyu pozzhe",
+      "nativeText": "Listen for \"я перезвоню позже\" inside \"Хорошо, я перезвоню позже.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya perezvonyu pozzhe",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Alright, I will call back later.”",
+      "korean": "я перезвоню позже",
+      "english": "Listen for \"я перезвоню позже\" inside \"Хорошо, я перезвоню позже.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Alright, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "я перезвоню позже",
+      "romanization": "ya perezvonyu pozzhe",
+      "nativeText": "Write \"я перезвоню позже\" again without looking, then compare the exact written form against \"Хорошо, я перезвоню позже.\" before moving on.",
+      "pronunciation": "ya perezvonyu pozzhe",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "Use the written model as the final correctness check: “Alright, I will call back later.”",
+      "korean": "я перезвоню позже",
+      "english": "Write \"я перезвоню позже\" again without looking, then compare the exact written form against \"Хорошо, я перезвоню позже.\" before moving on.",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Alright, I will call back later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit15phonemessages-vocabulary-1",
+        "ru-level1unit15phonemessages-vocabulary-2",
+        "ru-level1unit15phonemessages-grammar-1",
+        "ru-level1unit15phonemessages-grammar-2",
+        "ru-level1unit15phonemessages-reading",
+        "ru-level1unit15phonemessages-listening",
+        "ru-level1unit15phonemessages-writing",
+        "ru-level1unit15phonemessages-task"
+      ],
+      "targetText": "я перезвоню позже",
+      "romanization": "ya perezvonyu pozzhe",
+      "nativeText": "Check whether \"я перезвоню позже\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Alright, I will call back later.”",
+      "pronunciation": "ya perezvonyu pozzhe",
+      "exampleTarget": "Хорошо, я перезвоню позже.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Alright, I will call back later.”",
+      "korean": "я перезвоню позже",
+      "english": "Check whether \"я перезвоню позже\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Alright, I will call back later.”",
+      "example": "Хорошо, я перезвоню позже.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Alright, I will call back later.”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u15',
-  title: 'Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages',
-  category: 'communication',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Make short calls, leave messages, and ask for repetition politely.',
-  vocabularyGoal: 'Use phone, message, number, and callback vocabulary.',
-  grammarGoal: 'Use respectful requests with `পারবেন?`, `বলবেন`, and `আবার বলবেন?`.',
-  speakingGoal: 'Open a call, ask for someone, leave a message, and confirm a number.',
-  task: 'Leave a clear message for a classmate.',
-  expressionPractice: [
-    practice('opening-call', 'Opening call', 'Use one phone greeting and identify yourself.'),
-    practice('leaving-message', 'Leaving message', 'Use one relay request.'),
-    practice('asking-repeat', 'Asking repetition', 'Use `আবার বলবেন?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages",
+  "category": "communication",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit15phonemessages-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Make short calls, leave messages, and ask for repetition politely."
+      ],
+      "task": "Leave a clear message for a classmate."
+    },
+    {
+      "id": "bn-level1unit15phonemessages-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit15phonemessages-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit15phonemessages-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit15phonemessages-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Make short calls, leave messages, and ask for repetition politely."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit15phonemessages-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit15phonemessages-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit15phonemessages-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit15phonemessages-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit15phonemessages-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit15phonemessages-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Leave a clear message for a classmate."
+      ],
+      "task": "Leave a clear message for a classmate."
+    }
   ],
-  relatedPools: ['topic-communication', 'topic-service'],
-  items: [
-    item('হ্যালো', 'hyalo', 'The ordinary phone greeting.', 'হ্যালো, আমি মিতা বলছি।', '“Hello, this is Mita speaking.”'),
-    item('... এর সঙ্গে কথা বলতে পারি?', '... er shonge kotha bolte pari', '“May I speak with ...?” A polite phone request.', 'রহিমের সঙ্গে কথা বলতে পারি?', '“May I speak with Rahim?”'),
-    item('তিনি এখন নেই', 'tini ekhon nei', '“He/she is not here now.” `তিনি` is respectful and gender-neutral.', 'তিনি এখন অফিসে নেই।', '“They are not in the office now.”'),
-    item('বার্তা', 'barta', '“Message.” Useful for phone and written contexts.', 'আমি কি একটা বার্তা রাখতে পারি?', '“May I leave a message?”'),
-    item('বলবেন যে আমি ফোন করেছি', 'bolben je ami phone korechhi', '“Please say that I called.” A respectful relay request.', 'বলবেন যে আমি ফোন করেছি।', '“Please say that I called.”'),
-    item('ফোন নম্বর', 'phone nombor', '“Phone number.” A practical service phrase.', 'আপনার ফোন নম্বর কত?', '“What is your phone number?”'),
-    item('আবার বলবেন?', 'abar bolben', '“Would you say that again?” A crucial repair phrase.', 'নম্বরটা আবার বলবেন?', '“Would you repeat the number?”'),
-    item('পরে আবার ফোন করব', 'pore abar phone korbo', '“I will call again later.” A natural call-ending promise.', 'ঠিক আছে, পরে আবার ফোন করব।', '“Okay, I will call again later.”'),
+  "expressionPractice": [
+    {
+      "id": "opening-call",
+      "label": "Opening call",
+      "goal": "Use one phone greeting and identify yourself."
+    },
+    {
+      "id": "leaving-message",
+      "label": "Leaving message",
+      "goal": "Use one relay request."
+    },
+    {
+      "id": "asking-repeat",
+      "label": "Asking repetition",
+      "goal": "Use `আবার বলবেন?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-communication",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Make short calls, leave messages, and ask for repetition politely.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Leave a clear message for a classmate.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Make short calls, leave messages, and ask for repetition politely.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Leave a clear message for a classmate."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit15phonemessages-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"হ্যালো, আমি মিতা বলছি।\".",
+      "pronunciation": "",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "“Hello, this is Mita speaking.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"হ্যালো, আমি মিতা বলছি।\".",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "“Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "“Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "Use the key language of Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "“Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-2"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "“May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "“May I speak with Rahim?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit15phonemessages-grammar-1"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "",
+      "nativeText": "Make short calls, leave messages, and ask for repetition politely.",
+      "pronunciation": "",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "“Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "Make short calls, leave messages, and ask for repetition politely.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "“Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "“May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "Contrast the main pattern in Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "“May I speak with Rahim?”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit15phonemessages-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"ঠিক আছে, পরে আবার ফোন করব।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"ঠিক আছে, পরে আবার ফোন করব।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit15phonemessages-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"ঠিক আছে, পরে আবার ফোন করব।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"ঠিক আছে, পরে আবার ফোন করব।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit15phonemessages-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"হ্যালো, আমি মিতা বলছি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"হ্যালো, আমি মিতা বলছি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit15phonemessages-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "“May I speak with Rahim?”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "“May I speak with Rahim?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Leave a clear message for a classmate.",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "Leave a clear message for a classmate.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Leave a clear message for a classmate.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "Leave a clear message for a classmate."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"রহিমের সঙ্গে কথা বলতে পারি?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “May I speak with Rahim?”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"রহিমের সঙ্গে কথা বলতে পারি?\" against the model.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “May I speak with Rahim?”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"হ্যালো, আমি মিতা বলছি।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "“Hello, this is Mita speaking.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"হ্যালো, আমি মিতা বলছি।\" before reusing it elsewhere.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "“Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"ঠিক আছে, পরে আবার ফোন করব।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"ঠিক আছে, পরে আবার ফোন করব।\" as one thought.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"হ্যালো, আমি মিতা বলছি।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"হ্যালো, আমি মিতা বলছি।\" and move it into your own life.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"হ্যালো\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "হ্যালো",
+      "exampleNative": "The ordinary phone greeting.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"হ্যালো\" before looking back.",
+      "example": "হ্যালো",
+      "exampleEnglish": "The ordinary phone greeting."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"ঠিক আছে, পরে আবার ফোন করব।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"ঠিক আছে, পরে আবার ফোন করব।\" rather than restarting from a blank sentence.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"রহিমের সঙ্গে কথা বলতে পারি?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "“May I speak with Rahim?”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"রহিমের সঙ্গে কথা বলতে পারি?\" as the comparison line.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "“May I speak with Rahim?”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit15phonemessages-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"হ্যালো, আমি মিতা বলছি।\".",
+      "pronunciation": "",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "“Hello, this is Mita speaking.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"হ্যালো, আমি মিতা বলছি।\".",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "“Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"ঠিক আছে, পরে আবার ফোন করব।\".",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"ঠিক আছে, পরে আবার ফোন করব।\".",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"হ্যালো, আমি মিতা বলছি।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "“Hello, this is Mita speaking.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"হ্যালো, আমি মিতা বলছি।\" one layer at a time.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "“Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"রহিমের সঙ্গে কথা বলতে পারি?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "“May I speak with Rahim?”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"রহিমের সঙ্গে কথা বলতে পারি?\" as the deciding example.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "“May I speak with Rahim?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-culture",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"ঠিক আছে, পরে আবার ফোন করব।\".",
+      "pronunciation": "",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"ঠিক আছে, পরে আবার ফোন করব।\".",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "hyalo",
+      "nativeText": "The ordinary phone greeting.",
+      "pronunciation": "hyalo",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "“Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "The ordinary phone greeting.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "“Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "হ্যালো, আমি মিতা বলছি।",
+      "romanization": "hyalo",
+      "nativeText": "Model use for \"হ্যালো, আমি মিতা বলছি।\": “Hello, this is Mita speaking.”",
+      "pronunciation": "hyalo",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "“Hello, this is Mita speaking.”",
+      "korean": "হ্যালো, আমি মিতা বলছি।",
+      "english": "Model use for \"হ্যালো, আমি মিতা বলছি।\": “Hello, this is Mita speaking.”",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "“Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "hyalo",
+      "nativeText": "Usage focus for \"হ্যালো\": Use the key language of Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "hyalo",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "Notice what the form is doing here: “Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "Usage focus for \"হ্যালো\": Use the key language of Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "Notice what the form is doing here: “Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "hyalo",
+      "nativeText": "Contrast check for \"হ্যালো\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hyalo",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "Contrast check for \"হ্যালো\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "hyalo",
+      "nativeText": "Recall \"হ্যালো\" from memory, then explain what would change if a nearby alternative replaced it in \"হ্যালো, আমি মিতা বলছি।\".",
+      "pronunciation": "hyalo",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "Self-check against the model before moving on: “Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "Recall \"হ্যালো\" from memory, then explain what would change if a nearby alternative replaced it in \"হ্যালো, আমি মিতা বলছি।\".",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "hyalo",
+      "nativeText": "Repair \"হ্যালো\" inside \"হ্যালো, আমি মিতা বলছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "pronunciation": "hyalo",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "Use the model as the repair target: “Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "Repair \"হ্যালো\" inside \"হ্যালো, আমি মিতা বলছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages with the register and setting that the lesson requires.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "Use the model as the repair target: “Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "hyalo",
+      "nativeText": "Transfer \"হ্যালো\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"হ্যালো, আমি মিতা বলছি।\".",
+      "pronunciation": "hyalo",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "Transfer \"হ্যালো\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"হ্যালো, আমি মিতা বলছি।\".",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "hyalo",
+      "nativeText": "Find one word or phrase that naturally travels with \"হ্যালো\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hyalo",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "Find one word or phrase that naturally travels with \"হ্যালো\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "hyalo",
+      "nativeText": "Listen for \"হ্যালো\" inside \"হ্যালো, আমি মিতা বলছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hyalo",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "Listen for \"হ্যালো\" inside \"হ্যালো, আমি মিতা বলছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "hyalo",
+      "nativeText": "Write \"হ্যালো\" again without looking, then compare the exact written form against \"হ্যালো, আমি মিতা বলছি।\" before moving on.",
+      "pronunciation": "hyalo",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "Use the written model as the final correctness check: “Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "Write \"হ্যালো\" again without looking, then compare the exact written form against \"হ্যালো, আমি মিতা বলছি।\" before moving on.",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "হ্যালো",
+      "romanization": "hyalo",
+      "nativeText": "Check whether \"হ্যালো\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Hello, this is Mita speaking.”",
+      "pronunciation": "hyalo",
+      "exampleTarget": "হ্যালো, আমি মিতা বলছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Hello, this is Mita speaking.”",
+      "korean": "হ্যালো",
+      "english": "Check whether \"হ্যালো\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Hello, this is Mita speaking.”",
+      "example": "হ্যালো, আমি মিতা বলছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Hello, this is Mita speaking.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "... er shonge kotha bolte pari",
+      "nativeText": "“May I speak with ...?” A polite phone request.",
+      "pronunciation": "... er shonge kotha bolte pari",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "“May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "“May I speak with ...?” A polite phone request.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "“May I speak with Rahim?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "romanization": "... er shonge kotha bolte pari",
+      "nativeText": "Model use for \"রহিমের সঙ্গে কথা বলতে পারি?\": “May I speak with Rahim?”",
+      "pronunciation": "... er shonge kotha bolte pari",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "“May I speak with Rahim?”",
+      "korean": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "english": "Model use for \"রহিমের সঙ্গে কথা বলতে পারি?\": “May I speak with Rahim?”",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "“May I speak with Rahim?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "... er shonge kotha bolte pari",
+      "nativeText": "Usage focus for \"... এর সঙ্গে কথা বলতে পারি?\": Distinguish the nearby wording choices that make Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "... er shonge kotha bolte pari",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "Notice what the form is doing here: “May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "Usage focus for \"... এর সঙ্গে কথা বলতে পারি?\": Distinguish the nearby wording choices that make Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "Notice what the form is doing here: “May I speak with Rahim?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "... er shonge kotha bolte pari",
+      "nativeText": "Contrast check for \"... এর সঙ্গে কথা বলতে পারি?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "... er shonge kotha bolte pari",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "Contrast check for \"... এর সঙ্গে কথা বলতে পারি?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I speak with Rahim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "... er shonge kotha bolte pari",
+      "nativeText": "Recall \"... এর সঙ্গে কথা বলতে পারি?\" from memory, then explain what would change if a nearby alternative replaced it in \"রহিমের সঙ্গে কথা বলতে পারি?\".",
+      "pronunciation": "... er shonge kotha bolte pari",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "Self-check against the model before moving on: “May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "Recall \"... এর সঙ্গে কথা বলতে পারি?\" from memory, then explain what would change if a nearby alternative replaced it in \"রহিমের সঙ্গে কথা বলতে পারি?\".",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I speak with Rahim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "... er shonge kotha bolte pari",
+      "nativeText": "Repair \"... এর সঙ্গে কথা বলতে পারি?\" inside \"রহিমের সঙ্গে কথা বলতে পারি?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages sound precise rather than merely understandable.",
+      "pronunciation": "... er shonge kotha bolte pari",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "Use the model as the repair target: “May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "Repair \"... এর সঙ্গে কথা বলতে পারি?\" inside \"রহিমের সঙ্গে কথা বলতে পারি?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 15: ফোন ও বার্তা — Phone Calls and Messages sound precise rather than merely understandable.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "Use the model as the repair target: “May I speak with Rahim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "... er shonge kotha bolte pari",
+      "nativeText": "Transfer \"... এর সঙ্গে কথা বলতে পারি?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"রহিমের সঙ্গে কথা বলতে পারি?\".",
+      "pronunciation": "... er shonge kotha bolte pari",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "Transfer \"... এর সঙ্গে কথা বলতে পারি?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"রহিমের সঙ্গে কথা বলতে পারি?\".",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I speak with Rahim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "... er shonge kotha bolte pari",
+      "nativeText": "Find one word or phrase that naturally travels with \"... এর সঙ্গে কথা বলতে পারি?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "... er shonge kotha bolte pari",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "Find one word or phrase that naturally travels with \"... এর সঙ্গে কথা বলতে পারি?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I speak with Rahim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "... er shonge kotha bolte pari",
+      "nativeText": "Listen for \"... এর সঙ্গে কথা বলতে পারি?\" inside \"রহিমের সঙ্গে কথা বলতে পারি?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "... er shonge kotha bolte pari",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "Listen for \"... এর সঙ্গে কথা বলতে পারি?\" inside \"রহিমের সঙ্গে কথা বলতে পারি?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I speak with Rahim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "... er shonge kotha bolte pari",
+      "nativeText": "Write \"... এর সঙ্গে কথা বলতে পারি?\" again without looking, then compare the exact written form against \"রহিমের সঙ্গে কথা বলতে পারি?\" before moving on.",
+      "pronunciation": "... er shonge kotha bolte pari",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "Use the written model as the final correctness check: “May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "Write \"... এর সঙ্গে কথা বলতে পারি?\" again without looking, then compare the exact written form against \"রহিমের সঙ্গে কথা বলতে পারি?\" before moving on.",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I speak with Rahim?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "... এর সঙ্গে কথা বলতে পারি?",
+      "romanization": "... er shonge kotha bolte pari",
+      "nativeText": "Check whether \"... এর সঙ্গে কথা বলতে পারি?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I speak with Rahim?”",
+      "pronunciation": "... er shonge kotha bolte pari",
+      "exampleTarget": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I speak with Rahim?”",
+      "korean": "... এর সঙ্গে কথা বলতে পারি?",
+      "english": "Check whether \"... এর সঙ্গে কথা বলতে পারি?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I speak with Rahim?”",
+      "example": "রহিমের সঙ্গে কথা বলতে পারি?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I speak with Rahim?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "তিনি এখন নেই",
+      "romanization": "tini ekhon nei",
+      "nativeText": "“He/she is not here now.” `তিনি` is respectful and gender-neutral.",
+      "pronunciation": "tini ekhon nei",
+      "exampleTarget": "তিনি এখন অফিসে নেই।",
+      "exampleNative": "“They are not in the office now.”",
+      "korean": "তিনি এখন নেই",
+      "english": "“He/she is not here now.” `তিনি` is respectful and gender-neutral.",
+      "example": "তিনি এখন অফিসে নেই।",
+      "exampleEnglish": "“They are not in the office now.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "তিনি এখন অফিসে নেই।",
+      "romanization": "tini ekhon nei",
+      "nativeText": "Model use for \"তিনি এখন অফিসে নেই।\": “They are not in the office now.”",
+      "pronunciation": "tini ekhon nei",
+      "exampleTarget": "তিনি এখন অফিসে নেই।",
+      "exampleNative": "“They are not in the office now.”",
+      "korean": "তিনি এখন অফিসে নেই।",
+      "english": "Model use for \"তিনি এখন অফিসে নেই।\": “They are not in the office now.”",
+      "example": "তিনি এখন অফিসে নেই।",
+      "exampleEnglish": "“They are not in the office now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "তিনি এখন নেই",
+      "romanization": "tini ekhon nei",
+      "nativeText": "Usage focus for \"তিনি এখন নেই\": “He/she is not here now.” `তিনি` is respectful and gender-neutral.",
+      "pronunciation": "tini ekhon nei",
+      "exampleTarget": "তিনি এখন অফিসে নেই।",
+      "exampleNative": "Notice what the form is doing here: “They are not in the office now.”",
+      "korean": "তিনি এখন নেই",
+      "english": "Usage focus for \"তিনি এখন নেই\": “He/she is not here now.” `তিনি` is respectful and gender-neutral.",
+      "example": "তিনি এখন অফিসে নেই।",
+      "exampleEnglish": "Notice what the form is doing here: “They are not in the office now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "তিনি এখন নেই",
+      "romanization": "tini ekhon nei",
+      "nativeText": "Contrast check for \"তিনি এখন নেই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tini ekhon nei",
+      "exampleTarget": "তিনি এখন অফিসে নেই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “They are not in the office now.”",
+      "korean": "তিনি এখন নেই",
+      "english": "Contrast check for \"তিনি এখন নেই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "তিনি এখন অফিসে নেই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “They are not in the office now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "তিনি এখন নেই",
+      "romanization": "tini ekhon nei",
+      "nativeText": "Recall \"তিনি এখন নেই\" from memory, then explain what would change if a nearby alternative replaced it in \"তিনি এখন অফিসে নেই।\".",
+      "pronunciation": "tini ekhon nei",
+      "exampleTarget": "তিনি এখন অফিসে নেই।",
+      "exampleNative": "Self-check against the model before moving on: “They are not in the office now.”",
+      "korean": "তিনি এখন নেই",
+      "english": "Recall \"তিনি এখন নেই\" from memory, then explain what would change if a nearby alternative replaced it in \"তিনি এখন অফিসে নেই।\".",
+      "example": "তিনি এখন অফিসে নেই।",
+      "exampleEnglish": "Self-check against the model before moving on: “They are not in the office now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "তিনি এখন নেই",
+      "romanization": "tini ekhon nei",
+      "nativeText": "Repair \"তিনি এখন নেই\" inside \"তিনি এখন অফিসে নেই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “He/she is not here now.” `তিনি` is respectful and gender-neutral.",
+      "pronunciation": "tini ekhon nei",
+      "exampleTarget": "তিনি এখন অফিসে নেই।",
+      "exampleNative": "Use the model as the repair target: “They are not in the office now.”",
+      "korean": "তিনি এখন নেই",
+      "english": "Repair \"তিনি এখন নেই\" inside \"তিনি এখন অফিসে নেই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “He/she is not here now.” `তিনি` is respectful and gender-neutral.",
+      "example": "তিনি এখন অফিসে নেই।",
+      "exampleEnglish": "Use the model as the repair target: “They are not in the office now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "তিনি এখন নেই",
+      "romanization": "tini ekhon nei",
+      "nativeText": "Transfer \"তিনি এখন নেই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"তিনি এখন অফিসে নেই।\".",
+      "pronunciation": "tini ekhon nei",
+      "exampleTarget": "তিনি এখন অফিসে নেই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “They are not in the office now.”",
+      "korean": "তিনি এখন নেই",
+      "english": "Transfer \"তিনি এখন নেই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"তিনি এখন অফিসে নেই।\".",
+      "example": "তিনি এখন অফিসে নেই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “They are not in the office now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "তিনি এখন নেই",
+      "romanization": "tini ekhon nei",
+      "nativeText": "Find one word or phrase that naturally travels with \"তিনি এখন নেই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tini ekhon nei",
+      "exampleTarget": "তিনি এখন অফিসে নেই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “They are not in the office now.”",
+      "korean": "তিনি এখন নেই",
+      "english": "Find one word or phrase that naturally travels with \"তিনি এখন নেই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "তিনি এখন অফিসে নেই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “They are not in the office now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "তিনি এখন নেই",
+      "romanization": "tini ekhon nei",
+      "nativeText": "Listen for \"তিনি এখন নেই\" inside \"তিনি এখন অফিসে নেই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tini ekhon nei",
+      "exampleTarget": "তিনি এখন অফিসে নেই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “They are not in the office now.”",
+      "korean": "তিনি এখন নেই",
+      "english": "Listen for \"তিনি এখন নেই\" inside \"তিনি এখন অফিসে নেই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "তিনি এখন অফিসে নেই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “They are not in the office now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "তিনি এখন নেই",
+      "romanization": "tini ekhon nei",
+      "nativeText": "Write \"তিনি এখন নেই\" again without looking, then compare the exact written form against \"তিনি এখন অফিসে নেই।\" before moving on.",
+      "pronunciation": "tini ekhon nei",
+      "exampleTarget": "তিনি এখন অফিসে নেই।",
+      "exampleNative": "Use the written model as the final correctness check: “They are not in the office now.”",
+      "korean": "তিনি এখন নেই",
+      "english": "Write \"তিনি এখন নেই\" again without looking, then compare the exact written form against \"তিনি এখন অফিসে নেই।\" before moving on.",
+      "example": "তিনি এখন অফিসে নেই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “They are not in the office now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "তিনি এখন নেই",
+      "romanization": "tini ekhon nei",
+      "nativeText": "Check whether \"তিনি এখন নেই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “They are not in the office now.”",
+      "pronunciation": "tini ekhon nei",
+      "exampleTarget": "তিনি এখন অফিসে নেই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “They are not in the office now.”",
+      "korean": "তিনি এখন নেই",
+      "english": "Check whether \"তিনি এখন নেই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “They are not in the office now.”",
+      "example": "তিনি এখন অফিসে নেই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “They are not in the office now.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বার্তা",
+      "romanization": "barta",
+      "nativeText": "“Message.” Useful for phone and written contexts.",
+      "pronunciation": "barta",
+      "exampleTarget": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleNative": "“May I leave a message?”",
+      "korean": "বার্তা",
+      "english": "“Message.” Useful for phone and written contexts.",
+      "example": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleEnglish": "“May I leave a message?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আমি কি একটা বার্তা রাখতে পারি?",
+      "romanization": "barta",
+      "nativeText": "Model use for \"আমি কি একটা বার্তা রাখতে পারি?\": “May I leave a message?”",
+      "pronunciation": "barta",
+      "exampleTarget": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleNative": "“May I leave a message?”",
+      "korean": "আমি কি একটা বার্তা রাখতে পারি?",
+      "english": "Model use for \"আমি কি একটা বার্তা রাখতে পারি?\": “May I leave a message?”",
+      "example": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleEnglish": "“May I leave a message?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বার্তা",
+      "romanization": "barta",
+      "nativeText": "Usage focus for \"বার্তা\": “Message.” Useful for phone and written contexts.",
+      "pronunciation": "barta",
+      "exampleTarget": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleNative": "Notice what the form is doing here: “May I leave a message?”",
+      "korean": "বার্তা",
+      "english": "Usage focus for \"বার্তা\": “Message.” Useful for phone and written contexts.",
+      "example": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleEnglish": "Notice what the form is doing here: “May I leave a message?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বার্তা",
+      "romanization": "barta",
+      "nativeText": "Contrast check for \"বার্তা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "barta",
+      "exampleTarget": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I leave a message?”",
+      "korean": "বার্তা",
+      "english": "Contrast check for \"বার্তা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বার্তা",
+      "romanization": "barta",
+      "nativeText": "Recall \"বার্তা\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি কি একটা বার্তা রাখতে পারি?\".",
+      "pronunciation": "barta",
+      "exampleTarget": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleNative": "Self-check against the model before moving on: “May I leave a message?”",
+      "korean": "বার্তা",
+      "english": "Recall \"বার্তা\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি কি একটা বার্তা রাখতে পারি?\".",
+      "example": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বার্তা",
+      "romanization": "barta",
+      "nativeText": "Repair \"বার্তা\" inside \"আমি কি একটা বার্তা রাখতে পারি?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Message.” Useful for phone and written contexts.",
+      "pronunciation": "barta",
+      "exampleTarget": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleNative": "Use the model as the repair target: “May I leave a message?”",
+      "korean": "বার্তা",
+      "english": "Repair \"বার্তা\" inside \"আমি কি একটা বার্তা রাখতে পারি?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Message.” Useful for phone and written contexts.",
+      "example": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleEnglish": "Use the model as the repair target: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বার্তা",
+      "romanization": "barta",
+      "nativeText": "Transfer \"বার্তা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি কি একটা বার্তা রাখতে পারি?\".",
+      "pronunciation": "barta",
+      "exampleTarget": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I leave a message?”",
+      "korean": "বার্তা",
+      "english": "Transfer \"বার্তা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি কি একটা বার্তা রাখতে পারি?\".",
+      "example": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বার্তা",
+      "romanization": "barta",
+      "nativeText": "Find one word or phrase that naturally travels with \"বার্তা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "barta",
+      "exampleTarget": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I leave a message?”",
+      "korean": "বার্তা",
+      "english": "Find one word or phrase that naturally travels with \"বার্তা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বার্তা",
+      "romanization": "barta",
+      "nativeText": "Listen for \"বার্তা\" inside \"আমি কি একটা বার্তা রাখতে পারি?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "barta",
+      "exampleTarget": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I leave a message?”",
+      "korean": "বার্তা",
+      "english": "Listen for \"বার্তা\" inside \"আমি কি একটা বার্তা রাখতে পারি?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বার্তা",
+      "romanization": "barta",
+      "nativeText": "Write \"বার্তা\" again without looking, then compare the exact written form against \"আমি কি একটা বার্তা রাখতে পারি?\" before moving on.",
+      "pronunciation": "barta",
+      "exampleTarget": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleNative": "Use the written model as the final correctness check: “May I leave a message?”",
+      "korean": "বার্তা",
+      "english": "Write \"বার্তা\" again without looking, then compare the exact written form against \"আমি কি একটা বার্তা রাখতে পারি?\" before moving on.",
+      "example": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I leave a message?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বার্তা",
+      "romanization": "barta",
+      "nativeText": "Check whether \"বার্তা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "pronunciation": "barta",
+      "exampleTarget": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "korean": "বার্তা",
+      "english": "Check whether \"বার্তা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I leave a message?”",
+      "example": "আমি কি একটা বার্তা রাখতে পারি?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I leave a message?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বলবেন যে আমি ফোন করেছি",
+      "romanization": "bolben je ami phone korechhi",
+      "nativeText": "“Please say that I called.” A respectful relay request.",
+      "pronunciation": "bolben je ami phone korechhi",
+      "exampleTarget": "বলবেন যে আমি ফোন করেছি।",
+      "exampleNative": "“Please say that I called.”",
+      "korean": "বলবেন যে আমি ফোন করেছি",
+      "english": "“Please say that I called.” A respectful relay request.",
+      "example": "বলবেন যে আমি ফোন করেছি।",
+      "exampleEnglish": "“Please say that I called.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বলবেন যে আমি ফোন করেছি।",
+      "romanization": "bolben je ami phone korechhi",
+      "nativeText": "Model use for \"বলবেন যে আমি ফোন করেছি।\": “Please say that I called.”",
+      "pronunciation": "bolben je ami phone korechhi",
+      "exampleTarget": "বলবেন যে আমি ফোন করেছি।",
+      "exampleNative": "“Please say that I called.”",
+      "korean": "বলবেন যে আমি ফোন করেছি।",
+      "english": "Model use for \"বলবেন যে আমি ফোন করেছি।\": “Please say that I called.”",
+      "example": "বলবেন যে আমি ফোন করেছি।",
+      "exampleEnglish": "“Please say that I called.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বলবেন যে আমি ফোন করেছি",
+      "romanization": "bolben je ami phone korechhi",
+      "nativeText": "Usage focus for \"বলবেন যে আমি ফোন করেছি\": “Please say that I called.” A respectful relay request.",
+      "pronunciation": "bolben je ami phone korechhi",
+      "exampleTarget": "বলবেন যে আমি ফোন করেছি।",
+      "exampleNative": "Notice what the form is doing here: “Please say that I called.”",
+      "korean": "বলবেন যে আমি ফোন করেছি",
+      "english": "Usage focus for \"বলবেন যে আমি ফোন করেছি\": “Please say that I called.” A respectful relay request.",
+      "example": "বলবেন যে আমি ফোন করেছি।",
+      "exampleEnglish": "Notice what the form is doing here: “Please say that I called.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বলবেন যে আমি ফোন করেছি",
+      "romanization": "bolben je ami phone korechhi",
+      "nativeText": "Contrast check for \"বলবেন যে আমি ফোন করেছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bolben je ami phone korechhi",
+      "exampleTarget": "বলবেন যে আমি ফোন করেছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please say that I called.”",
+      "korean": "বলবেন যে আমি ফোন করেছি",
+      "english": "Contrast check for \"বলবেন যে আমি ফোন করেছি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "বলবেন যে আমি ফোন করেছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বলবেন যে আমি ফোন করেছি",
+      "romanization": "bolben je ami phone korechhi",
+      "nativeText": "Recall \"বলবেন যে আমি ফোন করেছি\" from memory, then explain what would change if a nearby alternative replaced it in \"বলবেন যে আমি ফোন করেছি।\".",
+      "pronunciation": "bolben je ami phone korechhi",
+      "exampleTarget": "বলবেন যে আমি ফোন করেছি।",
+      "exampleNative": "Self-check against the model before moving on: “Please say that I called.”",
+      "korean": "বলবেন যে আমি ফোন করেছি",
+      "english": "Recall \"বলবেন যে আমি ফোন করেছি\" from memory, then explain what would change if a nearby alternative replaced it in \"বলবেন যে আমি ফোন করেছি।\".",
+      "example": "বলবেন যে আমি ফোন করেছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বলবেন যে আমি ফোন করেছি",
+      "romanization": "bolben je ami phone korechhi",
+      "nativeText": "Repair \"বলবেন যে আমি ফোন করেছি\" inside \"বলবেন যে আমি ফোন করেছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please say that I called.” A respectful relay request.",
+      "pronunciation": "bolben je ami phone korechhi",
+      "exampleTarget": "বলবেন যে আমি ফোন করেছি।",
+      "exampleNative": "Use the model as the repair target: “Please say that I called.”",
+      "korean": "বলবেন যে আমি ফোন করেছি",
+      "english": "Repair \"বলবেন যে আমি ফোন করেছি\" inside \"বলবেন যে আমি ফোন করেছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please say that I called.” A respectful relay request.",
+      "example": "বলবেন যে আমি ফোন করেছি।",
+      "exampleEnglish": "Use the model as the repair target: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বলবেন যে আমি ফোন করেছি",
+      "romanization": "bolben je ami phone korechhi",
+      "nativeText": "Transfer \"বলবেন যে আমি ফোন করেছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বলবেন যে আমি ফোন করেছি।\".",
+      "pronunciation": "bolben je ami phone korechhi",
+      "exampleTarget": "বলবেন যে আমি ফোন করেছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please say that I called.”",
+      "korean": "বলবেন যে আমি ফোন করেছি",
+      "english": "Transfer \"বলবেন যে আমি ফোন করেছি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বলবেন যে আমি ফোন করেছি।\".",
+      "example": "বলবেন যে আমি ফোন করেছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বলবেন যে আমি ফোন করেছি",
+      "romanization": "bolben je ami phone korechhi",
+      "nativeText": "Find one word or phrase that naturally travels with \"বলবেন যে আমি ফোন করেছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bolben je ami phone korechhi",
+      "exampleTarget": "বলবেন যে আমি ফোন করেছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Please say that I called.”",
+      "korean": "বলবেন যে আমি ফোন করেছি",
+      "english": "Find one word or phrase that naturally travels with \"বলবেন যে আমি ফোন করেছি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "বলবেন যে আমি ফোন করেছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বলবেন যে আমি ফোন করেছি",
+      "romanization": "bolben je ami phone korechhi",
+      "nativeText": "Listen for \"বলবেন যে আমি ফোন করেছি\" inside \"বলবেন যে আমি ফোন করেছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bolben je ami phone korechhi",
+      "exampleTarget": "বলবেন যে আমি ফোন করেছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please say that I called.”",
+      "korean": "বলবেন যে আমি ফোন করেছি",
+      "english": "Listen for \"বলবেন যে আমি ফোন করেছি\" inside \"বলবেন যে আমি ফোন করেছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "বলবেন যে আমি ফোন করেছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বলবেন যে আমি ফোন করেছি",
+      "romanization": "bolben je ami phone korechhi",
+      "nativeText": "Write \"বলবেন যে আমি ফোন করেছি\" again without looking, then compare the exact written form against \"বলবেন যে আমি ফোন করেছি।\" before moving on.",
+      "pronunciation": "bolben je ami phone korechhi",
+      "exampleTarget": "বলবেন যে আমি ফোন করেছি।",
+      "exampleNative": "Use the written model as the final correctness check: “Please say that I called.”",
+      "korean": "বলবেন যে আমি ফোন করেছি",
+      "english": "Write \"বলবেন যে আমি ফোন করেছি\" again without looking, then compare the exact written form against \"বলবেন যে আমি ফোন করেছি।\" before moving on.",
+      "example": "বলবেন যে আমি ফোন করেছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Please say that I called.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "বলবেন যে আমি ফোন করেছি",
+      "romanization": "bolben je ami phone korechhi",
+      "nativeText": "Check whether \"বলবেন যে আমি ফোন করেছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please say that I called.”",
+      "pronunciation": "bolben je ami phone korechhi",
+      "exampleTarget": "বলবেন যে আমি ফোন করেছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Please say that I called.”",
+      "korean": "বলবেন যে আমি ফোন করেছি",
+      "english": "Check whether \"বলবেন যে আমি ফোন করেছি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please say that I called.”",
+      "example": "বলবেন যে আমি ফোন করেছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Please say that I called.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "ফোন নম্বর",
+      "romanization": "phone nombor",
+      "nativeText": "“Phone number.” A practical service phrase.",
+      "pronunciation": "phone nombor",
+      "exampleTarget": "আপনার ফোন নম্বর কত?",
+      "exampleNative": "“What is your phone number?”",
+      "korean": "ফোন নম্বর",
+      "english": "“Phone number.” A practical service phrase.",
+      "example": "আপনার ফোন নম্বর কত?",
+      "exampleEnglish": "“What is your phone number?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আপনার ফোন নম্বর কত?",
+      "romanization": "phone nombor",
+      "nativeText": "Model use for \"আপনার ফোন নম্বর কত?\": “What is your phone number?”",
+      "pronunciation": "phone nombor",
+      "exampleTarget": "আপনার ফোন নম্বর কত?",
+      "exampleNative": "“What is your phone number?”",
+      "korean": "আপনার ফোন নম্বর কত?",
+      "english": "Model use for \"আপনার ফোন নম্বর কত?\": “What is your phone number?”",
+      "example": "আপনার ফোন নম্বর কত?",
+      "exampleEnglish": "“What is your phone number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "ফোন নম্বর",
+      "romanization": "phone nombor",
+      "nativeText": "Usage focus for \"ফোন নম্বর\": “Phone number.” A practical service phrase.",
+      "pronunciation": "phone nombor",
+      "exampleTarget": "আপনার ফোন নম্বর কত?",
+      "exampleNative": "Notice what the form is doing here: “What is your phone number?”",
+      "korean": "ফোন নম্বর",
+      "english": "Usage focus for \"ফোন নম্বর\": “Phone number.” A practical service phrase.",
+      "example": "আপনার ফোন নম্বর কত?",
+      "exampleEnglish": "Notice what the form is doing here: “What is your phone number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "ফোন নম্বর",
+      "romanization": "phone nombor",
+      "nativeText": "Contrast check for \"ফোন নম্বর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "phone nombor",
+      "exampleTarget": "আপনার ফোন নম্বর কত?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is your phone number?”",
+      "korean": "ফোন নম্বর",
+      "english": "Contrast check for \"ফোন নম্বর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আপনার ফোন নম্বর কত?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "ফোন নম্বর",
+      "romanization": "phone nombor",
+      "nativeText": "Recall \"ফোন নম্বর\" from memory, then explain what would change if a nearby alternative replaced it in \"আপনার ফোন নম্বর কত?\".",
+      "pronunciation": "phone nombor",
+      "exampleTarget": "আপনার ফোন নম্বর কত?",
+      "exampleNative": "Self-check against the model before moving on: “What is your phone number?”",
+      "korean": "ফোন নম্বর",
+      "english": "Recall \"ফোন নম্বর\" from memory, then explain what would change if a nearby alternative replaced it in \"আপনার ফোন নম্বর কত?\".",
+      "example": "আপনার ফোন নম্বর কত?",
+      "exampleEnglish": "Self-check against the model before moving on: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "ফোন নম্বর",
+      "romanization": "phone nombor",
+      "nativeText": "Repair \"ফোন নম্বর\" inside \"আপনার ফোন নম্বর কত?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Phone number.” A practical service phrase.",
+      "pronunciation": "phone nombor",
+      "exampleTarget": "আপনার ফোন নম্বর কত?",
+      "exampleNative": "Use the model as the repair target: “What is your phone number?”",
+      "korean": "ফোন নম্বর",
+      "english": "Repair \"ফোন নম্বর\" inside \"আপনার ফোন নম্বর কত?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Phone number.” A practical service phrase.",
+      "example": "আপনার ফোন নম্বর কত?",
+      "exampleEnglish": "Use the model as the repair target: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "ফোন নম্বর",
+      "romanization": "phone nombor",
+      "nativeText": "Transfer \"ফোন নম্বর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আপনার ফোন নম্বর কত?\".",
+      "pronunciation": "phone nombor",
+      "exampleTarget": "আপনার ফোন নম্বর কত?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is your phone number?”",
+      "korean": "ফোন নম্বর",
+      "english": "Transfer \"ফোন নম্বর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আপনার ফোন নম্বর কত?\".",
+      "example": "আপনার ফোন নম্বর কত?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "ফোন নম্বর",
+      "romanization": "phone nombor",
+      "nativeText": "Find one word or phrase that naturally travels with \"ফোন নম্বর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "phone nombor",
+      "exampleTarget": "আপনার ফোন নম্বর কত?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What is your phone number?”",
+      "korean": "ফোন নম্বর",
+      "english": "Find one word or phrase that naturally travels with \"ফোন নম্বর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আপনার ফোন নম্বর কত?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "ফোন নম্বর",
+      "romanization": "phone nombor",
+      "nativeText": "Listen for \"ফোন নম্বর\" inside \"আপনার ফোন নম্বর কত?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "phone nombor",
+      "exampleTarget": "আপনার ফোন নম্বর কত?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is your phone number?”",
+      "korean": "ফোন নম্বর",
+      "english": "Listen for \"ফোন নম্বর\" inside \"আপনার ফোন নম্বর কত?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আপনার ফোন নম্বর কত?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "ফোন নম্বর",
+      "romanization": "phone nombor",
+      "nativeText": "Write \"ফোন নম্বর\" again without looking, then compare the exact written form against \"আপনার ফোন নম্বর কত?\" before moving on.",
+      "pronunciation": "phone nombor",
+      "exampleTarget": "আপনার ফোন নম্বর কত?",
+      "exampleNative": "Use the written model as the final correctness check: “What is your phone number?”",
+      "korean": "ফোন নম্বর",
+      "english": "Write \"ফোন নম্বর\" again without looking, then compare the exact written form against \"আপনার ফোন নম্বর কত?\" before moving on.",
+      "example": "আপনার ফোন নম্বর কত?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What is your phone number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "ফোন নম্বর",
+      "romanization": "phone nombor",
+      "nativeText": "Check whether \"ফোন নম্বর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "pronunciation": "phone nombor",
+      "exampleTarget": "আপনার ফোন নম্বর কত?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "korean": "ফোন নম্বর",
+      "english": "Check whether \"ফোন নম্বর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is your phone number?”",
+      "example": "আপনার ফোন নম্বর কত?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What is your phone number?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আবার বলবেন?",
+      "romanization": "abar bolben",
+      "nativeText": "“Would you say that again?” A crucial repair phrase.",
+      "pronunciation": "abar bolben",
+      "exampleTarget": "নম্বরটা আবার বলবেন?",
+      "exampleNative": "“Would you repeat the number?”",
+      "korean": "আবার বলবেন?",
+      "english": "“Would you say that again?” A crucial repair phrase.",
+      "example": "নম্বরটা আবার বলবেন?",
+      "exampleEnglish": "“Would you repeat the number?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "নম্বরটা আবার বলবেন?",
+      "romanization": "abar bolben",
+      "nativeText": "Model use for \"নম্বরটা আবার বলবেন?\": “Would you repeat the number?”",
+      "pronunciation": "abar bolben",
+      "exampleTarget": "নম্বরটা আবার বলবেন?",
+      "exampleNative": "“Would you repeat the number?”",
+      "korean": "নম্বরটা আবার বলবেন?",
+      "english": "Model use for \"নম্বরটা আবার বলবেন?\": “Would you repeat the number?”",
+      "example": "নম্বরটা আবার বলবেন?",
+      "exampleEnglish": "“Would you repeat the number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আবার বলবেন?",
+      "romanization": "abar bolben",
+      "nativeText": "Usage focus for \"আবার বলবেন?\": “Would you say that again?” A crucial repair phrase.",
+      "pronunciation": "abar bolben",
+      "exampleTarget": "নম্বরটা আবার বলবেন?",
+      "exampleNative": "Notice what the form is doing here: “Would you repeat the number?”",
+      "korean": "আবার বলবেন?",
+      "english": "Usage focus for \"আবার বলবেন?\": “Would you say that again?” A crucial repair phrase.",
+      "example": "নম্বরটা আবার বলবেন?",
+      "exampleEnglish": "Notice what the form is doing here: “Would you repeat the number?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আবার বলবেন?",
+      "romanization": "abar bolben",
+      "nativeText": "Contrast check for \"আবার বলবেন?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "abar bolben",
+      "exampleTarget": "নম্বরটা আবার বলবেন?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Would you repeat the number?”",
+      "korean": "আবার বলবেন?",
+      "english": "Contrast check for \"আবার বলবেন?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "নম্বরটা আবার বলবেন?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Would you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আবার বলবেন?",
+      "romanization": "abar bolben",
+      "nativeText": "Recall \"আবার বলবেন?\" from memory, then explain what would change if a nearby alternative replaced it in \"নম্বরটা আবার বলবেন?\".",
+      "pronunciation": "abar bolben",
+      "exampleTarget": "নম্বরটা আবার বলবেন?",
+      "exampleNative": "Self-check against the model before moving on: “Would you repeat the number?”",
+      "korean": "আবার বলবেন?",
+      "english": "Recall \"আবার বলবেন?\" from memory, then explain what would change if a nearby alternative replaced it in \"নম্বরটা আবার বলবেন?\".",
+      "example": "নম্বরটা আবার বলবেন?",
+      "exampleEnglish": "Self-check against the model before moving on: “Would you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আবার বলবেন?",
+      "romanization": "abar bolben",
+      "nativeText": "Repair \"আবার বলবেন?\" inside \"নম্বরটা আবার বলবেন?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Would you say that again?” A crucial repair phrase.",
+      "pronunciation": "abar bolben",
+      "exampleTarget": "নম্বরটা আবার বলবেন?",
+      "exampleNative": "Use the model as the repair target: “Would you repeat the number?”",
+      "korean": "আবার বলবেন?",
+      "english": "Repair \"আবার বলবেন?\" inside \"নম্বরটা আবার বলবেন?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Would you say that again?” A crucial repair phrase.",
+      "example": "নম্বরটা আবার বলবেন?",
+      "exampleEnglish": "Use the model as the repair target: “Would you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আবার বলবেন?",
+      "romanization": "abar bolben",
+      "nativeText": "Transfer \"আবার বলবেন?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"নম্বরটা আবার বলবেন?\".",
+      "pronunciation": "abar bolben",
+      "exampleTarget": "নম্বরটা আবার বলবেন?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Would you repeat the number?”",
+      "korean": "আবার বলবেন?",
+      "english": "Transfer \"আবার বলবেন?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"নম্বরটা আবার বলবেন?\".",
+      "example": "নম্বরটা আবার বলবেন?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Would you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আবার বলবেন?",
+      "romanization": "abar bolben",
+      "nativeText": "Find one word or phrase that naturally travels with \"আবার বলবেন?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "abar bolben",
+      "exampleTarget": "নম্বরটা আবার বলবেন?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Would you repeat the number?”",
+      "korean": "আবার বলবেন?",
+      "english": "Find one word or phrase that naturally travels with \"আবার বলবেন?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "নম্বরটা আবার বলবেন?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Would you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আবার বলবেন?",
+      "romanization": "abar bolben",
+      "nativeText": "Listen for \"আবার বলবেন?\" inside \"নম্বরটা আবার বলবেন?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "abar bolben",
+      "exampleTarget": "নম্বরটা আবার বলবেন?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Would you repeat the number?”",
+      "korean": "আবার বলবেন?",
+      "english": "Listen for \"আবার বলবেন?\" inside \"নম্বরটা আবার বলবেন?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "নম্বরটা আবার বলবেন?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Would you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আবার বলবেন?",
+      "romanization": "abar bolben",
+      "nativeText": "Write \"আবার বলবেন?\" again without looking, then compare the exact written form against \"নম্বরটা আবার বলবেন?\" before moving on.",
+      "pronunciation": "abar bolben",
+      "exampleTarget": "নম্বরটা আবার বলবেন?",
+      "exampleNative": "Use the written model as the final correctness check: “Would you repeat the number?”",
+      "korean": "আবার বলবেন?",
+      "english": "Write \"আবার বলবেন?\" again without looking, then compare the exact written form against \"নম্বরটা আবার বলবেন?\" before moving on.",
+      "example": "নম্বরটা আবার বলবেন?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Would you repeat the number?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "আবার বলবেন?",
+      "romanization": "abar bolben",
+      "nativeText": "Check whether \"আবার বলবেন?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Would you repeat the number?”",
+      "pronunciation": "abar bolben",
+      "exampleTarget": "নম্বরটা আবার বলবেন?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Would you repeat the number?”",
+      "korean": "আবার বলবেন?",
+      "english": "Check whether \"আবার বলবেন?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Would you repeat the number?”",
+      "example": "নম্বরটা আবার বলবেন?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Would you repeat the number?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "পরে আবার ফোন করব",
+      "romanization": "pore abar phone korbo",
+      "nativeText": "“I will call again later.” A natural call-ending promise.",
+      "pronunciation": "pore abar phone korbo",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "পরে আবার ফোন করব",
+      "english": "“I will call again later.” A natural call-ending promise.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "ঠিক আছে, পরে আবার ফোন করব।",
+      "romanization": "pore abar phone korbo",
+      "nativeText": "Model use for \"ঠিক আছে, পরে আবার ফোন করব।\": “Okay, I will call again later.”",
+      "pronunciation": "pore abar phone korbo",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "“Okay, I will call again later.”",
+      "korean": "ঠিক আছে, পরে আবার ফোন করব।",
+      "english": "Model use for \"ঠিক আছে, পরে আবার ফোন করব।\": “Okay, I will call again later.”",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "“Okay, I will call again later.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "পরে আবার ফোন করব",
+      "romanization": "pore abar phone korbo",
+      "nativeText": "Usage focus for \"পরে আবার ফোন করব\": “I will call again later.” A natural call-ending promise.",
+      "pronunciation": "pore abar phone korbo",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "Notice what the form is doing here: “Okay, I will call again later.”",
+      "korean": "পরে আবার ফোন করব",
+      "english": "Usage focus for \"পরে আবার ফোন করব\": “I will call again later.” A natural call-ending promise.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "Notice what the form is doing here: “Okay, I will call again later.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "পরে আবার ফোন করব",
+      "romanization": "pore abar phone korbo",
+      "nativeText": "Contrast check for \"পরে আবার ফোন করব\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pore abar phone korbo",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, I will call again later.”",
+      "korean": "পরে আবার ফোন করব",
+      "english": "Contrast check for \"পরে আবার ফোন করব\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "পরে আবার ফোন করব",
+      "romanization": "pore abar phone korbo",
+      "nativeText": "Recall \"পরে আবার ফোন করব\" from memory, then explain what would change if a nearby alternative replaced it in \"ঠিক আছে, পরে আবার ফোন করব।\".",
+      "pronunciation": "pore abar phone korbo",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "Self-check against the model before moving on: “Okay, I will call again later.”",
+      "korean": "পরে আবার ফোন করব",
+      "english": "Recall \"পরে আবার ফোন করব\" from memory, then explain what would change if a nearby alternative replaced it in \"ঠিক আছে, পরে আবার ফোন করব।\".",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "Self-check against the model before moving on: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "পরে আবার ফোন করব",
+      "romanization": "pore abar phone korbo",
+      "nativeText": "Repair \"পরে আবার ফোন করব\" inside \"ঠিক আছে, পরে আবার ফোন করব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will call again later.” A natural call-ending promise.",
+      "pronunciation": "pore abar phone korbo",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "Use the model as the repair target: “Okay, I will call again later.”",
+      "korean": "পরে আবার ফোন করব",
+      "english": "Repair \"পরে আবার ফোন করব\" inside \"ঠিক আছে, পরে আবার ফোন করব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will call again later.” A natural call-ending promise.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "Use the model as the repair target: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "পরে আবার ফোন করব",
+      "romanization": "pore abar phone korbo",
+      "nativeText": "Transfer \"পরে আবার ফোন করব\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঠিক আছে, পরে আবার ফোন করব।\".",
+      "pronunciation": "pore abar phone korbo",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, I will call again later.”",
+      "korean": "পরে আবার ফোন করব",
+      "english": "Transfer \"পরে আবার ফোন করব\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঠিক আছে, পরে আবার ফোন করব।\".",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "পরে আবার ফোন করব",
+      "romanization": "pore abar phone korbo",
+      "nativeText": "Find one word or phrase that naturally travels with \"পরে আবার ফোন করব\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pore abar phone korbo",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Okay, I will call again later.”",
+      "korean": "পরে আবার ফোন করব",
+      "english": "Find one word or phrase that naturally travels with \"পরে আবার ফোন করব\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "পরে আবার ফোন করব",
+      "romanization": "pore abar phone korbo",
+      "nativeText": "Listen for \"পরে আবার ফোন করব\" inside \"ঠিক আছে, পরে আবার ফোন করব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pore abar phone korbo",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, I will call again later.”",
+      "korean": "পরে আবার ফোন করব",
+      "english": "Listen for \"পরে আবার ফোন করব\" inside \"ঠিক আছে, পরে আবার ফোন করব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "পরে আবার ফোন করব",
+      "romanization": "pore abar phone korbo",
+      "nativeText": "Write \"পরে আবার ফোন করব\" again without looking, then compare the exact written form against \"ঠিক আছে, পরে আবার ফোন করব।\" before moving on.",
+      "pronunciation": "pore abar phone korbo",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "Use the written model as the final correctness check: “Okay, I will call again later.”",
+      "korean": "পরে আবার ফোন করব",
+      "english": "Write \"পরে আবার ফোন করব\" again without looking, then compare the exact written form against \"ঠিক আছে, পরে আবার ফোন করব।\" before moving on.",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Okay, I will call again later.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit15phonemessages-vocabulary-1",
+        "bn-level1unit15phonemessages-vocabulary-2",
+        "bn-level1unit15phonemessages-grammar-1",
+        "bn-level1unit15phonemessages-grammar-2",
+        "bn-level1unit15phonemessages-reading",
+        "bn-level1unit15phonemessages-listening",
+        "bn-level1unit15phonemessages-writing",
+        "bn-level1unit15phonemessages-task"
+      ],
+      "targetText": "পরে আবার ফোন করব",
+      "romanization": "pore abar phone korbo",
+      "nativeText": "Check whether \"পরে আবার ফোন করব\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”",
+      "pronunciation": "pore abar phone korbo",
+      "exampleTarget": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”",
+      "korean": "পরে আবার ফোন করব",
+      "english": "Check whether \"পরে আবার ফোন করব\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”",
+      "example": "ঠিক আছে, পরে আবার ফোন করব।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Okay, I will call again later.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

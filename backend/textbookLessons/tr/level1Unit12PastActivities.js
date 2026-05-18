@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u12',
-  title: 'Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about completed past actions with the witnessed past `-di` series.',
-  vocabularyGoal: 'Use past-time markers and common activity verbs.',
-  grammarGoal: 'Use `-dı/-di/-du/-dü` and related forms shaped by vowel harmony and consonant voicing.',
-  speakingGoal: 'Say what you did yesterday and ask someone else one past question.',
-  task: 'Give a short update about yesterday.',
-  expressionPractice: [
-    practice('stating-past', 'Stating past action', 'Use one `-di` past form.'),
-    practice('sequencing', 'Sequencing', 'Use `sonra`.'),
-    practice('asking-past', 'Asking about past', 'Use `dün ne yaptın?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit12pastactivities-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about completed past actions with the witnessed past `-di` series."
+      ],
+      "task": "Give a short update about yesterday."
+    },
+    {
+      "id": "tr-level1unit12pastactivities-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit12pastactivities-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit12pastactivities-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit12pastactivities-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about completed past actions with the witnessed past `-di` series."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit12pastactivities-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit12pastactivities-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit12pastactivities-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit12pastactivities-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit12pastactivities-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit12pastactivities-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Give a short update about yesterday."
+      ],
+      "task": "Give a short update about yesterday."
+    }
   ],
-  relatedPools: ['topic-routines', 'topic-time'],
-  items: [
-    item('gittim', 'git-TİM', '“I went.” The consonant and vowel shape the exact suffix form.', 'Dün pazara gittim.', '“Yesterday I went to the market.”'),
-    item('yedim', 'ye-DİM', '“I ate.” A compact high-frequency past form.', 'Sabah simit yedim.', '“In the morning I ate simit.”'),
-    item('çalıştım', 'ça-lış-TIM', '“I studied / worked.” The hard consonant triggers the `t` variant.', 'Dün akşam çalıştım.', '“Yesterday evening I studied.”'),
-    item('izledim', 'iz-le-DİM', '“I watched.” A useful leisure verb in the past.', 'Gece film izledim.', '“At night I watched a film.”'),
-    item('sonra', 'SON-ra', '“Then / afterwards.” A simple sequence connector.', 'Sonra eve döndüm.', '“Then I returned home.”'),
-    item('geçen hafta', 'ge-ÇEN HAF-ta', '“Last week.” A common past-time phrase.', 'Geçen hafta müzeye gittik.', '“Last week we went to the museum.”'),
-    item('dün ne yaptın?', 'DÜN ne yap-TIN', '“What did you do yesterday?” A core past-question frame.', 'Dün ne yaptın?', '“What did you do yesterday?”'),
-    item('hiç', 'HİÇ', '“Ever / at all” depending on context, useful in negative and experience questions.', 'Hiç Türk kahvesi içtin mi?', '“Have you ever drunk Turkish coffee?”'),
+  "expressionPractice": [
+    {
+      "id": "stating-past",
+      "label": "Stating past action",
+      "goal": "Use one `-di` past form."
+    },
+    {
+      "id": "sequencing",
+      "label": "Sequencing",
+      "goal": "Use `sonra`."
+    },
+    {
+      "id": "asking-past",
+      "label": "Asking about past",
+      "goal": "Use `dün ne yaptın?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-routines",
+    "topic-time"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Talk about completed past actions with the witnessed past `-di` series.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Give a short update about yesterday.",
+      "korean": "ders hedefi",
+      "english": "Talk about completed past actions with the witnessed past `-di` series.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Give a short update about yesterday."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit12pastactivities-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Dün pazara gittim.\".",
+      "pronunciation": "",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Dün pazara gittim.\".",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1"
+      ],
+      "targetText": "gittim",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "Use the key language of Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with the register and setting that the lesson requires.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-2"
+      ],
+      "targetText": "yedim",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "“In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities sound precise rather than merely understandable.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "“In the morning I ate simit.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit12pastactivities-grammar-1"
+      ],
+      "targetText": "gittim",
+      "romanization": "",
+      "nativeText": "Talk about completed past actions with the witnessed past `-di` series.",
+      "pronunciation": "",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "Talk about completed past actions with the witnessed past `-di` series.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "yedim",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "“In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "Contrast the main pattern in Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "“In the morning I ate simit.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit12pastactivities-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Hiç Türk kahvesi içtin mi?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "“Have you ever drunk Turkish coffee?”",
+      "korean": "okuma modeli",
+      "english": "Read \"Hiç Türk kahvesi içtin mi?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "“Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit12pastactivities-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Hiç Türk kahvesi içtin mi?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "“Have you ever drunk Turkish coffee?”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Hiç Türk kahvesi içtin mi?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "“Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit12pastactivities-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Dün pazara gittim.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Dün pazara gittim.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit12pastactivities-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "“In the morning I ate simit.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "“In the morning I ate simit.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Give a short update about yesterday.",
+      "pronunciation": "",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "Give a short update about yesterday.",
+      "korean": "son görev",
+      "english": "Give a short update about yesterday.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "Give a short update about yesterday."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Sabah simit yedim.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “In the morning I ate simit.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Sabah simit yedim.\" against the model.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “In the morning I ate simit.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Dün pazara gittim.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Dün pazara gittim.\" before reusing it elsewhere.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Hiç Türk kahvesi içtin mi?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "“Have you ever drunk Turkish coffee?”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Hiç Türk kahvesi içtin mi?\" as one thought.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "“Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Dün pazara gittim.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Dün pazara gittim.\" and move it into your own life.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"gittim\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "gittim",
+      "exampleNative": "“I went.” The consonant and vowel shape the exact suffix form.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"gittim\" before looking back.",
+      "example": "gittim",
+      "exampleEnglish": "“I went.” The consonant and vowel shape the exact suffix form."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Hiç Türk kahvesi içtin mi?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Hiç Türk kahvesi içtin mi?\" rather than restarting from a blank sentence.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Sabah simit yedim.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "“In the morning I ate simit.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Sabah simit yedim.\" as the comparison line.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "“In the morning I ate simit.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit12pastactivities-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Dün pazara gittim.\".",
+      "pronunciation": "",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Dün pazara gittim.\".",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Hiç Türk kahvesi içtin mi?\".",
+      "pronunciation": "",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "“Have you ever drunk Turkish coffee?”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Hiç Türk kahvesi içtin mi?\".",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "“Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Dün pazara gittim.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Dün pazara gittim.\" one layer at a time.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Sabah simit yedim.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "“In the morning I ate simit.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Sabah simit yedim.\" as the deciding example.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "“In the morning I ate simit.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-culture",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Hiç Türk kahvesi içtin mi?\".",
+      "pronunciation": "",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "“Have you ever drunk Turkish coffee?”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Hiç Türk kahvesi içtin mi?\".",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "“Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "gittim",
+      "romanization": "git-TİM",
+      "nativeText": "“I went.” The consonant and vowel shape the exact suffix form.",
+      "pronunciation": "git-TİM",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "“I went.” The consonant and vowel shape the exact suffix form.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "Dün pazara gittim.",
+      "romanization": "git-TİM",
+      "nativeText": "Model use for \"Dün pazara gittim.\": “Yesterday I went to the market.”",
+      "pronunciation": "git-TİM",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "“Yesterday I went to the market.”",
+      "korean": "Dün pazara gittim.",
+      "english": "Model use for \"Dün pazara gittim.\": “Yesterday I went to the market.”",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "“Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "gittim",
+      "romanization": "git-TİM",
+      "nativeText": "Usage focus for \"gittim\": Use the key language of Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "git-TİM",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "Usage focus for \"gittim\": Use the key language of Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with the register and setting that the lesson requires.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "gittim",
+      "romanization": "git-TİM",
+      "nativeText": "Contrast check for \"gittim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "git-TİM",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "Contrast check for \"gittim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "gittim",
+      "romanization": "git-TİM",
+      "nativeText": "Recall \"gittim\" from memory, then explain what would change if a nearby alternative replaced it in \"Dün pazara gittim.\".",
+      "pronunciation": "git-TİM",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "Recall \"gittim\" from memory, then explain what would change if a nearby alternative replaced it in \"Dün pazara gittim.\".",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "gittim",
+      "romanization": "git-TİM",
+      "nativeText": "Repair \"gittim\" inside \"Dün pazara gittim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with the register and setting that the lesson requires.",
+      "pronunciation": "git-TİM",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "Use the model as the repair target: “Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "Repair \"gittim\" inside \"Dün pazara gittim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities with the register and setting that the lesson requires.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "gittim",
+      "romanization": "git-TİM",
+      "nativeText": "Transfer \"gittim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dün pazara gittim.\".",
+      "pronunciation": "git-TİM",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "Transfer \"gittim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dün pazara gittim.\".",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "gittim",
+      "romanization": "git-TİM",
+      "nativeText": "Find one word or phrase that naturally travels with \"gittim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "git-TİM",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "Find one word or phrase that naturally travels with \"gittim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "gittim",
+      "romanization": "git-TİM",
+      "nativeText": "Listen for \"gittim\" inside \"Dün pazara gittim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "git-TİM",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "Listen for \"gittim\" inside \"Dün pazara gittim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "gittim",
+      "romanization": "git-TİM",
+      "nativeText": "Write \"gittim\" again without looking, then compare the exact written form against \"Dün pazara gittim.\" before moving on.",
+      "pronunciation": "git-TİM",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "Write \"gittim\" again without looking, then compare the exact written form against \"Dün pazara gittim.\" before moving on.",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "gittim",
+      "romanization": "git-TİM",
+      "nativeText": "Check whether \"gittim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”",
+      "pronunciation": "git-TİM",
+      "exampleTarget": "Dün pazara gittim.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”",
+      "korean": "gittim",
+      "english": "Check whether \"gittim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”",
+      "example": "Dün pazara gittim.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I went to the market.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "yedim",
+      "romanization": "ye-DİM",
+      "nativeText": "“I ate.” A compact high-frequency past form.",
+      "pronunciation": "ye-DİM",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "“In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "“I ate.” A compact high-frequency past form.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "“In the morning I ate simit.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "Sabah simit yedim.",
+      "romanization": "ye-DİM",
+      "nativeText": "Model use for \"Sabah simit yedim.\": “In the morning I ate simit.”",
+      "pronunciation": "ye-DİM",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "“In the morning I ate simit.”",
+      "korean": "Sabah simit yedim.",
+      "english": "Model use for \"Sabah simit yedim.\": “In the morning I ate simit.”",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "“In the morning I ate simit.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "yedim",
+      "romanization": "ye-DİM",
+      "nativeText": "Usage focus for \"yedim\": Distinguish the nearby wording choices that make Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "ye-DİM",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "Notice what the form is doing here: “In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "Usage focus for \"yedim\": Distinguish the nearby wording choices that make Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities sound precise rather than merely understandable.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "Notice what the form is doing here: “In the morning I ate simit.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "yedim",
+      "romanization": "ye-DİM",
+      "nativeText": "Contrast check for \"yedim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ye-DİM",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "Contrast check for \"yedim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In the morning I ate simit.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "yedim",
+      "romanization": "ye-DİM",
+      "nativeText": "Recall \"yedim\" from memory, then explain what would change if a nearby alternative replaced it in \"Sabah simit yedim.\".",
+      "pronunciation": "ye-DİM",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "Self-check against the model before moving on: “In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "Recall \"yedim\" from memory, then explain what would change if a nearby alternative replaced it in \"Sabah simit yedim.\".",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "Self-check against the model before moving on: “In the morning I ate simit.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "yedim",
+      "romanization": "ye-DİM",
+      "nativeText": "Repair \"yedim\" inside \"Sabah simit yedim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities sound precise rather than merely understandable.",
+      "pronunciation": "ye-DİM",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "Use the model as the repair target: “In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "Repair \"yedim\" inside \"Sabah simit yedim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 12: Dün Ne Yaptın? — Past Activities sound precise rather than merely understandable.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "Use the model as the repair target: “In the morning I ate simit.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "yedim",
+      "romanization": "ye-DİM",
+      "nativeText": "Transfer \"yedim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sabah simit yedim.\".",
+      "pronunciation": "ye-DİM",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "Transfer \"yedim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sabah simit yedim.\".",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “In the morning I ate simit.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "yedim",
+      "romanization": "ye-DİM",
+      "nativeText": "Find one word or phrase that naturally travels with \"yedim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ye-DİM",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "Find one word or phrase that naturally travels with \"yedim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “In the morning I ate simit.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "yedim",
+      "romanization": "ye-DİM",
+      "nativeText": "Listen for \"yedim\" inside \"Sabah simit yedim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ye-DİM",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "Listen for \"yedim\" inside \"Sabah simit yedim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In the morning I ate simit.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "yedim",
+      "romanization": "ye-DİM",
+      "nativeText": "Write \"yedim\" again without looking, then compare the exact written form against \"Sabah simit yedim.\" before moving on.",
+      "pronunciation": "ye-DİM",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "Use the written model as the final correctness check: “In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "Write \"yedim\" again without looking, then compare the exact written form against \"Sabah simit yedim.\" before moving on.",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "Use the written model as the final correctness check: “In the morning I ate simit.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "yedim",
+      "romanization": "ye-DİM",
+      "nativeText": "Check whether \"yedim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In the morning I ate simit.”",
+      "pronunciation": "ye-DİM",
+      "exampleTarget": "Sabah simit yedim.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “In the morning I ate simit.”",
+      "korean": "yedim",
+      "english": "Check whether \"yedim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In the morning I ate simit.”",
+      "example": "Sabah simit yedim.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “In the morning I ate simit.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "çalıştım",
+      "romanization": "ça-lış-TIM",
+      "nativeText": "“I studied / worked.” The hard consonant triggers the `t` variant.",
+      "pronunciation": "ça-lış-TIM",
+      "exampleTarget": "Dün akşam çalıştım.",
+      "exampleNative": "“Yesterday evening I studied.”",
+      "korean": "çalıştım",
+      "english": "“I studied / worked.” The hard consonant triggers the `t` variant.",
+      "example": "Dün akşam çalıştım.",
+      "exampleEnglish": "“Yesterday evening I studied.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "Dün akşam çalıştım.",
+      "romanization": "ça-lış-TIM",
+      "nativeText": "Model use for \"Dün akşam çalıştım.\": “Yesterday evening I studied.”",
+      "pronunciation": "ça-lış-TIM",
+      "exampleTarget": "Dün akşam çalıştım.",
+      "exampleNative": "“Yesterday evening I studied.”",
+      "korean": "Dün akşam çalıştım.",
+      "english": "Model use for \"Dün akşam çalıştım.\": “Yesterday evening I studied.”",
+      "example": "Dün akşam çalıştım.",
+      "exampleEnglish": "“Yesterday evening I studied.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "çalıştım",
+      "romanization": "ça-lış-TIM",
+      "nativeText": "Usage focus for \"çalıştım\": “I studied / worked.” The hard consonant triggers the `t` variant.",
+      "pronunciation": "ça-lış-TIM",
+      "exampleTarget": "Dün akşam çalıştım.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday evening I studied.”",
+      "korean": "çalıştım",
+      "english": "Usage focus for \"çalıştım\": “I studied / worked.” The hard consonant triggers the `t` variant.",
+      "example": "Dün akşam çalıştım.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday evening I studied.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "çalıştım",
+      "romanization": "ça-lış-TIM",
+      "nativeText": "Contrast check for \"çalıştım\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ça-lış-TIM",
+      "exampleTarget": "Dün akşam çalıştım.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday evening I studied.”",
+      "korean": "çalıştım",
+      "english": "Contrast check for \"çalıştım\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Dün akşam çalıştım.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday evening I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "çalıştım",
+      "romanization": "ça-lış-TIM",
+      "nativeText": "Recall \"çalıştım\" from memory, then explain what would change if a nearby alternative replaced it in \"Dün akşam çalıştım.\".",
+      "pronunciation": "ça-lış-TIM",
+      "exampleTarget": "Dün akşam çalıştım.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday evening I studied.”",
+      "korean": "çalıştım",
+      "english": "Recall \"çalıştım\" from memory, then explain what would change if a nearby alternative replaced it in \"Dün akşam çalıştım.\".",
+      "example": "Dün akşam çalıştım.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday evening I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "çalıştım",
+      "romanization": "ça-lış-TIM",
+      "nativeText": "Repair \"çalıştım\" inside \"Dün akşam çalıştım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I studied / worked.” The hard consonant triggers the `t` variant.",
+      "pronunciation": "ça-lış-TIM",
+      "exampleTarget": "Dün akşam çalıştım.",
+      "exampleNative": "Use the model as the repair target: “Yesterday evening I studied.”",
+      "korean": "çalıştım",
+      "english": "Repair \"çalıştım\" inside \"Dün akşam çalıştım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I studied / worked.” The hard consonant triggers the `t` variant.",
+      "example": "Dün akşam çalıştım.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday evening I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "çalıştım",
+      "romanization": "ça-lış-TIM",
+      "nativeText": "Transfer \"çalıştım\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dün akşam çalıştım.\".",
+      "pronunciation": "ça-lış-TIM",
+      "exampleTarget": "Dün akşam çalıştım.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday evening I studied.”",
+      "korean": "çalıştım",
+      "english": "Transfer \"çalıştım\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dün akşam çalıştım.\".",
+      "example": "Dün akşam çalıştım.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday evening I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "çalıştım",
+      "romanization": "ça-lış-TIM",
+      "nativeText": "Find one word or phrase that naturally travels with \"çalıştım\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ça-lış-TIM",
+      "exampleTarget": "Dün akşam çalıştım.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday evening I studied.”",
+      "korean": "çalıştım",
+      "english": "Find one word or phrase that naturally travels with \"çalıştım\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Dün akşam çalıştım.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday evening I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "çalıştım",
+      "romanization": "ça-lış-TIM",
+      "nativeText": "Listen for \"çalıştım\" inside \"Dün akşam çalıştım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ça-lış-TIM",
+      "exampleTarget": "Dün akşam çalıştım.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday evening I studied.”",
+      "korean": "çalıştım",
+      "english": "Listen for \"çalıştım\" inside \"Dün akşam çalıştım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Dün akşam çalıştım.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday evening I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "çalıştım",
+      "romanization": "ça-lış-TIM",
+      "nativeText": "Write \"çalıştım\" again without looking, then compare the exact written form against \"Dün akşam çalıştım.\" before moving on.",
+      "pronunciation": "ça-lış-TIM",
+      "exampleTarget": "Dün akşam çalıştım.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday evening I studied.”",
+      "korean": "çalıştım",
+      "english": "Write \"çalıştım\" again without looking, then compare the exact written form against \"Dün akşam çalıştım.\" before moving on.",
+      "example": "Dün akşam çalıştım.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday evening I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "çalıştım",
+      "romanization": "ça-lış-TIM",
+      "nativeText": "Check whether \"çalıştım\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday evening I studied.”",
+      "pronunciation": "ça-lış-TIM",
+      "exampleTarget": "Dün akşam çalıştım.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday evening I studied.”",
+      "korean": "çalıştım",
+      "english": "Check whether \"çalıştım\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday evening I studied.”",
+      "example": "Dün akşam çalıştım.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday evening I studied.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "izledim",
+      "romanization": "iz-le-DİM",
+      "nativeText": "“I watched.” A useful leisure verb in the past.",
+      "pronunciation": "iz-le-DİM",
+      "exampleTarget": "Gece film izledim.",
+      "exampleNative": "“At night I watched a film.”",
+      "korean": "izledim",
+      "english": "“I watched.” A useful leisure verb in the past.",
+      "example": "Gece film izledim.",
+      "exampleEnglish": "“At night I watched a film.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "Gece film izledim.",
+      "romanization": "iz-le-DİM",
+      "nativeText": "Model use for \"Gece film izledim.\": “At night I watched a film.”",
+      "pronunciation": "iz-le-DİM",
+      "exampleTarget": "Gece film izledim.",
+      "exampleNative": "“At night I watched a film.”",
+      "korean": "Gece film izledim.",
+      "english": "Model use for \"Gece film izledim.\": “At night I watched a film.”",
+      "example": "Gece film izledim.",
+      "exampleEnglish": "“At night I watched a film.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "izledim",
+      "romanization": "iz-le-DİM",
+      "nativeText": "Usage focus for \"izledim\": “I watched.” A useful leisure verb in the past.",
+      "pronunciation": "iz-le-DİM",
+      "exampleTarget": "Gece film izledim.",
+      "exampleNative": "Notice what the form is doing here: “At night I watched a film.”",
+      "korean": "izledim",
+      "english": "Usage focus for \"izledim\": “I watched.” A useful leisure verb in the past.",
+      "example": "Gece film izledim.",
+      "exampleEnglish": "Notice what the form is doing here: “At night I watched a film.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "izledim",
+      "romanization": "iz-le-DİM",
+      "nativeText": "Contrast check for \"izledim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "iz-le-DİM",
+      "exampleTarget": "Gece film izledim.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At night I watched a film.”",
+      "korean": "izledim",
+      "english": "Contrast check for \"izledim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Gece film izledim.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At night I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "izledim",
+      "romanization": "iz-le-DİM",
+      "nativeText": "Recall \"izledim\" from memory, then explain what would change if a nearby alternative replaced it in \"Gece film izledim.\".",
+      "pronunciation": "iz-le-DİM",
+      "exampleTarget": "Gece film izledim.",
+      "exampleNative": "Self-check against the model before moving on: “At night I watched a film.”",
+      "korean": "izledim",
+      "english": "Recall \"izledim\" from memory, then explain what would change if a nearby alternative replaced it in \"Gece film izledim.\".",
+      "example": "Gece film izledim.",
+      "exampleEnglish": "Self-check against the model before moving on: “At night I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "izledim",
+      "romanization": "iz-le-DİM",
+      "nativeText": "Repair \"izledim\" inside \"Gece film izledim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I watched.” A useful leisure verb in the past.",
+      "pronunciation": "iz-le-DİM",
+      "exampleTarget": "Gece film izledim.",
+      "exampleNative": "Use the model as the repair target: “At night I watched a film.”",
+      "korean": "izledim",
+      "english": "Repair \"izledim\" inside \"Gece film izledim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I watched.” A useful leisure verb in the past.",
+      "example": "Gece film izledim.",
+      "exampleEnglish": "Use the model as the repair target: “At night I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "izledim",
+      "romanization": "iz-le-DİM",
+      "nativeText": "Transfer \"izledim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Gece film izledim.\".",
+      "pronunciation": "iz-le-DİM",
+      "exampleTarget": "Gece film izledim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At night I watched a film.”",
+      "korean": "izledim",
+      "english": "Transfer \"izledim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Gece film izledim.\".",
+      "example": "Gece film izledim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At night I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "izledim",
+      "romanization": "iz-le-DİM",
+      "nativeText": "Find one word or phrase that naturally travels with \"izledim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "iz-le-DİM",
+      "exampleTarget": "Gece film izledim.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At night I watched a film.”",
+      "korean": "izledim",
+      "english": "Find one word or phrase that naturally travels with \"izledim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Gece film izledim.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At night I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "izledim",
+      "romanization": "iz-le-DİM",
+      "nativeText": "Listen for \"izledim\" inside \"Gece film izledim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "iz-le-DİM",
+      "exampleTarget": "Gece film izledim.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At night I watched a film.”",
+      "korean": "izledim",
+      "english": "Listen for \"izledim\" inside \"Gece film izledim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Gece film izledim.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At night I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "izledim",
+      "romanization": "iz-le-DİM",
+      "nativeText": "Write \"izledim\" again without looking, then compare the exact written form against \"Gece film izledim.\" before moving on.",
+      "pronunciation": "iz-le-DİM",
+      "exampleTarget": "Gece film izledim.",
+      "exampleNative": "Use the written model as the final correctness check: “At night I watched a film.”",
+      "korean": "izledim",
+      "english": "Write \"izledim\" again without looking, then compare the exact written form against \"Gece film izledim.\" before moving on.",
+      "example": "Gece film izledim.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At night I watched a film.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "izledim",
+      "romanization": "iz-le-DİM",
+      "nativeText": "Check whether \"izledim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At night I watched a film.”",
+      "pronunciation": "iz-le-DİM",
+      "exampleTarget": "Gece film izledim.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At night I watched a film.”",
+      "korean": "izledim",
+      "english": "Check whether \"izledim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At night I watched a film.”",
+      "example": "Gece film izledim.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At night I watched a film.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "sonra",
+      "romanization": "SON-ra",
+      "nativeText": "“Then / afterwards.” A simple sequence connector.",
+      "pronunciation": "SON-ra",
+      "exampleTarget": "Sonra eve döndüm.",
+      "exampleNative": "“Then I returned home.”",
+      "korean": "sonra",
+      "english": "“Then / afterwards.” A simple sequence connector.",
+      "example": "Sonra eve döndüm.",
+      "exampleEnglish": "“Then I returned home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "Sonra eve döndüm.",
+      "romanization": "SON-ra",
+      "nativeText": "Model use for \"Sonra eve döndüm.\": “Then I returned home.”",
+      "pronunciation": "SON-ra",
+      "exampleTarget": "Sonra eve döndüm.",
+      "exampleNative": "“Then I returned home.”",
+      "korean": "Sonra eve döndüm.",
+      "english": "Model use for \"Sonra eve döndüm.\": “Then I returned home.”",
+      "example": "Sonra eve döndüm.",
+      "exampleEnglish": "“Then I returned home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "sonra",
+      "romanization": "SON-ra",
+      "nativeText": "Usage focus for \"sonra\": “Then / afterwards.” A simple sequence connector.",
+      "pronunciation": "SON-ra",
+      "exampleTarget": "Sonra eve döndüm.",
+      "exampleNative": "Notice what the form is doing here: “Then I returned home.”",
+      "korean": "sonra",
+      "english": "Usage focus for \"sonra\": “Then / afterwards.” A simple sequence connector.",
+      "example": "Sonra eve döndüm.",
+      "exampleEnglish": "Notice what the form is doing here: “Then I returned home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "sonra",
+      "romanization": "SON-ra",
+      "nativeText": "Contrast check for \"sonra\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "SON-ra",
+      "exampleTarget": "Sonra eve döndüm.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then I returned home.”",
+      "korean": "sonra",
+      "english": "Contrast check for \"sonra\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Sonra eve döndüm.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "sonra",
+      "romanization": "SON-ra",
+      "nativeText": "Recall \"sonra\" from memory, then explain what would change if a nearby alternative replaced it in \"Sonra eve döndüm.\".",
+      "pronunciation": "SON-ra",
+      "exampleTarget": "Sonra eve döndüm.",
+      "exampleNative": "Self-check against the model before moving on: “Then I returned home.”",
+      "korean": "sonra",
+      "english": "Recall \"sonra\" from memory, then explain what would change if a nearby alternative replaced it in \"Sonra eve döndüm.\".",
+      "example": "Sonra eve döndüm.",
+      "exampleEnglish": "Self-check against the model before moving on: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "sonra",
+      "romanization": "SON-ra",
+      "nativeText": "Repair \"sonra\" inside \"Sonra eve döndüm.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / afterwards.” A simple sequence connector.",
+      "pronunciation": "SON-ra",
+      "exampleTarget": "Sonra eve döndüm.",
+      "exampleNative": "Use the model as the repair target: “Then I returned home.”",
+      "korean": "sonra",
+      "english": "Repair \"sonra\" inside \"Sonra eve döndüm.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / afterwards.” A simple sequence connector.",
+      "example": "Sonra eve döndüm.",
+      "exampleEnglish": "Use the model as the repair target: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "sonra",
+      "romanization": "SON-ra",
+      "nativeText": "Transfer \"sonra\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sonra eve döndüm.\".",
+      "pronunciation": "SON-ra",
+      "exampleTarget": "Sonra eve döndüm.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then I returned home.”",
+      "korean": "sonra",
+      "english": "Transfer \"sonra\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Sonra eve döndüm.\".",
+      "example": "Sonra eve döndüm.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "sonra",
+      "romanization": "SON-ra",
+      "nativeText": "Find one word or phrase that naturally travels with \"sonra\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "SON-ra",
+      "exampleTarget": "Sonra eve döndüm.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Then I returned home.”",
+      "korean": "sonra",
+      "english": "Find one word or phrase that naturally travels with \"sonra\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Sonra eve döndüm.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "sonra",
+      "romanization": "SON-ra",
+      "nativeText": "Listen for \"sonra\" inside \"Sonra eve döndüm.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "SON-ra",
+      "exampleTarget": "Sonra eve döndüm.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then I returned home.”",
+      "korean": "sonra",
+      "english": "Listen for \"sonra\" inside \"Sonra eve döndüm.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Sonra eve döndüm.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "sonra",
+      "romanization": "SON-ra",
+      "nativeText": "Write \"sonra\" again without looking, then compare the exact written form against \"Sonra eve döndüm.\" before moving on.",
+      "pronunciation": "SON-ra",
+      "exampleTarget": "Sonra eve döndüm.",
+      "exampleNative": "Use the written model as the final correctness check: “Then I returned home.”",
+      "korean": "sonra",
+      "english": "Write \"sonra\" again without looking, then compare the exact written form against \"Sonra eve döndüm.\" before moving on.",
+      "example": "Sonra eve döndüm.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Then I returned home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "sonra",
+      "romanization": "SON-ra",
+      "nativeText": "Check whether \"sonra\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then I returned home.”",
+      "pronunciation": "SON-ra",
+      "exampleTarget": "Sonra eve döndüm.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Then I returned home.”",
+      "korean": "sonra",
+      "english": "Check whether \"sonra\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then I returned home.”",
+      "example": "Sonra eve döndüm.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Then I returned home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "geçen hafta",
+      "romanization": "ge-ÇEN HAF-ta",
+      "nativeText": "“Last week.” A common past-time phrase.",
+      "pronunciation": "ge-ÇEN HAF-ta",
+      "exampleTarget": "Geçen hafta müzeye gittik.",
+      "exampleNative": "“Last week we went to the museum.”",
+      "korean": "geçen hafta",
+      "english": "“Last week.” A common past-time phrase.",
+      "example": "Geçen hafta müzeye gittik.",
+      "exampleEnglish": "“Last week we went to the museum.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "Geçen hafta müzeye gittik.",
+      "romanization": "ge-ÇEN HAF-ta",
+      "nativeText": "Model use for \"Geçen hafta müzeye gittik.\": “Last week we went to the museum.”",
+      "pronunciation": "ge-ÇEN HAF-ta",
+      "exampleTarget": "Geçen hafta müzeye gittik.",
+      "exampleNative": "“Last week we went to the museum.”",
+      "korean": "Geçen hafta müzeye gittik.",
+      "english": "Model use for \"Geçen hafta müzeye gittik.\": “Last week we went to the museum.”",
+      "example": "Geçen hafta müzeye gittik.",
+      "exampleEnglish": "“Last week we went to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "geçen hafta",
+      "romanization": "ge-ÇEN HAF-ta",
+      "nativeText": "Usage focus for \"geçen hafta\": “Last week.” A common past-time phrase.",
+      "pronunciation": "ge-ÇEN HAF-ta",
+      "exampleTarget": "Geçen hafta müzeye gittik.",
+      "exampleNative": "Notice what the form is doing here: “Last week we went to the museum.”",
+      "korean": "geçen hafta",
+      "english": "Usage focus for \"geçen hafta\": “Last week.” A common past-time phrase.",
+      "example": "Geçen hafta müzeye gittik.",
+      "exampleEnglish": "Notice what the form is doing here: “Last week we went to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "geçen hafta",
+      "romanization": "ge-ÇEN HAF-ta",
+      "nativeText": "Contrast check for \"geçen hafta\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ge-ÇEN HAF-ta",
+      "exampleTarget": "Geçen hafta müzeye gittik.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last week we went to the museum.”",
+      "korean": "geçen hafta",
+      "english": "Contrast check for \"geçen hafta\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Geçen hafta müzeye gittik.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "geçen hafta",
+      "romanization": "ge-ÇEN HAF-ta",
+      "nativeText": "Recall \"geçen hafta\" from memory, then explain what would change if a nearby alternative replaced it in \"Geçen hafta müzeye gittik.\".",
+      "pronunciation": "ge-ÇEN HAF-ta",
+      "exampleTarget": "Geçen hafta müzeye gittik.",
+      "exampleNative": "Self-check against the model before moving on: “Last week we went to the museum.”",
+      "korean": "geçen hafta",
+      "english": "Recall \"geçen hafta\" from memory, then explain what would change if a nearby alternative replaced it in \"Geçen hafta müzeye gittik.\".",
+      "example": "Geçen hafta müzeye gittik.",
+      "exampleEnglish": "Self-check against the model before moving on: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "geçen hafta",
+      "romanization": "ge-ÇEN HAF-ta",
+      "nativeText": "Repair \"geçen hafta\" inside \"Geçen hafta müzeye gittik.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Last week.” A common past-time phrase.",
+      "pronunciation": "ge-ÇEN HAF-ta",
+      "exampleTarget": "Geçen hafta müzeye gittik.",
+      "exampleNative": "Use the model as the repair target: “Last week we went to the museum.”",
+      "korean": "geçen hafta",
+      "english": "Repair \"geçen hafta\" inside \"Geçen hafta müzeye gittik.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Last week.” A common past-time phrase.",
+      "example": "Geçen hafta müzeye gittik.",
+      "exampleEnglish": "Use the model as the repair target: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "geçen hafta",
+      "romanization": "ge-ÇEN HAF-ta",
+      "nativeText": "Transfer \"geçen hafta\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Geçen hafta müzeye gittik.\".",
+      "pronunciation": "ge-ÇEN HAF-ta",
+      "exampleTarget": "Geçen hafta müzeye gittik.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last week we went to the museum.”",
+      "korean": "geçen hafta",
+      "english": "Transfer \"geçen hafta\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Geçen hafta müzeye gittik.\".",
+      "example": "Geçen hafta müzeye gittik.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "geçen hafta",
+      "romanization": "ge-ÇEN HAF-ta",
+      "nativeText": "Find one word or phrase that naturally travels with \"geçen hafta\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ge-ÇEN HAF-ta",
+      "exampleTarget": "Geçen hafta müzeye gittik.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Last week we went to the museum.”",
+      "korean": "geçen hafta",
+      "english": "Find one word or phrase that naturally travels with \"geçen hafta\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Geçen hafta müzeye gittik.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "geçen hafta",
+      "romanization": "ge-ÇEN HAF-ta",
+      "nativeText": "Listen for \"geçen hafta\" inside \"Geçen hafta müzeye gittik.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ge-ÇEN HAF-ta",
+      "exampleTarget": "Geçen hafta müzeye gittik.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last week we went to the museum.”",
+      "korean": "geçen hafta",
+      "english": "Listen for \"geçen hafta\" inside \"Geçen hafta müzeye gittik.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Geçen hafta müzeye gittik.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "geçen hafta",
+      "romanization": "ge-ÇEN HAF-ta",
+      "nativeText": "Write \"geçen hafta\" again without looking, then compare the exact written form against \"Geçen hafta müzeye gittik.\" before moving on.",
+      "pronunciation": "ge-ÇEN HAF-ta",
+      "exampleTarget": "Geçen hafta müzeye gittik.",
+      "exampleNative": "Use the written model as the final correctness check: “Last week we went to the museum.”",
+      "korean": "geçen hafta",
+      "english": "Write \"geçen hafta\" again without looking, then compare the exact written form against \"Geçen hafta müzeye gittik.\" before moving on.",
+      "example": "Geçen hafta müzeye gittik.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Last week we went to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "geçen hafta",
+      "romanization": "ge-ÇEN HAF-ta",
+      "nativeText": "Check whether \"geçen hafta\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”",
+      "pronunciation": "ge-ÇEN HAF-ta",
+      "exampleTarget": "Geçen hafta müzeye gittik.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”",
+      "korean": "geçen hafta",
+      "english": "Check whether \"geçen hafta\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”",
+      "example": "Geçen hafta müzeye gittik.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Last week we went to the museum.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "dün ne yaptın?",
+      "romanization": "DÜN ne yap-TIN",
+      "nativeText": "“What did you do yesterday?” A core past-question frame.",
+      "pronunciation": "DÜN ne yap-TIN",
+      "exampleTarget": "Dün ne yaptın?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "dün ne yaptın?",
+      "english": "“What did you do yesterday?” A core past-question frame.",
+      "example": "Dün ne yaptın?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "Dün ne yaptın?",
+      "romanization": "DÜN ne yap-TIN",
+      "nativeText": "Model use for \"Dün ne yaptın?\": “What did you do yesterday?”",
+      "pronunciation": "DÜN ne yap-TIN",
+      "exampleTarget": "Dün ne yaptın?",
+      "exampleNative": "“What did you do yesterday?”",
+      "korean": "Dün ne yaptın?",
+      "english": "Model use for \"Dün ne yaptın?\": “What did you do yesterday?”",
+      "example": "Dün ne yaptın?",
+      "exampleEnglish": "“What did you do yesterday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "dün ne yaptın?",
+      "romanization": "DÜN ne yap-TIN",
+      "nativeText": "Usage focus for \"dün ne yaptın?\": “What did you do yesterday?” A core past-question frame.",
+      "pronunciation": "DÜN ne yap-TIN",
+      "exampleTarget": "Dün ne yaptın?",
+      "exampleNative": "Notice what the form is doing here: “What did you do yesterday?”",
+      "korean": "dün ne yaptın?",
+      "english": "Usage focus for \"dün ne yaptın?\": “What did you do yesterday?” A core past-question frame.",
+      "example": "Dün ne yaptın?",
+      "exampleEnglish": "Notice what the form is doing here: “What did you do yesterday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "dün ne yaptın?",
+      "romanization": "DÜN ne yap-TIN",
+      "nativeText": "Contrast check for \"dün ne yaptın?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "DÜN ne yap-TIN",
+      "exampleTarget": "Dün ne yaptın?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What did you do yesterday?”",
+      "korean": "dün ne yaptın?",
+      "english": "Contrast check for \"dün ne yaptın?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Dün ne yaptın?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "dün ne yaptın?",
+      "romanization": "DÜN ne yap-TIN",
+      "nativeText": "Recall \"dün ne yaptın?\" from memory, then explain what would change if a nearby alternative replaced it in \"Dün ne yaptın?\".",
+      "pronunciation": "DÜN ne yap-TIN",
+      "exampleTarget": "Dün ne yaptın?",
+      "exampleNative": "Self-check against the model before moving on: “What did you do yesterday?”",
+      "korean": "dün ne yaptın?",
+      "english": "Recall \"dün ne yaptın?\" from memory, then explain what would change if a nearby alternative replaced it in \"Dün ne yaptın?\".",
+      "example": "Dün ne yaptın?",
+      "exampleEnglish": "Self-check against the model before moving on: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "dün ne yaptın?",
+      "romanization": "DÜN ne yap-TIN",
+      "nativeText": "Repair \"dün ne yaptın?\" inside \"Dün ne yaptın?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What did you do yesterday?” A core past-question frame.",
+      "pronunciation": "DÜN ne yap-TIN",
+      "exampleTarget": "Dün ne yaptın?",
+      "exampleNative": "Use the model as the repair target: “What did you do yesterday?”",
+      "korean": "dün ne yaptın?",
+      "english": "Repair \"dün ne yaptın?\" inside \"Dün ne yaptın?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What did you do yesterday?” A core past-question frame.",
+      "example": "Dün ne yaptın?",
+      "exampleEnglish": "Use the model as the repair target: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "dün ne yaptın?",
+      "romanization": "DÜN ne yap-TIN",
+      "nativeText": "Transfer \"dün ne yaptın?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dün ne yaptın?\".",
+      "pronunciation": "DÜN ne yap-TIN",
+      "exampleTarget": "Dün ne yaptın?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What did you do yesterday?”",
+      "korean": "dün ne yaptın?",
+      "english": "Transfer \"dün ne yaptın?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dün ne yaptın?\".",
+      "example": "Dün ne yaptın?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "dün ne yaptın?",
+      "romanization": "DÜN ne yap-TIN",
+      "nativeText": "Find one word or phrase that naturally travels with \"dün ne yaptın?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "DÜN ne yap-TIN",
+      "exampleTarget": "Dün ne yaptın?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What did you do yesterday?”",
+      "korean": "dün ne yaptın?",
+      "english": "Find one word or phrase that naturally travels with \"dün ne yaptın?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Dün ne yaptın?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "dün ne yaptın?",
+      "romanization": "DÜN ne yap-TIN",
+      "nativeText": "Listen for \"dün ne yaptın?\" inside \"Dün ne yaptın?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "DÜN ne yap-TIN",
+      "exampleTarget": "Dün ne yaptın?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What did you do yesterday?”",
+      "korean": "dün ne yaptın?",
+      "english": "Listen for \"dün ne yaptın?\" inside \"Dün ne yaptın?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Dün ne yaptın?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "dün ne yaptın?",
+      "romanization": "DÜN ne yap-TIN",
+      "nativeText": "Write \"dün ne yaptın?\" again without looking, then compare the exact written form against \"Dün ne yaptın?\" before moving on.",
+      "pronunciation": "DÜN ne yap-TIN",
+      "exampleTarget": "Dün ne yaptın?",
+      "exampleNative": "Use the written model as the final correctness check: “What did you do yesterday?”",
+      "korean": "dün ne yaptın?",
+      "english": "Write \"dün ne yaptın?\" again without looking, then compare the exact written form against \"Dün ne yaptın?\" before moving on.",
+      "example": "Dün ne yaptın?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What did you do yesterday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "dün ne yaptın?",
+      "romanization": "DÜN ne yap-TIN",
+      "nativeText": "Check whether \"dün ne yaptın?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "pronunciation": "DÜN ne yap-TIN",
+      "exampleTarget": "Dün ne yaptın?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "korean": "dün ne yaptın?",
+      "english": "Check whether \"dün ne yaptın?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”",
+      "example": "Dün ne yaptın?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What did you do yesterday?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "hiç",
+      "romanization": "HİÇ",
+      "nativeText": "“Ever / at all” depending on context, useful in negative and experience questions.",
+      "pronunciation": "HİÇ",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "“Have you ever drunk Turkish coffee?”",
+      "korean": "hiç",
+      "english": "“Ever / at all” depending on context, useful in negative and experience questions.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "“Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "Hiç Türk kahvesi içtin mi?",
+      "romanization": "HİÇ",
+      "nativeText": "Model use for \"Hiç Türk kahvesi içtin mi?\": “Have you ever drunk Turkish coffee?”",
+      "pronunciation": "HİÇ",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "“Have you ever drunk Turkish coffee?”",
+      "korean": "Hiç Türk kahvesi içtin mi?",
+      "english": "Model use for \"Hiç Türk kahvesi içtin mi?\": “Have you ever drunk Turkish coffee?”",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "“Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "hiç",
+      "romanization": "HİÇ",
+      "nativeText": "Usage focus for \"hiç\": “Ever / at all” depending on context, useful in negative and experience questions.",
+      "pronunciation": "HİÇ",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "Notice what the form is doing here: “Have you ever drunk Turkish coffee?”",
+      "korean": "hiç",
+      "english": "Usage focus for \"hiç\": “Ever / at all” depending on context, useful in negative and experience questions.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "Notice what the form is doing here: “Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "hiç",
+      "romanization": "HİÇ",
+      "nativeText": "Contrast check for \"hiç\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "HİÇ",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Have you ever drunk Turkish coffee?”",
+      "korean": "hiç",
+      "english": "Contrast check for \"hiç\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "hiç",
+      "romanization": "HİÇ",
+      "nativeText": "Recall \"hiç\" from memory, then explain what would change if a nearby alternative replaced it in \"Hiç Türk kahvesi içtin mi?\".",
+      "pronunciation": "HİÇ",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "Self-check against the model before moving on: “Have you ever drunk Turkish coffee?”",
+      "korean": "hiç",
+      "english": "Recall \"hiç\" from memory, then explain what would change if a nearby alternative replaced it in \"Hiç Türk kahvesi içtin mi?\".",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "Self-check against the model before moving on: “Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "hiç",
+      "romanization": "HİÇ",
+      "nativeText": "Repair \"hiç\" inside \"Hiç Türk kahvesi içtin mi?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ever / at all” depending on context, useful in negative and experience questions.",
+      "pronunciation": "HİÇ",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "Use the model as the repair target: “Have you ever drunk Turkish coffee?”",
+      "korean": "hiç",
+      "english": "Repair \"hiç\" inside \"Hiç Türk kahvesi içtin mi?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ever / at all” depending on context, useful in negative and experience questions.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "Use the model as the repair target: “Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "hiç",
+      "romanization": "HİÇ",
+      "nativeText": "Transfer \"hiç\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hiç Türk kahvesi içtin mi?\".",
+      "pronunciation": "HİÇ",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Have you ever drunk Turkish coffee?”",
+      "korean": "hiç",
+      "english": "Transfer \"hiç\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hiç Türk kahvesi içtin mi?\".",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "hiç",
+      "romanization": "HİÇ",
+      "nativeText": "Find one word or phrase that naturally travels with \"hiç\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "HİÇ",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Have you ever drunk Turkish coffee?”",
+      "korean": "hiç",
+      "english": "Find one word or phrase that naturally travels with \"hiç\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "hiç",
+      "romanization": "HİÇ",
+      "nativeText": "Listen for \"hiç\" inside \"Hiç Türk kahvesi içtin mi?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "HİÇ",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Have you ever drunk Turkish coffee?”",
+      "korean": "hiç",
+      "english": "Listen for \"hiç\" inside \"Hiç Türk kahvesi içtin mi?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "hiç",
+      "romanization": "HİÇ",
+      "nativeText": "Write \"hiç\" again without looking, then compare the exact written form against \"Hiç Türk kahvesi içtin mi?\" before moving on.",
+      "pronunciation": "HİÇ",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "Use the written model as the final correctness check: “Have you ever drunk Turkish coffee?”",
+      "korean": "hiç",
+      "english": "Write \"hiç\" again without looking, then compare the exact written form against \"Hiç Türk kahvesi içtin mi?\" before moving on.",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Have you ever drunk Turkish coffee?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit12pastactivities-vocabulary-1",
+        "tr-level1unit12pastactivities-vocabulary-2",
+        "tr-level1unit12pastactivities-grammar-1",
+        "tr-level1unit12pastactivities-grammar-2",
+        "tr-level1unit12pastactivities-reading",
+        "tr-level1unit12pastactivities-listening",
+        "tr-level1unit12pastactivities-writing",
+        "tr-level1unit12pastactivities-task"
+      ],
+      "targetText": "hiç",
+      "romanization": "HİÇ",
+      "nativeText": "Check whether \"hiç\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Have you ever drunk Turkish coffee?”",
+      "pronunciation": "HİÇ",
+      "exampleTarget": "Hiç Türk kahvesi içtin mi?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Have you ever drunk Turkish coffee?”",
+      "korean": "hiç",
+      "english": "Check whether \"hiç\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Have you ever drunk Turkish coffee?”",
+      "example": "Hiç Türk kahvesi içtin mi?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Have you ever drunk Turkish coffee?”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

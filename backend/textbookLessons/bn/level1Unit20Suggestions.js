@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u20',
-  title: 'Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans',
-  category: 'planning',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Make friendly suggestions, respond to them, and settle on a plan.',
-  vocabularyGoal: 'Use suggestion, plan, and response phrases.',
-  grammarGoal: 'Use `চলুন`, `কেমন হয়`, and soft refusals with reasons.',
-  speakingGoal: 'Suggest one activity, respond to one suggestion, and agree on a plan.',
-  task: 'Plan a simple weekend outing.',
-  expressionPractice: [
-    practice('making-suggestion', 'Making suggestion', 'Use `চলুন` or `কেমন হয়`.'),
-    practice('accepting', 'Accepting suggestion', 'Use one positive response plus detail.'),
-    practice('declining-softly', 'Declining softly', 'Give a reason and another option.'),
+module.exports = {
+  "title": "Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans",
+  "category": "planning",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit20suggestions-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Make friendly suggestions, respond to them, and settle on a plan."
+      ],
+      "task": "Plan a simple weekend outing."
+    },
+    {
+      "id": "bn-level1unit20suggestions-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit20suggestions-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit20suggestions-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit20suggestions-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Make friendly suggestions, respond to them, and settle on a plan."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit20suggestions-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit20suggestions-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit20suggestions-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit20suggestions-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit20suggestions-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit20suggestions-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Plan a simple weekend outing."
+      ],
+      "task": "Plan a simple weekend outing."
+    }
   ],
-  relatedPools: ['topic-planning', 'topic-leisure'],
-  items: [
-    item('চলুন', 'cholun', '“Let’s go / let us.” A polite inclusive suggestion.', 'চলুন কফি খাই।', '“Let’s drink coffee.”'),
-    item('কেমন হয়?', 'kemon hoy', '“How would it be?” A soft suggestion frame.', 'শনিবার গেলে কেমন হয়?', '“How about going on Saturday?”'),
-    item('ভালো idea', 'bhalo idea', '“Good idea.” Everyday speech often uses an English loan in this phrase.', 'এটা ভালো idea.', '“That is a good idea.”'),
-    item('ঠিক আছে', 'thik achhe', '“Okay / alright.” A compact acceptance phrase.', 'ঠিক আছে, শনিবার যাই।', '“Okay, let’s go on Saturday.”'),
-    item('দুঃখিত, পারব না', 'dukkhito parbo na', '“Sorry, I cannot.” A soft refusal.', 'দুঃখিত, শনিবার পারব না।', '“Sorry, I cannot on Saturday.”'),
-    item('হয়তো', 'hoyto', '“Maybe.” Useful when the speaker is uncertain.', 'হয়তো রবিবার ভালো।', '“Maybe Sunday is better.”'),
-    item('আরও ভালো', 'aro bhalo', '“Better.” A practical comparison phrase.', 'সকালে গেলে আরও ভালো।', '“It is better if we go in the morning.”'),
-    item('তাহলে', 'tahole', '“Then / in that case.” A natural pivot after new information.', 'তাহলে পাঁচটায় দেখা করি।', '“Then let’s meet at five.”'),
+  "expressionPractice": [
+    {
+      "id": "making-suggestion",
+      "label": "Making suggestion",
+      "goal": "Use `চলুন` or `কেমন হয়`."
+    },
+    {
+      "id": "accepting",
+      "label": "Accepting suggestion",
+      "goal": "Use one positive response plus detail."
+    },
+    {
+      "id": "declining-softly",
+      "label": "Declining softly",
+      "goal": "Give a reason and another option."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-planning",
+    "topic-leisure"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Plan a simple weekend outing.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Plan a simple weekend outing."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit20suggestions-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"চলুন কফি খাই।\".",
+      "pronunciation": "",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "“Let’s drink coffee.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"চলুন কফি খাই।\".",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "“Let’s drink coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1"
+      ],
+      "targetText": "চলুন",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "“Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "Use the key language of Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "“Let’s drink coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-2"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "“How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "“How about going on Saturday?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit20suggestions-grammar-1"
+      ],
+      "targetText": "চলুন",
+      "romanization": "",
+      "nativeText": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "pronunciation": "",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "“Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "“Let’s drink coffee.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "“How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "Contrast the main pattern in Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "“How about going on Saturday?”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit20suggestions-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"তাহলে পাঁচটায় দেখা করি।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "“Then let’s meet at five.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"তাহলে পাঁচটায় দেখা করি।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "“Then let’s meet at five.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit20suggestions-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"তাহলে পাঁচটায় দেখা করি।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "“Then let’s meet at five.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"তাহলে পাঁচটায় দেখা করি।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "“Then let’s meet at five.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit20suggestions-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"চলুন কফি খাই।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"চলুন কফি খাই।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit20suggestions-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "“How about going on Saturday?”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "“How about going on Saturday?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Plan a simple weekend outing.",
+      "pronunciation": "",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "Plan a simple weekend outing.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Plan a simple weekend outing.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "Plan a simple weekend outing."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"শনিবার গেলে কেমন হয়?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “How about going on Saturday?”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"শনিবার গেলে কেমন হয়?\" against the model.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “How about going on Saturday?”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"চলুন কফি খাই।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "“Let’s drink coffee.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"চলুন কফি খাই।\" before reusing it elsewhere.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "“Let’s drink coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"তাহলে পাঁচটায় দেখা করি।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "“Then let’s meet at five.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"তাহলে পাঁচটায় দেখা করি।\" as one thought.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "“Then let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"চলুন কফি খাই।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"চলুন কফি খাই।\" and move it into your own life.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"চলুন\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "চলুন",
+      "exampleNative": "“Let’s go / let us.” A polite inclusive suggestion.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"চলুন\" before looking back.",
+      "example": "চলুন",
+      "exampleEnglish": "“Let’s go / let us.” A polite inclusive suggestion."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"তাহলে পাঁচটায় দেখা করি।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"তাহলে পাঁচটায় দেখা করি।\" rather than restarting from a blank sentence.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"শনিবার গেলে কেমন হয়?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "“How about going on Saturday?”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"শনিবার গেলে কেমন হয়?\" as the comparison line.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "“How about going on Saturday?”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit20suggestions-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"চলুন কফি খাই।\".",
+      "pronunciation": "",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "“Let’s drink coffee.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"চলুন কফি খাই।\".",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "“Let’s drink coffee.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"তাহলে পাঁচটায় দেখা করি।\".",
+      "pronunciation": "",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "“Then let’s meet at five.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"তাহলে পাঁচটায় দেখা করি।\".",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "“Then let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"চলুন কফি খাই।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "“Let’s drink coffee.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"চলুন কফি খাই।\" one layer at a time.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "“Let’s drink coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"শনিবার গেলে কেমন হয়?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "“How about going on Saturday?”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"শনিবার গেলে কেমন হয়?\" as the deciding example.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "“How about going on Saturday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-culture",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"তাহলে পাঁচটায় দেখা করি।\".",
+      "pronunciation": "",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "“Then let’s meet at five.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"তাহলে পাঁচটায় দেখা করি।\".",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "“Then let’s meet at five.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চলুন",
+      "romanization": "cholun",
+      "nativeText": "“Let’s go / let us.” A polite inclusive suggestion.",
+      "pronunciation": "cholun",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "“Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "“Let’s go / let us.” A polite inclusive suggestion.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "“Let’s drink coffee.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চলুন কফি খাই।",
+      "romanization": "cholun",
+      "nativeText": "Model use for \"চলুন কফি খাই।\": “Let’s drink coffee.”",
+      "pronunciation": "cholun",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "“Let’s drink coffee.”",
+      "korean": "চলুন কফি খাই।",
+      "english": "Model use for \"চলুন কফি খাই।\": “Let’s drink coffee.”",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "“Let’s drink coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চলুন",
+      "romanization": "cholun",
+      "nativeText": "Usage focus for \"চলুন\": Use the key language of Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "cholun",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "Notice what the form is doing here: “Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "Usage focus for \"চলুন\": Use the key language of Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "Notice what the form is doing here: “Let’s drink coffee.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চলুন",
+      "romanization": "cholun",
+      "nativeText": "Contrast check for \"চলুন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "cholun",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "Contrast check for \"চলুন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s drink coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চলুন",
+      "romanization": "cholun",
+      "nativeText": "Recall \"চলুন\" from memory, then explain what would change if a nearby alternative replaced it in \"চলুন কফি খাই।\".",
+      "pronunciation": "cholun",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "Self-check against the model before moving on: “Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "Recall \"চলুন\" from memory, then explain what would change if a nearby alternative replaced it in \"চলুন কফি খাই।\".",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “Let’s drink coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চলুন",
+      "romanization": "cholun",
+      "nativeText": "Repair \"চলুন\" inside \"চলুন কফি খাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "cholun",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "Use the model as the repair target: “Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "Repair \"চলুন\" inside \"চলুন কফি খাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "Use the model as the repair target: “Let’s drink coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চলুন",
+      "romanization": "cholun",
+      "nativeText": "Transfer \"চলুন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"চলুন কফি খাই।\".",
+      "pronunciation": "cholun",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "Transfer \"চলুন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"চলুন কফি খাই।\".",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s drink coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চলুন",
+      "romanization": "cholun",
+      "nativeText": "Find one word or phrase that naturally travels with \"চলুন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "cholun",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "Find one word or phrase that naturally travels with \"চলুন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Let’s drink coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চলুন",
+      "romanization": "cholun",
+      "nativeText": "Listen for \"চলুন\" inside \"চলুন কফি খাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "cholun",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "Listen for \"চলুন\" inside \"চলুন কফি খাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s drink coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চলুন",
+      "romanization": "cholun",
+      "nativeText": "Write \"চলুন\" again without looking, then compare the exact written form against \"চলুন কফি খাই।\" before moving on.",
+      "pronunciation": "cholun",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "Use the written model as the final correctness check: “Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "Write \"চলুন\" again without looking, then compare the exact written form against \"চলুন কফি খাই।\" before moving on.",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Let’s drink coffee.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "চলুন",
+      "romanization": "cholun",
+      "nativeText": "Check whether \"চলুন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s drink coffee.”",
+      "pronunciation": "cholun",
+      "exampleTarget": "চলুন কফি খাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Let’s drink coffee.”",
+      "korean": "চলুন",
+      "english": "Check whether \"চলুন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s drink coffee.”",
+      "example": "চলুন কফি খাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Let’s drink coffee.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "kemon hoy",
+      "nativeText": "“How would it be?” A soft suggestion frame.",
+      "pronunciation": "kemon hoy",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "“How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "“How would it be?” A soft suggestion frame.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "“How about going on Saturday?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "শনিবার গেলে কেমন হয়?",
+      "romanization": "kemon hoy",
+      "nativeText": "Model use for \"শনিবার গেলে কেমন হয়?\": “How about going on Saturday?”",
+      "pronunciation": "kemon hoy",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "“How about going on Saturday?”",
+      "korean": "শনিবার গেলে কেমন হয়?",
+      "english": "Model use for \"শনিবার গেলে কেমন হয়?\": “How about going on Saturday?”",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "“How about going on Saturday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "kemon hoy",
+      "nativeText": "Usage focus for \"কেমন হয়?\": Distinguish the nearby wording choices that make Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "kemon hoy",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "Notice what the form is doing here: “How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "Usage focus for \"কেমন হয়?\": Distinguish the nearby wording choices that make Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "Notice what the form is doing here: “How about going on Saturday?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "kemon hoy",
+      "nativeText": "Contrast check for \"কেমন হয়?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kemon hoy",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "Contrast check for \"কেমন হয়?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How about going on Saturday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "kemon hoy",
+      "nativeText": "Recall \"কেমন হয়?\" from memory, then explain what would change if a nearby alternative replaced it in \"শনিবার গেলে কেমন হয়?\".",
+      "pronunciation": "kemon hoy",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "Self-check against the model before moving on: “How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "Recall \"কেমন হয়?\" from memory, then explain what would change if a nearby alternative replaced it in \"শনিবার গেলে কেমন হয়?\".",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "Self-check against the model before moving on: “How about going on Saturday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "kemon hoy",
+      "nativeText": "Repair \"কেমন হয়?\" inside \"শনিবার গেলে কেমন হয়?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "kemon hoy",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "Use the model as the repair target: “How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "Repair \"কেমন হয়?\" inside \"শনিবার গেলে কেমন হয়?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 20: পরামর্শ ও পরিকল্পনা — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "Use the model as the repair target: “How about going on Saturday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "kemon hoy",
+      "nativeText": "Transfer \"কেমন হয়?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"শনিবার গেলে কেমন হয়?\".",
+      "pronunciation": "kemon hoy",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "Transfer \"কেমন হয়?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"শনিবার গেলে কেমন হয়?\".",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How about going on Saturday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "kemon hoy",
+      "nativeText": "Find one word or phrase that naturally travels with \"কেমন হয়?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kemon hoy",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "Find one word or phrase that naturally travels with \"কেমন হয়?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How about going on Saturday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "kemon hoy",
+      "nativeText": "Listen for \"কেমন হয়?\" inside \"শনিবার গেলে কেমন হয়?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kemon hoy",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "Listen for \"কেমন হয়?\" inside \"শনিবার গেলে কেমন হয়?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How about going on Saturday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "kemon hoy",
+      "nativeText": "Write \"কেমন হয়?\" again without looking, then compare the exact written form against \"শনিবার গেলে কেমন হয়?\" before moving on.",
+      "pronunciation": "kemon hoy",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "Use the written model as the final correctness check: “How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "Write \"কেমন হয়?\" again without looking, then compare the exact written form against \"শনিবার গেলে কেমন হয়?\" before moving on.",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How about going on Saturday?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "কেমন হয়?",
+      "romanization": "kemon hoy",
+      "nativeText": "Check whether \"কেমন হয়?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How about going on Saturday?”",
+      "pronunciation": "kemon hoy",
+      "exampleTarget": "শনিবার গেলে কেমন হয়?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How about going on Saturday?”",
+      "korean": "কেমন হয়?",
+      "english": "Check whether \"কেমন হয়?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How about going on Saturday?”",
+      "example": "শনিবার গেলে কেমন হয়?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How about going on Saturday?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ভালো idea",
+      "romanization": "bhalo idea",
+      "nativeText": "“Good idea.” Everyday speech often uses an English loan in this phrase.",
+      "pronunciation": "bhalo idea",
+      "exampleTarget": "এটা ভালো idea.",
+      "exampleNative": "“That is a good idea.”",
+      "korean": "ভালো idea",
+      "english": "“Good idea.” Everyday speech often uses an English loan in this phrase.",
+      "example": "এটা ভালো idea.",
+      "exampleEnglish": "“That is a good idea.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "এটা ভালো idea.",
+      "romanization": "bhalo idea",
+      "nativeText": "Model use for \"এটা ভালো idea.\": “That is a good idea.”",
+      "pronunciation": "bhalo idea",
+      "exampleTarget": "এটা ভালো idea.",
+      "exampleNative": "“That is a good idea.”",
+      "korean": "এটা ভালো idea.",
+      "english": "Model use for \"এটা ভালো idea.\": “That is a good idea.”",
+      "example": "এটা ভালো idea.",
+      "exampleEnglish": "“That is a good idea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ভালো idea",
+      "romanization": "bhalo idea",
+      "nativeText": "Usage focus for \"ভালো idea\": “Good idea.” Everyday speech often uses an English loan in this phrase.",
+      "pronunciation": "bhalo idea",
+      "exampleTarget": "এটা ভালো idea.",
+      "exampleNative": "Notice what the form is doing here: “That is a good idea.”",
+      "korean": "ভালো idea",
+      "english": "Usage focus for \"ভালো idea\": “Good idea.” Everyday speech often uses an English loan in this phrase.",
+      "example": "এটা ভালো idea.",
+      "exampleEnglish": "Notice what the form is doing here: “That is a good idea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ভালো idea",
+      "romanization": "bhalo idea",
+      "nativeText": "Contrast check for \"ভালো idea\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bhalo idea",
+      "exampleTarget": "এটা ভালো idea.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is a good idea.”",
+      "korean": "ভালো idea",
+      "english": "Contrast check for \"ভালো idea\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এটা ভালো idea.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ভালো idea",
+      "romanization": "bhalo idea",
+      "nativeText": "Recall \"ভালো idea\" from memory, then explain what would change if a nearby alternative replaced it in \"এটা ভালো idea.\".",
+      "pronunciation": "bhalo idea",
+      "exampleTarget": "এটা ভালো idea.",
+      "exampleNative": "Self-check against the model before moving on: “That is a good idea.”",
+      "korean": "ভালো idea",
+      "english": "Recall \"ভালো idea\" from memory, then explain what would change if a nearby alternative replaced it in \"এটা ভালো idea.\".",
+      "example": "এটা ভালো idea.",
+      "exampleEnglish": "Self-check against the model before moving on: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ভালো idea",
+      "romanization": "bhalo idea",
+      "nativeText": "Repair \"ভালো idea\" inside \"এটা ভালো idea.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Good idea.” Everyday speech often uses an English loan in this phrase.",
+      "pronunciation": "bhalo idea",
+      "exampleTarget": "এটা ভালো idea.",
+      "exampleNative": "Use the model as the repair target: “That is a good idea.”",
+      "korean": "ভালো idea",
+      "english": "Repair \"ভালো idea\" inside \"এটা ভালো idea.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Good idea.” Everyday speech often uses an English loan in this phrase.",
+      "example": "এটা ভালো idea.",
+      "exampleEnglish": "Use the model as the repair target: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ভালো idea",
+      "romanization": "bhalo idea",
+      "nativeText": "Transfer \"ভালো idea\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এটা ভালো idea.\".",
+      "pronunciation": "bhalo idea",
+      "exampleTarget": "এটা ভালো idea.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is a good idea.”",
+      "korean": "ভালো idea",
+      "english": "Transfer \"ভালো idea\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এটা ভালো idea.\".",
+      "example": "এটা ভালো idea.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ভালো idea",
+      "romanization": "bhalo idea",
+      "nativeText": "Find one word or phrase that naturally travels with \"ভালো idea\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bhalo idea",
+      "exampleTarget": "এটা ভালো idea.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “That is a good idea.”",
+      "korean": "ভালো idea",
+      "english": "Find one word or phrase that naturally travels with \"ভালো idea\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এটা ভালো idea.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ভালো idea",
+      "romanization": "bhalo idea",
+      "nativeText": "Listen for \"ভালো idea\" inside \"এটা ভালো idea.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bhalo idea",
+      "exampleTarget": "এটা ভালো idea.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is a good idea.”",
+      "korean": "ভালো idea",
+      "english": "Listen for \"ভালো idea\" inside \"এটা ভালো idea.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এটা ভালো idea.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ভালো idea",
+      "romanization": "bhalo idea",
+      "nativeText": "Write \"ভালো idea\" again without looking, then compare the exact written form against \"এটা ভালো idea.\" before moving on.",
+      "pronunciation": "bhalo idea",
+      "exampleTarget": "এটা ভালো idea.",
+      "exampleNative": "Use the written model as the final correctness check: “That is a good idea.”",
+      "korean": "ভালো idea",
+      "english": "Write \"ভালো idea\" again without looking, then compare the exact written form against \"এটা ভালো idea.\" before moving on.",
+      "example": "এটা ভালো idea.",
+      "exampleEnglish": "Use the written model as the final correctness check: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ভালো idea",
+      "romanization": "bhalo idea",
+      "nativeText": "Check whether \"ভালো idea\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "pronunciation": "bhalo idea",
+      "exampleTarget": "এটা ভালো idea.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "korean": "ভালো idea",
+      "english": "Check whether \"ভালো idea\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "example": "এটা ভালো idea.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “That is a good idea.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "“Okay / alright.” A compact acceptance phrase.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, শনিবার যাই।",
+      "exampleNative": "“Okay, let’s go on Saturday.”",
+      "korean": "ঠিক আছে",
+      "english": "“Okay / alright.” A compact acceptance phrase.",
+      "example": "ঠিক আছে, শনিবার যাই।",
+      "exampleEnglish": "“Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ঠিক আছে, শনিবার যাই।",
+      "romanization": "thik achhe",
+      "nativeText": "Model use for \"ঠিক আছে, শনিবার যাই।\": “Okay, let’s go on Saturday.”",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, শনিবার যাই।",
+      "exampleNative": "“Okay, let’s go on Saturday.”",
+      "korean": "ঠিক আছে, শনিবার যাই।",
+      "english": "Model use for \"ঠিক আছে, শনিবার যাই।\": “Okay, let’s go on Saturday.”",
+      "example": "ঠিক আছে, শনিবার যাই।",
+      "exampleEnglish": "“Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Usage focus for \"ঠিক আছে\": “Okay / alright.” A compact acceptance phrase.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, শনিবার যাই।",
+      "exampleNative": "Notice what the form is doing here: “Okay, let’s go on Saturday.”",
+      "korean": "ঠিক আছে",
+      "english": "Usage focus for \"ঠিক আছে\": “Okay / alright.” A compact acceptance phrase.",
+      "example": "ঠিক আছে, শনিবার যাই।",
+      "exampleEnglish": "Notice what the form is doing here: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Contrast check for \"ঠিক আছে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, শনিবার যাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, let’s go on Saturday.”",
+      "korean": "ঠিক আছে",
+      "english": "Contrast check for \"ঠিক আছে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ঠিক আছে, শনিবার যাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Recall \"ঠিক আছে\" from memory, then explain what would change if a nearby alternative replaced it in \"ঠিক আছে, শনিবার যাই।\".",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, শনিবার যাই।",
+      "exampleNative": "Self-check against the model before moving on: “Okay, let’s go on Saturday.”",
+      "korean": "ঠিক আছে",
+      "english": "Recall \"ঠিক আছে\" from memory, then explain what would change if a nearby alternative replaced it in \"ঠিক আছে, শনিবার যাই।\".",
+      "example": "ঠিক আছে, শনিবার যাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Repair \"ঠিক আছে\" inside \"ঠিক আছে, শনিবার যাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay / alright.” A compact acceptance phrase.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, শনিবার যাই।",
+      "exampleNative": "Use the model as the repair target: “Okay, let’s go on Saturday.”",
+      "korean": "ঠিক আছে",
+      "english": "Repair \"ঠিক আছে\" inside \"ঠিক আছে, শনিবার যাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay / alright.” A compact acceptance phrase.",
+      "example": "ঠিক আছে, শনিবার যাই।",
+      "exampleEnglish": "Use the model as the repair target: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Transfer \"ঠিক আছে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঠিক আছে, শনিবার যাই।\".",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, শনিবার যাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, let’s go on Saturday.”",
+      "korean": "ঠিক আছে",
+      "english": "Transfer \"ঠিক আছে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ঠিক আছে, শনিবার যাই।\".",
+      "example": "ঠিক আছে, শনিবার যাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Find one word or phrase that naturally travels with \"ঠিক আছে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, শনিবার যাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Okay, let’s go on Saturday.”",
+      "korean": "ঠিক আছে",
+      "english": "Find one word or phrase that naturally travels with \"ঠিক আছে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ঠিক আছে, শনিবার যাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Listen for \"ঠিক আছে\" inside \"ঠিক আছে, শনিবার যাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, শনিবার যাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, let’s go on Saturday.”",
+      "korean": "ঠিক আছে",
+      "english": "Listen for \"ঠিক আছে\" inside \"ঠিক আছে, শনিবার যাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ঠিক আছে, শনিবার যাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Write \"ঠিক আছে\" again without looking, then compare the exact written form against \"ঠিক আছে, শনিবার যাই।\" before moving on.",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, শনিবার যাই।",
+      "exampleNative": "Use the written model as the final correctness check: “Okay, let’s go on Saturday.”",
+      "korean": "ঠিক আছে",
+      "english": "Write \"ঠিক আছে\" again without looking, then compare the exact written form against \"ঠিক আছে, শনিবার যাই।\" before moving on.",
+      "example": "ঠিক আছে, শনিবার যাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "ঠিক আছে",
+      "romanization": "thik achhe",
+      "nativeText": "Check whether \"ঠিক আছে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, let’s go on Saturday.”",
+      "pronunciation": "thik achhe",
+      "exampleTarget": "ঠিক আছে, শনিবার যাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Okay, let’s go on Saturday.”",
+      "korean": "ঠিক আছে",
+      "english": "Check whether \"ঠিক আছে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, let’s go on Saturday.”",
+      "example": "ঠিক আছে, শনিবার যাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Okay, let’s go on Saturday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "দুঃখিত, পারব না",
+      "romanization": "dukkhito parbo na",
+      "nativeText": "“Sorry, I cannot.” A soft refusal.",
+      "pronunciation": "dukkhito parbo na",
+      "exampleTarget": "দুঃখিত, শনিবার পারব না।",
+      "exampleNative": "“Sorry, I cannot on Saturday.”",
+      "korean": "দুঃখিত, পারব না",
+      "english": "“Sorry, I cannot.” A soft refusal.",
+      "example": "দুঃখিত, শনিবার পারব না।",
+      "exampleEnglish": "“Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "দুঃখিত, শনিবার পারব না।",
+      "romanization": "dukkhito parbo na",
+      "nativeText": "Model use for \"দুঃখিত, শনিবার পারব না।\": “Sorry, I cannot on Saturday.”",
+      "pronunciation": "dukkhito parbo na",
+      "exampleTarget": "দুঃখিত, শনিবার পারব না।",
+      "exampleNative": "“Sorry, I cannot on Saturday.”",
+      "korean": "দুঃখিত, শনিবার পারব না।",
+      "english": "Model use for \"দুঃখিত, শনিবার পারব না।\": “Sorry, I cannot on Saturday.”",
+      "example": "দুঃখিত, শনিবার পারব না।",
+      "exampleEnglish": "“Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "দুঃখিত, পারব না",
+      "romanization": "dukkhito parbo na",
+      "nativeText": "Usage focus for \"দুঃখিত, পারব না\": “Sorry, I cannot.” A soft refusal.",
+      "pronunciation": "dukkhito parbo na",
+      "exampleTarget": "দুঃখিত, শনিবার পারব না।",
+      "exampleNative": "Notice what the form is doing here: “Sorry, I cannot on Saturday.”",
+      "korean": "দুঃখিত, পারব না",
+      "english": "Usage focus for \"দুঃখিত, পারব না\": “Sorry, I cannot.” A soft refusal.",
+      "example": "দুঃখিত, শনিবার পারব না।",
+      "exampleEnglish": "Notice what the form is doing here: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "দুঃখিত, পারব না",
+      "romanization": "dukkhito parbo na",
+      "nativeText": "Contrast check for \"দুঃখিত, পারব না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dukkhito parbo na",
+      "exampleTarget": "দুঃখিত, শনিবার পারব না।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sorry, I cannot on Saturday.”",
+      "korean": "দুঃখিত, পারব না",
+      "english": "Contrast check for \"দুঃখিত, পারব না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "দুঃখিত, শনিবার পারব না।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "দুঃখিত, পারব না",
+      "romanization": "dukkhito parbo na",
+      "nativeText": "Recall \"দুঃখিত, পারব না\" from memory, then explain what would change if a nearby alternative replaced it in \"দুঃখিত, শনিবার পারব না।\".",
+      "pronunciation": "dukkhito parbo na",
+      "exampleTarget": "দুঃখিত, শনিবার পারব না।",
+      "exampleNative": "Self-check against the model before moving on: “Sorry, I cannot on Saturday.”",
+      "korean": "দুঃখিত, পারব না",
+      "english": "Recall \"দুঃখিত, পারব না\" from memory, then explain what would change if a nearby alternative replaced it in \"দুঃখিত, শনিবার পারব না।\".",
+      "example": "দুঃখিত, শনিবার পারব না।",
+      "exampleEnglish": "Self-check against the model before moving on: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "দুঃখিত, পারব না",
+      "romanization": "dukkhito parbo na",
+      "nativeText": "Repair \"দুঃখিত, পারব না\" inside \"দুঃখিত, শনিবার পারব না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sorry, I cannot.” A soft refusal.",
+      "pronunciation": "dukkhito parbo na",
+      "exampleTarget": "দুঃখিত, শনিবার পারব না।",
+      "exampleNative": "Use the model as the repair target: “Sorry, I cannot on Saturday.”",
+      "korean": "দুঃখিত, পারব না",
+      "english": "Repair \"দুঃখিত, পারব না\" inside \"দুঃখিত, শনিবার পারব না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sorry, I cannot.” A soft refusal.",
+      "example": "দুঃখিত, শনিবার পারব না।",
+      "exampleEnglish": "Use the model as the repair target: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "দুঃখিত, পারব না",
+      "romanization": "dukkhito parbo na",
+      "nativeText": "Transfer \"দুঃখিত, পারব না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"দুঃখিত, শনিবার পারব না।\".",
+      "pronunciation": "dukkhito parbo na",
+      "exampleTarget": "দুঃখিত, শনিবার পারব না।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sorry, I cannot on Saturday.”",
+      "korean": "দুঃখিত, পারব না",
+      "english": "Transfer \"দুঃখিত, পারব না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"দুঃখিত, শনিবার পারব না।\".",
+      "example": "দুঃখিত, শনিবার পারব না।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "দুঃখিত, পারব না",
+      "romanization": "dukkhito parbo na",
+      "nativeText": "Find one word or phrase that naturally travels with \"দুঃখিত, পারব না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dukkhito parbo na",
+      "exampleTarget": "দুঃখিত, শনিবার পারব না।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Sorry, I cannot on Saturday.”",
+      "korean": "দুঃখিত, পারব না",
+      "english": "Find one word or phrase that naturally travels with \"দুঃখিত, পারব না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "দুঃখিত, শনিবার পারব না।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "দুঃখিত, পারব না",
+      "romanization": "dukkhito parbo na",
+      "nativeText": "Listen for \"দুঃখিত, পারব না\" inside \"দুঃখিত, শনিবার পারব না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dukkhito parbo na",
+      "exampleTarget": "দুঃখিত, শনিবার পারব না।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sorry, I cannot on Saturday.”",
+      "korean": "দুঃখিত, পারব না",
+      "english": "Listen for \"দুঃখিত, পারব না\" inside \"দুঃখিত, শনিবার পারব না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "দুঃখিত, শনিবার পারব না।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "দুঃখিত, পারব না",
+      "romanization": "dukkhito parbo na",
+      "nativeText": "Write \"দুঃখিত, পারব না\" again without looking, then compare the exact written form against \"দুঃখিত, শনিবার পারব না।\" before moving on.",
+      "pronunciation": "dukkhito parbo na",
+      "exampleTarget": "দুঃখিত, শনিবার পারব না।",
+      "exampleNative": "Use the written model as the final correctness check: “Sorry, I cannot on Saturday.”",
+      "korean": "দুঃখিত, পারব না",
+      "english": "Write \"দুঃখিত, পারব না\" again without looking, then compare the exact written form against \"দুঃখিত, শনিবার পারব না।\" before moving on.",
+      "example": "দুঃখিত, শনিবার পারব না।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "দুঃখিত, পারব না",
+      "romanization": "dukkhito parbo na",
+      "nativeText": "Check whether \"দুঃখিত, পারব না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”",
+      "pronunciation": "dukkhito parbo na",
+      "exampleTarget": "দুঃখিত, শনিবার পারব না।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”",
+      "korean": "দুঃখিত, পারব না",
+      "english": "Check whether \"দুঃখিত, পারব না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”",
+      "example": "দুঃখিত, শনিবার পারব না।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot on Saturday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "হয়তো",
+      "romanization": "hoyto",
+      "nativeText": "“Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "hoyto",
+      "exampleTarget": "হয়তো রবিবার ভালো।",
+      "exampleNative": "“Maybe Sunday is better.”",
+      "korean": "হয়তো",
+      "english": "“Maybe.” Useful when the speaker is uncertain.",
+      "example": "হয়তো রবিবার ভালো।",
+      "exampleEnglish": "“Maybe Sunday is better.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "হয়তো রবিবার ভালো।",
+      "romanization": "hoyto",
+      "nativeText": "Model use for \"হয়তো রবিবার ভালো।\": “Maybe Sunday is better.”",
+      "pronunciation": "hoyto",
+      "exampleTarget": "হয়তো রবিবার ভালো।",
+      "exampleNative": "“Maybe Sunday is better.”",
+      "korean": "হয়তো রবিবার ভালো।",
+      "english": "Model use for \"হয়তো রবিবার ভালো।\": “Maybe Sunday is better.”",
+      "example": "হয়তো রবিবার ভালো।",
+      "exampleEnglish": "“Maybe Sunday is better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "হয়তো",
+      "romanization": "hoyto",
+      "nativeText": "Usage focus for \"হয়তো\": “Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "hoyto",
+      "exampleTarget": "হয়তো রবিবার ভালো।",
+      "exampleNative": "Notice what the form is doing here: “Maybe Sunday is better.”",
+      "korean": "হয়তো",
+      "english": "Usage focus for \"হয়তো\": “Maybe.” Useful when the speaker is uncertain.",
+      "example": "হয়তো রবিবার ভালো।",
+      "exampleEnglish": "Notice what the form is doing here: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "হয়তো",
+      "romanization": "hoyto",
+      "nativeText": "Contrast check for \"হয়তো\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hoyto",
+      "exampleTarget": "হয়তো রবিবার ভালো।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe Sunday is better.”",
+      "korean": "হয়তো",
+      "english": "Contrast check for \"হয়তো\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "হয়তো রবিবার ভালো।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "হয়তো",
+      "romanization": "hoyto",
+      "nativeText": "Recall \"হয়তো\" from memory, then explain what would change if a nearby alternative replaced it in \"হয়তো রবিবার ভালো।\".",
+      "pronunciation": "hoyto",
+      "exampleTarget": "হয়তো রবিবার ভালো।",
+      "exampleNative": "Self-check against the model before moving on: “Maybe Sunday is better.”",
+      "korean": "হয়তো",
+      "english": "Recall \"হয়তো\" from memory, then explain what would change if a nearby alternative replaced it in \"হয়তো রবিবার ভালো।\".",
+      "example": "হয়তো রবিবার ভালো।",
+      "exampleEnglish": "Self-check against the model before moving on: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "হয়তো",
+      "romanization": "hoyto",
+      "nativeText": "Repair \"হয়তো\" inside \"হয়তো রবিবার ভালো।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Maybe.” Useful when the speaker is uncertain.",
+      "pronunciation": "hoyto",
+      "exampleTarget": "হয়তো রবিবার ভালো।",
+      "exampleNative": "Use the model as the repair target: “Maybe Sunday is better.”",
+      "korean": "হয়তো",
+      "english": "Repair \"হয়তো\" inside \"হয়তো রবিবার ভালো।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Maybe.” Useful when the speaker is uncertain.",
+      "example": "হয়তো রবিবার ভালো।",
+      "exampleEnglish": "Use the model as the repair target: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "হয়তো",
+      "romanization": "hoyto",
+      "nativeText": "Transfer \"হয়তো\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"হয়তো রবিবার ভালো।\".",
+      "pronunciation": "hoyto",
+      "exampleTarget": "হয়তো রবিবার ভালো।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe Sunday is better.”",
+      "korean": "হয়তো",
+      "english": "Transfer \"হয়তো\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"হয়তো রবিবার ভালো।\".",
+      "example": "হয়তো রবিবার ভালো।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "হয়তো",
+      "romanization": "hoyto",
+      "nativeText": "Find one word or phrase that naturally travels with \"হয়তো\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hoyto",
+      "exampleTarget": "হয়তো রবিবার ভালো।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Maybe Sunday is better.”",
+      "korean": "হয়তো",
+      "english": "Find one word or phrase that naturally travels with \"হয়তো\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "হয়তো রবিবার ভালো।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "হয়তো",
+      "romanization": "hoyto",
+      "nativeText": "Listen for \"হয়তো\" inside \"হয়তো রবিবার ভালো।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hoyto",
+      "exampleTarget": "হয়তো রবিবার ভালো।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe Sunday is better.”",
+      "korean": "হয়তো",
+      "english": "Listen for \"হয়তো\" inside \"হয়তো রবিবার ভালো।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "হয়তো রবিবার ভালো।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "হয়তো",
+      "romanization": "hoyto",
+      "nativeText": "Write \"হয়তো\" again without looking, then compare the exact written form against \"হয়তো রবিবার ভালো।\" before moving on.",
+      "pronunciation": "hoyto",
+      "exampleTarget": "হয়তো রবিবার ভালো।",
+      "exampleNative": "Use the written model as the final correctness check: “Maybe Sunday is better.”",
+      "korean": "হয়তো",
+      "english": "Write \"হয়তো\" again without looking, then compare the exact written form against \"হয়তো রবিবার ভালো।\" before moving on.",
+      "example": "হয়তো রবিবার ভালো।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "হয়তো",
+      "romanization": "hoyto",
+      "nativeText": "Check whether \"হয়তো\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "pronunciation": "hoyto",
+      "exampleTarget": "হয়তো রবিবার ভালো।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "korean": "হয়তো",
+      "english": "Check whether \"হয়তো\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "example": "হয়তো রবিবার ভালো।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "আরও ভালো",
+      "romanization": "aro bhalo",
+      "nativeText": "“Better.” A practical comparison phrase.",
+      "pronunciation": "aro bhalo",
+      "exampleTarget": "সকালে গেলে আরও ভালো।",
+      "exampleNative": "“It is better if we go in the morning.”",
+      "korean": "আরও ভালো",
+      "english": "“Better.” A practical comparison phrase.",
+      "example": "সকালে গেলে আরও ভালো।",
+      "exampleEnglish": "“It is better if we go in the morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "সকালে গেলে আরও ভালো।",
+      "romanization": "aro bhalo",
+      "nativeText": "Model use for \"সকালে গেলে আরও ভালো।\": “It is better if we go in the morning.”",
+      "pronunciation": "aro bhalo",
+      "exampleTarget": "সকালে গেলে আরও ভালো।",
+      "exampleNative": "“It is better if we go in the morning.”",
+      "korean": "সকালে গেলে আরও ভালো।",
+      "english": "Model use for \"সকালে গেলে আরও ভালো।\": “It is better if we go in the morning.”",
+      "example": "সকালে গেলে আরও ভালো।",
+      "exampleEnglish": "“It is better if we go in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "আরও ভালো",
+      "romanization": "aro bhalo",
+      "nativeText": "Usage focus for \"আরও ভালো\": “Better.” A practical comparison phrase.",
+      "pronunciation": "aro bhalo",
+      "exampleTarget": "সকালে গেলে আরও ভালো।",
+      "exampleNative": "Notice what the form is doing here: “It is better if we go in the morning.”",
+      "korean": "আরও ভালো",
+      "english": "Usage focus for \"আরও ভালো\": “Better.” A practical comparison phrase.",
+      "example": "সকালে গেলে আরও ভালো।",
+      "exampleEnglish": "Notice what the form is doing here: “It is better if we go in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "আরও ভালো",
+      "romanization": "aro bhalo",
+      "nativeText": "Contrast check for \"আরও ভালো\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "aro bhalo",
+      "exampleTarget": "সকালে গেলে আরও ভালো।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is better if we go in the morning.”",
+      "korean": "আরও ভালো",
+      "english": "Contrast check for \"আরও ভালো\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সকালে গেলে আরও ভালো।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is better if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "আরও ভালো",
+      "romanization": "aro bhalo",
+      "nativeText": "Recall \"আরও ভালো\" from memory, then explain what would change if a nearby alternative replaced it in \"সকালে গেলে আরও ভালো।\".",
+      "pronunciation": "aro bhalo",
+      "exampleTarget": "সকালে গেলে আরও ভালো।",
+      "exampleNative": "Self-check against the model before moving on: “It is better if we go in the morning.”",
+      "korean": "আরও ভালো",
+      "english": "Recall \"আরও ভালো\" from memory, then explain what would change if a nearby alternative replaced it in \"সকালে গেলে আরও ভালো।\".",
+      "example": "সকালে গেলে আরও ভালো।",
+      "exampleEnglish": "Self-check against the model before moving on: “It is better if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "আরও ভালো",
+      "romanization": "aro bhalo",
+      "nativeText": "Repair \"আরও ভালো\" inside \"সকালে গেলে আরও ভালো।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Better.” A practical comparison phrase.",
+      "pronunciation": "aro bhalo",
+      "exampleTarget": "সকালে গেলে আরও ভালো।",
+      "exampleNative": "Use the model as the repair target: “It is better if we go in the morning.”",
+      "korean": "আরও ভালো",
+      "english": "Repair \"আরও ভালো\" inside \"সকালে গেলে আরও ভালো।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Better.” A practical comparison phrase.",
+      "example": "সকালে গেলে আরও ভালো।",
+      "exampleEnglish": "Use the model as the repair target: “It is better if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "আরও ভালো",
+      "romanization": "aro bhalo",
+      "nativeText": "Transfer \"আরও ভালো\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সকালে গেলে আরও ভালো।\".",
+      "pronunciation": "aro bhalo",
+      "exampleTarget": "সকালে গেলে আরও ভালো।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is better if we go in the morning.”",
+      "korean": "আরও ভালো",
+      "english": "Transfer \"আরও ভালো\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সকালে গেলে আরও ভালো।\".",
+      "example": "সকালে গেলে আরও ভালো।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is better if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "আরও ভালো",
+      "romanization": "aro bhalo",
+      "nativeText": "Find one word or phrase that naturally travels with \"আরও ভালো\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "aro bhalo",
+      "exampleTarget": "সকালে গেলে আরও ভালো।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “It is better if we go in the morning.”",
+      "korean": "আরও ভালো",
+      "english": "Find one word or phrase that naturally travels with \"আরও ভালো\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সকালে গেলে আরও ভালো।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “It is better if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "আরও ভালো",
+      "romanization": "aro bhalo",
+      "nativeText": "Listen for \"আরও ভালো\" inside \"সকালে গেলে আরও ভালো।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "aro bhalo",
+      "exampleTarget": "সকালে গেলে আরও ভালো।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is better if we go in the morning.”",
+      "korean": "আরও ভালো",
+      "english": "Listen for \"আরও ভালো\" inside \"সকালে গেলে আরও ভালো।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সকালে গেলে আরও ভালো।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is better if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "আরও ভালো",
+      "romanization": "aro bhalo",
+      "nativeText": "Write \"আরও ভালো\" again without looking, then compare the exact written form against \"সকালে গেলে আরও ভালো।\" before moving on.",
+      "pronunciation": "aro bhalo",
+      "exampleTarget": "সকালে গেলে আরও ভালো।",
+      "exampleNative": "Use the written model as the final correctness check: “It is better if we go in the morning.”",
+      "korean": "আরও ভালো",
+      "english": "Write \"আরও ভালো\" again without looking, then compare the exact written form against \"সকালে গেলে আরও ভালো।\" before moving on.",
+      "example": "সকালে গেলে আরও ভালো।",
+      "exampleEnglish": "Use the written model as the final correctness check: “It is better if we go in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "আরও ভালো",
+      "romanization": "aro bhalo",
+      "nativeText": "Check whether \"আরও ভালো\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is better if we go in the morning.”",
+      "pronunciation": "aro bhalo",
+      "exampleTarget": "সকালে গেলে আরও ভালো।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “It is better if we go in the morning.”",
+      "korean": "আরও ভালো",
+      "english": "Check whether \"আরও ভালো\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is better if we go in the morning.”",
+      "example": "সকালে গেলে আরও ভালো।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “It is better if we go in the morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "তাহলে",
+      "romanization": "tahole",
+      "nativeText": "“Then / in that case.” A natural pivot after new information.",
+      "pronunciation": "tahole",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "“Then let’s meet at five.”",
+      "korean": "তাহলে",
+      "english": "“Then / in that case.” A natural pivot after new information.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "“Then let’s meet at five.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "তাহলে পাঁচটায় দেখা করি।",
+      "romanization": "tahole",
+      "nativeText": "Model use for \"তাহলে পাঁচটায় দেখা করি।\": “Then let’s meet at five.”",
+      "pronunciation": "tahole",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "“Then let’s meet at five.”",
+      "korean": "তাহলে পাঁচটায় দেখা করি।",
+      "english": "Model use for \"তাহলে পাঁচটায় দেখা করি।\": “Then let’s meet at five.”",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "“Then let’s meet at five.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "তাহলে",
+      "romanization": "tahole",
+      "nativeText": "Usage focus for \"তাহলে\": “Then / in that case.” A natural pivot after new information.",
+      "pronunciation": "tahole",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "Notice what the form is doing here: “Then let’s meet at five.”",
+      "korean": "তাহলে",
+      "english": "Usage focus for \"তাহলে\": “Then / in that case.” A natural pivot after new information.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "Notice what the form is doing here: “Then let’s meet at five.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "তাহলে",
+      "romanization": "tahole",
+      "nativeText": "Contrast check for \"তাহলে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tahole",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then let’s meet at five.”",
+      "korean": "তাহলে",
+      "english": "Contrast check for \"তাহলে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "তাহলে",
+      "romanization": "tahole",
+      "nativeText": "Recall \"তাহলে\" from memory, then explain what would change if a nearby alternative replaced it in \"তাহলে পাঁচটায় দেখা করি।\".",
+      "pronunciation": "tahole",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "Self-check against the model before moving on: “Then let’s meet at five.”",
+      "korean": "তাহলে",
+      "english": "Recall \"তাহলে\" from memory, then explain what would change if a nearby alternative replaced it in \"তাহলে পাঁচটায় দেখা করি।\".",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "Self-check against the model before moving on: “Then let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "তাহলে",
+      "romanization": "tahole",
+      "nativeText": "Repair \"তাহলে\" inside \"তাহলে পাঁচটায় দেখা করি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / in that case.” A natural pivot after new information.",
+      "pronunciation": "tahole",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "Use the model as the repair target: “Then let’s meet at five.”",
+      "korean": "তাহলে",
+      "english": "Repair \"তাহলে\" inside \"তাহলে পাঁচটায় দেখা করি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / in that case.” A natural pivot after new information.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "Use the model as the repair target: “Then let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "তাহলে",
+      "romanization": "tahole",
+      "nativeText": "Transfer \"তাহলে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"তাহলে পাঁচটায় দেখা করি।\".",
+      "pronunciation": "tahole",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then let’s meet at five.”",
+      "korean": "তাহলে",
+      "english": "Transfer \"তাহলে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"তাহলে পাঁচটায় দেখা করি।\".",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "তাহলে",
+      "romanization": "tahole",
+      "nativeText": "Find one word or phrase that naturally travels with \"তাহলে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tahole",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Then let’s meet at five.”",
+      "korean": "তাহলে",
+      "english": "Find one word or phrase that naturally travels with \"তাহলে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Then let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "তাহলে",
+      "romanization": "tahole",
+      "nativeText": "Listen for \"তাহলে\" inside \"তাহলে পাঁচটায় দেখা করি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tahole",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then let’s meet at five.”",
+      "korean": "তাহলে",
+      "english": "Listen for \"তাহলে\" inside \"তাহলে পাঁচটায় দেখা করি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "তাহলে",
+      "romanization": "tahole",
+      "nativeText": "Write \"তাহলে\" again without looking, then compare the exact written form against \"তাহলে পাঁচটায় দেখা করি।\" before moving on.",
+      "pronunciation": "tahole",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "Use the written model as the final correctness check: “Then let’s meet at five.”",
+      "korean": "তাহলে",
+      "english": "Write \"তাহলে\" again without looking, then compare the exact written form against \"তাহলে পাঁচটায় দেখা করি।\" before moving on.",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Then let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit20suggestions-vocabulary-1",
+        "bn-level1unit20suggestions-vocabulary-2",
+        "bn-level1unit20suggestions-grammar-1",
+        "bn-level1unit20suggestions-grammar-2",
+        "bn-level1unit20suggestions-reading",
+        "bn-level1unit20suggestions-listening",
+        "bn-level1unit20suggestions-writing",
+        "bn-level1unit20suggestions-task"
+      ],
+      "targetText": "তাহলে",
+      "romanization": "tahole",
+      "nativeText": "Check whether \"তাহলে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then let’s meet at five.”",
+      "pronunciation": "tahole",
+      "exampleTarget": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Then let’s meet at five.”",
+      "korean": "তাহলে",
+      "english": "Check whether \"তাহলে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then let’s meet at five.”",
+      "example": "তাহলে পাঁচটায় দেখা করি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Then let’s meet at five.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u6',
-  title: 'Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar',
-  category: 'time',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about days, dates, and short plans using Bengali calendar expressions.',
-  vocabularyGoal: 'Use weekdays, months, today/tomorrow/yesterday, and date questions.',
-  grammarGoal: 'Use postpositional-style time endings and common date phrases.',
-  speakingGoal: 'Say today’s date, ask when something happens, and answer with one plan.',
-  task: 'Arrange a simple class meeting on a calendar.',
-  expressionPractice: [
-    practice('asking-date', 'Asking the date', 'Use `আজ কত তারিখ?`.'),
-    practice('stating-date', 'Stating a date', 'Use one weekday and one date.'),
-    practice('making-plan', 'Making a plan', 'Use `আগামী সপ্তাহে`.'),
+module.exports = {
+  "title": "Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar",
+  "category": "time",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit06datescalendar-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about days, dates, and short plans using Bengali calendar expressions."
+      ],
+      "task": "Arrange a simple class meeting on a calendar."
+    },
+    {
+      "id": "bn-level1unit06datescalendar-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit06datescalendar-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit06datescalendar-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit06datescalendar-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about days, dates, and short plans using Bengali calendar expressions."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit06datescalendar-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit06datescalendar-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit06datescalendar-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit06datescalendar-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit06datescalendar-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit06datescalendar-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Arrange a simple class meeting on a calendar."
+      ],
+      "task": "Arrange a simple class meeting on a calendar."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-calendar'],
-  items: [
-    item('আজ', 'aj', '“Today.” A compact high-frequency time word.', 'আজ সোমবার।', '“Today is Monday.”'),
-    item('আগামীকাল', 'agamikal', '“Tomorrow.” Useful in nearly every planning exchange.', 'আগামীকাল আমার ক্লাস আছে।', '“Tomorrow I have class.”'),
-    item('গতকাল', 'gotokal', '“Yesterday.” A basic past-time marker.', 'গতকাল আমি পড়েছি।', '“Yesterday I studied.”'),
-    item('সোমবার', 'shombar', '“Monday.” Weekday names are practical early vocabulary.', 'পরীক্ষা সোমবার।', '“The exam is on Monday.”'),
-    item('আজ কত তারিখ?', 'aj koto tarikh', '“What is today’s date?” A practical full question.', 'আজ কত তারিখ?', '“What is today’s date?”'),
-    item('পাঁচ মে', 'panch me', '“May fifth.” Bengali states the day number with the month name in compact form.', 'ক্লাস পাঁচ মে শুরু হবে।', '“Class will begin on May fifth.”'),
-    item('আগামী সপ্তাহে', 'agami shoptah-e', '“Next week.” The ending marks the time setting.', 'আমরা আগামী সপ্তাহে দেখা করব।', '“We will meet next week.”'),
-    item('কখন?', 'kokhon', '“When?” A compact question word for times and plans.', 'মিটিং কখন শুরু হবে?', '“When will the meeting start?”'),
+  "expressionPractice": [
+    {
+      "id": "asking-date",
+      "label": "Asking the date",
+      "goal": "Use `আজ কত তারিখ?`."
+    },
+    {
+      "id": "stating-date",
+      "label": "Stating a date",
+      "goal": "Use one weekday and one date."
+    },
+    {
+      "id": "making-plan",
+      "label": "Making a plan",
+      "goal": "Use `আগামী সপ্তাহে`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-time",
+    "topic-calendar"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Talk about days, dates, and short plans using Bengali calendar expressions.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Arrange a simple class meeting on a calendar.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Talk about days, dates, and short plans using Bengali calendar expressions.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Arrange a simple class meeting on a calendar."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আজ সোমবার।\".",
+      "pronunciation": "",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আজ সোমবার।\".",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1"
+      ],
+      "targetText": "আজ",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "আজ",
+      "english": "Use the key language of Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-2"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "আজ",
+      "romanization": "",
+      "nativeText": "Talk about days, dates, and short plans using Bengali calendar expressions.",
+      "pronunciation": "",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "আজ",
+      "english": "Talk about days, dates, and short plans using Bengali calendar expressions.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "Contrast the main pattern in Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit06datescalendar-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"মিটিং কখন শুরু হবে?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "“When will the meeting start?”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"মিটিং কখন শুরু হবে?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "“When will the meeting start?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit06datescalendar-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"মিটিং কখন শুরু হবে?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "“When will the meeting start?”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"মিটিং কখন শুরু হবে?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "“When will the meeting start?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit06datescalendar-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"আজ সোমবার।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"আজ সোমবার।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit06datescalendar-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Arrange a simple class meeting on a calendar.",
+      "pronunciation": "",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "Arrange a simple class meeting on a calendar.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Arrange a simple class meeting on a calendar.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "Arrange a simple class meeting on a calendar."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আগামীকাল আমার ক্লাস আছে।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Tomorrow I have class.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আগামীকাল আমার ক্লাস আছে।\" against the model.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Tomorrow I have class.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আজ সোমবার।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আজ সোমবার।\" before reusing it elsewhere.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"মিটিং কখন শুরু হবে?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "“When will the meeting start?”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"মিটিং কখন শুরু হবে?\" as one thought.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "“When will the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আজ সোমবার।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আজ সোমবার।\" and move it into your own life.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"আজ\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "আজ",
+      "exampleNative": "“Today.” A compact high-frequency time word.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"আজ\" before looking back.",
+      "example": "আজ",
+      "exampleEnglish": "“Today.” A compact high-frequency time word."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"মিটিং কখন শুরু হবে?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"মিটিং কখন শুরু হবে?\" rather than restarting from a blank sentence.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আগামীকাল আমার ক্লাস আছে।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আগামীকাল আমার ক্লাস আছে।\" as the comparison line.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আজ সোমবার।\".",
+      "pronunciation": "",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আজ সোমবার।\".",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"মিটিং কখন শুরু হবে?\".",
+      "pronunciation": "",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "“When will the meeting start?”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"মিটিং কখন শুরু হবে?\".",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "“When will the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আজ সোমবার।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আজ সোমবার।\" one layer at a time.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আগামীকাল আমার ক্লাস আছে।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আগামীকাল আমার ক্লাস আছে।\" as the deciding example.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-culture",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"মিটিং কখন শুরু হবে?\".",
+      "pronunciation": "",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "“When will the meeting start?”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"মিটিং কখন শুরু হবে?\".",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "“When will the meeting start?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ",
+      "romanization": "aj",
+      "nativeText": "“Today.” A compact high-frequency time word.",
+      "pronunciation": "aj",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "আজ",
+      "english": "“Today.” A compact high-frequency time word.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ সোমবার।",
+      "romanization": "aj",
+      "nativeText": "Model use for \"আজ সোমবার।\": “Today is Monday.”",
+      "pronunciation": "aj",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "আজ সোমবার।",
+      "english": "Model use for \"আজ সোমবার।\": “Today is Monday.”",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ",
+      "romanization": "aj",
+      "nativeText": "Usage focus for \"আজ\": Use the key language of Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "aj",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "Notice what the form is doing here: “Today is Monday.”",
+      "korean": "আজ",
+      "english": "Usage focus for \"আজ\": Use the key language of Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "Notice what the form is doing here: “Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ",
+      "romanization": "aj",
+      "nativeText": "Contrast check for \"আজ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "aj",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today is Monday.”",
+      "korean": "আজ",
+      "english": "Contrast check for \"আজ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ",
+      "romanization": "aj",
+      "nativeText": "Recall \"আজ\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ সোমবার।\".",
+      "pronunciation": "aj",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "Self-check against the model before moving on: “Today is Monday.”",
+      "korean": "আজ",
+      "english": "Recall \"আজ\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ সোমবার।\".",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "Self-check against the model before moving on: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ",
+      "romanization": "aj",
+      "nativeText": "Repair \"আজ\" inside \"আজ সোমবার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "aj",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "Use the model as the repair target: “Today is Monday.”",
+      "korean": "আজ",
+      "english": "Repair \"আজ\" inside \"আজ সোমবার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "Use the model as the repair target: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ",
+      "romanization": "aj",
+      "nativeText": "Transfer \"আজ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ সোমবার।\".",
+      "pronunciation": "aj",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today is Monday.”",
+      "korean": "আজ",
+      "english": "Transfer \"আজ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ সোমবার।\".",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ",
+      "romanization": "aj",
+      "nativeText": "Find one word or phrase that naturally travels with \"আজ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "aj",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today is Monday.”",
+      "korean": "আজ",
+      "english": "Find one word or phrase that naturally travels with \"আজ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ",
+      "romanization": "aj",
+      "nativeText": "Listen for \"আজ\" inside \"আজ সোমবার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "aj",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today is Monday.”",
+      "korean": "আজ",
+      "english": "Listen for \"আজ\" inside \"আজ সোমবার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ",
+      "romanization": "aj",
+      "nativeText": "Write \"আজ\" again without looking, then compare the exact written form against \"আজ সোমবার।\" before moving on.",
+      "pronunciation": "aj",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "Use the written model as the final correctness check: “Today is Monday.”",
+      "korean": "আজ",
+      "english": "Write \"আজ\" again without looking, then compare the exact written form against \"আজ সোমবার।\" before moving on.",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ",
+      "romanization": "aj",
+      "nativeText": "Check whether \"আজ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "pronunciation": "aj",
+      "exampleTarget": "আজ সোমবার।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "korean": "আজ",
+      "english": "Check whether \"আজ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "example": "আজ সোমবার।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today is Monday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "agamikal",
+      "nativeText": "“Tomorrow.” Useful in nearly every planning exchange.",
+      "pronunciation": "agamikal",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "“Tomorrow.” Useful in nearly every planning exchange.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামীকাল আমার ক্লাস আছে।",
+      "romanization": "agamikal",
+      "nativeText": "Model use for \"আগামীকাল আমার ক্লাস আছে।\": “Tomorrow I have class.”",
+      "pronunciation": "agamikal",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "আগামীকাল আমার ক্লাস আছে।",
+      "english": "Model use for \"আগামীকাল আমার ক্লাস আছে।\": “Tomorrow I have class.”",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "agamikal",
+      "nativeText": "Usage focus for \"আগামীকাল\": Distinguish the nearby wording choices that make Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "agamikal",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "Notice what the form is doing here: “Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "Usage focus for \"আগামীকাল\": Distinguish the nearby wording choices that make Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "Notice what the form is doing here: “Tomorrow I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "agamikal",
+      "nativeText": "Contrast check for \"আগামীকাল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "agamikal",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "Contrast check for \"আগামীকাল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "agamikal",
+      "nativeText": "Recall \"আগামীকাল\" from memory, then explain what would change if a nearby alternative replaced it in \"আগামীকাল আমার ক্লাস আছে।\".",
+      "pronunciation": "agamikal",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "Self-check against the model before moving on: “Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "Recall \"আগামীকাল\" from memory, then explain what would change if a nearby alternative replaced it in \"আগামীকাল আমার ক্লাস আছে।\".",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "Self-check against the model before moving on: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "agamikal",
+      "nativeText": "Repair \"আগামীকাল\" inside \"আগামীকাল আমার ক্লাস আছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "agamikal",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "Use the model as the repair target: “Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "Repair \"আগামীকাল\" inside \"আগামীকাল আমার ক্লাস আছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: তারিখ ও ক্যালেন্ডার — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "Use the model as the repair target: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "agamikal",
+      "nativeText": "Transfer \"আগামীকাল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আগামীকাল আমার ক্লাস আছে।\".",
+      "pronunciation": "agamikal",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "Transfer \"আগামীকাল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আগামীকাল আমার ক্লাস আছে।\".",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "agamikal",
+      "nativeText": "Find one word or phrase that naturally travels with \"আগামীকাল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "agamikal",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "Find one word or phrase that naturally travels with \"আগামীকাল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "agamikal",
+      "nativeText": "Listen for \"আগামীকাল\" inside \"আগামীকাল আমার ক্লাস আছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "agamikal",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "Listen for \"আগামীকাল\" inside \"আগামীকাল আমার ক্লাস আছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "agamikal",
+      "nativeText": "Write \"আগামীকাল\" again without looking, then compare the exact written form against \"আগামীকাল আমার ক্লাস আছে।\" before moving on.",
+      "pronunciation": "agamikal",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "Use the written model as the final correctness check: “Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "Write \"আগামীকাল\" again without looking, then compare the exact written form against \"আগামীকাল আমার ক্লাস আছে।\" before moving on.",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামীকাল",
+      "romanization": "agamikal",
+      "nativeText": "Check whether \"আগামীকাল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”",
+      "pronunciation": "agamikal",
+      "exampleTarget": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”",
+      "korean": "আগামীকাল",
+      "english": "Check whether \"আগামীকাল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”",
+      "example": "আগামীকাল আমার ক্লাস আছে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "গতকাল",
+      "romanization": "gotokal",
+      "nativeText": "“Yesterday.” A basic past-time marker.",
+      "pronunciation": "gotokal",
+      "exampleTarget": "গতকাল আমি পড়েছি।",
+      "exampleNative": "“Yesterday I studied.”",
+      "korean": "গতকাল",
+      "english": "“Yesterday.” A basic past-time marker.",
+      "example": "গতকাল আমি পড়েছি।",
+      "exampleEnglish": "“Yesterday I studied.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "গতকাল আমি পড়েছি।",
+      "romanization": "gotokal",
+      "nativeText": "Model use for \"গতকাল আমি পড়েছি।\": “Yesterday I studied.”",
+      "pronunciation": "gotokal",
+      "exampleTarget": "গতকাল আমি পড়েছি।",
+      "exampleNative": "“Yesterday I studied.”",
+      "korean": "গতকাল আমি পড়েছি।",
+      "english": "Model use for \"গতকাল আমি পড়েছি।\": “Yesterday I studied.”",
+      "example": "গতকাল আমি পড়েছি।",
+      "exampleEnglish": "“Yesterday I studied.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "গতকাল",
+      "romanization": "gotokal",
+      "nativeText": "Usage focus for \"গতকাল\": “Yesterday.” A basic past-time marker.",
+      "pronunciation": "gotokal",
+      "exampleTarget": "গতকাল আমি পড়েছি।",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I studied.”",
+      "korean": "গতকাল",
+      "english": "Usage focus for \"গতকাল\": “Yesterday.” A basic past-time marker.",
+      "example": "গতকাল আমি পড়েছি।",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I studied.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "গতকাল",
+      "romanization": "gotokal",
+      "nativeText": "Contrast check for \"গতকাল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "gotokal",
+      "exampleTarget": "গতকাল আমি পড়েছি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I studied.”",
+      "korean": "গতকাল",
+      "english": "Contrast check for \"গতকাল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "গতকাল আমি পড়েছি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "গতকাল",
+      "romanization": "gotokal",
+      "nativeText": "Recall \"গতকাল\" from memory, then explain what would change if a nearby alternative replaced it in \"গতকাল আমি পড়েছি।\".",
+      "pronunciation": "gotokal",
+      "exampleTarget": "গতকাল আমি পড়েছি।",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I studied.”",
+      "korean": "গতকাল",
+      "english": "Recall \"গতকাল\" from memory, then explain what would change if a nearby alternative replaced it in \"গতকাল আমি পড়েছি।\".",
+      "example": "গতকাল আমি পড়েছি।",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "গতকাল",
+      "romanization": "gotokal",
+      "nativeText": "Repair \"গতকাল\" inside \"গতকাল আমি পড়েছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Yesterday.” A basic past-time marker.",
+      "pronunciation": "gotokal",
+      "exampleTarget": "গতকাল আমি পড়েছি।",
+      "exampleNative": "Use the model as the repair target: “Yesterday I studied.”",
+      "korean": "গতকাল",
+      "english": "Repair \"গতকাল\" inside \"গতকাল আমি পড়েছি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Yesterday.” A basic past-time marker.",
+      "example": "গতকাল আমি পড়েছি।",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "গতকাল",
+      "romanization": "gotokal",
+      "nativeText": "Transfer \"গতকাল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গতকাল আমি পড়েছি।\".",
+      "pronunciation": "gotokal",
+      "exampleTarget": "গতকাল আমি পড়েছি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I studied.”",
+      "korean": "গতকাল",
+      "english": "Transfer \"গতকাল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"গতকাল আমি পড়েছি।\".",
+      "example": "গতকাল আমি পড়েছি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "গতকাল",
+      "romanization": "gotokal",
+      "nativeText": "Find one word or phrase that naturally travels with \"গতকাল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "gotokal",
+      "exampleTarget": "গতকাল আমি পড়েছি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I studied.”",
+      "korean": "গতকাল",
+      "english": "Find one word or phrase that naturally travels with \"গতকাল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "গতকাল আমি পড়েছি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "গতকাল",
+      "romanization": "gotokal",
+      "nativeText": "Listen for \"গতকাল\" inside \"গতকাল আমি পড়েছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "gotokal",
+      "exampleTarget": "গতকাল আমি পড়েছি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I studied.”",
+      "korean": "গতকাল",
+      "english": "Listen for \"গতকাল\" inside \"গতকাল আমি পড়েছি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "গতকাল আমি পড়েছি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "গতকাল",
+      "romanization": "gotokal",
+      "nativeText": "Write \"গতকাল\" again without looking, then compare the exact written form against \"গতকাল আমি পড়েছি।\" before moving on.",
+      "pronunciation": "gotokal",
+      "exampleTarget": "গতকাল আমি পড়েছি।",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I studied.”",
+      "korean": "গতকাল",
+      "english": "Write \"গতকাল\" again without looking, then compare the exact written form against \"গতকাল আমি পড়েছি।\" before moving on.",
+      "example": "গতকাল আমি পড়েছি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "গতকাল",
+      "romanization": "gotokal",
+      "nativeText": "Check whether \"গতকাল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I studied.”",
+      "pronunciation": "gotokal",
+      "exampleTarget": "গতকাল আমি পড়েছি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I studied.”",
+      "korean": "গতকাল",
+      "english": "Check whether \"গতকাল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I studied.”",
+      "example": "গতকাল আমি পড়েছি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I studied.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সোমবার",
+      "romanization": "shombar",
+      "nativeText": "“Monday.” Weekday names are practical early vocabulary.",
+      "pronunciation": "shombar",
+      "exampleTarget": "পরীক্ষা সোমবার।",
+      "exampleNative": "“The exam is on Monday.”",
+      "korean": "সোমবার",
+      "english": "“Monday.” Weekday names are practical early vocabulary.",
+      "example": "পরীক্ষা সোমবার।",
+      "exampleEnglish": "“The exam is on Monday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পরীক্ষা সোমবার।",
+      "romanization": "shombar",
+      "nativeText": "Model use for \"পরীক্ষা সোমবার।\": “The exam is on Monday.”",
+      "pronunciation": "shombar",
+      "exampleTarget": "পরীক্ষা সোমবার।",
+      "exampleNative": "“The exam is on Monday.”",
+      "korean": "পরীক্ষা সোমবার।",
+      "english": "Model use for \"পরীক্ষা সোমবার।\": “The exam is on Monday.”",
+      "example": "পরীক্ষা সোমবার।",
+      "exampleEnglish": "“The exam is on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সোমবার",
+      "romanization": "shombar",
+      "nativeText": "Usage focus for \"সোমবার\": “Monday.” Weekday names are practical early vocabulary.",
+      "pronunciation": "shombar",
+      "exampleTarget": "পরীক্ষা সোমবার।",
+      "exampleNative": "Notice what the form is doing here: “The exam is on Monday.”",
+      "korean": "সোমবার",
+      "english": "Usage focus for \"সোমবার\": “Monday.” Weekday names are practical early vocabulary.",
+      "example": "পরীক্ষা সোমবার।",
+      "exampleEnglish": "Notice what the form is doing here: “The exam is on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সোমবার",
+      "romanization": "shombar",
+      "nativeText": "Contrast check for \"সোমবার\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shombar",
+      "exampleTarget": "পরীক্ষা সোমবার।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The exam is on Monday.”",
+      "korean": "সোমবার",
+      "english": "Contrast check for \"সোমবার\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "পরীক্ষা সোমবার।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সোমবার",
+      "romanization": "shombar",
+      "nativeText": "Recall \"সোমবার\" from memory, then explain what would change if a nearby alternative replaced it in \"পরীক্ষা সোমবার।\".",
+      "pronunciation": "shombar",
+      "exampleTarget": "পরীক্ষা সোমবার।",
+      "exampleNative": "Self-check against the model before moving on: “The exam is on Monday.”",
+      "korean": "সোমবার",
+      "english": "Recall \"সোমবার\" from memory, then explain what would change if a nearby alternative replaced it in \"পরীক্ষা সোমবার।\".",
+      "example": "পরীক্ষা সোমবার।",
+      "exampleEnglish": "Self-check against the model before moving on: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সোমবার",
+      "romanization": "shombar",
+      "nativeText": "Repair \"সোমবার\" inside \"পরীক্ষা সোমবার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Monday.” Weekday names are practical early vocabulary.",
+      "pronunciation": "shombar",
+      "exampleTarget": "পরীক্ষা সোমবার।",
+      "exampleNative": "Use the model as the repair target: “The exam is on Monday.”",
+      "korean": "সোমবার",
+      "english": "Repair \"সোমবার\" inside \"পরীক্ষা সোমবার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Monday.” Weekday names are practical early vocabulary.",
+      "example": "পরীক্ষা সোমবার।",
+      "exampleEnglish": "Use the model as the repair target: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সোমবার",
+      "romanization": "shombar",
+      "nativeText": "Transfer \"সোমবার\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পরীক্ষা সোমবার।\".",
+      "pronunciation": "shombar",
+      "exampleTarget": "পরীক্ষা সোমবার।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The exam is on Monday.”",
+      "korean": "সোমবার",
+      "english": "Transfer \"সোমবার\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পরীক্ষা সোমবার।\".",
+      "example": "পরীক্ষা সোমবার।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সোমবার",
+      "romanization": "shombar",
+      "nativeText": "Find one word or phrase that naturally travels with \"সোমবার\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shombar",
+      "exampleTarget": "পরীক্ষা সোমবার।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The exam is on Monday.”",
+      "korean": "সোমবার",
+      "english": "Find one word or phrase that naturally travels with \"সোমবার\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "পরীক্ষা সোমবার।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সোমবার",
+      "romanization": "shombar",
+      "nativeText": "Listen for \"সোমবার\" inside \"পরীক্ষা সোমবার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shombar",
+      "exampleTarget": "পরীক্ষা সোমবার।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The exam is on Monday.”",
+      "korean": "সোমবার",
+      "english": "Listen for \"সোমবার\" inside \"পরীক্ষা সোমবার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "পরীক্ষা সোমবার।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সোমবার",
+      "romanization": "shombar",
+      "nativeText": "Write \"সোমবার\" again without looking, then compare the exact written form against \"পরীক্ষা সোমবার।\" before moving on.",
+      "pronunciation": "shombar",
+      "exampleTarget": "পরীক্ষা সোমবার।",
+      "exampleNative": "Use the written model as the final correctness check: “The exam is on Monday.”",
+      "korean": "সোমবার",
+      "english": "Write \"সোমবার\" again without looking, then compare the exact written form against \"পরীক্ষা সোমবার।\" before moving on.",
+      "example": "পরীক্ষা সোমবার।",
+      "exampleEnglish": "Use the written model as the final correctness check: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "সোমবার",
+      "romanization": "shombar",
+      "nativeText": "Check whether \"সোমবার\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”",
+      "pronunciation": "shombar",
+      "exampleTarget": "পরীক্ষা সোমবার।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”",
+      "korean": "সোমবার",
+      "english": "Check whether \"সোমবার\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”",
+      "example": "পরীক্ষা সোমবার।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ কত তারিখ?",
+      "romanization": "aj koto tarikh",
+      "nativeText": "“What is today’s date?” A practical full question.",
+      "pronunciation": "aj koto tarikh",
+      "exampleTarget": "আজ কত তারিখ?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "আজ কত তারিখ?",
+      "english": "“What is today’s date?” A practical full question.",
+      "example": "আজ কত তারিখ?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ কত তারিখ?",
+      "romanization": "aj koto tarikh",
+      "nativeText": "Model use for \"আজ কত তারিখ?\": “What is today’s date?” A practical full question.",
+      "pronunciation": "aj koto tarikh",
+      "exampleTarget": "আজ কত তারিখ?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "আজ কত তারিখ?",
+      "english": "Model use for \"আজ কত তারিখ?\": “What is today’s date?” A practical full question.",
+      "example": "আজ কত তারিখ?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ কত তারিখ?",
+      "romanization": "aj koto tarikh",
+      "nativeText": "Usage focus for \"আজ কত তারিখ?\": “What is today’s date?” A practical full question.",
+      "pronunciation": "aj koto tarikh",
+      "exampleTarget": "আজ কত তারিখ?",
+      "exampleNative": "Notice what the form is doing here: “What is today’s date?”",
+      "korean": "আজ কত তারিখ?",
+      "english": "Usage focus for \"আজ কত তারিখ?\": “What is today’s date?” A practical full question.",
+      "example": "আজ কত তারিখ?",
+      "exampleEnglish": "Notice what the form is doing here: “What is today’s date?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ কত তারিখ?",
+      "romanization": "aj koto tarikh",
+      "nativeText": "Contrast check for \"আজ কত তারিখ?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "aj koto tarikh",
+      "exampleTarget": "আজ কত তারিখ?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is today’s date?”",
+      "korean": "আজ কত তারিখ?",
+      "english": "Contrast check for \"আজ কত তারিখ?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আজ কত তারিখ?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ কত তারিখ?",
+      "romanization": "aj koto tarikh",
+      "nativeText": "Recall \"আজ কত তারিখ?\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ কত তারিখ?\".",
+      "pronunciation": "aj koto tarikh",
+      "exampleTarget": "আজ কত তারিখ?",
+      "exampleNative": "Self-check against the model before moving on: “What is today’s date?”",
+      "korean": "আজ কত তারিখ?",
+      "english": "Recall \"আজ কত তারিখ?\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ কত তারিখ?\".",
+      "example": "আজ কত তারিখ?",
+      "exampleEnglish": "Self-check against the model before moving on: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ কত তারিখ?",
+      "romanization": "aj koto tarikh",
+      "nativeText": "Repair \"আজ কত তারিখ?\" inside \"আজ কত তারিখ?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What is today’s date?” A practical full question.",
+      "pronunciation": "aj koto tarikh",
+      "exampleTarget": "আজ কত তারিখ?",
+      "exampleNative": "Use the model as the repair target: “What is today’s date?”",
+      "korean": "আজ কত তারিখ?",
+      "english": "Repair \"আজ কত তারিখ?\" inside \"আজ কত তারিখ?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What is today’s date?” A practical full question.",
+      "example": "আজ কত তারিখ?",
+      "exampleEnglish": "Use the model as the repair target: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ কত তারিখ?",
+      "romanization": "aj koto tarikh",
+      "nativeText": "Transfer \"আজ কত তারিখ?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ কত তারিখ?\".",
+      "pronunciation": "aj koto tarikh",
+      "exampleTarget": "আজ কত তারিখ?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is today’s date?”",
+      "korean": "আজ কত তারিখ?",
+      "english": "Transfer \"আজ কত তারিখ?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ কত তারিখ?\".",
+      "example": "আজ কত তারিখ?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ কত তারিখ?",
+      "romanization": "aj koto tarikh",
+      "nativeText": "Find one word or phrase that naturally travels with \"আজ কত তারিখ?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "aj koto tarikh",
+      "exampleTarget": "আজ কত তারিখ?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What is today’s date?”",
+      "korean": "আজ কত তারিখ?",
+      "english": "Find one word or phrase that naturally travels with \"আজ কত তারিখ?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আজ কত তারিখ?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ কত তারিখ?",
+      "romanization": "aj koto tarikh",
+      "nativeText": "Listen for \"আজ কত তারিখ?\" inside \"আজ কত তারিখ?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "aj koto tarikh",
+      "exampleTarget": "আজ কত তারিখ?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is today’s date?”",
+      "korean": "আজ কত তারিখ?",
+      "english": "Listen for \"আজ কত তারিখ?\" inside \"আজ কত তারিখ?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আজ কত তারিখ?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ কত তারিখ?",
+      "romanization": "aj koto tarikh",
+      "nativeText": "Write \"আজ কত তারিখ?\" again without looking, then compare the exact written form against \"আজ কত তারিখ?\" before moving on.",
+      "pronunciation": "aj koto tarikh",
+      "exampleTarget": "আজ কত তারিখ?",
+      "exampleNative": "Use the written model as the final correctness check: “What is today’s date?”",
+      "korean": "আজ কত তারিখ?",
+      "english": "Write \"আজ কত তারিখ?\" again without looking, then compare the exact written form against \"আজ কত তারিখ?\" before moving on.",
+      "example": "আজ কত তারিখ?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আজ কত তারিখ?",
+      "romanization": "aj koto tarikh",
+      "nativeText": "Check whether \"আজ কত তারিখ?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "pronunciation": "aj koto tarikh",
+      "exampleTarget": "আজ কত তারিখ?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "korean": "আজ কত তারিখ?",
+      "english": "Check whether \"আজ কত তারিখ?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "example": "আজ কত তারিখ?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What is today’s date?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পাঁচ মে",
+      "romanization": "panch me",
+      "nativeText": "“May fifth.” Bengali states the day number with the month name in compact form.",
+      "pronunciation": "panch me",
+      "exampleTarget": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleNative": "“Class will begin on May fifth.”",
+      "korean": "পাঁচ মে",
+      "english": "“May fifth.” Bengali states the day number with the month name in compact form.",
+      "example": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleEnglish": "“Class will begin on May fifth.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "ক্লাস পাঁচ মে শুরু হবে।",
+      "romanization": "panch me",
+      "nativeText": "Model use for \"ক্লাস পাঁচ মে শুরু হবে।\": “Class will begin on May fifth.”",
+      "pronunciation": "panch me",
+      "exampleTarget": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleNative": "“Class will begin on May fifth.”",
+      "korean": "ক্লাস পাঁচ মে শুরু হবে।",
+      "english": "Model use for \"ক্লাস পাঁচ মে শুরু হবে।\": “Class will begin on May fifth.”",
+      "example": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleEnglish": "“Class will begin on May fifth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পাঁচ মে",
+      "romanization": "panch me",
+      "nativeText": "Usage focus for \"পাঁচ মে\": “May fifth.” Bengali states the day number with the month name in compact form.",
+      "pronunciation": "panch me",
+      "exampleTarget": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleNative": "Notice what the form is doing here: “Class will begin on May fifth.”",
+      "korean": "পাঁচ মে",
+      "english": "Usage focus for \"পাঁচ মে\": “May fifth.” Bengali states the day number with the month name in compact form.",
+      "example": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleEnglish": "Notice what the form is doing here: “Class will begin on May fifth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পাঁচ মে",
+      "romanization": "panch me",
+      "nativeText": "Contrast check for \"পাঁচ মে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "panch me",
+      "exampleTarget": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Class will begin on May fifth.”",
+      "korean": "পাঁচ মে",
+      "english": "Contrast check for \"পাঁচ মে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Class will begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পাঁচ মে",
+      "romanization": "panch me",
+      "nativeText": "Recall \"পাঁচ মে\" from memory, then explain what would change if a nearby alternative replaced it in \"ক্লাস পাঁচ মে শুরু হবে।\".",
+      "pronunciation": "panch me",
+      "exampleTarget": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleNative": "Self-check against the model before moving on: “Class will begin on May fifth.”",
+      "korean": "পাঁচ মে",
+      "english": "Recall \"পাঁচ মে\" from memory, then explain what would change if a nearby alternative replaced it in \"ক্লাস পাঁচ মে শুরু হবে।\".",
+      "example": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleEnglish": "Self-check against the model before moving on: “Class will begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পাঁচ মে",
+      "romanization": "panch me",
+      "nativeText": "Repair \"পাঁচ মে\" inside \"ক্লাস পাঁচ মে শুরু হবে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May fifth.” Bengali states the day number with the month name in compact form.",
+      "pronunciation": "panch me",
+      "exampleTarget": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleNative": "Use the model as the repair target: “Class will begin on May fifth.”",
+      "korean": "পাঁচ মে",
+      "english": "Repair \"পাঁচ মে\" inside \"ক্লাস পাঁচ মে শুরু হবে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May fifth.” Bengali states the day number with the month name in compact form.",
+      "example": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleEnglish": "Use the model as the repair target: “Class will begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পাঁচ মে",
+      "romanization": "panch me",
+      "nativeText": "Transfer \"পাঁচ মে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ক্লাস পাঁচ মে শুরু হবে।\".",
+      "pronunciation": "panch me",
+      "exampleTarget": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Class will begin on May fifth.”",
+      "korean": "পাঁচ মে",
+      "english": "Transfer \"পাঁচ মে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ক্লাস পাঁচ মে শুরু হবে।\".",
+      "example": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Class will begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পাঁচ মে",
+      "romanization": "panch me",
+      "nativeText": "Find one word or phrase that naturally travels with \"পাঁচ মে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "panch me",
+      "exampleTarget": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Class will begin on May fifth.”",
+      "korean": "পাঁচ মে",
+      "english": "Find one word or phrase that naturally travels with \"পাঁচ মে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Class will begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পাঁচ মে",
+      "romanization": "panch me",
+      "nativeText": "Listen for \"পাঁচ মে\" inside \"ক্লাস পাঁচ মে শুরু হবে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "panch me",
+      "exampleTarget": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Class will begin on May fifth.”",
+      "korean": "পাঁচ মে",
+      "english": "Listen for \"পাঁচ মে\" inside \"ক্লাস পাঁচ মে শুরু হবে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Class will begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পাঁচ মে",
+      "romanization": "panch me",
+      "nativeText": "Write \"পাঁচ মে\" again without looking, then compare the exact written form against \"ক্লাস পাঁচ মে শুরু হবে।\" before moving on.",
+      "pronunciation": "panch me",
+      "exampleTarget": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleNative": "Use the written model as the final correctness check: “Class will begin on May fifth.”",
+      "korean": "পাঁচ মে",
+      "english": "Write \"পাঁচ মে\" again without looking, then compare the exact written form against \"ক্লাস পাঁচ মে শুরু হবে।\" before moving on.",
+      "example": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Class will begin on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "পাঁচ মে",
+      "romanization": "panch me",
+      "nativeText": "Check whether \"পাঁচ মে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Class will begin on May fifth.”",
+      "pronunciation": "panch me",
+      "exampleTarget": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Class will begin on May fifth.”",
+      "korean": "পাঁচ মে",
+      "english": "Check whether \"পাঁচ মে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Class will begin on May fifth.”",
+      "example": "ক্লাস পাঁচ মে শুরু হবে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Class will begin on May fifth.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামী সপ্তাহে",
+      "romanization": "agami shoptah-e",
+      "nativeText": "“Next week.” The ending marks the time setting.",
+      "pronunciation": "agami shoptah-e",
+      "exampleTarget": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleNative": "“We will meet next week.”",
+      "korean": "আগামী সপ্তাহে",
+      "english": "“Next week.” The ending marks the time setting.",
+      "example": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleEnglish": "“We will meet next week.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "romanization": "agami shoptah-e",
+      "nativeText": "Model use for \"আমরা আগামী সপ্তাহে দেখা করব।\": “We will meet next week.”",
+      "pronunciation": "agami shoptah-e",
+      "exampleTarget": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleNative": "“We will meet next week.”",
+      "korean": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "english": "Model use for \"আমরা আগামী সপ্তাহে দেখা করব।\": “We will meet next week.”",
+      "example": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleEnglish": "“We will meet next week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামী সপ্তাহে",
+      "romanization": "agami shoptah-e",
+      "nativeText": "Usage focus for \"আগামী সপ্তাহে\": “Next week.” The ending marks the time setting.",
+      "pronunciation": "agami shoptah-e",
+      "exampleTarget": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleNative": "Notice what the form is doing here: “We will meet next week.”",
+      "korean": "আগামী সপ্তাহে",
+      "english": "Usage focus for \"আগামী সপ্তাহে\": “Next week.” The ending marks the time setting.",
+      "example": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleEnglish": "Notice what the form is doing here: “We will meet next week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামী সপ্তাহে",
+      "romanization": "agami shoptah-e",
+      "nativeText": "Contrast check for \"আগামী সপ্তাহে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "agami shoptah-e",
+      "exampleTarget": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We will meet next week.”",
+      "korean": "আগামী সপ্তাহে",
+      "english": "Contrast check for \"আগামী সপ্তাহে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামী সপ্তাহে",
+      "romanization": "agami shoptah-e",
+      "nativeText": "Recall \"আগামী সপ্তাহে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমরা আগামী সপ্তাহে দেখা করব।\".",
+      "pronunciation": "agami shoptah-e",
+      "exampleTarget": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleNative": "Self-check against the model before moving on: “We will meet next week.”",
+      "korean": "আগামী সপ্তাহে",
+      "english": "Recall \"আগামী সপ্তাহে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমরা আগামী সপ্তাহে দেখা করব।\".",
+      "example": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleEnglish": "Self-check against the model before moving on: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামী সপ্তাহে",
+      "romanization": "agami shoptah-e",
+      "nativeText": "Repair \"আগামী সপ্তাহে\" inside \"আমরা আগামী সপ্তাহে দেখা করব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.” The ending marks the time setting.",
+      "pronunciation": "agami shoptah-e",
+      "exampleTarget": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleNative": "Use the model as the repair target: “We will meet next week.”",
+      "korean": "আগামী সপ্তাহে",
+      "english": "Repair \"আগামী সপ্তাহে\" inside \"আমরা আগামী সপ্তাহে দেখা করব।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.” The ending marks the time setting.",
+      "example": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleEnglish": "Use the model as the repair target: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামী সপ্তাহে",
+      "romanization": "agami shoptah-e",
+      "nativeText": "Transfer \"আগামী সপ্তাহে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমরা আগামী সপ্তাহে দেখা করব।\".",
+      "pronunciation": "agami shoptah-e",
+      "exampleTarget": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “We will meet next week.”",
+      "korean": "আগামী সপ্তাহে",
+      "english": "Transfer \"আগামী সপ্তাহে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমরা আগামী সপ্তাহে দেখা করব।\".",
+      "example": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামী সপ্তাহে",
+      "romanization": "agami shoptah-e",
+      "nativeText": "Find one word or phrase that naturally travels with \"আগামী সপ্তাহে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "agami shoptah-e",
+      "exampleTarget": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “We will meet next week.”",
+      "korean": "আগামী সপ্তাহে",
+      "english": "Find one word or phrase that naturally travels with \"আগামী সপ্তাহে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামী সপ্তাহে",
+      "romanization": "agami shoptah-e",
+      "nativeText": "Listen for \"আগামী সপ্তাহে\" inside \"আমরা আগামী সপ্তাহে দেখা করব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "agami shoptah-e",
+      "exampleTarget": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We will meet next week.”",
+      "korean": "আগামী সপ্তাহে",
+      "english": "Listen for \"আগামী সপ্তাহে\" inside \"আমরা আগামী সপ্তাহে দেখা করব।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামী সপ্তাহে",
+      "romanization": "agami shoptah-e",
+      "nativeText": "Write \"আগামী সপ্তাহে\" again without looking, then compare the exact written form against \"আমরা আগামী সপ্তাহে দেখা করব।\" before moving on.",
+      "pronunciation": "agami shoptah-e",
+      "exampleTarget": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleNative": "Use the written model as the final correctness check: “We will meet next week.”",
+      "korean": "আগামী সপ্তাহে",
+      "english": "Write \"আগামী সপ্তাহে\" again without looking, then compare the exact written form against \"আমরা আগামী সপ্তাহে দেখা করব।\" before moving on.",
+      "example": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleEnglish": "Use the written model as the final correctness check: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "আগামী সপ্তাহে",
+      "romanization": "agami shoptah-e",
+      "nativeText": "Check whether \"আগামী সপ্তাহে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We will meet next week.”",
+      "pronunciation": "agami shoptah-e",
+      "exampleTarget": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “We will meet next week.”",
+      "korean": "আগামী সপ্তাহে",
+      "english": "Check whether \"আগামী সপ্তাহে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We will meet next week.”",
+      "example": "আমরা আগামী সপ্তাহে দেখা করব।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “We will meet next week.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "কখন?",
+      "romanization": "kokhon",
+      "nativeText": "“When?” A compact question word for times and plans.",
+      "pronunciation": "kokhon",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "“When will the meeting start?”",
+      "korean": "কখন?",
+      "english": "“When?” A compact question word for times and plans.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "“When will the meeting start?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "মিটিং কখন শুরু হবে?",
+      "romanization": "kokhon",
+      "nativeText": "Model use for \"মিটিং কখন শুরু হবে?\": “When will the meeting start?”",
+      "pronunciation": "kokhon",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "“When will the meeting start?”",
+      "korean": "মিটিং কখন শুরু হবে?",
+      "english": "Model use for \"মিটিং কখন শুরু হবে?\": “When will the meeting start?”",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "“When will the meeting start?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "কখন?",
+      "romanization": "kokhon",
+      "nativeText": "Usage focus for \"কখন?\": “When?” A compact question word for times and plans.",
+      "pronunciation": "kokhon",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "Notice what the form is doing here: “When will the meeting start?”",
+      "korean": "কখন?",
+      "english": "Usage focus for \"কখন?\": “When?” A compact question word for times and plans.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "Notice what the form is doing here: “When will the meeting start?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "কখন?",
+      "romanization": "kokhon",
+      "nativeText": "Contrast check for \"কখন?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kokhon",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When will the meeting start?”",
+      "korean": "কখন?",
+      "english": "Contrast check for \"কখন?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When will the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "কখন?",
+      "romanization": "kokhon",
+      "nativeText": "Recall \"কখন?\" from memory, then explain what would change if a nearby alternative replaced it in \"মিটিং কখন শুরু হবে?\".",
+      "pronunciation": "kokhon",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "Self-check against the model before moving on: “When will the meeting start?”",
+      "korean": "কখন?",
+      "english": "Recall \"কখন?\" from memory, then explain what would change if a nearby alternative replaced it in \"মিটিং কখন শুরু হবে?\".",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "Self-check against the model before moving on: “When will the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "কখন?",
+      "romanization": "kokhon",
+      "nativeText": "Repair \"কখন?\" inside \"মিটিং কখন শুরু হবে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?” A compact question word for times and plans.",
+      "pronunciation": "kokhon",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "Use the model as the repair target: “When will the meeting start?”",
+      "korean": "কখন?",
+      "english": "Repair \"কখন?\" inside \"মিটিং কখন শুরু হবে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?” A compact question word for times and plans.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "Use the model as the repair target: “When will the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "কখন?",
+      "romanization": "kokhon",
+      "nativeText": "Transfer \"কখন?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"মিটিং কখন শুরু হবে?\".",
+      "pronunciation": "kokhon",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When will the meeting start?”",
+      "korean": "কখন?",
+      "english": "Transfer \"কখন?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"মিটিং কখন শুরু হবে?\".",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When will the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "কখন?",
+      "romanization": "kokhon",
+      "nativeText": "Find one word or phrase that naturally travels with \"কখন?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kokhon",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When will the meeting start?”",
+      "korean": "কখন?",
+      "english": "Find one word or phrase that naturally travels with \"কখন?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When will the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "কখন?",
+      "romanization": "kokhon",
+      "nativeText": "Listen for \"কখন?\" inside \"মিটিং কখন শুরু হবে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kokhon",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When will the meeting start?”",
+      "korean": "কখন?",
+      "english": "Listen for \"কখন?\" inside \"মিটিং কখন শুরু হবে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When will the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "কখন?",
+      "romanization": "kokhon",
+      "nativeText": "Write \"কখন?\" again without looking, then compare the exact written form against \"মিটিং কখন শুরু হবে?\" before moving on.",
+      "pronunciation": "kokhon",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "Use the written model as the final correctness check: “When will the meeting start?”",
+      "korean": "কখন?",
+      "english": "Write \"কখন?\" again without looking, then compare the exact written form against \"মিটিং কখন শুরু হবে?\" before moving on.",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When will the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit06datescalendar-vocabulary-1",
+        "bn-level1unit06datescalendar-vocabulary-2",
+        "bn-level1unit06datescalendar-grammar-1",
+        "bn-level1unit06datescalendar-grammar-2",
+        "bn-level1unit06datescalendar-reading",
+        "bn-level1unit06datescalendar-listening",
+        "bn-level1unit06datescalendar-writing",
+        "bn-level1unit06datescalendar-task"
+      ],
+      "targetText": "কখন?",
+      "romanization": "kokhon",
+      "nativeText": "Check whether \"কখন?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When will the meeting start?”",
+      "pronunciation": "kokhon",
+      "exampleTarget": "মিটিং কখন শুরু হবে?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When will the meeting start?”",
+      "korean": "কখন?",
+      "english": "Check whether \"কখন?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When will the meeting start?”",
+      "example": "মিটিং কখন শুরু হবে?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When will the meeting start?”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

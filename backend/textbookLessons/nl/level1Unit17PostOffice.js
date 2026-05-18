@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u17',
-  title: 'Level 1 · Unit 17: Op het Postkantoor — Post Office',
-  category: 'service',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Handle simple postal tasks such as sending letters, parcels, and asking about delivery.',
-  vocabularyGoal: 'Use letter, parcel, stamp, address, and delivery vocabulary.',
-  grammarGoal: 'Use `ik wil graag versturen`, destination phrases with `naar`, and service questions.',
-  speakingGoal: 'Say what you want to send, where it goes, and ask when it arrives.',
-  task: 'Send one parcel at a counter.',
-  expressionPractice: [
-    practice('service-need', 'Stating service need', 'Use `ik wil graag versturen`.'),
-    practice('destination', 'Giving destination', 'Use `naar`.'),
-    practice('asking-arrival', 'Asking arrival', 'Use `wanneer komt het aan?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 17: Op het Postkantoor — Post Office",
+  "category": "service",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit17postoffice-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Handle simple postal tasks such as sending letters, parcels, and asking about delivery."
+      ],
+      "task": "Send one parcel at a counter."
+    },
+    {
+      "id": "nl-level1unit17postoffice-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit17postoffice-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 17: Op het Postkantoor — Post Office with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit17postoffice-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 17: Op het Postkantoor — Post Office sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit17postoffice-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Handle simple postal tasks such as sending letters, parcels, and asking about delivery."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit17postoffice-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 17: Op het Postkantoor — Post Office with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit17postoffice-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit17postoffice-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit17postoffice-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit17postoffice-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit17postoffice-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Send one parcel at a counter."
+      ],
+      "task": "Send one parcel at a counter."
+    }
   ],
-  relatedPools: ['topic-service', 'topic-travel'],
-  items: [
-    item('postkantoor', 'POST-kan-tor', '“Post office.” A useful service compound.', 'Het postkantoor is naast de bank.', '“The post office is next to the bank.”'),
-    item('brief', 'breef', '“Letter.” Still important for formal mail.', 'Ik wil graag een brief versturen.', '“I would like to send a letter.”'),
-    item('pakket', 'pa-KET', '“Parcel / package.” A practical service noun.', 'Dit pakket gaat naar Rotterdam.', '“This parcel goes to Rotterdam.”'),
-    item('postzegel', 'POST-zay-khel', '“Stamp.” Literally “post seal.”', 'Ik heb twee postzegels nodig.', '“I need two stamps.”'),
-    item('adres', 'a-DRES', '“Address.” Essential for service interactions.', 'Schrijf het volledige adres op.', '“Write down the full address.”'),
-    item('versturen', 'fer-STY-ren', '“To send.” Common in postal contexts.', 'Ik wil dit pakket naar Leiden versturen.', '“I want to send this package to Leiden.”'),
-    item('verzendkosten', 'fer-ZENT-kos-ten', '“Shipping costs.” A transparent service compound.', 'Hoeveel zijn de verzendkosten?', '“How much are the shipping costs?”'),
-    item('wanneer komt het aan?', 'va-NEER komt hət ahn', '“When does it arrive?” The separable verb `aankomen` splits here.', 'Wanneer komt het pakket aan?', '“When does the package arrive?”'),
+  "expressionPractice": [
+    {
+      "id": "service-need",
+      "label": "Stating service need",
+      "goal": "Use `ik wil graag versturen`."
+    },
+    {
+      "id": "destination",
+      "label": "Giving destination",
+      "goal": "Use `naar`."
+    },
+    {
+      "id": "asking-arrival",
+      "label": "Asking arrival",
+      "goal": "Use `wanneer komt het aan?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-service",
+    "topic-travel"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Send one parcel at a counter.",
+      "korean": "lesdoel",
+      "english": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Send one parcel at a counter."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit17postoffice-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Het postkantoor is naast de bank.\".",
+      "pronunciation": "",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Het postkantoor is naast de bank.\".",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 17: Op het Postkantoor — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "Use the key language of Level 1 · Unit 17: Op het Postkantoor — Post Office with the register and setting that the lesson requires.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-2"
+      ],
+      "targetText": "brief",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 17: Op het Postkantoor — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "“I would like to send a letter.”",
+      "korean": "brief",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 17: Op het Postkantoor — Post Office sound precise rather than merely understandable.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "“I would like to send a letter.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit17postoffice-grammar-1"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "",
+      "nativeText": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "pronunciation": "",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "Handle simple postal tasks such as sending letters, parcels, and asking about delivery.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "brief",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 17: Op het Postkantoor — Post Office with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "“I would like to send a letter.”",
+      "korean": "brief",
+      "english": "Contrast the main pattern in Level 1 · Unit 17: Op het Postkantoor — Post Office with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "“I would like to send a letter.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit17postoffice-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Wanneer komt het pakket aan?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "“When does the package arrive?”",
+      "korean": "leesmodel",
+      "english": "Read \"Wanneer komt het pakket aan?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "“When does the package arrive?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit17postoffice-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Wanneer komt het pakket aan?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "“When does the package arrive?”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Wanneer komt het pakket aan?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "“When does the package arrive?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit17postoffice-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Het postkantoor is naast de bank.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Het postkantoor is naast de bank.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit17postoffice-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "“I would like to send a letter.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "“I would like to send a letter.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Send one parcel at a counter.",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "Send one parcel at a counter.",
+      "korean": "eindtaak",
+      "english": "Send one parcel at a counter.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "Send one parcel at a counter."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik wil graag een brief versturen.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I would like to send a letter.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Ik wil graag een brief versturen.\" against the model.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I would like to send a letter.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Het postkantoor is naast de bank.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Het postkantoor is naast de bank.\" before reusing it elsewhere.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Wanneer komt het pakket aan?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "“When does the package arrive?”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Wanneer komt het pakket aan?\" as one thought.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "“When does the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Het postkantoor is naast de bank.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Het postkantoor is naast de bank.\" and move it into your own life.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"postkantoor\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "postkantoor",
+      "exampleNative": "“Post office.” A useful service compound.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"postkantoor\" before looking back.",
+      "example": "postkantoor",
+      "exampleEnglish": "“Post office.” A useful service compound."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Wanneer komt het pakket aan?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Wanneer komt het pakket aan?\" rather than restarting from a blank sentence.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 17: Op het Postkantoor — Post Office with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik wil graag een brief versturen.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "“I would like to send a letter.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 17: Op het Postkantoor — Post Office with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Ik wil graag een brief versturen.\" as the comparison line.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "“I would like to send a letter.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit17postoffice-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Het postkantoor is naast de bank.\".",
+      "pronunciation": "",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Het postkantoor is naast de bank.\".",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Wanneer komt het pakket aan?\".",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "“When does the package arrive?”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Wanneer komt het pakket aan?\".",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "“When does the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Het postkantoor is naast de bank.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Het postkantoor is naast de bank.\" one layer at a time.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik wil graag een brief versturen.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "“I would like to send a letter.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Ik wil graag een brief versturen.\" as the deciding example.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "“I would like to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-culture",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Wanneer komt het pakket aan?\".",
+      "pronunciation": "",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "“When does the package arrive?”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Wanneer komt het pakket aan?\".",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "“When does the package arrive?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "POST-kan-tor",
+      "nativeText": "“Post office.” A useful service compound.",
+      "pronunciation": "POST-kan-tor",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "“Post office.” A useful service compound.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "Het postkantoor is naast de bank.",
+      "romanization": "POST-kan-tor",
+      "nativeText": "Model use for \"Het postkantoor is naast de bank.\": “The post office is next to the bank.”",
+      "pronunciation": "POST-kan-tor",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "“The post office is next to the bank.”",
+      "korean": "Het postkantoor is naast de bank.",
+      "english": "Model use for \"Het postkantoor is naast de bank.\": “The post office is next to the bank.”",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "“The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "POST-kan-tor",
+      "nativeText": "Usage focus for \"postkantoor\": Use the key language of Level 1 · Unit 17: Op het Postkantoor — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "POST-kan-tor",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "Notice what the form is doing here: “The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "Usage focus for \"postkantoor\": Use the key language of Level 1 · Unit 17: Op het Postkantoor — Post Office with the register and setting that the lesson requires.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "Notice what the form is doing here: “The post office is next to the bank.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "POST-kan-tor",
+      "nativeText": "Contrast check for \"postkantoor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "POST-kan-tor",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "Contrast check for \"postkantoor\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "POST-kan-tor",
+      "nativeText": "Recall \"postkantoor\" from memory, then explain what would change if a nearby alternative replaced it in \"Het postkantoor is naast de bank.\".",
+      "pronunciation": "POST-kan-tor",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "Self-check against the model before moving on: “The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "Recall \"postkantoor\" from memory, then explain what would change if a nearby alternative replaced it in \"Het postkantoor is naast de bank.\".",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "Self-check against the model before moving on: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "POST-kan-tor",
+      "nativeText": "Repair \"postkantoor\" inside \"Het postkantoor is naast de bank.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 17: Op het Postkantoor — Post Office with the register and setting that the lesson requires.",
+      "pronunciation": "POST-kan-tor",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "Use the model as the repair target: “The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "Repair \"postkantoor\" inside \"Het postkantoor is naast de bank.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 17: Op het Postkantoor — Post Office with the register and setting that the lesson requires.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "Use the model as the repair target: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "POST-kan-tor",
+      "nativeText": "Transfer \"postkantoor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Het postkantoor is naast de bank.\".",
+      "pronunciation": "POST-kan-tor",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "Transfer \"postkantoor\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Het postkantoor is naast de bank.\".",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "POST-kan-tor",
+      "nativeText": "Find one word or phrase that naturally travels with \"postkantoor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "POST-kan-tor",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "Find one word or phrase that naturally travels with \"postkantoor\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "POST-kan-tor",
+      "nativeText": "Listen for \"postkantoor\" inside \"Het postkantoor is naast de bank.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "POST-kan-tor",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "Listen for \"postkantoor\" inside \"Het postkantoor is naast de bank.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "POST-kan-tor",
+      "nativeText": "Write \"postkantoor\" again without looking, then compare the exact written form against \"Het postkantoor is naast de bank.\" before moving on.",
+      "pronunciation": "POST-kan-tor",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "Use the written model as the final correctness check: “The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "Write \"postkantoor\" again without looking, then compare the exact written form against \"Het postkantoor is naast de bank.\" before moving on.",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The post office is next to the bank.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postkantoor",
+      "romanization": "POST-kan-tor",
+      "nativeText": "Check whether \"postkantoor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "pronunciation": "POST-kan-tor",
+      "exampleTarget": "Het postkantoor is naast de bank.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "korean": "postkantoor",
+      "english": "Check whether \"postkantoor\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”",
+      "example": "Het postkantoor is naast de bank.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The post office is next to the bank.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "brief",
+      "romanization": "breef",
+      "nativeText": "“Letter.” Still important for formal mail.",
+      "pronunciation": "breef",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "“I would like to send a letter.”",
+      "korean": "brief",
+      "english": "“Letter.” Still important for formal mail.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "“I would like to send a letter.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "Ik wil graag een brief versturen.",
+      "romanization": "breef",
+      "nativeText": "Model use for \"Ik wil graag een brief versturen.\": “I would like to send a letter.”",
+      "pronunciation": "breef",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "“I would like to send a letter.”",
+      "korean": "Ik wil graag een brief versturen.",
+      "english": "Model use for \"Ik wil graag een brief versturen.\": “I would like to send a letter.”",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "“I would like to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "brief",
+      "romanization": "breef",
+      "nativeText": "Usage focus for \"brief\": Distinguish the nearby wording choices that make Level 1 · Unit 17: Op het Postkantoor — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "breef",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "Notice what the form is doing here: “I would like to send a letter.”",
+      "korean": "brief",
+      "english": "Usage focus for \"brief\": Distinguish the nearby wording choices that make Level 1 · Unit 17: Op het Postkantoor — Post Office sound precise rather than merely understandable.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "Notice what the form is doing here: “I would like to send a letter.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "brief",
+      "romanization": "breef",
+      "nativeText": "Contrast check for \"brief\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "breef",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I would like to send a letter.”",
+      "korean": "brief",
+      "english": "Contrast check for \"brief\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I would like to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "brief",
+      "romanization": "breef",
+      "nativeText": "Recall \"brief\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil graag een brief versturen.\".",
+      "pronunciation": "breef",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "Self-check against the model before moving on: “I would like to send a letter.”",
+      "korean": "brief",
+      "english": "Recall \"brief\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil graag een brief versturen.\".",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "Self-check against the model before moving on: “I would like to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "brief",
+      "romanization": "breef",
+      "nativeText": "Repair \"brief\" inside \"Ik wil graag een brief versturen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 17: Op het Postkantoor — Post Office sound precise rather than merely understandable.",
+      "pronunciation": "breef",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "Use the model as the repair target: “I would like to send a letter.”",
+      "korean": "brief",
+      "english": "Repair \"brief\" inside \"Ik wil graag een brief versturen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 17: Op het Postkantoor — Post Office sound precise rather than merely understandable.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "Use the model as the repair target: “I would like to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "brief",
+      "romanization": "breef",
+      "nativeText": "Transfer \"brief\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil graag een brief versturen.\".",
+      "pronunciation": "breef",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I would like to send a letter.”",
+      "korean": "brief",
+      "english": "Transfer \"brief\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil graag een brief versturen.\".",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I would like to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "brief",
+      "romanization": "breef",
+      "nativeText": "Find one word or phrase that naturally travels with \"brief\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "breef",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I would like to send a letter.”",
+      "korean": "brief",
+      "english": "Find one word or phrase that naturally travels with \"brief\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I would like to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "brief",
+      "romanization": "breef",
+      "nativeText": "Listen for \"brief\" inside \"Ik wil graag een brief versturen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "breef",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I would like to send a letter.”",
+      "korean": "brief",
+      "english": "Listen for \"brief\" inside \"Ik wil graag een brief versturen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I would like to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "brief",
+      "romanization": "breef",
+      "nativeText": "Write \"brief\" again without looking, then compare the exact written form against \"Ik wil graag een brief versturen.\" before moving on.",
+      "pronunciation": "breef",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "Use the written model as the final correctness check: “I would like to send a letter.”",
+      "korean": "brief",
+      "english": "Write \"brief\" again without looking, then compare the exact written form against \"Ik wil graag een brief versturen.\" before moving on.",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I would like to send a letter.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "brief",
+      "romanization": "breef",
+      "nativeText": "Check whether \"brief\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I would like to send a letter.”",
+      "pronunciation": "breef",
+      "exampleTarget": "Ik wil graag een brief versturen.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I would like to send a letter.”",
+      "korean": "brief",
+      "english": "Check whether \"brief\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I would like to send a letter.”",
+      "example": "Ik wil graag een brief versturen.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I would like to send a letter.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "pakket",
+      "romanization": "pa-KET",
+      "nativeText": "“Parcel / package.” A practical service noun.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Dit pakket gaat naar Rotterdam.",
+      "exampleNative": "“This parcel goes to Rotterdam.”",
+      "korean": "pakket",
+      "english": "“Parcel / package.” A practical service noun.",
+      "example": "Dit pakket gaat naar Rotterdam.",
+      "exampleEnglish": "“This parcel goes to Rotterdam.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "Dit pakket gaat naar Rotterdam.",
+      "romanization": "pa-KET",
+      "nativeText": "Model use for \"Dit pakket gaat naar Rotterdam.\": “This parcel goes to Rotterdam.”",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Dit pakket gaat naar Rotterdam.",
+      "exampleNative": "“This parcel goes to Rotterdam.”",
+      "korean": "Dit pakket gaat naar Rotterdam.",
+      "english": "Model use for \"Dit pakket gaat naar Rotterdam.\": “This parcel goes to Rotterdam.”",
+      "example": "Dit pakket gaat naar Rotterdam.",
+      "exampleEnglish": "“This parcel goes to Rotterdam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "pakket",
+      "romanization": "pa-KET",
+      "nativeText": "Usage focus for \"pakket\": “Parcel / package.” A practical service noun.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Dit pakket gaat naar Rotterdam.",
+      "exampleNative": "Notice what the form is doing here: “This parcel goes to Rotterdam.”",
+      "korean": "pakket",
+      "english": "Usage focus for \"pakket\": “Parcel / package.” A practical service noun.",
+      "example": "Dit pakket gaat naar Rotterdam.",
+      "exampleEnglish": "Notice what the form is doing here: “This parcel goes to Rotterdam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "pakket",
+      "romanization": "pa-KET",
+      "nativeText": "Contrast check for \"pakket\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Dit pakket gaat naar Rotterdam.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This parcel goes to Rotterdam.”",
+      "korean": "pakket",
+      "english": "Contrast check for \"pakket\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Dit pakket gaat naar Rotterdam.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This parcel goes to Rotterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "pakket",
+      "romanization": "pa-KET",
+      "nativeText": "Recall \"pakket\" from memory, then explain what would change if a nearby alternative replaced it in \"Dit pakket gaat naar Rotterdam.\".",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Dit pakket gaat naar Rotterdam.",
+      "exampleNative": "Self-check against the model before moving on: “This parcel goes to Rotterdam.”",
+      "korean": "pakket",
+      "english": "Recall \"pakket\" from memory, then explain what would change if a nearby alternative replaced it in \"Dit pakket gaat naar Rotterdam.\".",
+      "example": "Dit pakket gaat naar Rotterdam.",
+      "exampleEnglish": "Self-check against the model before moving on: “This parcel goes to Rotterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "pakket",
+      "romanization": "pa-KET",
+      "nativeText": "Repair \"pakket\" inside \"Dit pakket gaat naar Rotterdam.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Parcel / package.” A practical service noun.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Dit pakket gaat naar Rotterdam.",
+      "exampleNative": "Use the model as the repair target: “This parcel goes to Rotterdam.”",
+      "korean": "pakket",
+      "english": "Repair \"pakket\" inside \"Dit pakket gaat naar Rotterdam.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Parcel / package.” A practical service noun.",
+      "example": "Dit pakket gaat naar Rotterdam.",
+      "exampleEnglish": "Use the model as the repair target: “This parcel goes to Rotterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "pakket",
+      "romanization": "pa-KET",
+      "nativeText": "Transfer \"pakket\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dit pakket gaat naar Rotterdam.\".",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Dit pakket gaat naar Rotterdam.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This parcel goes to Rotterdam.”",
+      "korean": "pakket",
+      "english": "Transfer \"pakket\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dit pakket gaat naar Rotterdam.\".",
+      "example": "Dit pakket gaat naar Rotterdam.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This parcel goes to Rotterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "pakket",
+      "romanization": "pa-KET",
+      "nativeText": "Find one word or phrase that naturally travels with \"pakket\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Dit pakket gaat naar Rotterdam.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This parcel goes to Rotterdam.”",
+      "korean": "pakket",
+      "english": "Find one word or phrase that naturally travels with \"pakket\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Dit pakket gaat naar Rotterdam.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This parcel goes to Rotterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "pakket",
+      "romanization": "pa-KET",
+      "nativeText": "Listen for \"pakket\" inside \"Dit pakket gaat naar Rotterdam.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Dit pakket gaat naar Rotterdam.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This parcel goes to Rotterdam.”",
+      "korean": "pakket",
+      "english": "Listen for \"pakket\" inside \"Dit pakket gaat naar Rotterdam.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Dit pakket gaat naar Rotterdam.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This parcel goes to Rotterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "pakket",
+      "romanization": "pa-KET",
+      "nativeText": "Write \"pakket\" again without looking, then compare the exact written form against \"Dit pakket gaat naar Rotterdam.\" before moving on.",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Dit pakket gaat naar Rotterdam.",
+      "exampleNative": "Use the written model as the final correctness check: “This parcel goes to Rotterdam.”",
+      "korean": "pakket",
+      "english": "Write \"pakket\" again without looking, then compare the exact written form against \"Dit pakket gaat naar Rotterdam.\" before moving on.",
+      "example": "Dit pakket gaat naar Rotterdam.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This parcel goes to Rotterdam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "pakket",
+      "romanization": "pa-KET",
+      "nativeText": "Check whether \"pakket\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This parcel goes to Rotterdam.”",
+      "pronunciation": "pa-KET",
+      "exampleTarget": "Dit pakket gaat naar Rotterdam.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This parcel goes to Rotterdam.”",
+      "korean": "pakket",
+      "english": "Check whether \"pakket\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This parcel goes to Rotterdam.”",
+      "example": "Dit pakket gaat naar Rotterdam.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This parcel goes to Rotterdam.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postzegel",
+      "romanization": "POST-zay-khel",
+      "nativeText": "“Stamp.” Literally “post seal.”",
+      "pronunciation": "POST-zay-khel",
+      "exampleTarget": "Ik heb twee postzegels nodig.",
+      "exampleNative": "“I need two stamps.”",
+      "korean": "postzegel",
+      "english": "“Stamp.” Literally “post seal.”",
+      "example": "Ik heb twee postzegels nodig.",
+      "exampleEnglish": "“I need two stamps.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "Ik heb twee postzegels nodig.",
+      "romanization": "POST-zay-khel",
+      "nativeText": "Model use for \"Ik heb twee postzegels nodig.\": “I need two stamps.”",
+      "pronunciation": "POST-zay-khel",
+      "exampleTarget": "Ik heb twee postzegels nodig.",
+      "exampleNative": "“I need two stamps.”",
+      "korean": "Ik heb twee postzegels nodig.",
+      "english": "Model use for \"Ik heb twee postzegels nodig.\": “I need two stamps.”",
+      "example": "Ik heb twee postzegels nodig.",
+      "exampleEnglish": "“I need two stamps.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postzegel",
+      "romanization": "POST-zay-khel",
+      "nativeText": "Usage focus for \"postzegel\": “Stamp.” Literally “post seal.”",
+      "pronunciation": "POST-zay-khel",
+      "exampleTarget": "Ik heb twee postzegels nodig.",
+      "exampleNative": "Notice what the form is doing here: “I need two stamps.”",
+      "korean": "postzegel",
+      "english": "Usage focus for \"postzegel\": “Stamp.” Literally “post seal.”",
+      "example": "Ik heb twee postzegels nodig.",
+      "exampleEnglish": "Notice what the form is doing here: “I need two stamps.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postzegel",
+      "romanization": "POST-zay-khel",
+      "nativeText": "Contrast check for \"postzegel\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "POST-zay-khel",
+      "exampleTarget": "Ik heb twee postzegels nodig.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need two stamps.”",
+      "korean": "postzegel",
+      "english": "Contrast check for \"postzegel\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik heb twee postzegels nodig.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postzegel",
+      "romanization": "POST-zay-khel",
+      "nativeText": "Recall \"postzegel\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb twee postzegels nodig.\".",
+      "pronunciation": "POST-zay-khel",
+      "exampleTarget": "Ik heb twee postzegels nodig.",
+      "exampleNative": "Self-check against the model before moving on: “I need two stamps.”",
+      "korean": "postzegel",
+      "english": "Recall \"postzegel\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik heb twee postzegels nodig.\".",
+      "example": "Ik heb twee postzegels nodig.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postzegel",
+      "romanization": "POST-zay-khel",
+      "nativeText": "Repair \"postzegel\" inside \"Ik heb twee postzegels nodig.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stamp.” Literally “post seal.”",
+      "pronunciation": "POST-zay-khel",
+      "exampleTarget": "Ik heb twee postzegels nodig.",
+      "exampleNative": "Use the model as the repair target: “I need two stamps.”",
+      "korean": "postzegel",
+      "english": "Repair \"postzegel\" inside \"Ik heb twee postzegels nodig.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stamp.” Literally “post seal.”",
+      "example": "Ik heb twee postzegels nodig.",
+      "exampleEnglish": "Use the model as the repair target: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postzegel",
+      "romanization": "POST-zay-khel",
+      "nativeText": "Transfer \"postzegel\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb twee postzegels nodig.\".",
+      "pronunciation": "POST-zay-khel",
+      "exampleTarget": "Ik heb twee postzegels nodig.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need two stamps.”",
+      "korean": "postzegel",
+      "english": "Transfer \"postzegel\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik heb twee postzegels nodig.\".",
+      "example": "Ik heb twee postzegels nodig.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postzegel",
+      "romanization": "POST-zay-khel",
+      "nativeText": "Find one word or phrase that naturally travels with \"postzegel\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "POST-zay-khel",
+      "exampleTarget": "Ik heb twee postzegels nodig.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need two stamps.”",
+      "korean": "postzegel",
+      "english": "Find one word or phrase that naturally travels with \"postzegel\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik heb twee postzegels nodig.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postzegel",
+      "romanization": "POST-zay-khel",
+      "nativeText": "Listen for \"postzegel\" inside \"Ik heb twee postzegels nodig.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "POST-zay-khel",
+      "exampleTarget": "Ik heb twee postzegels nodig.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need two stamps.”",
+      "korean": "postzegel",
+      "english": "Listen for \"postzegel\" inside \"Ik heb twee postzegels nodig.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik heb twee postzegels nodig.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postzegel",
+      "romanization": "POST-zay-khel",
+      "nativeText": "Write \"postzegel\" again without looking, then compare the exact written form against \"Ik heb twee postzegels nodig.\" before moving on.",
+      "pronunciation": "POST-zay-khel",
+      "exampleTarget": "Ik heb twee postzegels nodig.",
+      "exampleNative": "Use the written model as the final correctness check: “I need two stamps.”",
+      "korean": "postzegel",
+      "english": "Write \"postzegel\" again without looking, then compare the exact written form against \"Ik heb twee postzegels nodig.\" before moving on.",
+      "example": "Ik heb twee postzegels nodig.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need two stamps.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "postzegel",
+      "romanization": "POST-zay-khel",
+      "nativeText": "Check whether \"postzegel\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need two stamps.”",
+      "pronunciation": "POST-zay-khel",
+      "exampleTarget": "Ik heb twee postzegels nodig.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need two stamps.”",
+      "korean": "postzegel",
+      "english": "Check whether \"postzegel\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need two stamps.”",
+      "example": "Ik heb twee postzegels nodig.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need two stamps.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "a-DRES",
+      "nativeText": "“Address.” Essential for service interactions.",
+      "pronunciation": "a-DRES",
+      "exampleTarget": "Schrijf het volledige adres op.",
+      "exampleNative": "“Write down the full address.”",
+      "korean": "adres",
+      "english": "“Address.” Essential for service interactions.",
+      "example": "Schrijf het volledige adres op.",
+      "exampleEnglish": "“Write down the full address.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "Schrijf het volledige adres op.",
+      "romanization": "a-DRES",
+      "nativeText": "Model use for \"Schrijf het volledige adres op.\": “Write down the full address.”",
+      "pronunciation": "a-DRES",
+      "exampleTarget": "Schrijf het volledige adres op.",
+      "exampleNative": "“Write down the full address.”",
+      "korean": "Schrijf het volledige adres op.",
+      "english": "Model use for \"Schrijf het volledige adres op.\": “Write down the full address.”",
+      "example": "Schrijf het volledige adres op.",
+      "exampleEnglish": "“Write down the full address.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "a-DRES",
+      "nativeText": "Usage focus for \"adres\": “Address.” Essential for service interactions.",
+      "pronunciation": "a-DRES",
+      "exampleTarget": "Schrijf het volledige adres op.",
+      "exampleNative": "Notice what the form is doing here: “Write down the full address.”",
+      "korean": "adres",
+      "english": "Usage focus for \"adres\": “Address.” Essential for service interactions.",
+      "example": "Schrijf het volledige adres op.",
+      "exampleEnglish": "Notice what the form is doing here: “Write down the full address.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "a-DRES",
+      "nativeText": "Contrast check for \"adres\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "a-DRES",
+      "exampleTarget": "Schrijf het volledige adres op.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Write down the full address.”",
+      "korean": "adres",
+      "english": "Contrast check for \"adres\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Schrijf het volledige adres op.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Write down the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "a-DRES",
+      "nativeText": "Recall \"adres\" from memory, then explain what would change if a nearby alternative replaced it in \"Schrijf het volledige adres op.\".",
+      "pronunciation": "a-DRES",
+      "exampleTarget": "Schrijf het volledige adres op.",
+      "exampleNative": "Self-check against the model before moving on: “Write down the full address.”",
+      "korean": "adres",
+      "english": "Recall \"adres\" from memory, then explain what would change if a nearby alternative replaced it in \"Schrijf het volledige adres op.\".",
+      "example": "Schrijf het volledige adres op.",
+      "exampleEnglish": "Self-check against the model before moving on: “Write down the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "a-DRES",
+      "nativeText": "Repair \"adres\" inside \"Schrijf het volledige adres op.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Address.” Essential for service interactions.",
+      "pronunciation": "a-DRES",
+      "exampleTarget": "Schrijf het volledige adres op.",
+      "exampleNative": "Use the model as the repair target: “Write down the full address.”",
+      "korean": "adres",
+      "english": "Repair \"adres\" inside \"Schrijf het volledige adres op.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Address.” Essential for service interactions.",
+      "example": "Schrijf het volledige adres op.",
+      "exampleEnglish": "Use the model as the repair target: “Write down the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "a-DRES",
+      "nativeText": "Transfer \"adres\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Schrijf het volledige adres op.\".",
+      "pronunciation": "a-DRES",
+      "exampleTarget": "Schrijf het volledige adres op.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Write down the full address.”",
+      "korean": "adres",
+      "english": "Transfer \"adres\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Schrijf het volledige adres op.\".",
+      "example": "Schrijf het volledige adres op.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Write down the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "a-DRES",
+      "nativeText": "Find one word or phrase that naturally travels with \"adres\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "a-DRES",
+      "exampleTarget": "Schrijf het volledige adres op.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Write down the full address.”",
+      "korean": "adres",
+      "english": "Find one word or phrase that naturally travels with \"adres\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Schrijf het volledige adres op.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Write down the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "a-DRES",
+      "nativeText": "Listen for \"adres\" inside \"Schrijf het volledige adres op.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "a-DRES",
+      "exampleTarget": "Schrijf het volledige adres op.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Write down the full address.”",
+      "korean": "adres",
+      "english": "Listen for \"adres\" inside \"Schrijf het volledige adres op.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Schrijf het volledige adres op.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Write down the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "a-DRES",
+      "nativeText": "Write \"adres\" again without looking, then compare the exact written form against \"Schrijf het volledige adres op.\" before moving on.",
+      "pronunciation": "a-DRES",
+      "exampleTarget": "Schrijf het volledige adres op.",
+      "exampleNative": "Use the written model as the final correctness check: “Write down the full address.”",
+      "korean": "adres",
+      "english": "Write \"adres\" again without looking, then compare the exact written form against \"Schrijf het volledige adres op.\" before moving on.",
+      "example": "Schrijf het volledige adres op.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Write down the full address.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "adres",
+      "romanization": "a-DRES",
+      "nativeText": "Check whether \"adres\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Write down the full address.”",
+      "pronunciation": "a-DRES",
+      "exampleTarget": "Schrijf het volledige adres op.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Write down the full address.”",
+      "korean": "adres",
+      "english": "Check whether \"adres\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Write down the full address.”",
+      "example": "Schrijf het volledige adres op.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Write down the full address.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "versturen",
+      "romanization": "fer-STY-ren",
+      "nativeText": "“To send.” Common in postal contexts.",
+      "pronunciation": "fer-STY-ren",
+      "exampleTarget": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleNative": "“I want to send this package to Leiden.”",
+      "korean": "versturen",
+      "english": "“To send.” Common in postal contexts.",
+      "example": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleEnglish": "“I want to send this package to Leiden.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "Ik wil dit pakket naar Leiden versturen.",
+      "romanization": "fer-STY-ren",
+      "nativeText": "Model use for \"Ik wil dit pakket naar Leiden versturen.\": “I want to send this package to Leiden.”",
+      "pronunciation": "fer-STY-ren",
+      "exampleTarget": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleNative": "“I want to send this package to Leiden.”",
+      "korean": "Ik wil dit pakket naar Leiden versturen.",
+      "english": "Model use for \"Ik wil dit pakket naar Leiden versturen.\": “I want to send this package to Leiden.”",
+      "example": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleEnglish": "“I want to send this package to Leiden.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "versturen",
+      "romanization": "fer-STY-ren",
+      "nativeText": "Usage focus for \"versturen\": “To send.” Common in postal contexts.",
+      "pronunciation": "fer-STY-ren",
+      "exampleTarget": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleNative": "Notice what the form is doing here: “I want to send this package to Leiden.”",
+      "korean": "versturen",
+      "english": "Usage focus for \"versturen\": “To send.” Common in postal contexts.",
+      "example": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to send this package to Leiden.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "versturen",
+      "romanization": "fer-STY-ren",
+      "nativeText": "Contrast check for \"versturen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "fer-STY-ren",
+      "exampleTarget": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send this package to Leiden.”",
+      "korean": "versturen",
+      "english": "Contrast check for \"versturen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to send this package to Leiden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "versturen",
+      "romanization": "fer-STY-ren",
+      "nativeText": "Recall \"versturen\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil dit pakket naar Leiden versturen.\".",
+      "pronunciation": "fer-STY-ren",
+      "exampleTarget": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleNative": "Self-check against the model before moving on: “I want to send this package to Leiden.”",
+      "korean": "versturen",
+      "english": "Recall \"versturen\" from memory, then explain what would change if a nearby alternative replaced it in \"Ik wil dit pakket naar Leiden versturen.\".",
+      "example": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to send this package to Leiden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "versturen",
+      "romanization": "fer-STY-ren",
+      "nativeText": "Repair \"versturen\" inside \"Ik wil dit pakket naar Leiden versturen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To send.” Common in postal contexts.",
+      "pronunciation": "fer-STY-ren",
+      "exampleTarget": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleNative": "Use the model as the repair target: “I want to send this package to Leiden.”",
+      "korean": "versturen",
+      "english": "Repair \"versturen\" inside \"Ik wil dit pakket naar Leiden versturen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To send.” Common in postal contexts.",
+      "example": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleEnglish": "Use the model as the repair target: “I want to send this package to Leiden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "versturen",
+      "romanization": "fer-STY-ren",
+      "nativeText": "Transfer \"versturen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil dit pakket naar Leiden versturen.\".",
+      "pronunciation": "fer-STY-ren",
+      "exampleTarget": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send this package to Leiden.”",
+      "korean": "versturen",
+      "english": "Transfer \"versturen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ik wil dit pakket naar Leiden versturen.\".",
+      "example": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to send this package to Leiden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "versturen",
+      "romanization": "fer-STY-ren",
+      "nativeText": "Find one word or phrase that naturally travels with \"versturen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "fer-STY-ren",
+      "exampleTarget": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to send this package to Leiden.”",
+      "korean": "versturen",
+      "english": "Find one word or phrase that naturally travels with \"versturen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to send this package to Leiden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "versturen",
+      "romanization": "fer-STY-ren",
+      "nativeText": "Listen for \"versturen\" inside \"Ik wil dit pakket naar Leiden versturen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "fer-STY-ren",
+      "exampleTarget": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send this package to Leiden.”",
+      "korean": "versturen",
+      "english": "Listen for \"versturen\" inside \"Ik wil dit pakket naar Leiden versturen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to send this package to Leiden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "versturen",
+      "romanization": "fer-STY-ren",
+      "nativeText": "Write \"versturen\" again without looking, then compare the exact written form against \"Ik wil dit pakket naar Leiden versturen.\" before moving on.",
+      "pronunciation": "fer-STY-ren",
+      "exampleTarget": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to send this package to Leiden.”",
+      "korean": "versturen",
+      "english": "Write \"versturen\" again without looking, then compare the exact written form against \"Ik wil dit pakket naar Leiden versturen.\" before moving on.",
+      "example": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to send this package to Leiden.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "versturen",
+      "romanization": "fer-STY-ren",
+      "nativeText": "Check whether \"versturen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send this package to Leiden.”",
+      "pronunciation": "fer-STY-ren",
+      "exampleTarget": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to send this package to Leiden.”",
+      "korean": "versturen",
+      "english": "Check whether \"versturen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to send this package to Leiden.”",
+      "example": "Ik wil dit pakket naar Leiden versturen.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to send this package to Leiden.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "verzendkosten",
+      "romanization": "fer-ZENT-kos-ten",
+      "nativeText": "“Shipping costs.” A transparent service compound.",
+      "pronunciation": "fer-ZENT-kos-ten",
+      "exampleTarget": "Hoeveel zijn de verzendkosten?",
+      "exampleNative": "“How much are the shipping costs?”",
+      "korean": "verzendkosten",
+      "english": "“Shipping costs.” A transparent service compound.",
+      "example": "Hoeveel zijn de verzendkosten?",
+      "exampleEnglish": "“How much are the shipping costs?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "Hoeveel zijn de verzendkosten?",
+      "romanization": "fer-ZENT-kos-ten",
+      "nativeText": "Model use for \"Hoeveel zijn de verzendkosten?\": “How much are the shipping costs?”",
+      "pronunciation": "fer-ZENT-kos-ten",
+      "exampleTarget": "Hoeveel zijn de verzendkosten?",
+      "exampleNative": "“How much are the shipping costs?”",
+      "korean": "Hoeveel zijn de verzendkosten?",
+      "english": "Model use for \"Hoeveel zijn de verzendkosten?\": “How much are the shipping costs?”",
+      "example": "Hoeveel zijn de verzendkosten?",
+      "exampleEnglish": "“How much are the shipping costs?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "verzendkosten",
+      "romanization": "fer-ZENT-kos-ten",
+      "nativeText": "Usage focus for \"verzendkosten\": “Shipping costs.” A transparent service compound.",
+      "pronunciation": "fer-ZENT-kos-ten",
+      "exampleTarget": "Hoeveel zijn de verzendkosten?",
+      "exampleNative": "Notice what the form is doing here: “How much are the shipping costs?”",
+      "korean": "verzendkosten",
+      "english": "Usage focus for \"verzendkosten\": “Shipping costs.” A transparent service compound.",
+      "example": "Hoeveel zijn de verzendkosten?",
+      "exampleEnglish": "Notice what the form is doing here: “How much are the shipping costs?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "verzendkosten",
+      "romanization": "fer-ZENT-kos-ten",
+      "nativeText": "Contrast check for \"verzendkosten\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "fer-ZENT-kos-ten",
+      "exampleTarget": "Hoeveel zijn de verzendkosten?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much are the shipping costs?”",
+      "korean": "verzendkosten",
+      "english": "Contrast check for \"verzendkosten\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hoeveel zijn de verzendkosten?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much are the shipping costs?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "verzendkosten",
+      "romanization": "fer-ZENT-kos-ten",
+      "nativeText": "Recall \"verzendkosten\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoeveel zijn de verzendkosten?\".",
+      "pronunciation": "fer-ZENT-kos-ten",
+      "exampleTarget": "Hoeveel zijn de verzendkosten?",
+      "exampleNative": "Self-check against the model before moving on: “How much are the shipping costs?”",
+      "korean": "verzendkosten",
+      "english": "Recall \"verzendkosten\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoeveel zijn de verzendkosten?\".",
+      "example": "Hoeveel zijn de verzendkosten?",
+      "exampleEnglish": "Self-check against the model before moving on: “How much are the shipping costs?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "verzendkosten",
+      "romanization": "fer-ZENT-kos-ten",
+      "nativeText": "Repair \"verzendkosten\" inside \"Hoeveel zijn de verzendkosten?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shipping costs.” A transparent service compound.",
+      "pronunciation": "fer-ZENT-kos-ten",
+      "exampleTarget": "Hoeveel zijn de verzendkosten?",
+      "exampleNative": "Use the model as the repair target: “How much are the shipping costs?”",
+      "korean": "verzendkosten",
+      "english": "Repair \"verzendkosten\" inside \"Hoeveel zijn de verzendkosten?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shipping costs.” A transparent service compound.",
+      "example": "Hoeveel zijn de verzendkosten?",
+      "exampleEnglish": "Use the model as the repair target: “How much are the shipping costs?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "verzendkosten",
+      "romanization": "fer-ZENT-kos-ten",
+      "nativeText": "Transfer \"verzendkosten\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoeveel zijn de verzendkosten?\".",
+      "pronunciation": "fer-ZENT-kos-ten",
+      "exampleTarget": "Hoeveel zijn de verzendkosten?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much are the shipping costs?”",
+      "korean": "verzendkosten",
+      "english": "Transfer \"verzendkosten\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoeveel zijn de verzendkosten?\".",
+      "example": "Hoeveel zijn de verzendkosten?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much are the shipping costs?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "verzendkosten",
+      "romanization": "fer-ZENT-kos-ten",
+      "nativeText": "Find one word or phrase that naturally travels with \"verzendkosten\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "fer-ZENT-kos-ten",
+      "exampleTarget": "Hoeveel zijn de verzendkosten?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How much are the shipping costs?”",
+      "korean": "verzendkosten",
+      "english": "Find one word or phrase that naturally travels with \"verzendkosten\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hoeveel zijn de verzendkosten?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How much are the shipping costs?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "verzendkosten",
+      "romanization": "fer-ZENT-kos-ten",
+      "nativeText": "Listen for \"verzendkosten\" inside \"Hoeveel zijn de verzendkosten?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "fer-ZENT-kos-ten",
+      "exampleTarget": "Hoeveel zijn de verzendkosten?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much are the shipping costs?”",
+      "korean": "verzendkosten",
+      "english": "Listen for \"verzendkosten\" inside \"Hoeveel zijn de verzendkosten?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hoeveel zijn de verzendkosten?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much are the shipping costs?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "verzendkosten",
+      "romanization": "fer-ZENT-kos-ten",
+      "nativeText": "Write \"verzendkosten\" again without looking, then compare the exact written form against \"Hoeveel zijn de verzendkosten?\" before moving on.",
+      "pronunciation": "fer-ZENT-kos-ten",
+      "exampleTarget": "Hoeveel zijn de verzendkosten?",
+      "exampleNative": "Use the written model as the final correctness check: “How much are the shipping costs?”",
+      "korean": "verzendkosten",
+      "english": "Write \"verzendkosten\" again without looking, then compare the exact written form against \"Hoeveel zijn de verzendkosten?\" before moving on.",
+      "example": "Hoeveel zijn de verzendkosten?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How much are the shipping costs?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "verzendkosten",
+      "romanization": "fer-ZENT-kos-ten",
+      "nativeText": "Check whether \"verzendkosten\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much are the shipping costs?”",
+      "pronunciation": "fer-ZENT-kos-ten",
+      "exampleTarget": "Hoeveel zijn de verzendkosten?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How much are the shipping costs?”",
+      "korean": "verzendkosten",
+      "english": "Check whether \"verzendkosten\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much are the shipping costs?”",
+      "example": "Hoeveel zijn de verzendkosten?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How much are the shipping costs?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "wanneer komt het aan?",
+      "romanization": "va-NEER komt hət ahn",
+      "nativeText": "“When does it arrive?” The separable verb `aankomen` splits here.",
+      "pronunciation": "va-NEER komt hət ahn",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "“When does the package arrive?”",
+      "korean": "wanneer komt het aan?",
+      "english": "“When does it arrive?” The separable verb `aankomen` splits here.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "“When does the package arrive?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "Wanneer komt het pakket aan?",
+      "romanization": "va-NEER komt hət ahn",
+      "nativeText": "Model use for \"Wanneer komt het pakket aan?\": “When does the package arrive?”",
+      "pronunciation": "va-NEER komt hət ahn",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "“When does the package arrive?”",
+      "korean": "Wanneer komt het pakket aan?",
+      "english": "Model use for \"Wanneer komt het pakket aan?\": “When does the package arrive?”",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "“When does the package arrive?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "wanneer komt het aan?",
+      "romanization": "va-NEER komt hət ahn",
+      "nativeText": "Usage focus for \"wanneer komt het aan?\": “When does it arrive?” The separable verb `aankomen` splits here.",
+      "pronunciation": "va-NEER komt hət ahn",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "Notice what the form is doing here: “When does the package arrive?”",
+      "korean": "wanneer komt het aan?",
+      "english": "Usage focus for \"wanneer komt het aan?\": “When does it arrive?” The separable verb `aankomen` splits here.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "Notice what the form is doing here: “When does the package arrive?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "wanneer komt het aan?",
+      "romanization": "va-NEER komt hət ahn",
+      "nativeText": "Contrast check for \"wanneer komt het aan?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "va-NEER komt hət ahn",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When does the package arrive?”",
+      "korean": "wanneer komt het aan?",
+      "english": "Contrast check for \"wanneer komt het aan?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When does the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "wanneer komt het aan?",
+      "romanization": "va-NEER komt hət ahn",
+      "nativeText": "Recall \"wanneer komt het aan?\" from memory, then explain what would change if a nearby alternative replaced it in \"Wanneer komt het pakket aan?\".",
+      "pronunciation": "va-NEER komt hət ahn",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "Self-check against the model before moving on: “When does the package arrive?”",
+      "korean": "wanneer komt het aan?",
+      "english": "Recall \"wanneer komt het aan?\" from memory, then explain what would change if a nearby alternative replaced it in \"Wanneer komt het pakket aan?\".",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "Self-check against the model before moving on: “When does the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "wanneer komt het aan?",
+      "romanization": "va-NEER komt hət ahn",
+      "nativeText": "Repair \"wanneer komt het aan?\" inside \"Wanneer komt het pakket aan?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When does it arrive?” The separable verb `aankomen` splits here.",
+      "pronunciation": "va-NEER komt hət ahn",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "Use the model as the repair target: “When does the package arrive?”",
+      "korean": "wanneer komt het aan?",
+      "english": "Repair \"wanneer komt het aan?\" inside \"Wanneer komt het pakket aan?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When does it arrive?” The separable verb `aankomen` splits here.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "Use the model as the repair target: “When does the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "wanneer komt het aan?",
+      "romanization": "va-NEER komt hət ahn",
+      "nativeText": "Transfer \"wanneer komt het aan?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wanneer komt het pakket aan?\".",
+      "pronunciation": "va-NEER komt hət ahn",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When does the package arrive?”",
+      "korean": "wanneer komt het aan?",
+      "english": "Transfer \"wanneer komt het aan?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Wanneer komt het pakket aan?\".",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When does the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "wanneer komt het aan?",
+      "romanization": "va-NEER komt hət ahn",
+      "nativeText": "Find one word or phrase that naturally travels with \"wanneer komt het aan?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "va-NEER komt hət ahn",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When does the package arrive?”",
+      "korean": "wanneer komt het aan?",
+      "english": "Find one word or phrase that naturally travels with \"wanneer komt het aan?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When does the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "wanneer komt het aan?",
+      "romanization": "va-NEER komt hət ahn",
+      "nativeText": "Listen for \"wanneer komt het aan?\" inside \"Wanneer komt het pakket aan?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "va-NEER komt hət ahn",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When does the package arrive?”",
+      "korean": "wanneer komt het aan?",
+      "english": "Listen for \"wanneer komt het aan?\" inside \"Wanneer komt het pakket aan?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When does the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "wanneer komt het aan?",
+      "romanization": "va-NEER komt hət ahn",
+      "nativeText": "Write \"wanneer komt het aan?\" again without looking, then compare the exact written form against \"Wanneer komt het pakket aan?\" before moving on.",
+      "pronunciation": "va-NEER komt hət ahn",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "Use the written model as the final correctness check: “When does the package arrive?”",
+      "korean": "wanneer komt het aan?",
+      "english": "Write \"wanneer komt het aan?\" again without looking, then compare the exact written form against \"Wanneer komt het pakket aan?\" before moving on.",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When does the package arrive?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit17postoffice-vocabulary-1",
+        "nl-level1unit17postoffice-vocabulary-2",
+        "nl-level1unit17postoffice-grammar-1",
+        "nl-level1unit17postoffice-grammar-2",
+        "nl-level1unit17postoffice-reading",
+        "nl-level1unit17postoffice-listening",
+        "nl-level1unit17postoffice-writing",
+        "nl-level1unit17postoffice-task"
+      ],
+      "targetText": "wanneer komt het aan?",
+      "romanization": "va-NEER komt hət ahn",
+      "nativeText": "Check whether \"wanneer komt het aan?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When does the package arrive?”",
+      "pronunciation": "va-NEER komt hət ahn",
+      "exampleTarget": "Wanneer komt het pakket aan?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When does the package arrive?”",
+      "korean": "wanneer komt het aan?",
+      "english": "Check whether \"wanneer komt het aan?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When does the package arrive?”",
+      "example": "Wanneer komt het pakket aan?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When does the package arrive?”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};

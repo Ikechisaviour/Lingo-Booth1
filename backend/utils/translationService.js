@@ -4,7 +4,7 @@ const Translation = require('../models/Translation');
 
 // Bump this whenever the overlay policy changes in a way that should invalidate
 // old cache rows even if the authored lesson text itself did not change.
-const TRANSLATION_POLICY_VERSION = 2;
+const TRANSLATION_POLICY_VERSION = 4;
 
 // Languages that use non-Latin scripts and benefit from romanization
 const ROMANIZATION_LANGS = new Set([
@@ -54,6 +54,98 @@ const NON_LATIN_LANGS = new Set([
   'th', 'ka', 'am', 'my', 'km', 'lo', 'si', 'ne', 'ur',
   'fa', 'ps', 'yi', 'gu', 'kn', 'ml', 'te', 'pa', 'uk', 'bg', 'el',
 ]);
+
+const TARGET_SCRIPT_SEGMENT_PATTERNS = {
+  ko: /[\u3131-\u314e\u314f-\u3163\uac00-\ud7a3]+/g,
+  zh: /[\u3400-\u9fff]+/g,
+  ja: /[\u3040-\u30ff\u3400-\u9fff]+/g,
+  hi: /[\u0900-\u097f]+/g,
+  ar: /[\u0600-\u06ff]+/g,
+  he: /[\u0590-\u05ff]+/g,
+  ru: /[\u0400-\u04ff]+/g,
+  bn: /[\u0980-\u09ff]+/g,
+  ta: /[\u0b80-\u0bff]+/g,
+};
+
+function protectTargetScriptSegments(text, targetLang) {
+  const pattern = TARGET_SCRIPT_SEGMENT_PATTERNS[targetLang];
+  const source = String(text || '');
+  if (!pattern || !source) return { text: source, segments: [] };
+
+  const segments = [];
+  const protectedText = source.replace(pattern, (segment) => {
+    const token = `ZZTARGET${segments.length}ZZ`;
+    segments.push(segment);
+    return token;
+  });
+
+  return { text: protectedText, segments };
+}
+
+function protectQuotedTargetSegments(text) {
+  const source = String(text || '');
+  if (!source) return { text: source, segments: [] };
+
+  const segments = [];
+  const protectedText = source.replace(/(["“])([^"”]{1,120})(["”])/g, (match, open, inner, close) => {
+    if (!/[A-Za-z\u00c0-\u024f\u0370-\u03ff\u0400-\u04ff\u0590-\u05ff\u0600-\u06ff\u0900-\u097f\u0980-\u09ff\u0b80-\u0bff\u3040-\u30ff\u3131-\u318e\u3400-\u9fff]/.test(inner)) {
+      return match;
+    }
+    const token = `ZZQUOTE${segments.length}ZZ`;
+    segments.push(`${open}${inner}${close}`);
+    return token;
+  });
+
+  return { text: protectedText, segments };
+}
+
+function targetScriptSegments(text, targetLang) {
+  const pattern = TARGET_SCRIPT_SEGMENT_PATTERNS[targetLang];
+  if (!pattern) return [];
+  return String(text || '').match(pattern) || [];
+}
+
+function preservesTargetScriptSegments(sourceText, translatedText, targetLang) {
+  return targetScriptSegments(sourceText, targetLang)
+    .every((segment) => String(translatedText || '').includes(segment));
+}
+
+function restoreTargetScriptSegments(text, segments = []) {
+  return segments.reduce(
+    (value, segment, index) => String(value || '').replace(new RegExp(`ZZTARGET${index}ZZ`, 'g'), segment),
+    String(text || ''),
+  );
+}
+
+function restoreQuotedTargetSegments(text, segments = []) {
+  return segments.reduce(
+    (value, segment, index) => String(value || '').replace(new RegExp(`ZZQUOTE${index}ZZ`, 'g'), segment),
+    String(text || ''),
+  );
+}
+
+async function batchTranslatePreservingTargetScript(texts, fromLang, toLang, targetLang) {
+  if (!texts.length) return [];
+  const protectedRows = texts.map((text) => {
+    const quoted = protectQuotedTargetSegments(text);
+    const scripted = protectTargetScriptSegments(quoted.text, targetLang);
+    return {
+      text: scripted.text,
+      quotedSegments: quoted.segments,
+      targetSegments: scripted.segments,
+    };
+  });
+  const translated = await batchTranslateRaw(protectedRows.map((row) => row.text), fromLang, toLang);
+  return translated.map((result, index) => ({
+    ...result,
+    text: result?.failed
+      ? ''
+      : restoreQuotedTargetSegments(
+          restoreTargetScriptSegments(result?.text || '', protectedRows[index].targetSegments),
+          protectedRows[index].quotedSegments,
+        ),
+  }));
+}
 
 /**
  * Transliterate romanization strings into the native script.
@@ -121,7 +213,7 @@ async function batchNativePhonetic(romanizations, fromLang, nativeLang) {
 // Per AGENTS.md: activities[].section/title/goals/task are seeded in English
 // and rendered through the translation overlay — never displayed raw to a
 // non-English learner.
-async function translateActivitiesArray(activities, nativeLang) {
+async function translateActivitiesArray(activities, nativeLang, targetLang) {
   const list = Array.isArray(activities) ? activities : [];
   if (!list.length) return [];
 
@@ -137,7 +229,7 @@ async function translateActivitiesArray(activities, nativeLang) {
     });
   });
 
-  const results = texts.length ? await batchTranslateRaw(texts, 'en', nativeLang) : [];
+  const results = texts.length ? await batchTranslatePreservingTargetScript(texts, 'en', nativeLang, targetLang) : [];
 
   const out = list.map((act) => ({
     id: act?.id || '',
@@ -162,7 +254,7 @@ async function translateActivitiesArray(activities, nativeLang) {
 }
 
 // Translate every native-displayed string on `lesson.expressionPractice[]`.
-async function translateExpressionPracticeArray(expressionPractice, nativeLang) {
+async function translateExpressionPracticeArray(expressionPractice, nativeLang, targetLang) {
   const list = Array.isArray(expressionPractice) ? expressionPractice : [];
   if (!list.length) return [];
 
@@ -173,7 +265,7 @@ async function translateExpressionPracticeArray(expressionPractice, nativeLang) 
     if (ep?.goal)  { map.push({ i, field: 'goal' });  texts.push(ep.goal); }
   });
 
-  const results = texts.length ? await batchTranslateRaw(texts, 'en', nativeLang) : [];
+  const results = texts.length ? await batchTranslatePreservingTargetScript(texts, 'en', nativeLang, targetLang) : [];
 
   const out = list.map((ep) => ({ id: ep?.id || '', label: '', goal: '' }));
   for (let k = 0; k < map.length; k++) {
@@ -184,7 +276,7 @@ async function translateExpressionPracticeArray(expressionPractice, nativeLang) 
   return out;
 }
 
-async function batchTranslateBySource(texts, mapping, defaultFromLang, toLang) {
+async function batchTranslateBySource(texts, mapping, defaultFromLang, toLang, targetLang) {
   if (!texts.length) return [];
   const results = new Array(texts.length);
   const groups = new Map();
@@ -195,7 +287,7 @@ async function batchTranslateBySource(texts, mapping, defaultFromLang, toLang) {
   });
 
   await Promise.all(Array.from(groups.entries()).map(async ([fromLang, indices]) => {
-    const groupResults = await batchTranslateRaw(indices.map(index => texts[index]), fromLang, toLang);
+    const groupResults = await batchTranslatePreservingTargetScript(indices.map(index => texts[index]), fromLang, toLang, targetLang);
     indices.forEach((textIndex, groupIndex) => {
       results[textIndex] = groupResults[groupIndex] || { text: texts[textIndex], pronunciation: '' };
     });
@@ -254,7 +346,7 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
 
       if (lesson.title && !cached.title) {
         try {
-          const [titleResult] = await batchTranslateRaw([lesson.title], 'en', nativeLang);
+          const [titleResult] = await batchTranslatePreservingTargetScript([lesson.title], 'en', nativeLang, targetLang);
           cached.title = titleResult?.failed ? '' : (titleResult?.text || '');
           updates.title = cached.title;
         } catch (e) { /* ignore backfill errors */ }
@@ -264,7 +356,7 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
       const cachedActs = Array.isArray(cached.activities) ? cached.activities : [];
       if (seedActs.length > 0 && cachedActs.length === 0) {
         try {
-          const filled = await translateActivitiesArray(seedActs, nativeLang);
+          const filled = await translateActivitiesArray(seedActs, nativeLang, targetLang);
           cached.activities = filled;
           updates.activities = filled;
         } catch (e) { /* ignore backfill errors */ }
@@ -274,7 +366,7 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
       const cachedEps = Array.isArray(cached.expressionPractice) ? cached.expressionPractice : [];
       if (seedEps.length > 0 && cachedEps.length === 0) {
         try {
-          const filled = await translateExpressionPracticeArray(seedEps, nativeLang);
+          const filled = await translateExpressionPracticeArray(seedEps, nativeLang, targetLang);
           cached.expressionPractice = filled;
           updates.expressionPractice = filled;
         } catch (e) { /* ignore backfill errors */ }
@@ -361,11 +453,11 @@ async function getOrCreateTranslation(lesson, nativeLang, targetLang) {
   //   seed authors these in English as canonical source; they are never shown
   //   raw to a non-English learner — see AGENTS.md "Class Lesson Content Language").
   const [nativeResults, romanResults, titleResults, activitiesArr, epArr] = await Promise.all([
-    targetTexts.length > 0 ? batchTranslateBySource(targetTexts, targetMapping, targetLang, nativeLang) : [],
+    targetTexts.length > 0 ? batchTranslateBySource(targetTexts, targetMapping, targetLang, nativeLang, targetLang) : [],
     romanTexts.length > 0 ? batchRomanize(romanTexts, targetLang) : [],
-    needsNativeTranslation && lesson.title ? batchTranslateRaw([lesson.title], 'en', nativeLang) : [],
-    needsNativeTranslation ? translateActivitiesArray(lesson.activities, nativeLang) : [],
-    needsNativeTranslation ? translateExpressionPracticeArray(lesson.expressionPractice, nativeLang) : [],
+    needsNativeTranslation && lesson.title ? batchTranslatePreservingTargetScript([lesson.title], 'en', nativeLang, targetLang) : [],
+    needsNativeTranslation ? translateActivitiesArray(lesson.activities, nativeLang, targetLang) : [],
+    needsNativeTranslation ? translateExpressionPracticeArray(lesson.expressionPractice, nativeLang, targetLang) : [],
   ]);
   const translatedTitle = titleResults.length > 0 && !titleResults[0]?.failed ? (titleResults[0]?.text || '') : '';
 
@@ -521,6 +613,8 @@ function applyTranslation(lessonObj, translation) {
 
 module.exports = {
   batchTranslateRaw,
+  batchTranslatePreservingTargetScript,
+  preservesTargetScriptSegments,
   batchRomanize,
   batchNativePhonetic,
   TRANSLATION_POLICY_VERSION,

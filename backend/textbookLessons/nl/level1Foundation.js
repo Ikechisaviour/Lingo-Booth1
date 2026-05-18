@@ -200,7 +200,7 @@ const lesson = {
   difficulty: 'beginner',
   targetLang: 'nl',
   nativeLang: 'en',
-  track: 'foundation',
+  track: 'textbook',
   lessonType: 'foundation',
   activities,
   expressionPractice: [

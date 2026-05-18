@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u20',
-  title: 'Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans',
-  category: 'planning',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Make friendly suggestions, respond to them, and settle on a plan.',
-  vocabularyGoal: 'Use suggestion, plan, and response phrases.',
-  grammarGoal: 'Use `-elim/-alım`, `ister misin`, and soft refusal phrases.',
-  speakingGoal: 'Suggest one activity, respond to one suggestion, and agree on a plan.',
-  task: 'Plan a simple weekend outing.',
-  expressionPractice: [
-    practice('making-suggestion', 'Making suggestion', 'Use one `-elim/-alım` form.'),
-    practice('accepting', 'Accepting suggestion', 'Use one positive response plus detail.'),
-    practice('declining-softly', 'Declining softly', 'Give a reason and another option.'),
+module.exports = {
+  "title": "Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans",
+  "category": "planning",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit20suggestions-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Make friendly suggestions, respond to them, and settle on a plan."
+      ],
+      "task": "Plan a simple weekend outing."
+    },
+    {
+      "id": "tr-level1unit20suggestions-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit20suggestions-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit20suggestions-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit20suggestions-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Make friendly suggestions, respond to them, and settle on a plan."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit20suggestions-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit20suggestions-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit20suggestions-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit20suggestions-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit20suggestions-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit20suggestions-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Plan a simple weekend outing."
+      ],
+      "task": "Plan a simple weekend outing."
+    }
   ],
-  relatedPools: ['topic-planning', 'topic-leisure'],
-  items: [
-    item('gidelim', 'gi-de-LİM', '“Let’s go.” The `-elim/-alım` form is a productive suggestion pattern.', 'Hafta sonu müzeye gidelim.', '“Let’s go to the museum on the weekend.”'),
-    item('kahve içelim', 'kah-VE i-çe-LİM', '“Let’s drink coffee.” A highly reusable social suggestion.', 'Dersten sonra kahve içelim.', '“Let’s drink coffee after class.”'),
-    item('ister misin?', 'is-TER mi-SİN', '“Would you like?” Useful for inviting rather than commanding.', 'Bizimle gelmek ister misin?', '“Would you like to come with us?”'),
-    item('iyi fikir', 'i-Yİ fi-KİR', '“Good idea.” A quick warm response.', 'Bu iyi fikir.', '“That is a good idea.”'),
-    item('olur', 'o-LUR', '“Okay / that works.” One of the most natural acceptance words.', 'Saat beş olur.', '“Five o’clock works.”'),
-    item('kusura bakma, gelemem', 'ku-su-RA bak-MA ge-le-MEM', '“Sorry, I cannot come.” A soft refusal.', 'Kusura bakma, cumartesi gelemem.', '“Sorry, I cannot come on Saturday.”'),
-    item('belki', 'bel-Kİ', '“Maybe.” Useful when the speaker is undecided.', 'Belki pazar daha iyi.', '“Maybe Sunday is better.”'),
-    item('o zaman', 'o za-MAN', '“Then / in that case.” A natural pivot after new information.', 'O zaman saat altıda buluşalım.', '“Then let’s meet at six.”'),
+  "expressionPractice": [
+    {
+      "id": "making-suggestion",
+      "label": "Making suggestion",
+      "goal": "Use one `-elim/-alım` form."
+    },
+    {
+      "id": "accepting",
+      "label": "Accepting suggestion",
+      "goal": "Use one positive response plus detail."
+    },
+    {
+      "id": "declining-softly",
+      "label": "Declining softly",
+      "goal": "Give a reason and another option."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-planning",
+    "topic-leisure"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Plan a simple weekend outing.",
+      "korean": "ders hedefi",
+      "english": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Plan a simple weekend outing."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit20suggestions-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Hafta sonu müzeye gidelim.\".",
+      "pronunciation": "",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "“Let’s go to the museum on the weekend.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Hafta sonu müzeye gidelim.\".",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "“Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1"
+      ],
+      "targetText": "gidelim",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "“Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "Use the key language of Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "“Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-2"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "“Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "“Let’s drink coffee after class.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit20suggestions-grammar-1"
+      ],
+      "targetText": "gidelim",
+      "romanization": "",
+      "nativeText": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "pronunciation": "",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "“Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "Make friendly suggestions, respond to them, and settle on a plan.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "“Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "“Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "Contrast the main pattern in Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "“Let’s drink coffee after class.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit20suggestions-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"O zaman saat altıda buluşalım.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "“Then let’s meet at six.”",
+      "korean": "okuma modeli",
+      "english": "Read \"O zaman saat altıda buluşalım.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "“Then let’s meet at six.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit20suggestions-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"O zaman saat altıda buluşalım.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "“Then let’s meet at six.”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"O zaman saat altıda buluşalım.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "“Then let’s meet at six.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit20suggestions-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Hafta sonu müzeye gidelim.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Hafta sonu müzeye gidelim.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit20suggestions-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "“Let’s drink coffee after class.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "“Let’s drink coffee after class.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Plan a simple weekend outing.",
+      "pronunciation": "",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "Plan a simple weekend outing.",
+      "korean": "son görev",
+      "english": "Plan a simple weekend outing.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "Plan a simple weekend outing."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Dersten sonra kahve içelim.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Let’s drink coffee after class.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Dersten sonra kahve içelim.\" against the model.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Let’s drink coffee after class.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Hafta sonu müzeye gidelim.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "“Let’s go to the museum on the weekend.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Hafta sonu müzeye gidelim.\" before reusing it elsewhere.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "“Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"O zaman saat altıda buluşalım.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "“Then let’s meet at six.”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"O zaman saat altıda buluşalım.\" as one thought.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "“Then let’s meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Hafta sonu müzeye gidelim.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Hafta sonu müzeye gidelim.\" and move it into your own life.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"gidelim\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "gidelim",
+      "exampleNative": "“Let’s go.” The `-elim/-alım` form is a productive suggestion pattern.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"gidelim\" before looking back.",
+      "example": "gidelim",
+      "exampleEnglish": "“Let’s go.” The `-elim/-alım` form is a productive suggestion pattern."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"O zaman saat altıda buluşalım.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"O zaman saat altıda buluşalım.\" rather than restarting from a blank sentence.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Dersten sonra kahve içelim.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "“Let’s drink coffee after class.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Dersten sonra kahve içelim.\" as the comparison line.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "“Let’s drink coffee after class.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit20suggestions-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Hafta sonu müzeye gidelim.\".",
+      "pronunciation": "",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "“Let’s go to the museum on the weekend.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Hafta sonu müzeye gidelim.\".",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "“Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"O zaman saat altıda buluşalım.\".",
+      "pronunciation": "",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "“Then let’s meet at six.”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"O zaman saat altıda buluşalım.\".",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "“Then let’s meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Hafta sonu müzeye gidelim.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "“Let’s go to the museum on the weekend.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Hafta sonu müzeye gidelim.\" one layer at a time.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "“Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Dersten sonra kahve içelim.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "“Let’s drink coffee after class.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Dersten sonra kahve içelim.\" as the deciding example.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "“Let’s drink coffee after class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-culture",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"O zaman saat altıda buluşalım.\".",
+      "pronunciation": "",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "“Then let’s meet at six.”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"O zaman saat altıda buluşalım.\".",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "“Then let’s meet at six.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "gidelim",
+      "romanization": "gi-de-LİM",
+      "nativeText": "“Let’s go.” The `-elim/-alım` form is a productive suggestion pattern.",
+      "pronunciation": "gi-de-LİM",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "“Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "“Let’s go.” The `-elim/-alım` form is a productive suggestion pattern.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "“Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "Hafta sonu müzeye gidelim.",
+      "romanization": "gi-de-LİM",
+      "nativeText": "Model use for \"Hafta sonu müzeye gidelim.\": “Let’s go to the museum on the weekend.”",
+      "pronunciation": "gi-de-LİM",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "“Let’s go to the museum on the weekend.”",
+      "korean": "Hafta sonu müzeye gidelim.",
+      "english": "Model use for \"Hafta sonu müzeye gidelim.\": “Let’s go to the museum on the weekend.”",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "“Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "gidelim",
+      "romanization": "gi-de-LİM",
+      "nativeText": "Usage focus for \"gidelim\": Use the key language of Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "gi-de-LİM",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "Notice what the form is doing here: “Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "Usage focus for \"gidelim\": Use the key language of Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "Notice what the form is doing here: “Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "gidelim",
+      "romanization": "gi-de-LİM",
+      "nativeText": "Contrast check for \"gidelim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "gi-de-LİM",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "Contrast check for \"gidelim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "gidelim",
+      "romanization": "gi-de-LİM",
+      "nativeText": "Recall \"gidelim\" from memory, then explain what would change if a nearby alternative replaced it in \"Hafta sonu müzeye gidelim.\".",
+      "pronunciation": "gi-de-LİM",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "Self-check against the model before moving on: “Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "Recall \"gidelim\" from memory, then explain what would change if a nearby alternative replaced it in \"Hafta sonu müzeye gidelim.\".",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "Self-check against the model before moving on: “Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "gidelim",
+      "romanization": "gi-de-LİM",
+      "nativeText": "Repair \"gidelim\" inside \"Hafta sonu müzeye gidelim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with the register and setting that the lesson requires.",
+      "pronunciation": "gi-de-LİM",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "Use the model as the repair target: “Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "Repair \"gidelim\" inside \"Hafta sonu müzeye gidelim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans with the register and setting that the lesson requires.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "Use the model as the repair target: “Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "gidelim",
+      "romanization": "gi-de-LİM",
+      "nativeText": "Transfer \"gidelim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hafta sonu müzeye gidelim.\".",
+      "pronunciation": "gi-de-LİM",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "Transfer \"gidelim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hafta sonu müzeye gidelim.\".",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "gidelim",
+      "romanization": "gi-de-LİM",
+      "nativeText": "Find one word or phrase that naturally travels with \"gidelim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "gi-de-LİM",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "Find one word or phrase that naturally travels with \"gidelim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "gidelim",
+      "romanization": "gi-de-LİM",
+      "nativeText": "Listen for \"gidelim\" inside \"Hafta sonu müzeye gidelim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "gi-de-LİM",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "Listen for \"gidelim\" inside \"Hafta sonu müzeye gidelim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "gidelim",
+      "romanization": "gi-de-LİM",
+      "nativeText": "Write \"gidelim\" again without looking, then compare the exact written form against \"Hafta sonu müzeye gidelim.\" before moving on.",
+      "pronunciation": "gi-de-LİM",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "Use the written model as the final correctness check: “Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "Write \"gidelim\" again without looking, then compare the exact written form against \"Hafta sonu müzeye gidelim.\" before moving on.",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "gidelim",
+      "romanization": "gi-de-LİM",
+      "nativeText": "Check whether \"gidelim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s go to the museum on the weekend.”",
+      "pronunciation": "gi-de-LİM",
+      "exampleTarget": "Hafta sonu müzeye gidelim.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Let’s go to the museum on the weekend.”",
+      "korean": "gidelim",
+      "english": "Check whether \"gidelim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s go to the museum on the weekend.”",
+      "example": "Hafta sonu müzeye gidelim.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Let’s go to the museum on the weekend.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "kah-VE i-çe-LİM",
+      "nativeText": "“Let’s drink coffee.” A highly reusable social suggestion.",
+      "pronunciation": "kah-VE i-çe-LİM",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "“Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "“Let’s drink coffee.” A highly reusable social suggestion.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "“Let’s drink coffee after class.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "Dersten sonra kahve içelim.",
+      "romanization": "kah-VE i-çe-LİM",
+      "nativeText": "Model use for \"Dersten sonra kahve içelim.\": “Let’s drink coffee after class.”",
+      "pronunciation": "kah-VE i-çe-LİM",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "“Let’s drink coffee after class.”",
+      "korean": "Dersten sonra kahve içelim.",
+      "english": "Model use for \"Dersten sonra kahve içelim.\": “Let’s drink coffee after class.”",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "“Let’s drink coffee after class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "kah-VE i-çe-LİM",
+      "nativeText": "Usage focus for \"kahve içelim\": Distinguish the nearby wording choices that make Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "kah-VE i-çe-LİM",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "Notice what the form is doing here: “Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "Usage focus for \"kahve içelim\": Distinguish the nearby wording choices that make Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "Notice what the form is doing here: “Let’s drink coffee after class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "kah-VE i-çe-LİM",
+      "nativeText": "Contrast check for \"kahve içelim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kah-VE i-çe-LİM",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "Contrast check for \"kahve içelim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Let’s drink coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "kah-VE i-çe-LİM",
+      "nativeText": "Recall \"kahve içelim\" from memory, then explain what would change if a nearby alternative replaced it in \"Dersten sonra kahve içelim.\".",
+      "pronunciation": "kah-VE i-çe-LİM",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "Self-check against the model before moving on: “Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "Recall \"kahve içelim\" from memory, then explain what would change if a nearby alternative replaced it in \"Dersten sonra kahve içelim.\".",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "Self-check against the model before moving on: “Let’s drink coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "kah-VE i-çe-LİM",
+      "nativeText": "Repair \"kahve içelim\" inside \"Dersten sonra kahve içelim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans sound precise rather than merely understandable.",
+      "pronunciation": "kah-VE i-çe-LİM",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "Use the model as the repair target: “Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "Repair \"kahve içelim\" inside \"Dersten sonra kahve içelim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 20: Öneriler ve Planlar — Suggestions and Plans sound precise rather than merely understandable.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "Use the model as the repair target: “Let’s drink coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "kah-VE i-çe-LİM",
+      "nativeText": "Transfer \"kahve içelim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dersten sonra kahve içelim.\".",
+      "pronunciation": "kah-VE i-çe-LİM",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "Transfer \"kahve içelim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dersten sonra kahve içelim.\".",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Let’s drink coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "kah-VE i-çe-LİM",
+      "nativeText": "Find one word or phrase that naturally travels with \"kahve içelim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kah-VE i-çe-LİM",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "Find one word or phrase that naturally travels with \"kahve içelim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Let’s drink coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "kah-VE i-çe-LİM",
+      "nativeText": "Listen for \"kahve içelim\" inside \"Dersten sonra kahve içelim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kah-VE i-çe-LİM",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "Listen for \"kahve içelim\" inside \"Dersten sonra kahve içelim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Let’s drink coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "kah-VE i-çe-LİM",
+      "nativeText": "Write \"kahve içelim\" again without looking, then compare the exact written form against \"Dersten sonra kahve içelim.\" before moving on.",
+      "pronunciation": "kah-VE i-çe-LİM",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "Use the written model as the final correctness check: “Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "Write \"kahve içelim\" again without looking, then compare the exact written form against \"Dersten sonra kahve içelim.\" before moving on.",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Let’s drink coffee after class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kahve içelim",
+      "romanization": "kah-VE i-çe-LİM",
+      "nativeText": "Check whether \"kahve içelim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s drink coffee after class.”",
+      "pronunciation": "kah-VE i-çe-LİM",
+      "exampleTarget": "Dersten sonra kahve içelim.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Let’s drink coffee after class.”",
+      "korean": "kahve içelim",
+      "english": "Check whether \"kahve içelim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Let’s drink coffee after class.”",
+      "example": "Dersten sonra kahve içelim.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Let’s drink coffee after class.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "ister misin?",
+      "romanization": "is-TER mi-SİN",
+      "nativeText": "“Would you like?” Useful for inviting rather than commanding.",
+      "pronunciation": "is-TER mi-SİN",
+      "exampleTarget": "Bizimle gelmek ister misin?",
+      "exampleNative": "“Would you like to come with us?”",
+      "korean": "ister misin?",
+      "english": "“Would you like?” Useful for inviting rather than commanding.",
+      "example": "Bizimle gelmek ister misin?",
+      "exampleEnglish": "“Would you like to come with us?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "Bizimle gelmek ister misin?",
+      "romanization": "is-TER mi-SİN",
+      "nativeText": "Model use for \"Bizimle gelmek ister misin?\": “Would you like to come with us?”",
+      "pronunciation": "is-TER mi-SİN",
+      "exampleTarget": "Bizimle gelmek ister misin?",
+      "exampleNative": "“Would you like to come with us?”",
+      "korean": "Bizimle gelmek ister misin?",
+      "english": "Model use for \"Bizimle gelmek ister misin?\": “Would you like to come with us?”",
+      "example": "Bizimle gelmek ister misin?",
+      "exampleEnglish": "“Would you like to come with us?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "ister misin?",
+      "romanization": "is-TER mi-SİN",
+      "nativeText": "Usage focus for \"ister misin?\": “Would you like?” Useful for inviting rather than commanding.",
+      "pronunciation": "is-TER mi-SİN",
+      "exampleTarget": "Bizimle gelmek ister misin?",
+      "exampleNative": "Notice what the form is doing here: “Would you like to come with us?”",
+      "korean": "ister misin?",
+      "english": "Usage focus for \"ister misin?\": “Would you like?” Useful for inviting rather than commanding.",
+      "example": "Bizimle gelmek ister misin?",
+      "exampleEnglish": "Notice what the form is doing here: “Would you like to come with us?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "ister misin?",
+      "romanization": "is-TER mi-SİN",
+      "nativeText": "Contrast check for \"ister misin?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "is-TER mi-SİN",
+      "exampleTarget": "Bizimle gelmek ister misin?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Would you like to come with us?”",
+      "korean": "ister misin?",
+      "english": "Contrast check for \"ister misin?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bizimle gelmek ister misin?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Would you like to come with us?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "ister misin?",
+      "romanization": "is-TER mi-SİN",
+      "nativeText": "Recall \"ister misin?\" from memory, then explain what would change if a nearby alternative replaced it in \"Bizimle gelmek ister misin?\".",
+      "pronunciation": "is-TER mi-SİN",
+      "exampleTarget": "Bizimle gelmek ister misin?",
+      "exampleNative": "Self-check against the model before moving on: “Would you like to come with us?”",
+      "korean": "ister misin?",
+      "english": "Recall \"ister misin?\" from memory, then explain what would change if a nearby alternative replaced it in \"Bizimle gelmek ister misin?\".",
+      "example": "Bizimle gelmek ister misin?",
+      "exampleEnglish": "Self-check against the model before moving on: “Would you like to come with us?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "ister misin?",
+      "romanization": "is-TER mi-SİN",
+      "nativeText": "Repair \"ister misin?\" inside \"Bizimle gelmek ister misin?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Would you like?” Useful for inviting rather than commanding.",
+      "pronunciation": "is-TER mi-SİN",
+      "exampleTarget": "Bizimle gelmek ister misin?",
+      "exampleNative": "Use the model as the repair target: “Would you like to come with us?”",
+      "korean": "ister misin?",
+      "english": "Repair \"ister misin?\" inside \"Bizimle gelmek ister misin?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Would you like?” Useful for inviting rather than commanding.",
+      "example": "Bizimle gelmek ister misin?",
+      "exampleEnglish": "Use the model as the repair target: “Would you like to come with us?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "ister misin?",
+      "romanization": "is-TER mi-SİN",
+      "nativeText": "Transfer \"ister misin?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bizimle gelmek ister misin?\".",
+      "pronunciation": "is-TER mi-SİN",
+      "exampleTarget": "Bizimle gelmek ister misin?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Would you like to come with us?”",
+      "korean": "ister misin?",
+      "english": "Transfer \"ister misin?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bizimle gelmek ister misin?\".",
+      "example": "Bizimle gelmek ister misin?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Would you like to come with us?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "ister misin?",
+      "romanization": "is-TER mi-SİN",
+      "nativeText": "Find one word or phrase that naturally travels with \"ister misin?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "is-TER mi-SİN",
+      "exampleTarget": "Bizimle gelmek ister misin?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Would you like to come with us?”",
+      "korean": "ister misin?",
+      "english": "Find one word or phrase that naturally travels with \"ister misin?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bizimle gelmek ister misin?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Would you like to come with us?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "ister misin?",
+      "romanization": "is-TER mi-SİN",
+      "nativeText": "Listen for \"ister misin?\" inside \"Bizimle gelmek ister misin?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "is-TER mi-SİN",
+      "exampleTarget": "Bizimle gelmek ister misin?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Would you like to come with us?”",
+      "korean": "ister misin?",
+      "english": "Listen for \"ister misin?\" inside \"Bizimle gelmek ister misin?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bizimle gelmek ister misin?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Would you like to come with us?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "ister misin?",
+      "romanization": "is-TER mi-SİN",
+      "nativeText": "Write \"ister misin?\" again without looking, then compare the exact written form against \"Bizimle gelmek ister misin?\" before moving on.",
+      "pronunciation": "is-TER mi-SİN",
+      "exampleTarget": "Bizimle gelmek ister misin?",
+      "exampleNative": "Use the written model as the final correctness check: “Would you like to come with us?”",
+      "korean": "ister misin?",
+      "english": "Write \"ister misin?\" again without looking, then compare the exact written form against \"Bizimle gelmek ister misin?\" before moving on.",
+      "example": "Bizimle gelmek ister misin?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Would you like to come with us?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "ister misin?",
+      "romanization": "is-TER mi-SİN",
+      "nativeText": "Check whether \"ister misin?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Would you like to come with us?”",
+      "pronunciation": "is-TER mi-SİN",
+      "exampleTarget": "Bizimle gelmek ister misin?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Would you like to come with us?”",
+      "korean": "ister misin?",
+      "english": "Check whether \"ister misin?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Would you like to come with us?”",
+      "example": "Bizimle gelmek ister misin?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Would you like to come with us?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "iyi fikir",
+      "romanization": "i-Yİ fi-KİR",
+      "nativeText": "“Good idea.” A quick warm response.",
+      "pronunciation": "i-Yİ fi-KİR",
+      "exampleTarget": "Bu iyi fikir.",
+      "exampleNative": "“That is a good idea.”",
+      "korean": "iyi fikir",
+      "english": "“Good idea.” A quick warm response.",
+      "example": "Bu iyi fikir.",
+      "exampleEnglish": "“That is a good idea.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "Bu iyi fikir.",
+      "romanization": "i-Yİ fi-KİR",
+      "nativeText": "Model use for \"Bu iyi fikir.\": “That is a good idea.”",
+      "pronunciation": "i-Yİ fi-KİR",
+      "exampleTarget": "Bu iyi fikir.",
+      "exampleNative": "“That is a good idea.”",
+      "korean": "Bu iyi fikir.",
+      "english": "Model use for \"Bu iyi fikir.\": “That is a good idea.”",
+      "example": "Bu iyi fikir.",
+      "exampleEnglish": "“That is a good idea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "iyi fikir",
+      "romanization": "i-Yİ fi-KİR",
+      "nativeText": "Usage focus for \"iyi fikir\": “Good idea.” A quick warm response.",
+      "pronunciation": "i-Yİ fi-KİR",
+      "exampleTarget": "Bu iyi fikir.",
+      "exampleNative": "Notice what the form is doing here: “That is a good idea.”",
+      "korean": "iyi fikir",
+      "english": "Usage focus for \"iyi fikir\": “Good idea.” A quick warm response.",
+      "example": "Bu iyi fikir.",
+      "exampleEnglish": "Notice what the form is doing here: “That is a good idea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "iyi fikir",
+      "romanization": "i-Yİ fi-KİR",
+      "nativeText": "Contrast check for \"iyi fikir\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "i-Yİ fi-KİR",
+      "exampleTarget": "Bu iyi fikir.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is a good idea.”",
+      "korean": "iyi fikir",
+      "english": "Contrast check for \"iyi fikir\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bu iyi fikir.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "iyi fikir",
+      "romanization": "i-Yİ fi-KİR",
+      "nativeText": "Recall \"iyi fikir\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu iyi fikir.\".",
+      "pronunciation": "i-Yİ fi-KİR",
+      "exampleTarget": "Bu iyi fikir.",
+      "exampleNative": "Self-check against the model before moving on: “That is a good idea.”",
+      "korean": "iyi fikir",
+      "english": "Recall \"iyi fikir\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu iyi fikir.\".",
+      "example": "Bu iyi fikir.",
+      "exampleEnglish": "Self-check against the model before moving on: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "iyi fikir",
+      "romanization": "i-Yİ fi-KİR",
+      "nativeText": "Repair \"iyi fikir\" inside \"Bu iyi fikir.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Good idea.” A quick warm response.",
+      "pronunciation": "i-Yİ fi-KİR",
+      "exampleTarget": "Bu iyi fikir.",
+      "exampleNative": "Use the model as the repair target: “That is a good idea.”",
+      "korean": "iyi fikir",
+      "english": "Repair \"iyi fikir\" inside \"Bu iyi fikir.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Good idea.” A quick warm response.",
+      "example": "Bu iyi fikir.",
+      "exampleEnglish": "Use the model as the repair target: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "iyi fikir",
+      "romanization": "i-Yİ fi-KİR",
+      "nativeText": "Transfer \"iyi fikir\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu iyi fikir.\".",
+      "pronunciation": "i-Yİ fi-KİR",
+      "exampleTarget": "Bu iyi fikir.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is a good idea.”",
+      "korean": "iyi fikir",
+      "english": "Transfer \"iyi fikir\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu iyi fikir.\".",
+      "example": "Bu iyi fikir.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "iyi fikir",
+      "romanization": "i-Yİ fi-KİR",
+      "nativeText": "Find one word or phrase that naturally travels with \"iyi fikir\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "i-Yİ fi-KİR",
+      "exampleTarget": "Bu iyi fikir.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “That is a good idea.”",
+      "korean": "iyi fikir",
+      "english": "Find one word or phrase that naturally travels with \"iyi fikir\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bu iyi fikir.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "iyi fikir",
+      "romanization": "i-Yİ fi-KİR",
+      "nativeText": "Listen for \"iyi fikir\" inside \"Bu iyi fikir.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "i-Yİ fi-KİR",
+      "exampleTarget": "Bu iyi fikir.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is a good idea.”",
+      "korean": "iyi fikir",
+      "english": "Listen for \"iyi fikir\" inside \"Bu iyi fikir.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bu iyi fikir.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "iyi fikir",
+      "romanization": "i-Yİ fi-KİR",
+      "nativeText": "Write \"iyi fikir\" again without looking, then compare the exact written form against \"Bu iyi fikir.\" before moving on.",
+      "pronunciation": "i-Yİ fi-KİR",
+      "exampleTarget": "Bu iyi fikir.",
+      "exampleNative": "Use the written model as the final correctness check: “That is a good idea.”",
+      "korean": "iyi fikir",
+      "english": "Write \"iyi fikir\" again without looking, then compare the exact written form against \"Bu iyi fikir.\" before moving on.",
+      "example": "Bu iyi fikir.",
+      "exampleEnglish": "Use the written model as the final correctness check: “That is a good idea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "iyi fikir",
+      "romanization": "i-Yİ fi-KİR",
+      "nativeText": "Check whether \"iyi fikir\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "pronunciation": "i-Yİ fi-KİR",
+      "exampleTarget": "Bu iyi fikir.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "korean": "iyi fikir",
+      "english": "Check whether \"iyi fikir\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is a good idea.”",
+      "example": "Bu iyi fikir.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “That is a good idea.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "olur",
+      "romanization": "o-LUR",
+      "nativeText": "“Okay / that works.” One of the most natural acceptance words.",
+      "pronunciation": "o-LUR",
+      "exampleTarget": "Saat beş olur.",
+      "exampleNative": "“Five o’clock works.”",
+      "korean": "olur",
+      "english": "“Okay / that works.” One of the most natural acceptance words.",
+      "example": "Saat beş olur.",
+      "exampleEnglish": "“Five o’clock works.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "Saat beş olur.",
+      "romanization": "o-LUR",
+      "nativeText": "Model use for \"Saat beş olur.\": “Five o’clock works.”",
+      "pronunciation": "o-LUR",
+      "exampleTarget": "Saat beş olur.",
+      "exampleNative": "“Five o’clock works.”",
+      "korean": "Saat beş olur.",
+      "english": "Model use for \"Saat beş olur.\": “Five o’clock works.”",
+      "example": "Saat beş olur.",
+      "exampleEnglish": "“Five o’clock works.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "olur",
+      "romanization": "o-LUR",
+      "nativeText": "Usage focus for \"olur\": “Okay / that works.” One of the most natural acceptance words.",
+      "pronunciation": "o-LUR",
+      "exampleTarget": "Saat beş olur.",
+      "exampleNative": "Notice what the form is doing here: “Five o’clock works.”",
+      "korean": "olur",
+      "english": "Usage focus for \"olur\": “Okay / that works.” One of the most natural acceptance words.",
+      "example": "Saat beş olur.",
+      "exampleEnglish": "Notice what the form is doing here: “Five o’clock works.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "olur",
+      "romanization": "o-LUR",
+      "nativeText": "Contrast check for \"olur\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "o-LUR",
+      "exampleTarget": "Saat beş olur.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Five o’clock works.”",
+      "korean": "olur",
+      "english": "Contrast check for \"olur\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Saat beş olur.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Five o’clock works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "olur",
+      "romanization": "o-LUR",
+      "nativeText": "Recall \"olur\" from memory, then explain what would change if a nearby alternative replaced it in \"Saat beş olur.\".",
+      "pronunciation": "o-LUR",
+      "exampleTarget": "Saat beş olur.",
+      "exampleNative": "Self-check against the model before moving on: “Five o’clock works.”",
+      "korean": "olur",
+      "english": "Recall \"olur\" from memory, then explain what would change if a nearby alternative replaced it in \"Saat beş olur.\".",
+      "example": "Saat beş olur.",
+      "exampleEnglish": "Self-check against the model before moving on: “Five o’clock works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "olur",
+      "romanization": "o-LUR",
+      "nativeText": "Repair \"olur\" inside \"Saat beş olur.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay / that works.” One of the most natural acceptance words.",
+      "pronunciation": "o-LUR",
+      "exampleTarget": "Saat beş olur.",
+      "exampleNative": "Use the model as the repair target: “Five o’clock works.”",
+      "korean": "olur",
+      "english": "Repair \"olur\" inside \"Saat beş olur.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay / that works.” One of the most natural acceptance words.",
+      "example": "Saat beş olur.",
+      "exampleEnglish": "Use the model as the repair target: “Five o’clock works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "olur",
+      "romanization": "o-LUR",
+      "nativeText": "Transfer \"olur\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Saat beş olur.\".",
+      "pronunciation": "o-LUR",
+      "exampleTarget": "Saat beş olur.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Five o’clock works.”",
+      "korean": "olur",
+      "english": "Transfer \"olur\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Saat beş olur.\".",
+      "example": "Saat beş olur.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Five o’clock works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "olur",
+      "romanization": "o-LUR",
+      "nativeText": "Find one word or phrase that naturally travels with \"olur\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "o-LUR",
+      "exampleTarget": "Saat beş olur.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Five o’clock works.”",
+      "korean": "olur",
+      "english": "Find one word or phrase that naturally travels with \"olur\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Saat beş olur.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Five o’clock works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "olur",
+      "romanization": "o-LUR",
+      "nativeText": "Listen for \"olur\" inside \"Saat beş olur.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "o-LUR",
+      "exampleTarget": "Saat beş olur.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Five o’clock works.”",
+      "korean": "olur",
+      "english": "Listen for \"olur\" inside \"Saat beş olur.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Saat beş olur.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Five o’clock works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "olur",
+      "romanization": "o-LUR",
+      "nativeText": "Write \"olur\" again without looking, then compare the exact written form against \"Saat beş olur.\" before moving on.",
+      "pronunciation": "o-LUR",
+      "exampleTarget": "Saat beş olur.",
+      "exampleNative": "Use the written model as the final correctness check: “Five o’clock works.”",
+      "korean": "olur",
+      "english": "Write \"olur\" again without looking, then compare the exact written form against \"Saat beş olur.\" before moving on.",
+      "example": "Saat beş olur.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Five o’clock works.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "olur",
+      "romanization": "o-LUR",
+      "nativeText": "Check whether \"olur\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Five o’clock works.”",
+      "pronunciation": "o-LUR",
+      "exampleTarget": "Saat beş olur.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Five o’clock works.”",
+      "korean": "olur",
+      "english": "Check whether \"olur\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Five o’clock works.”",
+      "example": "Saat beş olur.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Five o’clock works.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kusura bakma, gelemem",
+      "romanization": "ku-su-RA bak-MA ge-le-MEM",
+      "nativeText": "“Sorry, I cannot come.” A soft refusal.",
+      "pronunciation": "ku-su-RA bak-MA ge-le-MEM",
+      "exampleTarget": "Kusura bakma, cumartesi gelemem.",
+      "exampleNative": "“Sorry, I cannot come on Saturday.”",
+      "korean": "kusura bakma, gelemem",
+      "english": "“Sorry, I cannot come.” A soft refusal.",
+      "example": "Kusura bakma, cumartesi gelemem.",
+      "exampleEnglish": "“Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "Kusura bakma, cumartesi gelemem.",
+      "romanization": "ku-su-RA bak-MA ge-le-MEM",
+      "nativeText": "Model use for \"Kusura bakma, cumartesi gelemem.\": “Sorry, I cannot come on Saturday.”",
+      "pronunciation": "ku-su-RA bak-MA ge-le-MEM",
+      "exampleTarget": "Kusura bakma, cumartesi gelemem.",
+      "exampleNative": "“Sorry, I cannot come on Saturday.”",
+      "korean": "Kusura bakma, cumartesi gelemem.",
+      "english": "Model use for \"Kusura bakma, cumartesi gelemem.\": “Sorry, I cannot come on Saturday.”",
+      "example": "Kusura bakma, cumartesi gelemem.",
+      "exampleEnglish": "“Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kusura bakma, gelemem",
+      "romanization": "ku-su-RA bak-MA ge-le-MEM",
+      "nativeText": "Usage focus for \"kusura bakma, gelemem\": “Sorry, I cannot come.” A soft refusal.",
+      "pronunciation": "ku-su-RA bak-MA ge-le-MEM",
+      "exampleTarget": "Kusura bakma, cumartesi gelemem.",
+      "exampleNative": "Notice what the form is doing here: “Sorry, I cannot come on Saturday.”",
+      "korean": "kusura bakma, gelemem",
+      "english": "Usage focus for \"kusura bakma, gelemem\": “Sorry, I cannot come.” A soft refusal.",
+      "example": "Kusura bakma, cumartesi gelemem.",
+      "exampleEnglish": "Notice what the form is doing here: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kusura bakma, gelemem",
+      "romanization": "ku-su-RA bak-MA ge-le-MEM",
+      "nativeText": "Contrast check for \"kusura bakma, gelemem\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ku-su-RA bak-MA ge-le-MEM",
+      "exampleTarget": "Kusura bakma, cumartesi gelemem.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sorry, I cannot come on Saturday.”",
+      "korean": "kusura bakma, gelemem",
+      "english": "Contrast check for \"kusura bakma, gelemem\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kusura bakma, cumartesi gelemem.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kusura bakma, gelemem",
+      "romanization": "ku-su-RA bak-MA ge-le-MEM",
+      "nativeText": "Recall \"kusura bakma, gelemem\" from memory, then explain what would change if a nearby alternative replaced it in \"Kusura bakma, cumartesi gelemem.\".",
+      "pronunciation": "ku-su-RA bak-MA ge-le-MEM",
+      "exampleTarget": "Kusura bakma, cumartesi gelemem.",
+      "exampleNative": "Self-check against the model before moving on: “Sorry, I cannot come on Saturday.”",
+      "korean": "kusura bakma, gelemem",
+      "english": "Recall \"kusura bakma, gelemem\" from memory, then explain what would change if a nearby alternative replaced it in \"Kusura bakma, cumartesi gelemem.\".",
+      "example": "Kusura bakma, cumartesi gelemem.",
+      "exampleEnglish": "Self-check against the model before moving on: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kusura bakma, gelemem",
+      "romanization": "ku-su-RA bak-MA ge-le-MEM",
+      "nativeText": "Repair \"kusura bakma, gelemem\" inside \"Kusura bakma, cumartesi gelemem.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sorry, I cannot come.” A soft refusal.",
+      "pronunciation": "ku-su-RA bak-MA ge-le-MEM",
+      "exampleTarget": "Kusura bakma, cumartesi gelemem.",
+      "exampleNative": "Use the model as the repair target: “Sorry, I cannot come on Saturday.”",
+      "korean": "kusura bakma, gelemem",
+      "english": "Repair \"kusura bakma, gelemem\" inside \"Kusura bakma, cumartesi gelemem.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sorry, I cannot come.” A soft refusal.",
+      "example": "Kusura bakma, cumartesi gelemem.",
+      "exampleEnglish": "Use the model as the repair target: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kusura bakma, gelemem",
+      "romanization": "ku-su-RA bak-MA ge-le-MEM",
+      "nativeText": "Transfer \"kusura bakma, gelemem\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kusura bakma, cumartesi gelemem.\".",
+      "pronunciation": "ku-su-RA bak-MA ge-le-MEM",
+      "exampleTarget": "Kusura bakma, cumartesi gelemem.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sorry, I cannot come on Saturday.”",
+      "korean": "kusura bakma, gelemem",
+      "english": "Transfer \"kusura bakma, gelemem\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kusura bakma, cumartesi gelemem.\".",
+      "example": "Kusura bakma, cumartesi gelemem.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kusura bakma, gelemem",
+      "romanization": "ku-su-RA bak-MA ge-le-MEM",
+      "nativeText": "Find one word or phrase that naturally travels with \"kusura bakma, gelemem\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ku-su-RA bak-MA ge-le-MEM",
+      "exampleTarget": "Kusura bakma, cumartesi gelemem.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Sorry, I cannot come on Saturday.”",
+      "korean": "kusura bakma, gelemem",
+      "english": "Find one word or phrase that naturally travels with \"kusura bakma, gelemem\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kusura bakma, cumartesi gelemem.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kusura bakma, gelemem",
+      "romanization": "ku-su-RA bak-MA ge-le-MEM",
+      "nativeText": "Listen for \"kusura bakma, gelemem\" inside \"Kusura bakma, cumartesi gelemem.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ku-su-RA bak-MA ge-le-MEM",
+      "exampleTarget": "Kusura bakma, cumartesi gelemem.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sorry, I cannot come on Saturday.”",
+      "korean": "kusura bakma, gelemem",
+      "english": "Listen for \"kusura bakma, gelemem\" inside \"Kusura bakma, cumartesi gelemem.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kusura bakma, cumartesi gelemem.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kusura bakma, gelemem",
+      "romanization": "ku-su-RA bak-MA ge-le-MEM",
+      "nativeText": "Write \"kusura bakma, gelemem\" again without looking, then compare the exact written form against \"Kusura bakma, cumartesi gelemem.\" before moving on.",
+      "pronunciation": "ku-su-RA bak-MA ge-le-MEM",
+      "exampleTarget": "Kusura bakma, cumartesi gelemem.",
+      "exampleNative": "Use the written model as the final correctness check: “Sorry, I cannot come on Saturday.”",
+      "korean": "kusura bakma, gelemem",
+      "english": "Write \"kusura bakma, gelemem\" again without looking, then compare the exact written form against \"Kusura bakma, cumartesi gelemem.\" before moving on.",
+      "example": "Kusura bakma, cumartesi gelemem.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "kusura bakma, gelemem",
+      "romanization": "ku-su-RA bak-MA ge-le-MEM",
+      "nativeText": "Check whether \"kusura bakma, gelemem\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot come on Saturday.”",
+      "pronunciation": "ku-su-RA bak-MA ge-le-MEM",
+      "exampleTarget": "Kusura bakma, cumartesi gelemem.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot come on Saturday.”",
+      "korean": "kusura bakma, gelemem",
+      "english": "Check whether \"kusura bakma, gelemem\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot come on Saturday.”",
+      "example": "Kusura bakma, cumartesi gelemem.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Sorry, I cannot come on Saturday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "belki",
+      "romanization": "bel-Kİ",
+      "nativeText": "“Maybe.” Useful when the speaker is undecided.",
+      "pronunciation": "bel-Kİ",
+      "exampleTarget": "Belki pazar daha iyi.",
+      "exampleNative": "“Maybe Sunday is better.”",
+      "korean": "belki",
+      "english": "“Maybe.” Useful when the speaker is undecided.",
+      "example": "Belki pazar daha iyi.",
+      "exampleEnglish": "“Maybe Sunday is better.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "Belki pazar daha iyi.",
+      "romanization": "bel-Kİ",
+      "nativeText": "Model use for \"Belki pazar daha iyi.\": “Maybe Sunday is better.”",
+      "pronunciation": "bel-Kİ",
+      "exampleTarget": "Belki pazar daha iyi.",
+      "exampleNative": "“Maybe Sunday is better.”",
+      "korean": "Belki pazar daha iyi.",
+      "english": "Model use for \"Belki pazar daha iyi.\": “Maybe Sunday is better.”",
+      "example": "Belki pazar daha iyi.",
+      "exampleEnglish": "“Maybe Sunday is better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "belki",
+      "romanization": "bel-Kİ",
+      "nativeText": "Usage focus for \"belki\": “Maybe.” Useful when the speaker is undecided.",
+      "pronunciation": "bel-Kİ",
+      "exampleTarget": "Belki pazar daha iyi.",
+      "exampleNative": "Notice what the form is doing here: “Maybe Sunday is better.”",
+      "korean": "belki",
+      "english": "Usage focus for \"belki\": “Maybe.” Useful when the speaker is undecided.",
+      "example": "Belki pazar daha iyi.",
+      "exampleEnglish": "Notice what the form is doing here: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "belki",
+      "romanization": "bel-Kİ",
+      "nativeText": "Contrast check for \"belki\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bel-Kİ",
+      "exampleTarget": "Belki pazar daha iyi.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe Sunday is better.”",
+      "korean": "belki",
+      "english": "Contrast check for \"belki\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Belki pazar daha iyi.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "belki",
+      "romanization": "bel-Kİ",
+      "nativeText": "Recall \"belki\" from memory, then explain what would change if a nearby alternative replaced it in \"Belki pazar daha iyi.\".",
+      "pronunciation": "bel-Kİ",
+      "exampleTarget": "Belki pazar daha iyi.",
+      "exampleNative": "Self-check against the model before moving on: “Maybe Sunday is better.”",
+      "korean": "belki",
+      "english": "Recall \"belki\" from memory, then explain what would change if a nearby alternative replaced it in \"Belki pazar daha iyi.\".",
+      "example": "Belki pazar daha iyi.",
+      "exampleEnglish": "Self-check against the model before moving on: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "belki",
+      "romanization": "bel-Kİ",
+      "nativeText": "Repair \"belki\" inside \"Belki pazar daha iyi.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Maybe.” Useful when the speaker is undecided.",
+      "pronunciation": "bel-Kİ",
+      "exampleTarget": "Belki pazar daha iyi.",
+      "exampleNative": "Use the model as the repair target: “Maybe Sunday is better.”",
+      "korean": "belki",
+      "english": "Repair \"belki\" inside \"Belki pazar daha iyi.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Maybe.” Useful when the speaker is undecided.",
+      "example": "Belki pazar daha iyi.",
+      "exampleEnglish": "Use the model as the repair target: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "belki",
+      "romanization": "bel-Kİ",
+      "nativeText": "Transfer \"belki\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Belki pazar daha iyi.\".",
+      "pronunciation": "bel-Kİ",
+      "exampleTarget": "Belki pazar daha iyi.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe Sunday is better.”",
+      "korean": "belki",
+      "english": "Transfer \"belki\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Belki pazar daha iyi.\".",
+      "example": "Belki pazar daha iyi.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "belki",
+      "romanization": "bel-Kİ",
+      "nativeText": "Find one word or phrase that naturally travels with \"belki\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bel-Kİ",
+      "exampleTarget": "Belki pazar daha iyi.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Maybe Sunday is better.”",
+      "korean": "belki",
+      "english": "Find one word or phrase that naturally travels with \"belki\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Belki pazar daha iyi.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "belki",
+      "romanization": "bel-Kİ",
+      "nativeText": "Listen for \"belki\" inside \"Belki pazar daha iyi.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bel-Kİ",
+      "exampleTarget": "Belki pazar daha iyi.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe Sunday is better.”",
+      "korean": "belki",
+      "english": "Listen for \"belki\" inside \"Belki pazar daha iyi.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Belki pazar daha iyi.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "belki",
+      "romanization": "bel-Kİ",
+      "nativeText": "Write \"belki\" again without looking, then compare the exact written form against \"Belki pazar daha iyi.\" before moving on.",
+      "pronunciation": "bel-Kİ",
+      "exampleTarget": "Belki pazar daha iyi.",
+      "exampleNative": "Use the written model as the final correctness check: “Maybe Sunday is better.”",
+      "korean": "belki",
+      "english": "Write \"belki\" again without looking, then compare the exact written form against \"Belki pazar daha iyi.\" before moving on.",
+      "example": "Belki pazar daha iyi.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "belki",
+      "romanization": "bel-Kİ",
+      "nativeText": "Check whether \"belki\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "pronunciation": "bel-Kİ",
+      "exampleTarget": "Belki pazar daha iyi.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "korean": "belki",
+      "english": "Check whether \"belki\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”",
+      "example": "Belki pazar daha iyi.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Maybe Sunday is better.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "o zaman",
+      "romanization": "o za-MAN",
+      "nativeText": "“Then / in that case.” A natural pivot after new information.",
+      "pronunciation": "o za-MAN",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "“Then let’s meet at six.”",
+      "korean": "o zaman",
+      "english": "“Then / in that case.” A natural pivot after new information.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "“Then let’s meet at six.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "O zaman saat altıda buluşalım.",
+      "romanization": "o za-MAN",
+      "nativeText": "Model use for \"O zaman saat altıda buluşalım.\": “Then let’s meet at six.”",
+      "pronunciation": "o za-MAN",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "“Then let’s meet at six.”",
+      "korean": "O zaman saat altıda buluşalım.",
+      "english": "Model use for \"O zaman saat altıda buluşalım.\": “Then let’s meet at six.”",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "“Then let’s meet at six.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "o zaman",
+      "romanization": "o za-MAN",
+      "nativeText": "Usage focus for \"o zaman\": “Then / in that case.” A natural pivot after new information.",
+      "pronunciation": "o za-MAN",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "Notice what the form is doing here: “Then let’s meet at six.”",
+      "korean": "o zaman",
+      "english": "Usage focus for \"o zaman\": “Then / in that case.” A natural pivot after new information.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "Notice what the form is doing here: “Then let’s meet at six.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "o zaman",
+      "romanization": "o za-MAN",
+      "nativeText": "Contrast check for \"o zaman\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "o za-MAN",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then let’s meet at six.”",
+      "korean": "o zaman",
+      "english": "Contrast check for \"o zaman\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then let’s meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "o zaman",
+      "romanization": "o za-MAN",
+      "nativeText": "Recall \"o zaman\" from memory, then explain what would change if a nearby alternative replaced it in \"O zaman saat altıda buluşalım.\".",
+      "pronunciation": "o za-MAN",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "Self-check against the model before moving on: “Then let’s meet at six.”",
+      "korean": "o zaman",
+      "english": "Recall \"o zaman\" from memory, then explain what would change if a nearby alternative replaced it in \"O zaman saat altıda buluşalım.\".",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "Self-check against the model before moving on: “Then let’s meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "o zaman",
+      "romanization": "o za-MAN",
+      "nativeText": "Repair \"o zaman\" inside \"O zaman saat altıda buluşalım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / in that case.” A natural pivot after new information.",
+      "pronunciation": "o za-MAN",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "Use the model as the repair target: “Then let’s meet at six.”",
+      "korean": "o zaman",
+      "english": "Repair \"o zaman\" inside \"O zaman saat altıda buluşalım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / in that case.” A natural pivot after new information.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "Use the model as the repair target: “Then let’s meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "o zaman",
+      "romanization": "o za-MAN",
+      "nativeText": "Transfer \"o zaman\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"O zaman saat altıda buluşalım.\".",
+      "pronunciation": "o za-MAN",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then let’s meet at six.”",
+      "korean": "o zaman",
+      "english": "Transfer \"o zaman\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"O zaman saat altıda buluşalım.\".",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then let’s meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "o zaman",
+      "romanization": "o za-MAN",
+      "nativeText": "Find one word or phrase that naturally travels with \"o zaman\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "o za-MAN",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Then let’s meet at six.”",
+      "korean": "o zaman",
+      "english": "Find one word or phrase that naturally travels with \"o zaman\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Then let’s meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "o zaman",
+      "romanization": "o za-MAN",
+      "nativeText": "Listen for \"o zaman\" inside \"O zaman saat altıda buluşalım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "o za-MAN",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then let’s meet at six.”",
+      "korean": "o zaman",
+      "english": "Listen for \"o zaman\" inside \"O zaman saat altıda buluşalım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then let’s meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "o zaman",
+      "romanization": "o za-MAN",
+      "nativeText": "Write \"o zaman\" again without looking, then compare the exact written form against \"O zaman saat altıda buluşalım.\" before moving on.",
+      "pronunciation": "o za-MAN",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "Use the written model as the final correctness check: “Then let’s meet at six.”",
+      "korean": "o zaman",
+      "english": "Write \"o zaman\" again without looking, then compare the exact written form against \"O zaman saat altıda buluşalım.\" before moving on.",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Then let’s meet at six.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit20suggestions-vocabulary-1",
+        "tr-level1unit20suggestions-vocabulary-2",
+        "tr-level1unit20suggestions-grammar-1",
+        "tr-level1unit20suggestions-grammar-2",
+        "tr-level1unit20suggestions-reading",
+        "tr-level1unit20suggestions-listening",
+        "tr-level1unit20suggestions-writing",
+        "tr-level1unit20suggestions-task"
+      ],
+      "targetText": "o zaman",
+      "romanization": "o za-MAN",
+      "nativeText": "Check whether \"o zaman\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then let’s meet at six.”",
+      "pronunciation": "o za-MAN",
+      "exampleTarget": "O zaman saat altıda buluşalım.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Then let’s meet at six.”",
+      "korean": "o zaman",
+      "english": "Check whether \"o zaman\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then let’s meet at six.”",
+      "example": "O zaman saat altıda buluşalım.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Then let’s meet at six.”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

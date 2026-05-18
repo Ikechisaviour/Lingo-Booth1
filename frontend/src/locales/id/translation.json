@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Latihlah item ini di tempat lain",
     "practiceEverywhere": "Praktekkan ini di mana saja",
     "saveReply": "Simpan balasan",
-    "selfTestReason": "Disimpan dari kelas untuk tes mandiri cepat."
+    "selfTestReason": "Disimpan dari kelas untuk tes mandiri cepat.",
+    "hideOutline": "Sembunyikan garis besar",
+    "showOutline": "Tampilkan garis besar"
   },
   "classList": {
     "heroAriaLabel": "Kelas",
@@ -994,7 +996,7 @@
     "guidedTutor": "Guru yang dipandu",
     "startClass": "Mulai kelas",
     "classFallback": "Kelas",
-    "loadError": "Tidak dapat memuat pelajaran kelas. Pastikan backend berjalan dan diunggulkan.",
+    "loadError": "Kami tidak dapat memuat pelajaran Anda saat ini. Silakan periksa koneksi Anda dan coba lagi.",
     "tracks": {
       "foundationTitle": "Tingkat {{level}} - Fondasi",
       "foundationSubtitle": "Mulai di sini dengan sistem suara dan penulisan untuk {{language}}.",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "Tingkat {{level}} · Satuan {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Coba lagi",
+    "progressAriaLabel": "Kemajuan kelas",
+    "progressCaption": "{{percent}}% selesai · {{completed}} dari {{total}} item"
   },
   "contextPractice": {
     "title": "Pelajaran terbentuk di sekitar Anda",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "Apa yang berjalan dengan baik",
     "recapUsefulPhrases": "Frase yang berguna",
     "recapReview": "Tinjau selanjutnya",
-    "recapReviewFallback": "Simpan satu frasa dan gunakan kembali dalam mode latihan lainnya."
+    "recapReviewFallback": "Simpan satu frasa dan gunakan kembali dalam mode latihan lainnya.",
+    "hideSetup": "Sembunyikan pengaturan",
+    "showSetup": "Tampilkan pengaturan"
   },
   "exerciseHub": {
     "ariaLabel": "Latihan",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: salin bentuknya, lalu tulis dari memori."
     },
     "savedReason": "Disimpan dari latihan menulis untuk izin lain.",
-    "selfTestReason": "Disimpan dari latihan menulis untuk tes mandiri cepat."
+    "selfTestReason": "Disimpan dari latihan menulis untuk tes mandiri cepat.",
+    "hideNotebook": "Sembunyikan buku catatan",
+    "showNotebook": "Tunjukkan buku catatan"
   },
   "institution": {
     "kicker": "Lembaga",

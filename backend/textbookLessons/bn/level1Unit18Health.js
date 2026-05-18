@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u18',
-  title: 'Level 1 · Unit 18: স্বাস্থ্য — Health',
-  category: 'health',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe simple symptoms, ask for help, and understand basic health advice.',
-  vocabularyGoal: 'Use body-part, symptom, medicine, and clinic vocabulary.',
-  grammarGoal: 'Use experiencer phrases such as `আমার ... ব্যথা`, need phrases, and polite advice.',
-  speakingGoal: 'Say what hurts, describe one symptom, and understand one instruction.',
-  task: 'Explain a minor illness at a pharmacy or clinic.',
-  expressionPractice: [
-    practice('describing-symptom', 'Describing symptom', 'Use one pain or symptom phrase.'),
-    practice('asking-help', 'Asking help', 'Use `ওষুধ দরকার`.'),
-    practice('understanding-advice', 'Understanding advice', 'Recognize one recommendation and one prohibition.'),
+module.exports = {
+  "title": "Level 1 · Unit 18: স্বাস্থ্য — Health",
+  "category": "health",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit18health-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe simple symptoms, ask for help, and understand basic health advice."
+      ],
+      "task": "Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "id": "bn-level1unit18health-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit18health-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 18: স্বাস্থ্য — Health with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit18health-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 18: স্বাস্থ্য — Health sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit18health-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe simple symptoms, ask for help, and understand basic health advice."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit18health-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 18: স্বাস্থ্য — Health with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit18health-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit18health-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit18health-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit18health-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit18health-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Explain a minor illness at a pharmacy or clinic."
+      ],
+      "task": "Explain a minor illness at a pharmacy or clinic."
+    }
   ],
-  relatedPools: ['topic-health', 'topic-service'],
-  items: [
-    item('আমার মাথা ব্যথা', 'amar matha byatha', '“I have a headache.” Bengali often uses a possession-like experiencer phrase.', 'সকাল থেকে আমার মাথা ব্যথা।', '“I have had a headache since morning.”'),
-    item('জ্বর', 'jor', '“Fever.” A common clinic word.', 'আমার জ্বর আছে।', '“I have a fever.”'),
-    item('কাশি', 'kashi', '“Cough.” A practical symptom noun.', 'আমার শুকনো কাশি আছে।', '“I have a dry cough.”'),
-    item('পেট ব্যথা', 'pet byatha', '“Stomachache.” A common compound complaint.', 'খাওয়ার পরে পেট ব্যথা।', '“I have stomach pain after eating.”'),
-    item('ওষুধ', 'oshudh', '“Medicine.” Useful in pharmacy talk.', 'সর্দির ওষুধ দরকার।', '“I need medicine for a cold.”'),
-    item('ডাক্তার', 'daktar', '“Doctor.” A central service noun.', 'আমার ডাক্তার দেখানো দরকার।', '“I need to see a doctor.”'),
-    item('বিশ্রাম নিন', 'bishram nin', '“Take rest.” A polite advice phrase.', 'দুই দিন বিশ্রাম নিন।', '“Take rest for two days.”'),
-    item('ঝাল খাবেন না', 'jhal khaben na', '“Do not eat spicy food.” Respectful negative advice.', 'আজ ঝাল খাবেন না।', '“Do not eat spicy food today.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-symptom",
+      "label": "Describing symptom",
+      "goal": "Use one pain or symptom phrase."
+    },
+    {
+      "id": "asking-help",
+      "label": "Asking help",
+      "goal": "Use `ওষুধ দরকার`."
+    },
+    {
+      "id": "understanding-advice",
+      "label": "Understanding advice",
+      "goal": "Recognize one recommendation and one prohibition."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-health",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Explain a minor illness at a pharmacy or clinic.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit18health-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"সকাল থেকে আমার মাথা ব্যথা।\".",
+      "pronunciation": "",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"সকাল থেকে আমার মাথা ব্যথা।\".",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 18: স্বাস্থ্য — Health with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "Use the key language of Level 1 · Unit 18: স্বাস্থ্য — Health with the register and setting that the lesson requires.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-2"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 18: স্বাস্থ্য — Health sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "“I have a fever.”",
+      "korean": "জ্বর",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 18: স্বাস্থ্য — Health sound precise rather than merely understandable.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit18health-grammar-1"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "",
+      "nativeText": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "pronunciation": "",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit18health-grammar-2"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 18: স্বাস্থ্য — Health with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "“I have a fever.”",
+      "korean": "জ্বর",
+      "english": "Contrast the main pattern in Level 1 · Unit 18: স্বাস্থ্য — Health with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit18health-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"আজ ঝাল খাবেন না।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"আজ ঝাল খাবেন না।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit18health-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"আজ ঝাল খাবেন না।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"আজ ঝাল খাবেন না।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit18health-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"সকাল থেকে আমার মাথা ব্যথা।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"সকাল থেকে আমার মাথা ব্যথা।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit18health-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "“I have a fever.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Explain a minor illness at a pharmacy or clinic.",
+      "pronunciation": "",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "Explain a minor illness at a pharmacy or clinic.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Explain a minor illness at a pharmacy or clinic.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আমার জ্বর আছে।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I have a fever.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আমার জ্বর আছে।\" against the model.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I have a fever.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"সকাল থেকে আমার মাথা ব্যথা।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"সকাল থেকে আমার মাথা ব্যথা।\" before reusing it elsewhere.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"আজ ঝাল খাবেন না।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"আজ ঝাল খাবেন না।\" as one thought.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"সকাল থেকে আমার মাথা ব্যথা।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"সকাল থেকে আমার মাথা ব্যথা।\" and move it into your own life.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"আমার মাথা ব্যথা\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "আমার মাথা ব্যথা",
+      "exampleNative": "“I have a headache.” Bengali often uses a possession-like experiencer phrase.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"আমার মাথা ব্যথা\" before looking back.",
+      "example": "আমার মাথা ব্যথা",
+      "exampleEnglish": "“I have a headache.” Bengali often uses a possession-like experiencer phrase."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"আজ ঝাল খাবেন না।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"আজ ঝাল খাবেন না।\" rather than restarting from a blank sentence.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 18: স্বাস্থ্য — Health with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আমার জ্বর আছে।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "“I have a fever.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 18: স্বাস্থ্য — Health with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আমার জ্বর আছে।\" as the comparison line.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit18health-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"সকাল থেকে আমার মাথা ব্যথা।\".",
+      "pronunciation": "",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"সকাল থেকে আমার মাথা ব্যথা।\".",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"আজ ঝাল খাবেন না।\".",
+      "pronunciation": "",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"আজ ঝাল খাবেন না।\".",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"সকাল থেকে আমার মাথা ব্যথা।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"সকাল থেকে আমার মাথা ব্যথা।\" one layer at a time.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আমার জ্বর আছে।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "“I have a fever.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আমার জ্বর আছে।\" as the deciding example.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-culture",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"আজ ঝাল খাবেন না।\".",
+      "pronunciation": "",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"আজ ঝাল খাবেন না।\".",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "amar matha byatha",
+      "nativeText": "“I have a headache.” Bengali often uses a possession-like experiencer phrase.",
+      "pronunciation": "amar matha byatha",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "“I have a headache.” Bengali often uses a possession-like experiencer phrase.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "সকাল থেকে আমার মাথা ব্যথা।",
+      "romanization": "amar matha byatha",
+      "nativeText": "Model use for \"সকাল থেকে আমার মাথা ব্যথা।\": “I have had a headache since morning.”",
+      "pronunciation": "amar matha byatha",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "“I have had a headache since morning.”",
+      "korean": "সকাল থেকে আমার মাথা ব্যথা।",
+      "english": "Model use for \"সকাল থেকে আমার মাথা ব্যথা।\": “I have had a headache since morning.”",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "“I have had a headache since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "amar matha byatha",
+      "nativeText": "Usage focus for \"আমার মাথা ব্যথা\": Use the key language of Level 1 · Unit 18: স্বাস্থ্য — Health with the register and setting that the lesson requires.",
+      "pronunciation": "amar matha byatha",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "Notice what the form is doing here: “I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "Usage focus for \"আমার মাথা ব্যথা\": Use the key language of Level 1 · Unit 18: স্বাস্থ্য — Health with the register and setting that the lesson requires.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "Notice what the form is doing here: “I have had a headache since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "amar matha byatha",
+      "nativeText": "Contrast check for \"আমার মাথা ব্যথা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "amar matha byatha",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "Contrast check for \"আমার মাথা ব্যথা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "amar matha byatha",
+      "nativeText": "Recall \"আমার মাথা ব্যথা\" from memory, then explain what would change if a nearby alternative replaced it in \"সকাল থেকে আমার মাথা ব্যথা।\".",
+      "pronunciation": "amar matha byatha",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "Self-check against the model before moving on: “I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "Recall \"আমার মাথা ব্যথা\" from memory, then explain what would change if a nearby alternative replaced it in \"সকাল থেকে আমার মাথা ব্যথা।\".",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "Self-check against the model before moving on: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "amar matha byatha",
+      "nativeText": "Repair \"আমার মাথা ব্যথা\" inside \"সকাল থেকে আমার মাথা ব্যথা।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 18: স্বাস্থ্য — Health with the register and setting that the lesson requires.",
+      "pronunciation": "amar matha byatha",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "Use the model as the repair target: “I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "Repair \"আমার মাথা ব্যথা\" inside \"সকাল থেকে আমার মাথা ব্যথা।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 18: স্বাস্থ্য — Health with the register and setting that the lesson requires.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "Use the model as the repair target: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "amar matha byatha",
+      "nativeText": "Transfer \"আমার মাথা ব্যথা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সকাল থেকে আমার মাথা ব্যথা।\".",
+      "pronunciation": "amar matha byatha",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "Transfer \"আমার মাথা ব্যথা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সকাল থেকে আমার মাথা ব্যথা।\".",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "amar matha byatha",
+      "nativeText": "Find one word or phrase that naturally travels with \"আমার মাথা ব্যথা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "amar matha byatha",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "Find one word or phrase that naturally travels with \"আমার মাথা ব্যথা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "amar matha byatha",
+      "nativeText": "Listen for \"আমার মাথা ব্যথা\" inside \"সকাল থেকে আমার মাথা ব্যথা।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "amar matha byatha",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "Listen for \"আমার মাথা ব্যথা\" inside \"সকাল থেকে আমার মাথা ব্যথা।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "amar matha byatha",
+      "nativeText": "Write \"আমার মাথা ব্যথা\" again without looking, then compare the exact written form against \"সকাল থেকে আমার মাথা ব্যথা।\" before moving on.",
+      "pronunciation": "amar matha byatha",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "Use the written model as the final correctness check: “I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "Write \"আমার মাথা ব্যথা\" again without looking, then compare the exact written form against \"সকাল থেকে আমার মাথা ব্যথা।\" before moving on.",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have had a headache since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার মাথা ব্যথা",
+      "romanization": "amar matha byatha",
+      "nativeText": "Check whether \"আমার মাথা ব্যথা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have had a headache since morning.”",
+      "pronunciation": "amar matha byatha",
+      "exampleTarget": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have had a headache since morning.”",
+      "korean": "আমার মাথা ব্যথা",
+      "english": "Check whether \"আমার মাথা ব্যথা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have had a headache since morning.”",
+      "example": "সকাল থেকে আমার মাথা ব্যথা।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have had a headache since morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "jor",
+      "nativeText": "“Fever.” A common clinic word.",
+      "pronunciation": "jor",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "“I have a fever.”",
+      "korean": "জ্বর",
+      "english": "“Fever.” A common clinic word.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার জ্বর আছে।",
+      "romanization": "jor",
+      "nativeText": "Model use for \"আমার জ্বর আছে।\": “I have a fever.”",
+      "pronunciation": "jor",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "“I have a fever.”",
+      "korean": "আমার জ্বর আছে।",
+      "english": "Model use for \"আমার জ্বর আছে।\": “I have a fever.”",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "“I have a fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "jor",
+      "nativeText": "Usage focus for \"জ্বর\": Distinguish the nearby wording choices that make Level 1 · Unit 18: স্বাস্থ্য — Health sound precise rather than merely understandable.",
+      "pronunciation": "jor",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "Notice what the form is doing here: “I have a fever.”",
+      "korean": "জ্বর",
+      "english": "Usage focus for \"জ্বর\": Distinguish the nearby wording choices that make Level 1 · Unit 18: স্বাস্থ্য — Health sound precise rather than merely understandable.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "Notice what the form is doing here: “I have a fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "jor",
+      "nativeText": "Contrast check for \"জ্বর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "jor",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a fever.”",
+      "korean": "জ্বর",
+      "english": "Contrast check for \"জ্বর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "jor",
+      "nativeText": "Recall \"জ্বর\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার জ্বর আছে।\".",
+      "pronunciation": "jor",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "Self-check against the model before moving on: “I have a fever.”",
+      "korean": "জ্বর",
+      "english": "Recall \"জ্বর\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার জ্বর আছে।\".",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "Self-check against the model before moving on: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "jor",
+      "nativeText": "Repair \"জ্বর\" inside \"আমার জ্বর আছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 18: স্বাস্থ্য — Health sound precise rather than merely understandable.",
+      "pronunciation": "jor",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "Use the model as the repair target: “I have a fever.”",
+      "korean": "জ্বর",
+      "english": "Repair \"জ্বর\" inside \"আমার জ্বর আছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 18: স্বাস্থ্য — Health sound precise rather than merely understandable.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "Use the model as the repair target: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "jor",
+      "nativeText": "Transfer \"জ্বর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার জ্বর আছে।\".",
+      "pronunciation": "jor",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a fever.”",
+      "korean": "জ্বর",
+      "english": "Transfer \"জ্বর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার জ্বর আছে।\".",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "jor",
+      "nativeText": "Find one word or phrase that naturally travels with \"জ্বর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "jor",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have a fever.”",
+      "korean": "জ্বর",
+      "english": "Find one word or phrase that naturally travels with \"জ্বর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "jor",
+      "nativeText": "Listen for \"জ্বর\" inside \"আমার জ্বর আছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "jor",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a fever.”",
+      "korean": "জ্বর",
+      "english": "Listen for \"জ্বর\" inside \"আমার জ্বর আছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "jor",
+      "nativeText": "Write \"জ্বর\" again without looking, then compare the exact written form against \"আমার জ্বর আছে।\" before moving on.",
+      "pronunciation": "jor",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "Use the written model as the final correctness check: “I have a fever.”",
+      "korean": "জ্বর",
+      "english": "Write \"জ্বর\" again without looking, then compare the exact written form against \"আমার জ্বর আছে।\" before moving on.",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have a fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "জ্বর",
+      "romanization": "jor",
+      "nativeText": "Check whether \"জ্বর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a fever.”",
+      "pronunciation": "jor",
+      "exampleTarget": "আমার জ্বর আছে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have a fever.”",
+      "korean": "জ্বর",
+      "english": "Check whether \"জ্বর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a fever.”",
+      "example": "আমার জ্বর আছে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have a fever.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "কাশি",
+      "romanization": "kashi",
+      "nativeText": "“Cough.” A practical symptom noun.",
+      "pronunciation": "kashi",
+      "exampleTarget": "আমার শুকনো কাশি আছে।",
+      "exampleNative": "“I have a dry cough.”",
+      "korean": "কাশি",
+      "english": "“Cough.” A practical symptom noun.",
+      "example": "আমার শুকনো কাশি আছে।",
+      "exampleEnglish": "“I have a dry cough.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার শুকনো কাশি আছে।",
+      "romanization": "kashi",
+      "nativeText": "Model use for \"আমার শুকনো কাশি আছে।\": “I have a dry cough.”",
+      "pronunciation": "kashi",
+      "exampleTarget": "আমার শুকনো কাশি আছে।",
+      "exampleNative": "“I have a dry cough.”",
+      "korean": "আমার শুকনো কাশি আছে।",
+      "english": "Model use for \"আমার শুকনো কাশি আছে।\": “I have a dry cough.”",
+      "example": "আমার শুকনো কাশি আছে।",
+      "exampleEnglish": "“I have a dry cough.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "কাশি",
+      "romanization": "kashi",
+      "nativeText": "Usage focus for \"কাশি\": “Cough.” A practical symptom noun.",
+      "pronunciation": "kashi",
+      "exampleTarget": "আমার শুকনো কাশি আছে।",
+      "exampleNative": "Notice what the form is doing here: “I have a dry cough.”",
+      "korean": "কাশি",
+      "english": "Usage focus for \"কাশি\": “Cough.” A practical symptom noun.",
+      "example": "আমার শুকনো কাশি আছে।",
+      "exampleEnglish": "Notice what the form is doing here: “I have a dry cough.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "কাশি",
+      "romanization": "kashi",
+      "nativeText": "Contrast check for \"কাশি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kashi",
+      "exampleTarget": "আমার শুকনো কাশি আছে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a dry cough.”",
+      "korean": "কাশি",
+      "english": "Contrast check for \"কাশি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমার শুকনো কাশি আছে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "কাশি",
+      "romanization": "kashi",
+      "nativeText": "Recall \"কাশি\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার শুকনো কাশি আছে।\".",
+      "pronunciation": "kashi",
+      "exampleTarget": "আমার শুকনো কাশি আছে।",
+      "exampleNative": "Self-check against the model before moving on: “I have a dry cough.”",
+      "korean": "কাশি",
+      "english": "Recall \"কাশি\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার শুকনো কাশি আছে।\".",
+      "example": "আমার শুকনো কাশি আছে।",
+      "exampleEnglish": "Self-check against the model before moving on: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "কাশি",
+      "romanization": "kashi",
+      "nativeText": "Repair \"কাশি\" inside \"আমার শুকনো কাশি আছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cough.” A practical symptom noun.",
+      "pronunciation": "kashi",
+      "exampleTarget": "আমার শুকনো কাশি আছে।",
+      "exampleNative": "Use the model as the repair target: “I have a dry cough.”",
+      "korean": "কাশি",
+      "english": "Repair \"কাশি\" inside \"আমার শুকনো কাশি আছে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cough.” A practical symptom noun.",
+      "example": "আমার শুকনো কাশি আছে।",
+      "exampleEnglish": "Use the model as the repair target: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "কাশি",
+      "romanization": "kashi",
+      "nativeText": "Transfer \"কাশি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার শুকনো কাশি আছে।\".",
+      "pronunciation": "kashi",
+      "exampleTarget": "আমার শুকনো কাশি আছে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a dry cough.”",
+      "korean": "কাশি",
+      "english": "Transfer \"কাশি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার শুকনো কাশি আছে।\".",
+      "example": "আমার শুকনো কাশি আছে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "কাশি",
+      "romanization": "kashi",
+      "nativeText": "Find one word or phrase that naturally travels with \"কাশি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kashi",
+      "exampleTarget": "আমার শুকনো কাশি আছে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have a dry cough.”",
+      "korean": "কাশি",
+      "english": "Find one word or phrase that naturally travels with \"কাশি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমার শুকনো কাশি আছে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "কাশি",
+      "romanization": "kashi",
+      "nativeText": "Listen for \"কাশি\" inside \"আমার শুকনো কাশি আছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kashi",
+      "exampleTarget": "আমার শুকনো কাশি আছে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a dry cough.”",
+      "korean": "কাশি",
+      "english": "Listen for \"কাশি\" inside \"আমার শুকনো কাশি আছে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমার শুকনো কাশি আছে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "কাশি",
+      "romanization": "kashi",
+      "nativeText": "Write \"কাশি\" again without looking, then compare the exact written form against \"আমার শুকনো কাশি আছে।\" before moving on.",
+      "pronunciation": "kashi",
+      "exampleTarget": "আমার শুকনো কাশি আছে।",
+      "exampleNative": "Use the written model as the final correctness check: “I have a dry cough.”",
+      "korean": "কাশি",
+      "english": "Write \"কাশি\" again without looking, then compare the exact written form against \"আমার শুকনো কাশি আছে।\" before moving on.",
+      "example": "আমার শুকনো কাশি আছে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "কাশি",
+      "romanization": "kashi",
+      "nativeText": "Check whether \"কাশি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "pronunciation": "kashi",
+      "exampleTarget": "আমার শুকনো কাশি আছে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "korean": "কাশি",
+      "english": "Check whether \"কাশি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "example": "আমার শুকনো কাশি আছে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "পেট ব্যথা",
+      "romanization": "pet byatha",
+      "nativeText": "“Stomachache.” A common compound complaint.",
+      "pronunciation": "pet byatha",
+      "exampleTarget": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleNative": "“I have stomach pain after eating.”",
+      "korean": "পেট ব্যথা",
+      "english": "“Stomachache.” A common compound complaint.",
+      "example": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleEnglish": "“I have stomach pain after eating.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "খাওয়ার পরে পেট ব্যথা।",
+      "romanization": "pet byatha",
+      "nativeText": "Model use for \"খাওয়ার পরে পেট ব্যথা।\": “I have stomach pain after eating.”",
+      "pronunciation": "pet byatha",
+      "exampleTarget": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleNative": "“I have stomach pain after eating.”",
+      "korean": "খাওয়ার পরে পেট ব্যথা।",
+      "english": "Model use for \"খাওয়ার পরে পেট ব্যথা।\": “I have stomach pain after eating.”",
+      "example": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleEnglish": "“I have stomach pain after eating.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "পেট ব্যথা",
+      "romanization": "pet byatha",
+      "nativeText": "Usage focus for \"পেট ব্যথা\": “Stomachache.” A common compound complaint.",
+      "pronunciation": "pet byatha",
+      "exampleTarget": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleNative": "Notice what the form is doing here: “I have stomach pain after eating.”",
+      "korean": "পেট ব্যথা",
+      "english": "Usage focus for \"পেট ব্যথা\": “Stomachache.” A common compound complaint.",
+      "example": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleEnglish": "Notice what the form is doing here: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "পেট ব্যথা",
+      "romanization": "pet byatha",
+      "nativeText": "Contrast check for \"পেট ব্যথা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pet byatha",
+      "exampleTarget": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have stomach pain after eating.”",
+      "korean": "পেট ব্যথা",
+      "english": "Contrast check for \"পেট ব্যথা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "পেট ব্যথা",
+      "romanization": "pet byatha",
+      "nativeText": "Recall \"পেট ব্যথা\" from memory, then explain what would change if a nearby alternative replaced it in \"খাওয়ার পরে পেট ব্যথা।\".",
+      "pronunciation": "pet byatha",
+      "exampleTarget": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleNative": "Self-check against the model before moving on: “I have stomach pain after eating.”",
+      "korean": "পেট ব্যথা",
+      "english": "Recall \"পেট ব্যথা\" from memory, then explain what would change if a nearby alternative replaced it in \"খাওয়ার পরে পেট ব্যথা।\".",
+      "example": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleEnglish": "Self-check against the model before moving on: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "পেট ব্যথা",
+      "romanization": "pet byatha",
+      "nativeText": "Repair \"পেট ব্যথা\" inside \"খাওয়ার পরে পেট ব্যথা।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stomachache.” A common compound complaint.",
+      "pronunciation": "pet byatha",
+      "exampleTarget": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleNative": "Use the model as the repair target: “I have stomach pain after eating.”",
+      "korean": "পেট ব্যথা",
+      "english": "Repair \"পেট ব্যথা\" inside \"খাওয়ার পরে পেট ব্যথা।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stomachache.” A common compound complaint.",
+      "example": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleEnglish": "Use the model as the repair target: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "পেট ব্যথা",
+      "romanization": "pet byatha",
+      "nativeText": "Transfer \"পেট ব্যথা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"খাওয়ার পরে পেট ব্যথা।\".",
+      "pronunciation": "pet byatha",
+      "exampleTarget": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have stomach pain after eating.”",
+      "korean": "পেট ব্যথা",
+      "english": "Transfer \"পেট ব্যথা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"খাওয়ার পরে পেট ব্যথা।\".",
+      "example": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "পেট ব্যথা",
+      "romanization": "pet byatha",
+      "nativeText": "Find one word or phrase that naturally travels with \"পেট ব্যথা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pet byatha",
+      "exampleTarget": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have stomach pain after eating.”",
+      "korean": "পেট ব্যথা",
+      "english": "Find one word or phrase that naturally travels with \"পেট ব্যথা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "পেট ব্যথা",
+      "romanization": "pet byatha",
+      "nativeText": "Listen for \"পেট ব্যথা\" inside \"খাওয়ার পরে পেট ব্যথা।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pet byatha",
+      "exampleTarget": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have stomach pain after eating.”",
+      "korean": "পেট ব্যথা",
+      "english": "Listen for \"পেট ব্যথা\" inside \"খাওয়ার পরে পেট ব্যথা।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "পেট ব্যথা",
+      "romanization": "pet byatha",
+      "nativeText": "Write \"পেট ব্যথা\" again without looking, then compare the exact written form against \"খাওয়ার পরে পেট ব্যথা।\" before moving on.",
+      "pronunciation": "pet byatha",
+      "exampleTarget": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleNative": "Use the written model as the final correctness check: “I have stomach pain after eating.”",
+      "korean": "পেট ব্যথা",
+      "english": "Write \"পেট ব্যথা\" again without looking, then compare the exact written form against \"খাওয়ার পরে পেট ব্যথা।\" before moving on.",
+      "example": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "পেট ব্যথা",
+      "romanization": "pet byatha",
+      "nativeText": "Check whether \"পেট ব্যথা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”",
+      "pronunciation": "pet byatha",
+      "exampleTarget": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”",
+      "korean": "পেট ব্যথা",
+      "english": "Check whether \"পেট ব্যথা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”",
+      "example": "খাওয়ার পরে পেট ব্যথা।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have stomach pain after eating.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ওষুধ",
+      "romanization": "oshudh",
+      "nativeText": "“Medicine.” Useful in pharmacy talk.",
+      "pronunciation": "oshudh",
+      "exampleTarget": "সর্দির ওষুধ দরকার।",
+      "exampleNative": "“I need medicine for a cold.”",
+      "korean": "ওষুধ",
+      "english": "“Medicine.” Useful in pharmacy talk.",
+      "example": "সর্দির ওষুধ দরকার।",
+      "exampleEnglish": "“I need medicine for a cold.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "সর্দির ওষুধ দরকার।",
+      "romanization": "oshudh",
+      "nativeText": "Model use for \"সর্দির ওষুধ দরকার।\": “I need medicine for a cold.”",
+      "pronunciation": "oshudh",
+      "exampleTarget": "সর্দির ওষুধ দরকার।",
+      "exampleNative": "“I need medicine for a cold.”",
+      "korean": "সর্দির ওষুধ দরকার।",
+      "english": "Model use for \"সর্দির ওষুধ দরকার।\": “I need medicine for a cold.”",
+      "example": "সর্দির ওষুধ দরকার।",
+      "exampleEnglish": "“I need medicine for a cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ওষুধ",
+      "romanization": "oshudh",
+      "nativeText": "Usage focus for \"ওষুধ\": “Medicine.” Useful in pharmacy talk.",
+      "pronunciation": "oshudh",
+      "exampleTarget": "সর্দির ওষুধ দরকার।",
+      "exampleNative": "Notice what the form is doing here: “I need medicine for a cold.”",
+      "korean": "ওষুধ",
+      "english": "Usage focus for \"ওষুধ\": “Medicine.” Useful in pharmacy talk.",
+      "example": "সর্দির ওষুধ দরকার।",
+      "exampleEnglish": "Notice what the form is doing here: “I need medicine for a cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ওষুধ",
+      "romanization": "oshudh",
+      "nativeText": "Contrast check for \"ওষুধ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "oshudh",
+      "exampleTarget": "সর্দির ওষুধ দরকার।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need medicine for a cold.”",
+      "korean": "ওষুধ",
+      "english": "Contrast check for \"ওষুধ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সর্দির ওষুধ দরকার।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ওষুধ",
+      "romanization": "oshudh",
+      "nativeText": "Recall \"ওষুধ\" from memory, then explain what would change if a nearby alternative replaced it in \"সর্দির ওষুধ দরকার।\".",
+      "pronunciation": "oshudh",
+      "exampleTarget": "সর্দির ওষুধ দরকার।",
+      "exampleNative": "Self-check against the model before moving on: “I need medicine for a cold.”",
+      "korean": "ওষুধ",
+      "english": "Recall \"ওষুধ\" from memory, then explain what would change if a nearby alternative replaced it in \"সর্দির ওষুধ দরকার।\".",
+      "example": "সর্দির ওষুধ দরকার।",
+      "exampleEnglish": "Self-check against the model before moving on: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ওষুধ",
+      "romanization": "oshudh",
+      "nativeText": "Repair \"ওষুধ\" inside \"সর্দির ওষুধ দরকার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Medicine.” Useful in pharmacy talk.",
+      "pronunciation": "oshudh",
+      "exampleTarget": "সর্দির ওষুধ দরকার।",
+      "exampleNative": "Use the model as the repair target: “I need medicine for a cold.”",
+      "korean": "ওষুধ",
+      "english": "Repair \"ওষুধ\" inside \"সর্দির ওষুধ দরকার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Medicine.” Useful in pharmacy talk.",
+      "example": "সর্দির ওষুধ দরকার।",
+      "exampleEnglish": "Use the model as the repair target: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ওষুধ",
+      "romanization": "oshudh",
+      "nativeText": "Transfer \"ওষুধ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সর্দির ওষুধ দরকার।\".",
+      "pronunciation": "oshudh",
+      "exampleTarget": "সর্দির ওষুধ দরকার।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need medicine for a cold.”",
+      "korean": "ওষুধ",
+      "english": "Transfer \"ওষুধ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সর্দির ওষুধ দরকার।\".",
+      "example": "সর্দির ওষুধ দরকার।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ওষুধ",
+      "romanization": "oshudh",
+      "nativeText": "Find one word or phrase that naturally travels with \"ওষুধ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "oshudh",
+      "exampleTarget": "সর্দির ওষুধ দরকার।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need medicine for a cold.”",
+      "korean": "ওষুধ",
+      "english": "Find one word or phrase that naturally travels with \"ওষুধ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সর্দির ওষুধ দরকার।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ওষুধ",
+      "romanization": "oshudh",
+      "nativeText": "Listen for \"ওষুধ\" inside \"সর্দির ওষুধ দরকার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "oshudh",
+      "exampleTarget": "সর্দির ওষুধ দরকার।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need medicine for a cold.”",
+      "korean": "ওষুধ",
+      "english": "Listen for \"ওষুধ\" inside \"সর্দির ওষুধ দরকার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সর্দির ওষুধ দরকার।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ওষুধ",
+      "romanization": "oshudh",
+      "nativeText": "Write \"ওষুধ\" again without looking, then compare the exact written form against \"সর্দির ওষুধ দরকার।\" before moving on.",
+      "pronunciation": "oshudh",
+      "exampleTarget": "সর্দির ওষুধ দরকার।",
+      "exampleNative": "Use the written model as the final correctness check: “I need medicine for a cold.”",
+      "korean": "ওষুধ",
+      "english": "Write \"ওষুধ\" again without looking, then compare the exact written form against \"সর্দির ওষুধ দরকার।\" before moving on.",
+      "example": "সর্দির ওষুধ দরকার।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ওষুধ",
+      "romanization": "oshudh",
+      "nativeText": "Check whether \"ওষুধ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”",
+      "pronunciation": "oshudh",
+      "exampleTarget": "সর্দির ওষুধ দরকার।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”",
+      "korean": "ওষুধ",
+      "english": "Check whether \"ওষুধ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”",
+      "example": "সর্দির ওষুধ দরকার।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ডাক্তার",
+      "romanization": "daktar",
+      "nativeText": "“Doctor.” A central service noun.",
+      "pronunciation": "daktar",
+      "exampleTarget": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleNative": "“I need to see a doctor.”",
+      "korean": "ডাক্তার",
+      "english": "“Doctor.” A central service noun.",
+      "example": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleEnglish": "“I need to see a doctor.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আমার ডাক্তার দেখানো দরকার।",
+      "romanization": "daktar",
+      "nativeText": "Model use for \"আমার ডাক্তার দেখানো দরকার।\": “I need to see a doctor.”",
+      "pronunciation": "daktar",
+      "exampleTarget": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleNative": "“I need to see a doctor.”",
+      "korean": "আমার ডাক্তার দেখানো দরকার।",
+      "english": "Model use for \"আমার ডাক্তার দেখানো দরকার।\": “I need to see a doctor.”",
+      "example": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleEnglish": "“I need to see a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ডাক্তার",
+      "romanization": "daktar",
+      "nativeText": "Usage focus for \"ডাক্তার\": “Doctor.” A central service noun.",
+      "pronunciation": "daktar",
+      "exampleTarget": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleNative": "Notice what the form is doing here: “I need to see a doctor.”",
+      "korean": "ডাক্তার",
+      "english": "Usage focus for \"ডাক্তার\": “Doctor.” A central service noun.",
+      "example": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleEnglish": "Notice what the form is doing here: “I need to see a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ডাক্তার",
+      "romanization": "daktar",
+      "nativeText": "Contrast check for \"ডাক্তার\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "daktar",
+      "exampleTarget": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to see a doctor.”",
+      "korean": "ডাক্তার",
+      "english": "Contrast check for \"ডাক্তার\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ডাক্তার",
+      "romanization": "daktar",
+      "nativeText": "Recall \"ডাক্তার\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার ডাক্তার দেখানো দরকার।\".",
+      "pronunciation": "daktar",
+      "exampleTarget": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleNative": "Self-check against the model before moving on: “I need to see a doctor.”",
+      "korean": "ডাক্তার",
+      "english": "Recall \"ডাক্তার\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার ডাক্তার দেখানো দরকার।\".",
+      "example": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleEnglish": "Self-check against the model before moving on: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ডাক্তার",
+      "romanization": "daktar",
+      "nativeText": "Repair \"ডাক্তার\" inside \"আমার ডাক্তার দেখানো দরকার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doctor.” A central service noun.",
+      "pronunciation": "daktar",
+      "exampleTarget": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleNative": "Use the model as the repair target: “I need to see a doctor.”",
+      "korean": "ডাক্তার",
+      "english": "Repair \"ডাক্তার\" inside \"আমার ডাক্তার দেখানো দরকার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doctor.” A central service noun.",
+      "example": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleEnglish": "Use the model as the repair target: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ডাক্তার",
+      "romanization": "daktar",
+      "nativeText": "Transfer \"ডাক্তার\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার ডাক্তার দেখানো দরকার।\".",
+      "pronunciation": "daktar",
+      "exampleTarget": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to see a doctor.”",
+      "korean": "ডাক্তার",
+      "english": "Transfer \"ডাক্তার\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার ডাক্তার দেখানো দরকার।\".",
+      "example": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ডাক্তার",
+      "romanization": "daktar",
+      "nativeText": "Find one word or phrase that naturally travels with \"ডাক্তার\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "daktar",
+      "exampleTarget": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need to see a doctor.”",
+      "korean": "ডাক্তার",
+      "english": "Find one word or phrase that naturally travels with \"ডাক্তার\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ডাক্তার",
+      "romanization": "daktar",
+      "nativeText": "Listen for \"ডাক্তার\" inside \"আমার ডাক্তার দেখানো দরকার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "daktar",
+      "exampleTarget": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to see a doctor.”",
+      "korean": "ডাক্তার",
+      "english": "Listen for \"ডাক্তার\" inside \"আমার ডাক্তার দেখানো দরকার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ডাক্তার",
+      "romanization": "daktar",
+      "nativeText": "Write \"ডাক্তার\" again without looking, then compare the exact written form against \"আমার ডাক্তার দেখানো দরকার।\" before moving on.",
+      "pronunciation": "daktar",
+      "exampleTarget": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleNative": "Use the written model as the final correctness check: “I need to see a doctor.”",
+      "korean": "ডাক্তার",
+      "english": "Write \"ডাক্তার\" again without looking, then compare the exact written form against \"আমার ডাক্তার দেখানো দরকার।\" before moving on.",
+      "example": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ডাক্তার",
+      "romanization": "daktar",
+      "nativeText": "Check whether \"ডাক্তার\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to see a doctor.”",
+      "pronunciation": "daktar",
+      "exampleTarget": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need to see a doctor.”",
+      "korean": "ডাক্তার",
+      "english": "Check whether \"ডাক্তার\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to see a doctor.”",
+      "example": "আমার ডাক্তার দেখানো দরকার।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need to see a doctor.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "বিশ্রাম নিন",
+      "romanization": "bishram nin",
+      "nativeText": "“Take rest.” A polite advice phrase.",
+      "pronunciation": "bishram nin",
+      "exampleTarget": "দুই দিন বিশ্রাম নিন।",
+      "exampleNative": "“Take rest for two days.”",
+      "korean": "বিশ্রাম নিন",
+      "english": "“Take rest.” A polite advice phrase.",
+      "example": "দুই দিন বিশ্রাম নিন।",
+      "exampleEnglish": "“Take rest for two days.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "দুই দিন বিশ্রাম নিন।",
+      "romanization": "bishram nin",
+      "nativeText": "Model use for \"দুই দিন বিশ্রাম নিন।\": “Take rest for two days.”",
+      "pronunciation": "bishram nin",
+      "exampleTarget": "দুই দিন বিশ্রাম নিন।",
+      "exampleNative": "“Take rest for two days.”",
+      "korean": "দুই দিন বিশ্রাম নিন।",
+      "english": "Model use for \"দুই দিন বিশ্রাম নিন।\": “Take rest for two days.”",
+      "example": "দুই দিন বিশ্রাম নিন।",
+      "exampleEnglish": "“Take rest for two days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "বিশ্রাম নিন",
+      "romanization": "bishram nin",
+      "nativeText": "Usage focus for \"বিশ্রাম নিন\": “Take rest.” A polite advice phrase.",
+      "pronunciation": "bishram nin",
+      "exampleTarget": "দুই দিন বিশ্রাম নিন।",
+      "exampleNative": "Notice what the form is doing here: “Take rest for two days.”",
+      "korean": "বিশ্রাম নিন",
+      "english": "Usage focus for \"বিশ্রাম নিন\": “Take rest.” A polite advice phrase.",
+      "example": "দুই দিন বিশ্রাম নিন।",
+      "exampleEnglish": "Notice what the form is doing here: “Take rest for two days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "বিশ্রাম নিন",
+      "romanization": "bishram nin",
+      "nativeText": "Contrast check for \"বিশ্রাম নিন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bishram nin",
+      "exampleTarget": "দুই দিন বিশ্রাম নিন।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Take rest for two days.”",
+      "korean": "বিশ্রাম নিন",
+      "english": "Contrast check for \"বিশ্রাম নিন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "দুই দিন বিশ্রাম নিন।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Take rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "বিশ্রাম নিন",
+      "romanization": "bishram nin",
+      "nativeText": "Recall \"বিশ্রাম নিন\" from memory, then explain what would change if a nearby alternative replaced it in \"দুই দিন বিশ্রাম নিন।\".",
+      "pronunciation": "bishram nin",
+      "exampleTarget": "দুই দিন বিশ্রাম নিন।",
+      "exampleNative": "Self-check against the model before moving on: “Take rest for two days.”",
+      "korean": "বিশ্রাম নিন",
+      "english": "Recall \"বিশ্রাম নিন\" from memory, then explain what would change if a nearby alternative replaced it in \"দুই দিন বিশ্রাম নিন।\".",
+      "example": "দুই দিন বিশ্রাম নিন।",
+      "exampleEnglish": "Self-check against the model before moving on: “Take rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "বিশ্রাম নিন",
+      "romanization": "bishram nin",
+      "nativeText": "Repair \"বিশ্রাম নিন\" inside \"দুই দিন বিশ্রাম নিন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Take rest.” A polite advice phrase.",
+      "pronunciation": "bishram nin",
+      "exampleTarget": "দুই দিন বিশ্রাম নিন।",
+      "exampleNative": "Use the model as the repair target: “Take rest for two days.”",
+      "korean": "বিশ্রাম নিন",
+      "english": "Repair \"বিশ্রাম নিন\" inside \"দুই দিন বিশ্রাম নিন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Take rest.” A polite advice phrase.",
+      "example": "দুই দিন বিশ্রাম নিন।",
+      "exampleEnglish": "Use the model as the repair target: “Take rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "বিশ্রাম নিন",
+      "romanization": "bishram nin",
+      "nativeText": "Transfer \"বিশ্রাম নিন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"দুই দিন বিশ্রাম নিন।\".",
+      "pronunciation": "bishram nin",
+      "exampleTarget": "দুই দিন বিশ্রাম নিন।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Take rest for two days.”",
+      "korean": "বিশ্রাম নিন",
+      "english": "Transfer \"বিশ্রাম নিন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"দুই দিন বিশ্রাম নিন।\".",
+      "example": "দুই দিন বিশ্রাম নিন।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Take rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "বিশ্রাম নিন",
+      "romanization": "bishram nin",
+      "nativeText": "Find one word or phrase that naturally travels with \"বিশ্রাম নিন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bishram nin",
+      "exampleTarget": "দুই দিন বিশ্রাম নিন।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Take rest for two days.”",
+      "korean": "বিশ্রাম নিন",
+      "english": "Find one word or phrase that naturally travels with \"বিশ্রাম নিন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "দুই দিন বিশ্রাম নিন।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Take rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "বিশ্রাম নিন",
+      "romanization": "bishram nin",
+      "nativeText": "Listen for \"বিশ্রাম নিন\" inside \"দুই দিন বিশ্রাম নিন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bishram nin",
+      "exampleTarget": "দুই দিন বিশ্রাম নিন।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Take rest for two days.”",
+      "korean": "বিশ্রাম নিন",
+      "english": "Listen for \"বিশ্রাম নিন\" inside \"দুই দিন বিশ্রাম নিন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "দুই দিন বিশ্রাম নিন।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Take rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "বিশ্রাম নিন",
+      "romanization": "bishram nin",
+      "nativeText": "Write \"বিশ্রাম নিন\" again without looking, then compare the exact written form against \"দুই দিন বিশ্রাম নিন।\" before moving on.",
+      "pronunciation": "bishram nin",
+      "exampleTarget": "দুই দিন বিশ্রাম নিন।",
+      "exampleNative": "Use the written model as the final correctness check: “Take rest for two days.”",
+      "korean": "বিশ্রাম নিন",
+      "english": "Write \"বিশ্রাম নিন\" again without looking, then compare the exact written form against \"দুই দিন বিশ্রাম নিন।\" before moving on.",
+      "example": "দুই দিন বিশ্রাম নিন।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Take rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "বিশ্রাম নিন",
+      "romanization": "bishram nin",
+      "nativeText": "Check whether \"বিশ্রাম নিন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Take rest for two days.”",
+      "pronunciation": "bishram nin",
+      "exampleTarget": "দুই দিন বিশ্রাম নিন।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Take rest for two days.”",
+      "korean": "বিশ্রাম নিন",
+      "english": "Check whether \"বিশ্রাম নিন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Take rest for two days.”",
+      "example": "দুই দিন বিশ্রাম নিন।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Take rest for two days.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ঝাল খাবেন না",
+      "romanization": "jhal khaben na",
+      "nativeText": "“Do not eat spicy food.” Respectful negative advice.",
+      "pronunciation": "jhal khaben na",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "ঝাল খাবেন না",
+      "english": "“Do not eat spicy food.” Respectful negative advice.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "আজ ঝাল খাবেন না।",
+      "romanization": "jhal khaben na",
+      "nativeText": "Model use for \"আজ ঝাল খাবেন না।\": “Do not eat spicy food today.”",
+      "pronunciation": "jhal khaben na",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "আজ ঝাল খাবেন না।",
+      "english": "Model use for \"আজ ঝাল খাবেন না।\": “Do not eat spicy food today.”",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ঝাল খাবেন না",
+      "romanization": "jhal khaben na",
+      "nativeText": "Usage focus for \"ঝাল খাবেন না\": “Do not eat spicy food.” Respectful negative advice.",
+      "pronunciation": "jhal khaben na",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "Notice what the form is doing here: “Do not eat spicy food today.”",
+      "korean": "ঝাল খাবেন না",
+      "english": "Usage focus for \"ঝাল খাবেন না\": “Do not eat spicy food.” Respectful negative advice.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "Notice what the form is doing here: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ঝাল খাবেন না",
+      "romanization": "jhal khaben na",
+      "nativeText": "Contrast check for \"ঝাল খাবেন না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "jhal khaben na",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do not eat spicy food today.”",
+      "korean": "ঝাল খাবেন না",
+      "english": "Contrast check for \"ঝাল খাবেন না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ঝাল খাবেন না",
+      "romanization": "jhal khaben na",
+      "nativeText": "Recall \"ঝাল খাবেন না\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ ঝাল খাবেন না।\".",
+      "pronunciation": "jhal khaben na",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "Self-check against the model before moving on: “Do not eat spicy food today.”",
+      "korean": "ঝাল খাবেন না",
+      "english": "Recall \"ঝাল খাবেন না\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ ঝাল খাবেন না।\".",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "Self-check against the model before moving on: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ঝাল খাবেন না",
+      "romanization": "jhal khaben na",
+      "nativeText": "Repair \"ঝাল খাবেন না\" inside \"আজ ঝাল খাবেন না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do not eat spicy food.” Respectful negative advice.",
+      "pronunciation": "jhal khaben na",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "Use the model as the repair target: “Do not eat spicy food today.”",
+      "korean": "ঝাল খাবেন না",
+      "english": "Repair \"ঝাল খাবেন না\" inside \"আজ ঝাল খাবেন না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do not eat spicy food.” Respectful negative advice.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "Use the model as the repair target: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ঝাল খাবেন না",
+      "romanization": "jhal khaben na",
+      "nativeText": "Transfer \"ঝাল খাবেন না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ ঝাল খাবেন না।\".",
+      "pronunciation": "jhal khaben na",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do not eat spicy food today.”",
+      "korean": "ঝাল খাবেন না",
+      "english": "Transfer \"ঝাল খাবেন না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ ঝাল খাবেন না।\".",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ঝাল খাবেন না",
+      "romanization": "jhal khaben na",
+      "nativeText": "Find one word or phrase that naturally travels with \"ঝাল খাবেন না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "jhal khaben na",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Do not eat spicy food today.”",
+      "korean": "ঝাল খাবেন না",
+      "english": "Find one word or phrase that naturally travels with \"ঝাল খাবেন না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ঝাল খাবেন না",
+      "romanization": "jhal khaben na",
+      "nativeText": "Listen for \"ঝাল খাবেন না\" inside \"আজ ঝাল খাবেন না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "jhal khaben na",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do not eat spicy food today.”",
+      "korean": "ঝাল খাবেন না",
+      "english": "Listen for \"ঝাল খাবেন না\" inside \"আজ ঝাল খাবেন না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ঝাল খাবেন না",
+      "romanization": "jhal khaben na",
+      "nativeText": "Write \"ঝাল খাবেন না\" again without looking, then compare the exact written form against \"আজ ঝাল খাবেন না।\" before moving on.",
+      "pronunciation": "jhal khaben na",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "Use the written model as the final correctness check: “Do not eat spicy food today.”",
+      "korean": "ঝাল খাবেন না",
+      "english": "Write \"ঝাল খাবেন না\" again without looking, then compare the exact written form against \"আজ ঝাল খাবেন না।\" before moving on.",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit18health-vocabulary-1",
+        "bn-level1unit18health-vocabulary-2",
+        "bn-level1unit18health-grammar-1",
+        "bn-level1unit18health-grammar-2",
+        "bn-level1unit18health-reading",
+        "bn-level1unit18health-listening",
+        "bn-level1unit18health-writing",
+        "bn-level1unit18health-task"
+      ],
+      "targetText": "ঝাল খাবেন না",
+      "romanization": "jhal khaben na",
+      "nativeText": "Check whether \"ঝাল খাবেন না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "pronunciation": "jhal khaben na",
+      "exampleTarget": "আজ ঝাল খাবেন না।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "korean": "ঝাল খাবেন না",
+      "english": "Check whether \"ঝাল খাবেন না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "example": "আজ ঝাল খাবেন না।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

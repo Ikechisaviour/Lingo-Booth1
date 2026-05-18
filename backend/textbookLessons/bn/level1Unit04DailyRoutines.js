@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u4',
-  title: 'Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines',
-  category: 'daily-routines',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe a simple day using Bengali routine verbs and time expressions.',
-  vocabularyGoal: 'Use morning, afternoon, evening, night, and common activity verbs.',
-  grammarGoal: 'Use present habitual forms and keep subject-respect choices consistent.',
-  speakingGoal: 'Describe your own day in five short sentences.',
-  task: 'Tell a friend about your weekday routine.',
-  expressionPractice: [
-    practice('stating-routine', 'Stating routine', 'Use one habitual verb.'),
-    practice('sequencing', 'Sequencing', 'Use `তারপর`.'),
-    practice('asking-routine', 'Asking routine', 'Use one respectful question.'),
+module.exports = {
+  "title": "Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines",
+  "category": "daily-routines",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit04dailyroutines-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe a simple day using Bengali routine verbs and time expressions."
+      ],
+      "task": "Tell a friend about your weekday routine."
+    },
+    {
+      "id": "bn-level1unit04dailyroutines-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit04dailyroutines-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit04dailyroutines-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit04dailyroutines-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe a simple day using Bengali routine verbs and time expressions."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit04dailyroutines-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit04dailyroutines-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit04dailyroutines-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit04dailyroutines-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit04dailyroutines-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit04dailyroutines-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Tell a friend about your weekday routine."
+      ],
+      "task": "Tell a friend about your weekday routine."
+    }
   ],
-  relatedPools: ['topic-routines', 'topic-time'],
-  items: [
-    item('সকাল', 'shokal', '“Morning.” A core time-of-day word.', 'আমি সকালে উঠি।', '“I get up in the morning.”'),
-    item('দুপুর', 'dupur', '“Noon / afternoon.” Often tied to lunch and school schedules.', 'আমি দুপুরে ভাত খাই।', '“I eat rice at noon.”'),
-    item('সন্ধ্যা', 'shondhya', '“Evening.” A useful daily-rhythm word.', 'সন্ধ্যায় আমি পড়ি।', '“In the evening I study.”'),
-    item('ঘুমাই', 'ghumai', '“I sleep.” A common first-person habitual form.', 'আমি রাতে ঘুমাই।', '“I sleep at night.”'),
-    item('খাই', 'khai', '“I eat.” Bengali verbs do not change for speaker gender.', 'আমি সকাল আটটায় নাশতা খাই।', '“I eat breakfast at eight in the morning.”'),
-    item('পড়ি', 'poṛi', '“I study / read.” Context determines which English verb fits.', 'আমি বিশ্ববিদ্যালয়ে পড়ি।', '“I study at university.”'),
-    item('তারপর', 'tarpor', '“Then / after that.” A simple sequence connector.', 'তারপর আমি বাসে যাই।', '“Then I go by bus.”'),
-    item('আপনি কখন ওঠেন?', 'apni kokhon othen', '“When do you get up?” The respectful subject pairs with respectful verb form.', 'আপনি কখন ওঠেন?', '“When do you get up?”'),
+  "expressionPractice": [
+    {
+      "id": "stating-routine",
+      "label": "Stating routine",
+      "goal": "Use one habitual verb."
+    },
+    {
+      "id": "sequencing",
+      "label": "Sequencing",
+      "goal": "Use `তারপর`."
+    },
+    {
+      "id": "asking-routine",
+      "label": "Asking routine",
+      "goal": "Use one respectful question."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-routines",
+    "topic-time"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Describe a simple day using Bengali routine verbs and time expressions.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Tell a friend about your weekday routine.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Describe a simple day using Bengali routine verbs and time expressions.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Tell a friend about your weekday routine."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি সকালে উঠি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "“I get up in the morning.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি সকালে উঠি।\".",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "“I get up in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1"
+      ],
+      "targetText": "সকাল",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "“I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "Use the key language of Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with the register and setting that the lesson requires.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "“I get up in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-2"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "“I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines sound precise rather than merely understandable.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "“I eat rice at noon.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-grammar-1"
+      ],
+      "targetText": "সকাল",
+      "romanization": "",
+      "nativeText": "Describe a simple day using Bengali routine verbs and time expressions.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "“I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "Describe a simple day using Bengali routine verbs and time expressions.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "“I get up in the morning.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "“I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "Contrast the main pattern in Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "“I eat rice at noon.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"আপনি কখন ওঠেন?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "“When do you get up?”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"আপনি কখন ওঠেন?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "“When do you get up?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"আপনি কখন ওঠেন?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "“When do you get up?”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"আপনি কখন ওঠেন?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "“When do you get up?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"আমি সকালে উঠি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"আমি সকালে উঠি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "“I eat rice at noon.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "“I eat rice at noon.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Tell a friend about your weekday routine.",
+      "pronunciation": "",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "Tell a friend about your weekday routine.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Tell a friend about your weekday routine.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "Tell a friend about your weekday routine."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আমি দুপুরে ভাত খাই।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I eat rice at noon.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আমি দুপুরে ভাত খাই।\" against the model.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I eat rice at noon.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি সকালে উঠি।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "“I get up in the morning.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি সকালে উঠি।\" before reusing it elsewhere.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "“I get up in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"আপনি কখন ওঠেন?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "“When do you get up?”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"আপনি কখন ওঠেন?\" as one thought.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "“When do you get up?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি সকালে উঠি।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি সকালে উঠি।\" and move it into your own life.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"সকাল\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "সকাল",
+      "exampleNative": "“Morning.” A core time-of-day word.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"সকাল\" before looking back.",
+      "example": "সকাল",
+      "exampleEnglish": "“Morning.” A core time-of-day word."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"আপনি কখন ওঠেন?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"আপনি কখন ওঠেন?\" rather than restarting from a blank sentence.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আমি দুপুরে ভাত খাই।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "“I eat rice at noon.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আমি দুপুরে ভাত খাই।\" as the comparison line.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "“I eat rice at noon.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি সকালে উঠি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "“I get up in the morning.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি সকালে উঠি।\".",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "“I get up in the morning.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"আপনি কখন ওঠেন?\".",
+      "pronunciation": "",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "“When do you get up?”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"আপনি কখন ওঠেন?\".",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "“When do you get up?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি সকালে উঠি।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "“I get up in the morning.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি সকালে উঠি।\" one layer at a time.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "“I get up in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আমি দুপুরে ভাত খাই।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "“I eat rice at noon.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আমি দুপুরে ভাত খাই।\" as the deciding example.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "“I eat rice at noon.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-culture",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"আপনি কখন ওঠেন?\".",
+      "pronunciation": "",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "“When do you get up?”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"আপনি কখন ওঠেন?\".",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "“When do you get up?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সকাল",
+      "romanization": "shokal",
+      "nativeText": "“Morning.” A core time-of-day word.",
+      "pronunciation": "shokal",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "“I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "“Morning.” A core time-of-day word.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "“I get up in the morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আমি সকালে উঠি।",
+      "romanization": "shokal",
+      "nativeText": "Model use for \"আমি সকালে উঠি।\": “I get up in the morning.”",
+      "pronunciation": "shokal",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "“I get up in the morning.”",
+      "korean": "আমি সকালে উঠি।",
+      "english": "Model use for \"আমি সকালে উঠি।\": “I get up in the morning.”",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "“I get up in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সকাল",
+      "romanization": "shokal",
+      "nativeText": "Usage focus for \"সকাল\": Use the key language of Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with the register and setting that the lesson requires.",
+      "pronunciation": "shokal",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "Notice what the form is doing here: “I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "Usage focus for \"সকাল\": Use the key language of Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with the register and setting that the lesson requires.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "Notice what the form is doing here: “I get up in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সকাল",
+      "romanization": "shokal",
+      "nativeText": "Contrast check for \"সকাল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shokal",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "Contrast check for \"সকাল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I get up in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সকাল",
+      "romanization": "shokal",
+      "nativeText": "Recall \"সকাল\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সকালে উঠি।\".",
+      "pronunciation": "shokal",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "Self-check against the model before moving on: “I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "Recall \"সকাল\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সকালে উঠি।\".",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I get up in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সকাল",
+      "romanization": "shokal",
+      "nativeText": "Repair \"সকাল\" inside \"আমি সকালে উঠি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with the register and setting that the lesson requires.",
+      "pronunciation": "shokal",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "Use the model as the repair target: “I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "Repair \"সকাল\" inside \"আমি সকালে উঠি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines with the register and setting that the lesson requires.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "Use the model as the repair target: “I get up in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সকাল",
+      "romanization": "shokal",
+      "nativeText": "Transfer \"সকাল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সকালে উঠি।\".",
+      "pronunciation": "shokal",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "Transfer \"সকাল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সকালে উঠি।\".",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I get up in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সকাল",
+      "romanization": "shokal",
+      "nativeText": "Find one word or phrase that naturally travels with \"সকাল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shokal",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "Find one word or phrase that naturally travels with \"সকাল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I get up in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সকাল",
+      "romanization": "shokal",
+      "nativeText": "Listen for \"সকাল\" inside \"আমি সকালে উঠি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shokal",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "Listen for \"সকাল\" inside \"আমি সকালে উঠি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I get up in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সকাল",
+      "romanization": "shokal",
+      "nativeText": "Write \"সকাল\" again without looking, then compare the exact written form against \"আমি সকালে উঠি।\" before moving on.",
+      "pronunciation": "shokal",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "Use the written model as the final correctness check: “I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "Write \"সকাল\" again without looking, then compare the exact written form against \"আমি সকালে উঠি।\" before moving on.",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I get up in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সকাল",
+      "romanization": "shokal",
+      "nativeText": "Check whether \"সকাল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I get up in the morning.”",
+      "pronunciation": "shokal",
+      "exampleTarget": "আমি সকালে উঠি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I get up in the morning.”",
+      "korean": "সকাল",
+      "english": "Check whether \"সকাল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I get up in the morning.”",
+      "example": "আমি সকালে উঠি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I get up in the morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "dupur",
+      "nativeText": "“Noon / afternoon.” Often tied to lunch and school schedules.",
+      "pronunciation": "dupur",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "“I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "“Noon / afternoon.” Often tied to lunch and school schedules.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "“I eat rice at noon.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আমি দুপুরে ভাত খাই।",
+      "romanization": "dupur",
+      "nativeText": "Model use for \"আমি দুপুরে ভাত খাই।\": “I eat rice at noon.”",
+      "pronunciation": "dupur",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "“I eat rice at noon.”",
+      "korean": "আমি দুপুরে ভাত খাই।",
+      "english": "Model use for \"আমি দুপুরে ভাত খাই।\": “I eat rice at noon.”",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "“I eat rice at noon.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "dupur",
+      "nativeText": "Usage focus for \"দুপুর\": Distinguish the nearby wording choices that make Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines sound precise rather than merely understandable.",
+      "pronunciation": "dupur",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "Notice what the form is doing here: “I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "Usage focus for \"দুপুর\": Distinguish the nearby wording choices that make Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines sound precise rather than merely understandable.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I eat rice at noon.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "dupur",
+      "nativeText": "Contrast check for \"দুপুর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dupur",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "Contrast check for \"দুপুর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I eat rice at noon.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "dupur",
+      "nativeText": "Recall \"দুপুর\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি দুপুরে ভাত খাই।\".",
+      "pronunciation": "dupur",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "Self-check against the model before moving on: “I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "Recall \"দুপুর\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি দুপুরে ভাত খাই।\".",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I eat rice at noon.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "dupur",
+      "nativeText": "Repair \"দুপুর\" inside \"আমি দুপুরে ভাত খাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines sound precise rather than merely understandable.",
+      "pronunciation": "dupur",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "Use the model as the repair target: “I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "Repair \"দুপুর\" inside \"আমি দুপুরে ভাত খাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 4: দৈনন্দিন কাজ — Daily Routines sound precise rather than merely understandable.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "Use the model as the repair target: “I eat rice at noon.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "dupur",
+      "nativeText": "Transfer \"দুপুর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি দুপুরে ভাত খাই।\".",
+      "pronunciation": "dupur",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "Transfer \"দুপুর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি দুপুরে ভাত খাই।\".",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I eat rice at noon.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "dupur",
+      "nativeText": "Find one word or phrase that naturally travels with \"দুপুর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dupur",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "Find one word or phrase that naturally travels with \"দুপুর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I eat rice at noon.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "dupur",
+      "nativeText": "Listen for \"দুপুর\" inside \"আমি দুপুরে ভাত খাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dupur",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "Listen for \"দুপুর\" inside \"আমি দুপুরে ভাত খাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I eat rice at noon.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "dupur",
+      "nativeText": "Write \"দুপুর\" again without looking, then compare the exact written form against \"আমি দুপুরে ভাত খাই।\" before moving on.",
+      "pronunciation": "dupur",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "Write \"দুপুর\" again without looking, then compare the exact written form against \"আমি দুপুরে ভাত খাই।\" before moving on.",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I eat rice at noon.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "দুপুর",
+      "romanization": "dupur",
+      "nativeText": "Check whether \"দুপুর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I eat rice at noon.”",
+      "pronunciation": "dupur",
+      "exampleTarget": "আমি দুপুরে ভাত খাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I eat rice at noon.”",
+      "korean": "দুপুর",
+      "english": "Check whether \"দুপুর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I eat rice at noon.”",
+      "example": "আমি দুপুরে ভাত খাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I eat rice at noon.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সন্ধ্যা",
+      "romanization": "shondhya",
+      "nativeText": "“Evening.” A useful daily-rhythm word.",
+      "pronunciation": "shondhya",
+      "exampleTarget": "সন্ধ্যায় আমি পড়ি।",
+      "exampleNative": "“In the evening I study.”",
+      "korean": "সন্ধ্যা",
+      "english": "“Evening.” A useful daily-rhythm word.",
+      "example": "সন্ধ্যায় আমি পড়ি।",
+      "exampleEnglish": "“In the evening I study.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সন্ধ্যায় আমি পড়ি।",
+      "romanization": "shondhya",
+      "nativeText": "Model use for \"সন্ধ্যায় আমি পড়ি।\": “In the evening I study.”",
+      "pronunciation": "shondhya",
+      "exampleTarget": "সন্ধ্যায় আমি পড়ি।",
+      "exampleNative": "“In the evening I study.”",
+      "korean": "সন্ধ্যায় আমি পড়ি।",
+      "english": "Model use for \"সন্ধ্যায় আমি পড়ি।\": “In the evening I study.”",
+      "example": "সন্ধ্যায় আমি পড়ি।",
+      "exampleEnglish": "“In the evening I study.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সন্ধ্যা",
+      "romanization": "shondhya",
+      "nativeText": "Usage focus for \"সন্ধ্যা\": “Evening.” A useful daily-rhythm word.",
+      "pronunciation": "shondhya",
+      "exampleTarget": "সন্ধ্যায় আমি পড়ি।",
+      "exampleNative": "Notice what the form is doing here: “In the evening I study.”",
+      "korean": "সন্ধ্যা",
+      "english": "Usage focus for \"সন্ধ্যা\": “Evening.” A useful daily-rhythm word.",
+      "example": "সন্ধ্যায় আমি পড়ি।",
+      "exampleEnglish": "Notice what the form is doing here: “In the evening I study.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সন্ধ্যা",
+      "romanization": "shondhya",
+      "nativeText": "Contrast check for \"সন্ধ্যা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shondhya",
+      "exampleTarget": "সন্ধ্যায় আমি পড়ি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In the evening I study.”",
+      "korean": "সন্ধ্যা",
+      "english": "Contrast check for \"সন্ধ্যা\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "সন্ধ্যায় আমি পড়ি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “In the evening I study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সন্ধ্যা",
+      "romanization": "shondhya",
+      "nativeText": "Recall \"সন্ধ্যা\" from memory, then explain what would change if a nearby alternative replaced it in \"সন্ধ্যায় আমি পড়ি।\".",
+      "pronunciation": "shondhya",
+      "exampleTarget": "সন্ধ্যায় আমি পড়ি।",
+      "exampleNative": "Self-check against the model before moving on: “In the evening I study.”",
+      "korean": "সন্ধ্যা",
+      "english": "Recall \"সন্ধ্যা\" from memory, then explain what would change if a nearby alternative replaced it in \"সন্ধ্যায় আমি পড়ি।\".",
+      "example": "সন্ধ্যায় আমি পড়ি।",
+      "exampleEnglish": "Self-check against the model before moving on: “In the evening I study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সন্ধ্যা",
+      "romanization": "shondhya",
+      "nativeText": "Repair \"সন্ধ্যা\" inside \"সন্ধ্যায় আমি পড়ি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Evening.” A useful daily-rhythm word.",
+      "pronunciation": "shondhya",
+      "exampleTarget": "সন্ধ্যায় আমি পড়ি।",
+      "exampleNative": "Use the model as the repair target: “In the evening I study.”",
+      "korean": "সন্ধ্যা",
+      "english": "Repair \"সন্ধ্যা\" inside \"সন্ধ্যায় আমি পড়ি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Evening.” A useful daily-rhythm word.",
+      "example": "সন্ধ্যায় আমি পড়ি।",
+      "exampleEnglish": "Use the model as the repair target: “In the evening I study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সন্ধ্যা",
+      "romanization": "shondhya",
+      "nativeText": "Transfer \"সন্ধ্যা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সন্ধ্যায় আমি পড়ি।\".",
+      "pronunciation": "shondhya",
+      "exampleTarget": "সন্ধ্যায় আমি পড়ি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “In the evening I study.”",
+      "korean": "সন্ধ্যা",
+      "english": "Transfer \"সন্ধ্যা\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"সন্ধ্যায় আমি পড়ি।\".",
+      "example": "সন্ধ্যায় আমি পড়ি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “In the evening I study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সন্ধ্যা",
+      "romanization": "shondhya",
+      "nativeText": "Find one word or phrase that naturally travels with \"সন্ধ্যা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shondhya",
+      "exampleTarget": "সন্ধ্যায় আমি পড়ি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “In the evening I study.”",
+      "korean": "সন্ধ্যা",
+      "english": "Find one word or phrase that naturally travels with \"সন্ধ্যা\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "সন্ধ্যায় আমি পড়ি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “In the evening I study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সন্ধ্যা",
+      "romanization": "shondhya",
+      "nativeText": "Listen for \"সন্ধ্যা\" inside \"সন্ধ্যায় আমি পড়ি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shondhya",
+      "exampleTarget": "সন্ধ্যায় আমি পড়ি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In the evening I study.”",
+      "korean": "সন্ধ্যা",
+      "english": "Listen for \"সন্ধ্যা\" inside \"সন্ধ্যায় আমি পড়ি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "সন্ধ্যায় আমি পড়ি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “In the evening I study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সন্ধ্যা",
+      "romanization": "shondhya",
+      "nativeText": "Write \"সন্ধ্যা\" again without looking, then compare the exact written form against \"সন্ধ্যায় আমি পড়ি।\" before moving on.",
+      "pronunciation": "shondhya",
+      "exampleTarget": "সন্ধ্যায় আমি পড়ি।",
+      "exampleNative": "Use the written model as the final correctness check: “In the evening I study.”",
+      "korean": "সন্ধ্যা",
+      "english": "Write \"সন্ধ্যা\" again without looking, then compare the exact written form against \"সন্ধ্যায় আমি পড়ি।\" before moving on.",
+      "example": "সন্ধ্যায় আমি পড়ি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “In the evening I study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "সন্ধ্যা",
+      "romanization": "shondhya",
+      "nativeText": "Check whether \"সন্ধ্যা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In the evening I study.”",
+      "pronunciation": "shondhya",
+      "exampleTarget": "সন্ধ্যায় আমি পড়ি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “In the evening I study.”",
+      "korean": "সন্ধ্যা",
+      "english": "Check whether \"সন্ধ্যা\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “In the evening I study.”",
+      "example": "সন্ধ্যায় আমি পড়ি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “In the evening I study.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ঘুমাই",
+      "romanization": "ghumai",
+      "nativeText": "“I sleep.” A common first-person habitual form.",
+      "pronunciation": "ghumai",
+      "exampleTarget": "আমি রাতে ঘুমাই।",
+      "exampleNative": "“I sleep at night.”",
+      "korean": "ঘুমাই",
+      "english": "“I sleep.” A common first-person habitual form.",
+      "example": "আমি রাতে ঘুমাই।",
+      "exampleEnglish": "“I sleep at night.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আমি রাতে ঘুমাই।",
+      "romanization": "ghumai",
+      "nativeText": "Model use for \"আমি রাতে ঘুমাই।\": “I sleep at night.”",
+      "pronunciation": "ghumai",
+      "exampleTarget": "আমি রাতে ঘুমাই।",
+      "exampleNative": "“I sleep at night.”",
+      "korean": "আমি রাতে ঘুমাই।",
+      "english": "Model use for \"আমি রাতে ঘুমাই।\": “I sleep at night.”",
+      "example": "আমি রাতে ঘুমাই।",
+      "exampleEnglish": "“I sleep at night.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ঘুমাই",
+      "romanization": "ghumai",
+      "nativeText": "Usage focus for \"ঘুমাই\": “I sleep.” A common first-person habitual form.",
+      "pronunciation": "ghumai",
+      "exampleTarget": "আমি রাতে ঘুমাই।",
+      "exampleNative": "Notice what the form is doing here: “I sleep at night.”",
+      "korean": "ঘুমাই",
+      "english": "Usage focus for \"ঘুমাই\": “I sleep.” A common first-person habitual form.",
+      "example": "আমি রাতে ঘুমাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I sleep at night.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ঘুমাই",
+      "romanization": "ghumai",
+      "nativeText": "Contrast check for \"ঘুমাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ghumai",
+      "exampleTarget": "আমি রাতে ঘুমাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I sleep at night.”",
+      "korean": "ঘুমাই",
+      "english": "Contrast check for \"ঘুমাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি রাতে ঘুমাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I sleep at night.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ঘুমাই",
+      "romanization": "ghumai",
+      "nativeText": "Recall \"ঘুমাই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি রাতে ঘুমাই।\".",
+      "pronunciation": "ghumai",
+      "exampleTarget": "আমি রাতে ঘুমাই।",
+      "exampleNative": "Self-check against the model before moving on: “I sleep at night.”",
+      "korean": "ঘুমাই",
+      "english": "Recall \"ঘুমাই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি রাতে ঘুমাই।\".",
+      "example": "আমি রাতে ঘুমাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I sleep at night.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ঘুমাই",
+      "romanization": "ghumai",
+      "nativeText": "Repair \"ঘুমাই\" inside \"আমি রাতে ঘুমাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I sleep.” A common first-person habitual form.",
+      "pronunciation": "ghumai",
+      "exampleTarget": "আমি রাতে ঘুমাই।",
+      "exampleNative": "Use the model as the repair target: “I sleep at night.”",
+      "korean": "ঘুমাই",
+      "english": "Repair \"ঘুমাই\" inside \"আমি রাতে ঘুমাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I sleep.” A common first-person habitual form.",
+      "example": "আমি রাতে ঘুমাই।",
+      "exampleEnglish": "Use the model as the repair target: “I sleep at night.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ঘুমাই",
+      "romanization": "ghumai",
+      "nativeText": "Transfer \"ঘুমাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি রাতে ঘুমাই।\".",
+      "pronunciation": "ghumai",
+      "exampleTarget": "আমি রাতে ঘুমাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I sleep at night.”",
+      "korean": "ঘুমাই",
+      "english": "Transfer \"ঘুমাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি রাতে ঘুমাই।\".",
+      "example": "আমি রাতে ঘুমাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I sleep at night.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ঘুমাই",
+      "romanization": "ghumai",
+      "nativeText": "Find one word or phrase that naturally travels with \"ঘুমাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ghumai",
+      "exampleTarget": "আমি রাতে ঘুমাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I sleep at night.”",
+      "korean": "ঘুমাই",
+      "english": "Find one word or phrase that naturally travels with \"ঘুমাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি রাতে ঘুমাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I sleep at night.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ঘুমাই",
+      "romanization": "ghumai",
+      "nativeText": "Listen for \"ঘুমাই\" inside \"আমি রাতে ঘুমাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ghumai",
+      "exampleTarget": "আমি রাতে ঘুমাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I sleep at night.”",
+      "korean": "ঘুমাই",
+      "english": "Listen for \"ঘুমাই\" inside \"আমি রাতে ঘুমাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি রাতে ঘুমাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I sleep at night.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ঘুমাই",
+      "romanization": "ghumai",
+      "nativeText": "Write \"ঘুমাই\" again without looking, then compare the exact written form against \"আমি রাতে ঘুমাই।\" before moving on.",
+      "pronunciation": "ghumai",
+      "exampleTarget": "আমি রাতে ঘুমাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I sleep at night.”",
+      "korean": "ঘুমাই",
+      "english": "Write \"ঘুমাই\" again without looking, then compare the exact written form against \"আমি রাতে ঘুমাই।\" before moving on.",
+      "example": "আমি রাতে ঘুমাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I sleep at night.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ঘুমাই",
+      "romanization": "ghumai",
+      "nativeText": "Check whether \"ঘুমাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I sleep at night.”",
+      "pronunciation": "ghumai",
+      "exampleTarget": "আমি রাতে ঘুমাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I sleep at night.”",
+      "korean": "ঘুমাই",
+      "english": "Check whether \"ঘুমাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I sleep at night.”",
+      "example": "আমি রাতে ঘুমাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I sleep at night.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "খাই",
+      "romanization": "khai",
+      "nativeText": "“I eat.” Bengali verbs do not change for speaker gender.",
+      "pronunciation": "khai",
+      "exampleTarget": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleNative": "“I eat breakfast at eight in the morning.”",
+      "korean": "খাই",
+      "english": "“I eat.” Bengali verbs do not change for speaker gender.",
+      "example": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleEnglish": "“I eat breakfast at eight in the morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আমি সকাল আটটায় নাশতা খাই।",
+      "romanization": "khai",
+      "nativeText": "Model use for \"আমি সকাল আটটায় নাশতা খাই।\": “I eat breakfast at eight in the morning.”",
+      "pronunciation": "khai",
+      "exampleTarget": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleNative": "“I eat breakfast at eight in the morning.”",
+      "korean": "আমি সকাল আটটায় নাশতা খাই।",
+      "english": "Model use for \"আমি সকাল আটটায় নাশতা খাই।\": “I eat breakfast at eight in the morning.”",
+      "example": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleEnglish": "“I eat breakfast at eight in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "খাই",
+      "romanization": "khai",
+      "nativeText": "Usage focus for \"খাই\": “I eat.” Bengali verbs do not change for speaker gender.",
+      "pronunciation": "khai",
+      "exampleTarget": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleNative": "Notice what the form is doing here: “I eat breakfast at eight in the morning.”",
+      "korean": "খাই",
+      "english": "Usage focus for \"খাই\": “I eat.” Bengali verbs do not change for speaker gender.",
+      "example": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I eat breakfast at eight in the morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "খাই",
+      "romanization": "khai",
+      "nativeText": "Contrast check for \"খাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "khai",
+      "exampleTarget": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I eat breakfast at eight in the morning.”",
+      "korean": "খাই",
+      "english": "Contrast check for \"খাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I eat breakfast at eight in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "খাই",
+      "romanization": "khai",
+      "nativeText": "Recall \"খাই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সকাল আটটায় নাশতা খাই।\".",
+      "pronunciation": "khai",
+      "exampleTarget": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleNative": "Self-check against the model before moving on: “I eat breakfast at eight in the morning.”",
+      "korean": "খাই",
+      "english": "Recall \"খাই\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সকাল আটটায় নাশতা খাই।\".",
+      "example": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I eat breakfast at eight in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "খাই",
+      "romanization": "khai",
+      "nativeText": "Repair \"খাই\" inside \"আমি সকাল আটটায় নাশতা খাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I eat.” Bengali verbs do not change for speaker gender.",
+      "pronunciation": "khai",
+      "exampleTarget": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleNative": "Use the model as the repair target: “I eat breakfast at eight in the morning.”",
+      "korean": "খাই",
+      "english": "Repair \"খাই\" inside \"আমি সকাল আটটায় নাশতা খাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I eat.” Bengali verbs do not change for speaker gender.",
+      "example": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleEnglish": "Use the model as the repair target: “I eat breakfast at eight in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "খাই",
+      "romanization": "khai",
+      "nativeText": "Transfer \"খাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সকাল আটটায় নাশতা খাই।\".",
+      "pronunciation": "khai",
+      "exampleTarget": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I eat breakfast at eight in the morning.”",
+      "korean": "খাই",
+      "english": "Transfer \"খাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সকাল আটটায় নাশতা খাই।\".",
+      "example": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I eat breakfast at eight in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "খাই",
+      "romanization": "khai",
+      "nativeText": "Find one word or phrase that naturally travels with \"খাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "khai",
+      "exampleTarget": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I eat breakfast at eight in the morning.”",
+      "korean": "খাই",
+      "english": "Find one word or phrase that naturally travels with \"খাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I eat breakfast at eight in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "খাই",
+      "romanization": "khai",
+      "nativeText": "Listen for \"খাই\" inside \"আমি সকাল আটটায় নাশতা খাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "khai",
+      "exampleTarget": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I eat breakfast at eight in the morning.”",
+      "korean": "খাই",
+      "english": "Listen for \"খাই\" inside \"আমি সকাল আটটায় নাশতা খাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I eat breakfast at eight in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "খাই",
+      "romanization": "khai",
+      "nativeText": "Write \"খাই\" again without looking, then compare the exact written form against \"আমি সকাল আটটায় নাশতা খাই।\" before moving on.",
+      "pronunciation": "khai",
+      "exampleTarget": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I eat breakfast at eight in the morning.”",
+      "korean": "খাই",
+      "english": "Write \"খাই\" again without looking, then compare the exact written form against \"আমি সকাল আটটায় নাশতা খাই।\" before moving on.",
+      "example": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I eat breakfast at eight in the morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "খাই",
+      "romanization": "khai",
+      "nativeText": "Check whether \"খাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I eat breakfast at eight in the morning.”",
+      "pronunciation": "khai",
+      "exampleTarget": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I eat breakfast at eight in the morning.”",
+      "korean": "খাই",
+      "english": "Check whether \"খাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I eat breakfast at eight in the morning.”",
+      "example": "আমি সকাল আটটায় নাশতা খাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I eat breakfast at eight in the morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "পড়ি",
+      "romanization": "poṛi",
+      "nativeText": "“I study / read.” Context determines which English verb fits.",
+      "pronunciation": "poṛi",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleNative": "“I study at university.”",
+      "korean": "পড়ি",
+      "english": "“I study / read.” Context determines which English verb fits.",
+      "example": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleEnglish": "“I study at university.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "romanization": "poṛi",
+      "nativeText": "Model use for \"আমি বিশ্ববিদ্যালয়ে পড়ি।\": “I study at university.”",
+      "pronunciation": "poṛi",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleNative": "“I study at university.”",
+      "korean": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "english": "Model use for \"আমি বিশ্ববিদ্যালয়ে পড়ি।\": “I study at university.”",
+      "example": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleEnglish": "“I study at university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "পড়ি",
+      "romanization": "poṛi",
+      "nativeText": "Usage focus for \"পড়ি\": “I study / read.” Context determines which English verb fits.",
+      "pronunciation": "poṛi",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleNative": "Notice what the form is doing here: “I study at university.”",
+      "korean": "পড়ি",
+      "english": "Usage focus for \"পড়ি\": “I study / read.” Context determines which English verb fits.",
+      "example": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleEnglish": "Notice what the form is doing here: “I study at university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "পড়ি",
+      "romanization": "poṛi",
+      "nativeText": "Contrast check for \"পড়ি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "poṛi",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I study at university.”",
+      "korean": "পড়ি",
+      "english": "Contrast check for \"পড়ি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "পড়ি",
+      "romanization": "poṛi",
+      "nativeText": "Recall \"পড়ি\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বিশ্ববিদ্যালয়ে পড়ি।\".",
+      "pronunciation": "poṛi",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleNative": "Self-check against the model before moving on: “I study at university.”",
+      "korean": "পড়ি",
+      "english": "Recall \"পড়ি\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি বিশ্ববিদ্যালয়ে পড়ি।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "পড়ি",
+      "romanization": "poṛi",
+      "nativeText": "Repair \"পড়ি\" inside \"আমি বিশ্ববিদ্যালয়ে পড়ি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I study / read.” Context determines which English verb fits.",
+      "pronunciation": "poṛi",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleNative": "Use the model as the repair target: “I study at university.”",
+      "korean": "পড়ি",
+      "english": "Repair \"পড়ি\" inside \"আমি বিশ্ববিদ্যালয়ে পড়ি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I study / read.” Context determines which English verb fits.",
+      "example": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleEnglish": "Use the model as the repair target: “I study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "পড়ি",
+      "romanization": "poṛi",
+      "nativeText": "Transfer \"পড়ি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বিশ্ববিদ্যালয়ে পড়ি।\".",
+      "pronunciation": "poṛi",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I study at university.”",
+      "korean": "পড়ি",
+      "english": "Transfer \"পড়ি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি বিশ্ববিদ্যালয়ে পড়ি।\".",
+      "example": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "পড়ি",
+      "romanization": "poṛi",
+      "nativeText": "Find one word or phrase that naturally travels with \"পড়ি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "poṛi",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I study at university.”",
+      "korean": "পড়ি",
+      "english": "Find one word or phrase that naturally travels with \"পড়ি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "পড়ি",
+      "romanization": "poṛi",
+      "nativeText": "Listen for \"পড়ি\" inside \"আমি বিশ্ববিদ্যালয়ে পড়ি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "poṛi",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I study at university.”",
+      "korean": "পড়ি",
+      "english": "Listen for \"পড়ি\" inside \"আমি বিশ্ববিদ্যালয়ে পড়ি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "পড়ি",
+      "romanization": "poṛi",
+      "nativeText": "Write \"পড়ি\" again without looking, then compare the exact written form against \"আমি বিশ্ববিদ্যালয়ে পড়ি।\" before moving on.",
+      "pronunciation": "poṛi",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleNative": "Use the written model as the final correctness check: “I study at university.”",
+      "korean": "পড়ি",
+      "english": "Write \"পড়ি\" again without looking, then compare the exact written form against \"আমি বিশ্ববিদ্যালয়ে পড়ি।\" before moving on.",
+      "example": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "পড়ি",
+      "romanization": "poṛi",
+      "nativeText": "Check whether \"পড়ি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I study at university.”",
+      "pronunciation": "poṛi",
+      "exampleTarget": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I study at university.”",
+      "korean": "পড়ি",
+      "english": "Check whether \"পড়ি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I study at university.”",
+      "example": "আমি বিশ্ববিদ্যালয়ে পড়ি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I study at university.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "“Then / after that.” A simple sequence connector.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর আমি বাসে যাই।",
+      "exampleNative": "“Then I go by bus.”",
+      "korean": "তারপর",
+      "english": "“Then / after that.” A simple sequence connector.",
+      "example": "তারপর আমি বাসে যাই।",
+      "exampleEnglish": "“Then I go by bus.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "তারপর আমি বাসে যাই।",
+      "romanization": "tarpor",
+      "nativeText": "Model use for \"তারপর আমি বাসে যাই।\": “Then I go by bus.”",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর আমি বাসে যাই।",
+      "exampleNative": "“Then I go by bus.”",
+      "korean": "তারপর আমি বাসে যাই।",
+      "english": "Model use for \"তারপর আমি বাসে যাই।\": “Then I go by bus.”",
+      "example": "তারপর আমি বাসে যাই।",
+      "exampleEnglish": "“Then I go by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Usage focus for \"তারপর\": “Then / after that.” A simple sequence connector.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর আমি বাসে যাই।",
+      "exampleNative": "Notice what the form is doing here: “Then I go by bus.”",
+      "korean": "তারপর",
+      "english": "Usage focus for \"তারপর\": “Then / after that.” A simple sequence connector.",
+      "example": "তারপর আমি বাসে যাই।",
+      "exampleEnglish": "Notice what the form is doing here: “Then I go by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Contrast check for \"তারপর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর আমি বাসে যাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then I go by bus.”",
+      "korean": "তারপর",
+      "english": "Contrast check for \"তারপর\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "তারপর আমি বাসে যাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Then I go by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Recall \"তারপর\" from memory, then explain what would change if a nearby alternative replaced it in \"তারপর আমি বাসে যাই।\".",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর আমি বাসে যাই।",
+      "exampleNative": "Self-check against the model before moving on: “Then I go by bus.”",
+      "korean": "তারপর",
+      "english": "Recall \"তারপর\" from memory, then explain what would change if a nearby alternative replaced it in \"তারপর আমি বাসে যাই।\".",
+      "example": "তারপর আমি বাসে যাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “Then I go by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Repair \"তারপর\" inside \"তারপর আমি বাসে যাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / after that.” A simple sequence connector.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর আমি বাসে যাই।",
+      "exampleNative": "Use the model as the repair target: “Then I go by bus.”",
+      "korean": "তারপর",
+      "english": "Repair \"তারপর\" inside \"তারপর আমি বাসে যাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Then / after that.” A simple sequence connector.",
+      "example": "তারপর আমি বাসে যাই।",
+      "exampleEnglish": "Use the model as the repair target: “Then I go by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Transfer \"তারপর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"তারপর আমি বাসে যাই।\".",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর আমি বাসে যাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then I go by bus.”",
+      "korean": "তারপর",
+      "english": "Transfer \"তারপর\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"তারপর আমি বাসে যাই।\".",
+      "example": "তারপর আমি বাসে যাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Then I go by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Find one word or phrase that naturally travels with \"তারপর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর আমি বাসে যাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Then I go by bus.”",
+      "korean": "তারপর",
+      "english": "Find one word or phrase that naturally travels with \"তারপর\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "তারপর আমি বাসে যাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Then I go by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Listen for \"তারপর\" inside \"তারপর আমি বাসে যাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর আমি বাসে যাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then I go by bus.”",
+      "korean": "তারপর",
+      "english": "Listen for \"তারপর\" inside \"তারপর আমি বাসে যাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "তারপর আমি বাসে যাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Then I go by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Write \"তারপর\" again without looking, then compare the exact written form against \"তারপর আমি বাসে যাই।\" before moving on.",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর আমি বাসে যাই।",
+      "exampleNative": "Use the written model as the final correctness check: “Then I go by bus.”",
+      "korean": "তারপর",
+      "english": "Write \"তারপর\" again without looking, then compare the exact written form against \"তারপর আমি বাসে যাই।\" before moving on.",
+      "example": "তারপর আমি বাসে যাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Then I go by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "তারপর",
+      "romanization": "tarpor",
+      "nativeText": "Check whether \"তারপর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then I go by bus.”",
+      "pronunciation": "tarpor",
+      "exampleTarget": "তারপর আমি বাসে যাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Then I go by bus.”",
+      "korean": "তারপর",
+      "english": "Check whether \"তারপর\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Then I go by bus.”",
+      "example": "তারপর আমি বাসে যাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Then I go by bus.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আপনি কখন ওঠেন?",
+      "romanization": "apni kokhon othen",
+      "nativeText": "“When do you get up?” The respectful subject pairs with respectful verb form.",
+      "pronunciation": "apni kokhon othen",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "“When do you get up?”",
+      "korean": "আপনি কখন ওঠেন?",
+      "english": "“When do you get up?” The respectful subject pairs with respectful verb form.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "“When do you get up?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আপনি কখন ওঠেন?",
+      "romanization": "apni kokhon othen",
+      "nativeText": "Model use for \"আপনি কখন ওঠেন?\": “When do you get up?” The respectful subject pairs with respectful verb form.",
+      "pronunciation": "apni kokhon othen",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "“When do you get up?”",
+      "korean": "আপনি কখন ওঠেন?",
+      "english": "Model use for \"আপনি কখন ওঠেন?\": “When do you get up?” The respectful subject pairs with respectful verb form.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "“When do you get up?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আপনি কখন ওঠেন?",
+      "romanization": "apni kokhon othen",
+      "nativeText": "Usage focus for \"আপনি কখন ওঠেন?\": “When do you get up?” The respectful subject pairs with respectful verb form.",
+      "pronunciation": "apni kokhon othen",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "Notice what the form is doing here: “When do you get up?”",
+      "korean": "আপনি কখন ওঠেন?",
+      "english": "Usage focus for \"আপনি কখন ওঠেন?\": “When do you get up?” The respectful subject pairs with respectful verb form.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "Notice what the form is doing here: “When do you get up?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আপনি কখন ওঠেন?",
+      "romanization": "apni kokhon othen",
+      "nativeText": "Contrast check for \"আপনি কখন ওঠেন?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "apni kokhon othen",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When do you get up?”",
+      "korean": "আপনি কখন ওঠেন?",
+      "english": "Contrast check for \"আপনি কখন ওঠেন?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When do you get up?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আপনি কখন ওঠেন?",
+      "romanization": "apni kokhon othen",
+      "nativeText": "Recall \"আপনি কখন ওঠেন?\" from memory, then explain what would change if a nearby alternative replaced it in \"আপনি কখন ওঠেন?\".",
+      "pronunciation": "apni kokhon othen",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "Self-check against the model before moving on: “When do you get up?”",
+      "korean": "আপনি কখন ওঠেন?",
+      "english": "Recall \"আপনি কখন ওঠেন?\" from memory, then explain what would change if a nearby alternative replaced it in \"আপনি কখন ওঠেন?\".",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "Self-check against the model before moving on: “When do you get up?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আপনি কখন ওঠেন?",
+      "romanization": "apni kokhon othen",
+      "nativeText": "Repair \"আপনি কখন ওঠেন?\" inside \"আপনি কখন ওঠেন?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When do you get up?” The respectful subject pairs with respectful verb form.",
+      "pronunciation": "apni kokhon othen",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "Use the model as the repair target: “When do you get up?”",
+      "korean": "আপনি কখন ওঠেন?",
+      "english": "Repair \"আপনি কখন ওঠেন?\" inside \"আপনি কখন ওঠেন?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When do you get up?” The respectful subject pairs with respectful verb form.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "Use the model as the repair target: “When do you get up?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আপনি কখন ওঠেন?",
+      "romanization": "apni kokhon othen",
+      "nativeText": "Transfer \"আপনি কখন ওঠেন?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আপনি কখন ওঠেন?\".",
+      "pronunciation": "apni kokhon othen",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When do you get up?”",
+      "korean": "আপনি কখন ওঠেন?",
+      "english": "Transfer \"আপনি কখন ওঠেন?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আপনি কখন ওঠেন?\".",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When do you get up?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আপনি কখন ওঠেন?",
+      "romanization": "apni kokhon othen",
+      "nativeText": "Find one word or phrase that naturally travels with \"আপনি কখন ওঠেন?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "apni kokhon othen",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When do you get up?”",
+      "korean": "আপনি কখন ওঠেন?",
+      "english": "Find one word or phrase that naturally travels with \"আপনি কখন ওঠেন?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When do you get up?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আপনি কখন ওঠেন?",
+      "romanization": "apni kokhon othen",
+      "nativeText": "Listen for \"আপনি কখন ওঠেন?\" inside \"আপনি কখন ওঠেন?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "apni kokhon othen",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When do you get up?”",
+      "korean": "আপনি কখন ওঠেন?",
+      "english": "Listen for \"আপনি কখন ওঠেন?\" inside \"আপনি কখন ওঠেন?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When do you get up?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আপনি কখন ওঠেন?",
+      "romanization": "apni kokhon othen",
+      "nativeText": "Write \"আপনি কখন ওঠেন?\" again without looking, then compare the exact written form against \"আপনি কখন ওঠেন?\" before moving on.",
+      "pronunciation": "apni kokhon othen",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "Use the written model as the final correctness check: “When do you get up?”",
+      "korean": "আপনি কখন ওঠেন?",
+      "english": "Write \"আপনি কখন ওঠেন?\" again without looking, then compare the exact written form against \"আপনি কখন ওঠেন?\" before moving on.",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When do you get up?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit04dailyroutines-vocabulary-1",
+        "bn-level1unit04dailyroutines-vocabulary-2",
+        "bn-level1unit04dailyroutines-grammar-1",
+        "bn-level1unit04dailyroutines-grammar-2",
+        "bn-level1unit04dailyroutines-reading",
+        "bn-level1unit04dailyroutines-listening",
+        "bn-level1unit04dailyroutines-writing",
+        "bn-level1unit04dailyroutines-task"
+      ],
+      "targetText": "আপনি কখন ওঠেন?",
+      "romanization": "apni kokhon othen",
+      "nativeText": "Check whether \"আপনি কখন ওঠেন?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When do you get up?”",
+      "pronunciation": "apni kokhon othen",
+      "exampleTarget": "আপনি কখন ওঠেন?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When do you get up?”",
+      "korean": "আপনি কখন ওঠেন?",
+      "english": "Check whether \"আপনি কখন ওঠেন?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When do you get up?”",
+      "example": "আপনি কখন ওঠেন?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When do you get up?”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

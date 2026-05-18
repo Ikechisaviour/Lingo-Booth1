@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u7',
-  title: 'Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places',
-  category: 'travel',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Say where you are, where you are going, and ask for directions with Turkish case endings.',
-  vocabularyGoal: 'Use common destinations, direction words, and route phrases.',
-  grammarGoal: 'Keep location `-de/-da`, destination `-e/-a`, and source `-den/-dan` distinct.',
-  speakingGoal: 'Say where you are, ask how to get somewhere, and give one short route.',
-  task: 'Guide a visitor from campus to a nearby cafe.',
-  expressionPractice: [
-    practice('stating-location', 'Stating location', 'Use the locative ending.'),
-    practice('stating-destination', 'Stating destination', 'Use the dative ending.'),
-    practice('asking-route', 'Asking route', 'Use `... nasıl giderim?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places",
+  "category": "travel",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit07goingplaces-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Say where you are, where you are going, and ask for directions with Turkish case endings."
+      ],
+      "task": "Guide a visitor from campus to a nearby cafe."
+    },
+    {
+      "id": "tr-level1unit07goingplaces-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit07goingplaces-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit07goingplaces-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit07goingplaces-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Say where you are, where you are going, and ask for directions with Turkish case endings."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit07goingplaces-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit07goingplaces-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit07goingplaces-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit07goingplaces-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit07goingplaces-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit07goingplaces-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Guide a visitor from campus to a nearby cafe."
+      ],
+      "task": "Guide a visitor from campus to a nearby cafe."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-directions'],
-  items: [
-    item('üniversitedeyim', 'ü-ni-ver-si-te-DE-yim', '“I am at the university.” The locative and personal ending stack onto the noun.', 'Şu an üniversitedeyim.', '“Right now I am at the university.”'),
-    item('kütüphaneye gidiyorum', 'kü-tüp-ha-ne-YE gi-di-YO-rum', '“I am going to the library.” Destination takes the dative suffix.', 'Dersten sonra kütüphaneye gidiyorum.', '“After class I am going to the library.”'),
-    item('evden geliyorum', 'ev-DEN ge-li-YO-rum', '“I am coming from home.” Source takes the ablative suffix.', 'Her sabah evden geliyorum.', '“Every morning I come from home.”'),
-    item('sola dönün', 'so-LA dö-NÜN', '“Turn left.” The direction word itself carries the dative ending.', 'Işıklarda sola dönün.', '“At the lights, turn left.”'),
-    item('düz gidin', 'DÜZ gi-DİN', '“Go straight.” A compact polite route instruction.', 'Düz gidin, sonra sağa dönün.', '“Go straight, then turn right.”'),
-    item('yakın / uzak', 'ya-KIN / u-ZAK', '“Near / far.” These adjectives answer many route questions simply.', 'Metro yakın, otobüs durağı uzak.', '“The metro is near, the bus stop is far.”'),
-    item('... nasıl giderim?', 'na-SIL gi-de-RİM', '“How do I get to ...?” The destination takes the dative suffix before the question.', 'Müzeye nasıl giderim?', '“How do I get to the museum?”'),
-    item('yanında', 'ya-NIN-da', '“Next to.” The possessed/location structure literally means “at its side.”', 'Kafe müzenin yanında.', '“The cafe is next to the museum.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-location",
+      "label": "Stating location",
+      "goal": "Use the locative ending."
+    },
+    {
+      "id": "stating-destination",
+      "label": "Stating destination",
+      "goal": "Use the dative ending."
+    },
+    {
+      "id": "asking-route",
+      "label": "Asking route",
+      "goal": "Use `... nasıl giderim?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-travel",
+    "topic-directions"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Say where you are, where you are going, and ask for directions with Turkish case endings.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Guide a visitor from campus to a nearby cafe.",
+      "korean": "ders hedefi",
+      "english": "Say where you are, where you are going, and ask for directions with Turkish case endings.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Guide a visitor from campus to a nearby cafe."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Şu an üniversitedeyim.\".",
+      "pronunciation": "",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Şu an üniversitedeyim.\".",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "Use the key language of Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with the register and setting that the lesson requires.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-2"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places sound precise rather than merely understandable.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "",
+      "nativeText": "Say where you are, where you are going, and ask for directions with Turkish case endings.",
+      "pronunciation": "",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "Say where you are, where you are going, and ask for directions with Turkish case endings.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "Contrast the main pattern in Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit07goingplaces-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Kafe müzenin yanında.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "okuma modeli",
+      "english": "Read \"Kafe müzenin yanında.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit07goingplaces-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Kafe müzenin yanında.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Kafe müzenin yanında.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit07goingplaces-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Şu an üniversitedeyim.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Şu an üniversitedeyim.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit07goingplaces-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Guide a visitor from campus to a nearby cafe.",
+      "pronunciation": "",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "Guide a visitor from campus to a nearby cafe.",
+      "korean": "son görev",
+      "english": "Guide a visitor from campus to a nearby cafe.",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "Guide a visitor from campus to a nearby cafe."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Dersten sonra kütüphaneye gidiyorum.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “After class I am going to the library.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Dersten sonra kütüphaneye gidiyorum.\" against the model.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “After class I am going to the library.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Şu an üniversitedeyim.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Şu an üniversitedeyim.\" before reusing it elsewhere.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Kafe müzenin yanında.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Kafe müzenin yanında.\" as one thought.",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Şu an üniversitedeyim.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Şu an üniversitedeyim.\" and move it into your own life.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"üniversitedeyim\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "üniversitedeyim",
+      "exampleNative": "“I am at the university.” The locative and personal ending stack onto the noun.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"üniversitedeyim\" before looking back.",
+      "example": "üniversitedeyim",
+      "exampleEnglish": "“I am at the university.” The locative and personal ending stack onto the noun."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Kafe müzenin yanında.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Kafe müzenin yanında.\" rather than restarting from a blank sentence.",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Dersten sonra kütüphaneye gidiyorum.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Dersten sonra kütüphaneye gidiyorum.\" as the comparison line.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Şu an üniversitedeyim.\".",
+      "pronunciation": "",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Şu an üniversitedeyim.\".",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Kafe müzenin yanında.\".",
+      "pronunciation": "",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Kafe müzenin yanında.\".",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Şu an üniversitedeyim.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Şu an üniversitedeyim.\" one layer at a time.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Dersten sonra kütüphaneye gidiyorum.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Dersten sonra kütüphaneye gidiyorum.\" as the deciding example.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-culture",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Kafe müzenin yanında.\".",
+      "pronunciation": "",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Kafe müzenin yanında.\".",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "ü-ni-ver-si-te-DE-yim",
+      "nativeText": "“I am at the university.” The locative and personal ending stack onto the noun.",
+      "pronunciation": "ü-ni-ver-si-te-DE-yim",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "“I am at the university.” The locative and personal ending stack onto the noun.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "Şu an üniversitedeyim.",
+      "romanization": "ü-ni-ver-si-te-DE-yim",
+      "nativeText": "Model use for \"Şu an üniversitedeyim.\": “Right now I am at the university.”",
+      "pronunciation": "ü-ni-ver-si-te-DE-yim",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "Şu an üniversitedeyim.",
+      "english": "Model use for \"Şu an üniversitedeyim.\": “Right now I am at the university.”",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "ü-ni-ver-si-te-DE-yim",
+      "nativeText": "Usage focus for \"üniversitedeyim\": Use the key language of Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "ü-ni-ver-si-te-DE-yim",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "Notice what the form is doing here: “Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "Usage focus for \"üniversitedeyim\": Use the key language of Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with the register and setting that the lesson requires.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "Notice what the form is doing here: “Right now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "ü-ni-ver-si-te-DE-yim",
+      "nativeText": "Contrast check for \"üniversitedeyim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ü-ni-ver-si-te-DE-yim",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "Contrast check for \"üniversitedeyim\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "ü-ni-ver-si-te-DE-yim",
+      "nativeText": "Recall \"üniversitedeyim\" from memory, then explain what would change if a nearby alternative replaced it in \"Şu an üniversitedeyim.\".",
+      "pronunciation": "ü-ni-ver-si-te-DE-yim",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "Self-check against the model before moving on: “Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "Recall \"üniversitedeyim\" from memory, then explain what would change if a nearby alternative replaced it in \"Şu an üniversitedeyim.\".",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "Self-check against the model before moving on: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "ü-ni-ver-si-te-DE-yim",
+      "nativeText": "Repair \"üniversitedeyim\" inside \"Şu an üniversitedeyim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "ü-ni-ver-si-te-DE-yim",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "Use the model as the repair target: “Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "Repair \"üniversitedeyim\" inside \"Şu an üniversitedeyim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places with the register and setting that the lesson requires.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "Use the model as the repair target: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "ü-ni-ver-si-te-DE-yim",
+      "nativeText": "Transfer \"üniversitedeyim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Şu an üniversitedeyim.\".",
+      "pronunciation": "ü-ni-ver-si-te-DE-yim",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "Transfer \"üniversitedeyim\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Şu an üniversitedeyim.\".",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "ü-ni-ver-si-te-DE-yim",
+      "nativeText": "Find one word or phrase that naturally travels with \"üniversitedeyim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ü-ni-ver-si-te-DE-yim",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "Find one word or phrase that naturally travels with \"üniversitedeyim\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "ü-ni-ver-si-te-DE-yim",
+      "nativeText": "Listen for \"üniversitedeyim\" inside \"Şu an üniversitedeyim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ü-ni-ver-si-te-DE-yim",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "Listen for \"üniversitedeyim\" inside \"Şu an üniversitedeyim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "ü-ni-ver-si-te-DE-yim",
+      "nativeText": "Write \"üniversitedeyim\" again without looking, then compare the exact written form against \"Şu an üniversitedeyim.\" before moving on.",
+      "pronunciation": "ü-ni-ver-si-te-DE-yim",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "Use the written model as the final correctness check: “Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "Write \"üniversitedeyim\" again without looking, then compare the exact written form against \"Şu an üniversitedeyim.\" before moving on.",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "üniversitedeyim",
+      "romanization": "ü-ni-ver-si-te-DE-yim",
+      "nativeText": "Check whether \"üniversitedeyim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Right now I am at the university.”",
+      "pronunciation": "ü-ni-ver-si-te-DE-yim",
+      "exampleTarget": "Şu an üniversitedeyim.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Right now I am at the university.”",
+      "korean": "üniversitedeyim",
+      "english": "Check whether \"üniversitedeyim\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Right now I am at the university.”",
+      "example": "Şu an üniversitedeyim.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Right now I am at the university.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "nativeText": "“I am going to the library.” Destination takes the dative suffix.",
+      "pronunciation": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "“I am going to the library.” Destination takes the dative suffix.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "Dersten sonra kütüphaneye gidiyorum.",
+      "romanization": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "nativeText": "Model use for \"Dersten sonra kütüphaneye gidiyorum.\": “After class I am going to the library.”",
+      "pronunciation": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "Dersten sonra kütüphaneye gidiyorum.",
+      "english": "Model use for \"Dersten sonra kütüphaneye gidiyorum.\": “After class I am going to the library.”",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "nativeText": "Usage focus for \"kütüphaneye gidiyorum\": Distinguish the nearby wording choices that make Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "Notice what the form is doing here: “After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "Usage focus for \"kütüphaneye gidiyorum\": Distinguish the nearby wording choices that make Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places sound precise rather than merely understandable.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "nativeText": "Contrast check for \"kütüphaneye gidiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "Contrast check for \"kütüphaneye gidiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "nativeText": "Recall \"kütüphaneye gidiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Dersten sonra kütüphaneye gidiyorum.\".",
+      "pronunciation": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "Recall \"kütüphaneye gidiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Dersten sonra kütüphaneye gidiyorum.\".",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "nativeText": "Repair \"kütüphaneye gidiyorum\" inside \"Dersten sonra kütüphaneye gidiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "Use the model as the repair target: “After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "Repair \"kütüphaneye gidiyorum\" inside \"Dersten sonra kütüphaneye gidiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: Nereye Gidiyorsun? — Going Places sound precise rather than merely understandable.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "nativeText": "Transfer \"kütüphaneye gidiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dersten sonra kütüphaneye gidiyorum.\".",
+      "pronunciation": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "Transfer \"kütüphaneye gidiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dersten sonra kütüphaneye gidiyorum.\".",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "nativeText": "Find one word or phrase that naturally travels with \"kütüphaneye gidiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "Find one word or phrase that naturally travels with \"kütüphaneye gidiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "nativeText": "Listen for \"kütüphaneye gidiyorum\" inside \"Dersten sonra kütüphaneye gidiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "Listen for \"kütüphaneye gidiyorum\" inside \"Dersten sonra kütüphaneye gidiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "nativeText": "Write \"kütüphaneye gidiyorum\" again without looking, then compare the exact written form against \"Dersten sonra kütüphaneye gidiyorum.\" before moving on.",
+      "pronunciation": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "Write \"kütüphaneye gidiyorum\" again without looking, then compare the exact written form against \"Dersten sonra kütüphaneye gidiyorum.\" before moving on.",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "kütüphaneye gidiyorum",
+      "romanization": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "nativeText": "Check whether \"kütüphaneye gidiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "pronunciation": "kü-tüp-ha-ne-YE gi-di-YO-rum",
+      "exampleTarget": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "korean": "kütüphaneye gidiyorum",
+      "english": "Check whether \"kütüphaneye gidiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "example": "Dersten sonra kütüphaneye gidiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "evden geliyorum",
+      "romanization": "ev-DEN ge-li-YO-rum",
+      "nativeText": "“I am coming from home.” Source takes the ablative suffix.",
+      "pronunciation": "ev-DEN ge-li-YO-rum",
+      "exampleTarget": "Her sabah evden geliyorum.",
+      "exampleNative": "“Every morning I come from home.”",
+      "korean": "evden geliyorum",
+      "english": "“I am coming from home.” Source takes the ablative suffix.",
+      "example": "Her sabah evden geliyorum.",
+      "exampleEnglish": "“Every morning I come from home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "Her sabah evden geliyorum.",
+      "romanization": "ev-DEN ge-li-YO-rum",
+      "nativeText": "Model use for \"Her sabah evden geliyorum.\": “Every morning I come from home.”",
+      "pronunciation": "ev-DEN ge-li-YO-rum",
+      "exampleTarget": "Her sabah evden geliyorum.",
+      "exampleNative": "“Every morning I come from home.”",
+      "korean": "Her sabah evden geliyorum.",
+      "english": "Model use for \"Her sabah evden geliyorum.\": “Every morning I come from home.”",
+      "example": "Her sabah evden geliyorum.",
+      "exampleEnglish": "“Every morning I come from home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "evden geliyorum",
+      "romanization": "ev-DEN ge-li-YO-rum",
+      "nativeText": "Usage focus for \"evden geliyorum\": “I am coming from home.” Source takes the ablative suffix.",
+      "pronunciation": "ev-DEN ge-li-YO-rum",
+      "exampleTarget": "Her sabah evden geliyorum.",
+      "exampleNative": "Notice what the form is doing here: “Every morning I come from home.”",
+      "korean": "evden geliyorum",
+      "english": "Usage focus for \"evden geliyorum\": “I am coming from home.” Source takes the ablative suffix.",
+      "example": "Her sabah evden geliyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “Every morning I come from home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "evden geliyorum",
+      "romanization": "ev-DEN ge-li-YO-rum",
+      "nativeText": "Contrast check for \"evden geliyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ev-DEN ge-li-YO-rum",
+      "exampleTarget": "Her sabah evden geliyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Every morning I come from home.”",
+      "korean": "evden geliyorum",
+      "english": "Contrast check for \"evden geliyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Her sabah evden geliyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Every morning I come from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "evden geliyorum",
+      "romanization": "ev-DEN ge-li-YO-rum",
+      "nativeText": "Recall \"evden geliyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Her sabah evden geliyorum.\".",
+      "pronunciation": "ev-DEN ge-li-YO-rum",
+      "exampleTarget": "Her sabah evden geliyorum.",
+      "exampleNative": "Self-check against the model before moving on: “Every morning I come from home.”",
+      "korean": "evden geliyorum",
+      "english": "Recall \"evden geliyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Her sabah evden geliyorum.\".",
+      "example": "Her sabah evden geliyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “Every morning I come from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "evden geliyorum",
+      "romanization": "ev-DEN ge-li-YO-rum",
+      "nativeText": "Repair \"evden geliyorum\" inside \"Her sabah evden geliyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I am coming from home.” Source takes the ablative suffix.",
+      "pronunciation": "ev-DEN ge-li-YO-rum",
+      "exampleTarget": "Her sabah evden geliyorum.",
+      "exampleNative": "Use the model as the repair target: “Every morning I come from home.”",
+      "korean": "evden geliyorum",
+      "english": "Repair \"evden geliyorum\" inside \"Her sabah evden geliyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I am coming from home.” Source takes the ablative suffix.",
+      "example": "Her sabah evden geliyorum.",
+      "exampleEnglish": "Use the model as the repair target: “Every morning I come from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "evden geliyorum",
+      "romanization": "ev-DEN ge-li-YO-rum",
+      "nativeText": "Transfer \"evden geliyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Her sabah evden geliyorum.\".",
+      "pronunciation": "ev-DEN ge-li-YO-rum",
+      "exampleTarget": "Her sabah evden geliyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Every morning I come from home.”",
+      "korean": "evden geliyorum",
+      "english": "Transfer \"evden geliyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Her sabah evden geliyorum.\".",
+      "example": "Her sabah evden geliyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Every morning I come from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "evden geliyorum",
+      "romanization": "ev-DEN ge-li-YO-rum",
+      "nativeText": "Find one word or phrase that naturally travels with \"evden geliyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ev-DEN ge-li-YO-rum",
+      "exampleTarget": "Her sabah evden geliyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Every morning I come from home.”",
+      "korean": "evden geliyorum",
+      "english": "Find one word or phrase that naturally travels with \"evden geliyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Her sabah evden geliyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Every morning I come from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "evden geliyorum",
+      "romanization": "ev-DEN ge-li-YO-rum",
+      "nativeText": "Listen for \"evden geliyorum\" inside \"Her sabah evden geliyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ev-DEN ge-li-YO-rum",
+      "exampleTarget": "Her sabah evden geliyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Every morning I come from home.”",
+      "korean": "evden geliyorum",
+      "english": "Listen for \"evden geliyorum\" inside \"Her sabah evden geliyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Her sabah evden geliyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Every morning I come from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "evden geliyorum",
+      "romanization": "ev-DEN ge-li-YO-rum",
+      "nativeText": "Write \"evden geliyorum\" again without looking, then compare the exact written form against \"Her sabah evden geliyorum.\" before moving on.",
+      "pronunciation": "ev-DEN ge-li-YO-rum",
+      "exampleTarget": "Her sabah evden geliyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “Every morning I come from home.”",
+      "korean": "evden geliyorum",
+      "english": "Write \"evden geliyorum\" again without looking, then compare the exact written form against \"Her sabah evden geliyorum.\" before moving on.",
+      "example": "Her sabah evden geliyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Every morning I come from home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "evden geliyorum",
+      "romanization": "ev-DEN ge-li-YO-rum",
+      "nativeText": "Check whether \"evden geliyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Every morning I come from home.”",
+      "pronunciation": "ev-DEN ge-li-YO-rum",
+      "exampleTarget": "Her sabah evden geliyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Every morning I come from home.”",
+      "korean": "evden geliyorum",
+      "english": "Check whether \"evden geliyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Every morning I come from home.”",
+      "example": "Her sabah evden geliyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Every morning I come from home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "sola dönün",
+      "romanization": "so-LA dö-NÜN",
+      "nativeText": "“Turn left.” The direction word itself carries the dative ending.",
+      "pronunciation": "so-LA dö-NÜN",
+      "exampleTarget": "Işıklarda sola dönün.",
+      "exampleNative": "“At the lights, turn left.”",
+      "korean": "sola dönün",
+      "english": "“Turn left.” The direction word itself carries the dative ending.",
+      "example": "Işıklarda sola dönün.",
+      "exampleEnglish": "“At the lights, turn left.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "Işıklarda sola dönün.",
+      "romanization": "so-LA dö-NÜN",
+      "nativeText": "Model use for \"Işıklarda sola dönün.\": “At the lights, turn left.”",
+      "pronunciation": "so-LA dö-NÜN",
+      "exampleTarget": "Işıklarda sola dönün.",
+      "exampleNative": "“At the lights, turn left.”",
+      "korean": "Işıklarda sola dönün.",
+      "english": "Model use for \"Işıklarda sola dönün.\": “At the lights, turn left.”",
+      "example": "Işıklarda sola dönün.",
+      "exampleEnglish": "“At the lights, turn left.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "sola dönün",
+      "romanization": "so-LA dö-NÜN",
+      "nativeText": "Usage focus for \"sola dönün\": “Turn left.” The direction word itself carries the dative ending.",
+      "pronunciation": "so-LA dö-NÜN",
+      "exampleTarget": "Işıklarda sola dönün.",
+      "exampleNative": "Notice what the form is doing here: “At the lights, turn left.”",
+      "korean": "sola dönün",
+      "english": "Usage focus for \"sola dönün\": “Turn left.” The direction word itself carries the dative ending.",
+      "example": "Işıklarda sola dönün.",
+      "exampleEnglish": "Notice what the form is doing here: “At the lights, turn left.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "sola dönün",
+      "romanization": "so-LA dö-NÜN",
+      "nativeText": "Contrast check for \"sola dönün\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "so-LA dö-NÜN",
+      "exampleTarget": "Işıklarda sola dönün.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At the lights, turn left.”",
+      "korean": "sola dönün",
+      "english": "Contrast check for \"sola dönün\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Işıklarda sola dönün.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At the lights, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "sola dönün",
+      "romanization": "so-LA dö-NÜN",
+      "nativeText": "Recall \"sola dönün\" from memory, then explain what would change if a nearby alternative replaced it in \"Işıklarda sola dönün.\".",
+      "pronunciation": "so-LA dö-NÜN",
+      "exampleTarget": "Işıklarda sola dönün.",
+      "exampleNative": "Self-check against the model before moving on: “At the lights, turn left.”",
+      "korean": "sola dönün",
+      "english": "Recall \"sola dönün\" from memory, then explain what would change if a nearby alternative replaced it in \"Işıklarda sola dönün.\".",
+      "example": "Işıklarda sola dönün.",
+      "exampleEnglish": "Self-check against the model before moving on: “At the lights, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "sola dönün",
+      "romanization": "so-LA dö-NÜN",
+      "nativeText": "Repair \"sola dönün\" inside \"Işıklarda sola dönün.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Turn left.” The direction word itself carries the dative ending.",
+      "pronunciation": "so-LA dö-NÜN",
+      "exampleTarget": "Işıklarda sola dönün.",
+      "exampleNative": "Use the model as the repair target: “At the lights, turn left.”",
+      "korean": "sola dönün",
+      "english": "Repair \"sola dönün\" inside \"Işıklarda sola dönün.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Turn left.” The direction word itself carries the dative ending.",
+      "example": "Işıklarda sola dönün.",
+      "exampleEnglish": "Use the model as the repair target: “At the lights, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "sola dönün",
+      "romanization": "so-LA dö-NÜN",
+      "nativeText": "Transfer \"sola dönün\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Işıklarda sola dönün.\".",
+      "pronunciation": "so-LA dö-NÜN",
+      "exampleTarget": "Işıklarda sola dönün.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At the lights, turn left.”",
+      "korean": "sola dönün",
+      "english": "Transfer \"sola dönün\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Işıklarda sola dönün.\".",
+      "example": "Işıklarda sola dönün.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At the lights, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "sola dönün",
+      "romanization": "so-LA dö-NÜN",
+      "nativeText": "Find one word or phrase that naturally travels with \"sola dönün\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "so-LA dö-NÜN",
+      "exampleTarget": "Işıklarda sola dönün.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At the lights, turn left.”",
+      "korean": "sola dönün",
+      "english": "Find one word or phrase that naturally travels with \"sola dönün\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Işıklarda sola dönün.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At the lights, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "sola dönün",
+      "romanization": "so-LA dö-NÜN",
+      "nativeText": "Listen for \"sola dönün\" inside \"Işıklarda sola dönün.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "so-LA dö-NÜN",
+      "exampleTarget": "Işıklarda sola dönün.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At the lights, turn left.”",
+      "korean": "sola dönün",
+      "english": "Listen for \"sola dönün\" inside \"Işıklarda sola dönün.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Işıklarda sola dönün.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At the lights, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "sola dönün",
+      "romanization": "so-LA dö-NÜN",
+      "nativeText": "Write \"sola dönün\" again without looking, then compare the exact written form against \"Işıklarda sola dönün.\" before moving on.",
+      "pronunciation": "so-LA dö-NÜN",
+      "exampleTarget": "Işıklarda sola dönün.",
+      "exampleNative": "Use the written model as the final correctness check: “At the lights, turn left.”",
+      "korean": "sola dönün",
+      "english": "Write \"sola dönün\" again without looking, then compare the exact written form against \"Işıklarda sola dönün.\" before moving on.",
+      "example": "Işıklarda sola dönün.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At the lights, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "sola dönün",
+      "romanization": "so-LA dö-NÜN",
+      "nativeText": "Check whether \"sola dönün\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At the lights, turn left.”",
+      "pronunciation": "so-LA dö-NÜN",
+      "exampleTarget": "Işıklarda sola dönün.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At the lights, turn left.”",
+      "korean": "sola dönün",
+      "english": "Check whether \"sola dönün\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At the lights, turn left.”",
+      "example": "Işıklarda sola dönün.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At the lights, turn left.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "düz gidin",
+      "romanization": "DÜZ gi-DİN",
+      "nativeText": "“Go straight.” A compact polite route instruction.",
+      "pronunciation": "DÜZ gi-DİN",
+      "exampleTarget": "Düz gidin, sonra sağa dönün.",
+      "exampleNative": "“Go straight, then turn right.”",
+      "korean": "düz gidin",
+      "english": "“Go straight.” A compact polite route instruction.",
+      "example": "Düz gidin, sonra sağa dönün.",
+      "exampleEnglish": "“Go straight, then turn right.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "Düz gidin, sonra sağa dönün.",
+      "romanization": "DÜZ gi-DİN",
+      "nativeText": "Model use for \"Düz gidin, sonra sağa dönün.\": “Go straight, then turn right.”",
+      "pronunciation": "DÜZ gi-DİN",
+      "exampleTarget": "Düz gidin, sonra sağa dönün.",
+      "exampleNative": "“Go straight, then turn right.”",
+      "korean": "Düz gidin, sonra sağa dönün.",
+      "english": "Model use for \"Düz gidin, sonra sağa dönün.\": “Go straight, then turn right.”",
+      "example": "Düz gidin, sonra sağa dönün.",
+      "exampleEnglish": "“Go straight, then turn right.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "düz gidin",
+      "romanization": "DÜZ gi-DİN",
+      "nativeText": "Usage focus for \"düz gidin\": “Go straight.” A compact polite route instruction.",
+      "pronunciation": "DÜZ gi-DİN",
+      "exampleTarget": "Düz gidin, sonra sağa dönün.",
+      "exampleNative": "Notice what the form is doing here: “Go straight, then turn right.”",
+      "korean": "düz gidin",
+      "english": "Usage focus for \"düz gidin\": “Go straight.” A compact polite route instruction.",
+      "example": "Düz gidin, sonra sağa dönün.",
+      "exampleEnglish": "Notice what the form is doing here: “Go straight, then turn right.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "düz gidin",
+      "romanization": "DÜZ gi-DİN",
+      "nativeText": "Contrast check for \"düz gidin\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "DÜZ gi-DİN",
+      "exampleTarget": "Düz gidin, sonra sağa dönün.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Go straight, then turn right.”",
+      "korean": "düz gidin",
+      "english": "Contrast check for \"düz gidin\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Düz gidin, sonra sağa dönün.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "düz gidin",
+      "romanization": "DÜZ gi-DİN",
+      "nativeText": "Recall \"düz gidin\" from memory, then explain what would change if a nearby alternative replaced it in \"Düz gidin, sonra sağa dönün.\".",
+      "pronunciation": "DÜZ gi-DİN",
+      "exampleTarget": "Düz gidin, sonra sağa dönün.",
+      "exampleNative": "Self-check against the model before moving on: “Go straight, then turn right.”",
+      "korean": "düz gidin",
+      "english": "Recall \"düz gidin\" from memory, then explain what would change if a nearby alternative replaced it in \"Düz gidin, sonra sağa dönün.\".",
+      "example": "Düz gidin, sonra sağa dönün.",
+      "exampleEnglish": "Self-check against the model before moving on: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "düz gidin",
+      "romanization": "DÜZ gi-DİN",
+      "nativeText": "Repair \"düz gidin\" inside \"Düz gidin, sonra sağa dönün.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Go straight.” A compact polite route instruction.",
+      "pronunciation": "DÜZ gi-DİN",
+      "exampleTarget": "Düz gidin, sonra sağa dönün.",
+      "exampleNative": "Use the model as the repair target: “Go straight, then turn right.”",
+      "korean": "düz gidin",
+      "english": "Repair \"düz gidin\" inside \"Düz gidin, sonra sağa dönün.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Go straight.” A compact polite route instruction.",
+      "example": "Düz gidin, sonra sağa dönün.",
+      "exampleEnglish": "Use the model as the repair target: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "düz gidin",
+      "romanization": "DÜZ gi-DİN",
+      "nativeText": "Transfer \"düz gidin\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Düz gidin, sonra sağa dönün.\".",
+      "pronunciation": "DÜZ gi-DİN",
+      "exampleTarget": "Düz gidin, sonra sağa dönün.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Go straight, then turn right.”",
+      "korean": "düz gidin",
+      "english": "Transfer \"düz gidin\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Düz gidin, sonra sağa dönün.\".",
+      "example": "Düz gidin, sonra sağa dönün.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "düz gidin",
+      "romanization": "DÜZ gi-DİN",
+      "nativeText": "Find one word or phrase that naturally travels with \"düz gidin\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "DÜZ gi-DİN",
+      "exampleTarget": "Düz gidin, sonra sağa dönün.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Go straight, then turn right.”",
+      "korean": "düz gidin",
+      "english": "Find one word or phrase that naturally travels with \"düz gidin\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Düz gidin, sonra sağa dönün.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "düz gidin",
+      "romanization": "DÜZ gi-DİN",
+      "nativeText": "Listen for \"düz gidin\" inside \"Düz gidin, sonra sağa dönün.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "DÜZ gi-DİN",
+      "exampleTarget": "Düz gidin, sonra sağa dönün.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Go straight, then turn right.”",
+      "korean": "düz gidin",
+      "english": "Listen for \"düz gidin\" inside \"Düz gidin, sonra sağa dönün.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Düz gidin, sonra sağa dönün.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "düz gidin",
+      "romanization": "DÜZ gi-DİN",
+      "nativeText": "Write \"düz gidin\" again without looking, then compare the exact written form against \"Düz gidin, sonra sağa dönün.\" before moving on.",
+      "pronunciation": "DÜZ gi-DİN",
+      "exampleTarget": "Düz gidin, sonra sağa dönün.",
+      "exampleNative": "Use the written model as the final correctness check: “Go straight, then turn right.”",
+      "korean": "düz gidin",
+      "english": "Write \"düz gidin\" again without looking, then compare the exact written form against \"Düz gidin, sonra sağa dönün.\" before moving on.",
+      "example": "Düz gidin, sonra sağa dönün.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Go straight, then turn right.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "düz gidin",
+      "romanization": "DÜZ gi-DİN",
+      "nativeText": "Check whether \"düz gidin\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Go straight, then turn right.”",
+      "pronunciation": "DÜZ gi-DİN",
+      "exampleTarget": "Düz gidin, sonra sağa dönün.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Go straight, then turn right.”",
+      "korean": "düz gidin",
+      "english": "Check whether \"düz gidin\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Go straight, then turn right.”",
+      "example": "Düz gidin, sonra sağa dönün.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Go straight, then turn right.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yakın / uzak",
+      "romanization": "ya-KIN / u-ZAK",
+      "nativeText": "“Near / far.” These adjectives answer many route questions simply.",
+      "pronunciation": "ya-KIN / u-ZAK",
+      "exampleTarget": "Metro yakın, otobüs durağı uzak.",
+      "exampleNative": "“The metro is near, the bus stop is far.”",
+      "korean": "yakın / uzak",
+      "english": "“Near / far.” These adjectives answer many route questions simply.",
+      "example": "Metro yakın, otobüs durağı uzak.",
+      "exampleEnglish": "“The metro is near, the bus stop is far.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "Metro yakın, otobüs durağı uzak.",
+      "romanization": "ya-KIN / u-ZAK",
+      "nativeText": "Model use for \"Metro yakın, otobüs durağı uzak.\": “The metro is near, the bus stop is far.”",
+      "pronunciation": "ya-KIN / u-ZAK",
+      "exampleTarget": "Metro yakın, otobüs durağı uzak.",
+      "exampleNative": "“The metro is near, the bus stop is far.”",
+      "korean": "Metro yakın, otobüs durağı uzak.",
+      "english": "Model use for \"Metro yakın, otobüs durağı uzak.\": “The metro is near, the bus stop is far.”",
+      "example": "Metro yakın, otobüs durağı uzak.",
+      "exampleEnglish": "“The metro is near, the bus stop is far.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yakın / uzak",
+      "romanization": "ya-KIN / u-ZAK",
+      "nativeText": "Usage focus for \"yakın / uzak\": “Near / far.” These adjectives answer many route questions simply.",
+      "pronunciation": "ya-KIN / u-ZAK",
+      "exampleTarget": "Metro yakın, otobüs durağı uzak.",
+      "exampleNative": "Notice what the form is doing here: “The metro is near, the bus stop is far.”",
+      "korean": "yakın / uzak",
+      "english": "Usage focus for \"yakın / uzak\": “Near / far.” These adjectives answer many route questions simply.",
+      "example": "Metro yakın, otobüs durağı uzak.",
+      "exampleEnglish": "Notice what the form is doing here: “The metro is near, the bus stop is far.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yakın / uzak",
+      "romanization": "ya-KIN / u-ZAK",
+      "nativeText": "Contrast check for \"yakın / uzak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya-KIN / u-ZAK",
+      "exampleTarget": "Metro yakın, otobüs durağı uzak.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The metro is near, the bus stop is far.”",
+      "korean": "yakın / uzak",
+      "english": "Contrast check for \"yakın / uzak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Metro yakın, otobüs durağı uzak.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The metro is near, the bus stop is far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yakın / uzak",
+      "romanization": "ya-KIN / u-ZAK",
+      "nativeText": "Recall \"yakın / uzak\" from memory, then explain what would change if a nearby alternative replaced it in \"Metro yakın, otobüs durağı uzak.\".",
+      "pronunciation": "ya-KIN / u-ZAK",
+      "exampleTarget": "Metro yakın, otobüs durağı uzak.",
+      "exampleNative": "Self-check against the model before moving on: “The metro is near, the bus stop is far.”",
+      "korean": "yakın / uzak",
+      "english": "Recall \"yakın / uzak\" from memory, then explain what would change if a nearby alternative replaced it in \"Metro yakın, otobüs durağı uzak.\".",
+      "example": "Metro yakın, otobüs durağı uzak.",
+      "exampleEnglish": "Self-check against the model before moving on: “The metro is near, the bus stop is far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yakın / uzak",
+      "romanization": "ya-KIN / u-ZAK",
+      "nativeText": "Repair \"yakın / uzak\" inside \"Metro yakın, otobüs durağı uzak.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Near / far.” These adjectives answer many route questions simply.",
+      "pronunciation": "ya-KIN / u-ZAK",
+      "exampleTarget": "Metro yakın, otobüs durağı uzak.",
+      "exampleNative": "Use the model as the repair target: “The metro is near, the bus stop is far.”",
+      "korean": "yakın / uzak",
+      "english": "Repair \"yakın / uzak\" inside \"Metro yakın, otobüs durağı uzak.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Near / far.” These adjectives answer many route questions simply.",
+      "example": "Metro yakın, otobüs durağı uzak.",
+      "exampleEnglish": "Use the model as the repair target: “The metro is near, the bus stop is far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yakın / uzak",
+      "romanization": "ya-KIN / u-ZAK",
+      "nativeText": "Transfer \"yakın / uzak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Metro yakın, otobüs durağı uzak.\".",
+      "pronunciation": "ya-KIN / u-ZAK",
+      "exampleTarget": "Metro yakın, otobüs durağı uzak.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The metro is near, the bus stop is far.”",
+      "korean": "yakın / uzak",
+      "english": "Transfer \"yakın / uzak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Metro yakın, otobüs durağı uzak.\".",
+      "example": "Metro yakın, otobüs durağı uzak.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The metro is near, the bus stop is far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yakın / uzak",
+      "romanization": "ya-KIN / u-ZAK",
+      "nativeText": "Find one word or phrase that naturally travels with \"yakın / uzak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya-KIN / u-ZAK",
+      "exampleTarget": "Metro yakın, otobüs durağı uzak.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The metro is near, the bus stop is far.”",
+      "korean": "yakın / uzak",
+      "english": "Find one word or phrase that naturally travels with \"yakın / uzak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Metro yakın, otobüs durağı uzak.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The metro is near, the bus stop is far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yakın / uzak",
+      "romanization": "ya-KIN / u-ZAK",
+      "nativeText": "Listen for \"yakın / uzak\" inside \"Metro yakın, otobüs durağı uzak.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya-KIN / u-ZAK",
+      "exampleTarget": "Metro yakın, otobüs durağı uzak.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The metro is near, the bus stop is far.”",
+      "korean": "yakın / uzak",
+      "english": "Listen for \"yakın / uzak\" inside \"Metro yakın, otobüs durağı uzak.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Metro yakın, otobüs durağı uzak.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The metro is near, the bus stop is far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yakın / uzak",
+      "romanization": "ya-KIN / u-ZAK",
+      "nativeText": "Write \"yakın / uzak\" again without looking, then compare the exact written form against \"Metro yakın, otobüs durağı uzak.\" before moving on.",
+      "pronunciation": "ya-KIN / u-ZAK",
+      "exampleTarget": "Metro yakın, otobüs durağı uzak.",
+      "exampleNative": "Use the written model as the final correctness check: “The metro is near, the bus stop is far.”",
+      "korean": "yakın / uzak",
+      "english": "Write \"yakın / uzak\" again without looking, then compare the exact written form against \"Metro yakın, otobüs durağı uzak.\" before moving on.",
+      "example": "Metro yakın, otobüs durağı uzak.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The metro is near, the bus stop is far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yakın / uzak",
+      "romanization": "ya-KIN / u-ZAK",
+      "nativeText": "Check whether \"yakın / uzak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The metro is near, the bus stop is far.”",
+      "pronunciation": "ya-KIN / u-ZAK",
+      "exampleTarget": "Metro yakın, otobüs durağı uzak.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The metro is near, the bus stop is far.”",
+      "korean": "yakın / uzak",
+      "english": "Check whether \"yakın / uzak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The metro is near, the bus stop is far.”",
+      "example": "Metro yakın, otobüs durağı uzak.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The metro is near, the bus stop is far.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "“How do I get to ...?” The destination takes the dative suffix before the question.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Müzeye nasıl giderim?",
+      "exampleNative": "“How do I get to the museum?”",
+      "korean": "... nasıl giderim?",
+      "english": "“How do I get to ...?” The destination takes the dative suffix before the question.",
+      "example": "Müzeye nasıl giderim?",
+      "exampleEnglish": "“How do I get to the museum?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "Müzeye nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Model use for \"Müzeye nasıl giderim?\": “How do I get to the museum?”",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Müzeye nasıl giderim?",
+      "exampleNative": "“How do I get to the museum?”",
+      "korean": "Müzeye nasıl giderim?",
+      "english": "Model use for \"Müzeye nasıl giderim?\": “How do I get to the museum?”",
+      "example": "Müzeye nasıl giderim?",
+      "exampleEnglish": "“How do I get to the museum?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Usage focus for \"... nasıl giderim?\": “How do I get to ...?” The destination takes the dative suffix before the question.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Müzeye nasıl giderim?",
+      "exampleNative": "Notice what the form is doing here: “How do I get to the museum?”",
+      "korean": "... nasıl giderim?",
+      "english": "Usage focus for \"... nasıl giderim?\": “How do I get to ...?” The destination takes the dative suffix before the question.",
+      "example": "Müzeye nasıl giderim?",
+      "exampleEnglish": "Notice what the form is doing here: “How do I get to the museum?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Contrast check for \"... nasıl giderim?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Müzeye nasıl giderim?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to the museum?”",
+      "korean": "... nasıl giderim?",
+      "english": "Contrast check for \"... nasıl giderim?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Müzeye nasıl giderim?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Recall \"... nasıl giderim?\" from memory, then explain what would change if a nearby alternative replaced it in \"Müzeye nasıl giderim?\".",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Müzeye nasıl giderim?",
+      "exampleNative": "Self-check against the model before moving on: “How do I get to the museum?”",
+      "korean": "... nasıl giderim?",
+      "english": "Recall \"... nasıl giderim?\" from memory, then explain what would change if a nearby alternative replaced it in \"Müzeye nasıl giderim?\".",
+      "example": "Müzeye nasıl giderim?",
+      "exampleEnglish": "Self-check against the model before moving on: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Repair \"... nasıl giderim?\" inside \"Müzeye nasıl giderim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get to ...?” The destination takes the dative suffix before the question.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Müzeye nasıl giderim?",
+      "exampleNative": "Use the model as the repair target: “How do I get to the museum?”",
+      "korean": "... nasıl giderim?",
+      "english": "Repair \"... nasıl giderim?\" inside \"Müzeye nasıl giderim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get to ...?” The destination takes the dative suffix before the question.",
+      "example": "Müzeye nasıl giderim?",
+      "exampleEnglish": "Use the model as the repair target: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Transfer \"... nasıl giderim?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Müzeye nasıl giderim?\".",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Müzeye nasıl giderim?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to the museum?”",
+      "korean": "... nasıl giderim?",
+      "english": "Transfer \"... nasıl giderim?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Müzeye nasıl giderim?\".",
+      "example": "Müzeye nasıl giderim?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Find one word or phrase that naturally travels with \"... nasıl giderim?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Müzeye nasıl giderim?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How do I get to the museum?”",
+      "korean": "... nasıl giderim?",
+      "english": "Find one word or phrase that naturally travels with \"... nasıl giderim?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Müzeye nasıl giderim?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Listen for \"... nasıl giderim?\" inside \"Müzeye nasıl giderim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Müzeye nasıl giderim?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to the museum?”",
+      "korean": "... nasıl giderim?",
+      "english": "Listen for \"... nasıl giderim?\" inside \"Müzeye nasıl giderim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Müzeye nasıl giderim?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Write \"... nasıl giderim?\" again without looking, then compare the exact written form against \"Müzeye nasıl giderim?\" before moving on.",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Müzeye nasıl giderim?",
+      "exampleNative": "Use the written model as the final correctness check: “How do I get to the museum?”",
+      "korean": "... nasıl giderim?",
+      "english": "Write \"... nasıl giderim?\" again without looking, then compare the exact written form against \"Müzeye nasıl giderim?\" before moving on.",
+      "example": "Müzeye nasıl giderim?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "... nasıl giderim?",
+      "romanization": "na-SIL gi-de-RİM",
+      "nativeText": "Check whether \"... nasıl giderim?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”",
+      "pronunciation": "na-SIL gi-de-RİM",
+      "exampleTarget": "Müzeye nasıl giderim?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”",
+      "korean": "... nasıl giderim?",
+      "english": "Check whether \"... nasıl giderim?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”",
+      "example": "Müzeye nasıl giderim?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yanında",
+      "romanization": "ya-NIN-da",
+      "nativeText": "“Next to.” The possessed/location structure literally means “at its side.”",
+      "pronunciation": "ya-NIN-da",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "yanında",
+      "english": "“Next to.” The possessed/location structure literally means “at its side.”",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "Kafe müzenin yanında.",
+      "romanization": "ya-NIN-da",
+      "nativeText": "Model use for \"Kafe müzenin yanında.\": “The cafe is next to the museum.”",
+      "pronunciation": "ya-NIN-da",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "Kafe müzenin yanında.",
+      "english": "Model use for \"Kafe müzenin yanında.\": “The cafe is next to the museum.”",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yanında",
+      "romanization": "ya-NIN-da",
+      "nativeText": "Usage focus for \"yanında\": “Next to.” The possessed/location structure literally means “at its side.”",
+      "pronunciation": "ya-NIN-da",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "Notice what the form is doing here: “The cafe is next to the museum.”",
+      "korean": "yanında",
+      "english": "Usage focus for \"yanında\": “Next to.” The possessed/location structure literally means “at its side.”",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "Notice what the form is doing here: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yanında",
+      "romanization": "ya-NIN-da",
+      "nativeText": "Contrast check for \"yanında\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya-NIN-da",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is next to the museum.”",
+      "korean": "yanında",
+      "english": "Contrast check for \"yanında\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yanında",
+      "romanization": "ya-NIN-da",
+      "nativeText": "Recall \"yanında\" from memory, then explain what would change if a nearby alternative replaced it in \"Kafe müzenin yanında.\".",
+      "pronunciation": "ya-NIN-da",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "Self-check against the model before moving on: “The cafe is next to the museum.”",
+      "korean": "yanında",
+      "english": "Recall \"yanında\" from memory, then explain what would change if a nearby alternative replaced it in \"Kafe müzenin yanında.\".",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "Self-check against the model before moving on: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yanında",
+      "romanization": "ya-NIN-da",
+      "nativeText": "Repair \"yanında\" inside \"Kafe müzenin yanında.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next to.” The possessed/location structure literally means “at its side.”",
+      "pronunciation": "ya-NIN-da",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "Use the model as the repair target: “The cafe is next to the museum.”",
+      "korean": "yanında",
+      "english": "Repair \"yanında\" inside \"Kafe müzenin yanında.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next to.” The possessed/location structure literally means “at its side.”",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "Use the model as the repair target: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yanında",
+      "romanization": "ya-NIN-da",
+      "nativeText": "Transfer \"yanında\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kafe müzenin yanında.\".",
+      "pronunciation": "ya-NIN-da",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is next to the museum.”",
+      "korean": "yanında",
+      "english": "Transfer \"yanında\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kafe müzenin yanında.\".",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yanında",
+      "romanization": "ya-NIN-da",
+      "nativeText": "Find one word or phrase that naturally travels with \"yanında\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya-NIN-da",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The cafe is next to the museum.”",
+      "korean": "yanında",
+      "english": "Find one word or phrase that naturally travels with \"yanında\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yanında",
+      "romanization": "ya-NIN-da",
+      "nativeText": "Listen for \"yanında\" inside \"Kafe müzenin yanında.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya-NIN-da",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is next to the museum.”",
+      "korean": "yanında",
+      "english": "Listen for \"yanında\" inside \"Kafe müzenin yanında.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yanında",
+      "romanization": "ya-NIN-da",
+      "nativeText": "Write \"yanında\" again without looking, then compare the exact written form against \"Kafe müzenin yanında.\" before moving on.",
+      "pronunciation": "ya-NIN-da",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "Use the written model as the final correctness check: “The cafe is next to the museum.”",
+      "korean": "yanında",
+      "english": "Write \"yanında\" again without looking, then compare the exact written form against \"Kafe müzenin yanında.\" before moving on.",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit07goingplaces-vocabulary-1",
+        "tr-level1unit07goingplaces-vocabulary-2",
+        "tr-level1unit07goingplaces-grammar-1",
+        "tr-level1unit07goingplaces-grammar-2",
+        "tr-level1unit07goingplaces-reading",
+        "tr-level1unit07goingplaces-listening",
+        "tr-level1unit07goingplaces-writing",
+        "tr-level1unit07goingplaces-task"
+      ],
+      "targetText": "yanında",
+      "romanization": "ya-NIN-da",
+      "nativeText": "Check whether \"yanında\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is next to the museum.”",
+      "pronunciation": "ya-NIN-da",
+      "exampleTarget": "Kafe müzenin yanında.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The cafe is next to the museum.”",
+      "korean": "yanında",
+      "english": "Check whether \"yanında\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is next to the museum.”",
+      "example": "Kafe müzenin yanında.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The cafe is next to the museum.”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

@@ -1,119 +1,2788 @@
-// Level 1 Unit 5 — Life in the Arab World (Modern Standard Arabic)
-// Functions: describing places, food, climate, customs across Arab countries.
-
-const createContentItem = (target, romanization, note, type = 'word', example = '', exampleNote = '', breakdown = null, activityIds = []) => ({
-  type, activityIds, targetText: target, romanization, nativeText: note, pronunciation: romanization,
-  exampleTarget: example || target, exampleNative: exampleNote || note,
-  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'ar-l1u5-orientation', pronunciation: 'ar-l1u5-pronunciation',
-  vocabCountries: 'ar-l1u5-vocab-countries', vocabLife: 'ar-l1u5-vocab-life',
-  grammarAdj: 'ar-l1u5-grammar-adj', grammarDual: 'ar-l1u5-grammar-dual',
-  grammarKana: 'ar-l1u5-grammar-kana',
-  reading: 'ar-l1u5-reading', listening: 'ar-l1u5-listening',
-  writing: 'ar-l1u5-writing', culture: 'ar-l1u5-culture', task: 'ar-l1u5-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'Life across the Arab world',
-    goals: ['Name 15+ Arab countries with their capitals and nisba adjectives.', 'Describe climate and food differences across regions.', 'Use the dual (مُثَنَّى) for paired things (eyes, hands, two countries).'],
-    task: 'Survey the 22 Arab countries — their capitals, languages, and one cultural feature each.' },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'City names', goals: ['Pronounce القاهرة, الرياض, الدوحة, الجزائر, الخرطوم correctly.', 'Apply sun-letter rule on city names with الـ.'], task: 'Read 10 capital names with correct emphatics and pharyngeals.' },
-  { id: ACT.vocabCountries, section: 'Vocabulary I', title: 'Arab countries and capitals', goals: ['Memorize 15 countries with capitals.'], task: 'Pair each country with its capital and nisba.' },
-  { id: ACT.vocabLife, section: 'Vocabulary II', title: 'Life vocabulary', goals: ['12 nouns about climate, food, dress.'], task: 'Describe daily life in 3 different Arab countries.' },
-  { id: ACT.grammarAdj, section: 'Grammar I', title: 'Adjective agreement', goals: ['Agree adjectives in definiteness, gender, number, and case.', 'Apply the "agreement-with-non-human-plurals as feminine-singular" rule.'], task: 'Modify 6 nouns with appropriately-agreed adjectives.' },
-  { id: ACT.grammarDual, section: 'Grammar II', title: 'The dual (المثنى)', goals: ['Form the dual: noun + ـان (nom) / ـين (acc/gen).', 'Use the dual for exactly two of anything — eyes, hands, two countries, two students.'], task: 'Convert 5 plurals into duals.' },
-  { id: ACT.grammarKana, section: 'Grammar III', title: 'كان and the past nominal sentence', goals: ['Use كان to push a nominal sentence into the past: كان الطقس حارًا ("the weather WAS hot").', 'Apply the accusative case on the predicate after كان.'], task: 'Convert 4 present nominal sentences to past with كان.' },
-  { id: ACT.reading, section: 'Reading', title: 'A tour of the Arab world', goals: ['Read a paragraph describing 4 Arab cities.'], task: 'Read and answer 4 location questions.' },
-  { id: ACT.listening, section: 'Listening', title: 'Comparing two countries', goals: ['Follow a dialogue comparing Egypt and Saudi Arabia.'], task: 'Reproduce with two countries of your choice.' },
-  { id: ACT.writing, section: 'Writing', title: 'Describe an Arab city', goals: ['Write 5 sentences about an Arab city using adj agreement.'], task: 'Choose a city; describe.' },
-  { id: ACT.culture, section: 'Culture', title: 'The diversity of the Arab world', goals: ['Understand the geographic spread (Atlantic to Gulf), 22 countries, ~400M speakers.', 'Recognize regional dialect families: Maghrebi, Egyptian, Levantine, Mesopotamian, Gulf.'], task: 'Sketch a map of the 5 dialect zones.' },
-  { id: ACT.task, section: 'Task', title: 'Present an Arab country', goals: ['Give a 1-minute oral summary of an Arab country.'], task: 'Roleplay a presentation about a country.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 5: في العالم العربي — Life in the Arab World',
-  category: 'culture', difficulty: 'beginner',
-  targetLang: 'ar', nativeLang: 'en', track: 'textbook', lessonType: 'thematic',
-  activities, expressionPractice: [
-    { id: 'naming-countries', label: 'Naming countries', goal: 'Pair each Arab country with capital + nisba.' },
-    { id: 'comparing', label: 'Comparing', goal: 'Use أكثر / أقل + adjective to compare.' },
-    { id: 'describing-culture', label: 'Describing culture', goal: '5-sentence description of one Arab country.' },
+module.exports = {
+  "title": "Level 1 · Unit 5: في العالم العربي — Life in the Arab World",
+  "category": "culture",
+  "difficulty": "beginner",
+  "targetLang": "ar",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ar-level1unit05lifeinarabworld-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Name 15+ Arab countries with their capitals and nisba adjectives."
+      ],
+      "task": "Roleplay a presentation about a country."
+    },
+    {
+      "id": "ar-level1unit05lifeinarabworld-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ar-level1unit05lifeinarabworld-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 5: في العالم العربي — Life in the Arab World with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ar-level1unit05lifeinarabworld-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 5: في العالم العربي — Life in the Arab World sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ar-level1unit05lifeinarabworld-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Name 15+ Arab countries with their capitals and nisba adjectives."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ar-level1unit05lifeinarabworld-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 5: في العالم العربي — Life in the Arab World with one nearby Arabic form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ar-level1unit05lifeinarabworld-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ar-level1unit05lifeinarabworld-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ar-level1unit05lifeinarabworld-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ar-level1unit05lifeinarabworld-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the formal-register, regional, or courtesy choice that changes how this Arabic is used in real interaction."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ar-level1unit05lifeinarabworld-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay a presentation about a country."
+      ],
+      "task": "Roleplay a presentation about a country."
+    }
   ],
-  relatedPools: ['topic-culture', 'topic-geography'],
-  content: [
-    createContentItem('العالم العربي', 'al-ʿālam al-ʿarabī', 'The Arab world — 22 countries from Morocco to Oman, spanning Africa and West Asia. About 400 million Arabic speakers. ʿAyn at the start of both words.', 'word', 'العالم العربي مساحته واسعة.', '"The Arab world has a vast area."', null, [ACT.orientation]),
-    createContentItem('مصر / القاهرة', 'Miṣr / al-Qāhira', 'Egypt — capital Cairo. ~110 million people, the most-populous Arab country. The Egyptian dialect is the most-understood across the Arab world due to media reach.', 'word', 'القاهرة عاصمة مصر.', '"Cairo is the capital of Egypt."', null, [ACT.vocabCountries]),
-    createContentItem('السعودية / الرياض', 'as-Saʿūdiyya / ar-Riyāḍ', 'Saudi Arabia — capital Riyadh. Birthplace of Islam (Mecca المكرمة and Medina المنورة). Home to King Saud University, our anchor.', 'word', 'الرياض عاصمة المملكة العربية السعودية.', '"Riyadh is the capital of the Kingdom of Saudi Arabia."', null, [ACT.vocabCountries]),
-    createContentItem('الإمارات / أبوظبي', 'al-Imārāt / Abū Ẓabī', 'UAE — capital Abu Dhabi (literally "father of the gazelle"); biggest city Dubai (دبي). Federation of 7 emirates.', 'word', 'دبي أكبر مدن الإمارات.', '"Dubai is the largest of the UAE\'s cities."', null, [ACT.vocabCountries]),
-    createContentItem('قطر / الدوحة', 'Qaṭar / ad-Dawḥa', 'Qatar — capital Doha. Small Gulf country; hosts Al Jazeera and the 2022 World Cup.', 'word', 'الدوحة مدينة حديثة.', '"Doha is a modern city."', null, [ACT.vocabCountries]),
-    createContentItem('الكويت', 'al-Kuwait', 'Kuwait — country and capital share the name. The ك moon letter (no assimilation in الكويت).', 'word', 'الكويت دولة صغيرة وغنية.', '"Kuwait is a small and rich country."', null, [ACT.vocabCountries]),
-    createContentItem('عُمان / مسقط', 'ʿUmān / Masqaṭ', 'Oman — capital Muscat. Pharyngeal ع at the start.', 'word', 'مسقط على ساحل البحر.', '"Muscat is on the sea coast."', null, [ACT.vocabCountries]),
-    createContentItem('البحرين / المنامة', 'al-Baḥrayn / al-Manāma', 'Bahrain — capital Manama. The name البحرين is a dual: "the two seas".', 'word', 'البحرين جزيرة في الخليج.', '"Bahrain is an island in the Gulf."', null, [ACT.vocabCountries]),
-    createContentItem('الأردن / عَمَّان', 'al-Urdun / ʿAmmān', 'Jordan — capital Amman. Note the shadda on م in ʿAmmān.', 'word', 'عمان عاصمة الأردن.', '"Amman is the capital of Jordan."', null, [ACT.vocabCountries]),
-    createContentItem('لبنان / بيروت', 'Lubnān / Bayrūt', 'Lebanon — capital Beirut.', 'word', 'بيروت مدينة الثقافة.', '"Beirut is the city of culture."', null, [ACT.vocabCountries]),
-    createContentItem('سوريا / دمشق', 'Sūriyā / Dimashq', 'Syria — capital Damascus, one of the oldest continuously inhabited cities in the world.', 'word', 'دمشق من أقدم المدن.', '"Damascus is among the oldest cities."', null, [ACT.vocabCountries]),
-    createContentItem('فلسطين / القدس', 'Filasṭīn / al-Quds', 'Palestine — Jerusalem (al-Quds, "the Holy"). Religious significance for Muslims, Christians, and Jews.', 'word', 'القدس مدينة مقدسة.', '"Jerusalem is a holy city."', null, [ACT.vocabCountries]),
-    createContentItem('العراق / بغداد', 'al-ʿIrāq / Baghdād', 'Iraq — capital Baghdad. Heart of the medieval Abbasid Caliphate.', 'word', 'بغداد مدينة عريقة.', '"Baghdad is an ancient city."', null, [ACT.vocabCountries]),
-    createContentItem('اليمن / صنعاء', 'al-Yaman / Ṣanʿāʾ', 'Yemen — capital Sanaa. The hamza at the end of صنعاء is the final glottal stop.', 'word', 'صنعاء مدينة جبلية.', '"Sanaa is a mountainous city."', null, [ACT.vocabCountries]),
-    createContentItem('المغرب / الرباط', 'al-Maghrib / ar-Ribāṭ', 'Morocco — capital Rabat. The name المغرب means "the West" (where the sun sets).', 'word', 'المغرب في شمال إفريقيا.', '"Morocco is in North Africa."', null, [ACT.vocabCountries]),
-    createContentItem('الجزائر', 'al-Jazāʾir', 'Algeria — country and capital share the name. Means "the islands".', 'word', 'الجزائر أكبر دولة عربية مساحةً.', '"Algeria is the largest Arab country by area."', null, [ACT.vocabCountries]),
-    createContentItem('تونس', 'Tūnis', 'Tunisia — country and capital share the name.', 'word', 'تونس بلد صغير وجميل.', '"Tunisia is a small and beautiful country."', null, [ACT.vocabCountries]),
-    createContentItem('ليبيا / طرابلس', 'Lībiyā / Ṭarābulus', 'Libya — capital Tripoli. Emphatic ط at the start of طرابلس.', 'word', 'طرابلس على البحر المتوسط.', '"Tripoli is on the Mediterranean."', null, [ACT.vocabCountries]),
-    createContentItem('السودان / الخرطوم', 'as-Sūdān / al-Kharṭūm', 'Sudan — capital Khartoum. Velar fricative خ at the start of الخرطوم.', 'word', 'الخرطوم عند ملتقى النيلين.', '"Khartoum is at the confluence of the two Niles."', null, [ACT.vocabCountries]),
-
-    // Vocab life
-    createContentItem('حار', 'ḥārr', 'Hot (M). Plain شدّة on the ر. Used for weather and food. Pharyngeal ح.', 'word', 'الطقس حار في الصيف.', '"The weather is hot in summer."', null, [ACT.vocabLife]),
-    createContentItem('بارد', 'bārid', 'Cold (M). Active participle pattern فاعِل.', 'word', 'الجو بارد في الجبال.', '"The weather is cold in the mountains."', null, [ACT.vocabLife]),
-    createContentItem('معتدل', 'muʿtadil', 'Moderate (M). Used for climate and behavior.', 'word', 'الجو معتدل في الربيع.', '"The weather is moderate in spring."', null, [ACT.vocabLife]),
-    createContentItem('صحراء', 'ṣaḥrāʾ', 'Desert (F). Plural صحارى ṣaḥārā.', 'word', 'الصحراء الكبرى في إفريقيا.', '"The Great Sahara is in Africa."', null, [ACT.vocabLife]),
-    createContentItem('بحر', 'baḥr', 'Sea (M). Plural بحار biḥār. The pharyngeal ح.', 'word', 'البحر الأحمر بين مصر والسعودية.', '"The Red Sea is between Egypt and Saudi Arabia."', null, [ACT.vocabLife]),
-    createContentItem('نهر', 'nahr', 'River (M). Plural أنهار anhār. The Nile = نهر النيل.', 'word', 'نهر النيل أطول نهر في العالم.', '"The Nile is the longest river in the world."', null, [ACT.vocabLife]),
-    createContentItem('جبل', 'jabal', 'Mountain (M). Plural جبال jibāl. Many Arab city names start with جبل (Jebel Ali, Jabal an-Nūr).', 'word', 'جبل النور في مكة.', '"Mount Nūr is in Mecca."', null, [ACT.vocabLife]),
-    createContentItem('تمر', 'tamr', 'Dates (collective M). The signature food of Arab desert culture; eaten daily and especially during Ramadan.', 'word', 'نأكل التمر قبل الإفطار في رمضان.', '"We eat dates before iftar in Ramadan."', null, [ACT.vocabLife]),
-    createContentItem('قهوة', 'qahwa', 'Coffee (F). The Arabic word that English "coffee" comes from. Arabic coffee (قهوة عربية) is cardamom-spiced and central to hospitality.', 'word', 'القهوة العربية رمز الكرم.', '"Arabic coffee is a symbol of generosity."', null, [ACT.vocabLife]),
-    createContentItem('شاي', 'shāy', 'Tea (M). The Maghreb prefers mint tea (الشاي بالنعناع); the Gulf prefers black tea.', 'word', 'الشاي بالنعناع شائع في المغرب.', '"Mint tea is common in Morocco."', null, [ACT.vocabLife]),
-    createContentItem('خبز', 'khubz', 'Bread (M). Eaten with nearly every meal. Regional varieties: كماج kumāj (Levantine), خبز عربي khubz ʿarabī (pita-style).', 'word', 'الخبز العربي رقيق وطري.', '"Arabic bread is thin and soft."', null, [ACT.vocabLife]),
-    createContentItem('ثوب', 'thawb', 'Thawb — the traditional ankle-length men\'s robe of the Gulf. In Saudi Arabia worn daily by most local men.', 'word', 'يلبس الرجل الثوب الأبيض.', '"The man wears the white thawb."', null, [ACT.vocabLife]),
-    createContentItem('عباءة', 'ʿabāʾa', 'Abaya — the loose black overgarment worn by many women in the Gulf. Pharyngeal ع at the start.', 'word', 'العباءة لباس تقليدي.', '"The abaya is traditional dress."', null, [ACT.vocabLife]),
-    createContentItem('حجاب', 'ḥijāb', 'Headscarf / Islamic head covering. Pharyngeal ح.', 'word', 'تلبس الحجاب باختيارها.', '"She wears the hijab by her own choice."', null, [ACT.vocabLife]),
-
-    // Grammar
-    createContentItem('مطابقة الصفة', 'muṭābaqat aṣ-ṣifa', 'Adjective agreement: an adjective must agree with its noun in 4 features — DEFINITENESS (الـ or not), GENDER (M/F), NUMBER (sg/du/pl), and CASE (raf\'/nasb/jarr). Special rule: NON-HUMAN PLURALS take FEMININE SINGULAR adjective agreement.', 'sentence', 'كتاب جديد kitāb jadīd (a new book — both indef M sg)\nالكتاب الجديد al-kitāb al-jadīd (the new book — both def M sg)\nكتب جديدة kutub jadīda ("new books"-NON-HUMAN PL → fem sg adj!)\nطلاب أمريكيون ṭullāb amrīkiyyūn ("American students" — human pl, sound masc pl adj)', 'The non-human-plural rule is a hallmark of Arabic agreement; English speakers must drill it.', [
-      { target: 'human plural', note: 'adj in plural form (sound masc/fem plural or broken plural)' },
-      { target: 'non-human plural', note: 'adj in FEMININE SINGULAR form — كتب جديدة, لا كتب جدد' },
-    ], [ACT.grammarAdj]),
-    createContentItem('المثنى', 'al-muthannā', 'The dual — Arabic\'s third number, used for EXACTLY TWO of anything. Form: noun + ـان (nominative) or ـين (accusative/genitive). Falls between singular and plural.', 'sentence', 'كتاب → كتابان (two books, nom) → كتابين (two books, acc/gen)\nطالب → طالبان · طالبة → طالبتان (note ـة + ـان = ـتان)', 'In colloquial speech the accusative form ـين covers all uses; MSA writing still observes the case distinction.', [
-      { target: 'nominative ـان', note: 'used when the dual is subject of a sentence' },
-      { target: 'accusative/genitive ـين', note: 'used after verbs (as object) or prepositions' },
-      { target: 'feminine ـة → ـتان', note: 'taa marbuta opens up to ـت before the dual ending' },
-    ], [ACT.grammarDual]),
-    createContentItem('كان وأخواتها', 'kāna wa-akhawātuhā', 'كان ("was/were") is the past-tense copula. Use it to push a nominal sentence into the past. The PREDICATE after كان takes the accusative case, just like after ليس.', 'sentence', 'الطقس حار (present: "the weather is hot")\nكان الطقس حارًا (past: "the weather was hot" — note accusative ـًا)', 'The "sisters" of كان (أخوات كان) are a class of verbs that take an accusative predicate: كان, ليس, صار, أصبح, ظل, بقي, ما زال.', null, [ACT.grammarKana]),
-
-    // Reading
-    createContentItem('جولة في العالم العربي', 'jawla fī l-ʿālam al-ʿarabī', 'A tour paragraph describing four Arab cities.', 'sentence', 'القاهرة مدينة كبيرة جدًا، عاصمة مصر، وفيها أهرامات الجيزة. الرياض عاصمة المملكة العربية السعودية، وهي مدينة حديثة في وسط الصحراء. بيروت مدينة جميلة على البحر المتوسط، عاصمة لبنان. مراكش مدينة تاريخية في المغرب، فيها أسواق قديمة وحدائق رائعة.', 'Translation: "Cairo is a very big city, capital of Egypt, with the Giza pyramids. Riyadh is the capital of Saudi Arabia, a modern city in the middle of the desert. Beirut is a beautiful city on the Mediterranean, capital of Lebanon. Marrakech is a historic city in Morocco, with old souks and wonderful gardens."', null, [ACT.reading]),
-
-    // Listening
-    createContentItem('مقارنة بين مصر والسعودية', 'muqārana bayna Miṣr wa-s-Saʿūdiyya', 'A comparison dialogue between an Egyptian and a Saudi student.', 'conversation', 'المصرية: الطقس في القاهرة حار صيفًا وبارد شتاءً.\nالسعودي: الرياض حارة جدًا في الصيف، خمسون درجة أحيانًا!\nالمصرية: ماذا تأكلون عادةً؟\nالسعودي: نأكل الكبسة والتمر. وأنتم؟\nالمصرية: نأكل الفول والطعمية في الفطور.\nالسعودي: لذيذ!', 'كبسة kabsa — the iconic Saudi rice-with-meat dish. فول fūl — Egyptian breakfast staple of stewed fava beans.', null, [ACT.listening]),
-
-    // Writing
-    createContentItem('قالب الكتابة', 'qālab al-kitāba', 'Template: 5 sentences describing one Arab city with adj agreement.', 'sentence', 'مثال: الرياض مدينة كبيرة وحديثة. عاصمة السعودية. الطقس فيها حار في الصيف. الناس فيها كرماء. أحب جامعة الملك سعود في وسط المدينة.', 'Adjectives must agree: مدينة كبيرة (F sg adj after F sg noun); الناس كرماء (human plural adj after human plural noun).', null, [ACT.writing]),
-
-    // Culture
-    createContentItem('تنوع العالم العربي', 'tanawwuʿ al-ʿālam al-ʿarabī', 'The Arab world is geographically vast (Atlantic to Gulf) and culturally diverse: Maghrebi (Morocco/Algeria/Tunisia/Libya), Egyptian, Levantine (Syria/Lebanon/Jordan/Palestine), Iraqi, Gulf, Yemeni. Shared MSA + Quran; very different colloquials.', 'sentence', '٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.', '"22 countries, 5 main dialect regions, 400 million speakers."', [
-      { target: 'Maghrebi', note: 'Morocco, Algeria, Tunisia, Libya — heaviest Berber substrate; hardest for easterners to understand' },
-      { target: 'Egyptian', note: 'most-understood dialect due to films and media' },
-      { target: 'Levantine', note: 'Syria, Lebanon, Jordan, Palestine — sweet-sounding, often used in songs' },
-      { target: 'Gulf', note: 'Saudi, Kuwaiti, Qatari, Emirati, Bahraini, Omani' },
-      { target: 'Mesopotamian', note: 'Iraqi — distinctive vocabulary; close to Gulf' },
-    ], [ACT.culture]),
-
-    // Task
-    createContentItem('المهمة — تقديم بلد عربي', 'al-mahamma — taqdīm balad ʿarabī', 'Roleplay a 1-minute presentation about an Arab country. Include capital, population (approximate), climate, one famous dish, and one cultural feature.', 'conversation', 'الأستاذ: قدّم لنا بلدًا عربيًا.\nأنت: سأقدم [البلد]. عاصمته [العاصمة]. عدد السكان [الرقم] مليون تقريبًا. الطقس [وصف]. أشهر طعام [الأكل]. الناس [وصف الثقافة]. شكرًا.', 'Aim for 6+ sentences with adj agreement and at least one إضافة.', null, [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "naming-countries",
+      "label": "Naming countries",
+      "goal": "Pair each Arab country with capital + nisba."
+    },
+    {
+      "id": "comparing",
+      "label": "Comparing",
+      "goal": "Use أكثر / أقل + adjective to compare."
+    },
+    {
+      "id": "describing-culture",
+      "label": "Describing culture",
+      "goal": "5-sentence description of one Arab country."
+    }
   ],
+  "relatedPools": [
+    "topic-culture",
+    "topic-geography"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-orientation"
+      ],
+      "targetText": "هدف الدرس",
+      "romanization": "",
+      "nativeText": "Name 15+ Arab countries with their capitals and nisba adjectives.",
+      "pronunciation": "",
+      "exampleTarget": "هدف الدرس",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay a presentation about a country.",
+      "korean": "هدف الدرس",
+      "english": "Name 15+ Arab countries with their capitals and nisba adjectives.",
+      "example": "هدف الدرس",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay a presentation about a country."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-pronunciation"
+      ],
+      "targetText": "فحص النطق",
+      "romanization": "",
+      "nativeText": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. In this lesson, listen especially while saying \"العالم العربي مساحته واسعة.\".",
+      "pronunciation": "",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "\"The Arab world has a vast area.\"",
+      "korean": "فحص النطق",
+      "english": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. In this lesson, listen especially while saying \"العالم العربي مساحته واسعة.\".",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "\"The Arab world has a vast area.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 5: في العالم العربي — Life in the Arab World with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "\"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "Use the key language of Level 1 · Unit 5: في العالم العربي — Life in the Arab World with the register and setting that the lesson requires.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "\"The Arab world has a vast area.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-2"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 5: في العالم العربي — Life in the Arab World sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "\"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 5: في العالم العربي — Life in the Arab World sound precise rather than merely understandable.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "\"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-grammar-1"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "",
+      "nativeText": "Name 15+ Arab countries with their capitals and nisba adjectives.",
+      "pronunciation": "",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "\"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "Name 15+ Arab countries with their capitals and nisba adjectives.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "\"The Arab world has a vast area.\""
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-grammar-2"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 5: في العالم العربي — Life in the Arab World with one nearby Arabic form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "\"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Contrast the main pattern in Level 1 · Unit 5: في العالم العربي — Life in the Arab World with one nearby Arabic form so the learner can avoid literal translation.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "\"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-reading"
+      ],
+      "targetText": "نموذج قراءة",
+      "romanization": "",
+      "nativeText": "Read the connected model for نموذج قراءة as one message. Notice how \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleNative": "\"22 countries, 5 main dialect regions, 400 million speakers.\"",
+      "korean": "نموذج قراءة",
+      "english": "Read the connected model for نموذج قراءة as one message. Notice how \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleEnglish": "\"22 countries, 5 main dialect regions, 400 million speakers.\""
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-listening"
+      ],
+      "targetText": "نموذج حوار",
+      "romanization": "",
+      "nativeText": "Hear \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleNative": "\"22 countries, 5 main dialect regions, 400 million speakers.\"",
+      "korean": "نموذج حوار",
+      "english": "Hear \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleEnglish": "\"22 countries, 5 main dialect regions, 400 million speakers.\""
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-writing"
+      ],
+      "targetText": "تدريب كتابي",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"العالم العربي مساحته واسعة.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "تدريب كتابي",
+      "english": "Write your own version after studying \"العالم العربي مساحته واسعة.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-culture"
+      ],
+      "targetText": "الاستخدام والسياق",
+      "romanization": "",
+      "nativeText": "Notice the formal-register, regional, or courtesy choice that changes how this Arabic is used in real interaction. Use \"القاهرة عاصمة مصر.\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "\"Cairo is the capital of Egypt.\"",
+      "korean": "الاستخدام والسياق",
+      "english": "Notice the formal-register, regional, or courtesy choice that changes how this Arabic is used in real interaction. Use \"القاهرة عاصمة مصر.\" as the social comparison point for this lesson.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "\"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "المهمة النهائية",
+      "romanization": "",
+      "nativeText": "Roleplay a presentation about a country.",
+      "pronunciation": "",
+      "exampleTarget": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleNative": "Roleplay a presentation about a country.",
+      "korean": "المهمة النهائية",
+      "english": "Roleplay a presentation about a country.",
+      "example": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleEnglish": "Roleplay a presentation about a country."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-grammar-2"
+      ],
+      "targetText": "خطأ شائع",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around root-and-pattern forms, agreement, case-sensitive endings, and register that another language may leave implicit. Begin by checking \"القاهرة عاصمة مصر.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: \"Cairo is the capital of Egypt.\"",
+      "korean": "خطأ شائع",
+      "english": "Watch for literal-translation mistakes around root-and-pattern forms, agreement, case-sensitive endings, and register that another language may leave implicit. Begin by checking \"القاهرة عاصمة مصر.\" against the model.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: \"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-culture"
+      ],
+      "targetText": "السجل",
+      "romanization": "",
+      "nativeText": "Check whether the situation calls for Modern Standard Arabic, a formal phrase, or a spoken-dialect note before choosing the final wording. Compare the social fit of \"العالم العربي مساحته واسعة.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "\"The Arab world has a vast area.\"",
+      "korean": "السجل",
+      "english": "Check whether the situation calls for Modern Standard Arabic, a formal phrase, or a spoken-dialect note before choosing the final wording. Compare the social fit of \"العالم العربي مساحته واسعة.\" before reusing it elsewhere.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "\"The Arab world has a vast area.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الطلاقة",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Arabic message rather than as separate translated fragments. Aim to carry \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleNative": "\"22 countries, 5 main dialect regions, 400 million speakers.\"",
+      "korean": "الطلاقة",
+      "english": "Say the idea as one connected Arabic message rather than as separate translated fragments. Aim to carry \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\" as one thought.",
+      "example": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleEnglish": "\"22 countries, 5 main dialect regions, 400 million speakers.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "التطبيق",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"العالم العربي مساحته واسعة.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "التطبيق",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"العالم العربي مساحته واسعة.\" and move it into your own life.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-grammar-1"
+      ],
+      "targetText": "الاسترجاع",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"العالم العربي\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "العالم العربي",
+      "exampleNative": "The Arab world — 22 countries from Morocco to Oman, spanning Africa and West Asia. About 400 million Arabic speakers. ʿAyn at the start of both words.",
+      "korean": "الاسترجاع",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"العالم العربي\" before looking back.",
+      "example": "العالم العربي",
+      "exampleEnglish": "The Arab world — 22 countries from Morocco to Oman, spanning Africa and West Asia. About 400 million Arabic speakers. ʿAyn at the start of both words."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-writing"
+      ],
+      "targetText": "التوسيع",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "التوسيع",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\" rather than restarting from a blank sentence.",
+      "example": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading"
+      ],
+      "targetText": "المقارنة",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 5: في العالم العربي — Life in the Arab World with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"القاهرة عاصمة مصر.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "\"Cairo is the capital of Egypt.\"",
+      "korean": "المقارنة",
+      "english": "Compare the central form in Level 1 · Unit 5: في العالم العربي — Life in the Arab World with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"القاهرة عاصمة مصر.\" as the comparison line.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "\"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-pronunciation"
+      ],
+      "targetText": "تصحيح النطق",
+      "romanization": "",
+      "nativeText": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. Use \"العالم العربي مساحته واسعة.\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "\"The Arab world has a vast area.\"",
+      "korean": "تصحيح النطق",
+      "english": "Keep emphatics, pharyngeals, vowel length, and sun-letter assimilation distinct enough that Modern Standard Arabic stays intelligible. Use \"العالم العربي مساحته واسعة.\" as the repair line.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "\"The Arab world has a vast area.\""
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "تنويع الحوار",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\".",
+      "pronunciation": "",
+      "exampleTarget": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleNative": "\"22 countries, 5 main dialect regions, 400 million speakers.\"",
+      "korean": "تنويع الحوار",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\".",
+      "example": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleEnglish": "\"22 countries, 5 main dialect regions, 400 million speakers.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-writing"
+      ],
+      "targetText": "بناء الجملة",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"العالم العربي مساحته واسعة.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "\"The Arab world has a vast area.\"",
+      "korean": "بناء الجملة",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"العالم العربي مساحته واسعة.\" one layer at a time.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "\"The Arab world has a vast area.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-2"
+      ],
+      "targetText": "اختبار سريع",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"القاهرة عاصمة مصر.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "\"Cairo is the capital of Egypt.\"",
+      "korean": "اختبار سريع",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"القاهرة عاصمة مصر.\" as the deciding example.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "\"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-culture",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مراجعة",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\".",
+      "pronunciation": "",
+      "exampleTarget": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleNative": "\"22 countries, 5 main dialect regions, 400 million speakers.\"",
+      "korean": "مراجعة",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.\".",
+      "example": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleEnglish": "\"22 countries, 5 main dialect regions, 400 million speakers.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "al-ʿālam al-ʿarabī",
+      "nativeText": "The Arab world — 22 countries from Morocco to Oman, spanning Africa and West Asia. About 400 million Arabic speakers. ʿAyn at the start of both words.",
+      "pronunciation": "al-ʿālam al-ʿarabī",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "\"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "The Arab world — 22 countries from Morocco to Oman, spanning Africa and West Asia. About 400 million Arabic speakers. ʿAyn at the start of both words.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "\"The Arab world has a vast area.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "Miṣr / al-Qāhira",
+      "nativeText": "Egypt — capital Cairo. ~110 million people, the most-populous Arab country. The Egyptian dialect is the most-understood across the Arab world due to media reach.",
+      "pronunciation": "Miṣr / al-Qāhira",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "\"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Egypt — capital Cairo. ~110 million people, the most-populous Arab country. The Egyptian dialect is the most-understood across the Arab world due to media reach.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "\"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "السعودية / الرياض",
+      "romanization": "as-Saʿūdiyya / ar-Riyāḍ",
+      "nativeText": "Saudi Arabia — capital Riyadh. Birthplace of Islam (Mecca المكرمة and Medina المنورة). Home to King Saud University, our anchor.",
+      "pronunciation": "as-Saʿūdiyya / ar-Riyāḍ",
+      "exampleTarget": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleNative": "\"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "korean": "السعودية / الرياض",
+      "english": "Saudi Arabia — capital Riyadh. Birthplace of Islam (Mecca المكرمة and Medina المنورة). Home to King Saud University, our anchor.",
+      "example": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleEnglish": "\"Riyadh is the capital of the Kingdom of Saudi Arabia.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الإمارات / أبوظبي",
+      "romanization": "al-Imārāt / Abū Ẓabī",
+      "nativeText": "UAE — capital Abu Dhabi (literally \"father of the gazelle\"); biggest city Dubai (دبي). Federation of 7 emirates.",
+      "pronunciation": "al-Imārāt / Abū Ẓabī",
+      "exampleTarget": "دبي أكبر مدن الإمارات.",
+      "exampleNative": "\"Dubai is the largest of the UAE's cities.\"",
+      "korean": "الإمارات / أبوظبي",
+      "english": "UAE — capital Abu Dhabi (literally \"father of the gazelle\"); biggest city Dubai (دبي). Federation of 7 emirates.",
+      "example": "دبي أكبر مدن الإمارات.",
+      "exampleEnglish": "\"Dubai is the largest of the UAE's cities.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قطر / الدوحة",
+      "romanization": "Qaṭar / ad-Dawḥa",
+      "nativeText": "Qatar — capital Doha. Small Gulf country; hosts Al Jazeera and the 2022 World Cup.",
+      "pronunciation": "Qaṭar / ad-Dawḥa",
+      "exampleTarget": "الدوحة مدينة حديثة.",
+      "exampleNative": "\"Doha is a modern city.\"",
+      "korean": "قطر / الدوحة",
+      "english": "Qatar — capital Doha. Small Gulf country; hosts Al Jazeera and the 2022 World Cup.",
+      "example": "الدوحة مدينة حديثة.",
+      "exampleEnglish": "\"Doha is a modern city.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الكويت",
+      "romanization": "al-Kuwait",
+      "nativeText": "Kuwait — country and capital share the name. The ك moon letter (no assimilation in الكويت).",
+      "pronunciation": "al-Kuwait",
+      "exampleTarget": "الكويت دولة صغيرة وغنية.",
+      "exampleNative": "\"Kuwait is a small and rich country.\"",
+      "korean": "الكويت",
+      "english": "Kuwait — country and capital share the name. The ك moon letter (no assimilation in الكويت).",
+      "example": "الكويت دولة صغيرة وغنية.",
+      "exampleEnglish": "\"Kuwait is a small and rich country.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "عُمان / مسقط",
+      "romanization": "ʿUmān / Masqaṭ",
+      "nativeText": "Oman — capital Muscat. Pharyngeal ع at the start.",
+      "pronunciation": "ʿUmān / Masqaṭ",
+      "exampleTarget": "مسقط على ساحل البحر.",
+      "exampleNative": "\"Muscat is on the sea coast.\"",
+      "korean": "عُمان / مسقط",
+      "english": "Oman — capital Muscat. Pharyngeal ع at the start.",
+      "example": "مسقط على ساحل البحر.",
+      "exampleEnglish": "\"Muscat is on the sea coast.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "البحرين / المنامة",
+      "romanization": "al-Baḥrayn / al-Manāma",
+      "nativeText": "Bahrain — capital Manama. The name البحرين is a dual: \"the two seas\".",
+      "pronunciation": "al-Baḥrayn / al-Manāma",
+      "exampleTarget": "البحرين جزيرة في الخليج.",
+      "exampleNative": "\"Bahrain is an island in the Gulf.\"",
+      "korean": "البحرين / المنامة",
+      "english": "Bahrain — capital Manama. The name البحرين is a dual: \"the two seas\".",
+      "example": "البحرين جزيرة في الخليج.",
+      "exampleEnglish": "\"Bahrain is an island in the Gulf.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الأردن / عَمَّان",
+      "romanization": "al-Urdun / ʿAmmān",
+      "nativeText": "Jordan — capital Amman. Note the shadda on م in ʿAmmān.",
+      "pronunciation": "al-Urdun / ʿAmmān",
+      "exampleTarget": "عمان عاصمة الأردن.",
+      "exampleNative": "\"Amman is the capital of Jordan.\"",
+      "korean": "الأردن / عَمَّان",
+      "english": "Jordan — capital Amman. Note the shadda on م in ʿAmmān.",
+      "example": "عمان عاصمة الأردن.",
+      "exampleEnglish": "\"Amman is the capital of Jordan.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "لبنان / بيروت",
+      "romanization": "Lubnān / Bayrūt",
+      "nativeText": "Lebanon — capital Beirut.",
+      "pronunciation": "Lubnān / Bayrūt",
+      "exampleTarget": "بيروت مدينة الثقافة.",
+      "exampleNative": "\"Beirut is the city of culture.\"",
+      "korean": "لبنان / بيروت",
+      "english": "Lebanon — capital Beirut.",
+      "example": "بيروت مدينة الثقافة.",
+      "exampleEnglish": "\"Beirut is the city of culture.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "سوريا / دمشق",
+      "romanization": "Sūriyā / Dimashq",
+      "nativeText": "Syria — capital Damascus, one of the oldest continuously inhabited cities in the world.",
+      "pronunciation": "Sūriyā / Dimashq",
+      "exampleTarget": "دمشق من أقدم المدن.",
+      "exampleNative": "\"Damascus is among the oldest cities.\"",
+      "korean": "سوريا / دمشق",
+      "english": "Syria — capital Damascus, one of the oldest continuously inhabited cities in the world.",
+      "example": "دمشق من أقدم المدن.",
+      "exampleEnglish": "\"Damascus is among the oldest cities.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "فلسطين / القدس",
+      "romanization": "Filasṭīn / al-Quds",
+      "nativeText": "Palestine — Jerusalem (al-Quds, \"the Holy\"). Religious significance for Muslims, Christians, and Jews.",
+      "pronunciation": "Filasṭīn / al-Quds",
+      "exampleTarget": "القدس مدينة مقدسة.",
+      "exampleNative": "\"Jerusalem is a holy city.\"",
+      "korean": "فلسطين / القدس",
+      "english": "Palestine — Jerusalem (al-Quds, \"the Holy\"). Religious significance for Muslims, Christians, and Jews.",
+      "example": "القدس مدينة مقدسة.",
+      "exampleEnglish": "\"Jerusalem is a holy city.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العراق / بغداد",
+      "romanization": "al-ʿIrāq / Baghdād",
+      "nativeText": "Iraq — capital Baghdad. Heart of the medieval Abbasid Caliphate.",
+      "pronunciation": "al-ʿIrāq / Baghdād",
+      "exampleTarget": "بغداد مدينة عريقة.",
+      "exampleNative": "\"Baghdad is an ancient city.\"",
+      "korean": "العراق / بغداد",
+      "english": "Iraq — capital Baghdad. Heart of the medieval Abbasid Caliphate.",
+      "example": "بغداد مدينة عريقة.",
+      "exampleEnglish": "\"Baghdad is an ancient city.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "اليمن / صنعاء",
+      "romanization": "al-Yaman / Ṣanʿāʾ",
+      "nativeText": "Yemen — capital Sanaa. The hamza at the end of صنعاء is the final glottal stop.",
+      "pronunciation": "al-Yaman / Ṣanʿāʾ",
+      "exampleTarget": "صنعاء مدينة جبلية.",
+      "exampleNative": "\"Sanaa is a mountainous city.\"",
+      "korean": "اليمن / صنعاء",
+      "english": "Yemen — capital Sanaa. The hamza at the end of صنعاء is the final glottal stop.",
+      "example": "صنعاء مدينة جبلية.",
+      "exampleEnglish": "\"Sanaa is a mountainous city.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "المغرب / الرباط",
+      "romanization": "al-Maghrib / ar-Ribāṭ",
+      "nativeText": "Morocco — capital Rabat. The name المغرب means \"the West\" (where the sun sets).",
+      "pronunciation": "al-Maghrib / ar-Ribāṭ",
+      "exampleTarget": "المغرب في شمال إفريقيا.",
+      "exampleNative": "\"Morocco is in North Africa.\"",
+      "korean": "المغرب / الرباط",
+      "english": "Morocco — capital Rabat. The name المغرب means \"the West\" (where the sun sets).",
+      "example": "المغرب في شمال إفريقيا.",
+      "exampleEnglish": "\"Morocco is in North Africa.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الجزائر",
+      "romanization": "al-Jazāʾir",
+      "nativeText": "Algeria — country and capital share the name. Means \"the islands\".",
+      "pronunciation": "al-Jazāʾir",
+      "exampleTarget": "الجزائر أكبر دولة عربية مساحةً.",
+      "exampleNative": "\"Algeria is the largest Arab country by area.\"",
+      "korean": "الجزائر",
+      "english": "Algeria — country and capital share the name. Means \"the islands\".",
+      "example": "الجزائر أكبر دولة عربية مساحةً.",
+      "exampleEnglish": "\"Algeria is the largest Arab country by area.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "تونس",
+      "romanization": "Tūnis",
+      "nativeText": "Tunisia — country and capital share the name.",
+      "pronunciation": "Tūnis",
+      "exampleTarget": "تونس بلد صغير وجميل.",
+      "exampleNative": "\"Tunisia is a small and beautiful country.\"",
+      "korean": "تونس",
+      "english": "Tunisia — country and capital share the name.",
+      "example": "تونس بلد صغير وجميل.",
+      "exampleEnglish": "\"Tunisia is a small and beautiful country.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "ليبيا / طرابلس",
+      "romanization": "Lībiyā / Ṭarābulus",
+      "nativeText": "Libya — capital Tripoli. Emphatic ط at the start of طرابلس.",
+      "pronunciation": "Lībiyā / Ṭarābulus",
+      "exampleTarget": "طرابلس على البحر المتوسط.",
+      "exampleNative": "\"Tripoli is on the Mediterranean.\"",
+      "korean": "ليبيا / طرابلس",
+      "english": "Libya — capital Tripoli. Emphatic ط at the start of طرابلس.",
+      "example": "طرابلس على البحر المتوسط.",
+      "exampleEnglish": "\"Tripoli is on the Mediterranean.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "السودان / الخرطوم",
+      "romanization": "as-Sūdān / al-Kharṭūm",
+      "nativeText": "Sudan — capital Khartoum. Velar fricative خ at the start of الخرطوم.",
+      "pronunciation": "as-Sūdān / al-Kharṭūm",
+      "exampleTarget": "الخرطوم عند ملتقى النيلين.",
+      "exampleNative": "\"Khartoum is at the confluence of the two Niles.\"",
+      "korean": "السودان / الخرطوم",
+      "english": "Sudan — capital Khartoum. Velar fricative خ at the start of الخرطوم.",
+      "example": "الخرطوم عند ملتقى النيلين.",
+      "exampleEnglish": "\"Khartoum is at the confluence of the two Niles.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "حار",
+      "romanization": "ḥārr",
+      "nativeText": "Hot (M). Plain شدّة on the ر. Used for weather and food. Pharyngeal ح.",
+      "pronunciation": "ḥārr",
+      "exampleTarget": "الطقس حار في الصيف.",
+      "exampleNative": "\"The weather is hot in summer.\"",
+      "korean": "حار",
+      "english": "Hot (M). Plain شدّة on the ر. Used for weather and food. Pharyngeal ح.",
+      "example": "الطقس حار في الصيف.",
+      "exampleEnglish": "\"The weather is hot in summer.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "بارد",
+      "romanization": "bārid",
+      "nativeText": "Cold (M). Active participle pattern فاعِل.",
+      "pronunciation": "bārid",
+      "exampleTarget": "الجو بارد في الجبال.",
+      "exampleNative": "\"The weather is cold in the mountains.\"",
+      "korean": "بارد",
+      "english": "Cold (M). Active participle pattern فاعِل.",
+      "example": "الجو بارد في الجبال.",
+      "exampleEnglish": "\"The weather is cold in the mountains.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "معتدل",
+      "romanization": "muʿtadil",
+      "nativeText": "Moderate (M). Used for climate and behavior.",
+      "pronunciation": "muʿtadil",
+      "exampleTarget": "الجو معتدل في الربيع.",
+      "exampleNative": "\"The weather is moderate in spring.\"",
+      "korean": "معتدل",
+      "english": "Moderate (M). Used for climate and behavior.",
+      "example": "الجو معتدل في الربيع.",
+      "exampleEnglish": "\"The weather is moderate in spring.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "صحراء",
+      "romanization": "ṣaḥrāʾ",
+      "nativeText": "Desert (F). Plural صحارى ṣaḥārā.",
+      "pronunciation": "ṣaḥrāʾ",
+      "exampleTarget": "الصحراء الكبرى في إفريقيا.",
+      "exampleNative": "\"The Great Sahara is in Africa.\"",
+      "korean": "صحراء",
+      "english": "Desert (F). Plural صحارى ṣaḥārā.",
+      "example": "الصحراء الكبرى في إفريقيا.",
+      "exampleEnglish": "\"The Great Sahara is in Africa.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "بحر",
+      "romanization": "baḥr",
+      "nativeText": "Sea (M). Plural بحار biḥār. The pharyngeal ح.",
+      "pronunciation": "baḥr",
+      "exampleTarget": "البحر الأحمر بين مصر والسعودية.",
+      "exampleNative": "\"The Red Sea is between Egypt and Saudi Arabia.\"",
+      "korean": "بحر",
+      "english": "Sea (M). Plural بحار biḥār. The pharyngeal ح.",
+      "example": "البحر الأحمر بين مصر والسعودية.",
+      "exampleEnglish": "\"The Red Sea is between Egypt and Saudi Arabia.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "نهر",
+      "romanization": "nahr",
+      "nativeText": "River (M). Plural أنهار anhār. The Nile = نهر النيل.",
+      "pronunciation": "nahr",
+      "exampleTarget": "نهر النيل أطول نهر في العالم.",
+      "exampleNative": "\"The Nile is the longest river in the world.\"",
+      "korean": "نهر",
+      "english": "River (M). Plural أنهار anhār. The Nile = نهر النيل.",
+      "example": "نهر النيل أطول نهر في العالم.",
+      "exampleEnglish": "\"The Nile is the longest river in the world.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "جبل",
+      "romanization": "jabal",
+      "nativeText": "Mountain (M). Plural جبال jibāl. Many Arab city names start with جبل (Jebel Ali, Jabal an-Nūr).",
+      "pronunciation": "jabal",
+      "exampleTarget": "جبل النور في مكة.",
+      "exampleNative": "\"Mount Nūr is in Mecca.\"",
+      "korean": "جبل",
+      "english": "Mountain (M). Plural جبال jibāl. Many Arab city names start with جبل (Jebel Ali, Jabal an-Nūr).",
+      "example": "جبل النور في مكة.",
+      "exampleEnglish": "\"Mount Nūr is in Mecca.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "تمر",
+      "romanization": "tamr",
+      "nativeText": "Dates (collective M). The signature food of Arab desert culture; eaten daily and especially during Ramadan.",
+      "pronunciation": "tamr",
+      "exampleTarget": "نأكل التمر قبل الإفطار في رمضان.",
+      "exampleNative": "\"We eat dates before iftar in Ramadan.\"",
+      "korean": "تمر",
+      "english": "Dates (collective M). The signature food of Arab desert culture; eaten daily and especially during Ramadan.",
+      "example": "نأكل التمر قبل الإفطار في رمضان.",
+      "exampleEnglish": "\"We eat dates before iftar in Ramadan.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قهوة",
+      "romanization": "qahwa",
+      "nativeText": "Coffee (F). The Arabic word that English \"coffee\" comes from. Arabic coffee (قهوة عربية) is cardamom-spiced and central to hospitality.",
+      "pronunciation": "qahwa",
+      "exampleTarget": "القهوة العربية رمز الكرم.",
+      "exampleNative": "\"Arabic coffee is a symbol of generosity.\"",
+      "korean": "قهوة",
+      "english": "Coffee (F). The Arabic word that English \"coffee\" comes from. Arabic coffee (قهوة عربية) is cardamom-spiced and central to hospitality.",
+      "example": "القهوة العربية رمز الكرم.",
+      "exampleEnglish": "\"Arabic coffee is a symbol of generosity.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "شاي",
+      "romanization": "shāy",
+      "nativeText": "Tea (M). The Maghreb prefers mint tea (الشاي بالنعناع); the Gulf prefers black tea.",
+      "pronunciation": "shāy",
+      "exampleTarget": "الشاي بالنعناع شائع في المغرب.",
+      "exampleNative": "\"Mint tea is common in Morocco.\"",
+      "korean": "شاي",
+      "english": "Tea (M). The Maghreb prefers mint tea (الشاي بالنعناع); the Gulf prefers black tea.",
+      "example": "الشاي بالنعناع شائع في المغرب.",
+      "exampleEnglish": "\"Mint tea is common in Morocco.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "خبز",
+      "romanization": "khubz",
+      "nativeText": "Bread (M). Eaten with nearly every meal. Regional varieties: كماج kumāj (Levantine), خبز عربي khubz ʿarabī (pita-style).",
+      "pronunciation": "khubz",
+      "exampleTarget": "الخبز العربي رقيق وطري.",
+      "exampleNative": "\"Arabic bread is thin and soft.\"",
+      "korean": "خبز",
+      "english": "Bread (M). Eaten with nearly every meal. Regional varieties: كماج kumāj (Levantine), خبز عربي khubz ʿarabī (pita-style).",
+      "example": "الخبز العربي رقيق وطري.",
+      "exampleEnglish": "\"Arabic bread is thin and soft.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "ثوب",
+      "romanization": "thawb",
+      "nativeText": "Thawb — the traditional ankle-length men's robe of the Gulf. In Saudi Arabia worn daily by most local men.",
+      "pronunciation": "thawb",
+      "exampleTarget": "يلبس الرجل الثوب الأبيض.",
+      "exampleNative": "\"The man wears the white thawb.\"",
+      "korean": "ثوب",
+      "english": "Thawb — the traditional ankle-length men's robe of the Gulf. In Saudi Arabia worn daily by most local men.",
+      "example": "يلبس الرجل الثوب الأبيض.",
+      "exampleEnglish": "\"The man wears the white thawb.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "عباءة",
+      "romanization": "ʿabāʾa",
+      "nativeText": "Abaya — the loose black overgarment worn by many women in the Gulf. Pharyngeal ع at the start.",
+      "pronunciation": "ʿabāʾa",
+      "exampleTarget": "العباءة لباس تقليدي.",
+      "exampleNative": "\"The abaya is traditional dress.\"",
+      "korean": "عباءة",
+      "english": "Abaya — the loose black overgarment worn by many women in the Gulf. Pharyngeal ع at the start.",
+      "example": "العباءة لباس تقليدي.",
+      "exampleEnglish": "\"The abaya is traditional dress.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "حجاب",
+      "romanization": "ḥijāb",
+      "nativeText": "Headscarf / Islamic head covering. Pharyngeal ح.",
+      "pronunciation": "ḥijāb",
+      "exampleTarget": "تلبس الحجاب باختيارها.",
+      "exampleNative": "\"She wears the hijab by her own choice.\"",
+      "korean": "حجاب",
+      "english": "Headscarf / Islamic head covering. Pharyngeal ح.",
+      "example": "تلبس الحجاب باختيارها.",
+      "exampleEnglish": "\"She wears the hijab by her own choice.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مطابقة الصفة",
+      "romanization": "muṭābaqat aṣ-ṣifa",
+      "nativeText": "Adjective agreement: an adjective must agree with its noun in 4 features — DEFINITENESS (الـ or not), GENDER (M/F), NUMBER (sg/du/pl), and CASE (raf'/nasb/jarr). Special rule: NON-HUMAN PLURALS take FEMININE SINGULAR adjective agreement.",
+      "pronunciation": "muṭābaqat aṣ-ṣifa",
+      "exampleTarget": "كتاب جديد kitāb jadīd (a new book — both indef M sg)\nالكتاب الجديد al-kitāb al-jadīd (the new book — both def M sg)\nكتب جديدة kutub jadīda (\"new books\"-NON-HUMAN PL → fem sg adj!)\nطلاب أمريكيون ṭullāb amrīkiyyūn (\"American students\" — human pl, sound masc pl adj)",
+      "exampleNative": "The non-human-plural rule is a hallmark of Arabic agreement; English speakers must drill it.",
+      "korean": "مطابقة الصفة",
+      "english": "Adjective agreement: an adjective must agree with its noun in 4 features — DEFINITENESS (الـ or not), GENDER (M/F), NUMBER (sg/du/pl), and CASE (raf'/nasb/jarr). Special rule: NON-HUMAN PLURALS take FEMININE SINGULAR adjective agreement.",
+      "example": "كتاب جديد kitāb jadīd (a new book — both indef M sg)\nالكتاب الجديد al-kitāb al-jadīd (the new book — both def M sg)\nكتب جديدة kutub jadīda (\"new books\"-NON-HUMAN PL → fem sg adj!)\nطلاب أمريكيون ṭullāb amrīkiyyūn (\"American students\" — human pl, sound masc pl adj)",
+      "exampleEnglish": "The non-human-plural rule is a hallmark of Arabic agreement; English speakers must drill it."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "المثنى",
+      "romanization": "al-muthannā",
+      "nativeText": "The dual — Arabic's third number, used for EXACTLY TWO of anything. Form: noun + ـان (nominative) or ـين (accusative/genitive). Falls between singular and plural.",
+      "pronunciation": "al-muthannā",
+      "exampleTarget": "كتاب → كتابان (two books, nom) → كتابين (two books, acc/gen)\nطالب → طالبان · طالبة → طالبتان (note ـة + ـان = ـتان)",
+      "exampleNative": "In colloquial speech the accusative form ـين covers all uses; MSA writing still observes the case distinction.",
+      "korean": "المثنى",
+      "english": "The dual — Arabic's third number, used for EXACTLY TWO of anything. Form: noun + ـان (nominative) or ـين (accusative/genitive). Falls between singular and plural.",
+      "example": "كتاب → كتابان (two books, nom) → كتابين (two books, acc/gen)\nطالب → طالبان · طالبة → طالبتان (note ـة + ـان = ـتان)",
+      "exampleEnglish": "In colloquial speech the accusative form ـين covers all uses; MSA writing still observes the case distinction."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "كان وأخواتها",
+      "romanization": "kāna wa-akhawātuhā",
+      "nativeText": "كان (\"was/were\") is the past-tense copula. Use it to push a nominal sentence into the past. The PREDICATE after كان takes the accusative case, just like after ليس.",
+      "pronunciation": "kāna wa-akhawātuhā",
+      "exampleTarget": "الطقس حار (present: \"the weather is hot\")\nكان الطقس حارًا (past: \"the weather was hot\" — note accusative ـًا)",
+      "exampleNative": "The \"sisters\" of كان (أخوات كان) are a class of verbs that take an accusative predicate: كان, ليس, صار, أصبح, ظل, بقي, ما زال.",
+      "korean": "كان وأخواتها",
+      "english": "كان (\"was/were\") is the past-tense copula. Use it to push a nominal sentence into the past. The PREDICATE after كان takes the accusative case, just like after ليس.",
+      "example": "الطقس حار (present: \"the weather is hot\")\nكان الطقس حارًا (past: \"the weather was hot\" — note accusative ـًا)",
+      "exampleEnglish": "The \"sisters\" of كان (أخوات كان) are a class of verbs that take an accusative predicate: كان, ليس, صار, أصبح, ظل, بقي, ما زال."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "جولة في العالم العربي",
+      "romanization": "jawla fī l-ʿālam al-ʿarabī",
+      "nativeText": "A tour paragraph describing four Arab cities.",
+      "pronunciation": "jawla fī l-ʿālam al-ʿarabī",
+      "exampleTarget": "القاهرة مدينة كبيرة جدًا، عاصمة مصر، وفيها أهرامات الجيزة. الرياض عاصمة المملكة العربية السعودية، وهي مدينة حديثة في وسط الصحراء. بيروت مدينة جميلة على البحر المتوسط، عاصمة لبنان. مراكش مدينة تاريخية في المغرب، فيها أسواق قديمة وحدائق رائعة.",
+      "exampleNative": "Translation: \"Cairo is a very big city, capital of Egypt, with the Giza pyramids. Riyadh is the capital of Saudi Arabia, a modern city in the middle of the desert. Beirut is a beautiful city on the Mediterranean, capital of Lebanon. Marrakech is a historic city in Morocco, with old souks and wonderful gardens.\"",
+      "korean": "جولة في العالم العربي",
+      "english": "A tour paragraph describing four Arab cities.",
+      "example": "القاهرة مدينة كبيرة جدًا، عاصمة مصر، وفيها أهرامات الجيزة. الرياض عاصمة المملكة العربية السعودية، وهي مدينة حديثة في وسط الصحراء. بيروت مدينة جميلة على البحر المتوسط، عاصمة لبنان. مراكش مدينة تاريخية في المغرب، فيها أسواق قديمة وحدائق رائعة.",
+      "exampleEnglish": "Translation: \"Cairo is a very big city, capital of Egypt, with the Giza pyramids. Riyadh is the capital of Saudi Arabia, a modern city in the middle of the desert. Beirut is a beautiful city on the Mediterranean, capital of Lebanon. Marrakech is a historic city in Morocco, with old souks and wonderful gardens.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قالب الكتابة",
+      "romanization": "qālab al-kitāba",
+      "nativeText": "Template: 5 sentences describing one Arab city with adj agreement.",
+      "pronunciation": "qālab al-kitāba",
+      "exampleTarget": "مثال: الرياض مدينة كبيرة وحديثة. عاصمة السعودية. الطقس فيها حار في الصيف. الناس فيها كرماء. أحب جامعة الملك سعود في وسط المدينة.",
+      "exampleNative": "Adjectives must agree: مدينة كبيرة (F sg adj after F sg noun); الناس كرماء (human plural adj after human plural noun).",
+      "korean": "قالب الكتابة",
+      "english": "Template: 5 sentences describing one Arab city with adj agreement.",
+      "example": "مثال: الرياض مدينة كبيرة وحديثة. عاصمة السعودية. الطقس فيها حار في الصيف. الناس فيها كرماء. أحب جامعة الملك سعود في وسط المدينة.",
+      "exampleEnglish": "Adjectives must agree: مدينة كبيرة (F sg adj after F sg noun); الناس كرماء (human plural adj after human plural noun)."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "تنوع العالم العربي",
+      "romanization": "tanawwuʿ al-ʿālam al-ʿarabī",
+      "nativeText": "The Arab world is geographically vast (Atlantic to Gulf) and culturally diverse: Maghrebi (Morocco/Algeria/Tunisia/Libya), Egyptian, Levantine (Syria/Lebanon/Jordan/Palestine), Iraqi, Gulf, Yemeni. Shared MSA + Quran; very different colloquials.",
+      "pronunciation": "tanawwuʿ al-ʿālam al-ʿarabī",
+      "exampleTarget": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleNative": "\"22 countries, 5 main dialect regions, 400 million speakers.\"",
+      "korean": "تنوع العالم العربي",
+      "english": "The Arab world is geographically vast (Atlantic to Gulf) and culturally diverse: Maghrebi (Morocco/Algeria/Tunisia/Libya), Egyptian, Levantine (Syria/Lebanon/Jordan/Palestine), Iraqi, Gulf, Yemeni. Shared MSA + Quran; very different colloquials.",
+      "example": "٢٢ دولة، ٥ مناطق لهجية رئيسية، ٤٠٠ مليون متحدث.",
+      "exampleEnglish": "\"22 countries, 5 main dialect regions, 400 million speakers.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العالم العربي مساحته واسعة.",
+      "romanization": "al-ʿālam al-ʿarabī",
+      "nativeText": "Model use for \"العالم العربي\": The Arab world — 22 countries from Morocco to Oman, spanning Africa and West Asia. About 400 million Arabic speakers. ʿAyn at the start of both words.",
+      "pronunciation": "al-ʿālam al-ʿarabī",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "\"The Arab world has a vast area.\"",
+      "korean": "العالم العربي مساحته واسعة.",
+      "english": "Model use for \"العالم العربي\": The Arab world — 22 countries from Morocco to Oman, spanning Africa and West Asia. About 400 million Arabic speakers. ʿAyn at the start of both words.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "\"The Arab world has a vast area.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "al-ʿālam al-ʿarabī",
+      "nativeText": "Usage focus for \"العالم العربي\": The Arab world — 22 countries from Morocco to Oman, spanning Africa and West Asia. About 400 million Arabic speakers. ʿAyn at the start of both words.",
+      "pronunciation": "al-ʿālam al-ʿarabī",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "Notice what the form is doing here: \"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "Usage focus for \"العالم العربي\": The Arab world — 22 countries from Morocco to Oman, spanning Africa and West Asia. About 400 million Arabic speakers. ʿAyn at the start of both words.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "Notice what the form is doing here: \"The Arab world has a vast area.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "al-ʿālam al-ʿarabī",
+      "nativeText": "Contrast check for \"العالم العربي\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "al-ʿālam al-ʿarabī",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "Contrast check for \"العالم العربي\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"The Arab world has a vast area.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "al-ʿālam al-ʿarabī",
+      "nativeText": "Recall \"العالم العربي\" from memory, then explain what would change if a nearby alternative replaced it in \"العالم العربي مساحته واسعة.\".",
+      "pronunciation": "al-ʿālam al-ʿarabī",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "Self-check against the model before moving on: \"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "Recall \"العالم العربي\" from memory, then explain what would change if a nearby alternative replaced it in \"العالم العربي مساحته واسعة.\".",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "Self-check against the model before moving on: \"The Arab world has a vast area.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "al-ʿālam al-ʿarabī",
+      "nativeText": "Repair \"العالم العربي\" inside \"العالم العربي مساحته واسعة.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: The Arab world — 22 countries from Morocco to Oman, spanning Africa and West Asia. About 400 million Arabic speakers. ʿAyn at the start of both words.",
+      "pronunciation": "al-ʿālam al-ʿarabī",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "Use the model as the repair target: \"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "Repair \"العالم العربي\" inside \"العالم العربي مساحته واسعة.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: The Arab world — 22 countries from Morocco to Oman, spanning Africa and West Asia. About 400 million Arabic speakers. ʿAyn at the start of both words.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "Use the model as the repair target: \"The Arab world has a vast area.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "al-ʿālam al-ʿarabī",
+      "nativeText": "Transfer \"العالم العربي\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"العالم العربي مساحته واسعة.\".",
+      "pronunciation": "al-ʿālam al-ʿarabī",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "Transfer \"العالم العربي\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"العالم العربي مساحته واسعة.\".",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"The Arab world has a vast area.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "al-ʿālam al-ʿarabī",
+      "nativeText": "Find one word or phrase that naturally travels with \"العالم العربي\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "al-ʿālam al-ʿarabī",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "Find one word or phrase that naturally travels with \"العالم العربي\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"The Arab world has a vast area.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "al-ʿālam al-ʿarabī",
+      "nativeText": "Listen for \"العالم العربي\" inside \"العالم العربي مساحته واسعة.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "al-ʿālam al-ʿarabī",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "Listen for \"العالم العربي\" inside \"العالم العربي مساحته واسعة.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"The Arab world has a vast area.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "al-ʿālam al-ʿarabī",
+      "nativeText": "Write \"العالم العربي\" again without looking, then compare the exact written form against \"العالم العربي مساحته واسعة.\" before moving on.",
+      "pronunciation": "al-ʿālam al-ʿarabī",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "Use the written model as the final correctness check: \"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "Write \"العالم العربي\" again without looking, then compare the exact written form against \"العالم العربي مساحته واسعة.\" before moving on.",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"The Arab world has a vast area.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "العالم العربي",
+      "romanization": "al-ʿālam al-ʿarabī",
+      "nativeText": "Check whether \"العالم العربي\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The Arab world has a vast area.\"",
+      "pronunciation": "al-ʿālam al-ʿarabī",
+      "exampleTarget": "العالم العربي مساحته واسعة.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"The Arab world has a vast area.\"",
+      "korean": "العالم العربي",
+      "english": "Check whether \"العالم العربي\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"The Arab world has a vast area.\"",
+      "example": "العالم العربي مساحته واسعة.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"The Arab world has a vast area.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "القاهرة عاصمة مصر.",
+      "romanization": "Miṣr / al-Qāhira",
+      "nativeText": "Model use for \"مصر / القاهرة\": Egypt — capital Cairo. ~110 million people, the most-populous Arab country. The Egyptian dialect is the most-understood across the Arab world due to media reach.",
+      "pronunciation": "Miṣr / al-Qāhira",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "\"Cairo is the capital of Egypt.\"",
+      "korean": "القاهرة عاصمة مصر.",
+      "english": "Model use for \"مصر / القاهرة\": Egypt — capital Cairo. ~110 million people, the most-populous Arab country. The Egyptian dialect is the most-understood across the Arab world due to media reach.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "\"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "Miṣr / al-Qāhira",
+      "nativeText": "Usage focus for \"مصر / القاهرة\": Egypt — capital Cairo. ~110 million people, the most-populous Arab country. The Egyptian dialect is the most-understood across the Arab world due to media reach.",
+      "pronunciation": "Miṣr / al-Qāhira",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "Notice what the form is doing here: \"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Usage focus for \"مصر / القاهرة\": Egypt — capital Cairo. ~110 million people, the most-populous Arab country. The Egyptian dialect is the most-understood across the Arab world due to media reach.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "Notice what the form is doing here: \"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "Miṣr / al-Qāhira",
+      "nativeText": "Contrast check for \"مصر / القاهرة\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Miṣr / al-Qāhira",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Contrast check for \"مصر / القاهرة\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "Miṣr / al-Qāhira",
+      "nativeText": "Recall \"مصر / القاهرة\" from memory, then explain what would change if a nearby alternative replaced it in \"القاهرة عاصمة مصر.\".",
+      "pronunciation": "Miṣr / al-Qāhira",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "Self-check against the model before moving on: \"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Recall \"مصر / القاهرة\" from memory, then explain what would change if a nearby alternative replaced it in \"القاهرة عاصمة مصر.\".",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "Miṣr / al-Qāhira",
+      "nativeText": "Repair \"مصر / القاهرة\" inside \"القاهرة عاصمة مصر.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Egypt — capital Cairo. ~110 million people, the most-populous Arab country. The Egyptian dialect is the most-understood across the Arab world due to media reach.",
+      "pronunciation": "Miṣr / al-Qāhira",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "Use the model as the repair target: \"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Repair \"مصر / القاهرة\" inside \"القاهرة عاصمة مصر.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Egypt — capital Cairo. ~110 million people, the most-populous Arab country. The Egyptian dialect is the most-understood across the Arab world due to media reach.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "Use the model as the repair target: \"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "Miṣr / al-Qāhira",
+      "nativeText": "Transfer \"مصر / القاهرة\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"القاهرة عاصمة مصر.\".",
+      "pronunciation": "Miṣr / al-Qāhira",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Transfer \"مصر / القاهرة\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"القاهرة عاصمة مصر.\".",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "Miṣr / al-Qāhira",
+      "nativeText": "Find one word or phrase that naturally travels with \"مصر / القاهرة\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Miṣr / al-Qāhira",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Find one word or phrase that naturally travels with \"مصر / القاهرة\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "Miṣr / al-Qāhira",
+      "nativeText": "Listen for \"مصر / القاهرة\" inside \"القاهرة عاصمة مصر.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Miṣr / al-Qāhira",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Listen for \"مصر / القاهرة\" inside \"القاهرة عاصمة مصر.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "Miṣr / al-Qāhira",
+      "nativeText": "Write \"مصر / القاهرة\" again without looking, then compare the exact written form against \"القاهرة عاصمة مصر.\" before moving on.",
+      "pronunciation": "Miṣr / al-Qāhira",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "Use the written model as the final correctness check: \"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Write \"مصر / القاهرة\" again without looking, then compare the exact written form against \"القاهرة عاصمة مصر.\" before moving on.",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "مصر / القاهرة",
+      "romanization": "Miṣr / al-Qāhira",
+      "nativeText": "Check whether \"مصر / القاهرة\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Cairo is the capital of Egypt.\"",
+      "pronunciation": "Miṣr / al-Qāhira",
+      "exampleTarget": "القاهرة عاصمة مصر.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Cairo is the capital of Egypt.\"",
+      "korean": "مصر / القاهرة",
+      "english": "Check whether \"مصر / القاهرة\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Cairo is the capital of Egypt.\"",
+      "example": "القاهرة عاصمة مصر.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Cairo is the capital of Egypt.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الرياض عاصمة المملكة العربية السعودية.",
+      "romanization": "as-Saʿūdiyya / ar-Riyāḍ",
+      "nativeText": "Model use for \"السعودية / الرياض\": Saudi Arabia — capital Riyadh. Birthplace of Islam (Mecca المكرمة and Medina المنورة). Home to King Saud University, our anchor.",
+      "pronunciation": "as-Saʿūdiyya / ar-Riyāḍ",
+      "exampleTarget": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleNative": "\"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "korean": "الرياض عاصمة المملكة العربية السعودية.",
+      "english": "Model use for \"السعودية / الرياض\": Saudi Arabia — capital Riyadh. Birthplace of Islam (Mecca المكرمة and Medina المنورة). Home to King Saud University, our anchor.",
+      "example": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleEnglish": "\"Riyadh is the capital of the Kingdom of Saudi Arabia.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "السعودية / الرياض",
+      "romanization": "as-Saʿūdiyya / ar-Riyāḍ",
+      "nativeText": "Usage focus for \"السعودية / الرياض\": Saudi Arabia — capital Riyadh. Birthplace of Islam (Mecca المكرمة and Medina المنورة). Home to King Saud University, our anchor.",
+      "pronunciation": "as-Saʿūdiyya / ar-Riyāḍ",
+      "exampleTarget": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleNative": "Notice what the form is doing here: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "korean": "السعودية / الرياض",
+      "english": "Usage focus for \"السعودية / الرياض\": Saudi Arabia — capital Riyadh. Birthplace of Islam (Mecca المكرمة and Medina المنورة). Home to King Saud University, our anchor.",
+      "example": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleEnglish": "Notice what the form is doing here: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "السعودية / الرياض",
+      "romanization": "as-Saʿūdiyya / ar-Riyāḍ",
+      "nativeText": "Contrast check for \"السعودية / الرياض\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "as-Saʿūdiyya / ar-Riyāḍ",
+      "exampleTarget": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "korean": "السعودية / الرياض",
+      "english": "Contrast check for \"السعودية / الرياض\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "السعودية / الرياض",
+      "romanization": "as-Saʿūdiyya / ar-Riyāḍ",
+      "nativeText": "Recall \"السعودية / الرياض\" from memory, then explain what would change if a nearby alternative replaced it in \"الرياض عاصمة المملكة العربية السعودية.\".",
+      "pronunciation": "as-Saʿūdiyya / ar-Riyāḍ",
+      "exampleTarget": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleNative": "Self-check against the model before moving on: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "korean": "السعودية / الرياض",
+      "english": "Recall \"السعودية / الرياض\" from memory, then explain what would change if a nearby alternative replaced it in \"الرياض عاصمة المملكة العربية السعودية.\".",
+      "example": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "السعودية / الرياض",
+      "romanization": "as-Saʿūdiyya / ar-Riyāḍ",
+      "nativeText": "Repair \"السعودية / الرياض\" inside \"الرياض عاصمة المملكة العربية السعودية.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Saudi Arabia — capital Riyadh. Birthplace of Islam (Mecca المكرمة and Medina المنورة). Home to King Saud University, our anchor.",
+      "pronunciation": "as-Saʿūdiyya / ar-Riyāḍ",
+      "exampleTarget": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleNative": "Use the model as the repair target: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "korean": "السعودية / الرياض",
+      "english": "Repair \"السعودية / الرياض\" inside \"الرياض عاصمة المملكة العربية السعودية.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Saudi Arabia — capital Riyadh. Birthplace of Islam (Mecca المكرمة and Medina المنورة). Home to King Saud University, our anchor.",
+      "example": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleEnglish": "Use the model as the repair target: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "السعودية / الرياض",
+      "romanization": "as-Saʿūdiyya / ar-Riyāḍ",
+      "nativeText": "Transfer \"السعودية / الرياض\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"الرياض عاصمة المملكة العربية السعودية.\".",
+      "pronunciation": "as-Saʿūdiyya / ar-Riyāḍ",
+      "exampleTarget": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "korean": "السعودية / الرياض",
+      "english": "Transfer \"السعودية / الرياض\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"الرياض عاصمة المملكة العربية السعودية.\".",
+      "example": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "السعودية / الرياض",
+      "romanization": "as-Saʿūdiyya / ar-Riyāḍ",
+      "nativeText": "Find one word or phrase that naturally travels with \"السعودية / الرياض\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "as-Saʿūdiyya / ar-Riyāḍ",
+      "exampleTarget": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "korean": "السعودية / الرياض",
+      "english": "Find one word or phrase that naturally travels with \"السعودية / الرياض\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "السعودية / الرياض",
+      "romanization": "as-Saʿūdiyya / ar-Riyāḍ",
+      "nativeText": "Listen for \"السعودية / الرياض\" inside \"الرياض عاصمة المملكة العربية السعودية.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "as-Saʿūdiyya / ar-Riyāḍ",
+      "exampleTarget": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "korean": "السعودية / الرياض",
+      "english": "Listen for \"السعودية / الرياض\" inside \"الرياض عاصمة المملكة العربية السعودية.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "السعودية / الرياض",
+      "romanization": "as-Saʿūdiyya / ar-Riyāḍ",
+      "nativeText": "Write \"السعودية / الرياض\" again without looking, then compare the exact written form against \"الرياض عاصمة المملكة العربية السعودية.\" before moving on.",
+      "pronunciation": "as-Saʿūdiyya / ar-Riyāḍ",
+      "exampleTarget": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleNative": "Use the written model as the final correctness check: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "korean": "السعودية / الرياض",
+      "english": "Write \"السعودية / الرياض\" again without looking, then compare the exact written form against \"الرياض عاصمة المملكة العربية السعودية.\" before moving on.",
+      "example": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "السعودية / الرياض",
+      "romanization": "as-Saʿūdiyya / ar-Riyāḍ",
+      "nativeText": "Check whether \"السعودية / الرياض\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "pronunciation": "as-Saʿūdiyya / ar-Riyāḍ",
+      "exampleTarget": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "korean": "السعودية / الرياض",
+      "english": "Check whether \"السعودية / الرياض\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\"",
+      "example": "الرياض عاصمة المملكة العربية السعودية.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Riyadh is the capital of the Kingdom of Saudi Arabia.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "دبي أكبر مدن الإمارات.",
+      "romanization": "al-Imārāt / Abū Ẓabī",
+      "nativeText": "Model use for \"الإمارات / أبوظبي\": UAE — capital Abu Dhabi (literally \"father of the gazelle\"); biggest city Dubai (دبي). Federation of 7 emirates.",
+      "pronunciation": "al-Imārāt / Abū Ẓabī",
+      "exampleTarget": "دبي أكبر مدن الإمارات.",
+      "exampleNative": "\"Dubai is the largest of the UAE's cities.\"",
+      "korean": "دبي أكبر مدن الإمارات.",
+      "english": "Model use for \"الإمارات / أبوظبي\": UAE — capital Abu Dhabi (literally \"father of the gazelle\"); biggest city Dubai (دبي). Federation of 7 emirates.",
+      "example": "دبي أكبر مدن الإمارات.",
+      "exampleEnglish": "\"Dubai is the largest of the UAE's cities.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الإمارات / أبوظبي",
+      "romanization": "al-Imārāt / Abū Ẓabī",
+      "nativeText": "Usage focus for \"الإمارات / أبوظبي\": UAE — capital Abu Dhabi (literally \"father of the gazelle\"); biggest city Dubai (دبي). Federation of 7 emirates.",
+      "pronunciation": "al-Imārāt / Abū Ẓabī",
+      "exampleTarget": "دبي أكبر مدن الإمارات.",
+      "exampleNative": "Notice what the form is doing here: \"Dubai is the largest of the UAE's cities.\"",
+      "korean": "الإمارات / أبوظبي",
+      "english": "Usage focus for \"الإمارات / أبوظبي\": UAE — capital Abu Dhabi (literally \"father of the gazelle\"); biggest city Dubai (دبي). Federation of 7 emirates.",
+      "example": "دبي أكبر مدن الإمارات.",
+      "exampleEnglish": "Notice what the form is doing here: \"Dubai is the largest of the UAE's cities.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الإمارات / أبوظبي",
+      "romanization": "al-Imārāt / Abū Ẓabī",
+      "nativeText": "Contrast check for \"الإمارات / أبوظبي\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "al-Imārāt / Abū Ẓabī",
+      "exampleTarget": "دبي أكبر مدن الإمارات.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Dubai is the largest of the UAE's cities.\"",
+      "korean": "الإمارات / أبوظبي",
+      "english": "Contrast check for \"الإمارات / أبوظبي\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "دبي أكبر مدن الإمارات.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Dubai is the largest of the UAE's cities.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الإمارات / أبوظبي",
+      "romanization": "al-Imārāt / Abū Ẓabī",
+      "nativeText": "Recall \"الإمارات / أبوظبي\" from memory, then explain what would change if a nearby alternative replaced it in \"دبي أكبر مدن الإمارات.\".",
+      "pronunciation": "al-Imārāt / Abū Ẓabī",
+      "exampleTarget": "دبي أكبر مدن الإمارات.",
+      "exampleNative": "Self-check against the model before moving on: \"Dubai is the largest of the UAE's cities.\"",
+      "korean": "الإمارات / أبوظبي",
+      "english": "Recall \"الإمارات / أبوظبي\" from memory, then explain what would change if a nearby alternative replaced it in \"دبي أكبر مدن الإمارات.\".",
+      "example": "دبي أكبر مدن الإمارات.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Dubai is the largest of the UAE's cities.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الإمارات / أبوظبي",
+      "romanization": "al-Imārāt / Abū Ẓabī",
+      "nativeText": "Repair \"الإمارات / أبوظبي\" inside \"دبي أكبر مدن الإمارات.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: UAE — capital Abu Dhabi (literally \"father of the gazelle\"); biggest city Dubai (دبي). Federation of 7 emirates.",
+      "pronunciation": "al-Imārāt / Abū Ẓabī",
+      "exampleTarget": "دبي أكبر مدن الإمارات.",
+      "exampleNative": "Use the model as the repair target: \"Dubai is the largest of the UAE's cities.\"",
+      "korean": "الإمارات / أبوظبي",
+      "english": "Repair \"الإمارات / أبوظبي\" inside \"دبي أكبر مدن الإمارات.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: UAE — capital Abu Dhabi (literally \"father of the gazelle\"); biggest city Dubai (دبي). Federation of 7 emirates.",
+      "example": "دبي أكبر مدن الإمارات.",
+      "exampleEnglish": "Use the model as the repair target: \"Dubai is the largest of the UAE's cities.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الإمارات / أبوظبي",
+      "romanization": "al-Imārāt / Abū Ẓabī",
+      "nativeText": "Transfer \"الإمارات / أبوظبي\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"دبي أكبر مدن الإمارات.\".",
+      "pronunciation": "al-Imārāt / Abū Ẓabī",
+      "exampleTarget": "دبي أكبر مدن الإمارات.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Dubai is the largest of the UAE's cities.\"",
+      "korean": "الإمارات / أبوظبي",
+      "english": "Transfer \"الإمارات / أبوظبي\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"دبي أكبر مدن الإمارات.\".",
+      "example": "دبي أكبر مدن الإمارات.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Dubai is the largest of the UAE's cities.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الإمارات / أبوظبي",
+      "romanization": "al-Imārāt / Abū Ẓabī",
+      "nativeText": "Find one word or phrase that naturally travels with \"الإمارات / أبوظبي\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "al-Imārāt / Abū Ẓabī",
+      "exampleTarget": "دبي أكبر مدن الإمارات.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Dubai is the largest of the UAE's cities.\"",
+      "korean": "الإمارات / أبوظبي",
+      "english": "Find one word or phrase that naturally travels with \"الإمارات / أبوظبي\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "دبي أكبر مدن الإمارات.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Dubai is the largest of the UAE's cities.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الإمارات / أبوظبي",
+      "romanization": "al-Imārāt / Abū Ẓabī",
+      "nativeText": "Listen for \"الإمارات / أبوظبي\" inside \"دبي أكبر مدن الإمارات.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "al-Imārāt / Abū Ẓabī",
+      "exampleTarget": "دبي أكبر مدن الإمارات.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Dubai is the largest of the UAE's cities.\"",
+      "korean": "الإمارات / أبوظبي",
+      "english": "Listen for \"الإمارات / أبوظبي\" inside \"دبي أكبر مدن الإمارات.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "دبي أكبر مدن الإمارات.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Dubai is the largest of the UAE's cities.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الإمارات / أبوظبي",
+      "romanization": "al-Imārāt / Abū Ẓabī",
+      "nativeText": "Write \"الإمارات / أبوظبي\" again without looking, then compare the exact written form against \"دبي أكبر مدن الإمارات.\" before moving on.",
+      "pronunciation": "al-Imārāt / Abū Ẓabī",
+      "exampleTarget": "دبي أكبر مدن الإمارات.",
+      "exampleNative": "Use the written model as the final correctness check: \"Dubai is the largest of the UAE's cities.\"",
+      "korean": "الإمارات / أبوظبي",
+      "english": "Write \"الإمارات / أبوظبي\" again without looking, then compare the exact written form against \"دبي أكبر مدن الإمارات.\" before moving on.",
+      "example": "دبي أكبر مدن الإمارات.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Dubai is the largest of the UAE's cities.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الإمارات / أبوظبي",
+      "romanization": "al-Imārāt / Abū Ẓabī",
+      "nativeText": "Check whether \"الإمارات / أبوظبي\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Dubai is the largest of the UAE's cities.\"",
+      "pronunciation": "al-Imārāt / Abū Ẓabī",
+      "exampleTarget": "دبي أكبر مدن الإمارات.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Dubai is the largest of the UAE's cities.\"",
+      "korean": "الإمارات / أبوظبي",
+      "english": "Check whether \"الإمارات / أبوظبي\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Dubai is the largest of the UAE's cities.\"",
+      "example": "دبي أكبر مدن الإمارات.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Dubai is the largest of the UAE's cities.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الدوحة مدينة حديثة.",
+      "romanization": "Qaṭar / ad-Dawḥa",
+      "nativeText": "Model use for \"قطر / الدوحة\": Qatar — capital Doha. Small Gulf country; hosts Al Jazeera and the 2022 World Cup.",
+      "pronunciation": "Qaṭar / ad-Dawḥa",
+      "exampleTarget": "الدوحة مدينة حديثة.",
+      "exampleNative": "\"Doha is a modern city.\"",
+      "korean": "الدوحة مدينة حديثة.",
+      "english": "Model use for \"قطر / الدوحة\": Qatar — capital Doha. Small Gulf country; hosts Al Jazeera and the 2022 World Cup.",
+      "example": "الدوحة مدينة حديثة.",
+      "exampleEnglish": "\"Doha is a modern city.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قطر / الدوحة",
+      "romanization": "Qaṭar / ad-Dawḥa",
+      "nativeText": "Usage focus for \"قطر / الدوحة\": Qatar — capital Doha. Small Gulf country; hosts Al Jazeera and the 2022 World Cup.",
+      "pronunciation": "Qaṭar / ad-Dawḥa",
+      "exampleTarget": "الدوحة مدينة حديثة.",
+      "exampleNative": "Notice what the form is doing here: \"Doha is a modern city.\"",
+      "korean": "قطر / الدوحة",
+      "english": "Usage focus for \"قطر / الدوحة\": Qatar — capital Doha. Small Gulf country; hosts Al Jazeera and the 2022 World Cup.",
+      "example": "الدوحة مدينة حديثة.",
+      "exampleEnglish": "Notice what the form is doing here: \"Doha is a modern city.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قطر / الدوحة",
+      "romanization": "Qaṭar / ad-Dawḥa",
+      "nativeText": "Contrast check for \"قطر / الدوحة\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "Qaṭar / ad-Dawḥa",
+      "exampleTarget": "الدوحة مدينة حديثة.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Doha is a modern city.\"",
+      "korean": "قطر / الدوحة",
+      "english": "Contrast check for \"قطر / الدوحة\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "الدوحة مدينة حديثة.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Doha is a modern city.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قطر / الدوحة",
+      "romanization": "Qaṭar / ad-Dawḥa",
+      "nativeText": "Recall \"قطر / الدوحة\" from memory, then explain what would change if a nearby alternative replaced it in \"الدوحة مدينة حديثة.\".",
+      "pronunciation": "Qaṭar / ad-Dawḥa",
+      "exampleTarget": "الدوحة مدينة حديثة.",
+      "exampleNative": "Self-check against the model before moving on: \"Doha is a modern city.\"",
+      "korean": "قطر / الدوحة",
+      "english": "Recall \"قطر / الدوحة\" from memory, then explain what would change if a nearby alternative replaced it in \"الدوحة مدينة حديثة.\".",
+      "example": "الدوحة مدينة حديثة.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Doha is a modern city.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قطر / الدوحة",
+      "romanization": "Qaṭar / ad-Dawḥa",
+      "nativeText": "Repair \"قطر / الدوحة\" inside \"الدوحة مدينة حديثة.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Qatar — capital Doha. Small Gulf country; hosts Al Jazeera and the 2022 World Cup.",
+      "pronunciation": "Qaṭar / ad-Dawḥa",
+      "exampleTarget": "الدوحة مدينة حديثة.",
+      "exampleNative": "Use the model as the repair target: \"Doha is a modern city.\"",
+      "korean": "قطر / الدوحة",
+      "english": "Repair \"قطر / الدوحة\" inside \"الدوحة مدينة حديثة.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Qatar — capital Doha. Small Gulf country; hosts Al Jazeera and the 2022 World Cup.",
+      "example": "الدوحة مدينة حديثة.",
+      "exampleEnglish": "Use the model as the repair target: \"Doha is a modern city.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قطر / الدوحة",
+      "romanization": "Qaṭar / ad-Dawḥa",
+      "nativeText": "Transfer \"قطر / الدوحة\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"الدوحة مدينة حديثة.\".",
+      "pronunciation": "Qaṭar / ad-Dawḥa",
+      "exampleTarget": "الدوحة مدينة حديثة.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Doha is a modern city.\"",
+      "korean": "قطر / الدوحة",
+      "english": "Transfer \"قطر / الدوحة\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"الدوحة مدينة حديثة.\".",
+      "example": "الدوحة مدينة حديثة.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Doha is a modern city.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قطر / الدوحة",
+      "romanization": "Qaṭar / ad-Dawḥa",
+      "nativeText": "Find one word or phrase that naturally travels with \"قطر / الدوحة\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "Qaṭar / ad-Dawḥa",
+      "exampleTarget": "الدوحة مدينة حديثة.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Doha is a modern city.\"",
+      "korean": "قطر / الدوحة",
+      "english": "Find one word or phrase that naturally travels with \"قطر / الدوحة\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "الدوحة مدينة حديثة.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Doha is a modern city.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قطر / الدوحة",
+      "romanization": "Qaṭar / ad-Dawḥa",
+      "nativeText": "Listen for \"قطر / الدوحة\" inside \"الدوحة مدينة حديثة.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "Qaṭar / ad-Dawḥa",
+      "exampleTarget": "الدوحة مدينة حديثة.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Doha is a modern city.\"",
+      "korean": "قطر / الدوحة",
+      "english": "Listen for \"قطر / الدوحة\" inside \"الدوحة مدينة حديثة.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "الدوحة مدينة حديثة.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Doha is a modern city.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قطر / الدوحة",
+      "romanization": "Qaṭar / ad-Dawḥa",
+      "nativeText": "Write \"قطر / الدوحة\" again without looking, then compare the exact written form against \"الدوحة مدينة حديثة.\" before moving on.",
+      "pronunciation": "Qaṭar / ad-Dawḥa",
+      "exampleTarget": "الدوحة مدينة حديثة.",
+      "exampleNative": "Use the written model as the final correctness check: \"Doha is a modern city.\"",
+      "korean": "قطر / الدوحة",
+      "english": "Write \"قطر / الدوحة\" again without looking, then compare the exact written form against \"الدوحة مدينة حديثة.\" before moving on.",
+      "example": "الدوحة مدينة حديثة.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Doha is a modern city.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "قطر / الدوحة",
+      "romanization": "Qaṭar / ad-Dawḥa",
+      "nativeText": "Check whether \"قطر / الدوحة\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Doha is a modern city.\"",
+      "pronunciation": "Qaṭar / ad-Dawḥa",
+      "exampleTarget": "الدوحة مدينة حديثة.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Doha is a modern city.\"",
+      "korean": "قطر / الدوحة",
+      "english": "Check whether \"قطر / الدوحة\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Doha is a modern city.\"",
+      "example": "الدوحة مدينة حديثة.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Doha is a modern city.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الكويت دولة صغيرة وغنية.",
+      "romanization": "al-Kuwait",
+      "nativeText": "Model use for \"الكويت\": Kuwait — country and capital share the name. The ك moon letter (no assimilation in الكويت).",
+      "pronunciation": "al-Kuwait",
+      "exampleTarget": "الكويت دولة صغيرة وغنية.",
+      "exampleNative": "\"Kuwait is a small and rich country.\"",
+      "korean": "الكويت دولة صغيرة وغنية.",
+      "english": "Model use for \"الكويت\": Kuwait — country and capital share the name. The ك moon letter (no assimilation in الكويت).",
+      "example": "الكويت دولة صغيرة وغنية.",
+      "exampleEnglish": "\"Kuwait is a small and rich country.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الكويت",
+      "romanization": "al-Kuwait",
+      "nativeText": "Usage focus for \"الكويت\": Kuwait — country and capital share the name. The ك moon letter (no assimilation in الكويت).",
+      "pronunciation": "al-Kuwait",
+      "exampleTarget": "الكويت دولة صغيرة وغنية.",
+      "exampleNative": "Notice what the form is doing here: \"Kuwait is a small and rich country.\"",
+      "korean": "الكويت",
+      "english": "Usage focus for \"الكويت\": Kuwait — country and capital share the name. The ك moon letter (no assimilation in الكويت).",
+      "example": "الكويت دولة صغيرة وغنية.",
+      "exampleEnglish": "Notice what the form is doing here: \"Kuwait is a small and rich country.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الكويت",
+      "romanization": "al-Kuwait",
+      "nativeText": "Contrast check for \"الكويت\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "al-Kuwait",
+      "exampleTarget": "الكويت دولة صغيرة وغنية.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Kuwait is a small and rich country.\"",
+      "korean": "الكويت",
+      "english": "Contrast check for \"الكويت\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "الكويت دولة صغيرة وغنية.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"Kuwait is a small and rich country.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الكويت",
+      "romanization": "al-Kuwait",
+      "nativeText": "Recall \"الكويت\" from memory, then explain what would change if a nearby alternative replaced it in \"الكويت دولة صغيرة وغنية.\".",
+      "pronunciation": "al-Kuwait",
+      "exampleTarget": "الكويت دولة صغيرة وغنية.",
+      "exampleNative": "Self-check against the model before moving on: \"Kuwait is a small and rich country.\"",
+      "korean": "الكويت",
+      "english": "Recall \"الكويت\" from memory, then explain what would change if a nearby alternative replaced it in \"الكويت دولة صغيرة وغنية.\".",
+      "example": "الكويت دولة صغيرة وغنية.",
+      "exampleEnglish": "Self-check against the model before moving on: \"Kuwait is a small and rich country.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الكويت",
+      "romanization": "al-Kuwait",
+      "nativeText": "Repair \"الكويت\" inside \"الكويت دولة صغيرة وغنية.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Kuwait — country and capital share the name. The ك moon letter (no assimilation in الكويت).",
+      "pronunciation": "al-Kuwait",
+      "exampleTarget": "الكويت دولة صغيرة وغنية.",
+      "exampleNative": "Use the model as the repair target: \"Kuwait is a small and rich country.\"",
+      "korean": "الكويت",
+      "english": "Repair \"الكويت\" inside \"الكويت دولة صغيرة وغنية.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Kuwait — country and capital share the name. The ك moon letter (no assimilation in الكويت).",
+      "example": "الكويت دولة صغيرة وغنية.",
+      "exampleEnglish": "Use the model as the repair target: \"Kuwait is a small and rich country.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الكويت",
+      "romanization": "al-Kuwait",
+      "nativeText": "Transfer \"الكويت\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"الكويت دولة صغيرة وغنية.\".",
+      "pronunciation": "al-Kuwait",
+      "exampleTarget": "الكويت دولة صغيرة وغنية.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Kuwait is a small and rich country.\"",
+      "korean": "الكويت",
+      "english": "Transfer \"الكويت\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"الكويت دولة صغيرة وغنية.\".",
+      "example": "الكويت دولة صغيرة وغنية.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"Kuwait is a small and rich country.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الكويت",
+      "romanization": "al-Kuwait",
+      "nativeText": "Find one word or phrase that naturally travels with \"الكويت\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "al-Kuwait",
+      "exampleTarget": "الكويت دولة صغيرة وغنية.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"Kuwait is a small and rich country.\"",
+      "korean": "الكويت",
+      "english": "Find one word or phrase that naturally travels with \"الكويت\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "الكويت دولة صغيرة وغنية.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"Kuwait is a small and rich country.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الكويت",
+      "romanization": "al-Kuwait",
+      "nativeText": "Listen for \"الكويت\" inside \"الكويت دولة صغيرة وغنية.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "al-Kuwait",
+      "exampleTarget": "الكويت دولة صغيرة وغنية.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Kuwait is a small and rich country.\"",
+      "korean": "الكويت",
+      "english": "Listen for \"الكويت\" inside \"الكويت دولة صغيرة وغنية.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "الكويت دولة صغيرة وغنية.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"Kuwait is a small and rich country.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الكويت",
+      "romanization": "al-Kuwait",
+      "nativeText": "Write \"الكويت\" again without looking, then compare the exact written form against \"الكويت دولة صغيرة وغنية.\" before moving on.",
+      "pronunciation": "al-Kuwait",
+      "exampleTarget": "الكويت دولة صغيرة وغنية.",
+      "exampleNative": "Use the written model as the final correctness check: \"Kuwait is a small and rich country.\"",
+      "korean": "الكويت",
+      "english": "Write \"الكويت\" again without looking, then compare the exact written form against \"الكويت دولة صغيرة وغنية.\" before moving on.",
+      "example": "الكويت دولة صغيرة وغنية.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"Kuwait is a small and rich country.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ar-level1unit05lifeinarabworld-vocabulary-1",
+        "ar-level1unit05lifeinarabworld-vocabulary-2",
+        "ar-level1unit05lifeinarabworld-grammar-1",
+        "ar-level1unit05lifeinarabworld-grammar-2",
+        "ar-level1unit05lifeinarabworld-reading",
+        "ar-level1unit05lifeinarabworld-listening",
+        "ar-level1unit05lifeinarabworld-writing",
+        "ar-level1unit05lifeinarabworld-task"
+      ],
+      "targetText": "الكويت",
+      "romanization": "al-Kuwait",
+      "nativeText": "Check whether \"الكويت\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Kuwait is a small and rich country.\"",
+      "pronunciation": "al-Kuwait",
+      "exampleTarget": "الكويت دولة صغيرة وغنية.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"Kuwait is a small and rich country.\"",
+      "korean": "الكويت",
+      "english": "Check whether \"الكويت\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"Kuwait is a small and rich country.\"",
+      "example": "الكويت دولة صغيرة وغنية.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"Kuwait is a small and rich country.\""
+    }
+  ]
 };
-
-module.exports = lesson;

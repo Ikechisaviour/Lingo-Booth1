@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u11',
-  title: 'Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling',
-  category: 'time',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Arrange meetings, talk about availability, and change plans politely.',
-  vocabularyGoal: 'Use meeting, schedule, clock-time, and availability words.',
-  grammarGoal: 'Use future/polite forms with `சந்திப்போம்`, `முடியுமா`, and time expressions.',
-  speakingGoal: 'Propose a time, accept or reject it, and offer another option.',
-  task: 'Schedule a study meeting with a classmate.',
-  expressionPractice: [
-    practice('proposing-time', 'Proposing time', 'Use `சந்திப்போமா?`.'),
-    practice('accepting', 'Accepting', 'Use `சரி`.'),
-    practice('rescheduling', 'Rescheduling', 'Use `முடியாது` plus another option.'),
+module.exports = {
+  "title": "Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling",
+  "category": "time",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit11scheduling-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Arrange meetings, talk about availability, and change plans politely."
+      ],
+      "task": "Schedule a study meeting with a classmate."
+    },
+    {
+      "id": "ta-level1unit11scheduling-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit11scheduling-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit11scheduling-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit11scheduling-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Arrange meetings, talk about availability, and change plans politely."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit11scheduling-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit11scheduling-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit11scheduling-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit11scheduling-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit11scheduling-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit11scheduling-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Schedule a study meeting with a classmate."
+      ],
+      "task": "Schedule a study meeting with a classmate."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-planning'],
-  items: [
-    item('சந்திப்பு', 'cantippu', '“Meeting.” A practical scheduling noun.', 'நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.', '“Tomorrow I have a meeting.”'),
-    item('நேர அட்டவணை', 'nēra aṭṭavaṇai', '“Schedule / timetable.” A useful school-and-work phrase.', 'என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.', '“My schedule is full today.”'),
-    item('மூன்று மணிக்கு', 'mūṉṟu maṇikku', '“At three o’clock.” The dative-style suffix marks time.', 'கூட்டம் மூன்று மணிக்கு தொடங்கும்.', '“The meeting starts at three.”'),
-    item('எனக்கு முடியும்', 'eṉakku muṭiyum', '“I can / it is possible for me.” Useful for availability.', 'மாலை எனக்கு முடியும்.', '“Evening works for me.”'),
-    item('எனக்கு முடியாது', 'eṉakku muṭiyātu', '“I cannot.” Add another option to stay cooperative.', 'காலை எனக்கு முடியாது.', '“Morning does not work for me.”'),
-    item('நாளை சந்திப்போமா?', 'nāḷai cantippōmā', '“Shall we meet tomorrow?” A natural proposal.', 'நாளை சந்திப்போமா?', '“Shall we meet tomorrow?”'),
-    item('நேரத்தை மாற்ற முடியுமா?', 'nērattai māṟṟa muṭiyumā', '“Can we change the time?” A practical rescheduling question.', 'நேரத்தை மாற்ற முடியுமா?', '“Can we change the time?”'),
-    item('சரி', 'cari', '“Okay / alright.” A compact acceptance word.', 'சரி, ஐந்து மணிக்கு சந்திப்போம்.', '“Okay, let’s meet at five.”'),
+  "expressionPractice": [
+    {
+      "id": "proposing-time",
+      "label": "Proposing time",
+      "goal": "Use `சந்திப்போமா?`."
+    },
+    {
+      "id": "accepting",
+      "label": "Accepting",
+      "goal": "Use `சரி`."
+    },
+    {
+      "id": "rescheduling",
+      "label": "Rescheduling",
+      "goal": "Use `முடியாது` plus another option."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-time",
+    "topic-planning"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Arrange meetings, talk about availability, and change plans politely.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Schedule a study meeting with a classmate.",
+      "korean": "பாட இலக்கு",
+      "english": "Arrange meetings, talk about availability, and change plans politely.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Schedule a study meeting with a classmate."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit11scheduling-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\".",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\".",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "Use the key language of Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with the register and setting that the lesson requires.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-2"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling sound precise rather than merely understandable.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit11scheduling-grammar-1"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "",
+      "nativeText": "Arrange meetings, talk about availability, and change plans politely.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "Arrange meetings, talk about availability, and change plans politely.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "Contrast the main pattern in Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit11scheduling-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“Okay, let’s meet at five.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“Okay, let’s meet at five.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit11scheduling-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“Okay, let’s meet at five.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“Okay, let’s meet at five.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit11scheduling-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit11scheduling-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Schedule a study meeting with a classmate.",
+      "pronunciation": "",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Schedule a study meeting with a classmate.",
+      "korean": "இறுதி செயல்",
+      "english": "Schedule a study meeting with a classmate.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Schedule a study meeting with a classmate."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “My schedule is full today.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" against the model.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “My schedule is full today.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" before reusing it elsewhere.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“Okay, let’s meet at five.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" as one thought.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“Okay, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" and move it into your own life.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"சந்திப்பு\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "சந்திப்பு",
+      "exampleNative": "“Meeting.” A practical scheduling noun.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"சந்திப்பு\" before looking back.",
+      "example": "சந்திப்பு",
+      "exampleEnglish": "“Meeting.” A practical scheduling noun."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" rather than restarting from a blank sentence.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" as the comparison line.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit11scheduling-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\".",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\".",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "pronunciation": "",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“Okay, let’s meet at five.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“Okay, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" one layer at a time.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" as the deciding example.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-culture",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "pronunciation": "",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“Okay, let’s meet at five.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“Okay, let’s meet at five.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "cantippu",
+      "nativeText": "“Meeting.” A practical scheduling noun.",
+      "pronunciation": "cantippu",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "“Meeting.” A practical scheduling noun.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "romanization": "cantippu",
+      "nativeText": "Model use for \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\": “Tomorrow I have a meeting.”",
+      "pronunciation": "cantippu",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have a meeting.”",
+      "korean": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "english": "Model use for \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\": “Tomorrow I have a meeting.”",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "cantippu",
+      "nativeText": "Usage focus for \"சந்திப்பு\": Use the key language of Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "cantippu",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "Notice what the form is doing here: “Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "Usage focus for \"சந்திப்பு\": Use the key language of Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with the register and setting that the lesson requires.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "Notice what the form is doing here: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "cantippu",
+      "nativeText": "Contrast check for \"சந்திப்பு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "cantippu",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "Contrast check for \"சந்திப்பு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "cantippu",
+      "nativeText": "Recall \"சந்திப்பு\" from memory, then explain what would change if a nearby alternative replaced it in \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\".",
+      "pronunciation": "cantippu",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "Self-check against the model before moving on: “Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "Recall \"சந்திப்பு\" from memory, then explain what would change if a nearby alternative replaced it in \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\".",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "Self-check against the model before moving on: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "cantippu",
+      "nativeText": "Repair \"சந்திப்பு\" inside \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with the register and setting that the lesson requires.",
+      "pronunciation": "cantippu",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "Use the model as the repair target: “Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "Repair \"சந்திப்பு\" inside \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling with the register and setting that the lesson requires.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "Use the model as the repair target: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "cantippu",
+      "nativeText": "Transfer \"சந்திப்பு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\".",
+      "pronunciation": "cantippu",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "Transfer \"சந்திப்பு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\".",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "cantippu",
+      "nativeText": "Find one word or phrase that naturally travels with \"சந்திப்பு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "cantippu",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "Find one word or phrase that naturally travels with \"சந்திப்பு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "cantippu",
+      "nativeText": "Listen for \"சந்திப்பு\" inside \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "cantippu",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "Listen for \"சந்திப்பு\" inside \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "cantippu",
+      "nativeText": "Write \"சந்திப்பு\" again without looking, then compare the exact written form against \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" before moving on.",
+      "pronunciation": "cantippu",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "Use the written model as the final correctness check: “Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "Write \"சந்திப்பு\" again without looking, then compare the exact written form against \"நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.\" before moving on.",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சந்திப்பு",
+      "romanization": "cantippu",
+      "nativeText": "Check whether \"சந்திப்பு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a meeting.”",
+      "pronunciation": "cantippu",
+      "exampleTarget": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a meeting.”",
+      "korean": "சந்திப்பு",
+      "english": "Check whether \"சந்திப்பு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a meeting.”",
+      "example": "நாளை எனக்கு ஒரு சந்திப்பு உள்ளது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have a meeting.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "nēra aṭṭavaṇai",
+      "nativeText": "“Schedule / timetable.” A useful school-and-work phrase.",
+      "pronunciation": "nēra aṭṭavaṇai",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "“Schedule / timetable.” A useful school-and-work phrase.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "romanization": "nēra aṭṭavaṇai",
+      "nativeText": "Model use for \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\": “My schedule is full today.”",
+      "pronunciation": "nēra aṭṭavaṇai",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "“My schedule is full today.”",
+      "korean": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "english": "Model use for \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\": “My schedule is full today.”",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "“My schedule is full today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "nēra aṭṭavaṇai",
+      "nativeText": "Usage focus for \"நேர அட்டவணை\": Distinguish the nearby wording choices that make Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "nēra aṭṭavaṇai",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "Notice what the form is doing here: “My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "Usage focus for \"நேர அட்டவணை\": Distinguish the nearby wording choices that make Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling sound precise rather than merely understandable.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "Notice what the form is doing here: “My schedule is full today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "nēra aṭṭavaṇai",
+      "nativeText": "Contrast check for \"நேர அட்டவணை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nēra aṭṭavaṇai",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "Contrast check for \"நேர அட்டவணை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "nēra aṭṭavaṇai",
+      "nativeText": "Recall \"நேர அட்டவணை\" from memory, then explain what would change if a nearby alternative replaced it in \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\".",
+      "pronunciation": "nēra aṭṭavaṇai",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "Self-check against the model before moving on: “My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "Recall \"நேர அட்டவணை\" from memory, then explain what would change if a nearby alternative replaced it in \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\".",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "Self-check against the model before moving on: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "nēra aṭṭavaṇai",
+      "nativeText": "Repair \"நேர அட்டவணை\" inside \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling sound precise rather than merely understandable.",
+      "pronunciation": "nēra aṭṭavaṇai",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "Use the model as the repair target: “My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "Repair \"நேர அட்டவணை\" inside \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 11: நேரம் மற்றும் சந்திப்பு — Scheduling sound precise rather than merely understandable.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "Use the model as the repair target: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "nēra aṭṭavaṇai",
+      "nativeText": "Transfer \"நேர அட்டவணை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\".",
+      "pronunciation": "nēra aṭṭavaṇai",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "Transfer \"நேர அட்டவணை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\".",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "nēra aṭṭavaṇai",
+      "nativeText": "Find one word or phrase that naturally travels with \"நேர அட்டவணை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nēra aṭṭavaṇai",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "Find one word or phrase that naturally travels with \"நேர அட்டவணை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "nēra aṭṭavaṇai",
+      "nativeText": "Listen for \"நேர அட்டவணை\" inside \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nēra aṭṭavaṇai",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "Listen for \"நேர அட்டவணை\" inside \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "nēra aṭṭavaṇai",
+      "nativeText": "Write \"நேர அட்டவணை\" again without looking, then compare the exact written form against \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" before moving on.",
+      "pronunciation": "nēra aṭṭavaṇai",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "Use the written model as the final correctness check: “My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "Write \"நேர அட்டவணை\" again without looking, then compare the exact written form against \"என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.\" before moving on.",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My schedule is full today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேர அட்டவணை",
+      "romanization": "nēra aṭṭavaṇai",
+      "nativeText": "Check whether \"நேர அட்டவணை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”",
+      "pronunciation": "nēra aṭṭavaṇai",
+      "exampleTarget": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”",
+      "korean": "நேர அட்டவணை",
+      "english": "Check whether \"நேர அட்டவணை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”",
+      "example": "என் நேர அட்டவணை இன்று நிரம்பியுள்ளது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My schedule is full today.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மூன்று மணிக்கு",
+      "romanization": "mūṉṟu maṇikku",
+      "nativeText": "“At three o’clock.” The dative-style suffix marks time.",
+      "pronunciation": "mūṉṟu maṇikku",
+      "exampleTarget": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleNative": "“The meeting starts at three.”",
+      "korean": "மூன்று மணிக்கு",
+      "english": "“At three o’clock.” The dative-style suffix marks time.",
+      "example": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleEnglish": "“The meeting starts at three.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "romanization": "mūṉṟu maṇikku",
+      "nativeText": "Model use for \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\": “The meeting starts at three.”",
+      "pronunciation": "mūṉṟu maṇikku",
+      "exampleTarget": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleNative": "“The meeting starts at three.”",
+      "korean": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "english": "Model use for \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\": “The meeting starts at three.”",
+      "example": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleEnglish": "“The meeting starts at three.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மூன்று மணிக்கு",
+      "romanization": "mūṉṟu maṇikku",
+      "nativeText": "Usage focus for \"மூன்று மணிக்கு\": “At three o’clock.” The dative-style suffix marks time.",
+      "pronunciation": "mūṉṟu maṇikku",
+      "exampleTarget": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleNative": "Notice what the form is doing here: “The meeting starts at three.”",
+      "korean": "மூன்று மணிக்கு",
+      "english": "Usage focus for \"மூன்று மணிக்கு\": “At three o’clock.” The dative-style suffix marks time.",
+      "example": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleEnglish": "Notice what the form is doing here: “The meeting starts at three.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மூன்று மணிக்கு",
+      "romanization": "mūṉṟu maṇikku",
+      "nativeText": "Contrast check for \"மூன்று மணிக்கு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mūṉṟu maṇikku",
+      "exampleTarget": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The meeting starts at three.”",
+      "korean": "மூன்று மணிக்கு",
+      "english": "Contrast check for \"மூன்று மணிக்கு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மூன்று மணிக்கு",
+      "romanization": "mūṉṟu maṇikku",
+      "nativeText": "Recall \"மூன்று மணிக்கு\" from memory, then explain what would change if a nearby alternative replaced it in \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\".",
+      "pronunciation": "mūṉṟu maṇikku",
+      "exampleTarget": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleNative": "Self-check against the model before moving on: “The meeting starts at three.”",
+      "korean": "மூன்று மணிக்கு",
+      "english": "Recall \"மூன்று மணிக்கு\" from memory, then explain what would change if a nearby alternative replaced it in \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\".",
+      "example": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மூன்று மணிக்கு",
+      "romanization": "mūṉṟu maṇikku",
+      "nativeText": "Repair \"மூன்று மணிக்கு\" inside \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “At three o’clock.” The dative-style suffix marks time.",
+      "pronunciation": "mūṉṟu maṇikku",
+      "exampleTarget": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleNative": "Use the model as the repair target: “The meeting starts at three.”",
+      "korean": "மூன்று மணிக்கு",
+      "english": "Repair \"மூன்று மணிக்கு\" inside \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “At three o’clock.” The dative-style suffix marks time.",
+      "example": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleEnglish": "Use the model as the repair target: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மூன்று மணிக்கு",
+      "romanization": "mūṉṟu maṇikku",
+      "nativeText": "Transfer \"மூன்று மணிக்கு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\".",
+      "pronunciation": "mūṉṟu maṇikku",
+      "exampleTarget": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The meeting starts at three.”",
+      "korean": "மூன்று மணிக்கு",
+      "english": "Transfer \"மூன்று மணிக்கு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\".",
+      "example": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மூன்று மணிக்கு",
+      "romanization": "mūṉṟu maṇikku",
+      "nativeText": "Find one word or phrase that naturally travels with \"மூன்று மணிக்கு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mūṉṟu maṇikku",
+      "exampleTarget": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The meeting starts at three.”",
+      "korean": "மூன்று மணிக்கு",
+      "english": "Find one word or phrase that naturally travels with \"மூன்று மணிக்கு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மூன்று மணிக்கு",
+      "romanization": "mūṉṟu maṇikku",
+      "nativeText": "Listen for \"மூன்று மணிக்கு\" inside \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mūṉṟu maṇikku",
+      "exampleTarget": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The meeting starts at three.”",
+      "korean": "மூன்று மணிக்கு",
+      "english": "Listen for \"மூன்று மணிக்கு\" inside \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மூன்று மணிக்கு",
+      "romanization": "mūṉṟu maṇikku",
+      "nativeText": "Write \"மூன்று மணிக்கு\" again without looking, then compare the exact written form against \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\" before moving on.",
+      "pronunciation": "mūṉṟu maṇikku",
+      "exampleTarget": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleNative": "Use the written model as the final correctness check: “The meeting starts at three.”",
+      "korean": "மூன்று மணிக்கு",
+      "english": "Write \"மூன்று மணிக்கு\" again without looking, then compare the exact written form against \"கூட்டம் மூன்று மணிக்கு தொடங்கும்.\" before moving on.",
+      "example": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The meeting starts at three.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மூன்று மணிக்கு",
+      "romanization": "mūṉṟu maṇikku",
+      "nativeText": "Check whether \"மூன்று மணிக்கு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The meeting starts at three.”",
+      "pronunciation": "mūṉṟu maṇikku",
+      "exampleTarget": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The meeting starts at three.”",
+      "korean": "மூன்று மணிக்கு",
+      "english": "Check whether \"மூன்று மணிக்கு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The meeting starts at three.”",
+      "example": "கூட்டம் மூன்று மணிக்கு தொடங்கும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The meeting starts at three.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியும்",
+      "romanization": "eṉakku muṭiyum",
+      "nativeText": "“I can / it is possible for me.” Useful for availability.",
+      "pronunciation": "eṉakku muṭiyum",
+      "exampleTarget": "மாலை எனக்கு முடியும்.",
+      "exampleNative": "“Evening works for me.”",
+      "korean": "எனக்கு முடியும்",
+      "english": "“I can / it is possible for me.” Useful for availability.",
+      "example": "மாலை எனக்கு முடியும்.",
+      "exampleEnglish": "“Evening works for me.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "மாலை எனக்கு முடியும்.",
+      "romanization": "eṉakku muṭiyum",
+      "nativeText": "Model use for \"மாலை எனக்கு முடியும்.\": “Evening works for me.”",
+      "pronunciation": "eṉakku muṭiyum",
+      "exampleTarget": "மாலை எனக்கு முடியும்.",
+      "exampleNative": "“Evening works for me.”",
+      "korean": "மாலை எனக்கு முடியும்.",
+      "english": "Model use for \"மாலை எனக்கு முடியும்.\": “Evening works for me.”",
+      "example": "மாலை எனக்கு முடியும்.",
+      "exampleEnglish": "“Evening works for me.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியும்",
+      "romanization": "eṉakku muṭiyum",
+      "nativeText": "Usage focus for \"எனக்கு முடியும்\": “I can / it is possible for me.” Useful for availability.",
+      "pronunciation": "eṉakku muṭiyum",
+      "exampleTarget": "மாலை எனக்கு முடியும்.",
+      "exampleNative": "Notice what the form is doing here: “Evening works for me.”",
+      "korean": "எனக்கு முடியும்",
+      "english": "Usage focus for \"எனக்கு முடியும்\": “I can / it is possible for me.” Useful for availability.",
+      "example": "மாலை எனக்கு முடியும்.",
+      "exampleEnglish": "Notice what the form is doing here: “Evening works for me.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியும்",
+      "romanization": "eṉakku muṭiyum",
+      "nativeText": "Contrast check for \"எனக்கு முடியும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eṉakku muṭiyum",
+      "exampleTarget": "மாலை எனக்கு முடியும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Evening works for me.”",
+      "korean": "எனக்கு முடியும்",
+      "english": "Contrast check for \"எனக்கு முடியும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "மாலை எனக்கு முடியும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியும்",
+      "romanization": "eṉakku muṭiyum",
+      "nativeText": "Recall \"எனக்கு முடியும்\" from memory, then explain what would change if a nearby alternative replaced it in \"மாலை எனக்கு முடியும்.\".",
+      "pronunciation": "eṉakku muṭiyum",
+      "exampleTarget": "மாலை எனக்கு முடியும்.",
+      "exampleNative": "Self-check against the model before moving on: “Evening works for me.”",
+      "korean": "எனக்கு முடியும்",
+      "english": "Recall \"எனக்கு முடியும்\" from memory, then explain what would change if a nearby alternative replaced it in \"மாலை எனக்கு முடியும்.\".",
+      "example": "மாலை எனக்கு முடியும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியும்",
+      "romanization": "eṉakku muṭiyum",
+      "nativeText": "Repair \"எனக்கு முடியும்\" inside \"மாலை எனக்கு முடியும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can / it is possible for me.” Useful for availability.",
+      "pronunciation": "eṉakku muṭiyum",
+      "exampleTarget": "மாலை எனக்கு முடியும்.",
+      "exampleNative": "Use the model as the repair target: “Evening works for me.”",
+      "korean": "எனக்கு முடியும்",
+      "english": "Repair \"எனக்கு முடியும்\" inside \"மாலை எனக்கு முடியும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I can / it is possible for me.” Useful for availability.",
+      "example": "மாலை எனக்கு முடியும்.",
+      "exampleEnglish": "Use the model as the repair target: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியும்",
+      "romanization": "eṉakku muṭiyum",
+      "nativeText": "Transfer \"எனக்கு முடியும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மாலை எனக்கு முடியும்.\".",
+      "pronunciation": "eṉakku muṭiyum",
+      "exampleTarget": "மாலை எனக்கு முடியும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Evening works for me.”",
+      "korean": "எனக்கு முடியும்",
+      "english": "Transfer \"எனக்கு முடியும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மாலை எனக்கு முடியும்.\".",
+      "example": "மாலை எனக்கு முடியும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியும்",
+      "romanization": "eṉakku muṭiyum",
+      "nativeText": "Find one word or phrase that naturally travels with \"எனக்கு முடியும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eṉakku muṭiyum",
+      "exampleTarget": "மாலை எனக்கு முடியும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Evening works for me.”",
+      "korean": "எனக்கு முடியும்",
+      "english": "Find one word or phrase that naturally travels with \"எனக்கு முடியும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "மாலை எனக்கு முடியும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியும்",
+      "romanization": "eṉakku muṭiyum",
+      "nativeText": "Listen for \"எனக்கு முடியும்\" inside \"மாலை எனக்கு முடியும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eṉakku muṭiyum",
+      "exampleTarget": "மாலை எனக்கு முடியும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Evening works for me.”",
+      "korean": "எனக்கு முடியும்",
+      "english": "Listen for \"எனக்கு முடியும்\" inside \"மாலை எனக்கு முடியும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "மாலை எனக்கு முடியும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியும்",
+      "romanization": "eṉakku muṭiyum",
+      "nativeText": "Write \"எனக்கு முடியும்\" again without looking, then compare the exact written form against \"மாலை எனக்கு முடியும்.\" before moving on.",
+      "pronunciation": "eṉakku muṭiyum",
+      "exampleTarget": "மாலை எனக்கு முடியும்.",
+      "exampleNative": "Use the written model as the final correctness check: “Evening works for me.”",
+      "korean": "எனக்கு முடியும்",
+      "english": "Write \"எனக்கு முடியும்\" again without looking, then compare the exact written form against \"மாலை எனக்கு முடியும்.\" before moving on.",
+      "example": "மாலை எனக்கு முடியும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Evening works for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியும்",
+      "romanization": "eṉakku muṭiyum",
+      "nativeText": "Check whether \"எனக்கு முடியும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Evening works for me.”",
+      "pronunciation": "eṉakku muṭiyum",
+      "exampleTarget": "மாலை எனக்கு முடியும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Evening works for me.”",
+      "korean": "எனக்கு முடியும்",
+      "english": "Check whether \"எனக்கு முடியும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Evening works for me.”",
+      "example": "மாலை எனக்கு முடியும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Evening works for me.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியாது",
+      "romanization": "eṉakku muṭiyātu",
+      "nativeText": "“I cannot.” Add another option to stay cooperative.",
+      "pronunciation": "eṉakku muṭiyātu",
+      "exampleTarget": "காலை எனக்கு முடியாது.",
+      "exampleNative": "“Morning does not work for me.”",
+      "korean": "எனக்கு முடியாது",
+      "english": "“I cannot.” Add another option to stay cooperative.",
+      "example": "காலை எனக்கு முடியாது.",
+      "exampleEnglish": "“Morning does not work for me.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "காலை எனக்கு முடியாது.",
+      "romanization": "eṉakku muṭiyātu",
+      "nativeText": "Model use for \"காலை எனக்கு முடியாது.\": “Morning does not work for me.”",
+      "pronunciation": "eṉakku muṭiyātu",
+      "exampleTarget": "காலை எனக்கு முடியாது.",
+      "exampleNative": "“Morning does not work for me.”",
+      "korean": "காலை எனக்கு முடியாது.",
+      "english": "Model use for \"காலை எனக்கு முடியாது.\": “Morning does not work for me.”",
+      "example": "காலை எனக்கு முடியாது.",
+      "exampleEnglish": "“Morning does not work for me.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியாது",
+      "romanization": "eṉakku muṭiyātu",
+      "nativeText": "Usage focus for \"எனக்கு முடியாது\": “I cannot.” Add another option to stay cooperative.",
+      "pronunciation": "eṉakku muṭiyātu",
+      "exampleTarget": "காலை எனக்கு முடியாது.",
+      "exampleNative": "Notice what the form is doing here: “Morning does not work for me.”",
+      "korean": "எனக்கு முடியாது",
+      "english": "Usage focus for \"எனக்கு முடியாது\": “I cannot.” Add another option to stay cooperative.",
+      "example": "காலை எனக்கு முடியாது.",
+      "exampleEnglish": "Notice what the form is doing here: “Morning does not work for me.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியாது",
+      "romanization": "eṉakku muṭiyātu",
+      "nativeText": "Contrast check for \"எனக்கு முடியாது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eṉakku muṭiyātu",
+      "exampleTarget": "காலை எனக்கு முடியாது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Morning does not work for me.”",
+      "korean": "எனக்கு முடியாது",
+      "english": "Contrast check for \"எனக்கு முடியாது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "காலை எனக்கு முடியாது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Morning does not work for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியாது",
+      "romanization": "eṉakku muṭiyātu",
+      "nativeText": "Recall \"எனக்கு முடியாது\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை எனக்கு முடியாது.\".",
+      "pronunciation": "eṉakku muṭiyātu",
+      "exampleTarget": "காலை எனக்கு முடியாது.",
+      "exampleNative": "Self-check against the model before moving on: “Morning does not work for me.”",
+      "korean": "எனக்கு முடியாது",
+      "english": "Recall \"எனக்கு முடியாது\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை எனக்கு முடியாது.\".",
+      "example": "காலை எனக்கு முடியாது.",
+      "exampleEnglish": "Self-check against the model before moving on: “Morning does not work for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியாது",
+      "romanization": "eṉakku muṭiyātu",
+      "nativeText": "Repair \"எனக்கு முடியாது\" inside \"காலை எனக்கு முடியாது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I cannot.” Add another option to stay cooperative.",
+      "pronunciation": "eṉakku muṭiyātu",
+      "exampleTarget": "காலை எனக்கு முடியாது.",
+      "exampleNative": "Use the model as the repair target: “Morning does not work for me.”",
+      "korean": "எனக்கு முடியாது",
+      "english": "Repair \"எனக்கு முடியாது\" inside \"காலை எனக்கு முடியாது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I cannot.” Add another option to stay cooperative.",
+      "example": "காலை எனக்கு முடியாது.",
+      "exampleEnglish": "Use the model as the repair target: “Morning does not work for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியாது",
+      "romanization": "eṉakku muṭiyātu",
+      "nativeText": "Transfer \"எனக்கு முடியாது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை எனக்கு முடியாது.\".",
+      "pronunciation": "eṉakku muṭiyātu",
+      "exampleTarget": "காலை எனக்கு முடியாது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Morning does not work for me.”",
+      "korean": "எனக்கு முடியாது",
+      "english": "Transfer \"எனக்கு முடியாது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை எனக்கு முடியாது.\".",
+      "example": "காலை எனக்கு முடியாது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Morning does not work for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியாது",
+      "romanization": "eṉakku muṭiyātu",
+      "nativeText": "Find one word or phrase that naturally travels with \"எனக்கு முடியாது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eṉakku muṭiyātu",
+      "exampleTarget": "காலை எனக்கு முடியாது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Morning does not work for me.”",
+      "korean": "எனக்கு முடியாது",
+      "english": "Find one word or phrase that naturally travels with \"எனக்கு முடியாது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "காலை எனக்கு முடியாது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Morning does not work for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியாது",
+      "romanization": "eṉakku muṭiyātu",
+      "nativeText": "Listen for \"எனக்கு முடியாது\" inside \"காலை எனக்கு முடியாது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eṉakku muṭiyātu",
+      "exampleTarget": "காலை எனக்கு முடியாது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Morning does not work for me.”",
+      "korean": "எனக்கு முடியாது",
+      "english": "Listen for \"எனக்கு முடியாது\" inside \"காலை எனக்கு முடியாது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "காலை எனக்கு முடியாது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Morning does not work for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியாது",
+      "romanization": "eṉakku muṭiyātu",
+      "nativeText": "Write \"எனக்கு முடியாது\" again without looking, then compare the exact written form against \"காலை எனக்கு முடியாது.\" before moving on.",
+      "pronunciation": "eṉakku muṭiyātu",
+      "exampleTarget": "காலை எனக்கு முடியாது.",
+      "exampleNative": "Use the written model as the final correctness check: “Morning does not work for me.”",
+      "korean": "எனக்கு முடியாது",
+      "english": "Write \"எனக்கு முடியாது\" again without looking, then compare the exact written form against \"காலை எனக்கு முடியாது.\" before moving on.",
+      "example": "காலை எனக்கு முடியாது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Morning does not work for me.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "எனக்கு முடியாது",
+      "romanization": "eṉakku muṭiyātu",
+      "nativeText": "Check whether \"எனக்கு முடியாது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Morning does not work for me.”",
+      "pronunciation": "eṉakku muṭiyātu",
+      "exampleTarget": "காலை எனக்கு முடியாது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Morning does not work for me.”",
+      "korean": "எனக்கு முடியாது",
+      "english": "Check whether \"எனக்கு முடியாது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Morning does not work for me.”",
+      "example": "காலை எனக்கு முடியாது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Morning does not work for me.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை சந்திப்போமா?",
+      "romanization": "nāḷai cantippōmā",
+      "nativeText": "“Shall we meet tomorrow?” A natural proposal.",
+      "pronunciation": "nāḷai cantippōmā",
+      "exampleTarget": "நாளை சந்திப்போமா?",
+      "exampleNative": "“Shall we meet tomorrow?”",
+      "korean": "நாளை சந்திப்போமா?",
+      "english": "“Shall we meet tomorrow?” A natural proposal.",
+      "example": "நாளை சந்திப்போமா?",
+      "exampleEnglish": "“Shall we meet tomorrow?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை சந்திப்போமா?",
+      "romanization": "nāḷai cantippōmā",
+      "nativeText": "Model use for \"நாளை சந்திப்போமா?\": “Shall we meet tomorrow?” A natural proposal.",
+      "pronunciation": "nāḷai cantippōmā",
+      "exampleTarget": "நாளை சந்திப்போமா?",
+      "exampleNative": "“Shall we meet tomorrow?”",
+      "korean": "நாளை சந்திப்போமா?",
+      "english": "Model use for \"நாளை சந்திப்போமா?\": “Shall we meet tomorrow?” A natural proposal.",
+      "example": "நாளை சந்திப்போமா?",
+      "exampleEnglish": "“Shall we meet tomorrow?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை சந்திப்போமா?",
+      "romanization": "nāḷai cantippōmā",
+      "nativeText": "Usage focus for \"நாளை சந்திப்போமா?\": “Shall we meet tomorrow?” A natural proposal.",
+      "pronunciation": "nāḷai cantippōmā",
+      "exampleTarget": "நாளை சந்திப்போமா?",
+      "exampleNative": "Notice what the form is doing here: “Shall we meet tomorrow?”",
+      "korean": "நாளை சந்திப்போமா?",
+      "english": "Usage focus for \"நாளை சந்திப்போமா?\": “Shall we meet tomorrow?” A natural proposal.",
+      "example": "நாளை சந்திப்போமா?",
+      "exampleEnglish": "Notice what the form is doing here: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை சந்திப்போமா?",
+      "romanization": "nāḷai cantippōmā",
+      "nativeText": "Contrast check for \"நாளை சந்திப்போமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nāḷai cantippōmā",
+      "exampleTarget": "நாளை சந்திப்போமா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we meet tomorrow?”",
+      "korean": "நாளை சந்திப்போமா?",
+      "english": "Contrast check for \"நாளை சந்திப்போமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நாளை சந்திப்போமா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை சந்திப்போமா?",
+      "romanization": "nāḷai cantippōmā",
+      "nativeText": "Recall \"நாளை சந்திப்போமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"நாளை சந்திப்போமா?\".",
+      "pronunciation": "nāḷai cantippōmā",
+      "exampleTarget": "நாளை சந்திப்போமா?",
+      "exampleNative": "Self-check against the model before moving on: “Shall we meet tomorrow?”",
+      "korean": "நாளை சந்திப்போமா?",
+      "english": "Recall \"நாளை சந்திப்போமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"நாளை சந்திப்போமா?\".",
+      "example": "நாளை சந்திப்போமா?",
+      "exampleEnglish": "Self-check against the model before moving on: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை சந்திப்போமா?",
+      "romanization": "nāḷai cantippōmā",
+      "nativeText": "Repair \"நாளை சந்திப்போமா?\" inside \"நாளை சந்திப்போமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shall we meet tomorrow?” A natural proposal.",
+      "pronunciation": "nāḷai cantippōmā",
+      "exampleTarget": "நாளை சந்திப்போமா?",
+      "exampleNative": "Use the model as the repair target: “Shall we meet tomorrow?”",
+      "korean": "நாளை சந்திப்போமா?",
+      "english": "Repair \"நாளை சந்திப்போமா?\" inside \"நாளை சந்திப்போமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Shall we meet tomorrow?” A natural proposal.",
+      "example": "நாளை சந்திப்போமா?",
+      "exampleEnglish": "Use the model as the repair target: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை சந்திப்போமா?",
+      "romanization": "nāḷai cantippōmā",
+      "nativeText": "Transfer \"நாளை சந்திப்போமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நாளை சந்திப்போமா?\".",
+      "pronunciation": "nāḷai cantippōmā",
+      "exampleTarget": "நாளை சந்திப்போமா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we meet tomorrow?”",
+      "korean": "நாளை சந்திப்போமா?",
+      "english": "Transfer \"நாளை சந்திப்போமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நாளை சந்திப்போமா?\".",
+      "example": "நாளை சந்திப்போமா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை சந்திப்போமா?",
+      "romanization": "nāḷai cantippōmā",
+      "nativeText": "Find one word or phrase that naturally travels with \"நாளை சந்திப்போமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nāḷai cantippōmā",
+      "exampleTarget": "நாளை சந்திப்போமா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Shall we meet tomorrow?”",
+      "korean": "நாளை சந்திப்போமா?",
+      "english": "Find one word or phrase that naturally travels with \"நாளை சந்திப்போமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நாளை சந்திப்போமா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை சந்திப்போமா?",
+      "romanization": "nāḷai cantippōmā",
+      "nativeText": "Listen for \"நாளை சந்திப்போமா?\" inside \"நாளை சந்திப்போமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nāḷai cantippōmā",
+      "exampleTarget": "நாளை சந்திப்போமா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we meet tomorrow?”",
+      "korean": "நாளை சந்திப்போமா?",
+      "english": "Listen for \"நாளை சந்திப்போமா?\" inside \"நாளை சந்திப்போமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நாளை சந்திப்போமா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை சந்திப்போமா?",
+      "romanization": "nāḷai cantippōmā",
+      "nativeText": "Write \"நாளை சந்திப்போமா?\" again without looking, then compare the exact written form against \"நாளை சந்திப்போமா?\" before moving on.",
+      "pronunciation": "nāḷai cantippōmā",
+      "exampleTarget": "நாளை சந்திப்போமா?",
+      "exampleNative": "Use the written model as the final correctness check: “Shall we meet tomorrow?”",
+      "korean": "நாளை சந்திப்போமா?",
+      "english": "Write \"நாளை சந்திப்போமா?\" again without looking, then compare the exact written form against \"நாளை சந்திப்போமா?\" before moving on.",
+      "example": "நாளை சந்திப்போமா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நாளை சந்திப்போமா?",
+      "romanization": "nāḷai cantippōmā",
+      "nativeText": "Check whether \"நாளை சந்திப்போமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”",
+      "pronunciation": "nāḷai cantippōmā",
+      "exampleTarget": "நாளை சந்திப்போமா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”",
+      "korean": "நாளை சந்திப்போமா?",
+      "english": "Check whether \"நாளை சந்திப்போமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”",
+      "example": "நாளை சந்திப்போமா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Shall we meet tomorrow?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேரத்தை மாற்ற முடியுமா?",
+      "romanization": "nērattai māṟṟa muṭiyumā",
+      "nativeText": "“Can we change the time?” A practical rescheduling question.",
+      "pronunciation": "nērattai māṟṟa muṭiyumā",
+      "exampleTarget": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleNative": "“Can we change the time?”",
+      "korean": "நேரத்தை மாற்ற முடியுமா?",
+      "english": "“Can we change the time?” A practical rescheduling question.",
+      "example": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleEnglish": "“Can we change the time?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேரத்தை மாற்ற முடியுமா?",
+      "romanization": "nērattai māṟṟa muṭiyumā",
+      "nativeText": "Model use for \"நேரத்தை மாற்ற முடியுமா?\": “Can we change the time?” A practical rescheduling question.",
+      "pronunciation": "nērattai māṟṟa muṭiyumā",
+      "exampleTarget": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleNative": "“Can we change the time?”",
+      "korean": "நேரத்தை மாற்ற முடியுமா?",
+      "english": "Model use for \"நேரத்தை மாற்ற முடியுமா?\": “Can we change the time?” A practical rescheduling question.",
+      "example": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleEnglish": "“Can we change the time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேரத்தை மாற்ற முடியுமா?",
+      "romanization": "nērattai māṟṟa muṭiyumā",
+      "nativeText": "Usage focus for \"நேரத்தை மாற்ற முடியுமா?\": “Can we change the time?” A practical rescheduling question.",
+      "pronunciation": "nērattai māṟṟa muṭiyumā",
+      "exampleTarget": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleNative": "Notice what the form is doing here: “Can we change the time?”",
+      "korean": "நேரத்தை மாற்ற முடியுமா?",
+      "english": "Usage focus for \"நேரத்தை மாற்ற முடியுமா?\": “Can we change the time?” A practical rescheduling question.",
+      "example": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleEnglish": "Notice what the form is doing here: “Can we change the time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேரத்தை மாற்ற முடியுமா?",
+      "romanization": "nērattai māṟṟa muṭiyumā",
+      "nativeText": "Contrast check for \"நேரத்தை மாற்ற முடியுமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nērattai māṟṟa muṭiyumā",
+      "exampleTarget": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can we change the time?”",
+      "korean": "நேரத்தை மாற்ற முடியுமா?",
+      "english": "Contrast check for \"நேரத்தை மாற்ற முடியுமா?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேரத்தை மாற்ற முடியுமா?",
+      "romanization": "nērattai māṟṟa muṭiyumā",
+      "nativeText": "Recall \"நேரத்தை மாற்ற முடியுமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"நேரத்தை மாற்ற முடியுமா?\".",
+      "pronunciation": "nērattai māṟṟa muṭiyumā",
+      "exampleTarget": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleNative": "Self-check against the model before moving on: “Can we change the time?”",
+      "korean": "நேரத்தை மாற்ற முடியுமா?",
+      "english": "Recall \"நேரத்தை மாற்ற முடியுமா?\" from memory, then explain what would change if a nearby alternative replaced it in \"நேரத்தை மாற்ற முடியுமா?\".",
+      "example": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleEnglish": "Self-check against the model before moving on: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேரத்தை மாற்ற முடியுமா?",
+      "romanization": "nērattai māṟṟa muṭiyumā",
+      "nativeText": "Repair \"நேரத்தை மாற்ற முடியுமா?\" inside \"நேரத்தை மாற்ற முடியுமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Can we change the time?” A practical rescheduling question.",
+      "pronunciation": "nērattai māṟṟa muṭiyumā",
+      "exampleTarget": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleNative": "Use the model as the repair target: “Can we change the time?”",
+      "korean": "நேரத்தை மாற்ற முடியுமா?",
+      "english": "Repair \"நேரத்தை மாற்ற முடியுமா?\" inside \"நேரத்தை மாற்ற முடியுமா?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Can we change the time?” A practical rescheduling question.",
+      "example": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleEnglish": "Use the model as the repair target: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேரத்தை மாற்ற முடியுமா?",
+      "romanization": "nērattai māṟṟa muṭiyumā",
+      "nativeText": "Transfer \"நேரத்தை மாற்ற முடியுமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேரத்தை மாற்ற முடியுமா?\".",
+      "pronunciation": "nērattai māṟṟa muṭiyumā",
+      "exampleTarget": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can we change the time?”",
+      "korean": "நேரத்தை மாற்ற முடியுமா?",
+      "english": "Transfer \"நேரத்தை மாற்ற முடியுமா?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேரத்தை மாற்ற முடியுமா?\".",
+      "example": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேரத்தை மாற்ற முடியுமா?",
+      "romanization": "nērattai māṟṟa muṭiyumā",
+      "nativeText": "Find one word or phrase that naturally travels with \"நேரத்தை மாற்ற முடியுமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nērattai māṟṟa muṭiyumā",
+      "exampleTarget": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Can we change the time?”",
+      "korean": "நேரத்தை மாற்ற முடியுமா?",
+      "english": "Find one word or phrase that naturally travels with \"நேரத்தை மாற்ற முடியுமா?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேரத்தை மாற்ற முடியுமா?",
+      "romanization": "nērattai māṟṟa muṭiyumā",
+      "nativeText": "Listen for \"நேரத்தை மாற்ற முடியுமா?\" inside \"நேரத்தை மாற்ற முடியுமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nērattai māṟṟa muṭiyumā",
+      "exampleTarget": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can we change the time?”",
+      "korean": "நேரத்தை மாற்ற முடியுமா?",
+      "english": "Listen for \"நேரத்தை மாற்ற முடியுமா?\" inside \"நேரத்தை மாற்ற முடியுமா?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேரத்தை மாற்ற முடியுமா?",
+      "romanization": "nērattai māṟṟa muṭiyumā",
+      "nativeText": "Write \"நேரத்தை மாற்ற முடியுமா?\" again without looking, then compare the exact written form against \"நேரத்தை மாற்ற முடியுமா?\" before moving on.",
+      "pronunciation": "nērattai māṟṟa muṭiyumā",
+      "exampleTarget": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleNative": "Use the written model as the final correctness check: “Can we change the time?”",
+      "korean": "நேரத்தை மாற்ற முடியுமா?",
+      "english": "Write \"நேரத்தை மாற்ற முடியுமா?\" again without looking, then compare the exact written form against \"நேரத்தை மாற்ற முடியுமா?\" before moving on.",
+      "example": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Can we change the time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "நேரத்தை மாற்ற முடியுமா?",
+      "romanization": "nērattai māṟṟa muṭiyumā",
+      "nativeText": "Check whether \"நேரத்தை மாற்ற முடியுமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can we change the time?”",
+      "pronunciation": "nērattai māṟṟa muṭiyumā",
+      "exampleTarget": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Can we change the time?”",
+      "korean": "நேரத்தை மாற்ற முடியுமா?",
+      "english": "Check whether \"நேரத்தை மாற்ற முடியுமா?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can we change the time?”",
+      "example": "நேரத்தை மாற்ற முடியுமா?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Can we change the time?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "“Okay / alright.” A compact acceptance word.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“Okay, let’s meet at five.”",
+      "korean": "சரி",
+      "english": "“Okay / alright.” A compact acceptance word.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“Okay, let’s meet at five.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "romanization": "cari",
+      "nativeText": "Model use for \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\": “Okay, let’s meet at five.”",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "“Okay, let’s meet at five.”",
+      "korean": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "english": "Model use for \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\": “Okay, let’s meet at five.”",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "“Okay, let’s meet at five.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Usage focus for \"சரி\": “Okay / alright.” A compact acceptance word.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Notice what the form is doing here: “Okay, let’s meet at five.”",
+      "korean": "சரி",
+      "english": "Usage focus for \"சரி\": “Okay / alright.” A compact acceptance word.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Notice what the form is doing here: “Okay, let’s meet at five.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Contrast check for \"சரி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, let’s meet at five.”",
+      "korean": "சரி",
+      "english": "Contrast check for \"சரி\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Okay, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Recall \"சரி\" from memory, then explain what would change if a nearby alternative replaced it in \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Self-check against the model before moving on: “Okay, let’s meet at five.”",
+      "korean": "சரி",
+      "english": "Recall \"சரி\" from memory, then explain what would change if a nearby alternative replaced it in \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Okay, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Repair \"சரி\" inside \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay / alright.” A compact acceptance word.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Use the model as the repair target: “Okay, let’s meet at five.”",
+      "korean": "சரி",
+      "english": "Repair \"சரி\" inside \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Okay / alright.” A compact acceptance word.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Use the model as the repair target: “Okay, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Transfer \"சரி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, let’s meet at five.”",
+      "korean": "சரி",
+      "english": "Transfer \"சரி\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\".",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Okay, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Find one word or phrase that naturally travels with \"சரி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Okay, let’s meet at five.”",
+      "korean": "சரி",
+      "english": "Find one word or phrase that naturally travels with \"சரி\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Okay, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Listen for \"சரி\" inside \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, let’s meet at five.”",
+      "korean": "சரி",
+      "english": "Listen for \"சரி\" inside \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Okay, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Write \"சரி\" again without looking, then compare the exact written form against \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" before moving on.",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "Use the written model as the final correctness check: “Okay, let’s meet at five.”",
+      "korean": "சரி",
+      "english": "Write \"சரி\" again without looking, then compare the exact written form against \"சரி, ஐந்து மணிக்கு சந்திப்போம்.\" before moving on.",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Okay, let’s meet at five.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit11scheduling-vocabulary-1",
+        "ta-level1unit11scheduling-vocabulary-2",
+        "ta-level1unit11scheduling-grammar-1",
+        "ta-level1unit11scheduling-grammar-2",
+        "ta-level1unit11scheduling-reading",
+        "ta-level1unit11scheduling-listening",
+        "ta-level1unit11scheduling-writing",
+        "ta-level1unit11scheduling-task"
+      ],
+      "targetText": "சரி",
+      "romanization": "cari",
+      "nativeText": "Check whether \"சரி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, let’s meet at five.”",
+      "pronunciation": "cari",
+      "exampleTarget": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Okay, let’s meet at five.”",
+      "korean": "சரி",
+      "english": "Check whether \"சரி\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Okay, let’s meet at five.”",
+      "example": "சரி, ஐந்து மணிக்கு சந்திப்போம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Okay, let’s meet at five.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

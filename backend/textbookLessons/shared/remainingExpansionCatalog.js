@@ -1,0 +1,188 @@
+const thematic = [
+  ['level2Unit02HealthyLife', 'Level 2 · Unit 2: Healthy Life', 'health', ['level1Unit18Health'], 'Discuss symptoms, habits, and practical choices that support a healthy daily routine.', 'Give one health update, one habit, and one suggestion that fits a real situation.'],
+  ['level2Unit03Sports', 'Level 2 · Unit 3: Sports and Movement', 'daily-life', ['level1Unit16ClubsLeisure', 'level1Unit14Ability'], 'Talk about sports, ability, and improvement with more precise descriptions than beginner preference sentences.', 'Describe one sport, one ability, and one reason you would recommend it.'],
+  ['level2Unit04ModernRelationships', 'Level 2 · Unit 4: Modern Relationships', 'people', ['level1Unit01Greetings', 'level1Unit11Scheduling'], 'Describe relationships, expectations, and invitations with tact rather than isolated labels.', 'Explain one relationship and arrange one realistic plan with that person.'],
+  ['level2Unit05ProverbsIdioms', 'Level 2 · Unit 5: Proverbs and Idioms', 'culture', ['level1Unit19CulturalHolidays', 'level1Unit20Suggestions'], 'Notice how short fixed expressions carry culture, evaluation, and indirect advice.', 'Use one fixed expression, explain it plainly, and give a matching example.'],
+  ['level2Unit06Performances', 'Level 2 · Unit 6: Performances and Festivals', 'culture', ['level1Unit16ClubsLeisure', 'level1Unit19CulturalHolidays'], 'Describe performances, events, and reactions with enough detail to compare experiences.', 'Recommend one event and justify the recommendation with two details.'],
+  ['level2Unit07RightWrong', 'Level 2 · Unit 7: Right, Wrong, and Reasons', 'society', ['level1Unit20Suggestions', 'level1Unit14Ability'], 'State an opinion, support it, and disagree without sounding abrupt or childish.', 'Give one opinion, one reason, and one respectful alternative view.'],
+  ['level2Unit08IntriguingWorld', 'Level 2 · Unit 8: An Intriguing World', 'culture', ['level1Unit05LifeInCountry', 'level1Unit03Locations'], 'Ask explanatory questions and describe unfamiliar customs, places, or discoveries clearly.', 'Explain one interesting custom or place and answer a follow-up question.'],
+  ['level2Unit09PopCulture', 'Level 2 · Unit 9: Popular Culture', 'culture', ['level1Unit16ClubsLeisure', 'level1Unit19CulturalHolidays'], 'Discuss media, trends, and taste with more nuance than simple like/dislike statements.', 'Describe one work you enjoy and compare it with one alternative.'],
+];
+
+const reviews = [
+  ['level2Review01', 'Level 2 · Review 1: Daily Life and Relationships', ['level2Unit02HealthyLife', 'level2Unit03Sports', 'level2Unit04ModernRelationships'], 'Recombine recent lessons about health, activity, and relationships in one connected exchange.'],
+  ['level2Review02', 'Level 2 · Review 2: Culture and Evaluation', ['level2Unit05ProverbsIdioms', 'level2Unit06Performances', 'level2Unit07RightWrong'], 'Recombine proverbs, performances, and opinion language in one connected answer.'],
+  ['level2Review03', 'Level 2 · Review 3: Explaining the World', ['level2Unit08IntriguingWorld', 'level2Unit09PopCulture'], 'Recombine explanation, comparison, and culture language in one integrated response.'],
+];
+
+const adult = [
+  ['level2AdultUnit01Greetings', 'Adult Unit 1: Workplace Greetings', 'work', ['level1Unit01Greetings'], 'Handle first contact, greetings, and introductions in an adult service or workplace setting.', 'Complete one workplace greeting exchange with the right level of formality.'],
+  ['level2AdultUnit02WorkSchedule', 'Adult Unit 2: Work Schedule', 'work', ['level1Unit11Scheduling'], 'Talk about shifts, start times, delays, and availability precisely.', 'Explain one work schedule and negotiate one small change.'],
+  ['level2AdultUnit03Food', 'Adult Unit 3: Food Needs', 'food', ['level1Unit09OrderingFood'], 'Explain food preferences, restrictions, and requests in practical adult contexts.', 'Order one suitable meal and explain one restriction clearly.'],
+  ['level2AdultUnit04Commute', 'Adult Unit 4: Commute and Delays', 'travel', ['level1Unit13Transportation'], 'Describe how you travel, what changed, and why you may be late.', 'Report one commute problem and give one revised arrival time.'],
+  ['level2AdultUnit05Buying', 'Adult Unit 5: Buying and Stock', 'shopping', ['level1Unit08Shopping'], 'Discuss quantities, purchases, stock, and invoices beyond a simple shop exchange.', 'Request one item, confirm a quantity, and close the purchase.'],
+  ['level2AdultUnit06DormLife', 'Adult Unit 6: Shared Living', 'daily-life', ['level1Unit03Locations', 'level1Unit05LifeInCountry'], 'Handle shared-space language about rooms, routines, and small conflicts.', 'Describe one shared-living issue and propose one workable solution.'],
+  ['level2AdultUnit07Safety', 'Adult Unit 7: Safety', 'work', ['level1Unit20Suggestions', 'level1Unit14Ability'], 'Understand instructions, obligations, and prohibitions in safety-sensitive contexts.', 'Give one safety instruction and explain why it matters.'],
+  ['level2AdultUnit08Medical', 'Adult Unit 8: Medical Visit', 'health', ['level1Unit18Health'], 'Describe symptoms, duration, and needs clearly enough for practical care.', 'Explain one symptom, how long it has lasted, and what help you need.'],
+  ['level2AdultUnit09Weekend', 'Adult Unit 9: Weekend Plans', 'daily-life', ['level1Unit11Scheduling', 'level1Unit16ClubsLeisure'], 'Discuss plans, preferences, and changes with adult conversational ease.', 'Arrange one weekend plan and adapt it when a detail changes.'],
+  ['level2AdultUnit10Rules', 'Adult Unit 10: Rules and Procedures', 'work', ['level1Unit20Suggestions'], 'Talk about rules, obligations, and process steps without relying on one beginner command form.', 'Explain one rule and one consequence in a calm, clear way.'],
+  ['level2AdultUnit11JobHunting', 'Adult Unit 11: Job Hunting', 'work', ['level1Unit21HopesDreams'], 'Discuss experience, goals, and next steps in a job-search setting.', 'Introduce one strength and one next step for work.'],
+  ['level2AdultUnit12Housing', 'Adult Unit 12: Housing', 'daily-life', ['level1Unit03Locations', 'level1Unit07GoingPlaces'], 'Ask about housing, compare options, and describe practical needs.', 'Compare two housing options and state which one fits better.'],
+];
+
+const grammarBlueprints = {
+  ms: [
+    ['level3Cluster1AffixVoice', 'Level 3 · Cluster 1: Affixes and Voice'],
+    ['level3Cluster2Reduplication', 'Level 3 · Cluster 2: Reduplication'],
+    ['level3Cluster3Classifiers', 'Level 3 · Cluster 3: Classifiers and Quantity'],
+    ['level3Cluster4Particles', 'Level 3 · Cluster 4: Particles and Emphasis'],
+    ['level3Cluster5Register', 'Level 3 · Cluster 5: Register and Formality'],
+    ['level3Cluster6ClauseLinking', 'Level 3 · Cluster 6: Clause Linking'],
+  ],
+  ar: [
+    ['level3Cluster1RootsPatterns', 'Level 3 · Cluster 1: Roots and Patterns'],
+    ['level3Cluster2Agreement', 'Level 3 · Cluster 2: Agreement'],
+    ['level3Cluster3BrokenPlurals', 'Level 3 · Cluster 3: Broken Plurals'],
+    ['level3Cluster4VerbForms', 'Level 3 · Cluster 4: Verb Forms'],
+    ['level3Cluster5CaseRegister', 'Level 3 · Cluster 5: Case and Register'],
+    ['level3Cluster6Diglossia', 'Level 3 · Cluster 6: Diglossia'],
+  ],
+  he: [
+    ['level3Cluster1Binyanim', 'Level 3 · Cluster 1: Binyanim'],
+    ['level3Cluster2ConstructState', 'Level 3 · Cluster 2: Construct State'],
+    ['level3Cluster3Agreement', 'Level 3 · Cluster 3: Agreement'],
+    ['level3Cluster4DirectObject', 'Level 3 · Cluster 4: Direct Object Marking'],
+    ['level3Cluster5WordOrder', 'Level 3 · Cluster 5: Word Order'],
+    ['level3Cluster6Register', 'Level 3 · Cluster 6: Register'],
+  ],
+  hi: [
+    ['level3Cluster1Postpositions', 'Level 3 · Cluster 1: Postpositions'],
+    ['level3Cluster2AgreementErgativity', 'Level 3 · Cluster 2: Agreement and Ergativity'],
+    ['level3Cluster3CompoundVerbs', 'Level 3 · Cluster 3: Compound Verbs'],
+    ['level3Cluster4Aspect', 'Level 3 · Cluster 4: Aspect'],
+    ['level3Cluster5Honorificity', 'Level 3 · Cluster 5: Honorificity'],
+    ['level3Cluster6RelativeCorrelative', 'Level 3 · Cluster 6: Relative-Correlative Clauses'],
+  ],
+  it: [
+    ['level3Cluster1GenderAgreement', 'Level 3 · Cluster 1: Gender and Agreement'],
+    ['level3Cluster2PastAspect', 'Level 3 · Cluster 2: Passato Prossimo and Imperfetto'],
+    ['level3Cluster3Clitics', 'Level 3 · Cluster 3: Object Pronouns'],
+    ['level3Cluster4Subjunctive', 'Level 3 · Cluster 4: Subjunctive'],
+    ['level3Cluster5PronominalForms', 'Level 3 · Cluster 5: Pronominal Forms'],
+    ['level3Cluster6Register', 'Level 3 · Cluster 6: Register and Regional Italian'],
+  ],
+  fil: [
+    ['level3Cluster1Focus', 'Level 3 · Cluster 1: Focus and Voice'],
+    ['level3Cluster2Aspect', 'Level 3 · Cluster 2: Aspect'],
+    ['level3Cluster3Linkers', 'Level 3 · Cluster 3: Linkers'],
+    ['level3Cluster4Markers', 'Level 3 · Cluster 4: Markers'],
+    ['level3Cluster5Particles', 'Level 3 · Cluster 5: Enclitic Particles'],
+    ['level3Cluster6Register', 'Level 3 · Cluster 6: Register'],
+  ],
+  id: [
+    ['level3Cluster1AffixVoice', 'Level 3 · Cluster 1: Affixes and Voice'],
+    ['level3Cluster2Reduplication', 'Level 3 · Cluster 2: Reduplication'],
+    ['level3Cluster3Classifiers', 'Level 3 · Cluster 3: Classifiers'],
+    ['level3Cluster4Particles', 'Level 3 · Cluster 4: Particles'],
+    ['level3Cluster5FormalInformal', 'Level 3 · Cluster 5: Formal and Informal Indonesian'],
+    ['level3Cluster6ClauseLinking', 'Level 3 · Cluster 6: Clause Linking'],
+  ],
+  pt: [
+    ['level3Cluster1GenderAgreement', 'Level 3 · Cluster 1: Gender and Agreement'],
+    ['level3Cluster2SerEstar', 'Level 3 · Cluster 2: Ser and Estar'],
+    ['level3Cluster3PastAspect', 'Level 3 · Cluster 3: Past Aspect'],
+    ['level3Cluster4Clitics', 'Level 3 · Cluster 4: Object Pronouns'],
+    ['level3Cluster5Subjunctive', 'Level 3 · Cluster 5: Subjunctive'],
+    ['level3Cluster6VariationRegister', 'Level 3 · Cluster 6: Variation and Register'],
+  ],
+  ru: [
+    ['level3Cluster1Cases', 'Level 3 · Cluster 1: Cases'],
+    ['level3Cluster2Aspect', 'Level 3 · Cluster 2: Verbal Aspect'],
+    ['level3Cluster3MotionVerbs', 'Level 3 · Cluster 3: Motion Verbs'],
+    ['level3Cluster4Participles', 'Level 3 · Cluster 4: Participles'],
+    ['level3Cluster5Prefixes', 'Level 3 · Cluster 5: Verbal Prefixes'],
+    ['level3Cluster6WordOrderRegister', 'Level 3 · Cluster 6: Word Order and Register'],
+  ],
+  tr: [
+    ['level3Cluster1VowelHarmony', 'Level 3 · Cluster 1: Vowel Harmony'],
+    ['level3Cluster2Cases', 'Level 3 · Cluster 2: Cases'],
+    ['level3Cluster3EvidentialPast', 'Level 3 · Cluster 3: Evidential Past'],
+    ['level3Cluster4Participles', 'Level 3 · Cluster 4: Participles'],
+    ['level3Cluster5Converbs', 'Level 3 · Cluster 5: Converbs'],
+    ['level3Cluster6Register', 'Level 3 · Cluster 6: Register'],
+  ],
+  nl: [
+    ['level3Cluster1WordOrder', 'Level 3 · Cluster 1: Word Order'],
+    ['level3Cluster2SeparableVerbs', 'Level 3 · Cluster 2: Separable Verbs'],
+    ['level3Cluster3Diminutives', 'Level 3 · Cluster 3: Diminutives'],
+    ['level3Cluster4PastTenses', 'Level 3 · Cluster 4: Past Tenses'],
+    ['level3Cluster5Pronouns', 'Level 3 · Cluster 5: Pronouns'],
+    ['level3Cluster6Register', 'Level 3 · Cluster 6: Register'],
+  ],
+  ta: [
+    ['level3Cluster1Cases', 'Level 3 · Cluster 1: Case Suffixes'],
+    ['level3Cluster2VerbMorphology', 'Level 3 · Cluster 2: Verb Morphology'],
+    ['level3Cluster3Participles', 'Level 3 · Cluster 3: Participles'],
+    ['level3Cluster4Diglossia', 'Level 3 · Cluster 4: Diglossia'],
+    ['level3Cluster5Honorificity', 'Level 3 · Cluster 5: Honorificity'],
+    ['level3Cluster6RelativeClauses', 'Level 3 · Cluster 6: Relative Clauses'],
+  ],
+  bn: [
+    ['level3Cluster1Classifiers', 'Level 3 · Cluster 1: Classifiers'],
+    ['level3Cluster2CaseMarkers', 'Level 3 · Cluster 2: Case Markers'],
+    ['level3Cluster3Agreement', 'Level 3 · Cluster 3: Verb Agreement'],
+    ['level3Cluster4Aspect', 'Level 3 · Cluster 4: Aspect'],
+    ['level3Cluster5Honorificity', 'Level 3 · Cluster 5: Honorificity'],
+    ['level3Cluster6Compounds', 'Level 3 · Cluster 6: Compound Verbs'],
+  ],
+};
+
+function getBlueprints(lang) {
+  return [
+    ...thematic.map(([id, title, category, sourceKeys, overview, task]) => ({
+      id,
+      title,
+      category,
+      difficulty: 'intermediate',
+      lessonType: 'thematic',
+      sourceKeys,
+      overview,
+      task,
+    })),
+    ...reviews.map(([id, title, reviewOf, task]) => ({
+      id,
+      title,
+      category: 'review',
+      difficulty: 'intermediate',
+      lessonType: 'review',
+      sourceKeys: reviewOf,
+      reviewOf,
+      overview: task,
+      task,
+    })),
+    ...adult.map(([id, title, category, sourceKeys, overview, task]) => ({
+      id,
+      title,
+      category,
+      difficulty: 'intermediate',
+      lessonType: 'workplace',
+      sourceKeys,
+      overview,
+      task,
+    })),
+    ...(grammarBlueprints[lang] || []).map(([id, title]) => ({
+      id,
+      title,
+      category: 'grammar',
+      difficulty: 'advanced',
+      lessonType: 'grammar',
+      sourceKeys: ['level1Unit01Greetings', 'level1Unit04DailyRoutines', 'level1Unit12PastActivities'],
+      overview: `Control the central grammar contrast in ${title} and explain why it changes meaning.`,
+      task: `Use the main contrast from ${title} in one short explanation and one original example.`,
+    })),
+  ];
+}
+
+module.exports = {
+  getBlueprints,
+};

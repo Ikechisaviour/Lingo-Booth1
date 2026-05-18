@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u13',
-  title: 'Level 1 · Unit 13: Транспорт — Transportation',
-  category: 'travel',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Use transport language and begin distinguishing going on foot from going by vehicle.',
-  vocabularyGoal: 'Use vehicle, station, ticket, and route words.',
-  grammarGoal: 'Use `идти` for going on foot and `ехать` for going by transport.',
-  speakingGoal: 'Ask how to get somewhere, choose transport, and ask how long it takes.',
-  task: 'Plan a trip from campus to the city center.',
-  expressionPractice: [
-    practice('choosing-transport', 'Choosing transport', 'Choose `иду` or `еду` correctly.'),
-    practice('asking-route', 'Asking route', 'Use one route question.'),
-    practice('asking-duration', 'Asking duration', 'Use `сколько времени?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 13: Транспорт — Transportation",
+  "category": "travel",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit13transportation-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Use transport language and begin distinguishing going on foot from going by vehicle."
+      ],
+      "task": "Plan a trip from campus to the city center."
+    },
+    {
+      "id": "ru-level1unit13transportation-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit13transportation-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 13: Транспорт — Transportation with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit13transportation-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 13: Транспорт — Transportation sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit13transportation-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Use transport language and begin distinguishing going on foot from going by vehicle."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit13transportation-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 13: Транспорт — Transportation with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit13transportation-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit13transportation-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit13transportation-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit13transportation-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit13transportation-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Plan a trip from campus to the city center."
+      ],
+      "task": "Plan a trip from campus to the city center."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-city'],
-  items: [
-    item('я иду пешком', 'ya idu peshkom', '“I am going on foot.” Use `идти` for one-direction movement on foot.', 'Я иду пешком до метро.', '“I am walking to the metro.”'),
-    item('я еду на автобусе', 'ya yedu na avtobuse', '“I am going by bus.” Use `ехать` for one-direction movement by vehicle.', 'Я еду на автобусе в центр.', '“I am going downtown by bus.”'),
-    item('метро', 'metro', '“Metro.” In Moscow especially, it is both practical transport and a cultural landmark.', 'Метро очень удобное.', '“The metro is very convenient.”'),
-    item('остановка', 'ostanovka', '“Stop.” Used for bus and tram stops.', 'Остановка рядом с университетом.', '“The stop is next to the university.”'),
-    item('станция', 'stantsiya', '“Station.” Common for metro and train stations.', 'Я выхожу на следующей станции.', '“I get off at the next station.”'),
-    item('билет', 'bilet', '“Ticket.” Practical across transport and events.', 'Мне нужен один билет до Тулы.', '“I need one ticket to Tula.”'),
-    item('как доехать до ...?', 'kak doy ekhat do', '“How do I get to ... by transport?” A useful contrast with walking directions.', 'Как доехать до музея?', '“How do I get to the museum?”'),
-    item('сколько времени занимает?', 'skolko vremeni zanimayet', '“How long does it take?” A complete travel-duration question.', 'Сколько времени занимает дорога?', '“How long does the trip take?”'),
+  "expressionPractice": [
+    {
+      "id": "choosing-transport",
+      "label": "Choosing transport",
+      "goal": "Choose `иду` or `еду` correctly."
+    },
+    {
+      "id": "asking-route",
+      "label": "Asking route",
+      "goal": "Use one route question."
+    },
+    {
+      "id": "asking-duration",
+      "label": "Asking duration",
+      "goal": "Use `сколько времени?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-travel",
+    "topic-city"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Use transport language and begin distinguishing going on foot from going by vehicle.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Plan a trip from campus to the city center.",
+      "korean": "цель урока",
+      "english": "Use transport language and begin distinguishing going on foot from going by vehicle.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Plan a trip from campus to the city center."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit13transportation-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я иду пешком до метро.\".",
+      "pronunciation": "",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "“I am walking to the metro.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я иду пешком до метро.\".",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "“I am walking to the metro.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 13: Транспорт — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "“I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "Use the key language of Level 1 · Unit 13: Транспорт — Transportation with the register and setting that the lesson requires.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "“I am walking to the metro.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-2"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 13: Транспорт — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "“I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 13: Транспорт — Transportation sound precise rather than merely understandable.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "“I am going downtown by bus.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit13transportation-grammar-1"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "",
+      "nativeText": "Use transport language and begin distinguishing going on foot from going by vehicle.",
+      "pronunciation": "",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "“I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "Use transport language and begin distinguishing going on foot from going by vehicle.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "“I am walking to the metro.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 13: Транспорт — Transportation with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "“I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "Contrast the main pattern in Level 1 · Unit 13: Транспорт — Transportation with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "“I am going downtown by bus.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit13transportation-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Сколько времени занимает дорога?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "“How long does the trip take?”",
+      "korean": "модель чтения",
+      "english": "Read \"Сколько времени занимает дорога?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "“How long does the trip take?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit13transportation-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Сколько времени занимает дорога?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "“How long does the trip take?”",
+      "korean": "модель диалога",
+      "english": "Hear \"Сколько времени занимает дорога?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "“How long does the trip take?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit13transportation-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Я иду пешком до метро.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Я иду пешком до метро.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit13transportation-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "“I am going downtown by bus.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "“I am going downtown by bus.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Plan a trip from campus to the city center.",
+      "pronunciation": "",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "Plan a trip from campus to the city center.",
+      "korean": "итоговое задание",
+      "english": "Plan a trip from campus to the city center.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "Plan a trip from campus to the city center."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Я еду на автобусе в центр.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I am going downtown by bus.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Я еду на автобусе в центр.\" against the model.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I am going downtown by bus.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Я иду пешком до метро.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "“I am walking to the metro.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Я иду пешком до метро.\" before reusing it elsewhere.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "“I am walking to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Сколько времени занимает дорога?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "“How long does the trip take?”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Сколько времени занимает дорога?\" as one thought.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "“How long does the trip take?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Я иду пешком до метро.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Я иду пешком до метро.\" and move it into your own life.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"я иду пешком\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "я иду пешком",
+      "exampleNative": "“I am going on foot.” Use `идти` for one-direction movement on foot.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"я иду пешком\" before looking back.",
+      "example": "я иду пешком",
+      "exampleEnglish": "“I am going on foot.” Use `идти` for one-direction movement on foot."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Сколько времени занимает дорога?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Сколько времени занимает дорога?\" rather than restarting from a blank sentence.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 13: Транспорт — Transportation with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Я еду на автобусе в центр.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "“I am going downtown by bus.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 13: Транспорт — Transportation with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Я еду на автобусе в центр.\" as the comparison line.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "“I am going downtown by bus.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit13transportation-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я иду пешком до метро.\".",
+      "pronunciation": "",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "“I am walking to the metro.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Я иду пешком до метро.\".",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "“I am walking to the metro.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Сколько времени занимает дорога?\".",
+      "pronunciation": "",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "“How long does the trip take?”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Сколько времени занимает дорога?\".",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "“How long does the trip take?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Я иду пешком до метро.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "“I am walking to the metro.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Я иду пешком до метро.\" one layer at a time.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "“I am walking to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Я еду на автобусе в центр.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "“I am going downtown by bus.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Я еду на автобусе в центр.\" as the deciding example.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "“I am going downtown by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-culture",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Сколько времени занимает дорога?\".",
+      "pronunciation": "",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "“How long does the trip take?”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Сколько времени занимает дорога?\".",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "“How long does the trip take?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "ya idu peshkom",
+      "nativeText": "“I am going on foot.” Use `идти` for one-direction movement on foot.",
+      "pronunciation": "ya idu peshkom",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "“I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "“I am going on foot.” Use `идти` for one-direction movement on foot.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "“I am walking to the metro.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "Я иду пешком до метро.",
+      "romanization": "ya idu peshkom",
+      "nativeText": "Model use for \"Я иду пешком до метро.\": “I am walking to the metro.”",
+      "pronunciation": "ya idu peshkom",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "“I am walking to the metro.”",
+      "korean": "Я иду пешком до метро.",
+      "english": "Model use for \"Я иду пешком до метро.\": “I am walking to the metro.”",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "“I am walking to the metro.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "ya idu peshkom",
+      "nativeText": "Usage focus for \"я иду пешком\": Use the key language of Level 1 · Unit 13: Транспорт — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "ya idu peshkom",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "Notice what the form is doing here: “I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "Usage focus for \"я иду пешком\": Use the key language of Level 1 · Unit 13: Транспорт — Transportation with the register and setting that the lesson requires.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "Notice what the form is doing here: “I am walking to the metro.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "ya idu peshkom",
+      "nativeText": "Contrast check for \"я иду пешком\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya idu peshkom",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "Contrast check for \"я иду пешком\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am walking to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "ya idu peshkom",
+      "nativeText": "Recall \"я иду пешком\" from memory, then explain what would change if a nearby alternative replaced it in \"Я иду пешком до метро.\".",
+      "pronunciation": "ya idu peshkom",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "Self-check against the model before moving on: “I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "Recall \"я иду пешком\" from memory, then explain what would change if a nearby alternative replaced it in \"Я иду пешком до метро.\".",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am walking to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "ya idu peshkom",
+      "nativeText": "Repair \"я иду пешком\" inside \"Я иду пешком до метро.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 13: Транспорт — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "ya idu peshkom",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "Use the model as the repair target: “I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "Repair \"я иду пешком\" inside \"Я иду пешком до метро.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 13: Транспорт — Transportation with the register and setting that the lesson requires.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "Use the model as the repair target: “I am walking to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "ya idu peshkom",
+      "nativeText": "Transfer \"я иду пешком\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я иду пешком до метро.\".",
+      "pronunciation": "ya idu peshkom",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "Transfer \"я иду пешком\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я иду пешком до метро.\".",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am walking to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "ya idu peshkom",
+      "nativeText": "Find one word or phrase that naturally travels with \"я иду пешком\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya idu peshkom",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "Find one word or phrase that naturally travels with \"я иду пешком\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am walking to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "ya idu peshkom",
+      "nativeText": "Listen for \"я иду пешком\" inside \"Я иду пешком до метро.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya idu peshkom",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "Listen for \"я иду пешком\" inside \"Я иду пешком до метро.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am walking to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "ya idu peshkom",
+      "nativeText": "Write \"я иду пешком\" again without looking, then compare the exact written form against \"Я иду пешком до метро.\" before moving on.",
+      "pronunciation": "ya idu peshkom",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "Use the written model as the final correctness check: “I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "Write \"я иду пешком\" again without looking, then compare the exact written form against \"Я иду пешком до метро.\" before moving on.",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am walking to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я иду пешком",
+      "romanization": "ya idu peshkom",
+      "nativeText": "Check whether \"я иду пешком\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am walking to the metro.”",
+      "pronunciation": "ya idu peshkom",
+      "exampleTarget": "Я иду пешком до метро.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am walking to the metro.”",
+      "korean": "я иду пешком",
+      "english": "Check whether \"я иду пешком\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am walking to the metro.”",
+      "example": "Я иду пешком до метро.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am walking to the metro.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "ya yedu na avtobuse",
+      "nativeText": "“I am going by bus.” Use `ехать` for one-direction movement by vehicle.",
+      "pronunciation": "ya yedu na avtobuse",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "“I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "“I am going by bus.” Use `ехать` for one-direction movement by vehicle.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "“I am going downtown by bus.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "Я еду на автобусе в центр.",
+      "romanization": "ya yedu na avtobuse",
+      "nativeText": "Model use for \"Я еду на автобусе в центр.\": “I am going downtown by bus.”",
+      "pronunciation": "ya yedu na avtobuse",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "“I am going downtown by bus.”",
+      "korean": "Я еду на автобусе в центр.",
+      "english": "Model use for \"Я еду на автобусе в центр.\": “I am going downtown by bus.”",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "“I am going downtown by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "ya yedu na avtobuse",
+      "nativeText": "Usage focus for \"я еду на автобусе\": Distinguish the nearby wording choices that make Level 1 · Unit 13: Транспорт — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "ya yedu na avtobuse",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "Notice what the form is doing here: “I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "Usage focus for \"я еду на автобусе\": Distinguish the nearby wording choices that make Level 1 · Unit 13: Транспорт — Transportation sound precise rather than merely understandable.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "Notice what the form is doing here: “I am going downtown by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "ya yedu na avtobuse",
+      "nativeText": "Contrast check for \"я еду на автобусе\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya yedu na avtobuse",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "Contrast check for \"я еду на автобусе\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am going downtown by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "ya yedu na avtobuse",
+      "nativeText": "Recall \"я еду на автобусе\" from memory, then explain what would change if a nearby alternative replaced it in \"Я еду на автобусе в центр.\".",
+      "pronunciation": "ya yedu na avtobuse",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "Self-check against the model before moving on: “I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "Recall \"я еду на автобусе\" from memory, then explain what would change if a nearby alternative replaced it in \"Я еду на автобусе в центр.\".",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am going downtown by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "ya yedu na avtobuse",
+      "nativeText": "Repair \"я еду на автобусе\" inside \"Я еду на автобусе в центр.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 13: Транспорт — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "ya yedu na avtobuse",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "Use the model as the repair target: “I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "Repair \"я еду на автобусе\" inside \"Я еду на автобусе в центр.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 13: Транспорт — Transportation sound precise rather than merely understandable.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "Use the model as the repair target: “I am going downtown by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "ya yedu na avtobuse",
+      "nativeText": "Transfer \"я еду на автобусе\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я еду на автобусе в центр.\".",
+      "pronunciation": "ya yedu na avtobuse",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "Transfer \"я еду на автобусе\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я еду на автобусе в центр.\".",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am going downtown by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "ya yedu na avtobuse",
+      "nativeText": "Find one word or phrase that naturally travels with \"я еду на автобусе\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya yedu na avtobuse",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "Find one word or phrase that naturally travels with \"я еду на автобусе\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am going downtown by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "ya yedu na avtobuse",
+      "nativeText": "Listen for \"я еду на автобусе\" inside \"Я еду на автобусе в центр.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya yedu na avtobuse",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "Listen for \"я еду на автобусе\" inside \"Я еду на автобусе в центр.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am going downtown by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "ya yedu na avtobuse",
+      "nativeText": "Write \"я еду на автобусе\" again without looking, then compare the exact written form against \"Я еду на автобусе в центр.\" before moving on.",
+      "pronunciation": "ya yedu na avtobuse",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "Use the written model as the final correctness check: “I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "Write \"я еду на автобусе\" again without looking, then compare the exact written form against \"Я еду на автобусе в центр.\" before moving on.",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am going downtown by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "я еду на автобусе",
+      "romanization": "ya yedu na avtobuse",
+      "nativeText": "Check whether \"я еду на автобусе\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am going downtown by bus.”",
+      "pronunciation": "ya yedu na avtobuse",
+      "exampleTarget": "Я еду на автобусе в центр.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am going downtown by bus.”",
+      "korean": "я еду на автобусе",
+      "english": "Check whether \"я еду на автобусе\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am going downtown by bus.”",
+      "example": "Я еду на автобусе в центр.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am going downtown by bus.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "метро",
+      "romanization": "metro",
+      "nativeText": "“Metro.” In Moscow especially, it is both practical transport and a cultural landmark.",
+      "pronunciation": "metro",
+      "exampleTarget": "Метро очень удобное.",
+      "exampleNative": "“The metro is very convenient.”",
+      "korean": "метро",
+      "english": "“Metro.” In Moscow especially, it is both practical transport and a cultural landmark.",
+      "example": "Метро очень удобное.",
+      "exampleEnglish": "“The metro is very convenient.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "Метро очень удобное.",
+      "romanization": "metro",
+      "nativeText": "Model use for \"Метро очень удобное.\": “The metro is very convenient.”",
+      "pronunciation": "metro",
+      "exampleTarget": "Метро очень удобное.",
+      "exampleNative": "“The metro is very convenient.”",
+      "korean": "Метро очень удобное.",
+      "english": "Model use for \"Метро очень удобное.\": “The metro is very convenient.”",
+      "example": "Метро очень удобное.",
+      "exampleEnglish": "“The metro is very convenient.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "метро",
+      "romanization": "metro",
+      "nativeText": "Usage focus for \"метро\": “Metro.” In Moscow especially, it is both practical transport and a cultural landmark.",
+      "pronunciation": "metro",
+      "exampleTarget": "Метро очень удобное.",
+      "exampleNative": "Notice what the form is doing here: “The metro is very convenient.”",
+      "korean": "метро",
+      "english": "Usage focus for \"метро\": “Metro.” In Moscow especially, it is both practical transport and a cultural landmark.",
+      "example": "Метро очень удобное.",
+      "exampleEnglish": "Notice what the form is doing here: “The metro is very convenient.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "метро",
+      "romanization": "metro",
+      "nativeText": "Contrast check for \"метро\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "metro",
+      "exampleTarget": "Метро очень удобное.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The metro is very convenient.”",
+      "korean": "метро",
+      "english": "Contrast check for \"метро\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Метро очень удобное.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The metro is very convenient.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "метро",
+      "romanization": "metro",
+      "nativeText": "Recall \"метро\" from memory, then explain what would change if a nearby alternative replaced it in \"Метро очень удобное.\".",
+      "pronunciation": "metro",
+      "exampleTarget": "Метро очень удобное.",
+      "exampleNative": "Self-check against the model before moving on: “The metro is very convenient.”",
+      "korean": "метро",
+      "english": "Recall \"метро\" from memory, then explain what would change if a nearby alternative replaced it in \"Метро очень удобное.\".",
+      "example": "Метро очень удобное.",
+      "exampleEnglish": "Self-check against the model before moving on: “The metro is very convenient.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "метро",
+      "romanization": "metro",
+      "nativeText": "Repair \"метро\" inside \"Метро очень удобное.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Metro.” In Moscow especially, it is both practical transport and a cultural landmark.",
+      "pronunciation": "metro",
+      "exampleTarget": "Метро очень удобное.",
+      "exampleNative": "Use the model as the repair target: “The metro is very convenient.”",
+      "korean": "метро",
+      "english": "Repair \"метро\" inside \"Метро очень удобное.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Metro.” In Moscow especially, it is both practical transport and a cultural landmark.",
+      "example": "Метро очень удобное.",
+      "exampleEnglish": "Use the model as the repair target: “The metro is very convenient.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "метро",
+      "romanization": "metro",
+      "nativeText": "Transfer \"метро\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Метро очень удобное.\".",
+      "pronunciation": "metro",
+      "exampleTarget": "Метро очень удобное.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The metro is very convenient.”",
+      "korean": "метро",
+      "english": "Transfer \"метро\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Метро очень удобное.\".",
+      "example": "Метро очень удобное.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The metro is very convenient.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "метро",
+      "romanization": "metro",
+      "nativeText": "Find one word or phrase that naturally travels with \"метро\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "metro",
+      "exampleTarget": "Метро очень удобное.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The metro is very convenient.”",
+      "korean": "метро",
+      "english": "Find one word or phrase that naturally travels with \"метро\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Метро очень удобное.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The metro is very convenient.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "метро",
+      "romanization": "metro",
+      "nativeText": "Listen for \"метро\" inside \"Метро очень удобное.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "metro",
+      "exampleTarget": "Метро очень удобное.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The metro is very convenient.”",
+      "korean": "метро",
+      "english": "Listen for \"метро\" inside \"Метро очень удобное.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Метро очень удобное.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The metro is very convenient.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "метро",
+      "romanization": "metro",
+      "nativeText": "Write \"метро\" again without looking, then compare the exact written form against \"Метро очень удобное.\" before moving on.",
+      "pronunciation": "metro",
+      "exampleTarget": "Метро очень удобное.",
+      "exampleNative": "Use the written model as the final correctness check: “The metro is very convenient.”",
+      "korean": "метро",
+      "english": "Write \"метро\" again without looking, then compare the exact written form against \"Метро очень удобное.\" before moving on.",
+      "example": "Метро очень удобное.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The metro is very convenient.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "метро",
+      "romanization": "metro",
+      "nativeText": "Check whether \"метро\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The metro is very convenient.”",
+      "pronunciation": "metro",
+      "exampleTarget": "Метро очень удобное.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The metro is very convenient.”",
+      "korean": "метро",
+      "english": "Check whether \"метро\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The metro is very convenient.”",
+      "example": "Метро очень удобное.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The metro is very convenient.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "остановка",
+      "romanization": "ostanovka",
+      "nativeText": "“Stop.” Used for bus and tram stops.",
+      "pronunciation": "ostanovka",
+      "exampleTarget": "Остановка рядом с университетом.",
+      "exampleNative": "“The stop is next to the university.”",
+      "korean": "остановка",
+      "english": "“Stop.” Used for bus and tram stops.",
+      "example": "Остановка рядом с университетом.",
+      "exampleEnglish": "“The stop is next to the university.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "Остановка рядом с университетом.",
+      "romanization": "ostanovka",
+      "nativeText": "Model use for \"Остановка рядом с университетом.\": “The stop is next to the university.”",
+      "pronunciation": "ostanovka",
+      "exampleTarget": "Остановка рядом с университетом.",
+      "exampleNative": "“The stop is next to the university.”",
+      "korean": "Остановка рядом с университетом.",
+      "english": "Model use for \"Остановка рядом с университетом.\": “The stop is next to the university.”",
+      "example": "Остановка рядом с университетом.",
+      "exampleEnglish": "“The stop is next to the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "остановка",
+      "romanization": "ostanovka",
+      "nativeText": "Usage focus for \"остановка\": “Stop.” Used for bus and tram stops.",
+      "pronunciation": "ostanovka",
+      "exampleTarget": "Остановка рядом с университетом.",
+      "exampleNative": "Notice what the form is doing here: “The stop is next to the university.”",
+      "korean": "остановка",
+      "english": "Usage focus for \"остановка\": “Stop.” Used for bus and tram stops.",
+      "example": "Остановка рядом с университетом.",
+      "exampleEnglish": "Notice what the form is doing here: “The stop is next to the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "остановка",
+      "romanization": "ostanovka",
+      "nativeText": "Contrast check for \"остановка\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ostanovka",
+      "exampleTarget": "Остановка рядом с университетом.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The stop is next to the university.”",
+      "korean": "остановка",
+      "english": "Contrast check for \"остановка\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Остановка рядом с университетом.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The stop is next to the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "остановка",
+      "romanization": "ostanovka",
+      "nativeText": "Recall \"остановка\" from memory, then explain what would change if a nearby alternative replaced it in \"Остановка рядом с университетом.\".",
+      "pronunciation": "ostanovka",
+      "exampleTarget": "Остановка рядом с университетом.",
+      "exampleNative": "Self-check against the model before moving on: “The stop is next to the university.”",
+      "korean": "остановка",
+      "english": "Recall \"остановка\" from memory, then explain what would change if a nearby alternative replaced it in \"Остановка рядом с университетом.\".",
+      "example": "Остановка рядом с университетом.",
+      "exampleEnglish": "Self-check against the model before moving on: “The stop is next to the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "остановка",
+      "romanization": "ostanovka",
+      "nativeText": "Repair \"остановка\" inside \"Остановка рядом с университетом.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stop.” Used for bus and tram stops.",
+      "pronunciation": "ostanovka",
+      "exampleTarget": "Остановка рядом с университетом.",
+      "exampleNative": "Use the model as the repair target: “The stop is next to the university.”",
+      "korean": "остановка",
+      "english": "Repair \"остановка\" inside \"Остановка рядом с университетом.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stop.” Used for bus and tram stops.",
+      "example": "Остановка рядом с университетом.",
+      "exampleEnglish": "Use the model as the repair target: “The stop is next to the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "остановка",
+      "romanization": "ostanovka",
+      "nativeText": "Transfer \"остановка\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Остановка рядом с университетом.\".",
+      "pronunciation": "ostanovka",
+      "exampleTarget": "Остановка рядом с университетом.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The stop is next to the university.”",
+      "korean": "остановка",
+      "english": "Transfer \"остановка\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Остановка рядом с университетом.\".",
+      "example": "Остановка рядом с университетом.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The stop is next to the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "остановка",
+      "romanization": "ostanovka",
+      "nativeText": "Find one word or phrase that naturally travels with \"остановка\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ostanovka",
+      "exampleTarget": "Остановка рядом с университетом.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The stop is next to the university.”",
+      "korean": "остановка",
+      "english": "Find one word or phrase that naturally travels with \"остановка\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Остановка рядом с университетом.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The stop is next to the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "остановка",
+      "romanization": "ostanovka",
+      "nativeText": "Listen for \"остановка\" inside \"Остановка рядом с университетом.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ostanovka",
+      "exampleTarget": "Остановка рядом с университетом.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The stop is next to the university.”",
+      "korean": "остановка",
+      "english": "Listen for \"остановка\" inside \"Остановка рядом с университетом.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Остановка рядом с университетом.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The stop is next to the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "остановка",
+      "romanization": "ostanovka",
+      "nativeText": "Write \"остановка\" again without looking, then compare the exact written form against \"Остановка рядом с университетом.\" before moving on.",
+      "pronunciation": "ostanovka",
+      "exampleTarget": "Остановка рядом с университетом.",
+      "exampleNative": "Use the written model as the final correctness check: “The stop is next to the university.”",
+      "korean": "остановка",
+      "english": "Write \"остановка\" again without looking, then compare the exact written form against \"Остановка рядом с университетом.\" before moving on.",
+      "example": "Остановка рядом с университетом.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The stop is next to the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "остановка",
+      "romanization": "ostanovka",
+      "nativeText": "Check whether \"остановка\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The stop is next to the university.”",
+      "pronunciation": "ostanovka",
+      "exampleTarget": "Остановка рядом с университетом.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The stop is next to the university.”",
+      "korean": "остановка",
+      "english": "Check whether \"остановка\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The stop is next to the university.”",
+      "example": "Остановка рядом с университетом.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The stop is next to the university.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "станция",
+      "romanization": "stantsiya",
+      "nativeText": "“Station.” Common for metro and train stations.",
+      "pronunciation": "stantsiya",
+      "exampleTarget": "Я выхожу на следующей станции.",
+      "exampleNative": "“I get off at the next station.”",
+      "korean": "станция",
+      "english": "“Station.” Common for metro and train stations.",
+      "example": "Я выхожу на следующей станции.",
+      "exampleEnglish": "“I get off at the next station.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "Я выхожу на следующей станции.",
+      "romanization": "stantsiya",
+      "nativeText": "Model use for \"Я выхожу на следующей станции.\": “I get off at the next station.”",
+      "pronunciation": "stantsiya",
+      "exampleTarget": "Я выхожу на следующей станции.",
+      "exampleNative": "“I get off at the next station.”",
+      "korean": "Я выхожу на следующей станции.",
+      "english": "Model use for \"Я выхожу на следующей станции.\": “I get off at the next station.”",
+      "example": "Я выхожу на следующей станции.",
+      "exampleEnglish": "“I get off at the next station.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "станция",
+      "romanization": "stantsiya",
+      "nativeText": "Usage focus for \"станция\": “Station.” Common for metro and train stations.",
+      "pronunciation": "stantsiya",
+      "exampleTarget": "Я выхожу на следующей станции.",
+      "exampleNative": "Notice what the form is doing here: “I get off at the next station.”",
+      "korean": "станция",
+      "english": "Usage focus for \"станция\": “Station.” Common for metro and train stations.",
+      "example": "Я выхожу на следующей станции.",
+      "exampleEnglish": "Notice what the form is doing here: “I get off at the next station.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "станция",
+      "romanization": "stantsiya",
+      "nativeText": "Contrast check for \"станция\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "stantsiya",
+      "exampleTarget": "Я выхожу на следующей станции.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I get off at the next station.”",
+      "korean": "станция",
+      "english": "Contrast check for \"станция\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я выхожу на следующей станции.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "станция",
+      "romanization": "stantsiya",
+      "nativeText": "Recall \"станция\" from memory, then explain what would change if a nearby alternative replaced it in \"Я выхожу на следующей станции.\".",
+      "pronunciation": "stantsiya",
+      "exampleTarget": "Я выхожу на следующей станции.",
+      "exampleNative": "Self-check against the model before moving on: “I get off at the next station.”",
+      "korean": "станция",
+      "english": "Recall \"станция\" from memory, then explain what would change if a nearby alternative replaced it in \"Я выхожу на следующей станции.\".",
+      "example": "Я выхожу на следующей станции.",
+      "exampleEnglish": "Self-check against the model before moving on: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "станция",
+      "romanization": "stantsiya",
+      "nativeText": "Repair \"станция\" inside \"Я выхожу на следующей станции.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Station.” Common for metro and train stations.",
+      "pronunciation": "stantsiya",
+      "exampleTarget": "Я выхожу на следующей станции.",
+      "exampleNative": "Use the model as the repair target: “I get off at the next station.”",
+      "korean": "станция",
+      "english": "Repair \"станция\" inside \"Я выхожу на следующей станции.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Station.” Common for metro and train stations.",
+      "example": "Я выхожу на следующей станции.",
+      "exampleEnglish": "Use the model as the repair target: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "станция",
+      "romanization": "stantsiya",
+      "nativeText": "Transfer \"станция\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я выхожу на следующей станции.\".",
+      "pronunciation": "stantsiya",
+      "exampleTarget": "Я выхожу на следующей станции.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I get off at the next station.”",
+      "korean": "станция",
+      "english": "Transfer \"станция\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я выхожу на следующей станции.\".",
+      "example": "Я выхожу на следующей станции.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "станция",
+      "romanization": "stantsiya",
+      "nativeText": "Find one word or phrase that naturally travels with \"станция\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "stantsiya",
+      "exampleTarget": "Я выхожу на следующей станции.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I get off at the next station.”",
+      "korean": "станция",
+      "english": "Find one word or phrase that naturally travels with \"станция\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я выхожу на следующей станции.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "станция",
+      "romanization": "stantsiya",
+      "nativeText": "Listen for \"станция\" inside \"Я выхожу на следующей станции.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "stantsiya",
+      "exampleTarget": "Я выхожу на следующей станции.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I get off at the next station.”",
+      "korean": "станция",
+      "english": "Listen for \"станция\" inside \"Я выхожу на следующей станции.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я выхожу на следующей станции.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "станция",
+      "romanization": "stantsiya",
+      "nativeText": "Write \"станция\" again without looking, then compare the exact written form against \"Я выхожу на следующей станции.\" before moving on.",
+      "pronunciation": "stantsiya",
+      "exampleTarget": "Я выхожу на следующей станции.",
+      "exampleNative": "Use the written model as the final correctness check: “I get off at the next station.”",
+      "korean": "станция",
+      "english": "Write \"станция\" again without looking, then compare the exact written form against \"Я выхожу на следующей станции.\" before moving on.",
+      "example": "Я выхожу на следующей станции.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "станция",
+      "romanization": "stantsiya",
+      "nativeText": "Check whether \"станция\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I get off at the next station.”",
+      "pronunciation": "stantsiya",
+      "exampleTarget": "Я выхожу на следующей станции.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I get off at the next station.”",
+      "korean": "станция",
+      "english": "Check whether \"станция\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I get off at the next station.”",
+      "example": "Я выхожу на следующей станции.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I get off at the next station.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "билет",
+      "romanization": "bilet",
+      "nativeText": "“Ticket.” Practical across transport and events.",
+      "pronunciation": "bilet",
+      "exampleTarget": "Мне нужен один билет до Тулы.",
+      "exampleNative": "“I need one ticket to Tula.”",
+      "korean": "билет",
+      "english": "“Ticket.” Practical across transport and events.",
+      "example": "Мне нужен один билет до Тулы.",
+      "exampleEnglish": "“I need one ticket to Tula.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "Мне нужен один билет до Тулы.",
+      "romanization": "bilet",
+      "nativeText": "Model use for \"Мне нужен один билет до Тулы.\": “I need one ticket to Tula.”",
+      "pronunciation": "bilet",
+      "exampleTarget": "Мне нужен один билет до Тулы.",
+      "exampleNative": "“I need one ticket to Tula.”",
+      "korean": "Мне нужен один билет до Тулы.",
+      "english": "Model use for \"Мне нужен один билет до Тулы.\": “I need one ticket to Tula.”",
+      "example": "Мне нужен один билет до Тулы.",
+      "exampleEnglish": "“I need one ticket to Tula.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "билет",
+      "romanization": "bilet",
+      "nativeText": "Usage focus for \"билет\": “Ticket.” Practical across transport and events.",
+      "pronunciation": "bilet",
+      "exampleTarget": "Мне нужен один билет до Тулы.",
+      "exampleNative": "Notice what the form is doing here: “I need one ticket to Tula.”",
+      "korean": "билет",
+      "english": "Usage focus for \"билет\": “Ticket.” Practical across transport and events.",
+      "example": "Мне нужен один билет до Тулы.",
+      "exampleEnglish": "Notice what the form is doing here: “I need one ticket to Tula.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "билет",
+      "romanization": "bilet",
+      "nativeText": "Contrast check for \"билет\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bilet",
+      "exampleTarget": "Мне нужен один билет до Тулы.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need one ticket to Tula.”",
+      "korean": "билет",
+      "english": "Contrast check for \"билет\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мне нужен один билет до Тулы.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need one ticket to Tula.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "билет",
+      "romanization": "bilet",
+      "nativeText": "Recall \"билет\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужен один билет до Тулы.\".",
+      "pronunciation": "bilet",
+      "exampleTarget": "Мне нужен один билет до Тулы.",
+      "exampleNative": "Self-check against the model before moving on: “I need one ticket to Tula.”",
+      "korean": "билет",
+      "english": "Recall \"билет\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужен один билет до Тулы.\".",
+      "example": "Мне нужен один билет до Тулы.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need one ticket to Tula.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "билет",
+      "romanization": "bilet",
+      "nativeText": "Repair \"билет\" inside \"Мне нужен один билет до Тулы.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ticket.” Practical across transport and events.",
+      "pronunciation": "bilet",
+      "exampleTarget": "Мне нужен один билет до Тулы.",
+      "exampleNative": "Use the model as the repair target: “I need one ticket to Tula.”",
+      "korean": "билет",
+      "english": "Repair \"билет\" inside \"Мне нужен один билет до Тулы.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ticket.” Practical across transport and events.",
+      "example": "Мне нужен один билет до Тулы.",
+      "exampleEnglish": "Use the model as the repair target: “I need one ticket to Tula.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "билет",
+      "romanization": "bilet",
+      "nativeText": "Transfer \"билет\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужен один билет до Тулы.\".",
+      "pronunciation": "bilet",
+      "exampleTarget": "Мне нужен один билет до Тулы.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need one ticket to Tula.”",
+      "korean": "билет",
+      "english": "Transfer \"билет\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужен один билет до Тулы.\".",
+      "example": "Мне нужен один билет до Тулы.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need one ticket to Tula.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "билет",
+      "romanization": "bilet",
+      "nativeText": "Find one word or phrase that naturally travels with \"билет\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bilet",
+      "exampleTarget": "Мне нужен один билет до Тулы.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need one ticket to Tula.”",
+      "korean": "билет",
+      "english": "Find one word or phrase that naturally travels with \"билет\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мне нужен один билет до Тулы.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need one ticket to Tula.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "билет",
+      "romanization": "bilet",
+      "nativeText": "Listen for \"билет\" inside \"Мне нужен один билет до Тулы.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bilet",
+      "exampleTarget": "Мне нужен один билет до Тулы.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need one ticket to Tula.”",
+      "korean": "билет",
+      "english": "Listen for \"билет\" inside \"Мне нужен один билет до Тулы.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мне нужен один билет до Тулы.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need one ticket to Tula.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "билет",
+      "romanization": "bilet",
+      "nativeText": "Write \"билет\" again without looking, then compare the exact written form against \"Мне нужен один билет до Тулы.\" before moving on.",
+      "pronunciation": "bilet",
+      "exampleTarget": "Мне нужен один билет до Тулы.",
+      "exampleNative": "Use the written model as the final correctness check: “I need one ticket to Tula.”",
+      "korean": "билет",
+      "english": "Write \"билет\" again without looking, then compare the exact written form against \"Мне нужен один билет до Тулы.\" before moving on.",
+      "example": "Мне нужен один билет до Тулы.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need one ticket to Tula.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "билет",
+      "romanization": "bilet",
+      "nativeText": "Check whether \"билет\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need one ticket to Tula.”",
+      "pronunciation": "bilet",
+      "exampleTarget": "Мне нужен один билет до Тулы.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need one ticket to Tula.”",
+      "korean": "билет",
+      "english": "Check whether \"билет\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need one ticket to Tula.”",
+      "example": "Мне нужен один билет до Тулы.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need one ticket to Tula.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "как доехать до ...?",
+      "romanization": "kak doy ekhat do",
+      "nativeText": "“How do I get to ... by transport?” A useful contrast with walking directions.",
+      "pronunciation": "kak doy ekhat do",
+      "exampleTarget": "Как доехать до музея?",
+      "exampleNative": "“How do I get to the museum?”",
+      "korean": "как доехать до ...?",
+      "english": "“How do I get to ... by transport?” A useful contrast with walking directions.",
+      "example": "Как доехать до музея?",
+      "exampleEnglish": "“How do I get to the museum?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "Как доехать до музея?",
+      "romanization": "kak doy ekhat do",
+      "nativeText": "Model use for \"Как доехать до музея?\": “How do I get to the museum?”",
+      "pronunciation": "kak doy ekhat do",
+      "exampleTarget": "Как доехать до музея?",
+      "exampleNative": "“How do I get to the museum?”",
+      "korean": "Как доехать до музея?",
+      "english": "Model use for \"Как доехать до музея?\": “How do I get to the museum?”",
+      "example": "Как доехать до музея?",
+      "exampleEnglish": "“How do I get to the museum?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "как доехать до ...?",
+      "romanization": "kak doy ekhat do",
+      "nativeText": "Usage focus for \"как доехать до ...?\": “How do I get to ... by transport?” A useful contrast with walking directions.",
+      "pronunciation": "kak doy ekhat do",
+      "exampleTarget": "Как доехать до музея?",
+      "exampleNative": "Notice what the form is doing here: “How do I get to the museum?”",
+      "korean": "как доехать до ...?",
+      "english": "Usage focus for \"как доехать до ...?\": “How do I get to ... by transport?” A useful contrast with walking directions.",
+      "example": "Как доехать до музея?",
+      "exampleEnglish": "Notice what the form is doing here: “How do I get to the museum?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "как доехать до ...?",
+      "romanization": "kak doy ekhat do",
+      "nativeText": "Contrast check for \"как доехать до ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kak doy ekhat do",
+      "exampleTarget": "Как доехать до музея?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to the museum?”",
+      "korean": "как доехать до ...?",
+      "english": "Contrast check for \"как доехать до ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Как доехать до музея?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "как доехать до ...?",
+      "romanization": "kak doy ekhat do",
+      "nativeText": "Recall \"как доехать до ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Как доехать до музея?\".",
+      "pronunciation": "kak doy ekhat do",
+      "exampleTarget": "Как доехать до музея?",
+      "exampleNative": "Self-check against the model before moving on: “How do I get to the museum?”",
+      "korean": "как доехать до ...?",
+      "english": "Recall \"как доехать до ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Как доехать до музея?\".",
+      "example": "Как доехать до музея?",
+      "exampleEnglish": "Self-check against the model before moving on: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "как доехать до ...?",
+      "romanization": "kak doy ekhat do",
+      "nativeText": "Repair \"как доехать до ...?\" inside \"Как доехать до музея?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get to ... by transport?” A useful contrast with walking directions.",
+      "pronunciation": "kak doy ekhat do",
+      "exampleTarget": "Как доехать до музея?",
+      "exampleNative": "Use the model as the repair target: “How do I get to the museum?”",
+      "korean": "как доехать до ...?",
+      "english": "Repair \"как доехать до ...?\" inside \"Как доехать до музея?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get to ... by transport?” A useful contrast with walking directions.",
+      "example": "Как доехать до музея?",
+      "exampleEnglish": "Use the model as the repair target: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "как доехать до ...?",
+      "romanization": "kak doy ekhat do",
+      "nativeText": "Transfer \"как доехать до ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Как доехать до музея?\".",
+      "pronunciation": "kak doy ekhat do",
+      "exampleTarget": "Как доехать до музея?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to the museum?”",
+      "korean": "как доехать до ...?",
+      "english": "Transfer \"как доехать до ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Как доехать до музея?\".",
+      "example": "Как доехать до музея?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "как доехать до ...?",
+      "romanization": "kak doy ekhat do",
+      "nativeText": "Find one word or phrase that naturally travels with \"как доехать до ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kak doy ekhat do",
+      "exampleTarget": "Как доехать до музея?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How do I get to the museum?”",
+      "korean": "как доехать до ...?",
+      "english": "Find one word or phrase that naturally travels with \"как доехать до ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Как доехать до музея?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "как доехать до ...?",
+      "romanization": "kak doy ekhat do",
+      "nativeText": "Listen for \"как доехать до ...?\" inside \"Как доехать до музея?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kak doy ekhat do",
+      "exampleTarget": "Как доехать до музея?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to the museum?”",
+      "korean": "как доехать до ...?",
+      "english": "Listen for \"как доехать до ...?\" inside \"Как доехать до музея?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Как доехать до музея?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "как доехать до ...?",
+      "romanization": "kak doy ekhat do",
+      "nativeText": "Write \"как доехать до ...?\" again without looking, then compare the exact written form against \"Как доехать до музея?\" before moving on.",
+      "pronunciation": "kak doy ekhat do",
+      "exampleTarget": "Как доехать до музея?",
+      "exampleNative": "Use the written model as the final correctness check: “How do I get to the museum?”",
+      "korean": "как доехать до ...?",
+      "english": "Write \"как доехать до ...?\" again without looking, then compare the exact written form against \"Как доехать до музея?\" before moving on.",
+      "example": "Как доехать до музея?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How do I get to the museum?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "как доехать до ...?",
+      "romanization": "kak doy ekhat do",
+      "nativeText": "Check whether \"как доехать до ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”",
+      "pronunciation": "kak doy ekhat do",
+      "exampleTarget": "Как доехать до музея?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”",
+      "korean": "как доехать до ...?",
+      "english": "Check whether \"как доехать до ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”",
+      "example": "Как доехать до музея?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How do I get to the museum?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "сколько времени занимает?",
+      "romanization": "skolko vremeni zanimayet",
+      "nativeText": "“How long does it take?” A complete travel-duration question.",
+      "pronunciation": "skolko vremeni zanimayet",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "“How long does the trip take?”",
+      "korean": "сколько времени занимает?",
+      "english": "“How long does it take?” A complete travel-duration question.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "“How long does the trip take?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "Сколько времени занимает дорога?",
+      "romanization": "skolko vremeni zanimayet",
+      "nativeText": "Model use for \"Сколько времени занимает дорога?\": “How long does the trip take?”",
+      "pronunciation": "skolko vremeni zanimayet",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "“How long does the trip take?”",
+      "korean": "Сколько времени занимает дорога?",
+      "english": "Model use for \"Сколько времени занимает дорога?\": “How long does the trip take?”",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "“How long does the trip take?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "сколько времени занимает?",
+      "romanization": "skolko vremeni zanimayet",
+      "nativeText": "Usage focus for \"сколько времени занимает?\": “How long does it take?” A complete travel-duration question.",
+      "pronunciation": "skolko vremeni zanimayet",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "Notice what the form is doing here: “How long does the trip take?”",
+      "korean": "сколько времени занимает?",
+      "english": "Usage focus for \"сколько времени занимает?\": “How long does it take?” A complete travel-duration question.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "Notice what the form is doing here: “How long does the trip take?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "сколько времени занимает?",
+      "romanization": "skolko vremeni zanimayet",
+      "nativeText": "Contrast check for \"сколько времени занимает?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "skolko vremeni zanimayet",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How long does the trip take?”",
+      "korean": "сколько времени занимает?",
+      "english": "Contrast check for \"сколько времени занимает?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How long does the trip take?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "сколько времени занимает?",
+      "romanization": "skolko vremeni zanimayet",
+      "nativeText": "Recall \"сколько времени занимает?\" from memory, then explain what would change if a nearby alternative replaced it in \"Сколько времени занимает дорога?\".",
+      "pronunciation": "skolko vremeni zanimayet",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "Self-check against the model before moving on: “How long does the trip take?”",
+      "korean": "сколько времени занимает?",
+      "english": "Recall \"сколько времени занимает?\" from memory, then explain what would change if a nearby alternative replaced it in \"Сколько времени занимает дорога?\".",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "Self-check against the model before moving on: “How long does the trip take?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "сколько времени занимает?",
+      "romanization": "skolko vremeni zanimayet",
+      "nativeText": "Repair \"сколько времени занимает?\" inside \"Сколько времени занимает дорога?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How long does it take?” A complete travel-duration question.",
+      "pronunciation": "skolko vremeni zanimayet",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "Use the model as the repair target: “How long does the trip take?”",
+      "korean": "сколько времени занимает?",
+      "english": "Repair \"сколько времени занимает?\" inside \"Сколько времени занимает дорога?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How long does it take?” A complete travel-duration question.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "Use the model as the repair target: “How long does the trip take?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "сколько времени занимает?",
+      "romanization": "skolko vremeni zanimayet",
+      "nativeText": "Transfer \"сколько времени занимает?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сколько времени занимает дорога?\".",
+      "pronunciation": "skolko vremeni zanimayet",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How long does the trip take?”",
+      "korean": "сколько времени занимает?",
+      "english": "Transfer \"сколько времени занимает?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сколько времени занимает дорога?\".",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How long does the trip take?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "сколько времени занимает?",
+      "romanization": "skolko vremeni zanimayet",
+      "nativeText": "Find one word or phrase that naturally travels with \"сколько времени занимает?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "skolko vremeni zanimayet",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How long does the trip take?”",
+      "korean": "сколько времени занимает?",
+      "english": "Find one word or phrase that naturally travels with \"сколько времени занимает?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How long does the trip take?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "сколько времени занимает?",
+      "romanization": "skolko vremeni zanimayet",
+      "nativeText": "Listen for \"сколько времени занимает?\" inside \"Сколько времени занимает дорога?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "skolko vremeni zanimayet",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How long does the trip take?”",
+      "korean": "сколько времени занимает?",
+      "english": "Listen for \"сколько времени занимает?\" inside \"Сколько времени занимает дорога?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How long does the trip take?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "сколько времени занимает?",
+      "romanization": "skolko vremeni zanimayet",
+      "nativeText": "Write \"сколько времени занимает?\" again without looking, then compare the exact written form against \"Сколько времени занимает дорога?\" before moving on.",
+      "pronunciation": "skolko vremeni zanimayet",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "Use the written model as the final correctness check: “How long does the trip take?”",
+      "korean": "сколько времени занимает?",
+      "english": "Write \"сколько времени занимает?\" again without looking, then compare the exact written form against \"Сколько времени занимает дорога?\" before moving on.",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How long does the trip take?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit13transportation-vocabulary-1",
+        "ru-level1unit13transportation-vocabulary-2",
+        "ru-level1unit13transportation-grammar-1",
+        "ru-level1unit13transportation-grammar-2",
+        "ru-level1unit13transportation-reading",
+        "ru-level1unit13transportation-listening",
+        "ru-level1unit13transportation-writing",
+        "ru-level1unit13transportation-task"
+      ],
+      "targetText": "сколько времени занимает?",
+      "romanization": "skolko vremeni zanimayet",
+      "nativeText": "Check whether \"сколько времени занимает?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How long does the trip take?”",
+      "pronunciation": "skolko vremeni zanimayet",
+      "exampleTarget": "Сколько времени занимает дорога?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How long does the trip take?”",
+      "korean": "сколько времени занимает?",
+      "english": "Check whether \"сколько времени занимает?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How long does the trip take?”",
+      "example": "Сколько времени занимает дорога?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How long does the trip take?”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

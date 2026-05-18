@@ -23,7 +23,8 @@
     "saving": "Kaydediliyor...",
     "search": "Aramak",
     "notSet": "Ayarlanmadı",
-    "all": "Tüm"
+    "all": "Tüm",
+    "reset": "Sıfırla"
   },
   "languages": {
     "en": "İngilizce",
@@ -218,7 +219,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "contactDesc": "Sorular, geri bildirimler veya bildirilecek bir sorun"
   },
   "lessons": {
     "title": "{{language}} Dersler",
@@ -738,7 +740,102 @@
     "modeBreakdown": "Çalışma Modu",
     "searchUsers": "Kullanıcı ara...",
     "all": "Tümü",
-    "demo": "Demo"
+    "demo": "Demo",
+    "failures": "Başarısızlıklar",
+    "messages": "Mesajlar",
+    "userFailures": "Kullanıcı tarafı hataları",
+    "openFailures": "{{count}} açık arızalar",
+    "criticalFailures": "{{count}} kritik",
+    "clearing": "Temizleniyor...",
+    "loadingFailures": "Hatalar yükleniyor...",
+    "noOpenFailures": "Kullanıcı tarafında açık arıza yok.",
+    "acknowledge": "Kabullenmek",
+    "page": "Sayfa",
+    "device": "Cihaz",
+    "languagePair": "Dil Çifti",
+    "clientStatus": "Müşteri",
+    "pageOf": "Sayfa {{page}} / {{total}}",
+    "guestUser": "Konuk kullanıcı",
+    "unknownUser": "Bilinmeyen kullanıcı",
+    "unknown": "Bilinmiyor",
+    "clearFailuresTitle": "Açık arızalar temizlensin mi?",
+    "clearFailuresBody": "Tüm {{count}} açık arızaları onaylandı olarak işaretlensin mi?",
+    "contactMessages": "İletişim mesajları",
+    "unreadMessages": "{{count}} okunmamış mesajlar",
+    "allMessages": "Tüm mesajlar",
+    "registeredUsers": "Kayıtlı kullanıcılar",
+    "guestUsers": "Konuk kullanıcılar",
+    "loadingMessages": "Mesajlar yükleniyor...",
+    "noUnreadMessages": "Okunmamış iletişim mesajı yok.",
+    "registeredUser": "Kayıtlı kullanıcı",
+    "contactMessage": "İletişim mesajı",
+    "markRead": "Okundu olarak işaretle",
+    "name": "İsim",
+    "accountTier": "Hesap Katmanı",
+    "clearMessagesTitle": "Okunmamış mesajlar silinsin mi?",
+    "clearMessagesBody": "Tüm {{count}} okunmamış kişi mesajları okundu olarak işaretlensin mi?",
+    "demoDifficulty": {
+      "beginner": "Acemi",
+      "balanced": "Dengeli",
+      "natural": "Doğal",
+      "challenge": "Meydan okumak"
+    },
+    "demoScenarios": {
+      "friendlyChat": "Dostça sohbet",
+      "cafeWorker": "Bir kafe çalışanı ile konuşuyorum",
+      "taxiDriver": "Taksi şoföründen yardım istemek",
+      "meetingNew": "Yeni biriyle tanışmak"
+    },
+    "demoReplyPlaceholder": "Uygulama ortağının yanıtı burada görünecektir.",
+    "demoTipPlaceholder": "Seçilen dillerden herhangi birinde sorun. Konuyu değiştirebilir, anlamlarını sorabilir veya daha kolay ifadeler talep edebilirsiniz.",
+    "promoteConfirmShort": "{{username}} yönetici yapılsın mı?",
+    "promote": "Terfi",
+    "deleteUserTitle": "Kullanıcıyı Sil",
+    "deleteUserConfirmShort": "{{username}} kalıcı olarak silinsin mi? Bu geri alınamaz.",
+    "demoReset": "Görüşme sıfırlandı.",
+    "demoNoReply": "Cevap verilmedi.",
+    "demoNoCoachingNote": "Antrenörlük notu yok.",
+    "demoResponseFailed": "Bu sefer cevap veremedim. Lütfen tekrar deneyin.",
+    "demoConnectionIssue": "Bağlantı sorunu. Birazdan tekrar deneyin.",
+    "tapForDetails": "Ayrıntılar için dokunun",
+    "activeWeek": "Aktif 7 gün",
+    "countries": "Ülkeler",
+    "conversion": "Dönüşüm",
+    "engagement": "Nişanlanmak",
+    "totalCardsStudied": "Çalışılan Toplam Kartlar",
+    "totalAudioPlays": "Toplam Ses Çalma Sayısı",
+    "lessonsViewed": "Görüntülenen Dersler",
+    "topLanguagePairs": "En Popüler Dil Çiftleri",
+    "sessionsCount": "{{count}} oturumlar",
+    "deviceBreakdown": "Cihaz Dağılımı",
+    "recentSessions": "Son Oturumlar ({{count}})",
+    "cardsStudiedCount": "{{count}} kartlar",
+    "pageNumber": "Sayfa {{page}}",
+    "noGuestData": "Konuk verisi yok",
+    "loadData": "Veri Yükle",
+    "speakingDemo": "Konuşma Demosu",
+    "demoIntro": "Yalnızca yöneticilere yönelik görüşme önizlemesi. Sesi veya öğrencinin ilerlemesini kaydetmez.",
+    "scenario": "Senaryo",
+    "customScenario": "Özel senaryo",
+    "learningLanguage": "Dil öğrenmek",
+    "nativeLanguage": "Ana dil",
+    "listenFor": "Dinle",
+    "difficulty": "Zorluk",
+    "learnerTurnInput": "Öğrencinin söylediklerini yazın veya yapıştırın",
+    "interrupt": "Yarıda kesmek",
+    "conversationState": "Konuşma Durumu",
+    "lastLearnerTurn": "Son öğrenci sırası",
+    "noTurnSentYet": "Henüz bir dönüş gönderilmedi.",
+    "practicePartnerResponse": "Partner yanıtını pratik edin",
+    "coachNote": "Antrenör notu",
+    "userDetails": "Kullanıcı Detayları",
+    "totalXp": "Toplam XP",
+    "studyMode": "Çalışma Modu",
+    "languages": "Diller",
+    "loginCount": "Giriş Sayısı",
+    "memberSince": "Üyelik Tarihi:",
+    "suspendReasonLabel": "Askıya Alma Nedeni",
+    "userDetailsLoadFailed": "Kullanıcı ayrıntıları yüklenemedi"
   },
   "pricing": {
     "kicker": "Planlar",
@@ -820,7 +917,9 @@
     "discountCode": "İndirim kodu",
     "discountPlaceholder": "İsteğe bağlı kod",
     "discountUnavailable": "Bu indirim kodu bu planda mevcut değil.",
-    "automaticDiscountApplied": "Otomatik {{discount}} indirim uygulandı"
+    "automaticDiscountApplied": "Otomatik {{discount}} indirim uygulandı",
+    "signInToChooseTitle": "Devam etmek için bir hesap oluşturun",
+    "signInToChooseBody": "Erişiminizin size bağlanabilmesi için ücretli bir plan seçmeden önce bir hesap oluşturun veya oturum açın."
   },
   "billing": {
     "kicker": "Faturalandırma",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "Seviye {{level}} · Birim {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Tekrar deneyin"
   },
   "classLesson": {
     "loading": "Sınıf dersi yükleniyor...",
@@ -1114,7 +1214,10 @@
     "saveReply": "Yanıtı kaydet",
     "saveExample": "Örneği kaydet",
     "practiceEverywhere": "Bunu her yerde uygulayın",
-    "selfTestReason": "Hızlı bir kendi kendine test için sınıftan kaydedildi."
+    "selfTestReason": "Hızlı bir kendi kendine test için sınıftan kaydedildi.",
+    "previous": "Öncesi",
+    "lessonGuide": "Ders kılavuzu",
+    "activityXOfY": "Etkinlik {{current}} / {{total}}"
   },
   "exercise": {
     "kicker": "Egzersiz yapmak",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "Yararlı ifadeler",
     "recapReview": "Sonrakini incele",
     "recapReviewFallback": "Bir cümleyi kaydedin ve başka bir pratik modunda yeniden kullanın.",
-    "practiceLabel": "Konuşma pratiği"
+    "practiceLabel": "Konuşma pratiği",
+    "practiceSetup": "Alıştırma kurulumu"
   },
   "context": {
     "backToProfile": "Profile Geri Dön",
@@ -1304,7 +1408,10 @@
       "memory": "Bellekten"
     },
     "savedReason": "Başka bir geçiş için yazma alıştırmasından kurtarıldım.",
-    "selfTestReason": "Hızlı bir kendi kendine test için yazma alıştırmasından kurtarıldı."
+    "selfTestReason": "Hızlı bir kendi kendine test için yazma alıştırmasından kurtarıldı.",
+    "hideNotebook": "Not defterini gizle",
+    "showNotebook": "Not defterini göster",
+    "hideAddPanel": "Ekleme panelini gizle"
   },
   "certificates": {
     "kicker": "Sertifika",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "Dün gördüklerinize bir kez geri dönün, böylece ilk öğeler yapışmaya başlar.",
     "firstThreeDaySpeakBody": "Dilin sayfadan erken çıkması için kısa bir konuşma sırası kullanın.",
     "firstThreeDayLearnBody": "Çiftin net bir başlangıç ​​noktasına sahip olması için küçük, rehberli bir dersle başlayın."
+  },
+  "resetPassword": {
+    "title": "Şifre sıfırla",
+    "subtitle": "Yeni şifrenizi girin.",
+    "error": "Şifre sıfırlanamadı. Lütfen tekrar deneyin.",
+    "invalidLink": "Bu sıfırlama bağlantısı geçersiz veya süresi dolmuş.",
+    "noToken": "Sıfırlama jetonu eksik. Lütfen yeni bir bağlantı talep edin.",
+    "requestNew": "Yeni bağlantı talep et",
+    "success": "Şifreniz başarıyla sıfırlandı.",
+    "goToLogin": "Girişe git",
+    "newPasswordPlaceholder": "Yeni şifre",
+    "resetButton": "Şifreyi sıfırla",
+    "failed": "Şifre sıfırlanamadı. Lütfen tekrar deneyin.",
+    "kicker": "Şifreyi sıfırla",
+    "missingToken": "Bu sıfırlama bağlantısı eksik veya geçersiz.",
+    "newPassword": "Yeni Şifre",
+    "confirmPassword": "Şifreyi onayla",
+    "submit": "Şifreyi sıfırla"
+  },
+  "contact": {
+    "navLabel": "?leti?im",
+    "kicker": "Bize ula??n",
+    "title": "Neye ihtiyac?n?z oldu?unu s?yleyin",
+    "subtitle": "Bir soru g?nderin, sorun bildirin veya geri bildirim payla??n. Mesaj?n?z? inceleyecek ve gerekti?inde yan?tlayaca??z.",
+    "infoTitle": "Dinliyoruz",
+    "infoText": "Bu formdaki mesajlar, varsa hesap ba?lam?yla birlikte g?venli ?ekilde saklan?r; b?ylece durumu daha h?zl? anlay?p yard?mc? olabiliriz.",
+    "name": "Ad",
+    "namePlaceholder": "Ad?n?z",
+    "email": "E-posta",
+    "emailPlaceholder": "siz@ornek.com",
+    "subject": "Konu",
+    "subjectPlaceholder": "Bu ne hakk?nda?",
+    "message": "Mesaj",
+    "messagePlaceholder": "Mesaj?n?z? buraya yaz?n...",
+    "send": "Mesaj g?nder",
+    "success": "Te?ekk?rler. Mesaj?n?z al?nd?.",
+    "error": "Mesaj?n?z ?u anda g?nderilemedi. L?tfen tekrar deneyin.",
+    "companyTrap": "Şirket",
+    "profileHint": "Bu cihazdan bir soru gönderin, sorun bildirin veya geri bildirim paylaşın."
   }
 }

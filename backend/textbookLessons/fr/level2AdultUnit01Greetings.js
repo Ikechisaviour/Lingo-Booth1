@@ -148,12 +148,12 @@ module.exports = {
       ],
       "targetText": "controle des sons",
       "romanization": "",
-      "nativeText": "Keep French liaison, mute letters, vowel quality, and phrase rhythm clear enough that the sentence remains easy to follow.",
+      "nativeText": "Keep French liaison, mute letters, vowel quality, and phrase rhythm clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Salutations au travail\".",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
       "exampleNative": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
       "korean": "controle des sons",
-      "english": "Keep French liaison, mute letters, vowel quality, and phrase rhythm clear enough that the sentence remains easy to follow.",
+      "english": "Keep French liaison, mute letters, vowel quality, and phrase rhythm clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Salutations au travail\".",
       "example": "Salutations au travail",
       "exampleEnglish": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
     },
@@ -167,27 +167,27 @@ module.exports = {
       "nativeText": "Use the key language of Adult Unit 1: Salutations au travail with the register and setting that the lesson requires.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Topic anchor.",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "Salutations au travail",
       "english": "Use the key language of Adult Unit 1: Salutations au travail with the register and setting that the lesson requires.",
       "example": "Salutations au travail",
-      "exampleEnglish": "Topic anchor."
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "note",
       "activityIds": [
         "fr-level2adultunit01greetings-vocabulary-2"
       ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "targetText": "Salutations au travail",
       "romanization": "",
       "nativeText": "Distinguish the nearby wording choices that make Adult Unit 1: Salutations au travail sound precise rather than merely understandable.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "Salutations au travail",
       "english": "Distinguish the nearby wording choices that make Adult Unit 1: Salutations au travail sound precise rather than merely understandable.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "grammar",
@@ -199,27 +199,27 @@ module.exports = {
       "nativeText": "Handle this adult-life situation politely and clearly.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Topic anchor.",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "Salutations au travail",
       "english": "Handle this adult-life situation politely and clearly.",
       "example": "Salutations au travail",
-      "exampleEnglish": "Topic anchor."
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "grammar",
       "activityIds": [
         "fr-level2adultunit01greetings-grammar-2"
       ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "targetText": "Salutations au travail",
       "romanization": "",
       "nativeText": "Contrast the main pattern in Adult Unit 1: Salutations au travail with one common alternative so the learner can avoid literal translation.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "Salutations au travail",
       "english": "Contrast the main pattern in Adult Unit 1: Salutations au travail with one common alternative so the learner can avoid literal translation.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "reading",
@@ -228,14 +228,14 @@ module.exports = {
       ],
       "targetText": "lecture modele",
       "romanization": "",
-      "nativeText": "Read this connected model as one piece, then identify how the lesson vocabulary and grammar cooperate inside it.",
+      "nativeText": "Read the connected model for lecture modele as one message. Notice how \"Salutations au travail\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "lecture modele",
-      "english": "Read this connected model as one piece, then identify how the lesson vocabulary and grammar cooperate inside it.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
+      "english": "Read the connected model for lecture modele as one message. Notice how \"Salutations au travail\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "conversation",
@@ -244,14 +244,14 @@ module.exports = {
       ],
       "targetText": "dialogue modele",
       "romanization": "",
-      "nativeText": "This short exchange is meant to sound like real interaction rather than a list of isolated sentences.",
+      "nativeText": "Hear \"Salutations au travail\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "dialogue modele",
-      "english": "This short exchange is meant to sound like real interaction rather than a list of isolated sentences.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
+      "english": "Hear \"Salutations au travail\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "writing",
@@ -260,12 +260,12 @@ module.exports = {
       ],
       "targetText": "ecriture guidee",
       "romanization": "",
-      "nativeText": "Use the lesson pattern in your own writing so the form becomes available outside the model sentence.",
+      "nativeText": "Write your own version after studying \"Salutations au travail\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
       "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
       "korean": "ecriture guidee",
-      "english": "Use the lesson pattern in your own writing so the form becomes available outside the model sentence.",
+      "english": "Write your own version after studying \"Salutations au travail\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
       "example": "Salutations au travail",
       "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
     },
@@ -276,13 +276,13 @@ module.exports = {
       ],
       "targetText": "usage et contexte",
       "romanization": "",
-      "nativeText": "Notice the register, interactional, or cultural choice that affects how this French is actually used in daily life.",
+      "nativeText": "Notice the register, interactional, or cultural choice that affects how this French is actually used in daily life. Use \"Salutations au travail\" as the social comparison point for this lesson.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
+      "exampleTarget": "Salutations au travail",
       "exampleNative": "French depends heavily on register and connected speech; the lesson keeps both visible instead of teaching words in isolation.",
       "korean": "usage et contexte",
-      "english": "Notice the register, interactional, or cultural choice that affects how this French is actually used in daily life.",
-      "example": "Adapt the request to the unit topic.",
+      "english": "Notice the register, interactional, or cultural choice that affects how this French is actually used in daily life. Use \"Salutations au travail\" as the social comparison point for this lesson.",
+      "example": "Salutations au travail",
       "exampleEnglish": "French depends heavily on register and connected speech; the lesson keeps both visible instead of teaching words in isolation."
     },
     {
@@ -294,11 +294,11 @@ module.exports = {
       "romanization": "",
       "nativeText": "Complete one realistic exchange with clear French.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
+      "exampleTarget": "Salutations au travail",
       "exampleNative": "Complete one realistic exchange with clear French.",
       "korean": "tache finale",
       "english": "Complete one realistic exchange with clear French.",
-      "example": "Adapt the request to the unit topic.",
+      "example": "Salutations au travail",
       "exampleEnglish": "Complete one realistic exchange with clear French."
     },
     {
@@ -308,14 +308,14 @@ module.exports = {
       ],
       "targetText": "erreur fréquente",
       "romanization": "",
-      "nativeText": "Watch for the literal-translation mistake most likely in Adult Unit 1: Salutations au travail; French often signals meaning through articles, pronoun order, agreement, or connected speech that another language may leave implicit.",
+      "nativeText": "Watch for the literal-translation mistake most likely in Adult Unit 1: Salutations au travail; French often signals meaning through articles, pronoun order, agreement, or connected speech that another language may leave implicit. Begin by checking \"Salutations au travail\" against the model.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: The learner practices functional adult language.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "erreur fréquente",
-      "english": "Watch for the literal-translation mistake most likely in Adult Unit 1: Salutations au travail; French often signals meaning through articles, pronoun order, agreement, or connected speech that another language may leave implicit.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: The learner practices functional adult language."
+      "english": "Watch for the literal-translation mistake most likely in Adult Unit 1: Salutations au travail; French often signals meaning through articles, pronoun order, agreement, or connected speech that another language may leave implicit. Begin by checking \"Salutations au travail\" against the model.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "culture",
@@ -325,32 +325,31 @@ module.exports = {
       ],
       "targetText": "registre",
       "romanization": "",
-      "nativeText": "Check whether the situation calls for familiar, polite, service, or written-register French before choosing the final wording.",
+      "nativeText": "Check whether the situation calls for familiar, polite, service, or written-register French before choosing the final wording. Compare the social fit of \"Salutations au travail\" before reusing it elsewhere.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Topic anchor.",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "registre",
-      "english": "Check whether the situation calls for familiar, polite, service, or written-register French before choosing the final wording.",
+      "english": "Check whether the situation calls for familiar, polite, service, or written-register French before choosing the final wording. Compare the social fit of \"Salutations au travail\" before reusing it elsewhere.",
       "example": "Salutations au travail",
-      "exampleEnglish": "Topic anchor."
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
       "activityIds": [
         "fr-level2adultunit01greetings-listening",
-        null,
         "fr-level2adultunit01greetings-task"
       ],
       "targetText": "fluidité",
       "romanization": "",
-      "nativeText": "Say the idea as one connected message rather than as separate translated fragments.",
+      "nativeText": "Say the idea as one connected message rather than as separate translated fragments. Aim to carry \"Salutations au travail\" as one thought.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "fluidité",
-      "english": "Say the idea as one connected message rather than as separate translated fragments.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
+      "english": "Say the idea as one connected message rather than as separate translated fragments. Aim to carry \"Salutations au travail\" as one thought.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -360,12 +359,12 @@ module.exports = {
       ],
       "targetText": "transfert",
       "romanization": "",
-      "nativeText": "Move the lesson pattern from the model into a new personal situation while keeping its grammatical job intact.",
+      "nativeText": "Move the lesson pattern from the model into a new personal situation while keeping its grammatical job intact. Start from \"Salutations au travail\" and move it into your own life.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
       "exampleNative": "The learner should be able to leave the model behind without losing the form.",
       "korean": "transfert",
-      "english": "Move the lesson pattern from the model into a new personal situation while keeping its grammatical job intact.",
+      "english": "Move the lesson pattern from the model into a new personal situation while keeping its grammatical job intact. Start from \"Salutations au travail\" and move it into your own life.",
       "example": "Salutations au travail",
       "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
     },
@@ -377,12 +376,12 @@ module.exports = {
       ],
       "targetText": "rappel actif",
       "romanization": "",
-      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins.",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Salutations au travail\" before looking back.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
       "exampleNative": "Practical adult-life French with clear service or workplace use.",
       "korean": "rappel actif",
-      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins.",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Salutations au travail\" before looking back.",
       "example": "Salutations au travail",
       "exampleEnglish": "Practical adult-life French with clear service or workplace use."
     },
@@ -394,14 +393,115 @@ module.exports = {
       ],
       "targetText": "extension",
       "romanization": "",
-      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line.",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Salutations au travail\" rather than restarting from a blank sentence.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
+      "exampleTarget": "Salutations au travail",
       "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
       "korean": "extension",
-      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line.",
-      "example": "Adapt the request to the unit topic.",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Salutations au travail\" rather than restarting from a blank sentence.",
+      "example": "Salutations au travail",
       "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fr-level2adultunit01greetings-grammar-2",
+        "fr-level2adultunit01greetings-reading"
+      ],
+      "targetText": "contraste",
+      "romanization": "",
+      "nativeText": "Compare the central form in Adult Unit 1: Salutations au travail with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Salutations au travail\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "contraste",
+      "english": "Compare the central form in Adult Unit 1: Salutations au travail with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Salutations au travail\" as the comparison line.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "fr-level2adultunit01greetings-pronunciation"
+      ],
+      "targetText": "réparation sonore",
+      "romanization": "",
+      "nativeText": "Repair the one liaison, vowel, final consonant, or rhythm detail most likely to blur this French lesson in fast speech. Use \"Salutations au travail\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "réparation sonore",
+      "english": "Repair the one liaison, vowel, final consonant, or rhythm detail most likely to blur this French lesson in fast speech. Use \"Salutations au travail\" as the repair line.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "fr-level2adultunit01greetings-listening",
+        "fr-level2adultunit01greetings-task"
+      ],
+      "targetText": "variation du dialogue",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Salutations au travail\".",
+      "pronunciation": "",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "variation du dialogue",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Salutations au travail\".",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fr-level2adultunit01greetings-grammar-1",
+        "fr-level2adultunit01greetings-writing"
+      ],
+      "targetText": "construction de phrase",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, then grammar carrier, then the detail that makes it personal. Rebuild \"Salutations au travail\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "construction de phrase",
+      "english": "Build the sentence in layers: anchor phrase first, then grammar carrier, then the detail that makes it personal. Rebuild \"Salutations au travail\" one layer at a time.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fr-level2adultunit01greetings-vocabulary-2",
+        "fr-level2adultunit01greetings-grammar-2"
+      ],
+      "targetText": "vérification rapide",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Salutations au travail\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "vérification rapide",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Salutations au travail\" as the deciding example.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fr-level2adultunit01greetings-culture",
+        "fr-level2adultunit01greetings-task"
+      ],
+      "targetText": "réflexion",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Salutations au travail\".",
+      "pronunciation": "",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "réflexion",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Salutations au travail\".",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "word",
@@ -420,11 +520,11 @@ module.exports = {
       "nativeText": "Practical adult-life French with clear service or workplace use.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Topic anchor.",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "Salutations au travail",
       "english": "Practical adult-life French with clear service or workplace use.",
       "example": "Salutations au travail",
-      "exampleEnglish": "Topic anchor."
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "sentence",
@@ -440,14 +540,14 @@ module.exports = {
       ],
       "targetText": "Salutations au travail",
       "romanization": "",
-      "nativeText": "Model use: Practical adult-life French with clear service or workplace use.",
+      "nativeText": "Model use for \"Salutations au travail\": Practical adult-life French with clear service or workplace use.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Topic anchor.",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "Salutations au travail",
-      "english": "Model use: Practical adult-life French with clear service or workplace use.",
+      "english": "Model use for \"Salutations au travail\": Practical adult-life French with clear service or workplace use.",
       "example": "Salutations au travail",
-      "exampleEnglish": "Topic anchor."
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "note",
@@ -463,14 +563,14 @@ module.exports = {
       ],
       "targetText": "Salutations au travail",
       "romanization": "",
-      "nativeText": "Usage focus: Practical adult-life French with clear service or workplace use.",
+      "nativeText": "Usage focus for \"Salutations au travail\": Practical adult-life French with clear service or workplace use.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Notice what the form is doing here: Topic anchor.",
+      "exampleNative": "Notice what the form is doing here: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "Salutations au travail",
-      "english": "Usage focus: Practical adult-life French with clear service or workplace use.",
+      "english": "Usage focus for \"Salutations au travail\": Practical adult-life French with clear service or workplace use.",
       "example": "Salutations au travail",
-      "exampleEnglish": "Notice what the form is doing here: Topic anchor."
+      "exampleEnglish": "Notice what the form is doing here: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "note",
@@ -486,14 +586,14 @@ module.exports = {
       ],
       "targetText": "Salutations au travail",
       "romanization": "",
-      "nativeText": "Contrast check: use this form when the meaning and setting match this lesson, not merely because it resembles a word-for-word translation.",
+      "nativeText": "Contrast check for \"Salutations au travail\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Topic anchor.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "Salutations au travail",
-      "english": "Contrast check: use this form when the meaning and setting match this lesson, not merely because it resembles a word-for-word translation.",
+      "english": "Contrast check for \"Salutations au travail\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
       "example": "Salutations au travail",
-      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Topic anchor."
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -509,14 +609,14 @@ module.exports = {
       ],
       "targetText": "Salutations au travail",
       "romanization": "",
-      "nativeText": "Recall prompt: say the form from memory, then explain what would change if you replaced it with a nearby alternative.",
+      "nativeText": "Recall \"Salutations au travail\" from memory, then explain what would change if a nearby alternative replaced it in \"Salutations au travail\".",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Self-check against the model before moving on: Topic anchor.",
+      "exampleNative": "Self-check against the model before moving on: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "Salutations au travail",
-      "english": "Recall prompt: say the form from memory, then explain what would change if you replaced it with a nearby alternative.",
+      "english": "Recall \"Salutations au travail\" from memory, then explain what would change if a nearby alternative replaced it in \"Salutations au travail\".",
       "example": "Salutations au travail",
-      "exampleEnglish": "Self-check against the model before moving on: Topic anchor."
+      "exampleEnglish": "Self-check against the model before moving on: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -532,14 +632,14 @@ module.exports = {
       ],
       "targetText": "Salutations au travail",
       "romanization": "",
-      "nativeText": "Repair prompt: if this sentence sounds translated rather than natural, return to the register, agreement, tense, or word-order clue highlighted in the note.",
+      "nativeText": "Repair \"Salutations au travail\" inside \"Salutations au travail\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Practical adult-life French with clear service or workplace use.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Use the model as the repair target: Topic anchor.",
+      "exampleNative": "Use the model as the repair target: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "Salutations au travail",
-      "english": "Repair prompt: if this sentence sounds translated rather than natural, return to the register, agreement, tense, or word-order clue highlighted in the note.",
+      "english": "Repair \"Salutations au travail\" inside \"Salutations au travail\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Practical adult-life French with clear service or workplace use.",
       "example": "Salutations au travail",
-      "exampleEnglish": "Use the model as the repair target: Topic anchor."
+      "exampleEnglish": "Use the model as the repair target: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -555,106 +655,14 @@ module.exports = {
       ],
       "targetText": "Salutations au travail",
       "romanization": "",
-      "nativeText": "Transfer prompt: move this form into a new personal sentence while preserving the same grammatical job and social tone.",
+      "nativeText": "Transfer \"Salutations au travail\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Salutations au travail\".",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Topic anchor.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "Salutations au travail",
-      "english": "Transfer prompt: move this form into a new personal sentence while preserving the same grammatical job and social tone.",
+      "english": "Transfer \"Salutations au travail\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Salutations au travail\".",
       "example": "Salutations au travail",
-      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Topic anchor."
-    },
-    {
-      "type": "conversation",
-      "activityIds": [
-        "fr-level2adultunit01greetings-vocabulary-1",
-        "fr-level2adultunit01greetings-vocabulary-2",
-        "fr-level2adultunit01greetings-grammar-1",
-        "fr-level2adultunit01greetings-grammar-2",
-        "fr-level2adultunit01greetings-reading",
-        "fr-level2adultunit01greetings-listening",
-        "fr-level2adultunit01greetings-writing",
-        "fr-level2adultunit01greetings-task"
-      ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "romanization": "",
-      "nativeText": "A polite practical exchange.",
-      "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "A polite practical exchange.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
-    },
-    {
-      "type": "sentence",
-      "activityIds": [
-        "fr-level2adultunit01greetings-vocabulary-1",
-        "fr-level2adultunit01greetings-vocabulary-2",
-        "fr-level2adultunit01greetings-grammar-1",
-        "fr-level2adultunit01greetings-grammar-2",
-        "fr-level2adultunit01greetings-reading",
-        "fr-level2adultunit01greetings-listening",
-        "fr-level2adultunit01greetings-writing",
-        "fr-level2adultunit01greetings-task"
-      ],
-      "targetText": "Adapt the request to the unit topic.",
-      "romanization": "",
-      "nativeText": "Model use: A polite practical exchange.",
-      "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner practices functional adult language.",
-      "korean": "Adapt the request to the unit topic.",
-      "english": "Model use: A polite practical exchange.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner practices functional adult language."
-    },
-    {
-      "type": "note",
-      "activityIds": [
-        "fr-level2adultunit01greetings-vocabulary-1",
-        "fr-level2adultunit01greetings-vocabulary-2",
-        "fr-level2adultunit01greetings-grammar-1",
-        "fr-level2adultunit01greetings-grammar-2",
-        "fr-level2adultunit01greetings-reading",
-        "fr-level2adultunit01greetings-listening",
-        "fr-level2adultunit01greetings-writing",
-        "fr-level2adultunit01greetings-task"
-      ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "romanization": "",
-      "nativeText": "Usage focus: A polite practical exchange.",
-      "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "Notice what the form is doing here: The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "Usage focus: A polite practical exchange.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "Notice what the form is doing here: The learner practices functional adult language."
-    },
-    {
-      "type": "note",
-      "activityIds": [
-        "fr-level2adultunit01greetings-vocabulary-1",
-        "fr-level2adultunit01greetings-vocabulary-2",
-        "fr-level2adultunit01greetings-grammar-1",
-        "fr-level2adultunit01greetings-grammar-2",
-        "fr-level2adultunit01greetings-reading",
-        "fr-level2adultunit01greetings-listening",
-        "fr-level2adultunit01greetings-writing",
-        "fr-level2adultunit01greetings-task"
-      ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "romanization": "",
-      "nativeText": "Contrast check: use this form when the meaning and setting match this lesson, not merely because it resembles a word-for-word translation.",
-      "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "Contrast check: use this form when the meaning and setting match this lesson, not merely because it resembles a word-for-word translation.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: The learner practices functional adult language."
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -668,16 +676,16 @@ module.exports = {
         "fr-level2adultunit01greetings-writing",
         "fr-level2adultunit01greetings-task"
       ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "targetText": "Salutations au travail",
       "romanization": "",
-      "nativeText": "Recall prompt: say the form from memory, then explain what would change if you replaced it with a nearby alternative.",
+      "nativeText": "Find one word or phrase that naturally travels with \"Salutations au travail\" in this setting so it becomes usable language, not a stranded flashcard.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "Self-check against the model before moving on: The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "Recall prompt: say the form from memory, then explain what would change if you replaced it with a nearby alternative.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "Self-check against the model before moving on: The learner practices functional adult language."
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "Salutations au travail",
+      "english": "Find one word or phrase that naturally travels with \"Salutations au travail\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -691,16 +699,16 @@ module.exports = {
         "fr-level2adultunit01greetings-writing",
         "fr-level2adultunit01greetings-task"
       ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "targetText": "Salutations au travail",
       "romanization": "",
-      "nativeText": "Repair prompt: if this sentence sounds translated rather than natural, return to the register, agreement, tense, or word-order clue highlighted in the note.",
+      "nativeText": "Listen for \"Salutations au travail\" inside \"Salutations au travail\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "Use the model as the repair target: The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "Repair prompt: if this sentence sounds translated rather than natural, return to the register, agreement, tense, or word-order clue highlighted in the note.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "Use the model as the repair target: The learner practices functional adult language."
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "Salutations au travail",
+      "english": "Listen for \"Salutations au travail\" inside \"Salutations au travail\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -714,16 +722,39 @@ module.exports = {
         "fr-level2adultunit01greetings-writing",
         "fr-level2adultunit01greetings-task"
       ],
-      "targetText": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
+      "targetText": "Salutations au travail",
       "romanization": "",
-      "nativeText": "Transfer prompt: move this form into a new personal sentence while preserving the same grammatical job and social tone.",
+      "nativeText": "Write \"Salutations au travail\" again without looking, then compare the exact written form against \"Salutations au travail\" before moving on.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language.",
-      "korean": "A: Pouvez-vous m’aider ?\nB: Bien sûr.",
-      "english": "Transfer prompt: move this form into a new personal sentence while preserving the same grammatical job and social tone.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language."
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use the written model as the final correctness check: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "Salutations au travail",
+      "english": "Write \"Salutations au travail\" again without looking, then compare the exact written form against \"Salutations au travail\" before moving on.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use the written model as the final correctness check: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fr-level2adultunit01greetings-vocabulary-1",
+        "fr-level2adultunit01greetings-vocabulary-2",
+        "fr-level2adultunit01greetings-grammar-1",
+        "fr-level2adultunit01greetings-grammar-2",
+        "fr-level2adultunit01greetings-reading",
+        "fr-level2adultunit01greetings-listening",
+        "fr-level2adultunit01greetings-writing",
+        "fr-level2adultunit01greetings-task"
+      ],
+      "targetText": "Salutations au travail",
+      "romanization": "",
+      "nativeText": "Check whether \"Salutations au travail\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "pronunciation": "",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "korean": "Salutations au travail",
+      "english": "Check whether \"Salutations au travail\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "note",
@@ -735,11 +766,11 @@ module.exports = {
       "nativeText": "Compare the central form in Adult Unit 1: Salutations au travail with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "contraste",
       "english": "Compare the central form in Adult Unit 1: Salutations au travail with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here.",
       "example": "Salutations au travail",
-      "exampleEnglish": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "pronunciation",
@@ -750,12 +781,12 @@ module.exports = {
       "romanization": "",
       "nativeText": "Repair the one liaison, vowel, final consonant, or rhythm detail most likely to blur this French lesson in fast speech.",
       "pronunciation": "",
-      "exampleTarget": "Complete one realistic exchange with clear French.",
-      "exampleNative": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "réparation sonore",
       "english": "Repair the one liaison, vowel, final consonant, or rhythm detail most likely to blur this French lesson in fast speech.",
-      "example": "Complete one realistic exchange with clear French.",
-      "exampleEnglish": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French."
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "conversation",
@@ -767,12 +798,12 @@ module.exports = {
       "romanization": "",
       "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "variation du dialogue",
       "english": "Change one participant, one setting, and one detail while keeping the lesson form natural.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language."
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -784,12 +815,12 @@ module.exports = {
       "romanization": "",
       "nativeText": "Build the sentence in layers: anchor phrase first, then grammar carrier, then the detail that makes it personal.",
       "pronunciation": "",
-      "exampleTarget": "Complete one realistic exchange with clear French.",
-      "exampleNative": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "construction de phrase",
       "english": "Build the sentence in layers: anchor phrase first, then grammar carrier, then the detail that makes it personal.",
-      "example": "Complete one realistic exchange with clear French.",
-      "exampleEnglish": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French."
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -802,11 +833,11 @@ module.exports = {
       "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "vérification rapide",
       "english": "Choose the better of two nearby forms and say aloud what clue made the decision.",
       "example": "Salutations au travail",
-      "exampleEnglish": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "note",
@@ -818,12 +849,12 @@ module.exports = {
       "romanization": "",
       "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "réflexion",
       "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language."
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -833,13 +864,13 @@ module.exports = {
       ],
       "targetText": "écoute ciblée",
       "romanization": "",
-      "nativeText": "Listen for the exact syllable, ending, article, or pronoun that changes the meaning of the model.",
+      "nativeText": "Listen inside \"Salutations au travail\" for the syllable, ending, article, or pronoun that changes the meaning of the model.",
       "pronunciation": "",
-      "exampleTarget": "Complete one realistic exchange with clear French.",
+      "exampleTarget": "Salutations au travail",
       "exampleNative": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
       "korean": "écoute ciblée",
-      "english": "Listen for the exact syllable, ending, article, or pronoun that changes the meaning of the model.",
-      "example": "Complete one realistic exchange with clear French.",
+      "english": "Listen inside \"Salutations au travail\" for the syllable, ending, article, or pronoun that changes the meaning of the model.",
+      "example": "Salutations au travail",
       "exampleEnglish": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
     },
     {
@@ -850,14 +881,14 @@ module.exports = {
       ],
       "targetText": "réponse courte",
       "romanization": "",
-      "nativeText": "Answer once with the shortest correct form, then answer again with one useful extension.",
+      "nativeText": "Answer first with the shortest correct form that still fits \"Salutations au travail\", then add one useful extension.",
       "pronunciation": "",
-      "exampleTarget": "Complete one realistic exchange with clear French.",
-      "exampleNative": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "réponse courte",
-      "english": "Answer once with the shortest correct form, then answer again with one useful extension.",
-      "example": "Complete one realistic exchange with clear French.",
-      "exampleEnglish": "The whole lesson is built toward this outcome: Complete one realistic exchange with clear French."
+      "english": "Answer first with the shortest correct form that still fits \"Salutations au travail\", then add one useful extension.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -867,13 +898,13 @@ module.exports = {
       ],
       "targetText": "réponse développée",
       "romanization": "",
-      "nativeText": "Turn the model into a fuller answer by adding cause, time, or contrast without changing the core grammar.",
+      "nativeText": "Turn \"Salutations au travail\" into a fuller answer by adding cause, time, or contrast without changing the core grammar.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
+      "exampleTarget": "Salutations au travail",
       "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
       "korean": "réponse développée",
-      "english": "Turn the model into a fuller answer by adding cause, time, or contrast without changing the core grammar.",
-      "example": "Adapt the request to the unit topic.",
+      "english": "Turn \"Salutations au travail\" into a fuller answer by adding cause, time, or contrast without changing the core grammar.",
+      "example": "Salutations au travail",
       "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
     },
     {
@@ -883,14 +914,14 @@ module.exports = {
       ],
       "targetText": "paire minimale",
       "romanization": "",
-      "nativeText": "Contrast the lesson form with the nearest form a learner might confuse it with and explain what changes.",
+      "nativeText": "Compare \"Salutations au travail\" with the nearest form a learner might confuse it with and explain what changes.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "paire minimale",
-      "english": "Contrast the lesson form with the nearest form a learner might confuse it with and explain what changes.",
+      "english": "Compare \"Salutations au travail\" with the nearest form a learner might confuse it with and explain what changes.",
       "example": "Salutations au travail",
-      "exampleEnglish": "Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "writing",
@@ -899,13 +930,13 @@ module.exports = {
       ],
       "targetText": "révision écrite",
       "romanization": "",
-      "nativeText": "Copy the target sentence once, then rewrite it from memory with attention to accents, agreement, and pronoun placement.",
+      "nativeText": "Copy \"Salutations au travail\" once, then rewrite it from memory with attention to accents, agreement, and pronoun placement.",
       "pronunciation": "",
-      "exampleTarget": "Complete one realistic exchange with clear French.",
+      "exampleTarget": "Salutations au travail",
       "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
       "korean": "révision écrite",
-      "english": "Copy the target sentence once, then rewrite it from memory with attention to accents, agreement, and pronoun placement.",
-      "example": "Complete one realistic exchange with clear French.",
+      "english": "Copy \"Salutations au travail\" once, then rewrite it from memory with attention to accents, agreement, and pronoun placement.",
+      "example": "Salutations au travail",
       "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
     },
     {
@@ -915,13 +946,13 @@ module.exports = {
       ],
       "targetText": "nouvelle scène",
       "romanization": "",
-      "nativeText": "Move the lesson language into a new setting so the learner proves transfer rather than repetition.",
+      "nativeText": "Move \"Salutations au travail\" into a new setting so the learner proves transfer rather than repetition.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
+      "exampleTarget": "Salutations au travail",
       "exampleNative": "Complete one realistic exchange with clear French.",
       "korean": "nouvelle scène",
-      "english": "Move the lesson language into a new setting so the learner proves transfer rather than repetition.",
-      "example": "Adapt the request to the unit topic.",
+      "english": "Move \"Salutations au travail\" into a new setting so the learner proves transfer rather than repetition.",
+      "example": "Salutations au travail",
       "exampleEnglish": "Complete one realistic exchange with clear French."
     },
     {
@@ -931,14 +962,14 @@ module.exports = {
       ],
       "targetText": "auto-correction",
       "romanization": "",
-      "nativeText": "Name one error you might make in this lesson and repair it before looking back at the model.",
+      "nativeText": "Name one error you might make while producing \"Salutations au travail\", then repair it before looking back at the model.",
       "pronunciation": "",
       "exampleTarget": "Salutations au travail",
-      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "auto-correction",
-      "english": "Name one error you might make in this lesson and repair it before looking back at the model.",
+      "english": "Name one error you might make while producing \"Salutations au travail\", then repair it before looking back at the model.",
       "example": "Salutations au travail",
-      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: Read the model with French phrase rhythm, liaison where appropriate, and no extra sounded final consonants."
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     },
     {
       "type": "practice",
@@ -948,14 +979,14 @@ module.exports = {
       ],
       "targetText": "sortie orale",
       "romanization": "",
-      "nativeText": "Speak for twenty seconds using at least two lesson forms in one connected answer.",
+      "nativeText": "Speak for twenty seconds by linking at least two lesson forms around \"Salutations au travail\" in one connected answer.",
       "pronunciation": "",
-      "exampleTarget": "Adapt the request to the unit topic.",
-      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language.",
+      "exampleTarget": "Salutations au travail",
+      "exampleNative": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings.",
       "korean": "sortie orale",
-      "english": "Speak for twenty seconds using at least two lesson forms in one connected answer.",
-      "example": "Adapt the request to the unit topic.",
-      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: The learner practices functional adult language."
+      "english": "Speak for twenty seconds by linking at least two lesson forms around \"Salutations au travail\" in one connected answer.",
+      "example": "Salutations au travail",
+      "exampleEnglish": "Use workplace greetings that fit first contact, return greetings, and the polite distance expected in professional settings."
     }
   ],
   "targetLang": "fr",

@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u18',
-  title: 'Level 1 · Unit 18: Здоровье — Health',
-  category: 'health',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe simple symptoms, ask for help, and understand basic health advice.',
-  vocabularyGoal: 'Use body-part, symptom, medicine, and clinic vocabulary.',
-  grammarGoal: 'Use `у меня болит`, `мне нужно`, and simple imperative advice.',
-  speakingGoal: 'Say what hurts, describe one symptom, and understand one instruction.',
-  task: 'Explain a minor illness at a pharmacy or clinic.',
-  expressionPractice: [
-    practice('describing-symptom', 'Describing symptom', 'Use `у меня болит`.'),
-    practice('asking-help', 'Asking help', 'Use `мне нужно`.'),
-    practice('understanding-advice', 'Understanding advice', 'Recognize one recommendation and one prohibition.'),
+module.exports = {
+  "title": "Level 1 · Unit 18: Здоровье — Health",
+  "category": "health",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit18health-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe simple symptoms, ask for help, and understand basic health advice."
+      ],
+      "task": "Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "id": "ru-level1unit18health-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit18health-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 18: Здоровье — Health with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit18health-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 18: Здоровье — Health sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit18health-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe simple symptoms, ask for help, and understand basic health advice."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit18health-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 18: Здоровье — Health with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit18health-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit18health-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit18health-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit18health-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit18health-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Explain a minor illness at a pharmacy or clinic."
+      ],
+      "task": "Explain a minor illness at a pharmacy or clinic."
+    }
   ],
-  relatedPools: ['topic-health', 'topic-service'],
-  items: [
-    item('у меня болит голова', 'u menya bolit golova', '“My head hurts.” Russian often frames pain as “at me hurts X.”', 'У меня болит голова с утра.', '“My head has hurt since morning.”'),
-    item('температура', 'temperatura', '“Fever / temperature.” Everyday speech often uses this noun for having a fever.', 'У меня высокая температура.', '“I have a high fever.”'),
-    item('кашель', 'kashel', '“Cough.” A common pharmacy word.', 'У меня сухой кашель.', '“I have a dry cough.”'),
-    item('живот', 'zhivot', '“Stomach / belly.” Useful in ordinary complaints.', 'У меня болит живот.', '“My stomach hurts.”'),
-    item('лекарство', 'lekarstvo', '“Medicine.” A practical health noun.', 'Мне нужно лекарство от простуды.', '“I need medicine for a cold.”'),
-    item('врач', 'vrach', '“Doctor.” A common profession noun in health contexts.', 'Мне нужно к врачу.', '“I need to see a doctor.”'),
-    item('вам нужно отдыхать', 'vam nuzhno otdykhat', '“You need to rest.” A polite advice phrase with dative `вам`.', 'Вам нужно отдыхать два дня.', '“You need to rest for two days.”'),
-    item('не ешьте острое', 'ne yeshte ostroye', '“Do not eat spicy food.” A polite negative imperative.', 'Не ешьте острое сегодня.', '“Do not eat spicy food today.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-symptom",
+      "label": "Describing symptom",
+      "goal": "Use `у меня болит`."
+    },
+    {
+      "id": "asking-help",
+      "label": "Asking help",
+      "goal": "Use `мне нужно`."
+    },
+    {
+      "id": "understanding-advice",
+      "label": "Understanding advice",
+      "goal": "Recognize one recommendation and one prohibition."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-health",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Explain a minor illness at a pharmacy or clinic.",
+      "korean": "цель урока",
+      "english": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit18health-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"У меня болит голова с утра.\".",
+      "pronunciation": "",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"У меня болит голова с утра.\".",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 18: Здоровье — Health with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "Use the key language of Level 1 · Unit 18: Здоровье — Health with the register and setting that the lesson requires.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-2"
+      ],
+      "targetText": "температура",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 18: Здоровье — Health sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "температура",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 18: Здоровье — Health sound precise rather than merely understandable.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit18health-grammar-1"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "",
+      "nativeText": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "pronunciation": "",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "Describe simple symptoms, ask for help, and understand basic health advice.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit18health-grammar-2"
+      ],
+      "targetText": "температура",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 18: Здоровье — Health with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "температура",
+      "english": "Contrast the main pattern in Level 1 · Unit 18: Здоровье — Health with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit18health-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Не ешьте острое сегодня.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "модель чтения",
+      "english": "Read \"Не ешьте острое сегодня.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit18health-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Не ешьте острое сегодня.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "модель диалога",
+      "english": "Hear \"Не ешьте острое сегодня.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit18health-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"У меня болит голова с утра.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"У меня болит голова с утра.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit18health-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Explain a minor illness at a pharmacy or clinic.",
+      "pronunciation": "",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "Explain a minor illness at a pharmacy or clinic.",
+      "korean": "итоговое задание",
+      "english": "Explain a minor illness at a pharmacy or clinic.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "Explain a minor illness at a pharmacy or clinic."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"У меня высокая температура.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I have a high fever.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"У меня высокая температура.\" against the model.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I have a high fever.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"У меня болит голова с утра.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"У меня болит голова с утра.\" before reusing it elsewhere.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Не ешьте острое сегодня.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Не ешьте острое сегодня.\" as one thought.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"У меня болит голова с утра.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"У меня болит голова с утра.\" and move it into your own life.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"у меня болит голова\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "у меня болит голова",
+      "exampleNative": "“My head hurts.” Russian often frames pain as “at me hurts X.”",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"у меня болит голова\" before looking back.",
+      "example": "у меня болит голова",
+      "exampleEnglish": "“My head hurts.” Russian often frames pain as “at me hurts X.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Не ешьте острое сегодня.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Не ешьте острое сегодня.\" rather than restarting from a blank sentence.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 18: Здоровье — Health with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"У меня высокая температура.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 18: Здоровье — Health with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"У меня высокая температура.\" as the comparison line.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit18health-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"У меня болит голова с утра.\".",
+      "pronunciation": "",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"У меня болит голова с утра.\".",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Не ешьте острое сегодня.\".",
+      "pronunciation": "",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Не ешьте острое сегодня.\".",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"У меня болит голова с утра.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"У меня болит голова с утра.\" one layer at a time.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"У меня высокая температура.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"У меня высокая температура.\" as the deciding example.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-culture",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Не ешьте острое сегодня.\".",
+      "pronunciation": "",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Не ешьте острое сегодня.\".",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "u menya bolit golova",
+      "nativeText": "“My head hurts.” Russian often frames pain as “at me hurts X.”",
+      "pronunciation": "u menya bolit golova",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "“My head hurts.” Russian often frames pain as “at me hurts X.”",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "У меня болит голова с утра.",
+      "romanization": "u menya bolit golova",
+      "nativeText": "Model use for \"У меня болит голова с утра.\": “My head has hurt since morning.”",
+      "pronunciation": "u menya bolit golova",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "“My head has hurt since morning.”",
+      "korean": "У меня болит голова с утра.",
+      "english": "Model use for \"У меня болит голова с утра.\": “My head has hurt since morning.”",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "“My head has hurt since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "u menya bolit golova",
+      "nativeText": "Usage focus for \"у меня болит голова\": Use the key language of Level 1 · Unit 18: Здоровье — Health with the register and setting that the lesson requires.",
+      "pronunciation": "u menya bolit golova",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "Notice what the form is doing here: “My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "Usage focus for \"у меня болит голова\": Use the key language of Level 1 · Unit 18: Здоровье — Health with the register and setting that the lesson requires.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "Notice what the form is doing here: “My head has hurt since morning.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "u menya bolit golova",
+      "nativeText": "Contrast check for \"у меня болит голова\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "u menya bolit golova",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "Contrast check for \"у меня болит голова\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "u menya bolit golova",
+      "nativeText": "Recall \"у меня болит голова\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня болит голова с утра.\".",
+      "pronunciation": "u menya bolit golova",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "Self-check against the model before moving on: “My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "Recall \"у меня болит голова\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня болит голова с утра.\".",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "Self-check against the model before moving on: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "u menya bolit golova",
+      "nativeText": "Repair \"у меня болит голова\" inside \"У меня болит голова с утра.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 18: Здоровье — Health with the register and setting that the lesson requires.",
+      "pronunciation": "u menya bolit golova",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "Use the model as the repair target: “My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "Repair \"у меня болит голова\" inside \"У меня болит голова с утра.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 18: Здоровье — Health with the register and setting that the lesson requires.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "Use the model as the repair target: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "u menya bolit golova",
+      "nativeText": "Transfer \"у меня болит голова\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня болит голова с утра.\".",
+      "pronunciation": "u menya bolit golova",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "Transfer \"у меня болит голова\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня болит голова с утра.\".",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "u menya bolit golova",
+      "nativeText": "Find one word or phrase that naturally travels with \"у меня болит голова\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "u menya bolit golova",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "Find one word or phrase that naturally travels with \"у меня болит голова\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "u menya bolit golova",
+      "nativeText": "Listen for \"у меня болит голова\" inside \"У меня болит голова с утра.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "u menya bolit golova",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "Listen for \"у меня болит голова\" inside \"У меня болит голова с утра.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "u menya bolit golova",
+      "nativeText": "Write \"у меня болит голова\" again without looking, then compare the exact written form against \"У меня болит голова с утра.\" before moving on.",
+      "pronunciation": "u menya bolit golova",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "Use the written model as the final correctness check: “My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "Write \"у меня болит голова\" again without looking, then compare the exact written form against \"У меня болит голова с утра.\" before moving on.",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My head has hurt since morning.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "у меня болит голова",
+      "romanization": "u menya bolit golova",
+      "nativeText": "Check whether \"у меня болит голова\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My head has hurt since morning.”",
+      "pronunciation": "u menya bolit golova",
+      "exampleTarget": "У меня болит голова с утра.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My head has hurt since morning.”",
+      "korean": "у меня болит голова",
+      "english": "Check whether \"у меня болит голова\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My head has hurt since morning.”",
+      "example": "У меня болит голова с утра.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My head has hurt since morning.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "температура",
+      "romanization": "temperatura",
+      "nativeText": "“Fever / temperature.” Everyday speech often uses this noun for having a fever.",
+      "pronunciation": "temperatura",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "температура",
+      "english": "“Fever / temperature.” Everyday speech often uses this noun for having a fever.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "У меня высокая температура.",
+      "romanization": "temperatura",
+      "nativeText": "Model use for \"У меня высокая температура.\": “I have a high fever.”",
+      "pronunciation": "temperatura",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "“I have a high fever.”",
+      "korean": "У меня высокая температура.",
+      "english": "Model use for \"У меня высокая температура.\": “I have a high fever.”",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "“I have a high fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "температура",
+      "romanization": "temperatura",
+      "nativeText": "Usage focus for \"температура\": Distinguish the nearby wording choices that make Level 1 · Unit 18: Здоровье — Health sound precise rather than merely understandable.",
+      "pronunciation": "temperatura",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "Notice what the form is doing here: “I have a high fever.”",
+      "korean": "температура",
+      "english": "Usage focus for \"температура\": Distinguish the nearby wording choices that make Level 1 · Unit 18: Здоровье — Health sound precise rather than merely understandable.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "Notice what the form is doing here: “I have a high fever.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "температура",
+      "romanization": "temperatura",
+      "nativeText": "Contrast check for \"температура\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "temperatura",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a high fever.”",
+      "korean": "температура",
+      "english": "Contrast check for \"температура\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "температура",
+      "romanization": "temperatura",
+      "nativeText": "Recall \"температура\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня высокая температура.\".",
+      "pronunciation": "temperatura",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "Self-check against the model before moving on: “I have a high fever.”",
+      "korean": "температура",
+      "english": "Recall \"температура\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня высокая температура.\".",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "температура",
+      "romanization": "temperatura",
+      "nativeText": "Repair \"температура\" inside \"У меня высокая температура.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 18: Здоровье — Health sound precise rather than merely understandable.",
+      "pronunciation": "temperatura",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "Use the model as the repair target: “I have a high fever.”",
+      "korean": "температура",
+      "english": "Repair \"температура\" inside \"У меня высокая температура.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 18: Здоровье — Health sound precise rather than merely understandable.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "Use the model as the repair target: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "температура",
+      "romanization": "temperatura",
+      "nativeText": "Transfer \"температура\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня высокая температура.\".",
+      "pronunciation": "temperatura",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a high fever.”",
+      "korean": "температура",
+      "english": "Transfer \"температура\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня высокая температура.\".",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "температура",
+      "romanization": "temperatura",
+      "nativeText": "Find one word or phrase that naturally travels with \"температура\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "temperatura",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have a high fever.”",
+      "korean": "температура",
+      "english": "Find one word or phrase that naturally travels with \"температура\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "температура",
+      "romanization": "temperatura",
+      "nativeText": "Listen for \"температура\" inside \"У меня высокая температура.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "temperatura",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a high fever.”",
+      "korean": "температура",
+      "english": "Listen for \"температура\" inside \"У меня высокая температура.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "температура",
+      "romanization": "temperatura",
+      "nativeText": "Write \"температура\" again without looking, then compare the exact written form against \"У меня высокая температура.\" before moving on.",
+      "pronunciation": "temperatura",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "Use the written model as the final correctness check: “I have a high fever.”",
+      "korean": "температура",
+      "english": "Write \"температура\" again without looking, then compare the exact written form against \"У меня высокая температура.\" before moving on.",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have a high fever.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "температура",
+      "romanization": "temperatura",
+      "nativeText": "Check whether \"температура\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a high fever.”",
+      "pronunciation": "temperatura",
+      "exampleTarget": "У меня высокая температура.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have a high fever.”",
+      "korean": "температура",
+      "english": "Check whether \"температура\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a high fever.”",
+      "example": "У меня высокая температура.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have a high fever.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "кашель",
+      "romanization": "kashel",
+      "nativeText": "“Cough.” A common pharmacy word.",
+      "pronunciation": "kashel",
+      "exampleTarget": "У меня сухой кашель.",
+      "exampleNative": "“I have a dry cough.”",
+      "korean": "кашель",
+      "english": "“Cough.” A common pharmacy word.",
+      "example": "У меня сухой кашель.",
+      "exampleEnglish": "“I have a dry cough.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "У меня сухой кашель.",
+      "romanization": "kashel",
+      "nativeText": "Model use for \"У меня сухой кашель.\": “I have a dry cough.”",
+      "pronunciation": "kashel",
+      "exampleTarget": "У меня сухой кашель.",
+      "exampleNative": "“I have a dry cough.”",
+      "korean": "У меня сухой кашель.",
+      "english": "Model use for \"У меня сухой кашель.\": “I have a dry cough.”",
+      "example": "У меня сухой кашель.",
+      "exampleEnglish": "“I have a dry cough.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "кашель",
+      "romanization": "kashel",
+      "nativeText": "Usage focus for \"кашель\": “Cough.” A common pharmacy word.",
+      "pronunciation": "kashel",
+      "exampleTarget": "У меня сухой кашель.",
+      "exampleNative": "Notice what the form is doing here: “I have a dry cough.”",
+      "korean": "кашель",
+      "english": "Usage focus for \"кашель\": “Cough.” A common pharmacy word.",
+      "example": "У меня сухой кашель.",
+      "exampleEnglish": "Notice what the form is doing here: “I have a dry cough.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "кашель",
+      "romanization": "kashel",
+      "nativeText": "Contrast check for \"кашель\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kashel",
+      "exampleTarget": "У меня сухой кашель.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a dry cough.”",
+      "korean": "кашель",
+      "english": "Contrast check for \"кашель\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "У меня сухой кашель.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "кашель",
+      "romanization": "kashel",
+      "nativeText": "Recall \"кашель\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня сухой кашель.\".",
+      "pronunciation": "kashel",
+      "exampleTarget": "У меня сухой кашель.",
+      "exampleNative": "Self-check against the model before moving on: “I have a dry cough.”",
+      "korean": "кашель",
+      "english": "Recall \"кашель\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня сухой кашель.\".",
+      "example": "У меня сухой кашель.",
+      "exampleEnglish": "Self-check against the model before moving on: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "кашель",
+      "romanization": "kashel",
+      "nativeText": "Repair \"кашель\" inside \"У меня сухой кашель.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cough.” A common pharmacy word.",
+      "pronunciation": "kashel",
+      "exampleTarget": "У меня сухой кашель.",
+      "exampleNative": "Use the model as the repair target: “I have a dry cough.”",
+      "korean": "кашель",
+      "english": "Repair \"кашель\" inside \"У меня сухой кашель.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cough.” A common pharmacy word.",
+      "example": "У меня сухой кашель.",
+      "exampleEnglish": "Use the model as the repair target: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "кашель",
+      "romanization": "kashel",
+      "nativeText": "Transfer \"кашель\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня сухой кашель.\".",
+      "pronunciation": "kashel",
+      "exampleTarget": "У меня сухой кашель.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a dry cough.”",
+      "korean": "кашель",
+      "english": "Transfer \"кашель\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня сухой кашель.\".",
+      "example": "У меня сухой кашель.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "кашель",
+      "romanization": "kashel",
+      "nativeText": "Find one word or phrase that naturally travels with \"кашель\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kashel",
+      "exampleTarget": "У меня сухой кашель.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I have a dry cough.”",
+      "korean": "кашель",
+      "english": "Find one word or phrase that naturally travels with \"кашель\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "У меня сухой кашель.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "кашель",
+      "romanization": "kashel",
+      "nativeText": "Listen for \"кашель\" inside \"У меня сухой кашель.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kashel",
+      "exampleTarget": "У меня сухой кашель.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a dry cough.”",
+      "korean": "кашель",
+      "english": "Listen for \"кашель\" inside \"У меня сухой кашель.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "У меня сухой кашель.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "кашель",
+      "romanization": "kashel",
+      "nativeText": "Write \"кашель\" again without looking, then compare the exact written form against \"У меня сухой кашель.\" before moving on.",
+      "pronunciation": "kashel",
+      "exampleTarget": "У меня сухой кашель.",
+      "exampleNative": "Use the written model as the final correctness check: “I have a dry cough.”",
+      "korean": "кашель",
+      "english": "Write \"кашель\" again without looking, then compare the exact written form against \"У меня сухой кашель.\" before moving on.",
+      "example": "У меня сухой кашель.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I have a dry cough.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "кашель",
+      "romanization": "kashel",
+      "nativeText": "Check whether \"кашель\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "pronunciation": "kashel",
+      "exampleTarget": "У меня сухой кашель.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "korean": "кашель",
+      "english": "Check whether \"кашель\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”",
+      "example": "У меня сухой кашель.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I have a dry cough.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "живот",
+      "romanization": "zhivot",
+      "nativeText": "“Stomach / belly.” Useful in ordinary complaints.",
+      "pronunciation": "zhivot",
+      "exampleTarget": "У меня болит живот.",
+      "exampleNative": "“My stomach hurts.”",
+      "korean": "живот",
+      "english": "“Stomach / belly.” Useful in ordinary complaints.",
+      "example": "У меня болит живот.",
+      "exampleEnglish": "“My stomach hurts.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "У меня болит живот.",
+      "romanization": "zhivot",
+      "nativeText": "Model use for \"У меня болит живот.\": “My stomach hurts.”",
+      "pronunciation": "zhivot",
+      "exampleTarget": "У меня болит живот.",
+      "exampleNative": "“My stomach hurts.”",
+      "korean": "У меня болит живот.",
+      "english": "Model use for \"У меня болит живот.\": “My stomach hurts.”",
+      "example": "У меня болит живот.",
+      "exampleEnglish": "“My stomach hurts.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "живот",
+      "romanization": "zhivot",
+      "nativeText": "Usage focus for \"живот\": “Stomach / belly.” Useful in ordinary complaints.",
+      "pronunciation": "zhivot",
+      "exampleTarget": "У меня болит живот.",
+      "exampleNative": "Notice what the form is doing here: “My stomach hurts.”",
+      "korean": "живот",
+      "english": "Usage focus for \"живот\": “Stomach / belly.” Useful in ordinary complaints.",
+      "example": "У меня болит живот.",
+      "exampleEnglish": "Notice what the form is doing here: “My stomach hurts.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "живот",
+      "romanization": "zhivot",
+      "nativeText": "Contrast check for \"живот\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "zhivot",
+      "exampleTarget": "У меня болит живот.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My stomach hurts.”",
+      "korean": "живот",
+      "english": "Contrast check for \"живот\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "У меня болит живот.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My stomach hurts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "живот",
+      "romanization": "zhivot",
+      "nativeText": "Recall \"живот\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня болит живот.\".",
+      "pronunciation": "zhivot",
+      "exampleTarget": "У меня болит живот.",
+      "exampleNative": "Self-check against the model before moving on: “My stomach hurts.”",
+      "korean": "живот",
+      "english": "Recall \"живот\" from memory, then explain what would change if a nearby alternative replaced it in \"У меня болит живот.\".",
+      "example": "У меня болит живот.",
+      "exampleEnglish": "Self-check against the model before moving on: “My stomach hurts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "живот",
+      "romanization": "zhivot",
+      "nativeText": "Repair \"живот\" inside \"У меня болит живот.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stomach / belly.” Useful in ordinary complaints.",
+      "pronunciation": "zhivot",
+      "exampleTarget": "У меня болит живот.",
+      "exampleNative": "Use the model as the repair target: “My stomach hurts.”",
+      "korean": "живот",
+      "english": "Repair \"живот\" inside \"У меня болит живот.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stomach / belly.” Useful in ordinary complaints.",
+      "example": "У меня болит живот.",
+      "exampleEnglish": "Use the model as the repair target: “My stomach hurts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "живот",
+      "romanization": "zhivot",
+      "nativeText": "Transfer \"живот\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня болит живот.\".",
+      "pronunciation": "zhivot",
+      "exampleTarget": "У меня болит живот.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My stomach hurts.”",
+      "korean": "живот",
+      "english": "Transfer \"живот\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У меня болит живот.\".",
+      "example": "У меня болит живот.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My stomach hurts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "живот",
+      "romanization": "zhivot",
+      "nativeText": "Find one word or phrase that naturally travels with \"живот\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "zhivot",
+      "exampleTarget": "У меня болит живот.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My stomach hurts.”",
+      "korean": "живот",
+      "english": "Find one word or phrase that naturally travels with \"живот\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "У меня болит живот.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My stomach hurts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "живот",
+      "romanization": "zhivot",
+      "nativeText": "Listen for \"живот\" inside \"У меня болит живот.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "zhivot",
+      "exampleTarget": "У меня болит живот.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My stomach hurts.”",
+      "korean": "живот",
+      "english": "Listen for \"живот\" inside \"У меня болит живот.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "У меня болит живот.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My stomach hurts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "живот",
+      "romanization": "zhivot",
+      "nativeText": "Write \"живот\" again without looking, then compare the exact written form against \"У меня болит живот.\" before moving on.",
+      "pronunciation": "zhivot",
+      "exampleTarget": "У меня болит живот.",
+      "exampleNative": "Use the written model as the final correctness check: “My stomach hurts.”",
+      "korean": "живот",
+      "english": "Write \"живот\" again without looking, then compare the exact written form against \"У меня болит живот.\" before moving on.",
+      "example": "У меня болит живот.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My stomach hurts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "живот",
+      "romanization": "zhivot",
+      "nativeText": "Check whether \"живот\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My stomach hurts.”",
+      "pronunciation": "zhivot",
+      "exampleTarget": "У меня болит живот.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My stomach hurts.”",
+      "korean": "живот",
+      "english": "Check whether \"живот\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My stomach hurts.”",
+      "example": "У меня болит живот.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My stomach hurts.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "лекарство",
+      "romanization": "lekarstvo",
+      "nativeText": "“Medicine.” A practical health noun.",
+      "pronunciation": "lekarstvo",
+      "exampleTarget": "Мне нужно лекарство от простуды.",
+      "exampleNative": "“I need medicine for a cold.”",
+      "korean": "лекарство",
+      "english": "“Medicine.” A practical health noun.",
+      "example": "Мне нужно лекарство от простуды.",
+      "exampleEnglish": "“I need medicine for a cold.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "Мне нужно лекарство от простуды.",
+      "romanization": "lekarstvo",
+      "nativeText": "Model use for \"Мне нужно лекарство от простуды.\": “I need medicine for a cold.”",
+      "pronunciation": "lekarstvo",
+      "exampleTarget": "Мне нужно лекарство от простуды.",
+      "exampleNative": "“I need medicine for a cold.”",
+      "korean": "Мне нужно лекарство от простуды.",
+      "english": "Model use for \"Мне нужно лекарство от простуды.\": “I need medicine for a cold.”",
+      "example": "Мне нужно лекарство от простуды.",
+      "exampleEnglish": "“I need medicine for a cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "лекарство",
+      "romanization": "lekarstvo",
+      "nativeText": "Usage focus for \"лекарство\": “Medicine.” A practical health noun.",
+      "pronunciation": "lekarstvo",
+      "exampleTarget": "Мне нужно лекарство от простуды.",
+      "exampleNative": "Notice what the form is doing here: “I need medicine for a cold.”",
+      "korean": "лекарство",
+      "english": "Usage focus for \"лекарство\": “Medicine.” A practical health noun.",
+      "example": "Мне нужно лекарство от простуды.",
+      "exampleEnglish": "Notice what the form is doing here: “I need medicine for a cold.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "лекарство",
+      "romanization": "lekarstvo",
+      "nativeText": "Contrast check for \"лекарство\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "lekarstvo",
+      "exampleTarget": "Мне нужно лекарство от простуды.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need medicine for a cold.”",
+      "korean": "лекарство",
+      "english": "Contrast check for \"лекарство\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мне нужно лекарство от простуды.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "лекарство",
+      "romanization": "lekarstvo",
+      "nativeText": "Recall \"лекарство\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужно лекарство от простуды.\".",
+      "pronunciation": "lekarstvo",
+      "exampleTarget": "Мне нужно лекарство от простуды.",
+      "exampleNative": "Self-check against the model before moving on: “I need medicine for a cold.”",
+      "korean": "лекарство",
+      "english": "Recall \"лекарство\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужно лекарство от простуды.\".",
+      "example": "Мне нужно лекарство от простуды.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "лекарство",
+      "romanization": "lekarstvo",
+      "nativeText": "Repair \"лекарство\" inside \"Мне нужно лекарство от простуды.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Medicine.” A practical health noun.",
+      "pronunciation": "lekarstvo",
+      "exampleTarget": "Мне нужно лекарство от простуды.",
+      "exampleNative": "Use the model as the repair target: “I need medicine for a cold.”",
+      "korean": "лекарство",
+      "english": "Repair \"лекарство\" inside \"Мне нужно лекарство от простуды.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Medicine.” A practical health noun.",
+      "example": "Мне нужно лекарство от простуды.",
+      "exampleEnglish": "Use the model as the repair target: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "лекарство",
+      "romanization": "lekarstvo",
+      "nativeText": "Transfer \"лекарство\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужно лекарство от простуды.\".",
+      "pronunciation": "lekarstvo",
+      "exampleTarget": "Мне нужно лекарство от простуды.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need medicine for a cold.”",
+      "korean": "лекарство",
+      "english": "Transfer \"лекарство\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужно лекарство от простуды.\".",
+      "example": "Мне нужно лекарство от простуды.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "лекарство",
+      "romanization": "lekarstvo",
+      "nativeText": "Find one word or phrase that naturally travels with \"лекарство\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "lekarstvo",
+      "exampleTarget": "Мне нужно лекарство от простуды.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need medicine for a cold.”",
+      "korean": "лекарство",
+      "english": "Find one word or phrase that naturally travels with \"лекарство\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мне нужно лекарство от простуды.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "лекарство",
+      "romanization": "lekarstvo",
+      "nativeText": "Listen for \"лекарство\" inside \"Мне нужно лекарство от простуды.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "lekarstvo",
+      "exampleTarget": "Мне нужно лекарство от простуды.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need medicine for a cold.”",
+      "korean": "лекарство",
+      "english": "Listen for \"лекарство\" inside \"Мне нужно лекарство от простуды.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мне нужно лекарство от простуды.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "лекарство",
+      "romanization": "lekarstvo",
+      "nativeText": "Write \"лекарство\" again without looking, then compare the exact written form against \"Мне нужно лекарство от простуды.\" before moving on.",
+      "pronunciation": "lekarstvo",
+      "exampleTarget": "Мне нужно лекарство от простуды.",
+      "exampleNative": "Use the written model as the final correctness check: “I need medicine for a cold.”",
+      "korean": "лекарство",
+      "english": "Write \"лекарство\" again without looking, then compare the exact written form against \"Мне нужно лекарство от простуды.\" before moving on.",
+      "example": "Мне нужно лекарство от простуды.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need medicine for a cold.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "лекарство",
+      "romanization": "lekarstvo",
+      "nativeText": "Check whether \"лекарство\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”",
+      "pronunciation": "lekarstvo",
+      "exampleTarget": "Мне нужно лекарство от простуды.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”",
+      "korean": "лекарство",
+      "english": "Check whether \"лекарство\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”",
+      "example": "Мне нужно лекарство от простуды.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need medicine for a cold.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "врач",
+      "romanization": "vrach",
+      "nativeText": "“Doctor.” A common profession noun in health contexts.",
+      "pronunciation": "vrach",
+      "exampleTarget": "Мне нужно к врачу.",
+      "exampleNative": "“I need to see a doctor.”",
+      "korean": "врач",
+      "english": "“Doctor.” A common profession noun in health contexts.",
+      "example": "Мне нужно к врачу.",
+      "exampleEnglish": "“I need to see a doctor.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "Мне нужно к врачу.",
+      "romanization": "vrach",
+      "nativeText": "Model use for \"Мне нужно к врачу.\": “I need to see a doctor.”",
+      "pronunciation": "vrach",
+      "exampleTarget": "Мне нужно к врачу.",
+      "exampleNative": "“I need to see a doctor.”",
+      "korean": "Мне нужно к врачу.",
+      "english": "Model use for \"Мне нужно к врачу.\": “I need to see a doctor.”",
+      "example": "Мне нужно к врачу.",
+      "exampleEnglish": "“I need to see a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "врач",
+      "romanization": "vrach",
+      "nativeText": "Usage focus for \"врач\": “Doctor.” A common profession noun in health contexts.",
+      "pronunciation": "vrach",
+      "exampleTarget": "Мне нужно к врачу.",
+      "exampleNative": "Notice what the form is doing here: “I need to see a doctor.”",
+      "korean": "врач",
+      "english": "Usage focus for \"врач\": “Doctor.” A common profession noun in health contexts.",
+      "example": "Мне нужно к врачу.",
+      "exampleEnglish": "Notice what the form is doing here: “I need to see a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "врач",
+      "romanization": "vrach",
+      "nativeText": "Contrast check for \"врач\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vrach",
+      "exampleTarget": "Мне нужно к врачу.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to see a doctor.”",
+      "korean": "врач",
+      "english": "Contrast check for \"врач\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мне нужно к врачу.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "врач",
+      "romanization": "vrach",
+      "nativeText": "Recall \"врач\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужно к врачу.\".",
+      "pronunciation": "vrach",
+      "exampleTarget": "Мне нужно к врачу.",
+      "exampleNative": "Self-check against the model before moving on: “I need to see a doctor.”",
+      "korean": "врач",
+      "english": "Recall \"врач\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужно к врачу.\".",
+      "example": "Мне нужно к врачу.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "врач",
+      "romanization": "vrach",
+      "nativeText": "Repair \"врач\" inside \"Мне нужно к врачу.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doctor.” A common profession noun in health contexts.",
+      "pronunciation": "vrach",
+      "exampleTarget": "Мне нужно к врачу.",
+      "exampleNative": "Use the model as the repair target: “I need to see a doctor.”",
+      "korean": "врач",
+      "english": "Repair \"врач\" inside \"Мне нужно к врачу.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Doctor.” A common profession noun in health contexts.",
+      "example": "Мне нужно к врачу.",
+      "exampleEnglish": "Use the model as the repair target: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "врач",
+      "romanization": "vrach",
+      "nativeText": "Transfer \"врач\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужно к врачу.\".",
+      "pronunciation": "vrach",
+      "exampleTarget": "Мне нужно к врачу.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to see a doctor.”",
+      "korean": "врач",
+      "english": "Transfer \"врач\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужно к врачу.\".",
+      "example": "Мне нужно к врачу.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "врач",
+      "romanization": "vrach",
+      "nativeText": "Find one word or phrase that naturally travels with \"врач\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vrach",
+      "exampleTarget": "Мне нужно к врачу.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need to see a doctor.”",
+      "korean": "врач",
+      "english": "Find one word or phrase that naturally travels with \"врач\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мне нужно к врачу.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "врач",
+      "romanization": "vrach",
+      "nativeText": "Listen for \"врач\" inside \"Мне нужно к врачу.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vrach",
+      "exampleTarget": "Мне нужно к врачу.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to see a doctor.”",
+      "korean": "врач",
+      "english": "Listen for \"врач\" inside \"Мне нужно к врачу.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мне нужно к врачу.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "врач",
+      "romanization": "vrach",
+      "nativeText": "Write \"врач\" again without looking, then compare the exact written form against \"Мне нужно к врачу.\" before moving on.",
+      "pronunciation": "vrach",
+      "exampleTarget": "Мне нужно к врачу.",
+      "exampleNative": "Use the written model as the final correctness check: “I need to see a doctor.”",
+      "korean": "врач",
+      "english": "Write \"врач\" again without looking, then compare the exact written form against \"Мне нужно к врачу.\" before moving on.",
+      "example": "Мне нужно к врачу.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need to see a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "врач",
+      "romanization": "vrach",
+      "nativeText": "Check whether \"врач\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to see a doctor.”",
+      "pronunciation": "vrach",
+      "exampleTarget": "Мне нужно к врачу.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need to see a doctor.”",
+      "korean": "врач",
+      "english": "Check whether \"врач\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need to see a doctor.”",
+      "example": "Мне нужно к врачу.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need to see a doctor.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "вам нужно отдыхать",
+      "romanization": "vam nuzhno otdykhat",
+      "nativeText": "“You need to rest.” A polite advice phrase with dative `вам`.",
+      "pronunciation": "vam nuzhno otdykhat",
+      "exampleTarget": "Вам нужно отдыхать два дня.",
+      "exampleNative": "“You need to rest for two days.”",
+      "korean": "вам нужно отдыхать",
+      "english": "“You need to rest.” A polite advice phrase with dative `вам`.",
+      "example": "Вам нужно отдыхать два дня.",
+      "exampleEnglish": "“You need to rest for two days.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "Вам нужно отдыхать два дня.",
+      "romanization": "vam nuzhno otdykhat",
+      "nativeText": "Model use for \"Вам нужно отдыхать два дня.\": “You need to rest for two days.”",
+      "pronunciation": "vam nuzhno otdykhat",
+      "exampleTarget": "Вам нужно отдыхать два дня.",
+      "exampleNative": "“You need to rest for two days.”",
+      "korean": "Вам нужно отдыхать два дня.",
+      "english": "Model use for \"Вам нужно отдыхать два дня.\": “You need to rest for two days.”",
+      "example": "Вам нужно отдыхать два дня.",
+      "exampleEnglish": "“You need to rest for two days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "вам нужно отдыхать",
+      "romanization": "vam nuzhno otdykhat",
+      "nativeText": "Usage focus for \"вам нужно отдыхать\": “You need to rest.” A polite advice phrase with dative `вам`.",
+      "pronunciation": "vam nuzhno otdykhat",
+      "exampleTarget": "Вам нужно отдыхать два дня.",
+      "exampleNative": "Notice what the form is doing here: “You need to rest for two days.”",
+      "korean": "вам нужно отдыхать",
+      "english": "Usage focus for \"вам нужно отдыхать\": “You need to rest.” A polite advice phrase with dative `вам`.",
+      "example": "Вам нужно отдыхать два дня.",
+      "exampleEnglish": "Notice what the form is doing here: “You need to rest for two days.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "вам нужно отдыхать",
+      "romanization": "vam nuzhno otdykhat",
+      "nativeText": "Contrast check for \"вам нужно отдыхать\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "vam nuzhno otdykhat",
+      "exampleTarget": "Вам нужно отдыхать два дня.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “You need to rest for two days.”",
+      "korean": "вам нужно отдыхать",
+      "english": "Contrast check for \"вам нужно отдыхать\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Вам нужно отдыхать два дня.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "вам нужно отдыхать",
+      "romanization": "vam nuzhno otdykhat",
+      "nativeText": "Recall \"вам нужно отдыхать\" from memory, then explain what would change if a nearby alternative replaced it in \"Вам нужно отдыхать два дня.\".",
+      "pronunciation": "vam nuzhno otdykhat",
+      "exampleTarget": "Вам нужно отдыхать два дня.",
+      "exampleNative": "Self-check against the model before moving on: “You need to rest for two days.”",
+      "korean": "вам нужно отдыхать",
+      "english": "Recall \"вам нужно отдыхать\" from memory, then explain what would change if a nearby alternative replaced it in \"Вам нужно отдыхать два дня.\".",
+      "example": "Вам нужно отдыхать два дня.",
+      "exampleEnglish": "Self-check against the model before moving on: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "вам нужно отдыхать",
+      "romanization": "vam nuzhno otdykhat",
+      "nativeText": "Repair \"вам нужно отдыхать\" inside \"Вам нужно отдыхать два дня.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “You need to rest.” A polite advice phrase with dative `вам`.",
+      "pronunciation": "vam nuzhno otdykhat",
+      "exampleTarget": "Вам нужно отдыхать два дня.",
+      "exampleNative": "Use the model as the repair target: “You need to rest for two days.”",
+      "korean": "вам нужно отдыхать",
+      "english": "Repair \"вам нужно отдыхать\" inside \"Вам нужно отдыхать два дня.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “You need to rest.” A polite advice phrase with dative `вам`.",
+      "example": "Вам нужно отдыхать два дня.",
+      "exampleEnglish": "Use the model as the repair target: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "вам нужно отдыхать",
+      "romanization": "vam nuzhno otdykhat",
+      "nativeText": "Transfer \"вам нужно отдыхать\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Вам нужно отдыхать два дня.\".",
+      "pronunciation": "vam nuzhno otdykhat",
+      "exampleTarget": "Вам нужно отдыхать два дня.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “You need to rest for two days.”",
+      "korean": "вам нужно отдыхать",
+      "english": "Transfer \"вам нужно отдыхать\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Вам нужно отдыхать два дня.\".",
+      "example": "Вам нужно отдыхать два дня.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "вам нужно отдыхать",
+      "romanization": "vam nuzhno otdykhat",
+      "nativeText": "Find one word or phrase that naturally travels with \"вам нужно отдыхать\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "vam nuzhno otdykhat",
+      "exampleTarget": "Вам нужно отдыхать два дня.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “You need to rest for two days.”",
+      "korean": "вам нужно отдыхать",
+      "english": "Find one word or phrase that naturally travels with \"вам нужно отдыхать\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Вам нужно отдыхать два дня.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "вам нужно отдыхать",
+      "romanization": "vam nuzhno otdykhat",
+      "nativeText": "Listen for \"вам нужно отдыхать\" inside \"Вам нужно отдыхать два дня.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "vam nuzhno otdykhat",
+      "exampleTarget": "Вам нужно отдыхать два дня.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “You need to rest for two days.”",
+      "korean": "вам нужно отдыхать",
+      "english": "Listen for \"вам нужно отдыхать\" inside \"Вам нужно отдыхать два дня.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Вам нужно отдыхать два дня.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "вам нужно отдыхать",
+      "romanization": "vam nuzhno otdykhat",
+      "nativeText": "Write \"вам нужно отдыхать\" again without looking, then compare the exact written form against \"Вам нужно отдыхать два дня.\" before moving on.",
+      "pronunciation": "vam nuzhno otdykhat",
+      "exampleTarget": "Вам нужно отдыхать два дня.",
+      "exampleNative": "Use the written model as the final correctness check: “You need to rest for two days.”",
+      "korean": "вам нужно отдыхать",
+      "english": "Write \"вам нужно отдыхать\" again without looking, then compare the exact written form against \"Вам нужно отдыхать два дня.\" before moving on.",
+      "example": "Вам нужно отдыхать два дня.",
+      "exampleEnglish": "Use the written model as the final correctness check: “You need to rest for two days.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "вам нужно отдыхать",
+      "romanization": "vam nuzhno otdykhat",
+      "nativeText": "Check whether \"вам нужно отдыхать\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “You need to rest for two days.”",
+      "pronunciation": "vam nuzhno otdykhat",
+      "exampleTarget": "Вам нужно отдыхать два дня.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “You need to rest for two days.”",
+      "korean": "вам нужно отдыхать",
+      "english": "Check whether \"вам нужно отдыхать\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “You need to rest for two days.”",
+      "example": "Вам нужно отдыхать два дня.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “You need to rest for two days.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "не ешьте острое",
+      "romanization": "ne yeshte ostroye",
+      "nativeText": "“Do not eat spicy food.” A polite negative imperative.",
+      "pronunciation": "ne yeshte ostroye",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "не ешьте острое",
+      "english": "“Do not eat spicy food.” A polite negative imperative.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "Не ешьте острое сегодня.",
+      "romanization": "ne yeshte ostroye",
+      "nativeText": "Model use for \"Не ешьте острое сегодня.\": “Do not eat spicy food today.”",
+      "pronunciation": "ne yeshte ostroye",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "“Do not eat spicy food today.”",
+      "korean": "Не ешьте острое сегодня.",
+      "english": "Model use for \"Не ешьте острое сегодня.\": “Do not eat spicy food today.”",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "“Do not eat spicy food today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "не ешьте острое",
+      "romanization": "ne yeshte ostroye",
+      "nativeText": "Usage focus for \"не ешьте острое\": “Do not eat spicy food.” A polite negative imperative.",
+      "pronunciation": "ne yeshte ostroye",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "Notice what the form is doing here: “Do not eat spicy food today.”",
+      "korean": "не ешьте острое",
+      "english": "Usage focus for \"не ешьте острое\": “Do not eat spicy food.” A polite negative imperative.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "Notice what the form is doing here: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "не ешьте острое",
+      "romanization": "ne yeshte ostroye",
+      "nativeText": "Contrast check for \"не ешьте острое\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ne yeshte ostroye",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do not eat spicy food today.”",
+      "korean": "не ешьте острое",
+      "english": "Contrast check for \"не ешьте острое\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "не ешьте острое",
+      "romanization": "ne yeshte ostroye",
+      "nativeText": "Recall \"не ешьте острое\" from memory, then explain what would change if a nearby alternative replaced it in \"Не ешьте острое сегодня.\".",
+      "pronunciation": "ne yeshte ostroye",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "Self-check against the model before moving on: “Do not eat spicy food today.”",
+      "korean": "не ешьте острое",
+      "english": "Recall \"не ешьте острое\" from memory, then explain what would change if a nearby alternative replaced it in \"Не ешьте острое сегодня.\".",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "Self-check against the model before moving on: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "не ешьте острое",
+      "romanization": "ne yeshte ostroye",
+      "nativeText": "Repair \"не ешьте острое\" inside \"Не ешьте острое сегодня.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do not eat spicy food.” A polite negative imperative.",
+      "pronunciation": "ne yeshte ostroye",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "Use the model as the repair target: “Do not eat spicy food today.”",
+      "korean": "не ешьте острое",
+      "english": "Repair \"не ешьте острое\" inside \"Не ешьте острое сегодня.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do not eat spicy food.” A polite negative imperative.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "Use the model as the repair target: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "не ешьте острое",
+      "romanization": "ne yeshte ostroye",
+      "nativeText": "Transfer \"не ешьте острое\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Не ешьте острое сегодня.\".",
+      "pronunciation": "ne yeshte ostroye",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do not eat spicy food today.”",
+      "korean": "не ешьте острое",
+      "english": "Transfer \"не ешьте острое\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Не ешьте острое сегодня.\".",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "не ешьте острое",
+      "romanization": "ne yeshte ostroye",
+      "nativeText": "Find one word or phrase that naturally travels with \"не ешьте острое\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ne yeshte ostroye",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Do not eat spicy food today.”",
+      "korean": "не ешьте острое",
+      "english": "Find one word or phrase that naturally travels with \"не ешьте острое\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "не ешьте острое",
+      "romanization": "ne yeshte ostroye",
+      "nativeText": "Listen for \"не ешьте острое\" inside \"Не ешьте острое сегодня.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ne yeshte ostroye",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do not eat spicy food today.”",
+      "korean": "не ешьте острое",
+      "english": "Listen for \"не ешьте острое\" inside \"Не ешьте острое сегодня.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "не ешьте острое",
+      "romanization": "ne yeshte ostroye",
+      "nativeText": "Write \"не ешьте острое\" again without looking, then compare the exact written form against \"Не ешьте острое сегодня.\" before moving on.",
+      "pronunciation": "ne yeshte ostroye",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "Use the written model as the final correctness check: “Do not eat spicy food today.”",
+      "korean": "не ешьте острое",
+      "english": "Write \"не ешьте острое\" again without looking, then compare the exact written form against \"Не ешьте острое сегодня.\" before moving on.",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Do not eat spicy food today.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit18health-vocabulary-1",
+        "ru-level1unit18health-vocabulary-2",
+        "ru-level1unit18health-grammar-1",
+        "ru-level1unit18health-grammar-2",
+        "ru-level1unit18health-reading",
+        "ru-level1unit18health-listening",
+        "ru-level1unit18health-writing",
+        "ru-level1unit18health-task"
+      ],
+      "targetText": "не ешьте острое",
+      "romanization": "ne yeshte ostroye",
+      "nativeText": "Check whether \"не ешьте острое\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "pronunciation": "ne yeshte ostroye",
+      "exampleTarget": "Не ешьте острое сегодня.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "korean": "не ешьте острое",
+      "english": "Check whether \"не ешьте острое\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”",
+      "example": "Не ешьте острое сегодня.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Do not eat spicy food today.”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

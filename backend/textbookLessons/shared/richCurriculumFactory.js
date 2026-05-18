@@ -32,6 +32,164 @@ const createContentItem = ({
     : {}),
 });
 
+const CORE_TYPES = new Set(['word', 'grammar', 'sentence']);
+const MAX_EXPANDED_CORE_ITEMS = 6;
+const GENERATED_NOTE_PREFIXES = [
+  'Model use for ',
+  'Usage focus for ',
+  'Contrast check for ',
+  'Recall ',
+  'Repair ',
+  'Transfer ',
+  'Find one word or phrase that naturally travels with ',
+  'Listen for ',
+  'Write ',
+  'Check whether ',
+];
+
+const quoted = (value) => `"${String(value || '').trim()}"`;
+
+const contextualSupportNotes = (profile) => ({
+  pronunciation: `${profile.pronunciationGoal} In this lesson, listen especially while saying ${quoted(profile.pronunciationExample)}.`,
+  reading: `Read the connected model for ${profile.readingAnchor || 'this lesson'} as one message. Notice how ${quoted(profile.readingExample)} lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.`,
+  listening: `Hear ${quoted(profile.listeningExample)} as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.`,
+  writing: `Write your own version after studying ${quoted(profile.writingExample)}. Keep the same grammatical job, then change the detail that makes the sentence true for you.`,
+  culture: `${profile.cultureGoal} Use ${quoted(profile.cultureExample)} as the social comparison point for this lesson.`,
+  error: `${profile.errorGoal} Begin by checking ${quoted(profile.errorExample)} against the model.`,
+  register: `${profile.registerGoal} Compare the social fit of ${quoted(profile.registerExample)} before reusing it elsewhere.`,
+  fluency: `${profile.fluencyGoal} Aim to carry ${quoted(profile.fluencyExample)} as one thought.`,
+  transfer: `${profile.transferGoal} Start from ${quoted(profile.transferExample)} and move it into your own life.`,
+  recall: `${profile.recallGoal} Begin with ${quoted(profile.recallExample)} before looking back.`,
+  extension: `${profile.extensionGoal} Extend from ${quoted(profile.extensionExample)} rather than restarting from a blank sentence.`,
+  comparison: `${profile.comparisonGoal} Use ${quoted(profile.comparisonExample)} as the comparison line.`,
+  pronunciationRepair: `${profile.pronunciationRepairGoal} Use ${quoted(profile.pronunciationRepairExample)} as the repair line.`,
+  dialogueVariation: `${profile.dialogueVariationGoal} Begin from ${quoted(profile.dialogueVariationExample)}.`,
+  sentenceBuilding: `${profile.sentenceBuildingGoal} Rebuild ${quoted(profile.sentenceBuildingExample)} one layer at a time.`,
+  miniQuiz: `${profile.miniQuizGoal} Use ${quoted(profile.miniQuizExample)} as the deciding example.`,
+  reflection: `${profile.reflectionGoal} Finish by testing that idea against ${quoted(profile.reflectionExample)}.`,
+});
+
+const contextualCoreNotes = ({ label, note, example, exampleNote }) => ({
+  model: `Model use for ${quoted(label)}: ${note}`,
+  usage: `Usage focus for ${quoted(label)}: ${note}`,
+  contrast: `Contrast check for ${quoted(label)}: keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.`,
+  recall: `Recall ${quoted(label)} from memory, then explain what would change if a nearby alternative replaced it in ${quoted(example)}.`,
+  repair: `Repair ${quoted(label)} inside ${quoted(example)} if the sentence starts sounding translated rather than natural. Use the note as the clue: ${note}`,
+  transfer: `Transfer ${quoted(label)} into one new personal sentence while preserving the same grammatical job and social tone shown by ${quoted(example)}.`,
+  collocation: `Find one word or phrase that naturally travels with ${quoted(label)} in this setting so it becomes usable language, not a stranded flashcard.`,
+  listening: `Listen for ${quoted(label)} inside ${quoted(example)} and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.`,
+  writing: `Write ${quoted(label)} again without looking, then compare the exact written form against ${quoted(example)} before moving on.`,
+  register: `Check whether ${quoted(label)} would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: ${exampleNote}`,
+});
+
+const isGeneratedScaffoldText = (value) => GENERATED_NOTE_PREFIXES
+  .some((prefix) => String(value || '').startsWith(prefix));
+
+const normalizeSourceItem = (entry, activityIds) => createContentItem({
+  target: entry.targetText || entry.target,
+  romanization: entry.romanization || '',
+  note: entry.nativeText || entry.note,
+  type: entry.type || 'word',
+  example: entry.exampleTarget || entry.example || entry.targetText || entry.target,
+  exampleNote: entry.exampleNative || entry.exampleNote || entry.nativeText || entry.note,
+  breakdown: (entry.breakdown || []).map((row) => ({
+    target: row.target || row.korean,
+    note: row.native || row.english,
+  })),
+  activityIds: entry.activityIds?.length ? entry.activityIds : activityIds,
+});
+
+const selectRepresentativeCoreItems = (entries, limit = MAX_EXPANDED_CORE_ITEMS) => {
+  const selected = [];
+  const seen = new Set();
+
+  for (const entry of entries || []) {
+    const key = `${entry.targetText || entry.target || ''}::${entry.nativeText || entry.note || ''}`;
+    if (
+      !CORE_TYPES.has(entry.type)
+      || !String(entry.targetText || entry.target || '').trim()
+      || isGeneratedScaffoldText(entry.nativeText || entry.note)
+      || seen.has(key)
+    ) {
+      continue;
+    }
+    selected.push(entry);
+    seen.add(key);
+    if (selected.length >= limit) return selected;
+  }
+
+  return selected;
+};
+
+const selectProfileCoreItems = (lesson) => {
+  const pool = selectRepresentativeCoreItems(lesson.content || [], MAX_EXPANDED_CORE_ITEMS);
+  const fallback = lesson.content || [];
+  const items = pool.length ? pool : fallback;
+  return {
+    first: items[0] || {},
+    second: items[1] || items[0] || {},
+    middle: items[Math.floor(items.length / 2)] || items[1] || items[0] || {},
+    last: items[items.length - 1] || items[1] || items[0] || {},
+  };
+};
+
+const instructionalStringsForLesson = (lesson) => new Set([
+  ...(lesson.activities || []).flatMap((activity) => [
+    activity.task,
+    ...(activity.goals || []),
+  ]),
+  ...(lesson.expressionPractice || []).flatMap((entry) => [entry.goal]),
+].filter(Boolean));
+
+const hasInstructionalTargetLeak = (lesson, targetLang = lesson.targetLang) => {
+  if (targetLang === 'en') return false;
+  const instructionalStrings = instructionalStringsForLesson(lesson);
+  return (lesson.content || []).some((entry) => (
+    instructionalStrings.has(entry.exampleTarget)
+  ));
+};
+
+const extractCanonicalSourceItemsFromRichLesson = (lesson) => selectRepresentativeCoreItems(
+  (lesson.content || []).filter((entry) => {
+    const activityCount = entry.activityIds?.length || 0;
+    return activityCount === 0 || activityCount >= 8;
+  }),
+  Number.POSITIVE_INFINITY,
+);
+
+const dedupeContentItems = (entries) => {
+  const seen = new Set();
+  return entries.filter((entry) => {
+    const key = `${entry.type || ''}::${entry.targetText || ''}::${entry.nativeText || ''}::${entry.exampleTarget || ''}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+};
+
+const mergeDuplicateContentItems = (entries = []) => {
+  const merged = [];
+  const bySignature = new Map();
+
+  entries.forEach((entry) => {
+    const key = `${entry.type || ''}::${entry.targetText || ''}::${entry.nativeText || ''}::${entry.exampleTarget || ''}`;
+    if (!bySignature.has(key)) {
+      const next = {
+        ...entry,
+        activityIds: [...new Set(entry.activityIds || [])],
+      };
+      bySignature.set(key, next);
+      merged.push(next);
+      return;
+    }
+
+    const existing = bySignature.get(key);
+    existing.activityIds = [...new Set([...(existing.activityIds || []), ...(entry.activityIds || [])])];
+  });
+
+  return merged;
+};
+
 const makeActivities = (lessonId, lesson, profile) => {
   const slug = profile.slug || lessonId.toLowerCase();
   const act = {
@@ -100,13 +258,19 @@ const expandCoreItem = (entry, index, activityIds) => {
     type: entry.type || 'word',
     activityIds,
   };
+  const prompts = contextualCoreNotes({
+    label,
+    note,
+    example,
+    exampleNote,
+  });
 
   return [
     base,
     {
       target: example,
       romanization,
-      note: `Model use: ${note}`,
+      note: prompts.model,
       example,
       exampleNote,
       type: 'sentence',
@@ -115,7 +279,7 @@ const expandCoreItem = (entry, index, activityIds) => {
     {
       target: label,
       romanization,
-      note: `Usage focus: ${note}`,
+      note: prompts.usage,
       example,
       exampleNote: `Notice what the form is doing here: ${exampleNote}`,
       type: 'note',
@@ -124,7 +288,7 @@ const expandCoreItem = (entry, index, activityIds) => {
     {
       target: label,
       romanization,
-      note: `Contrast check: use this form when the meaning and setting match this lesson, not merely because it resembles a word-for-word translation.`,
+      note: prompts.contrast,
       example,
       exampleNote: `The model shows the form inside a complete message rather than as an isolated dictionary item: ${exampleNote}`,
       type: 'note',
@@ -133,7 +297,7 @@ const expandCoreItem = (entry, index, activityIds) => {
     {
       target: label,
       romanization,
-      note: `Recall prompt: say the form from memory, then explain what would change if you replaced it with a nearby alternative.`,
+      note: prompts.recall,
       example,
       exampleNote: `Self-check against the model before moving on: ${exampleNote}`,
       type: 'practice',
@@ -142,7 +306,7 @@ const expandCoreItem = (entry, index, activityIds) => {
     {
       target: label,
       romanization,
-      note: `Repair prompt: if this sentence sounds translated rather than natural, return to the register, agreement, tense, or word-order clue highlighted in the note.`,
+      note: prompts.repair,
       example,
       exampleNote: `Use the model as the repair target: ${exampleNote}`,
       type: 'practice',
@@ -151,7 +315,7 @@ const expandCoreItem = (entry, index, activityIds) => {
     {
       target: label,
       romanization,
-      note: `Transfer prompt: move this form into a new personal sentence while preserving the same grammatical job and social tone.`,
+      note: prompts.transfer,
       example,
       exampleNote: `The learner should be able to leave the model behind without losing the point it demonstrates: ${exampleNote}`,
       type: 'practice',
@@ -160,7 +324,7 @@ const expandCoreItem = (entry, index, activityIds) => {
     {
       target: label,
       romanization,
-      note: `Collocation check: say one word or phrase that naturally travels with this form so it is learned as usable language, not a stranded flashcard.`,
+      note: prompts.collocation,
       example,
       exampleNote: `Use the model to notice what tends to appear beside the form: ${exampleNote}`,
       type: 'practice',
@@ -169,7 +333,7 @@ const expandCoreItem = (entry, index, activityIds) => {
     {
       target: label,
       romanization,
-      note: `Listening cue: hear this item inside a full sentence and identify the small sound, ending, or pronoun that carries the grammatical difference.`,
+      note: prompts.listening,
       example,
       exampleNote: `The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: ${exampleNote}`,
       type: 'practice',
@@ -178,7 +342,7 @@ const expandCoreItem = (entry, index, activityIds) => {
     {
       target: label,
       romanization,
-      note: `Writing check: reproduce the form without looking, then compare article, agreement, accent, or pronoun placement against the model.`,
+      note: prompts.writing,
       example,
       exampleNote: `Use the written model as the final correctness check: ${exampleNote}`,
       type: 'practice',
@@ -187,7 +351,7 @@ const expandCoreItem = (entry, index, activityIds) => {
     {
       target: label,
       romanization,
-      note: `Register check: decide whether this same idea would need a different wording with a friend, a stranger, or a professional counterpart.`,
+      note: prompts.register,
       example,
       exampleNote: `The meaning may survive a register shift, but the social fit may not: ${exampleNote}`,
       type: 'practice',
@@ -207,7 +371,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.pronunciationAnchor,
-    note: profile.pronunciationGoal,
+    note: contextualSupportNotes(profile).pronunciation,
     example: profile.pronunciationExample,
     exampleNote: profile.pronunciationExampleNote,
     type: 'pronunciation',
@@ -247,7 +411,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.readingAnchor,
-    note: 'Read this connected model as one piece, then identify how the lesson vocabulary and grammar cooperate inside it.',
+    note: contextualSupportNotes(profile).reading,
     example: profile.readingExample,
     exampleNote: profile.readingExampleNote,
     type: 'reading',
@@ -255,7 +419,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.listeningAnchor,
-    note: 'This short exchange is meant to sound like real interaction rather than a list of isolated sentences.',
+    note: contextualSupportNotes(profile).listening,
     example: profile.listeningExample,
     exampleNote: profile.listeningExampleNote,
     type: 'conversation',
@@ -263,7 +427,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.writingAnchor,
-    note: 'Use the lesson pattern in your own writing so the form becomes available outside the model sentence.',
+    note: contextualSupportNotes(profile).writing,
     example: profile.writingExample,
     exampleNote: profile.writingExampleNote,
     type: 'writing',
@@ -271,7 +435,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.cultureAnchor,
-    note: profile.cultureGoal,
+    note: contextualSupportNotes(profile).culture,
     example: profile.cultureExample,
     exampleNote: profile.cultureExampleNote,
     type: 'culture',
@@ -287,7 +451,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.errorAnchor,
-    note: profile.errorGoal,
+    note: contextualSupportNotes(profile).error,
     example: profile.errorExample,
     exampleNote: profile.errorExampleNote,
     type: 'note',
@@ -295,7 +459,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.registerAnchor,
-    note: profile.registerGoal,
+    note: contextualSupportNotes(profile).register,
     example: profile.registerExample,
     exampleNote: profile.registerExampleNote,
     type: 'culture',
@@ -303,15 +467,15 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.fluencyAnchor,
-    note: profile.fluencyGoal,
+    note: contextualSupportNotes(profile).fluency,
     example: profile.fluencyExample,
     exampleNote: profile.fluencyExampleNote,
     type: 'practice',
-    activityIds: [act.listening, act.speaking, act.task],
+    activityIds: [act.listening, act.task],
   }),
   createContentItem({
     target: profile.transferAnchor,
-    note: profile.transferGoal,
+    note: contextualSupportNotes(profile).transfer,
     example: profile.transferExample,
     exampleNote: profile.transferExampleNote,
     type: 'practice',
@@ -319,7 +483,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.recallAnchor,
-    note: profile.recallGoal,
+    note: contextualSupportNotes(profile).recall,
     example: profile.recallExample,
     exampleNote: profile.recallExampleNote,
     type: 'practice',
@@ -327,7 +491,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.extensionAnchor,
-    note: profile.extensionGoal,
+    note: contextualSupportNotes(profile).extension,
     example: profile.extensionExample,
     exampleNote: profile.extensionExampleNote,
     type: 'note',
@@ -335,7 +499,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.comparisonAnchor,
-    note: profile.comparisonGoal,
+    note: contextualSupportNotes(profile).comparison,
     example: profile.comparisonExample,
     exampleNote: profile.comparisonExampleNote,
     type: 'note',
@@ -343,7 +507,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.pronunciationRepairAnchor,
-    note: profile.pronunciationRepairGoal,
+    note: contextualSupportNotes(profile).pronunciationRepair,
     example: profile.pronunciationRepairExample,
     exampleNote: profile.pronunciationRepairExampleNote,
     type: 'pronunciation',
@@ -351,7 +515,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.dialogueVariationAnchor,
-    note: profile.dialogueVariationGoal,
+    note: contextualSupportNotes(profile).dialogueVariation,
     example: profile.dialogueVariationExample,
     exampleNote: profile.dialogueVariationExampleNote,
     type: 'conversation',
@@ -359,7 +523,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.sentenceBuildingAnchor,
-    note: profile.sentenceBuildingGoal,
+    note: contextualSupportNotes(profile).sentenceBuilding,
     example: profile.sentenceBuildingExample,
     exampleNote: profile.sentenceBuildingExampleNote,
     type: 'practice',
@@ -367,7 +531,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.miniQuizAnchor,
-    note: profile.miniQuizGoal,
+    note: contextualSupportNotes(profile).miniQuiz,
     example: profile.miniQuizExample,
     exampleNote: profile.miniQuizExampleNote,
     type: 'practice',
@@ -375,7 +539,7 @@ const supportItems = (lessonId, lesson, profile, act) => [
   }),
   createContentItem({
     target: profile.reflectionAnchor,
-    note: profile.reflectionGoal,
+    note: contextualSupportNotes(profile).reflection,
     example: profile.reflectionExample,
     exampleNote: profile.reflectionExampleNote,
     type: 'note',
@@ -386,8 +550,11 @@ const supportItems = (lessonId, lesson, profile, act) => [
 const buildRichLesson = (targetLang, lessonId, sourceLesson, profile) => {
   const { act, activities } = makeActivities(lessonId, sourceLesson, profile);
   const coreIds = [act.vocabularyI, act.vocabularyII, act.grammarI, act.grammarII, act.reading, act.listening, act.writing, act.task];
-  const sourceItems = sourceLesson.content || [];
-  const expandedCore = sourceItems.flatMap((entry, index) => expandCoreItem(entry, index, coreIds));
+  const sourceItems = (sourceLesson.content || [])
+    .filter((entry) => CORE_TYPES.has(entry.type))
+    .map((entry) => normalizeSourceItem(entry, coreIds));
+  const representativeItems = selectRepresentativeCoreItems(sourceItems);
+  const expandedCore = representativeItems.flatMap((entry, index) => expandCoreItem(entry, index, coreIds).slice(1));
   const featureItems = (profile.featureItems || []).flatMap((entry) => [
     createContentItem({
       ...entry,
@@ -412,14 +579,25 @@ const buildRichLesson = (targetLang, lessonId, sourceLesson, profile) => {
     activities,
     expressionPractice: profile.expressionPractice || sourceLesson.expressionPractice || [],
     relatedPools: profile.relatedPools || sourceLesson.relatedPools || [],
-    content: [
+    content: dedupeContentItems([
       ...supportItems(lessonId, sourceLesson, profile, act),
       ...featureItems,
+      ...sourceItems,
       ...expandedCore.map((entry) => createContentItem(entry)),
-    ],
+    ]),
   };
 };
 
 module.exports = {
   buildRichLesson,
+  contextualCoreNotes,
+  contextualSupportNotes,
+  extractCanonicalSourceItemsFromRichLesson,
+  isGeneratedScaffoldText,
+  selectRepresentativeCoreItems,
+  selectProfileCoreItems,
+  instructionalStringsForLesson,
+  hasInstructionalTargetLeak,
+  dedupeContentItems,
+  mergeDuplicateContentItems,
 };

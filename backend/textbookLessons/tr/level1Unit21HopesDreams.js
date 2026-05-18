@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u21',
-  title: 'Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams',
-  category: 'future',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about future plans, hopes, and longer-term dreams.',
-  vocabularyGoal: 'Use future, study, work, travel, and aspiration words.',
-  grammarGoal: 'Use `istiyorum`, future `-ecek/-acak`, and `umarım` for desire, plan, and hope.',
-  speakingGoal: 'Describe one realistic plan and one longer dream with a reason.',
-  task: 'Give a short future-self introduction.',
-  expressionPractice: [
-    practice('stating-desire', 'Stating desire', 'Use `istiyorum`.'),
-    practice('stating-plan', 'Stating plan', 'Use one future form.'),
-    practice('stating-hope', 'Stating hope', 'Use `umarım`.'),
+module.exports = {
+  "title": "Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams",
+  "category": "future",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit21hopesdreams-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about future plans, hopes, and longer-term dreams."
+      ],
+      "task": "Give a short future-self introduction."
+    },
+    {
+      "id": "tr-level1unit21hopesdreams-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit21hopesdreams-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit21hopesdreams-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit21hopesdreams-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about future plans, hopes, and longer-term dreams."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit21hopesdreams-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit21hopesdreams-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit21hopesdreams-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit21hopesdreams-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit21hopesdreams-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit21hopesdreams-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Give a short future-self introduction."
+      ],
+      "task": "Give a short future-self introduction."
+    }
   ],
-  relatedPools: ['topic-future', 'topic-goals'],
-  items: [
-    item('gelecek', 'ge-le-JEK', '“Future.” It also appears as the future participle form in many contexts.', 'Geleceğimi düşünüyorum.', '“I am thinking about my future.”'),
-    item('hayal', 'ha-YAL', '“Dream / aspiration.”', 'Hayalim doktor olmak.', '“My dream is to become a doctor.”'),
-    item('istiyorum', 'is-ti-YO-rum', '“I want.” A direct statement of desire.', 'Türkçeyi iyi öğrenmek istiyorum.', '“I want to learn Turkish well.”'),
-    item('çalışacağım', 'ça-lı-şa-JA-ğım', '“I will work / study.” Future suffixes obey harmony and soften before personal endings.', 'Üniversitede çalışacağım.', '“I will study at university.”'),
-    item('umarım', 'u-ma-RIM', '“I hope.” Useful before a desired clause.', 'Umarım Türkiye’ye giderim.', '“I hope I go to Turkey.”'),
-    item('olmak', 'ol-MAK', '“To become / be.” Career dreams often use this infinitive.', 'Öğretmen olmak istiyorum.', '“I want to become a teacher.”'),
-    item('fırsat olursa', 'fır-SAT o-LUR-sa', '“If there is an opportunity.” A realistic condition around future plans.', 'Fırsat olursa yurt dışında çalışacağım.', '“If there is an opportunity, I will work abroad.”'),
-    item('bir gün', 'bir GÜN', '“One day.” A simple phrase for distant dreams.', 'Bir gün kitap yazmak istiyorum.', '“One day I want to write a book.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-desire",
+      "label": "Stating desire",
+      "goal": "Use `istiyorum`."
+    },
+    {
+      "id": "stating-plan",
+      "label": "Stating plan",
+      "goal": "Use one future form."
+    },
+    {
+      "id": "stating-hope",
+      "label": "Stating hope",
+      "goal": "Use `umarım`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-future",
+    "topic-goals"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Talk about future plans, hopes, and longer-term dreams.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Give a short future-self introduction.",
+      "korean": "ders hedefi",
+      "english": "Talk about future plans, hopes, and longer-term dreams.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Give a short future-self introduction."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Geleceğimi düşünüyorum.\".",
+      "pronunciation": "",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "“I am thinking about my future.”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Geleceğimi düşünüyorum.\".",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "“I am thinking about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1"
+      ],
+      "targetText": "gelecek",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "“I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "Use the key language of Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "“I am thinking about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-2"
+      ],
+      "targetText": "hayal",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-grammar-1"
+      ],
+      "targetText": "gelecek",
+      "romanization": "",
+      "nativeText": "Talk about future plans, hopes, and longer-term dreams.",
+      "pronunciation": "",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "“I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "Talk about future plans, hopes, and longer-term dreams.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "“I am thinking about my future.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "hayal",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "Contrast the main pattern in Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Bir gün kitap yazmak istiyorum.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "okuma modeli",
+      "english": "Read \"Bir gün kitap yazmak istiyorum.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Bir gün kitap yazmak istiyorum.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Bir gün kitap yazmak istiyorum.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Geleceğimi düşünüyorum.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Geleceğimi düşünüyorum.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Give a short future-self introduction.",
+      "pronunciation": "",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "Give a short future-self introduction.",
+      "korean": "son görev",
+      "english": "Give a short future-self introduction.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "Give a short future-self introduction."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Hayalim doktor olmak.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “My dream is to become a doctor.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Hayalim doktor olmak.\" against the model.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Geleceğimi düşünüyorum.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "“I am thinking about my future.”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Geleceğimi düşünüyorum.\" before reusing it elsewhere.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "“I am thinking about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Bir gün kitap yazmak istiyorum.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Bir gün kitap yazmak istiyorum.\" as one thought.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Geleceğimi düşünüyorum.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Geleceğimi düşünüyorum.\" and move it into your own life.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"gelecek\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "gelecek",
+      "exampleNative": "“Future.” It also appears as the future participle form in many contexts.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"gelecek\" before looking back.",
+      "example": "gelecek",
+      "exampleEnglish": "“Future.” It also appears as the future participle form in many contexts."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Bir gün kitap yazmak istiyorum.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Bir gün kitap yazmak istiyorum.\" rather than restarting from a blank sentence.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Hayalim doktor olmak.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Hayalim doktor olmak.\" as the comparison line.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Geleceğimi düşünüyorum.\".",
+      "pronunciation": "",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "“I am thinking about my future.”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Geleceğimi düşünüyorum.\".",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "“I am thinking about my future.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Bir gün kitap yazmak istiyorum.\".",
+      "pronunciation": "",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Bir gün kitap yazmak istiyorum.\".",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Geleceğimi düşünüyorum.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "“I am thinking about my future.”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Geleceğimi düşünüyorum.\" one layer at a time.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "“I am thinking about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Hayalim doktor olmak.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Hayalim doktor olmak.\" as the deciding example.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-culture",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Bir gün kitap yazmak istiyorum.\".",
+      "pronunciation": "",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Bir gün kitap yazmak istiyorum.\".",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "gelecek",
+      "romanization": "ge-le-JEK",
+      "nativeText": "“Future.” It also appears as the future participle form in many contexts.",
+      "pronunciation": "ge-le-JEK",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "“I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "“Future.” It also appears as the future participle form in many contexts.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "“I am thinking about my future.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Geleceğimi düşünüyorum.",
+      "romanization": "ge-le-JEK",
+      "nativeText": "Model use for \"Geleceğimi düşünüyorum.\": “I am thinking about my future.”",
+      "pronunciation": "ge-le-JEK",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "“I am thinking about my future.”",
+      "korean": "Geleceğimi düşünüyorum.",
+      "english": "Model use for \"Geleceğimi düşünüyorum.\": “I am thinking about my future.”",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "“I am thinking about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "gelecek",
+      "romanization": "ge-le-JEK",
+      "nativeText": "Usage focus for \"gelecek\": Use the key language of Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "ge-le-JEK",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "Notice what the form is doing here: “I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "Usage focus for \"gelecek\": Use the key language of Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I am thinking about my future.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "gelecek",
+      "romanization": "ge-le-JEK",
+      "nativeText": "Contrast check for \"gelecek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ge-le-JEK",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "Contrast check for \"gelecek\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am thinking about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "gelecek",
+      "romanization": "ge-le-JEK",
+      "nativeText": "Recall \"gelecek\" from memory, then explain what would change if a nearby alternative replaced it in \"Geleceğimi düşünüyorum.\".",
+      "pronunciation": "ge-le-JEK",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "Recall \"gelecek\" from memory, then explain what would change if a nearby alternative replaced it in \"Geleceğimi düşünüyorum.\".",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am thinking about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "gelecek",
+      "romanization": "ge-le-JEK",
+      "nativeText": "Repair \"gelecek\" inside \"Geleceğimi düşünüyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with the register and setting that the lesson requires.",
+      "pronunciation": "ge-le-JEK",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "Use the model as the repair target: “I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "Repair \"gelecek\" inside \"Geleceğimi düşünüyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams with the register and setting that the lesson requires.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I am thinking about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "gelecek",
+      "romanization": "ge-le-JEK",
+      "nativeText": "Transfer \"gelecek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Geleceğimi düşünüyorum.\".",
+      "pronunciation": "ge-le-JEK",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "Transfer \"gelecek\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Geleceğimi düşünüyorum.\".",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am thinking about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "gelecek",
+      "romanization": "ge-le-JEK",
+      "nativeText": "Find one word or phrase that naturally travels with \"gelecek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ge-le-JEK",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "Find one word or phrase that naturally travels with \"gelecek\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am thinking about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "gelecek",
+      "romanization": "ge-le-JEK",
+      "nativeText": "Listen for \"gelecek\" inside \"Geleceğimi düşünüyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ge-le-JEK",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "Listen for \"gelecek\" inside \"Geleceğimi düşünüyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am thinking about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "gelecek",
+      "romanization": "ge-le-JEK",
+      "nativeText": "Write \"gelecek\" again without looking, then compare the exact written form against \"Geleceğimi düşünüyorum.\" before moving on.",
+      "pronunciation": "ge-le-JEK",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "Write \"gelecek\" again without looking, then compare the exact written form against \"Geleceğimi düşünüyorum.\" before moving on.",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am thinking about my future.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "gelecek",
+      "romanization": "ge-le-JEK",
+      "nativeText": "Check whether \"gelecek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am thinking about my future.”",
+      "pronunciation": "ge-le-JEK",
+      "exampleTarget": "Geleceğimi düşünüyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am thinking about my future.”",
+      "korean": "gelecek",
+      "english": "Check whether \"gelecek\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am thinking about my future.”",
+      "example": "Geleceğimi düşünüyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am thinking about my future.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "hayal",
+      "romanization": "ha-YAL",
+      "nativeText": "“Dream / aspiration.”",
+      "pronunciation": "ha-YAL",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "“Dream / aspiration.”",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Hayalim doktor olmak.",
+      "romanization": "ha-YAL",
+      "nativeText": "Model use for \"Hayalim doktor olmak.\": “My dream is to become a doctor.”",
+      "pronunciation": "ha-YAL",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "“My dream is to become a doctor.”",
+      "korean": "Hayalim doktor olmak.",
+      "english": "Model use for \"Hayalim doktor olmak.\": “My dream is to become a doctor.”",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "“My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "hayal",
+      "romanization": "ha-YAL",
+      "nativeText": "Usage focus for \"hayal\": Distinguish the nearby wording choices that make Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "ha-YAL",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "Notice what the form is doing here: “My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "Usage focus for \"hayal\": Distinguish the nearby wording choices that make Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "Notice what the form is doing here: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "hayal",
+      "romanization": "ha-YAL",
+      "nativeText": "Contrast check for \"hayal\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ha-YAL",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "Contrast check for \"hayal\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "hayal",
+      "romanization": "ha-YAL",
+      "nativeText": "Recall \"hayal\" from memory, then explain what would change if a nearby alternative replaced it in \"Hayalim doktor olmak.\".",
+      "pronunciation": "ha-YAL",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "Self-check against the model before moving on: “My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "Recall \"hayal\" from memory, then explain what would change if a nearby alternative replaced it in \"Hayalim doktor olmak.\".",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "Self-check against the model before moving on: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "hayal",
+      "romanization": "ha-YAL",
+      "nativeText": "Repair \"hayal\" inside \"Hayalim doktor olmak.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams sound precise rather than merely understandable.",
+      "pronunciation": "ha-YAL",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "Use the model as the repair target: “My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "Repair \"hayal\" inside \"Hayalim doktor olmak.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 21: Umutlar ve Hayaller — Hopes and Dreams sound precise rather than merely understandable.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "Use the model as the repair target: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "hayal",
+      "romanization": "ha-YAL",
+      "nativeText": "Transfer \"hayal\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hayalim doktor olmak.\".",
+      "pronunciation": "ha-YAL",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "Transfer \"hayal\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hayalim doktor olmak.\".",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "hayal",
+      "romanization": "ha-YAL",
+      "nativeText": "Find one word or phrase that naturally travels with \"hayal\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ha-YAL",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "Find one word or phrase that naturally travels with \"hayal\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "hayal",
+      "romanization": "ha-YAL",
+      "nativeText": "Listen for \"hayal\" inside \"Hayalim doktor olmak.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ha-YAL",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "Listen for \"hayal\" inside \"Hayalim doktor olmak.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "hayal",
+      "romanization": "ha-YAL",
+      "nativeText": "Write \"hayal\" again without looking, then compare the exact written form against \"Hayalim doktor olmak.\" before moving on.",
+      "pronunciation": "ha-YAL",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "Use the written model as the final correctness check: “My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "Write \"hayal\" again without looking, then compare the exact written form against \"Hayalim doktor olmak.\" before moving on.",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "hayal",
+      "romanization": "ha-YAL",
+      "nativeText": "Check whether \"hayal\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "pronunciation": "ha-YAL",
+      "exampleTarget": "Hayalim doktor olmak.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "korean": "hayal",
+      "english": "Check whether \"hayal\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”",
+      "example": "Hayalim doktor olmak.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My dream is to become a doctor.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "istiyorum",
+      "romanization": "is-ti-YO-rum",
+      "nativeText": "“I want.” A direct statement of desire.",
+      "pronunciation": "is-ti-YO-rum",
+      "exampleTarget": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleNative": "“I want to learn Turkish well.”",
+      "korean": "istiyorum",
+      "english": "“I want.” A direct statement of desire.",
+      "example": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleEnglish": "“I want to learn Turkish well.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Türkçeyi iyi öğrenmek istiyorum.",
+      "romanization": "is-ti-YO-rum",
+      "nativeText": "Model use for \"Türkçeyi iyi öğrenmek istiyorum.\": “I want to learn Turkish well.”",
+      "pronunciation": "is-ti-YO-rum",
+      "exampleTarget": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleNative": "“I want to learn Turkish well.”",
+      "korean": "Türkçeyi iyi öğrenmek istiyorum.",
+      "english": "Model use for \"Türkçeyi iyi öğrenmek istiyorum.\": “I want to learn Turkish well.”",
+      "example": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleEnglish": "“I want to learn Turkish well.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "istiyorum",
+      "romanization": "is-ti-YO-rum",
+      "nativeText": "Usage focus for \"istiyorum\": “I want.” A direct statement of desire.",
+      "pronunciation": "is-ti-YO-rum",
+      "exampleTarget": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I want to learn Turkish well.”",
+      "korean": "istiyorum",
+      "english": "Usage focus for \"istiyorum\": “I want.” A direct statement of desire.",
+      "example": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to learn Turkish well.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "istiyorum",
+      "romanization": "is-ti-YO-rum",
+      "nativeText": "Contrast check for \"istiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "is-ti-YO-rum",
+      "exampleTarget": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn Turkish well.”",
+      "korean": "istiyorum",
+      "english": "Contrast check for \"istiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn Turkish well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "istiyorum",
+      "romanization": "is-ti-YO-rum",
+      "nativeText": "Recall \"istiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Türkçeyi iyi öğrenmek istiyorum.\".",
+      "pronunciation": "is-ti-YO-rum",
+      "exampleTarget": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I want to learn Turkish well.”",
+      "korean": "istiyorum",
+      "english": "Recall \"istiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Türkçeyi iyi öğrenmek istiyorum.\".",
+      "example": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to learn Turkish well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "istiyorum",
+      "romanization": "is-ti-YO-rum",
+      "nativeText": "Repair \"istiyorum\" inside \"Türkçeyi iyi öğrenmek istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want.” A direct statement of desire.",
+      "pronunciation": "is-ti-YO-rum",
+      "exampleTarget": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleNative": "Use the model as the repair target: “I want to learn Turkish well.”",
+      "korean": "istiyorum",
+      "english": "Repair \"istiyorum\" inside \"Türkçeyi iyi öğrenmek istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I want.” A direct statement of desire.",
+      "example": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I want to learn Turkish well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "istiyorum",
+      "romanization": "is-ti-YO-rum",
+      "nativeText": "Transfer \"istiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Türkçeyi iyi öğrenmek istiyorum.\".",
+      "pronunciation": "is-ti-YO-rum",
+      "exampleTarget": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn Turkish well.”",
+      "korean": "istiyorum",
+      "english": "Transfer \"istiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Türkçeyi iyi öğrenmek istiyorum.\".",
+      "example": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn Turkish well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "istiyorum",
+      "romanization": "is-ti-YO-rum",
+      "nativeText": "Find one word or phrase that naturally travels with \"istiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "is-ti-YO-rum",
+      "exampleTarget": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to learn Turkish well.”",
+      "korean": "istiyorum",
+      "english": "Find one word or phrase that naturally travels with \"istiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to learn Turkish well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "istiyorum",
+      "romanization": "is-ti-YO-rum",
+      "nativeText": "Listen for \"istiyorum\" inside \"Türkçeyi iyi öğrenmek istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "is-ti-YO-rum",
+      "exampleTarget": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn Turkish well.”",
+      "korean": "istiyorum",
+      "english": "Listen for \"istiyorum\" inside \"Türkçeyi iyi öğrenmek istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn Turkish well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "istiyorum",
+      "romanization": "is-ti-YO-rum",
+      "nativeText": "Write \"istiyorum\" again without looking, then compare the exact written form against \"Türkçeyi iyi öğrenmek istiyorum.\" before moving on.",
+      "pronunciation": "is-ti-YO-rum",
+      "exampleTarget": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to learn Turkish well.”",
+      "korean": "istiyorum",
+      "english": "Write \"istiyorum\" again without looking, then compare the exact written form against \"Türkçeyi iyi öğrenmek istiyorum.\" before moving on.",
+      "example": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to learn Turkish well.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "istiyorum",
+      "romanization": "is-ti-YO-rum",
+      "nativeText": "Check whether \"istiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn Turkish well.”",
+      "pronunciation": "is-ti-YO-rum",
+      "exampleTarget": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to learn Turkish well.”",
+      "korean": "istiyorum",
+      "english": "Check whether \"istiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn Turkish well.”",
+      "example": "Türkçeyi iyi öğrenmek istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to learn Turkish well.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "çalışacağım",
+      "romanization": "ça-lı-şa-JA-ğım",
+      "nativeText": "“I will work / study.” Future suffixes obey harmony and soften before personal endings.",
+      "pronunciation": "ça-lı-şa-JA-ğım",
+      "exampleTarget": "Üniversitede çalışacağım.",
+      "exampleNative": "“I will study at university.”",
+      "korean": "çalışacağım",
+      "english": "“I will work / study.” Future suffixes obey harmony and soften before personal endings.",
+      "example": "Üniversitede çalışacağım.",
+      "exampleEnglish": "“I will study at university.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Üniversitede çalışacağım.",
+      "romanization": "ça-lı-şa-JA-ğım",
+      "nativeText": "Model use for \"Üniversitede çalışacağım.\": “I will study at university.”",
+      "pronunciation": "ça-lı-şa-JA-ğım",
+      "exampleTarget": "Üniversitede çalışacağım.",
+      "exampleNative": "“I will study at university.”",
+      "korean": "Üniversitede çalışacağım.",
+      "english": "Model use for \"Üniversitede çalışacağım.\": “I will study at university.”",
+      "example": "Üniversitede çalışacağım.",
+      "exampleEnglish": "“I will study at university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "çalışacağım",
+      "romanization": "ça-lı-şa-JA-ğım",
+      "nativeText": "Usage focus for \"çalışacağım\": “I will work / study.” Future suffixes obey harmony and soften before personal endings.",
+      "pronunciation": "ça-lı-şa-JA-ğım",
+      "exampleTarget": "Üniversitede çalışacağım.",
+      "exampleNative": "Notice what the form is doing here: “I will study at university.”",
+      "korean": "çalışacağım",
+      "english": "Usage focus for \"çalışacağım\": “I will work / study.” Future suffixes obey harmony and soften before personal endings.",
+      "example": "Üniversitede çalışacağım.",
+      "exampleEnglish": "Notice what the form is doing here: “I will study at university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "çalışacağım",
+      "romanization": "ça-lı-şa-JA-ğım",
+      "nativeText": "Contrast check for \"çalışacağım\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ça-lı-şa-JA-ğım",
+      "exampleTarget": "Üniversitede çalışacağım.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will study at university.”",
+      "korean": "çalışacağım",
+      "english": "Contrast check for \"çalışacağım\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Üniversitede çalışacağım.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "çalışacağım",
+      "romanization": "ça-lı-şa-JA-ğım",
+      "nativeText": "Recall \"çalışacağım\" from memory, then explain what would change if a nearby alternative replaced it in \"Üniversitede çalışacağım.\".",
+      "pronunciation": "ça-lı-şa-JA-ğım",
+      "exampleTarget": "Üniversitede çalışacağım.",
+      "exampleNative": "Self-check against the model before moving on: “I will study at university.”",
+      "korean": "çalışacağım",
+      "english": "Recall \"çalışacağım\" from memory, then explain what would change if a nearby alternative replaced it in \"Üniversitede çalışacağım.\".",
+      "example": "Üniversitede çalışacağım.",
+      "exampleEnglish": "Self-check against the model before moving on: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "çalışacağım",
+      "romanization": "ça-lı-şa-JA-ğım",
+      "nativeText": "Repair \"çalışacağım\" inside \"Üniversitede çalışacağım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will work / study.” Future suffixes obey harmony and soften before personal endings.",
+      "pronunciation": "ça-lı-şa-JA-ğım",
+      "exampleTarget": "Üniversitede çalışacağım.",
+      "exampleNative": "Use the model as the repair target: “I will study at university.”",
+      "korean": "çalışacağım",
+      "english": "Repair \"çalışacağım\" inside \"Üniversitede çalışacağım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will work / study.” Future suffixes obey harmony and soften before personal endings.",
+      "example": "Üniversitede çalışacağım.",
+      "exampleEnglish": "Use the model as the repair target: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "çalışacağım",
+      "romanization": "ça-lı-şa-JA-ğım",
+      "nativeText": "Transfer \"çalışacağım\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Üniversitede çalışacağım.\".",
+      "pronunciation": "ça-lı-şa-JA-ğım",
+      "exampleTarget": "Üniversitede çalışacağım.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will study at university.”",
+      "korean": "çalışacağım",
+      "english": "Transfer \"çalışacağım\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Üniversitede çalışacağım.\".",
+      "example": "Üniversitede çalışacağım.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "çalışacağım",
+      "romanization": "ça-lı-şa-JA-ğım",
+      "nativeText": "Find one word or phrase that naturally travels with \"çalışacağım\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ça-lı-şa-JA-ğım",
+      "exampleTarget": "Üniversitede çalışacağım.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I will study at university.”",
+      "korean": "çalışacağım",
+      "english": "Find one word or phrase that naturally travels with \"çalışacağım\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Üniversitede çalışacağım.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "çalışacağım",
+      "romanization": "ça-lı-şa-JA-ğım",
+      "nativeText": "Listen for \"çalışacağım\" inside \"Üniversitede çalışacağım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ça-lı-şa-JA-ğım",
+      "exampleTarget": "Üniversitede çalışacağım.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will study at university.”",
+      "korean": "çalışacağım",
+      "english": "Listen for \"çalışacağım\" inside \"Üniversitede çalışacağım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Üniversitede çalışacağım.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "çalışacağım",
+      "romanization": "ça-lı-şa-JA-ğım",
+      "nativeText": "Write \"çalışacağım\" again without looking, then compare the exact written form against \"Üniversitede çalışacağım.\" before moving on.",
+      "pronunciation": "ça-lı-şa-JA-ğım",
+      "exampleTarget": "Üniversitede çalışacağım.",
+      "exampleNative": "Use the written model as the final correctness check: “I will study at university.”",
+      "korean": "çalışacağım",
+      "english": "Write \"çalışacağım\" again without looking, then compare the exact written form against \"Üniversitede çalışacağım.\" before moving on.",
+      "example": "Üniversitede çalışacağım.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I will study at university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "çalışacağım",
+      "romanization": "ça-lı-şa-JA-ğım",
+      "nativeText": "Check whether \"çalışacağım\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will study at university.”",
+      "pronunciation": "ça-lı-şa-JA-ğım",
+      "exampleTarget": "Üniversitede çalışacağım.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I will study at university.”",
+      "korean": "çalışacağım",
+      "english": "Check whether \"çalışacağım\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will study at university.”",
+      "example": "Üniversitede çalışacağım.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I will study at university.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "umarım",
+      "romanization": "u-ma-RIM",
+      "nativeText": "“I hope.” Useful before a desired clause.",
+      "pronunciation": "u-ma-RIM",
+      "exampleTarget": "Umarım Türkiye’ye giderim.",
+      "exampleNative": "“I hope I go to Turkey.”",
+      "korean": "umarım",
+      "english": "“I hope.” Useful before a desired clause.",
+      "example": "Umarım Türkiye’ye giderim.",
+      "exampleEnglish": "“I hope I go to Turkey.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Umarım Türkiye’ye giderim.",
+      "romanization": "u-ma-RIM",
+      "nativeText": "Model use for \"Umarım Türkiye’ye giderim.\": “I hope I go to Turkey.”",
+      "pronunciation": "u-ma-RIM",
+      "exampleTarget": "Umarım Türkiye’ye giderim.",
+      "exampleNative": "“I hope I go to Turkey.”",
+      "korean": "Umarım Türkiye’ye giderim.",
+      "english": "Model use for \"Umarım Türkiye’ye giderim.\": “I hope I go to Turkey.”",
+      "example": "Umarım Türkiye’ye giderim.",
+      "exampleEnglish": "“I hope I go to Turkey.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "umarım",
+      "romanization": "u-ma-RIM",
+      "nativeText": "Usage focus for \"umarım\": “I hope.” Useful before a desired clause.",
+      "pronunciation": "u-ma-RIM",
+      "exampleTarget": "Umarım Türkiye’ye giderim.",
+      "exampleNative": "Notice what the form is doing here: “I hope I go to Turkey.”",
+      "korean": "umarım",
+      "english": "Usage focus for \"umarım\": “I hope.” Useful before a desired clause.",
+      "example": "Umarım Türkiye’ye giderim.",
+      "exampleEnglish": "Notice what the form is doing here: “I hope I go to Turkey.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "umarım",
+      "romanization": "u-ma-RIM",
+      "nativeText": "Contrast check for \"umarım\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "u-ma-RIM",
+      "exampleTarget": "Umarım Türkiye’ye giderim.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I hope I go to Turkey.”",
+      "korean": "umarım",
+      "english": "Contrast check for \"umarım\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Umarım Türkiye’ye giderim.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I hope I go to Turkey.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "umarım",
+      "romanization": "u-ma-RIM",
+      "nativeText": "Recall \"umarım\" from memory, then explain what would change if a nearby alternative replaced it in \"Umarım Türkiye’ye giderim.\".",
+      "pronunciation": "u-ma-RIM",
+      "exampleTarget": "Umarım Türkiye’ye giderim.",
+      "exampleNative": "Self-check against the model before moving on: “I hope I go to Turkey.”",
+      "korean": "umarım",
+      "english": "Recall \"umarım\" from memory, then explain what would change if a nearby alternative replaced it in \"Umarım Türkiye’ye giderim.\".",
+      "example": "Umarım Türkiye’ye giderim.",
+      "exampleEnglish": "Self-check against the model before moving on: “I hope I go to Turkey.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "umarım",
+      "romanization": "u-ma-RIM",
+      "nativeText": "Repair \"umarım\" inside \"Umarım Türkiye’ye giderim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I hope.” Useful before a desired clause.",
+      "pronunciation": "u-ma-RIM",
+      "exampleTarget": "Umarım Türkiye’ye giderim.",
+      "exampleNative": "Use the model as the repair target: “I hope I go to Turkey.”",
+      "korean": "umarım",
+      "english": "Repair \"umarım\" inside \"Umarım Türkiye’ye giderim.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I hope.” Useful before a desired clause.",
+      "example": "Umarım Türkiye’ye giderim.",
+      "exampleEnglish": "Use the model as the repair target: “I hope I go to Turkey.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "umarım",
+      "romanization": "u-ma-RIM",
+      "nativeText": "Transfer \"umarım\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Umarım Türkiye’ye giderim.\".",
+      "pronunciation": "u-ma-RIM",
+      "exampleTarget": "Umarım Türkiye’ye giderim.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I hope I go to Turkey.”",
+      "korean": "umarım",
+      "english": "Transfer \"umarım\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Umarım Türkiye’ye giderim.\".",
+      "example": "Umarım Türkiye’ye giderim.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I hope I go to Turkey.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "umarım",
+      "romanization": "u-ma-RIM",
+      "nativeText": "Find one word or phrase that naturally travels with \"umarım\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "u-ma-RIM",
+      "exampleTarget": "Umarım Türkiye’ye giderim.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I hope I go to Turkey.”",
+      "korean": "umarım",
+      "english": "Find one word or phrase that naturally travels with \"umarım\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Umarım Türkiye’ye giderim.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I hope I go to Turkey.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "umarım",
+      "romanization": "u-ma-RIM",
+      "nativeText": "Listen for \"umarım\" inside \"Umarım Türkiye’ye giderim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "u-ma-RIM",
+      "exampleTarget": "Umarım Türkiye’ye giderim.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I hope I go to Turkey.”",
+      "korean": "umarım",
+      "english": "Listen for \"umarım\" inside \"Umarım Türkiye’ye giderim.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Umarım Türkiye’ye giderim.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I hope I go to Turkey.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "umarım",
+      "romanization": "u-ma-RIM",
+      "nativeText": "Write \"umarım\" again without looking, then compare the exact written form against \"Umarım Türkiye’ye giderim.\" before moving on.",
+      "pronunciation": "u-ma-RIM",
+      "exampleTarget": "Umarım Türkiye’ye giderim.",
+      "exampleNative": "Use the written model as the final correctness check: “I hope I go to Turkey.”",
+      "korean": "umarım",
+      "english": "Write \"umarım\" again without looking, then compare the exact written form against \"Umarım Türkiye’ye giderim.\" before moving on.",
+      "example": "Umarım Türkiye’ye giderim.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I hope I go to Turkey.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "umarım",
+      "romanization": "u-ma-RIM",
+      "nativeText": "Check whether \"umarım\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I hope I go to Turkey.”",
+      "pronunciation": "u-ma-RIM",
+      "exampleTarget": "Umarım Türkiye’ye giderim.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I hope I go to Turkey.”",
+      "korean": "umarım",
+      "english": "Check whether \"umarım\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I hope I go to Turkey.”",
+      "example": "Umarım Türkiye’ye giderim.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I hope I go to Turkey.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "olmak",
+      "romanization": "ol-MAK",
+      "nativeText": "“To become / be.” Career dreams often use this infinitive.",
+      "pronunciation": "ol-MAK",
+      "exampleTarget": "Öğretmen olmak istiyorum.",
+      "exampleNative": "“I want to become a teacher.”",
+      "korean": "olmak",
+      "english": "“To become / be.” Career dreams often use this infinitive.",
+      "example": "Öğretmen olmak istiyorum.",
+      "exampleEnglish": "“I want to become a teacher.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Öğretmen olmak istiyorum.",
+      "romanization": "ol-MAK",
+      "nativeText": "Model use for \"Öğretmen olmak istiyorum.\": “I want to become a teacher.”",
+      "pronunciation": "ol-MAK",
+      "exampleTarget": "Öğretmen olmak istiyorum.",
+      "exampleNative": "“I want to become a teacher.”",
+      "korean": "Öğretmen olmak istiyorum.",
+      "english": "Model use for \"Öğretmen olmak istiyorum.\": “I want to become a teacher.”",
+      "example": "Öğretmen olmak istiyorum.",
+      "exampleEnglish": "“I want to become a teacher.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "olmak",
+      "romanization": "ol-MAK",
+      "nativeText": "Usage focus for \"olmak\": “To become / be.” Career dreams often use this infinitive.",
+      "pronunciation": "ol-MAK",
+      "exampleTarget": "Öğretmen olmak istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I want to become a teacher.”",
+      "korean": "olmak",
+      "english": "Usage focus for \"olmak\": “To become / be.” Career dreams often use this infinitive.",
+      "example": "Öğretmen olmak istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I want to become a teacher.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "olmak",
+      "romanization": "ol-MAK",
+      "nativeText": "Contrast check for \"olmak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ol-MAK",
+      "exampleTarget": "Öğretmen olmak istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to become a teacher.”",
+      "korean": "olmak",
+      "english": "Contrast check for \"olmak\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Öğretmen olmak istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "olmak",
+      "romanization": "ol-MAK",
+      "nativeText": "Recall \"olmak\" from memory, then explain what would change if a nearby alternative replaced it in \"Öğretmen olmak istiyorum.\".",
+      "pronunciation": "ol-MAK",
+      "exampleTarget": "Öğretmen olmak istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I want to become a teacher.”",
+      "korean": "olmak",
+      "english": "Recall \"olmak\" from memory, then explain what would change if a nearby alternative replaced it in \"Öğretmen olmak istiyorum.\".",
+      "example": "Öğretmen olmak istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "olmak",
+      "romanization": "ol-MAK",
+      "nativeText": "Repair \"olmak\" inside \"Öğretmen olmak istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To become / be.” Career dreams often use this infinitive.",
+      "pronunciation": "ol-MAK",
+      "exampleTarget": "Öğretmen olmak istiyorum.",
+      "exampleNative": "Use the model as the repair target: “I want to become a teacher.”",
+      "korean": "olmak",
+      "english": "Repair \"olmak\" inside \"Öğretmen olmak istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To become / be.” Career dreams often use this infinitive.",
+      "example": "Öğretmen olmak istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "olmak",
+      "romanization": "ol-MAK",
+      "nativeText": "Transfer \"olmak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Öğretmen olmak istiyorum.\".",
+      "pronunciation": "ol-MAK",
+      "exampleTarget": "Öğretmen olmak istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to become a teacher.”",
+      "korean": "olmak",
+      "english": "Transfer \"olmak\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Öğretmen olmak istiyorum.\".",
+      "example": "Öğretmen olmak istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "olmak",
+      "romanization": "ol-MAK",
+      "nativeText": "Find one word or phrase that naturally travels with \"olmak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ol-MAK",
+      "exampleTarget": "Öğretmen olmak istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to become a teacher.”",
+      "korean": "olmak",
+      "english": "Find one word or phrase that naturally travels with \"olmak\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Öğretmen olmak istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "olmak",
+      "romanization": "ol-MAK",
+      "nativeText": "Listen for \"olmak\" inside \"Öğretmen olmak istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ol-MAK",
+      "exampleTarget": "Öğretmen olmak istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to become a teacher.”",
+      "korean": "olmak",
+      "english": "Listen for \"olmak\" inside \"Öğretmen olmak istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Öğretmen olmak istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "olmak",
+      "romanization": "ol-MAK",
+      "nativeText": "Write \"olmak\" again without looking, then compare the exact written form against \"Öğretmen olmak istiyorum.\" before moving on.",
+      "pronunciation": "ol-MAK",
+      "exampleTarget": "Öğretmen olmak istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I want to become a teacher.”",
+      "korean": "olmak",
+      "english": "Write \"olmak\" again without looking, then compare the exact written form against \"Öğretmen olmak istiyorum.\" before moving on.",
+      "example": "Öğretmen olmak istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to become a teacher.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "olmak",
+      "romanization": "ol-MAK",
+      "nativeText": "Check whether \"olmak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "pronunciation": "ol-MAK",
+      "exampleTarget": "Öğretmen olmak istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "korean": "olmak",
+      "english": "Check whether \"olmak\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”",
+      "example": "Öğretmen olmak istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to become a teacher.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "fırsat olursa",
+      "romanization": "fır-SAT o-LUR-sa",
+      "nativeText": "“If there is an opportunity.” A realistic condition around future plans.",
+      "pronunciation": "fır-SAT o-LUR-sa",
+      "exampleTarget": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleNative": "“If there is an opportunity, I will work abroad.”",
+      "korean": "fırsat olursa",
+      "english": "“If there is an opportunity.” A realistic condition around future plans.",
+      "example": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleEnglish": "“If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Fırsat olursa yurt dışında çalışacağım.",
+      "romanization": "fır-SAT o-LUR-sa",
+      "nativeText": "Model use for \"Fırsat olursa yurt dışında çalışacağım.\": “If there is an opportunity, I will work abroad.”",
+      "pronunciation": "fır-SAT o-LUR-sa",
+      "exampleTarget": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleNative": "“If there is an opportunity, I will work abroad.”",
+      "korean": "Fırsat olursa yurt dışında çalışacağım.",
+      "english": "Model use for \"Fırsat olursa yurt dışında çalışacağım.\": “If there is an opportunity, I will work abroad.”",
+      "example": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleEnglish": "“If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "fırsat olursa",
+      "romanization": "fır-SAT o-LUR-sa",
+      "nativeText": "Usage focus for \"fırsat olursa\": “If there is an opportunity.” A realistic condition around future plans.",
+      "pronunciation": "fır-SAT o-LUR-sa",
+      "exampleTarget": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleNative": "Notice what the form is doing here: “If there is an opportunity, I will work abroad.”",
+      "korean": "fırsat olursa",
+      "english": "Usage focus for \"fırsat olursa\": “If there is an opportunity.” A realistic condition around future plans.",
+      "example": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleEnglish": "Notice what the form is doing here: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "fırsat olursa",
+      "romanization": "fır-SAT o-LUR-sa",
+      "nativeText": "Contrast check for \"fırsat olursa\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "fır-SAT o-LUR-sa",
+      "exampleTarget": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If there is an opportunity, I will work abroad.”",
+      "korean": "fırsat olursa",
+      "english": "Contrast check for \"fırsat olursa\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "fırsat olursa",
+      "romanization": "fır-SAT o-LUR-sa",
+      "nativeText": "Recall \"fırsat olursa\" from memory, then explain what would change if a nearby alternative replaced it in \"Fırsat olursa yurt dışında çalışacağım.\".",
+      "pronunciation": "fır-SAT o-LUR-sa",
+      "exampleTarget": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleNative": "Self-check against the model before moving on: “If there is an opportunity, I will work abroad.”",
+      "korean": "fırsat olursa",
+      "english": "Recall \"fırsat olursa\" from memory, then explain what would change if a nearby alternative replaced it in \"Fırsat olursa yurt dışında çalışacağım.\".",
+      "example": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleEnglish": "Self-check against the model before moving on: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "fırsat olursa",
+      "romanization": "fır-SAT o-LUR-sa",
+      "nativeText": "Repair \"fırsat olursa\" inside \"Fırsat olursa yurt dışında çalışacağım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “If there is an opportunity.” A realistic condition around future plans.",
+      "pronunciation": "fır-SAT o-LUR-sa",
+      "exampleTarget": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleNative": "Use the model as the repair target: “If there is an opportunity, I will work abroad.”",
+      "korean": "fırsat olursa",
+      "english": "Repair \"fırsat olursa\" inside \"Fırsat olursa yurt dışında çalışacağım.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “If there is an opportunity.” A realistic condition around future plans.",
+      "example": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleEnglish": "Use the model as the repair target: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "fırsat olursa",
+      "romanization": "fır-SAT o-LUR-sa",
+      "nativeText": "Transfer \"fırsat olursa\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Fırsat olursa yurt dışında çalışacağım.\".",
+      "pronunciation": "fır-SAT o-LUR-sa",
+      "exampleTarget": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “If there is an opportunity, I will work abroad.”",
+      "korean": "fırsat olursa",
+      "english": "Transfer \"fırsat olursa\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Fırsat olursa yurt dışında çalışacağım.\".",
+      "example": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "fırsat olursa",
+      "romanization": "fır-SAT o-LUR-sa",
+      "nativeText": "Find one word or phrase that naturally travels with \"fırsat olursa\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "fır-SAT o-LUR-sa",
+      "exampleTarget": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “If there is an opportunity, I will work abroad.”",
+      "korean": "fırsat olursa",
+      "english": "Find one word or phrase that naturally travels with \"fırsat olursa\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "fırsat olursa",
+      "romanization": "fır-SAT o-LUR-sa",
+      "nativeText": "Listen for \"fırsat olursa\" inside \"Fırsat olursa yurt dışında çalışacağım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "fır-SAT o-LUR-sa",
+      "exampleTarget": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If there is an opportunity, I will work abroad.”",
+      "korean": "fırsat olursa",
+      "english": "Listen for \"fırsat olursa\" inside \"Fırsat olursa yurt dışında çalışacağım.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "fırsat olursa",
+      "romanization": "fır-SAT o-LUR-sa",
+      "nativeText": "Write \"fırsat olursa\" again without looking, then compare the exact written form against \"Fırsat olursa yurt dışında çalışacağım.\" before moving on.",
+      "pronunciation": "fır-SAT o-LUR-sa",
+      "exampleTarget": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleNative": "Use the written model as the final correctness check: “If there is an opportunity, I will work abroad.”",
+      "korean": "fırsat olursa",
+      "english": "Write \"fırsat olursa\" again without looking, then compare the exact written form against \"Fırsat olursa yurt dışında çalışacağım.\" before moving on.",
+      "example": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleEnglish": "Use the written model as the final correctness check: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "fırsat olursa",
+      "romanization": "fır-SAT o-LUR-sa",
+      "nativeText": "Check whether \"fırsat olursa\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”",
+      "pronunciation": "fır-SAT o-LUR-sa",
+      "exampleTarget": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”",
+      "korean": "fırsat olursa",
+      "english": "Check whether \"fırsat olursa\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”",
+      "example": "Fırsat olursa yurt dışında çalışacağım.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “If there is an opportunity, I will work abroad.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "bir gün",
+      "romanization": "bir GÜN",
+      "nativeText": "“One day.” A simple phrase for distant dreams.",
+      "pronunciation": "bir GÜN",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "bir gün",
+      "english": "“One day.” A simple phrase for distant dreams.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "Bir gün kitap yazmak istiyorum.",
+      "romanization": "bir GÜN",
+      "nativeText": "Model use for \"Bir gün kitap yazmak istiyorum.\": “One day I want to write a book.”",
+      "pronunciation": "bir GÜN",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "“One day I want to write a book.”",
+      "korean": "Bir gün kitap yazmak istiyorum.",
+      "english": "Model use for \"Bir gün kitap yazmak istiyorum.\": “One day I want to write a book.”",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "“One day I want to write a book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "bir gün",
+      "romanization": "bir GÜN",
+      "nativeText": "Usage focus for \"bir gün\": “One day.” A simple phrase for distant dreams.",
+      "pronunciation": "bir GÜN",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “One day I want to write a book.”",
+      "korean": "bir gün",
+      "english": "Usage focus for \"bir gün\": “One day.” A simple phrase for distant dreams.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “One day I want to write a book.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "bir gün",
+      "romanization": "bir GÜN",
+      "nativeText": "Contrast check for \"bir gün\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bir GÜN",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “One day I want to write a book.”",
+      "korean": "bir gün",
+      "english": "Contrast check for \"bir gün\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "bir gün",
+      "romanization": "bir GÜN",
+      "nativeText": "Recall \"bir gün\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir gün kitap yazmak istiyorum.\".",
+      "pronunciation": "bir GÜN",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “One day I want to write a book.”",
+      "korean": "bir gün",
+      "english": "Recall \"bir gün\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir gün kitap yazmak istiyorum.\".",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "bir gün",
+      "romanization": "bir GÜN",
+      "nativeText": "Repair \"bir gün\" inside \"Bir gün kitap yazmak istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One day.” A simple phrase for distant dreams.",
+      "pronunciation": "bir GÜN",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "Use the model as the repair target: “One day I want to write a book.”",
+      "korean": "bir gün",
+      "english": "Repair \"bir gün\" inside \"Bir gün kitap yazmak istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One day.” A simple phrase for distant dreams.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "bir gün",
+      "romanization": "bir GÜN",
+      "nativeText": "Transfer \"bir gün\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir gün kitap yazmak istiyorum.\".",
+      "pronunciation": "bir GÜN",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “One day I want to write a book.”",
+      "korean": "bir gün",
+      "english": "Transfer \"bir gün\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir gün kitap yazmak istiyorum.\".",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "bir gün",
+      "romanization": "bir GÜN",
+      "nativeText": "Find one word or phrase that naturally travels with \"bir gün\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bir GÜN",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “One day I want to write a book.”",
+      "korean": "bir gün",
+      "english": "Find one word or phrase that naturally travels with \"bir gün\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "bir gün",
+      "romanization": "bir GÜN",
+      "nativeText": "Listen for \"bir gün\" inside \"Bir gün kitap yazmak istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bir GÜN",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “One day I want to write a book.”",
+      "korean": "bir gün",
+      "english": "Listen for \"bir gün\" inside \"Bir gün kitap yazmak istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "bir gün",
+      "romanization": "bir GÜN",
+      "nativeText": "Write \"bir gün\" again without looking, then compare the exact written form against \"Bir gün kitap yazmak istiyorum.\" before moving on.",
+      "pronunciation": "bir GÜN",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “One day I want to write a book.”",
+      "korean": "bir gün",
+      "english": "Write \"bir gün\" again without looking, then compare the exact written form against \"Bir gün kitap yazmak istiyorum.\" before moving on.",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “One day I want to write a book.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit21hopesdreams-vocabulary-1",
+        "tr-level1unit21hopesdreams-vocabulary-2",
+        "tr-level1unit21hopesdreams-grammar-1",
+        "tr-level1unit21hopesdreams-grammar-2",
+        "tr-level1unit21hopesdreams-reading",
+        "tr-level1unit21hopesdreams-listening",
+        "tr-level1unit21hopesdreams-writing",
+        "tr-level1unit21hopesdreams-task"
+      ],
+      "targetText": "bir gün",
+      "romanization": "bir GÜN",
+      "nativeText": "Check whether \"bir gün\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”",
+      "pronunciation": "bir GÜN",
+      "exampleTarget": "Bir gün kitap yazmak istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”",
+      "korean": "bir gün",
+      "english": "Check whether \"bir gün\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”",
+      "example": "Bir gün kitap yazmak istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “One day I want to write a book.”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

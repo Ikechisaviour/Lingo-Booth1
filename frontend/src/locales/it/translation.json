@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Esercitati con questo elemento altrove",
     "practiceEverywhere": "Praticatelo ovunque",
     "saveReply": "Salva risposta",
-    "selfTestReason": "Salvato dalla lezione per un rapido autotest."
+    "selfTestReason": "Salvato dalla lezione per un rapido autotest.",
+    "hideOutline": "Nascondi contorno",
+    "showOutline": "Mostra contorno"
   },
   "classList": {
     "heroAriaLabel": "Classe",
@@ -994,7 +996,7 @@
     "guidedTutor": "Tutor guidato",
     "startClass": "Inizia la lezione",
     "classFallback": "Classe",
-    "loadError": "Impossibile caricare le lezioni del corso. Assicurati che il backend sia in esecuzione e sottoposto a seeding.",
+    "loadError": "Impossibile caricare le tue lezioni in questo momento. Controlla la connessione e riprova.",
     "tracks": {
       "foundationTitle": "Livello {{level}} - Fondazione",
       "foundationSubtitle": "Inizia qui con il sistema di suono e scrittura per {{language}}.",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "Livello {{level}} · Unità {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Riprova",
+    "progressAriaLabel": "Progresso della classe",
+    "progressCaption": "{{percent}}% completato · {{completed}} di {{total}} elementi"
   },
   "contextPractice": {
     "title": "Lezioni modellate intorno a te",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "Ciò che è andato bene",
     "recapUsefulPhrases": "Frasi utili",
     "recapReview": "Rivedi di seguito",
-    "recapReviewFallback": "Salva una frase e riutilizzala in un'altra modalità pratica."
+    "recapReviewFallback": "Salva una frase e riutilizzala in un'altra modalità pratica.",
+    "hideSetup": "Nascondi configurazione",
+    "showSetup": "Mostra configurazione"
   },
   "exerciseHub": {
     "ariaLabel": "Esercizio",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: copia la forma, quindi scrivila dalla memoria."
     },
     "savedReason": "Salvato dalla pratica di scrittura per un altro passaggio.",
-    "selfTestReason": "Salvato dalla pratica di scrittura per un rapido autotest."
+    "selfTestReason": "Salvato dalla pratica di scrittura per un rapido autotest.",
+    "hideNotebook": "Nascondi taccuino",
+    "showNotebook": "Mostra taccuino"
   },
   "institution": {
     "kicker": "Istituzione",

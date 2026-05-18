@@ -861,6 +861,20 @@ const ProfileScreen: React.FC = () => {
             </Card.Content>
           </Card>
 
+          <Card style={styles.card}>
+            <Card.Content>
+              <Text variant="titleMedium" style={styles.cardTitle}>
+                {t('contact.navLabel', 'Contact')}
+              </Text>
+              <Text style={styles.hintText}>
+                {t('contact.profileHint', 'Send a question, report a problem, or share feedback from this device.')}
+              </Text>
+              <Button mode="outlined" onPress={() => navigation.navigate('Contact')} style={{ marginTop: 12 }}>
+                {t('contact.send', 'Send message')}
+              </Button>
+            </Card.Content>
+          </Card>
+
           {canManageInstitution && (
             <Card style={styles.card}>
               <Card.Content>

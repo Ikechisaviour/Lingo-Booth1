@@ -129,6 +129,25 @@ function lessonStats(classLesson) {
   };
 }
 
+// Read per-lesson completed-item count from the same localStorage key
+// ClassLessonPage writes to. Returns 0 when nothing is stored or parsing fails.
+function readClassLessonCompletedCount(lessonId, nativeLanguage, targetLanguage) {
+  if (!lessonId) return 0;
+  try {
+    const raw = window.localStorage.getItem(
+      `lingoClassLesson:${lessonId}:${nativeLanguage}-${targetLanguage}`,
+    );
+    if (!raw) return 0;
+    const parsed = JSON.parse(raw);
+    const items = Array.isArray(parsed?.completedItems)
+      ? parsed.completedItems
+      : (Array.isArray(parsed?.completed) ? parsed.completed : []);
+    return new Set(items.filter(Number.isInteger)).size;
+  } catch {
+    return 0;
+  }
+}
+
 function readableDifficulty(value = '', t) {
   const key = String(value || '').toLowerCase();
   if (key) {
@@ -194,6 +213,7 @@ function ClassLessonsPage() {
   const [classLessons, setClassLessons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [reloadKey, setReloadKey] = useState(0);
   const targetLanguage = getTargetLangCode();
   const nativeLanguage = getNativeLangCode();
   const targetName = languageNameFor(targetLanguage, t);
@@ -202,6 +222,8 @@ function ClassLessonsPage() {
     let cancelled = false;
 
     async function loadClassLessons() {
+      setLoading(true);
+      setError('');
       try {
         classLessonService.preparePair().catch(() => {});
         const response = await classLessonService.getClassLessonSummaries();
@@ -210,7 +232,7 @@ function ClassLessonsPage() {
         setClassLessons(list);
       } catch (err) {
         if (!cancelled) {
-          setError(t('classList.loadError', 'Could not load class lessons. Make sure the backend is running and seeded.'));
+          setError(t('classList.loadError', 'We couldn\'t load your lessons right now. Please check your connection and try again.'));
         }
       } finally {
         if (!cancelled) setLoading(false);
@@ -219,7 +241,9 @@ function ClassLessonsPage() {
 
     loadClassLessons();
     return () => { cancelled = true; };
-  }, [t]);
+  }, [t, reloadKey]);
+
+  const handleRetry = () => setReloadKey((n) => n + 1);
 
   // Group lessons by (level, track) and sort within each group by position.
   const groups = useMemo(() => {
@@ -249,6 +273,23 @@ function ClassLessonsPage() {
       dialogues: acc.dialogues + stats.dialogues,
     };
   }, { vocab: 0, grammar: 0, dialogues: 0 }), [classLessons]);
+
+  // Aggregate completed items across every loaded class lesson, using the same
+  // per-lesson localStorage records ClassLessonPage writes when the learner
+  // marks items done. Re-runs whenever the lesson list or learner pair changes.
+  const completionStats = useMemo(() => {
+    let completed = 0;
+    let total = 0;
+    for (const lesson of classLessons) {
+      const items = Array.isArray(lesson.content) ? lesson.content.length : 0;
+      if (!items) continue;
+      total += items;
+      const done = readClassLessonCompletedCount(lesson._id, nativeLanguage, targetLanguage);
+      completed += Math.min(done, items);
+    }
+    const percent = total ? Math.round((completed / total) * 100) : 0;
+    return { completed, total, percent };
+  }, [classLessons, nativeLanguage, targetLanguage]);
 
   const firstClassLesson = useMemo(() => {
     for (const { level, track } of TRACK_GROUPS) {
@@ -286,8 +327,25 @@ function ClassLessonsPage() {
               <span className="class-hero-count">{totalLessons || '--'}</span>
             </div>
             <p>{t('classList.availableUnits', 'available class units')}</p>
-            <div className="class-hero-meter" aria-hidden="true">
-              <span style={{ width: totalLessons ? '72%' : '24%' }} />
+            <div className="class-hero-meter-wrap">
+              <div
+                className="class-hero-meter"
+                role="progressbar"
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-valuenow={completionStats.percent}
+                aria-label={t('classList.progressAriaLabel', 'Class progress')}
+              >
+                <span style={{ width: `${completionStats.percent}%` }} />
+              </div>
+              <p className="class-hero-meter-caption">
+                {t('classList.progressCaption', {
+                  percent: completionStats.percent,
+                  completed: completionStats.completed,
+                  total: completionStats.total,
+                  defaultValue: '{{percent}}% complete · {{completed}} of {{total}} items',
+                })}
+              </p>
             </div>
           </div>
         </section>
@@ -314,7 +372,14 @@ function ClassLessonsPage() {
         <section className="class-lessons-panel" aria-label={t('classList.unitsAriaLabel', 'Class units')}>
 
           {loading && <p className="class-loading">{t('classList.loading', 'Loading lessons...')}</p>}
-          {error && <p className="class-error">{error}</p>}
+          {error && (
+            <div className="class-error" role="alert">
+              <p>{error}</p>
+              <button type="button" className="class-error-retry" onClick={handleRetry}>
+                {t('classList.retry', 'Try again')}
+              </button>
+            </div>
+          )}
           {!loading && !error && totalLessons === 0 && (
             <div className="class-empty">
               <h2>{t('classList.emptyTitle', 'Coming soon')}</h2>

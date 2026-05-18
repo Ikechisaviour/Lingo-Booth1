@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u13',
-  title: 'Level 1 · Unit 13: போக்குவரத்து — Transportation',
-  category: 'travel',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Use transport language for buses, trains, autos, and travel time.',
-  vocabularyGoal: 'Use vehicle, stop, ticket, and route words.',
-  grammarGoal: 'Use instrumental-style phrases with `-ஆல்` and destination marking in travel sentences.',
-  speakingGoal: 'Ask how to go somewhere, choose transport, and ask how long it takes.',
-  task: 'Plan a trip from campus to the city center.',
-  expressionPractice: [
-    practice('choosing-transport', 'Choosing transport', 'Use one transport phrase with `-ஆல்`.'),
-    practice('asking-route', 'Asking route', 'Use one route question.'),
-    practice('asking-duration', 'Asking duration', 'Use `எவ்வளவு நேரம் ஆகும்?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 13: போக்குவரத்து — Transportation",
+  "category": "travel",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit13transportation-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Use transport language for buses, trains, autos, and travel time."
+      ],
+      "task": "Plan a trip from campus to the city center."
+    },
+    {
+      "id": "ta-level1unit13transportation-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit13transportation-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 13: போக்குவரத்து — Transportation with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit13transportation-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 13: போக்குவரத்து — Transportation sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit13transportation-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Use transport language for buses, trains, autos, and travel time."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit13transportation-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 13: போக்குவரத்து — Transportation with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit13transportation-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit13transportation-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit13transportation-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit13transportation-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit13transportation-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Plan a trip from campus to the city center."
+      ],
+      "task": "Plan a trip from campus to the city center."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-city'],
-  items: [
-    item('பஸ்ஸால் செல்கிறேன்', 'passāl celkiṟēṉ', '“I go by bus.” The instrumental-style ending marks means.', 'நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.', '“I go to college by bus.”'),
-    item('ரயில்', 'rayil', '“Train.” A core transport noun in Tamil Nadu.', 'ரயில் எட்டு மணிக்கு புறப்படும்.', '“The train departs at eight.”'),
-    item('ஆட்டோ', 'āṭṭō', '“Auto-rickshaw.” A very practical local transport word.', 'நாம் ஆட்டோவில் போகலாம்.', '“We can go by auto.”'),
-    item('நிறுத்தம்', 'niṟuttam', '“Stop.” Used for bus stops and stopping points.', 'பஸ் நிறுத்தம் அருகில் உள்ளது.', '“The bus stop is nearby.”'),
-    item('நிலையம்', 'nilaiyam', '“Station.” Used for rail and bus stations.', 'அடுத்த நிலையத்தில் இறங்குங்கள்.', '“Get off at the next station.”'),
-    item('டிக்கெட்', 'ṭikkeṭ', '“Ticket.” A common loanword.', 'ஒரு டிக்கெட் வேண்டும்.', '“I want one ticket.”'),
-    item('...க்கு எப்படி போகலாம்?', '...kku eppaṭi pōkalām', '“How can I go to ...?” A practical route question.', 'மையத்துக்கு எப்படி போகலாம்?', '“How can I go to the center?”'),
-    item('எவ்வளவு நேரம் ஆகும்?', 'evvaḷavu nēram ākum', '“How long will it take?” A complete duration question.', 'விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?', '“How long will it take to the airport?”'),
+  "expressionPractice": [
+    {
+      "id": "choosing-transport",
+      "label": "Choosing transport",
+      "goal": "Use one transport phrase with `-ஆல்`."
+    },
+    {
+      "id": "asking-route",
+      "label": "Asking route",
+      "goal": "Use one route question."
+    },
+    {
+      "id": "asking-duration",
+      "label": "Asking duration",
+      "goal": "Use `எவ்வளவு நேரம் ஆகும்?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-travel",
+    "topic-city"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Use transport language for buses, trains, autos, and travel time.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Plan a trip from campus to the city center.",
+      "korean": "பாட இலக்கு",
+      "english": "Use transport language for buses, trains, autos, and travel time.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Plan a trip from campus to the city center."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit13transportation-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "“I go to college by bus.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\".",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "“I go to college by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 13: போக்குவரத்து — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "“I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "Use the key language of Level 1 · Unit 13: போக்குவரத்து — Transportation with the register and setting that the lesson requires.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "“I go to college by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-2"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 13: போக்குவரத்து — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "“The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 13: போக்குவரத்து — Transportation sound precise rather than merely understandable.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "“The train departs at eight.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit13transportation-grammar-1"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "",
+      "nativeText": "Use transport language for buses, trains, autos, and travel time.",
+      "pronunciation": "",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "“I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "Use transport language for buses, trains, autos, and travel time.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "“I go to college by bus.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 13: போக்குவரத்து — Transportation with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "“The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "Contrast the main pattern in Level 1 · Unit 13: போக்குவரத்து — Transportation with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "“The train departs at eight.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit13transportation-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "“How long will it take to the airport?”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "“How long will it take to the airport?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit13transportation-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "“How long will it take to the airport?”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "“How long will it take to the airport?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit13transportation-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit13transportation-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "“The train departs at eight.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "“The train departs at eight.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Plan a trip from campus to the city center.",
+      "pronunciation": "",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "Plan a trip from campus to the city center.",
+      "korean": "இறுதி செயல்",
+      "english": "Plan a trip from campus to the city center.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "Plan a trip from campus to the city center."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"ரயில் எட்டு மணிக்கு புறப்படும்.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “The train departs at eight.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"ரயில் எட்டு மணிக்கு புறப்படும்.\" against the model.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “The train departs at eight.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "“I go to college by bus.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" before reusing it elsewhere.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "“I go to college by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "“How long will it take to the airport?”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" as one thought.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "“How long will it take to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" and move it into your own life.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"பஸ்ஸால் செல்கிறேன்\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "பஸ்ஸால் செல்கிறேன்",
+      "exampleNative": "“I go by bus.” The instrumental-style ending marks means.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"பஸ்ஸால் செல்கிறேன்\" before looking back.",
+      "example": "பஸ்ஸால் செல்கிறேன்",
+      "exampleEnglish": "“I go by bus.” The instrumental-style ending marks means."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" rather than restarting from a blank sentence.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 13: போக்குவரத்து — Transportation with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ரயில் எட்டு மணிக்கு புறப்படும்.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "“The train departs at eight.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 13: போக்குவரத்து — Transportation with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"ரயில் எட்டு மணிக்கு புறப்படும்.\" as the comparison line.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "“The train departs at eight.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit13transportation-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\".",
+      "pronunciation": "",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "“I go to college by bus.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\".",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "“I go to college by bus.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\".",
+      "pronunciation": "",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "“How long will it take to the airport?”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\".",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "“How long will it take to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "“I go to college by bus.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" one layer at a time.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "“I go to college by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ரயில் எட்டு மணிக்கு புறப்படும்.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "“The train departs at eight.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"ரயில் எட்டு மணிக்கு புறப்படும்.\" as the deciding example.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "“The train departs at eight.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-culture",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\".",
+      "pronunciation": "",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "“How long will it take to the airport?”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\".",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "“How long will it take to the airport?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "passāl celkiṟēṉ",
+      "nativeText": "“I go by bus.” The instrumental-style ending marks means.",
+      "pronunciation": "passāl celkiṟēṉ",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "“I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "“I go by bus.” The instrumental-style ending marks means.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "“I go to college by bus.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "romanization": "passāl celkiṟēṉ",
+      "nativeText": "Model use for \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\": “I go to college by bus.”",
+      "pronunciation": "passāl celkiṟēṉ",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "“I go to college by bus.”",
+      "korean": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "english": "Model use for \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\": “I go to college by bus.”",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "“I go to college by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "passāl celkiṟēṉ",
+      "nativeText": "Usage focus for \"பஸ்ஸால் செல்கிறேன்\": Use the key language of Level 1 · Unit 13: போக்குவரத்து — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "passāl celkiṟēṉ",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "Notice what the form is doing here: “I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "Usage focus for \"பஸ்ஸால் செல்கிறேன்\": Use the key language of Level 1 · Unit 13: போக்குவரத்து — Transportation with the register and setting that the lesson requires.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “I go to college by bus.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "passāl celkiṟēṉ",
+      "nativeText": "Contrast check for \"பஸ்ஸால் செல்கிறேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "passāl celkiṟēṉ",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "Contrast check for \"பஸ்ஸால் செல்கிறேன்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I go to college by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "passāl celkiṟēṉ",
+      "nativeText": "Recall \"பஸ்ஸால் செல்கிறேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\".",
+      "pronunciation": "passāl celkiṟēṉ",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: “I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "Recall \"பஸ்ஸால் செல்கிறேன்\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\".",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I go to college by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "passāl celkiṟēṉ",
+      "nativeText": "Repair \"பஸ்ஸால் செல்கிறேன்\" inside \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 13: போக்குவரத்து — Transportation with the register and setting that the lesson requires.",
+      "pronunciation": "passāl celkiṟēṉ",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "Use the model as the repair target: “I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "Repair \"பஸ்ஸால் செல்கிறேன்\" inside \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 13: போக்குவரத்து — Transportation with the register and setting that the lesson requires.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: “I go to college by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "passāl celkiṟēṉ",
+      "nativeText": "Transfer \"பஸ்ஸால் செல்கிறேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\".",
+      "pronunciation": "passāl celkiṟēṉ",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "Transfer \"பஸ்ஸால் செல்கிறேன்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\".",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I go to college by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "passāl celkiṟēṉ",
+      "nativeText": "Find one word or phrase that naturally travels with \"பஸ்ஸால் செல்கிறேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "passāl celkiṟēṉ",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "Find one word or phrase that naturally travels with \"பஸ்ஸால் செல்கிறேன்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I go to college by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "passāl celkiṟēṉ",
+      "nativeText": "Listen for \"பஸ்ஸால் செல்கிறேன்\" inside \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "passāl celkiṟēṉ",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "Listen for \"பஸ்ஸால் செல்கிறேன்\" inside \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I go to college by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "passāl celkiṟēṉ",
+      "nativeText": "Write \"பஸ்ஸால் செல்கிறேன்\" again without looking, then compare the exact written form against \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" before moving on.",
+      "pronunciation": "passāl celkiṟēṉ",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "Write \"பஸ்ஸால் செல்கிறேன்\" again without looking, then compare the exact written form against \"நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.\" before moving on.",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I go to college by bus.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பஸ்ஸால் செல்கிறேன்",
+      "romanization": "passāl celkiṟēṉ",
+      "nativeText": "Check whether \"பஸ்ஸால் செல்கிறேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I go to college by bus.”",
+      "pronunciation": "passāl celkiṟēṉ",
+      "exampleTarget": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I go to college by bus.”",
+      "korean": "பஸ்ஸால் செல்கிறேன்",
+      "english": "Check whether \"பஸ்ஸால் செல்கிறேன்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I go to college by bus.”",
+      "example": "நான் கல்லூரிக்கு பஸ்ஸால் செல்கிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I go to college by bus.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "rayil",
+      "nativeText": "“Train.” A core transport noun in Tamil Nadu.",
+      "pronunciation": "rayil",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "“The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "“Train.” A core transport noun in Tamil Nadu.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "“The train departs at eight.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "romanization": "rayil",
+      "nativeText": "Model use for \"ரயில் எட்டு மணிக்கு புறப்படும்.\": “The train departs at eight.”",
+      "pronunciation": "rayil",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "“The train departs at eight.”",
+      "korean": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "english": "Model use for \"ரயில் எட்டு மணிக்கு புறப்படும்.\": “The train departs at eight.”",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "“The train departs at eight.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "rayil",
+      "nativeText": "Usage focus for \"ரயில்\": Distinguish the nearby wording choices that make Level 1 · Unit 13: போக்குவரத்து — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "rayil",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "Notice what the form is doing here: “The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "Usage focus for \"ரயில்\": Distinguish the nearby wording choices that make Level 1 · Unit 13: போக்குவரத்து — Transportation sound precise rather than merely understandable.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "Notice what the form is doing here: “The train departs at eight.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "rayil",
+      "nativeText": "Contrast check for \"ரயில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "rayil",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "Contrast check for \"ரயில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The train departs at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "rayil",
+      "nativeText": "Recall \"ரயில்\" from memory, then explain what would change if a nearby alternative replaced it in \"ரயில் எட்டு மணிக்கு புறப்படும்.\".",
+      "pronunciation": "rayil",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "Self-check against the model before moving on: “The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "Recall \"ரயில்\" from memory, then explain what would change if a nearby alternative replaced it in \"ரயில் எட்டு மணிக்கு புறப்படும்.\".",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “The train departs at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "rayil",
+      "nativeText": "Repair \"ரயில்\" inside \"ரயில் எட்டு மணிக்கு புறப்படும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 13: போக்குவரத்து — Transportation sound precise rather than merely understandable.",
+      "pronunciation": "rayil",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "Use the model as the repair target: “The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "Repair \"ரயில்\" inside \"ரயில் எட்டு மணிக்கு புறப்படும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 13: போக்குவரத்து — Transportation sound precise rather than merely understandable.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "Use the model as the repair target: “The train departs at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "rayil",
+      "nativeText": "Transfer \"ரயில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ரயில் எட்டு மணிக்கு புறப்படும்.\".",
+      "pronunciation": "rayil",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "Transfer \"ரயில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ரயில் எட்டு மணிக்கு புறப்படும்.\".",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The train departs at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "rayil",
+      "nativeText": "Find one word or phrase that naturally travels with \"ரயில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "rayil",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "Find one word or phrase that naturally travels with \"ரயில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The train departs at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "rayil",
+      "nativeText": "Listen for \"ரயில்\" inside \"ரயில் எட்டு மணிக்கு புறப்படும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "rayil",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "Listen for \"ரயில்\" inside \"ரயில் எட்டு மணிக்கு புறப்படும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The train departs at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "rayil",
+      "nativeText": "Write \"ரயில்\" again without looking, then compare the exact written form against \"ரயில் எட்டு மணிக்கு புறப்படும்.\" before moving on.",
+      "pronunciation": "rayil",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "Use the written model as the final correctness check: “The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "Write \"ரயில்\" again without looking, then compare the exact written form against \"ரயில் எட்டு மணிக்கு புறப்படும்.\" before moving on.",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The train departs at eight.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ரயில்",
+      "romanization": "rayil",
+      "nativeText": "Check whether \"ரயில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The train departs at eight.”",
+      "pronunciation": "rayil",
+      "exampleTarget": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The train departs at eight.”",
+      "korean": "ரயில்",
+      "english": "Check whether \"ரயில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The train departs at eight.”",
+      "example": "ரயில் எட்டு மணிக்கு புறப்படும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The train departs at eight.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ஆட்டோ",
+      "romanization": "āṭṭō",
+      "nativeText": "“Auto-rickshaw.” A very practical local transport word.",
+      "pronunciation": "āṭṭō",
+      "exampleTarget": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleNative": "“We can go by auto.”",
+      "korean": "ஆட்டோ",
+      "english": "“Auto-rickshaw.” A very practical local transport word.",
+      "example": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleEnglish": "“We can go by auto.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நாம் ஆட்டோவில் போகலாம்.",
+      "romanization": "āṭṭō",
+      "nativeText": "Model use for \"நாம் ஆட்டோவில் போகலாம்.\": “We can go by auto.”",
+      "pronunciation": "āṭṭō",
+      "exampleTarget": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleNative": "“We can go by auto.”",
+      "korean": "நாம் ஆட்டோவில் போகலாம்.",
+      "english": "Model use for \"நாம் ஆட்டோவில் போகலாம்.\": “We can go by auto.”",
+      "example": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleEnglish": "“We can go by auto.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ஆட்டோ",
+      "romanization": "āṭṭō",
+      "nativeText": "Usage focus for \"ஆட்டோ\": “Auto-rickshaw.” A very practical local transport word.",
+      "pronunciation": "āṭṭō",
+      "exampleTarget": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleNative": "Notice what the form is doing here: “We can go by auto.”",
+      "korean": "ஆட்டோ",
+      "english": "Usage focus for \"ஆட்டோ\": “Auto-rickshaw.” A very practical local transport word.",
+      "example": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleEnglish": "Notice what the form is doing here: “We can go by auto.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ஆட்டோ",
+      "romanization": "āṭṭō",
+      "nativeText": "Contrast check for \"ஆட்டோ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "āṭṭō",
+      "exampleTarget": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We can go by auto.”",
+      "korean": "ஆட்டோ",
+      "english": "Contrast check for \"ஆட்டோ\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We can go by auto.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ஆட்டோ",
+      "romanization": "āṭṭō",
+      "nativeText": "Recall \"ஆட்டோ\" from memory, then explain what would change if a nearby alternative replaced it in \"நாம் ஆட்டோவில் போகலாம்.\".",
+      "pronunciation": "āṭṭō",
+      "exampleTarget": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleNative": "Self-check against the model before moving on: “We can go by auto.”",
+      "korean": "ஆட்டோ",
+      "english": "Recall \"ஆட்டோ\" from memory, then explain what would change if a nearby alternative replaced it in \"நாம் ஆட்டோவில் போகலாம்.\".",
+      "example": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “We can go by auto.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ஆட்டோ",
+      "romanization": "āṭṭō",
+      "nativeText": "Repair \"ஆட்டோ\" inside \"நாம் ஆட்டோவில் போகலாம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Auto-rickshaw.” A very practical local transport word.",
+      "pronunciation": "āṭṭō",
+      "exampleTarget": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleNative": "Use the model as the repair target: “We can go by auto.”",
+      "korean": "ஆட்டோ",
+      "english": "Repair \"ஆட்டோ\" inside \"நாம் ஆட்டோவில் போகலாம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Auto-rickshaw.” A very practical local transport word.",
+      "example": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleEnglish": "Use the model as the repair target: “We can go by auto.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ஆட்டோ",
+      "romanization": "āṭṭō",
+      "nativeText": "Transfer \"ஆட்டோ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நாம் ஆட்டோவில் போகலாம்.\".",
+      "pronunciation": "āṭṭō",
+      "exampleTarget": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “We can go by auto.”",
+      "korean": "ஆட்டோ",
+      "english": "Transfer \"ஆட்டோ\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நாம் ஆட்டோவில் போகலாம்.\".",
+      "example": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “We can go by auto.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ஆட்டோ",
+      "romanization": "āṭṭō",
+      "nativeText": "Find one word or phrase that naturally travels with \"ஆட்டோ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "āṭṭō",
+      "exampleTarget": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “We can go by auto.”",
+      "korean": "ஆட்டோ",
+      "english": "Find one word or phrase that naturally travels with \"ஆட்டோ\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “We can go by auto.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ஆட்டோ",
+      "romanization": "āṭṭō",
+      "nativeText": "Listen for \"ஆட்டோ\" inside \"நாம் ஆட்டோவில் போகலாம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "āṭṭō",
+      "exampleTarget": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We can go by auto.”",
+      "korean": "ஆட்டோ",
+      "english": "Listen for \"ஆட்டோ\" inside \"நாம் ஆட்டோவில் போகலாம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We can go by auto.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ஆட்டோ",
+      "romanization": "āṭṭō",
+      "nativeText": "Write \"ஆட்டோ\" again without looking, then compare the exact written form against \"நாம் ஆட்டோவில் போகலாம்.\" before moving on.",
+      "pronunciation": "āṭṭō",
+      "exampleTarget": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleNative": "Use the written model as the final correctness check: “We can go by auto.”",
+      "korean": "ஆட்டோ",
+      "english": "Write \"ஆட்டோ\" again without looking, then compare the exact written form against \"நாம் ஆட்டோவில் போகலாம்.\" before moving on.",
+      "example": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “We can go by auto.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ஆட்டோ",
+      "romanization": "āṭṭō",
+      "nativeText": "Check whether \"ஆட்டோ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We can go by auto.”",
+      "pronunciation": "āṭṭō",
+      "exampleTarget": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “We can go by auto.”",
+      "korean": "ஆட்டோ",
+      "english": "Check whether \"ஆட்டோ\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We can go by auto.”",
+      "example": "நாம் ஆட்டோவில் போகலாம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “We can go by auto.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிறுத்தம்",
+      "romanization": "niṟuttam",
+      "nativeText": "“Stop.” Used for bus stops and stopping points.",
+      "pronunciation": "niṟuttam",
+      "exampleTarget": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleNative": "“The bus stop is nearby.”",
+      "korean": "நிறுத்தம்",
+      "english": "“Stop.” Used for bus stops and stopping points.",
+      "example": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleEnglish": "“The bus stop is nearby.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "romanization": "niṟuttam",
+      "nativeText": "Model use for \"பஸ் நிறுத்தம் அருகில் உள்ளது.\": “The bus stop is nearby.”",
+      "pronunciation": "niṟuttam",
+      "exampleTarget": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleNative": "“The bus stop is nearby.”",
+      "korean": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "english": "Model use for \"பஸ் நிறுத்தம் அருகில் உள்ளது.\": “The bus stop is nearby.”",
+      "example": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleEnglish": "“The bus stop is nearby.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிறுத்தம்",
+      "romanization": "niṟuttam",
+      "nativeText": "Usage focus for \"நிறுத்தம்\": “Stop.” Used for bus stops and stopping points.",
+      "pronunciation": "niṟuttam",
+      "exampleTarget": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleNative": "Notice what the form is doing here: “The bus stop is nearby.”",
+      "korean": "நிறுத்தம்",
+      "english": "Usage focus for \"நிறுத்தம்\": “Stop.” Used for bus stops and stopping points.",
+      "example": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleEnglish": "Notice what the form is doing here: “The bus stop is nearby.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிறுத்தம்",
+      "romanization": "niṟuttam",
+      "nativeText": "Contrast check for \"நிறுத்தம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "niṟuttam",
+      "exampleTarget": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bus stop is nearby.”",
+      "korean": "நிறுத்தம்",
+      "english": "Contrast check for \"நிறுத்தம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிறுத்தம்",
+      "romanization": "niṟuttam",
+      "nativeText": "Recall \"நிறுத்தம்\" from memory, then explain what would change if a nearby alternative replaced it in \"பஸ் நிறுத்தம் அருகில் உள்ளது.\".",
+      "pronunciation": "niṟuttam",
+      "exampleTarget": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleNative": "Self-check against the model before moving on: “The bus stop is nearby.”",
+      "korean": "நிறுத்தம்",
+      "english": "Recall \"நிறுத்தம்\" from memory, then explain what would change if a nearby alternative replaced it in \"பஸ் நிறுத்தம் அருகில் உள்ளது.\".",
+      "example": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleEnglish": "Self-check against the model before moving on: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிறுத்தம்",
+      "romanization": "niṟuttam",
+      "nativeText": "Repair \"நிறுத்தம்\" inside \"பஸ் நிறுத்தம் அருகில் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stop.” Used for bus stops and stopping points.",
+      "pronunciation": "niṟuttam",
+      "exampleTarget": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleNative": "Use the model as the repair target: “The bus stop is nearby.”",
+      "korean": "நிறுத்தம்",
+      "english": "Repair \"நிறுத்தம்\" inside \"பஸ் நிறுத்தம் அருகில் உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Stop.” Used for bus stops and stopping points.",
+      "example": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the model as the repair target: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிறுத்தம்",
+      "romanization": "niṟuttam",
+      "nativeText": "Transfer \"நிறுத்தம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பஸ் நிறுத்தம் அருகில் உள்ளது.\".",
+      "pronunciation": "niṟuttam",
+      "exampleTarget": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bus stop is nearby.”",
+      "korean": "நிறுத்தம்",
+      "english": "Transfer \"நிறுத்தம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"பஸ் நிறுத்தம் அருகில் உள்ளது.\".",
+      "example": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிறுத்தம்",
+      "romanization": "niṟuttam",
+      "nativeText": "Find one word or phrase that naturally travels with \"நிறுத்தம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "niṟuttam",
+      "exampleTarget": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The bus stop is nearby.”",
+      "korean": "நிறுத்தம்",
+      "english": "Find one word or phrase that naturally travels with \"நிறுத்தம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிறுத்தம்",
+      "romanization": "niṟuttam",
+      "nativeText": "Listen for \"நிறுத்தம்\" inside \"பஸ் நிறுத்தம் அருகில் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "niṟuttam",
+      "exampleTarget": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bus stop is nearby.”",
+      "korean": "நிறுத்தம்",
+      "english": "Listen for \"நிறுத்தம்\" inside \"பஸ் நிறுத்தம் அருகில் உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிறுத்தம்",
+      "romanization": "niṟuttam",
+      "nativeText": "Write \"நிறுத்தம்\" again without looking, then compare the exact written form against \"பஸ் நிறுத்தம் அருகில் உள்ளது.\" before moving on.",
+      "pronunciation": "niṟuttam",
+      "exampleTarget": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleNative": "Use the written model as the final correctness check: “The bus stop is nearby.”",
+      "korean": "நிறுத்தம்",
+      "english": "Write \"நிறுத்தம்\" again without looking, then compare the exact written form against \"பஸ் நிறுத்தம் அருகில் உள்ளது.\" before moving on.",
+      "example": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The bus stop is nearby.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிறுத்தம்",
+      "romanization": "niṟuttam",
+      "nativeText": "Check whether \"நிறுத்தம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”",
+      "pronunciation": "niṟuttam",
+      "exampleTarget": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”",
+      "korean": "நிறுத்தம்",
+      "english": "Check whether \"நிறுத்தம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”",
+      "example": "பஸ் நிறுத்தம் அருகில் உள்ளது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The bus stop is nearby.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிலையம்",
+      "romanization": "nilaiyam",
+      "nativeText": "“Station.” Used for rail and bus stations.",
+      "pronunciation": "nilaiyam",
+      "exampleTarget": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleNative": "“Get off at the next station.”",
+      "korean": "நிலையம்",
+      "english": "“Station.” Used for rail and bus stations.",
+      "example": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleEnglish": "“Get off at the next station.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "romanization": "nilaiyam",
+      "nativeText": "Model use for \"அடுத்த நிலையத்தில் இறங்குங்கள்.\": “Get off at the next station.”",
+      "pronunciation": "nilaiyam",
+      "exampleTarget": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleNative": "“Get off at the next station.”",
+      "korean": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "english": "Model use for \"அடுத்த நிலையத்தில் இறங்குங்கள்.\": “Get off at the next station.”",
+      "example": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleEnglish": "“Get off at the next station.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிலையம்",
+      "romanization": "nilaiyam",
+      "nativeText": "Usage focus for \"நிலையம்\": “Station.” Used for rail and bus stations.",
+      "pronunciation": "nilaiyam",
+      "exampleTarget": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleNative": "Notice what the form is doing here: “Get off at the next station.”",
+      "korean": "நிலையம்",
+      "english": "Usage focus for \"நிலையம்\": “Station.” Used for rail and bus stations.",
+      "example": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleEnglish": "Notice what the form is doing here: “Get off at the next station.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிலையம்",
+      "romanization": "nilaiyam",
+      "nativeText": "Contrast check for \"நிலையம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nilaiyam",
+      "exampleTarget": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Get off at the next station.”",
+      "korean": "நிலையம்",
+      "english": "Contrast check for \"நிலையம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிலையம்",
+      "romanization": "nilaiyam",
+      "nativeText": "Recall \"நிலையம்\" from memory, then explain what would change if a nearby alternative replaced it in \"அடுத்த நிலையத்தில் இறங்குங்கள்.\".",
+      "pronunciation": "nilaiyam",
+      "exampleTarget": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleNative": "Self-check against the model before moving on: “Get off at the next station.”",
+      "korean": "நிலையம்",
+      "english": "Recall \"நிலையம்\" from memory, then explain what would change if a nearby alternative replaced it in \"அடுத்த நிலையத்தில் இறங்குங்கள்.\".",
+      "example": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிலையம்",
+      "romanization": "nilaiyam",
+      "nativeText": "Repair \"நிலையம்\" inside \"அடுத்த நிலையத்தில் இறங்குங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Station.” Used for rail and bus stations.",
+      "pronunciation": "nilaiyam",
+      "exampleTarget": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleNative": "Use the model as the repair target: “Get off at the next station.”",
+      "korean": "நிலையம்",
+      "english": "Repair \"நிலையம்\" inside \"அடுத்த நிலையத்தில் இறங்குங்கள்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Station.” Used for rail and bus stations.",
+      "example": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleEnglish": "Use the model as the repair target: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிலையம்",
+      "romanization": "nilaiyam",
+      "nativeText": "Transfer \"நிலையம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அடுத்த நிலையத்தில் இறங்குங்கள்.\".",
+      "pronunciation": "nilaiyam",
+      "exampleTarget": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Get off at the next station.”",
+      "korean": "நிலையம்",
+      "english": "Transfer \"நிலையம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அடுத்த நிலையத்தில் இறங்குங்கள்.\".",
+      "example": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிலையம்",
+      "romanization": "nilaiyam",
+      "nativeText": "Find one word or phrase that naturally travels with \"நிலையம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nilaiyam",
+      "exampleTarget": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Get off at the next station.”",
+      "korean": "நிலையம்",
+      "english": "Find one word or phrase that naturally travels with \"நிலையம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிலையம்",
+      "romanization": "nilaiyam",
+      "nativeText": "Listen for \"நிலையம்\" inside \"அடுத்த நிலையத்தில் இறங்குங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nilaiyam",
+      "exampleTarget": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Get off at the next station.”",
+      "korean": "நிலையம்",
+      "english": "Listen for \"நிலையம்\" inside \"அடுத்த நிலையத்தில் இறங்குங்கள்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிலையம்",
+      "romanization": "nilaiyam",
+      "nativeText": "Write \"நிலையம்\" again without looking, then compare the exact written form against \"அடுத்த நிலையத்தில் இறங்குங்கள்.\" before moving on.",
+      "pronunciation": "nilaiyam",
+      "exampleTarget": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleNative": "Use the written model as the final correctness check: “Get off at the next station.”",
+      "korean": "நிலையம்",
+      "english": "Write \"நிலையம்\" again without looking, then compare the exact written form against \"அடுத்த நிலையத்தில் இறங்குங்கள்.\" before moving on.",
+      "example": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Get off at the next station.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "நிலையம்",
+      "romanization": "nilaiyam",
+      "nativeText": "Check whether \"நிலையம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Get off at the next station.”",
+      "pronunciation": "nilaiyam",
+      "exampleTarget": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Get off at the next station.”",
+      "korean": "நிலையம்",
+      "english": "Check whether \"நிலையம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Get off at the next station.”",
+      "example": "அடுத்த நிலையத்தில் இறங்குங்கள்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Get off at the next station.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "டிக்கெட்",
+      "romanization": "ṭikkeṭ",
+      "nativeText": "“Ticket.” A common loanword.",
+      "pronunciation": "ṭikkeṭ",
+      "exampleTarget": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleNative": "“I want one ticket.”",
+      "korean": "டிக்கெட்",
+      "english": "“Ticket.” A common loanword.",
+      "example": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleEnglish": "“I want one ticket.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "ஒரு டிக்கெட் வேண்டும்.",
+      "romanization": "ṭikkeṭ",
+      "nativeText": "Model use for \"ஒரு டிக்கெட் வேண்டும்.\": “I want one ticket.”",
+      "pronunciation": "ṭikkeṭ",
+      "exampleTarget": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleNative": "“I want one ticket.”",
+      "korean": "ஒரு டிக்கெட் வேண்டும்.",
+      "english": "Model use for \"ஒரு டிக்கெட் வேண்டும்.\": “I want one ticket.”",
+      "example": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleEnglish": "“I want one ticket.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "டிக்கெட்",
+      "romanization": "ṭikkeṭ",
+      "nativeText": "Usage focus for \"டிக்கெட்\": “Ticket.” A common loanword.",
+      "pronunciation": "ṭikkeṭ",
+      "exampleTarget": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleNative": "Notice what the form is doing here: “I want one ticket.”",
+      "korean": "டிக்கெட்",
+      "english": "Usage focus for \"டிக்கெட்\": “Ticket.” A common loanword.",
+      "example": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I want one ticket.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "டிக்கெட்",
+      "romanization": "ṭikkeṭ",
+      "nativeText": "Contrast check for \"டிக்கெட்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ṭikkeṭ",
+      "exampleTarget": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one ticket.”",
+      "korean": "டிக்கெட்",
+      "english": "Contrast check for \"டிக்கெட்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "டிக்கெட்",
+      "romanization": "ṭikkeṭ",
+      "nativeText": "Recall \"டிக்கெட்\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு டிக்கெட் வேண்டும்.\".",
+      "pronunciation": "ṭikkeṭ",
+      "exampleTarget": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleNative": "Self-check against the model before moving on: “I want one ticket.”",
+      "korean": "டிக்கெட்",
+      "english": "Recall \"டிக்கெட்\" from memory, then explain what would change if a nearby alternative replaced it in \"ஒரு டிக்கெட் வேண்டும்.\".",
+      "example": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "டிக்கெட்",
+      "romanization": "ṭikkeṭ",
+      "nativeText": "Repair \"டிக்கெட்\" inside \"ஒரு டிக்கெட் வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ticket.” A common loanword.",
+      "pronunciation": "ṭikkeṭ",
+      "exampleTarget": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleNative": "Use the model as the repair target: “I want one ticket.”",
+      "korean": "டிக்கெட்",
+      "english": "Repair \"டிக்கெட்\" inside \"ஒரு டிக்கெட் வேண்டும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Ticket.” A common loanword.",
+      "example": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleEnglish": "Use the model as the repair target: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "டிக்கெட்",
+      "romanization": "ṭikkeṭ",
+      "nativeText": "Transfer \"டிக்கெட்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு டிக்கெட் வேண்டும்.\".",
+      "pronunciation": "ṭikkeṭ",
+      "exampleTarget": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one ticket.”",
+      "korean": "டிக்கெட்",
+      "english": "Transfer \"டிக்கெட்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"ஒரு டிக்கெட் வேண்டும்.\".",
+      "example": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "டிக்கெட்",
+      "romanization": "ṭikkeṭ",
+      "nativeText": "Find one word or phrase that naturally travels with \"டிக்கெட்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ṭikkeṭ",
+      "exampleTarget": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one ticket.”",
+      "korean": "டிக்கெட்",
+      "english": "Find one word or phrase that naturally travels with \"டிக்கெட்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "டிக்கெட்",
+      "romanization": "ṭikkeṭ",
+      "nativeText": "Listen for \"டிக்கெட்\" inside \"ஒரு டிக்கெட் வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ṭikkeṭ",
+      "exampleTarget": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one ticket.”",
+      "korean": "டிக்கெட்",
+      "english": "Listen for \"டிக்கெட்\" inside \"ஒரு டிக்கெட் வேண்டும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "டிக்கெட்",
+      "romanization": "ṭikkeṭ",
+      "nativeText": "Write \"டிக்கெட்\" again without looking, then compare the exact written form against \"ஒரு டிக்கெட் வேண்டும்.\" before moving on.",
+      "pronunciation": "ṭikkeṭ",
+      "exampleTarget": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I want one ticket.”",
+      "korean": "டிக்கெட்",
+      "english": "Write \"டிக்கெட்\" again without looking, then compare the exact written form against \"ஒரு டிக்கெட் வேண்டும்.\" before moving on.",
+      "example": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one ticket.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "டிக்கெட்",
+      "romanization": "ṭikkeṭ",
+      "nativeText": "Check whether \"டிக்கெட்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one ticket.”",
+      "pronunciation": "ṭikkeṭ",
+      "exampleTarget": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one ticket.”",
+      "korean": "டிக்கெட்",
+      "english": "Check whether \"டிக்கெட்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one ticket.”",
+      "example": "ஒரு டிக்கெட் வேண்டும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one ticket.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "“How can I go to ...?” A practical route question.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleNative": "“How can I go to the center?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "“How can I go to ...?” A practical route question.",
+      "example": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "“How can I go to the center?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "மையத்துக்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Model use for \"மையத்துக்கு எப்படி போகலாம்?\": “How can I go to the center?”",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleNative": "“How can I go to the center?”",
+      "korean": "மையத்துக்கு எப்படி போகலாம்?",
+      "english": "Model use for \"மையத்துக்கு எப்படி போகலாம்?\": “How can I go to the center?”",
+      "example": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "“How can I go to the center?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Usage focus for \"...க்கு எப்படி போகலாம்?\": “How can I go to ...?” A practical route question.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleNative": "Notice what the form is doing here: “How can I go to the center?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Usage focus for \"...க்கு எப்படி போகலாம்?\": “How can I go to ...?” A practical route question.",
+      "example": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "Notice what the form is doing here: “How can I go to the center?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Contrast check for \"...க்கு எப்படி போகலாம்?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How can I go to the center?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Contrast check for \"...க்கு எப்படி போகலாம்?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How can I go to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Recall \"...க்கு எப்படி போகலாம்?\" from memory, then explain what would change if a nearby alternative replaced it in \"மையத்துக்கு எப்படி போகலாம்?\".",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleNative": "Self-check against the model before moving on: “How can I go to the center?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Recall \"...க்கு எப்படி போகலாம்?\" from memory, then explain what would change if a nearby alternative replaced it in \"மையத்துக்கு எப்படி போகலாம்?\".",
+      "example": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "Self-check against the model before moving on: “How can I go to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Repair \"...க்கு எப்படி போகலாம்?\" inside \"மையத்துக்கு எப்படி போகலாம்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How can I go to ...?” A practical route question.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleNative": "Use the model as the repair target: “How can I go to the center?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Repair \"...க்கு எப்படி போகலாம்?\" inside \"மையத்துக்கு எப்படி போகலாம்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How can I go to ...?” A practical route question.",
+      "example": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "Use the model as the repair target: “How can I go to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Transfer \"...க்கு எப்படி போகலாம்?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மையத்துக்கு எப்படி போகலாம்?\".",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How can I go to the center?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Transfer \"...க்கு எப்படி போகலாம்?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மையத்துக்கு எப்படி போகலாம்?\".",
+      "example": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How can I go to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Find one word or phrase that naturally travels with \"...க்கு எப்படி போகலாம்?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How can I go to the center?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Find one word or phrase that naturally travels with \"...க்கு எப்படி போகலாம்?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How can I go to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Listen for \"...க்கு எப்படி போகலாம்?\" inside \"மையத்துக்கு எப்படி போகலாம்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How can I go to the center?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Listen for \"...க்கு எப்படி போகலாம்?\" inside \"மையத்துக்கு எப்படி போகலாம்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How can I go to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Write \"...க்கு எப்படி போகலாம்?\" again without looking, then compare the exact written form against \"மையத்துக்கு எப்படி போகலாம்?\" before moving on.",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleNative": "Use the written model as the final correctness check: “How can I go to the center?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Write \"...க்கு எப்படி போகலாம்?\" again without looking, then compare the exact written form against \"மையத்துக்கு எப்படி போகலாம்?\" before moving on.",
+      "example": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How can I go to the center?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "...க்கு எப்படி போகலாம்?",
+      "romanization": "...kku eppaṭi pōkalām",
+      "nativeText": "Check whether \"...க்கு எப்படி போகலாம்?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How can I go to the center?”",
+      "pronunciation": "...kku eppaṭi pōkalām",
+      "exampleTarget": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How can I go to the center?”",
+      "korean": "...க்கு எப்படி போகலாம்?",
+      "english": "Check whether \"...க்கு எப்படி போகலாம்?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How can I go to the center?”",
+      "example": "மையத்துக்கு எப்படி போகலாம்?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How can I go to the center?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "எவ்வளவு நேரம் ஆகும்?",
+      "romanization": "evvaḷavu nēram ākum",
+      "nativeText": "“How long will it take?” A complete duration question.",
+      "pronunciation": "evvaḷavu nēram ākum",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "“How long will it take to the airport?”",
+      "korean": "எவ்வளவு நேரம் ஆகும்?",
+      "english": "“How long will it take?” A complete duration question.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "“How long will it take to the airport?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "romanization": "evvaḷavu nēram ākum",
+      "nativeText": "Model use for \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\": “How long will it take to the airport?”",
+      "pronunciation": "evvaḷavu nēram ākum",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "“How long will it take to the airport?”",
+      "korean": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "english": "Model use for \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\": “How long will it take to the airport?”",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "“How long will it take to the airport?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "எவ்வளவு நேரம் ஆகும்?",
+      "romanization": "evvaḷavu nēram ākum",
+      "nativeText": "Usage focus for \"எவ்வளவு நேரம் ஆகும்?\": “How long will it take?” A complete duration question.",
+      "pronunciation": "evvaḷavu nēram ākum",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "Notice what the form is doing here: “How long will it take to the airport?”",
+      "korean": "எவ்வளவு நேரம் ஆகும்?",
+      "english": "Usage focus for \"எவ்வளவு நேரம் ஆகும்?\": “How long will it take?” A complete duration question.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "Notice what the form is doing here: “How long will it take to the airport?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "எவ்வளவு நேரம் ஆகும்?",
+      "romanization": "evvaḷavu nēram ākum",
+      "nativeText": "Contrast check for \"எவ்வளவு நேரம் ஆகும்?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "evvaḷavu nēram ākum",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How long will it take to the airport?”",
+      "korean": "எவ்வளவு நேரம் ஆகும்?",
+      "english": "Contrast check for \"எவ்வளவு நேரம் ஆகும்?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How long will it take to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "எவ்வளவு நேரம் ஆகும்?",
+      "romanization": "evvaḷavu nēram ākum",
+      "nativeText": "Recall \"எவ்வளவு நேரம் ஆகும்?\" from memory, then explain what would change if a nearby alternative replaced it in \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\".",
+      "pronunciation": "evvaḷavu nēram ākum",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "Self-check against the model before moving on: “How long will it take to the airport?”",
+      "korean": "எவ்வளவு நேரம் ஆகும்?",
+      "english": "Recall \"எவ்வளவு நேரம் ஆகும்?\" from memory, then explain what would change if a nearby alternative replaced it in \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\".",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "Self-check against the model before moving on: “How long will it take to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "எவ்வளவு நேரம் ஆகும்?",
+      "romanization": "evvaḷavu nēram ākum",
+      "nativeText": "Repair \"எவ்வளவு நேரம் ஆகும்?\" inside \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How long will it take?” A complete duration question.",
+      "pronunciation": "evvaḷavu nēram ākum",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "Use the model as the repair target: “How long will it take to the airport?”",
+      "korean": "எவ்வளவு நேரம் ஆகும்?",
+      "english": "Repair \"எவ்வளவு நேரம் ஆகும்?\" inside \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How long will it take?” A complete duration question.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "Use the model as the repair target: “How long will it take to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "எவ்வளவு நேரம் ஆகும்?",
+      "romanization": "evvaḷavu nēram ākum",
+      "nativeText": "Transfer \"எவ்வளவு நேரம் ஆகும்?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\".",
+      "pronunciation": "evvaḷavu nēram ākum",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How long will it take to the airport?”",
+      "korean": "எவ்வளவு நேரம் ஆகும்?",
+      "english": "Transfer \"எவ்வளவு நேரம் ஆகும்?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\".",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How long will it take to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "எவ்வளவு நேரம் ஆகும்?",
+      "romanization": "evvaḷavu nēram ākum",
+      "nativeText": "Find one word or phrase that naturally travels with \"எவ்வளவு நேரம் ஆகும்?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "evvaḷavu nēram ākum",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How long will it take to the airport?”",
+      "korean": "எவ்வளவு நேரம் ஆகும்?",
+      "english": "Find one word or phrase that naturally travels with \"எவ்வளவு நேரம் ஆகும்?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How long will it take to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "எவ்வளவு நேரம் ஆகும்?",
+      "romanization": "evvaḷavu nēram ākum",
+      "nativeText": "Listen for \"எவ்வளவு நேரம் ஆகும்?\" inside \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "evvaḷavu nēram ākum",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How long will it take to the airport?”",
+      "korean": "எவ்வளவு நேரம் ஆகும்?",
+      "english": "Listen for \"எவ்வளவு நேரம் ஆகும்?\" inside \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How long will it take to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "எவ்வளவு நேரம் ஆகும்?",
+      "romanization": "evvaḷavu nēram ākum",
+      "nativeText": "Write \"எவ்வளவு நேரம் ஆகும்?\" again without looking, then compare the exact written form against \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" before moving on.",
+      "pronunciation": "evvaḷavu nēram ākum",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "Use the written model as the final correctness check: “How long will it take to the airport?”",
+      "korean": "எவ்வளவு நேரம் ஆகும்?",
+      "english": "Write \"எவ்வளவு நேரம் ஆகும்?\" again without looking, then compare the exact written form against \"விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?\" before moving on.",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How long will it take to the airport?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit13transportation-vocabulary-1",
+        "ta-level1unit13transportation-vocabulary-2",
+        "ta-level1unit13transportation-grammar-1",
+        "ta-level1unit13transportation-grammar-2",
+        "ta-level1unit13transportation-reading",
+        "ta-level1unit13transportation-listening",
+        "ta-level1unit13transportation-writing",
+        "ta-level1unit13transportation-task"
+      ],
+      "targetText": "எவ்வளவு நேரம் ஆகும்?",
+      "romanization": "evvaḷavu nēram ākum",
+      "nativeText": "Check whether \"எவ்வளவு நேரம் ஆகும்?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How long will it take to the airport?”",
+      "pronunciation": "evvaḷavu nēram ākum",
+      "exampleTarget": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How long will it take to the airport?”",
+      "korean": "எவ்வளவு நேரம் ஆகும்?",
+      "english": "Check whether \"எவ்வளவு நேரம் ஆகும்?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How long will it take to the airport?”",
+      "example": "விமான நிலையத்துக்கு எவ்வளவு நேரம் ஆகும்?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How long will it take to the airport?”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

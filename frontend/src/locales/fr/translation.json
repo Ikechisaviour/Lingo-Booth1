@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Pratiquez cet article ailleurs",
     "practiceEverywhere": "Pratiquez-le partout",
     "saveReply": "Enregistrer la réponse",
-    "selfTestReason": "Enregistré du cours pour un auto-test rapide."
+    "selfTestReason": "Enregistré du cours pour un auto-test rapide.",
+    "hideOutline": "Masquer le contour",
+    "showOutline": "Afficher le plan"
   },
   "classList": {
     "heroAriaLabel": "Classe",
@@ -994,7 +996,7 @@
     "guidedTutor": "Tuteur guidé",
     "startClass": "Commencer le cours",
     "classFallback": "Classe",
-    "loadError": "Impossible de charger les leçons du cours. Assurez-vous que le backend est en cours d’exécution et amorcé.",
+    "loadError": "Nous n'avons pas pu charger vos leçons pour le moment. Veuillez vérifier votre connexion et réessayer.",
     "tracks": {
       "foundationTitle": "Niveau {{level}} - Fondation",
       "foundationSubtitle": "Commencez ici avec le système de son et d'écriture pour {{language}}.",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "Niveau {{level}} · Unité {{unit}} : {{title}}"
-    }
+    },
+    "retry": "Essayer à nouveau",
+    "progressAriaLabel": "Progression en classe",
+    "progressCaption": "{{percent}}% terminé · {{completed}} des éléments {{total}}"
   },
   "contextPractice": {
     "title": "Des leçons façonnées autour de vous",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "Ce qui s'est bien passé",
     "recapUsefulPhrases": "Phrases utiles",
     "recapReview": "Réviser ensuite",
-    "recapReviewFallback": "Enregistrez une phrase et réutilisez-la dans un autre mode d'entraînement."
+    "recapReviewFallback": "Enregistrez une phrase et réutilisez-la dans un autre mode d'entraînement.",
+    "hideSetup": "Masquer la configuration",
+    "showSetup": "Afficher la configuration"
   },
   "exerciseHub": {
     "ariaLabel": "Exercice",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}} : copiez la forme, puis écrivez-la depuis la mémoire."
     },
     "savedReason": "Sauvé de la pratique d'écriture pour une autre passe.",
-    "selfTestReason": "Enregistré de la pratique d'écriture pour un auto-test rapide."
+    "selfTestReason": "Enregistré de la pratique d'écriture pour un auto-test rapide.",
+    "hideNotebook": "Masquer le carnet",
+    "showNotebook": "Afficher le carnet"
   },
   "institution": {
     "kicker": "Institution",

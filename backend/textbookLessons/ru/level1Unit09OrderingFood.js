@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u9',
-  title: 'Level 1 · Unit 9: В кафе — Ordering Food',
-  category: 'food',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Order food and drinks politely in a cafe or столовая.',
-  vocabularyGoal: 'Use food, drink, portion, and service words.',
-  grammarGoal: 'Use `мне, пожалуйста`, `можно`, and `без` to request and customize.',
-  speakingGoal: 'Place a full order, remove one ingredient, and ask for the bill.',
-  task: 'Roleplay ordering lunch in a cafe.',
-  expressionPractice: [
-    practice('ordering-politely', 'Ordering politely', 'Use `мне, пожалуйста`.'),
-    practice('customizing', 'Customizing', 'Use `без` plus genitive.'),
-    practice('closing-order', 'Closing order', 'Ask for the bill naturally.'),
+module.exports = {
+  "title": "Level 1 · Unit 9: В кафе — Ordering Food",
+  "category": "food",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit09orderingfood-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Order food and drinks politely in a cafe or столовая."
+      ],
+      "task": "Roleplay ordering lunch in a cafe."
+    },
+    {
+      "id": "ru-level1unit09orderingfood-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit09orderingfood-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 9: В кафе — Ordering Food with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit09orderingfood-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 9: В кафе — Ordering Food sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit09orderingfood-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Order food and drinks politely in a cafe or столовая."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit09orderingfood-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 9: В кафе — Ordering Food with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit09orderingfood-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit09orderingfood-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit09orderingfood-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit09orderingfood-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit09orderingfood-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay ordering lunch in a cafe."
+      ],
+      "task": "Roleplay ordering lunch in a cafe."
+    }
   ],
-  relatedPools: ['topic-food', 'topic-service'],
-  items: [
-    item('мне, пожалуйста', 'mne pozhaluysta', 'Literally “to me, please,” this is a very natural polite ordering frame.', 'Мне, пожалуйста, чай и суп.', '“Tea and soup for me, please.”'),
-    item('можно ...?', 'mozhno', '“May I / can I have ...?” A soft, versatile service request.', 'Можно кофе без сахара?', '“May I have coffee without sugar?”'),
-    item('без сахара', 'bez sakhara', '“Without sugar.” `Без` takes the genitive case.', 'Чай без сахара, пожалуйста.', '“Tea without sugar, please.”'),
-    item('не острое', 'ne ostroye', '“Not spicy.” The adjective agrees with the neuter food noun implied here.', 'Мне нужно не острое блюдо.', '“I need a non-spicy dish.”'),
-    item('порция', 'portsiya', '“Portion.” Food orders often need this serving noun.', 'Одну порцию пельменей, пожалуйста.', '“One portion of dumplings, please.”'),
-    item('здесь / с собой', 'zdes / s soboy', '“Here / to go.” These are the practical service contrasts.', 'Это здесь или с собой?', '“Is this for here or to go?”'),
-    item('ещё что-нибудь?', 'yeshcho chto-nibud', '“Anything else?” A common server question.', 'Ещё что-нибудь будете?', '“Will you have anything else?”'),
-    item('счёт, пожалуйста', 'shchyot pozhaluysta', '“The bill, please.” A complete phrase worth memorizing whole.', 'Счёт, пожалуйста.', '“The bill, please.”'),
+  "expressionPractice": [
+    {
+      "id": "ordering-politely",
+      "label": "Ordering politely",
+      "goal": "Use `мне, пожалуйста`."
+    },
+    {
+      "id": "customizing",
+      "label": "Customizing",
+      "goal": "Use `без` plus genitive."
+    },
+    {
+      "id": "closing-order",
+      "label": "Closing order",
+      "goal": "Ask for the bill naturally."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-food",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Order food and drinks politely in a cafe or столовая.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay ordering lunch in a cafe.",
+      "korean": "цель урока",
+      "english": "Order food and drinks politely in a cafe or столовая.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay ordering lunch in a cafe."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit09orderingfood-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Мне, пожалуйста, чай и суп.\".",
+      "pronunciation": "",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "“Tea and soup for me, please.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Мне, пожалуйста, чай и суп.\".",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "“Tea and soup for me, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 9: В кафе — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "“Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Use the key language of Level 1 · Unit 9: В кафе — Ordering Food with the register and setting that the lesson requires.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "“Tea and soup for me, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-2"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 9: В кафе — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "“May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 9: В кафе — Ordering Food sound precise rather than merely understandable.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "“May I have coffee without sugar?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit09orderingfood-grammar-1"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "",
+      "nativeText": "Order food and drinks politely in a cafe or столовая.",
+      "pronunciation": "",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "“Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Order food and drinks politely in a cafe or столовая.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "“Tea and soup for me, please.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 9: В кафе — Ordering Food with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "“May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "Contrast the main pattern in Level 1 · Unit 9: В кафе — Ordering Food with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "“May I have coffee without sugar?”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit09orderingfood-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Счёт, пожалуйста.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "модель чтения",
+      "english": "Read \"Счёт, пожалуйста.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit09orderingfood-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Счёт, пожалуйста.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "модель диалога",
+      "english": "Hear \"Счёт, пожалуйста.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit09orderingfood-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Мне, пожалуйста, чай и суп.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Мне, пожалуйста, чай и суп.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit09orderingfood-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "“May I have coffee without sugar?”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "“May I have coffee without sugar?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Roleplay ordering lunch in a cafe.",
+      "pronunciation": "",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "Roleplay ordering lunch in a cafe.",
+      "korean": "итоговое задание",
+      "english": "Roleplay ordering lunch in a cafe.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "Roleplay ordering lunch in a cafe."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Можно кофе без сахара?\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “May I have coffee without sugar?”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Можно кофе без сахара?\" against the model.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “May I have coffee without sugar?”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Мне, пожалуйста, чай и суп.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "“Tea and soup for me, please.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Мне, пожалуйста, чай и суп.\" before reusing it elsewhere.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "“Tea and soup for me, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Счёт, пожалуйста.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Счёт, пожалуйста.\" as one thought.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Мне, пожалуйста, чай и суп.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Мне, пожалуйста, чай и суп.\" and move it into your own life.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"мне, пожалуйста\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "мне, пожалуйста",
+      "exampleNative": "Literally “to me, please,” this is a very natural polite ordering frame.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"мне, пожалуйста\" before looking back.",
+      "example": "мне, пожалуйста",
+      "exampleEnglish": "Literally “to me, please,” this is a very natural polite ordering frame."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Счёт, пожалуйста.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Счёт, пожалуйста.\" rather than restarting from a blank sentence.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 9: В кафе — Ordering Food with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Можно кофе без сахара?\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "“May I have coffee without sugar?”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 9: В кафе — Ordering Food with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Можно кофе без сахара?\" as the comparison line.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "“May I have coffee without sugar?”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit09orderingfood-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Мне, пожалуйста, чай и суп.\".",
+      "pronunciation": "",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "“Tea and soup for me, please.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Мне, пожалуйста, чай и суп.\".",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "“Tea and soup for me, please.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Счёт, пожалуйста.\".",
+      "pronunciation": "",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Счёт, пожалуйста.\".",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Мне, пожалуйста, чай и суп.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "“Tea and soup for me, please.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Мне, пожалуйста, чай и суп.\" one layer at a time.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "“Tea and soup for me, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Можно кофе без сахара?\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "“May I have coffee without sugar?”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Можно кофе без сахара?\" as the deciding example.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "“May I have coffee without sugar?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-culture",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Счёт, пожалуйста.\".",
+      "pronunciation": "",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Счёт, пожалуйста.\".",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "mne pozhaluysta",
+      "nativeText": "Literally “to me, please,” this is a very natural polite ordering frame.",
+      "pronunciation": "mne pozhaluysta",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "“Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Literally “to me, please,” this is a very natural polite ordering frame.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "“Tea and soup for me, please.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "Мне, пожалуйста, чай и суп.",
+      "romanization": "mne pozhaluysta",
+      "nativeText": "Model use for \"Мне, пожалуйста, чай и суп.\": “Tea and soup for me, please.”",
+      "pronunciation": "mne pozhaluysta",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "“Tea and soup for me, please.”",
+      "korean": "Мне, пожалуйста, чай и суп.",
+      "english": "Model use for \"Мне, пожалуйста, чай и суп.\": “Tea and soup for me, please.”",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "“Tea and soup for me, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "mne pozhaluysta",
+      "nativeText": "Usage focus for \"мне, пожалуйста\": Use the key language of Level 1 · Unit 9: В кафе — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "mne pozhaluysta",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "Notice what the form is doing here: “Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Usage focus for \"мне, пожалуйста\": Use the key language of Level 1 · Unit 9: В кафе — Ordering Food with the register and setting that the lesson requires.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "Notice what the form is doing here: “Tea and soup for me, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "mne pozhaluysta",
+      "nativeText": "Contrast check for \"мне, пожалуйста\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mne pozhaluysta",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Contrast check for \"мне, пожалуйста\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tea and soup for me, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "mne pozhaluysta",
+      "nativeText": "Recall \"мне, пожалуйста\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне, пожалуйста, чай и суп.\".",
+      "pronunciation": "mne pozhaluysta",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "Self-check against the model before moving on: “Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Recall \"мне, пожалуйста\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне, пожалуйста, чай и суп.\".",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "Self-check against the model before moving on: “Tea and soup for me, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "mne pozhaluysta",
+      "nativeText": "Repair \"мне, пожалуйста\" inside \"Мне, пожалуйста, чай и суп.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 9: В кафе — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "mne pozhaluysta",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "Use the model as the repair target: “Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Repair \"мне, пожалуйста\" inside \"Мне, пожалуйста, чай и суп.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 9: В кафе — Ordering Food with the register and setting that the lesson requires.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "Use the model as the repair target: “Tea and soup for me, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "mne pozhaluysta",
+      "nativeText": "Transfer \"мне, пожалуйста\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне, пожалуйста, чай и суп.\".",
+      "pronunciation": "mne pozhaluysta",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Transfer \"мне, пожалуйста\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне, пожалуйста, чай и суп.\".",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tea and soup for me, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "mne pozhaluysta",
+      "nativeText": "Find one word or phrase that naturally travels with \"мне, пожалуйста\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mne pozhaluysta",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Find one word or phrase that naturally travels with \"мне, пожалуйста\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Tea and soup for me, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "mne pozhaluysta",
+      "nativeText": "Listen for \"мне, пожалуйста\" inside \"Мне, пожалуйста, чай и суп.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mne pozhaluysta",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Listen for \"мне, пожалуйста\" inside \"Мне, пожалуйста, чай и суп.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tea and soup for me, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "mne pozhaluysta",
+      "nativeText": "Write \"мне, пожалуйста\" again without looking, then compare the exact written form against \"Мне, пожалуйста, чай и суп.\" before moving on.",
+      "pronunciation": "mne pozhaluysta",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "Use the written model as the final correctness check: “Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Write \"мне, пожалуйста\" again without looking, then compare the exact written form against \"Мне, пожалуйста, чай и суп.\" before moving on.",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Tea and soup for me, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "мне, пожалуйста",
+      "romanization": "mne pozhaluysta",
+      "nativeText": "Check whether \"мне, пожалуйста\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tea and soup for me, please.”",
+      "pronunciation": "mne pozhaluysta",
+      "exampleTarget": "Мне, пожалуйста, чай и суп.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Tea and soup for me, please.”",
+      "korean": "мне, пожалуйста",
+      "english": "Check whether \"мне, пожалуйста\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tea and soup for me, please.”",
+      "example": "Мне, пожалуйста, чай и суп.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Tea and soup for me, please.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "mozhno",
+      "nativeText": "“May I / can I have ...?” A soft, versatile service request.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "“May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "“May I / can I have ...?” A soft, versatile service request.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "“May I have coffee without sugar?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "Можно кофе без сахара?",
+      "romanization": "mozhno",
+      "nativeText": "Model use for \"Можно кофе без сахара?\": “May I have coffee without sugar?”",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "“May I have coffee without sugar?”",
+      "korean": "Можно кофе без сахара?",
+      "english": "Model use for \"Можно кофе без сахара?\": “May I have coffee without sugar?”",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "“May I have coffee without sugar?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "mozhno",
+      "nativeText": "Usage focus for \"можно ...?\": Distinguish the nearby wording choices that make Level 1 · Unit 9: В кафе — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "Notice what the form is doing here: “May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "Usage focus for \"можно ...?\": Distinguish the nearby wording choices that make Level 1 · Unit 9: В кафе — Ordering Food sound precise rather than merely understandable.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "Notice what the form is doing here: “May I have coffee without sugar?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "mozhno",
+      "nativeText": "Contrast check for \"можно ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "Contrast check for \"можно ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I have coffee without sugar?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "mozhno",
+      "nativeText": "Recall \"можно ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно кофе без сахара?\".",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "Self-check against the model before moving on: “May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "Recall \"можно ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно кофе без сахара?\".",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I have coffee without sugar?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "mozhno",
+      "nativeText": "Repair \"можно ...?\" inside \"Можно кофе без сахара?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 9: В кафе — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "Use the model as the repair target: “May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "Repair \"можно ...?\" inside \"Можно кофе без сахара?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 9: В кафе — Ordering Food sound precise rather than merely understandable.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "Use the model as the repair target: “May I have coffee without sugar?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "mozhno",
+      "nativeText": "Transfer \"можно ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно кофе без сахара?\".",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "Transfer \"можно ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно кофе без сахара?\".",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I have coffee without sugar?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "mozhno",
+      "nativeText": "Find one word or phrase that naturally travels with \"можно ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "Find one word or phrase that naturally travels with \"можно ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I have coffee without sugar?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "mozhno",
+      "nativeText": "Listen for \"можно ...?\" inside \"Можно кофе без сахара?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "Listen for \"можно ...?\" inside \"Можно кофе без сахара?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I have coffee without sugar?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "mozhno",
+      "nativeText": "Write \"можно ...?\" again without looking, then compare the exact written form against \"Можно кофе без сахара?\" before moving on.",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "Use the written model as the final correctness check: “May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "Write \"можно ...?\" again without looking, then compare the exact written form against \"Можно кофе без сахара?\" before moving on.",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I have coffee without sugar?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "можно ...?",
+      "romanization": "mozhno",
+      "nativeText": "Check whether \"можно ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I have coffee without sugar?”",
+      "pronunciation": "mozhno",
+      "exampleTarget": "Можно кофе без сахара?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I have coffee without sugar?”",
+      "korean": "можно ...?",
+      "english": "Check whether \"можно ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I have coffee without sugar?”",
+      "example": "Можно кофе без сахара?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I have coffee without sugar?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "без сахара",
+      "romanization": "bez sakhara",
+      "nativeText": "“Without sugar.” `Без` takes the genitive case.",
+      "pronunciation": "bez sakhara",
+      "exampleTarget": "Чай без сахара, пожалуйста.",
+      "exampleNative": "“Tea without sugar, please.”",
+      "korean": "без сахара",
+      "english": "“Without sugar.” `Без` takes the genitive case.",
+      "example": "Чай без сахара, пожалуйста.",
+      "exampleEnglish": "“Tea without sugar, please.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "Чай без сахара, пожалуйста.",
+      "romanization": "bez sakhara",
+      "nativeText": "Model use for \"Чай без сахара, пожалуйста.\": “Tea without sugar, please.”",
+      "pronunciation": "bez sakhara",
+      "exampleTarget": "Чай без сахара, пожалуйста.",
+      "exampleNative": "“Tea without sugar, please.”",
+      "korean": "Чай без сахара, пожалуйста.",
+      "english": "Model use for \"Чай без сахара, пожалуйста.\": “Tea without sugar, please.”",
+      "example": "Чай без сахара, пожалуйста.",
+      "exampleEnglish": "“Tea without sugar, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "без сахара",
+      "romanization": "bez sakhara",
+      "nativeText": "Usage focus for \"без сахара\": “Without sugar.” `Без` takes the genitive case.",
+      "pronunciation": "bez sakhara",
+      "exampleTarget": "Чай без сахара, пожалуйста.",
+      "exampleNative": "Notice what the form is doing here: “Tea without sugar, please.”",
+      "korean": "без сахара",
+      "english": "Usage focus for \"без сахара\": “Without sugar.” `Без` takes the genitive case.",
+      "example": "Чай без сахара, пожалуйста.",
+      "exampleEnglish": "Notice what the form is doing here: “Tea without sugar, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "без сахара",
+      "romanization": "bez sakhara",
+      "nativeText": "Contrast check for \"без сахара\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bez sakhara",
+      "exampleTarget": "Чай без сахара, пожалуйста.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tea without sugar, please.”",
+      "korean": "без сахара",
+      "english": "Contrast check for \"без сахара\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Чай без сахара, пожалуйста.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "без сахара",
+      "romanization": "bez sakhara",
+      "nativeText": "Recall \"без сахара\" from memory, then explain what would change if a nearby alternative replaced it in \"Чай без сахара, пожалуйста.\".",
+      "pronunciation": "bez sakhara",
+      "exampleTarget": "Чай без сахара, пожалуйста.",
+      "exampleNative": "Self-check against the model before moving on: “Tea without sugar, please.”",
+      "korean": "без сахара",
+      "english": "Recall \"без сахара\" from memory, then explain what would change if a nearby alternative replaced it in \"Чай без сахара, пожалуйста.\".",
+      "example": "Чай без сахара, пожалуйста.",
+      "exampleEnglish": "Self-check against the model before moving on: “Tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "без сахара",
+      "romanization": "bez sakhara",
+      "nativeText": "Repair \"без сахара\" inside \"Чай без сахара, пожалуйста.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Without sugar.” `Без` takes the genitive case.",
+      "pronunciation": "bez sakhara",
+      "exampleTarget": "Чай без сахара, пожалуйста.",
+      "exampleNative": "Use the model as the repair target: “Tea without sugar, please.”",
+      "korean": "без сахара",
+      "english": "Repair \"без сахара\" inside \"Чай без сахара, пожалуйста.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Without sugar.” `Без` takes the genitive case.",
+      "example": "Чай без сахара, пожалуйста.",
+      "exampleEnglish": "Use the model as the repair target: “Tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "без сахара",
+      "romanization": "bez sakhara",
+      "nativeText": "Transfer \"без сахара\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Чай без сахара, пожалуйста.\".",
+      "pronunciation": "bez sakhara",
+      "exampleTarget": "Чай без сахара, пожалуйста.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tea without sugar, please.”",
+      "korean": "без сахара",
+      "english": "Transfer \"без сахара\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Чай без сахара, пожалуйста.\".",
+      "example": "Чай без сахара, пожалуйста.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "без сахара",
+      "romanization": "bez sakhara",
+      "nativeText": "Find one word or phrase that naturally travels with \"без сахара\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bez sakhara",
+      "exampleTarget": "Чай без сахара, пожалуйста.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Tea without sugar, please.”",
+      "korean": "без сахара",
+      "english": "Find one word or phrase that naturally travels with \"без сахара\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Чай без сахара, пожалуйста.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "без сахара",
+      "romanization": "bez sakhara",
+      "nativeText": "Listen for \"без сахара\" inside \"Чай без сахара, пожалуйста.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bez sakhara",
+      "exampleTarget": "Чай без сахара, пожалуйста.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tea without sugar, please.”",
+      "korean": "без сахара",
+      "english": "Listen for \"без сахара\" inside \"Чай без сахара, пожалуйста.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Чай без сахара, пожалуйста.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "без сахара",
+      "romanization": "bez sakhara",
+      "nativeText": "Write \"без сахара\" again without looking, then compare the exact written form against \"Чай без сахара, пожалуйста.\" before moving on.",
+      "pronunciation": "bez sakhara",
+      "exampleTarget": "Чай без сахара, пожалуйста.",
+      "exampleNative": "Use the written model as the final correctness check: “Tea without sugar, please.”",
+      "korean": "без сахара",
+      "english": "Write \"без сахара\" again without looking, then compare the exact written form against \"Чай без сахара, пожалуйста.\" before moving on.",
+      "example": "Чай без сахара, пожалуйста.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Tea without sugar, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "без сахара",
+      "romanization": "bez sakhara",
+      "nativeText": "Check whether \"без сахара\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tea without sugar, please.”",
+      "pronunciation": "bez sakhara",
+      "exampleTarget": "Чай без сахара, пожалуйста.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Tea without sugar, please.”",
+      "korean": "без сахара",
+      "english": "Check whether \"без сахара\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tea without sugar, please.”",
+      "example": "Чай без сахара, пожалуйста.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Tea without sugar, please.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "не острое",
+      "romanization": "ne ostroye",
+      "nativeText": "“Not spicy.” The adjective agrees with the neuter food noun implied here.",
+      "pronunciation": "ne ostroye",
+      "exampleTarget": "Мне нужно не острое блюдо.",
+      "exampleNative": "“I need a non-spicy dish.”",
+      "korean": "не острое",
+      "english": "“Not spicy.” The adjective agrees with the neuter food noun implied here.",
+      "example": "Мне нужно не острое блюдо.",
+      "exampleEnglish": "“I need a non-spicy dish.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "Мне нужно не острое блюдо.",
+      "romanization": "ne ostroye",
+      "nativeText": "Model use for \"Мне нужно не острое блюдо.\": “I need a non-spicy dish.”",
+      "pronunciation": "ne ostroye",
+      "exampleTarget": "Мне нужно не острое блюдо.",
+      "exampleNative": "“I need a non-spicy dish.”",
+      "korean": "Мне нужно не острое блюдо.",
+      "english": "Model use for \"Мне нужно не острое блюдо.\": “I need a non-spicy dish.”",
+      "example": "Мне нужно не острое блюдо.",
+      "exampleEnglish": "“I need a non-spicy dish.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "не острое",
+      "romanization": "ne ostroye",
+      "nativeText": "Usage focus for \"не острое\": “Not spicy.” The adjective agrees with the neuter food noun implied here.",
+      "pronunciation": "ne ostroye",
+      "exampleTarget": "Мне нужно не острое блюдо.",
+      "exampleNative": "Notice what the form is doing here: “I need a non-spicy dish.”",
+      "korean": "не острое",
+      "english": "Usage focus for \"не острое\": “Not spicy.” The adjective agrees with the neuter food noun implied here.",
+      "example": "Мне нужно не острое блюдо.",
+      "exampleEnglish": "Notice what the form is doing here: “I need a non-spicy dish.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "не острое",
+      "romanization": "ne ostroye",
+      "nativeText": "Contrast check for \"не острое\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ne ostroye",
+      "exampleTarget": "Мне нужно не острое блюдо.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need a non-spicy dish.”",
+      "korean": "не острое",
+      "english": "Contrast check for \"не острое\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мне нужно не острое блюдо.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need a non-spicy dish.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "не острое",
+      "romanization": "ne ostroye",
+      "nativeText": "Recall \"не острое\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужно не острое блюдо.\".",
+      "pronunciation": "ne ostroye",
+      "exampleTarget": "Мне нужно не острое блюдо.",
+      "exampleNative": "Self-check against the model before moving on: “I need a non-spicy dish.”",
+      "korean": "не острое",
+      "english": "Recall \"не острое\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужно не острое блюдо.\".",
+      "example": "Мне нужно не острое блюдо.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need a non-spicy dish.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "не острое",
+      "romanization": "ne ostroye",
+      "nativeText": "Repair \"не острое\" inside \"Мне нужно не острое блюдо.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Not spicy.” The adjective agrees with the neuter food noun implied here.",
+      "pronunciation": "ne ostroye",
+      "exampleTarget": "Мне нужно не острое блюдо.",
+      "exampleNative": "Use the model as the repair target: “I need a non-spicy dish.”",
+      "korean": "не острое",
+      "english": "Repair \"не острое\" inside \"Мне нужно не острое блюдо.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Not spicy.” The adjective agrees with the neuter food noun implied here.",
+      "example": "Мне нужно не острое блюдо.",
+      "exampleEnglish": "Use the model as the repair target: “I need a non-spicy dish.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "не острое",
+      "romanization": "ne ostroye",
+      "nativeText": "Transfer \"не острое\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужно не острое блюдо.\".",
+      "pronunciation": "ne ostroye",
+      "exampleTarget": "Мне нужно не острое блюдо.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need a non-spicy dish.”",
+      "korean": "не острое",
+      "english": "Transfer \"не острое\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужно не острое блюдо.\".",
+      "example": "Мне нужно не острое блюдо.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need a non-spicy dish.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "не острое",
+      "romanization": "ne ostroye",
+      "nativeText": "Find one word or phrase that naturally travels with \"не острое\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ne ostroye",
+      "exampleTarget": "Мне нужно не острое блюдо.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need a non-spicy dish.”",
+      "korean": "не острое",
+      "english": "Find one word or phrase that naturally travels with \"не острое\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мне нужно не острое блюдо.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need a non-spicy dish.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "не острое",
+      "romanization": "ne ostroye",
+      "nativeText": "Listen for \"не острое\" inside \"Мне нужно не острое блюдо.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ne ostroye",
+      "exampleTarget": "Мне нужно не острое блюдо.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need a non-spicy dish.”",
+      "korean": "не острое",
+      "english": "Listen for \"не острое\" inside \"Мне нужно не острое блюдо.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мне нужно не острое блюдо.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need a non-spicy dish.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "не острое",
+      "romanization": "ne ostroye",
+      "nativeText": "Write \"не острое\" again without looking, then compare the exact written form against \"Мне нужно не острое блюдо.\" before moving on.",
+      "pronunciation": "ne ostroye",
+      "exampleTarget": "Мне нужно не острое блюдо.",
+      "exampleNative": "Use the written model as the final correctness check: “I need a non-spicy dish.”",
+      "korean": "не острое",
+      "english": "Write \"не острое\" again without looking, then compare the exact written form against \"Мне нужно не острое блюдо.\" before moving on.",
+      "example": "Мне нужно не острое блюдо.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need a non-spicy dish.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "не острое",
+      "romanization": "ne ostroye",
+      "nativeText": "Check whether \"не острое\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need a non-spicy dish.”",
+      "pronunciation": "ne ostroye",
+      "exampleTarget": "Мне нужно не острое блюдо.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need a non-spicy dish.”",
+      "korean": "не острое",
+      "english": "Check whether \"не острое\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need a non-spicy dish.”",
+      "example": "Мне нужно не острое блюдо.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need a non-spicy dish.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "порция",
+      "romanization": "portsiya",
+      "nativeText": "“Portion.” Food orders often need this serving noun.",
+      "pronunciation": "portsiya",
+      "exampleTarget": "Одну порцию пельменей, пожалуйста.",
+      "exampleNative": "“One portion of dumplings, please.”",
+      "korean": "порция",
+      "english": "“Portion.” Food orders often need this serving noun.",
+      "example": "Одну порцию пельменей, пожалуйста.",
+      "exampleEnglish": "“One portion of dumplings, please.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "Одну порцию пельменей, пожалуйста.",
+      "romanization": "portsiya",
+      "nativeText": "Model use for \"Одну порцию пельменей, пожалуйста.\": “One portion of dumplings, please.”",
+      "pronunciation": "portsiya",
+      "exampleTarget": "Одну порцию пельменей, пожалуйста.",
+      "exampleNative": "“One portion of dumplings, please.”",
+      "korean": "Одну порцию пельменей, пожалуйста.",
+      "english": "Model use for \"Одну порцию пельменей, пожалуйста.\": “One portion of dumplings, please.”",
+      "example": "Одну порцию пельменей, пожалуйста.",
+      "exampleEnglish": "“One portion of dumplings, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "порция",
+      "romanization": "portsiya",
+      "nativeText": "Usage focus for \"порция\": “Portion.” Food orders often need this serving noun.",
+      "pronunciation": "portsiya",
+      "exampleTarget": "Одну порцию пельменей, пожалуйста.",
+      "exampleNative": "Notice what the form is doing here: “One portion of dumplings, please.”",
+      "korean": "порция",
+      "english": "Usage focus for \"порция\": “Portion.” Food orders often need this serving noun.",
+      "example": "Одну порцию пельменей, пожалуйста.",
+      "exampleEnglish": "Notice what the form is doing here: “One portion of dumplings, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "порция",
+      "romanization": "portsiya",
+      "nativeText": "Contrast check for \"порция\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "portsiya",
+      "exampleTarget": "Одну порцию пельменей, пожалуйста.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “One portion of dumplings, please.”",
+      "korean": "порция",
+      "english": "Contrast check for \"порция\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Одну порцию пельменей, пожалуйста.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “One portion of dumplings, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "порция",
+      "romanization": "portsiya",
+      "nativeText": "Recall \"порция\" from memory, then explain what would change if a nearby alternative replaced it in \"Одну порцию пельменей, пожалуйста.\".",
+      "pronunciation": "portsiya",
+      "exampleTarget": "Одну порцию пельменей, пожалуйста.",
+      "exampleNative": "Self-check against the model before moving on: “One portion of dumplings, please.”",
+      "korean": "порция",
+      "english": "Recall \"порция\" from memory, then explain what would change if a nearby alternative replaced it in \"Одну порцию пельменей, пожалуйста.\".",
+      "example": "Одну порцию пельменей, пожалуйста.",
+      "exampleEnglish": "Self-check against the model before moving on: “One portion of dumplings, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "порция",
+      "romanization": "portsiya",
+      "nativeText": "Repair \"порция\" inside \"Одну порцию пельменей, пожалуйста.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Portion.” Food orders often need this serving noun.",
+      "pronunciation": "portsiya",
+      "exampleTarget": "Одну порцию пельменей, пожалуйста.",
+      "exampleNative": "Use the model as the repair target: “One portion of dumplings, please.”",
+      "korean": "порция",
+      "english": "Repair \"порция\" inside \"Одну порцию пельменей, пожалуйста.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Portion.” Food orders often need this serving noun.",
+      "example": "Одну порцию пельменей, пожалуйста.",
+      "exampleEnglish": "Use the model as the repair target: “One portion of dumplings, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "порция",
+      "romanization": "portsiya",
+      "nativeText": "Transfer \"порция\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Одну порцию пельменей, пожалуйста.\".",
+      "pronunciation": "portsiya",
+      "exampleTarget": "Одну порцию пельменей, пожалуйста.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “One portion of dumplings, please.”",
+      "korean": "порция",
+      "english": "Transfer \"порция\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Одну порцию пельменей, пожалуйста.\".",
+      "example": "Одну порцию пельменей, пожалуйста.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “One portion of dumplings, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "порция",
+      "romanization": "portsiya",
+      "nativeText": "Find one word or phrase that naturally travels with \"порция\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "portsiya",
+      "exampleTarget": "Одну порцию пельменей, пожалуйста.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “One portion of dumplings, please.”",
+      "korean": "порция",
+      "english": "Find one word or phrase that naturally travels with \"порция\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Одну порцию пельменей, пожалуйста.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “One portion of dumplings, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "порция",
+      "romanization": "portsiya",
+      "nativeText": "Listen for \"порция\" inside \"Одну порцию пельменей, пожалуйста.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "portsiya",
+      "exampleTarget": "Одну порцию пельменей, пожалуйста.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “One portion of dumplings, please.”",
+      "korean": "порция",
+      "english": "Listen for \"порция\" inside \"Одну порцию пельменей, пожалуйста.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Одну порцию пельменей, пожалуйста.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “One portion of dumplings, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "порция",
+      "romanization": "portsiya",
+      "nativeText": "Write \"порция\" again without looking, then compare the exact written form against \"Одну порцию пельменей, пожалуйста.\" before moving on.",
+      "pronunciation": "portsiya",
+      "exampleTarget": "Одну порцию пельменей, пожалуйста.",
+      "exampleNative": "Use the written model as the final correctness check: “One portion of dumplings, please.”",
+      "korean": "порция",
+      "english": "Write \"порция\" again without looking, then compare the exact written form against \"Одну порцию пельменей, пожалуйста.\" before moving on.",
+      "example": "Одну порцию пельменей, пожалуйста.",
+      "exampleEnglish": "Use the written model as the final correctness check: “One portion of dumplings, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "порция",
+      "romanization": "portsiya",
+      "nativeText": "Check whether \"порция\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “One portion of dumplings, please.”",
+      "pronunciation": "portsiya",
+      "exampleTarget": "Одну порцию пельменей, пожалуйста.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “One portion of dumplings, please.”",
+      "korean": "порция",
+      "english": "Check whether \"порция\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “One portion of dumplings, please.”",
+      "example": "Одну порцию пельменей, пожалуйста.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “One portion of dumplings, please.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "здесь / с собой",
+      "romanization": "zdes / s soboy",
+      "nativeText": "“Here / to go.” These are the practical service contrasts.",
+      "pronunciation": "zdes / s soboy",
+      "exampleTarget": "Это здесь или с собой?",
+      "exampleNative": "“Is this for here or to go?”",
+      "korean": "здесь / с собой",
+      "english": "“Here / to go.” These are the practical service contrasts.",
+      "example": "Это здесь или с собой?",
+      "exampleEnglish": "“Is this for here or to go?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "Это здесь или с собой?",
+      "romanization": "zdes / s soboy",
+      "nativeText": "Model use for \"Это здесь или с собой?\": “Is this for here or to go?”",
+      "pronunciation": "zdes / s soboy",
+      "exampleTarget": "Это здесь или с собой?",
+      "exampleNative": "“Is this for here or to go?”",
+      "korean": "Это здесь или с собой?",
+      "english": "Model use for \"Это здесь или с собой?\": “Is this for here or to go?”",
+      "example": "Это здесь или с собой?",
+      "exampleEnglish": "“Is this for here or to go?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "здесь / с собой",
+      "romanization": "zdes / s soboy",
+      "nativeText": "Usage focus for \"здесь / с собой\": “Here / to go.” These are the practical service contrasts.",
+      "pronunciation": "zdes / s soboy",
+      "exampleTarget": "Это здесь или с собой?",
+      "exampleNative": "Notice what the form is doing here: “Is this for here or to go?”",
+      "korean": "здесь / с собой",
+      "english": "Usage focus for \"здесь / с собой\": “Here / to go.” These are the practical service contrasts.",
+      "example": "Это здесь или с собой?",
+      "exampleEnglish": "Notice what the form is doing here: “Is this for here or to go?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "здесь / с собой",
+      "romanization": "zdes / s soboy",
+      "nativeText": "Contrast check for \"здесь / с собой\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "zdes / s soboy",
+      "exampleTarget": "Это здесь или с собой?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Is this for here or to go?”",
+      "korean": "здесь / с собой",
+      "english": "Contrast check for \"здесь / с собой\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Это здесь или с собой?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Is this for here or to go?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "здесь / с собой",
+      "romanization": "zdes / s soboy",
+      "nativeText": "Recall \"здесь / с собой\" from memory, then explain what would change if a nearby alternative replaced it in \"Это здесь или с собой?\".",
+      "pronunciation": "zdes / s soboy",
+      "exampleTarget": "Это здесь или с собой?",
+      "exampleNative": "Self-check against the model before moving on: “Is this for here or to go?”",
+      "korean": "здесь / с собой",
+      "english": "Recall \"здесь / с собой\" from memory, then explain what would change if a nearby alternative replaced it in \"Это здесь или с собой?\".",
+      "example": "Это здесь или с собой?",
+      "exampleEnglish": "Self-check against the model before moving on: “Is this for here or to go?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "здесь / с собой",
+      "romanization": "zdes / s soboy",
+      "nativeText": "Repair \"здесь / с собой\" inside \"Это здесь или с собой?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Here / to go.” These are the practical service contrasts.",
+      "pronunciation": "zdes / s soboy",
+      "exampleTarget": "Это здесь или с собой?",
+      "exampleNative": "Use the model as the repair target: “Is this for here or to go?”",
+      "korean": "здесь / с собой",
+      "english": "Repair \"здесь / с собой\" inside \"Это здесь или с собой?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Here / to go.” These are the practical service contrasts.",
+      "example": "Это здесь или с собой?",
+      "exampleEnglish": "Use the model as the repair target: “Is this for here or to go?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "здесь / с собой",
+      "romanization": "zdes / s soboy",
+      "nativeText": "Transfer \"здесь / с собой\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Это здесь или с собой?\".",
+      "pronunciation": "zdes / s soboy",
+      "exampleTarget": "Это здесь или с собой?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Is this for here or to go?”",
+      "korean": "здесь / с собой",
+      "english": "Transfer \"здесь / с собой\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Это здесь или с собой?\".",
+      "example": "Это здесь или с собой?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Is this for here or to go?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "здесь / с собой",
+      "romanization": "zdes / s soboy",
+      "nativeText": "Find one word or phrase that naturally travels with \"здесь / с собой\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "zdes / s soboy",
+      "exampleTarget": "Это здесь или с собой?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Is this for here or to go?”",
+      "korean": "здесь / с собой",
+      "english": "Find one word or phrase that naturally travels with \"здесь / с собой\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Это здесь или с собой?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Is this for here or to go?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "здесь / с собой",
+      "romanization": "zdes / s soboy",
+      "nativeText": "Listen for \"здесь / с собой\" inside \"Это здесь или с собой?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "zdes / s soboy",
+      "exampleTarget": "Это здесь или с собой?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Is this for here or to go?”",
+      "korean": "здесь / с собой",
+      "english": "Listen for \"здесь / с собой\" inside \"Это здесь или с собой?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Это здесь или с собой?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Is this for here or to go?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "здесь / с собой",
+      "romanization": "zdes / s soboy",
+      "nativeText": "Write \"здесь / с собой\" again without looking, then compare the exact written form against \"Это здесь или с собой?\" before moving on.",
+      "pronunciation": "zdes / s soboy",
+      "exampleTarget": "Это здесь или с собой?",
+      "exampleNative": "Use the written model as the final correctness check: “Is this for here or to go?”",
+      "korean": "здесь / с собой",
+      "english": "Write \"здесь / с собой\" again without looking, then compare the exact written form against \"Это здесь или с собой?\" before moving on.",
+      "example": "Это здесь или с собой?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Is this for here or to go?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "здесь / с собой",
+      "romanization": "zdes / s soboy",
+      "nativeText": "Check whether \"здесь / с собой\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Is this for here or to go?”",
+      "pronunciation": "zdes / s soboy",
+      "exampleTarget": "Это здесь или с собой?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Is this for here or to go?”",
+      "korean": "здесь / с собой",
+      "english": "Check whether \"здесь / с собой\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Is this for here or to go?”",
+      "example": "Это здесь или с собой?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Is this for here or to go?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "ещё что-нибудь?",
+      "romanization": "yeshcho chto-nibud",
+      "nativeText": "“Anything else?” A common server question.",
+      "pronunciation": "yeshcho chto-nibud",
+      "exampleTarget": "Ещё что-нибудь будете?",
+      "exampleNative": "“Will you have anything else?”",
+      "korean": "ещё что-нибудь?",
+      "english": "“Anything else?” A common server question.",
+      "example": "Ещё что-нибудь будете?",
+      "exampleEnglish": "“Will you have anything else?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "Ещё что-нибудь будете?",
+      "romanization": "yeshcho chto-nibud",
+      "nativeText": "Model use for \"Ещё что-нибудь будете?\": “Will you have anything else?”",
+      "pronunciation": "yeshcho chto-nibud",
+      "exampleTarget": "Ещё что-нибудь будете?",
+      "exampleNative": "“Will you have anything else?”",
+      "korean": "Ещё что-нибудь будете?",
+      "english": "Model use for \"Ещё что-нибудь будете?\": “Will you have anything else?”",
+      "example": "Ещё что-нибудь будете?",
+      "exampleEnglish": "“Will you have anything else?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "ещё что-нибудь?",
+      "romanization": "yeshcho chto-nibud",
+      "nativeText": "Usage focus for \"ещё что-нибудь?\": “Anything else?” A common server question.",
+      "pronunciation": "yeshcho chto-nibud",
+      "exampleTarget": "Ещё что-нибудь будете?",
+      "exampleNative": "Notice what the form is doing here: “Will you have anything else?”",
+      "korean": "ещё что-нибудь?",
+      "english": "Usage focus for \"ещё что-нибудь?\": “Anything else?” A common server question.",
+      "example": "Ещё что-нибудь будете?",
+      "exampleEnglish": "Notice what the form is doing here: “Will you have anything else?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "ещё что-нибудь?",
+      "romanization": "yeshcho chto-nibud",
+      "nativeText": "Contrast check for \"ещё что-нибудь?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "yeshcho chto-nibud",
+      "exampleTarget": "Ещё что-нибудь будете?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Will you have anything else?”",
+      "korean": "ещё что-нибудь?",
+      "english": "Contrast check for \"ещё что-нибудь?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Ещё что-нибудь будете?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Will you have anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "ещё что-нибудь?",
+      "romanization": "yeshcho chto-nibud",
+      "nativeText": "Recall \"ещё что-нибудь?\" from memory, then explain what would change if a nearby alternative replaced it in \"Ещё что-нибудь будете?\".",
+      "pronunciation": "yeshcho chto-nibud",
+      "exampleTarget": "Ещё что-нибудь будете?",
+      "exampleNative": "Self-check against the model before moving on: “Will you have anything else?”",
+      "korean": "ещё что-нибудь?",
+      "english": "Recall \"ещё что-нибудь?\" from memory, then explain what would change if a nearby alternative replaced it in \"Ещё что-нибудь будете?\".",
+      "example": "Ещё что-нибудь будете?",
+      "exampleEnglish": "Self-check against the model before moving on: “Will you have anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "ещё что-нибудь?",
+      "romanization": "yeshcho chto-nibud",
+      "nativeText": "Repair \"ещё что-нибудь?\" inside \"Ещё что-нибудь будете?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Anything else?” A common server question.",
+      "pronunciation": "yeshcho chto-nibud",
+      "exampleTarget": "Ещё что-нибудь будете?",
+      "exampleNative": "Use the model as the repair target: “Will you have anything else?”",
+      "korean": "ещё что-нибудь?",
+      "english": "Repair \"ещё что-нибудь?\" inside \"Ещё что-нибудь будете?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Anything else?” A common server question.",
+      "example": "Ещё что-нибудь будете?",
+      "exampleEnglish": "Use the model as the repair target: “Will you have anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "ещё что-нибудь?",
+      "romanization": "yeshcho chto-nibud",
+      "nativeText": "Transfer \"ещё что-нибудь?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ещё что-нибудь будете?\".",
+      "pronunciation": "yeshcho chto-nibud",
+      "exampleTarget": "Ещё что-нибудь будете?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Will you have anything else?”",
+      "korean": "ещё что-нибудь?",
+      "english": "Transfer \"ещё что-нибудь?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Ещё что-нибудь будете?\".",
+      "example": "Ещё что-нибудь будете?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Will you have anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "ещё что-нибудь?",
+      "romanization": "yeshcho chto-nibud",
+      "nativeText": "Find one word or phrase that naturally travels with \"ещё что-нибудь?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "yeshcho chto-nibud",
+      "exampleTarget": "Ещё что-нибудь будете?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Will you have anything else?”",
+      "korean": "ещё что-нибудь?",
+      "english": "Find one word or phrase that naturally travels with \"ещё что-нибудь?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Ещё что-нибудь будете?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Will you have anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "ещё что-нибудь?",
+      "romanization": "yeshcho chto-nibud",
+      "nativeText": "Listen for \"ещё что-нибудь?\" inside \"Ещё что-нибудь будете?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "yeshcho chto-nibud",
+      "exampleTarget": "Ещё что-нибудь будете?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Will you have anything else?”",
+      "korean": "ещё что-нибудь?",
+      "english": "Listen for \"ещё что-нибудь?\" inside \"Ещё что-нибудь будете?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Ещё что-нибудь будете?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Will you have anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "ещё что-нибудь?",
+      "romanization": "yeshcho chto-nibud",
+      "nativeText": "Write \"ещё что-нибудь?\" again without looking, then compare the exact written form against \"Ещё что-нибудь будете?\" before moving on.",
+      "pronunciation": "yeshcho chto-nibud",
+      "exampleTarget": "Ещё что-нибудь будете?",
+      "exampleNative": "Use the written model as the final correctness check: “Will you have anything else?”",
+      "korean": "ещё что-нибудь?",
+      "english": "Write \"ещё что-нибудь?\" again without looking, then compare the exact written form against \"Ещё что-нибудь будете?\" before moving on.",
+      "example": "Ещё что-нибудь будете?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Will you have anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "ещё что-нибудь?",
+      "romanization": "yeshcho chto-nibud",
+      "nativeText": "Check whether \"ещё что-нибудь?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Will you have anything else?”",
+      "pronunciation": "yeshcho chto-nibud",
+      "exampleTarget": "Ещё что-нибудь будете?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Will you have anything else?”",
+      "korean": "ещё что-нибудь?",
+      "english": "Check whether \"ещё что-нибудь?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Will you have anything else?”",
+      "example": "Ещё что-нибудь будете?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Will you have anything else?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "счёт, пожалуйста",
+      "romanization": "shchyot pozhaluysta",
+      "nativeText": "“The bill, please.” A complete phrase worth memorizing whole.",
+      "pronunciation": "shchyot pozhaluysta",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "счёт, пожалуйста",
+      "english": "“The bill, please.” A complete phrase worth memorizing whole.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "Счёт, пожалуйста.",
+      "romanization": "shchyot pozhaluysta",
+      "nativeText": "Model use for \"Счёт, пожалуйста.\": “The bill, please.”",
+      "pronunciation": "shchyot pozhaluysta",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "“The bill, please.”",
+      "korean": "Счёт, пожалуйста.",
+      "english": "Model use for \"Счёт, пожалуйста.\": “The bill, please.”",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "“The bill, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "счёт, пожалуйста",
+      "romanization": "shchyot pozhaluysta",
+      "nativeText": "Usage focus for \"счёт, пожалуйста\": “The bill, please.” A complete phrase worth memorizing whole.",
+      "pronunciation": "shchyot pozhaluysta",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "Notice what the form is doing here: “The bill, please.”",
+      "korean": "счёт, пожалуйста",
+      "english": "Usage focus for \"счёт, пожалуйста\": “The bill, please.” A complete phrase worth memorizing whole.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "Notice what the form is doing here: “The bill, please.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "счёт, пожалуйста",
+      "romanization": "shchyot pozhaluysta",
+      "nativeText": "Contrast check for \"счёт, пожалуйста\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shchyot pozhaluysta",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bill, please.”",
+      "korean": "счёт, пожалуйста",
+      "english": "Contrast check for \"счёт, пожалуйста\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "счёт, пожалуйста",
+      "romanization": "shchyot pozhaluysta",
+      "nativeText": "Recall \"счёт, пожалуйста\" from memory, then explain what would change if a nearby alternative replaced it in \"Счёт, пожалуйста.\".",
+      "pronunciation": "shchyot pozhaluysta",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "Self-check against the model before moving on: “The bill, please.”",
+      "korean": "счёт, пожалуйста",
+      "english": "Recall \"счёт, пожалуйста\" from memory, then explain what would change if a nearby alternative replaced it in \"Счёт, пожалуйста.\".",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "Self-check against the model before moving on: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "счёт, пожалуйста",
+      "romanization": "shchyot pozhaluysta",
+      "nativeText": "Repair \"счёт, пожалуйста\" inside \"Счёт, пожалуйста.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The bill, please.” A complete phrase worth memorizing whole.",
+      "pronunciation": "shchyot pozhaluysta",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "Use the model as the repair target: “The bill, please.”",
+      "korean": "счёт, пожалуйста",
+      "english": "Repair \"счёт, пожалуйста\" inside \"Счёт, пожалуйста.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “The bill, please.” A complete phrase worth memorizing whole.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "Use the model as the repair target: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "счёт, пожалуйста",
+      "romanization": "shchyot pozhaluysta",
+      "nativeText": "Transfer \"счёт, пожалуйста\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Счёт, пожалуйста.\".",
+      "pronunciation": "shchyot pozhaluysta",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bill, please.”",
+      "korean": "счёт, пожалуйста",
+      "english": "Transfer \"счёт, пожалуйста\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Счёт, пожалуйста.\".",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "счёт, пожалуйста",
+      "romanization": "shchyot pozhaluysta",
+      "nativeText": "Find one word or phrase that naturally travels with \"счёт, пожалуйста\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shchyot pozhaluysta",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The bill, please.”",
+      "korean": "счёт, пожалуйста",
+      "english": "Find one word or phrase that naturally travels with \"счёт, пожалуйста\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "счёт, пожалуйста",
+      "romanization": "shchyot pozhaluysta",
+      "nativeText": "Listen for \"счёт, пожалуйста\" inside \"Счёт, пожалуйста.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shchyot pozhaluysta",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bill, please.”",
+      "korean": "счёт, пожалуйста",
+      "english": "Listen for \"счёт, пожалуйста\" inside \"Счёт, пожалуйста.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "счёт, пожалуйста",
+      "romanization": "shchyot pozhaluysta",
+      "nativeText": "Write \"счёт, пожалуйста\" again without looking, then compare the exact written form against \"Счёт, пожалуйста.\" before moving on.",
+      "pronunciation": "shchyot pozhaluysta",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "Use the written model as the final correctness check: “The bill, please.”",
+      "korean": "счёт, пожалуйста",
+      "english": "Write \"счёт, пожалуйста\" again without looking, then compare the exact written form against \"Счёт, пожалуйста.\" before moving on.",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The bill, please.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit09orderingfood-vocabulary-1",
+        "ru-level1unit09orderingfood-vocabulary-2",
+        "ru-level1unit09orderingfood-grammar-1",
+        "ru-level1unit09orderingfood-grammar-2",
+        "ru-level1unit09orderingfood-reading",
+        "ru-level1unit09orderingfood-listening",
+        "ru-level1unit09orderingfood-writing",
+        "ru-level1unit09orderingfood-task"
+      ],
+      "targetText": "счёт, пожалуйста",
+      "romanization": "shchyot pozhaluysta",
+      "nativeText": "Check whether \"счёт, пожалуйста\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bill, please.”",
+      "pronunciation": "shchyot pozhaluysta",
+      "exampleTarget": "Счёт, пожалуйста.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The bill, please.”",
+      "korean": "счёт, пожалуйста",
+      "english": "Check whether \"счёт, пожалуйста\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The bill, please.”",
+      "example": "Счёт, пожалуйста.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The bill, please.”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

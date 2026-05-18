@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "この項目を他の場所で練習してください",
     "practiceEverywhere": "どこでもこれを実践してください",
     "saveReply": "返信を保存する",
-    "selfTestReason": "簡単なセルフテストのためにクラスから保存されました。"
+    "selfTestReason": "簡単なセルフテストのためにクラスから保存されました。",
+    "hideOutline": "アウトラインを隠す",
+    "showOutline": "概要を表示"
   },
   "classList": {
     "heroAriaLabel": "クラス",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "レベル {{level}} · ユニット {{unit}}: {{title}}"
-    }
+    },
+    "retry": "もう一度やり直してください",
+    "progressAriaLabel": "授業の進み具合",
+    "progressCaption": "{{percent}}% 完了 · {{total}} アイテム中 {{completed}}"
   },
   "contextPractice": {
     "title": "あなたを中心に形作られたレッスン",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "何がうまくいったのか",
     "recapUsefulPhrases": "便利なフレーズ",
     "recapReview": "次にレビューします",
-    "recapReviewFallback": "1 つのフレーズを保存し、別の練習モードで再利用します。"
+    "recapReviewFallback": "1 つのフレーズを保存し、別の練習モードで再利用します。",
+    "hideSetup": "設定を隠す",
+    "showSetup": "セットアップを表示する"
   },
   "exerciseHub": {
     "ariaLabel": "エクササイズ",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}。 {{char}}: 形状をコピーし、メモリから書き込みます。"
     },
     "savedReason": "別の合格のために書く練習から救われました。",
-    "selfTestReason": "簡単な自己テストのためのライティング練習から保存されました。"
+    "selfTestReason": "簡単な自己テストのためのライティング練習から保存されました。",
+    "hideNotebook": "ノートを隠す",
+    "showNotebook": "ノートブックを表示"
   },
   "institution": {
     "kicker": "機関",

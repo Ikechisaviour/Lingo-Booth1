@@ -23,7 +23,8 @@
     "saving": "חִסָכוֹן...",
     "search": "לְחַפֵּשׂ",
     "notSet": "לא מוגדר",
-    "all": "כֹּל"
+    "all": "כֹּל",
+    "reset": "אִתחוּל"
   },
   "languages": {
     "en": "אנגלית",
@@ -218,7 +219,8 @@
       "fri": "ו",
       "sat": "ס",
       "sun": "ס"
-    }
+    },
+    "contactDesc": "שאלות, משוב או בעיה לדווח"
   },
   "lessons": {
     "title": "{{language}} שיעורים",
@@ -738,7 +740,102 @@
     "modeBreakdown": "מצב לימוד",
     "searchUsers": "חפש משתמשים...",
     "all": "הכל",
-    "demo": "הַדגָמָה"
+    "demo": "הַדגָמָה",
+    "failures": "כשלים",
+    "messages": "הודעות",
+    "userFailures": "כשלים בצד המשתמש",
+    "openFailures": "{{count}} כשלים פתוחים",
+    "criticalFailures": "{{count}} קריטי",
+    "clearing": "קָרְחַת יַעַר...",
+    "loadingFailures": "טעינת כשלים...",
+    "noOpenFailures": "אין כשלים פתוחים בצד המשתמש.",
+    "acknowledge": "לְהוֹדוֹת",
+    "page": "עַמוּד",
+    "device": "הֶתקֵן",
+    "languagePair": "צמד שפות",
+    "clientStatus": "לָקוּחַ",
+    "pageOf": "עמוד {{page}} מתוך {{total}}",
+    "guestUser": "משתמש אורח",
+    "unknownUser": "משתמש לא ידוע",
+    "unknown": "לֹא יְדוּעַ",
+    "clearFailuresTitle": "לנקות כשלים פתוחים?",
+    "clearFailuresBody": "לסמן את כל הכשלים הפתוחים {{count}} כמאושרים?",
+    "contactMessages": "הודעות ליצירת קשר",
+    "unreadMessages": "{{count}} הודעות שלא נקראו",
+    "allMessages": "כל ההודעות",
+    "registeredUsers": "משתמשים רשומים",
+    "guestUsers": "משתמשים אורחים",
+    "loadingMessages": "טוען הודעות...",
+    "noUnreadMessages": "אין הודעות איש קשר שלא נקראו.",
+    "registeredUser": "משתמש רשום",
+    "contactMessage": "הודעת יצירת קשר",
+    "markRead": "סמן שנקרא",
+    "name": "שֵׁם",
+    "accountTier": "שכבת חשבון",
+    "clearMessagesTitle": "לנקות הודעות שלא נקראו?",
+    "clearMessagesBody": "לסמן את כל הודעות אנשי הקשר שלא נקראו {{count}} כנקראו?",
+    "demoDifficulty": {
+      "beginner": "מַתחִיל",
+      "balanced": "מְאוּזָן",
+      "natural": "טִבעִי",
+      "challenge": "אֶתגָר"
+    },
+    "demoScenarios": {
+      "friendlyChat": "צ'אט ידידותי",
+      "cafeWorker": "מדבר עם עובד בית קפה",
+      "taxiDriver": "מבקש עזרה מנהג מונית",
+      "meetingNew": "להכיר מישהו חדש"
+    },
+    "demoReplyPlaceholder": "תגובת השותף לתרגול תופיע כאן.",
+    "demoTipPlaceholder": "שאל בכל אחת מהשפות שנבחרו. אתה יכול לשנות נושא, לבקש משמעויות או לבקש ניסוח קל יותר.",
+    "promoteConfirmShort": "להפוך את {{username}} למנהל?",
+    "promote": "לְקַדֵם",
+    "deleteUserTitle": "מחק משתמש",
+    "deleteUserConfirmShort": "למחוק לצמיתות את {{username}}? לא ניתן לבטל זאת.",
+    "demoReset": "איפוס השיחה.",
+    "demoNoReply": "לא הוחזרה תשובה.",
+    "demoNoCoachingNote": "אין הערת אימון.",
+    "demoResponseFailed": "לא יכולתי להגיב הפעם. אנא נסה שוב.",
+    "demoConnectionIssue": "בעיית חיבור. נסה שוב בעוד רגע.",
+    "tapForDetails": "הקש לפרטים",
+    "activeWeek": "פעיל 7d",
+    "countries": "מדינות",
+    "conversion": "הֲמָרָה",
+    "engagement": "אירוסין",
+    "totalCardsStudied": "סך הקלפים שנלמדו",
+    "totalAudioPlays": "סך השמעות אודיו",
+    "lessonsViewed": "צפו בשיעורים",
+    "topLanguagePairs": "צמדי שפות מובילים",
+    "sessionsCount": "{{count}} הפעלות",
+    "deviceBreakdown": "התמוטטות המכשיר",
+    "recentSessions": "הפעלות אחרונות ({{count}})",
+    "cardsStudiedCount": "כרטיסי {{count}}",
+    "pageNumber": "עמוד {{page}}",
+    "noGuestData": "אין נתוני אורחים זמינים",
+    "loadData": "טען נתונים",
+    "speakingDemo": "הדגמה מדברת",
+    "demoIntro": "תצוגה מקדימה של שיחה למנהל מערכת בלבד. זה לא חוסך אודיו או התקדמות הלומד.",
+    "scenario": "תַרחִישׁ",
+    "customScenario": "תרחיש מותאם אישית",
+    "learningLanguage": "לימוד שפה",
+    "nativeLanguage": "שפת אם",
+    "listenFor": "תקשיב ל",
+    "difficulty": "קוֹשִׁי",
+    "learnerTurnInput": "הקלד או הדבק את מה שהלומד אמר",
+    "interrupt": "לְהַפְרִיעַ",
+    "conversationState": "מצב שיחה",
+    "lastLearnerTurn": "תור אחרון לומד",
+    "noTurnSentYet": "עדיין לא נשלח תור.",
+    "practicePartnerResponse": "תרגל תגובת שותף",
+    "coachNote": "הערת המאמן",
+    "userDetails": "פרטי משתמש",
+    "totalXp": "סך הכל XP",
+    "studyMode": "מצב לימוד",
+    "languages": "שפות",
+    "loginCount": "ספירת כניסה",
+    "memberSince": "חבר מאז",
+    "suspendReasonLabel": "השעיית סיבה",
+    "userDetailsLoadFailed": "לא ניתן היה לטעון את פרטי המשתמש"
   },
   "pricing": {
     "kicker": "תוכניות",
@@ -820,7 +917,9 @@
     "discountCode": "קוד הנחה",
     "discountPlaceholder": "קוד אופציונלי",
     "discountUnavailable": "קוד הנחה זה אינו זמין עבור תוכנית זו.",
-    "automaticDiscountApplied": "הנחה אוטומטית של {{discount}} הוחלה"
+    "automaticDiscountApplied": "הנחה אוטומטית של {{discount}} הוחלה",
+    "signInToChooseTitle": "צור חשבון כדי להמשיך",
+    "signInToChooseBody": "צור חשבון או היכנס לפני בחירת תוכנית בתשלום כדי שניתן יהיה לצרף את הגישה שלך אליך."
   },
   "billing": {
     "kicker": "חיוב",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "רמה {{level}} · יחידה {{unit}}: {{title}}"
-    }
+    },
+    "retry": "נסה שוב"
   },
   "classLesson": {
     "loading": "טוען שיעור בכיתה...",
@@ -1114,7 +1214,10 @@
     "saveReply": "שמור תשובה",
     "saveExample": "שמור דוגמה",
     "practiceEverywhere": "תתאמן על זה בכל מקום",
-    "selfTestReason": "נשמר מהכיתה לבדיקה עצמית מהירה."
+    "selfTestReason": "נשמר מהכיתה לבדיקה עצמית מהירה.",
+    "previous": "קוֹדֵם",
+    "lessonGuide": "מדריך שיעור",
+    "activityXOfY": "פעילות {{current}} מתוך {{total}}"
   },
   "exercise": {
     "kicker": "תַרגִיל",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "ביטויים שימושיים",
     "recapReview": "סקירה הבאה",
     "recapReviewFallback": "שמור ביטוי אחד והשתמש בו שוב במצב תרגול אחר.",
-    "practiceLabel": "תרגול שיחות"
+    "practiceLabel": "תרגול שיחות",
+    "practiceSetup": "תרגול הגדרה"
   },
   "context": {
     "backToProfile": "חזרה לפרופיל",
@@ -1304,7 +1408,10 @@
       "memory": "מהזיכרון"
     },
     "savedReason": "נשמר מאימון כתיבה למעבר נוסף.",
-    "selfTestReason": "נשמר מאימון כתיבה למבחן עצמי מהיר."
+    "selfTestReason": "נשמר מאימון כתיבה למבחן עצמי מהיר.",
+    "hideNotebook": "הסתר מחברת",
+    "showNotebook": "הצג מחברת",
+    "hideAddPanel": "הסתר חלונית הוסף"
   },
   "certificates": {
     "kicker": "תְעוּדָה",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "חזור פעם אחת למה שראית אתמול כדי שהפריטים הראשונים יתחילו להידבק.",
     "firstThreeDaySpeakBody": "השתמש בסיבוב דיבור קצר כדי שהשפה תצא מוקדם מהדף.",
     "firstThreeDayLearnBody": "התחילו בשיעור מודרך אחד קטן כדי שתהיה לזוג נקודת התחלה ברורה."
+  },
+  "resetPassword": {
+    "title": "איפוס סיסמה",
+    "subtitle": "הזן את הסיסמה החדשה שלך.",
+    "error": "איפוס הסיסמה נכשל. נסה שוב.",
+    "invalidLink": "קישור איפוס זה אינו תקף או שפג תוקפו.",
+    "noToken": "אסימון איפוס חסר. בקש קישור חדש.",
+    "requestNew": "בקש קישור חדש",
+    "success": "הסיסמה אופסה בהצלחה.",
+    "goToLogin": "עבור להתחברות",
+    "newPasswordPlaceholder": "סיסמה חדשה",
+    "resetButton": "אפס סיסמה",
+    "failed": "לא ניתן לאפס את הסיסמה. אנא נסה שוב.",
+    "kicker": "אפס את הסיסמה",
+    "missingToken": "קישור האיפוס הזה חסר או לא חוקי.",
+    "newPassword": "סיסמה חדשה",
+    "confirmPassword": "אשר את הסיסמה",
+    "submit": "אפס את הסיסמה"
+  },
+  "contact": {
+    "navLabel": "מַגָע",
+    "kicker": "צור איתנו קשר",
+    "title": "ספר לנו מה אתה צריך",
+    "subtitle": "שלח שאלה, דווח על בעיה או שתף משוב. אנו נבדוק את הודעתך ונגיב בעת הצורך.",
+    "infoTitle": "אנחנו מקשיבים",
+    "infoText": "הודעות מהטופס הזה נשמרות בצורה מאובטחת עם הקשר החשבון כשהן זמינות, כדי שנוכל להבין מה קרה ולעזור מהר יותר.",
+    "name": "??",
+    "namePlaceholder": "השם שלך",
+    "email": "אֶלֶקטרוֹנִי",
+    "emailPlaceholder": "you@example.com",
+    "subject": "נוֹשֵׂא",
+    "subjectPlaceholder": "על מה מדובר?",
+    "message": "הוֹדָעָה",
+    "messagePlaceholder": "כתוב את הודעתך כאן...",
+    "send": "שלח הודעה",
+    "success": "תוֹדָה. הודעתך התקבלה.",
+    "error": "לא יכולנו לשלוח את הודעתך כעת. אנא נסה שוב.",
+    "companyTrap": "חֶברָה",
+    "profileHint": "שלח שאלה, דווח על בעיה או שתף משוב מהמכשיר הזה."
   }
 }

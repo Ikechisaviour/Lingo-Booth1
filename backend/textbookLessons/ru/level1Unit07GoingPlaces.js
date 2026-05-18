@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u7',
-  title: 'Level 1 · Unit 7: Куда вы идёте? — Going Places',
-  category: 'travel',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Say where you are, where you are going, and ask for basic directions.',
-  vocabularyGoal: 'Use destinations, route words, and direction phrases.',
-  grammarGoal: 'Keep `где?` location separate from `куда?` destination with `в/на` plus different case forms.',
-  speakingGoal: 'Say where you are, ask how to get somewhere, and give one short route.',
-  task: 'Guide a visitor from the metro to the library.',
-  expressionPractice: [
-    practice('stating-location', 'Stating location', 'Use a location form after `где?`.'),
-    practice('stating-destination', 'Stating destination', 'Use a destination form after `куда?`.'),
-    practice('asking-route', 'Asking route', 'Use `как пройти к ...?`.'),
+module.exports = {
+  "title": "Level 1 · Unit 7: Куда вы идёте? — Going Places",
+  "category": "travel",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit07goingplaces-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Say where you are, where you are going, and ask for basic directions."
+      ],
+      "task": "Guide a visitor from the metro to the library."
+    },
+    {
+      "id": "ru-level1unit07goingplaces-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit07goingplaces-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 7: Куда вы идёте? — Going Places with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit07goingplaces-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 7: Куда вы идёте? — Going Places sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit07goingplaces-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Say where you are, where you are going, and ask for basic directions."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit07goingplaces-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 7: Куда вы идёте? — Going Places with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit07goingplaces-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit07goingplaces-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit07goingplaces-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit07goingplaces-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit07goingplaces-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Guide a visitor from the metro to the library."
+      ],
+      "task": "Guide a visitor from the metro to the library."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-directions'],
-  items: [
-    item('я в университете', 'ya v universitete', '“I am at the university.” The location answer uses the prepositional case.', 'Сейчас я в университете.', '“Right now I am at the university.”'),
-    item('я иду в библиотеку', 'ya idu v biblioteku', '“I am going to the library.” Movement toward a destination uses the accusative.', 'После пары я иду в библиотеку.', '“After class I am going to the library.”'),
-    item('от дома', 'ot doma', '“From home.” Origin often uses genitive forms after prepositions such as `от` or `из`.', 'Я иду от дома к метро.', '“I am walking from home to the metro.”'),
-    item('поверните налево', 'povernite nalevo', '“Turn left.” A useful polite imperative for directions.', 'У банка поверните налево.', '“At the bank, turn left.”'),
-    item('идите прямо', 'idite pryamo', '“Go straight.” A standard route instruction.', 'Идите прямо до светофора.', '“Go straight until the traffic light.”'),
-    item('близко / далеко', 'blizko / daleko', '“Near / far.” These adverbs answer many location questions directly.', 'Метро близко, не далеко.', '“The metro is near, not far.”'),
-    item('как пройти к ...?', 'kak proyti k', '“How do I get to ...?” Literally “how to walk to,” useful for street directions.', 'Как пройти к аптеке?', '“How do I get to the pharmacy?”'),
-    item('рядом с', 'ryadom s', '“Next to.” It takes the instrumental case, so the following noun changes form.', 'Кафе рядом с музеем.', '“The cafe is next to the museum.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-location",
+      "label": "Stating location",
+      "goal": "Use a location form after `где?`."
+    },
+    {
+      "id": "stating-destination",
+      "label": "Stating destination",
+      "goal": "Use a destination form after `куда?`."
+    },
+    {
+      "id": "asking-route",
+      "label": "Asking route",
+      "goal": "Use `как пройти к ...?`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-travel",
+    "topic-directions"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Say where you are, where you are going, and ask for basic directions.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Guide a visitor from the metro to the library.",
+      "korean": "цель урока",
+      "english": "Say where you are, where you are going, and ask for basic directions.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Guide a visitor from the metro to the library."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сейчас я в университете.\".",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сейчас я в университете.\".",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1"
+      ],
+      "targetText": "я в университете",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 7: Куда вы идёте? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "Use the key language of Level 1 · Unit 7: Куда вы идёте? — Going Places with the register and setting that the lesson requires.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-2"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 7: Куда вы идёте? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 7: Куда вы идёте? — Going Places sound precise rather than merely understandable.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "я в университете",
+      "romanization": "",
+      "nativeText": "Say where you are, where you are going, and ask for basic directions.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "Say where you are, where you are going, and ask for basic directions.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 7: Куда вы идёте? — Going Places with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "Contrast the main pattern in Level 1 · Unit 7: Куда вы идёте? — Going Places with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit07goingplaces-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Кафе рядом с музеем.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "модель чтения",
+      "english": "Read \"Кафе рядом с музеем.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit07goingplaces-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Кафе рядом с музеем.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "модель диалога",
+      "english": "Hear \"Кафе рядом с музеем.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit07goingplaces-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Сейчас я в университете.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Сейчас я в университете.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit07goingplaces-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Guide a visitor from the metro to the library.",
+      "pronunciation": "",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "Guide a visitor from the metro to the library.",
+      "korean": "итоговое задание",
+      "english": "Guide a visitor from the metro to the library.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "Guide a visitor from the metro to the library."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"После пары я иду в библиотеку.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “After class I am going to the library.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"После пары я иду в библиотеку.\" against the model.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “After class I am going to the library.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Сейчас я в университете.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Сейчас я в университете.\" before reusing it elsewhere.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Кафе рядом с музеем.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Кафе рядом с музеем.\" as one thought.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Сейчас я в университете.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Сейчас я в университете.\" and move it into your own life.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"я в университете\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "я в университете",
+      "exampleNative": "“I am at the university.” The location answer uses the prepositional case.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"я в университете\" before looking back.",
+      "example": "я в университете",
+      "exampleEnglish": "“I am at the university.” The location answer uses the prepositional case."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Кафе рядом с музеем.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Кафе рядом с музеем.\" rather than restarting from a blank sentence.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 7: Куда вы идёте? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"После пары я иду в библиотеку.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 7: Куда вы идёте? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"После пары я иду в библиотеку.\" as the comparison line.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сейчас я в университете.\".",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сейчас я в университете.\".",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Кафе рядом с музеем.\".",
+      "pronunciation": "",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Кафе рядом с музеем.\".",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Сейчас я в университете.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Сейчас я в университете.\" one layer at a time.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"После пары я иду в библиотеку.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"После пары я иду в библиотеку.\" as the deciding example.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-culture",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Кафе рядом с музеем.\".",
+      "pronunciation": "",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Кафе рядом с музеем.\".",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я в университете",
+      "romanization": "ya v universitete",
+      "nativeText": "“I am at the university.” The location answer uses the prepositional case.",
+      "pronunciation": "ya v universitete",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "“I am at the university.” The location answer uses the prepositional case.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "Сейчас я в университете.",
+      "romanization": "ya v universitete",
+      "nativeText": "Model use for \"Сейчас я в университете.\": “Right now I am at the university.”",
+      "pronunciation": "ya v universitete",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "“Right now I am at the university.”",
+      "korean": "Сейчас я в университете.",
+      "english": "Model use for \"Сейчас я в университете.\": “Right now I am at the university.”",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "“Right now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я в университете",
+      "romanization": "ya v universitete",
+      "nativeText": "Usage focus for \"я в университете\": Use the key language of Level 1 · Unit 7: Куда вы идёте? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "ya v universitete",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "Notice what the form is doing here: “Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "Usage focus for \"я в университете\": Use the key language of Level 1 · Unit 7: Куда вы идёте? — Going Places with the register and setting that the lesson requires.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "Notice what the form is doing here: “Right now I am at the university.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я в университете",
+      "romanization": "ya v universitete",
+      "nativeText": "Contrast check for \"я в университете\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya v universitete",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "Contrast check for \"я в университете\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я в университете",
+      "romanization": "ya v universitete",
+      "nativeText": "Recall \"я в университете\" from memory, then explain what would change if a nearby alternative replaced it in \"Сейчас я в университете.\".",
+      "pronunciation": "ya v universitete",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "Self-check against the model before moving on: “Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "Recall \"я в университете\" from memory, then explain what would change if a nearby alternative replaced it in \"Сейчас я в университете.\".",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "Self-check against the model before moving on: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я в университете",
+      "romanization": "ya v universitete",
+      "nativeText": "Repair \"я в университете\" inside \"Сейчас я в университете.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: Куда вы идёте? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "ya v universitete",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "Use the model as the repair target: “Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "Repair \"я в университете\" inside \"Сейчас я в университете.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: Куда вы идёте? — Going Places with the register and setting that the lesson requires.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "Use the model as the repair target: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я в университете",
+      "romanization": "ya v universitete",
+      "nativeText": "Transfer \"я в университете\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сейчас я в университете.\".",
+      "pronunciation": "ya v universitete",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "Transfer \"я в университете\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сейчас я в университете.\".",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я в университете",
+      "romanization": "ya v universitete",
+      "nativeText": "Find one word or phrase that naturally travels with \"я в университете\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya v universitete",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "Find one word or phrase that naturally travels with \"я в университете\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я в университете",
+      "romanization": "ya v universitete",
+      "nativeText": "Listen for \"я в университете\" inside \"Сейчас я в университете.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya v universitete",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "Listen for \"я в университете\" inside \"Сейчас я в университете.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я в университете",
+      "romanization": "ya v universitete",
+      "nativeText": "Write \"я в университете\" again without looking, then compare the exact written form against \"Сейчас я в университете.\" before moving on.",
+      "pronunciation": "ya v universitete",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "Use the written model as the final correctness check: “Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "Write \"я в университете\" again without looking, then compare the exact written form against \"Сейчас я в университете.\" before moving on.",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Right now I am at the university.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я в университете",
+      "romanization": "ya v universitete",
+      "nativeText": "Check whether \"я в университете\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Right now I am at the university.”",
+      "pronunciation": "ya v universitete",
+      "exampleTarget": "Сейчас я в университете.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Right now I am at the university.”",
+      "korean": "я в университете",
+      "english": "Check whether \"я в университете\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Right now I am at the university.”",
+      "example": "Сейчас я в университете.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Right now I am at the university.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "ya idu v biblioteku",
+      "nativeText": "“I am going to the library.” Movement toward a destination uses the accusative.",
+      "pronunciation": "ya idu v biblioteku",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "“I am going to the library.” Movement toward a destination uses the accusative.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "После пары я иду в библиотеку.",
+      "romanization": "ya idu v biblioteku",
+      "nativeText": "Model use for \"После пары я иду в библиотеку.\": “After class I am going to the library.”",
+      "pronunciation": "ya idu v biblioteku",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "“After class I am going to the library.”",
+      "korean": "После пары я иду в библиотеку.",
+      "english": "Model use for \"После пары я иду в библиотеку.\": “After class I am going to the library.”",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "“After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "ya idu v biblioteku",
+      "nativeText": "Usage focus for \"я иду в библиотеку\": Distinguish the nearby wording choices that make Level 1 · Unit 7: Куда вы идёте? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "ya idu v biblioteku",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "Notice what the form is doing here: “After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "Usage focus for \"я иду в библиотеку\": Distinguish the nearby wording choices that make Level 1 · Unit 7: Куда вы идёте? — Going Places sound precise rather than merely understandable.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "Notice what the form is doing here: “After class I am going to the library.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "ya idu v biblioteku",
+      "nativeText": "Contrast check for \"я иду в библиотеку\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ya idu v biblioteku",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "Contrast check for \"я иду в библиотеку\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "ya idu v biblioteku",
+      "nativeText": "Recall \"я иду в библиотеку\" from memory, then explain what would change if a nearby alternative replaced it in \"После пары я иду в библиотеку.\".",
+      "pronunciation": "ya idu v biblioteku",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "Self-check against the model before moving on: “After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "Recall \"я иду в библиотеку\" from memory, then explain what would change if a nearby alternative replaced it in \"После пары я иду в библиотеку.\".",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "Self-check against the model before moving on: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "ya idu v biblioteku",
+      "nativeText": "Repair \"я иду в библиотеку\" inside \"После пары я иду в библиотеку.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: Куда вы идёте? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "ya idu v biblioteku",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "Use the model as the repair target: “After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "Repair \"я иду в библиотеку\" inside \"После пары я иду в библиотеку.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: Куда вы идёте? — Going Places sound precise rather than merely understandable.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "Use the model as the repair target: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "ya idu v biblioteku",
+      "nativeText": "Transfer \"я иду в библиотеку\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"После пары я иду в библиотеку.\".",
+      "pronunciation": "ya idu v biblioteku",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "Transfer \"я иду в библиотеку\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"После пары я иду в библиотеку.\".",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "ya idu v biblioteku",
+      "nativeText": "Find one word or phrase that naturally travels with \"я иду в библиотеку\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ya idu v biblioteku",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "Find one word or phrase that naturally travels with \"я иду в библиотеку\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "ya idu v biblioteku",
+      "nativeText": "Listen for \"я иду в библиотеку\" inside \"После пары я иду в библиотеку.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ya idu v biblioteku",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "Listen for \"я иду в библиотеку\" inside \"После пары я иду в библиотеку.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "ya idu v biblioteku",
+      "nativeText": "Write \"я иду в библиотеку\" again without looking, then compare the exact written form against \"После пары я иду в библиотеку.\" before moving on.",
+      "pronunciation": "ya idu v biblioteku",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "Use the written model as the final correctness check: “After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "Write \"я иду в библиотеку\" again without looking, then compare the exact written form against \"После пары я иду в библиотеку.\" before moving on.",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "Use the written model as the final correctness check: “After class I am going to the library.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "я иду в библиотеку",
+      "romanization": "ya idu v biblioteku",
+      "nativeText": "Check whether \"я иду в библиотеку\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "pronunciation": "ya idu v biblioteku",
+      "exampleTarget": "После пары я иду в библиотеку.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "korean": "я иду в библиотеку",
+      "english": "Check whether \"я иду в библиотеку\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”",
+      "example": "После пары я иду в библиотеку.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “After class I am going to the library.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "от дома",
+      "romanization": "ot doma",
+      "nativeText": "“From home.” Origin often uses genitive forms after prepositions such as `от` or `из`.",
+      "pronunciation": "ot doma",
+      "exampleTarget": "Я иду от дома к метро.",
+      "exampleNative": "“I am walking from home to the metro.”",
+      "korean": "от дома",
+      "english": "“From home.” Origin often uses genitive forms after prepositions such as `от` or `из`.",
+      "example": "Я иду от дома к метро.",
+      "exampleEnglish": "“I am walking from home to the metro.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "Я иду от дома к метро.",
+      "romanization": "ot doma",
+      "nativeText": "Model use for \"Я иду от дома к метро.\": “I am walking from home to the metro.”",
+      "pronunciation": "ot doma",
+      "exampleTarget": "Я иду от дома к метро.",
+      "exampleNative": "“I am walking from home to the metro.”",
+      "korean": "Я иду от дома к метро.",
+      "english": "Model use for \"Я иду от дома к метро.\": “I am walking from home to the metro.”",
+      "example": "Я иду от дома к метро.",
+      "exampleEnglish": "“I am walking from home to the metro.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "от дома",
+      "romanization": "ot doma",
+      "nativeText": "Usage focus for \"от дома\": “From home.” Origin often uses genitive forms after prepositions such as `от` or `из`.",
+      "pronunciation": "ot doma",
+      "exampleTarget": "Я иду от дома к метро.",
+      "exampleNative": "Notice what the form is doing here: “I am walking from home to the metro.”",
+      "korean": "от дома",
+      "english": "Usage focus for \"от дома\": “From home.” Origin often uses genitive forms after prepositions such as `от` or `из`.",
+      "example": "Я иду от дома к метро.",
+      "exampleEnglish": "Notice what the form is doing here: “I am walking from home to the metro.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "от дома",
+      "romanization": "ot doma",
+      "nativeText": "Contrast check for \"от дома\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ot doma",
+      "exampleTarget": "Я иду от дома к метро.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am walking from home to the metro.”",
+      "korean": "от дома",
+      "english": "Contrast check for \"от дома\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я иду от дома к метро.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am walking from home to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "от дома",
+      "romanization": "ot doma",
+      "nativeText": "Recall \"от дома\" from memory, then explain what would change if a nearby alternative replaced it in \"Я иду от дома к метро.\".",
+      "pronunciation": "ot doma",
+      "exampleTarget": "Я иду от дома к метро.",
+      "exampleNative": "Self-check against the model before moving on: “I am walking from home to the metro.”",
+      "korean": "от дома",
+      "english": "Recall \"от дома\" from memory, then explain what would change if a nearby alternative replaced it in \"Я иду от дома к метро.\".",
+      "example": "Я иду от дома к метро.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am walking from home to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "от дома",
+      "romanization": "ot doma",
+      "nativeText": "Repair \"от дома\" inside \"Я иду от дома к метро.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “From home.” Origin often uses genitive forms after prepositions such as `от` or `из`.",
+      "pronunciation": "ot doma",
+      "exampleTarget": "Я иду от дома к метро.",
+      "exampleNative": "Use the model as the repair target: “I am walking from home to the metro.”",
+      "korean": "от дома",
+      "english": "Repair \"от дома\" inside \"Я иду от дома к метро.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “From home.” Origin often uses genitive forms after prepositions such as `от` or `из`.",
+      "example": "Я иду от дома к метро.",
+      "exampleEnglish": "Use the model as the repair target: “I am walking from home to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "от дома",
+      "romanization": "ot doma",
+      "nativeText": "Transfer \"от дома\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я иду от дома к метро.\".",
+      "pronunciation": "ot doma",
+      "exampleTarget": "Я иду от дома к метро.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am walking from home to the metro.”",
+      "korean": "от дома",
+      "english": "Transfer \"от дома\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я иду от дома к метро.\".",
+      "example": "Я иду от дома к метро.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am walking from home to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "от дома",
+      "romanization": "ot doma",
+      "nativeText": "Find one word or phrase that naturally travels with \"от дома\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ot doma",
+      "exampleTarget": "Я иду от дома к метро.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am walking from home to the metro.”",
+      "korean": "от дома",
+      "english": "Find one word or phrase that naturally travels with \"от дома\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я иду от дома к метро.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am walking from home to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "от дома",
+      "romanization": "ot doma",
+      "nativeText": "Listen for \"от дома\" inside \"Я иду от дома к метро.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ot doma",
+      "exampleTarget": "Я иду от дома к метро.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am walking from home to the metro.”",
+      "korean": "от дома",
+      "english": "Listen for \"от дома\" inside \"Я иду от дома к метро.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я иду от дома к метро.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am walking from home to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "от дома",
+      "romanization": "ot doma",
+      "nativeText": "Write \"от дома\" again without looking, then compare the exact written form against \"Я иду от дома к метро.\" before moving on.",
+      "pronunciation": "ot doma",
+      "exampleTarget": "Я иду от дома к метро.",
+      "exampleNative": "Use the written model as the final correctness check: “I am walking from home to the metro.”",
+      "korean": "от дома",
+      "english": "Write \"от дома\" again without looking, then compare the exact written form against \"Я иду от дома к метро.\" before moving on.",
+      "example": "Я иду от дома к метро.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am walking from home to the metro.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "от дома",
+      "romanization": "ot doma",
+      "nativeText": "Check whether \"от дома\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am walking from home to the metro.”",
+      "pronunciation": "ot doma",
+      "exampleTarget": "Я иду от дома к метро.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am walking from home to the metro.”",
+      "korean": "от дома",
+      "english": "Check whether \"от дома\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am walking from home to the metro.”",
+      "example": "Я иду от дома к метро.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am walking from home to the metro.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "поверните налево",
+      "romanization": "povernite nalevo",
+      "nativeText": "“Turn left.” A useful polite imperative for directions.",
+      "pronunciation": "povernite nalevo",
+      "exampleTarget": "У банка поверните налево.",
+      "exampleNative": "“At the bank, turn left.”",
+      "korean": "поверните налево",
+      "english": "“Turn left.” A useful polite imperative for directions.",
+      "example": "У банка поверните налево.",
+      "exampleEnglish": "“At the bank, turn left.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "У банка поверните налево.",
+      "romanization": "povernite nalevo",
+      "nativeText": "Model use for \"У банка поверните налево.\": “At the bank, turn left.”",
+      "pronunciation": "povernite nalevo",
+      "exampleTarget": "У банка поверните налево.",
+      "exampleNative": "“At the bank, turn left.”",
+      "korean": "У банка поверните налево.",
+      "english": "Model use for \"У банка поверните налево.\": “At the bank, turn left.”",
+      "example": "У банка поверните налево.",
+      "exampleEnglish": "“At the bank, turn left.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "поверните налево",
+      "romanization": "povernite nalevo",
+      "nativeText": "Usage focus for \"поверните налево\": “Turn left.” A useful polite imperative for directions.",
+      "pronunciation": "povernite nalevo",
+      "exampleTarget": "У банка поверните налево.",
+      "exampleNative": "Notice what the form is doing here: “At the bank, turn left.”",
+      "korean": "поверните налево",
+      "english": "Usage focus for \"поверните налево\": “Turn left.” A useful polite imperative for directions.",
+      "example": "У банка поверните налево.",
+      "exampleEnglish": "Notice what the form is doing here: “At the bank, turn left.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "поверните налево",
+      "romanization": "povernite nalevo",
+      "nativeText": "Contrast check for \"поверните налево\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "povernite nalevo",
+      "exampleTarget": "У банка поверните налево.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At the bank, turn left.”",
+      "korean": "поверните налево",
+      "english": "Contrast check for \"поверните налево\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "У банка поверните налево.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At the bank, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "поверните налево",
+      "romanization": "povernite nalevo",
+      "nativeText": "Recall \"поверните налево\" from memory, then explain what would change if a nearby alternative replaced it in \"У банка поверните налево.\".",
+      "pronunciation": "povernite nalevo",
+      "exampleTarget": "У банка поверните налево.",
+      "exampleNative": "Self-check against the model before moving on: “At the bank, turn left.”",
+      "korean": "поверните налево",
+      "english": "Recall \"поверните налево\" from memory, then explain what would change if a nearby alternative replaced it in \"У банка поверните налево.\".",
+      "example": "У банка поверните налево.",
+      "exampleEnglish": "Self-check against the model before moving on: “At the bank, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "поверните налево",
+      "romanization": "povernite nalevo",
+      "nativeText": "Repair \"поверните налево\" inside \"У банка поверните налево.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Turn left.” A useful polite imperative for directions.",
+      "pronunciation": "povernite nalevo",
+      "exampleTarget": "У банка поверните налево.",
+      "exampleNative": "Use the model as the repair target: “At the bank, turn left.”",
+      "korean": "поверните налево",
+      "english": "Repair \"поверните налево\" inside \"У банка поверните налево.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Turn left.” A useful polite imperative for directions.",
+      "example": "У банка поверните налево.",
+      "exampleEnglish": "Use the model as the repair target: “At the bank, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "поверните налево",
+      "romanization": "povernite nalevo",
+      "nativeText": "Transfer \"поверните налево\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У банка поверните налево.\".",
+      "pronunciation": "povernite nalevo",
+      "exampleTarget": "У банка поверните налево.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At the bank, turn left.”",
+      "korean": "поверните налево",
+      "english": "Transfer \"поверните налево\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У банка поверните налево.\".",
+      "example": "У банка поверните налево.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At the bank, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "поверните налево",
+      "romanization": "povernite nalevo",
+      "nativeText": "Find one word or phrase that naturally travels with \"поверните налево\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "povernite nalevo",
+      "exampleTarget": "У банка поверните налево.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At the bank, turn left.”",
+      "korean": "поверните налево",
+      "english": "Find one word or phrase that naturally travels with \"поверните налево\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "У банка поверните налево.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At the bank, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "поверните налево",
+      "romanization": "povernite nalevo",
+      "nativeText": "Listen for \"поверните налево\" inside \"У банка поверните налево.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "povernite nalevo",
+      "exampleTarget": "У банка поверните налево.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At the bank, turn left.”",
+      "korean": "поверните налево",
+      "english": "Listen for \"поверните налево\" inside \"У банка поверните налево.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "У банка поверните налево.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At the bank, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "поверните налево",
+      "romanization": "povernite nalevo",
+      "nativeText": "Write \"поверните налево\" again without looking, then compare the exact written form against \"У банка поверните налево.\" before moving on.",
+      "pronunciation": "povernite nalevo",
+      "exampleTarget": "У банка поверните налево.",
+      "exampleNative": "Use the written model as the final correctness check: “At the bank, turn left.”",
+      "korean": "поверните налево",
+      "english": "Write \"поверните налево\" again without looking, then compare the exact written form against \"У банка поверните налево.\" before moving on.",
+      "example": "У банка поверните налево.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At the bank, turn left.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "поверните налево",
+      "romanization": "povernite nalevo",
+      "nativeText": "Check whether \"поверните налево\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At the bank, turn left.”",
+      "pronunciation": "povernite nalevo",
+      "exampleTarget": "У банка поверните налево.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At the bank, turn left.”",
+      "korean": "поверните налево",
+      "english": "Check whether \"поверните налево\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At the bank, turn left.”",
+      "example": "У банка поверните налево.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At the bank, turn left.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "идите прямо",
+      "romanization": "idite pryamo",
+      "nativeText": "“Go straight.” A standard route instruction.",
+      "pronunciation": "idite pryamo",
+      "exampleTarget": "Идите прямо до светофора.",
+      "exampleNative": "“Go straight until the traffic light.”",
+      "korean": "идите прямо",
+      "english": "“Go straight.” A standard route instruction.",
+      "example": "Идите прямо до светофора.",
+      "exampleEnglish": "“Go straight until the traffic light.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "Идите прямо до светофора.",
+      "romanization": "idite pryamo",
+      "nativeText": "Model use for \"Идите прямо до светофора.\": “Go straight until the traffic light.”",
+      "pronunciation": "idite pryamo",
+      "exampleTarget": "Идите прямо до светофора.",
+      "exampleNative": "“Go straight until the traffic light.”",
+      "korean": "Идите прямо до светофора.",
+      "english": "Model use for \"Идите прямо до светофора.\": “Go straight until the traffic light.”",
+      "example": "Идите прямо до светофора.",
+      "exampleEnglish": "“Go straight until the traffic light.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "идите прямо",
+      "romanization": "idite pryamo",
+      "nativeText": "Usage focus for \"идите прямо\": “Go straight.” A standard route instruction.",
+      "pronunciation": "idite pryamo",
+      "exampleTarget": "Идите прямо до светофора.",
+      "exampleNative": "Notice what the form is doing here: “Go straight until the traffic light.”",
+      "korean": "идите прямо",
+      "english": "Usage focus for \"идите прямо\": “Go straight.” A standard route instruction.",
+      "example": "Идите прямо до светофора.",
+      "exampleEnglish": "Notice what the form is doing here: “Go straight until the traffic light.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "идите прямо",
+      "romanization": "idite pryamo",
+      "nativeText": "Contrast check for \"идите прямо\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "idite pryamo",
+      "exampleTarget": "Идите прямо до светофора.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Go straight until the traffic light.”",
+      "korean": "идите прямо",
+      "english": "Contrast check for \"идите прямо\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Идите прямо до светофора.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Go straight until the traffic light.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "идите прямо",
+      "romanization": "idite pryamo",
+      "nativeText": "Recall \"идите прямо\" from memory, then explain what would change if a nearby alternative replaced it in \"Идите прямо до светофора.\".",
+      "pronunciation": "idite pryamo",
+      "exampleTarget": "Идите прямо до светофора.",
+      "exampleNative": "Self-check against the model before moving on: “Go straight until the traffic light.”",
+      "korean": "идите прямо",
+      "english": "Recall \"идите прямо\" from memory, then explain what would change if a nearby alternative replaced it in \"Идите прямо до светофора.\".",
+      "example": "Идите прямо до светофора.",
+      "exampleEnglish": "Self-check against the model before moving on: “Go straight until the traffic light.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "идите прямо",
+      "romanization": "idite pryamo",
+      "nativeText": "Repair \"идите прямо\" inside \"Идите прямо до светофора.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Go straight.” A standard route instruction.",
+      "pronunciation": "idite pryamo",
+      "exampleTarget": "Идите прямо до светофора.",
+      "exampleNative": "Use the model as the repair target: “Go straight until the traffic light.”",
+      "korean": "идите прямо",
+      "english": "Repair \"идите прямо\" inside \"Идите прямо до светофора.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Go straight.” A standard route instruction.",
+      "example": "Идите прямо до светофора.",
+      "exampleEnglish": "Use the model as the repair target: “Go straight until the traffic light.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "идите прямо",
+      "romanization": "idite pryamo",
+      "nativeText": "Transfer \"идите прямо\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Идите прямо до светофора.\".",
+      "pronunciation": "idite pryamo",
+      "exampleTarget": "Идите прямо до светофора.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Go straight until the traffic light.”",
+      "korean": "идите прямо",
+      "english": "Transfer \"идите прямо\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Идите прямо до светофора.\".",
+      "example": "Идите прямо до светофора.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Go straight until the traffic light.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "идите прямо",
+      "romanization": "idite pryamo",
+      "nativeText": "Find one word or phrase that naturally travels with \"идите прямо\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "idite pryamo",
+      "exampleTarget": "Идите прямо до светофора.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Go straight until the traffic light.”",
+      "korean": "идите прямо",
+      "english": "Find one word or phrase that naturally travels with \"идите прямо\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Идите прямо до светофора.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Go straight until the traffic light.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "идите прямо",
+      "romanization": "idite pryamo",
+      "nativeText": "Listen for \"идите прямо\" inside \"Идите прямо до светофора.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "idite pryamo",
+      "exampleTarget": "Идите прямо до светофора.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Go straight until the traffic light.”",
+      "korean": "идите прямо",
+      "english": "Listen for \"идите прямо\" inside \"Идите прямо до светофора.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Идите прямо до светофора.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Go straight until the traffic light.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "идите прямо",
+      "romanization": "idite pryamo",
+      "nativeText": "Write \"идите прямо\" again without looking, then compare the exact written form against \"Идите прямо до светофора.\" before moving on.",
+      "pronunciation": "idite pryamo",
+      "exampleTarget": "Идите прямо до светофора.",
+      "exampleNative": "Use the written model as the final correctness check: “Go straight until the traffic light.”",
+      "korean": "идите прямо",
+      "english": "Write \"идите прямо\" again without looking, then compare the exact written form against \"Идите прямо до светофора.\" before moving on.",
+      "example": "Идите прямо до светофора.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Go straight until the traffic light.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "идите прямо",
+      "romanization": "idite pryamo",
+      "nativeText": "Check whether \"идите прямо\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Go straight until the traffic light.”",
+      "pronunciation": "idite pryamo",
+      "exampleTarget": "Идите прямо до светофора.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Go straight until the traffic light.”",
+      "korean": "идите прямо",
+      "english": "Check whether \"идите прямо\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Go straight until the traffic light.”",
+      "example": "Идите прямо до светофора.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Go straight until the traffic light.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "близко / далеко",
+      "romanization": "blizko / daleko",
+      "nativeText": "“Near / far.” These adverbs answer many location questions directly.",
+      "pronunciation": "blizko / daleko",
+      "exampleTarget": "Метро близко, не далеко.",
+      "exampleNative": "“The metro is near, not far.”",
+      "korean": "близко / далеко",
+      "english": "“Near / far.” These adverbs answer many location questions directly.",
+      "example": "Метро близко, не далеко.",
+      "exampleEnglish": "“The metro is near, not far.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "Метро близко, не далеко.",
+      "romanization": "blizko / daleko",
+      "nativeText": "Model use for \"Метро близко, не далеко.\": “The metro is near, not far.”",
+      "pronunciation": "blizko / daleko",
+      "exampleTarget": "Метро близко, не далеко.",
+      "exampleNative": "“The metro is near, not far.”",
+      "korean": "Метро близко, не далеко.",
+      "english": "Model use for \"Метро близко, не далеко.\": “The metro is near, not far.”",
+      "example": "Метро близко, не далеко.",
+      "exampleEnglish": "“The metro is near, not far.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "близко / далеко",
+      "romanization": "blizko / daleko",
+      "nativeText": "Usage focus for \"близко / далеко\": “Near / far.” These adverbs answer many location questions directly.",
+      "pronunciation": "blizko / daleko",
+      "exampleTarget": "Метро близко, не далеко.",
+      "exampleNative": "Notice what the form is doing here: “The metro is near, not far.”",
+      "korean": "близко / далеко",
+      "english": "Usage focus for \"близко / далеко\": “Near / far.” These adverbs answer many location questions directly.",
+      "example": "Метро близко, не далеко.",
+      "exampleEnglish": "Notice what the form is doing here: “The metro is near, not far.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "близко / далеко",
+      "romanization": "blizko / daleko",
+      "nativeText": "Contrast check for \"близко / далеко\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "blizko / daleko",
+      "exampleTarget": "Метро близко, не далеко.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The metro is near, not far.”",
+      "korean": "близко / далеко",
+      "english": "Contrast check for \"близко / далеко\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Метро близко, не далеко.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The metro is near, not far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "близко / далеко",
+      "romanization": "blizko / daleko",
+      "nativeText": "Recall \"близко / далеко\" from memory, then explain what would change if a nearby alternative replaced it in \"Метро близко, не далеко.\".",
+      "pronunciation": "blizko / daleko",
+      "exampleTarget": "Метро близко, не далеко.",
+      "exampleNative": "Self-check against the model before moving on: “The metro is near, not far.”",
+      "korean": "близко / далеко",
+      "english": "Recall \"близко / далеко\" from memory, then explain what would change if a nearby alternative replaced it in \"Метро близко, не далеко.\".",
+      "example": "Метро близко, не далеко.",
+      "exampleEnglish": "Self-check against the model before moving on: “The metro is near, not far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "близко / далеко",
+      "romanization": "blizko / daleko",
+      "nativeText": "Repair \"близко / далеко\" inside \"Метро близко, не далеко.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Near / far.” These adverbs answer many location questions directly.",
+      "pronunciation": "blizko / daleko",
+      "exampleTarget": "Метро близко, не далеко.",
+      "exampleNative": "Use the model as the repair target: “The metro is near, not far.”",
+      "korean": "близко / далеко",
+      "english": "Repair \"близко / далеко\" inside \"Метро близко, не далеко.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Near / far.” These adverbs answer many location questions directly.",
+      "example": "Метро близко, не далеко.",
+      "exampleEnglish": "Use the model as the repair target: “The metro is near, not far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "близко / далеко",
+      "romanization": "blizko / daleko",
+      "nativeText": "Transfer \"близко / далеко\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Метро близко, не далеко.\".",
+      "pronunciation": "blizko / daleko",
+      "exampleTarget": "Метро близко, не далеко.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The metro is near, not far.”",
+      "korean": "близко / далеко",
+      "english": "Transfer \"близко / далеко\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Метро близко, не далеко.\".",
+      "example": "Метро близко, не далеко.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The metro is near, not far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "близко / далеко",
+      "romanization": "blizko / daleko",
+      "nativeText": "Find one word or phrase that naturally travels with \"близко / далеко\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "blizko / daleko",
+      "exampleTarget": "Метро близко, не далеко.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The metro is near, not far.”",
+      "korean": "близко / далеко",
+      "english": "Find one word or phrase that naturally travels with \"близко / далеко\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Метро близко, не далеко.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The metro is near, not far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "близко / далеко",
+      "romanization": "blizko / daleko",
+      "nativeText": "Listen for \"близко / далеко\" inside \"Метро близко, не далеко.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "blizko / daleko",
+      "exampleTarget": "Метро близко, не далеко.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The metro is near, not far.”",
+      "korean": "близко / далеко",
+      "english": "Listen for \"близко / далеко\" inside \"Метро близко, не далеко.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Метро близко, не далеко.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The metro is near, not far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "близко / далеко",
+      "romanization": "blizko / daleko",
+      "nativeText": "Write \"близко / далеко\" again without looking, then compare the exact written form against \"Метро близко, не далеко.\" before moving on.",
+      "pronunciation": "blizko / daleko",
+      "exampleTarget": "Метро близко, не далеко.",
+      "exampleNative": "Use the written model as the final correctness check: “The metro is near, not far.”",
+      "korean": "близко / далеко",
+      "english": "Write \"близко / далеко\" again without looking, then compare the exact written form against \"Метро близко, не далеко.\" before moving on.",
+      "example": "Метро близко, не далеко.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The metro is near, not far.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "близко / далеко",
+      "romanization": "blizko / daleko",
+      "nativeText": "Check whether \"близко / далеко\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The metro is near, not far.”",
+      "pronunciation": "blizko / daleko",
+      "exampleTarget": "Метро близко, не далеко.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The metro is near, not far.”",
+      "korean": "близко / далеко",
+      "english": "Check whether \"близко / далеко\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The metro is near, not far.”",
+      "example": "Метро близко, не далеко.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The metro is near, not far.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "как пройти к ...?",
+      "romanization": "kak proyti k",
+      "nativeText": "“How do I get to ...?” Literally “how to walk to,” useful for street directions.",
+      "pronunciation": "kak proyti k",
+      "exampleTarget": "Как пройти к аптеке?",
+      "exampleNative": "“How do I get to the pharmacy?”",
+      "korean": "как пройти к ...?",
+      "english": "“How do I get to ...?” Literally “how to walk to,” useful for street directions.",
+      "example": "Как пройти к аптеке?",
+      "exampleEnglish": "“How do I get to the pharmacy?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "Как пройти к аптеке?",
+      "romanization": "kak proyti k",
+      "nativeText": "Model use for \"Как пройти к аптеке?\": “How do I get to the pharmacy?”",
+      "pronunciation": "kak proyti k",
+      "exampleTarget": "Как пройти к аптеке?",
+      "exampleNative": "“How do I get to the pharmacy?”",
+      "korean": "Как пройти к аптеке?",
+      "english": "Model use for \"Как пройти к аптеке?\": “How do I get to the pharmacy?”",
+      "example": "Как пройти к аптеке?",
+      "exampleEnglish": "“How do I get to the pharmacy?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "как пройти к ...?",
+      "romanization": "kak proyti k",
+      "nativeText": "Usage focus for \"как пройти к ...?\": “How do I get to ...?” Literally “how to walk to,” useful for street directions.",
+      "pronunciation": "kak proyti k",
+      "exampleTarget": "Как пройти к аптеке?",
+      "exampleNative": "Notice what the form is doing here: “How do I get to the pharmacy?”",
+      "korean": "как пройти к ...?",
+      "english": "Usage focus for \"как пройти к ...?\": “How do I get to ...?” Literally “how to walk to,” useful for street directions.",
+      "example": "Как пройти к аптеке?",
+      "exampleEnglish": "Notice what the form is doing here: “How do I get to the pharmacy?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "как пройти к ...?",
+      "romanization": "kak proyti k",
+      "nativeText": "Contrast check for \"как пройти к ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kak proyti k",
+      "exampleTarget": "Как пройти к аптеке?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to the pharmacy?”",
+      "korean": "как пройти к ...?",
+      "english": "Contrast check for \"как пройти к ...?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Как пройти к аптеке?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do I get to the pharmacy?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "как пройти к ...?",
+      "romanization": "kak proyti k",
+      "nativeText": "Recall \"как пройти к ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Как пройти к аптеке?\".",
+      "pronunciation": "kak proyti k",
+      "exampleTarget": "Как пройти к аптеке?",
+      "exampleNative": "Self-check against the model before moving on: “How do I get to the pharmacy?”",
+      "korean": "как пройти к ...?",
+      "english": "Recall \"как пройти к ...?\" from memory, then explain what would change if a nearby alternative replaced it in \"Как пройти к аптеке?\".",
+      "example": "Как пройти к аптеке?",
+      "exampleEnglish": "Self-check against the model before moving on: “How do I get to the pharmacy?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "как пройти к ...?",
+      "romanization": "kak proyti k",
+      "nativeText": "Repair \"как пройти к ...?\" inside \"Как пройти к аптеке?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get to ...?” Literally “how to walk to,” useful for street directions.",
+      "pronunciation": "kak proyti k",
+      "exampleTarget": "Как пройти к аптеке?",
+      "exampleNative": "Use the model as the repair target: “How do I get to the pharmacy?”",
+      "korean": "как пройти к ...?",
+      "english": "Repair \"как пройти к ...?\" inside \"Как пройти к аптеке?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “How do I get to ...?” Literally “how to walk to,” useful for street directions.",
+      "example": "Как пройти к аптеке?",
+      "exampleEnglish": "Use the model as the repair target: “How do I get to the pharmacy?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "как пройти к ...?",
+      "romanization": "kak proyti k",
+      "nativeText": "Transfer \"как пройти к ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Как пройти к аптеке?\".",
+      "pronunciation": "kak proyti k",
+      "exampleTarget": "Как пройти к аптеке?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to the pharmacy?”",
+      "korean": "как пройти к ...?",
+      "english": "Transfer \"как пройти к ...?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Как пройти к аптеке?\".",
+      "example": "Как пройти к аптеке?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do I get to the pharmacy?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "как пройти к ...?",
+      "romanization": "kak proyti k",
+      "nativeText": "Find one word or phrase that naturally travels with \"как пройти к ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kak proyti k",
+      "exampleTarget": "Как пройти к аптеке?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How do I get to the pharmacy?”",
+      "korean": "как пройти к ...?",
+      "english": "Find one word or phrase that naturally travels with \"как пройти к ...?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Как пройти к аптеке?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How do I get to the pharmacy?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "как пройти к ...?",
+      "romanization": "kak proyti k",
+      "nativeText": "Listen for \"как пройти к ...?\" inside \"Как пройти к аптеке?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kak proyti k",
+      "exampleTarget": "Как пройти к аптеке?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to the pharmacy?”",
+      "korean": "как пройти к ...?",
+      "english": "Listen for \"как пройти к ...?\" inside \"Как пройти к аптеке?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Как пройти к аптеке?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do I get to the pharmacy?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "как пройти к ...?",
+      "romanization": "kak proyti k",
+      "nativeText": "Write \"как пройти к ...?\" again without looking, then compare the exact written form against \"Как пройти к аптеке?\" before moving on.",
+      "pronunciation": "kak proyti k",
+      "exampleTarget": "Как пройти к аптеке?",
+      "exampleNative": "Use the written model as the final correctness check: “How do I get to the pharmacy?”",
+      "korean": "как пройти к ...?",
+      "english": "Write \"как пройти к ...?\" again without looking, then compare the exact written form against \"Как пройти к аптеке?\" before moving on.",
+      "example": "Как пройти к аптеке?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How do I get to the pharmacy?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "как пройти к ...?",
+      "romanization": "kak proyti k",
+      "nativeText": "Check whether \"как пройти к ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to the pharmacy?”",
+      "pronunciation": "kak proyti k",
+      "exampleTarget": "Как пройти к аптеке?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How do I get to the pharmacy?”",
+      "korean": "как пройти к ...?",
+      "english": "Check whether \"как пройти к ...?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do I get to the pharmacy?”",
+      "example": "Как пройти к аптеке?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How do I get to the pharmacy?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "рядом с",
+      "romanization": "ryadom s",
+      "nativeText": "“Next to.” It takes the instrumental case, so the following noun changes form.",
+      "pronunciation": "ryadom s",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "рядом с",
+      "english": "“Next to.” It takes the instrumental case, so the following noun changes form.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "Кафе рядом с музеем.",
+      "romanization": "ryadom s",
+      "nativeText": "Model use for \"Кафе рядом с музеем.\": “The cafe is next to the museum.”",
+      "pronunciation": "ryadom s",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "“The cafe is next to the museum.”",
+      "korean": "Кафе рядом с музеем.",
+      "english": "Model use for \"Кафе рядом с музеем.\": “The cafe is next to the museum.”",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "“The cafe is next to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "рядом с",
+      "romanization": "ryadom s",
+      "nativeText": "Usage focus for \"рядом с\": “Next to.” It takes the instrumental case, so the following noun changes form.",
+      "pronunciation": "ryadom s",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "Notice what the form is doing here: “The cafe is next to the museum.”",
+      "korean": "рядом с",
+      "english": "Usage focus for \"рядом с\": “Next to.” It takes the instrumental case, so the following noun changes form.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "Notice what the form is doing here: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "рядом с",
+      "romanization": "ryadom s",
+      "nativeText": "Contrast check for \"рядом с\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ryadom s",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is next to the museum.”",
+      "korean": "рядом с",
+      "english": "Contrast check for \"рядом с\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "рядом с",
+      "romanization": "ryadom s",
+      "nativeText": "Recall \"рядом с\" from memory, then explain what would change if a nearby alternative replaced it in \"Кафе рядом с музеем.\".",
+      "pronunciation": "ryadom s",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "Self-check against the model before moving on: “The cafe is next to the museum.”",
+      "korean": "рядом с",
+      "english": "Recall \"рядом с\" from memory, then explain what would change if a nearby alternative replaced it in \"Кафе рядом с музеем.\".",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "Self-check against the model before moving on: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "рядом с",
+      "romanization": "ryadom s",
+      "nativeText": "Repair \"рядом с\" inside \"Кафе рядом с музеем.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next to.” It takes the instrumental case, so the following noun changes form.",
+      "pronunciation": "ryadom s",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "Use the model as the repair target: “The cafe is next to the museum.”",
+      "korean": "рядом с",
+      "english": "Repair \"рядом с\" inside \"Кафе рядом с музеем.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next to.” It takes the instrumental case, so the following noun changes form.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "Use the model as the repair target: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "рядом с",
+      "romanization": "ryadom s",
+      "nativeText": "Transfer \"рядом с\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Кафе рядом с музеем.\".",
+      "pronunciation": "ryadom s",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is next to the museum.”",
+      "korean": "рядом с",
+      "english": "Transfer \"рядом с\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Кафе рядом с музеем.\".",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "рядом с",
+      "romanization": "ryadom s",
+      "nativeText": "Find one word or phrase that naturally travels with \"рядом с\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ryadom s",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The cafe is next to the museum.”",
+      "korean": "рядом с",
+      "english": "Find one word or phrase that naturally travels with \"рядом с\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "рядом с",
+      "romanization": "ryadom s",
+      "nativeText": "Listen for \"рядом с\" inside \"Кафе рядом с музеем.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ryadom s",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is next to the museum.”",
+      "korean": "рядом с",
+      "english": "Listen for \"рядом с\" inside \"Кафе рядом с музеем.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "рядом с",
+      "romanization": "ryadom s",
+      "nativeText": "Write \"рядом с\" again without looking, then compare the exact written form against \"Кафе рядом с музеем.\" before moving on.",
+      "pronunciation": "ryadom s",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "Use the written model as the final correctness check: “The cafe is next to the museum.”",
+      "korean": "рядом с",
+      "english": "Write \"рядом с\" again without looking, then compare the exact written form against \"Кафе рядом с музеем.\" before moving on.",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The cafe is next to the museum.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit07goingplaces-vocabulary-1",
+        "ru-level1unit07goingplaces-vocabulary-2",
+        "ru-level1unit07goingplaces-grammar-1",
+        "ru-level1unit07goingplaces-grammar-2",
+        "ru-level1unit07goingplaces-reading",
+        "ru-level1unit07goingplaces-listening",
+        "ru-level1unit07goingplaces-writing",
+        "ru-level1unit07goingplaces-task"
+      ],
+      "targetText": "рядом с",
+      "romanization": "ryadom s",
+      "nativeText": "Check whether \"рядом с\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is next to the museum.”",
+      "pronunciation": "ryadom s",
+      "exampleTarget": "Кафе рядом с музеем.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The cafe is next to the museum.”",
+      "korean": "рядом с",
+      "english": "Check whether \"рядом с\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The cafe is next to the museum.”",
+      "example": "Кафе рядом с музеем.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The cafe is next to the museum.”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

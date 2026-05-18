@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "Amalkan item ini di tempat lain",
     "practiceEverywhere": "Amalkan ini di mana-mana sahaja",
     "saveReply": "Simpan balasan",
-    "selfTestReason": "Disimpan daripada kelas untuk ujian kendiri yang pantas."
+    "selfTestReason": "Disimpan daripada kelas untuk ujian kendiri yang pantas.",
+    "hideOutline": "Sembunyikan garis besar",
+    "showOutline": "Tunjukkan garis besar"
   },
   "classList": {
     "heroAriaLabel": "Kelas",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "Tahap {{level}} · Unit {{unit}}: {{title}}"
-    }
+    },
+    "retry": "Cuba lagi",
+    "progressAriaLabel": "Kemajuan kelas",
+    "progressCaption": "{{percent}}% selesai · {{completed}} daripada {{total}} item"
   },
   "contextPractice": {
     "title": "Pengajaran terbentuk di sekeliling anda",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "Apa yang berjalan lancar",
     "recapUsefulPhrases": "Frasa yang berguna",
     "recapReview": "Semakan seterusnya",
-    "recapReviewFallback": "Simpan satu frasa dan gunakan semula dalam mod latihan yang lain."
+    "recapReviewFallback": "Simpan satu frasa dan gunakan semula dalam mod latihan yang lain.",
+    "hideSetup": "Sembunyikan persediaan",
+    "showSetup": "Tunjukkan persediaan"
   },
   "exerciseHub": {
     "ariaLabel": "Bersenam",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: salin bentuk, kemudian tulis dari ingatan."
     },
     "savedReason": "Disimpan daripada latihan menulis untuk pas yang lain.",
-    "selfTestReason": "Disimpan daripada latihan menulis untuk ujian kendiri yang cepat."
+    "selfTestReason": "Disimpan daripada latihan menulis untuk ujian kendiri yang cepat.",
+    "hideNotebook": "Sembunyikan buku nota",
+    "showNotebook": "Tunjukkan buku nota"
   },
   "institution": {
     "kicker": "Institusi",

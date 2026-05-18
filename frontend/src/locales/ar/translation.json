@@ -968,7 +968,9 @@
     "practiceEverywhereAria": "ممارسة هذا البند في مكان آخر",
     "practiceEverywhere": "ممارسة هذا في كل مكان",
     "saveReply": "حفظ الرد",
-    "selfTestReason": "تم الحفظ من الفصل لإجراء اختبار ذاتي سريع."
+    "selfTestReason": "تم الحفظ من الفصل لإجراء اختبار ذاتي سريع.",
+    "hideOutline": "إخفاء المخطط التفصيلي",
+    "showOutline": "إظهار المخطط التفصيلي"
   },
   "classList": {
     "heroAriaLabel": "فصل",
@@ -1009,7 +1011,10 @@
     },
     "titlePrefix": {
       "unit": "المستوى {{level}} · الوحدة {{unit}}: {{title}}"
-    }
+    },
+    "retry": "حاول ثانية",
+    "progressAriaLabel": "تقدم الصف",
+    "progressCaption": "{{percent}}% مكتمل · {{completed}} من {{total}} العناصر"
   },
   "contextPractice": {
     "title": "الدروس تتشكل من حولك",
@@ -1092,7 +1097,9 @@
     "recapWentWell": "ما سار على ما يرام",
     "recapUsefulPhrases": "عبارات مفيدة",
     "recapReview": "مراجعة المقبل",
-    "recapReviewFallback": "احفظ عبارة واحدة وأعد استخدامها في وضع تدريبي آخر."
+    "recapReviewFallback": "احفظ عبارة واحدة وأعد استخدامها في وضع تدريبي آخر.",
+    "hideSetup": "إخفاء الإعداد",
+    "showSetup": "إظهار الإعداد"
   },
   "exerciseHub": {
     "ariaLabel": "يمارس",
@@ -1187,7 +1194,9 @@
       "default": "{{index}}. {{char}}: انسخ الشكل ثم اكتبه من الذاكرة."
     },
     "savedReason": "تم الحفظ من ممارسة الكتابة لتمريرة أخرى.",
-    "selfTestReason": "تم الحفظ من ممارسة الكتابة لإجراء اختبار ذاتي سريع."
+    "selfTestReason": "تم الحفظ من ممارسة الكتابة لإجراء اختبار ذاتي سريع.",
+    "hideNotebook": "إخفاء دفتر الملاحظات",
+    "showNotebook": "عرض دفتر الملاحظات"
   },
   "institution": {
     "kicker": "مؤسسة",

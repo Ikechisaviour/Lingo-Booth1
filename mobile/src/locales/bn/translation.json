@@ -23,7 +23,8 @@
     "saving": "সংরক্ষণ করা হচ্ছে...",
     "search": "অনুসন্ধান করুন",
     "notSet": "সেট করা হয়নি",
-    "all": "সব"
+    "all": "সব",
+    "reset": "রিসেট করুন"
   },
   "languages": {
     "en": "ইংরেজি",
@@ -218,7 +219,8 @@
       "fri": "চ",
       "sat": "এস",
       "sun": "এস"
-    }
+    },
+    "contactDesc": "প্রশ্ন, প্রতিক্রিয়া, বা রিপোর্ট করতে একটি সমস্যা"
   },
   "lessons": {
     "title": "{{language}} পাঠ",
@@ -738,7 +740,102 @@
     "modeBreakdown": "অধ্যয়ন মোড",
     "searchUsers": "ব্যবহারকারী খুঁজুন...",
     "all": "সব",
-    "demo": "ডেমো"
+    "demo": "ডেমো",
+    "failures": "ব্যর্থতা",
+    "messages": "বার্তা",
+    "userFailures": "ব্যবহারকারী-পার্শ্ব ব্যর্থতা",
+    "openFailures": "{{count}} খোলা ব্যর্থতা",
+    "criticalFailures": "{{count}} সমালোচনামূলক",
+    "clearing": "সাফ করা হচ্ছে...",
+    "loadingFailures": "ব্যর্থতা লোড হচ্ছে...",
+    "noOpenFailures": "কোন খোলা ব্যবহারকারী-সাইড ব্যর্থতা.",
+    "acknowledge": "স্বীকার করুন",
+    "page": "পাতা",
+    "device": "ডিভাইস",
+    "languagePair": "ভাষা জোড়া",
+    "clientStatus": "ক্লায়েন্ট",
+    "pageOf": "পৃষ্ঠা {{page}} এর {{total}}",
+    "guestUser": "অতিথি ব্যবহারকারী",
+    "unknownUser": "অজানা ব্যবহারকারী",
+    "unknown": "অজানা",
+    "clearFailuresTitle": "খোলা ব্যর্থতা সাফ?",
+    "clearFailuresBody": "সমস্ত {{count}} খোলা ব্যর্থতাকে স্বীকৃত হিসাবে চিহ্নিত করবেন?",
+    "contactMessages": "যোগাযোগ বার্তা",
+    "unreadMessages": "{{count}} অপঠিত বার্তা",
+    "allMessages": "সব বার্তা",
+    "registeredUsers": "নিবন্ধিত ব্যবহারকারী",
+    "guestUsers": "অতিথি ব্যবহারকারী",
+    "loadingMessages": "বার্তা লোড হচ্ছে...",
+    "noUnreadMessages": "কোন অপঠিত যোগাযোগ বার্তা.",
+    "registeredUser": "নিবন্ধিত ব্যবহারকারী",
+    "contactMessage": "যোগাযোগ বার্তা",
+    "markRead": "পড়া চিহ্নিত করুন",
+    "name": "নাম",
+    "accountTier": "অ্যাকাউন্টের স্তর",
+    "clearMessagesTitle": "অপঠিত বার্তা সাফ করবেন?",
+    "clearMessagesBody": "সমস্ত {{count}} অপঠিত যোগাযোগ বার্তাগুলিকে পঠিত হিসাবে চিহ্নিত করবেন?",
+    "demoDifficulty": {
+      "beginner": "শিক্ষানবিস",
+      "balanced": "সুষম",
+      "natural": "প্রাকৃতিক",
+      "challenge": "চ্যালেঞ্জ"
+    },
+    "demoScenarios": {
+      "friendlyChat": "বন্ধুত্বপূর্ণ চ্যাট",
+      "cafeWorker": "একজন ক্যাফে কর্মীর সাথে কথা বলছেন",
+      "taxiDriver": "সাহায্যের জন্য একটি ট্যাক্সি ড্রাইভার জিজ্ঞাসা",
+      "meetingNew": "নতুন কারো সাথে দেখা"
+    },
+    "demoReplyPlaceholder": "অনুশীলন অংশীদার প্রতিক্রিয়া এখানে প্রদর্শিত হবে.",
+    "demoTipPlaceholder": "যেকোনো একটি নির্বাচিত ভাষায় জিজ্ঞাসা করুন। আপনি বিষয় পরিবর্তন করতে পারেন, অর্থ জিজ্ঞাসা করতে পারেন, বা সহজ শব্দের অনুরোধ করতে পারেন।",
+    "promoteConfirmShort": "{{username}} একজন অ্যাডমিন বানাবেন?",
+    "promote": "প্রচার করুন",
+    "deleteUserTitle": "ব্যবহারকারী মুছুন",
+    "deleteUserConfirmShort": "স্থায়ীভাবে মুছে ফেলবেন {{username}}? এটি পূর্বাবস্থায় ফেরানো যাবে না।",
+    "demoReset": "কথোপকথন রিসেট।",
+    "demoNoReply": "কোন উত্তর ফিরে আসেনি।",
+    "demoNoCoachingNote": "কোচিং নোট নেই।",
+    "demoResponseFailed": "এবার সাড়া দিতে পারলাম না। আবার চেষ্টা করুন.",
+    "demoConnectionIssue": "সংযোগ সমস্যা। কিছুক্ষণের মধ্যে আবার চেষ্টা করুন।",
+    "tapForDetails": "বিশদ বিবরণের জন্য আলতো চাপুন",
+    "activeWeek": "সক্রিয় 7d",
+    "countries": "দেশগুলো",
+    "conversion": "রূপান্তর",
+    "engagement": "ব্যস্ততা",
+    "totalCardsStudied": "মোট কার্ড অধ্যয়ন",
+    "totalAudioPlays": "মোট অডিও প্লে",
+    "lessonsViewed": "পাঠ দেখা হয়েছে",
+    "topLanguagePairs": "টপ ল্যাঙ্গুয়েজ পেয়ার",
+    "sessionsCount": "{{count}} সেশন",
+    "deviceBreakdown": "ডিভাইস ব্রেকডাউন",
+    "recentSessions": "সাম্প্রতিক সেশন ({{count}})",
+    "cardsStudiedCount": "{{count}} কার্ড",
+    "pageNumber": "পৃষ্ঠা {{page}}",
+    "noGuestData": "কোনো অতিথি ডেটা উপলব্ধ নেই৷",
+    "loadData": "ডেটা লোড করুন",
+    "speakingDemo": "স্পিকিং ডেমো",
+    "demoIntro": "অ্যাডমিন-শুধু কথোপকথনের পূর্বরূপ। এটি অডিও বা শিক্ষার্থীর অগ্রগতি সংরক্ষণ করে না।",
+    "scenario": "দৃশ্যকল্প",
+    "customScenario": "কাস্টম দৃশ্যকল্প",
+    "learningLanguage": "ভাষা শেখা",
+    "nativeLanguage": "স্থানীয় ভাষা",
+    "listenFor": "জন্য শুনুন",
+    "difficulty": "অসুবিধা",
+    "learnerTurnInput": "শিক্ষার্থী যা বলেছে তা টাইপ বা পেস্ট করুন",
+    "interrupt": "বাধা",
+    "conversationState": "কথোপকথনের অবস্থা",
+    "lastLearnerTurn": "শেষ শিক্ষার্থীর পালা",
+    "noTurnSentYet": "এখনও কোন পালা পাঠানো হয়নি.",
+    "practicePartnerResponse": "অংশীদার প্রতিক্রিয়া অনুশীলন করুন",
+    "coachNote": "কোচ নোট",
+    "userDetails": "ব্যবহারকারীর বিবরণ",
+    "totalXp": "মোট এক্সপি",
+    "studyMode": "অধ্যয়ন মোড",
+    "languages": "ভাষা",
+    "loginCount": "লগইন গণনা",
+    "memberSince": "থেকে সদস্য",
+    "suspendReasonLabel": "স্থগিত কারণ",
+    "userDetailsLoadFailed": "ব্যবহারকারীর বিবরণ লোড করা যায়নি"
   },
   "pricing": {
     "kicker": "পরিকল্পনা",
@@ -820,7 +917,9 @@
     "discountCode": "ডিসকাউন্ট কোড",
     "discountPlaceholder": "ঐচ্ছিক কোড",
     "discountUnavailable": "এই ডিসকাউন্ট কোড এই প্ল্যানের জন্য উপলব্ধ নয়।",
-    "automaticDiscountApplied": "{{discount}} স্বয়ংক্রিয় ছাড় প্রয়োগ হয়েছে"
+    "automaticDiscountApplied": "{{discount}} স্বয়ংক্রিয় ছাড় প্রয়োগ হয়েছে",
+    "signInToChooseTitle": "চালিয়ে যেতে একটি অ্যাকাউন্ট তৈরি করুন",
+    "signInToChooseBody": "একটি অ্যাকাউন্ট তৈরি করুন বা একটি অর্থপ্রদানের পরিকল্পনা বেছে নেওয়ার আগে সাইন ইন করুন যাতে আপনার অ্যাক্সেস আপনার সাথে সংযুক্ত করা যায়৷"
   },
   "billing": {
     "kicker": "বিলিং",
@@ -975,7 +1074,8 @@
     },
     "titlePrefix": {
       "unit": "স্তর {{level}} · ইউনিট {{unit}}: {{title}}"
-    }
+    },
+    "retry": "আবার চেষ্টা করুন"
   },
   "classLesson": {
     "loading": "ক্লাসের পাঠ লোড হচ্ছে...",
@@ -1114,7 +1214,10 @@
     "saveReply": "উত্তর সংরক্ষণ করুন",
     "saveExample": "উদাহরণ সংরক্ষণ করুন",
     "practiceEverywhere": "এটি সর্বত্র অনুশীলন করুন",
-    "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য ক্লাস থেকে সংরক্ষিত."
+    "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য ক্লাস থেকে সংরক্ষিত.",
+    "previous": "আগের",
+    "lessonGuide": "পাঠ নির্দেশিকা",
+    "activityXOfY": "কার্যকলাপ {{current}} এর {{total}}"
   },
   "exercise": {
     "kicker": "ব্যায়াম",
@@ -1182,7 +1285,8 @@
     "recapUsefulPhrases": "দরকারী বাক্যাংশ",
     "recapReview": "পরবর্তী পর্যালোচনা",
     "recapReviewFallback": "একটি বাক্যাংশ সংরক্ষণ করুন এবং এটি অন্য অনুশীলন মোডে পুনরায় ব্যবহার করুন।",
-    "practiceLabel": "কথোপকথন অনুশীলন"
+    "practiceLabel": "কথোপকথন অনুশীলন",
+    "practiceSetup": "সেটআপ অনুশীলন করুন"
   },
   "context": {
     "backToProfile": "প্রোফাইলে ফিরে যান",
@@ -1304,7 +1408,10 @@
       "memory": "স্মৃতি থেকে"
     },
     "savedReason": "অন্য পাসের জন্য লেখার অনুশীলন থেকে বাঁচানো হয়েছে।",
-    "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য লেখার অনুশীলন থেকে সংরক্ষিত।"
+    "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য লেখার অনুশীলন থেকে সংরক্ষিত।",
+    "hideNotebook": "নোটবুক লুকান",
+    "showNotebook": "নোটবুক দেখান",
+    "hideAddPanel": "অ্যাড প্যানেল লুকান"
   },
   "certificates": {
     "kicker": "সার্টিফিকেট",
@@ -1472,5 +1579,44 @@
     "firstThreeDayReviewBody": "আপনি গতকাল যা দেখেছেন তাতে একবার ফিরে আসুন যাতে প্রথম আইটেমগুলি আটকে যেতে শুরু করে।",
     "firstThreeDaySpeakBody": "একটি সংক্ষিপ্ত কথা বলার পালা ব্যবহার করুন যাতে ভাষাটি পৃষ্ঠাটি তাড়াতাড়ি ছেড়ে যায়।",
     "firstThreeDayLearnBody": "একটি ছোট নির্দেশিত পাঠ দিয়ে শুরু করুন যাতে এই জুটির একটি স্পষ্ট সূচনা বিন্দু থাকে।"
+  },
+  "resetPassword": {
+    "title": "পাসওয়ার্ড রিসেট করুন",
+    "subtitle": "আপনার নতুন পাসওয়ার্ড লিখুন।",
+    "error": "পাসওয়ার্ড রিসেট করতে ব্যর্থ। অনুগ্রহ করে আবার চেষ্টা করুন।",
+    "invalidLink": "এই রিসেট লিংকটি অবৈধ বা মেয়াদ শেষ হয়ে গেছে।",
+    "noToken": "রিসেট টোকেন নেই। অনুগ্রহ করে একটি নতুন লিংক অনুরোধ করুন।",
+    "requestNew": "নতুন লিংক অনুরোধ করুন",
+    "success": "আপনার পাসওয়ার্ড সফলভাবে রিসেট হয়েছে।",
+    "goToLogin": "লগইনে যান",
+    "newPasswordPlaceholder": "নতুন পাসওয়ার্ড",
+    "resetButton": "পাসওয়ার্ড রিসেট করুন",
+    "failed": "পাসওয়ার্ড রিসেট করা যায়নি। আবার চেষ্টা করুন.",
+    "kicker": "পাসওয়ার্ড রিসেট করুন",
+    "missingToken": "এই রিসেট লিঙ্কটি অনুপস্থিত বা অবৈধ৷",
+    "newPassword": "নতুন পাসওয়ার্ড",
+    "confirmPassword": "পাসওয়ার্ড নিশ্চিত করুন",
+    "submit": "পাসওয়ার্ড রিসেট করুন"
+  },
+  "contact": {
+    "navLabel": "যোগাযোগ",
+    "kicker": "আমাদের সাথে যোগাযোগ করুন",
+    "title": "আপনি কি প্রয়োজন আমাদের বলুন",
+    "subtitle": "একটি প্রশ্ন পাঠান, একটি সমস্যা রিপোর্ট, বা মতামত শেয়ার করুন. আমরা আপনার বার্তা পর্যালোচনা করব এবং প্রয়োজনে প্রতিক্রিয়া জানাব।",
+    "infoTitle": "আমরা শুনছি",
+    "infoText": "এই ফর্মের বার্তাগুলি যখন উপলব্ধ থাকে তখন অ্যাকাউন্টের প্রসঙ্গে সুরক্ষিতভাবে সংরক্ষণ করা হয়, যাতে আমরা বুঝতে পারি যে কী ঘটেছে এবং দ্রুত সাহায্য করতে পারি৷",
+    "name": "নাম",
+    "namePlaceholder": "তোমার নাম",
+    "email": "ইমেইল",
+    "emailPlaceholder": "you@example.com",
+    "subject": "বিষয়",
+    "subjectPlaceholder": "এই সম্পর্কে কি?",
+    "message": "বার্তা",
+    "messagePlaceholder": "এখানে আপনার বার্তা লিখুন...",
+    "send": "বার্তা পাঠান",
+    "success": "ধন্যবাদ আপনার বার্তা গৃহীত হয়েছে.",
+    "error": "আমরা এই মুহূর্তে আপনার বার্তা পাঠাতে পারিনি৷ আবার চেষ্টা করুন.",
+    "companyTrap": "কোম্পানি",
+    "profileHint": "এই ডিভাইস থেকে একটি প্রশ্ন পাঠান, একটি সমস্যা রিপোর্ট করুন, বা প্রতিক্রিয়া শেয়ার করুন৷"
   }
 }

@@ -1,113 +1,2747 @@
-// Level 1 Unit 4 — Daily Routines (Tamil)
-// Functions: time-of-day vocab, daily routine verbs, simple present tense
-// agreement, narrating a daily schedule, Anna University student day.
-
-const createContentItem = (target, romanization, note, type = 'word', example = '', exampleNote = '', breakdown = null, activityIds = []) => ({
-  type, activityIds, targetText: target, romanization, nativeText: note, pronunciation: romanization,
-  exampleTarget: example || target, exampleNative: exampleNote || note,
-  korean: target, english: note, example: example || target, exampleEnglish: exampleNote || note,
-  ...(breakdown ? { breakdown: breakdown.map(b => ({ target: b.target, native: b.note, korean: b.target, english: b.note })) } : {}),
-});
-
-const ACT = {
-  orientation: 'ta-l1u4-orientation', pronunciation: 'ta-l1u4-pronunciation',
-  vocabularyTime: 'ta-l1u4-vocab-time', vocabularyVerbs: 'ta-l1u4-vocab-verbs',
-  grammarPresent: 'ta-l1u4-grammar-present', grammarAdverbs: 'ta-l1u4-grammar-adverbs',
-  grammarSequence: 'ta-l1u4-grammar-sequence',
-  reading: 'ta-l1u4-reading', listening: 'ta-l1u4-listening', writing: 'ta-l1u4-writing',
-  culture: 'ta-l1u4-culture', task: 'ta-l1u4-task',
-};
-
-const activities = [
-  { id: ACT.orientation, section: 'Orientation', title: 'What you will be able to do', goals: ['Describe a typical day in Tamil using time markers (kālai, maṭiyam, mālai, irāvu) + routine verbs.', 'Conjugate the simple present in all 8 agreement forms (-kiṟēṉ, -kiṟāy, -kiṟāṉ, -kiṟāḷ, -kiṟār, -kiṟatu, -kiṟōm, -kiṟīrkaḷ, -kiṟārkaḷ).', 'Sequence actions with piṟaku ("then/after") and muṉṉar ("before").'], task: 'Picture a day in your Anna University student life — by the end, you can narrate it minute-by-minute in Tamil.' },
-  { id: ACT.pronunciation, section: 'Pronunciation', title: 'Sound traps in routine verbs', goals: ['Distinguish the present-tense markers -kiṟ- (Centhamizh) from spoken -kkir-/-r-.', 'Pronounce சாப்பிடு cāppiṭu (eat) with geminate pp + retroflex ṭ — two pronunciation rules at once.', 'Pronounce எழுந்திரு eḻuntiru (wake up) without losing the ழ.'], task: 'Drill present-tense verb pairs in formal vs spoken register.' },
-  { id: ACT.vocabularyTime, section: 'Vocabulary I', title: 'Time of day & frequency', goals: ['Memorize: kālai (morning), maṭiyam (afternoon), mālai (evening), irāvu (night), patuṅki (early), naṭuvē (middle), tāmatam (late).', 'Numerals + maṇi for clock time: kālai eṭṭu maṇi = 8 AM.'], task: 'State 5 daily activities with their time of day.' },
-  { id: ACT.vocabularyVerbs, section: 'Vocabulary II', title: 'Routine verbs', goals: ['Memorize 15 routine verbs: eḻuntiru (wake), kuḷi (bathe), cāppiṭu (eat), pō (go), paṭi (study/read), eḻutu (write), pēcu (speak), kēḷ (listen), pār (see), tūṅku (sleep), āṭu (play), oṭu (run), naṭa (walk), uṭkāru (sit), niṟku (stand).'], task: 'Pick 6 verbs and form simple present sentences with each.' },
-  { id: ACT.grammarPresent, section: 'Grammar I', title: 'Simple present + 8-way agreement', goals: ['Form the simple present: verb stem + -கிற்- (-kiṟ-) + agreement suffix. நான் சாப்பிடு + கிற் + ஏன் = சாப்பிடுகிறேன் "I eat".', 'Apply ALL 8 agreement forms: -kiṟēṉ (1sg), -kiṟāy (2sg-int), -kiṟāṉ/-kiṟāḷ (3sg peer M/F), -kiṟār (3sg hon), -kiṟatu (3sg neuter), -kiṟōm (1pl), -kiṟīrkaḷ (2pl/polite), -kiṟārkaḷ (3pl).'], task: 'Conjugate "to eat" in all 8 forms; do same for "to sleep".' },
-  { id: ACT.grammarAdverbs, section: 'Grammar II', title: 'Adverbs with -ஆக -āka', goals: ['Form adverbs from adjective/noun + -ஆக (-āka): vēkam (speed) → vēkamāka (quickly); maṭṭum (only) → maṭṭumāka.'], task: 'Form 5 adverbs and use each in a sentence.' },
-  { id: ACT.grammarSequence, section: 'Grammar III', title: 'Sequencing with piṟaku and muṉṉar', goals: ['Use பிறகு piṟaku ("after that, then") and முன்னர் muṉṉar ("before") to chain actions.', 'Use the verbal participle (verb + -நு / -த்து) to subordinate: சாப்பிட்டு பிறகு படிக்கிறேன் "having eaten, then I study".'], task: 'Narrate 3 sequential actions using verbal participle + piṟaku.' },
-  { id: ACT.reading, section: 'Reading', title: 'A student\'s day', goals: ['Read a 5-sentence daily routine paragraph aloud.'], task: 'Read and answer 4 comprehension questions.' },
-  { id: ACT.listening, section: 'Listening', title: 'Two friends compare schedules', goals: ['Follow a 5-turn dialogue contrasting morning and evening routines.'], task: 'Reproduce with your schedule.' },
-  { id: ACT.writing, section: 'Writing', title: 'Your day in Tamil', goals: ['Write 5-6 sentences describing your typical day.'], task: 'Use 4+ verbs in present tense + 2 time markers + 1 sequence marker.' },
-  { id: ACT.culture, section: 'Culture Note', title: 'Tamil daily rhythms', goals: ['Understand Tamil daily rhythm: early start (kolam at dawn), filter-coffee morning, late lunch (1-2 PM), tiffin evening, dinner ~9 PM.', 'Know the campus rhythm at Anna University: hostel mess, mid-morning chai, late library hours.'], task: 'Compare your daily routine with the Chennai-student version.' },
-  { id: ACT.task, section: 'Task', title: 'Narrate your day', goals: ['Combine all skills in a continuous narrative.'], task: 'Roleplay with the AI tutor as a friend asking about your day.' },
-];
-
-const lesson = {
-  title: 'Level 1 · Unit 4: ஒரு நாள் — Daily Routines',
-  category: 'daily-routines', difficulty: 'beginner', targetLang: 'ta', nativeLang: 'en',
-  track: 'textbook', lessonType: 'thematic', activities,
-  expressionPractice: [
-    { id: 'narrate-day', label: 'Narrate your day', goal: 'Sequence 5+ actions with time markers and connectors.' },
-    { id: 'simple-present', label: 'Simple present', goal: 'Conjugate any verb in all 8 agreement forms.' },
-    { id: 'sequencing', label: 'Sequencing actions', goal: 'Use verbal participle + piṟaku to chain events.' },
-    { id: 'time-vocab', label: 'Time-of-day vocab', goal: 'State activities with kālai/maṭiyam/mālai/irāvu.' },
+module.exports = {
+  "title": "Level 1 · Unit 4: ஒரு நாள் — Daily Routines",
+  "category": "daily-routines",
+  "difficulty": "beginner",
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit04dailyroutines-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe a typical day in Tamil using time markers (kālai, maṭiyam, mālai, irāvu) + routine verbs."
+      ],
+      "task": "Roleplay with the AI tutor as a friend asking about your day."
+    },
+    {
+      "id": "ta-level1unit04dailyroutines-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit04dailyroutines-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 4: ஒரு நாள் — Daily Routines with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit04dailyroutines-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 4: ஒரு நாள் — Daily Routines sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit04dailyroutines-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe a typical day in Tamil using time markers (kālai, maṭiyam, mālai, irāvu) + routine verbs."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit04dailyroutines-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 4: ஒரு நாள் — Daily Routines with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit04dailyroutines-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit04dailyroutines-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit04dailyroutines-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit04dailyroutines-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit04dailyroutines-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay with the AI tutor as a friend asking about your day."
+      ],
+      "task": "Roleplay with the AI tutor as a friend asking about your day."
+    }
   ],
-  relatedPools: ['topic-daily-life', 'topic-routines'],
-  content: [
-    createContentItem('என் ஒரு நாள்', 'eṉ oru nāḷ', 'By the end of this lesson you can narrate your day in Tamil minute-by-minute, conjugating verbs in all 8 present-tense forms.', 'word', 'Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement', 'Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.', null, [ACT.orientation]),
-    createContentItem('சூழல்', 'cūḻal', 'A friend at the Anna University mess asks "என்ன, இன்று என்ன பண்ணினீங்க?" ("So, what did you do today?"). You answer in fluent present-then-past Tamil.', 'word', 'நண்பன்: "இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?"', 'A standard catch-up question; "எத்தனை மணிக்கு" = "at what time".', null, [ACT.orientation]),
-
-    // Pronunciation
-    createContentItem('-கிற- formal / -க்கிற்- spoken', '-kiṟ- vs -kkir-', 'Present-tense marker in Centhamizh is -கிற- (-kiṟ-, alveolar ṟ). In Koduntamizh (spoken), often contracted to -க்கிற்- with extra k or to -ர் -r alone. Diglossia in action: news Tamil uses one, friends use the other.', 'word', 'CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ', 'Both are correct in their register; mixing makes you sound bookish or street.', null, [ACT.pronunciation]),
-    createContentItem('சாப்பிடு', 'cāppiṭu', 'Eat. Geminate pp + retroflex ṭ. The most common Tamil verb after "be/go".', 'word', 'நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?', 'Polite "what are you eating?"; same verb works for "having" food.', null, [ACT.pronunciation]),
-    createContentItem('எழுந்திரு', 'eḻuntiru', 'Wake up. Compound: eḻu (rise) + tiru (be). The medial ழ is the Tamil signature.', 'word', 'நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.', '"I wake up at 6 AM."', null, [ACT.pronunciation]),
-
-    // Vocab I: time
-    createContentItem('காலை', 'kālai', 'Morning. Long ā + diphthong ai. Time range: roughly sunrise to ~10 AM.', 'word', 'காலை வணக்கம். kālai vaṇakkam. "Good morning."', 'In Centhamizh: kālai. In Koduntamizh: kāla.', null, [ACT.vocabularyTime]),
-    createContentItem('மதியம்', 'matiyam', 'Noon / afternoon. Dental t. Time range: ~11 AM to 3 PM. Lunch is "matiya cāppāṭu".', 'word', 'மதியம் சாப்பிட்டாயா? matiyam cāppiṭṭāyā?', '"Have you eaten lunch?" intimate-past + question particle -ā.', null, [ACT.vocabularyTime]),
-    createContentItem('மாலை', 'mālai', 'Evening. Time range: ~4-7 PM. Tea/tiffin time in Tamil households.', 'word', 'மாலை சிற்றுண்டி நேரம். mālai ciṟṟuṇṭi nēram.', '"Evening tiffin time." ciṟṟuṇṭi = small evening meal.', null, [ACT.vocabularyTime]),
-    createContentItem('இரவு', 'irāvu', 'Night. Long ā. Time range: ~7 PM onwards. Dinner is "irā cāppāṭu".', 'word', 'இரவு படிக்கிறேன். irāvu paṭikkiṟēṉ.', '"I study at night."', null, [ACT.vocabularyTime]),
-    createContentItem('நேற்று / இன்று / நாளை', 'nēṟṟu / iṉṟu / nāḷai', 'Yesterday / today / tomorrow. Three high-frequency time markers. Alveolar trill ṟṟ in nēṟṟu.', 'word', 'நேற்று நான் வந்தேன், இன்று இருக்கிறேன், நாளை போகிறேன்.', '"Yesterday I came, today I am here, tomorrow I go."', null, [ACT.vocabularyTime]),
-    createContentItem('-மணி hour', '-maṇi', 'The clock-hour marker. Format: numeral + maṇi = "[N] o\'clock". கால் maṇi (15 min), அரை maṇi (30 min), முக்கால் maṇi (45 min).', 'word', 'எட்டு மணிக்கு வா. eṭṭu maṇikku vā. "Come at 8 o\'clock."', '-maṇi + ukku = "at [N] o\'clock"; dative case for time-point.', null, [ACT.vocabularyTime]),
-    createContentItem('நிமிடம்', 'nimiṭam', 'Minute. This time noun becomes especially useful once it takes the locative form `நிமிடத்தில்`, used for deadlines and near-future promises.', 'word', 'பத்து நிமிடத்தில் வருகிறேன். pattu nimiṭattil varukiṟēṉ.', '"I come in ten minutes." `nimiṭattil` shows the noun with a locative ending for elapsed time.', null, [ACT.vocabularyTime]),
-    createContentItem('நாள் / வாரம் / மாதம்', 'nāḷ / vāram / mātam', 'Day / week / month. Three temporal-unit nouns. நாள் nāḷ has retroflex ḷ.', 'word', 'ஒரு வாரத்தில் ஏழு நாட்கள். oru vārattil ēḻu nāṭkaḷ.', '"In one week there are seven days."', null, [ACT.vocabularyTime]),
-
-    // Vocab II: verbs
-    createContentItem('எழுந்திரு', 'eḻuntiru', 'Wake up / get up. Common opener of daily routine narratives. Compound of eḻu + iru.', 'word', 'நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.', '"I wake up at 6 AM."', null, [ACT.vocabularyVerbs]),
-    createContentItem('குளி', 'kuḷi', 'Bathe / take a shower. Retroflex ḷ. In Tamil culture, morning bath is essentially universal.', 'word', 'காலையில் குளிக்கிறேன்.', '"I bathe in the morning."', null, [ACT.vocabularyVerbs]),
-    createContentItem('சாப்பிடு', 'cāppiṭu', 'Eat. The all-purpose food verb; works for any meal type.', 'word', 'நாங்கள் ஒன்றாக சாப்பிடுவோம்.', '"We will eat together." -uvōm = "let\'s VERB" (1pl).', null, [ACT.vocabularyVerbs]),
-    createContentItem('படி', 'paṭi', 'Study / read. Tamil same word for both — context disambiguates.', 'word', 'நான் நூலகத்தில் படிக்கிறேன். nāṉ nūlakattil paṭikkiṟēṉ.', '"I study in the library."', null, [ACT.vocabularyVerbs]),
-    createContentItem('எழுது', 'eḻutu', 'Write. ழ in middle.', 'word', 'நாள்தோறும் எழுதுகிறேன்.', '"I write daily." -tōṟum = "every/each".', null, [ACT.vocabularyVerbs]),
-    createContentItem('பேசு', 'pēcu', 'Speak / talk. Long ē.', 'word', 'நீங்கள் தமிழ் பேசுகிறீர்களா?', '"Do you speak Tamil?" -ā question particle.', null, [ACT.vocabularyVerbs]),
-    createContentItem('கேள்', 'kēḷ', 'Listen / ask. Retroflex ḷ at end of stem. Same verb for both meanings; context decides.', 'word', 'நான் இசை கேட்கிறேன்.', '"I listen to music." Note that the stem changes from kēḷ to kēṭ before -kiṟēṉ — a sandhi rule.', null, [ACT.vocabularyVerbs]),
-    createContentItem('பார்', 'pār', 'See / look at.', 'word', 'நான் தினமும் செய்தித்தாள் பார்க்கிறேன்.', '"I look at the newspaper every day." tiṉa-mum = "every-day".', null, [ACT.vocabularyVerbs]),
-    createContentItem('தூங்கு', 'tūṅku', 'Sleep. The cluster ṅk is natural Tamil place-assimilation.', 'word', 'நான் இரவு 11 மணிக்கு தூங்குகிறேன்.', '"I sleep at 11 PM."', null, [ACT.vocabularyVerbs]),
-    createContentItem('போ', 'pō', 'Go. Most irregular Tamil verb; future stem is pō-v-, past is pōṉēṉ.', 'word', 'நான் பல்கலைக்கழகத்துக்கு போகிறேன்.', '"I go to the university."', null, [ACT.vocabularyVerbs]),
-    createContentItem('வா', 'vā', 'Come. Pair with pō. Future stem var-, past vantēṉ.', 'word', 'நாளை வருகிறேன்.', '"I will come tomorrow." (present-as-future use)', null, [ACT.vocabularyVerbs]),
-    createContentItem('நட', 'naṭa', 'Walk. Retroflex ṭ.', 'word', 'நாங்கள் கடற்கரையில் நடக்கிறோம்.', '"We walk on the beach."', null, [ACT.vocabularyVerbs]),
-    createContentItem('ஓடு', 'ōṭu', 'Run. Long ō + retroflex ṭ.', 'word', 'காலையில் நான் ஓடுகிறேன்.', '"In the morning I run."', null, [ACT.vocabularyVerbs]),
-    createContentItem('உட்காரு', 'uṭkāru', 'Sit. Geminate ṭk cluster.', 'word', 'தயவுசெய்து உட்காருங்கள்.', '"Please sit." tayavuceytu = "kindly/please".', null, [ACT.vocabularyVerbs]),
-    createContentItem('நிறு / நில்', 'niṟu / nil', 'Stand / stop. Two forms; nil is the imperative-stem.', 'word', 'அங்கே நிற்காதீர்கள்.', '"Don\'t stand there." -ātīrkaḷ negative polite imperative.', null, [ACT.vocabularyVerbs]),
-    createContentItem('ஆடு', 'āṭu', 'Play / dance. Long ā + retroflex ṭ.', 'word', 'குழந்தைகள் பூங்காவில் ஆடுகிறார்கள்.', '"Children play in the park."', null, [ACT.vocabularyVerbs]),
-
-    // Grammar I
-    createContentItem('Present tense formula', 'present tense formula', 'PATTERN: verb stem + -கிற்- (-kiṟ-) + agreement suffix. Example: saap-piṭu + kiṟ + ēṉ = cāppiṭukiṟēṉ. The -kiṟ- marker is invariant; only the agreement changes.', 'sentence', 'நான் சாப்பிடுகிறேன் (-ēṉ) · நீ சாப்பிடுகிறாய் (-āy) · அவன் சாப்பிடுகிறான் (-āṉ) · அவள் சாப்பிடுகிறாள் (-āḷ) · அவர் சாப்பிடுகிறார் (-ār) · அது சாப்பிடுகிறது (-atu) · நாங்கள் சாப்பிடுகிறோம் (-ōm) · நீங்கள் சாப்பிடுகிறீர்கள் (-īrkaḷ) · அவர்கள் சாப்பிடுகிறார்கள் (-ārkaḷ)', '9 forms covering person + number + gender + honor — all built from one stem + one tense marker + one agreement.', [{ target: 'stem', note: 'unchanged across tenses for most verbs (some stem sandhi)' }, { target: '-kiṟ-', note: 'present-tense marker, invariant' }, { target: 'agreement', note: '9 endings; mandatory' }], [ACT.grammarPresent]),
-    createContentItem('Centhamizh vs Koduntamizh present', 'register present', 'Centhamizh (formal): -கிறேன் -kiṟēṉ, etc. Koduntamizh (spoken): contracted forms — Chennai vaṟēṉ, Madurai vaṟēṉ but with regional vowels.', 'sentence', 'வருகிறேன் (formal) → வரேன் / வரோம் (spoken contraction)\nஇருக்கிறேன் (formal) → இருக்கேன் / இருக்கு (very colloquial 3rd-neuter)', 'News broadcasts use the formal; friends use the spoken; the two are mutually intelligible but stylistically distinct.', null, [ACT.grammarPresent]),
-
-    // Grammar II
-    createContentItem('-ஆக adverbializer', '-āka adverb', 'Form an adverb by adding -ஆக (-āka) to an adjective or noun. vēkam (speed) → vēkamāka (quickly); naṉṟu (good) → naṉṟāka (well); maṭṭum (only) → maṭṭumāka.', 'sentence', 'அவர் வேகமாக ஓடுகிறார். avar vēkamāka ōṭukiṟār.', '"He/she runs quickly."', [{ target: 'noun + āka', note: 'turns noun into manner adverb' }, { target: 'adj + āka', note: 'turns adjective into adverb' }, { target: '-mā-ka simplification', note: 'in spoken Tamil, -āka often → -ā: vēkamā ōṭuṟār' }], [ACT.grammarAdverbs]),
-
-    // Grammar III
-    createContentItem('Verbal participle (verb + -நு / -த்து)', 'verbal participle', 'To say "having done X, then Y", use the verbal participle: verb-stem with -நு (-nu) or -த்து (-ttu) ending, depending on verb class. சாப்பிடு → சாப்பிட்டு (having eaten); படி → படித்து (having studied).', 'sentence', 'நான் சாப்பிட்டு படிக்கிறேன். nāṉ cāppiṭṭu paṭikkiṟēṉ.', '"Having eaten, I study." = "I eat then study." Tamil chains actions this way constantly.', [{ target: 'class 1', note: 'verb + -ttu: paṭi → paṭittu' }, { target: 'class 2', note: 'verb + -ṭṭu: cāppiṭu → cāppiṭṭu' }, { target: 'class 3', note: 'verb + -ñcu/-ndu: pō → pōy (irregular)' }], [ACT.grammarSequence]),
-    createContentItem('பிறகு / முன்னர்', 'piṟaku / muṉṉar', 'After (that) / before. Use either alone as a sequencer or attached after a verbal participle: VPart + piṟaku = "after VERB-ing".', 'sentence', 'நான் சாப்பிட்ட பிறகு படிக்கிறேன். (after-eating-then-study)\nநான் படிப்பதற்கு முன்னர் சாப்பிடுகிறேன். (eat-before-studying)', 'Sequencing with these two words is the backbone of narrating any routine.', null, [ACT.grammarSequence]),
-
-    // Reading
-    createContentItem('என் ஒரு நாள்', 'eṉ oru nāḷ', 'A 5-sentence daily-routine paragraph in Tamil.', 'sentence', 'நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன். குளித்து, காலை உணவு சாப்பிடுகிறேன். 8 மணிக்கு பல்கலைக்கழகத்துக்கு போகிறேன். வகுப்புகள் முடிந்த பிறகு, மாலையில் கடற்கரையில் நடக்கிறேன். இரவு 11 மணிக்கு தூங்குகிறேன்.', 'Translation: "I wake up at 6 AM. Having bathed, I eat breakfast. At 8 I go to the university. After classes end, in the evening I walk on the beach. I sleep at 11 PM."', [{ target: 'எழுந்திருக்கிறேன்', note: 'wake-up present 1sg' }, { target: 'குளித்து', note: 'verbal participle "having bathed"' }, { target: 'காலை உணவு', note: '"morning meal" = breakfast' }, { target: 'வகுப்புகள் முடிந்த பிறகு', note: '"after classes ended"; muṭi = end + past relative participle' }], [ACT.reading]),
-
-    // Listening
-    createContentItem('இரண்டு நண்பர்கள்', 'iraṇṭu naṇparkaḷ', '5-turn dialogue between Anna University friends comparing routines.', 'conversation', 'முருகன்: காலை எத்தனை மணிக்கு எழுந்தாய்?\nசாரா: ஐந்தரை மணிக்கு. நீ?\nமுருகன்: நான் 7 மணிக்கு. நீ காலையில் என்ன செய்கிறாய்?\nசாரா: ஓடுகிறேன், குளிக்கிறேன், காலை உணவு சாப்பிடுகிறேன். பிறகு பல்கலைக்கழகம் போகிறேன்.\nமுருகன்: நீ வேகமாக நடக்கிறாய்! நான் சோம்பேறி.', 'Note intimate -āy ending used between friends; Sara uses informal style throughout.', [{ target: 'எத்தனை மணிக்கு', note: '"at how many o\'clock" = "at what time"' }, { target: 'என்ன செய்கிறாய்?', note: '"what do you (intimate) do?"' }, { target: 'சோம்பேறி', note: 'cōmpēṟi = "lazy person"; common Tamil teasing word' }], [ACT.listening]),
-
-    // Writing
-    createContentItem('உங்கள் நாள்', 'uṅkaḷ nāḷ', 'Write 5-6 sentences describing your typical day. Use 4+ verbs, 2 time markers, 1 sequencer.', 'sentence', 'மாதிரி: நான் காலை [நேரம்]க்கு எழுந்திருக்கிறேன். [verb]கிறேன், [verb]கிறேன். மதியம் [verb]கிறேன். பிறகு [verb]கிறேன். இரவு [நேரம்]க்கு தூங்குகிறேன்.', 'Fill the bracketed slots; read aloud with correct agreement.', null, [ACT.writing]),
-
-    // Culture
-    createContentItem('தமிழ் தினசரி தாளம்', 'tamiḻ tiṉacari tāḷam', 'Tamil daily rhythm: dawn kolam (rangoli rice-flour patterns drawn at house entrances), filter-coffee morning, idli/dosa breakfast, late lunch (rice + sambar + rasam at 1-2 PM), evening tiffin (4-5 PM), late dinner (8-9 PM). Hostel students adapt with mess-meal timings.', 'sentence', 'தமிழ் வீட்டில் காலையில் காப்பி தயார் ஆனால் ஒரு நாள் தொடங்கியது.', '"In a Tamil home, the day begins when the coffee is ready." Filter coffee is iconic; tea is also common.', null, [ACT.culture]),
-    createContentItem('கோலம்', 'kōlam', 'The kolam — rice-flour pattern drawn at dawn outside the house entrance by women of the household. A daily artistic and spiritual practice; varieties include pulli kolam (dot-grid) and rangoli (colored). Anna Nagar streets are famous for elaborate kolams.', 'sentence', 'என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.', '"My mother draws a kolam at the doorstep every day."', null, [ACT.culture]),
-
-    // Task
-    createContentItem('பணி: உங்கள் நாள் சொல்லுங்கள்', 'paṇi: uṅkaḷ nāḷ colluṅkaḷ', 'Tell your day to the AI tutor playing a curious classmate. Use all verbs and time markers from this lesson.', 'conversation', 'நண்பன்: காலை எத்தனை மணிக்கு எழுந்தாய்?\nநீ: [answer with time + verb]\nநண்பன்: காலை உணவு என்ன சாப்பிட்டாய்?\nநீ: [answer]\nநண்பன்: மதியம் என்ன பண்ணினாய்?\nநீ: [answer with sequence]\nநண்பன்: மாலையில்?\nநீ: [answer]', '6+ turn schedule narrative.', [{ target: 'opening', note: 'time-loc + verb' }, { target: 'sequence', note: 'verbal-participle + piṟaku' }, { target: 'closing', note: 'irāvu + sleep verb' }], [ACT.task]),
+  "expressionPractice": [
+    {
+      "id": "narrate-day",
+      "label": "Narrate your day",
+      "goal": "Sequence 5+ actions with time markers and connectors."
+    },
+    {
+      "id": "simple-present",
+      "label": "Simple present",
+      "goal": "Conjugate any verb in all 8 agreement forms."
+    },
+    {
+      "id": "sequencing",
+      "label": "Sequencing actions",
+      "goal": "Use verbal participle + piṟaku to chain events."
+    },
+    {
+      "id": "time-vocab",
+      "label": "Time-of-day vocab",
+      "goal": "State activities with kālai/maṭiyam/mālai/irāvu."
+    }
   ],
+  "relatedPools": [
+    "topic-daily-life",
+    "topic-routines"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Describe a typical day in Tamil using time markers (kālai, maṭiyam, mālai, irāvu) + routine verbs.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay with the AI tutor as a friend asking about your day.",
+      "korean": "பாட இலக்கு",
+      "english": "Describe a typical day in Tamil using time markers (kālai, maṭiyam, mālai, irāvu) + routine verbs.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay with the AI tutor as a friend asking about your day."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\".",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\".",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 4: ஒரு நாள் — Daily Routines with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "Use the key language of Level 1 · Unit 4: ஒரு நாள் — Daily Routines with the register and setting that the lesson requires.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-2"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 4: ஒரு நாள் — Daily Routines sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 4: ஒரு நாள் — Daily Routines sound precise rather than merely understandable.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-grammar-1"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "",
+      "nativeText": "Describe a typical day in Tamil using time markers (kālai, maṭiyam, mālai, irāvu) + routine verbs.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "Describe a typical day in Tamil using time markers (kālai, maṭiyam, mālai, irāvu) + routine verbs.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 4: ஒரு நாள் — Daily Routines with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "Contrast the main pattern in Level 1 · Unit 4: ஒரு நாள் — Daily Routines with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read the connected model for வாசிப்பு மாதிரி as one message. Notice how \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleNative": "\"My mother draws a kolam at the doorstep every day.\"",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read the connected model for வாசிப்பு மாதிரி as one message. Notice how \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\" lets the lesson vocabulary and grammar work together instead of appearing as isolated flashcards.",
+      "example": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleEnglish": "\"My mother draws a kolam at the doorstep every day.\""
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleNative": "\"My mother draws a kolam at the doorstep every day.\"",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\" as interaction, not as a sentence list. The listening goal is to follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleEnglish": "\"My mother draws a kolam at the doorstep every day.\""
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used. Use \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" as the social comparison point for this lesson.",
+      "pronunciation": "",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used. Use \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" as the social comparison point for this lesson.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Roleplay with the AI tutor as a friend asking about your day.",
+      "pronunciation": "",
+      "exampleTarget": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleNative": "Roleplay with the AI tutor as a friend asking about your day.",
+      "korean": "இறுதி செயல்",
+      "english": "Roleplay with the AI tutor as a friend asking about your day.",
+      "example": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleEnglish": "Roleplay with the AI tutor as a friend asking about your day."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" against the model.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" before reusing it elsewhere.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleNative": "\"My mother draws a kolam at the doorstep every day.\"",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\" as one thought.",
+      "example": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleEnglish": "\"My mother draws a kolam at the doorstep every day.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" and move it into your own life.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"என் ஒரு நாள்\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "என் ஒரு நாள்",
+      "exampleNative": "By the end of this lesson you can narrate your day in Tamil minute-by-minute, conjugating verbs in all 8 present-tense forms.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"என் ஒரு நாள்\" before looking back.",
+      "example": "என் ஒரு நாள்",
+      "exampleEnglish": "By the end of this lesson you can narrate your day in Tamil minute-by-minute, conjugating verbs in all 8 present-tense forms."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\" rather than restarting from a blank sentence.",
+      "example": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 4: ஒரு நாள் — Daily Routines with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 4: ஒரு நாள் — Daily Routines with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" as the comparison line.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. Use \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" as the repair line.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. Use \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" as the repair line.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\".",
+      "pronunciation": "",
+      "exampleTarget": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleNative": "\"My mother draws a kolam at the doorstep every day.\"",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\".",
+      "example": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleEnglish": "\"My mother draws a kolam at the doorstep every day.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" one layer at a time.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" as the deciding example.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-culture",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\".",
+      "pronunciation": "",
+      "exampleTarget": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleNative": "\"My mother draws a kolam at the doorstep every day.\"",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.\".",
+      "example": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleEnglish": "\"My mother draws a kolam at the doorstep every day.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "By the end of this lesson you can narrate your day in Tamil minute-by-minute, conjugating verbs in all 8 present-tense forms.",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "By the end of this lesson you can narrate your day in Tamil minute-by-minute, conjugating verbs in all 8 present-tense forms.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "A friend at the Anna University mess asks \"என்ன, இன்று என்ன பண்ணினீங்க?\" (\"So, what did you do today?\"). You answer in fluent present-then-past Tamil.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "A friend at the Anna University mess asks \"என்ன, இன்று என்ன பண்ணினீங்க?\" (\"So, what did you do today?\"). You answer in fluent present-then-past Tamil.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-கிற- formal / -க்கிற்- spoken",
+      "romanization": "-kiṟ- vs -kkir-",
+      "nativeText": "Present-tense marker in Centhamizh is -கிற- (-kiṟ-, alveolar ṟ). In Koduntamizh (spoken), often contracted to -க்கிற்- with extra k or to -ர் -r alone. Diglossia in action: news Tamil uses one, friends use the other.",
+      "pronunciation": "-kiṟ- vs -kkir-",
+      "exampleTarget": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleNative": "Both are correct in their register; mixing makes you sound bookish or street.",
+      "korean": "-கிற- formal / -க்கிற்- spoken",
+      "english": "Present-tense marker in Centhamizh is -கிற- (-kiṟ-, alveolar ṟ). In Koduntamizh (spoken), often contracted to -க்கிற்- with extra k or to -ர் -r alone. Diglossia in action: news Tamil uses one, friends use the other.",
+      "example": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleEnglish": "Both are correct in their register; mixing makes you sound bookish or street."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடு",
+      "romanization": "cāppiṭu",
+      "nativeText": "Eat. Geminate pp + retroflex ṭ. The most common Tamil verb after \"be/go\".",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleNative": "Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "korean": "சாப்பிடு",
+      "english": "Eat. Geminate pp + retroflex ṭ. The most common Tamil verb after \"be/go\".",
+      "example": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleEnglish": "Polite \"what are you eating?\"; same verb works for \"having\" food."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுந்திரு",
+      "romanization": "eḻuntiru",
+      "nativeText": "Wake up. Compound: eḻu (rise) + tiru (be). The medial ழ is the Tamil signature.",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "\"I wake up at 6 AM.\"",
+      "korean": "எழுந்திரு",
+      "english": "Wake up. Compound: eḻu (rise) + tiru (be). The medial ழ is the Tamil signature.",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "\"I wake up at 6 AM.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "காலை",
+      "romanization": "kālai",
+      "nativeText": "Morning. Long ā + diphthong ai. Time range: roughly sunrise to ~10 AM.",
+      "pronunciation": "kālai",
+      "exampleTarget": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleNative": "In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "korean": "காலை",
+      "english": "Morning. Long ā + diphthong ai. Time range: roughly sunrise to ~10 AM.",
+      "example": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleEnglish": "In Centhamizh: kālai. In Koduntamizh: kāla."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "மதியம்",
+      "romanization": "matiyam",
+      "nativeText": "Noon / afternoon. Dental t. Time range: ~11 AM to 3 PM. Lunch is \"matiya cāppāṭu\".",
+      "pronunciation": "matiyam",
+      "exampleTarget": "மதியம் சாப்பிட்டாயா? matiyam cāppiṭṭāyā?",
+      "exampleNative": "\"Have you eaten lunch?\" intimate-past + question particle -ā.",
+      "korean": "மதியம்",
+      "english": "Noon / afternoon. Dental t. Time range: ~11 AM to 3 PM. Lunch is \"matiya cāppāṭu\".",
+      "example": "மதியம் சாப்பிட்டாயா? matiyam cāppiṭṭāyā?",
+      "exampleEnglish": "\"Have you eaten lunch?\" intimate-past + question particle -ā."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "மாலை",
+      "romanization": "mālai",
+      "nativeText": "Evening. Time range: ~4-7 PM. Tea/tiffin time in Tamil households.",
+      "pronunciation": "mālai",
+      "exampleTarget": "மாலை சிற்றுண்டி நேரம். mālai ciṟṟuṇṭi nēram.",
+      "exampleNative": "\"Evening tiffin time.\" ciṟṟuṇṭi = small evening meal.",
+      "korean": "மாலை",
+      "english": "Evening. Time range: ~4-7 PM. Tea/tiffin time in Tamil households.",
+      "example": "மாலை சிற்றுண்டி நேரம். mālai ciṟṟuṇṭi nēram.",
+      "exampleEnglish": "\"Evening tiffin time.\" ciṟṟuṇṭi = small evening meal."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "இரவு",
+      "romanization": "irāvu",
+      "nativeText": "Night. Long ā. Time range: ~7 PM onwards. Dinner is \"irā cāppāṭu\".",
+      "pronunciation": "irāvu",
+      "exampleTarget": "இரவு படிக்கிறேன். irāvu paṭikkiṟēṉ.",
+      "exampleNative": "\"I study at night.\"",
+      "korean": "இரவு",
+      "english": "Night. Long ā. Time range: ~7 PM onwards. Dinner is \"irā cāppāṭu\".",
+      "example": "இரவு படிக்கிறேன். irāvu paṭikkiṟēṉ.",
+      "exampleEnglish": "\"I study at night.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "நேற்று / இன்று / நாளை",
+      "romanization": "nēṟṟu / iṉṟu / nāḷai",
+      "nativeText": "Yesterday / today / tomorrow. Three high-frequency time markers. Alveolar trill ṟṟ in nēṟṟu.",
+      "pronunciation": "nēṟṟu / iṉṟu / nāḷai",
+      "exampleTarget": "நேற்று நான் வந்தேன், இன்று இருக்கிறேன், நாளை போகிறேன்.",
+      "exampleNative": "\"Yesterday I came, today I am here, tomorrow I go.\"",
+      "korean": "நேற்று / இன்று / நாளை",
+      "english": "Yesterday / today / tomorrow. Three high-frequency time markers. Alveolar trill ṟṟ in nēṟṟu.",
+      "example": "நேற்று நான் வந்தேன், இன்று இருக்கிறேன், நாளை போகிறேன்.",
+      "exampleEnglish": "\"Yesterday I came, today I am here, tomorrow I go.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-மணி hour",
+      "romanization": "-maṇi",
+      "nativeText": "The clock-hour marker. Format: numeral + maṇi = \"[N] o'clock\". கால் maṇi (15 min), அரை maṇi (30 min), முக்கால் maṇi (45 min).",
+      "pronunciation": "-maṇi",
+      "exampleTarget": "எட்டு மணிக்கு வா. eṭṭu maṇikku vā. \"Come at 8 o'clock.\"",
+      "exampleNative": "-maṇi + ukku = \"at [N] o'clock\"; dative case for time-point.",
+      "korean": "-மணி hour",
+      "english": "The clock-hour marker. Format: numeral + maṇi = \"[N] o'clock\". கால் maṇi (15 min), அரை maṇi (30 min), முக்கால் maṇi (45 min).",
+      "example": "எட்டு மணிக்கு வா. eṭṭu maṇikku vā. \"Come at 8 o'clock.\"",
+      "exampleEnglish": "-maṇi + ukku = \"at [N] o'clock\"; dative case for time-point."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "நிமிடம்",
+      "romanization": "nimiṭam",
+      "nativeText": "Minute. This time noun becomes especially useful once it takes the locative form `நிமிடத்தில்`, used for deadlines and near-future promises.",
+      "pronunciation": "nimiṭam",
+      "exampleTarget": "பத்து நிமிடத்தில் வருகிறேன். pattu nimiṭattil varukiṟēṉ.",
+      "exampleNative": "\"I come in ten minutes.\" `nimiṭattil` shows the noun with a locative ending for elapsed time.",
+      "korean": "நிமிடம்",
+      "english": "Minute. This time noun becomes especially useful once it takes the locative form `நிமிடத்தில்`, used for deadlines and near-future promises.",
+      "example": "பத்து நிமிடத்தில் வருகிறேன். pattu nimiṭattil varukiṟēṉ.",
+      "exampleEnglish": "\"I come in ten minutes.\" `nimiṭattil` shows the noun with a locative ending for elapsed time."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "நாள் / வாரம் / மாதம்",
+      "romanization": "nāḷ / vāram / mātam",
+      "nativeText": "Day / week / month. Three temporal-unit nouns. நாள் nāḷ has retroflex ḷ.",
+      "pronunciation": "nāḷ / vāram / mātam",
+      "exampleTarget": "ஒரு வாரத்தில் ஏழு நாட்கள். oru vārattil ēḻu nāṭkaḷ.",
+      "exampleNative": "\"In one week there are seven days.\"",
+      "korean": "நாள் / வாரம் / மாதம்",
+      "english": "Day / week / month. Three temporal-unit nouns. நாள் nāḷ has retroflex ḷ.",
+      "example": "ஒரு வாரத்தில் ஏழு நாட்கள். oru vārattil ēḻu nāṭkaḷ.",
+      "exampleEnglish": "\"In one week there are seven days.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுந்திரு",
+      "romanization": "eḻuntiru",
+      "nativeText": "Wake up / get up. Common opener of daily routine narratives. Compound of eḻu + iru.",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "\"I wake up at 6 AM.\"",
+      "korean": "எழுந்திரு",
+      "english": "Wake up / get up. Common opener of daily routine narratives. Compound of eḻu + iru.",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "\"I wake up at 6 AM.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "குளி",
+      "romanization": "kuḷi",
+      "nativeText": "Bathe / take a shower. Retroflex ḷ. In Tamil culture, morning bath is essentially universal.",
+      "pronunciation": "kuḷi",
+      "exampleTarget": "காலையில் குளிக்கிறேன்.",
+      "exampleNative": "\"I bathe in the morning.\"",
+      "korean": "குளி",
+      "english": "Bathe / take a shower. Retroflex ḷ. In Tamil culture, morning bath is essentially universal.",
+      "example": "காலையில் குளிக்கிறேன்.",
+      "exampleEnglish": "\"I bathe in the morning.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடு",
+      "romanization": "cāppiṭu",
+      "nativeText": "Eat. The all-purpose food verb; works for any meal type.",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நாங்கள் ஒன்றாக சாப்பிடுவோம்.",
+      "exampleNative": "\"We will eat together.\" -uvōm = \"let's VERB\" (1pl).",
+      "korean": "சாப்பிடு",
+      "english": "Eat. The all-purpose food verb; works for any meal type.",
+      "example": "நாங்கள் ஒன்றாக சாப்பிடுவோம்.",
+      "exampleEnglish": "\"We will eat together.\" -uvōm = \"let's VERB\" (1pl)."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "படி",
+      "romanization": "paṭi",
+      "nativeText": "Study / read. Tamil same word for both — context disambiguates.",
+      "pronunciation": "paṭi",
+      "exampleTarget": "நான் நூலகத்தில் படிக்கிறேன். nāṉ nūlakattil paṭikkiṟēṉ.",
+      "exampleNative": "\"I study in the library.\"",
+      "korean": "படி",
+      "english": "Study / read. Tamil same word for both — context disambiguates.",
+      "example": "நான் நூலகத்தில் படிக்கிறேன். nāṉ nūlakattil paṭikkiṟēṉ.",
+      "exampleEnglish": "\"I study in the library.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுது",
+      "romanization": "eḻutu",
+      "nativeText": "Write. ழ in middle.",
+      "pronunciation": "eḻutu",
+      "exampleTarget": "நாள்தோறும் எழுதுகிறேன்.",
+      "exampleNative": "\"I write daily.\" -tōṟum = \"every/each\".",
+      "korean": "எழுது",
+      "english": "Write. ழ in middle.",
+      "example": "நாள்தோறும் எழுதுகிறேன்.",
+      "exampleEnglish": "\"I write daily.\" -tōṟum = \"every/each\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "பேசு",
+      "romanization": "pēcu",
+      "nativeText": "Speak / talk. Long ē.",
+      "pronunciation": "pēcu",
+      "exampleTarget": "நீங்கள் தமிழ் பேசுகிறீர்களா?",
+      "exampleNative": "\"Do you speak Tamil?\" -ā question particle.",
+      "korean": "பேசு",
+      "english": "Speak / talk. Long ē.",
+      "example": "நீங்கள் தமிழ் பேசுகிறீர்களா?",
+      "exampleEnglish": "\"Do you speak Tamil?\" -ā question particle."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "கேள்",
+      "romanization": "kēḷ",
+      "nativeText": "Listen / ask. Retroflex ḷ at end of stem. Same verb for both meanings; context decides.",
+      "pronunciation": "kēḷ",
+      "exampleTarget": "நான் இசை கேட்கிறேன்.",
+      "exampleNative": "\"I listen to music.\" Note that the stem changes from kēḷ to kēṭ before -kiṟēṉ — a sandhi rule.",
+      "korean": "கேள்",
+      "english": "Listen / ask. Retroflex ḷ at end of stem. Same verb for both meanings; context decides.",
+      "example": "நான் இசை கேட்கிறேன்.",
+      "exampleEnglish": "\"I listen to music.\" Note that the stem changes from kēḷ to kēṭ before -kiṟēṉ — a sandhi rule."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "பார்",
+      "romanization": "pār",
+      "nativeText": "See / look at.",
+      "pronunciation": "pār",
+      "exampleTarget": "நான் தினமும் செய்தித்தாள் பார்க்கிறேன்.",
+      "exampleNative": "\"I look at the newspaper every day.\" tiṉa-mum = \"every-day\".",
+      "korean": "பார்",
+      "english": "See / look at.",
+      "example": "நான் தினமும் செய்தித்தாள் பார்க்கிறேன்.",
+      "exampleEnglish": "\"I look at the newspaper every day.\" tiṉa-mum = \"every-day\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "தூங்கு",
+      "romanization": "tūṅku",
+      "nativeText": "Sleep. The cluster ṅk is natural Tamil place-assimilation.",
+      "pronunciation": "tūṅku",
+      "exampleTarget": "நான் இரவு 11 மணிக்கு தூங்குகிறேன்.",
+      "exampleNative": "\"I sleep at 11 PM.\"",
+      "korean": "தூங்கு",
+      "english": "Sleep. The cluster ṅk is natural Tamil place-assimilation.",
+      "example": "நான் இரவு 11 மணிக்கு தூங்குகிறேன்.",
+      "exampleEnglish": "\"I sleep at 11 PM.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "போ",
+      "romanization": "pō",
+      "nativeText": "Go. Most irregular Tamil verb; future stem is pō-v-, past is pōṉēṉ.",
+      "pronunciation": "pō",
+      "exampleTarget": "நான் பல்கலைக்கழகத்துக்கு போகிறேன்.",
+      "exampleNative": "\"I go to the university.\"",
+      "korean": "போ",
+      "english": "Go. Most irregular Tamil verb; future stem is pō-v-, past is pōṉēṉ.",
+      "example": "நான் பல்கலைக்கழகத்துக்கு போகிறேன்.",
+      "exampleEnglish": "\"I go to the university.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "வா",
+      "romanization": "vā",
+      "nativeText": "Come. Pair with pō. Future stem var-, past vantēṉ.",
+      "pronunciation": "vā",
+      "exampleTarget": "நாளை வருகிறேன்.",
+      "exampleNative": "\"I will come tomorrow.\" (present-as-future use)",
+      "korean": "வா",
+      "english": "Come. Pair with pō. Future stem var-, past vantēṉ.",
+      "example": "நாளை வருகிறேன்.",
+      "exampleEnglish": "\"I will come tomorrow.\" (present-as-future use)"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "நட",
+      "romanization": "naṭa",
+      "nativeText": "Walk. Retroflex ṭ.",
+      "pronunciation": "naṭa",
+      "exampleTarget": "நாங்கள் கடற்கரையில் நடக்கிறோம்.",
+      "exampleNative": "\"We walk on the beach.\"",
+      "korean": "நட",
+      "english": "Walk. Retroflex ṭ.",
+      "example": "நாங்கள் கடற்கரையில் நடக்கிறோம்.",
+      "exampleEnglish": "\"We walk on the beach.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ஓடு",
+      "romanization": "ōṭu",
+      "nativeText": "Run. Long ō + retroflex ṭ.",
+      "pronunciation": "ōṭu",
+      "exampleTarget": "காலையில் நான் ஓடுகிறேன்.",
+      "exampleNative": "\"In the morning I run.\"",
+      "korean": "ஓடு",
+      "english": "Run. Long ō + retroflex ṭ.",
+      "example": "காலையில் நான் ஓடுகிறேன்.",
+      "exampleEnglish": "\"In the morning I run.\""
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "உட்காரு",
+      "romanization": "uṭkāru",
+      "nativeText": "Sit. Geminate ṭk cluster.",
+      "pronunciation": "uṭkāru",
+      "exampleTarget": "தயவுசெய்து உட்காருங்கள்.",
+      "exampleNative": "\"Please sit.\" tayavuceytu = \"kindly/please\".",
+      "korean": "உட்காரு",
+      "english": "Sit. Geminate ṭk cluster.",
+      "example": "தயவுசெய்து உட்காருங்கள்.",
+      "exampleEnglish": "\"Please sit.\" tayavuceytu = \"kindly/please\"."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "நிறு / நில்",
+      "romanization": "niṟu / nil",
+      "nativeText": "Stand / stop. Two forms; nil is the imperative-stem.",
+      "pronunciation": "niṟu / nil",
+      "exampleTarget": "அங்கே நிற்காதீர்கள்.",
+      "exampleNative": "\"Don't stand there.\" -ātīrkaḷ negative polite imperative.",
+      "korean": "நிறு / நில்",
+      "english": "Stand / stop. Two forms; nil is the imperative-stem.",
+      "example": "அங்கே நிற்காதீர்கள்.",
+      "exampleEnglish": "\"Don't stand there.\" -ātīrkaḷ negative polite imperative."
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "ஆடு",
+      "romanization": "āṭu",
+      "nativeText": "Play / dance. Long ā + retroflex ṭ.",
+      "pronunciation": "āṭu",
+      "exampleTarget": "குழந்தைகள் பூங்காவில் ஆடுகிறார்கள்.",
+      "exampleNative": "\"Children play in the park.\"",
+      "korean": "ஆடு",
+      "english": "Play / dance. Long ā + retroflex ṭ.",
+      "example": "குழந்தைகள் பூங்காவில் ஆடுகிறார்கள்.",
+      "exampleEnglish": "\"Children play in the park.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடுகிறேன் / சாப்பிடுகிறாய்",
+      "romanization": "present tense formula",
+      "nativeText": "PATTERN: verb stem + -கிற்- (-kiṟ-) + agreement suffix. Example: saap-piṭu + kiṟ + ēṉ = cāppiṭukiṟēṉ. The -kiṟ- marker is invariant; only the agreement changes.",
+      "pronunciation": "present tense formula",
+      "exampleTarget": "நான் சாப்பிடுகிறேன் (-ēṉ) · நீ சாப்பிடுகிறாய் (-āy) · அவன் சாப்பிடுகிறான் (-āṉ) · அவள் சாப்பிடுகிறாள் (-āḷ) · அவர் சாப்பிடுகிறார் (-ār) · அது சாப்பிடுகிறது (-atu) · நாங்கள் சாப்பிடுகிறோம் (-ōm) · நீங்கள் சாப்பிடுகிறீர்கள் (-īrkaḷ) · அவர்கள் சாப்பிடுகிறார்கள் (-ārkaḷ)",
+      "exampleNative": "9 forms covering person + number + gender + honor — all built from one stem + one tense marker + one agreement.",
+      "korean": "சாப்பிடுகிறேன் / சாப்பிடுகிறாய்",
+      "english": "PATTERN: verb stem + -கிற்- (-kiṟ-) + agreement suffix. Example: saap-piṭu + kiṟ + ēṉ = cāppiṭukiṟēṉ. The -kiṟ- marker is invariant; only the agreement changes.",
+      "example": "நான் சாப்பிடுகிறேன் (-ēṉ) · நீ சாப்பிடுகிறாய் (-āy) · அவன் சாப்பிடுகிறான் (-āṉ) · அவள் சாப்பிடுகிறாள் (-āḷ) · அவர் சாப்பிடுகிறார் (-ār) · அது சாப்பிடுகிறது (-atu) · நாங்கள் சாப்பிடுகிறோம் (-ōm) · நீங்கள் சாப்பிடுகிறீர்கள் (-īrkaḷ) · அவர்கள் சாப்பிடுகிறார்கள் (-ārkaḷ)",
+      "exampleEnglish": "9 forms covering person + number + gender + honor — all built from one stem + one tense marker + one agreement."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "வருகிறேன் / வரேன்",
+      "romanization": "register present",
+      "nativeText": "Centhamizh (formal): -கிறேன் -kiṟēṉ, etc. Koduntamizh (spoken): contracted forms — Chennai vaṟēṉ, Madurai vaṟēṉ but with regional vowels.",
+      "pronunciation": "register present",
+      "exampleTarget": "வருகிறேன் (formal) → வரேன் / வரோம் (spoken contraction)\nஇருக்கிறேன் (formal) → இருக்கேன் / இருக்கு (very colloquial 3rd-neuter)",
+      "exampleNative": "News broadcasts use the formal; friends use the spoken; the two are mutually intelligible but stylistically distinct.",
+      "korean": "வருகிறேன் / வரேன்",
+      "english": "Centhamizh (formal): -கிறேன் -kiṟēṉ, etc. Koduntamizh (spoken): contracted forms — Chennai vaṟēṉ, Madurai vaṟēṉ but with regional vowels.",
+      "example": "வருகிறேன் (formal) → வரேன் / வரோம் (spoken contraction)\nஇருக்கிறேன் (formal) → இருக்கேன் / இருக்கு (very colloquial 3rd-neuter)",
+      "exampleEnglish": "News broadcasts use the formal; friends use the spoken; the two are mutually intelligible but stylistically distinct."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-ஆக adverbializer",
+      "romanization": "-āka adverb",
+      "nativeText": "Form an adverb by adding -ஆக (-āka) to an adjective or noun. vēkam (speed) → vēkamāka (quickly); naṉṟu (good) → naṉṟāka (well); maṭṭum (only) → maṭṭumāka.",
+      "pronunciation": "-āka adverb",
+      "exampleTarget": "அவர் வேகமாக ஓடுகிறார். avar vēkamāka ōṭukiṟār.",
+      "exampleNative": "\"He/she runs quickly.\"",
+      "korean": "-ஆக adverbializer",
+      "english": "Form an adverb by adding -ஆக (-āka) to an adjective or noun. vēkam (speed) → vēkamāka (quickly); naṉṟu (good) → naṉṟāka (well); maṭṭum (only) → maṭṭumāka.",
+      "example": "அவர் வேகமாக ஓடுகிறார். avar vēkamāka ōṭukiṟār.",
+      "exampleEnglish": "\"He/she runs quickly.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Verbal participle (verb + -நு / -த்து)",
+      "romanization": "verbal participle",
+      "nativeText": "To say \"having done X, then Y\", use the verbal participle: verb-stem with -நு (-nu) or -த்து (-ttu) ending, depending on verb class. சாப்பிடு → சாப்பிட்டு (having eaten); படி → படித்து (having studied).",
+      "pronunciation": "verbal participle",
+      "exampleTarget": "நான் சாப்பிட்டு படிக்கிறேன். nāṉ cāppiṭṭu paṭikkiṟēṉ.",
+      "exampleNative": "\"Having eaten, I study.\" = \"I eat then study.\" Tamil chains actions this way constantly.",
+      "korean": "Verbal participle (verb + -நு / -த்து)",
+      "english": "To say \"having done X, then Y\", use the verbal participle: verb-stem with -நு (-nu) or -த்து (-ttu) ending, depending on verb class. சாப்பிடு → சாப்பிட்டு (having eaten); படி → படித்து (having studied).",
+      "example": "நான் சாப்பிட்டு படிக்கிறேன். nāṉ cāppiṭṭu paṭikkiṟēṉ.",
+      "exampleEnglish": "\"Having eaten, I study.\" = \"I eat then study.\" Tamil chains actions this way constantly."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "பிறகு / முன்னர்",
+      "romanization": "piṟaku / muṉṉar",
+      "nativeText": "After (that) / before. Use either alone as a sequencer or attached after a verbal participle: VPart + piṟaku = \"after VERB-ing\".",
+      "pronunciation": "piṟaku / muṉṉar",
+      "exampleTarget": "நான் சாப்பிட்ட பிறகு படிக்கிறேன். (after-eating-then-study)\nநான் படிப்பதற்கு முன்னர் சாப்பிடுகிறேன். (eat-before-studying)",
+      "exampleNative": "Sequencing with these two words is the backbone of narrating any routine.",
+      "korean": "பிறகு / முன்னர்",
+      "english": "After (that) / before. Use either alone as a sequencer or attached after a verbal participle: VPart + piṟaku = \"after VERB-ing\".",
+      "example": "நான் சாப்பிட்ட பிறகு படிக்கிறேன். (after-eating-then-study)\nநான் படிப்பதற்கு முன்னர் சாப்பிடுகிறேன். (eat-before-studying)",
+      "exampleEnglish": "Sequencing with these two words is the backbone of narrating any routine."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "A 5-sentence daily-routine paragraph in Tamil.",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன். குளித்து, காலை உணவு சாப்பிடுகிறேன். 8 மணிக்கு பல்கலைக்கழகத்துக்கு போகிறேன். வகுப்புகள் முடிந்த பிறகு, மாலையில் கடற்கரையில் நடக்கிறேன். இரவு 11 மணிக்கு தூங்குகிறேன்.",
+      "exampleNative": "Translation: \"I wake up at 6 AM. Having bathed, I eat breakfast. At 8 I go to the university. After classes end, in the evening I walk on the beach. I sleep at 11 PM.\"",
+      "korean": "என் ஒரு நாள்",
+      "english": "A 5-sentence daily-routine paragraph in Tamil.",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன். குளித்து, காலை உணவு சாப்பிடுகிறேன். 8 மணிக்கு பல்கலைக்கழகத்துக்கு போகிறேன். வகுப்புகள் முடிந்த பிறகு, மாலையில் கடற்கரையில் நடக்கிறேன். இரவு 11 மணிக்கு தூங்குகிறேன்.",
+      "exampleEnglish": "Translation: \"I wake up at 6 AM. Having bathed, I eat breakfast. At 8 I go to the university. After classes end, in the evening I walk on the beach. I sleep at 11 PM.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "தமிழ் தினசரி தாளம்",
+      "romanization": "tamiḻ tiṉacari tāḷam",
+      "nativeText": "Tamil daily rhythm: dawn kolam (rangoli rice-flour patterns drawn at house entrances), filter-coffee morning, idli/dosa breakfast, late lunch (rice + sambar + rasam at 1-2 PM), evening tiffin (4-5 PM), late dinner (8-9 PM). Hostel students adapt with mess-meal timings.",
+      "pronunciation": "tamiḻ tiṉacari tāḷam",
+      "exampleTarget": "தமிழ் வீட்டில் காலையில் காப்பி தயார் ஆனால் ஒரு நாள் தொடங்கியது.",
+      "exampleNative": "\"In a Tamil home, the day begins when the coffee is ready.\" Filter coffee is iconic; tea is also common.",
+      "korean": "தமிழ் தினசரி தாளம்",
+      "english": "Tamil daily rhythm: dawn kolam (rangoli rice-flour patterns drawn at house entrances), filter-coffee morning, idli/dosa breakfast, late lunch (rice + sambar + rasam at 1-2 PM), evening tiffin (4-5 PM), late dinner (8-9 PM). Hostel students adapt with mess-meal timings.",
+      "example": "தமிழ் வீட்டில் காலையில் காப்பி தயார் ஆனால் ஒரு நாள் தொடங்கியது.",
+      "exampleEnglish": "\"In a Tamil home, the day begins when the coffee is ready.\" Filter coffee is iconic; tea is also common."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "கோலம்",
+      "romanization": "kōlam",
+      "nativeText": "The kolam — rice-flour pattern drawn at dawn outside the house entrance by women of the household. A daily artistic and spiritual practice; varieties include pulli kolam (dot-grid) and rangoli (colored). Anna Nagar streets are famous for elaborate kolams.",
+      "pronunciation": "kōlam",
+      "exampleTarget": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleNative": "\"My mother draws a kolam at the doorstep every day.\"",
+      "korean": "கோலம்",
+      "english": "The kolam — rice-flour pattern drawn at dawn outside the house entrance by women of the household. A daily artistic and spiritual practice; varieties include pulli kolam (dot-grid) and rangoli (colored). Anna Nagar streets are famous for elaborate kolams.",
+      "example": "என் அம்மா தினமும் வாசலில் கோலம் போடுகிறார்.",
+      "exampleEnglish": "\"My mother draws a kolam at the doorstep every day.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "Model use for \"என் ஒரு நாள்\": By the end of this lesson you can narrate your day in Tamil minute-by-minute, conjugating verbs in all 8 present-tense forms.",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "english": "Model use for \"என் ஒரு நாள்\": By the end of this lesson you can narrate your day in Tamil minute-by-minute, conjugating verbs in all 8 present-tense forms.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "Usage focus for \"என் ஒரு நாள்\": By the end of this lesson you can narrate your day in Tamil minute-by-minute, conjugating verbs in all 8 present-tense forms.",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Notice what the form is doing here: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "Usage focus for \"என் ஒரு நாள்\": By the end of this lesson you can narrate your day in Tamil minute-by-minute, conjugating verbs in all 8 present-tense forms.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Notice what the form is doing here: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "Contrast check for \"என் ஒரு நாள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "Contrast check for \"என் ஒரு நாள்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "Recall \"என் ஒரு நாள்\" from memory, then explain what would change if a nearby alternative replaced it in \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\".",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Self-check against the model before moving on: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "Recall \"என் ஒரு நாள்\" from memory, then explain what would change if a nearby alternative replaced it in \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\".",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Self-check against the model before moving on: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "Repair \"என் ஒரு நாள்\" inside \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" if the sentence starts sounding translated rather than natural. Use the note as the clue: By the end of this lesson you can narrate your day in Tamil minute-by-minute, conjugating verbs in all 8 present-tense forms.",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Use the model as the repair target: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "Repair \"என் ஒரு நாள்\" inside \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" if the sentence starts sounding translated rather than natural. Use the note as the clue: By the end of this lesson you can narrate your day in Tamil minute-by-minute, conjugating verbs in all 8 present-tense forms.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Use the model as the repair target: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "Transfer \"என் ஒரு நாள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\".",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "Transfer \"என் ஒரு நாள்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\".",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "Find one word or phrase that naturally travels with \"என் ஒரு நாள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "Find one word or phrase that naturally travels with \"என் ஒரு நாள்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "Listen for \"என் ஒரு நாள்\" inside \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "Listen for \"என் ஒரு நாள்\" inside \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "Write \"என் ஒரு நாள்\" again without looking, then compare the exact written form against \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" before moving on.",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "Use the written model as the final correctness check: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "Write \"என் ஒரு நாள்\" again without looking, then compare the exact written form against \"Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement\" before moving on.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "Use the written model as the final correctness check: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "என் ஒரு நாள்",
+      "romanization": "eṉ oru nāḷ",
+      "nativeText": "Check whether \"என் ஒரு நாள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "pronunciation": "eṉ oru nāḷ",
+      "exampleTarget": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "korean": "என் ஒரு நாள்",
+      "english": "Check whether \"என் ஒரு நாள்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk.",
+      "example": "Functional: எழுந்திரு (wake) · சாப்பிடு (eat) · படி (study) · தூங்கு (sleep) · -கிறேன்/-கிறான்/etc agreement",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Daily-routine narration is the most common topic in beginner conversation; mastering it unlocks fluent small talk."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "romanization": "cūḻal",
+      "nativeText": "Model use for \"சூழல்\": A friend at the Anna University mess asks \"என்ன, இன்று என்ன பண்ணினீங்க?\" (\"So, what did you do today?\"). You answer in fluent present-then-past Tamil.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "english": "Model use for \"சூழல்\": A friend at the Anna University mess asks \"என்ன, இன்று என்ன பண்ணினீங்க?\" (\"So, what did you do today?\"). You answer in fluent present-then-past Tamil.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Usage focus for \"சூழல்\": A friend at the Anna University mess asks \"என்ன, இன்று என்ன பண்ணினீங்க?\" (\"So, what did you do today?\"). You answer in fluent present-then-past Tamil.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "Notice what the form is doing here: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "Usage focus for \"சூழல்\": A friend at the Anna University mess asks \"என்ன, இன்று என்ன பண்ணினீங்க?\" (\"So, what did you do today?\"). You answer in fluent present-then-past Tamil.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "Notice what the form is doing here: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Contrast check for \"சூழல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "Contrast check for \"சூழல்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Recall \"சூழல்\" from memory, then explain what would change if a nearby alternative replaced it in \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\".",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "Self-check against the model before moving on: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "Recall \"சூழல்\" from memory, then explain what would change if a nearby alternative replaced it in \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\".",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "Self-check against the model before moving on: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Repair \"சூழல்\" inside \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A friend at the Anna University mess asks \"என்ன, இன்று என்ன பண்ணினீங்க?\" (\"So, what did you do today?\"). You answer in fluent present-then-past Tamil.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "Use the model as the repair target: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "Repair \"சூழல்\" inside \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: A friend at the Anna University mess asks \"என்ன, இன்று என்ன பண்ணினீங்க?\" (\"So, what did you do today?\"). You answer in fluent present-then-past Tamil.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "Use the model as the repair target: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Transfer \"சூழல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\".",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "Transfer \"சூழல்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\".",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Find one word or phrase that naturally travels with \"சூழல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "Find one word or phrase that naturally travels with \"சூழல்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Listen for \"சூழல்\" inside \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "Listen for \"சூழல்\" inside \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Write \"சூழல்\" again without looking, then compare the exact written form against \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" before moving on.",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "Use the written model as the final correctness check: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "Write \"சூழல்\" again without looking, then compare the exact written form against \"நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"\" before moving on.",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "Use the written model as the final correctness check: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சூழல்",
+      "romanization": "cūḻal",
+      "nativeText": "Check whether \"சூழல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "pronunciation": "cūḻal",
+      "exampleTarget": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "korean": "சூழல்",
+      "english": "Check whether \"சூழல்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\".",
+      "example": "நண்பன்: \"இன்று எத்தனை மணிக்கு எழுந்தீர்கள்?\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: A standard catch-up question; \"எத்தனை மணிக்கு\" = \"at what time\"."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "romanization": "-kiṟ- vs -kkir-",
+      "nativeText": "Model use for \"-கிற- formal / -க்கிற்- spoken\": Present-tense marker in Centhamizh is -கிற- (-kiṟ-, alveolar ṟ). In Koduntamizh (spoken), often contracted to -க்கிற்- with extra k or to -ர் -r alone. Diglossia in action: news Tamil uses one, friends use the other.",
+      "pronunciation": "-kiṟ- vs -kkir-",
+      "exampleTarget": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleNative": "Both are correct in their register; mixing makes you sound bookish or street.",
+      "korean": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "english": "Model use for \"-கிற- formal / -க்கிற்- spoken\": Present-tense marker in Centhamizh is -கிற- (-kiṟ-, alveolar ṟ). In Koduntamizh (spoken), often contracted to -க்கிற்- with extra k or to -ர் -r alone. Diglossia in action: news Tamil uses one, friends use the other.",
+      "example": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleEnglish": "Both are correct in their register; mixing makes you sound bookish or street."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-கிற- formal / -க்கிற்- spoken",
+      "romanization": "-kiṟ- vs -kkir-",
+      "nativeText": "Usage focus for \"-கிற- formal / -க்கிற்- spoken\": Present-tense marker in Centhamizh is -கிற- (-kiṟ-, alveolar ṟ). In Koduntamizh (spoken), often contracted to -க்கிற்- with extra k or to -ர் -r alone. Diglossia in action: news Tamil uses one, friends use the other.",
+      "pronunciation": "-kiṟ- vs -kkir-",
+      "exampleTarget": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleNative": "Notice what the form is doing here: Both are correct in their register; mixing makes you sound bookish or street.",
+      "korean": "-கிற- formal / -க்கிற்- spoken",
+      "english": "Usage focus for \"-கிற- formal / -க்கிற்- spoken\": Present-tense marker in Centhamizh is -கிற- (-kiṟ-, alveolar ṟ). In Koduntamizh (spoken), often contracted to -க்கிற்- with extra k or to -ர் -r alone. Diglossia in action: news Tamil uses one, friends use the other.",
+      "example": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleEnglish": "Notice what the form is doing here: Both are correct in their register; mixing makes you sound bookish or street."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-கிற- formal / -க்கிற்- spoken",
+      "romanization": "-kiṟ- vs -kkir-",
+      "nativeText": "Contrast check for \"-கிற- formal / -க்கிற்- spoken\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "-kiṟ- vs -kkir-",
+      "exampleTarget": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Both are correct in their register; mixing makes you sound bookish or street.",
+      "korean": "-கிற- formal / -க்கிற்- spoken",
+      "english": "Contrast check for \"-கிற- formal / -க்கிற்- spoken\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Both are correct in their register; mixing makes you sound bookish or street."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-கிற- formal / -க்கிற்- spoken",
+      "romanization": "-kiṟ- vs -kkir-",
+      "nativeText": "Recall \"-கிற- formal / -க்கிற்- spoken\" from memory, then explain what would change if a nearby alternative replaced it in \"CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ\".",
+      "pronunciation": "-kiṟ- vs -kkir-",
+      "exampleTarget": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleNative": "Self-check against the model before moving on: Both are correct in their register; mixing makes you sound bookish or street.",
+      "korean": "-கிற- formal / -க்கிற்- spoken",
+      "english": "Recall \"-கிற- formal / -க்கிற்- spoken\" from memory, then explain what would change if a nearby alternative replaced it in \"CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ\".",
+      "example": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleEnglish": "Self-check against the model before moving on: Both are correct in their register; mixing makes you sound bookish or street."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-கிற- formal / -க்கிற்- spoken",
+      "romanization": "-kiṟ- vs -kkir-",
+      "nativeText": "Repair \"-கிற- formal / -க்கிற்- spoken\" inside \"CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Present-tense marker in Centhamizh is -கிற- (-kiṟ-, alveolar ṟ). In Koduntamizh (spoken), often contracted to -க்கிற்- with extra k or to -ர் -r alone. Diglossia in action: news Tamil uses one, friends use the other.",
+      "pronunciation": "-kiṟ- vs -kkir-",
+      "exampleTarget": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleNative": "Use the model as the repair target: Both are correct in their register; mixing makes you sound bookish or street.",
+      "korean": "-கிற- formal / -க்கிற்- spoken",
+      "english": "Repair \"-கிற- formal / -க்கிற்- spoken\" inside \"CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Present-tense marker in Centhamizh is -கிற- (-kiṟ-, alveolar ṟ). In Koduntamizh (spoken), often contracted to -க்கிற்- with extra k or to -ர் -r alone. Diglossia in action: news Tamil uses one, friends use the other.",
+      "example": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleEnglish": "Use the model as the repair target: Both are correct in their register; mixing makes you sound bookish or street."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-கிற- formal / -க்கிற்- spoken",
+      "romanization": "-kiṟ- vs -kkir-",
+      "nativeText": "Transfer \"-கிற- formal / -க்கிற்- spoken\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ\".",
+      "pronunciation": "-kiṟ- vs -kkir-",
+      "exampleTarget": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Both are correct in their register; mixing makes you sound bookish or street.",
+      "korean": "-கிற- formal / -க்கிற்- spoken",
+      "english": "Transfer \"-கிற- formal / -க்கிற்- spoken\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ\".",
+      "example": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Both are correct in their register; mixing makes you sound bookish or street."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-கிற- formal / -க்கிற்- spoken",
+      "romanization": "-kiṟ- vs -kkir-",
+      "nativeText": "Find one word or phrase that naturally travels with \"-கிற- formal / -க்கிற்- spoken\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "-kiṟ- vs -kkir-",
+      "exampleTarget": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Both are correct in their register; mixing makes you sound bookish or street.",
+      "korean": "-கிற- formal / -க்கிற்- spoken",
+      "english": "Find one word or phrase that naturally travels with \"-கிற- formal / -க்கிற்- spoken\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Both are correct in their register; mixing makes you sound bookish or street."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-கிற- formal / -க்கிற்- spoken",
+      "romanization": "-kiṟ- vs -kkir-",
+      "nativeText": "Listen for \"-கிற- formal / -க்கிற்- spoken\" inside \"CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "-kiṟ- vs -kkir-",
+      "exampleTarget": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Both are correct in their register; mixing makes you sound bookish or street.",
+      "korean": "-கிற- formal / -க்கிற்- spoken",
+      "english": "Listen for \"-கிற- formal / -க்கிற்- spoken\" inside \"CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Both are correct in their register; mixing makes you sound bookish or street."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-கிற- formal / -க்கிற்- spoken",
+      "romanization": "-kiṟ- vs -kkir-",
+      "nativeText": "Write \"-கிற- formal / -க்கிற்- spoken\" again without looking, then compare the exact written form against \"CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ\" before moving on.",
+      "pronunciation": "-kiṟ- vs -kkir-",
+      "exampleTarget": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleNative": "Use the written model as the final correctness check: Both are correct in their register; mixing makes you sound bookish or street.",
+      "korean": "-கிற- formal / -க்கிற்- spoken",
+      "english": "Write \"-கிற- formal / -க்கிற்- spoken\" again without looking, then compare the exact written form against \"CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ\" before moving on.",
+      "example": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleEnglish": "Use the written model as the final correctness check: Both are correct in their register; mixing makes you sound bookish or street."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "-கிற- formal / -க்கிற்- spoken",
+      "romanization": "-kiṟ- vs -kkir-",
+      "nativeText": "Check whether \"-கிற- formal / -க்கிற்- spoken\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Both are correct in their register; mixing makes you sound bookish or street.",
+      "pronunciation": "-kiṟ- vs -kkir-",
+      "exampleTarget": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Both are correct in their register; mixing makes you sound bookish or street.",
+      "korean": "-கிற- formal / -க்கிற்- spoken",
+      "english": "Check whether \"-கிற- formal / -க்கிற்- spoken\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Both are correct in their register; mixing makes you sound bookish or street.",
+      "example": "CENTHAMIZH: சாப்பிடுகிறேன் cāppiṭukiṟēṉ\nKODUNTAMIZH: சாப்பிடுறேன் cāppiṭuṟēṉ",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Both are correct in their register; mixing makes you sound bookish or street."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "romanization": "cāppiṭu",
+      "nativeText": "Model use for \"சாப்பிடு\": Eat. Geminate pp + retroflex ṭ. The most common Tamil verb after \"be/go\".",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleNative": "Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "korean": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "english": "Model use for \"சாப்பிடு\": Eat. Geminate pp + retroflex ṭ. The most common Tamil verb after \"be/go\".",
+      "example": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleEnglish": "Polite \"what are you eating?\"; same verb works for \"having\" food."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடு",
+      "romanization": "cāppiṭu",
+      "nativeText": "Usage focus for \"சாப்பிடு\": Eat. Geminate pp + retroflex ṭ. The most common Tamil verb after \"be/go\".",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleNative": "Notice what the form is doing here: Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "korean": "சாப்பிடு",
+      "english": "Usage focus for \"சாப்பிடு\": Eat. Geminate pp + retroflex ṭ. The most common Tamil verb after \"be/go\".",
+      "example": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleEnglish": "Notice what the form is doing here: Polite \"what are you eating?\"; same verb works for \"having\" food."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடு",
+      "romanization": "cāppiṭu",
+      "nativeText": "Contrast check for \"சாப்பிடு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "korean": "சாப்பிடு",
+      "english": "Contrast check for \"சாப்பிடு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: Polite \"what are you eating?\"; same verb works for \"having\" food."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடு",
+      "romanization": "cāppiṭu",
+      "nativeText": "Recall \"சாப்பிடு\" from memory, then explain what would change if a nearby alternative replaced it in \"நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?\".",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleNative": "Self-check against the model before moving on: Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "korean": "சாப்பிடு",
+      "english": "Recall \"சாப்பிடு\" from memory, then explain what would change if a nearby alternative replaced it in \"நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?\".",
+      "example": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleEnglish": "Self-check against the model before moving on: Polite \"what are you eating?\"; same verb works for \"having\" food."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடு",
+      "romanization": "cāppiṭu",
+      "nativeText": "Repair \"சாப்பிடு\" inside \"நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Eat. Geminate pp + retroflex ṭ. The most common Tamil verb after \"be/go\".",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleNative": "Use the model as the repair target: Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "korean": "சாப்பிடு",
+      "english": "Repair \"சாப்பிடு\" inside \"நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Eat. Geminate pp + retroflex ṭ. The most common Tamil verb after \"be/go\".",
+      "example": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleEnglish": "Use the model as the repair target: Polite \"what are you eating?\"; same verb works for \"having\" food."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடு",
+      "romanization": "cāppiṭu",
+      "nativeText": "Transfer \"சாப்பிடு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?\".",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "korean": "சாப்பிடு",
+      "english": "Transfer \"சாப்பிடு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?\".",
+      "example": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: Polite \"what are you eating?\"; same verb works for \"having\" food."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடு",
+      "romanization": "cāppiṭu",
+      "nativeText": "Find one word or phrase that naturally travels with \"சாப்பிடு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "korean": "சாப்பிடு",
+      "english": "Find one word or phrase that naturally travels with \"சாப்பிடு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: Polite \"what are you eating?\"; same verb works for \"having\" food."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடு",
+      "romanization": "cāppiṭu",
+      "nativeText": "Listen for \"சாப்பிடு\" inside \"நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "korean": "சாப்பிடு",
+      "english": "Listen for \"சாப்பிடு\" inside \"நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: Polite \"what are you eating?\"; same verb works for \"having\" food."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடு",
+      "romanization": "cāppiṭu",
+      "nativeText": "Write \"சாப்பிடு\" again without looking, then compare the exact written form against \"நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?\" before moving on.",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleNative": "Use the written model as the final correctness check: Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "korean": "சாப்பிடு",
+      "english": "Write \"சாப்பிடு\" again without looking, then compare the exact written form against \"நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?\" before moving on.",
+      "example": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleEnglish": "Use the written model as the final correctness check: Polite \"what are you eating?\"; same verb works for \"having\" food."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "சாப்பிடு",
+      "romanization": "cāppiṭu",
+      "nativeText": "Check whether \"சாப்பிடு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "pronunciation": "cāppiṭu",
+      "exampleTarget": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "korean": "சாப்பிடு",
+      "english": "Check whether \"சாப்பிடு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: Polite \"what are you eating?\"; same verb works for \"having\" food.",
+      "example": "நீங்கள் என்ன சாப்பிடுகிறீர்கள்? nīṅkaḷ eṉṉa cāppiṭukiṟīrkaḷ?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: Polite \"what are you eating?\"; same verb works for \"having\" food."
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "romanization": "eḻuntiru",
+      "nativeText": "Model use for \"எழுந்திரு\": Wake up. Compound: eḻu (rise) + tiru (be). The medial ழ is the Tamil signature.",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "\"I wake up at 6 AM.\"",
+      "korean": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "english": "Model use for \"எழுந்திரு\": Wake up. Compound: eḻu (rise) + tiru (be). The medial ழ is the Tamil signature.",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "\"I wake up at 6 AM.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுந்திரு",
+      "romanization": "eḻuntiru",
+      "nativeText": "Usage focus for \"எழுந்திரு\": Wake up. Compound: eḻu (rise) + tiru (be). The medial ழ is the Tamil signature.",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "Notice what the form is doing here: \"I wake up at 6 AM.\"",
+      "korean": "எழுந்திரு",
+      "english": "Usage focus for \"எழுந்திரு\": Wake up. Compound: eḻu (rise) + tiru (be). The medial ழ is the Tamil signature.",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "Notice what the form is doing here: \"I wake up at 6 AM.\""
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுந்திரு",
+      "romanization": "eḻuntiru",
+      "nativeText": "Contrast check for \"எழுந்திரு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I wake up at 6 AM.\"",
+      "korean": "எழுந்திரு",
+      "english": "Contrast check for \"எழுந்திரு\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: \"I wake up at 6 AM.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுந்திரு",
+      "romanization": "eḻuntiru",
+      "nativeText": "Recall \"எழுந்திரு\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.\".",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "Self-check against the model before moving on: \"I wake up at 6 AM.\"",
+      "korean": "எழுந்திரு",
+      "english": "Recall \"எழுந்திரு\" from memory, then explain what would change if a nearby alternative replaced it in \"நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.\".",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: \"I wake up at 6 AM.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுந்திரு",
+      "romanization": "eḻuntiru",
+      "nativeText": "Repair \"எழுந்திரு\" inside \"நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Wake up. Compound: eḻu (rise) + tiru (be). The medial ழ is the Tamil signature.",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "Use the model as the repair target: \"I wake up at 6 AM.\"",
+      "korean": "எழுந்திரு",
+      "english": "Repair \"எழுந்திரு\" inside \"நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Wake up. Compound: eḻu (rise) + tiru (be). The medial ழ is the Tamil signature.",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "Use the model as the repair target: \"I wake up at 6 AM.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுந்திரு",
+      "romanization": "eḻuntiru",
+      "nativeText": "Transfer \"எழுந்திரு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.\".",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I wake up at 6 AM.\"",
+      "korean": "எழுந்திரு",
+      "english": "Transfer \"எழுந்திரு\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.\".",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: \"I wake up at 6 AM.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுந்திரு",
+      "romanization": "eḻuntiru",
+      "nativeText": "Find one word or phrase that naturally travels with \"எழுந்திரு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: \"I wake up at 6 AM.\"",
+      "korean": "எழுந்திரு",
+      "english": "Find one word or phrase that naturally travels with \"எழுந்திரு\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: \"I wake up at 6 AM.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுந்திரு",
+      "romanization": "eḻuntiru",
+      "nativeText": "Listen for \"எழுந்திரு\" inside \"நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I wake up at 6 AM.\"",
+      "korean": "எழுந்திரு",
+      "english": "Listen for \"எழுந்திரு\" inside \"நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: \"I wake up at 6 AM.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுந்திரு",
+      "romanization": "eḻuntiru",
+      "nativeText": "Write \"எழுந்திரு\" again without looking, then compare the exact written form against \"நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.\" before moving on.",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "Use the written model as the final correctness check: \"I wake up at 6 AM.\"",
+      "korean": "எழுந்திரு",
+      "english": "Write \"எழுந்திரு\" again without looking, then compare the exact written form against \"நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.\" before moving on.",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: \"I wake up at 6 AM.\""
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "எழுந்திரு",
+      "romanization": "eḻuntiru",
+      "nativeText": "Check whether \"எழுந்திரு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I wake up at 6 AM.\"",
+      "pronunciation": "eḻuntiru",
+      "exampleTarget": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: \"I wake up at 6 AM.\"",
+      "korean": "எழுந்திரு",
+      "english": "Check whether \"எழுந்திரு\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: \"I wake up at 6 AM.\"",
+      "example": "நான் காலை 6 மணிக்கு எழுந்திருக்கிறேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: \"I wake up at 6 AM.\""
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "romanization": "kālai",
+      "nativeText": "Model use for \"காலை\": Morning. Long ā + diphthong ai. Time range: roughly sunrise to ~10 AM.",
+      "pronunciation": "kālai",
+      "exampleTarget": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleNative": "In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "korean": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "english": "Model use for \"காலை\": Morning. Long ā + diphthong ai. Time range: roughly sunrise to ~10 AM.",
+      "example": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleEnglish": "In Centhamizh: kālai. In Koduntamizh: kāla."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "காலை",
+      "romanization": "kālai",
+      "nativeText": "Usage focus for \"காலை\": Morning. Long ā + diphthong ai. Time range: roughly sunrise to ~10 AM.",
+      "pronunciation": "kālai",
+      "exampleTarget": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleNative": "Notice what the form is doing here: In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "korean": "காலை",
+      "english": "Usage focus for \"காலை\": Morning. Long ā + diphthong ai. Time range: roughly sunrise to ~10 AM.",
+      "example": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleEnglish": "Notice what the form is doing here: In Centhamizh: kālai. In Koduntamizh: kāla."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "காலை",
+      "romanization": "kālai",
+      "nativeText": "Contrast check for \"காலை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kālai",
+      "exampleTarget": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "korean": "காலை",
+      "english": "Contrast check for \"காலை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: In Centhamizh: kālai. In Koduntamizh: kāla."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "காலை",
+      "romanization": "kālai",
+      "nativeText": "Recall \"காலை\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"\".",
+      "pronunciation": "kālai",
+      "exampleTarget": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleNative": "Self-check against the model before moving on: In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "korean": "காலை",
+      "english": "Recall \"காலை\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"\".",
+      "example": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleEnglish": "Self-check against the model before moving on: In Centhamizh: kālai. In Koduntamizh: kāla."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "காலை",
+      "romanization": "kālai",
+      "nativeText": "Repair \"காலை\" inside \"காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Morning. Long ā + diphthong ai. Time range: roughly sunrise to ~10 AM.",
+      "pronunciation": "kālai",
+      "exampleTarget": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleNative": "Use the model as the repair target: In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "korean": "காலை",
+      "english": "Repair \"காலை\" inside \"காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Morning. Long ā + diphthong ai. Time range: roughly sunrise to ~10 AM.",
+      "example": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleEnglish": "Use the model as the repair target: In Centhamizh: kālai. In Koduntamizh: kāla."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "காலை",
+      "romanization": "kālai",
+      "nativeText": "Transfer \"காலை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"\".",
+      "pronunciation": "kālai",
+      "exampleTarget": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "korean": "காலை",
+      "english": "Transfer \"காலை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"\".",
+      "example": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: In Centhamizh: kālai. In Koduntamizh: kāla."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "காலை",
+      "romanization": "kālai",
+      "nativeText": "Find one word or phrase that naturally travels with \"காலை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kālai",
+      "exampleTarget": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "korean": "காலை",
+      "english": "Find one word or phrase that naturally travels with \"காலை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: In Centhamizh: kālai. In Koduntamizh: kāla."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "காலை",
+      "romanization": "kālai",
+      "nativeText": "Listen for \"காலை\" inside \"காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kālai",
+      "exampleTarget": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "korean": "காலை",
+      "english": "Listen for \"காலை\" inside \"காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: In Centhamizh: kālai. In Koduntamizh: kāla."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "காலை",
+      "romanization": "kālai",
+      "nativeText": "Write \"காலை\" again without looking, then compare the exact written form against \"காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"\" before moving on.",
+      "pronunciation": "kālai",
+      "exampleTarget": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleNative": "Use the written model as the final correctness check: In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "korean": "காலை",
+      "english": "Write \"காலை\" again without looking, then compare the exact written form against \"காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"\" before moving on.",
+      "example": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleEnglish": "Use the written model as the final correctness check: In Centhamizh: kālai. In Koduntamizh: kāla."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit04dailyroutines-vocabulary-1",
+        "ta-level1unit04dailyroutines-vocabulary-2",
+        "ta-level1unit04dailyroutines-grammar-1",
+        "ta-level1unit04dailyroutines-grammar-2",
+        "ta-level1unit04dailyroutines-reading",
+        "ta-level1unit04dailyroutines-listening",
+        "ta-level1unit04dailyroutines-writing",
+        "ta-level1unit04dailyroutines-task"
+      ],
+      "targetText": "காலை",
+      "romanization": "kālai",
+      "nativeText": "Check whether \"காலை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "pronunciation": "kālai",
+      "exampleTarget": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "korean": "காலை",
+      "english": "Check whether \"காலை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: In Centhamizh: kālai. In Koduntamizh: kāla.",
+      "example": "காலை வணக்கம். kālai vaṇakkam. \"Good morning.\"",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: In Centhamizh: kālai. In Koduntamizh: kāla."
+    }
+  ]
 };
-
-module.exports = lesson;

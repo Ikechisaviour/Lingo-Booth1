@@ -36,10 +36,11 @@ for (const lang of beginnerLanguages) {
   }
 
   const keys = Object.keys(curriculum);
-  const lessons = Object.values(curriculum);
+  const level1Keys = keys.filter((key) => /^level1/i.test(key));
+  const lessons = level1Keys.map((key) => curriculum[key]);
 
-  if (keys.length !== expectedUnitPrefixes.length + 1) {
-    issues.push(`${lang}: expected ${expectedUnitPrefixes.length + 1} Level 1 lessons, found ${keys.length}`);
+  if (level1Keys.length !== expectedUnitPrefixes.length + 1) {
+    issues.push(`${lang}: expected ${expectedUnitPrefixes.length + 1} Level 1 lessons, found ${level1Keys.length}`);
   }
 
   if (!curriculum.level1Foundation) {
@@ -47,13 +48,13 @@ for (const lang of beginnerLanguages) {
   }
 
   expectedUnitPrefixes.forEach((prefix) => {
-    if (!keys.some((key) => key.startsWith(prefix))) {
+    if (!level1Keys.some((key) => key.startsWith(prefix))) {
       issues.push(`${lang}: missing unit with prefix ${prefix}`);
     }
   });
 
   lessons.forEach((lesson, index) => {
-    const key = keys[index];
+    const key = level1Keys[index];
     if (lesson.targetLang !== lang) {
       issues.push(`${lang}: ${key} has targetLang "${lesson.targetLang}"`);
     }

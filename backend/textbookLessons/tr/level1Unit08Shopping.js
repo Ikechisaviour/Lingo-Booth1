@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('tr', {
-  slug: 'tr-l1u8',
-  title: 'Level 1 · Unit 8: Alışveriş — Shopping',
-  category: 'shopping',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Shop for everyday items, ask prices, compare options, and pay.',
-  vocabularyGoal: 'Use price, color, size, and payment words.',
-  grammarGoal: 'Use `bu/şu`, accusative-marked specific objects, and comparison with `daha`.',
-  speakingGoal: 'Ask a price, request one item, and compare two options.',
-  task: 'Buy one practical item in a shop or pazar.',
-  expressionPractice: [
-    practice('asking-price', 'Asking price', 'Use `bu ne kadar?`.'),
-    practice('choosing-item', 'Choosing item', 'Use `bunu istiyorum`.'),
-    practice('comparing', 'Comparing items', 'Use `daha ucuz`.'),
+module.exports = {
+  "title": "Level 1 · Unit 8: Alışveriş — Shopping",
+  "category": "shopping",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "tr-level1unit08shopping-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Shop for everyday items, ask prices, compare options, and pay."
+      ],
+      "task": "Buy one practical item in a shop or pazar."
+    },
+    {
+      "id": "tr-level1unit08shopping-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "tr-level1unit08shopping-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 8: Alışveriş — Shopping with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "tr-level1unit08shopping-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 8: Alışveriş — Shopping sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "tr-level1unit08shopping-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Shop for everyday items, ask prices, compare options, and pay."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "tr-level1unit08shopping-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 8: Alışveriş — Shopping with one nearby Turkish form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "tr-level1unit08shopping-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "tr-level1unit08shopping-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "tr-level1unit08shopping-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "tr-level1unit08shopping-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "tr-level1unit08shopping-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Buy one practical item in a shop or pazar."
+      ],
+      "task": "Buy one practical item in a shop or pazar."
+    }
   ],
-  relatedPools: ['topic-shopping', 'topic-service'],
-  items: [
-    item('bu ne kadar?', 'bu ne ka-DAR', '“How much is this?” A core shopping question.', 'Bu çanta ne kadar?', '“How much is this bag?”'),
-    item('bunu istiyorum', 'bu-NU is-ti-YO-rum', '“I want this one.” The accusative `-u` marks a specific object.', 'Bunu istiyorum, şunu değil.', '“I want this one, not that one.”'),
-    item('daha ucuz', 'da-HA u-JUZ', '“Cheaper.” `Daha` forms the comparison before the adjective.', 'Daha ucuz bir model var mı?', '“Is there a cheaper model?”'),
-    item('pahalı', 'pa-ha-LI', '“Expensive.” A simple adjective often enough for polite hesitation.', 'Bu biraz pahalı.', '“This is a little expensive.”'),
-    item('büyük beden', 'bü-YÜK be-DEN', '“Large size.” A practical clothing phrase.', 'Büyük beden var mı?', '“Do you have a large size?”'),
-    item('kırmızı', 'kır-mı-ZI', '“Red.” Color adjectives usually come before the noun.', 'Kırmızı gömlek arıyorum.', '“I am looking for a red shirt.”'),
-    item('bir kilo', 'bir ki-LO', '“One kilo.” Food shopping uses measures naturally before nouns.', 'Bir kilo elma istiyorum.', '“I want one kilo of apples.”'),
-    item('nakit / kartla', 'na-KİT / kart-LA', '“Cash / by card.” `-la` marks instrument or means.', 'Kartla ödeyebilir miyim?', '“Can I pay by card?”'),
+  "expressionPractice": [
+    {
+      "id": "asking-price",
+      "label": "Asking price",
+      "goal": "Use `bu ne kadar?`."
+    },
+    {
+      "id": "choosing-item",
+      "label": "Choosing item",
+      "goal": "Use `bunu istiyorum`."
+    },
+    {
+      "id": "comparing",
+      "label": "Comparing items",
+      "goal": "Use `daha ucuz`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-shopping",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-orientation"
+      ],
+      "targetText": "ders hedefi",
+      "romanization": "",
+      "nativeText": "Shop for everyday items, ask prices, compare options, and pay.",
+      "pronunciation": "",
+      "exampleTarget": "ders hedefi",
+      "exampleNative": "The whole lesson is built toward this outcome: Buy one practical item in a shop or pazar.",
+      "korean": "ders hedefi",
+      "english": "Shop for everyday items, ask prices, compare options, and pay.",
+      "example": "ders hedefi",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Buy one practical item in a shop or pazar."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit08shopping-pronunciation"
+      ],
+      "targetText": "ses kontrolü",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bu çanta ne kadar?\".",
+      "pronunciation": "",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "ses kontrolü",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bu çanta ne kadar?\".",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 8: Alışveriş — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "Use the key language of Level 1 · Unit 8: Alışveriş — Shopping with the register and setting that the lesson requires.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-2"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 8: Alışveriş — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "“I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 8: Alışveriş — Shopping sound precise rather than merely understandable.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "“I want this one, not that one.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit08shopping-grammar-1"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "",
+      "nativeText": "Shop for everyday items, ask prices, compare options, and pay.",
+      "pronunciation": "",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "Shop for everyday items, ask prices, compare options, and pay.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "tr-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 8: Alışveriş — Shopping with one nearby Turkish form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "“I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "Contrast the main pattern in Level 1 · Unit 8: Alışveriş — Shopping with one nearby Turkish form so the learner can avoid literal translation.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "“I want this one, not that one.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "tr-level1unit08shopping-reading"
+      ],
+      "targetText": "okuma modeli",
+      "romanization": "",
+      "nativeText": "Read \"Kartla ödeyebilir miyim?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "okuma modeli",
+      "english": "Read \"Kartla ödeyebilir miyim?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit08shopping-listening"
+      ],
+      "targetText": "diyalog modeli",
+      "romanization": "",
+      "nativeText": "Hear \"Kartla ödeyebilir miyim?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "diyalog modeli",
+      "english": "Hear \"Kartla ödeyebilir miyim?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "tr-level1unit08shopping-writing"
+      ],
+      "targetText": "yazma alıştırması",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Bu çanta ne kadar?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "yazma alıştırması",
+      "english": "Write your own version after studying \"Bu çanta ne kadar?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit08shopping-culture"
+      ],
+      "targetText": "kullanım ve bağlam",
+      "romanization": "",
+      "nativeText": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "“I want this one, not that one.”",
+      "korean": "kullanım ve bağlam",
+      "english": "Notice the politeness, hospitality, or relationship cue that changes how this Turkish is naturally used.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "“I want this one, not that one.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "son görev",
+      "romanization": "",
+      "nativeText": "Buy one practical item in a shop or pazar.",
+      "pronunciation": "",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "Buy one practical item in a shop or pazar.",
+      "korean": "son görev",
+      "english": "Buy one practical item in a shop or pazar.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "Buy one practical item in a shop or pazar."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "yaygın hata",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Bunu istiyorum, şunu değil.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I want this one, not that one.”",
+      "korean": "yaygın hata",
+      "english": "Watch for literal-translation mistakes around suffix chains, vowel harmony, evidentiality, and word order. Begin by checking \"Bunu istiyorum, şunu değil.\" against the model.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I want this one, not that one.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-culture"
+      ],
+      "targetText": "üslup",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Bu çanta ne kadar?\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "üslup",
+      "english": "Check whether the setting calls for sen, siz, a service tone, or a more formal wording before selecting the final form. Compare the social fit of \"Bu çanta ne kadar?\" before reusing it elsewhere.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "akıcılık",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Kartla ödeyebilir miyim?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "akıcılık",
+      "english": "Say the idea as one connected Turkish message rather than as separate translated fragments. Aim to carry \"Kartla ödeyebilir miyim?\" as one thought.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "uygulama",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Bu çanta ne kadar?\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "uygulama",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Bu çanta ne kadar?\" and move it into your own life.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-grammar-1"
+      ],
+      "targetText": "hatırlama",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"bu ne kadar?\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "bu ne kadar?",
+      "exampleNative": "“How much is this?” A core shopping question.",
+      "korean": "hatırlama",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"bu ne kadar?\" before looking back.",
+      "example": "bu ne kadar?",
+      "exampleEnglish": "“How much is this?” A core shopping question."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-writing"
+      ],
+      "targetText": "genişletme",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Kartla ödeyebilir miyim?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "genişletme",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Kartla ödeyebilir miyim?\" rather than restarting from a blank sentence.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading"
+      ],
+      "targetText": "karşılaştırma",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 8: Alışveriş — Shopping with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Bunu istiyorum, şunu değil.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "“I want this one, not that one.”",
+      "korean": "karşılaştırma",
+      "english": "Compare the central form in Level 1 · Unit 8: Alışveriş — Shopping with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Bunu istiyorum, şunu değil.\" as the comparison line.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "“I want this one, not that one.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "tr-level1unit08shopping-pronunciation"
+      ],
+      "targetText": "telaffuz düzeltme",
+      "romanization": "",
+      "nativeText": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bu çanta ne kadar?\".",
+      "pronunciation": "",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "telaffuz düzeltme",
+      "english": "Keep Turkish vowel harmony, dotted-versus-dotless i, stress, and suffix boundaries clear enough that the sentence remains easy to parse. In this lesson, listen especially while saying \"Bu çanta ne kadar?\".",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "diyalog varyasyonu",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Kartla ödeyebilir miyim?\".",
+      "pronunciation": "",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "diyalog varyasyonu",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Kartla ödeyebilir miyim?\".",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-writing"
+      ],
+      "targetText": "cümle kurma",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Bu çanta ne kadar?\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "cümle kurma",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Bu çanta ne kadar?\" one layer at a time.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "hızlı kontrol",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Bunu istiyorum, şunu değil.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "“I want this one, not that one.”",
+      "korean": "hızlı kontrol",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Bunu istiyorum, şunu değil.\" as the deciding example.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "“I want this one, not that one.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-culture",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "değerlendirme",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Kartla ödeyebilir miyim?\".",
+      "pronunciation": "",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "değerlendirme",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Kartla ödeyebilir miyim?\".",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "bu ne ka-DAR",
+      "nativeText": "“How much is this?” A core shopping question.",
+      "pronunciation": "bu ne ka-DAR",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "“How much is this?” A core shopping question.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "Bu çanta ne kadar?",
+      "romanization": "bu ne ka-DAR",
+      "nativeText": "Model use for \"Bu çanta ne kadar?\": “How much is this bag?”",
+      "pronunciation": "bu ne ka-DAR",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "“How much is this bag?”",
+      "korean": "Bu çanta ne kadar?",
+      "english": "Model use for \"Bu çanta ne kadar?\": “How much is this bag?”",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "“How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "bu ne ka-DAR",
+      "nativeText": "Usage focus for \"bu ne kadar?\": Use the key language of Level 1 · Unit 8: Alışveriş — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "bu ne ka-DAR",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "Notice what the form is doing here: “How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "Usage focus for \"bu ne kadar?\": Use the key language of Level 1 · Unit 8: Alışveriş — Shopping with the register and setting that the lesson requires.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "Notice what the form is doing here: “How much is this bag?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "bu ne ka-DAR",
+      "nativeText": "Contrast check for \"bu ne kadar?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bu ne ka-DAR",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "Contrast check for \"bu ne kadar?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "bu ne ka-DAR",
+      "nativeText": "Recall \"bu ne kadar?\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu çanta ne kadar?\".",
+      "pronunciation": "bu ne ka-DAR",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "Self-check against the model before moving on: “How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "Recall \"bu ne kadar?\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu çanta ne kadar?\".",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "Self-check against the model before moving on: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "bu ne ka-DAR",
+      "nativeText": "Repair \"bu ne kadar?\" inside \"Bu çanta ne kadar?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 8: Alışveriş — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "bu ne ka-DAR",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "Use the model as the repair target: “How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "Repair \"bu ne kadar?\" inside \"Bu çanta ne kadar?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 8: Alışveriş — Shopping with the register and setting that the lesson requires.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "Use the model as the repair target: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "bu ne ka-DAR",
+      "nativeText": "Transfer \"bu ne kadar?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu çanta ne kadar?\".",
+      "pronunciation": "bu ne ka-DAR",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "Transfer \"bu ne kadar?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu çanta ne kadar?\".",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "bu ne ka-DAR",
+      "nativeText": "Find one word or phrase that naturally travels with \"bu ne kadar?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bu ne ka-DAR",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "Find one word or phrase that naturally travels with \"bu ne kadar?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "bu ne ka-DAR",
+      "nativeText": "Listen for \"bu ne kadar?\" inside \"Bu çanta ne kadar?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bu ne ka-DAR",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "Listen for \"bu ne kadar?\" inside \"Bu çanta ne kadar?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "bu ne ka-DAR",
+      "nativeText": "Write \"bu ne kadar?\" again without looking, then compare the exact written form against \"Bu çanta ne kadar?\" before moving on.",
+      "pronunciation": "bu ne ka-DAR",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "Use the written model as the final correctness check: “How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "Write \"bu ne kadar?\" again without looking, then compare the exact written form against \"Bu çanta ne kadar?\" before moving on.",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How much is this bag?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bu ne kadar?",
+      "romanization": "bu ne ka-DAR",
+      "nativeText": "Check whether \"bu ne kadar?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is this bag?”",
+      "pronunciation": "bu ne ka-DAR",
+      "exampleTarget": "Bu çanta ne kadar?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How much is this bag?”",
+      "korean": "bu ne kadar?",
+      "english": "Check whether \"bu ne kadar?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much is this bag?”",
+      "example": "Bu çanta ne kadar?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How much is this bag?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "bu-NU is-ti-YO-rum",
+      "nativeText": "“I want this one.” The accusative `-u` marks a specific object.",
+      "pronunciation": "bu-NU is-ti-YO-rum",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "“I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "“I want this one.” The accusative `-u` marks a specific object.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "“I want this one, not that one.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "Bunu istiyorum, şunu değil.",
+      "romanization": "bu-NU is-ti-YO-rum",
+      "nativeText": "Model use for \"Bunu istiyorum, şunu değil.\": “I want this one, not that one.”",
+      "pronunciation": "bu-NU is-ti-YO-rum",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "“I want this one, not that one.”",
+      "korean": "Bunu istiyorum, şunu değil.",
+      "english": "Model use for \"Bunu istiyorum, şunu değil.\": “I want this one, not that one.”",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "“I want this one, not that one.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "bu-NU is-ti-YO-rum",
+      "nativeText": "Usage focus for \"bunu istiyorum\": Distinguish the nearby wording choices that make Level 1 · Unit 8: Alışveriş — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "bu-NU is-ti-YO-rum",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "Notice what the form is doing here: “I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "Usage focus for \"bunu istiyorum\": Distinguish the nearby wording choices that make Level 1 · Unit 8: Alışveriş — Shopping sound precise rather than merely understandable.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "Notice what the form is doing here: “I want this one, not that one.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "bu-NU is-ti-YO-rum",
+      "nativeText": "Contrast check for \"bunu istiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bu-NU is-ti-YO-rum",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "Contrast check for \"bunu istiyorum\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want this one, not that one.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "bu-NU is-ti-YO-rum",
+      "nativeText": "Recall \"bunu istiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Bunu istiyorum, şunu değil.\".",
+      "pronunciation": "bu-NU is-ti-YO-rum",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "Self-check against the model before moving on: “I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "Recall \"bunu istiyorum\" from memory, then explain what would change if a nearby alternative replaced it in \"Bunu istiyorum, şunu değil.\".",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want this one, not that one.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "bu-NU is-ti-YO-rum",
+      "nativeText": "Repair \"bunu istiyorum\" inside \"Bunu istiyorum, şunu değil.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 8: Alışveriş — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "bu-NU is-ti-YO-rum",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "Use the model as the repair target: “I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "Repair \"bunu istiyorum\" inside \"Bunu istiyorum, şunu değil.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 8: Alışveriş — Shopping sound precise rather than merely understandable.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "Use the model as the repair target: “I want this one, not that one.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "bu-NU is-ti-YO-rum",
+      "nativeText": "Transfer \"bunu istiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bunu istiyorum, şunu değil.\".",
+      "pronunciation": "bu-NU is-ti-YO-rum",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "Transfer \"bunu istiyorum\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bunu istiyorum, şunu değil.\".",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want this one, not that one.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "bu-NU is-ti-YO-rum",
+      "nativeText": "Find one word or phrase that naturally travels with \"bunu istiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bu-NU is-ti-YO-rum",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "Find one word or phrase that naturally travels with \"bunu istiyorum\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want this one, not that one.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "bu-NU is-ti-YO-rum",
+      "nativeText": "Listen for \"bunu istiyorum\" inside \"Bunu istiyorum, şunu değil.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bu-NU is-ti-YO-rum",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "Listen for \"bunu istiyorum\" inside \"Bunu istiyorum, şunu değil.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want this one, not that one.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "bu-NU is-ti-YO-rum",
+      "nativeText": "Write \"bunu istiyorum\" again without looking, then compare the exact written form against \"Bunu istiyorum, şunu değil.\" before moving on.",
+      "pronunciation": "bu-NU is-ti-YO-rum",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "Use the written model as the final correctness check: “I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "Write \"bunu istiyorum\" again without looking, then compare the exact written form against \"Bunu istiyorum, şunu değil.\" before moving on.",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want this one, not that one.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bunu istiyorum",
+      "romanization": "bu-NU is-ti-YO-rum",
+      "nativeText": "Check whether \"bunu istiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want this one, not that one.”",
+      "pronunciation": "bu-NU is-ti-YO-rum",
+      "exampleTarget": "Bunu istiyorum, şunu değil.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want this one, not that one.”",
+      "korean": "bunu istiyorum",
+      "english": "Check whether \"bunu istiyorum\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want this one, not that one.”",
+      "example": "Bunu istiyorum, şunu değil.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want this one, not that one.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "daha ucuz",
+      "romanization": "da-HA u-JUZ",
+      "nativeText": "“Cheaper.” `Daha` forms the comparison before the adjective.",
+      "pronunciation": "da-HA u-JUZ",
+      "exampleTarget": "Daha ucuz bir model var mı?",
+      "exampleNative": "“Is there a cheaper model?”",
+      "korean": "daha ucuz",
+      "english": "“Cheaper.” `Daha` forms the comparison before the adjective.",
+      "example": "Daha ucuz bir model var mı?",
+      "exampleEnglish": "“Is there a cheaper model?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "Daha ucuz bir model var mı?",
+      "romanization": "da-HA u-JUZ",
+      "nativeText": "Model use for \"Daha ucuz bir model var mı?\": “Is there a cheaper model?”",
+      "pronunciation": "da-HA u-JUZ",
+      "exampleTarget": "Daha ucuz bir model var mı?",
+      "exampleNative": "“Is there a cheaper model?”",
+      "korean": "Daha ucuz bir model var mı?",
+      "english": "Model use for \"Daha ucuz bir model var mı?\": “Is there a cheaper model?”",
+      "example": "Daha ucuz bir model var mı?",
+      "exampleEnglish": "“Is there a cheaper model?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "daha ucuz",
+      "romanization": "da-HA u-JUZ",
+      "nativeText": "Usage focus for \"daha ucuz\": “Cheaper.” `Daha` forms the comparison before the adjective.",
+      "pronunciation": "da-HA u-JUZ",
+      "exampleTarget": "Daha ucuz bir model var mı?",
+      "exampleNative": "Notice what the form is doing here: “Is there a cheaper model?”",
+      "korean": "daha ucuz",
+      "english": "Usage focus for \"daha ucuz\": “Cheaper.” `Daha` forms the comparison before the adjective.",
+      "example": "Daha ucuz bir model var mı?",
+      "exampleEnglish": "Notice what the form is doing here: “Is there a cheaper model?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "daha ucuz",
+      "romanization": "da-HA u-JUZ",
+      "nativeText": "Contrast check for \"daha ucuz\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "da-HA u-JUZ",
+      "exampleTarget": "Daha ucuz bir model var mı?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Is there a cheaper model?”",
+      "korean": "daha ucuz",
+      "english": "Contrast check for \"daha ucuz\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Daha ucuz bir model var mı?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Is there a cheaper model?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "daha ucuz",
+      "romanization": "da-HA u-JUZ",
+      "nativeText": "Recall \"daha ucuz\" from memory, then explain what would change if a nearby alternative replaced it in \"Daha ucuz bir model var mı?\".",
+      "pronunciation": "da-HA u-JUZ",
+      "exampleTarget": "Daha ucuz bir model var mı?",
+      "exampleNative": "Self-check against the model before moving on: “Is there a cheaper model?”",
+      "korean": "daha ucuz",
+      "english": "Recall \"daha ucuz\" from memory, then explain what would change if a nearby alternative replaced it in \"Daha ucuz bir model var mı?\".",
+      "example": "Daha ucuz bir model var mı?",
+      "exampleEnglish": "Self-check against the model before moving on: “Is there a cheaper model?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "daha ucuz",
+      "romanization": "da-HA u-JUZ",
+      "nativeText": "Repair \"daha ucuz\" inside \"Daha ucuz bir model var mı?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cheaper.” `Daha` forms the comparison before the adjective.",
+      "pronunciation": "da-HA u-JUZ",
+      "exampleTarget": "Daha ucuz bir model var mı?",
+      "exampleNative": "Use the model as the repair target: “Is there a cheaper model?”",
+      "korean": "daha ucuz",
+      "english": "Repair \"daha ucuz\" inside \"Daha ucuz bir model var mı?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cheaper.” `Daha` forms the comparison before the adjective.",
+      "example": "Daha ucuz bir model var mı?",
+      "exampleEnglish": "Use the model as the repair target: “Is there a cheaper model?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "daha ucuz",
+      "romanization": "da-HA u-JUZ",
+      "nativeText": "Transfer \"daha ucuz\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Daha ucuz bir model var mı?\".",
+      "pronunciation": "da-HA u-JUZ",
+      "exampleTarget": "Daha ucuz bir model var mı?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Is there a cheaper model?”",
+      "korean": "daha ucuz",
+      "english": "Transfer \"daha ucuz\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Daha ucuz bir model var mı?\".",
+      "example": "Daha ucuz bir model var mı?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Is there a cheaper model?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "daha ucuz",
+      "romanization": "da-HA u-JUZ",
+      "nativeText": "Find one word or phrase that naturally travels with \"daha ucuz\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "da-HA u-JUZ",
+      "exampleTarget": "Daha ucuz bir model var mı?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Is there a cheaper model?”",
+      "korean": "daha ucuz",
+      "english": "Find one word or phrase that naturally travels with \"daha ucuz\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Daha ucuz bir model var mı?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Is there a cheaper model?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "daha ucuz",
+      "romanization": "da-HA u-JUZ",
+      "nativeText": "Listen for \"daha ucuz\" inside \"Daha ucuz bir model var mı?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "da-HA u-JUZ",
+      "exampleTarget": "Daha ucuz bir model var mı?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Is there a cheaper model?”",
+      "korean": "daha ucuz",
+      "english": "Listen for \"daha ucuz\" inside \"Daha ucuz bir model var mı?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Daha ucuz bir model var mı?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Is there a cheaper model?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "daha ucuz",
+      "romanization": "da-HA u-JUZ",
+      "nativeText": "Write \"daha ucuz\" again without looking, then compare the exact written form against \"Daha ucuz bir model var mı?\" before moving on.",
+      "pronunciation": "da-HA u-JUZ",
+      "exampleTarget": "Daha ucuz bir model var mı?",
+      "exampleNative": "Use the written model as the final correctness check: “Is there a cheaper model?”",
+      "korean": "daha ucuz",
+      "english": "Write \"daha ucuz\" again without looking, then compare the exact written form against \"Daha ucuz bir model var mı?\" before moving on.",
+      "example": "Daha ucuz bir model var mı?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Is there a cheaper model?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "daha ucuz",
+      "romanization": "da-HA u-JUZ",
+      "nativeText": "Check whether \"daha ucuz\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Is there a cheaper model?”",
+      "pronunciation": "da-HA u-JUZ",
+      "exampleTarget": "Daha ucuz bir model var mı?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Is there a cheaper model?”",
+      "korean": "daha ucuz",
+      "english": "Check whether \"daha ucuz\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Is there a cheaper model?”",
+      "example": "Daha ucuz bir model var mı?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Is there a cheaper model?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "pahalı",
+      "romanization": "pa-ha-LI",
+      "nativeText": "“Expensive.” A simple adjective often enough for polite hesitation.",
+      "pronunciation": "pa-ha-LI",
+      "exampleTarget": "Bu biraz pahalı.",
+      "exampleNative": "“This is a little expensive.”",
+      "korean": "pahalı",
+      "english": "“Expensive.” A simple adjective often enough for polite hesitation.",
+      "example": "Bu biraz pahalı.",
+      "exampleEnglish": "“This is a little expensive.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "Bu biraz pahalı.",
+      "romanization": "pa-ha-LI",
+      "nativeText": "Model use for \"Bu biraz pahalı.\": “This is a little expensive.”",
+      "pronunciation": "pa-ha-LI",
+      "exampleTarget": "Bu biraz pahalı.",
+      "exampleNative": "“This is a little expensive.”",
+      "korean": "Bu biraz pahalı.",
+      "english": "Model use for \"Bu biraz pahalı.\": “This is a little expensive.”",
+      "example": "Bu biraz pahalı.",
+      "exampleEnglish": "“This is a little expensive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "pahalı",
+      "romanization": "pa-ha-LI",
+      "nativeText": "Usage focus for \"pahalı\": “Expensive.” A simple adjective often enough for polite hesitation.",
+      "pronunciation": "pa-ha-LI",
+      "exampleTarget": "Bu biraz pahalı.",
+      "exampleNative": "Notice what the form is doing here: “This is a little expensive.”",
+      "korean": "pahalı",
+      "english": "Usage focus for \"pahalı\": “Expensive.” A simple adjective often enough for polite hesitation.",
+      "example": "Bu biraz pahalı.",
+      "exampleEnglish": "Notice what the form is doing here: “This is a little expensive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "pahalı",
+      "romanization": "pa-ha-LI",
+      "nativeText": "Contrast check for \"pahalı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pa-ha-LI",
+      "exampleTarget": "Bu biraz pahalı.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This is a little expensive.”",
+      "korean": "pahalı",
+      "english": "Contrast check for \"pahalı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bu biraz pahalı.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This is a little expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "pahalı",
+      "romanization": "pa-ha-LI",
+      "nativeText": "Recall \"pahalı\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu biraz pahalı.\".",
+      "pronunciation": "pa-ha-LI",
+      "exampleTarget": "Bu biraz pahalı.",
+      "exampleNative": "Self-check against the model before moving on: “This is a little expensive.”",
+      "korean": "pahalı",
+      "english": "Recall \"pahalı\" from memory, then explain what would change if a nearby alternative replaced it in \"Bu biraz pahalı.\".",
+      "example": "Bu biraz pahalı.",
+      "exampleEnglish": "Self-check against the model before moving on: “This is a little expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "pahalı",
+      "romanization": "pa-ha-LI",
+      "nativeText": "Repair \"pahalı\" inside \"Bu biraz pahalı.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Expensive.” A simple adjective often enough for polite hesitation.",
+      "pronunciation": "pa-ha-LI",
+      "exampleTarget": "Bu biraz pahalı.",
+      "exampleNative": "Use the model as the repair target: “This is a little expensive.”",
+      "korean": "pahalı",
+      "english": "Repair \"pahalı\" inside \"Bu biraz pahalı.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Expensive.” A simple adjective often enough for polite hesitation.",
+      "example": "Bu biraz pahalı.",
+      "exampleEnglish": "Use the model as the repair target: “This is a little expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "pahalı",
+      "romanization": "pa-ha-LI",
+      "nativeText": "Transfer \"pahalı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu biraz pahalı.\".",
+      "pronunciation": "pa-ha-LI",
+      "exampleTarget": "Bu biraz pahalı.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This is a little expensive.”",
+      "korean": "pahalı",
+      "english": "Transfer \"pahalı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bu biraz pahalı.\".",
+      "example": "Bu biraz pahalı.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This is a little expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "pahalı",
+      "romanization": "pa-ha-LI",
+      "nativeText": "Find one word or phrase that naturally travels with \"pahalı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pa-ha-LI",
+      "exampleTarget": "Bu biraz pahalı.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This is a little expensive.”",
+      "korean": "pahalı",
+      "english": "Find one word or phrase that naturally travels with \"pahalı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bu biraz pahalı.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This is a little expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "pahalı",
+      "romanization": "pa-ha-LI",
+      "nativeText": "Listen for \"pahalı\" inside \"Bu biraz pahalı.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pa-ha-LI",
+      "exampleTarget": "Bu biraz pahalı.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This is a little expensive.”",
+      "korean": "pahalı",
+      "english": "Listen for \"pahalı\" inside \"Bu biraz pahalı.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bu biraz pahalı.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This is a little expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "pahalı",
+      "romanization": "pa-ha-LI",
+      "nativeText": "Write \"pahalı\" again without looking, then compare the exact written form against \"Bu biraz pahalı.\" before moving on.",
+      "pronunciation": "pa-ha-LI",
+      "exampleTarget": "Bu biraz pahalı.",
+      "exampleNative": "Use the written model as the final correctness check: “This is a little expensive.”",
+      "korean": "pahalı",
+      "english": "Write \"pahalı\" again without looking, then compare the exact written form against \"Bu biraz pahalı.\" before moving on.",
+      "example": "Bu biraz pahalı.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This is a little expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "pahalı",
+      "romanization": "pa-ha-LI",
+      "nativeText": "Check whether \"pahalı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This is a little expensive.”",
+      "pronunciation": "pa-ha-LI",
+      "exampleTarget": "Bu biraz pahalı.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This is a little expensive.”",
+      "korean": "pahalı",
+      "english": "Check whether \"pahalı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This is a little expensive.”",
+      "example": "Bu biraz pahalı.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This is a little expensive.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "büyük beden",
+      "romanization": "bü-YÜK be-DEN",
+      "nativeText": "“Large size.” A practical clothing phrase.",
+      "pronunciation": "bü-YÜK be-DEN",
+      "exampleTarget": "Büyük beden var mı?",
+      "exampleNative": "“Do you have a large size?”",
+      "korean": "büyük beden",
+      "english": "“Large size.” A practical clothing phrase.",
+      "example": "Büyük beden var mı?",
+      "exampleEnglish": "“Do you have a large size?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "Büyük beden var mı?",
+      "romanization": "bü-YÜK be-DEN",
+      "nativeText": "Model use for \"Büyük beden var mı?\": “Do you have a large size?”",
+      "pronunciation": "bü-YÜK be-DEN",
+      "exampleTarget": "Büyük beden var mı?",
+      "exampleNative": "“Do you have a large size?”",
+      "korean": "Büyük beden var mı?",
+      "english": "Model use for \"Büyük beden var mı?\": “Do you have a large size?”",
+      "example": "Büyük beden var mı?",
+      "exampleEnglish": "“Do you have a large size?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "büyük beden",
+      "romanization": "bü-YÜK be-DEN",
+      "nativeText": "Usage focus for \"büyük beden\": “Large size.” A practical clothing phrase.",
+      "pronunciation": "bü-YÜK be-DEN",
+      "exampleTarget": "Büyük beden var mı?",
+      "exampleNative": "Notice what the form is doing here: “Do you have a large size?”",
+      "korean": "büyük beden",
+      "english": "Usage focus for \"büyük beden\": “Large size.” A practical clothing phrase.",
+      "example": "Büyük beden var mı?",
+      "exampleEnglish": "Notice what the form is doing here: “Do you have a large size?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "büyük beden",
+      "romanization": "bü-YÜK be-DEN",
+      "nativeText": "Contrast check for \"büyük beden\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bü-YÜK be-DEN",
+      "exampleTarget": "Büyük beden var mı?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have a large size?”",
+      "korean": "büyük beden",
+      "english": "Contrast check for \"büyük beden\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Büyük beden var mı?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "büyük beden",
+      "romanization": "bü-YÜK be-DEN",
+      "nativeText": "Recall \"büyük beden\" from memory, then explain what would change if a nearby alternative replaced it in \"Büyük beden var mı?\".",
+      "pronunciation": "bü-YÜK be-DEN",
+      "exampleTarget": "Büyük beden var mı?",
+      "exampleNative": "Self-check against the model before moving on: “Do you have a large size?”",
+      "korean": "büyük beden",
+      "english": "Recall \"büyük beden\" from memory, then explain what would change if a nearby alternative replaced it in \"Büyük beden var mı?\".",
+      "example": "Büyük beden var mı?",
+      "exampleEnglish": "Self-check against the model before moving on: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "büyük beden",
+      "romanization": "bü-YÜK be-DEN",
+      "nativeText": "Repair \"büyük beden\" inside \"Büyük beden var mı?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Large size.” A practical clothing phrase.",
+      "pronunciation": "bü-YÜK be-DEN",
+      "exampleTarget": "Büyük beden var mı?",
+      "exampleNative": "Use the model as the repair target: “Do you have a large size?”",
+      "korean": "büyük beden",
+      "english": "Repair \"büyük beden\" inside \"Büyük beden var mı?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Large size.” A practical clothing phrase.",
+      "example": "Büyük beden var mı?",
+      "exampleEnglish": "Use the model as the repair target: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "büyük beden",
+      "romanization": "bü-YÜK be-DEN",
+      "nativeText": "Transfer \"büyük beden\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Büyük beden var mı?\".",
+      "pronunciation": "bü-YÜK be-DEN",
+      "exampleTarget": "Büyük beden var mı?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have a large size?”",
+      "korean": "büyük beden",
+      "english": "Transfer \"büyük beden\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Büyük beden var mı?\".",
+      "example": "Büyük beden var mı?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "büyük beden",
+      "romanization": "bü-YÜK be-DEN",
+      "nativeText": "Find one word or phrase that naturally travels with \"büyük beden\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bü-YÜK be-DEN",
+      "exampleTarget": "Büyük beden var mı?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Do you have a large size?”",
+      "korean": "büyük beden",
+      "english": "Find one word or phrase that naturally travels with \"büyük beden\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Büyük beden var mı?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "büyük beden",
+      "romanization": "bü-YÜK be-DEN",
+      "nativeText": "Listen for \"büyük beden\" inside \"Büyük beden var mı?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bü-YÜK be-DEN",
+      "exampleTarget": "Büyük beden var mı?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have a large size?”",
+      "korean": "büyük beden",
+      "english": "Listen for \"büyük beden\" inside \"Büyük beden var mı?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Büyük beden var mı?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "büyük beden",
+      "romanization": "bü-YÜK be-DEN",
+      "nativeText": "Write \"büyük beden\" again without looking, then compare the exact written form against \"Büyük beden var mı?\" before moving on.",
+      "pronunciation": "bü-YÜK be-DEN",
+      "exampleTarget": "Büyük beden var mı?",
+      "exampleNative": "Use the written model as the final correctness check: “Do you have a large size?”",
+      "korean": "büyük beden",
+      "english": "Write \"büyük beden\" again without looking, then compare the exact written form against \"Büyük beden var mı?\" before moving on.",
+      "example": "Büyük beden var mı?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Do you have a large size?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "büyük beden",
+      "romanization": "bü-YÜK be-DEN",
+      "nativeText": "Check whether \"büyük beden\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”",
+      "pronunciation": "bü-YÜK be-DEN",
+      "exampleTarget": "Büyük beden var mı?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”",
+      "korean": "büyük beden",
+      "english": "Check whether \"büyük beden\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”",
+      "example": "Büyük beden var mı?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Do you have a large size?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "kırmızı",
+      "romanization": "kır-mı-ZI",
+      "nativeText": "“Red.” Color adjectives usually come before the noun.",
+      "pronunciation": "kır-mı-ZI",
+      "exampleTarget": "Kırmızı gömlek arıyorum.",
+      "exampleNative": "“I am looking for a red shirt.”",
+      "korean": "kırmızı",
+      "english": "“Red.” Color adjectives usually come before the noun.",
+      "example": "Kırmızı gömlek arıyorum.",
+      "exampleEnglish": "“I am looking for a red shirt.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "Kırmızı gömlek arıyorum.",
+      "romanization": "kır-mı-ZI",
+      "nativeText": "Model use for \"Kırmızı gömlek arıyorum.\": “I am looking for a red shirt.”",
+      "pronunciation": "kır-mı-ZI",
+      "exampleTarget": "Kırmızı gömlek arıyorum.",
+      "exampleNative": "“I am looking for a red shirt.”",
+      "korean": "Kırmızı gömlek arıyorum.",
+      "english": "Model use for \"Kırmızı gömlek arıyorum.\": “I am looking for a red shirt.”",
+      "example": "Kırmızı gömlek arıyorum.",
+      "exampleEnglish": "“I am looking for a red shirt.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "kırmızı",
+      "romanization": "kır-mı-ZI",
+      "nativeText": "Usage focus for \"kırmızı\": “Red.” Color adjectives usually come before the noun.",
+      "pronunciation": "kır-mı-ZI",
+      "exampleTarget": "Kırmızı gömlek arıyorum.",
+      "exampleNative": "Notice what the form is doing here: “I am looking for a red shirt.”",
+      "korean": "kırmızı",
+      "english": "Usage focus for \"kırmızı\": “Red.” Color adjectives usually come before the noun.",
+      "example": "Kırmızı gömlek arıyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I am looking for a red shirt.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "kırmızı",
+      "romanization": "kır-mı-ZI",
+      "nativeText": "Contrast check for \"kırmızı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kır-mı-ZI",
+      "exampleTarget": "Kırmızı gömlek arıyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am looking for a red shirt.”",
+      "korean": "kırmızı",
+      "english": "Contrast check for \"kırmızı\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kırmızı gömlek arıyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am looking for a red shirt.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "kırmızı",
+      "romanization": "kır-mı-ZI",
+      "nativeText": "Recall \"kırmızı\" from memory, then explain what would change if a nearby alternative replaced it in \"Kırmızı gömlek arıyorum.\".",
+      "pronunciation": "kır-mı-ZI",
+      "exampleTarget": "Kırmızı gömlek arıyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I am looking for a red shirt.”",
+      "korean": "kırmızı",
+      "english": "Recall \"kırmızı\" from memory, then explain what would change if a nearby alternative replaced it in \"Kırmızı gömlek arıyorum.\".",
+      "example": "Kırmızı gömlek arıyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am looking for a red shirt.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "kırmızı",
+      "romanization": "kır-mı-ZI",
+      "nativeText": "Repair \"kırmızı\" inside \"Kırmızı gömlek arıyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Red.” Color adjectives usually come before the noun.",
+      "pronunciation": "kır-mı-ZI",
+      "exampleTarget": "Kırmızı gömlek arıyorum.",
+      "exampleNative": "Use the model as the repair target: “I am looking for a red shirt.”",
+      "korean": "kırmızı",
+      "english": "Repair \"kırmızı\" inside \"Kırmızı gömlek arıyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Red.” Color adjectives usually come before the noun.",
+      "example": "Kırmızı gömlek arıyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I am looking for a red shirt.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "kırmızı",
+      "romanization": "kır-mı-ZI",
+      "nativeText": "Transfer \"kırmızı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kırmızı gömlek arıyorum.\".",
+      "pronunciation": "kır-mı-ZI",
+      "exampleTarget": "Kırmızı gömlek arıyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am looking for a red shirt.”",
+      "korean": "kırmızı",
+      "english": "Transfer \"kırmızı\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kırmızı gömlek arıyorum.\".",
+      "example": "Kırmızı gömlek arıyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am looking for a red shirt.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "kırmızı",
+      "romanization": "kır-mı-ZI",
+      "nativeText": "Find one word or phrase that naturally travels with \"kırmızı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kır-mı-ZI",
+      "exampleTarget": "Kırmızı gömlek arıyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am looking for a red shirt.”",
+      "korean": "kırmızı",
+      "english": "Find one word or phrase that naturally travels with \"kırmızı\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kırmızı gömlek arıyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am looking for a red shirt.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "kırmızı",
+      "romanization": "kır-mı-ZI",
+      "nativeText": "Listen for \"kırmızı\" inside \"Kırmızı gömlek arıyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kır-mı-ZI",
+      "exampleTarget": "Kırmızı gömlek arıyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am looking for a red shirt.”",
+      "korean": "kırmızı",
+      "english": "Listen for \"kırmızı\" inside \"Kırmızı gömlek arıyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kırmızı gömlek arıyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am looking for a red shirt.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "kırmızı",
+      "romanization": "kır-mı-ZI",
+      "nativeText": "Write \"kırmızı\" again without looking, then compare the exact written form against \"Kırmızı gömlek arıyorum.\" before moving on.",
+      "pronunciation": "kır-mı-ZI",
+      "exampleTarget": "Kırmızı gömlek arıyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I am looking for a red shirt.”",
+      "korean": "kırmızı",
+      "english": "Write \"kırmızı\" again without looking, then compare the exact written form against \"Kırmızı gömlek arıyorum.\" before moving on.",
+      "example": "Kırmızı gömlek arıyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am looking for a red shirt.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "kırmızı",
+      "romanization": "kır-mı-ZI",
+      "nativeText": "Check whether \"kırmızı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am looking for a red shirt.”",
+      "pronunciation": "kır-mı-ZI",
+      "exampleTarget": "Kırmızı gömlek arıyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am looking for a red shirt.”",
+      "korean": "kırmızı",
+      "english": "Check whether \"kırmızı\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am looking for a red shirt.”",
+      "example": "Kırmızı gömlek arıyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am looking for a red shirt.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bir kilo",
+      "romanization": "bir ki-LO",
+      "nativeText": "“One kilo.” Food shopping uses measures naturally before nouns.",
+      "pronunciation": "bir ki-LO",
+      "exampleTarget": "Bir kilo elma istiyorum.",
+      "exampleNative": "“I want one kilo of apples.”",
+      "korean": "bir kilo",
+      "english": "“One kilo.” Food shopping uses measures naturally before nouns.",
+      "example": "Bir kilo elma istiyorum.",
+      "exampleEnglish": "“I want one kilo of apples.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "Bir kilo elma istiyorum.",
+      "romanization": "bir ki-LO",
+      "nativeText": "Model use for \"Bir kilo elma istiyorum.\": “I want one kilo of apples.”",
+      "pronunciation": "bir ki-LO",
+      "exampleTarget": "Bir kilo elma istiyorum.",
+      "exampleNative": "“I want one kilo of apples.”",
+      "korean": "Bir kilo elma istiyorum.",
+      "english": "Model use for \"Bir kilo elma istiyorum.\": “I want one kilo of apples.”",
+      "example": "Bir kilo elma istiyorum.",
+      "exampleEnglish": "“I want one kilo of apples.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bir kilo",
+      "romanization": "bir ki-LO",
+      "nativeText": "Usage focus for \"bir kilo\": “One kilo.” Food shopping uses measures naturally before nouns.",
+      "pronunciation": "bir ki-LO",
+      "exampleTarget": "Bir kilo elma istiyorum.",
+      "exampleNative": "Notice what the form is doing here: “I want one kilo of apples.”",
+      "korean": "bir kilo",
+      "english": "Usage focus for \"bir kilo\": “One kilo.” Food shopping uses measures naturally before nouns.",
+      "example": "Bir kilo elma istiyorum.",
+      "exampleEnglish": "Notice what the form is doing here: “I want one kilo of apples.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bir kilo",
+      "romanization": "bir ki-LO",
+      "nativeText": "Contrast check for \"bir kilo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bir ki-LO",
+      "exampleTarget": "Bir kilo elma istiyorum.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one kilo of apples.”",
+      "korean": "bir kilo",
+      "english": "Contrast check for \"bir kilo\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Bir kilo elma istiyorum.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bir kilo",
+      "romanization": "bir ki-LO",
+      "nativeText": "Recall \"bir kilo\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir kilo elma istiyorum.\".",
+      "pronunciation": "bir ki-LO",
+      "exampleTarget": "Bir kilo elma istiyorum.",
+      "exampleNative": "Self-check against the model before moving on: “I want one kilo of apples.”",
+      "korean": "bir kilo",
+      "english": "Recall \"bir kilo\" from memory, then explain what would change if a nearby alternative replaced it in \"Bir kilo elma istiyorum.\".",
+      "example": "Bir kilo elma istiyorum.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bir kilo",
+      "romanization": "bir ki-LO",
+      "nativeText": "Repair \"bir kilo\" inside \"Bir kilo elma istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One kilo.” Food shopping uses measures naturally before nouns.",
+      "pronunciation": "bir ki-LO",
+      "exampleTarget": "Bir kilo elma istiyorum.",
+      "exampleNative": "Use the model as the repair target: “I want one kilo of apples.”",
+      "korean": "bir kilo",
+      "english": "Repair \"bir kilo\" inside \"Bir kilo elma istiyorum.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One kilo.” Food shopping uses measures naturally before nouns.",
+      "example": "Bir kilo elma istiyorum.",
+      "exampleEnglish": "Use the model as the repair target: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bir kilo",
+      "romanization": "bir ki-LO",
+      "nativeText": "Transfer \"bir kilo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir kilo elma istiyorum.\".",
+      "pronunciation": "bir ki-LO",
+      "exampleTarget": "Bir kilo elma istiyorum.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one kilo of apples.”",
+      "korean": "bir kilo",
+      "english": "Transfer \"bir kilo\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Bir kilo elma istiyorum.\".",
+      "example": "Bir kilo elma istiyorum.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bir kilo",
+      "romanization": "bir ki-LO",
+      "nativeText": "Find one word or phrase that naturally travels with \"bir kilo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bir ki-LO",
+      "exampleTarget": "Bir kilo elma istiyorum.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one kilo of apples.”",
+      "korean": "bir kilo",
+      "english": "Find one word or phrase that naturally travels with \"bir kilo\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Bir kilo elma istiyorum.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bir kilo",
+      "romanization": "bir ki-LO",
+      "nativeText": "Listen for \"bir kilo\" inside \"Bir kilo elma istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bir ki-LO",
+      "exampleTarget": "Bir kilo elma istiyorum.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one kilo of apples.”",
+      "korean": "bir kilo",
+      "english": "Listen for \"bir kilo\" inside \"Bir kilo elma istiyorum.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Bir kilo elma istiyorum.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bir kilo",
+      "romanization": "bir ki-LO",
+      "nativeText": "Write \"bir kilo\" again without looking, then compare the exact written form against \"Bir kilo elma istiyorum.\" before moving on.",
+      "pronunciation": "bir ki-LO",
+      "exampleTarget": "Bir kilo elma istiyorum.",
+      "exampleNative": "Use the written model as the final correctness check: “I want one kilo of apples.”",
+      "korean": "bir kilo",
+      "english": "Write \"bir kilo\" again without looking, then compare the exact written form against \"Bir kilo elma istiyorum.\" before moving on.",
+      "example": "Bir kilo elma istiyorum.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one kilo of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "bir kilo",
+      "romanization": "bir ki-LO",
+      "nativeText": "Check whether \"bir kilo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one kilo of apples.”",
+      "pronunciation": "bir ki-LO",
+      "exampleTarget": "Bir kilo elma istiyorum.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one kilo of apples.”",
+      "korean": "bir kilo",
+      "english": "Check whether \"bir kilo\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one kilo of apples.”",
+      "example": "Bir kilo elma istiyorum.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one kilo of apples.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "nakit / kartla",
+      "romanization": "na-KİT / kart-LA",
+      "nativeText": "“Cash / by card.” `-la` marks instrument or means.",
+      "pronunciation": "na-KİT / kart-LA",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "nakit / kartla",
+      "english": "“Cash / by card.” `-la` marks instrument or means.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "Kartla ödeyebilir miyim?",
+      "romanization": "na-KİT / kart-LA",
+      "nativeText": "Model use for \"Kartla ödeyebilir miyim?\": “Can I pay by card?”",
+      "pronunciation": "na-KİT / kart-LA",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "Kartla ödeyebilir miyim?",
+      "english": "Model use for \"Kartla ödeyebilir miyim?\": “Can I pay by card?”",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "nakit / kartla",
+      "romanization": "na-KİT / kart-LA",
+      "nativeText": "Usage focus for \"nakit / kartla\": “Cash / by card.” `-la` marks instrument or means.",
+      "pronunciation": "na-KİT / kart-LA",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "Notice what the form is doing here: “Can I pay by card?”",
+      "korean": "nakit / kartla",
+      "english": "Usage focus for \"nakit / kartla\": “Cash / by card.” `-la` marks instrument or means.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "Notice what the form is doing here: “Can I pay by card?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "nakit / kartla",
+      "romanization": "na-KİT / kart-LA",
+      "nativeText": "Contrast check for \"nakit / kartla\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "na-KİT / kart-LA",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can I pay by card?”",
+      "korean": "nakit / kartla",
+      "english": "Contrast check for \"nakit / kartla\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "nakit / kartla",
+      "romanization": "na-KİT / kart-LA",
+      "nativeText": "Recall \"nakit / kartla\" from memory, then explain what would change if a nearby alternative replaced it in \"Kartla ödeyebilir miyim?\".",
+      "pronunciation": "na-KİT / kart-LA",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "Self-check against the model before moving on: “Can I pay by card?”",
+      "korean": "nakit / kartla",
+      "english": "Recall \"nakit / kartla\" from memory, then explain what would change if a nearby alternative replaced it in \"Kartla ödeyebilir miyim?\".",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "Self-check against the model before moving on: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "nakit / kartla",
+      "romanization": "na-KİT / kart-LA",
+      "nativeText": "Repair \"nakit / kartla\" inside \"Kartla ödeyebilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cash / by card.” `-la` marks instrument or means.",
+      "pronunciation": "na-KİT / kart-LA",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "Use the model as the repair target: “Can I pay by card?”",
+      "korean": "nakit / kartla",
+      "english": "Repair \"nakit / kartla\" inside \"Kartla ödeyebilir miyim?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cash / by card.” `-la` marks instrument or means.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "Use the model as the repair target: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "nakit / kartla",
+      "romanization": "na-KİT / kart-LA",
+      "nativeText": "Transfer \"nakit / kartla\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kartla ödeyebilir miyim?\".",
+      "pronunciation": "na-KİT / kart-LA",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can I pay by card?”",
+      "korean": "nakit / kartla",
+      "english": "Transfer \"nakit / kartla\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Kartla ödeyebilir miyim?\".",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "nakit / kartla",
+      "romanization": "na-KİT / kart-LA",
+      "nativeText": "Find one word or phrase that naturally travels with \"nakit / kartla\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "na-KİT / kart-LA",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Can I pay by card?”",
+      "korean": "nakit / kartla",
+      "english": "Find one word or phrase that naturally travels with \"nakit / kartla\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "nakit / kartla",
+      "romanization": "na-KİT / kart-LA",
+      "nativeText": "Listen for \"nakit / kartla\" inside \"Kartla ödeyebilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "na-KİT / kart-LA",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can I pay by card?”",
+      "korean": "nakit / kartla",
+      "english": "Listen for \"nakit / kartla\" inside \"Kartla ödeyebilir miyim?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "nakit / kartla",
+      "romanization": "na-KİT / kart-LA",
+      "nativeText": "Write \"nakit / kartla\" again without looking, then compare the exact written form against \"Kartla ödeyebilir miyim?\" before moving on.",
+      "pronunciation": "na-KİT / kart-LA",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "Use the written model as the final correctness check: “Can I pay by card?”",
+      "korean": "nakit / kartla",
+      "english": "Write \"nakit / kartla\" again without looking, then compare the exact written form against \"Kartla ödeyebilir miyim?\" before moving on.",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "tr-level1unit08shopping-vocabulary-1",
+        "tr-level1unit08shopping-vocabulary-2",
+        "tr-level1unit08shopping-grammar-1",
+        "tr-level1unit08shopping-grammar-2",
+        "tr-level1unit08shopping-reading",
+        "tr-level1unit08shopping-listening",
+        "tr-level1unit08shopping-writing",
+        "tr-level1unit08shopping-task"
+      ],
+      "targetText": "nakit / kartla",
+      "romanization": "na-KİT / kart-LA",
+      "nativeText": "Check whether \"nakit / kartla\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "pronunciation": "na-KİT / kart-LA",
+      "exampleTarget": "Kartla ödeyebilir miyim?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "korean": "nakit / kartla",
+      "english": "Check whether \"nakit / kartla\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "example": "Kartla ödeyebilir miyim?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”"
+    }
+  ],
+  "targetLang": "tr",
+  "nativeLang": "en",
+  "track": "textbook"
+};

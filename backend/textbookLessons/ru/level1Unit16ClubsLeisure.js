@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u16',
-  title: 'Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure',
-  category: 'leisure',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about hobbies, clubs, and what you do in your free time.',
-  vocabularyGoal: 'Use hobby words, club words, and frequency expressions.',
-  grammarGoal: 'Use `любить` plus infinitive or nouns, and practice adverbs of frequency.',
-  speakingGoal: 'Describe one hobby, ask about someone else’s hobby, and recommend a club.',
-  task: 'Introduce your hobby and choose one student club.',
-  expressionPractice: [
-    practice('stating-hobby', 'Stating hobby', 'Use `я люблю` with a hobby.'),
-    practice('frequency', 'Talking frequency', 'Use `часто` or `иногда`.'),
-    practice('recommending', 'Recommending club', 'Give one reason with `потому что`.'),
+module.exports = {
+  "title": "Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure",
+  "category": "leisure",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit16clubsleisure-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about hobbies, clubs, and what you do in your free time."
+      ],
+      "task": "Introduce your hobby and choose one student club."
+    },
+    {
+      "id": "ru-level1unit16clubsleisure-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit16clubsleisure-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit16clubsleisure-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit16clubsleisure-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about hobbies, clubs, and what you do in your free time."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit16clubsleisure-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit16clubsleisure-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit16clubsleisure-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit16clubsleisure-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit16clubsleisure-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit16clubsleisure-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Introduce your hobby and choose one student club."
+      ],
+      "task": "Introduce your hobby and choose one student club."
+    }
   ],
-  relatedPools: ['topic-leisure', 'topic-campus'],
-  items: [
-    item('хобби', 'khobbi', '“Hobby.” A loanword that behaves conveniently as indeclinable in many contexts.', 'Моё хобби — фотография.', '“My hobby is photography.”'),
-    item('клуб', 'klub', '“Club.” Useful for campus and hobby groups.', 'Я хожу в книжный клуб.', '“I go to a book club.”'),
-    item('читать', 'chitat', '“To read.” Common after `любить` in hobby talk.', 'Я люблю читать романы.', '“I like reading novels.”'),
-    item('играть на гитаре', 'igrat na gitare', '“Play guitar.” Instruments usually use `играть на` plus prepositional form.', 'Она играет на гитаре.', '“She plays guitar.”'),
-    item('заниматься спортом', 'zanimatsya sportom', '“Do sports.” The noun appears in instrumental after this verb.', 'Я занимаюсь спортом по утрам.', '“I do sports in the mornings.”'),
-    item('часто', 'chasto', '“Often.” Frequency adverbs fit naturally before or after the verb depending on emphasis.', 'Мы часто смотрим фильмы.', '“We often watch films.”'),
-    item('иногда', 'inogda', '“Sometimes.” A useful moderate-frequency word.', 'Иногда я готовлю дома.', '“Sometimes I cook at home.”'),
-    item('свободное время', 'svobodnoye vremya', '“Free time.” A standard frame for hobby questions.', 'Что ты делаешь в свободное время?', '“What do you do in your free time?”'),
+  "expressionPractice": [
+    {
+      "id": "stating-hobby",
+      "label": "Stating hobby",
+      "goal": "Use `я люблю` with a hobby."
+    },
+    {
+      "id": "frequency",
+      "label": "Talking frequency",
+      "goal": "Use `часто` or `иногда`."
+    },
+    {
+      "id": "recommending",
+      "label": "Recommending club",
+      "goal": "Give one reason with `потому что`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-leisure",
+    "topic-campus"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Talk about hobbies, clubs, and what you do in your free time.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Introduce your hobby and choose one student club.",
+      "korean": "цель урока",
+      "english": "Talk about hobbies, clubs, and what you do in your free time.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Introduce your hobby and choose one student club."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Моё хобби — фотография.\".",
+      "pronunciation": "",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "“My hobby is photography.”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Моё хобби — фотография.\".",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "“My hobby is photography.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1"
+      ],
+      "targetText": "хобби",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "“My hobby is photography.”",
+      "korean": "хобби",
+      "english": "Use the key language of Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "“My hobby is photography.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-2"
+      ],
+      "targetText": "клуб",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "“I go to a book club.”",
+      "korean": "клуб",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "“I go to a book club.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-grammar-1"
+      ],
+      "targetText": "хобби",
+      "romanization": "",
+      "nativeText": "Talk about hobbies, clubs, and what you do in your free time.",
+      "pronunciation": "",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "“My hobby is photography.”",
+      "korean": "хобби",
+      "english": "Talk about hobbies, clubs, and what you do in your free time.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "“My hobby is photography.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "клуб",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "“I go to a book club.”",
+      "korean": "клуб",
+      "english": "Contrast the main pattern in Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "“I go to a book club.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Что ты делаешь в свободное время?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "модель чтения",
+      "english": "Read \"Что ты делаешь в свободное время?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Что ты делаешь в свободное время?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "модель диалога",
+      "english": "Hear \"Что ты делаешь в свободное время?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Моё хобби — фотография.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Моё хобби — фотография.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "“I go to a book club.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "“I go to a book club.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Introduce your hobby and choose one student club.",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "Introduce your hobby and choose one student club.",
+      "korean": "итоговое задание",
+      "english": "Introduce your hobby and choose one student club.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "Introduce your hobby and choose one student club."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Я хожу в книжный клуб.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I go to a book club.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Я хожу в книжный клуб.\" against the model.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I go to a book club.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Моё хобби — фотография.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "“My hobby is photography.”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Моё хобби — фотография.\" before reusing it elsewhere.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "“My hobby is photography.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Что ты делаешь в свободное время?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Что ты делаешь в свободное время?\" as one thought.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Моё хобби — фотография.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Моё хобби — фотография.\" and move it into your own life.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"хобби\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "хобби",
+      "exampleNative": "“Hobby.” A loanword that behaves conveniently as indeclinable in many contexts.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"хобби\" before looking back.",
+      "example": "хобби",
+      "exampleEnglish": "“Hobby.” A loanword that behaves conveniently as indeclinable in many contexts."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Что ты делаешь в свободное время?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Что ты делаешь в свободное время?\" rather than restarting from a blank sentence.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Я хожу в книжный клуб.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "“I go to a book club.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Я хожу в книжный клуб.\" as the comparison line.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "“I go to a book club.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Моё хобби — фотография.\".",
+      "pronunciation": "",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "“My hobby is photography.”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Моё хобби — фотография.\".",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "“My hobby is photography.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Что ты делаешь в свободное время?\".",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Что ты делаешь в свободное время?\".",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Моё хобби — фотография.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "“My hobby is photography.”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Моё хобби — фотография.\" one layer at a time.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "“My hobby is photography.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Я хожу в книжный клуб.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "“I go to a book club.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Я хожу в книжный клуб.\" as the deciding example.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "“I go to a book club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-culture",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Что ты делаешь в свободное время?\".",
+      "pronunciation": "",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Что ты делаешь в свободное время?\".",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "хобби",
+      "romanization": "khobbi",
+      "nativeText": "“Hobby.” A loanword that behaves conveniently as indeclinable in many contexts.",
+      "pronunciation": "khobbi",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "“My hobby is photography.”",
+      "korean": "хобби",
+      "english": "“Hobby.” A loanword that behaves conveniently as indeclinable in many contexts.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "“My hobby is photography.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Моё хобби — фотография.",
+      "romanization": "khobbi",
+      "nativeText": "Model use for \"Моё хобби — фотография.\": “My hobby is photography.”",
+      "pronunciation": "khobbi",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "“My hobby is photography.”",
+      "korean": "Моё хобби — фотография.",
+      "english": "Model use for \"Моё хобби — фотография.\": “My hobby is photography.”",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "“My hobby is photography.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "хобби",
+      "romanization": "khobbi",
+      "nativeText": "Usage focus for \"хобби\": Use the key language of Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "khobbi",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "Notice what the form is doing here: “My hobby is photography.”",
+      "korean": "хобби",
+      "english": "Usage focus for \"хобби\": Use the key language of Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "Notice what the form is doing here: “My hobby is photography.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "хобби",
+      "romanization": "khobbi",
+      "nativeText": "Contrast check for \"хобби\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "khobbi",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My hobby is photography.”",
+      "korean": "хобби",
+      "english": "Contrast check for \"хобби\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “My hobby is photography.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "хобби",
+      "romanization": "khobbi",
+      "nativeText": "Recall \"хобби\" from memory, then explain what would change if a nearby alternative replaced it in \"Моё хобби — фотография.\".",
+      "pronunciation": "khobbi",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "Self-check against the model before moving on: “My hobby is photography.”",
+      "korean": "хобби",
+      "english": "Recall \"хобби\" from memory, then explain what would change if a nearby alternative replaced it in \"Моё хобби — фотография.\".",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "Self-check against the model before moving on: “My hobby is photography.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "хобби",
+      "romanization": "khobbi",
+      "nativeText": "Repair \"хобби\" inside \"Моё хобби — фотография.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with the register and setting that the lesson requires.",
+      "pronunciation": "khobbi",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "Use the model as the repair target: “My hobby is photography.”",
+      "korean": "хобби",
+      "english": "Repair \"хобби\" inside \"Моё хобби — фотография.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure with the register and setting that the lesson requires.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "Use the model as the repair target: “My hobby is photography.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "хобби",
+      "romanization": "khobbi",
+      "nativeText": "Transfer \"хобби\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Моё хобби — фотография.\".",
+      "pronunciation": "khobbi",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “My hobby is photography.”",
+      "korean": "хобби",
+      "english": "Transfer \"хобби\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Моё хобби — фотография.\".",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “My hobby is photography.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "хобби",
+      "romanization": "khobbi",
+      "nativeText": "Find one word or phrase that naturally travels with \"хобби\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "khobbi",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “My hobby is photography.”",
+      "korean": "хобби",
+      "english": "Find one word or phrase that naturally travels with \"хобби\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “My hobby is photography.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "хобби",
+      "romanization": "khobbi",
+      "nativeText": "Listen for \"хобби\" inside \"Моё хобби — фотография.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "khobbi",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My hobby is photography.”",
+      "korean": "хобби",
+      "english": "Listen for \"хобби\" inside \"Моё хобби — фотография.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “My hobby is photography.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "хобби",
+      "romanization": "khobbi",
+      "nativeText": "Write \"хобби\" again without looking, then compare the exact written form against \"Моё хобби — фотография.\" before moving on.",
+      "pronunciation": "khobbi",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "Use the written model as the final correctness check: “My hobby is photography.”",
+      "korean": "хобби",
+      "english": "Write \"хобби\" again without looking, then compare the exact written form against \"Моё хобби — фотография.\" before moving on.",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "Use the written model as the final correctness check: “My hobby is photography.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "хобби",
+      "romanization": "khobbi",
+      "nativeText": "Check whether \"хобби\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My hobby is photography.”",
+      "pronunciation": "khobbi",
+      "exampleTarget": "Моё хобби — фотография.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “My hobby is photography.”",
+      "korean": "хобби",
+      "english": "Check whether \"хобби\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “My hobby is photography.”",
+      "example": "Моё хобби — фотография.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “My hobby is photography.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "клуб",
+      "romanization": "klub",
+      "nativeText": "“Club.” Useful for campus and hobby groups.",
+      "pronunciation": "klub",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "“I go to a book club.”",
+      "korean": "клуб",
+      "english": "“Club.” Useful for campus and hobby groups.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "“I go to a book club.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Я хожу в книжный клуб.",
+      "romanization": "klub",
+      "nativeText": "Model use for \"Я хожу в книжный клуб.\": “I go to a book club.”",
+      "pronunciation": "klub",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "“I go to a book club.”",
+      "korean": "Я хожу в книжный клуб.",
+      "english": "Model use for \"Я хожу в книжный клуб.\": “I go to a book club.”",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "“I go to a book club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "клуб",
+      "romanization": "klub",
+      "nativeText": "Usage focus for \"клуб\": Distinguish the nearby wording choices that make Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "klub",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "Notice what the form is doing here: “I go to a book club.”",
+      "korean": "клуб",
+      "english": "Usage focus for \"клуб\": Distinguish the nearby wording choices that make Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "Notice what the form is doing here: “I go to a book club.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "клуб",
+      "romanization": "klub",
+      "nativeText": "Contrast check for \"клуб\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "klub",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I go to a book club.”",
+      "korean": "клуб",
+      "english": "Contrast check for \"клуб\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I go to a book club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "клуб",
+      "romanization": "klub",
+      "nativeText": "Recall \"клуб\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хожу в книжный клуб.\".",
+      "pronunciation": "klub",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "Self-check against the model before moving on: “I go to a book club.”",
+      "korean": "клуб",
+      "english": "Recall \"клуб\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хожу в книжный клуб.\".",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "Self-check against the model before moving on: “I go to a book club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "клуб",
+      "romanization": "klub",
+      "nativeText": "Repair \"клуб\" inside \"Я хожу в книжный клуб.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure sound precise rather than merely understandable.",
+      "pronunciation": "klub",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "Use the model as the repair target: “I go to a book club.”",
+      "korean": "клуб",
+      "english": "Repair \"клуб\" inside \"Я хожу в книжный клуб.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 16: Клубы и свободное время — Clubs and Leisure sound precise rather than merely understandable.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "Use the model as the repair target: “I go to a book club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "клуб",
+      "romanization": "klub",
+      "nativeText": "Transfer \"клуб\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хожу в книжный клуб.\".",
+      "pronunciation": "klub",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I go to a book club.”",
+      "korean": "клуб",
+      "english": "Transfer \"клуб\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хожу в книжный клуб.\".",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I go to a book club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "клуб",
+      "romanization": "klub",
+      "nativeText": "Find one word or phrase that naturally travels with \"клуб\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "klub",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I go to a book club.”",
+      "korean": "клуб",
+      "english": "Find one word or phrase that naturally travels with \"клуб\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I go to a book club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "клуб",
+      "romanization": "klub",
+      "nativeText": "Listen for \"клуб\" inside \"Я хожу в книжный клуб.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "klub",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I go to a book club.”",
+      "korean": "клуб",
+      "english": "Listen for \"клуб\" inside \"Я хожу в книжный клуб.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I go to a book club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "клуб",
+      "romanization": "klub",
+      "nativeText": "Write \"клуб\" again without looking, then compare the exact written form against \"Я хожу в книжный клуб.\" before moving on.",
+      "pronunciation": "klub",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "Use the written model as the final correctness check: “I go to a book club.”",
+      "korean": "клуб",
+      "english": "Write \"клуб\" again without looking, then compare the exact written form against \"Я хожу в книжный клуб.\" before moving on.",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I go to a book club.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "клуб",
+      "romanization": "klub",
+      "nativeText": "Check whether \"клуб\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I go to a book club.”",
+      "pronunciation": "klub",
+      "exampleTarget": "Я хожу в книжный клуб.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I go to a book club.”",
+      "korean": "клуб",
+      "english": "Check whether \"клуб\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I go to a book club.”",
+      "example": "Я хожу в книжный клуб.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I go to a book club.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "читать",
+      "romanization": "chitat",
+      "nativeText": "“To read.” Common after `любить` in hobby talk.",
+      "pronunciation": "chitat",
+      "exampleTarget": "Я люблю читать романы.",
+      "exampleNative": "“I like reading novels.”",
+      "korean": "читать",
+      "english": "“To read.” Common after `любить` in hobby talk.",
+      "example": "Я люблю читать романы.",
+      "exampleEnglish": "“I like reading novels.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Я люблю читать романы.",
+      "romanization": "chitat",
+      "nativeText": "Model use for \"Я люблю читать романы.\": “I like reading novels.”",
+      "pronunciation": "chitat",
+      "exampleTarget": "Я люблю читать романы.",
+      "exampleNative": "“I like reading novels.”",
+      "korean": "Я люблю читать романы.",
+      "english": "Model use for \"Я люблю читать романы.\": “I like reading novels.”",
+      "example": "Я люблю читать романы.",
+      "exampleEnglish": "“I like reading novels.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "читать",
+      "romanization": "chitat",
+      "nativeText": "Usage focus for \"читать\": “To read.” Common after `любить` in hobby talk.",
+      "pronunciation": "chitat",
+      "exampleTarget": "Я люблю читать романы.",
+      "exampleNative": "Notice what the form is doing here: “I like reading novels.”",
+      "korean": "читать",
+      "english": "Usage focus for \"читать\": “To read.” Common after `любить` in hobby talk.",
+      "example": "Я люблю читать романы.",
+      "exampleEnglish": "Notice what the form is doing here: “I like reading novels.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "читать",
+      "romanization": "chitat",
+      "nativeText": "Contrast check for \"читать\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "chitat",
+      "exampleTarget": "Я люблю читать романы.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like reading novels.”",
+      "korean": "читать",
+      "english": "Contrast check for \"читать\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я люблю читать романы.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "читать",
+      "romanization": "chitat",
+      "nativeText": "Recall \"читать\" from memory, then explain what would change if a nearby alternative replaced it in \"Я люблю читать романы.\".",
+      "pronunciation": "chitat",
+      "exampleTarget": "Я люблю читать романы.",
+      "exampleNative": "Self-check against the model before moving on: “I like reading novels.”",
+      "korean": "читать",
+      "english": "Recall \"читать\" from memory, then explain what would change if a nearby alternative replaced it in \"Я люблю читать романы.\".",
+      "example": "Я люблю читать романы.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "читать",
+      "romanization": "chitat",
+      "nativeText": "Repair \"читать\" inside \"Я люблю читать романы.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To read.” Common after `любить` in hobby talk.",
+      "pronunciation": "chitat",
+      "exampleTarget": "Я люблю читать романы.",
+      "exampleNative": "Use the model as the repair target: “I like reading novels.”",
+      "korean": "читать",
+      "english": "Repair \"читать\" inside \"Я люблю читать романы.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To read.” Common after `любить` in hobby talk.",
+      "example": "Я люблю читать романы.",
+      "exampleEnglish": "Use the model as the repair target: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "читать",
+      "romanization": "chitat",
+      "nativeText": "Transfer \"читать\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я люблю читать романы.\".",
+      "pronunciation": "chitat",
+      "exampleTarget": "Я люблю читать романы.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like reading novels.”",
+      "korean": "читать",
+      "english": "Transfer \"читать\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я люблю читать романы.\".",
+      "example": "Я люблю читать романы.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "читать",
+      "romanization": "chitat",
+      "nativeText": "Find one word or phrase that naturally travels with \"читать\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "chitat",
+      "exampleTarget": "Я люблю читать романы.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like reading novels.”",
+      "korean": "читать",
+      "english": "Find one word or phrase that naturally travels with \"читать\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я люблю читать романы.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "читать",
+      "romanization": "chitat",
+      "nativeText": "Listen for \"читать\" inside \"Я люблю читать романы.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "chitat",
+      "exampleTarget": "Я люблю читать романы.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like reading novels.”",
+      "korean": "читать",
+      "english": "Listen for \"читать\" inside \"Я люблю читать романы.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я люблю читать романы.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "читать",
+      "romanization": "chitat",
+      "nativeText": "Write \"читать\" again without looking, then compare the exact written form against \"Я люблю читать романы.\" before moving on.",
+      "pronunciation": "chitat",
+      "exampleTarget": "Я люблю читать романы.",
+      "exampleNative": "Use the written model as the final correctness check: “I like reading novels.”",
+      "korean": "читать",
+      "english": "Write \"читать\" again without looking, then compare the exact written form against \"Я люблю читать романы.\" before moving on.",
+      "example": "Я люблю читать романы.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like reading novels.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "читать",
+      "romanization": "chitat",
+      "nativeText": "Check whether \"читать\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like reading novels.”",
+      "pronunciation": "chitat",
+      "exampleTarget": "Я люблю читать романы.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like reading novels.”",
+      "korean": "читать",
+      "english": "Check whether \"читать\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like reading novels.”",
+      "example": "Я люблю читать романы.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like reading novels.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "играть на гитаре",
+      "romanization": "igrat na gitare",
+      "nativeText": "“Play guitar.” Instruments usually use `играть на` plus prepositional form.",
+      "pronunciation": "igrat na gitare",
+      "exampleTarget": "Она играет на гитаре.",
+      "exampleNative": "“She plays guitar.”",
+      "korean": "играть на гитаре",
+      "english": "“Play guitar.” Instruments usually use `играть на` plus prepositional form.",
+      "example": "Она играет на гитаре.",
+      "exampleEnglish": "“She plays guitar.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Она играет на гитаре.",
+      "romanization": "igrat na gitare",
+      "nativeText": "Model use for \"Она играет на гитаре.\": “She plays guitar.”",
+      "pronunciation": "igrat na gitare",
+      "exampleTarget": "Она играет на гитаре.",
+      "exampleNative": "“She plays guitar.”",
+      "korean": "Она играет на гитаре.",
+      "english": "Model use for \"Она играет на гитаре.\": “She plays guitar.”",
+      "example": "Она играет на гитаре.",
+      "exampleEnglish": "“She plays guitar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "играть на гитаре",
+      "romanization": "igrat na gitare",
+      "nativeText": "Usage focus for \"играть на гитаре\": “Play guitar.” Instruments usually use `играть на` plus prepositional form.",
+      "pronunciation": "igrat na gitare",
+      "exampleTarget": "Она играет на гитаре.",
+      "exampleNative": "Notice what the form is doing here: “She plays guitar.”",
+      "korean": "играть на гитаре",
+      "english": "Usage focus for \"играть на гитаре\": “Play guitar.” Instruments usually use `играть на` plus prepositional form.",
+      "example": "Она играет на гитаре.",
+      "exampleEnglish": "Notice what the form is doing here: “She plays guitar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "играть на гитаре",
+      "romanization": "igrat na gitare",
+      "nativeText": "Contrast check for \"играть на гитаре\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "igrat na gitare",
+      "exampleTarget": "Она играет на гитаре.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “She plays guitar.”",
+      "korean": "играть на гитаре",
+      "english": "Contrast check for \"играть на гитаре\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Она играет на гитаре.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “She plays guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "играть на гитаре",
+      "romanization": "igrat na gitare",
+      "nativeText": "Recall \"играть на гитаре\" from memory, then explain what would change if a nearby alternative replaced it in \"Она играет на гитаре.\".",
+      "pronunciation": "igrat na gitare",
+      "exampleTarget": "Она играет на гитаре.",
+      "exampleNative": "Self-check against the model before moving on: “She plays guitar.”",
+      "korean": "играть на гитаре",
+      "english": "Recall \"играть на гитаре\" from memory, then explain what would change if a nearby alternative replaced it in \"Она играет на гитаре.\".",
+      "example": "Она играет на гитаре.",
+      "exampleEnglish": "Self-check against the model before moving on: “She plays guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "играть на гитаре",
+      "romanization": "igrat na gitare",
+      "nativeText": "Repair \"играть на гитаре\" inside \"Она играет на гитаре.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Play guitar.” Instruments usually use `играть на` plus prepositional form.",
+      "pronunciation": "igrat na gitare",
+      "exampleTarget": "Она играет на гитаре.",
+      "exampleNative": "Use the model as the repair target: “She plays guitar.”",
+      "korean": "играть на гитаре",
+      "english": "Repair \"играть на гитаре\" inside \"Она играет на гитаре.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Play guitar.” Instruments usually use `играть на` plus prepositional form.",
+      "example": "Она играет на гитаре.",
+      "exampleEnglish": "Use the model as the repair target: “She plays guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "играть на гитаре",
+      "romanization": "igrat na gitare",
+      "nativeText": "Transfer \"играть на гитаре\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Она играет на гитаре.\".",
+      "pronunciation": "igrat na gitare",
+      "exampleTarget": "Она играет на гитаре.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “She plays guitar.”",
+      "korean": "играть на гитаре",
+      "english": "Transfer \"играть на гитаре\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Она играет на гитаре.\".",
+      "example": "Она играет на гитаре.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “She plays guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "играть на гитаре",
+      "romanization": "igrat na gitare",
+      "nativeText": "Find one word or phrase that naturally travels with \"играть на гитаре\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "igrat na gitare",
+      "exampleTarget": "Она играет на гитаре.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “She plays guitar.”",
+      "korean": "играть на гитаре",
+      "english": "Find one word or phrase that naturally travels with \"играть на гитаре\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Она играет на гитаре.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “She plays guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "играть на гитаре",
+      "romanization": "igrat na gitare",
+      "nativeText": "Listen for \"играть на гитаре\" inside \"Она играет на гитаре.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "igrat na gitare",
+      "exampleTarget": "Она играет на гитаре.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “She plays guitar.”",
+      "korean": "играть на гитаре",
+      "english": "Listen for \"играть на гитаре\" inside \"Она играет на гитаре.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Она играет на гитаре.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “She plays guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "играть на гитаре",
+      "romanization": "igrat na gitare",
+      "nativeText": "Write \"играть на гитаре\" again without looking, then compare the exact written form against \"Она играет на гитаре.\" before moving on.",
+      "pronunciation": "igrat na gitare",
+      "exampleTarget": "Она играет на гитаре.",
+      "exampleNative": "Use the written model as the final correctness check: “She plays guitar.”",
+      "korean": "играть на гитаре",
+      "english": "Write \"играть на гитаре\" again without looking, then compare the exact written form against \"Она играет на гитаре.\" before moving on.",
+      "example": "Она играет на гитаре.",
+      "exampleEnglish": "Use the written model as the final correctness check: “She plays guitar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "играть на гитаре",
+      "romanization": "igrat na gitare",
+      "nativeText": "Check whether \"играть на гитаре\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “She plays guitar.”",
+      "pronunciation": "igrat na gitare",
+      "exampleTarget": "Она играет на гитаре.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “She plays guitar.”",
+      "korean": "играть на гитаре",
+      "english": "Check whether \"играть на гитаре\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “She plays guitar.”",
+      "example": "Она играет на гитаре.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “She plays guitar.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "заниматься спортом",
+      "romanization": "zanimatsya sportom",
+      "nativeText": "“Do sports.” The noun appears in instrumental after this verb.",
+      "pronunciation": "zanimatsya sportom",
+      "exampleTarget": "Я занимаюсь спортом по утрам.",
+      "exampleNative": "“I do sports in the mornings.”",
+      "korean": "заниматься спортом",
+      "english": "“Do sports.” The noun appears in instrumental after this verb.",
+      "example": "Я занимаюсь спортом по утрам.",
+      "exampleEnglish": "“I do sports in the mornings.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Я занимаюсь спортом по утрам.",
+      "romanization": "zanimatsya sportom",
+      "nativeText": "Model use for \"Я занимаюсь спортом по утрам.\": “I do sports in the mornings.”",
+      "pronunciation": "zanimatsya sportom",
+      "exampleTarget": "Я занимаюсь спортом по утрам.",
+      "exampleNative": "“I do sports in the mornings.”",
+      "korean": "Я занимаюсь спортом по утрам.",
+      "english": "Model use for \"Я занимаюсь спортом по утрам.\": “I do sports in the mornings.”",
+      "example": "Я занимаюсь спортом по утрам.",
+      "exampleEnglish": "“I do sports in the mornings.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "заниматься спортом",
+      "romanization": "zanimatsya sportom",
+      "nativeText": "Usage focus for \"заниматься спортом\": “Do sports.” The noun appears in instrumental after this verb.",
+      "pronunciation": "zanimatsya sportom",
+      "exampleTarget": "Я занимаюсь спортом по утрам.",
+      "exampleNative": "Notice what the form is doing here: “I do sports in the mornings.”",
+      "korean": "заниматься спортом",
+      "english": "Usage focus for \"заниматься спортом\": “Do sports.” The noun appears in instrumental after this verb.",
+      "example": "Я занимаюсь спортом по утрам.",
+      "exampleEnglish": "Notice what the form is doing here: “I do sports in the mornings.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "заниматься спортом",
+      "romanization": "zanimatsya sportom",
+      "nativeText": "Contrast check for \"заниматься спортом\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "zanimatsya sportom",
+      "exampleTarget": "Я занимаюсь спортом по утрам.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do sports in the mornings.”",
+      "korean": "заниматься спортом",
+      "english": "Contrast check for \"заниматься спортом\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я занимаюсь спортом по утрам.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do sports in the mornings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "заниматься спортом",
+      "romanization": "zanimatsya sportom",
+      "nativeText": "Recall \"заниматься спортом\" from memory, then explain what would change if a nearby alternative replaced it in \"Я занимаюсь спортом по утрам.\".",
+      "pronunciation": "zanimatsya sportom",
+      "exampleTarget": "Я занимаюсь спортом по утрам.",
+      "exampleNative": "Self-check against the model before moving on: “I do sports in the mornings.”",
+      "korean": "заниматься спортом",
+      "english": "Recall \"заниматься спортом\" from memory, then explain what would change if a nearby alternative replaced it in \"Я занимаюсь спортом по утрам.\".",
+      "example": "Я занимаюсь спортом по утрам.",
+      "exampleEnglish": "Self-check against the model before moving on: “I do sports in the mornings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "заниматься спортом",
+      "romanization": "zanimatsya sportom",
+      "nativeText": "Repair \"заниматься спортом\" inside \"Я занимаюсь спортом по утрам.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do sports.” The noun appears in instrumental after this verb.",
+      "pronunciation": "zanimatsya sportom",
+      "exampleTarget": "Я занимаюсь спортом по утрам.",
+      "exampleNative": "Use the model as the repair target: “I do sports in the mornings.”",
+      "korean": "заниматься спортом",
+      "english": "Repair \"заниматься спортом\" inside \"Я занимаюсь спортом по утрам.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Do sports.” The noun appears in instrumental after this verb.",
+      "example": "Я занимаюсь спортом по утрам.",
+      "exampleEnglish": "Use the model as the repair target: “I do sports in the mornings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "заниматься спортом",
+      "romanization": "zanimatsya sportom",
+      "nativeText": "Transfer \"заниматься спортом\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я занимаюсь спортом по утрам.\".",
+      "pronunciation": "zanimatsya sportom",
+      "exampleTarget": "Я занимаюсь спортом по утрам.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do sports in the mornings.”",
+      "korean": "заниматься спортом",
+      "english": "Transfer \"заниматься спортом\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я занимаюсь спортом по утрам.\".",
+      "example": "Я занимаюсь спортом по утрам.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do sports in the mornings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "заниматься спортом",
+      "romanization": "zanimatsya sportom",
+      "nativeText": "Find one word or phrase that naturally travels with \"заниматься спортом\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "zanimatsya sportom",
+      "exampleTarget": "Я занимаюсь спортом по утрам.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I do sports in the mornings.”",
+      "korean": "заниматься спортом",
+      "english": "Find one word or phrase that naturally travels with \"заниматься спортом\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я занимаюсь спортом по утрам.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I do sports in the mornings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "заниматься спортом",
+      "romanization": "zanimatsya sportom",
+      "nativeText": "Listen for \"заниматься спортом\" inside \"Я занимаюсь спортом по утрам.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "zanimatsya sportom",
+      "exampleTarget": "Я занимаюсь спортом по утрам.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do sports in the mornings.”",
+      "korean": "заниматься спортом",
+      "english": "Listen for \"заниматься спортом\" inside \"Я занимаюсь спортом по утрам.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я занимаюсь спортом по утрам.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do sports in the mornings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "заниматься спортом",
+      "romanization": "zanimatsya sportom",
+      "nativeText": "Write \"заниматься спортом\" again without looking, then compare the exact written form against \"Я занимаюсь спортом по утрам.\" before moving on.",
+      "pronunciation": "zanimatsya sportom",
+      "exampleTarget": "Я занимаюсь спортом по утрам.",
+      "exampleNative": "Use the written model as the final correctness check: “I do sports in the mornings.”",
+      "korean": "заниматься спортом",
+      "english": "Write \"заниматься спортом\" again without looking, then compare the exact written form against \"Я занимаюсь спортом по утрам.\" before moving on.",
+      "example": "Я занимаюсь спортом по утрам.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I do sports in the mornings.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "заниматься спортом",
+      "romanization": "zanimatsya sportom",
+      "nativeText": "Check whether \"заниматься спортом\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do sports in the mornings.”",
+      "pronunciation": "zanimatsya sportom",
+      "exampleTarget": "Я занимаюсь спортом по утрам.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I do sports in the mornings.”",
+      "korean": "заниматься спортом",
+      "english": "Check whether \"заниматься спортом\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do sports in the mornings.”",
+      "example": "Я занимаюсь спортом по утрам.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I do sports in the mornings.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "часто",
+      "romanization": "chasto",
+      "nativeText": "“Often.” Frequency adverbs fit naturally before or after the verb depending on emphasis.",
+      "pronunciation": "chasto",
+      "exampleTarget": "Мы часто смотрим фильмы.",
+      "exampleNative": "“We often watch films.”",
+      "korean": "часто",
+      "english": "“Often.” Frequency adverbs fit naturally before or after the verb depending on emphasis.",
+      "example": "Мы часто смотрим фильмы.",
+      "exampleEnglish": "“We often watch films.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Мы часто смотрим фильмы.",
+      "romanization": "chasto",
+      "nativeText": "Model use for \"Мы часто смотрим фильмы.\": “We often watch films.”",
+      "pronunciation": "chasto",
+      "exampleTarget": "Мы часто смотрим фильмы.",
+      "exampleNative": "“We often watch films.”",
+      "korean": "Мы часто смотрим фильмы.",
+      "english": "Model use for \"Мы часто смотрим фильмы.\": “We often watch films.”",
+      "example": "Мы часто смотрим фильмы.",
+      "exampleEnglish": "“We often watch films.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "часто",
+      "romanization": "chasto",
+      "nativeText": "Usage focus for \"часто\": “Often.” Frequency adverbs fit naturally before or after the verb depending on emphasis.",
+      "pronunciation": "chasto",
+      "exampleTarget": "Мы часто смотрим фильмы.",
+      "exampleNative": "Notice what the form is doing here: “We often watch films.”",
+      "korean": "часто",
+      "english": "Usage focus for \"часто\": “Often.” Frequency adverbs fit naturally before or after the verb depending on emphasis.",
+      "example": "Мы часто смотрим фильмы.",
+      "exampleEnglish": "Notice what the form is doing here: “We often watch films.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "часто",
+      "romanization": "chasto",
+      "nativeText": "Contrast check for \"часто\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "chasto",
+      "exampleTarget": "Мы часто смотрим фильмы.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We often watch films.”",
+      "korean": "часто",
+      "english": "Contrast check for \"часто\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мы часто смотрим фильмы.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "часто",
+      "romanization": "chasto",
+      "nativeText": "Recall \"часто\" from memory, then explain what would change if a nearby alternative replaced it in \"Мы часто смотрим фильмы.\".",
+      "pronunciation": "chasto",
+      "exampleTarget": "Мы часто смотрим фильмы.",
+      "exampleNative": "Self-check against the model before moving on: “We often watch films.”",
+      "korean": "часто",
+      "english": "Recall \"часто\" from memory, then explain what would change if a nearby alternative replaced it in \"Мы часто смотрим фильмы.\".",
+      "example": "Мы часто смотрим фильмы.",
+      "exampleEnglish": "Self-check against the model before moving on: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "часто",
+      "romanization": "chasto",
+      "nativeText": "Repair \"часто\" inside \"Мы часто смотрим фильмы.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Often.” Frequency adverbs fit naturally before or after the verb depending on emphasis.",
+      "pronunciation": "chasto",
+      "exampleTarget": "Мы часто смотрим фильмы.",
+      "exampleNative": "Use the model as the repair target: “We often watch films.”",
+      "korean": "часто",
+      "english": "Repair \"часто\" inside \"Мы часто смотрим фильмы.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Often.” Frequency adverbs fit naturally before or after the verb depending on emphasis.",
+      "example": "Мы часто смотрим фильмы.",
+      "exampleEnglish": "Use the model as the repair target: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "часто",
+      "romanization": "chasto",
+      "nativeText": "Transfer \"часто\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мы часто смотрим фильмы.\".",
+      "pronunciation": "chasto",
+      "exampleTarget": "Мы часто смотрим фильмы.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “We often watch films.”",
+      "korean": "часто",
+      "english": "Transfer \"часто\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мы часто смотрим фильмы.\".",
+      "example": "Мы часто смотрим фильмы.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "часто",
+      "romanization": "chasto",
+      "nativeText": "Find one word or phrase that naturally travels with \"часто\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "chasto",
+      "exampleTarget": "Мы часто смотрим фильмы.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “We often watch films.”",
+      "korean": "часто",
+      "english": "Find one word or phrase that naturally travels with \"часто\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мы часто смотрим фильмы.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "часто",
+      "romanization": "chasto",
+      "nativeText": "Listen for \"часто\" inside \"Мы часто смотрим фильмы.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "chasto",
+      "exampleTarget": "Мы часто смотрим фильмы.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We often watch films.”",
+      "korean": "часто",
+      "english": "Listen for \"часто\" inside \"Мы часто смотрим фильмы.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мы часто смотрим фильмы.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "часто",
+      "romanization": "chasto",
+      "nativeText": "Write \"часто\" again without looking, then compare the exact written form against \"Мы часто смотрим фильмы.\" before moving on.",
+      "pronunciation": "chasto",
+      "exampleTarget": "Мы часто смотрим фильмы.",
+      "exampleNative": "Use the written model as the final correctness check: “We often watch films.”",
+      "korean": "часто",
+      "english": "Write \"часто\" again without looking, then compare the exact written form against \"Мы часто смотрим фильмы.\" before moving on.",
+      "example": "Мы часто смотрим фильмы.",
+      "exampleEnglish": "Use the written model as the final correctness check: “We often watch films.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "часто",
+      "romanization": "chasto",
+      "nativeText": "Check whether \"часто\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We often watch films.”",
+      "pronunciation": "chasto",
+      "exampleTarget": "Мы часто смотрим фильмы.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “We often watch films.”",
+      "korean": "часто",
+      "english": "Check whether \"часто\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We often watch films.”",
+      "example": "Мы часто смотрим фильмы.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “We often watch films.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "иногда",
+      "romanization": "inogda",
+      "nativeText": "“Sometimes.” A useful moderate-frequency word.",
+      "pronunciation": "inogda",
+      "exampleTarget": "Иногда я готовлю дома.",
+      "exampleNative": "“Sometimes I cook at home.”",
+      "korean": "иногда",
+      "english": "“Sometimes.” A useful moderate-frequency word.",
+      "example": "Иногда я готовлю дома.",
+      "exampleEnglish": "“Sometimes I cook at home.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Иногда я готовлю дома.",
+      "romanization": "inogda",
+      "nativeText": "Model use for \"Иногда я готовлю дома.\": “Sometimes I cook at home.”",
+      "pronunciation": "inogda",
+      "exampleTarget": "Иногда я готовлю дома.",
+      "exampleNative": "“Sometimes I cook at home.”",
+      "korean": "Иногда я готовлю дома.",
+      "english": "Model use for \"Иногда я готовлю дома.\": “Sometimes I cook at home.”",
+      "example": "Иногда я готовлю дома.",
+      "exampleEnglish": "“Sometimes I cook at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "иногда",
+      "romanization": "inogda",
+      "nativeText": "Usage focus for \"иногда\": “Sometimes.” A useful moderate-frequency word.",
+      "pronunciation": "inogda",
+      "exampleTarget": "Иногда я готовлю дома.",
+      "exampleNative": "Notice what the form is doing here: “Sometimes I cook at home.”",
+      "korean": "иногда",
+      "english": "Usage focus for \"иногда\": “Sometimes.” A useful moderate-frequency word.",
+      "example": "Иногда я готовлю дома.",
+      "exampleEnglish": "Notice what the form is doing here: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "иногда",
+      "romanization": "inogda",
+      "nativeText": "Contrast check for \"иногда\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "inogda",
+      "exampleTarget": "Иногда я готовлю дома.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sometimes I cook at home.”",
+      "korean": "иногда",
+      "english": "Contrast check for \"иногда\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Иногда я готовлю дома.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "иногда",
+      "romanization": "inogda",
+      "nativeText": "Recall \"иногда\" from memory, then explain what would change if a nearby alternative replaced it in \"Иногда я готовлю дома.\".",
+      "pronunciation": "inogda",
+      "exampleTarget": "Иногда я готовлю дома.",
+      "exampleNative": "Self-check against the model before moving on: “Sometimes I cook at home.”",
+      "korean": "иногда",
+      "english": "Recall \"иногда\" from memory, then explain what would change if a nearby alternative replaced it in \"Иногда я готовлю дома.\".",
+      "example": "Иногда я готовлю дома.",
+      "exampleEnglish": "Self-check against the model before moving on: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "иногда",
+      "romanization": "inogda",
+      "nativeText": "Repair \"иногда\" inside \"Иногда я готовлю дома.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sometimes.” A useful moderate-frequency word.",
+      "pronunciation": "inogda",
+      "exampleTarget": "Иногда я готовлю дома.",
+      "exampleNative": "Use the model as the repair target: “Sometimes I cook at home.”",
+      "korean": "иногда",
+      "english": "Repair \"иногда\" inside \"Иногда я готовлю дома.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Sometimes.” A useful moderate-frequency word.",
+      "example": "Иногда я готовлю дома.",
+      "exampleEnglish": "Use the model as the repair target: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "иногда",
+      "romanization": "inogda",
+      "nativeText": "Transfer \"иногда\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Иногда я готовлю дома.\".",
+      "pronunciation": "inogda",
+      "exampleTarget": "Иногда я готовлю дома.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sometimes I cook at home.”",
+      "korean": "иногда",
+      "english": "Transfer \"иногда\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Иногда я готовлю дома.\".",
+      "example": "Иногда я готовлю дома.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "иногда",
+      "romanization": "inogda",
+      "nativeText": "Find one word or phrase that naturally travels with \"иногда\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "inogda",
+      "exampleTarget": "Иногда я готовлю дома.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Sometimes I cook at home.”",
+      "korean": "иногда",
+      "english": "Find one word or phrase that naturally travels with \"иногда\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Иногда я готовлю дома.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "иногда",
+      "romanization": "inogda",
+      "nativeText": "Listen for \"иногда\" inside \"Иногда я готовлю дома.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "inogda",
+      "exampleTarget": "Иногда я готовлю дома.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sometimes I cook at home.”",
+      "korean": "иногда",
+      "english": "Listen for \"иногда\" inside \"Иногда я готовлю дома.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Иногда я готовлю дома.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "иногда",
+      "romanization": "inogda",
+      "nativeText": "Write \"иногда\" again without looking, then compare the exact written form against \"Иногда я готовлю дома.\" before moving on.",
+      "pronunciation": "inogda",
+      "exampleTarget": "Иногда я готовлю дома.",
+      "exampleNative": "Use the written model as the final correctness check: “Sometimes I cook at home.”",
+      "korean": "иногда",
+      "english": "Write \"иногда\" again without looking, then compare the exact written form against \"Иногда я готовлю дома.\" before moving on.",
+      "example": "Иногда я готовлю дома.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "иногда",
+      "romanization": "inogda",
+      "nativeText": "Check whether \"иногда\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”",
+      "pronunciation": "inogda",
+      "exampleTarget": "Иногда я готовлю дома.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”",
+      "korean": "иногда",
+      "english": "Check whether \"иногда\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”",
+      "example": "Иногда я готовлю дома.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Sometimes I cook at home.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "свободное время",
+      "romanization": "svobodnoye vremya",
+      "nativeText": "“Free time.” A standard frame for hobby questions.",
+      "pronunciation": "svobodnoye vremya",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "свободное время",
+      "english": "“Free time.” A standard frame for hobby questions.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "Что ты делаешь в свободное время?",
+      "romanization": "svobodnoye vremya",
+      "nativeText": "Model use for \"Что ты делаешь в свободное время?\": “What do you do in your free time?”",
+      "pronunciation": "svobodnoye vremya",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "“What do you do in your free time?”",
+      "korean": "Что ты делаешь в свободное время?",
+      "english": "Model use for \"Что ты делаешь в свободное время?\": “What do you do in your free time?”",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "“What do you do in your free time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "свободное время",
+      "romanization": "svobodnoye vremya",
+      "nativeText": "Usage focus for \"свободное время\": “Free time.” A standard frame for hobby questions.",
+      "pronunciation": "svobodnoye vremya",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "Notice what the form is doing here: “What do you do in your free time?”",
+      "korean": "свободное время",
+      "english": "Usage focus for \"свободное время\": “Free time.” A standard frame for hobby questions.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "Notice what the form is doing here: “What do you do in your free time?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "свободное время",
+      "romanization": "svobodnoye vremya",
+      "nativeText": "Contrast check for \"свободное время\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "svobodnoye vremya",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What do you do in your free time?”",
+      "korean": "свободное время",
+      "english": "Contrast check for \"свободное время\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "свободное время",
+      "romanization": "svobodnoye vremya",
+      "nativeText": "Recall \"свободное время\" from memory, then explain what would change if a nearby alternative replaced it in \"Что ты делаешь в свободное время?\".",
+      "pronunciation": "svobodnoye vremya",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "Self-check against the model before moving on: “What do you do in your free time?”",
+      "korean": "свободное время",
+      "english": "Recall \"свободное время\" from memory, then explain what would change if a nearby alternative replaced it in \"Что ты делаешь в свободное время?\".",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "Self-check against the model before moving on: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "свободное время",
+      "romanization": "svobodnoye vremya",
+      "nativeText": "Repair \"свободное время\" inside \"Что ты делаешь в свободное время?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Free time.” A standard frame for hobby questions.",
+      "pronunciation": "svobodnoye vremya",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "Use the model as the repair target: “What do you do in your free time?”",
+      "korean": "свободное время",
+      "english": "Repair \"свободное время\" inside \"Что ты делаешь в свободное время?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Free time.” A standard frame for hobby questions.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "Use the model as the repair target: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "свободное время",
+      "romanization": "svobodnoye vremya",
+      "nativeText": "Transfer \"свободное время\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Что ты делаешь в свободное время?\".",
+      "pronunciation": "svobodnoye vremya",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What do you do in your free time?”",
+      "korean": "свободное время",
+      "english": "Transfer \"свободное время\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Что ты делаешь в свободное время?\".",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "свободное время",
+      "romanization": "svobodnoye vremya",
+      "nativeText": "Find one word or phrase that naturally travels with \"свободное время\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "svobodnoye vremya",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What do you do in your free time?”",
+      "korean": "свободное время",
+      "english": "Find one word or phrase that naturally travels with \"свободное время\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "свободное время",
+      "romanization": "svobodnoye vremya",
+      "nativeText": "Listen for \"свободное время\" inside \"Что ты делаешь в свободное время?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "svobodnoye vremya",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What do you do in your free time?”",
+      "korean": "свободное время",
+      "english": "Listen for \"свободное время\" inside \"Что ты делаешь в свободное время?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "свободное время",
+      "romanization": "svobodnoye vremya",
+      "nativeText": "Write \"свободное время\" again without looking, then compare the exact written form against \"Что ты делаешь в свободное время?\" before moving on.",
+      "pronunciation": "svobodnoye vremya",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "Use the written model as the final correctness check: “What do you do in your free time?”",
+      "korean": "свободное время",
+      "english": "Write \"свободное время\" again without looking, then compare the exact written form against \"Что ты делаешь в свободное время?\" before moving on.",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What do you do in your free time?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit16clubsleisure-vocabulary-1",
+        "ru-level1unit16clubsleisure-vocabulary-2",
+        "ru-level1unit16clubsleisure-grammar-1",
+        "ru-level1unit16clubsleisure-grammar-2",
+        "ru-level1unit16clubsleisure-reading",
+        "ru-level1unit16clubsleisure-listening",
+        "ru-level1unit16clubsleisure-writing",
+        "ru-level1unit16clubsleisure-task"
+      ],
+      "targetText": "свободное время",
+      "romanization": "svobodnoye vremya",
+      "nativeText": "Check whether \"свободное время\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "pronunciation": "svobodnoye vremya",
+      "exampleTarget": "Что ты делаешь в свободное время?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "korean": "свободное время",
+      "english": "Check whether \"свободное время\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”",
+      "example": "Что ты делаешь в свободное время?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What do you do in your free time?”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

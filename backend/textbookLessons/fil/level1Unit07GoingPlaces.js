@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('fil', {
-  slug: 'fil-l1u7',
-  title: 'Level 1 · Unit 7: Saan ka pupunta? — Going Places',
-  category: 'travel',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about destinations, movement, and reasons for going somewhere.',
-  vocabularyGoal: 'Use place nouns and common motion verbs for daily routes.',
-  grammarGoal: 'Use `sa` for destinations and notice completed / contemplated action prefixes.',
-  speakingGoal: 'Say where you are going and why.',
-  task: 'Describe a short afternoon route through town.',
-  expressionPractice: [
-    practice('asking-destination', 'Asking destination', 'Use `Saan ka pupunta?`.'),
-    practice('stating-destination', 'Stating destination', 'Use `sa` before the place.'),
-    practice('giving-reason', 'Giving reason', 'Add `para` plus a purpose phrase.'),
+module.exports = {
+  "title": "Level 1 · Unit 7: Saan ka pupunta? — Going Places",
+  "category": "travel",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "fil-level1unit07goingplaces-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about destinations, movement, and reasons for going somewhere."
+      ],
+      "task": "Describe a short afternoon route through town."
+    },
+    {
+      "id": "fil-level1unit07goingplaces-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "fil-level1unit07goingplaces-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 7: Saan ka pupunta? — Going Places with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "fil-level1unit07goingplaces-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 7: Saan ka pupunta? — Going Places sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "fil-level1unit07goingplaces-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about destinations, movement, and reasons for going somewhere."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "fil-level1unit07goingplaces-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 7: Saan ka pupunta? — Going Places with one nearby Filipino form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "fil-level1unit07goingplaces-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "fil-level1unit07goingplaces-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "fil-level1unit07goingplaces-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "fil-level1unit07goingplaces-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the politeness, kinship, or multilingual context that changes how this Filipino is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "fil-level1unit07goingplaces-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Describe a short afternoon route through town."
+      ],
+      "task": "Describe a short afternoon route through town."
+    }
   ],
-  relatedPools: ['topic-travel', 'topic-places'],
-  items: [
-    item('Saan ka pupunta?', 'saan ka pupunta?', '“Where are you going?” A high-frequency destination question.', 'Saan ka pupunta pagkatapos ng klase?', '“Where are you going after class?”'),
-    item('pupunta', 'pupunta', '“Will go / going to go.” The contemplated aspect gives future-like meaning.', 'Pupunta ako sa palengke.', '“I will go to the market.”'),
-    item('sa paaralan', 'sa paaralan', '“To school.” `Sa` marks location and destination.', 'Pupunta ang mga bata sa paaralan.', '“The children will go to school.”'),
-    item('aklatan', 'aklatan', '“Library.”', 'Pupunta ako sa aklatan para mag-aral.', '“I will go to the library to study.”'),
-    item('istasyon', 'istasyon', '“Station.”', 'Nasaan ang istasyon?', '“Where is the station?”'),
-    item('para', 'para', '“For / in order to.” Useful before purpose phrases.', 'Pupunta ako sa tindahan para bumili ng tinapay.', '“I will go to the store to buy bread.”'),
-    item('uuwi', 'uuwi', '“Will go home.” A common homeward motion verb.', 'Uuwi ako sa gabi.', '“I will go home in the evening.”'),
-    item('ngayon', 'ngayon', '“Now / today.” Context gives the exact sense.', 'Aalis ako ngayon.', '“I am leaving now.”'),
+  "expressionPractice": [
+    {
+      "id": "asking-destination",
+      "label": "Asking destination",
+      "goal": "Use `Saan ka pupunta?`."
+    },
+    {
+      "id": "stating-destination",
+      "label": "Stating destination",
+      "goal": "Use `sa` before the place."
+    },
+    {
+      "id": "giving-reason",
+      "label": "Giving reason",
+      "goal": "Add `para` plus a purpose phrase."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-travel",
+    "topic-places"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-orientation"
+      ],
+      "targetText": "layunin ng aralin",
+      "romanization": "",
+      "nativeText": "Talk about destinations, movement, and reasons for going somewhere.",
+      "pronunciation": "",
+      "exampleTarget": "layunin ng aralin",
+      "exampleNative": "The whole lesson is built toward this outcome: Describe a short afternoon route through town.",
+      "korean": "layunin ng aralin",
+      "english": "Talk about destinations, movement, and reasons for going somewhere.",
+      "example": "layunin ng aralin",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Describe a short afternoon route through town."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "fil-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "suri sa bigkas",
+      "romanization": "",
+      "nativeText": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Saan ka pupunta pagkatapos ng klase?\".",
+      "pronunciation": "",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "“Where are you going after class?”",
+      "korean": "suri sa bigkas",
+      "english": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Saan ka pupunta pagkatapos ng klase?\".",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "“Where are you going after class?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 7: Saan ka pupunta? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "“Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "Use the key language of Level 1 · Unit 7: Saan ka pupunta? — Going Places with the register and setting that the lesson requires.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "“Where are you going after class?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-2"
+      ],
+      "targetText": "pupunta",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 7: Saan ka pupunta? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "“I will go to the market.”",
+      "korean": "pupunta",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 7: Saan ka pupunta? — Going Places sound precise rather than merely understandable.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "“I will go to the market.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "fil-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "",
+      "nativeText": "Talk about destinations, movement, and reasons for going somewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "“Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "Talk about destinations, movement, and reasons for going somewhere.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "“Where are you going after class?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "fil-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "pupunta",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 7: Saan ka pupunta? — Going Places with one nearby Filipino form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "“I will go to the market.”",
+      "korean": "pupunta",
+      "english": "Contrast the main pattern in Level 1 · Unit 7: Saan ka pupunta? — Going Places with one nearby Filipino form so the learner can avoid literal translation.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "“I will go to the market.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "fil-level1unit07goingplaces-reading"
+      ],
+      "targetText": "halimbawang basa",
+      "romanization": "",
+      "nativeText": "Read \"Aalis ako ngayon.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "“I am leaving now.”",
+      "korean": "halimbawang basa",
+      "english": "Read \"Aalis ako ngayon.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "“I am leaving now.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "fil-level1unit07goingplaces-listening"
+      ],
+      "targetText": "halimbawang usapan",
+      "romanization": "",
+      "nativeText": "Hear \"Aalis ako ngayon.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "“I am leaving now.”",
+      "korean": "halimbawang usapan",
+      "english": "Hear \"Aalis ako ngayon.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "“I am leaving now.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "fil-level1unit07goingplaces-writing"
+      ],
+      "targetText": "gabay sa pagsulat",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Saan ka pupunta pagkatapos ng klase?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "gabay sa pagsulat",
+      "english": "Write your own version after studying \"Saan ka pupunta pagkatapos ng klase?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "fil-level1unit07goingplaces-culture"
+      ],
+      "targetText": "gamit at konteksto",
+      "romanization": "",
+      "nativeText": "Notice the politeness, kinship, or multilingual context that changes how this Filipino is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "“I will go to the market.”",
+      "korean": "gamit at konteksto",
+      "english": "Notice the politeness, kinship, or multilingual context that changes how this Filipino is naturally used.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "“I will go to the market.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pangwakas na gawain",
+      "romanization": "",
+      "nativeText": "Describe a short afternoon route through town.",
+      "pronunciation": "",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "Describe a short afternoon route through town.",
+      "korean": "pangwakas na gawain",
+      "english": "Describe a short afternoon route through town.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "Describe a short afternoon route through town."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "karaniwang pagkakamali",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around focus marking, affixes, particles, and word order. Begin by checking \"Pupunta ako sa palengke.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I will go to the market.”",
+      "korean": "karaniwang pagkakamali",
+      "english": "Watch for literal-translation mistakes around focus marking, affixes, particles, and word order. Begin by checking \"Pupunta ako sa palengke.\" against the model.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I will go to the market.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-culture"
+      ],
+      "targetText": "antas ng pananalita",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for neutral Filipino, a respectful tone, or a more conversational mixed-register choice. Compare the social fit of \"Saan ka pupunta pagkatapos ng klase?\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "“Where are you going after class?”",
+      "korean": "antas ng pananalita",
+      "english": "Check whether the setting calls for neutral Filipino, a respectful tone, or a more conversational mixed-register choice. Compare the social fit of \"Saan ka pupunta pagkatapos ng klase?\" before reusing it elsewhere.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "“Where are you going after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "daloy",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Filipino message rather than as separate translated fragments. Aim to carry \"Aalis ako ngayon.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "“I am leaving now.”",
+      "korean": "daloy",
+      "english": "Say the idea as one connected Filipino message rather than as separate translated fragments. Aim to carry \"Aalis ako ngayon.\" as one thought.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "“I am leaving now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "paglalapat",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Saan ka pupunta pagkatapos ng klase?\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "paglalapat",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Saan ka pupunta pagkatapos ng klase?\" and move it into your own life.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-grammar-1"
+      ],
+      "targetText": "paggunita",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Saan ka pupunta?\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "Saan ka pupunta?",
+      "exampleNative": "“Where are you going?” A high-frequency destination question.",
+      "korean": "paggunita",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Saan ka pupunta?\" before looking back.",
+      "example": "Saan ka pupunta?",
+      "exampleEnglish": "“Where are you going?” A high-frequency destination question."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-writing"
+      ],
+      "targetText": "pagpapalawak",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Aalis ako ngayon.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "pagpapalawak",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Aalis ako ngayon.\" rather than restarting from a blank sentence.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading"
+      ],
+      "targetText": "paghahambing",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 7: Saan ka pupunta? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Pupunta ako sa palengke.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "“I will go to the market.”",
+      "korean": "paghahambing",
+      "english": "Compare the central form in Level 1 · Unit 7: Saan ka pupunta? — Going Places with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Pupunta ako sa palengke.\" as the comparison line.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "“I will go to the market.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "fil-level1unit07goingplaces-pronunciation"
+      ],
+      "targetText": "ayos-bigkas",
+      "romanization": "",
+      "nativeText": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Saan ka pupunta pagkatapos ng klase?\".",
+      "pronunciation": "",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "“Where are you going after class?”",
+      "korean": "ayos-bigkas",
+      "english": "Keep Filipino stress, glottal stops, borrowed-word rhythm, and affix boundaries clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Saan ka pupunta pagkatapos ng klase?\".",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "“Where are you going after class?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pagbabago ng usapan",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Aalis ako ngayon.\".",
+      "pronunciation": "",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "“I am leaving now.”",
+      "korean": "pagbabago ng usapan",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Aalis ako ngayon.\".",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "“I am leaving now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-writing"
+      ],
+      "targetText": "pagbuo ng pangungusap",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Saan ka pupunta pagkatapos ng klase?\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "“Where are you going after class?”",
+      "korean": "pagbuo ng pangungusap",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Saan ka pupunta pagkatapos ng klase?\" one layer at a time.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "“Where are you going after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-2"
+      ],
+      "targetText": "mabilisang suri",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Pupunta ako sa palengke.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "“I will go to the market.”",
+      "korean": "mabilisang suri",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Pupunta ako sa palengke.\" as the deciding example.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "“I will go to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-culture",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pagmumuni",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Aalis ako ngayon.\".",
+      "pronunciation": "",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "“I am leaving now.”",
+      "korean": "pagmumuni",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Aalis ako ngayon.\".",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "“I am leaving now.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "saan ka pupunta?",
+      "nativeText": "“Where are you going?” A high-frequency destination question.",
+      "pronunciation": "saan ka pupunta?",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "“Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "“Where are you going?” A high-frequency destination question.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "“Where are you going after class?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Saan ka pupunta pagkatapos ng klase?",
+      "romanization": "saan ka pupunta?",
+      "nativeText": "Model use for \"Saan ka pupunta pagkatapos ng klase?\": “Where are you going after class?”",
+      "pronunciation": "saan ka pupunta?",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "“Where are you going after class?”",
+      "korean": "Saan ka pupunta pagkatapos ng klase?",
+      "english": "Model use for \"Saan ka pupunta pagkatapos ng klase?\": “Where are you going after class?”",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "“Where are you going after class?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "saan ka pupunta?",
+      "nativeText": "Usage focus for \"Saan ka pupunta?\": Use the key language of Level 1 · Unit 7: Saan ka pupunta? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "saan ka pupunta?",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "Notice what the form is doing here: “Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "Usage focus for \"Saan ka pupunta?\": Use the key language of Level 1 · Unit 7: Saan ka pupunta? — Going Places with the register and setting that the lesson requires.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "Notice what the form is doing here: “Where are you going after class?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "saan ka pupunta?",
+      "nativeText": "Contrast check for \"Saan ka pupunta?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "saan ka pupunta?",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "Contrast check for \"Saan ka pupunta?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Where are you going after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "saan ka pupunta?",
+      "nativeText": "Recall \"Saan ka pupunta?\" from memory, then explain what would change if a nearby alternative replaced it in \"Saan ka pupunta pagkatapos ng klase?\".",
+      "pronunciation": "saan ka pupunta?",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "Self-check against the model before moving on: “Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "Recall \"Saan ka pupunta?\" from memory, then explain what would change if a nearby alternative replaced it in \"Saan ka pupunta pagkatapos ng klase?\".",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "Self-check against the model before moving on: “Where are you going after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "saan ka pupunta?",
+      "nativeText": "Repair \"Saan ka pupunta?\" inside \"Saan ka pupunta pagkatapos ng klase?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: Saan ka pupunta? — Going Places with the register and setting that the lesson requires.",
+      "pronunciation": "saan ka pupunta?",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "Use the model as the repair target: “Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "Repair \"Saan ka pupunta?\" inside \"Saan ka pupunta pagkatapos ng klase?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 7: Saan ka pupunta? — Going Places with the register and setting that the lesson requires.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "Use the model as the repair target: “Where are you going after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "saan ka pupunta?",
+      "nativeText": "Transfer \"Saan ka pupunta?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Saan ka pupunta pagkatapos ng klase?\".",
+      "pronunciation": "saan ka pupunta?",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "Transfer \"Saan ka pupunta?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Saan ka pupunta pagkatapos ng klase?\".",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Where are you going after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "saan ka pupunta?",
+      "nativeText": "Find one word or phrase that naturally travels with \"Saan ka pupunta?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "saan ka pupunta?",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "Find one word or phrase that naturally travels with \"Saan ka pupunta?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Where are you going after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "saan ka pupunta?",
+      "nativeText": "Listen for \"Saan ka pupunta?\" inside \"Saan ka pupunta pagkatapos ng klase?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "saan ka pupunta?",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "Listen for \"Saan ka pupunta?\" inside \"Saan ka pupunta pagkatapos ng klase?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Where are you going after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "saan ka pupunta?",
+      "nativeText": "Write \"Saan ka pupunta?\" again without looking, then compare the exact written form against \"Saan ka pupunta pagkatapos ng klase?\" before moving on.",
+      "pronunciation": "saan ka pupunta?",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "Use the written model as the final correctness check: “Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "Write \"Saan ka pupunta?\" again without looking, then compare the exact written form against \"Saan ka pupunta pagkatapos ng klase?\" before moving on.",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Where are you going after class?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Saan ka pupunta?",
+      "romanization": "saan ka pupunta?",
+      "nativeText": "Check whether \"Saan ka pupunta?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Where are you going after class?”",
+      "pronunciation": "saan ka pupunta?",
+      "exampleTarget": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Where are you going after class?”",
+      "korean": "Saan ka pupunta?",
+      "english": "Check whether \"Saan ka pupunta?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Where are you going after class?”",
+      "example": "Saan ka pupunta pagkatapos ng klase?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Where are you going after class?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pupunta",
+      "romanization": "pupunta",
+      "nativeText": "“Will go / going to go.” The contemplated aspect gives future-like meaning.",
+      "pronunciation": "pupunta",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "“I will go to the market.”",
+      "korean": "pupunta",
+      "english": "“Will go / going to go.” The contemplated aspect gives future-like meaning.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "“I will go to the market.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Pupunta ako sa palengke.",
+      "romanization": "pupunta",
+      "nativeText": "Model use for \"Pupunta ako sa palengke.\": “I will go to the market.”",
+      "pronunciation": "pupunta",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "“I will go to the market.”",
+      "korean": "Pupunta ako sa palengke.",
+      "english": "Model use for \"Pupunta ako sa palengke.\": “I will go to the market.”",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "“I will go to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pupunta",
+      "romanization": "pupunta",
+      "nativeText": "Usage focus for \"pupunta\": Distinguish the nearby wording choices that make Level 1 · Unit 7: Saan ka pupunta? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "pupunta",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "Notice what the form is doing here: “I will go to the market.”",
+      "korean": "pupunta",
+      "english": "Usage focus for \"pupunta\": Distinguish the nearby wording choices that make Level 1 · Unit 7: Saan ka pupunta? — Going Places sound precise rather than merely understandable.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "Notice what the form is doing here: “I will go to the market.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pupunta",
+      "romanization": "pupunta",
+      "nativeText": "Contrast check for \"pupunta\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "pupunta",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will go to the market.”",
+      "korean": "pupunta",
+      "english": "Contrast check for \"pupunta\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will go to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pupunta",
+      "romanization": "pupunta",
+      "nativeText": "Recall \"pupunta\" from memory, then explain what would change if a nearby alternative replaced it in \"Pupunta ako sa palengke.\".",
+      "pronunciation": "pupunta",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "Self-check against the model before moving on: “I will go to the market.”",
+      "korean": "pupunta",
+      "english": "Recall \"pupunta\" from memory, then explain what would change if a nearby alternative replaced it in \"Pupunta ako sa palengke.\".",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "Self-check against the model before moving on: “I will go to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pupunta",
+      "romanization": "pupunta",
+      "nativeText": "Repair \"pupunta\" inside \"Pupunta ako sa palengke.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: Saan ka pupunta? — Going Places sound precise rather than merely understandable.",
+      "pronunciation": "pupunta",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "Use the model as the repair target: “I will go to the market.”",
+      "korean": "pupunta",
+      "english": "Repair \"pupunta\" inside \"Pupunta ako sa palengke.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 7: Saan ka pupunta? — Going Places sound precise rather than merely understandable.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "Use the model as the repair target: “I will go to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pupunta",
+      "romanization": "pupunta",
+      "nativeText": "Transfer \"pupunta\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pupunta ako sa palengke.\".",
+      "pronunciation": "pupunta",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will go to the market.”",
+      "korean": "pupunta",
+      "english": "Transfer \"pupunta\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pupunta ako sa palengke.\".",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will go to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pupunta",
+      "romanization": "pupunta",
+      "nativeText": "Find one word or phrase that naturally travels with \"pupunta\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "pupunta",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I will go to the market.”",
+      "korean": "pupunta",
+      "english": "Find one word or phrase that naturally travels with \"pupunta\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I will go to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pupunta",
+      "romanization": "pupunta",
+      "nativeText": "Listen for \"pupunta\" inside \"Pupunta ako sa palengke.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "pupunta",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will go to the market.”",
+      "korean": "pupunta",
+      "english": "Listen for \"pupunta\" inside \"Pupunta ako sa palengke.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will go to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pupunta",
+      "romanization": "pupunta",
+      "nativeText": "Write \"pupunta\" again without looking, then compare the exact written form against \"Pupunta ako sa palengke.\" before moving on.",
+      "pronunciation": "pupunta",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "Use the written model as the final correctness check: “I will go to the market.”",
+      "korean": "pupunta",
+      "english": "Write \"pupunta\" again without looking, then compare the exact written form against \"Pupunta ako sa palengke.\" before moving on.",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I will go to the market.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "pupunta",
+      "romanization": "pupunta",
+      "nativeText": "Check whether \"pupunta\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will go to the market.”",
+      "pronunciation": "pupunta",
+      "exampleTarget": "Pupunta ako sa palengke.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I will go to the market.”",
+      "korean": "pupunta",
+      "english": "Check whether \"pupunta\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will go to the market.”",
+      "example": "Pupunta ako sa palengke.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I will go to the market.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "sa paaralan",
+      "romanization": "sa paaralan",
+      "nativeText": "“To school.” `Sa` marks location and destination.",
+      "pronunciation": "sa paaralan",
+      "exampleTarget": "Pupunta ang mga bata sa paaralan.",
+      "exampleNative": "“The children will go to school.”",
+      "korean": "sa paaralan",
+      "english": "“To school.” `Sa` marks location and destination.",
+      "example": "Pupunta ang mga bata sa paaralan.",
+      "exampleEnglish": "“The children will go to school.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Pupunta ang mga bata sa paaralan.",
+      "romanization": "sa paaralan",
+      "nativeText": "Model use for \"Pupunta ang mga bata sa paaralan.\": “The children will go to school.”",
+      "pronunciation": "sa paaralan",
+      "exampleTarget": "Pupunta ang mga bata sa paaralan.",
+      "exampleNative": "“The children will go to school.”",
+      "korean": "Pupunta ang mga bata sa paaralan.",
+      "english": "Model use for \"Pupunta ang mga bata sa paaralan.\": “The children will go to school.”",
+      "example": "Pupunta ang mga bata sa paaralan.",
+      "exampleEnglish": "“The children will go to school.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "sa paaralan",
+      "romanization": "sa paaralan",
+      "nativeText": "Usage focus for \"sa paaralan\": “To school.” `Sa` marks location and destination.",
+      "pronunciation": "sa paaralan",
+      "exampleTarget": "Pupunta ang mga bata sa paaralan.",
+      "exampleNative": "Notice what the form is doing here: “The children will go to school.”",
+      "korean": "sa paaralan",
+      "english": "Usage focus for \"sa paaralan\": “To school.” `Sa` marks location and destination.",
+      "example": "Pupunta ang mga bata sa paaralan.",
+      "exampleEnglish": "Notice what the form is doing here: “The children will go to school.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "sa paaralan",
+      "romanization": "sa paaralan",
+      "nativeText": "Contrast check for \"sa paaralan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "sa paaralan",
+      "exampleTarget": "Pupunta ang mga bata sa paaralan.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The children will go to school.”",
+      "korean": "sa paaralan",
+      "english": "Contrast check for \"sa paaralan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Pupunta ang mga bata sa paaralan.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The children will go to school.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "sa paaralan",
+      "romanization": "sa paaralan",
+      "nativeText": "Recall \"sa paaralan\" from memory, then explain what would change if a nearby alternative replaced it in \"Pupunta ang mga bata sa paaralan.\".",
+      "pronunciation": "sa paaralan",
+      "exampleTarget": "Pupunta ang mga bata sa paaralan.",
+      "exampleNative": "Self-check against the model before moving on: “The children will go to school.”",
+      "korean": "sa paaralan",
+      "english": "Recall \"sa paaralan\" from memory, then explain what would change if a nearby alternative replaced it in \"Pupunta ang mga bata sa paaralan.\".",
+      "example": "Pupunta ang mga bata sa paaralan.",
+      "exampleEnglish": "Self-check against the model before moving on: “The children will go to school.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "sa paaralan",
+      "romanization": "sa paaralan",
+      "nativeText": "Repair \"sa paaralan\" inside \"Pupunta ang mga bata sa paaralan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To school.” `Sa` marks location and destination.",
+      "pronunciation": "sa paaralan",
+      "exampleTarget": "Pupunta ang mga bata sa paaralan.",
+      "exampleNative": "Use the model as the repair target: “The children will go to school.”",
+      "korean": "sa paaralan",
+      "english": "Repair \"sa paaralan\" inside \"Pupunta ang mga bata sa paaralan.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To school.” `Sa` marks location and destination.",
+      "example": "Pupunta ang mga bata sa paaralan.",
+      "exampleEnglish": "Use the model as the repair target: “The children will go to school.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "sa paaralan",
+      "romanization": "sa paaralan",
+      "nativeText": "Transfer \"sa paaralan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pupunta ang mga bata sa paaralan.\".",
+      "pronunciation": "sa paaralan",
+      "exampleTarget": "Pupunta ang mga bata sa paaralan.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The children will go to school.”",
+      "korean": "sa paaralan",
+      "english": "Transfer \"sa paaralan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pupunta ang mga bata sa paaralan.\".",
+      "example": "Pupunta ang mga bata sa paaralan.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The children will go to school.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "sa paaralan",
+      "romanization": "sa paaralan",
+      "nativeText": "Find one word or phrase that naturally travels with \"sa paaralan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "sa paaralan",
+      "exampleTarget": "Pupunta ang mga bata sa paaralan.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The children will go to school.”",
+      "korean": "sa paaralan",
+      "english": "Find one word or phrase that naturally travels with \"sa paaralan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Pupunta ang mga bata sa paaralan.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The children will go to school.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "sa paaralan",
+      "romanization": "sa paaralan",
+      "nativeText": "Listen for \"sa paaralan\" inside \"Pupunta ang mga bata sa paaralan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "sa paaralan",
+      "exampleTarget": "Pupunta ang mga bata sa paaralan.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The children will go to school.”",
+      "korean": "sa paaralan",
+      "english": "Listen for \"sa paaralan\" inside \"Pupunta ang mga bata sa paaralan.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Pupunta ang mga bata sa paaralan.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The children will go to school.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "sa paaralan",
+      "romanization": "sa paaralan",
+      "nativeText": "Write \"sa paaralan\" again without looking, then compare the exact written form against \"Pupunta ang mga bata sa paaralan.\" before moving on.",
+      "pronunciation": "sa paaralan",
+      "exampleTarget": "Pupunta ang mga bata sa paaralan.",
+      "exampleNative": "Use the written model as the final correctness check: “The children will go to school.”",
+      "korean": "sa paaralan",
+      "english": "Write \"sa paaralan\" again without looking, then compare the exact written form against \"Pupunta ang mga bata sa paaralan.\" before moving on.",
+      "example": "Pupunta ang mga bata sa paaralan.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The children will go to school.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "sa paaralan",
+      "romanization": "sa paaralan",
+      "nativeText": "Check whether \"sa paaralan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The children will go to school.”",
+      "pronunciation": "sa paaralan",
+      "exampleTarget": "Pupunta ang mga bata sa paaralan.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The children will go to school.”",
+      "korean": "sa paaralan",
+      "english": "Check whether \"sa paaralan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The children will go to school.”",
+      "example": "Pupunta ang mga bata sa paaralan.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The children will go to school.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "aklatan",
+      "romanization": "aklatan",
+      "nativeText": "“Library.”",
+      "pronunciation": "aklatan",
+      "exampleTarget": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleNative": "“I will go to the library to study.”",
+      "korean": "aklatan",
+      "english": "“Library.”",
+      "example": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleEnglish": "“I will go to the library to study.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Pupunta ako sa aklatan para mag-aral.",
+      "romanization": "aklatan",
+      "nativeText": "Model use for \"Pupunta ako sa aklatan para mag-aral.\": “I will go to the library to study.”",
+      "pronunciation": "aklatan",
+      "exampleTarget": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleNative": "“I will go to the library to study.”",
+      "korean": "Pupunta ako sa aklatan para mag-aral.",
+      "english": "Model use for \"Pupunta ako sa aklatan para mag-aral.\": “I will go to the library to study.”",
+      "example": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleEnglish": "“I will go to the library to study.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "aklatan",
+      "romanization": "aklatan",
+      "nativeText": "Usage focus for \"aklatan\": “Library.”",
+      "pronunciation": "aklatan",
+      "exampleTarget": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleNative": "Notice what the form is doing here: “I will go to the library to study.”",
+      "korean": "aklatan",
+      "english": "Usage focus for \"aklatan\": “Library.”",
+      "example": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleEnglish": "Notice what the form is doing here: “I will go to the library to study.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "aklatan",
+      "romanization": "aklatan",
+      "nativeText": "Contrast check for \"aklatan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "aklatan",
+      "exampleTarget": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will go to the library to study.”",
+      "korean": "aklatan",
+      "english": "Contrast check for \"aklatan\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will go to the library to study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "aklatan",
+      "romanization": "aklatan",
+      "nativeText": "Recall \"aklatan\" from memory, then explain what would change if a nearby alternative replaced it in \"Pupunta ako sa aklatan para mag-aral.\".",
+      "pronunciation": "aklatan",
+      "exampleTarget": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleNative": "Self-check against the model before moving on: “I will go to the library to study.”",
+      "korean": "aklatan",
+      "english": "Recall \"aklatan\" from memory, then explain what would change if a nearby alternative replaced it in \"Pupunta ako sa aklatan para mag-aral.\".",
+      "example": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleEnglish": "Self-check against the model before moving on: “I will go to the library to study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "aklatan",
+      "romanization": "aklatan",
+      "nativeText": "Repair \"aklatan\" inside \"Pupunta ako sa aklatan para mag-aral.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Library.”",
+      "pronunciation": "aklatan",
+      "exampleTarget": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleNative": "Use the model as the repair target: “I will go to the library to study.”",
+      "korean": "aklatan",
+      "english": "Repair \"aklatan\" inside \"Pupunta ako sa aklatan para mag-aral.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Library.”",
+      "example": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleEnglish": "Use the model as the repair target: “I will go to the library to study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "aklatan",
+      "romanization": "aklatan",
+      "nativeText": "Transfer \"aklatan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pupunta ako sa aklatan para mag-aral.\".",
+      "pronunciation": "aklatan",
+      "exampleTarget": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will go to the library to study.”",
+      "korean": "aklatan",
+      "english": "Transfer \"aklatan\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pupunta ako sa aklatan para mag-aral.\".",
+      "example": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will go to the library to study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "aklatan",
+      "romanization": "aklatan",
+      "nativeText": "Find one word or phrase that naturally travels with \"aklatan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "aklatan",
+      "exampleTarget": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I will go to the library to study.”",
+      "korean": "aklatan",
+      "english": "Find one word or phrase that naturally travels with \"aklatan\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I will go to the library to study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "aklatan",
+      "romanization": "aklatan",
+      "nativeText": "Listen for \"aklatan\" inside \"Pupunta ako sa aklatan para mag-aral.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "aklatan",
+      "exampleTarget": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will go to the library to study.”",
+      "korean": "aklatan",
+      "english": "Listen for \"aklatan\" inside \"Pupunta ako sa aklatan para mag-aral.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will go to the library to study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "aklatan",
+      "romanization": "aklatan",
+      "nativeText": "Write \"aklatan\" again without looking, then compare the exact written form against \"Pupunta ako sa aklatan para mag-aral.\" before moving on.",
+      "pronunciation": "aklatan",
+      "exampleTarget": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleNative": "Use the written model as the final correctness check: “I will go to the library to study.”",
+      "korean": "aklatan",
+      "english": "Write \"aklatan\" again without looking, then compare the exact written form against \"Pupunta ako sa aklatan para mag-aral.\" before moving on.",
+      "example": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I will go to the library to study.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "aklatan",
+      "romanization": "aklatan",
+      "nativeText": "Check whether \"aklatan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will go to the library to study.”",
+      "pronunciation": "aklatan",
+      "exampleTarget": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I will go to the library to study.”",
+      "korean": "aklatan",
+      "english": "Check whether \"aklatan\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will go to the library to study.”",
+      "example": "Pupunta ako sa aklatan para mag-aral.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I will go to the library to study.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "istasyon",
+      "nativeText": "“Station.”",
+      "pronunciation": "istasyon",
+      "exampleTarget": "Nasaan ang istasyon?",
+      "exampleNative": "“Where is the station?”",
+      "korean": "istasyon",
+      "english": "“Station.”",
+      "example": "Nasaan ang istasyon?",
+      "exampleEnglish": "“Where is the station?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Nasaan ang istasyon?",
+      "romanization": "istasyon",
+      "nativeText": "Model use for \"Nasaan ang istasyon?\": “Where is the station?”",
+      "pronunciation": "istasyon",
+      "exampleTarget": "Nasaan ang istasyon?",
+      "exampleNative": "“Where is the station?”",
+      "korean": "Nasaan ang istasyon?",
+      "english": "Model use for \"Nasaan ang istasyon?\": “Where is the station?”",
+      "example": "Nasaan ang istasyon?",
+      "exampleEnglish": "“Where is the station?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "istasyon",
+      "nativeText": "Usage focus for \"istasyon\": “Station.”",
+      "pronunciation": "istasyon",
+      "exampleTarget": "Nasaan ang istasyon?",
+      "exampleNative": "Notice what the form is doing here: “Where is the station?”",
+      "korean": "istasyon",
+      "english": "Usage focus for \"istasyon\": “Station.”",
+      "example": "Nasaan ang istasyon?",
+      "exampleEnglish": "Notice what the form is doing here: “Where is the station?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "istasyon",
+      "nativeText": "Contrast check for \"istasyon\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "istasyon",
+      "exampleTarget": "Nasaan ang istasyon?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Where is the station?”",
+      "korean": "istasyon",
+      "english": "Contrast check for \"istasyon\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Nasaan ang istasyon?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Where is the station?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "istasyon",
+      "nativeText": "Recall \"istasyon\" from memory, then explain what would change if a nearby alternative replaced it in \"Nasaan ang istasyon?\".",
+      "pronunciation": "istasyon",
+      "exampleTarget": "Nasaan ang istasyon?",
+      "exampleNative": "Self-check against the model before moving on: “Where is the station?”",
+      "korean": "istasyon",
+      "english": "Recall \"istasyon\" from memory, then explain what would change if a nearby alternative replaced it in \"Nasaan ang istasyon?\".",
+      "example": "Nasaan ang istasyon?",
+      "exampleEnglish": "Self-check against the model before moving on: “Where is the station?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "istasyon",
+      "nativeText": "Repair \"istasyon\" inside \"Nasaan ang istasyon?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Station.”",
+      "pronunciation": "istasyon",
+      "exampleTarget": "Nasaan ang istasyon?",
+      "exampleNative": "Use the model as the repair target: “Where is the station?”",
+      "korean": "istasyon",
+      "english": "Repair \"istasyon\" inside \"Nasaan ang istasyon?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Station.”",
+      "example": "Nasaan ang istasyon?",
+      "exampleEnglish": "Use the model as the repair target: “Where is the station?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "istasyon",
+      "nativeText": "Transfer \"istasyon\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Nasaan ang istasyon?\".",
+      "pronunciation": "istasyon",
+      "exampleTarget": "Nasaan ang istasyon?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Where is the station?”",
+      "korean": "istasyon",
+      "english": "Transfer \"istasyon\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Nasaan ang istasyon?\".",
+      "example": "Nasaan ang istasyon?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Where is the station?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "istasyon",
+      "nativeText": "Find one word or phrase that naturally travels with \"istasyon\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "istasyon",
+      "exampleTarget": "Nasaan ang istasyon?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Where is the station?”",
+      "korean": "istasyon",
+      "english": "Find one word or phrase that naturally travels with \"istasyon\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Nasaan ang istasyon?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Where is the station?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "istasyon",
+      "nativeText": "Listen for \"istasyon\" inside \"Nasaan ang istasyon?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "istasyon",
+      "exampleTarget": "Nasaan ang istasyon?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Where is the station?”",
+      "korean": "istasyon",
+      "english": "Listen for \"istasyon\" inside \"Nasaan ang istasyon?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Nasaan ang istasyon?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Where is the station?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "istasyon",
+      "nativeText": "Write \"istasyon\" again without looking, then compare the exact written form against \"Nasaan ang istasyon?\" before moving on.",
+      "pronunciation": "istasyon",
+      "exampleTarget": "Nasaan ang istasyon?",
+      "exampleNative": "Use the written model as the final correctness check: “Where is the station?”",
+      "korean": "istasyon",
+      "english": "Write \"istasyon\" again without looking, then compare the exact written form against \"Nasaan ang istasyon?\" before moving on.",
+      "example": "Nasaan ang istasyon?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Where is the station?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "istasyon",
+      "romanization": "istasyon",
+      "nativeText": "Check whether \"istasyon\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Where is the station?”",
+      "pronunciation": "istasyon",
+      "exampleTarget": "Nasaan ang istasyon?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Where is the station?”",
+      "korean": "istasyon",
+      "english": "Check whether \"istasyon\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Where is the station?”",
+      "example": "Nasaan ang istasyon?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Where is the station?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "para",
+      "romanization": "para",
+      "nativeText": "“For / in order to.” Useful before purpose phrases.",
+      "pronunciation": "para",
+      "exampleTarget": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleNative": "“I will go to the store to buy bread.”",
+      "korean": "para",
+      "english": "“For / in order to.” Useful before purpose phrases.",
+      "example": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleEnglish": "“I will go to the store to buy bread.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "romanization": "para",
+      "nativeText": "Model use for \"Pupunta ako sa tindahan para bumili ng tinapay.\": “I will go to the store to buy bread.”",
+      "pronunciation": "para",
+      "exampleTarget": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleNative": "“I will go to the store to buy bread.”",
+      "korean": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "english": "Model use for \"Pupunta ako sa tindahan para bumili ng tinapay.\": “I will go to the store to buy bread.”",
+      "example": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleEnglish": "“I will go to the store to buy bread.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "para",
+      "romanization": "para",
+      "nativeText": "Usage focus for \"para\": “For / in order to.” Useful before purpose phrases.",
+      "pronunciation": "para",
+      "exampleTarget": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleNative": "Notice what the form is doing here: “I will go to the store to buy bread.”",
+      "korean": "para",
+      "english": "Usage focus for \"para\": “For / in order to.” Useful before purpose phrases.",
+      "example": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleEnglish": "Notice what the form is doing here: “I will go to the store to buy bread.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "para",
+      "romanization": "para",
+      "nativeText": "Contrast check for \"para\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "para",
+      "exampleTarget": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will go to the store to buy bread.”",
+      "korean": "para",
+      "english": "Contrast check for \"para\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will go to the store to buy bread.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "para",
+      "romanization": "para",
+      "nativeText": "Recall \"para\" from memory, then explain what would change if a nearby alternative replaced it in \"Pupunta ako sa tindahan para bumili ng tinapay.\".",
+      "pronunciation": "para",
+      "exampleTarget": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleNative": "Self-check against the model before moving on: “I will go to the store to buy bread.”",
+      "korean": "para",
+      "english": "Recall \"para\" from memory, then explain what would change if a nearby alternative replaced it in \"Pupunta ako sa tindahan para bumili ng tinapay.\".",
+      "example": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleEnglish": "Self-check against the model before moving on: “I will go to the store to buy bread.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "para",
+      "romanization": "para",
+      "nativeText": "Repair \"para\" inside \"Pupunta ako sa tindahan para bumili ng tinapay.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “For / in order to.” Useful before purpose phrases.",
+      "pronunciation": "para",
+      "exampleTarget": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleNative": "Use the model as the repair target: “I will go to the store to buy bread.”",
+      "korean": "para",
+      "english": "Repair \"para\" inside \"Pupunta ako sa tindahan para bumili ng tinapay.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “For / in order to.” Useful before purpose phrases.",
+      "example": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleEnglish": "Use the model as the repair target: “I will go to the store to buy bread.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "para",
+      "romanization": "para",
+      "nativeText": "Transfer \"para\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pupunta ako sa tindahan para bumili ng tinapay.\".",
+      "pronunciation": "para",
+      "exampleTarget": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will go to the store to buy bread.”",
+      "korean": "para",
+      "english": "Transfer \"para\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Pupunta ako sa tindahan para bumili ng tinapay.\".",
+      "example": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will go to the store to buy bread.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "para",
+      "romanization": "para",
+      "nativeText": "Find one word or phrase that naturally travels with \"para\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "para",
+      "exampleTarget": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I will go to the store to buy bread.”",
+      "korean": "para",
+      "english": "Find one word or phrase that naturally travels with \"para\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I will go to the store to buy bread.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "para",
+      "romanization": "para",
+      "nativeText": "Listen for \"para\" inside \"Pupunta ako sa tindahan para bumili ng tinapay.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "para",
+      "exampleTarget": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will go to the store to buy bread.”",
+      "korean": "para",
+      "english": "Listen for \"para\" inside \"Pupunta ako sa tindahan para bumili ng tinapay.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will go to the store to buy bread.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "para",
+      "romanization": "para",
+      "nativeText": "Write \"para\" again without looking, then compare the exact written form against \"Pupunta ako sa tindahan para bumili ng tinapay.\" before moving on.",
+      "pronunciation": "para",
+      "exampleTarget": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleNative": "Use the written model as the final correctness check: “I will go to the store to buy bread.”",
+      "korean": "para",
+      "english": "Write \"para\" again without looking, then compare the exact written form against \"Pupunta ako sa tindahan para bumili ng tinapay.\" before moving on.",
+      "example": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I will go to the store to buy bread.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "para",
+      "romanization": "para",
+      "nativeText": "Check whether \"para\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will go to the store to buy bread.”",
+      "pronunciation": "para",
+      "exampleTarget": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I will go to the store to buy bread.”",
+      "korean": "para",
+      "english": "Check whether \"para\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will go to the store to buy bread.”",
+      "example": "Pupunta ako sa tindahan para bumili ng tinapay.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I will go to the store to buy bread.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "uuwi",
+      "romanization": "uuwi",
+      "nativeText": "“Will go home.” A common homeward motion verb.",
+      "pronunciation": "uuwi",
+      "exampleTarget": "Uuwi ako sa gabi.",
+      "exampleNative": "“I will go home in the evening.”",
+      "korean": "uuwi",
+      "english": "“Will go home.” A common homeward motion verb.",
+      "example": "Uuwi ako sa gabi.",
+      "exampleEnglish": "“I will go home in the evening.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Uuwi ako sa gabi.",
+      "romanization": "uuwi",
+      "nativeText": "Model use for \"Uuwi ako sa gabi.\": “I will go home in the evening.”",
+      "pronunciation": "uuwi",
+      "exampleTarget": "Uuwi ako sa gabi.",
+      "exampleNative": "“I will go home in the evening.”",
+      "korean": "Uuwi ako sa gabi.",
+      "english": "Model use for \"Uuwi ako sa gabi.\": “I will go home in the evening.”",
+      "example": "Uuwi ako sa gabi.",
+      "exampleEnglish": "“I will go home in the evening.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "uuwi",
+      "romanization": "uuwi",
+      "nativeText": "Usage focus for \"uuwi\": “Will go home.” A common homeward motion verb.",
+      "pronunciation": "uuwi",
+      "exampleTarget": "Uuwi ako sa gabi.",
+      "exampleNative": "Notice what the form is doing here: “I will go home in the evening.”",
+      "korean": "uuwi",
+      "english": "Usage focus for \"uuwi\": “Will go home.” A common homeward motion verb.",
+      "example": "Uuwi ako sa gabi.",
+      "exampleEnglish": "Notice what the form is doing here: “I will go home in the evening.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "uuwi",
+      "romanization": "uuwi",
+      "nativeText": "Contrast check for \"uuwi\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "uuwi",
+      "exampleTarget": "Uuwi ako sa gabi.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will go home in the evening.”",
+      "korean": "uuwi",
+      "english": "Contrast check for \"uuwi\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Uuwi ako sa gabi.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will go home in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "uuwi",
+      "romanization": "uuwi",
+      "nativeText": "Recall \"uuwi\" from memory, then explain what would change if a nearby alternative replaced it in \"Uuwi ako sa gabi.\".",
+      "pronunciation": "uuwi",
+      "exampleTarget": "Uuwi ako sa gabi.",
+      "exampleNative": "Self-check against the model before moving on: “I will go home in the evening.”",
+      "korean": "uuwi",
+      "english": "Recall \"uuwi\" from memory, then explain what would change if a nearby alternative replaced it in \"Uuwi ako sa gabi.\".",
+      "example": "Uuwi ako sa gabi.",
+      "exampleEnglish": "Self-check against the model before moving on: “I will go home in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "uuwi",
+      "romanization": "uuwi",
+      "nativeText": "Repair \"uuwi\" inside \"Uuwi ako sa gabi.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Will go home.” A common homeward motion verb.",
+      "pronunciation": "uuwi",
+      "exampleTarget": "Uuwi ako sa gabi.",
+      "exampleNative": "Use the model as the repair target: “I will go home in the evening.”",
+      "korean": "uuwi",
+      "english": "Repair \"uuwi\" inside \"Uuwi ako sa gabi.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Will go home.” A common homeward motion verb.",
+      "example": "Uuwi ako sa gabi.",
+      "exampleEnglish": "Use the model as the repair target: “I will go home in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "uuwi",
+      "romanization": "uuwi",
+      "nativeText": "Transfer \"uuwi\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Uuwi ako sa gabi.\".",
+      "pronunciation": "uuwi",
+      "exampleTarget": "Uuwi ako sa gabi.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will go home in the evening.”",
+      "korean": "uuwi",
+      "english": "Transfer \"uuwi\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Uuwi ako sa gabi.\".",
+      "example": "Uuwi ako sa gabi.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will go home in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "uuwi",
+      "romanization": "uuwi",
+      "nativeText": "Find one word or phrase that naturally travels with \"uuwi\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "uuwi",
+      "exampleTarget": "Uuwi ako sa gabi.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I will go home in the evening.”",
+      "korean": "uuwi",
+      "english": "Find one word or phrase that naturally travels with \"uuwi\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Uuwi ako sa gabi.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I will go home in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "uuwi",
+      "romanization": "uuwi",
+      "nativeText": "Listen for \"uuwi\" inside \"Uuwi ako sa gabi.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "uuwi",
+      "exampleTarget": "Uuwi ako sa gabi.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will go home in the evening.”",
+      "korean": "uuwi",
+      "english": "Listen for \"uuwi\" inside \"Uuwi ako sa gabi.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Uuwi ako sa gabi.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will go home in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "uuwi",
+      "romanization": "uuwi",
+      "nativeText": "Write \"uuwi\" again without looking, then compare the exact written form against \"Uuwi ako sa gabi.\" before moving on.",
+      "pronunciation": "uuwi",
+      "exampleTarget": "Uuwi ako sa gabi.",
+      "exampleNative": "Use the written model as the final correctness check: “I will go home in the evening.”",
+      "korean": "uuwi",
+      "english": "Write \"uuwi\" again without looking, then compare the exact written form against \"Uuwi ako sa gabi.\" before moving on.",
+      "example": "Uuwi ako sa gabi.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I will go home in the evening.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "uuwi",
+      "romanization": "uuwi",
+      "nativeText": "Check whether \"uuwi\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will go home in the evening.”",
+      "pronunciation": "uuwi",
+      "exampleTarget": "Uuwi ako sa gabi.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I will go home in the evening.”",
+      "korean": "uuwi",
+      "english": "Check whether \"uuwi\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will go home in the evening.”",
+      "example": "Uuwi ako sa gabi.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I will go home in the evening.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "ngayon",
+      "romanization": "ngayon",
+      "nativeText": "“Now / today.” Context gives the exact sense.",
+      "pronunciation": "ngayon",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "“I am leaving now.”",
+      "korean": "ngayon",
+      "english": "“Now / today.” Context gives the exact sense.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "“I am leaving now.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "Aalis ako ngayon.",
+      "romanization": "ngayon",
+      "nativeText": "Model use for \"Aalis ako ngayon.\": “I am leaving now.”",
+      "pronunciation": "ngayon",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "“I am leaving now.”",
+      "korean": "Aalis ako ngayon.",
+      "english": "Model use for \"Aalis ako ngayon.\": “I am leaving now.”",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "“I am leaving now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "ngayon",
+      "romanization": "ngayon",
+      "nativeText": "Usage focus for \"ngayon\": “Now / today.” Context gives the exact sense.",
+      "pronunciation": "ngayon",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "Notice what the form is doing here: “I am leaving now.”",
+      "korean": "ngayon",
+      "english": "Usage focus for \"ngayon\": “Now / today.” Context gives the exact sense.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "Notice what the form is doing here: “I am leaving now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "ngayon",
+      "romanization": "ngayon",
+      "nativeText": "Contrast check for \"ngayon\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ngayon",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am leaving now.”",
+      "korean": "ngayon",
+      "english": "Contrast check for \"ngayon\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I am leaving now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "ngayon",
+      "romanization": "ngayon",
+      "nativeText": "Recall \"ngayon\" from memory, then explain what would change if a nearby alternative replaced it in \"Aalis ako ngayon.\".",
+      "pronunciation": "ngayon",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "Self-check against the model before moving on: “I am leaving now.”",
+      "korean": "ngayon",
+      "english": "Recall \"ngayon\" from memory, then explain what would change if a nearby alternative replaced it in \"Aalis ako ngayon.\".",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "Self-check against the model before moving on: “I am leaving now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "ngayon",
+      "romanization": "ngayon",
+      "nativeText": "Repair \"ngayon\" inside \"Aalis ako ngayon.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Now / today.” Context gives the exact sense.",
+      "pronunciation": "ngayon",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "Use the model as the repair target: “I am leaving now.”",
+      "korean": "ngayon",
+      "english": "Repair \"ngayon\" inside \"Aalis ako ngayon.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Now / today.” Context gives the exact sense.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "Use the model as the repair target: “I am leaving now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "ngayon",
+      "romanization": "ngayon",
+      "nativeText": "Transfer \"ngayon\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Aalis ako ngayon.\".",
+      "pronunciation": "ngayon",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am leaving now.”",
+      "korean": "ngayon",
+      "english": "Transfer \"ngayon\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Aalis ako ngayon.\".",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I am leaving now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "ngayon",
+      "romanization": "ngayon",
+      "nativeText": "Find one word or phrase that naturally travels with \"ngayon\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ngayon",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I am leaving now.”",
+      "korean": "ngayon",
+      "english": "Find one word or phrase that naturally travels with \"ngayon\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I am leaving now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "ngayon",
+      "romanization": "ngayon",
+      "nativeText": "Listen for \"ngayon\" inside \"Aalis ako ngayon.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ngayon",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am leaving now.”",
+      "korean": "ngayon",
+      "english": "Listen for \"ngayon\" inside \"Aalis ako ngayon.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I am leaving now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "ngayon",
+      "romanization": "ngayon",
+      "nativeText": "Write \"ngayon\" again without looking, then compare the exact written form against \"Aalis ako ngayon.\" before moving on.",
+      "pronunciation": "ngayon",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "Use the written model as the final correctness check: “I am leaving now.”",
+      "korean": "ngayon",
+      "english": "Write \"ngayon\" again without looking, then compare the exact written form against \"Aalis ako ngayon.\" before moving on.",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I am leaving now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "fil-level1unit07goingplaces-vocabulary-1",
+        "fil-level1unit07goingplaces-vocabulary-2",
+        "fil-level1unit07goingplaces-grammar-1",
+        "fil-level1unit07goingplaces-grammar-2",
+        "fil-level1unit07goingplaces-reading",
+        "fil-level1unit07goingplaces-listening",
+        "fil-level1unit07goingplaces-writing",
+        "fil-level1unit07goingplaces-task"
+      ],
+      "targetText": "ngayon",
+      "romanization": "ngayon",
+      "nativeText": "Check whether \"ngayon\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am leaving now.”",
+      "pronunciation": "ngayon",
+      "exampleTarget": "Aalis ako ngayon.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I am leaving now.”",
+      "korean": "ngayon",
+      "english": "Check whether \"ngayon\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I am leaving now.”",
+      "example": "Aalis ako ngayon.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I am leaving now.”"
+    }
+  ],
+  "targetLang": "fil",
+  "nativeLang": "en",
+  "track": "textbook"
+};

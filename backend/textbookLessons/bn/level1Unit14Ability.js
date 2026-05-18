@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u14',
-  title: 'Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about ability, permission, and obligation in everyday situations.',
-  vocabularyGoal: 'Use skill, permission, and obligation language.',
-  grammarGoal: 'Use `পারি`, `পারব`, `পারবেন?`, and `উচিত` in practical contexts.',
-  speakingGoal: 'Say what you can do, ask permission, and state one obligation.',
-  task: 'Handle three everyday ability and permission questions.',
-  expressionPractice: [
-    practice('stating-ability', 'Stating ability', 'Use `আমি পারি`.'),
-    practice('asking-permission', 'Asking permission', 'Use `পারব?` politely.'),
-    practice('stating-obligation', 'Stating obligation', 'Use `উচিত`.'),
+module.exports = {
+  "title": "Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit14ability-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about ability, permission, and obligation in everyday situations."
+      ],
+      "task": "Handle three everyday ability and permission questions."
+    },
+    {
+      "id": "bn-level1unit14ability-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit14ability-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit14ability-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit14ability-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about ability, permission, and obligation in everyday situations."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit14ability-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit14ability-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit14ability-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit14ability-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit14ability-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit14ability-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Handle three everyday ability and permission questions."
+      ],
+      "task": "Handle three everyday ability and permission questions."
+    }
   ],
-  relatedPools: ['topic-ability', 'topic-classroom'],
-  items: [
-    item('আমি সাঁতার কাটতে পারি', 'ami shatar katte pari', '“I can swim.” `পারি` expresses ability.', 'আমি সাঁতার কাটতে পারি।', '“I can swim.”'),
-    item('আমি আসতে পারব না', 'ami aste parbo na', '“I will not be able to come.” A practical inability phrase.', 'আজ আমি আসতে পারব না।', '“Today I cannot come.”'),
-    item('আমি কি ঢুকতে পারি?', 'ami ki dhukte pari', '“May I enter?” A permission question.', 'আমি কি ঢুকতে পারি?', '“May I enter?”'),
-    item('এখানে ধূমপান করা যাবে না', 'ekhane dhumpan kora jabe na', '“Smoking is not allowed here.” A common impersonal prohibition.', 'এখানে ধূমপান করা যাবে না।', '“Smoking is not allowed here.”'),
-    item('আমার পড়া উচিত', 'amar poṛa uchit', '“I should study.” `উচিত` expresses advice or obligation.', 'পরীক্ষার জন্য আমার পড়া উচিত।', '“I should study for the exam.”'),
-    item('দরকার', 'dorkar', '“Need.” A practical necessity noun.', 'আমার একটা পাসপোর্ট দরকার।', '“I need a passport.”'),
-    item('শিখতে', 'shikhte', '“To learn.” Useful with ability and future goals.', 'আমি গাড়ি চালাতে শিখতে চাই।', '“I want to learn to drive.”'),
-    item('হবে', 'hobe', '“Will be / must happen.” A versatile future/necessity form.', 'এটা করতে হবে।', '“This must be done.”'),
+  "expressionPractice": [
+    {
+      "id": "stating-ability",
+      "label": "Stating ability",
+      "goal": "Use `আমি পারি`."
+    },
+    {
+      "id": "asking-permission",
+      "label": "Asking permission",
+      "goal": "Use `পারব?` politely."
+    },
+    {
+      "id": "stating-obligation",
+      "label": "Stating obligation",
+      "goal": "Use `উচিত`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-ability",
+    "topic-classroom"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Talk about ability, permission, and obligation in everyday situations.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Handle three everyday ability and permission questions.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Talk about ability, permission, and obligation in everyday situations.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Handle three everyday ability and permission questions."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit14ability-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি সাঁতার কাটতে পারি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "“I can swim.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি সাঁতার কাটতে পারি।\".",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "“I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "Use the key language of Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-2"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission sound precise rather than merely understandable.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit14ability-grammar-1"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "",
+      "nativeText": "Talk about ability, permission, and obligation in everyday situations.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "“I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "Talk about ability, permission, and obligation in everyday situations.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit14ability-grammar-2"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "Contrast the main pattern in Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit14ability-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"এটা করতে হবে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "“This must be done.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"এটা করতে হবে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "“This must be done.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit14ability-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"এটা করতে হবে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "“This must be done.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"এটা করতে হবে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "“This must be done.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit14ability-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"আমি সাঁতার কাটতে পারি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"আমি সাঁতার কাটতে পারি।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit14ability-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Handle three everyday ability and permission questions.",
+      "pronunciation": "",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "Handle three everyday ability and permission questions.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Handle three everyday ability and permission questions.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "Handle three everyday ability and permission questions."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আজ আমি আসতে পারব না।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Today I cannot come.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"আজ আমি আসতে পারব না।\" against the model.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Today I cannot come.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি সাঁতার কাটতে পারি।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "“I can swim.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমি সাঁতার কাটতে পারি।\" before reusing it elsewhere.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"এটা করতে হবে।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "“This must be done.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"এটা করতে হবে।\" as one thought.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "“This must be done.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি সাঁতার কাটতে পারি।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমি সাঁতার কাটতে পারি।\" and move it into your own life.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"আমি সাঁতার কাটতে পারি\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি",
+      "exampleNative": "“I can swim.” `পারি` expresses ability.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"আমি সাঁতার কাটতে পারি\" before looking back.",
+      "example": "আমি সাঁতার কাটতে পারি",
+      "exampleEnglish": "“I can swim.” `পারি` expresses ability."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"এটা করতে হবে।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"এটা করতে হবে।\" rather than restarting from a blank sentence.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আজ আমি আসতে পারব না।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"আজ আমি আসতে পারব না।\" as the comparison line.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit14ability-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি সাঁতার কাটতে পারি।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "“I can swim.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমি সাঁতার কাটতে পারি।\".",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"এটা করতে হবে।\".",
+      "pronunciation": "",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "“This must be done.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"এটা করতে হবে।\".",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "“This must be done.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি সাঁতার কাটতে পারি।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "“I can swim.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমি সাঁতার কাটতে পারি।\" one layer at a time.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আজ আমি আসতে পারব না।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"আজ আমি আসতে পারব না।\" as the deciding example.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-culture",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"এটা করতে হবে।\".",
+      "pronunciation": "",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "“This must be done.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"এটা করতে হবে।\".",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "“This must be done.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "ami shatar katte pari",
+      "nativeText": "“I can swim.” `পারি` expresses ability.",
+      "pronunciation": "ami shatar katte pari",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "“I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "“I can swim.” `পারি` expresses ability.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি।",
+      "romanization": "ami shatar katte pari",
+      "nativeText": "Model use for \"আমি সাঁতার কাটতে পারি।\": “I can swim.”",
+      "pronunciation": "ami shatar katte pari",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "“I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি।",
+      "english": "Model use for \"আমি সাঁতার কাটতে পারি।\": “I can swim.”",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "“I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "ami shatar katte pari",
+      "nativeText": "Usage focus for \"আমি সাঁতার কাটতে পারি\": Use the key language of Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "ami shatar katte pari",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "Notice what the form is doing here: “I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "Usage focus for \"আমি সাঁতার কাটতে পারি\": Use the key language of Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "Notice what the form is doing here: “I can swim.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "ami shatar katte pari",
+      "nativeText": "Contrast check for \"আমি সাঁতার কাটতে পারি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ami shatar katte pari",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "Contrast check for \"আমি সাঁতার কাটতে পারি\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "ami shatar katte pari",
+      "nativeText": "Recall \"আমি সাঁতার কাটতে পারি\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সাঁতার কাটতে পারি।\".",
+      "pronunciation": "ami shatar katte pari",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "Self-check against the model before moving on: “I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "Recall \"আমি সাঁতার কাটতে পারি\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি সাঁতার কাটতে পারি।\".",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "Self-check against the model before moving on: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "ami shatar katte pari",
+      "nativeText": "Repair \"আমি সাঁতার কাটতে পারি\" inside \"আমি সাঁতার কাটতে পারি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with the register and setting that the lesson requires.",
+      "pronunciation": "ami shatar katte pari",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "Use the model as the repair target: “I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "Repair \"আমি সাঁতার কাটতে পারি\" inside \"আমি সাঁতার কাটতে পারি।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission with the register and setting that the lesson requires.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "Use the model as the repair target: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "ami shatar katte pari",
+      "nativeText": "Transfer \"আমি সাঁতার কাটতে পারি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সাঁতার কাটতে পারি।\".",
+      "pronunciation": "ami shatar katte pari",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "Transfer \"আমি সাঁতার কাটতে পারি\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি সাঁতার কাটতে পারি।\".",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "ami shatar katte pari",
+      "nativeText": "Find one word or phrase that naturally travels with \"আমি সাঁতার কাটতে পারি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ami shatar katte pari",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "Find one word or phrase that naturally travels with \"আমি সাঁতার কাটতে পারি\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "ami shatar katte pari",
+      "nativeText": "Listen for \"আমি সাঁতার কাটতে পারি\" inside \"আমি সাঁতার কাটতে পারি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ami shatar katte pari",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "Listen for \"আমি সাঁতার কাটতে পারি\" inside \"আমি সাঁতার কাটতে পারি।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "ami shatar katte pari",
+      "nativeText": "Write \"আমি সাঁতার কাটতে পারি\" again without looking, then compare the exact written form against \"আমি সাঁতার কাটতে পারি।\" before moving on.",
+      "pronunciation": "ami shatar katte pari",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "Use the written model as the final correctness check: “I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "Write \"আমি সাঁতার কাটতে পারি\" again without looking, then compare the exact written form against \"আমি সাঁতার কাটতে পারি।\" before moving on.",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I can swim.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি সাঁতার কাটতে পারি",
+      "romanization": "ami shatar katte pari",
+      "nativeText": "Check whether \"আমি সাঁতার কাটতে পারি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "pronunciation": "ami shatar katte pari",
+      "exampleTarget": "আমি সাঁতার কাটতে পারি।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "korean": "আমি সাঁতার কাটতে পারি",
+      "english": "Check whether \"আমি সাঁতার কাটতে পারি\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I can swim.”",
+      "example": "আমি সাঁতার কাটতে পারি।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I can swim.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "ami aste parbo na",
+      "nativeText": "“I will not be able to come.” A practical inability phrase.",
+      "pronunciation": "ami aste parbo na",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "“I will not be able to come.” A practical inability phrase.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আজ আমি আসতে পারব না।",
+      "romanization": "ami aste parbo na",
+      "nativeText": "Model use for \"আজ আমি আসতে পারব না।\": “Today I cannot come.”",
+      "pronunciation": "ami aste parbo na",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "“Today I cannot come.”",
+      "korean": "আজ আমি আসতে পারব না।",
+      "english": "Model use for \"আজ আমি আসতে পারব না।\": “Today I cannot come.”",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "“Today I cannot come.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "ami aste parbo na",
+      "nativeText": "Usage focus for \"আমি আসতে পারব না\": Distinguish the nearby wording choices that make Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "ami aste parbo na",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "Notice what the form is doing here: “Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "Usage focus for \"আমি আসতে পারব না\": Distinguish the nearby wording choices that make Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission sound precise rather than merely understandable.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "Notice what the form is doing here: “Today I cannot come.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "ami aste parbo na",
+      "nativeText": "Contrast check for \"আমি আসতে পারব না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ami aste parbo na",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "Contrast check for \"আমি আসতে পারব না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "ami aste parbo na",
+      "nativeText": "Recall \"আমি আসতে পারব না\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ আমি আসতে পারব না।\".",
+      "pronunciation": "ami aste parbo na",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "Self-check against the model before moving on: “Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "Recall \"আমি আসতে পারব না\" from memory, then explain what would change if a nearby alternative replaced it in \"আজ আমি আসতে পারব না।\".",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "Self-check against the model before moving on: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "ami aste parbo na",
+      "nativeText": "Repair \"আমি আসতে পারব না\" inside \"আজ আমি আসতে পারব না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission sound precise rather than merely understandable.",
+      "pronunciation": "ami aste parbo na",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "Use the model as the repair target: “Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "Repair \"আমি আসতে পারব না\" inside \"আজ আমি আসতে পারব না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 14: পারা ও অনুমতি — Ability and Permission sound precise rather than merely understandable.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "Use the model as the repair target: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "ami aste parbo na",
+      "nativeText": "Transfer \"আমি আসতে পারব না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ আমি আসতে পারব না।\".",
+      "pronunciation": "ami aste parbo na",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "Transfer \"আমি আসতে পারব না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আজ আমি আসতে পারব না।\".",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "ami aste parbo na",
+      "nativeText": "Find one word or phrase that naturally travels with \"আমি আসতে পারব না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ami aste parbo na",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "Find one word or phrase that naturally travels with \"আমি আসতে পারব না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "ami aste parbo na",
+      "nativeText": "Listen for \"আমি আসতে পারব না\" inside \"আজ আমি আসতে পারব না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ami aste parbo na",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "Listen for \"আমি আসতে পারব না\" inside \"আজ আমি আসতে পারব না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "ami aste parbo na",
+      "nativeText": "Write \"আমি আসতে পারব না\" again without looking, then compare the exact written form against \"আজ আমি আসতে পারব না।\" before moving on.",
+      "pronunciation": "ami aste parbo na",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "Use the written model as the final correctness check: “Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "Write \"আমি আসতে পারব না\" again without looking, then compare the exact written form against \"আজ আমি আসতে পারব না।\" before moving on.",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today I cannot come.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি আসতে পারব না",
+      "romanization": "ami aste parbo na",
+      "nativeText": "Check whether \"আমি আসতে পারব না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today I cannot come.”",
+      "pronunciation": "ami aste parbo na",
+      "exampleTarget": "আজ আমি আসতে পারব না।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today I cannot come.”",
+      "korean": "আমি আসতে পারব না",
+      "english": "Check whether \"আমি আসতে পারব না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today I cannot come.”",
+      "example": "আজ আমি আসতে পারব না।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today I cannot come.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি কি ঢুকতে পারি?",
+      "romanization": "ami ki dhukte pari",
+      "nativeText": "“May I enter?” A permission question.",
+      "pronunciation": "ami ki dhukte pari",
+      "exampleTarget": "আমি কি ঢুকতে পারি?",
+      "exampleNative": "“May I enter?”",
+      "korean": "আমি কি ঢুকতে পারি?",
+      "english": "“May I enter?” A permission question.",
+      "example": "আমি কি ঢুকতে পারি?",
+      "exampleEnglish": "“May I enter?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি কি ঢুকতে পারি?",
+      "romanization": "ami ki dhukte pari",
+      "nativeText": "Model use for \"আমি কি ঢুকতে পারি?\": “May I enter?” A permission question.",
+      "pronunciation": "ami ki dhukte pari",
+      "exampleTarget": "আমি কি ঢুকতে পারি?",
+      "exampleNative": "“May I enter?”",
+      "korean": "আমি কি ঢুকতে পারি?",
+      "english": "Model use for \"আমি কি ঢুকতে পারি?\": “May I enter?” A permission question.",
+      "example": "আমি কি ঢুকতে পারি?",
+      "exampleEnglish": "“May I enter?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি কি ঢুকতে পারি?",
+      "romanization": "ami ki dhukte pari",
+      "nativeText": "Usage focus for \"আমি কি ঢুকতে পারি?\": “May I enter?” A permission question.",
+      "pronunciation": "ami ki dhukte pari",
+      "exampleTarget": "আমি কি ঢুকতে পারি?",
+      "exampleNative": "Notice what the form is doing here: “May I enter?”",
+      "korean": "আমি কি ঢুকতে পারি?",
+      "english": "Usage focus for \"আমি কি ঢুকতে পারি?\": “May I enter?” A permission question.",
+      "example": "আমি কি ঢুকতে পারি?",
+      "exampleEnglish": "Notice what the form is doing here: “May I enter?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি কি ঢুকতে পারি?",
+      "romanization": "ami ki dhukte pari",
+      "nativeText": "Contrast check for \"আমি কি ঢুকতে পারি?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ami ki dhukte pari",
+      "exampleTarget": "আমি কি ঢুকতে পারি?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I enter?”",
+      "korean": "আমি কি ঢুকতে পারি?",
+      "english": "Contrast check for \"আমি কি ঢুকতে পারি?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি কি ঢুকতে পারি?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “May I enter?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি কি ঢুকতে পারি?",
+      "romanization": "ami ki dhukte pari",
+      "nativeText": "Recall \"আমি কি ঢুকতে পারি?\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি কি ঢুকতে পারি?\".",
+      "pronunciation": "ami ki dhukte pari",
+      "exampleTarget": "আমি কি ঢুকতে পারি?",
+      "exampleNative": "Self-check against the model before moving on: “May I enter?”",
+      "korean": "আমি কি ঢুকতে পারি?",
+      "english": "Recall \"আমি কি ঢুকতে পারি?\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি কি ঢুকতে পারি?\".",
+      "example": "আমি কি ঢুকতে পারি?",
+      "exampleEnglish": "Self-check against the model before moving on: “May I enter?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি কি ঢুকতে পারি?",
+      "romanization": "ami ki dhukte pari",
+      "nativeText": "Repair \"আমি কি ঢুকতে পারি?\" inside \"আমি কি ঢুকতে পারি?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May I enter?” A permission question.",
+      "pronunciation": "ami ki dhukte pari",
+      "exampleTarget": "আমি কি ঢুকতে পারি?",
+      "exampleNative": "Use the model as the repair target: “May I enter?”",
+      "korean": "আমি কি ঢুকতে পারি?",
+      "english": "Repair \"আমি কি ঢুকতে পারি?\" inside \"আমি কি ঢুকতে পারি?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May I enter?” A permission question.",
+      "example": "আমি কি ঢুকতে পারি?",
+      "exampleEnglish": "Use the model as the repair target: “May I enter?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি কি ঢুকতে পারি?",
+      "romanization": "ami ki dhukte pari",
+      "nativeText": "Transfer \"আমি কি ঢুকতে পারি?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি কি ঢুকতে পারি?\".",
+      "pronunciation": "ami ki dhukte pari",
+      "exampleTarget": "আমি কি ঢুকতে পারি?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I enter?”",
+      "korean": "আমি কি ঢুকতে পারি?",
+      "english": "Transfer \"আমি কি ঢুকতে পারি?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি কি ঢুকতে পারি?\".",
+      "example": "আমি কি ঢুকতে পারি?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “May I enter?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি কি ঢুকতে পারি?",
+      "romanization": "ami ki dhukte pari",
+      "nativeText": "Find one word or phrase that naturally travels with \"আমি কি ঢুকতে পারি?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ami ki dhukte pari",
+      "exampleTarget": "আমি কি ঢুকতে পারি?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “May I enter?”",
+      "korean": "আমি কি ঢুকতে পারি?",
+      "english": "Find one word or phrase that naturally travels with \"আমি কি ঢুকতে পারি?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি কি ঢুকতে পারি?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “May I enter?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি কি ঢুকতে পারি?",
+      "romanization": "ami ki dhukte pari",
+      "nativeText": "Listen for \"আমি কি ঢুকতে পারি?\" inside \"আমি কি ঢুকতে পারি?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ami ki dhukte pari",
+      "exampleTarget": "আমি কি ঢুকতে পারি?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I enter?”",
+      "korean": "আমি কি ঢুকতে পারি?",
+      "english": "Listen for \"আমি কি ঢুকতে পারি?\" inside \"আমি কি ঢুকতে পারি?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি কি ঢুকতে পারি?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “May I enter?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি কি ঢুকতে পারি?",
+      "romanization": "ami ki dhukte pari",
+      "nativeText": "Write \"আমি কি ঢুকতে পারি?\" again without looking, then compare the exact written form against \"আমি কি ঢুকতে পারি?\" before moving on.",
+      "pronunciation": "ami ki dhukte pari",
+      "exampleTarget": "আমি কি ঢুকতে পারি?",
+      "exampleNative": "Use the written model as the final correctness check: “May I enter?”",
+      "korean": "আমি কি ঢুকতে পারি?",
+      "english": "Write \"আমি কি ঢুকতে পারি?\" again without looking, then compare the exact written form against \"আমি কি ঢুকতে পারি?\" before moving on.",
+      "example": "আমি কি ঢুকতে পারি?",
+      "exampleEnglish": "Use the written model as the final correctness check: “May I enter?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি কি ঢুকতে পারি?",
+      "romanization": "ami ki dhukte pari",
+      "nativeText": "Check whether \"আমি কি ঢুকতে পারি?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I enter?”",
+      "pronunciation": "ami ki dhukte pari",
+      "exampleTarget": "আমি কি ঢুকতে পারি?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “May I enter?”",
+      "korean": "আমি কি ঢুকতে পারি?",
+      "english": "Check whether \"আমি কি ঢুকতে পারি?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “May I enter?”",
+      "example": "আমি কি ঢুকতে পারি?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “May I enter?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এখানে ধূমপান করা যাবে না",
+      "romanization": "ekhane dhumpan kora jabe na",
+      "nativeText": "“Smoking is not allowed here.” A common impersonal prohibition.",
+      "pronunciation": "ekhane dhumpan kora jabe na",
+      "exampleTarget": "এখানে ধূমপান করা যাবে না।",
+      "exampleNative": "“Smoking is not allowed here.”",
+      "korean": "এখানে ধূমপান করা যাবে না",
+      "english": "“Smoking is not allowed here.” A common impersonal prohibition.",
+      "example": "এখানে ধূমপান করা যাবে না।",
+      "exampleEnglish": "“Smoking is not allowed here.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এখানে ধূমপান করা যাবে না।",
+      "romanization": "ekhane dhumpan kora jabe na",
+      "nativeText": "Model use for \"এখানে ধূমপান করা যাবে না।\": “Smoking is not allowed here.”",
+      "pronunciation": "ekhane dhumpan kora jabe na",
+      "exampleTarget": "এখানে ধূমপান করা যাবে না।",
+      "exampleNative": "“Smoking is not allowed here.”",
+      "korean": "এখানে ধূমপান করা যাবে না।",
+      "english": "Model use for \"এখানে ধূমপান করা যাবে না।\": “Smoking is not allowed here.”",
+      "example": "এখানে ধূমপান করা যাবে না।",
+      "exampleEnglish": "“Smoking is not allowed here.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এখানে ধূমপান করা যাবে না",
+      "romanization": "ekhane dhumpan kora jabe na",
+      "nativeText": "Usage focus for \"এখানে ধূমপান করা যাবে না\": “Smoking is not allowed here.” A common impersonal prohibition.",
+      "pronunciation": "ekhane dhumpan kora jabe na",
+      "exampleTarget": "এখানে ধূমপান করা যাবে না।",
+      "exampleNative": "Notice what the form is doing here: “Smoking is not allowed here.”",
+      "korean": "এখানে ধূমপান করা যাবে না",
+      "english": "Usage focus for \"এখানে ধূমপান করা যাবে না\": “Smoking is not allowed here.” A common impersonal prohibition.",
+      "example": "এখানে ধূমপান করা যাবে না।",
+      "exampleEnglish": "Notice what the form is doing here: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এখানে ধূমপান করা যাবে না",
+      "romanization": "ekhane dhumpan kora jabe na",
+      "nativeText": "Contrast check for \"এখানে ধূমপান করা যাবে না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ekhane dhumpan kora jabe na",
+      "exampleTarget": "এখানে ধূমপান করা যাবে না।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Smoking is not allowed here.”",
+      "korean": "এখানে ধূমপান করা যাবে না",
+      "english": "Contrast check for \"এখানে ধূমপান করা যাবে না\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এখানে ধূমপান করা যাবে না।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এখানে ধূমপান করা যাবে না",
+      "romanization": "ekhane dhumpan kora jabe na",
+      "nativeText": "Recall \"এখানে ধূমপান করা যাবে না\" from memory, then explain what would change if a nearby alternative replaced it in \"এখানে ধূমপান করা যাবে না।\".",
+      "pronunciation": "ekhane dhumpan kora jabe na",
+      "exampleTarget": "এখানে ধূমপান করা যাবে না।",
+      "exampleNative": "Self-check against the model before moving on: “Smoking is not allowed here.”",
+      "korean": "এখানে ধূমপান করা যাবে না",
+      "english": "Recall \"এখানে ধূমপান করা যাবে না\" from memory, then explain what would change if a nearby alternative replaced it in \"এখানে ধূমপান করা যাবে না।\".",
+      "example": "এখানে ধূমপান করা যাবে না।",
+      "exampleEnglish": "Self-check against the model before moving on: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এখানে ধূমপান করা যাবে না",
+      "romanization": "ekhane dhumpan kora jabe na",
+      "nativeText": "Repair \"এখানে ধূমপান করা যাবে না\" inside \"এখানে ধূমপান করা যাবে না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Smoking is not allowed here.” A common impersonal prohibition.",
+      "pronunciation": "ekhane dhumpan kora jabe na",
+      "exampleTarget": "এখানে ধূমপান করা যাবে না।",
+      "exampleNative": "Use the model as the repair target: “Smoking is not allowed here.”",
+      "korean": "এখানে ধূমপান করা যাবে না",
+      "english": "Repair \"এখানে ধূমপান করা যাবে না\" inside \"এখানে ধূমপান করা যাবে না।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Smoking is not allowed here.” A common impersonal prohibition.",
+      "example": "এখানে ধূমপান করা যাবে না।",
+      "exampleEnglish": "Use the model as the repair target: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এখানে ধূমপান করা যাবে না",
+      "romanization": "ekhane dhumpan kora jabe na",
+      "nativeText": "Transfer \"এখানে ধূমপান করা যাবে না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এখানে ধূমপান করা যাবে না।\".",
+      "pronunciation": "ekhane dhumpan kora jabe na",
+      "exampleTarget": "এখানে ধূমপান করা যাবে না।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Smoking is not allowed here.”",
+      "korean": "এখানে ধূমপান করা যাবে না",
+      "english": "Transfer \"এখানে ধূমপান করা যাবে না\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এখানে ধূমপান করা যাবে না।\".",
+      "example": "এখানে ধূমপান করা যাবে না।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এখানে ধূমপান করা যাবে না",
+      "romanization": "ekhane dhumpan kora jabe na",
+      "nativeText": "Find one word or phrase that naturally travels with \"এখানে ধূমপান করা যাবে না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ekhane dhumpan kora jabe na",
+      "exampleTarget": "এখানে ধূমপান করা যাবে না।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Smoking is not allowed here.”",
+      "korean": "এখানে ধূমপান করা যাবে না",
+      "english": "Find one word or phrase that naturally travels with \"এখানে ধূমপান করা যাবে না\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এখানে ধূমপান করা যাবে না।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এখানে ধূমপান করা যাবে না",
+      "romanization": "ekhane dhumpan kora jabe na",
+      "nativeText": "Listen for \"এখানে ধূমপান করা যাবে না\" inside \"এখানে ধূমপান করা যাবে না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ekhane dhumpan kora jabe na",
+      "exampleTarget": "এখানে ধূমপান করা যাবে না।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Smoking is not allowed here.”",
+      "korean": "এখানে ধূমপান করা যাবে না",
+      "english": "Listen for \"এখানে ধূমপান করা যাবে না\" inside \"এখানে ধূমপান করা যাবে না।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এখানে ধূমপান করা যাবে না।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এখানে ধূমপান করা যাবে না",
+      "romanization": "ekhane dhumpan kora jabe na",
+      "nativeText": "Write \"এখানে ধূমপান করা যাবে না\" again without looking, then compare the exact written form against \"এখানে ধূমপান করা যাবে না।\" before moving on.",
+      "pronunciation": "ekhane dhumpan kora jabe na",
+      "exampleTarget": "এখানে ধূমপান করা যাবে না।",
+      "exampleNative": "Use the written model as the final correctness check: “Smoking is not allowed here.”",
+      "korean": "এখানে ধূমপান করা যাবে না",
+      "english": "Write \"এখানে ধূমপান করা যাবে না\" again without looking, then compare the exact written form against \"এখানে ধূমপান করা যাবে না।\" before moving on.",
+      "example": "এখানে ধূমপান করা যাবে না।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এখানে ধূমপান করা যাবে না",
+      "romanization": "ekhane dhumpan kora jabe na",
+      "nativeText": "Check whether \"এখানে ধূমপান করা যাবে না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”",
+      "pronunciation": "ekhane dhumpan kora jabe na",
+      "exampleTarget": "এখানে ধূমপান করা যাবে না।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”",
+      "korean": "এখানে ধূমপান করা যাবে না",
+      "english": "Check whether \"এখানে ধূমপান করা যাবে না\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”",
+      "example": "এখানে ধূমপান করা যাবে না।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Smoking is not allowed here.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমার পড়া উচিত",
+      "romanization": "amar poṛa uchit",
+      "nativeText": "“I should study.” `উচিত` expresses advice or obligation.",
+      "pronunciation": "amar poṛa uchit",
+      "exampleTarget": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleNative": "“I should study for the exam.”",
+      "korean": "আমার পড়া উচিত",
+      "english": "“I should study.” `উচিত` expresses advice or obligation.",
+      "example": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleEnglish": "“I should study for the exam.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "romanization": "amar poṛa uchit",
+      "nativeText": "Model use for \"পরীক্ষার জন্য আমার পড়া উচিত।\": “I should study for the exam.”",
+      "pronunciation": "amar poṛa uchit",
+      "exampleTarget": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleNative": "“I should study for the exam.”",
+      "korean": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "english": "Model use for \"পরীক্ষার জন্য আমার পড়া উচিত।\": “I should study for the exam.”",
+      "example": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleEnglish": "“I should study for the exam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমার পড়া উচিত",
+      "romanization": "amar poṛa uchit",
+      "nativeText": "Usage focus for \"আমার পড়া উচিত\": “I should study.” `উচিত` expresses advice or obligation.",
+      "pronunciation": "amar poṛa uchit",
+      "exampleTarget": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleNative": "Notice what the form is doing here: “I should study for the exam.”",
+      "korean": "আমার পড়া উচিত",
+      "english": "Usage focus for \"আমার পড়া উচিত\": “I should study.” `উচিত` expresses advice or obligation.",
+      "example": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleEnglish": "Notice what the form is doing here: “I should study for the exam.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমার পড়া উচিত",
+      "romanization": "amar poṛa uchit",
+      "nativeText": "Contrast check for \"আমার পড়া উচিত\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "amar poṛa uchit",
+      "exampleTarget": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I should study for the exam.”",
+      "korean": "আমার পড়া উচিত",
+      "english": "Contrast check for \"আমার পড়া উচিত\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I should study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমার পড়া উচিত",
+      "romanization": "amar poṛa uchit",
+      "nativeText": "Recall \"আমার পড়া উচিত\" from memory, then explain what would change if a nearby alternative replaced it in \"পরীক্ষার জন্য আমার পড়া উচিত।\".",
+      "pronunciation": "amar poṛa uchit",
+      "exampleTarget": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleNative": "Self-check against the model before moving on: “I should study for the exam.”",
+      "korean": "আমার পড়া উচিত",
+      "english": "Recall \"আমার পড়া উচিত\" from memory, then explain what would change if a nearby alternative replaced it in \"পরীক্ষার জন্য আমার পড়া উচিত।\".",
+      "example": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleEnglish": "Self-check against the model before moving on: “I should study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমার পড়া উচিত",
+      "romanization": "amar poṛa uchit",
+      "nativeText": "Repair \"আমার পড়া উচিত\" inside \"পরীক্ষার জন্য আমার পড়া উচিত।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I should study.” `উচিত` expresses advice or obligation.",
+      "pronunciation": "amar poṛa uchit",
+      "exampleTarget": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleNative": "Use the model as the repair target: “I should study for the exam.”",
+      "korean": "আমার পড়া উচিত",
+      "english": "Repair \"আমার পড়া উচিত\" inside \"পরীক্ষার জন্য আমার পড়া উচিত।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I should study.” `উচিত` expresses advice or obligation.",
+      "example": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleEnglish": "Use the model as the repair target: “I should study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমার পড়া উচিত",
+      "romanization": "amar poṛa uchit",
+      "nativeText": "Transfer \"আমার পড়া উচিত\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পরীক্ষার জন্য আমার পড়া উচিত।\".",
+      "pronunciation": "amar poṛa uchit",
+      "exampleTarget": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I should study for the exam.”",
+      "korean": "আমার পড়া উচিত",
+      "english": "Transfer \"আমার পড়া উচিত\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"পরীক্ষার জন্য আমার পড়া উচিত।\".",
+      "example": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I should study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমার পড়া উচিত",
+      "romanization": "amar poṛa uchit",
+      "nativeText": "Find one word or phrase that naturally travels with \"আমার পড়া উচিত\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "amar poṛa uchit",
+      "exampleTarget": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I should study for the exam.”",
+      "korean": "আমার পড়া উচিত",
+      "english": "Find one word or phrase that naturally travels with \"আমার পড়া উচিত\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I should study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমার পড়া উচিত",
+      "romanization": "amar poṛa uchit",
+      "nativeText": "Listen for \"আমার পড়া উচিত\" inside \"পরীক্ষার জন্য আমার পড়া উচিত।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "amar poṛa uchit",
+      "exampleTarget": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I should study for the exam.”",
+      "korean": "আমার পড়া উচিত",
+      "english": "Listen for \"আমার পড়া উচিত\" inside \"পরীক্ষার জন্য আমার পড়া উচিত।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I should study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমার পড়া উচিত",
+      "romanization": "amar poṛa uchit",
+      "nativeText": "Write \"আমার পড়া উচিত\" again without looking, then compare the exact written form against \"পরীক্ষার জন্য আমার পড়া উচিত।\" before moving on.",
+      "pronunciation": "amar poṛa uchit",
+      "exampleTarget": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleNative": "Use the written model as the final correctness check: “I should study for the exam.”",
+      "korean": "আমার পড়া উচিত",
+      "english": "Write \"আমার পড়া উচিত\" again without looking, then compare the exact written form against \"পরীক্ষার জন্য আমার পড়া উচিত।\" before moving on.",
+      "example": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I should study for the exam.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমার পড়া উচিত",
+      "romanization": "amar poṛa uchit",
+      "nativeText": "Check whether \"আমার পড়া উচিত\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I should study for the exam.”",
+      "pronunciation": "amar poṛa uchit",
+      "exampleTarget": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I should study for the exam.”",
+      "korean": "আমার পড়া উচিত",
+      "english": "Check whether \"আমার পড়া উচিত\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I should study for the exam.”",
+      "example": "পরীক্ষার জন্য আমার পড়া উচিত।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I should study for the exam.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "দরকার",
+      "romanization": "dorkar",
+      "nativeText": "“Need.” A practical necessity noun.",
+      "pronunciation": "dorkar",
+      "exampleTarget": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleNative": "“I need a passport.”",
+      "korean": "দরকার",
+      "english": "“Need.” A practical necessity noun.",
+      "example": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleEnglish": "“I need a passport.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমার একটা পাসপোর্ট দরকার।",
+      "romanization": "dorkar",
+      "nativeText": "Model use for \"আমার একটা পাসপোর্ট দরকার।\": “I need a passport.”",
+      "pronunciation": "dorkar",
+      "exampleTarget": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleNative": "“I need a passport.”",
+      "korean": "আমার একটা পাসপোর্ট দরকার।",
+      "english": "Model use for \"আমার একটা পাসপোর্ট দরকার।\": “I need a passport.”",
+      "example": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleEnglish": "“I need a passport.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "দরকার",
+      "romanization": "dorkar",
+      "nativeText": "Usage focus for \"দরকার\": “Need.” A practical necessity noun.",
+      "pronunciation": "dorkar",
+      "exampleTarget": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleNative": "Notice what the form is doing here: “I need a passport.”",
+      "korean": "দরকার",
+      "english": "Usage focus for \"দরকার\": “Need.” A practical necessity noun.",
+      "example": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleEnglish": "Notice what the form is doing here: “I need a passport.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "দরকার",
+      "romanization": "dorkar",
+      "nativeText": "Contrast check for \"দরকার\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dorkar",
+      "exampleTarget": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need a passport.”",
+      "korean": "দরকার",
+      "english": "Contrast check for \"দরকার\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "দরকার",
+      "romanization": "dorkar",
+      "nativeText": "Recall \"দরকার\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার একটা পাসপোর্ট দরকার।\".",
+      "pronunciation": "dorkar",
+      "exampleTarget": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleNative": "Self-check against the model before moving on: “I need a passport.”",
+      "korean": "দরকার",
+      "english": "Recall \"দরকার\" from memory, then explain what would change if a nearby alternative replaced it in \"আমার একটা পাসপোর্ট দরকার।\".",
+      "example": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleEnglish": "Self-check against the model before moving on: “I need a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "দরকার",
+      "romanization": "dorkar",
+      "nativeText": "Repair \"দরকার\" inside \"আমার একটা পাসপোর্ট দরকার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Need.” A practical necessity noun.",
+      "pronunciation": "dorkar",
+      "exampleTarget": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleNative": "Use the model as the repair target: “I need a passport.”",
+      "korean": "দরকার",
+      "english": "Repair \"দরকার\" inside \"আমার একটা পাসপোর্ট দরকার।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Need.” A practical necessity noun.",
+      "example": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleEnglish": "Use the model as the repair target: “I need a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "দরকার",
+      "romanization": "dorkar",
+      "nativeText": "Transfer \"দরকার\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার একটা পাসপোর্ট দরকার।\".",
+      "pronunciation": "dorkar",
+      "exampleTarget": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need a passport.”",
+      "korean": "দরকার",
+      "english": "Transfer \"দরকার\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমার একটা পাসপোর্ট দরকার।\".",
+      "example": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "দরকার",
+      "romanization": "dorkar",
+      "nativeText": "Find one word or phrase that naturally travels with \"দরকার\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dorkar",
+      "exampleTarget": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need a passport.”",
+      "korean": "দরকার",
+      "english": "Find one word or phrase that naturally travels with \"দরকার\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "দরকার",
+      "romanization": "dorkar",
+      "nativeText": "Listen for \"দরকার\" inside \"আমার একটা পাসপোর্ট দরকার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dorkar",
+      "exampleTarget": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need a passport.”",
+      "korean": "দরকার",
+      "english": "Listen for \"দরকার\" inside \"আমার একটা পাসপোর্ট দরকার।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "দরকার",
+      "romanization": "dorkar",
+      "nativeText": "Write \"দরকার\" again without looking, then compare the exact written form against \"আমার একটা পাসপোর্ট দরকার।\" before moving on.",
+      "pronunciation": "dorkar",
+      "exampleTarget": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleNative": "Use the written model as the final correctness check: “I need a passport.”",
+      "korean": "দরকার",
+      "english": "Write \"দরকার\" again without looking, then compare the exact written form against \"আমার একটা পাসপোর্ট দরকার।\" before moving on.",
+      "example": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need a passport.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "দরকার",
+      "romanization": "dorkar",
+      "nativeText": "Check whether \"দরকার\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need a passport.”",
+      "pronunciation": "dorkar",
+      "exampleTarget": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need a passport.”",
+      "korean": "দরকার",
+      "english": "Check whether \"দরকার\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need a passport.”",
+      "example": "আমার একটা পাসপোর্ট দরকার।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need a passport.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "শিখতে",
+      "romanization": "shikhte",
+      "nativeText": "“To learn.” Useful with ability and future goals.",
+      "pronunciation": "shikhte",
+      "exampleTarget": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleNative": "“I want to learn to drive.”",
+      "korean": "শিখতে",
+      "english": "“To learn.” Useful with ability and future goals.",
+      "example": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleEnglish": "“I want to learn to drive.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "romanization": "shikhte",
+      "nativeText": "Model use for \"আমি গাড়ি চালাতে শিখতে চাই।\": “I want to learn to drive.”",
+      "pronunciation": "shikhte",
+      "exampleTarget": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleNative": "“I want to learn to drive.”",
+      "korean": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "english": "Model use for \"আমি গাড়ি চালাতে শিখতে চাই।\": “I want to learn to drive.”",
+      "example": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleEnglish": "“I want to learn to drive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "শিখতে",
+      "romanization": "shikhte",
+      "nativeText": "Usage focus for \"শিখতে\": “To learn.” Useful with ability and future goals.",
+      "pronunciation": "shikhte",
+      "exampleTarget": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleNative": "Notice what the form is doing here: “I want to learn to drive.”",
+      "korean": "শিখতে",
+      "english": "Usage focus for \"শিখতে\": “To learn.” Useful with ability and future goals.",
+      "example": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I want to learn to drive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "শিখতে",
+      "romanization": "shikhte",
+      "nativeText": "Contrast check for \"শিখতে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "shikhte",
+      "exampleTarget": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn to drive.”",
+      "korean": "শিখতে",
+      "english": "Contrast check for \"শিখতে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "শিখতে",
+      "romanization": "shikhte",
+      "nativeText": "Recall \"শিখতে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি গাড়ি চালাতে শিখতে চাই।\".",
+      "pronunciation": "shikhte",
+      "exampleTarget": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleNative": "Self-check against the model before moving on: “I want to learn to drive.”",
+      "korean": "শিখতে",
+      "english": "Recall \"শিখতে\" from memory, then explain what would change if a nearby alternative replaced it in \"আমি গাড়ি চালাতে শিখতে চাই।\".",
+      "example": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "শিখতে",
+      "romanization": "shikhte",
+      "nativeText": "Repair \"শিখতে\" inside \"আমি গাড়ি চালাতে শিখতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To learn.” Useful with ability and future goals.",
+      "pronunciation": "shikhte",
+      "exampleTarget": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleNative": "Use the model as the repair target: “I want to learn to drive.”",
+      "korean": "শিখতে",
+      "english": "Repair \"শিখতে\" inside \"আমি গাড়ি চালাতে শিখতে চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To learn.” Useful with ability and future goals.",
+      "example": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleEnglish": "Use the model as the repair target: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "শিখতে",
+      "romanization": "shikhte",
+      "nativeText": "Transfer \"শিখতে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি গাড়ি চালাতে শিখতে চাই।\".",
+      "pronunciation": "shikhte",
+      "exampleTarget": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn to drive.”",
+      "korean": "শিখতে",
+      "english": "Transfer \"শিখতে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমি গাড়ি চালাতে শিখতে চাই।\".",
+      "example": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "শিখতে",
+      "romanization": "shikhte",
+      "nativeText": "Find one word or phrase that naturally travels with \"শিখতে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "shikhte",
+      "exampleTarget": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want to learn to drive.”",
+      "korean": "শিখতে",
+      "english": "Find one word or phrase that naturally travels with \"শিখতে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "শিখতে",
+      "romanization": "shikhte",
+      "nativeText": "Listen for \"শিখতে\" inside \"আমি গাড়ি চালাতে শিখতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "shikhte",
+      "exampleTarget": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn to drive.”",
+      "korean": "শিখতে",
+      "english": "Listen for \"শিখতে\" inside \"আমি গাড়ি চালাতে শিখতে চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "শিখতে",
+      "romanization": "shikhte",
+      "nativeText": "Write \"শিখতে\" again without looking, then compare the exact written form against \"আমি গাড়ি চালাতে শিখতে চাই।\" before moving on.",
+      "pronunciation": "shikhte",
+      "exampleTarget": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I want to learn to drive.”",
+      "korean": "শিখতে",
+      "english": "Write \"শিখতে\" again without looking, then compare the exact written form against \"আমি গাড়ি চালাতে শিখতে চাই।\" before moving on.",
+      "example": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want to learn to drive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "শিখতে",
+      "romanization": "shikhte",
+      "nativeText": "Check whether \"শিখতে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "pronunciation": "shikhte",
+      "exampleTarget": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "korean": "শিখতে",
+      "english": "Check whether \"শিখতে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”",
+      "example": "আমি গাড়ি চালাতে শিখতে চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want to learn to drive.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "হবে",
+      "romanization": "hobe",
+      "nativeText": "“Will be / must happen.” A versatile future/necessity form.",
+      "pronunciation": "hobe",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "“This must be done.”",
+      "korean": "হবে",
+      "english": "“Will be / must happen.” A versatile future/necessity form.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "“This must be done.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "এটা করতে হবে।",
+      "romanization": "hobe",
+      "nativeText": "Model use for \"এটা করতে হবে।\": “This must be done.”",
+      "pronunciation": "hobe",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "“This must be done.”",
+      "korean": "এটা করতে হবে।",
+      "english": "Model use for \"এটা করতে হবে।\": “This must be done.”",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "“This must be done.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "হবে",
+      "romanization": "hobe",
+      "nativeText": "Usage focus for \"হবে\": “Will be / must happen.” A versatile future/necessity form.",
+      "pronunciation": "hobe",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "Notice what the form is doing here: “This must be done.”",
+      "korean": "হবে",
+      "english": "Usage focus for \"হবে\": “Will be / must happen.” A versatile future/necessity form.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "Notice what the form is doing here: “This must be done.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "হবে",
+      "romanization": "hobe",
+      "nativeText": "Contrast check for \"হবে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "hobe",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This must be done.”",
+      "korean": "হবে",
+      "english": "Contrast check for \"হবে\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This must be done.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "হবে",
+      "romanization": "hobe",
+      "nativeText": "Recall \"হবে\" from memory, then explain what would change if a nearby alternative replaced it in \"এটা করতে হবে।\".",
+      "pronunciation": "hobe",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "Self-check against the model before moving on: “This must be done.”",
+      "korean": "হবে",
+      "english": "Recall \"হবে\" from memory, then explain what would change if a nearby alternative replaced it in \"এটা করতে হবে।\".",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "Self-check against the model before moving on: “This must be done.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "হবে",
+      "romanization": "hobe",
+      "nativeText": "Repair \"হবে\" inside \"এটা করতে হবে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Will be / must happen.” A versatile future/necessity form.",
+      "pronunciation": "hobe",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "Use the model as the repair target: “This must be done.”",
+      "korean": "হবে",
+      "english": "Repair \"হবে\" inside \"এটা করতে হবে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Will be / must happen.” A versatile future/necessity form.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "Use the model as the repair target: “This must be done.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "হবে",
+      "romanization": "hobe",
+      "nativeText": "Transfer \"হবে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এটা করতে হবে।\".",
+      "pronunciation": "hobe",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This must be done.”",
+      "korean": "হবে",
+      "english": "Transfer \"হবে\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এটা করতে হবে।\".",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This must be done.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "হবে",
+      "romanization": "hobe",
+      "nativeText": "Find one word or phrase that naturally travels with \"হবে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "hobe",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This must be done.”",
+      "korean": "হবে",
+      "english": "Find one word or phrase that naturally travels with \"হবে\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This must be done.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "হবে",
+      "romanization": "hobe",
+      "nativeText": "Listen for \"হবে\" inside \"এটা করতে হবে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "hobe",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This must be done.”",
+      "korean": "হবে",
+      "english": "Listen for \"হবে\" inside \"এটা করতে হবে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This must be done.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "হবে",
+      "romanization": "hobe",
+      "nativeText": "Write \"হবে\" again without looking, then compare the exact written form against \"এটা করতে হবে।\" before moving on.",
+      "pronunciation": "hobe",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "Use the written model as the final correctness check: “This must be done.”",
+      "korean": "হবে",
+      "english": "Write \"হবে\" again without looking, then compare the exact written form against \"এটা করতে হবে।\" before moving on.",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “This must be done.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit14ability-vocabulary-1",
+        "bn-level1unit14ability-vocabulary-2",
+        "bn-level1unit14ability-grammar-1",
+        "bn-level1unit14ability-grammar-2",
+        "bn-level1unit14ability-reading",
+        "bn-level1unit14ability-listening",
+        "bn-level1unit14ability-writing",
+        "bn-level1unit14ability-task"
+      ],
+      "targetText": "হবে",
+      "romanization": "hobe",
+      "nativeText": "Check whether \"হবে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This must be done.”",
+      "pronunciation": "hobe",
+      "exampleTarget": "এটা করতে হবে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This must be done.”",
+      "korean": "হবে",
+      "english": "Check whether \"হবে\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This must be done.”",
+      "example": "এটা করতে হবে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This must be done.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

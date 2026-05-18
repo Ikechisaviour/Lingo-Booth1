@@ -182,10 +182,14 @@
 
 .conversation-body {
   display: grid;
-  grid-template-columns: 300px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   min-height: 0;
   flex: 1;
   overflow: hidden;
+}
+
+.conversation-body.setup-open {
+  grid-template-columns: 300px minmax(0, 1fr);
 }
 
 .conversation-side {
@@ -199,6 +203,10 @@
   border-right: 1px solid var(--border-light);
 }
 
+.conversation-body.setup-closed .conversation-side {
+  display: none;
+}
+
 .conversation-side-content {
   display: flex;
   min-height: 0;
@@ -209,6 +217,17 @@
 
 .conversation-setup-toggle {
   display: none;
+}
+
+.conversation-header-setup-toggle {
+  min-height: 36px;
+  padding: 0 11px;
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-weight: 850;
 }
 
 .conversation-field {
@@ -781,6 +800,10 @@
     border-right: none;
     border-top: 1px solid var(--border-light);
     border-bottom: none;
+  }
+
+  .conversation-body.setup-closed .conversation-side {
+    display: flex;
   }
 
   .conversation-main {

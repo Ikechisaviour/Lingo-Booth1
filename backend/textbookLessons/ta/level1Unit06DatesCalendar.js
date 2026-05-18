@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u6',
-  title: 'Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar',
-  category: 'time',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about days, dates, and short plans using Tamil time words.',
-  vocabularyGoal: 'Use weekdays, months, today/tomorrow/yesterday, and date questions.',
-  grammarGoal: 'Use time nouns with case markers such as `-இல்` when the sentence needs “on/in.”',
-  speakingGoal: 'Say today’s date, ask when something happens, and answer with one plan.',
-  task: 'Arrange a simple class meeting on a calendar.',
-  expressionPractice: [
-    practice('asking-date', 'Asking the date', 'Use `இன்று என்ன தேதி?`.'),
-    practice('stating-date', 'Stating a date', 'Use one weekday and one numbered date.'),
-    practice('making-plan', 'Making a plan', 'Use `அடுத்த வாரம்`.'),
+module.exports = {
+  "title": "Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar",
+  "category": "time",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit06datescalendar-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about days, dates, and short plans using Tamil time words."
+      ],
+      "task": "Arrange a simple class meeting on a calendar."
+    },
+    {
+      "id": "ta-level1unit06datescalendar-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit06datescalendar-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit06datescalendar-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit06datescalendar-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about days, dates, and short plans using Tamil time words."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit06datescalendar-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit06datescalendar-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit06datescalendar-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit06datescalendar-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit06datescalendar-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit06datescalendar-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Arrange a simple class meeting on a calendar."
+      ],
+      "task": "Arrange a simple class meeting on a calendar."
+    }
   ],
-  relatedPools: ['topic-time', 'topic-calendar'],
-  items: [
-    item('இன்று', 'iṉṟu', '“Today.” A high-frequency time word for everyday planning.', 'இன்று திங்கட்கிழமை.', '“Today is Monday.”'),
-    item('நாளை', 'nāḷai', '“Tomorrow.” Useful in nearly every future-planning exchange.', 'நாளை எனக்கு வகுப்பு உள்ளது.', '“Tomorrow I have class.”'),
-    item('நேற்று', 'nēṟṟu', '“Yesterday.” It pairs naturally with past forms later.', 'நேற்று நான் படித்தேன்.', '“Yesterday I studied.”'),
-    item('திங்கட்கிழமை', 'tiṅkaṭkiḻamai', '“Monday.” Tamil weekday names often end with `கிழமை`.', 'தேர்வு திங்கட்கிழமை.', '“The exam is on Monday.”'),
-    item('இன்று என்ன தேதி?', 'iṉṟu eṉṉa tēti', '“What is today’s date?” A practical full question.', 'இன்று என்ன தேதி?', '“What is today’s date?”'),
-    item('மே ஐந்து', 'mē aintu', '“May fifth.” The day number follows the month in this simple spoken frame.', 'வகுப்பு மே ஐந்தில் தொடங்கும்.', '“Class starts on May fifth.”'),
-    item('அடுத்த வாரம்', 'aṭutta vāram', '“Next week.” A common near-future phrase.', 'அடுத்த வாரம் நாம் சந்திப்போம்.', '“We will meet next week.”'),
-    item('எப்போது?', 'eppōtu', '“When?” A compact question word for time and plans.', 'கூட்டம் எப்போது தொடங்கும்?', '“When does the meeting start?”'),
+  "expressionPractice": [
+    {
+      "id": "asking-date",
+      "label": "Asking the date",
+      "goal": "Use `இன்று என்ன தேதி?`."
+    },
+    {
+      "id": "stating-date",
+      "label": "Stating a date",
+      "goal": "Use one weekday and one numbered date."
+    },
+    {
+      "id": "making-plan",
+      "label": "Making a plan",
+      "goal": "Use `அடுத்த வாரம்`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-time",
+    "topic-calendar"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Talk about days, dates, and short plans using Tamil time words.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Arrange a simple class meeting on a calendar.",
+      "korean": "பாட இலக்கு",
+      "english": "Talk about days, dates, and short plans using Tamil time words.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Arrange a simple class meeting on a calendar."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இன்று திங்கட்கிழமை.\".",
+      "pronunciation": "",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இன்று திங்கட்கிழமை.\".",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1"
+      ],
+      "targetText": "இன்று",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "இன்று",
+      "english": "Use the key language of Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-2"
+      ],
+      "targetText": "நாளை",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "இன்று",
+      "romanization": "",
+      "nativeText": "Talk about days, dates, and short plans using Tamil time words.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "இன்று",
+      "english": "Talk about days, dates, and short plans using Tamil time words.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "நாளை",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "Contrast the main pattern in Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit06datescalendar-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"கூட்டம் எப்போது தொடங்கும்?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"கூட்டம் எப்போது தொடங்கும்?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit06datescalendar-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"கூட்டம் எப்போது தொடங்கும்?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"கூட்டம் எப்போது தொடங்கும்?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit06datescalendar-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"இன்று திங்கட்கிழமை.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"இன்று திங்கட்கிழமை.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit06datescalendar-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Arrange a simple class meeting on a calendar.",
+      "pronunciation": "",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "Arrange a simple class meeting on a calendar.",
+      "korean": "இறுதி செயல்",
+      "english": "Arrange a simple class meeting on a calendar.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "Arrange a simple class meeting on a calendar."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"நாளை எனக்கு வகுப்பு உள்ளது.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “Tomorrow I have class.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"நாளை எனக்கு வகுப்பு உள்ளது.\" against the model.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “Tomorrow I have class.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"இன்று திங்கட்கிழமை.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"இன்று திங்கட்கிழமை.\" before reusing it elsewhere.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"கூட்டம் எப்போது தொடங்கும்?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"கூட்டம் எப்போது தொடங்கும்?\" as one thought.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"இன்று திங்கட்கிழமை.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"இன்று திங்கட்கிழமை.\" and move it into your own life.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"இன்று\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று",
+      "exampleNative": "“Today.” A high-frequency time word for everyday planning.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"இன்று\" before looking back.",
+      "example": "இன்று",
+      "exampleEnglish": "“Today.” A high-frequency time word for everyday planning."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"கூட்டம் எப்போது தொடங்கும்?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"கூட்டம் எப்போது தொடங்கும்?\" rather than restarting from a blank sentence.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"நாளை எனக்கு வகுப்பு உள்ளது.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"நாளை எனக்கு வகுப்பு உள்ளது.\" as the comparison line.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit06datescalendar-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இன்று திங்கட்கிழமை.\".",
+      "pronunciation": "",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இன்று திங்கட்கிழமை.\".",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"கூட்டம் எப்போது தொடங்கும்?\".",
+      "pronunciation": "",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"கூட்டம் எப்போது தொடங்கும்?\".",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"இன்று திங்கட்கிழமை.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"இன்று திங்கட்கிழமை.\" one layer at a time.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"நாளை எனக்கு வகுப்பு உள்ளது.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"நாளை எனக்கு வகுப்பு உள்ளது.\" as the deciding example.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-culture",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"கூட்டம் எப்போது தொடங்கும்?\".",
+      "pronunciation": "",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"கூட்டம் எப்போது தொடங்கும்?\".",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று",
+      "romanization": "iṉṟu",
+      "nativeText": "“Today.” A high-frequency time word for everyday planning.",
+      "pronunciation": "iṉṟu",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "இன்று",
+      "english": "“Today.” A high-frequency time word for everyday planning.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று திங்கட்கிழமை.",
+      "romanization": "iṉṟu",
+      "nativeText": "Model use for \"இன்று திங்கட்கிழமை.\": “Today is Monday.”",
+      "pronunciation": "iṉṟu",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "“Today is Monday.”",
+      "korean": "இன்று திங்கட்கிழமை.",
+      "english": "Model use for \"இன்று திங்கட்கிழமை.\": “Today is Monday.”",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "“Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று",
+      "romanization": "iṉṟu",
+      "nativeText": "Usage focus for \"இன்று\": Use the key language of Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "iṉṟu",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "Notice what the form is doing here: “Today is Monday.”",
+      "korean": "இன்று",
+      "english": "Usage focus for \"இன்று\": Use the key language of Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "Notice what the form is doing here: “Today is Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று",
+      "romanization": "iṉṟu",
+      "nativeText": "Contrast check for \"இன்று\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "iṉṟu",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today is Monday.”",
+      "korean": "இன்று",
+      "english": "Contrast check for \"இன்று\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று",
+      "romanization": "iṉṟu",
+      "nativeText": "Recall \"இன்று\" from memory, then explain what would change if a nearby alternative replaced it in \"இன்று திங்கட்கிழமை.\".",
+      "pronunciation": "iṉṟu",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "Self-check against the model before moving on: “Today is Monday.”",
+      "korean": "இன்று",
+      "english": "Recall \"இன்று\" from memory, then explain what would change if a nearby alternative replaced it in \"இன்று திங்கட்கிழமை.\".",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "Self-check against the model before moving on: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று",
+      "romanization": "iṉṟu",
+      "nativeText": "Repair \"இன்று\" inside \"இன்று திங்கட்கிழமை.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with the register and setting that the lesson requires.",
+      "pronunciation": "iṉṟu",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "Use the model as the repair target: “Today is Monday.”",
+      "korean": "இன்று",
+      "english": "Repair \"இன்று\" inside \"இன்று திங்கட்கிழமை.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar with the register and setting that the lesson requires.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "Use the model as the repair target: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று",
+      "romanization": "iṉṟu",
+      "nativeText": "Transfer \"இன்று\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இன்று திங்கட்கிழமை.\".",
+      "pronunciation": "iṉṟu",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today is Monday.”",
+      "korean": "இன்று",
+      "english": "Transfer \"இன்று\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இன்று திங்கட்கிழமை.\".",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று",
+      "romanization": "iṉṟu",
+      "nativeText": "Find one word or phrase that naturally travels with \"இன்று\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "iṉṟu",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today is Monday.”",
+      "korean": "இன்று",
+      "english": "Find one word or phrase that naturally travels with \"இன்று\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று",
+      "romanization": "iṉṟu",
+      "nativeText": "Listen for \"இன்று\" inside \"இன்று திங்கட்கிழமை.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "iṉṟu",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today is Monday.”",
+      "korean": "இன்று",
+      "english": "Listen for \"இன்று\" inside \"இன்று திங்கட்கிழமை.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று",
+      "romanization": "iṉṟu",
+      "nativeText": "Write \"இன்று\" again without looking, then compare the exact written form against \"இன்று திங்கட்கிழமை.\" before moving on.",
+      "pronunciation": "iṉṟu",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "Use the written model as the final correctness check: “Today is Monday.”",
+      "korean": "இன்று",
+      "english": "Write \"இன்று\" again without looking, then compare the exact written form against \"இன்று திங்கட்கிழமை.\" before moving on.",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today is Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று",
+      "romanization": "iṉṟu",
+      "nativeText": "Check whether \"இன்று\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "pronunciation": "iṉṟu",
+      "exampleTarget": "இன்று திங்கட்கிழமை.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "korean": "இன்று",
+      "english": "Check whether \"இன்று\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today is Monday.”",
+      "example": "இன்று திங்கட்கிழமை.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today is Monday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நாளை",
+      "romanization": "nāḷai",
+      "nativeText": "“Tomorrow.” Useful in nearly every future-planning exchange.",
+      "pronunciation": "nāḷai",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "“Tomorrow.” Useful in nearly every future-planning exchange.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "romanization": "nāḷai",
+      "nativeText": "Model use for \"நாளை எனக்கு வகுப்பு உள்ளது.\": “Tomorrow I have class.”",
+      "pronunciation": "nāḷai",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "“Tomorrow I have class.”",
+      "korean": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "english": "Model use for \"நாளை எனக்கு வகுப்பு உள்ளது.\": “Tomorrow I have class.”",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "“Tomorrow I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நாளை",
+      "romanization": "nāḷai",
+      "nativeText": "Usage focus for \"நாளை\": Distinguish the nearby wording choices that make Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "nāḷai",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "Notice what the form is doing here: “Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "Usage focus for \"நாளை\": Distinguish the nearby wording choices that make Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "Notice what the form is doing here: “Tomorrow I have class.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நாளை",
+      "romanization": "nāḷai",
+      "nativeText": "Contrast check for \"நாளை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nāḷai",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "Contrast check for \"நாளை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நாளை",
+      "romanization": "nāḷai",
+      "nativeText": "Recall \"நாளை\" from memory, then explain what would change if a nearby alternative replaced it in \"நாளை எனக்கு வகுப்பு உள்ளது.\".",
+      "pronunciation": "nāḷai",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "Self-check against the model before moving on: “Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "Recall \"நாளை\" from memory, then explain what would change if a nearby alternative replaced it in \"நாளை எனக்கு வகுப்பு உள்ளது.\".",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "Self-check against the model before moving on: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நாளை",
+      "romanization": "nāḷai",
+      "nativeText": "Repair \"நாளை\" inside \"நாளை எனக்கு வகுப்பு உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar sound precise rather than merely understandable.",
+      "pronunciation": "nāḷai",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "Use the model as the repair target: “Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "Repair \"நாளை\" inside \"நாளை எனக்கு வகுப்பு உள்ளது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 6: தேதி மற்றும் நாட்காட்டி — Dates and Calendar sound precise rather than merely understandable.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "Use the model as the repair target: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நாளை",
+      "romanization": "nāḷai",
+      "nativeText": "Transfer \"நாளை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நாளை எனக்கு வகுப்பு உள்ளது.\".",
+      "pronunciation": "nāḷai",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "Transfer \"நாளை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நாளை எனக்கு வகுப்பு உள்ளது.\".",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நாளை",
+      "romanization": "nāḷai",
+      "nativeText": "Find one word or phrase that naturally travels with \"நாளை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nāḷai",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "Find one word or phrase that naturally travels with \"நாளை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நாளை",
+      "romanization": "nāḷai",
+      "nativeText": "Listen for \"நாளை\" inside \"நாளை எனக்கு வகுப்பு உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nāḷai",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "Listen for \"நாளை\" inside \"நாளை எனக்கு வகுப்பு உள்ளது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நாளை",
+      "romanization": "nāḷai",
+      "nativeText": "Write \"நாளை\" again without looking, then compare the exact written form against \"நாளை எனக்கு வகுப்பு உள்ளது.\" before moving on.",
+      "pronunciation": "nāḷai",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "Use the written model as the final correctness check: “Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "Write \"நாளை\" again without looking, then compare the exact written form against \"நாளை எனக்கு வகுப்பு உள்ளது.\" before moving on.",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Tomorrow I have class.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நாளை",
+      "romanization": "nāḷai",
+      "nativeText": "Check whether \"நாளை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”",
+      "pronunciation": "nāḷai",
+      "exampleTarget": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”",
+      "korean": "நாளை",
+      "english": "Check whether \"நாளை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”",
+      "example": "நாளை எனக்கு வகுப்பு உள்ளது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Tomorrow I have class.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நேற்று",
+      "romanization": "nēṟṟu",
+      "nativeText": "“Yesterday.” It pairs naturally with past forms later.",
+      "pronunciation": "nēṟṟu",
+      "exampleTarget": "நேற்று நான் படித்தேன்.",
+      "exampleNative": "“Yesterday I studied.”",
+      "korean": "நேற்று",
+      "english": "“Yesterday.” It pairs naturally with past forms later.",
+      "example": "நேற்று நான் படித்தேன்.",
+      "exampleEnglish": "“Yesterday I studied.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நேற்று நான் படித்தேன்.",
+      "romanization": "nēṟṟu",
+      "nativeText": "Model use for \"நேற்று நான் படித்தேன்.\": “Yesterday I studied.”",
+      "pronunciation": "nēṟṟu",
+      "exampleTarget": "நேற்று நான் படித்தேன்.",
+      "exampleNative": "“Yesterday I studied.”",
+      "korean": "நேற்று நான் படித்தேன்.",
+      "english": "Model use for \"நேற்று நான் படித்தேன்.\": “Yesterday I studied.”",
+      "example": "நேற்று நான் படித்தேன்.",
+      "exampleEnglish": "“Yesterday I studied.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நேற்று",
+      "romanization": "nēṟṟu",
+      "nativeText": "Usage focus for \"நேற்று\": “Yesterday.” It pairs naturally with past forms later.",
+      "pronunciation": "nēṟṟu",
+      "exampleTarget": "நேற்று நான் படித்தேன்.",
+      "exampleNative": "Notice what the form is doing here: “Yesterday I studied.”",
+      "korean": "நேற்று",
+      "english": "Usage focus for \"நேற்று\": “Yesterday.” It pairs naturally with past forms later.",
+      "example": "நேற்று நான் படித்தேன்.",
+      "exampleEnglish": "Notice what the form is doing here: “Yesterday I studied.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நேற்று",
+      "romanization": "nēṟṟu",
+      "nativeText": "Contrast check for \"நேற்று\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nēṟṟu",
+      "exampleTarget": "நேற்று நான் படித்தேன்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I studied.”",
+      "korean": "நேற்று",
+      "english": "Contrast check for \"நேற்று\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "நேற்று நான் படித்தேன்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நேற்று",
+      "romanization": "nēṟṟu",
+      "nativeText": "Recall \"நேற்று\" from memory, then explain what would change if a nearby alternative replaced it in \"நேற்று நான் படித்தேன்.\".",
+      "pronunciation": "nēṟṟu",
+      "exampleTarget": "நேற்று நான் படித்தேன்.",
+      "exampleNative": "Self-check against the model before moving on: “Yesterday I studied.”",
+      "korean": "நேற்று",
+      "english": "Recall \"நேற்று\" from memory, then explain what would change if a nearby alternative replaced it in \"நேற்று நான் படித்தேன்.\".",
+      "example": "நேற்று நான் படித்தேன்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நேற்று",
+      "romanization": "nēṟṟu",
+      "nativeText": "Repair \"நேற்று\" inside \"நேற்று நான் படித்தேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Yesterday.” It pairs naturally with past forms later.",
+      "pronunciation": "nēṟṟu",
+      "exampleTarget": "நேற்று நான் படித்தேன்.",
+      "exampleNative": "Use the model as the repair target: “Yesterday I studied.”",
+      "korean": "நேற்று",
+      "english": "Repair \"நேற்று\" inside \"நேற்று நான் படித்தேன்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Yesterday.” It pairs naturally with past forms later.",
+      "example": "நேற்று நான் படித்தேன்.",
+      "exampleEnglish": "Use the model as the repair target: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நேற்று",
+      "romanization": "nēṟṟu",
+      "nativeText": "Transfer \"நேற்று\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேற்று நான் படித்தேன்.\".",
+      "pronunciation": "nēṟṟu",
+      "exampleTarget": "நேற்று நான் படித்தேன்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I studied.”",
+      "korean": "நேற்று",
+      "english": "Transfer \"நேற்று\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"நேற்று நான் படித்தேன்.\".",
+      "example": "நேற்று நான் படித்தேன்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நேற்று",
+      "romanization": "nēṟṟu",
+      "nativeText": "Find one word or phrase that naturally travels with \"நேற்று\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nēṟṟu",
+      "exampleTarget": "நேற்று நான் படித்தேன்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Yesterday I studied.”",
+      "korean": "நேற்று",
+      "english": "Find one word or phrase that naturally travels with \"நேற்று\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "நேற்று நான் படித்தேன்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நேற்று",
+      "romanization": "nēṟṟu",
+      "nativeText": "Listen for \"நேற்று\" inside \"நேற்று நான் படித்தேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nēṟṟu",
+      "exampleTarget": "நேற்று நான் படித்தேன்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I studied.”",
+      "korean": "நேற்று",
+      "english": "Listen for \"நேற்று\" inside \"நேற்று நான் படித்தேன்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "நேற்று நான் படித்தேன்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நேற்று",
+      "romanization": "nēṟṟu",
+      "nativeText": "Write \"நேற்று\" again without looking, then compare the exact written form against \"நேற்று நான் படித்தேன்.\" before moving on.",
+      "pronunciation": "nēṟṟu",
+      "exampleTarget": "நேற்று நான் படித்தேன்.",
+      "exampleNative": "Use the written model as the final correctness check: “Yesterday I studied.”",
+      "korean": "நேற்று",
+      "english": "Write \"நேற்று\" again without looking, then compare the exact written form against \"நேற்று நான் படித்தேன்.\" before moving on.",
+      "example": "நேற்று நான் படித்தேன்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Yesterday I studied.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "நேற்று",
+      "romanization": "nēṟṟu",
+      "nativeText": "Check whether \"நேற்று\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I studied.”",
+      "pronunciation": "nēṟṟu",
+      "exampleTarget": "நேற்று நான் படித்தேன்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Yesterday I studied.”",
+      "korean": "நேற்று",
+      "english": "Check whether \"நேற்று\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Yesterday I studied.”",
+      "example": "நேற்று நான் படித்தேன்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Yesterday I studied.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "திங்கட்கிழமை",
+      "romanization": "tiṅkaṭkiḻamai",
+      "nativeText": "“Monday.” Tamil weekday names often end with `கிழமை`.",
+      "pronunciation": "tiṅkaṭkiḻamai",
+      "exampleTarget": "தேர்வு திங்கட்கிழமை.",
+      "exampleNative": "“The exam is on Monday.”",
+      "korean": "திங்கட்கிழமை",
+      "english": "“Monday.” Tamil weekday names often end with `கிழமை`.",
+      "example": "தேர்வு திங்கட்கிழமை.",
+      "exampleEnglish": "“The exam is on Monday.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "தேர்வு திங்கட்கிழமை.",
+      "romanization": "tiṅkaṭkiḻamai",
+      "nativeText": "Model use for \"தேர்வு திங்கட்கிழமை.\": “The exam is on Monday.”",
+      "pronunciation": "tiṅkaṭkiḻamai",
+      "exampleTarget": "தேர்வு திங்கட்கிழமை.",
+      "exampleNative": "“The exam is on Monday.”",
+      "korean": "தேர்வு திங்கட்கிழமை.",
+      "english": "Model use for \"தேர்வு திங்கட்கிழமை.\": “The exam is on Monday.”",
+      "example": "தேர்வு திங்கட்கிழமை.",
+      "exampleEnglish": "“The exam is on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "திங்கட்கிழமை",
+      "romanization": "tiṅkaṭkiḻamai",
+      "nativeText": "Usage focus for \"திங்கட்கிழமை\": “Monday.” Tamil weekday names often end with `கிழமை`.",
+      "pronunciation": "tiṅkaṭkiḻamai",
+      "exampleTarget": "தேர்வு திங்கட்கிழமை.",
+      "exampleNative": "Notice what the form is doing here: “The exam is on Monday.”",
+      "korean": "திங்கட்கிழமை",
+      "english": "Usage focus for \"திங்கட்கிழமை\": “Monday.” Tamil weekday names often end with `கிழமை`.",
+      "example": "தேர்வு திங்கட்கிழமை.",
+      "exampleEnglish": "Notice what the form is doing here: “The exam is on Monday.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "திங்கட்கிழமை",
+      "romanization": "tiṅkaṭkiḻamai",
+      "nativeText": "Contrast check for \"திங்கட்கிழமை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tiṅkaṭkiḻamai",
+      "exampleTarget": "தேர்வு திங்கட்கிழமை.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The exam is on Monday.”",
+      "korean": "திங்கட்கிழமை",
+      "english": "Contrast check for \"திங்கட்கிழமை\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "தேர்வு திங்கட்கிழமை.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "திங்கட்கிழமை",
+      "romanization": "tiṅkaṭkiḻamai",
+      "nativeText": "Recall \"திங்கட்கிழமை\" from memory, then explain what would change if a nearby alternative replaced it in \"தேர்வு திங்கட்கிழமை.\".",
+      "pronunciation": "tiṅkaṭkiḻamai",
+      "exampleTarget": "தேர்வு திங்கட்கிழமை.",
+      "exampleNative": "Self-check against the model before moving on: “The exam is on Monday.”",
+      "korean": "திங்கட்கிழமை",
+      "english": "Recall \"திங்கட்கிழமை\" from memory, then explain what would change if a nearby alternative replaced it in \"தேர்வு திங்கட்கிழமை.\".",
+      "example": "தேர்வு திங்கட்கிழமை.",
+      "exampleEnglish": "Self-check against the model before moving on: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "திங்கட்கிழமை",
+      "romanization": "tiṅkaṭkiḻamai",
+      "nativeText": "Repair \"திங்கட்கிழமை\" inside \"தேர்வு திங்கட்கிழமை.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Monday.” Tamil weekday names often end with `கிழமை`.",
+      "pronunciation": "tiṅkaṭkiḻamai",
+      "exampleTarget": "தேர்வு திங்கட்கிழமை.",
+      "exampleNative": "Use the model as the repair target: “The exam is on Monday.”",
+      "korean": "திங்கட்கிழமை",
+      "english": "Repair \"திங்கட்கிழமை\" inside \"தேர்வு திங்கட்கிழமை.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Monday.” Tamil weekday names often end with `கிழமை`.",
+      "example": "தேர்வு திங்கட்கிழமை.",
+      "exampleEnglish": "Use the model as the repair target: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "திங்கட்கிழமை",
+      "romanization": "tiṅkaṭkiḻamai",
+      "nativeText": "Transfer \"திங்கட்கிழமை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தேர்வு திங்கட்கிழமை.\".",
+      "pronunciation": "tiṅkaṭkiḻamai",
+      "exampleTarget": "தேர்வு திங்கட்கிழமை.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The exam is on Monday.”",
+      "korean": "திங்கட்கிழமை",
+      "english": "Transfer \"திங்கட்கிழமை\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"தேர்வு திங்கட்கிழமை.\".",
+      "example": "தேர்வு திங்கட்கிழமை.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "திங்கட்கிழமை",
+      "romanization": "tiṅkaṭkiḻamai",
+      "nativeText": "Find one word or phrase that naturally travels with \"திங்கட்கிழமை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tiṅkaṭkiḻamai",
+      "exampleTarget": "தேர்வு திங்கட்கிழமை.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The exam is on Monday.”",
+      "korean": "திங்கட்கிழமை",
+      "english": "Find one word or phrase that naturally travels with \"திங்கட்கிழமை\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "தேர்வு திங்கட்கிழமை.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "திங்கட்கிழமை",
+      "romanization": "tiṅkaṭkiḻamai",
+      "nativeText": "Listen for \"திங்கட்கிழமை\" inside \"தேர்வு திங்கட்கிழமை.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tiṅkaṭkiḻamai",
+      "exampleTarget": "தேர்வு திங்கட்கிழமை.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The exam is on Monday.”",
+      "korean": "திங்கட்கிழமை",
+      "english": "Listen for \"திங்கட்கிழமை\" inside \"தேர்வு திங்கட்கிழமை.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "தேர்வு திங்கட்கிழமை.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "திங்கட்கிழமை",
+      "romanization": "tiṅkaṭkiḻamai",
+      "nativeText": "Write \"திங்கட்கிழமை\" again without looking, then compare the exact written form against \"தேர்வு திங்கட்கிழமை.\" before moving on.",
+      "pronunciation": "tiṅkaṭkiḻamai",
+      "exampleTarget": "தேர்வு திங்கட்கிழமை.",
+      "exampleNative": "Use the written model as the final correctness check: “The exam is on Monday.”",
+      "korean": "திங்கட்கிழமை",
+      "english": "Write \"திங்கட்கிழமை\" again without looking, then compare the exact written form against \"தேர்வு திங்கட்கிழமை.\" before moving on.",
+      "example": "தேர்வு திங்கட்கிழமை.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The exam is on Monday.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "திங்கட்கிழமை",
+      "romanization": "tiṅkaṭkiḻamai",
+      "nativeText": "Check whether \"திங்கட்கிழமை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”",
+      "pronunciation": "tiṅkaṭkiḻamai",
+      "exampleTarget": "தேர்வு திங்கட்கிழமை.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”",
+      "korean": "திங்கட்கிழமை",
+      "english": "Check whether \"திங்கட்கிழமை\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”",
+      "example": "தேர்வு திங்கட்கிழமை.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The exam is on Monday.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று என்ன தேதி?",
+      "romanization": "iṉṟu eṉṉa tēti",
+      "nativeText": "“What is today’s date?” A practical full question.",
+      "pronunciation": "iṉṟu eṉṉa tēti",
+      "exampleTarget": "இன்று என்ன தேதி?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "இன்று என்ன தேதி?",
+      "english": "“What is today’s date?” A practical full question.",
+      "example": "இன்று என்ன தேதி?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று என்ன தேதி?",
+      "romanization": "iṉṟu eṉṉa tēti",
+      "nativeText": "Model use for \"இன்று என்ன தேதி?\": “What is today’s date?” A practical full question.",
+      "pronunciation": "iṉṟu eṉṉa tēti",
+      "exampleTarget": "இன்று என்ன தேதி?",
+      "exampleNative": "“What is today’s date?”",
+      "korean": "இன்று என்ன தேதி?",
+      "english": "Model use for \"இன்று என்ன தேதி?\": “What is today’s date?” A practical full question.",
+      "example": "இன்று என்ன தேதி?",
+      "exampleEnglish": "“What is today’s date?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று என்ன தேதி?",
+      "romanization": "iṉṟu eṉṉa tēti",
+      "nativeText": "Usage focus for \"இன்று என்ன தேதி?\": “What is today’s date?” A practical full question.",
+      "pronunciation": "iṉṟu eṉṉa tēti",
+      "exampleTarget": "இன்று என்ன தேதி?",
+      "exampleNative": "Notice what the form is doing here: “What is today’s date?”",
+      "korean": "இன்று என்ன தேதி?",
+      "english": "Usage focus for \"இன்று என்ன தேதி?\": “What is today’s date?” A practical full question.",
+      "example": "இன்று என்ன தேதி?",
+      "exampleEnglish": "Notice what the form is doing here: “What is today’s date?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று என்ன தேதி?",
+      "romanization": "iṉṟu eṉṉa tēti",
+      "nativeText": "Contrast check for \"இன்று என்ன தேதி?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "iṉṟu eṉṉa tēti",
+      "exampleTarget": "இன்று என்ன தேதி?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is today’s date?”",
+      "korean": "இன்று என்ன தேதி?",
+      "english": "Contrast check for \"இன்று என்ன தேதி?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இன்று என்ன தேதி?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று என்ன தேதி?",
+      "romanization": "iṉṟu eṉṉa tēti",
+      "nativeText": "Recall \"இன்று என்ன தேதி?\" from memory, then explain what would change if a nearby alternative replaced it in \"இன்று என்ன தேதி?\".",
+      "pronunciation": "iṉṟu eṉṉa tēti",
+      "exampleTarget": "இன்று என்ன தேதி?",
+      "exampleNative": "Self-check against the model before moving on: “What is today’s date?”",
+      "korean": "இன்று என்ன தேதி?",
+      "english": "Recall \"இன்று என்ன தேதி?\" from memory, then explain what would change if a nearby alternative replaced it in \"இன்று என்ன தேதி?\".",
+      "example": "இன்று என்ன தேதி?",
+      "exampleEnglish": "Self-check against the model before moving on: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று என்ன தேதி?",
+      "romanization": "iṉṟu eṉṉa tēti",
+      "nativeText": "Repair \"இன்று என்ன தேதி?\" inside \"இன்று என்ன தேதி?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What is today’s date?” A practical full question.",
+      "pronunciation": "iṉṟu eṉṉa tēti",
+      "exampleTarget": "இன்று என்ன தேதி?",
+      "exampleNative": "Use the model as the repair target: “What is today’s date?”",
+      "korean": "இன்று என்ன தேதி?",
+      "english": "Repair \"இன்று என்ன தேதி?\" inside \"இன்று என்ன தேதி?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “What is today’s date?” A practical full question.",
+      "example": "இன்று என்ன தேதி?",
+      "exampleEnglish": "Use the model as the repair target: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று என்ன தேதி?",
+      "romanization": "iṉṟu eṉṉa tēti",
+      "nativeText": "Transfer \"இன்று என்ன தேதி?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இன்று என்ன தேதி?\".",
+      "pronunciation": "iṉṟu eṉṉa tēti",
+      "exampleTarget": "இன்று என்ன தேதி?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is today’s date?”",
+      "korean": "இன்று என்ன தேதி?",
+      "english": "Transfer \"இன்று என்ன தேதி?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இன்று என்ன தேதி?\".",
+      "example": "இன்று என்ன தேதி?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று என்ன தேதி?",
+      "romanization": "iṉṟu eṉṉa tēti",
+      "nativeText": "Find one word or phrase that naturally travels with \"இன்று என்ன தேதி?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "iṉṟu eṉṉa tēti",
+      "exampleTarget": "இன்று என்ன தேதி?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “What is today’s date?”",
+      "korean": "இன்று என்ன தேதி?",
+      "english": "Find one word or phrase that naturally travels with \"இன்று என்ன தேதி?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இன்று என்ன தேதி?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று என்ன தேதி?",
+      "romanization": "iṉṟu eṉṉa tēti",
+      "nativeText": "Listen for \"இன்று என்ன தேதி?\" inside \"இன்று என்ன தேதி?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "iṉṟu eṉṉa tēti",
+      "exampleTarget": "இன்று என்ன தேதி?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is today’s date?”",
+      "korean": "இன்று என்ன தேதி?",
+      "english": "Listen for \"இன்று என்ன தேதி?\" inside \"இன்று என்ன தேதி?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இன்று என்ன தேதி?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று என்ன தேதி?",
+      "romanization": "iṉṟu eṉṉa tēti",
+      "nativeText": "Write \"இன்று என்ன தேதி?\" again without looking, then compare the exact written form against \"இன்று என்ன தேதி?\" before moving on.",
+      "pronunciation": "iṉṟu eṉṉa tēti",
+      "exampleTarget": "இன்று என்ன தேதி?",
+      "exampleNative": "Use the written model as the final correctness check: “What is today’s date?”",
+      "korean": "இன்று என்ன தேதி?",
+      "english": "Write \"இன்று என்ன தேதி?\" again without looking, then compare the exact written form against \"இன்று என்ன தேதி?\" before moving on.",
+      "example": "இன்று என்ன தேதி?",
+      "exampleEnglish": "Use the written model as the final correctness check: “What is today’s date?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "இன்று என்ன தேதி?",
+      "romanization": "iṉṟu eṉṉa tēti",
+      "nativeText": "Check whether \"இன்று என்ன தேதி?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "pronunciation": "iṉṟu eṉṉa tēti",
+      "exampleTarget": "இன்று என்ன தேதி?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "korean": "இன்று என்ன தேதி?",
+      "english": "Check whether \"இன்று என்ன தேதி?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “What is today’s date?”",
+      "example": "இன்று என்ன தேதி?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “What is today’s date?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "மே ஐந்து",
+      "romanization": "mē aintu",
+      "nativeText": "“May fifth.” The day number follows the month in this simple spoken frame.",
+      "pronunciation": "mē aintu",
+      "exampleTarget": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleNative": "“Class starts on May fifth.”",
+      "korean": "மே ஐந்து",
+      "english": "“May fifth.” The day number follows the month in this simple spoken frame.",
+      "example": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleEnglish": "“Class starts on May fifth.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "romanization": "mē aintu",
+      "nativeText": "Model use for \"வகுப்பு மே ஐந்தில் தொடங்கும்.\": “Class starts on May fifth.”",
+      "pronunciation": "mē aintu",
+      "exampleTarget": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleNative": "“Class starts on May fifth.”",
+      "korean": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "english": "Model use for \"வகுப்பு மே ஐந்தில் தொடங்கும்.\": “Class starts on May fifth.”",
+      "example": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleEnglish": "“Class starts on May fifth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "மே ஐந்து",
+      "romanization": "mē aintu",
+      "nativeText": "Usage focus for \"மே ஐந்து\": “May fifth.” The day number follows the month in this simple spoken frame.",
+      "pronunciation": "mē aintu",
+      "exampleTarget": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleNative": "Notice what the form is doing here: “Class starts on May fifth.”",
+      "korean": "மே ஐந்து",
+      "english": "Usage focus for \"மே ஐந்து\": “May fifth.” The day number follows the month in this simple spoken frame.",
+      "example": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleEnglish": "Notice what the form is doing here: “Class starts on May fifth.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "மே ஐந்து",
+      "romanization": "mē aintu",
+      "nativeText": "Contrast check for \"மே ஐந்து\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "mē aintu",
+      "exampleTarget": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Class starts on May fifth.”",
+      "korean": "மே ஐந்து",
+      "english": "Contrast check for \"மே ஐந்து\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "மே ஐந்து",
+      "romanization": "mē aintu",
+      "nativeText": "Recall \"மே ஐந்து\" from memory, then explain what would change if a nearby alternative replaced it in \"வகுப்பு மே ஐந்தில் தொடங்கும்.\".",
+      "pronunciation": "mē aintu",
+      "exampleTarget": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleNative": "Self-check against the model before moving on: “Class starts on May fifth.”",
+      "korean": "மே ஐந்து",
+      "english": "Recall \"மே ஐந்து\" from memory, then explain what would change if a nearby alternative replaced it in \"வகுப்பு மே ஐந்தில் தொடங்கும்.\".",
+      "example": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "மே ஐந்து",
+      "romanization": "mē aintu",
+      "nativeText": "Repair \"மே ஐந்து\" inside \"வகுப்பு மே ஐந்தில் தொடங்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May fifth.” The day number follows the month in this simple spoken frame.",
+      "pronunciation": "mē aintu",
+      "exampleTarget": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleNative": "Use the model as the repair target: “Class starts on May fifth.”",
+      "korean": "மே ஐந்து",
+      "english": "Repair \"மே ஐந்து\" inside \"வகுப்பு மே ஐந்தில் தொடங்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “May fifth.” The day number follows the month in this simple spoken frame.",
+      "example": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleEnglish": "Use the model as the repair target: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "மே ஐந்து",
+      "romanization": "mē aintu",
+      "nativeText": "Transfer \"மே ஐந்து\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வகுப்பு மே ஐந்தில் தொடங்கும்.\".",
+      "pronunciation": "mē aintu",
+      "exampleTarget": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Class starts on May fifth.”",
+      "korean": "மே ஐந்து",
+      "english": "Transfer \"மே ஐந்து\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"வகுப்பு மே ஐந்தில் தொடங்கும்.\".",
+      "example": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "மே ஐந்து",
+      "romanization": "mē aintu",
+      "nativeText": "Find one word or phrase that naturally travels with \"மே ஐந்து\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "mē aintu",
+      "exampleTarget": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Class starts on May fifth.”",
+      "korean": "மே ஐந்து",
+      "english": "Find one word or phrase that naturally travels with \"மே ஐந்து\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "மே ஐந்து",
+      "romanization": "mē aintu",
+      "nativeText": "Listen for \"மே ஐந்து\" inside \"வகுப்பு மே ஐந்தில் தொடங்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "mē aintu",
+      "exampleTarget": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Class starts on May fifth.”",
+      "korean": "மே ஐந்து",
+      "english": "Listen for \"மே ஐந்து\" inside \"வகுப்பு மே ஐந்தில் தொடங்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "மே ஐந்து",
+      "romanization": "mē aintu",
+      "nativeText": "Write \"மே ஐந்து\" again without looking, then compare the exact written form against \"வகுப்பு மே ஐந்தில் தொடங்கும்.\" before moving on.",
+      "pronunciation": "mē aintu",
+      "exampleTarget": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleNative": "Use the written model as the final correctness check: “Class starts on May fifth.”",
+      "korean": "மே ஐந்து",
+      "english": "Write \"மே ஐந்து\" again without looking, then compare the exact written form against \"வகுப்பு மே ஐந்தில் தொடங்கும்.\" before moving on.",
+      "example": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Class starts on May fifth.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "மே ஐந்து",
+      "romanization": "mē aintu",
+      "nativeText": "Check whether \"மே ஐந்து\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Class starts on May fifth.”",
+      "pronunciation": "mē aintu",
+      "exampleTarget": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Class starts on May fifth.”",
+      "korean": "மே ஐந்து",
+      "english": "Check whether \"மே ஐந்து\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Class starts on May fifth.”",
+      "example": "வகுப்பு மே ஐந்தில் தொடங்கும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Class starts on May fifth.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "அடுத்த வாரம்",
+      "romanization": "aṭutta vāram",
+      "nativeText": "“Next week.” A common near-future phrase.",
+      "pronunciation": "aṭutta vāram",
+      "exampleTarget": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleNative": "“We will meet next week.”",
+      "korean": "அடுத்த வாரம்",
+      "english": "“Next week.” A common near-future phrase.",
+      "example": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleEnglish": "“We will meet next week.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "romanization": "aṭutta vāram",
+      "nativeText": "Model use for \"அடுத்த வாரம் நாம் சந்திப்போம்.\": “We will meet next week.”",
+      "pronunciation": "aṭutta vāram",
+      "exampleTarget": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleNative": "“We will meet next week.”",
+      "korean": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "english": "Model use for \"அடுத்த வாரம் நாம் சந்திப்போம்.\": “We will meet next week.”",
+      "example": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleEnglish": "“We will meet next week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "அடுத்த வாரம்",
+      "romanization": "aṭutta vāram",
+      "nativeText": "Usage focus for \"அடுத்த வாரம்\": “Next week.” A common near-future phrase.",
+      "pronunciation": "aṭutta vāram",
+      "exampleTarget": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleNative": "Notice what the form is doing here: “We will meet next week.”",
+      "korean": "அடுத்த வாரம்",
+      "english": "Usage focus for \"அடுத்த வாரம்\": “Next week.” A common near-future phrase.",
+      "example": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleEnglish": "Notice what the form is doing here: “We will meet next week.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "அடுத்த வாரம்",
+      "romanization": "aṭutta vāram",
+      "nativeText": "Contrast check for \"அடுத்த வாரம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "aṭutta vāram",
+      "exampleTarget": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We will meet next week.”",
+      "korean": "அடுத்த வாரம்",
+      "english": "Contrast check for \"அடுத்த வாரம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "அடுத்த வாரம்",
+      "romanization": "aṭutta vāram",
+      "nativeText": "Recall \"அடுத்த வாரம்\" from memory, then explain what would change if a nearby alternative replaced it in \"அடுத்த வாரம் நாம் சந்திப்போம்.\".",
+      "pronunciation": "aṭutta vāram",
+      "exampleTarget": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleNative": "Self-check against the model before moving on: “We will meet next week.”",
+      "korean": "அடுத்த வாரம்",
+      "english": "Recall \"அடுத்த வாரம்\" from memory, then explain what would change if a nearby alternative replaced it in \"அடுத்த வாரம் நாம் சந்திப்போம்.\".",
+      "example": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "அடுத்த வாரம்",
+      "romanization": "aṭutta vāram",
+      "nativeText": "Repair \"அடுத்த வாரம்\" inside \"அடுத்த வாரம் நாம் சந்திப்போம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.” A common near-future phrase.",
+      "pronunciation": "aṭutta vāram",
+      "exampleTarget": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleNative": "Use the model as the repair target: “We will meet next week.”",
+      "korean": "அடுத்த வாரம்",
+      "english": "Repair \"அடுத்த வாரம்\" inside \"அடுத்த வாரம் நாம் சந்திப்போம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Next week.” A common near-future phrase.",
+      "example": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleEnglish": "Use the model as the repair target: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "அடுத்த வாரம்",
+      "romanization": "aṭutta vāram",
+      "nativeText": "Transfer \"அடுத்த வாரம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அடுத்த வாரம் நாம் சந்திப்போம்.\".",
+      "pronunciation": "aṭutta vāram",
+      "exampleTarget": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “We will meet next week.”",
+      "korean": "அடுத்த வாரம்",
+      "english": "Transfer \"அடுத்த வாரம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"அடுத்த வாரம் நாம் சந்திப்போம்.\".",
+      "example": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "அடுத்த வாரம்",
+      "romanization": "aṭutta vāram",
+      "nativeText": "Find one word or phrase that naturally travels with \"அடுத்த வாரம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "aṭutta vāram",
+      "exampleTarget": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “We will meet next week.”",
+      "korean": "அடுத்த வாரம்",
+      "english": "Find one word or phrase that naturally travels with \"அடுத்த வாரம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "அடுத்த வாரம்",
+      "romanization": "aṭutta vāram",
+      "nativeText": "Listen for \"அடுத்த வாரம்\" inside \"அடுத்த வாரம் நாம் சந்திப்போம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "aṭutta vāram",
+      "exampleTarget": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We will meet next week.”",
+      "korean": "அடுத்த வாரம்",
+      "english": "Listen for \"அடுத்த வாரம்\" inside \"அடுத்த வாரம் நாம் சந்திப்போம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "அடுத்த வாரம்",
+      "romanization": "aṭutta vāram",
+      "nativeText": "Write \"அடுத்த வாரம்\" again without looking, then compare the exact written form against \"அடுத்த வாரம் நாம் சந்திப்போம்.\" before moving on.",
+      "pronunciation": "aṭutta vāram",
+      "exampleTarget": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleNative": "Use the written model as the final correctness check: “We will meet next week.”",
+      "korean": "அடுத்த வாரம்",
+      "english": "Write \"அடுத்த வாரம்\" again without looking, then compare the exact written form against \"அடுத்த வாரம் நாம் சந்திப்போம்.\" before moving on.",
+      "example": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “We will meet next week.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "அடுத்த வாரம்",
+      "romanization": "aṭutta vāram",
+      "nativeText": "Check whether \"அடுத்த வாரம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We will meet next week.”",
+      "pronunciation": "aṭutta vāram",
+      "exampleTarget": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “We will meet next week.”",
+      "korean": "அடுத்த வாரம்",
+      "english": "Check whether \"அடுத்த வாரம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “We will meet next week.”",
+      "example": "அடுத்த வாரம் நாம் சந்திப்போம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “We will meet next week.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "எப்போது?",
+      "romanization": "eppōtu",
+      "nativeText": "“When?” A compact question word for time and plans.",
+      "pronunciation": "eppōtu",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "எப்போது?",
+      "english": "“When?” A compact question word for time and plans.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "கூட்டம் எப்போது தொடங்கும்?",
+      "romanization": "eppōtu",
+      "nativeText": "Model use for \"கூட்டம் எப்போது தொடங்கும்?\": “When does the meeting start?”",
+      "pronunciation": "eppōtu",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "“When does the meeting start?”",
+      "korean": "கூட்டம் எப்போது தொடங்கும்?",
+      "english": "Model use for \"கூட்டம் எப்போது தொடங்கும்?\": “When does the meeting start?”",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "“When does the meeting start?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "எப்போது?",
+      "romanization": "eppōtu",
+      "nativeText": "Usage focus for \"எப்போது?\": “When?” A compact question word for time and plans.",
+      "pronunciation": "eppōtu",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "Notice what the form is doing here: “When does the meeting start?”",
+      "korean": "எப்போது?",
+      "english": "Usage focus for \"எப்போது?\": “When?” A compact question word for time and plans.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "Notice what the form is doing here: “When does the meeting start?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "எப்போது?",
+      "romanization": "eppōtu",
+      "nativeText": "Contrast check for \"எப்போது?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eppōtu",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When does the meeting start?”",
+      "korean": "எப்போது?",
+      "english": "Contrast check for \"எப்போது?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "எப்போது?",
+      "romanization": "eppōtu",
+      "nativeText": "Recall \"எப்போது?\" from memory, then explain what would change if a nearby alternative replaced it in \"கூட்டம் எப்போது தொடங்கும்?\".",
+      "pronunciation": "eppōtu",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "Self-check against the model before moving on: “When does the meeting start?”",
+      "korean": "எப்போது?",
+      "english": "Recall \"எப்போது?\" from memory, then explain what would change if a nearby alternative replaced it in \"கூட்டம் எப்போது தொடங்கும்?\".",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "Self-check against the model before moving on: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "எப்போது?",
+      "romanization": "eppōtu",
+      "nativeText": "Repair \"எப்போது?\" inside \"கூட்டம் எப்போது தொடங்கும்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?” A compact question word for time and plans.",
+      "pronunciation": "eppōtu",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "Use the model as the repair target: “When does the meeting start?”",
+      "korean": "எப்போது?",
+      "english": "Repair \"எப்போது?\" inside \"கூட்டம் எப்போது தொடங்கும்?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “When?” A compact question word for time and plans.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "Use the model as the repair target: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "எப்போது?",
+      "romanization": "eppōtu",
+      "nativeText": "Transfer \"எப்போது?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கூட்டம் எப்போது தொடங்கும்?\".",
+      "pronunciation": "eppōtu",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “When does the meeting start?”",
+      "korean": "எப்போது?",
+      "english": "Transfer \"எப்போது?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கூட்டம் எப்போது தொடங்கும்?\".",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "எப்போது?",
+      "romanization": "eppōtu",
+      "nativeText": "Find one word or phrase that naturally travels with \"எப்போது?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eppōtu",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “When does the meeting start?”",
+      "korean": "எப்போது?",
+      "english": "Find one word or phrase that naturally travels with \"எப்போது?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "எப்போது?",
+      "romanization": "eppōtu",
+      "nativeText": "Listen for \"எப்போது?\" inside \"கூட்டம் எப்போது தொடங்கும்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eppōtu",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When does the meeting start?”",
+      "korean": "எப்போது?",
+      "english": "Listen for \"எப்போது?\" inside \"கூட்டம் எப்போது தொடங்கும்?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "எப்போது?",
+      "romanization": "eppōtu",
+      "nativeText": "Write \"எப்போது?\" again without looking, then compare the exact written form against \"கூட்டம் எப்போது தொடங்கும்?\" before moving on.",
+      "pronunciation": "eppōtu",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "Use the written model as the final correctness check: “When does the meeting start?”",
+      "korean": "எப்போது?",
+      "english": "Write \"எப்போது?\" again without looking, then compare the exact written form against \"கூட்டம் எப்போது தொடங்கும்?\" before moving on.",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "Use the written model as the final correctness check: “When does the meeting start?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit06datescalendar-vocabulary-1",
+        "ta-level1unit06datescalendar-vocabulary-2",
+        "ta-level1unit06datescalendar-grammar-1",
+        "ta-level1unit06datescalendar-grammar-2",
+        "ta-level1unit06datescalendar-reading",
+        "ta-level1unit06datescalendar-listening",
+        "ta-level1unit06datescalendar-writing",
+        "ta-level1unit06datescalendar-task"
+      ],
+      "targetText": "எப்போது?",
+      "romanization": "eppōtu",
+      "nativeText": "Check whether \"எப்போது?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When does the meeting start?”",
+      "pronunciation": "eppōtu",
+      "exampleTarget": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “When does the meeting start?”",
+      "korean": "எப்போது?",
+      "english": "Check whether \"எப்போது?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “When does the meeting start?”",
+      "example": "கூட்டம் எப்போது தொடங்கும்?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “When does the meeting start?”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

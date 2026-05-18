@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ta', {
-  slug: 'ta-l1u10',
-  title: 'Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences',
-  category: 'daily-life',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Describe weather and say what you like or prefer.',
-  vocabularyGoal: 'Use weather words, season words, and preference phrases.',
-  grammarGoal: 'Use `பிடிக்கும்`, `பிடிக்காது`, and comparative preference expressions.',
-  speakingGoal: 'Describe today’s weather and compare two simple preferences.',
-  task: 'Choose a weekend plan based on the weather.',
-  expressionPractice: [
-    practice('describing-weather', 'Describing weather', 'Use one weather sentence.'),
-    practice('stating-like', 'Stating like', 'Use `பிடிக்கும்`.'),
-    practice('stating-preference', 'Stating preference', 'Use `அதைவிட`.'),
+module.exports = {
+  "title": "Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences",
+  "category": "daily-life",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ta-level1unit10weatherpreferences-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Describe weather and say what you like or prefer."
+      ],
+      "task": "Choose a weekend plan based on the weather."
+    },
+    {
+      "id": "ta-level1unit10weatherpreferences-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ta-level1unit10weatherpreferences-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ta-level1unit10weatherpreferences-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ta-level1unit10weatherpreferences-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Describe weather and say what you like or prefer."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ta-level1unit10weatherpreferences-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with one nearby Tamil form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ta-level1unit10weatherpreferences-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ta-level1unit10weatherpreferences-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ta-level1unit10weatherpreferences-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ta-level1unit10weatherpreferences-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ta-level1unit10weatherpreferences-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Choose a weekend plan based on the weather."
+      ],
+      "task": "Choose a weekend plan based on the weather."
+    }
   ],
-  relatedPools: ['topic-weather', 'topic-preferences'],
-  items: [
-    item('இன்று வெயில் அதிகம்', 'iṉṟu veyil atikam', '“Today there is a lot of sun / it is very sunny.” A natural tropical-weather statement.', 'இன்று வெயில் அதிகம்.', '“Today it is very sunny.”'),
-    item('மழை பெய்கிறது', 'maḻai peykiṟatu', '“It is raining.” A common weather verb phrase.', 'இப்போது மழை பெய்கிறது.', '“It is raining now.”'),
-    item('குளிர்', 'kuḷir', '“Cold / coolness.” Useful in seasonal and body-sensation talk.', 'காலை குளிராக இருக்கிறது.', '“The morning is cool.”'),
-    item('கோடை / மழைக்காலம்', 'kōṭai / maḻaikkālam', '“Summer / rainy season.” Seasonal talk matters more than a four-season European template.', 'எனக்கு மழைக்காலம் பிடிக்கும்.', '“I like the rainy season.”'),
-    item('எனக்கு பிடிக்கும்', 'eṉakku piṭikkum', '“I like.” Tamil frames liking through an experiencer construction.', 'எனக்கு குளிரான வானிலை பிடிக்கும்.', '“I like cool weather.”'),
-    item('எனக்கு பிடிக்காது', 'eṉakku piṭikkātu', '“I do not like.” The negative form is built into the verb.', 'எனக்கு மிகுந்த வெயில் பிடிக்காது.', '“I do not like intense sun.”'),
-    item('அதைவிட', 'ataiviṭa', '“Than that / compared with that.” Useful in preferences.', 'கோடையைவிட மழைக்காலம் பிடிக்கும்.', '“I like the rainy season more than summer.”'),
-    item('ஏனெனில்', 'ēṉeṉil', '“Because.” It lets the learner explain a preference.', 'மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.', '“I like the rainy season because the air is cool.”'),
+  "expressionPractice": [
+    {
+      "id": "describing-weather",
+      "label": "Describing weather",
+      "goal": "Use one weather sentence."
+    },
+    {
+      "id": "stating-like",
+      "label": "Stating like",
+      "goal": "Use `பிடிக்கும்`."
+    },
+    {
+      "id": "stating-preference",
+      "label": "Stating preference",
+      "goal": "Use `அதைவிட`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-weather",
+    "topic-preferences"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-orientation"
+      ],
+      "targetText": "பாட இலக்கு",
+      "romanization": "",
+      "nativeText": "Describe weather and say what you like or prefer.",
+      "pronunciation": "",
+      "exampleTarget": "பாட இலக்கு",
+      "exampleNative": "The whole lesson is built toward this outcome: Choose a weekend plan based on the weather.",
+      "korean": "பாட இலக்கு",
+      "english": "Describe weather and say what you like or prefer.",
+      "example": "பாட இலக்கு",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Choose a weekend plan based on the weather."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-pronunciation"
+      ],
+      "targetText": "ஒலி சரிபார்ப்பு",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இன்று வெயில் அதிகம்.\".",
+      "pronunciation": "",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "“Today it is very sunny.”",
+      "korean": "ஒலி சரிபார்ப்பு",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இன்று வெயில் அதிகம்.\".",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "“Today it is very sunny.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "“Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "Use the key language of Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "“Today it is very sunny.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-2"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-grammar-1"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "",
+      "nativeText": "Describe weather and say what you like or prefer.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "“Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "Describe weather and say what you like or prefer.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "“Today it is very sunny.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with one nearby Tamil form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "Contrast the main pattern in Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with one nearby Tamil form so the learner can avoid literal translation.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-reading"
+      ],
+      "targetText": "வாசிப்பு மாதிரி",
+      "romanization": "",
+      "nativeText": "Read \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "“I like the rainy season because the air is cool.”",
+      "korean": "வாசிப்பு மாதிரி",
+      "english": "Read \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "“I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-listening"
+      ],
+      "targetText": "உரையாடல் மாதிரி",
+      "romanization": "",
+      "nativeText": "Hear \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "“I like the rainy season because the air is cool.”",
+      "korean": "உரையாடல் மாதிரி",
+      "english": "Hear \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "“I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "எழுத்துப் பயிற்சி",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"இன்று வெயில் அதிகம்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "எழுத்துப் பயிற்சி",
+      "english": "Write your own version after studying \"இன்று வெயில் அதிகம்.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-culture"
+      ],
+      "targetText": "பயன்பாடும் சூழலும்",
+      "romanization": "",
+      "nativeText": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "பயன்பாடும் சூழலும்",
+      "english": "Notice the diglossia, honorific, or regional choice that changes how this Tamil is naturally used.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இறுதி செயல்",
+      "romanization": "",
+      "nativeText": "Choose a weekend plan based on the weather.",
+      "pronunciation": "",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "Choose a weekend plan based on the weather.",
+      "korean": "இறுதி செயல்",
+      "english": "Choose a weekend plan based on the weather.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "Choose a weekend plan based on the weather."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "பொதுவான பிழை",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"இப்போது மழை பெய்கிறது.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “It is raining now.”",
+      "korean": "பொதுவான பிழை",
+      "english": "Watch for literal-translation mistakes around case suffixes, agreement, verb endings, and spoken-versus-literary forms. Begin by checking \"இப்போது மழை பெய்கிறது.\" against the model.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “It is raining now.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-culture"
+      ],
+      "targetText": "மொழிநடை",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"இன்று வெயில் அதிகம்.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "“Today it is very sunny.”",
+      "korean": "மொழிநடை",
+      "english": "Check whether the setting calls for spoken Tamil, formal literary Tamil, or a respectful service tone before selecting the final wording. Compare the social fit of \"இன்று வெயில் அதிகம்.\" before reusing it elsewhere.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "“Today it is very sunny.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "சரளம்",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "“I like the rainy season because the air is cool.”",
+      "korean": "சரளம்",
+      "english": "Say the idea as one connected Tamil message rather than as separate translated fragments. Aim to carry \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" as one thought.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "“I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "பயன்பாடு",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"இன்று வெயில் அதிகம்.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "பயன்பாடு",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"இன்று வெயில் அதிகம்.\" and move it into your own life.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-grammar-1"
+      ],
+      "targetText": "நினைவூட்டல்",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"இன்று வெயில் அதிகம்\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று வெயில் அதிகம்",
+      "exampleNative": "“Today there is a lot of sun / it is very sunny.” A natural tropical-weather statement.",
+      "korean": "நினைவூட்டல்",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"இன்று வெயில் அதிகம்\" before looking back.",
+      "example": "இன்று வெயில் அதிகம்",
+      "exampleEnglish": "“Today there is a lot of sun / it is very sunny.” A natural tropical-weather statement."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "விரிவாக்கம்",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "விரிவாக்கம்",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" rather than restarting from a blank sentence.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading"
+      ],
+      "targetText": "ஒப்பீடு",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"இப்போது மழை பெய்கிறது.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "ஒப்பீடு",
+      "english": "Compare the central form in Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"இப்போது மழை பெய்கிறது.\" as the comparison line.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-pronunciation"
+      ],
+      "targetText": "உச்சரிப்பு திருத்தம்",
+      "romanization": "",
+      "nativeText": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இன்று வெயில் அதிகம்.\".",
+      "pronunciation": "",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "“Today it is very sunny.”",
+      "korean": "உச்சரிப்பு திருத்தம்",
+      "english": "Keep Tamil retroflex contrasts, long-versus-short vowels, gemination, and diglossic pronunciation choices clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"இன்று வெயில் அதிகம்.\".",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "“Today it is very sunny.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "உரையாடல் மாற்றம்",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\".",
+      "pronunciation": "",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "“I like the rainy season because the air is cool.”",
+      "korean": "உரையாடல் மாற்றம்",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\".",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "“I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-writing"
+      ],
+      "targetText": "வாக்கிய கட்டமைப்பு",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"இன்று வெயில் அதிகம்.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "“Today it is very sunny.”",
+      "korean": "வாக்கிய கட்டமைப்பு",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"இன்று வெயில் அதிகம்.\" one layer at a time.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "“Today it is very sunny.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-2"
+      ],
+      "targetText": "விரைவு சோதனை",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"இப்போது மழை பெய்கிறது.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "விரைவு சோதனை",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"இப்போது மழை பெய்கிறது.\" as the deciding example.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-culture",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மீள்பார்வு",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\".",
+      "pronunciation": "",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "“I like the rainy season because the air is cool.”",
+      "korean": "மீள்பார்வு",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\".",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "“I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "iṉṟu veyil atikam",
+      "nativeText": "“Today there is a lot of sun / it is very sunny.” A natural tropical-weather statement.",
+      "pronunciation": "iṉṟu veyil atikam",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "“Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "“Today there is a lot of sun / it is very sunny.” A natural tropical-weather statement.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "“Today it is very sunny.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்.",
+      "romanization": "iṉṟu veyil atikam",
+      "nativeText": "Model use for \"இன்று வெயில் அதிகம்.\": “Today it is very sunny.”",
+      "pronunciation": "iṉṟu veyil atikam",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "“Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்.",
+      "english": "Model use for \"இன்று வெயில் அதிகம்.\": “Today it is very sunny.”",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "“Today it is very sunny.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "iṉṟu veyil atikam",
+      "nativeText": "Usage focus for \"இன்று வெயில் அதிகம்\": Use the key language of Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "iṉṟu veyil atikam",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "Notice what the form is doing here: “Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "Usage focus for \"இன்று வெயில் அதிகம்\": Use the key language of Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "Notice what the form is doing here: “Today it is very sunny.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "iṉṟu veyil atikam",
+      "nativeText": "Contrast check for \"இன்று வெயில் அதிகம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "iṉṟu veyil atikam",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "Contrast check for \"இன்று வெயில் அதிகம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Today it is very sunny.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "iṉṟu veyil atikam",
+      "nativeText": "Recall \"இன்று வெயில் அதிகம்\" from memory, then explain what would change if a nearby alternative replaced it in \"இன்று வெயில் அதிகம்.\".",
+      "pronunciation": "iṉṟu veyil atikam",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "Self-check against the model before moving on: “Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "Recall \"இன்று வெயில் அதிகம்\" from memory, then explain what would change if a nearby alternative replaced it in \"இன்று வெயில் அதிகம்.\".",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "Self-check against the model before moving on: “Today it is very sunny.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "iṉṟu veyil atikam",
+      "nativeText": "Repair \"இன்று வெயில் அதிகம்\" inside \"இன்று வெயில் அதிகம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with the register and setting that the lesson requires.",
+      "pronunciation": "iṉṟu veyil atikam",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "Use the model as the repair target: “Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "Repair \"இன்று வெயில் அதிகம்\" inside \"இன்று வெயில் அதிகம்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences with the register and setting that the lesson requires.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "Use the model as the repair target: “Today it is very sunny.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "iṉṟu veyil atikam",
+      "nativeText": "Transfer \"இன்று வெயில் அதிகம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இன்று வெயில் அதிகம்.\".",
+      "pronunciation": "iṉṟu veyil atikam",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "Transfer \"இன்று வெயில் அதிகம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இன்று வெயில் அதிகம்.\".",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Today it is very sunny.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "iṉṟu veyil atikam",
+      "nativeText": "Find one word or phrase that naturally travels with \"இன்று வெயில் அதிகம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "iṉṟu veyil atikam",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "Find one word or phrase that naturally travels with \"இன்று வெயில் அதிகம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Today it is very sunny.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "iṉṟu veyil atikam",
+      "nativeText": "Listen for \"இன்று வெயில் அதிகம்\" inside \"இன்று வெயில் அதிகம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "iṉṟu veyil atikam",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "Listen for \"இன்று வெயில் அதிகம்\" inside \"இன்று வெயில் அதிகம்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Today it is very sunny.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "iṉṟu veyil atikam",
+      "nativeText": "Write \"இன்று வெயில் அதிகம்\" again without looking, then compare the exact written form against \"இன்று வெயில் அதிகம்.\" before moving on.",
+      "pronunciation": "iṉṟu veyil atikam",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "Use the written model as the final correctness check: “Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "Write \"இன்று வெயில் அதிகம்\" again without looking, then compare the exact written form against \"இன்று வெயில் அதிகம்.\" before moving on.",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Today it is very sunny.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இன்று வெயில் அதிகம்",
+      "romanization": "iṉṟu veyil atikam",
+      "nativeText": "Check whether \"இன்று வெயில் அதிகம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today it is very sunny.”",
+      "pronunciation": "iṉṟu veyil atikam",
+      "exampleTarget": "இன்று வெயில் அதிகம்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Today it is very sunny.”",
+      "korean": "இன்று வெயில் அதிகம்",
+      "english": "Check whether \"இன்று வெயில் அதிகம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Today it is very sunny.”",
+      "example": "இன்று வெயில் அதிகம்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Today it is very sunny.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "maḻai peykiṟatu",
+      "nativeText": "“It is raining.” A common weather verb phrase.",
+      "pronunciation": "maḻai peykiṟatu",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "“It is raining.” A common weather verb phrase.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "இப்போது மழை பெய்கிறது.",
+      "romanization": "maḻai peykiṟatu",
+      "nativeText": "Model use for \"இப்போது மழை பெய்கிறது.\": “It is raining now.”",
+      "pronunciation": "maḻai peykiṟatu",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "“It is raining now.”",
+      "korean": "இப்போது மழை பெய்கிறது.",
+      "english": "Model use for \"இப்போது மழை பெய்கிறது.\": “It is raining now.”",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "“It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "maḻai peykiṟatu",
+      "nativeText": "Usage focus for \"மழை பெய்கிறது\": Distinguish the nearby wording choices that make Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "maḻai peykiṟatu",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "Notice what the form is doing here: “It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "Usage focus for \"மழை பெய்கிறது\": Distinguish the nearby wording choices that make Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "Notice what the form is doing here: “It is raining now.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "maḻai peykiṟatu",
+      "nativeText": "Contrast check for \"மழை பெய்கிறது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "maḻai peykiṟatu",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "Contrast check for \"மழை பெய்கிறது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "maḻai peykiṟatu",
+      "nativeText": "Recall \"மழை பெய்கிறது\" from memory, then explain what would change if a nearby alternative replaced it in \"இப்போது மழை பெய்கிறது.\".",
+      "pronunciation": "maḻai peykiṟatu",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "Self-check against the model before moving on: “It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "Recall \"மழை பெய்கிறது\" from memory, then explain what would change if a nearby alternative replaced it in \"இப்போது மழை பெய்கிறது.\".",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "Self-check against the model before moving on: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "maḻai peykiṟatu",
+      "nativeText": "Repair \"மழை பெய்கிறது\" inside \"இப்போது மழை பெய்கிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences sound precise rather than merely understandable.",
+      "pronunciation": "maḻai peykiṟatu",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "Use the model as the repair target: “It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "Repair \"மழை பெய்கிறது\" inside \"இப்போது மழை பெய்கிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 10: வானிலை மற்றும் விருப்பங்கள் — Weather and Preferences sound precise rather than merely understandable.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "Use the model as the repair target: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "maḻai peykiṟatu",
+      "nativeText": "Transfer \"மழை பெய்கிறது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இப்போது மழை பெய்கிறது.\".",
+      "pronunciation": "maḻai peykiṟatu",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "Transfer \"மழை பெய்கிறது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"இப்போது மழை பெய்கிறது.\".",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "maḻai peykiṟatu",
+      "nativeText": "Find one word or phrase that naturally travels with \"மழை பெய்கிறது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "maḻai peykiṟatu",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "Find one word or phrase that naturally travels with \"மழை பெய்கிறது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "maḻai peykiṟatu",
+      "nativeText": "Listen for \"மழை பெய்கிறது\" inside \"இப்போது மழை பெய்கிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "maḻai peykiṟatu",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "Listen for \"மழை பெய்கிறது\" inside \"இப்போது மழை பெய்கிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "maḻai peykiṟatu",
+      "nativeText": "Write \"மழை பெய்கிறது\" again without looking, then compare the exact written form against \"இப்போது மழை பெய்கிறது.\" before moving on.",
+      "pronunciation": "maḻai peykiṟatu",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "Use the written model as the final correctness check: “It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "Write \"மழை பெய்கிறது\" again without looking, then compare the exact written form against \"இப்போது மழை பெய்கிறது.\" before moving on.",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “It is raining now.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மழை பெய்கிறது",
+      "romanization": "maḻai peykiṟatu",
+      "nativeText": "Check whether \"மழை பெய்கிறது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "pronunciation": "maḻai peykiṟatu",
+      "exampleTarget": "இப்போது மழை பெய்கிறது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "korean": "மழை பெய்கிறது",
+      "english": "Check whether \"மழை பெய்கிறது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “It is raining now.”",
+      "example": "இப்போது மழை பெய்கிறது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “It is raining now.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "குளிர்",
+      "romanization": "kuḷir",
+      "nativeText": "“Cold / coolness.” Useful in seasonal and body-sensation talk.",
+      "pronunciation": "kuḷir",
+      "exampleTarget": "காலை குளிராக இருக்கிறது.",
+      "exampleNative": "“The morning is cool.”",
+      "korean": "குளிர்",
+      "english": "“Cold / coolness.” Useful in seasonal and body-sensation talk.",
+      "example": "காலை குளிராக இருக்கிறது.",
+      "exampleEnglish": "“The morning is cool.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "காலை குளிராக இருக்கிறது.",
+      "romanization": "kuḷir",
+      "nativeText": "Model use for \"காலை குளிராக இருக்கிறது.\": “The morning is cool.”",
+      "pronunciation": "kuḷir",
+      "exampleTarget": "காலை குளிராக இருக்கிறது.",
+      "exampleNative": "“The morning is cool.”",
+      "korean": "காலை குளிராக இருக்கிறது.",
+      "english": "Model use for \"காலை குளிராக இருக்கிறது.\": “The morning is cool.”",
+      "example": "காலை குளிராக இருக்கிறது.",
+      "exampleEnglish": "“The morning is cool.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "குளிர்",
+      "romanization": "kuḷir",
+      "nativeText": "Usage focus for \"குளிர்\": “Cold / coolness.” Useful in seasonal and body-sensation talk.",
+      "pronunciation": "kuḷir",
+      "exampleTarget": "காலை குளிராக இருக்கிறது.",
+      "exampleNative": "Notice what the form is doing here: “The morning is cool.”",
+      "korean": "குளிர்",
+      "english": "Usage focus for \"குளிர்\": “Cold / coolness.” Useful in seasonal and body-sensation talk.",
+      "example": "காலை குளிராக இருக்கிறது.",
+      "exampleEnglish": "Notice what the form is doing here: “The morning is cool.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "குளிர்",
+      "romanization": "kuḷir",
+      "nativeText": "Contrast check for \"குளிர்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kuḷir",
+      "exampleTarget": "காலை குளிராக இருக்கிறது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The morning is cool.”",
+      "korean": "குளிர்",
+      "english": "Contrast check for \"குளிர்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "காலை குளிராக இருக்கிறது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “The morning is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "குளிர்",
+      "romanization": "kuḷir",
+      "nativeText": "Recall \"குளிர்\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை குளிராக இருக்கிறது.\".",
+      "pronunciation": "kuḷir",
+      "exampleTarget": "காலை குளிராக இருக்கிறது.",
+      "exampleNative": "Self-check against the model before moving on: “The morning is cool.”",
+      "korean": "குளிர்",
+      "english": "Recall \"குளிர்\" from memory, then explain what would change if a nearby alternative replaced it in \"காலை குளிராக இருக்கிறது.\".",
+      "example": "காலை குளிராக இருக்கிறது.",
+      "exampleEnglish": "Self-check against the model before moving on: “The morning is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "குளிர்",
+      "romanization": "kuḷir",
+      "nativeText": "Repair \"குளிர்\" inside \"காலை குளிராக இருக்கிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cold / coolness.” Useful in seasonal and body-sensation talk.",
+      "pronunciation": "kuḷir",
+      "exampleTarget": "காலை குளிராக இருக்கிறது.",
+      "exampleNative": "Use the model as the repair target: “The morning is cool.”",
+      "korean": "குளிர்",
+      "english": "Repair \"குளிர்\" inside \"காலை குளிராக இருக்கிறது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cold / coolness.” Useful in seasonal and body-sensation talk.",
+      "example": "காலை குளிராக இருக்கிறது.",
+      "exampleEnglish": "Use the model as the repair target: “The morning is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "குளிர்",
+      "romanization": "kuḷir",
+      "nativeText": "Transfer \"குளிர்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை குளிராக இருக்கிறது.\".",
+      "pronunciation": "kuḷir",
+      "exampleTarget": "காலை குளிராக இருக்கிறது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “The morning is cool.”",
+      "korean": "குளிர்",
+      "english": "Transfer \"குளிர்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"காலை குளிராக இருக்கிறது.\".",
+      "example": "காலை குளிராக இருக்கிறது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “The morning is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "குளிர்",
+      "romanization": "kuḷir",
+      "nativeText": "Find one word or phrase that naturally travels with \"குளிர்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kuḷir",
+      "exampleTarget": "காலை குளிராக இருக்கிறது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “The morning is cool.”",
+      "korean": "குளிர்",
+      "english": "Find one word or phrase that naturally travels with \"குளிர்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "காலை குளிராக இருக்கிறது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “The morning is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "குளிர்",
+      "romanization": "kuḷir",
+      "nativeText": "Listen for \"குளிர்\" inside \"காலை குளிராக இருக்கிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kuḷir",
+      "exampleTarget": "காலை குளிராக இருக்கிறது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The morning is cool.”",
+      "korean": "குளிர்",
+      "english": "Listen for \"குளிர்\" inside \"காலை குளிராக இருக்கிறது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "காலை குளிராக இருக்கிறது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “The morning is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "குளிர்",
+      "romanization": "kuḷir",
+      "nativeText": "Write \"குளிர்\" again without looking, then compare the exact written form against \"காலை குளிராக இருக்கிறது.\" before moving on.",
+      "pronunciation": "kuḷir",
+      "exampleTarget": "காலை குளிராக இருக்கிறது.",
+      "exampleNative": "Use the written model as the final correctness check: “The morning is cool.”",
+      "korean": "குளிர்",
+      "english": "Write \"குளிர்\" again without looking, then compare the exact written form against \"காலை குளிராக இருக்கிறது.\" before moving on.",
+      "example": "காலை குளிராக இருக்கிறது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “The morning is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "குளிர்",
+      "romanization": "kuḷir",
+      "nativeText": "Check whether \"குளிர்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The morning is cool.”",
+      "pronunciation": "kuḷir",
+      "exampleTarget": "காலை குளிராக இருக்கிறது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “The morning is cool.”",
+      "korean": "குளிர்",
+      "english": "Check whether \"குளிர்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “The morning is cool.”",
+      "example": "காலை குளிராக இருக்கிறது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “The morning is cool.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "கோடை / மழைக்காலம்",
+      "romanization": "kōṭai / maḻaikkālam",
+      "nativeText": "“Summer / rainy season.” Seasonal talk matters more than a four-season European template.",
+      "pronunciation": "kōṭai / maḻaikkālam",
+      "exampleTarget": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "“I like the rainy season.”",
+      "korean": "கோடை / மழைக்காலம்",
+      "english": "“Summer / rainy season.” Seasonal talk matters more than a four-season European template.",
+      "example": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "“I like the rainy season.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "romanization": "kōṭai / maḻaikkālam",
+      "nativeText": "Model use for \"எனக்கு மழைக்காலம் பிடிக்கும்.\": “I like the rainy season.”",
+      "pronunciation": "kōṭai / maḻaikkālam",
+      "exampleTarget": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "“I like the rainy season.”",
+      "korean": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "english": "Model use for \"எனக்கு மழைக்காலம் பிடிக்கும்.\": “I like the rainy season.”",
+      "example": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "“I like the rainy season.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "கோடை / மழைக்காலம்",
+      "romanization": "kōṭai / maḻaikkālam",
+      "nativeText": "Usage focus for \"கோடை / மழைக்காலம்\": “Summer / rainy season.” Seasonal talk matters more than a four-season European template.",
+      "pronunciation": "kōṭai / maḻaikkālam",
+      "exampleTarget": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "Notice what the form is doing here: “I like the rainy season.”",
+      "korean": "கோடை / மழைக்காலம்",
+      "english": "Usage focus for \"கோடை / மழைக்காலம்\": “Summer / rainy season.” Seasonal talk matters more than a four-season European template.",
+      "example": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I like the rainy season.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "கோடை / மழைக்காலம்",
+      "romanization": "kōṭai / maḻaikkālam",
+      "nativeText": "Contrast check for \"கோடை / மழைக்காலம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kōṭai / maḻaikkālam",
+      "exampleTarget": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the rainy season.”",
+      "korean": "கோடை / மழைக்காலம்",
+      "english": "Contrast check for \"கோடை / மழைக்காலம்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the rainy season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "கோடை / மழைக்காலம்",
+      "romanization": "kōṭai / maḻaikkālam",
+      "nativeText": "Recall \"கோடை / மழைக்காலம்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு மழைக்காலம் பிடிக்கும்.\".",
+      "pronunciation": "kōṭai / maḻaikkālam",
+      "exampleTarget": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "Self-check against the model before moving on: “I like the rainy season.”",
+      "korean": "கோடை / மழைக்காலம்",
+      "english": "Recall \"கோடை / மழைக்காலம்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு மழைக்காலம் பிடிக்கும்.\".",
+      "example": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like the rainy season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "கோடை / மழைக்காலம்",
+      "romanization": "kōṭai / maḻaikkālam",
+      "nativeText": "Repair \"கோடை / மழைக்காலம்\" inside \"எனக்கு மழைக்காலம் பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Summer / rainy season.” Seasonal talk matters more than a four-season European template.",
+      "pronunciation": "kōṭai / maḻaikkālam",
+      "exampleTarget": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "Use the model as the repair target: “I like the rainy season.”",
+      "korean": "கோடை / மழைக்காலம்",
+      "english": "Repair \"கோடை / மழைக்காலம்\" inside \"எனக்கு மழைக்காலம் பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Summer / rainy season.” Seasonal talk matters more than a four-season European template.",
+      "example": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "Use the model as the repair target: “I like the rainy season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "கோடை / மழைக்காலம்",
+      "romanization": "kōṭai / maḻaikkālam",
+      "nativeText": "Transfer \"கோடை / மழைக்காலம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு மழைக்காலம் பிடிக்கும்.\".",
+      "pronunciation": "kōṭai / maḻaikkālam",
+      "exampleTarget": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the rainy season.”",
+      "korean": "கோடை / மழைக்காலம்",
+      "english": "Transfer \"கோடை / மழைக்காலம்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு மழைக்காலம் பிடிக்கும்.\".",
+      "example": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the rainy season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "கோடை / மழைக்காலம்",
+      "romanization": "kōṭai / maḻaikkālam",
+      "nativeText": "Find one word or phrase that naturally travels with \"கோடை / மழைக்காலம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kōṭai / maḻaikkālam",
+      "exampleTarget": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like the rainy season.”",
+      "korean": "கோடை / மழைக்காலம்",
+      "english": "Find one word or phrase that naturally travels with \"கோடை / மழைக்காலம்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like the rainy season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "கோடை / மழைக்காலம்",
+      "romanization": "kōṭai / maḻaikkālam",
+      "nativeText": "Listen for \"கோடை / மழைக்காலம்\" inside \"எனக்கு மழைக்காலம் பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kōṭai / maḻaikkālam",
+      "exampleTarget": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the rainy season.”",
+      "korean": "கோடை / மழைக்காலம்",
+      "english": "Listen for \"கோடை / மழைக்காலம்\" inside \"எனக்கு மழைக்காலம் பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the rainy season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "கோடை / மழைக்காலம்",
+      "romanization": "kōṭai / maḻaikkālam",
+      "nativeText": "Write \"கோடை / மழைக்காலம்\" again without looking, then compare the exact written form against \"எனக்கு மழைக்காலம் பிடிக்கும்.\" before moving on.",
+      "pronunciation": "kōṭai / maḻaikkālam",
+      "exampleTarget": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I like the rainy season.”",
+      "korean": "கோடை / மழைக்காலம்",
+      "english": "Write \"கோடை / மழைக்காலம்\" again without looking, then compare the exact written form against \"எனக்கு மழைக்காலம் பிடிக்கும்.\" before moving on.",
+      "example": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like the rainy season.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "கோடை / மழைக்காலம்",
+      "romanization": "kōṭai / maḻaikkālam",
+      "nativeText": "Check whether \"கோடை / மழைக்காலம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the rainy season.”",
+      "pronunciation": "kōṭai / maḻaikkālam",
+      "exampleTarget": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like the rainy season.”",
+      "korean": "கோடை / மழைக்காலம்",
+      "english": "Check whether \"கோடை / மழைக்காலம்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the rainy season.”",
+      "example": "எனக்கு மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like the rainy season.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்கும்",
+      "romanization": "eṉakku piṭikkum",
+      "nativeText": "“I like.” Tamil frames liking through an experiencer construction.",
+      "pronunciation": "eṉakku piṭikkum",
+      "exampleTarget": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleNative": "“I like cool weather.”",
+      "korean": "எனக்கு பிடிக்கும்",
+      "english": "“I like.” Tamil frames liking through an experiencer construction.",
+      "example": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleEnglish": "“I like cool weather.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "romanization": "eṉakku piṭikkum",
+      "nativeText": "Model use for \"எனக்கு குளிரான வானிலை பிடிக்கும்.\": “I like cool weather.”",
+      "pronunciation": "eṉakku piṭikkum",
+      "exampleTarget": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleNative": "“I like cool weather.”",
+      "korean": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "english": "Model use for \"எனக்கு குளிரான வானிலை பிடிக்கும்.\": “I like cool weather.”",
+      "example": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleEnglish": "“I like cool weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்கும்",
+      "romanization": "eṉakku piṭikkum",
+      "nativeText": "Usage focus for \"எனக்கு பிடிக்கும்\": “I like.” Tamil frames liking through an experiencer construction.",
+      "pronunciation": "eṉakku piṭikkum",
+      "exampleTarget": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleNative": "Notice what the form is doing here: “I like cool weather.”",
+      "korean": "எனக்கு பிடிக்கும்",
+      "english": "Usage focus for \"எனக்கு பிடிக்கும்\": “I like.” Tamil frames liking through an experiencer construction.",
+      "example": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I like cool weather.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்கும்",
+      "romanization": "eṉakku piṭikkum",
+      "nativeText": "Contrast check for \"எனக்கு பிடிக்கும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eṉakku piṭikkum",
+      "exampleTarget": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like cool weather.”",
+      "korean": "எனக்கு பிடிக்கும்",
+      "english": "Contrast check for \"எனக்கு பிடிக்கும்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்கும்",
+      "romanization": "eṉakku piṭikkum",
+      "nativeText": "Recall \"எனக்கு பிடிக்கும்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு குளிரான வானிலை பிடிக்கும்.\".",
+      "pronunciation": "eṉakku piṭikkum",
+      "exampleTarget": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleNative": "Self-check against the model before moving on: “I like cool weather.”",
+      "korean": "எனக்கு பிடிக்கும்",
+      "english": "Recall \"எனக்கு பிடிக்கும்\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு குளிரான வானிலை பிடிக்கும்.\".",
+      "example": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்கும்",
+      "romanization": "eṉakku piṭikkum",
+      "nativeText": "Repair \"எனக்கு பிடிக்கும்\" inside \"எனக்கு குளிரான வானிலை பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like.” Tamil frames liking through an experiencer construction.",
+      "pronunciation": "eṉakku piṭikkum",
+      "exampleTarget": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleNative": "Use the model as the repair target: “I like cool weather.”",
+      "korean": "எனக்கு பிடிக்கும்",
+      "english": "Repair \"எனக்கு பிடிக்கும்\" inside \"எனக்கு குளிரான வானிலை பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I like.” Tamil frames liking through an experiencer construction.",
+      "example": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleEnglish": "Use the model as the repair target: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்கும்",
+      "romanization": "eṉakku piṭikkum",
+      "nativeText": "Transfer \"எனக்கு பிடிக்கும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு குளிரான வானிலை பிடிக்கும்.\".",
+      "pronunciation": "eṉakku piṭikkum",
+      "exampleTarget": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like cool weather.”",
+      "korean": "எனக்கு பிடிக்கும்",
+      "english": "Transfer \"எனக்கு பிடிக்கும்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு குளிரான வானிலை பிடிக்கும்.\".",
+      "example": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்கும்",
+      "romanization": "eṉakku piṭikkum",
+      "nativeText": "Find one word or phrase that naturally travels with \"எனக்கு பிடிக்கும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eṉakku piṭikkum",
+      "exampleTarget": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like cool weather.”",
+      "korean": "எனக்கு பிடிக்கும்",
+      "english": "Find one word or phrase that naturally travels with \"எனக்கு பிடிக்கும்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்கும்",
+      "romanization": "eṉakku piṭikkum",
+      "nativeText": "Listen for \"எனக்கு பிடிக்கும்\" inside \"எனக்கு குளிரான வானிலை பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eṉakku piṭikkum",
+      "exampleTarget": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like cool weather.”",
+      "korean": "எனக்கு பிடிக்கும்",
+      "english": "Listen for \"எனக்கு பிடிக்கும்\" inside \"எனக்கு குளிரான வானிலை பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்கும்",
+      "romanization": "eṉakku piṭikkum",
+      "nativeText": "Write \"எனக்கு பிடிக்கும்\" again without looking, then compare the exact written form against \"எனக்கு குளிரான வானிலை பிடிக்கும்.\" before moving on.",
+      "pronunciation": "eṉakku piṭikkum",
+      "exampleTarget": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I like cool weather.”",
+      "korean": "எனக்கு பிடிக்கும்",
+      "english": "Write \"எனக்கு பிடிக்கும்\" again without looking, then compare the exact written form against \"எனக்கு குளிரான வானிலை பிடிக்கும்.\" before moving on.",
+      "example": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like cool weather.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்கும்",
+      "romanization": "eṉakku piṭikkum",
+      "nativeText": "Check whether \"எனக்கு பிடிக்கும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like cool weather.”",
+      "pronunciation": "eṉakku piṭikkum",
+      "exampleTarget": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like cool weather.”",
+      "korean": "எனக்கு பிடிக்கும்",
+      "english": "Check whether \"எனக்கு பிடிக்கும்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like cool weather.”",
+      "example": "எனக்கு குளிரான வானிலை பிடிக்கும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like cool weather.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்காது",
+      "romanization": "eṉakku piṭikkātu",
+      "nativeText": "“I do not like.” The negative form is built into the verb.",
+      "pronunciation": "eṉakku piṭikkātu",
+      "exampleTarget": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleNative": "“I do not like intense sun.”",
+      "korean": "எனக்கு பிடிக்காது",
+      "english": "“I do not like.” The negative form is built into the verb.",
+      "example": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleEnglish": "“I do not like intense sun.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "romanization": "eṉakku piṭikkātu",
+      "nativeText": "Model use for \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\": “I do not like intense sun.”",
+      "pronunciation": "eṉakku piṭikkātu",
+      "exampleTarget": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleNative": "“I do not like intense sun.”",
+      "korean": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "english": "Model use for \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\": “I do not like intense sun.”",
+      "example": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleEnglish": "“I do not like intense sun.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்காது",
+      "romanization": "eṉakku piṭikkātu",
+      "nativeText": "Usage focus for \"எனக்கு பிடிக்காது\": “I do not like.” The negative form is built into the verb.",
+      "pronunciation": "eṉakku piṭikkātu",
+      "exampleTarget": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleNative": "Notice what the form is doing here: “I do not like intense sun.”",
+      "korean": "எனக்கு பிடிக்காது",
+      "english": "Usage focus for \"எனக்கு பிடிக்காது\": “I do not like.” The negative form is built into the verb.",
+      "example": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleEnglish": "Notice what the form is doing here: “I do not like intense sun.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்காது",
+      "romanization": "eṉakku piṭikkātu",
+      "nativeText": "Contrast check for \"எனக்கு பிடிக்காது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "eṉakku piṭikkātu",
+      "exampleTarget": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do not like intense sun.”",
+      "korean": "எனக்கு பிடிக்காது",
+      "english": "Contrast check for \"எனக்கு பிடிக்காது\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I do not like intense sun.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்காது",
+      "romanization": "eṉakku piṭikkātu",
+      "nativeText": "Recall \"எனக்கு பிடிக்காது\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\".",
+      "pronunciation": "eṉakku piṭikkātu",
+      "exampleTarget": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleNative": "Self-check against the model before moving on: “I do not like intense sun.”",
+      "korean": "எனக்கு பிடிக்காது",
+      "english": "Recall \"எனக்கு பிடிக்காது\" from memory, then explain what would change if a nearby alternative replaced it in \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\".",
+      "example": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleEnglish": "Self-check against the model before moving on: “I do not like intense sun.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்காது",
+      "romanization": "eṉakku piṭikkātu",
+      "nativeText": "Repair \"எனக்கு பிடிக்காது\" inside \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I do not like.” The negative form is built into the verb.",
+      "pronunciation": "eṉakku piṭikkātu",
+      "exampleTarget": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleNative": "Use the model as the repair target: “I do not like intense sun.”",
+      "korean": "எனக்கு பிடிக்காது",
+      "english": "Repair \"எனக்கு பிடிக்காது\" inside \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I do not like.” The negative form is built into the verb.",
+      "example": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleEnglish": "Use the model as the repair target: “I do not like intense sun.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்காது",
+      "romanization": "eṉakku piṭikkātu",
+      "nativeText": "Transfer \"எனக்கு பிடிக்காது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\".",
+      "pronunciation": "eṉakku piṭikkātu",
+      "exampleTarget": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do not like intense sun.”",
+      "korean": "எனக்கு பிடிக்காது",
+      "english": "Transfer \"எனக்கு பிடிக்காது\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\".",
+      "example": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I do not like intense sun.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்காது",
+      "romanization": "eṉakku piṭikkātu",
+      "nativeText": "Find one word or phrase that naturally travels with \"எனக்கு பிடிக்காது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "eṉakku piṭikkātu",
+      "exampleTarget": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I do not like intense sun.”",
+      "korean": "எனக்கு பிடிக்காது",
+      "english": "Find one word or phrase that naturally travels with \"எனக்கு பிடிக்காது\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I do not like intense sun.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்காது",
+      "romanization": "eṉakku piṭikkātu",
+      "nativeText": "Listen for \"எனக்கு பிடிக்காது\" inside \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "eṉakku piṭikkātu",
+      "exampleTarget": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do not like intense sun.”",
+      "korean": "எனக்கு பிடிக்காது",
+      "english": "Listen for \"எனக்கு பிடிக்காது\" inside \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I do not like intense sun.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்காது",
+      "romanization": "eṉakku piṭikkātu",
+      "nativeText": "Write \"எனக்கு பிடிக்காது\" again without looking, then compare the exact written form against \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\" before moving on.",
+      "pronunciation": "eṉakku piṭikkātu",
+      "exampleTarget": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleNative": "Use the written model as the final correctness check: “I do not like intense sun.”",
+      "korean": "எனக்கு பிடிக்காது",
+      "english": "Write \"எனக்கு பிடிக்காது\" again without looking, then compare the exact written form against \"எனக்கு மிகுந்த வெயில் பிடிக்காது.\" before moving on.",
+      "example": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I do not like intense sun.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "எனக்கு பிடிக்காது",
+      "romanization": "eṉakku piṭikkātu",
+      "nativeText": "Check whether \"எனக்கு பிடிக்காது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do not like intense sun.”",
+      "pronunciation": "eṉakku piṭikkātu",
+      "exampleTarget": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I do not like intense sun.”",
+      "korean": "எனக்கு பிடிக்காது",
+      "english": "Check whether \"எனக்கு பிடிக்காது\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I do not like intense sun.”",
+      "example": "எனக்கு மிகுந்த வெயில் பிடிக்காது.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I do not like intense sun.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "அதைவிட",
+      "romanization": "ataiviṭa",
+      "nativeText": "“Than that / compared with that.” Useful in preferences.",
+      "pronunciation": "ataiviṭa",
+      "exampleTarget": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "“I like the rainy season more than summer.”",
+      "korean": "அதைவிட",
+      "english": "“Than that / compared with that.” Useful in preferences.",
+      "example": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "“I like the rainy season more than summer.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "romanization": "ataiviṭa",
+      "nativeText": "Model use for \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\": “I like the rainy season more than summer.”",
+      "pronunciation": "ataiviṭa",
+      "exampleTarget": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "“I like the rainy season more than summer.”",
+      "korean": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "english": "Model use for \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\": “I like the rainy season more than summer.”",
+      "example": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "“I like the rainy season more than summer.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "அதைவிட",
+      "romanization": "ataiviṭa",
+      "nativeText": "Usage focus for \"அதைவிட\": “Than that / compared with that.” Useful in preferences.",
+      "pronunciation": "ataiviṭa",
+      "exampleTarget": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "Notice what the form is doing here: “I like the rainy season more than summer.”",
+      "korean": "அதைவிட",
+      "english": "Usage focus for \"அதைவிட\": “Than that / compared with that.” Useful in preferences.",
+      "example": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I like the rainy season more than summer.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "அதைவிட",
+      "romanization": "ataiviṭa",
+      "nativeText": "Contrast check for \"அதைவிட\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ataiviṭa",
+      "exampleTarget": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the rainy season more than summer.”",
+      "korean": "அதைவிட",
+      "english": "Contrast check for \"அதைவிட\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the rainy season more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "அதைவிட",
+      "romanization": "ataiviṭa",
+      "nativeText": "Recall \"அதைவிட\" from memory, then explain what would change if a nearby alternative replaced it in \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\".",
+      "pronunciation": "ataiviṭa",
+      "exampleTarget": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "Self-check against the model before moving on: “I like the rainy season more than summer.”",
+      "korean": "அதைவிட",
+      "english": "Recall \"அதைவிட\" from memory, then explain what would change if a nearby alternative replaced it in \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\".",
+      "example": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like the rainy season more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "அதைவிட",
+      "romanization": "ataiviṭa",
+      "nativeText": "Repair \"அதைவிட\" inside \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Than that / compared with that.” Useful in preferences.",
+      "pronunciation": "ataiviṭa",
+      "exampleTarget": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "Use the model as the repair target: “I like the rainy season more than summer.”",
+      "korean": "அதைவிட",
+      "english": "Repair \"அதைவிட\" inside \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Than that / compared with that.” Useful in preferences.",
+      "example": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "Use the model as the repair target: “I like the rainy season more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "அதைவிட",
+      "romanization": "ataiviṭa",
+      "nativeText": "Transfer \"அதைவிட\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\".",
+      "pronunciation": "ataiviṭa",
+      "exampleTarget": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the rainy season more than summer.”",
+      "korean": "அதைவிட",
+      "english": "Transfer \"அதைவிட\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\".",
+      "example": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the rainy season more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "அதைவிட",
+      "romanization": "ataiviṭa",
+      "nativeText": "Find one word or phrase that naturally travels with \"அதைவிட\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ataiviṭa",
+      "exampleTarget": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like the rainy season more than summer.”",
+      "korean": "அதைவிட",
+      "english": "Find one word or phrase that naturally travels with \"அதைவிட\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like the rainy season more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "அதைவிட",
+      "romanization": "ataiviṭa",
+      "nativeText": "Listen for \"அதைவிட\" inside \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ataiviṭa",
+      "exampleTarget": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the rainy season more than summer.”",
+      "korean": "அதைவிட",
+      "english": "Listen for \"அதைவிட\" inside \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the rainy season more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "அதைவிட",
+      "romanization": "ataiviṭa",
+      "nativeText": "Write \"அதைவிட\" again without looking, then compare the exact written form against \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\" before moving on.",
+      "pronunciation": "ataiviṭa",
+      "exampleTarget": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I like the rainy season more than summer.”",
+      "korean": "அதைவிட",
+      "english": "Write \"அதைவிட\" again without looking, then compare the exact written form against \"கோடையைவிட மழைக்காலம் பிடிக்கும்.\" before moving on.",
+      "example": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like the rainy season more than summer.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "அதைவிட",
+      "romanization": "ataiviṭa",
+      "nativeText": "Check whether \"அதைவிட\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the rainy season more than summer.”",
+      "pronunciation": "ataiviṭa",
+      "exampleTarget": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like the rainy season more than summer.”",
+      "korean": "அதைவிட",
+      "english": "Check whether \"அதைவிட\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the rainy season more than summer.”",
+      "example": "கோடையைவிட மழைக்காலம் பிடிக்கும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like the rainy season more than summer.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ஏனெனில்",
+      "romanization": "ēṉeṉil",
+      "nativeText": "“Because.” It lets the learner explain a preference.",
+      "pronunciation": "ēṉeṉil",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "“I like the rainy season because the air is cool.”",
+      "korean": "ஏனெனில்",
+      "english": "“Because.” It lets the learner explain a preference.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "“I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "romanization": "ēṉeṉil",
+      "nativeText": "Model use for \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\": “I like the rainy season because the air is cool.”",
+      "pronunciation": "ēṉeṉil",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "“I like the rainy season because the air is cool.”",
+      "korean": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "english": "Model use for \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\": “I like the rainy season because the air is cool.”",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "“I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ஏனெனில்",
+      "romanization": "ēṉeṉil",
+      "nativeText": "Usage focus for \"ஏனெனில்\": “Because.” It lets the learner explain a preference.",
+      "pronunciation": "ēṉeṉil",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "Notice what the form is doing here: “I like the rainy season because the air is cool.”",
+      "korean": "ஏனெனில்",
+      "english": "Usage focus for \"ஏனெனில்\": “Because.” It lets the learner explain a preference.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "Notice what the form is doing here: “I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ஏனெனில்",
+      "romanization": "ēṉeṉil",
+      "nativeText": "Contrast check for \"ஏனெனில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ēṉeṉil",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the rainy season because the air is cool.”",
+      "korean": "ஏனெனில்",
+      "english": "Contrast check for \"ஏனெனில்\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ஏனெனில்",
+      "romanization": "ēṉeṉil",
+      "nativeText": "Recall \"ஏனெனில்\" from memory, then explain what would change if a nearby alternative replaced it in \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\".",
+      "pronunciation": "ēṉeṉil",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "Self-check against the model before moving on: “I like the rainy season because the air is cool.”",
+      "korean": "ஏனெனில்",
+      "english": "Recall \"ஏனெனில்\" from memory, then explain what would change if a nearby alternative replaced it in \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\".",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "Self-check against the model before moving on: “I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ஏனெனில்",
+      "romanization": "ēṉeṉil",
+      "nativeText": "Repair \"ஏனெனில்\" inside \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Because.” It lets the learner explain a preference.",
+      "pronunciation": "ēṉeṉil",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "Use the model as the repair target: “I like the rainy season because the air is cool.”",
+      "korean": "ஏனெனில்",
+      "english": "Repair \"ஏனெனில்\" inside \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Because.” It lets the learner explain a preference.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "Use the model as the repair target: “I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ஏனெனில்",
+      "romanization": "ēṉeṉil",
+      "nativeText": "Transfer \"ஏனெனில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\".",
+      "pronunciation": "ēṉeṉil",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the rainy season because the air is cool.”",
+      "korean": "ஏனெனில்",
+      "english": "Transfer \"ஏனெனில்\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\".",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ஏனெனில்",
+      "romanization": "ēṉeṉil",
+      "nativeText": "Find one word or phrase that naturally travels with \"ஏனெனில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ēṉeṉil",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I like the rainy season because the air is cool.”",
+      "korean": "ஏனெனில்",
+      "english": "Find one word or phrase that naturally travels with \"ஏனெனில்\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ஏனெனில்",
+      "romanization": "ēṉeṉil",
+      "nativeText": "Listen for \"ஏனெனில்\" inside \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ēṉeṉil",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the rainy season because the air is cool.”",
+      "korean": "ஏனெனில்",
+      "english": "Listen for \"ஏனெனில்\" inside \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ஏனெனில்",
+      "romanization": "ēṉeṉil",
+      "nativeText": "Write \"ஏனெனில்\" again without looking, then compare the exact written form against \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" before moving on.",
+      "pronunciation": "ēṉeṉil",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "Use the written model as the final correctness check: “I like the rainy season because the air is cool.”",
+      "korean": "ஏனெனில்",
+      "english": "Write \"ஏனெனில்\" again without looking, then compare the exact written form against \"மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.\" before moving on.",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I like the rainy season because the air is cool.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ta-level1unit10weatherpreferences-vocabulary-1",
+        "ta-level1unit10weatherpreferences-vocabulary-2",
+        "ta-level1unit10weatherpreferences-grammar-1",
+        "ta-level1unit10weatherpreferences-grammar-2",
+        "ta-level1unit10weatherpreferences-reading",
+        "ta-level1unit10weatherpreferences-listening",
+        "ta-level1unit10weatherpreferences-writing",
+        "ta-level1unit10weatherpreferences-task"
+      ],
+      "targetText": "ஏனெனில்",
+      "romanization": "ēṉeṉil",
+      "nativeText": "Check whether \"ஏனெனில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the rainy season because the air is cool.”",
+      "pronunciation": "ēṉeṉil",
+      "exampleTarget": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I like the rainy season because the air is cool.”",
+      "korean": "ஏனெனில்",
+      "english": "Check whether \"ஏனெனில்\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I like the rainy season because the air is cool.”",
+      "example": "மழைக்காலம் பிடிக்கும் ஏனெனில் காற்று குளிராக இருக்கும்.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I like the rainy season because the air is cool.”"
+    }
+  ],
+  "targetLang": "ta",
+  "nativeLang": "en",
+  "track": "textbook"
+};

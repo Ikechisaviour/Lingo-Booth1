@@ -328,6 +328,7 @@ function WritingPracticePage() {
   const [review, setReview] = useState({ shape: false, spacing: false, memory: false });
   const [customTarget, setCustomTarget] = useState('');
   const [customNative, setCustomNative] = useState('');
+  const [notebookOpen, setNotebookOpen] = useState(false);
   const seededTarget = compact(searchParams.get('savedText'), 180);
   const seededNative = compact(searchParams.get('nativeText'), 180);
 
@@ -547,7 +548,8 @@ function WritingPracticePage() {
         </div>
       </section>
 
-      <section className="writing-layout">
+      <section className={`writing-layout ${notebookOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+        {notebookOpen && (
         <aside className="writing-sidebar">
           <div className="writing-card">
             <h2>{t('writing.notebook', 'Notebook')}</h2>
@@ -589,8 +591,22 @@ function WritingPracticePage() {
             <button type="button" className="writing-primary" onClick={addPersonalItem}>{t('writing.addToNotebook', 'Add to notebook')}</button>
           </div>
         </aside>
+        )}
 
         <main className="writing-workspace">
+          <div className="writing-workspace-toolbar">
+            <button type="button" onClick={() => setNotebookOpen((open) => !open)}>
+              {notebookOpen
+                ? t('writing.hideNotebook', 'Hide notebook')
+                : t('writing.showNotebook', 'Show notebook')}
+            </button>
+            {selectedItem && (
+              <span>
+                <strong>{selectedItem.target}</strong>
+                {selectedItem.native && <em>{selectedItem.native}</em>}
+              </span>
+            )}
+          </div>
           <div className="writing-mode-tabs" role="tablist" aria-label={t('writing.modesLabel', 'Writing modes')}>
             {MODES.map((item) => (
               <button

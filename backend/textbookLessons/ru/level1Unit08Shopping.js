@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('ru', {
-  slug: 'ru-l1u8',
-  title: 'Level 1 · Unit 8: Покупки — Shopping',
-  category: 'shopping',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Shop for everyday items, ask prices, compare options, and pay.',
-  vocabularyGoal: 'Use price, size, color, and payment vocabulary.',
-  grammarGoal: 'Use `сколько стоит`, adjective agreement, and basic number-plus-noun patterns.',
-  speakingGoal: 'Ask a price, request one item, and compare two options.',
-  task: 'Buy one practical item in a shop.',
-  expressionPractice: [
-    practice('asking-price', 'Asking price', 'Use `сколько стоит?`.'),
-    practice('choosing-item', 'Choosing item', 'Use `этот/эта` with agreement.'),
-    practice('comparing', 'Comparing items', 'Use `дешевле` or `больше`.'),
+module.exports = {
+  "title": "Level 1 · Unit 8: Покупки — Shopping",
+  "category": "shopping",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "ru-level1unit08shopping-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Shop for everyday items, ask prices, compare options, and pay."
+      ],
+      "task": "Buy one practical item in a shop."
+    },
+    {
+      "id": "ru-level1unit08shopping-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "ru-level1unit08shopping-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 8: Покупки — Shopping with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "ru-level1unit08shopping-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 8: Покупки — Shopping sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "ru-level1unit08shopping-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Shop for everyday items, ask prices, compare options, and pay."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "ru-level1unit08shopping-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 8: Покупки — Shopping with one nearby Russian form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "ru-level1unit08shopping-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "ru-level1unit08shopping-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "ru-level1unit08shopping-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "ru-level1unit08shopping-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "ru-level1unit08shopping-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Buy one practical item in a shop."
+      ],
+      "task": "Buy one practical item in a shop."
+    }
   ],
-  relatedPools: ['topic-shopping', 'topic-service'],
-  items: [
-    item('сколько стоит?', 'skolko stoit', '“How much does it cost?” The verb agrees with the thing being priced.', 'Сколько стоит эта сумка?', '“How much does this bag cost?”'),
-    item('этот / эта', 'etot / eta', '“This” masculine / feminine. Demonstratives agree with the noun’s gender.', 'Я хочу эту книгу и этот шарф.', '“I want this book and this scarf.”'),
-    item('дешевле', 'deshevle', '“Cheaper.” A compact comparative used constantly in shopping.', 'Есть что-нибудь дешевле?', '“Is there anything cheaper?”'),
-    item('дорогой / дорогая', 'dorogoy / dorogaya', '“Expensive” masculine / feminine. Adjectives visibly agree with nouns.', 'Эта куртка дорогая.', '“This jacket is expensive.”'),
-    item('большой размер', 'bolshoy razmer', '“Large size.” `Размер` is masculine, so the adjective follows that agreement.', 'Мне нужен большой размер.', '“I need a large size.”'),
-    item('красный цвет', 'krasnyy tsvet', '“Red color.” Colors behave like adjectives and agree when attached to nouns.', 'У вас есть красная рубашка?', '“Do you have a red shirt?”'),
-    item('один килограмм', 'odin kilogramm', '“One kilogram.” Numbers begin the quantity phrase and later numbers change noun forms.', 'Мне нужен один килограмм яблок.', '“I need one kilogram of apples.”'),
-    item('наличными / картой', 'nalichnymi / kartoy', '“In cash / by card.” The instrumental case marks the means of payment.', 'Можно оплатить картой?', '“Can I pay by card?”'),
+  "expressionPractice": [
+    {
+      "id": "asking-price",
+      "label": "Asking price",
+      "goal": "Use `сколько стоит?`."
+    },
+    {
+      "id": "choosing-item",
+      "label": "Choosing item",
+      "goal": "Use `этот/эта` with agreement."
+    },
+    {
+      "id": "comparing",
+      "label": "Comparing items",
+      "goal": "Use `дешевле` or `больше`."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-shopping",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-orientation"
+      ],
+      "targetText": "цель урока",
+      "romanization": "",
+      "nativeText": "Shop for everyday items, ask prices, compare options, and pay.",
+      "pronunciation": "",
+      "exampleTarget": "цель урока",
+      "exampleNative": "The whole lesson is built toward this outcome: Buy one practical item in a shop.",
+      "korean": "цель урока",
+      "english": "Shop for everyday items, ask prices, compare options, and pay.",
+      "example": "цель урока",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Buy one practical item in a shop."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit08shopping-pronunciation"
+      ],
+      "targetText": "проверка произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сколько стоит эта сумка?\".",
+      "pronunciation": "",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "проверка произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сколько стоит эта сумка?\".",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 8: Покупки — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "Use the key language of Level 1 · Unit 8: Покупки — Shopping with the register and setting that the lesson requires.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-2"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 8: Покупки — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "“I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 8: Покупки — Shopping sound precise rather than merely understandable.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "“I want this book and this scarf.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit08shopping-grammar-1"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "",
+      "nativeText": "Shop for everyday items, ask prices, compare options, and pay.",
+      "pronunciation": "",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "Shop for everyday items, ask prices, compare options, and pay.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "ru-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 8: Покупки — Shopping with one nearby Russian form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "“I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "Contrast the main pattern in Level 1 · Unit 8: Покупки — Shopping with one nearby Russian form so the learner can avoid literal translation.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "“I want this book and this scarf.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "ru-level1unit08shopping-reading"
+      ],
+      "targetText": "модель чтения",
+      "romanization": "",
+      "nativeText": "Read \"Можно оплатить картой?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "модель чтения",
+      "english": "Read \"Можно оплатить картой?\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit08shopping-listening"
+      ],
+      "targetText": "модель диалога",
+      "romanization": "",
+      "nativeText": "Hear \"Можно оплатить картой?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "модель диалога",
+      "english": "Hear \"Можно оплатить картой?\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "ru-level1unit08shopping-writing"
+      ],
+      "targetText": "письменная практика",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Сколько стоит эта сумка?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "письменная практика",
+      "english": "Write your own version after studying \"Сколько стоит эта сумка?\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit08shopping-culture"
+      ],
+      "targetText": "употребление и контекст",
+      "romanization": "",
+      "nativeText": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "“I want this book and this scarf.”",
+      "korean": "употребление и контекст",
+      "english": "Notice the relationship, formality, or pragmatic choice that changes how this Russian is naturally used.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "“I want this book and this scarf.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "итоговое задание",
+      "romanization": "",
+      "nativeText": "Buy one practical item in a shop.",
+      "pronunciation": "",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "Buy one practical item in a shop.",
+      "korean": "итоговое задание",
+      "english": "Buy one practical item in a shop.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "Buy one practical item in a shop."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "частая ошибка",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Я хочу эту книгу и этот шарф.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I want this book and this scarf.”",
+      "korean": "частая ошибка",
+      "english": "Watch for literal-translation mistakes around case, aspect, motion verbs, and stress-sensitive forms. Begin by checking \"Я хочу эту книгу и этот шарф.\" against the model.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I want this book and this scarf.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-culture"
+      ],
+      "targetText": "регистр",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Сколько стоит эта сумка?\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "регистр",
+      "english": "Check whether the setting calls for ты, вы, a service register, or a more formal written choice. Compare the social fit of \"Сколько стоит эта сумка?\" before reusing it elsewhere.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "беглость",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Можно оплатить картой?\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "беглость",
+      "english": "Say the idea as one connected Russian message rather than as separate translated fragments. Aim to carry \"Можно оплатить картой?\" as one thought.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "перенос",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Сколько стоит эта сумка?\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "перенос",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Сколько стоит эта сумка?\" and move it into your own life.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-grammar-1"
+      ],
+      "targetText": "воспроизведение",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"сколько стоит?\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "сколько стоит?",
+      "exampleNative": "“How much does it cost?” The verb agrees with the thing being priced.",
+      "korean": "воспроизведение",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"сколько стоит?\" before looking back.",
+      "example": "сколько стоит?",
+      "exampleEnglish": "“How much does it cost?” The verb agrees with the thing being priced."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-writing"
+      ],
+      "targetText": "расширение",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Можно оплатить картой?\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "расширение",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Можно оплатить картой?\" rather than restarting from a blank sentence.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading"
+      ],
+      "targetText": "сравнение",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 8: Покупки — Shopping with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Я хочу эту книгу и этот шарф.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "“I want this book and this scarf.”",
+      "korean": "сравнение",
+      "english": "Compare the central form in Level 1 · Unit 8: Покупки — Shopping with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Я хочу эту книгу и этот шарф.\" as the comparison line.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "“I want this book and this scarf.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "ru-level1unit08shopping-pronunciation"
+      ],
+      "targetText": "исправление произношения",
+      "romanization": "",
+      "nativeText": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сколько стоит эта сумка?\".",
+      "pronunciation": "",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "исправление произношения",
+      "english": "Keep Russian stress, vowel reduction, palatalization, and consonant clusters clear enough that the sentence remains easy to understand. In this lesson, listen especially while saying \"Сколько стоит эта сумка?\".",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "вариация диалога",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Можно оплатить картой?\".",
+      "pronunciation": "",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "вариация диалога",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Можно оплатить картой?\".",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-writing"
+      ],
+      "targetText": "построение предложения",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Сколько стоит эта сумка?\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "построение предложения",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Сколько стоит эта сумка?\" one layer at a time.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-2"
+      ],
+      "targetText": "быстрая проверка",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Я хочу эту книгу и этот шарф.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "“I want this book and this scarf.”",
+      "korean": "быстрая проверка",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Я хочу эту книгу и этот шарф.\" as the deciding example.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "“I want this book and this scarf.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-culture",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "рефлексия",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Можно оплатить картой?\".",
+      "pronunciation": "",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "рефлексия",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Можно оплатить картой?\".",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "skolko stoit",
+      "nativeText": "“How much does it cost?” The verb agrees with the thing being priced.",
+      "pronunciation": "skolko stoit",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "“How much does it cost?” The verb agrees with the thing being priced.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "Сколько стоит эта сумка?",
+      "romanization": "skolko stoit",
+      "nativeText": "Model use for \"Сколько стоит эта сумка?\": “How much does this bag cost?”",
+      "pronunciation": "skolko stoit",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "“How much does this bag cost?”",
+      "korean": "Сколько стоит эта сумка?",
+      "english": "Model use for \"Сколько стоит эта сумка?\": “How much does this bag cost?”",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "“How much does this bag cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "skolko stoit",
+      "nativeText": "Usage focus for \"сколько стоит?\": Use the key language of Level 1 · Unit 8: Покупки — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "skolko stoit",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "Notice what the form is doing here: “How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "Usage focus for \"сколько стоит?\": Use the key language of Level 1 · Unit 8: Покупки — Shopping with the register and setting that the lesson requires.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "Notice what the form is doing here: “How much does this bag cost?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "skolko stoit",
+      "nativeText": "Contrast check for \"сколько стоит?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "skolko stoit",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "Contrast check for \"сколько стоит?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "skolko stoit",
+      "nativeText": "Recall \"сколько стоит?\" from memory, then explain what would change if a nearby alternative replaced it in \"Сколько стоит эта сумка?\".",
+      "pronunciation": "skolko stoit",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "Self-check against the model before moving on: “How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "Recall \"сколько стоит?\" from memory, then explain what would change if a nearby alternative replaced it in \"Сколько стоит эта сумка?\".",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "Self-check against the model before moving on: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "skolko stoit",
+      "nativeText": "Repair \"сколько стоит?\" inside \"Сколько стоит эта сумка?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 8: Покупки — Shopping with the register and setting that the lesson requires.",
+      "pronunciation": "skolko stoit",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "Use the model as the repair target: “How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "Repair \"сколько стоит?\" inside \"Сколько стоит эта сумка?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 8: Покупки — Shopping with the register and setting that the lesson requires.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "Use the model as the repair target: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "skolko stoit",
+      "nativeText": "Transfer \"сколько стоит?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сколько стоит эта сумка?\".",
+      "pronunciation": "skolko stoit",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "Transfer \"сколько стоит?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Сколько стоит эта сумка?\".",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "skolko stoit",
+      "nativeText": "Find one word or phrase that naturally travels with \"сколько стоит?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "skolko stoit",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "Find one word or phrase that naturally travels with \"сколько стоит?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "skolko stoit",
+      "nativeText": "Listen for \"сколько стоит?\" inside \"Сколько стоит эта сумка?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "skolko stoit",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "Listen for \"сколько стоит?\" inside \"Сколько стоит эта сумка?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "skolko stoit",
+      "nativeText": "Write \"сколько стоит?\" again without looking, then compare the exact written form against \"Сколько стоит эта сумка?\" before moving on.",
+      "pronunciation": "skolko stoit",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "Use the written model as the final correctness check: “How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "Write \"сколько стоит?\" again without looking, then compare the exact written form against \"Сколько стоит эта сумка?\" before moving on.",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How much does this bag cost?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "сколько стоит?",
+      "romanization": "skolko stoit",
+      "nativeText": "Check whether \"сколько стоит?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much does this bag cost?”",
+      "pronunciation": "skolko stoit",
+      "exampleTarget": "Сколько стоит эта сумка?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How much does this bag cost?”",
+      "korean": "сколько стоит?",
+      "english": "Check whether \"сколько стоит?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How much does this bag cost?”",
+      "example": "Сколько стоит эта сумка?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How much does this bag cost?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "etot / eta",
+      "nativeText": "“This” masculine / feminine. Demonstratives agree with the noun’s gender.",
+      "pronunciation": "etot / eta",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "“I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "“This” masculine / feminine. Demonstratives agree with the noun’s gender.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "“I want this book and this scarf.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "Я хочу эту книгу и этот шарф.",
+      "romanization": "etot / eta",
+      "nativeText": "Model use for \"Я хочу эту книгу и этот шарф.\": “I want this book and this scarf.”",
+      "pronunciation": "etot / eta",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "“I want this book and this scarf.”",
+      "korean": "Я хочу эту книгу и этот шарф.",
+      "english": "Model use for \"Я хочу эту книгу и этот шарф.\": “I want this book and this scarf.”",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "“I want this book and this scarf.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "etot / eta",
+      "nativeText": "Usage focus for \"этот / эта\": Distinguish the nearby wording choices that make Level 1 · Unit 8: Покупки — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "etot / eta",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "Notice what the form is doing here: “I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "Usage focus for \"этот / эта\": Distinguish the nearby wording choices that make Level 1 · Unit 8: Покупки — Shopping sound precise rather than merely understandable.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "Notice what the form is doing here: “I want this book and this scarf.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "etot / eta",
+      "nativeText": "Contrast check for \"этот / эта\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "etot / eta",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "Contrast check for \"этот / эта\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want this book and this scarf.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "etot / eta",
+      "nativeText": "Recall \"этот / эта\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хочу эту книгу и этот шарф.\".",
+      "pronunciation": "etot / eta",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "Self-check against the model before moving on: “I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "Recall \"этот / эта\" from memory, then explain what would change if a nearby alternative replaced it in \"Я хочу эту книгу и этот шарф.\".",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "Self-check against the model before moving on: “I want this book and this scarf.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "etot / eta",
+      "nativeText": "Repair \"этот / эта\" inside \"Я хочу эту книгу и этот шарф.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 8: Покупки — Shopping sound precise rather than merely understandable.",
+      "pronunciation": "etot / eta",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "Use the model as the repair target: “I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "Repair \"этот / эта\" inside \"Я хочу эту книгу и этот шарф.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 8: Покупки — Shopping sound precise rather than merely understandable.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "Use the model as the repair target: “I want this book and this scarf.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "etot / eta",
+      "nativeText": "Transfer \"этот / эта\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хочу эту книгу и этот шарф.\".",
+      "pronunciation": "etot / eta",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "Transfer \"этот / эта\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Я хочу эту книгу и этот шарф.\".",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want this book and this scarf.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "etot / eta",
+      "nativeText": "Find one word or phrase that naturally travels with \"этот / эта\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "etot / eta",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "Find one word or phrase that naturally travels with \"этот / эта\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want this book and this scarf.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "etot / eta",
+      "nativeText": "Listen for \"этот / эта\" inside \"Я хочу эту книгу и этот шарф.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "etot / eta",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "Listen for \"этот / эта\" inside \"Я хочу эту книгу и этот шарф.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want this book and this scarf.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "etot / eta",
+      "nativeText": "Write \"этот / эта\" again without looking, then compare the exact written form against \"Я хочу эту книгу и этот шарф.\" before moving on.",
+      "pronunciation": "etot / eta",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "Use the written model as the final correctness check: “I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "Write \"этот / эта\" again without looking, then compare the exact written form against \"Я хочу эту книгу и этот шарф.\" before moving on.",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want this book and this scarf.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "этот / эта",
+      "romanization": "etot / eta",
+      "nativeText": "Check whether \"этот / эта\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want this book and this scarf.”",
+      "pronunciation": "etot / eta",
+      "exampleTarget": "Я хочу эту книгу и этот шарф.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want this book and this scarf.”",
+      "korean": "этот / эта",
+      "english": "Check whether \"этот / эта\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want this book and this scarf.”",
+      "example": "Я хочу эту книгу и этот шарф.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want this book and this scarf.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дешевле",
+      "romanization": "deshevle",
+      "nativeText": "“Cheaper.” A compact comparative used constantly in shopping.",
+      "pronunciation": "deshevle",
+      "exampleTarget": "Есть что-нибудь дешевле?",
+      "exampleNative": "“Is there anything cheaper?”",
+      "korean": "дешевле",
+      "english": "“Cheaper.” A compact comparative used constantly in shopping.",
+      "example": "Есть что-нибудь дешевле?",
+      "exampleEnglish": "“Is there anything cheaper?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "Есть что-нибудь дешевле?",
+      "romanization": "deshevle",
+      "nativeText": "Model use for \"Есть что-нибудь дешевле?\": “Is there anything cheaper?”",
+      "pronunciation": "deshevle",
+      "exampleTarget": "Есть что-нибудь дешевле?",
+      "exampleNative": "“Is there anything cheaper?”",
+      "korean": "Есть что-нибудь дешевле?",
+      "english": "Model use for \"Есть что-нибудь дешевле?\": “Is there anything cheaper?”",
+      "example": "Есть что-нибудь дешевле?",
+      "exampleEnglish": "“Is there anything cheaper?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дешевле",
+      "romanization": "deshevle",
+      "nativeText": "Usage focus for \"дешевле\": “Cheaper.” A compact comparative used constantly in shopping.",
+      "pronunciation": "deshevle",
+      "exampleTarget": "Есть что-нибудь дешевле?",
+      "exampleNative": "Notice what the form is doing here: “Is there anything cheaper?”",
+      "korean": "дешевле",
+      "english": "Usage focus for \"дешевле\": “Cheaper.” A compact comparative used constantly in shopping.",
+      "example": "Есть что-нибудь дешевле?",
+      "exampleEnglish": "Notice what the form is doing here: “Is there anything cheaper?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дешевле",
+      "romanization": "deshevle",
+      "nativeText": "Contrast check for \"дешевле\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "deshevle",
+      "exampleTarget": "Есть что-нибудь дешевле?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Is there anything cheaper?”",
+      "korean": "дешевле",
+      "english": "Contrast check for \"дешевле\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Есть что-нибудь дешевле?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дешевле",
+      "romanization": "deshevle",
+      "nativeText": "Recall \"дешевле\" from memory, then explain what would change if a nearby alternative replaced it in \"Есть что-нибудь дешевле?\".",
+      "pronunciation": "deshevle",
+      "exampleTarget": "Есть что-нибудь дешевле?",
+      "exampleNative": "Self-check against the model before moving on: “Is there anything cheaper?”",
+      "korean": "дешевле",
+      "english": "Recall \"дешевле\" from memory, then explain what would change if a nearby alternative replaced it in \"Есть что-нибудь дешевле?\".",
+      "example": "Есть что-нибудь дешевле?",
+      "exampleEnglish": "Self-check against the model before moving on: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дешевле",
+      "romanization": "deshevle",
+      "nativeText": "Repair \"дешевле\" inside \"Есть что-нибудь дешевле?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cheaper.” A compact comparative used constantly in shopping.",
+      "pronunciation": "deshevle",
+      "exampleTarget": "Есть что-нибудь дешевле?",
+      "exampleNative": "Use the model as the repair target: “Is there anything cheaper?”",
+      "korean": "дешевле",
+      "english": "Repair \"дешевле\" inside \"Есть что-нибудь дешевле?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Cheaper.” A compact comparative used constantly in shopping.",
+      "example": "Есть что-нибудь дешевле?",
+      "exampleEnglish": "Use the model as the repair target: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дешевле",
+      "romanization": "deshevle",
+      "nativeText": "Transfer \"дешевле\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Есть что-нибудь дешевле?\".",
+      "pronunciation": "deshevle",
+      "exampleTarget": "Есть что-нибудь дешевле?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Is there anything cheaper?”",
+      "korean": "дешевле",
+      "english": "Transfer \"дешевле\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Есть что-нибудь дешевле?\".",
+      "example": "Есть что-нибудь дешевле?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дешевле",
+      "romanization": "deshevle",
+      "nativeText": "Find one word or phrase that naturally travels with \"дешевле\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "deshevle",
+      "exampleTarget": "Есть что-нибудь дешевле?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Is there anything cheaper?”",
+      "korean": "дешевле",
+      "english": "Find one word or phrase that naturally travels with \"дешевле\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Есть что-нибудь дешевле?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дешевле",
+      "romanization": "deshevle",
+      "nativeText": "Listen for \"дешевле\" inside \"Есть что-нибудь дешевле?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "deshevle",
+      "exampleTarget": "Есть что-нибудь дешевле?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Is there anything cheaper?”",
+      "korean": "дешевле",
+      "english": "Listen for \"дешевле\" inside \"Есть что-нибудь дешевле?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Есть что-нибудь дешевле?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дешевле",
+      "romanization": "deshevle",
+      "nativeText": "Write \"дешевле\" again without looking, then compare the exact written form against \"Есть что-нибудь дешевле?\" before moving on.",
+      "pronunciation": "deshevle",
+      "exampleTarget": "Есть что-нибудь дешевле?",
+      "exampleNative": "Use the written model as the final correctness check: “Is there anything cheaper?”",
+      "korean": "дешевле",
+      "english": "Write \"дешевле\" again without looking, then compare the exact written form against \"Есть что-нибудь дешевле?\" before moving on.",
+      "example": "Есть что-нибудь дешевле?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Is there anything cheaper?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дешевле",
+      "romanization": "deshevle",
+      "nativeText": "Check whether \"дешевле\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Is there anything cheaper?”",
+      "pronunciation": "deshevle",
+      "exampleTarget": "Есть что-нибудь дешевле?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Is there anything cheaper?”",
+      "korean": "дешевле",
+      "english": "Check whether \"дешевле\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Is there anything cheaper?”",
+      "example": "Есть что-нибудь дешевле?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Is there anything cheaper?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дорогой / дорогая",
+      "romanization": "dorogoy / dorogaya",
+      "nativeText": "“Expensive” masculine / feminine. Adjectives visibly agree with nouns.",
+      "pronunciation": "dorogoy / dorogaya",
+      "exampleTarget": "Эта куртка дорогая.",
+      "exampleNative": "“This jacket is expensive.”",
+      "korean": "дорогой / дорогая",
+      "english": "“Expensive” masculine / feminine. Adjectives visibly agree with nouns.",
+      "example": "Эта куртка дорогая.",
+      "exampleEnglish": "“This jacket is expensive.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "Эта куртка дорогая.",
+      "romanization": "dorogoy / dorogaya",
+      "nativeText": "Model use for \"Эта куртка дорогая.\": “This jacket is expensive.”",
+      "pronunciation": "dorogoy / dorogaya",
+      "exampleTarget": "Эта куртка дорогая.",
+      "exampleNative": "“This jacket is expensive.”",
+      "korean": "Эта куртка дорогая.",
+      "english": "Model use for \"Эта куртка дорогая.\": “This jacket is expensive.”",
+      "example": "Эта куртка дорогая.",
+      "exampleEnglish": "“This jacket is expensive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дорогой / дорогая",
+      "romanization": "dorogoy / dorogaya",
+      "nativeText": "Usage focus for \"дорогой / дорогая\": “Expensive” masculine / feminine. Adjectives visibly agree with nouns.",
+      "pronunciation": "dorogoy / dorogaya",
+      "exampleTarget": "Эта куртка дорогая.",
+      "exampleNative": "Notice what the form is doing here: “This jacket is expensive.”",
+      "korean": "дорогой / дорогая",
+      "english": "Usage focus for \"дорогой / дорогая\": “Expensive” masculine / feminine. Adjectives visibly agree with nouns.",
+      "example": "Эта куртка дорогая.",
+      "exampleEnglish": "Notice what the form is doing here: “This jacket is expensive.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дорогой / дорогая",
+      "romanization": "dorogoy / dorogaya",
+      "nativeText": "Contrast check for \"дорогой / дорогая\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "dorogoy / dorogaya",
+      "exampleTarget": "Эта куртка дорогая.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This jacket is expensive.”",
+      "korean": "дорогой / дорогая",
+      "english": "Contrast check for \"дорогой / дорогая\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Эта куртка дорогая.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “This jacket is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дорогой / дорогая",
+      "romanization": "dorogoy / dorogaya",
+      "nativeText": "Recall \"дорогой / дорогая\" from memory, then explain what would change if a nearby alternative replaced it in \"Эта куртка дорогая.\".",
+      "pronunciation": "dorogoy / dorogaya",
+      "exampleTarget": "Эта куртка дорогая.",
+      "exampleNative": "Self-check against the model before moving on: “This jacket is expensive.”",
+      "korean": "дорогой / дорогая",
+      "english": "Recall \"дорогой / дорогая\" from memory, then explain what would change if a nearby alternative replaced it in \"Эта куртка дорогая.\".",
+      "example": "Эта куртка дорогая.",
+      "exampleEnglish": "Self-check against the model before moving on: “This jacket is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дорогой / дорогая",
+      "romanization": "dorogoy / dorogaya",
+      "nativeText": "Repair \"дорогой / дорогая\" inside \"Эта куртка дорогая.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Expensive” masculine / feminine. Adjectives visibly agree with nouns.",
+      "pronunciation": "dorogoy / dorogaya",
+      "exampleTarget": "Эта куртка дорогая.",
+      "exampleNative": "Use the model as the repair target: “This jacket is expensive.”",
+      "korean": "дорогой / дорогая",
+      "english": "Repair \"дорогой / дорогая\" inside \"Эта куртка дорогая.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Expensive” masculine / feminine. Adjectives visibly agree with nouns.",
+      "example": "Эта куртка дорогая.",
+      "exampleEnglish": "Use the model as the repair target: “This jacket is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дорогой / дорогая",
+      "romanization": "dorogoy / dorogaya",
+      "nativeText": "Transfer \"дорогой / дорогая\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Эта куртка дорогая.\".",
+      "pronunciation": "dorogoy / dorogaya",
+      "exampleTarget": "Эта куртка дорогая.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “This jacket is expensive.”",
+      "korean": "дорогой / дорогая",
+      "english": "Transfer \"дорогой / дорогая\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Эта куртка дорогая.\".",
+      "example": "Эта куртка дорогая.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “This jacket is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дорогой / дорогая",
+      "romanization": "dorogoy / dorogaya",
+      "nativeText": "Find one word or phrase that naturally travels with \"дорогой / дорогая\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "dorogoy / dorogaya",
+      "exampleTarget": "Эта куртка дорогая.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “This jacket is expensive.”",
+      "korean": "дорогой / дорогая",
+      "english": "Find one word or phrase that naturally travels with \"дорогой / дорогая\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Эта куртка дорогая.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “This jacket is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дорогой / дорогая",
+      "romanization": "dorogoy / dorogaya",
+      "nativeText": "Listen for \"дорогой / дорогая\" inside \"Эта куртка дорогая.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "dorogoy / dorogaya",
+      "exampleTarget": "Эта куртка дорогая.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This jacket is expensive.”",
+      "korean": "дорогой / дорогая",
+      "english": "Listen for \"дорогой / дорогая\" inside \"Эта куртка дорогая.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Эта куртка дорогая.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “This jacket is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дорогой / дорогая",
+      "romanization": "dorogoy / dorogaya",
+      "nativeText": "Write \"дорогой / дорогая\" again without looking, then compare the exact written form against \"Эта куртка дорогая.\" before moving on.",
+      "pronunciation": "dorogoy / dorogaya",
+      "exampleTarget": "Эта куртка дорогая.",
+      "exampleNative": "Use the written model as the final correctness check: “This jacket is expensive.”",
+      "korean": "дорогой / дорогая",
+      "english": "Write \"дорогой / дорогая\" again without looking, then compare the exact written form against \"Эта куртка дорогая.\" before moving on.",
+      "example": "Эта куртка дорогая.",
+      "exampleEnglish": "Use the written model as the final correctness check: “This jacket is expensive.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "дорогой / дорогая",
+      "romanization": "dorogoy / dorogaya",
+      "nativeText": "Check whether \"дорогой / дорогая\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This jacket is expensive.”",
+      "pronunciation": "dorogoy / dorogaya",
+      "exampleTarget": "Эта куртка дорогая.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “This jacket is expensive.”",
+      "korean": "дорогой / дорогая",
+      "english": "Check whether \"дорогой / дорогая\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “This jacket is expensive.”",
+      "example": "Эта куртка дорогая.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “This jacket is expensive.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "большой размер",
+      "romanization": "bolshoy razmer",
+      "nativeText": "“Large size.” `Размер` is masculine, so the adjective follows that agreement.",
+      "pronunciation": "bolshoy razmer",
+      "exampleTarget": "Мне нужен большой размер.",
+      "exampleNative": "“I need a large size.”",
+      "korean": "большой размер",
+      "english": "“Large size.” `Размер` is masculine, so the adjective follows that agreement.",
+      "example": "Мне нужен большой размер.",
+      "exampleEnglish": "“I need a large size.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "Мне нужен большой размер.",
+      "romanization": "bolshoy razmer",
+      "nativeText": "Model use for \"Мне нужен большой размер.\": “I need a large size.”",
+      "pronunciation": "bolshoy razmer",
+      "exampleTarget": "Мне нужен большой размер.",
+      "exampleNative": "“I need a large size.”",
+      "korean": "Мне нужен большой размер.",
+      "english": "Model use for \"Мне нужен большой размер.\": “I need a large size.”",
+      "example": "Мне нужен большой размер.",
+      "exampleEnglish": "“I need a large size.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "большой размер",
+      "romanization": "bolshoy razmer",
+      "nativeText": "Usage focus for \"большой размер\": “Large size.” `Размер` is masculine, so the adjective follows that agreement.",
+      "pronunciation": "bolshoy razmer",
+      "exampleTarget": "Мне нужен большой размер.",
+      "exampleNative": "Notice what the form is doing here: “I need a large size.”",
+      "korean": "большой размер",
+      "english": "Usage focus for \"большой размер\": “Large size.” `Размер` is masculine, so the adjective follows that agreement.",
+      "example": "Мне нужен большой размер.",
+      "exampleEnglish": "Notice what the form is doing here: “I need a large size.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "большой размер",
+      "romanization": "bolshoy razmer",
+      "nativeText": "Contrast check for \"большой размер\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bolshoy razmer",
+      "exampleTarget": "Мне нужен большой размер.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need a large size.”",
+      "korean": "большой размер",
+      "english": "Contrast check for \"большой размер\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мне нужен большой размер.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "большой размер",
+      "romanization": "bolshoy razmer",
+      "nativeText": "Recall \"большой размер\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужен большой размер.\".",
+      "pronunciation": "bolshoy razmer",
+      "exampleTarget": "Мне нужен большой размер.",
+      "exampleNative": "Self-check against the model before moving on: “I need a large size.”",
+      "korean": "большой размер",
+      "english": "Recall \"большой размер\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужен большой размер.\".",
+      "example": "Мне нужен большой размер.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "большой размер",
+      "romanization": "bolshoy razmer",
+      "nativeText": "Repair \"большой размер\" inside \"Мне нужен большой размер.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Large size.” `Размер` is masculine, so the adjective follows that agreement.",
+      "pronunciation": "bolshoy razmer",
+      "exampleTarget": "Мне нужен большой размер.",
+      "exampleNative": "Use the model as the repair target: “I need a large size.”",
+      "korean": "большой размер",
+      "english": "Repair \"большой размер\" inside \"Мне нужен большой размер.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Large size.” `Размер` is masculine, so the adjective follows that agreement.",
+      "example": "Мне нужен большой размер.",
+      "exampleEnglish": "Use the model as the repair target: “I need a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "большой размер",
+      "romanization": "bolshoy razmer",
+      "nativeText": "Transfer \"большой размер\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужен большой размер.\".",
+      "pronunciation": "bolshoy razmer",
+      "exampleTarget": "Мне нужен большой размер.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need a large size.”",
+      "korean": "большой размер",
+      "english": "Transfer \"большой размер\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужен большой размер.\".",
+      "example": "Мне нужен большой размер.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "большой размер",
+      "romanization": "bolshoy razmer",
+      "nativeText": "Find one word or phrase that naturally travels with \"большой размер\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bolshoy razmer",
+      "exampleTarget": "Мне нужен большой размер.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need a large size.”",
+      "korean": "большой размер",
+      "english": "Find one word or phrase that naturally travels with \"большой размер\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мне нужен большой размер.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "большой размер",
+      "romanization": "bolshoy razmer",
+      "nativeText": "Listen for \"большой размер\" inside \"Мне нужен большой размер.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bolshoy razmer",
+      "exampleTarget": "Мне нужен большой размер.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need a large size.”",
+      "korean": "большой размер",
+      "english": "Listen for \"большой размер\" inside \"Мне нужен большой размер.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мне нужен большой размер.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "большой размер",
+      "romanization": "bolshoy razmer",
+      "nativeText": "Write \"большой размер\" again without looking, then compare the exact written form against \"Мне нужен большой размер.\" before moving on.",
+      "pronunciation": "bolshoy razmer",
+      "exampleTarget": "Мне нужен большой размер.",
+      "exampleNative": "Use the written model as the final correctness check: “I need a large size.”",
+      "korean": "большой размер",
+      "english": "Write \"большой размер\" again without looking, then compare the exact written form against \"Мне нужен большой размер.\" before moving on.",
+      "example": "Мне нужен большой размер.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need a large size.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "большой размер",
+      "romanization": "bolshoy razmer",
+      "nativeText": "Check whether \"большой размер\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need a large size.”",
+      "pronunciation": "bolshoy razmer",
+      "exampleTarget": "Мне нужен большой размер.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need a large size.”",
+      "korean": "большой размер",
+      "english": "Check whether \"большой размер\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need a large size.”",
+      "example": "Мне нужен большой размер.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need a large size.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "красный цвет",
+      "romanization": "krasnyy tsvet",
+      "nativeText": "“Red color.” Colors behave like adjectives and agree when attached to nouns.",
+      "pronunciation": "krasnyy tsvet",
+      "exampleTarget": "У вас есть красная рубашка?",
+      "exampleNative": "“Do you have a red shirt?”",
+      "korean": "красный цвет",
+      "english": "“Red color.” Colors behave like adjectives and agree when attached to nouns.",
+      "example": "У вас есть красная рубашка?",
+      "exampleEnglish": "“Do you have a red shirt?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "У вас есть красная рубашка?",
+      "romanization": "krasnyy tsvet",
+      "nativeText": "Model use for \"У вас есть красная рубашка?\": “Do you have a red shirt?”",
+      "pronunciation": "krasnyy tsvet",
+      "exampleTarget": "У вас есть красная рубашка?",
+      "exampleNative": "“Do you have a red shirt?”",
+      "korean": "У вас есть красная рубашка?",
+      "english": "Model use for \"У вас есть красная рубашка?\": “Do you have a red shirt?”",
+      "example": "У вас есть красная рубашка?",
+      "exampleEnglish": "“Do you have a red shirt?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "красный цвет",
+      "romanization": "krasnyy tsvet",
+      "nativeText": "Usage focus for \"красный цвет\": “Red color.” Colors behave like adjectives and agree when attached to nouns.",
+      "pronunciation": "krasnyy tsvet",
+      "exampleTarget": "У вас есть красная рубашка?",
+      "exampleNative": "Notice what the form is doing here: “Do you have a red shirt?”",
+      "korean": "красный цвет",
+      "english": "Usage focus for \"красный цвет\": “Red color.” Colors behave like adjectives and agree when attached to nouns.",
+      "example": "У вас есть красная рубашка?",
+      "exampleEnglish": "Notice what the form is doing here: “Do you have a red shirt?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "красный цвет",
+      "romanization": "krasnyy tsvet",
+      "nativeText": "Contrast check for \"красный цвет\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "krasnyy tsvet",
+      "exampleTarget": "У вас есть красная рубашка?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have a red shirt?”",
+      "korean": "красный цвет",
+      "english": "Contrast check for \"красный цвет\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "У вас есть красная рубашка?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Do you have a red shirt?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "красный цвет",
+      "romanization": "krasnyy tsvet",
+      "nativeText": "Recall \"красный цвет\" from memory, then explain what would change if a nearby alternative replaced it in \"У вас есть красная рубашка?\".",
+      "pronunciation": "krasnyy tsvet",
+      "exampleTarget": "У вас есть красная рубашка?",
+      "exampleNative": "Self-check against the model before moving on: “Do you have a red shirt?”",
+      "korean": "красный цвет",
+      "english": "Recall \"красный цвет\" from memory, then explain what would change if a nearby alternative replaced it in \"У вас есть красная рубашка?\".",
+      "example": "У вас есть красная рубашка?",
+      "exampleEnglish": "Self-check against the model before moving on: “Do you have a red shirt?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "красный цвет",
+      "romanization": "krasnyy tsvet",
+      "nativeText": "Repair \"красный цвет\" inside \"У вас есть красная рубашка?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Red color.” Colors behave like adjectives and agree when attached to nouns.",
+      "pronunciation": "krasnyy tsvet",
+      "exampleTarget": "У вас есть красная рубашка?",
+      "exampleNative": "Use the model as the repair target: “Do you have a red shirt?”",
+      "korean": "красный цвет",
+      "english": "Repair \"красный цвет\" inside \"У вас есть красная рубашка?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Red color.” Colors behave like adjectives and agree when attached to nouns.",
+      "example": "У вас есть красная рубашка?",
+      "exampleEnglish": "Use the model as the repair target: “Do you have a red shirt?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "красный цвет",
+      "romanization": "krasnyy tsvet",
+      "nativeText": "Transfer \"красный цвет\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У вас есть красная рубашка?\".",
+      "pronunciation": "krasnyy tsvet",
+      "exampleTarget": "У вас есть красная рубашка?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have a red shirt?”",
+      "korean": "красный цвет",
+      "english": "Transfer \"красный цвет\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"У вас есть красная рубашка?\".",
+      "example": "У вас есть красная рубашка?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Do you have a red shirt?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "красный цвет",
+      "romanization": "krasnyy tsvet",
+      "nativeText": "Find one word or phrase that naturally travels with \"красный цвет\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "krasnyy tsvet",
+      "exampleTarget": "У вас есть красная рубашка?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Do you have a red shirt?”",
+      "korean": "красный цвет",
+      "english": "Find one word or phrase that naturally travels with \"красный цвет\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "У вас есть красная рубашка?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Do you have a red shirt?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "красный цвет",
+      "romanization": "krasnyy tsvet",
+      "nativeText": "Listen for \"красный цвет\" inside \"У вас есть красная рубашка?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "krasnyy tsvet",
+      "exampleTarget": "У вас есть красная рубашка?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have a red shirt?”",
+      "korean": "красный цвет",
+      "english": "Listen for \"красный цвет\" inside \"У вас есть красная рубашка?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "У вас есть красная рубашка?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Do you have a red shirt?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "красный цвет",
+      "romanization": "krasnyy tsvet",
+      "nativeText": "Write \"красный цвет\" again without looking, then compare the exact written form against \"У вас есть красная рубашка?\" before moving on.",
+      "pronunciation": "krasnyy tsvet",
+      "exampleTarget": "У вас есть красная рубашка?",
+      "exampleNative": "Use the written model as the final correctness check: “Do you have a red shirt?”",
+      "korean": "красный цвет",
+      "english": "Write \"красный цвет\" again without looking, then compare the exact written form against \"У вас есть красная рубашка?\" before moving on.",
+      "example": "У вас есть красная рубашка?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Do you have a red shirt?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "красный цвет",
+      "romanization": "krasnyy tsvet",
+      "nativeText": "Check whether \"красный цвет\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have a red shirt?”",
+      "pronunciation": "krasnyy tsvet",
+      "exampleTarget": "У вас есть красная рубашка?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Do you have a red shirt?”",
+      "korean": "красный цвет",
+      "english": "Check whether \"красный цвет\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Do you have a red shirt?”",
+      "example": "У вас есть красная рубашка?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Do you have a red shirt?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "один килограмм",
+      "romanization": "odin kilogramm",
+      "nativeText": "“One kilogram.” Numbers begin the quantity phrase and later numbers change noun forms.",
+      "pronunciation": "odin kilogramm",
+      "exampleTarget": "Мне нужен один килограмм яблок.",
+      "exampleNative": "“I need one kilogram of apples.”",
+      "korean": "один килограмм",
+      "english": "“One kilogram.” Numbers begin the quantity phrase and later numbers change noun forms.",
+      "example": "Мне нужен один килограмм яблок.",
+      "exampleEnglish": "“I need one kilogram of apples.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "Мне нужен один килограмм яблок.",
+      "romanization": "odin kilogramm",
+      "nativeText": "Model use for \"Мне нужен один килограмм яблок.\": “I need one kilogram of apples.”",
+      "pronunciation": "odin kilogramm",
+      "exampleTarget": "Мне нужен один килограмм яблок.",
+      "exampleNative": "“I need one kilogram of apples.”",
+      "korean": "Мне нужен один килограмм яблок.",
+      "english": "Model use for \"Мне нужен один килограмм яблок.\": “I need one kilogram of apples.”",
+      "example": "Мне нужен один килограмм яблок.",
+      "exampleEnglish": "“I need one kilogram of apples.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "один килограмм",
+      "romanization": "odin kilogramm",
+      "nativeText": "Usage focus for \"один килограмм\": “One kilogram.” Numbers begin the quantity phrase and later numbers change noun forms.",
+      "pronunciation": "odin kilogramm",
+      "exampleTarget": "Мне нужен один килограмм яблок.",
+      "exampleNative": "Notice what the form is doing here: “I need one kilogram of apples.”",
+      "korean": "один килограмм",
+      "english": "Usage focus for \"один килограмм\": “One kilogram.” Numbers begin the quantity phrase and later numbers change noun forms.",
+      "example": "Мне нужен один килограмм яблок.",
+      "exampleEnglish": "Notice what the form is doing here: “I need one kilogram of apples.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "один килограмм",
+      "romanization": "odin kilogramm",
+      "nativeText": "Contrast check for \"один килограмм\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "odin kilogramm",
+      "exampleTarget": "Мне нужен один килограмм яблок.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need one kilogram of apples.”",
+      "korean": "один килограмм",
+      "english": "Contrast check for \"один килограмм\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Мне нужен один килограмм яблок.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I need one kilogram of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "один килограмм",
+      "romanization": "odin kilogramm",
+      "nativeText": "Recall \"один килограмм\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужен один килограмм яблок.\".",
+      "pronunciation": "odin kilogramm",
+      "exampleTarget": "Мне нужен один килограмм яблок.",
+      "exampleNative": "Self-check against the model before moving on: “I need one kilogram of apples.”",
+      "korean": "один килограмм",
+      "english": "Recall \"один килограмм\" from memory, then explain what would change if a nearby alternative replaced it in \"Мне нужен один килограмм яблок.\".",
+      "example": "Мне нужен один килограмм яблок.",
+      "exampleEnglish": "Self-check against the model before moving on: “I need one kilogram of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "один килограмм",
+      "romanization": "odin kilogramm",
+      "nativeText": "Repair \"один килограмм\" inside \"Мне нужен один килограмм яблок.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One kilogram.” Numbers begin the quantity phrase and later numbers change noun forms.",
+      "pronunciation": "odin kilogramm",
+      "exampleTarget": "Мне нужен один килограмм яблок.",
+      "exampleNative": "Use the model as the repair target: “I need one kilogram of apples.”",
+      "korean": "один килограмм",
+      "english": "Repair \"один килограмм\" inside \"Мне нужен один килограмм яблок.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “One kilogram.” Numbers begin the quantity phrase and later numbers change noun forms.",
+      "example": "Мне нужен один килограмм яблок.",
+      "exampleEnglish": "Use the model as the repair target: “I need one kilogram of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "один килограмм",
+      "romanization": "odin kilogramm",
+      "nativeText": "Transfer \"один килограмм\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужен один килограмм яблок.\".",
+      "pronunciation": "odin kilogramm",
+      "exampleTarget": "Мне нужен один килограмм яблок.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need one kilogram of apples.”",
+      "korean": "один килограмм",
+      "english": "Transfer \"один килограмм\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Мне нужен один килограмм яблок.\".",
+      "example": "Мне нужен один килограмм яблок.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I need one kilogram of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "один килограмм",
+      "romanization": "odin kilogramm",
+      "nativeText": "Find one word or phrase that naturally travels with \"один килограмм\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "odin kilogramm",
+      "exampleTarget": "Мне нужен один килограмм яблок.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I need one kilogram of apples.”",
+      "korean": "один килограмм",
+      "english": "Find one word or phrase that naturally travels with \"один килограмм\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Мне нужен один килограмм яблок.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I need one kilogram of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "один килограмм",
+      "romanization": "odin kilogramm",
+      "nativeText": "Listen for \"один килограмм\" inside \"Мне нужен один килограмм яблок.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "odin kilogramm",
+      "exampleTarget": "Мне нужен один килограмм яблок.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need one kilogram of apples.”",
+      "korean": "один килограмм",
+      "english": "Listen for \"один килограмм\" inside \"Мне нужен один килограмм яблок.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Мне нужен один килограмм яблок.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I need one kilogram of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "один килограмм",
+      "romanization": "odin kilogramm",
+      "nativeText": "Write \"один килограмм\" again without looking, then compare the exact written form against \"Мне нужен один килограмм яблок.\" before moving on.",
+      "pronunciation": "odin kilogramm",
+      "exampleTarget": "Мне нужен один килограмм яблок.",
+      "exampleNative": "Use the written model as the final correctness check: “I need one kilogram of apples.”",
+      "korean": "один килограмм",
+      "english": "Write \"один килограмм\" again without looking, then compare the exact written form against \"Мне нужен один килограмм яблок.\" before moving on.",
+      "example": "Мне нужен один килограмм яблок.",
+      "exampleEnglish": "Use the written model as the final correctness check: “I need one kilogram of apples.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "один килограмм",
+      "romanization": "odin kilogramm",
+      "nativeText": "Check whether \"один килограмм\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need one kilogram of apples.”",
+      "pronunciation": "odin kilogramm",
+      "exampleTarget": "Мне нужен один килограмм яблок.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I need one kilogram of apples.”",
+      "korean": "один килограмм",
+      "english": "Check whether \"один килограмм\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I need one kilogram of apples.”",
+      "example": "Мне нужен один килограмм яблок.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I need one kilogram of apples.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "наличными / картой",
+      "romanization": "nalichnymi / kartoy",
+      "nativeText": "“In cash / by card.” The instrumental case marks the means of payment.",
+      "pronunciation": "nalichnymi / kartoy",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "наличными / картой",
+      "english": "“In cash / by card.” The instrumental case marks the means of payment.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "Можно оплатить картой?",
+      "romanization": "nalichnymi / kartoy",
+      "nativeText": "Model use for \"Можно оплатить картой?\": “Can I pay by card?”",
+      "pronunciation": "nalichnymi / kartoy",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "“Can I pay by card?”",
+      "korean": "Можно оплатить картой?",
+      "english": "Model use for \"Можно оплатить картой?\": “Can I pay by card?”",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "“Can I pay by card?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "наличными / картой",
+      "romanization": "nalichnymi / kartoy",
+      "nativeText": "Usage focus for \"наличными / картой\": “In cash / by card.” The instrumental case marks the means of payment.",
+      "pronunciation": "nalichnymi / kartoy",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "Notice what the form is doing here: “Can I pay by card?”",
+      "korean": "наличными / картой",
+      "english": "Usage focus for \"наличными / картой\": “In cash / by card.” The instrumental case marks the means of payment.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "Notice what the form is doing here: “Can I pay by card?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "наличными / картой",
+      "romanization": "nalichnymi / kartoy",
+      "nativeText": "Contrast check for \"наличными / картой\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "nalichnymi / kartoy",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can I pay by card?”",
+      "korean": "наличными / картой",
+      "english": "Contrast check for \"наличными / картой\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "наличными / картой",
+      "romanization": "nalichnymi / kartoy",
+      "nativeText": "Recall \"наличными / картой\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно оплатить картой?\".",
+      "pronunciation": "nalichnymi / kartoy",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "Self-check against the model before moving on: “Can I pay by card?”",
+      "korean": "наличными / картой",
+      "english": "Recall \"наличными / картой\" from memory, then explain what would change if a nearby alternative replaced it in \"Можно оплатить картой?\".",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "Self-check against the model before moving on: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "наличными / картой",
+      "romanization": "nalichnymi / kartoy",
+      "nativeText": "Repair \"наличными / картой\" inside \"Можно оплатить картой?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “In cash / by card.” The instrumental case marks the means of payment.",
+      "pronunciation": "nalichnymi / kartoy",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "Use the model as the repair target: “Can I pay by card?”",
+      "korean": "наличными / картой",
+      "english": "Repair \"наличными / картой\" inside \"Можно оплатить картой?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “In cash / by card.” The instrumental case marks the means of payment.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "Use the model as the repair target: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "наличными / картой",
+      "romanization": "nalichnymi / kartoy",
+      "nativeText": "Transfer \"наличными / картой\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно оплатить картой?\".",
+      "pronunciation": "nalichnymi / kartoy",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can I pay by card?”",
+      "korean": "наличными / картой",
+      "english": "Transfer \"наличными / картой\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Можно оплатить картой?\".",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "наличными / картой",
+      "romanization": "nalichnymi / kartoy",
+      "nativeText": "Find one word or phrase that naturally travels with \"наличными / картой\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "nalichnymi / kartoy",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Can I pay by card?”",
+      "korean": "наличными / картой",
+      "english": "Find one word or phrase that naturally travels with \"наличными / картой\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "наличными / картой",
+      "romanization": "nalichnymi / kartoy",
+      "nativeText": "Listen for \"наличными / картой\" inside \"Можно оплатить картой?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "nalichnymi / kartoy",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can I pay by card?”",
+      "korean": "наличными / картой",
+      "english": "Listen for \"наличными / картой\" inside \"Можно оплатить картой?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "наличными / картой",
+      "romanization": "nalichnymi / kartoy",
+      "nativeText": "Write \"наличными / картой\" again without looking, then compare the exact written form against \"Можно оплатить картой?\" before moving on.",
+      "pronunciation": "nalichnymi / kartoy",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "Use the written model as the final correctness check: “Can I pay by card?”",
+      "korean": "наличными / картой",
+      "english": "Write \"наличными / картой\" again without looking, then compare the exact written form against \"Можно оплатить картой?\" before moving on.",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Can I pay by card?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "ru-level1unit08shopping-vocabulary-1",
+        "ru-level1unit08shopping-vocabulary-2",
+        "ru-level1unit08shopping-grammar-1",
+        "ru-level1unit08shopping-grammar-2",
+        "ru-level1unit08shopping-reading",
+        "ru-level1unit08shopping-listening",
+        "ru-level1unit08shopping-writing",
+        "ru-level1unit08shopping-task"
+      ],
+      "targetText": "наличными / картой",
+      "romanization": "nalichnymi / kartoy",
+      "nativeText": "Check whether \"наличными / картой\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "pronunciation": "nalichnymi / kartoy",
+      "exampleTarget": "Можно оплатить картой?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "korean": "наличными / картой",
+      "english": "Check whether \"наличными / картой\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”",
+      "example": "Можно оплатить картой?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Can I pay by card?”"
+    }
+  ],
+  "targetLang": "ru",
+  "nativeLang": "en",
+  "track": "textbook"
+};

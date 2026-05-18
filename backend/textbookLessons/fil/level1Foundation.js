@@ -206,7 +206,7 @@ const lesson = {
   difficulty: 'beginner',
   targetLang: 'fil',
   nativeLang: 'en',
-  track: 'foundation',
+  track: 'textbook',
   lessonType: 'foundation',
   activities,
   expressionPractice: [

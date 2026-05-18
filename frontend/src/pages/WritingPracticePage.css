@@ -56,9 +56,13 @@
 .writing-layout {
   display: grid;
   max-width: 1180px;
-  grid-template-columns: 320px minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: 16px;
   margin: 0 auto;
+}
+
+.writing-layout.sidebar-open {
+  grid-template-columns: 320px minmax(0, 1fr);
 }
 
 .writing-card {
@@ -177,6 +181,51 @@
 
 .writing-workspace {
   min-width: 0;
+}
+
+.writing-workspace-toolbar {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.writing-workspace-toolbar button {
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.writing-workspace-toolbar span {
+  display: flex;
+  min-width: 0;
+  align-items: baseline;
+  gap: 8px;
+  color: var(--text-secondary);
+}
+
+.writing-workspace-toolbar strong,
+.writing-workspace-toolbar em {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.writing-workspace-toolbar strong {
+  color: var(--text-primary);
+}
+
+.writing-workspace-toolbar em {
+  color: var(--text-secondary);
+  font-style: normal;
 }
 
 .writing-practice-card {
@@ -331,6 +380,15 @@
 
   .writing-layout {
     grid-template-columns: 1fr;
+  }
+
+  .writing-layout.sidebar-open {
+    grid-template-columns: 1fr;
+  }
+
+  .writing-workspace-toolbar {
+    align-items: stretch;
+    flex-direction: column;
   }
 
   .writing-list {

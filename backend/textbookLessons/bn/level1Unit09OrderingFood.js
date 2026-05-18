@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('bn', {
-  slug: 'bn-l1u9',
-  title: 'Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food',
-  category: 'food',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Order food and drinks politely in a cafe or restaurant.',
-  vocabularyGoal: 'Use food, drink, portion, and service words.',
-  grammarGoal: 'Use `আমাকে ... দিন`, `ছাড়া`, and polite imperatives.',
-  speakingGoal: 'Place a complete order, change one detail, and ask for the bill.',
-  task: 'Roleplay ordering a simple meal.',
-  expressionPractice: [
-    practice('ordering-politely', 'Ordering politely', 'Use `আমাকে ... দিন`.'),
-    practice('customizing', 'Customizing', 'Use `ছাড়া`.'),
-    practice('closing-order', 'Closing order', 'Ask for the bill naturally.'),
+module.exports = {
+  "title": "Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food",
+  "category": "food",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "bn-level1unit09orderingfood-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Order food and drinks politely in a cafe or restaurant."
+      ],
+      "task": "Roleplay ordering a simple meal."
+    },
+    {
+      "id": "bn-level1unit09orderingfood-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "bn-level1unit09orderingfood-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "bn-level1unit09orderingfood-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "bn-level1unit09orderingfood-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Order food and drinks politely in a cafe or restaurant."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "bn-level1unit09orderingfood-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with one nearby Bengali form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "bn-level1unit09orderingfood-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "bn-level1unit09orderingfood-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "bn-level1unit09orderingfood-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "bn-level1unit09orderingfood-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "bn-level1unit09orderingfood-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Roleplay ordering a simple meal."
+      ],
+      "task": "Roleplay ordering a simple meal."
+    }
   ],
-  relatedPools: ['topic-food', 'topic-service'],
-  items: [
-    item('আমাকে এক কাপ চা দিন', 'amake ek kap cha din', '“Please give me one cup of tea.” The polite imperative suits service encounters.', 'আমাকে এক কাপ চা দিন।', '“Please give me one cup of tea.”'),
-    item('এক প্লেট ভাত চাই', 'ek plet bhat chai', '“I want one plate of rice.” Serving nouns matter in food orders.', 'এক প্লেট ভাত চাই।', '“I want one plate of rice.”'),
-    item('চিনি ছাড়া', 'chini chhara', '“Without sugar.” `ছাড়া` follows the item being removed.', 'চিনি ছাড়া চা দিন।', '“Please give tea without sugar.”'),
-    item('কম ঝাল', 'kom jhal', '“Less spicy.” A very practical food phrase in Bengali contexts.', 'কম ঝাল তরকারি চাই।', '“I want less-spicy curry.”'),
-    item('এখানে খাব', 'ekhane khabo', '“I will eat here.” A concise dine-in answer.', 'এখানে খাব, প্যাকেট নয়।', '“I will eat here, not takeaway.”'),
-    item('প্যাকেট', 'packet', '“Takeaway / parcel.” A common loanword in restaurant settings.', 'এটা প্যাকেট করে দিন।', '“Please pack this to go.”'),
-    item('আর কিছু?', 'ar kichhu', '“Anything else?” A common service question.', 'আর কিছু লাগবে?', '“Will you need anything else?”'),
-    item('বিল দিন', 'bil din', '“Please give the bill.” A compact closing phrase.', 'বিল দিন, দয়া করে।', '“Please give the bill.”'),
+  "expressionPractice": [
+    {
+      "id": "ordering-politely",
+      "label": "Ordering politely",
+      "goal": "Use `আমাকে ... দিন`."
+    },
+    {
+      "id": "customizing",
+      "label": "Customizing",
+      "goal": "Use `ছাড়া`."
+    },
+    {
+      "id": "closing-order",
+      "label": "Closing order",
+      "goal": "Ask for the bill naturally."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-food",
+    "topic-service"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-orientation"
+      ],
+      "targetText": "পাঠের লক্ষ্য",
+      "romanization": "",
+      "nativeText": "Order food and drinks politely in a cafe or restaurant.",
+      "pronunciation": "",
+      "exampleTarget": "পাঠের লক্ষ্য",
+      "exampleNative": "The whole lesson is built toward this outcome: Roleplay ordering a simple meal.",
+      "korean": "পাঠের লক্ষ্য",
+      "english": "Order food and drinks politely in a cafe or restaurant.",
+      "example": "পাঠের লক্ষ্য",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Roleplay ordering a simple meal."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit09orderingfood-pronunciation"
+      ],
+      "targetText": "উচ্চারণ পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমাকে এক কাপ চা দিন।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "“Please give me one cup of tea.”",
+      "korean": "উচ্চারণ পরীক্ষা",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমাকে এক কাপ চা দিন।\".",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "“Please give me one cup of tea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "“Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "Use the key language of Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with the register and setting that the lesson requires.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "“Please give me one cup of tea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-2"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "“I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food sound precise rather than merely understandable.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "“I want one plate of rice.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit09orderingfood-grammar-1"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "",
+      "nativeText": "Order food and drinks politely in a cafe or restaurant.",
+      "pronunciation": "",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "“Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "Order food and drinks politely in a cafe or restaurant.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "“Please give me one cup of tea.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "bn-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with one nearby Bengali form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "“I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "Contrast the main pattern in Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with one nearby Bengali form so the learner can avoid literal translation.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "“I want one plate of rice.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "bn-level1unit09orderingfood-reading"
+      ],
+      "targetText": "পাঠ মডেল",
+      "romanization": "",
+      "nativeText": "Read \"বিল দিন, দয়া করে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "পাঠ মডেল",
+      "english": "Read \"বিল দিন, দয়া করে।\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit09orderingfood-listening"
+      ],
+      "targetText": "সংলাপ মডেল",
+      "romanization": "",
+      "nativeText": "Hear \"বিল দিন, দয়া করে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "সংলাপ মডেল",
+      "english": "Hear \"বিল দিন, দয়া করে।\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "bn-level1unit09orderingfood-writing"
+      ],
+      "targetText": "লেখার অনুশীলন",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"আমাকে এক কাপ চা দিন।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "লেখার অনুশীলন",
+      "english": "Write your own version after studying \"আমাকে এক কাপ চা দিন।\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit09orderingfood-culture"
+      ],
+      "targetText": "ব্যবহার ও প্রসঙ্গ",
+      "romanization": "",
+      "nativeText": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "“I want one plate of rice.”",
+      "korean": "ব্যবহার ও প্রসঙ্গ",
+      "english": "Notice the relationship, honorific, or regional-register choice that changes how this Bengali is naturally used.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "“I want one plate of rice.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চূড়ান্ত কাজ",
+      "romanization": "",
+      "nativeText": "Roleplay ordering a simple meal.",
+      "pronunciation": "",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "Roleplay ordering a simple meal.",
+      "korean": "চূড়ান্ত কাজ",
+      "english": "Roleplay ordering a simple meal.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "Roleplay ordering a simple meal."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "সাধারণ ভুল",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"এক প্লেট ভাত চাই।\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “I want one plate of rice.”",
+      "korean": "সাধারণ ভুল",
+      "english": "Watch for literal-translation mistakes around pronoun levels, verb agreement, case markers, and register. Begin by checking \"এক প্লেট ভাত চাই।\" against the model.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “I want one plate of rice.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-culture"
+      ],
+      "targetText": "রেজিস্টার",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমাকে এক কাপ চা দিন।\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "“Please give me one cup of tea.”",
+      "korean": "রেজিস্টার",
+      "english": "Check whether the setting calls for familiar, respectful, or formal Bengali before selecting pronouns and verb endings. Compare the social fit of \"আমাকে এক কাপ চা দিন।\" before reusing it elsewhere.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "“Please give me one cup of tea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "সাবলীলতা",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"বিল দিন, দয়া করে।\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "সাবলীলতা",
+      "english": "Say the idea as one connected Bengali message rather than as separate translated fragments. Aim to carry \"বিল দিন, দয়া করে।\" as one thought.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "প্রয়োগ",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমাকে এক কাপ চা দিন।\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "প্রয়োগ",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"আমাকে এক কাপ চা দিন।\" and move it into your own life.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-grammar-1"
+      ],
+      "targetText": "স্মরণ",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"আমাকে এক কাপ চা দিন\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "আমাকে এক কাপ চা দিন",
+      "exampleNative": "“Please give me one cup of tea.” The polite imperative suits service encounters.",
+      "korean": "স্মরণ",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"আমাকে এক কাপ চা দিন\" before looking back.",
+      "example": "আমাকে এক কাপ চা দিন",
+      "exampleEnglish": "“Please give me one cup of tea.” The polite imperative suits service encounters."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-writing"
+      ],
+      "targetText": "বিস্তার",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"বিল দিন, দয়া করে।\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "বিস্তার",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"বিল দিন, দয়া করে।\" rather than restarting from a blank sentence.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading"
+      ],
+      "targetText": "তুলনা",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"এক প্লেট ভাত চাই।\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "“I want one plate of rice.”",
+      "korean": "তুলনা",
+      "english": "Compare the central form in Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"এক প্লেট ভাত চাই।\" as the comparison line.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "“I want one plate of rice.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "bn-level1unit09orderingfood-pronunciation"
+      ],
+      "targetText": "উচ্চারণ সংশোধন",
+      "romanization": "",
+      "nativeText": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমাকে এক কাপ চা দিন।\".",
+      "pronunciation": "",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "“Please give me one cup of tea.”",
+      "korean": "উচ্চারণ সংশোধন",
+      "english": "Keep Bengali vowel quality, aspiration, retroflex contrasts, and word-final sound changes clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"আমাকে এক কাপ চা দিন।\".",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "“Please give me one cup of tea.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "সংলাপ পরিবর্তন",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"বিল দিন, দয়া করে।\".",
+      "pronunciation": "",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "সংলাপ পরিবর্তন",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"বিল দিন, দয়া করে।\".",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-writing"
+      ],
+      "targetText": "বাক্য গঠন",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমাকে এক কাপ চা দিন।\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "“Please give me one cup of tea.”",
+      "korean": "বাক্য গঠন",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"আমাকে এক কাপ চা দিন।\" one layer at a time.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "“Please give me one cup of tea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-2"
+      ],
+      "targetText": "দ্রুত পরীক্ষা",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"এক প্লেট ভাত চাই।\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "“I want one plate of rice.”",
+      "korean": "দ্রুত পরীক্ষা",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"এক প্লেট ভাত চাই।\" as the deciding example.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "“I want one plate of rice.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-culture",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "পুনরালোচনা",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"বিল দিন, দয়া করে।\".",
+      "pronunciation": "",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "পুনরালোচনা",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"বিল দিন, দয়া করে।\".",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "amake ek kap cha din",
+      "nativeText": "“Please give me one cup of tea.” The polite imperative suits service encounters.",
+      "pronunciation": "amake ek kap cha din",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "“Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "“Please give me one cup of tea.” The polite imperative suits service encounters.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "“Please give me one cup of tea.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন।",
+      "romanization": "amake ek kap cha din",
+      "nativeText": "Model use for \"আমাকে এক কাপ চা দিন।\": “Please give me one cup of tea.”",
+      "pronunciation": "amake ek kap cha din",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "“Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন।",
+      "english": "Model use for \"আমাকে এক কাপ চা দিন।\": “Please give me one cup of tea.”",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "“Please give me one cup of tea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "amake ek kap cha din",
+      "nativeText": "Usage focus for \"আমাকে এক কাপ চা দিন\": Use the key language of Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "amake ek kap cha din",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "Notice what the form is doing here: “Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "Usage focus for \"আমাকে এক কাপ চা দিন\": Use the key language of Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with the register and setting that the lesson requires.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "Notice what the form is doing here: “Please give me one cup of tea.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "amake ek kap cha din",
+      "nativeText": "Contrast check for \"আমাকে এক কাপ চা দিন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "amake ek kap cha din",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "Contrast check for \"আমাকে এক কাপ চা দিন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please give me one cup of tea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "amake ek kap cha din",
+      "nativeText": "Recall \"আমাকে এক কাপ চা দিন\" from memory, then explain what would change if a nearby alternative replaced it in \"আমাকে এক কাপ চা দিন।\".",
+      "pronunciation": "amake ek kap cha din",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "Self-check against the model before moving on: “Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "Recall \"আমাকে এক কাপ চা দিন\" from memory, then explain what would change if a nearby alternative replaced it in \"আমাকে এক কাপ চা দিন।\".",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "Self-check against the model before moving on: “Please give me one cup of tea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "amake ek kap cha din",
+      "nativeText": "Repair \"আমাকে এক কাপ চা দিন\" inside \"আমাকে এক কাপ চা দিন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with the register and setting that the lesson requires.",
+      "pronunciation": "amake ek kap cha din",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "Use the model as the repair target: “Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "Repair \"আমাকে এক কাপ চা দিন\" inside \"আমাকে এক কাপ চা দিন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food with the register and setting that the lesson requires.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "Use the model as the repair target: “Please give me one cup of tea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "amake ek kap cha din",
+      "nativeText": "Transfer \"আমাকে এক কাপ চা দিন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমাকে এক কাপ চা দিন।\".",
+      "pronunciation": "amake ek kap cha din",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "Transfer \"আমাকে এক কাপ চা দিন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আমাকে এক কাপ চা দিন।\".",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please give me one cup of tea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "amake ek kap cha din",
+      "nativeText": "Find one word or phrase that naturally travels with \"আমাকে এক কাপ চা দিন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "amake ek kap cha din",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "Find one word or phrase that naturally travels with \"আমাকে এক কাপ চা দিন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Please give me one cup of tea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "amake ek kap cha din",
+      "nativeText": "Listen for \"আমাকে এক কাপ চা দিন\" inside \"আমাকে এক কাপ চা দিন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "amake ek kap cha din",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "Listen for \"আমাকে এক কাপ চা দিন\" inside \"আমাকে এক কাপ চা দিন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please give me one cup of tea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "amake ek kap cha din",
+      "nativeText": "Write \"আমাকে এক কাপ চা দিন\" again without looking, then compare the exact written form against \"আমাকে এক কাপ চা দিন।\" before moving on.",
+      "pronunciation": "amake ek kap cha din",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "Use the written model as the final correctness check: “Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "Write \"আমাকে এক কাপ চা দিন\" again without looking, then compare the exact written form against \"আমাকে এক কাপ চা দিন।\" before moving on.",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Please give me one cup of tea.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আমাকে এক কাপ চা দিন",
+      "romanization": "amake ek kap cha din",
+      "nativeText": "Check whether \"আমাকে এক কাপ চা দিন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please give me one cup of tea.”",
+      "pronunciation": "amake ek kap cha din",
+      "exampleTarget": "আমাকে এক কাপ চা দিন।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Please give me one cup of tea.”",
+      "korean": "আমাকে এক কাপ চা দিন",
+      "english": "Check whether \"আমাকে এক কাপ চা দিন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please give me one cup of tea.”",
+      "example": "আমাকে এক কাপ চা দিন।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Please give me one cup of tea.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "ek plet bhat chai",
+      "nativeText": "“I want one plate of rice.” Serving nouns matter in food orders.",
+      "pronunciation": "ek plet bhat chai",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "“I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "“I want one plate of rice.” Serving nouns matter in food orders.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "“I want one plate of rice.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এক প্লেট ভাত চাই।",
+      "romanization": "ek plet bhat chai",
+      "nativeText": "Model use for \"এক প্লেট ভাত চাই।\": “I want one plate of rice.”",
+      "pronunciation": "ek plet bhat chai",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "“I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই।",
+      "english": "Model use for \"এক প্লেট ভাত চাই।\": “I want one plate of rice.”",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "“I want one plate of rice.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "ek plet bhat chai",
+      "nativeText": "Usage focus for \"এক প্লেট ভাত চাই\": Distinguish the nearby wording choices that make Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "ek plet bhat chai",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "Notice what the form is doing here: “I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "Usage focus for \"এক প্লেট ভাত চাই\": Distinguish the nearby wording choices that make Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food sound precise rather than merely understandable.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I want one plate of rice.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "ek plet bhat chai",
+      "nativeText": "Contrast check for \"এক প্লেট ভাত চাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ek plet bhat chai",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "Contrast check for \"এক প্লেট ভাত চাই\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want one plate of rice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "ek plet bhat chai",
+      "nativeText": "Recall \"এক প্লেট ভাত চাই\" from memory, then explain what would change if a nearby alternative replaced it in \"এক প্লেট ভাত চাই।\".",
+      "pronunciation": "ek plet bhat chai",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "Self-check against the model before moving on: “I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "Recall \"এক প্লেট ভাত চাই\" from memory, then explain what would change if a nearby alternative replaced it in \"এক প্লেট ভাত চাই।\".",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want one plate of rice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "ek plet bhat chai",
+      "nativeText": "Repair \"এক প্লেট ভাত চাই\" inside \"এক প্লেট ভাত চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food sound precise rather than merely understandable.",
+      "pronunciation": "ek plet bhat chai",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "Use the model as the repair target: “I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "Repair \"এক প্লেট ভাত চাই\" inside \"এক প্লেট ভাত চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 9: খাবার অর্ডার করা — Ordering Food sound precise rather than merely understandable.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "Use the model as the repair target: “I want one plate of rice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "ek plet bhat chai",
+      "nativeText": "Transfer \"এক প্লেট ভাত চাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এক প্লেট ভাত চাই।\".",
+      "pronunciation": "ek plet bhat chai",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "Transfer \"এক প্লেট ভাত চাই\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এক প্লেট ভাত চাই।\".",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want one plate of rice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "ek plet bhat chai",
+      "nativeText": "Find one word or phrase that naturally travels with \"এক প্লেট ভাত চাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ek plet bhat chai",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "Find one word or phrase that naturally travels with \"এক প্লেট ভাত চাই\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want one plate of rice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "ek plet bhat chai",
+      "nativeText": "Listen for \"এক প্লেট ভাত চাই\" inside \"এক প্লেট ভাত চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ek plet bhat chai",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "Listen for \"এক প্লেট ভাত চাই\" inside \"এক প্লেট ভাত চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want one plate of rice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "ek plet bhat chai",
+      "nativeText": "Write \"এক প্লেট ভাত চাই\" again without looking, then compare the exact written form against \"এক প্লেট ভাত চাই।\" before moving on.",
+      "pronunciation": "ek plet bhat chai",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "Write \"এক প্লেট ভাত চাই\" again without looking, then compare the exact written form against \"এক প্লেট ভাত চাই।\" before moving on.",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want one plate of rice.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এক প্লেট ভাত চাই",
+      "romanization": "ek plet bhat chai",
+      "nativeText": "Check whether \"এক প্লেট ভাত চাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one plate of rice.”",
+      "pronunciation": "ek plet bhat chai",
+      "exampleTarget": "এক প্লেট ভাত চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want one plate of rice.”",
+      "korean": "এক প্লেট ভাত চাই",
+      "english": "Check whether \"এক প্লেট ভাত চাই\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want one plate of rice.”",
+      "example": "এক প্লেট ভাত চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want one plate of rice.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চিনি ছাড়া",
+      "romanization": "chini chhara",
+      "nativeText": "“Without sugar.” `ছাড়া` follows the item being removed.",
+      "pronunciation": "chini chhara",
+      "exampleTarget": "চিনি ছাড়া চা দিন।",
+      "exampleNative": "“Please give tea without sugar.”",
+      "korean": "চিনি ছাড়া",
+      "english": "“Without sugar.” `ছাড়া` follows the item being removed.",
+      "example": "চিনি ছাড়া চা দিন।",
+      "exampleEnglish": "“Please give tea without sugar.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চিনি ছাড়া চা দিন।",
+      "romanization": "chini chhara",
+      "nativeText": "Model use for \"চিনি ছাড়া চা দিন।\": “Please give tea without sugar.”",
+      "pronunciation": "chini chhara",
+      "exampleTarget": "চিনি ছাড়া চা দিন।",
+      "exampleNative": "“Please give tea without sugar.”",
+      "korean": "চিনি ছাড়া চা দিন।",
+      "english": "Model use for \"চিনি ছাড়া চা দিন।\": “Please give tea without sugar.”",
+      "example": "চিনি ছাড়া চা দিন।",
+      "exampleEnglish": "“Please give tea without sugar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চিনি ছাড়া",
+      "romanization": "chini chhara",
+      "nativeText": "Usage focus for \"চিনি ছাড়া\": “Without sugar.” `ছাড়া` follows the item being removed.",
+      "pronunciation": "chini chhara",
+      "exampleTarget": "চিনি ছাড়া চা দিন।",
+      "exampleNative": "Notice what the form is doing here: “Please give tea without sugar.”",
+      "korean": "চিনি ছাড়া",
+      "english": "Usage focus for \"চিনি ছাড়া\": “Without sugar.” `ছাড়া` follows the item being removed.",
+      "example": "চিনি ছাড়া চা দিন।",
+      "exampleEnglish": "Notice what the form is doing here: “Please give tea without sugar.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চিনি ছাড়া",
+      "romanization": "chini chhara",
+      "nativeText": "Contrast check for \"চিনি ছাড়া\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "chini chhara",
+      "exampleTarget": "চিনি ছাড়া চা দিন।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please give tea without sugar.”",
+      "korean": "চিনি ছাড়া",
+      "english": "Contrast check for \"চিনি ছাড়া\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "চিনি ছাড়া চা দিন।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please give tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চিনি ছাড়া",
+      "romanization": "chini chhara",
+      "nativeText": "Recall \"চিনি ছাড়া\" from memory, then explain what would change if a nearby alternative replaced it in \"চিনি ছাড়া চা দিন।\".",
+      "pronunciation": "chini chhara",
+      "exampleTarget": "চিনি ছাড়া চা দিন।",
+      "exampleNative": "Self-check against the model before moving on: “Please give tea without sugar.”",
+      "korean": "চিনি ছাড়া",
+      "english": "Recall \"চিনি ছাড়া\" from memory, then explain what would change if a nearby alternative replaced it in \"চিনি ছাড়া চা দিন।\".",
+      "example": "চিনি ছাড়া চা দিন।",
+      "exampleEnglish": "Self-check against the model before moving on: “Please give tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চিনি ছাড়া",
+      "romanization": "chini chhara",
+      "nativeText": "Repair \"চিনি ছাড়া\" inside \"চিনি ছাড়া চা দিন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Without sugar.” `ছাড়া` follows the item being removed.",
+      "pronunciation": "chini chhara",
+      "exampleTarget": "চিনি ছাড়া চা দিন।",
+      "exampleNative": "Use the model as the repair target: “Please give tea without sugar.”",
+      "korean": "চিনি ছাড়া",
+      "english": "Repair \"চিনি ছাড়া\" inside \"চিনি ছাড়া চা দিন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Without sugar.” `ছাড়া` follows the item being removed.",
+      "example": "চিনি ছাড়া চা দিন।",
+      "exampleEnglish": "Use the model as the repair target: “Please give tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চিনি ছাড়া",
+      "romanization": "chini chhara",
+      "nativeText": "Transfer \"চিনি ছাড়া\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"চিনি ছাড়া চা দিন।\".",
+      "pronunciation": "chini chhara",
+      "exampleTarget": "চিনি ছাড়া চা দিন।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please give tea without sugar.”",
+      "korean": "চিনি ছাড়া",
+      "english": "Transfer \"চিনি ছাড়া\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"চিনি ছাড়া চা দিন।\".",
+      "example": "চিনি ছাড়া চা দিন।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please give tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চিনি ছাড়া",
+      "romanization": "chini chhara",
+      "nativeText": "Find one word or phrase that naturally travels with \"চিনি ছাড়া\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "chini chhara",
+      "exampleTarget": "চিনি ছাড়া চা দিন।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Please give tea without sugar.”",
+      "korean": "চিনি ছাড়া",
+      "english": "Find one word or phrase that naturally travels with \"চিনি ছাড়া\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "চিনি ছাড়া চা দিন।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Please give tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চিনি ছাড়া",
+      "romanization": "chini chhara",
+      "nativeText": "Listen for \"চিনি ছাড়া\" inside \"চিনি ছাড়া চা দিন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "chini chhara",
+      "exampleTarget": "চিনি ছাড়া চা দিন।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please give tea without sugar.”",
+      "korean": "চিনি ছাড়া",
+      "english": "Listen for \"চিনি ছাড়া\" inside \"চিনি ছাড়া চা দিন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "চিনি ছাড়া চা দিন।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please give tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চিনি ছাড়া",
+      "romanization": "chini chhara",
+      "nativeText": "Write \"চিনি ছাড়া\" again without looking, then compare the exact written form against \"চিনি ছাড়া চা দিন।\" before moving on.",
+      "pronunciation": "chini chhara",
+      "exampleTarget": "চিনি ছাড়া চা দিন।",
+      "exampleNative": "Use the written model as the final correctness check: “Please give tea without sugar.”",
+      "korean": "চিনি ছাড়া",
+      "english": "Write \"চিনি ছাড়া\" again without looking, then compare the exact written form against \"চিনি ছাড়া চা দিন।\" before moving on.",
+      "example": "চিনি ছাড়া চা দিন।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Please give tea without sugar.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "চিনি ছাড়া",
+      "romanization": "chini chhara",
+      "nativeText": "Check whether \"চিনি ছাড়া\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please give tea without sugar.”",
+      "pronunciation": "chini chhara",
+      "exampleTarget": "চিনি ছাড়া চা দিন।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Please give tea without sugar.”",
+      "korean": "চিনি ছাড়া",
+      "english": "Check whether \"চিনি ছাড়া\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please give tea without sugar.”",
+      "example": "চিনি ছাড়া চা দিন।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Please give tea without sugar.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "কম ঝাল",
+      "romanization": "kom jhal",
+      "nativeText": "“Less spicy.” A very practical food phrase in Bengali contexts.",
+      "pronunciation": "kom jhal",
+      "exampleTarget": "কম ঝাল তরকারি চাই।",
+      "exampleNative": "“I want less-spicy curry.”",
+      "korean": "কম ঝাল",
+      "english": "“Less spicy.” A very practical food phrase in Bengali contexts.",
+      "example": "কম ঝাল তরকারি চাই।",
+      "exampleEnglish": "“I want less-spicy curry.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "কম ঝাল তরকারি চাই।",
+      "romanization": "kom jhal",
+      "nativeText": "Model use for \"কম ঝাল তরকারি চাই।\": “I want less-spicy curry.”",
+      "pronunciation": "kom jhal",
+      "exampleTarget": "কম ঝাল তরকারি চাই।",
+      "exampleNative": "“I want less-spicy curry.”",
+      "korean": "কম ঝাল তরকারি চাই।",
+      "english": "Model use for \"কম ঝাল তরকারি চাই।\": “I want less-spicy curry.”",
+      "example": "কম ঝাল তরকারি চাই।",
+      "exampleEnglish": "“I want less-spicy curry.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "কম ঝাল",
+      "romanization": "kom jhal",
+      "nativeText": "Usage focus for \"কম ঝাল\": “Less spicy.” A very practical food phrase in Bengali contexts.",
+      "pronunciation": "kom jhal",
+      "exampleTarget": "কম ঝাল তরকারি চাই।",
+      "exampleNative": "Notice what the form is doing here: “I want less-spicy curry.”",
+      "korean": "কম ঝাল",
+      "english": "Usage focus for \"কম ঝাল\": “Less spicy.” A very practical food phrase in Bengali contexts.",
+      "example": "কম ঝাল তরকারি চাই।",
+      "exampleEnglish": "Notice what the form is doing here: “I want less-spicy curry.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "কম ঝাল",
+      "romanization": "kom jhal",
+      "nativeText": "Contrast check for \"কম ঝাল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "kom jhal",
+      "exampleTarget": "কম ঝাল তরকারি চাই।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want less-spicy curry.”",
+      "korean": "কম ঝাল",
+      "english": "Contrast check for \"কম ঝাল\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "কম ঝাল তরকারি চাই।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I want less-spicy curry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "কম ঝাল",
+      "romanization": "kom jhal",
+      "nativeText": "Recall \"কম ঝাল\" from memory, then explain what would change if a nearby alternative replaced it in \"কম ঝাল তরকারি চাই।\".",
+      "pronunciation": "kom jhal",
+      "exampleTarget": "কম ঝাল তরকারি চাই।",
+      "exampleNative": "Self-check against the model before moving on: “I want less-spicy curry.”",
+      "korean": "কম ঝাল",
+      "english": "Recall \"কম ঝাল\" from memory, then explain what would change if a nearby alternative replaced it in \"কম ঝাল তরকারি চাই।\".",
+      "example": "কম ঝাল তরকারি চাই।",
+      "exampleEnglish": "Self-check against the model before moving on: “I want less-spicy curry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "কম ঝাল",
+      "romanization": "kom jhal",
+      "nativeText": "Repair \"কম ঝাল\" inside \"কম ঝাল তরকারি চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Less spicy.” A very practical food phrase in Bengali contexts.",
+      "pronunciation": "kom jhal",
+      "exampleTarget": "কম ঝাল তরকারি চাই।",
+      "exampleNative": "Use the model as the repair target: “I want less-spicy curry.”",
+      "korean": "কম ঝাল",
+      "english": "Repair \"কম ঝাল\" inside \"কম ঝাল তরকারি চাই।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Less spicy.” A very practical food phrase in Bengali contexts.",
+      "example": "কম ঝাল তরকারি চাই।",
+      "exampleEnglish": "Use the model as the repair target: “I want less-spicy curry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "কম ঝাল",
+      "romanization": "kom jhal",
+      "nativeText": "Transfer \"কম ঝাল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"কম ঝাল তরকারি চাই।\".",
+      "pronunciation": "kom jhal",
+      "exampleTarget": "কম ঝাল তরকারি চাই।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want less-spicy curry.”",
+      "korean": "কম ঝাল",
+      "english": "Transfer \"কম ঝাল\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"কম ঝাল তরকারি চাই।\".",
+      "example": "কম ঝাল তরকারি চাই।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I want less-spicy curry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "কম ঝাল",
+      "romanization": "kom jhal",
+      "nativeText": "Find one word or phrase that naturally travels with \"কম ঝাল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "kom jhal",
+      "exampleTarget": "কম ঝাল তরকারি চাই।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I want less-spicy curry.”",
+      "korean": "কম ঝাল",
+      "english": "Find one word or phrase that naturally travels with \"কম ঝাল\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "কম ঝাল তরকারি চাই।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I want less-spicy curry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "কম ঝাল",
+      "romanization": "kom jhal",
+      "nativeText": "Listen for \"কম ঝাল\" inside \"কম ঝাল তরকারি চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "kom jhal",
+      "exampleTarget": "কম ঝাল তরকারি চাই।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want less-spicy curry.”",
+      "korean": "কম ঝাল",
+      "english": "Listen for \"কম ঝাল\" inside \"কম ঝাল তরকারি চাই।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "কম ঝাল তরকারি চাই।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I want less-spicy curry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "কম ঝাল",
+      "romanization": "kom jhal",
+      "nativeText": "Write \"কম ঝাল\" again without looking, then compare the exact written form against \"কম ঝাল তরকারি চাই।\" before moving on.",
+      "pronunciation": "kom jhal",
+      "exampleTarget": "কম ঝাল তরকারি চাই।",
+      "exampleNative": "Use the written model as the final correctness check: “I want less-spicy curry.”",
+      "korean": "কম ঝাল",
+      "english": "Write \"কম ঝাল\" again without looking, then compare the exact written form against \"কম ঝাল তরকারি চাই।\" before moving on.",
+      "example": "কম ঝাল তরকারি চাই।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I want less-spicy curry.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "কম ঝাল",
+      "romanization": "kom jhal",
+      "nativeText": "Check whether \"কম ঝাল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want less-spicy curry.”",
+      "pronunciation": "kom jhal",
+      "exampleTarget": "কম ঝাল তরকারি চাই।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I want less-spicy curry.”",
+      "korean": "কম ঝাল",
+      "english": "Check whether \"কম ঝাল\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I want less-spicy curry.”",
+      "example": "কম ঝাল তরকারি চাই।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I want less-spicy curry.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এখানে খাব",
+      "romanization": "ekhane khabo",
+      "nativeText": "“I will eat here.” A concise dine-in answer.",
+      "pronunciation": "ekhane khabo",
+      "exampleTarget": "এখানে খাব, প্যাকেট নয়।",
+      "exampleNative": "“I will eat here, not takeaway.”",
+      "korean": "এখানে খাব",
+      "english": "“I will eat here.” A concise dine-in answer.",
+      "example": "এখানে খাব, প্যাকেট নয়।",
+      "exampleEnglish": "“I will eat here, not takeaway.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এখানে খাব, প্যাকেট নয়।",
+      "romanization": "ekhane khabo",
+      "nativeText": "Model use for \"এখানে খাব, প্যাকেট নয়।\": “I will eat here, not takeaway.”",
+      "pronunciation": "ekhane khabo",
+      "exampleTarget": "এখানে খাব, প্যাকেট নয়।",
+      "exampleNative": "“I will eat here, not takeaway.”",
+      "korean": "এখানে খাব, প্যাকেট নয়।",
+      "english": "Model use for \"এখানে খাব, প্যাকেট নয়।\": “I will eat here, not takeaway.”",
+      "example": "এখানে খাব, প্যাকেট নয়।",
+      "exampleEnglish": "“I will eat here, not takeaway.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এখানে খাব",
+      "romanization": "ekhane khabo",
+      "nativeText": "Usage focus for \"এখানে খাব\": “I will eat here.” A concise dine-in answer.",
+      "pronunciation": "ekhane khabo",
+      "exampleTarget": "এখানে খাব, প্যাকেট নয়।",
+      "exampleNative": "Notice what the form is doing here: “I will eat here, not takeaway.”",
+      "korean": "এখানে খাব",
+      "english": "Usage focus for \"এখানে খাব\": “I will eat here.” A concise dine-in answer.",
+      "example": "এখানে খাব, প্যাকেট নয়।",
+      "exampleEnglish": "Notice what the form is doing here: “I will eat here, not takeaway.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এখানে খাব",
+      "romanization": "ekhane khabo",
+      "nativeText": "Contrast check for \"এখানে খাব\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ekhane khabo",
+      "exampleTarget": "এখানে খাব, প্যাকেট নয়।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will eat here, not takeaway.”",
+      "korean": "এখানে খাব",
+      "english": "Contrast check for \"এখানে খাব\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এখানে খাব, প্যাকেট নয়।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “I will eat here, not takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এখানে খাব",
+      "romanization": "ekhane khabo",
+      "nativeText": "Recall \"এখানে খাব\" from memory, then explain what would change if a nearby alternative replaced it in \"এখানে খাব, প্যাকেট নয়।\".",
+      "pronunciation": "ekhane khabo",
+      "exampleTarget": "এখানে খাব, প্যাকেট নয়।",
+      "exampleNative": "Self-check against the model before moving on: “I will eat here, not takeaway.”",
+      "korean": "এখানে খাব",
+      "english": "Recall \"এখানে খাব\" from memory, then explain what would change if a nearby alternative replaced it in \"এখানে খাব, প্যাকেট নয়।\".",
+      "example": "এখানে খাব, প্যাকেট নয়।",
+      "exampleEnglish": "Self-check against the model before moving on: “I will eat here, not takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এখানে খাব",
+      "romanization": "ekhane khabo",
+      "nativeText": "Repair \"এখানে খাব\" inside \"এখানে খাব, প্যাকেট নয়।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will eat here.” A concise dine-in answer.",
+      "pronunciation": "ekhane khabo",
+      "exampleTarget": "এখানে খাব, প্যাকেট নয়।",
+      "exampleNative": "Use the model as the repair target: “I will eat here, not takeaway.”",
+      "korean": "এখানে খাব",
+      "english": "Repair \"এখানে খাব\" inside \"এখানে খাব, প্যাকেট নয়।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “I will eat here.” A concise dine-in answer.",
+      "example": "এখানে খাব, প্যাকেট নয়।",
+      "exampleEnglish": "Use the model as the repair target: “I will eat here, not takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এখানে খাব",
+      "romanization": "ekhane khabo",
+      "nativeText": "Transfer \"এখানে খাব\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এখানে খাব, প্যাকেট নয়।\".",
+      "pronunciation": "ekhane khabo",
+      "exampleTarget": "এখানে খাব, প্যাকেট নয়।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will eat here, not takeaway.”",
+      "korean": "এখানে খাব",
+      "english": "Transfer \"এখানে খাব\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এখানে খাব, প্যাকেট নয়।\".",
+      "example": "এখানে খাব, প্যাকেট নয়।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “I will eat here, not takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এখানে খাব",
+      "romanization": "ekhane khabo",
+      "nativeText": "Find one word or phrase that naturally travels with \"এখানে খাব\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ekhane khabo",
+      "exampleTarget": "এখানে খাব, প্যাকেট নয়।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “I will eat here, not takeaway.”",
+      "korean": "এখানে খাব",
+      "english": "Find one word or phrase that naturally travels with \"এখানে খাব\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এখানে খাব, প্যাকেট নয়।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “I will eat here, not takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এখানে খাব",
+      "romanization": "ekhane khabo",
+      "nativeText": "Listen for \"এখানে খাব\" inside \"এখানে খাব, প্যাকেট নয়।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ekhane khabo",
+      "exampleTarget": "এখানে খাব, প্যাকেট নয়।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will eat here, not takeaway.”",
+      "korean": "এখানে খাব",
+      "english": "Listen for \"এখানে খাব\" inside \"এখানে খাব, প্যাকেট নয়।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এখানে খাব, প্যাকেট নয়।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “I will eat here, not takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এখানে খাব",
+      "romanization": "ekhane khabo",
+      "nativeText": "Write \"এখানে খাব\" again without looking, then compare the exact written form against \"এখানে খাব, প্যাকেট নয়।\" before moving on.",
+      "pronunciation": "ekhane khabo",
+      "exampleTarget": "এখানে খাব, প্যাকেট নয়।",
+      "exampleNative": "Use the written model as the final correctness check: “I will eat here, not takeaway.”",
+      "korean": "এখানে খাব",
+      "english": "Write \"এখানে খাব\" again without looking, then compare the exact written form against \"এখানে খাব, প্যাকেট নয়।\" before moving on.",
+      "example": "এখানে খাব, প্যাকেট নয়।",
+      "exampleEnglish": "Use the written model as the final correctness check: “I will eat here, not takeaway.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এখানে খাব",
+      "romanization": "ekhane khabo",
+      "nativeText": "Check whether \"এখানে খাব\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will eat here, not takeaway.”",
+      "pronunciation": "ekhane khabo",
+      "exampleTarget": "এখানে খাব, প্যাকেট নয়।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “I will eat here, not takeaway.”",
+      "korean": "এখানে খাব",
+      "english": "Check whether \"এখানে খাব\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “I will eat here, not takeaway.”",
+      "example": "এখানে খাব, প্যাকেট নয়।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “I will eat here, not takeaway.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "প্যাকেট",
+      "romanization": "packet",
+      "nativeText": "“Takeaway / parcel.” A common loanword in restaurant settings.",
+      "pronunciation": "packet",
+      "exampleTarget": "এটা প্যাকেট করে দিন।",
+      "exampleNative": "“Please pack this to go.”",
+      "korean": "প্যাকেট",
+      "english": "“Takeaway / parcel.” A common loanword in restaurant settings.",
+      "example": "এটা প্যাকেট করে দিন।",
+      "exampleEnglish": "“Please pack this to go.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "এটা প্যাকেট করে দিন।",
+      "romanization": "packet",
+      "nativeText": "Model use for \"এটা প্যাকেট করে দিন।\": “Please pack this to go.”",
+      "pronunciation": "packet",
+      "exampleTarget": "এটা প্যাকেট করে দিন।",
+      "exampleNative": "“Please pack this to go.”",
+      "korean": "এটা প্যাকেট করে দিন।",
+      "english": "Model use for \"এটা প্যাকেট করে দিন।\": “Please pack this to go.”",
+      "example": "এটা প্যাকেট করে দিন।",
+      "exampleEnglish": "“Please pack this to go.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "প্যাকেট",
+      "romanization": "packet",
+      "nativeText": "Usage focus for \"প্যাকেট\": “Takeaway / parcel.” A common loanword in restaurant settings.",
+      "pronunciation": "packet",
+      "exampleTarget": "এটা প্যাকেট করে দিন।",
+      "exampleNative": "Notice what the form is doing here: “Please pack this to go.”",
+      "korean": "প্যাকেট",
+      "english": "Usage focus for \"প্যাকেট\": “Takeaway / parcel.” A common loanword in restaurant settings.",
+      "example": "এটা প্যাকেট করে দিন।",
+      "exampleEnglish": "Notice what the form is doing here: “Please pack this to go.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "প্যাকেট",
+      "romanization": "packet",
+      "nativeText": "Contrast check for \"প্যাকেট\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "packet",
+      "exampleTarget": "এটা প্যাকেট করে দিন।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please pack this to go.”",
+      "korean": "প্যাকেট",
+      "english": "Contrast check for \"প্যাকেট\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "এটা প্যাকেট করে দিন।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please pack this to go.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "প্যাকেট",
+      "romanization": "packet",
+      "nativeText": "Recall \"প্যাকেট\" from memory, then explain what would change if a nearby alternative replaced it in \"এটা প্যাকেট করে দিন।\".",
+      "pronunciation": "packet",
+      "exampleTarget": "এটা প্যাকেট করে দিন।",
+      "exampleNative": "Self-check against the model before moving on: “Please pack this to go.”",
+      "korean": "প্যাকেট",
+      "english": "Recall \"প্যাকেট\" from memory, then explain what would change if a nearby alternative replaced it in \"এটা প্যাকেট করে দিন।\".",
+      "example": "এটা প্যাকেট করে দিন।",
+      "exampleEnglish": "Self-check against the model before moving on: “Please pack this to go.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "প্যাকেট",
+      "romanization": "packet",
+      "nativeText": "Repair \"প্যাকেট\" inside \"এটা প্যাকেট করে দিন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Takeaway / parcel.” A common loanword in restaurant settings.",
+      "pronunciation": "packet",
+      "exampleTarget": "এটা প্যাকেট করে দিন।",
+      "exampleNative": "Use the model as the repair target: “Please pack this to go.”",
+      "korean": "প্যাকেট",
+      "english": "Repair \"প্যাকেট\" inside \"এটা প্যাকেট করে দিন।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Takeaway / parcel.” A common loanword in restaurant settings.",
+      "example": "এটা প্যাকেট করে দিন।",
+      "exampleEnglish": "Use the model as the repair target: “Please pack this to go.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "প্যাকেট",
+      "romanization": "packet",
+      "nativeText": "Transfer \"প্যাকেট\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এটা প্যাকেট করে দিন।\".",
+      "pronunciation": "packet",
+      "exampleTarget": "এটা প্যাকেট করে দিন।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please pack this to go.”",
+      "korean": "প্যাকেট",
+      "english": "Transfer \"প্যাকেট\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"এটা প্যাকেট করে দিন।\".",
+      "example": "এটা প্যাকেট করে দিন।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please pack this to go.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "প্যাকেট",
+      "romanization": "packet",
+      "nativeText": "Find one word or phrase that naturally travels with \"প্যাকেট\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "packet",
+      "exampleTarget": "এটা প্যাকেট করে দিন।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Please pack this to go.”",
+      "korean": "প্যাকেট",
+      "english": "Find one word or phrase that naturally travels with \"প্যাকেট\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "এটা প্যাকেট করে দিন।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Please pack this to go.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "প্যাকেট",
+      "romanization": "packet",
+      "nativeText": "Listen for \"প্যাকেট\" inside \"এটা প্যাকেট করে দিন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "packet",
+      "exampleTarget": "এটা প্যাকেট করে দিন।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please pack this to go.”",
+      "korean": "প্যাকেট",
+      "english": "Listen for \"প্যাকেট\" inside \"এটা প্যাকেট করে দিন।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "এটা প্যাকেট করে দিন।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please pack this to go.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "প্যাকেট",
+      "romanization": "packet",
+      "nativeText": "Write \"প্যাকেট\" again without looking, then compare the exact written form against \"এটা প্যাকেট করে দিন।\" before moving on.",
+      "pronunciation": "packet",
+      "exampleTarget": "এটা প্যাকেট করে দিন।",
+      "exampleNative": "Use the written model as the final correctness check: “Please pack this to go.”",
+      "korean": "প্যাকেট",
+      "english": "Write \"প্যাকেট\" again without looking, then compare the exact written form against \"এটা প্যাকেট করে দিন।\" before moving on.",
+      "example": "এটা প্যাকেট করে দিন।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Please pack this to go.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "প্যাকেট",
+      "romanization": "packet",
+      "nativeText": "Check whether \"প্যাকেট\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please pack this to go.”",
+      "pronunciation": "packet",
+      "exampleTarget": "এটা প্যাকেট করে দিন।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Please pack this to go.”",
+      "korean": "প্যাকেট",
+      "english": "Check whether \"প্যাকেট\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please pack this to go.”",
+      "example": "এটা প্যাকেট করে দিন।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Please pack this to go.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আর কিছু?",
+      "romanization": "ar kichhu",
+      "nativeText": "“Anything else?” A common service question.",
+      "pronunciation": "ar kichhu",
+      "exampleTarget": "আর কিছু লাগবে?",
+      "exampleNative": "“Will you need anything else?”",
+      "korean": "আর কিছু?",
+      "english": "“Anything else?” A common service question.",
+      "example": "আর কিছু লাগবে?",
+      "exampleEnglish": "“Will you need anything else?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আর কিছু লাগবে?",
+      "romanization": "ar kichhu",
+      "nativeText": "Model use for \"আর কিছু লাগবে?\": “Will you need anything else?”",
+      "pronunciation": "ar kichhu",
+      "exampleTarget": "আর কিছু লাগবে?",
+      "exampleNative": "“Will you need anything else?”",
+      "korean": "আর কিছু লাগবে?",
+      "english": "Model use for \"আর কিছু লাগবে?\": “Will you need anything else?”",
+      "example": "আর কিছু লাগবে?",
+      "exampleEnglish": "“Will you need anything else?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আর কিছু?",
+      "romanization": "ar kichhu",
+      "nativeText": "Usage focus for \"আর কিছু?\": “Anything else?” A common service question.",
+      "pronunciation": "ar kichhu",
+      "exampleTarget": "আর কিছু লাগবে?",
+      "exampleNative": "Notice what the form is doing here: “Will you need anything else?”",
+      "korean": "আর কিছু?",
+      "english": "Usage focus for \"আর কিছু?\": “Anything else?” A common service question.",
+      "example": "আর কিছু লাগবে?",
+      "exampleEnglish": "Notice what the form is doing here: “Will you need anything else?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আর কিছু?",
+      "romanization": "ar kichhu",
+      "nativeText": "Contrast check for \"আর কিছু?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "ar kichhu",
+      "exampleTarget": "আর কিছু লাগবে?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Will you need anything else?”",
+      "korean": "আর কিছু?",
+      "english": "Contrast check for \"আর কিছু?\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "আর কিছু লাগবে?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Will you need anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আর কিছু?",
+      "romanization": "ar kichhu",
+      "nativeText": "Recall \"আর কিছু?\" from memory, then explain what would change if a nearby alternative replaced it in \"আর কিছু লাগবে?\".",
+      "pronunciation": "ar kichhu",
+      "exampleTarget": "আর কিছু লাগবে?",
+      "exampleNative": "Self-check against the model before moving on: “Will you need anything else?”",
+      "korean": "আর কিছু?",
+      "english": "Recall \"আর কিছু?\" from memory, then explain what would change if a nearby alternative replaced it in \"আর কিছু লাগবে?\".",
+      "example": "আর কিছু লাগবে?",
+      "exampleEnglish": "Self-check against the model before moving on: “Will you need anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আর কিছু?",
+      "romanization": "ar kichhu",
+      "nativeText": "Repair \"আর কিছু?\" inside \"আর কিছু লাগবে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Anything else?” A common service question.",
+      "pronunciation": "ar kichhu",
+      "exampleTarget": "আর কিছু লাগবে?",
+      "exampleNative": "Use the model as the repair target: “Will you need anything else?”",
+      "korean": "আর কিছু?",
+      "english": "Repair \"আর কিছু?\" inside \"আর কিছু লাগবে?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Anything else?” A common service question.",
+      "example": "আর কিছু লাগবে?",
+      "exampleEnglish": "Use the model as the repair target: “Will you need anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আর কিছু?",
+      "romanization": "ar kichhu",
+      "nativeText": "Transfer \"আর কিছু?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আর কিছু লাগবে?\".",
+      "pronunciation": "ar kichhu",
+      "exampleTarget": "আর কিছু লাগবে?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Will you need anything else?”",
+      "korean": "আর কিছু?",
+      "english": "Transfer \"আর কিছু?\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"আর কিছু লাগবে?\".",
+      "example": "আর কিছু লাগবে?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Will you need anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আর কিছু?",
+      "romanization": "ar kichhu",
+      "nativeText": "Find one word or phrase that naturally travels with \"আর কিছু?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "ar kichhu",
+      "exampleTarget": "আর কিছু লাগবে?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Will you need anything else?”",
+      "korean": "আর কিছু?",
+      "english": "Find one word or phrase that naturally travels with \"আর কিছু?\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "আর কিছু লাগবে?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Will you need anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আর কিছু?",
+      "romanization": "ar kichhu",
+      "nativeText": "Listen for \"আর কিছু?\" inside \"আর কিছু লাগবে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "ar kichhu",
+      "exampleTarget": "আর কিছু লাগবে?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Will you need anything else?”",
+      "korean": "আর কিছু?",
+      "english": "Listen for \"আর কিছু?\" inside \"আর কিছু লাগবে?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "আর কিছু লাগবে?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Will you need anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আর কিছু?",
+      "romanization": "ar kichhu",
+      "nativeText": "Write \"আর কিছু?\" again without looking, then compare the exact written form against \"আর কিছু লাগবে?\" before moving on.",
+      "pronunciation": "ar kichhu",
+      "exampleTarget": "আর কিছু লাগবে?",
+      "exampleNative": "Use the written model as the final correctness check: “Will you need anything else?”",
+      "korean": "আর কিছু?",
+      "english": "Write \"আর কিছু?\" again without looking, then compare the exact written form against \"আর কিছু লাগবে?\" before moving on.",
+      "example": "আর কিছু লাগবে?",
+      "exampleEnglish": "Use the written model as the final correctness check: “Will you need anything else?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "আর কিছু?",
+      "romanization": "ar kichhu",
+      "nativeText": "Check whether \"আর কিছু?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Will you need anything else?”",
+      "pronunciation": "ar kichhu",
+      "exampleTarget": "আর কিছু লাগবে?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Will you need anything else?”",
+      "korean": "আর কিছু?",
+      "english": "Check whether \"আর কিছু?\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Will you need anything else?”",
+      "example": "আর কিছু লাগবে?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Will you need anything else?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "বিল দিন",
+      "romanization": "bil din",
+      "nativeText": "“Please give the bill.” A compact closing phrase.",
+      "pronunciation": "bil din",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "বিল দিন",
+      "english": "“Please give the bill.” A compact closing phrase.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "বিল দিন, দয়া করে।",
+      "romanization": "bil din",
+      "nativeText": "Model use for \"বিল দিন, দয়া করে।\": “Please give the bill.”",
+      "pronunciation": "bil din",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "“Please give the bill.”",
+      "korean": "বিল দিন, দয়া করে।",
+      "english": "Model use for \"বিল দিন, দয়া করে।\": “Please give the bill.”",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "“Please give the bill.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "বিল দিন",
+      "romanization": "bil din",
+      "nativeText": "Usage focus for \"বিল দিন\": “Please give the bill.” A compact closing phrase.",
+      "pronunciation": "bil din",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "Notice what the form is doing here: “Please give the bill.”",
+      "korean": "বিল দিন",
+      "english": "Usage focus for \"বিল দিন\": “Please give the bill.” A compact closing phrase.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "Notice what the form is doing here: “Please give the bill.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "বিল দিন",
+      "romanization": "bil din",
+      "nativeText": "Contrast check for \"বিল দিন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "bil din",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please give the bill.”",
+      "korean": "বিল দিন",
+      "english": "Contrast check for \"বিল দিন\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "বিল দিন",
+      "romanization": "bil din",
+      "nativeText": "Recall \"বিল দিন\" from memory, then explain what would change if a nearby alternative replaced it in \"বিল দিন, দয়া করে।\".",
+      "pronunciation": "bil din",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "Self-check against the model before moving on: “Please give the bill.”",
+      "korean": "বিল দিন",
+      "english": "Recall \"বিল দিন\" from memory, then explain what would change if a nearby alternative replaced it in \"বিল দিন, দয়া করে।\".",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "Self-check against the model before moving on: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "বিল দিন",
+      "romanization": "bil din",
+      "nativeText": "Repair \"বিল দিন\" inside \"বিল দিন, দয়া করে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please give the bill.” A compact closing phrase.",
+      "pronunciation": "bil din",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "Use the model as the repair target: “Please give the bill.”",
+      "korean": "বিল দিন",
+      "english": "Repair \"বিল দিন\" inside \"বিল দিন, দয়া করে।\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Please give the bill.” A compact closing phrase.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "Use the model as the repair target: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "বিল দিন",
+      "romanization": "bil din",
+      "nativeText": "Transfer \"বিল দিন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বিল দিন, দয়া করে।\".",
+      "pronunciation": "bil din",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please give the bill.”",
+      "korean": "বিল দিন",
+      "english": "Transfer \"বিল দিন\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"বিল দিন, দয়া করে।\".",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "বিল দিন",
+      "romanization": "bil din",
+      "nativeText": "Find one word or phrase that naturally travels with \"বিল দিন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "bil din",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Please give the bill.”",
+      "korean": "বিল দিন",
+      "english": "Find one word or phrase that naturally travels with \"বিল দিন\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "বিল দিন",
+      "romanization": "bil din",
+      "nativeText": "Listen for \"বিল দিন\" inside \"বিল দিন, দয়া করে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "bil din",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please give the bill.”",
+      "korean": "বিল দিন",
+      "english": "Listen for \"বিল দিন\" inside \"বিল দিন, দয়া করে।\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "বিল দিন",
+      "romanization": "bil din",
+      "nativeText": "Write \"বিল দিন\" again without looking, then compare the exact written form against \"বিল দিন, দয়া করে।\" before moving on.",
+      "pronunciation": "bil din",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "Use the written model as the final correctness check: “Please give the bill.”",
+      "korean": "বিল দিন",
+      "english": "Write \"বিল দিন\" again without looking, then compare the exact written form against \"বিল দিন, দয়া করে।\" before moving on.",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "Use the written model as the final correctness check: “Please give the bill.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "bn-level1unit09orderingfood-vocabulary-1",
+        "bn-level1unit09orderingfood-vocabulary-2",
+        "bn-level1unit09orderingfood-grammar-1",
+        "bn-level1unit09orderingfood-grammar-2",
+        "bn-level1unit09orderingfood-reading",
+        "bn-level1unit09orderingfood-listening",
+        "bn-level1unit09orderingfood-writing",
+        "bn-level1unit09orderingfood-task"
+      ],
+      "targetText": "বিল দিন",
+      "romanization": "bil din",
+      "nativeText": "Check whether \"বিল দিন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please give the bill.”",
+      "pronunciation": "bil din",
+      "exampleTarget": "বিল দিন, দয়া করে।",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Please give the bill.”",
+      "korean": "বিল দিন",
+      "english": "Check whether \"বিল দিন\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Please give the bill.”",
+      "example": "বিল দিন, দয়া করে।",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Please give the bill.”"
+    }
+  ],
+  "targetLang": "bn",
+  "nativeLang": "en",
+  "track": "textbook"
+};

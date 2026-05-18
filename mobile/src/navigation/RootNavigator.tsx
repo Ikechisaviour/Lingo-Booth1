@@ -25,7 +25,11 @@ const linking: LinkingOptions<any> = {
   config: {
     screens: {
       VerifyEmail: 'verify-email/:token',
+      ResetPassword: 'reset-password/:token',
+      CertificateVerify: 'certificates/verify/:certificateId',
       Login: 'login',
+      Contact: 'contact',
+      Pricing: 'pricing',
       Conversation: 'conversation',
       Class: 'class',
       Exercise: 'exercise',

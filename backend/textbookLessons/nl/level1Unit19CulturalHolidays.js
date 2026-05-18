@@ -1,30 +1,2535 @@
-const { item, practice, structured } = require('../shared/profileFactory');
-
-module.exports = structured('nl', {
-  slug: 'nl-l1u19',
-  title: 'Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays',
-  category: 'culture',
-  difficulty: 'beginner',
-  lessonType: 'thematic',
-  overview: 'Talk about Dutch holidays, greetings, and family traditions.',
-  vocabularyGoal: 'Use holiday, family, greeting, and tradition words.',
-  grammarGoal: 'Use habitual present forms and `meestal` to describe customs.',
-  speakingGoal: 'Describe one holiday, say what people usually do, and give an appropriate greeting.',
-  task: 'Explain one Dutch holiday to a visitor.',
-  expressionPractice: [
-    practice('naming-holiday', 'Naming holiday', 'Introduce one celebration clearly.'),
-    practice('describing-custom', 'Describing custom', 'Use `meestal` plus one action.'),
-    practice('giving-greeting', 'Giving greeting', 'Use the formula that fits the occasion.'),
+module.exports = {
+  "title": "Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays",
+  "category": "culture",
+  "difficulty": "beginner",
+  "lessonType": "thematic",
+  "activities": [
+    {
+      "id": "nl-level1unit19culturalholidays-orientation",
+      "section": "Orientation",
+      "title": "What you will be able to do",
+      "goals": [
+        "Talk about Dutch holidays, greetings, and family traditions."
+      ],
+      "task": "Explain one Dutch holiday to a visitor."
+    },
+    {
+      "id": "nl-level1unit19culturalholidays-pronunciation",
+      "section": "Pronunciation",
+      "title": "Sound traps in this lesson",
+      "goals": [
+        "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow."
+      ],
+      "task": "Read the anchor examples aloud and notice the contrast that changes meaning or naturalness."
+    },
+    {
+      "id": "nl-level1unit19culturalholidays-vocabulary-1",
+      "section": "Vocabulary I",
+      "title": "Core words for the situation",
+      "goals": [
+        "Use the key language of Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with the register and setting that the lesson requires."
+      ],
+      "task": "Use three anchor words in personally true sentences."
+    },
+    {
+      "id": "nl-level1unit19culturalholidays-vocabulary-2",
+      "section": "Vocabulary II",
+      "title": "Useful extensions and contrasts",
+      "goals": [
+        "Distinguish the nearby wording choices that make Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays sound precise rather than merely understandable."
+      ],
+      "task": "Choose the best expression for three nearby situations."
+    },
+    {
+      "id": "nl-level1unit19culturalholidays-grammar-1",
+      "section": "Grammar I",
+      "title": "The main pattern",
+      "goals": [
+        "Talk about Dutch holidays, greetings, and family traditions."
+      ],
+      "task": "Build three fresh sentences with the main pattern."
+    },
+    {
+      "id": "nl-level1unit19culturalholidays-grammar-2",
+      "section": "Grammar II",
+      "title": "The contrast that prevents translation mistakes",
+      "goals": [
+        "Contrast the main pattern in Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with one nearby Dutch form so the learner can avoid literal translation."
+      ],
+      "task": "Compare the main pattern with one near-neighbor and explain the difference."
+    },
+    {
+      "id": "nl-level1unit19culturalholidays-reading",
+      "section": "Reading and speaking",
+      "title": "Read the pattern in context",
+      "goals": [
+        "Read a compact natural model and notice which words carry the lesson meaning."
+      ],
+      "task": "Answer two comprehension questions in complete target-language sentences."
+    },
+    {
+      "id": "nl-level1unit19culturalholidays-listening",
+      "section": "Listening and speaking",
+      "title": "Hear a realistic exchange",
+      "goals": [
+        "Follow a short exchange at natural register and reproduce it with your own details."
+      ],
+      "task": "Perform the exchange once from the model and once from memory."
+    },
+    {
+      "id": "nl-level1unit19culturalholidays-writing",
+      "section": "Writing",
+      "title": "Write your own version",
+      "goals": [
+        "Write connected target-language sentences that apply the lesson pattern to your own life."
+      ],
+      "task": "Write three to five lines and read them aloud."
+    },
+    {
+      "id": "nl-level1unit19culturalholidays-culture",
+      "section": "Culture note",
+      "title": "How the language lives in context",
+      "goals": [
+        "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used."
+      ],
+      "task": "Explain one social or regional detail that changes how the lesson language is used."
+    },
+    {
+      "id": "nl-level1unit19culturalholidays-task",
+      "section": "Task",
+      "title": "Complete the communicative goal",
+      "goals": [
+        "Explain one Dutch holiday to a visitor."
+      ],
+      "task": "Explain one Dutch holiday to a visitor."
+    }
   ],
-  relatedPools: ['topic-culture', 'topic-family'],
-  items: [
-    item('Koningsdag', 'KOH-nings-dakh', 'King’s Day, one of the most visible Dutch national celebrations.', 'Op Koningsdag dragen veel mensen oranje.', '“On King’s Day many people wear orange.”'),
-    item('Sinterklaas', 'SIN-ter-klahs', 'A major December tradition involving gifts, poems, and family rituals.', 'Met Sinterklaas krijgen kinderen cadeautjes.', '“At Sinterklaas children receive gifts.”'),
-    item('Kerstmis', 'KERST-mis', '“Christmas.” A major family holiday.', 'Met Kerstmis eten families samen.', '“At Christmas families eat together.”'),
-    item('Nieuwjaar', 'NYU-yahr', '“New Year.” Fireworks and greetings are common associations.', 'Met Nieuwjaar wensen we elkaar geluk.', '“At New Year we wish each other happiness.”'),
-    item('meestal', 'MAY-stal', '“Usually.” A useful word for customs.', 'Meestal bezoeken we familie.', '“Usually we visit family.”'),
-    item('vieren', 'FEE-ren', '“To celebrate.” A central holiday verb.', 'Hoe vieren jullie Kerstmis?', '“How do you celebrate Christmas?”'),
-    item('fijne feestdagen', 'FEY-nə FEEST-dah-khen', '“Happy holidays.” A flexible seasonal greeting.', 'Fijne feestdagen voor jou en je familie.', '“Happy holidays to you and your family.”'),
-    item('traditie', 'tra-DEE-see', '“Tradition.” A useful bridge noun for cultural explanation.', 'Dat is een oude traditie.', '“That is an old tradition.”'),
+  "expressionPractice": [
+    {
+      "id": "naming-holiday",
+      "label": "Naming holiday",
+      "goal": "Introduce one celebration clearly."
+    },
+    {
+      "id": "describing-custom",
+      "label": "Describing custom",
+      "goal": "Use `meestal` plus one action."
+    },
+    {
+      "id": "giving-greeting",
+      "label": "Giving greeting",
+      "goal": "Use the formula that fits the occasion."
+    }
   ],
-});
+  "relatedPools": [
+    "topic-culture",
+    "topic-family"
+  ],
+  "content": [
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-orientation"
+      ],
+      "targetText": "lesdoel",
+      "romanization": "",
+      "nativeText": "Talk about Dutch holidays, greetings, and family traditions.",
+      "pronunciation": "",
+      "exampleTarget": "lesdoel",
+      "exampleNative": "The whole lesson is built toward this outcome: Explain one Dutch holiday to a visitor.",
+      "korean": "lesdoel",
+      "english": "Talk about Dutch holidays, greetings, and family traditions.",
+      "example": "lesdoel",
+      "exampleEnglish": "The whole lesson is built toward this outcome: Explain one Dutch holiday to a visitor."
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-pronunciation"
+      ],
+      "targetText": "klankcontrole",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Op Koningsdag dragen veel mensen oranje.\".",
+      "pronunciation": "",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "“On King’s Day many people wear orange.”",
+      "korean": "klankcontrole",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Op Koningsdag dragen veel mensen oranje.\".",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "“On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "",
+      "nativeText": "Use the key language of Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "“On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "Use the key language of Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "“On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-2"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "",
+      "nativeText": "Distinguish the nearby wording choices that make Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "“At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "Distinguish the nearby wording choices that make Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "“At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-grammar-1"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "",
+      "nativeText": "Talk about Dutch holidays, greetings, and family traditions.",
+      "pronunciation": "",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "“On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "Talk about Dutch holidays, greetings, and family traditions.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "“On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "grammar",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "",
+      "nativeText": "Contrast the main pattern in Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with one nearby Dutch form so the learner can avoid literal translation.",
+      "pronunciation": "",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "“At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "Contrast the main pattern in Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with one nearby Dutch form so the learner can avoid literal translation.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "“At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "reading",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-reading"
+      ],
+      "targetText": "leesmodel",
+      "romanization": "",
+      "nativeText": "Read \"Dat is een oude traditie.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "pronunciation": "",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "“That is an old tradition.”",
+      "korean": "leesmodel",
+      "english": "Read \"Dat is een oude traditie.\" as one connected model. Notice how the lesson vocabulary and grammar cooperate inside it instead of appearing as isolated flashcards.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "“That is an old tradition.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-listening"
+      ],
+      "targetText": "dialoogmodel",
+      "romanization": "",
+      "nativeText": "Hear \"Dat is een oude traditie.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "pronunciation": "",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "“That is an old tradition.”",
+      "korean": "dialoogmodel",
+      "english": "Hear \"Dat is een oude traditie.\" as interaction, not as a sentence list. Follow the exchange while keeping the lesson's register and grammar intact.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "“That is an old tradition.”"
+    },
+    {
+      "type": "writing",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "schrijfoefening",
+      "romanization": "",
+      "nativeText": "Write your own version after studying \"Op Koningsdag dragen veel mensen oranje.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "pronunciation": "",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "Adapt the model to your own life while keeping the lesson pattern intact.",
+      "korean": "schrijfoefening",
+      "english": "Write your own version after studying \"Op Koningsdag dragen veel mensen oranje.\". Keep the same grammatical job, then change the detail that makes the sentence true for you.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "Adapt the model to your own life while keeping the lesson pattern intact."
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-culture"
+      ],
+      "targetText": "gebruik en context",
+      "romanization": "",
+      "nativeText": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "pronunciation": "",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "“At Sinterklaas children receive gifts.”",
+      "korean": "gebruik en context",
+      "english": "Notice the directness, formality, or regional choice that changes how this Dutch is naturally used.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "“At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "eindtaak",
+      "romanization": "",
+      "nativeText": "Explain one Dutch holiday to a visitor.",
+      "pronunciation": "",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "Explain one Dutch holiday to a visitor.",
+      "korean": "eindtaak",
+      "english": "Explain one Dutch holiday to a visitor.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "Explain one Dutch holiday to a visitor."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "veelgemaakte fout",
+      "romanization": "",
+      "nativeText": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Met Sinterklaas krijgen kinderen cadeautjes.\" against the model.",
+      "pronunciation": "",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "Use the model to repair the likely mistake before it becomes automatic: “At Sinterklaas children receive gifts.”",
+      "korean": "veelgemaakte fout",
+      "english": "Watch for literal-translation mistakes around verb-second order, separable verbs, pronouns, and article choice. Begin by checking \"Met Sinterklaas krijgen kinderen cadeautjes.\" against the model.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "Use the model to repair the likely mistake before it becomes automatic: “At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "culture",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-culture"
+      ],
+      "targetText": "register",
+      "romanization": "",
+      "nativeText": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Op Koningsdag dragen veel mensen oranje.\" before reusing it elsewhere.",
+      "pronunciation": "",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "“On King’s Day many people wear orange.”",
+      "korean": "register",
+      "english": "Check whether the setting calls for jij, u, a service register, or a more relaxed everyday choice before selecting the final wording. Compare the social fit of \"Op Koningsdag dragen veel mensen oranje.\" before reusing it elsewhere.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "“On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "vloeiendheid",
+      "romanization": "",
+      "nativeText": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Dat is een oude traditie.\" as one thought.",
+      "pronunciation": "",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "“That is an old tradition.”",
+      "korean": "vloeiendheid",
+      "english": "Say the idea as one connected Dutch message rather than as separate translated fragments. Aim to carry \"Dat is een oude traditie.\" as one thought.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "“That is an old tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "toepassing",
+      "romanization": "",
+      "nativeText": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Op Koningsdag dragen veel mensen oranje.\" and move it into your own life.",
+      "pronunciation": "",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the form.",
+      "korean": "toepassing",
+      "english": "Move the lesson pattern into a new personal situation while preserving the same grammatical job and social tone. Start from \"Op Koningsdag dragen veel mensen oranje.\" and move it into your own life.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the form."
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-grammar-1"
+      ],
+      "targetText": "actief ophalen",
+      "romanization": "",
+      "nativeText": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Koningsdag\" before looking back.",
+      "pronunciation": "",
+      "exampleTarget": "Koningsdag",
+      "exampleNative": "King’s Day, one of the most visible Dutch national celebrations.",
+      "korean": "actief ophalen",
+      "english": "Retrieve the key form from memory before rereading the model; retrieval is where durable control begins. Begin with \"Koningsdag\" before looking back.",
+      "example": "Koningsdag",
+      "exampleEnglish": "King’s Day, one of the most visible Dutch national celebrations."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "uitbreiding",
+      "romanization": "",
+      "nativeText": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Dat is een oude traditie.\" rather than restarting from a blank sentence.",
+      "pronunciation": "",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "A strong answer usually says one useful thing more than the minimum.",
+      "korean": "uitbreiding",
+      "english": "Extend the answer with one cause, contrast, time marker, or social detail so the language becomes useful beyond a single memorized line. Extend from \"Dat is een oude traditie.\" rather than restarting from a blank sentence.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "A strong answer usually says one useful thing more than the minimum."
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading"
+      ],
+      "targetText": "vergelijking",
+      "romanization": "",
+      "nativeText": "Compare the central form in Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Met Sinterklaas krijgen kinderen cadeautjes.\" as the comparison line.",
+      "pronunciation": "",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "“At Sinterklaas children receive gifts.”",
+      "korean": "vergelijking",
+      "english": "Compare the central form in Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with the closest nearby alternative so the learner knows not only what to say, but why this wording wins here. Use \"Met Sinterklaas krijgen kinderen cadeautjes.\" as the comparison line.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "“At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "pronunciation",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-pronunciation"
+      ],
+      "targetText": "uitspraakcorrectie",
+      "romanization": "",
+      "nativeText": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Op Koningsdag dragen veel mensen oranje.\".",
+      "pronunciation": "",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "“On King’s Day many people wear orange.”",
+      "korean": "uitspraakcorrectie",
+      "english": "Keep Dutch vowel contrasts, guttural consonants, word stress, and connected speech clear enough that the sentence remains easy to follow. In this lesson, listen especially while saying \"Op Koningsdag dragen veel mensen oranje.\".",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "“On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "conversation",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "dialoogvariatie",
+      "romanization": "",
+      "nativeText": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Dat is een oude traditie.\".",
+      "pronunciation": "",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "“That is an old tradition.”",
+      "korean": "dialoogvariatie",
+      "english": "Change one participant, one setting, and one detail while keeping the lesson form natural. Begin from \"Dat is een oude traditie.\".",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "“That is an old tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-writing"
+      ],
+      "targetText": "zinsbouw",
+      "romanization": "",
+      "nativeText": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Op Koningsdag dragen veel mensen oranje.\" one layer at a time.",
+      "pronunciation": "",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "“On King’s Day many people wear orange.”",
+      "korean": "zinsbouw",
+      "english": "Build the sentence in layers: anchor phrase first, grammar carrier next, then the detail that makes it personal. Rebuild \"Op Koningsdag dragen veel mensen oranje.\" one layer at a time.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "“On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-2"
+      ],
+      "targetText": "snelle check",
+      "romanization": "",
+      "nativeText": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Met Sinterklaas krijgen kinderen cadeautjes.\" as the deciding example.",
+      "pronunciation": "",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "“At Sinterklaas children receive gifts.”",
+      "korean": "snelle check",
+      "english": "Choose the better of two nearby forms and say aloud what clue made the decision. Use \"Met Sinterklaas krijgen kinderen cadeautjes.\" as the deciding example.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "“At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-culture",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "terugblik",
+      "romanization": "",
+      "nativeText": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Dat is een oude traditie.\".",
+      "pronunciation": "",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "“That is an old tradition.”",
+      "korean": "terugblik",
+      "english": "Name the one feature from this lesson that would most easily betray literal translation if ignored. Finish by testing that idea against \"Dat is een oude traditie.\".",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "“That is an old tradition.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "KOH-nings-dakh",
+      "nativeText": "King’s Day, one of the most visible Dutch national celebrations.",
+      "pronunciation": "KOH-nings-dakh",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "“On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "King’s Day, one of the most visible Dutch national celebrations.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "“On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Op Koningsdag dragen veel mensen oranje.",
+      "romanization": "KOH-nings-dakh",
+      "nativeText": "Model use for \"Op Koningsdag dragen veel mensen oranje.\": “On King’s Day many people wear orange.”",
+      "pronunciation": "KOH-nings-dakh",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "“On King’s Day many people wear orange.”",
+      "korean": "Op Koningsdag dragen veel mensen oranje.",
+      "english": "Model use for \"Op Koningsdag dragen veel mensen oranje.\": “On King’s Day many people wear orange.”",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "“On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "KOH-nings-dakh",
+      "nativeText": "Usage focus for \"Koningsdag\": Use the key language of Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "KOH-nings-dakh",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "Notice what the form is doing here: “On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "Usage focus for \"Koningsdag\": Use the key language of Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "Notice what the form is doing here: “On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "KOH-nings-dakh",
+      "nativeText": "Contrast check for \"Koningsdag\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "KOH-nings-dakh",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "Contrast check for \"Koningsdag\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "KOH-nings-dakh",
+      "nativeText": "Recall \"Koningsdag\" from memory, then explain what would change if a nearby alternative replaced it in \"Op Koningsdag dragen veel mensen oranje.\".",
+      "pronunciation": "KOH-nings-dakh",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "Self-check against the model before moving on: “On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "Recall \"Koningsdag\" from memory, then explain what would change if a nearby alternative replaced it in \"Op Koningsdag dragen veel mensen oranje.\".",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "Self-check against the model before moving on: “On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "KOH-nings-dakh",
+      "nativeText": "Repair \"Koningsdag\" inside \"Op Koningsdag dragen veel mensen oranje.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with the register and setting that the lesson requires.",
+      "pronunciation": "KOH-nings-dakh",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "Use the model as the repair target: “On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "Repair \"Koningsdag\" inside \"Op Koningsdag dragen veel mensen oranje.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Use the key language of Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays with the register and setting that the lesson requires.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "Use the model as the repair target: “On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "KOH-nings-dakh",
+      "nativeText": "Transfer \"Koningsdag\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Op Koningsdag dragen veel mensen oranje.\".",
+      "pronunciation": "KOH-nings-dakh",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "Transfer \"Koningsdag\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Op Koningsdag dragen veel mensen oranje.\".",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "KOH-nings-dakh",
+      "nativeText": "Find one word or phrase that naturally travels with \"Koningsdag\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "KOH-nings-dakh",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "Find one word or phrase that naturally travels with \"Koningsdag\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "KOH-nings-dakh",
+      "nativeText": "Listen for \"Koningsdag\" inside \"Op Koningsdag dragen veel mensen oranje.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "KOH-nings-dakh",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "Listen for \"Koningsdag\" inside \"Op Koningsdag dragen veel mensen oranje.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "KOH-nings-dakh",
+      "nativeText": "Write \"Koningsdag\" again without looking, then compare the exact written form against \"Op Koningsdag dragen veel mensen oranje.\" before moving on.",
+      "pronunciation": "KOH-nings-dakh",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "Use the written model as the final correctness check: “On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "Write \"Koningsdag\" again without looking, then compare the exact written form against \"Op Koningsdag dragen veel mensen oranje.\" before moving on.",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "Use the written model as the final correctness check: “On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Koningsdag",
+      "romanization": "KOH-nings-dakh",
+      "nativeText": "Check whether \"Koningsdag\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “On King’s Day many people wear orange.”",
+      "pronunciation": "KOH-nings-dakh",
+      "exampleTarget": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “On King’s Day many people wear orange.”",
+      "korean": "Koningsdag",
+      "english": "Check whether \"Koningsdag\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “On King’s Day many people wear orange.”",
+      "example": "Op Koningsdag dragen veel mensen oranje.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “On King’s Day many people wear orange.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "SIN-ter-klahs",
+      "nativeText": "A major December tradition involving gifts, poems, and family rituals.",
+      "pronunciation": "SIN-ter-klahs",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "“At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "A major December tradition involving gifts, poems, and family rituals.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "“At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "romanization": "SIN-ter-klahs",
+      "nativeText": "Model use for \"Met Sinterklaas krijgen kinderen cadeautjes.\": “At Sinterklaas children receive gifts.”",
+      "pronunciation": "SIN-ter-klahs",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "“At Sinterklaas children receive gifts.”",
+      "korean": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "english": "Model use for \"Met Sinterklaas krijgen kinderen cadeautjes.\": “At Sinterklaas children receive gifts.”",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "“At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "SIN-ter-klahs",
+      "nativeText": "Usage focus for \"Sinterklaas\": Distinguish the nearby wording choices that make Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "SIN-ter-klahs",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "Notice what the form is doing here: “At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "Usage focus for \"Sinterklaas\": Distinguish the nearby wording choices that make Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "Notice what the form is doing here: “At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "SIN-ter-klahs",
+      "nativeText": "Contrast check for \"Sinterklaas\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "SIN-ter-klahs",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "Contrast check for \"Sinterklaas\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "SIN-ter-klahs",
+      "nativeText": "Recall \"Sinterklaas\" from memory, then explain what would change if a nearby alternative replaced it in \"Met Sinterklaas krijgen kinderen cadeautjes.\".",
+      "pronunciation": "SIN-ter-klahs",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "Self-check against the model before moving on: “At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "Recall \"Sinterklaas\" from memory, then explain what would change if a nearby alternative replaced it in \"Met Sinterklaas krijgen kinderen cadeautjes.\".",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "Self-check against the model before moving on: “At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "SIN-ter-klahs",
+      "nativeText": "Repair \"Sinterklaas\" inside \"Met Sinterklaas krijgen kinderen cadeautjes.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays sound precise rather than merely understandable.",
+      "pronunciation": "SIN-ter-klahs",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "Use the model as the repair target: “At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "Repair \"Sinterklaas\" inside \"Met Sinterklaas krijgen kinderen cadeautjes.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: Distinguish the nearby wording choices that make Level 1 · Unit 19: Feestdagen en Tradities — Cultural Holidays sound precise rather than merely understandable.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "Use the model as the repair target: “At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "SIN-ter-klahs",
+      "nativeText": "Transfer \"Sinterklaas\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Met Sinterklaas krijgen kinderen cadeautjes.\".",
+      "pronunciation": "SIN-ter-klahs",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "Transfer \"Sinterklaas\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Met Sinterklaas krijgen kinderen cadeautjes.\".",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "SIN-ter-klahs",
+      "nativeText": "Find one word or phrase that naturally travels with \"Sinterklaas\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "SIN-ter-klahs",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "Find one word or phrase that naturally travels with \"Sinterklaas\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "SIN-ter-klahs",
+      "nativeText": "Listen for \"Sinterklaas\" inside \"Met Sinterklaas krijgen kinderen cadeautjes.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "SIN-ter-klahs",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "Listen for \"Sinterklaas\" inside \"Met Sinterklaas krijgen kinderen cadeautjes.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "SIN-ter-klahs",
+      "nativeText": "Write \"Sinterklaas\" again without looking, then compare the exact written form against \"Met Sinterklaas krijgen kinderen cadeautjes.\" before moving on.",
+      "pronunciation": "SIN-ter-klahs",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "Use the written model as the final correctness check: “At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "Write \"Sinterklaas\" again without looking, then compare the exact written form against \"Met Sinterklaas krijgen kinderen cadeautjes.\" before moving on.",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Sinterklaas",
+      "romanization": "SIN-ter-klahs",
+      "nativeText": "Check whether \"Sinterklaas\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Sinterklaas children receive gifts.”",
+      "pronunciation": "SIN-ter-klahs",
+      "exampleTarget": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At Sinterklaas children receive gifts.”",
+      "korean": "Sinterklaas",
+      "english": "Check whether \"Sinterklaas\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Sinterklaas children receive gifts.”",
+      "example": "Met Sinterklaas krijgen kinderen cadeautjes.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At Sinterklaas children receive gifts.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kerstmis",
+      "romanization": "KERST-mis",
+      "nativeText": "“Christmas.” A major family holiday.",
+      "pronunciation": "KERST-mis",
+      "exampleTarget": "Met Kerstmis eten families samen.",
+      "exampleNative": "“At Christmas families eat together.”",
+      "korean": "Kerstmis",
+      "english": "“Christmas.” A major family holiday.",
+      "example": "Met Kerstmis eten families samen.",
+      "exampleEnglish": "“At Christmas families eat together.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Met Kerstmis eten families samen.",
+      "romanization": "KERST-mis",
+      "nativeText": "Model use for \"Met Kerstmis eten families samen.\": “At Christmas families eat together.”",
+      "pronunciation": "KERST-mis",
+      "exampleTarget": "Met Kerstmis eten families samen.",
+      "exampleNative": "“At Christmas families eat together.”",
+      "korean": "Met Kerstmis eten families samen.",
+      "english": "Model use for \"Met Kerstmis eten families samen.\": “At Christmas families eat together.”",
+      "example": "Met Kerstmis eten families samen.",
+      "exampleEnglish": "“At Christmas families eat together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kerstmis",
+      "romanization": "KERST-mis",
+      "nativeText": "Usage focus for \"Kerstmis\": “Christmas.” A major family holiday.",
+      "pronunciation": "KERST-mis",
+      "exampleTarget": "Met Kerstmis eten families samen.",
+      "exampleNative": "Notice what the form is doing here: “At Christmas families eat together.”",
+      "korean": "Kerstmis",
+      "english": "Usage focus for \"Kerstmis\": “Christmas.” A major family holiday.",
+      "example": "Met Kerstmis eten families samen.",
+      "exampleEnglish": "Notice what the form is doing here: “At Christmas families eat together.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kerstmis",
+      "romanization": "KERST-mis",
+      "nativeText": "Contrast check for \"Kerstmis\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "KERST-mis",
+      "exampleTarget": "Met Kerstmis eten families samen.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Christmas families eat together.”",
+      "korean": "Kerstmis",
+      "english": "Contrast check for \"Kerstmis\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Met Kerstmis eten families samen.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At Christmas families eat together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kerstmis",
+      "romanization": "KERST-mis",
+      "nativeText": "Recall \"Kerstmis\" from memory, then explain what would change if a nearby alternative replaced it in \"Met Kerstmis eten families samen.\".",
+      "pronunciation": "KERST-mis",
+      "exampleTarget": "Met Kerstmis eten families samen.",
+      "exampleNative": "Self-check against the model before moving on: “At Christmas families eat together.”",
+      "korean": "Kerstmis",
+      "english": "Recall \"Kerstmis\" from memory, then explain what would change if a nearby alternative replaced it in \"Met Kerstmis eten families samen.\".",
+      "example": "Met Kerstmis eten families samen.",
+      "exampleEnglish": "Self-check against the model before moving on: “At Christmas families eat together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kerstmis",
+      "romanization": "KERST-mis",
+      "nativeText": "Repair \"Kerstmis\" inside \"Met Kerstmis eten families samen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Christmas.” A major family holiday.",
+      "pronunciation": "KERST-mis",
+      "exampleTarget": "Met Kerstmis eten families samen.",
+      "exampleNative": "Use the model as the repair target: “At Christmas families eat together.”",
+      "korean": "Kerstmis",
+      "english": "Repair \"Kerstmis\" inside \"Met Kerstmis eten families samen.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Christmas.” A major family holiday.",
+      "example": "Met Kerstmis eten families samen.",
+      "exampleEnglish": "Use the model as the repair target: “At Christmas families eat together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kerstmis",
+      "romanization": "KERST-mis",
+      "nativeText": "Transfer \"Kerstmis\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Met Kerstmis eten families samen.\".",
+      "pronunciation": "KERST-mis",
+      "exampleTarget": "Met Kerstmis eten families samen.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Christmas families eat together.”",
+      "korean": "Kerstmis",
+      "english": "Transfer \"Kerstmis\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Met Kerstmis eten families samen.\".",
+      "example": "Met Kerstmis eten families samen.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At Christmas families eat together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kerstmis",
+      "romanization": "KERST-mis",
+      "nativeText": "Find one word or phrase that naturally travels with \"Kerstmis\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "KERST-mis",
+      "exampleTarget": "Met Kerstmis eten families samen.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At Christmas families eat together.”",
+      "korean": "Kerstmis",
+      "english": "Find one word or phrase that naturally travels with \"Kerstmis\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Met Kerstmis eten families samen.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At Christmas families eat together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kerstmis",
+      "romanization": "KERST-mis",
+      "nativeText": "Listen for \"Kerstmis\" inside \"Met Kerstmis eten families samen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "KERST-mis",
+      "exampleTarget": "Met Kerstmis eten families samen.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Christmas families eat together.”",
+      "korean": "Kerstmis",
+      "english": "Listen for \"Kerstmis\" inside \"Met Kerstmis eten families samen.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Met Kerstmis eten families samen.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At Christmas families eat together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kerstmis",
+      "romanization": "KERST-mis",
+      "nativeText": "Write \"Kerstmis\" again without looking, then compare the exact written form against \"Met Kerstmis eten families samen.\" before moving on.",
+      "pronunciation": "KERST-mis",
+      "exampleTarget": "Met Kerstmis eten families samen.",
+      "exampleNative": "Use the written model as the final correctness check: “At Christmas families eat together.”",
+      "korean": "Kerstmis",
+      "english": "Write \"Kerstmis\" again without looking, then compare the exact written form against \"Met Kerstmis eten families samen.\" before moving on.",
+      "example": "Met Kerstmis eten families samen.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At Christmas families eat together.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Kerstmis",
+      "romanization": "KERST-mis",
+      "nativeText": "Check whether \"Kerstmis\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Christmas families eat together.”",
+      "pronunciation": "KERST-mis",
+      "exampleTarget": "Met Kerstmis eten families samen.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At Christmas families eat together.”",
+      "korean": "Kerstmis",
+      "english": "Check whether \"Kerstmis\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At Christmas families eat together.”",
+      "example": "Met Kerstmis eten families samen.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At Christmas families eat together.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Nieuwjaar",
+      "romanization": "NYU-yahr",
+      "nativeText": "“New Year.” Fireworks and greetings are common associations.",
+      "pronunciation": "NYU-yahr",
+      "exampleTarget": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleNative": "“At New Year we wish each other happiness.”",
+      "korean": "Nieuwjaar",
+      "english": "“New Year.” Fireworks and greetings are common associations.",
+      "example": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleEnglish": "“At New Year we wish each other happiness.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Met Nieuwjaar wensen we elkaar geluk.",
+      "romanization": "NYU-yahr",
+      "nativeText": "Model use for \"Met Nieuwjaar wensen we elkaar geluk.\": “At New Year we wish each other happiness.”",
+      "pronunciation": "NYU-yahr",
+      "exampleTarget": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleNative": "“At New Year we wish each other happiness.”",
+      "korean": "Met Nieuwjaar wensen we elkaar geluk.",
+      "english": "Model use for \"Met Nieuwjaar wensen we elkaar geluk.\": “At New Year we wish each other happiness.”",
+      "example": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleEnglish": "“At New Year we wish each other happiness.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Nieuwjaar",
+      "romanization": "NYU-yahr",
+      "nativeText": "Usage focus for \"Nieuwjaar\": “New Year.” Fireworks and greetings are common associations.",
+      "pronunciation": "NYU-yahr",
+      "exampleTarget": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleNative": "Notice what the form is doing here: “At New Year we wish each other happiness.”",
+      "korean": "Nieuwjaar",
+      "english": "Usage focus for \"Nieuwjaar\": “New Year.” Fireworks and greetings are common associations.",
+      "example": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleEnglish": "Notice what the form is doing here: “At New Year we wish each other happiness.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Nieuwjaar",
+      "romanization": "NYU-yahr",
+      "nativeText": "Contrast check for \"Nieuwjaar\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "NYU-yahr",
+      "exampleTarget": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At New Year we wish each other happiness.”",
+      "korean": "Nieuwjaar",
+      "english": "Contrast check for \"Nieuwjaar\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “At New Year we wish each other happiness.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Nieuwjaar",
+      "romanization": "NYU-yahr",
+      "nativeText": "Recall \"Nieuwjaar\" from memory, then explain what would change if a nearby alternative replaced it in \"Met Nieuwjaar wensen we elkaar geluk.\".",
+      "pronunciation": "NYU-yahr",
+      "exampleTarget": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleNative": "Self-check against the model before moving on: “At New Year we wish each other happiness.”",
+      "korean": "Nieuwjaar",
+      "english": "Recall \"Nieuwjaar\" from memory, then explain what would change if a nearby alternative replaced it in \"Met Nieuwjaar wensen we elkaar geluk.\".",
+      "example": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleEnglish": "Self-check against the model before moving on: “At New Year we wish each other happiness.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Nieuwjaar",
+      "romanization": "NYU-yahr",
+      "nativeText": "Repair \"Nieuwjaar\" inside \"Met Nieuwjaar wensen we elkaar geluk.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “New Year.” Fireworks and greetings are common associations.",
+      "pronunciation": "NYU-yahr",
+      "exampleTarget": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleNative": "Use the model as the repair target: “At New Year we wish each other happiness.”",
+      "korean": "Nieuwjaar",
+      "english": "Repair \"Nieuwjaar\" inside \"Met Nieuwjaar wensen we elkaar geluk.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “New Year.” Fireworks and greetings are common associations.",
+      "example": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleEnglish": "Use the model as the repair target: “At New Year we wish each other happiness.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Nieuwjaar",
+      "romanization": "NYU-yahr",
+      "nativeText": "Transfer \"Nieuwjaar\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Met Nieuwjaar wensen we elkaar geluk.\".",
+      "pronunciation": "NYU-yahr",
+      "exampleTarget": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “At New Year we wish each other happiness.”",
+      "korean": "Nieuwjaar",
+      "english": "Transfer \"Nieuwjaar\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Met Nieuwjaar wensen we elkaar geluk.\".",
+      "example": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “At New Year we wish each other happiness.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Nieuwjaar",
+      "romanization": "NYU-yahr",
+      "nativeText": "Find one word or phrase that naturally travels with \"Nieuwjaar\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "NYU-yahr",
+      "exampleTarget": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “At New Year we wish each other happiness.”",
+      "korean": "Nieuwjaar",
+      "english": "Find one word or phrase that naturally travels with \"Nieuwjaar\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “At New Year we wish each other happiness.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Nieuwjaar",
+      "romanization": "NYU-yahr",
+      "nativeText": "Listen for \"Nieuwjaar\" inside \"Met Nieuwjaar wensen we elkaar geluk.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "NYU-yahr",
+      "exampleTarget": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At New Year we wish each other happiness.”",
+      "korean": "Nieuwjaar",
+      "english": "Listen for \"Nieuwjaar\" inside \"Met Nieuwjaar wensen we elkaar geluk.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “At New Year we wish each other happiness.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Nieuwjaar",
+      "romanization": "NYU-yahr",
+      "nativeText": "Write \"Nieuwjaar\" again without looking, then compare the exact written form against \"Met Nieuwjaar wensen we elkaar geluk.\" before moving on.",
+      "pronunciation": "NYU-yahr",
+      "exampleTarget": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleNative": "Use the written model as the final correctness check: “At New Year we wish each other happiness.”",
+      "korean": "Nieuwjaar",
+      "english": "Write \"Nieuwjaar\" again without looking, then compare the exact written form against \"Met Nieuwjaar wensen we elkaar geluk.\" before moving on.",
+      "example": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleEnglish": "Use the written model as the final correctness check: “At New Year we wish each other happiness.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Nieuwjaar",
+      "romanization": "NYU-yahr",
+      "nativeText": "Check whether \"Nieuwjaar\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At New Year we wish each other happiness.”",
+      "pronunciation": "NYU-yahr",
+      "exampleTarget": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “At New Year we wish each other happiness.”",
+      "korean": "Nieuwjaar",
+      "english": "Check whether \"Nieuwjaar\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “At New Year we wish each other happiness.”",
+      "example": "Met Nieuwjaar wensen we elkaar geluk.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “At New Year we wish each other happiness.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "meestal",
+      "romanization": "MAY-stal",
+      "nativeText": "“Usually.” A useful word for customs.",
+      "pronunciation": "MAY-stal",
+      "exampleTarget": "Meestal bezoeken we familie.",
+      "exampleNative": "“Usually we visit family.”",
+      "korean": "meestal",
+      "english": "“Usually.” A useful word for customs.",
+      "example": "Meestal bezoeken we familie.",
+      "exampleEnglish": "“Usually we visit family.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Meestal bezoeken we familie.",
+      "romanization": "MAY-stal",
+      "nativeText": "Model use for \"Meestal bezoeken we familie.\": “Usually we visit family.”",
+      "pronunciation": "MAY-stal",
+      "exampleTarget": "Meestal bezoeken we familie.",
+      "exampleNative": "“Usually we visit family.”",
+      "korean": "Meestal bezoeken we familie.",
+      "english": "Model use for \"Meestal bezoeken we familie.\": “Usually we visit family.”",
+      "example": "Meestal bezoeken we familie.",
+      "exampleEnglish": "“Usually we visit family.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "meestal",
+      "romanization": "MAY-stal",
+      "nativeText": "Usage focus for \"meestal\": “Usually.” A useful word for customs.",
+      "pronunciation": "MAY-stal",
+      "exampleTarget": "Meestal bezoeken we familie.",
+      "exampleNative": "Notice what the form is doing here: “Usually we visit family.”",
+      "korean": "meestal",
+      "english": "Usage focus for \"meestal\": “Usually.” A useful word for customs.",
+      "example": "Meestal bezoeken we familie.",
+      "exampleEnglish": "Notice what the form is doing here: “Usually we visit family.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "meestal",
+      "romanization": "MAY-stal",
+      "nativeText": "Contrast check for \"meestal\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "MAY-stal",
+      "exampleTarget": "Meestal bezoeken we familie.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Usually we visit family.”",
+      "korean": "meestal",
+      "english": "Contrast check for \"meestal\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Meestal bezoeken we familie.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Usually we visit family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "meestal",
+      "romanization": "MAY-stal",
+      "nativeText": "Recall \"meestal\" from memory, then explain what would change if a nearby alternative replaced it in \"Meestal bezoeken we familie.\".",
+      "pronunciation": "MAY-stal",
+      "exampleTarget": "Meestal bezoeken we familie.",
+      "exampleNative": "Self-check against the model before moving on: “Usually we visit family.”",
+      "korean": "meestal",
+      "english": "Recall \"meestal\" from memory, then explain what would change if a nearby alternative replaced it in \"Meestal bezoeken we familie.\".",
+      "example": "Meestal bezoeken we familie.",
+      "exampleEnglish": "Self-check against the model before moving on: “Usually we visit family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "meestal",
+      "romanization": "MAY-stal",
+      "nativeText": "Repair \"meestal\" inside \"Meestal bezoeken we familie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Usually.” A useful word for customs.",
+      "pronunciation": "MAY-stal",
+      "exampleTarget": "Meestal bezoeken we familie.",
+      "exampleNative": "Use the model as the repair target: “Usually we visit family.”",
+      "korean": "meestal",
+      "english": "Repair \"meestal\" inside \"Meestal bezoeken we familie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Usually.” A useful word for customs.",
+      "example": "Meestal bezoeken we familie.",
+      "exampleEnglish": "Use the model as the repair target: “Usually we visit family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "meestal",
+      "romanization": "MAY-stal",
+      "nativeText": "Transfer \"meestal\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Meestal bezoeken we familie.\".",
+      "pronunciation": "MAY-stal",
+      "exampleTarget": "Meestal bezoeken we familie.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Usually we visit family.”",
+      "korean": "meestal",
+      "english": "Transfer \"meestal\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Meestal bezoeken we familie.\".",
+      "example": "Meestal bezoeken we familie.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Usually we visit family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "meestal",
+      "romanization": "MAY-stal",
+      "nativeText": "Find one word or phrase that naturally travels with \"meestal\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "MAY-stal",
+      "exampleTarget": "Meestal bezoeken we familie.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Usually we visit family.”",
+      "korean": "meestal",
+      "english": "Find one word or phrase that naturally travels with \"meestal\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Meestal bezoeken we familie.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Usually we visit family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "meestal",
+      "romanization": "MAY-stal",
+      "nativeText": "Listen for \"meestal\" inside \"Meestal bezoeken we familie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "MAY-stal",
+      "exampleTarget": "Meestal bezoeken we familie.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Usually we visit family.”",
+      "korean": "meestal",
+      "english": "Listen for \"meestal\" inside \"Meestal bezoeken we familie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Meestal bezoeken we familie.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Usually we visit family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "meestal",
+      "romanization": "MAY-stal",
+      "nativeText": "Write \"meestal\" again without looking, then compare the exact written form against \"Meestal bezoeken we familie.\" before moving on.",
+      "pronunciation": "MAY-stal",
+      "exampleTarget": "Meestal bezoeken we familie.",
+      "exampleNative": "Use the written model as the final correctness check: “Usually we visit family.”",
+      "korean": "meestal",
+      "english": "Write \"meestal\" again without looking, then compare the exact written form against \"Meestal bezoeken we familie.\" before moving on.",
+      "example": "Meestal bezoeken we familie.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Usually we visit family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "meestal",
+      "romanization": "MAY-stal",
+      "nativeText": "Check whether \"meestal\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Usually we visit family.”",
+      "pronunciation": "MAY-stal",
+      "exampleTarget": "Meestal bezoeken we familie.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Usually we visit family.”",
+      "korean": "meestal",
+      "english": "Check whether \"meestal\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Usually we visit family.”",
+      "example": "Meestal bezoeken we familie.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Usually we visit family.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "vieren",
+      "romanization": "FEE-ren",
+      "nativeText": "“To celebrate.” A central holiday verb.",
+      "pronunciation": "FEE-ren",
+      "exampleTarget": "Hoe vieren jullie Kerstmis?",
+      "exampleNative": "“How do you celebrate Christmas?”",
+      "korean": "vieren",
+      "english": "“To celebrate.” A central holiday verb.",
+      "example": "Hoe vieren jullie Kerstmis?",
+      "exampleEnglish": "“How do you celebrate Christmas?”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Hoe vieren jullie Kerstmis?",
+      "romanization": "FEE-ren",
+      "nativeText": "Model use for \"Hoe vieren jullie Kerstmis?\": “How do you celebrate Christmas?”",
+      "pronunciation": "FEE-ren",
+      "exampleTarget": "Hoe vieren jullie Kerstmis?",
+      "exampleNative": "“How do you celebrate Christmas?”",
+      "korean": "Hoe vieren jullie Kerstmis?",
+      "english": "Model use for \"Hoe vieren jullie Kerstmis?\": “How do you celebrate Christmas?”",
+      "example": "Hoe vieren jullie Kerstmis?",
+      "exampleEnglish": "“How do you celebrate Christmas?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "vieren",
+      "romanization": "FEE-ren",
+      "nativeText": "Usage focus for \"vieren\": “To celebrate.” A central holiday verb.",
+      "pronunciation": "FEE-ren",
+      "exampleTarget": "Hoe vieren jullie Kerstmis?",
+      "exampleNative": "Notice what the form is doing here: “How do you celebrate Christmas?”",
+      "korean": "vieren",
+      "english": "Usage focus for \"vieren\": “To celebrate.” A central holiday verb.",
+      "example": "Hoe vieren jullie Kerstmis?",
+      "exampleEnglish": "Notice what the form is doing here: “How do you celebrate Christmas?”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "vieren",
+      "romanization": "FEE-ren",
+      "nativeText": "Contrast check for \"vieren\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "FEE-ren",
+      "exampleTarget": "Hoe vieren jullie Kerstmis?",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do you celebrate Christmas?”",
+      "korean": "vieren",
+      "english": "Contrast check for \"vieren\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Hoe vieren jullie Kerstmis?",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “How do you celebrate Christmas?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "vieren",
+      "romanization": "FEE-ren",
+      "nativeText": "Recall \"vieren\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoe vieren jullie Kerstmis?\".",
+      "pronunciation": "FEE-ren",
+      "exampleTarget": "Hoe vieren jullie Kerstmis?",
+      "exampleNative": "Self-check against the model before moving on: “How do you celebrate Christmas?”",
+      "korean": "vieren",
+      "english": "Recall \"vieren\" from memory, then explain what would change if a nearby alternative replaced it in \"Hoe vieren jullie Kerstmis?\".",
+      "example": "Hoe vieren jullie Kerstmis?",
+      "exampleEnglish": "Self-check against the model before moving on: “How do you celebrate Christmas?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "vieren",
+      "romanization": "FEE-ren",
+      "nativeText": "Repair \"vieren\" inside \"Hoe vieren jullie Kerstmis?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To celebrate.” A central holiday verb.",
+      "pronunciation": "FEE-ren",
+      "exampleTarget": "Hoe vieren jullie Kerstmis?",
+      "exampleNative": "Use the model as the repair target: “How do you celebrate Christmas?”",
+      "korean": "vieren",
+      "english": "Repair \"vieren\" inside \"Hoe vieren jullie Kerstmis?\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “To celebrate.” A central holiday verb.",
+      "example": "Hoe vieren jullie Kerstmis?",
+      "exampleEnglish": "Use the model as the repair target: “How do you celebrate Christmas?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "vieren",
+      "romanization": "FEE-ren",
+      "nativeText": "Transfer \"vieren\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoe vieren jullie Kerstmis?\".",
+      "pronunciation": "FEE-ren",
+      "exampleTarget": "Hoe vieren jullie Kerstmis?",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do you celebrate Christmas?”",
+      "korean": "vieren",
+      "english": "Transfer \"vieren\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Hoe vieren jullie Kerstmis?\".",
+      "example": "Hoe vieren jullie Kerstmis?",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “How do you celebrate Christmas?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "vieren",
+      "romanization": "FEE-ren",
+      "nativeText": "Find one word or phrase that naturally travels with \"vieren\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "FEE-ren",
+      "exampleTarget": "Hoe vieren jullie Kerstmis?",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “How do you celebrate Christmas?”",
+      "korean": "vieren",
+      "english": "Find one word or phrase that naturally travels with \"vieren\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Hoe vieren jullie Kerstmis?",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “How do you celebrate Christmas?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "vieren",
+      "romanization": "FEE-ren",
+      "nativeText": "Listen for \"vieren\" inside \"Hoe vieren jullie Kerstmis?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "FEE-ren",
+      "exampleTarget": "Hoe vieren jullie Kerstmis?",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do you celebrate Christmas?”",
+      "korean": "vieren",
+      "english": "Listen for \"vieren\" inside \"Hoe vieren jullie Kerstmis?\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Hoe vieren jullie Kerstmis?",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “How do you celebrate Christmas?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "vieren",
+      "romanization": "FEE-ren",
+      "nativeText": "Write \"vieren\" again without looking, then compare the exact written form against \"Hoe vieren jullie Kerstmis?\" before moving on.",
+      "pronunciation": "FEE-ren",
+      "exampleTarget": "Hoe vieren jullie Kerstmis?",
+      "exampleNative": "Use the written model as the final correctness check: “How do you celebrate Christmas?”",
+      "korean": "vieren",
+      "english": "Write \"vieren\" again without looking, then compare the exact written form against \"Hoe vieren jullie Kerstmis?\" before moving on.",
+      "example": "Hoe vieren jullie Kerstmis?",
+      "exampleEnglish": "Use the written model as the final correctness check: “How do you celebrate Christmas?”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "vieren",
+      "romanization": "FEE-ren",
+      "nativeText": "Check whether \"vieren\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do you celebrate Christmas?”",
+      "pronunciation": "FEE-ren",
+      "exampleTarget": "Hoe vieren jullie Kerstmis?",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “How do you celebrate Christmas?”",
+      "korean": "vieren",
+      "english": "Check whether \"vieren\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “How do you celebrate Christmas?”",
+      "example": "Hoe vieren jullie Kerstmis?",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “How do you celebrate Christmas?”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "fijne feestdagen",
+      "romanization": "FEY-nə FEEST-dah-khen",
+      "nativeText": "“Happy holidays.” A flexible seasonal greeting.",
+      "pronunciation": "FEY-nə FEEST-dah-khen",
+      "exampleTarget": "Fijne feestdagen voor jou en je familie.",
+      "exampleNative": "“Happy holidays to you and your family.”",
+      "korean": "fijne feestdagen",
+      "english": "“Happy holidays.” A flexible seasonal greeting.",
+      "example": "Fijne feestdagen voor jou en je familie.",
+      "exampleEnglish": "“Happy holidays to you and your family.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Fijne feestdagen voor jou en je familie.",
+      "romanization": "FEY-nə FEEST-dah-khen",
+      "nativeText": "Model use for \"Fijne feestdagen voor jou en je familie.\": “Happy holidays to you and your family.”",
+      "pronunciation": "FEY-nə FEEST-dah-khen",
+      "exampleTarget": "Fijne feestdagen voor jou en je familie.",
+      "exampleNative": "“Happy holidays to you and your family.”",
+      "korean": "Fijne feestdagen voor jou en je familie.",
+      "english": "Model use for \"Fijne feestdagen voor jou en je familie.\": “Happy holidays to you and your family.”",
+      "example": "Fijne feestdagen voor jou en je familie.",
+      "exampleEnglish": "“Happy holidays to you and your family.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "fijne feestdagen",
+      "romanization": "FEY-nə FEEST-dah-khen",
+      "nativeText": "Usage focus for \"fijne feestdagen\": “Happy holidays.” A flexible seasonal greeting.",
+      "pronunciation": "FEY-nə FEEST-dah-khen",
+      "exampleTarget": "Fijne feestdagen voor jou en je familie.",
+      "exampleNative": "Notice what the form is doing here: “Happy holidays to you and your family.”",
+      "korean": "fijne feestdagen",
+      "english": "Usage focus for \"fijne feestdagen\": “Happy holidays.” A flexible seasonal greeting.",
+      "example": "Fijne feestdagen voor jou en je familie.",
+      "exampleEnglish": "Notice what the form is doing here: “Happy holidays to you and your family.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "fijne feestdagen",
+      "romanization": "FEY-nə FEEST-dah-khen",
+      "nativeText": "Contrast check for \"fijne feestdagen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "FEY-nə FEEST-dah-khen",
+      "exampleTarget": "Fijne feestdagen voor jou en je familie.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Happy holidays to you and your family.”",
+      "korean": "fijne feestdagen",
+      "english": "Contrast check for \"fijne feestdagen\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Fijne feestdagen voor jou en je familie.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “Happy holidays to you and your family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "fijne feestdagen",
+      "romanization": "FEY-nə FEEST-dah-khen",
+      "nativeText": "Recall \"fijne feestdagen\" from memory, then explain what would change if a nearby alternative replaced it in \"Fijne feestdagen voor jou en je familie.\".",
+      "pronunciation": "FEY-nə FEEST-dah-khen",
+      "exampleTarget": "Fijne feestdagen voor jou en je familie.",
+      "exampleNative": "Self-check against the model before moving on: “Happy holidays to you and your family.”",
+      "korean": "fijne feestdagen",
+      "english": "Recall \"fijne feestdagen\" from memory, then explain what would change if a nearby alternative replaced it in \"Fijne feestdagen voor jou en je familie.\".",
+      "example": "Fijne feestdagen voor jou en je familie.",
+      "exampleEnglish": "Self-check against the model before moving on: “Happy holidays to you and your family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "fijne feestdagen",
+      "romanization": "FEY-nə FEEST-dah-khen",
+      "nativeText": "Repair \"fijne feestdagen\" inside \"Fijne feestdagen voor jou en je familie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Happy holidays.” A flexible seasonal greeting.",
+      "pronunciation": "FEY-nə FEEST-dah-khen",
+      "exampleTarget": "Fijne feestdagen voor jou en je familie.",
+      "exampleNative": "Use the model as the repair target: “Happy holidays to you and your family.”",
+      "korean": "fijne feestdagen",
+      "english": "Repair \"fijne feestdagen\" inside \"Fijne feestdagen voor jou en je familie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Happy holidays.” A flexible seasonal greeting.",
+      "example": "Fijne feestdagen voor jou en je familie.",
+      "exampleEnglish": "Use the model as the repair target: “Happy holidays to you and your family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "fijne feestdagen",
+      "romanization": "FEY-nə FEEST-dah-khen",
+      "nativeText": "Transfer \"fijne feestdagen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Fijne feestdagen voor jou en je familie.\".",
+      "pronunciation": "FEY-nə FEEST-dah-khen",
+      "exampleTarget": "Fijne feestdagen voor jou en je familie.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “Happy holidays to you and your family.”",
+      "korean": "fijne feestdagen",
+      "english": "Transfer \"fijne feestdagen\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Fijne feestdagen voor jou en je familie.\".",
+      "example": "Fijne feestdagen voor jou en je familie.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “Happy holidays to you and your family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "fijne feestdagen",
+      "romanization": "FEY-nə FEEST-dah-khen",
+      "nativeText": "Find one word or phrase that naturally travels with \"fijne feestdagen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "FEY-nə FEEST-dah-khen",
+      "exampleTarget": "Fijne feestdagen voor jou en je familie.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “Happy holidays to you and your family.”",
+      "korean": "fijne feestdagen",
+      "english": "Find one word or phrase that naturally travels with \"fijne feestdagen\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Fijne feestdagen voor jou en je familie.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “Happy holidays to you and your family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "fijne feestdagen",
+      "romanization": "FEY-nə FEEST-dah-khen",
+      "nativeText": "Listen for \"fijne feestdagen\" inside \"Fijne feestdagen voor jou en je familie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "FEY-nə FEEST-dah-khen",
+      "exampleTarget": "Fijne feestdagen voor jou en je familie.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Happy holidays to you and your family.”",
+      "korean": "fijne feestdagen",
+      "english": "Listen for \"fijne feestdagen\" inside \"Fijne feestdagen voor jou en je familie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Fijne feestdagen voor jou en je familie.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “Happy holidays to you and your family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "fijne feestdagen",
+      "romanization": "FEY-nə FEEST-dah-khen",
+      "nativeText": "Write \"fijne feestdagen\" again without looking, then compare the exact written form against \"Fijne feestdagen voor jou en je familie.\" before moving on.",
+      "pronunciation": "FEY-nə FEEST-dah-khen",
+      "exampleTarget": "Fijne feestdagen voor jou en je familie.",
+      "exampleNative": "Use the written model as the final correctness check: “Happy holidays to you and your family.”",
+      "korean": "fijne feestdagen",
+      "english": "Write \"fijne feestdagen\" again without looking, then compare the exact written form against \"Fijne feestdagen voor jou en je familie.\" before moving on.",
+      "example": "Fijne feestdagen voor jou en je familie.",
+      "exampleEnglish": "Use the written model as the final correctness check: “Happy holidays to you and your family.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "fijne feestdagen",
+      "romanization": "FEY-nə FEEST-dah-khen",
+      "nativeText": "Check whether \"fijne feestdagen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Happy holidays to you and your family.”",
+      "pronunciation": "FEY-nə FEEST-dah-khen",
+      "exampleTarget": "Fijne feestdagen voor jou en je familie.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “Happy holidays to you and your family.”",
+      "korean": "fijne feestdagen",
+      "english": "Check whether \"fijne feestdagen\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “Happy holidays to you and your family.”",
+      "example": "Fijne feestdagen voor jou en je familie.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “Happy holidays to you and your family.”"
+    },
+    {
+      "type": "word",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "traditie",
+      "romanization": "tra-DEE-see",
+      "nativeText": "“Tradition.” A useful bridge noun for cultural explanation.",
+      "pronunciation": "tra-DEE-see",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "“That is an old tradition.”",
+      "korean": "traditie",
+      "english": "“Tradition.” A useful bridge noun for cultural explanation.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "“That is an old tradition.”"
+    },
+    {
+      "type": "sentence",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "Dat is een oude traditie.",
+      "romanization": "tra-DEE-see",
+      "nativeText": "Model use for \"Dat is een oude traditie.\": “That is an old tradition.”",
+      "pronunciation": "tra-DEE-see",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "“That is an old tradition.”",
+      "korean": "Dat is een oude traditie.",
+      "english": "Model use for \"Dat is een oude traditie.\": “That is an old tradition.”",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "“That is an old tradition.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "traditie",
+      "romanization": "tra-DEE-see",
+      "nativeText": "Usage focus for \"traditie\": “Tradition.” A useful bridge noun for cultural explanation.",
+      "pronunciation": "tra-DEE-see",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "Notice what the form is doing here: “That is an old tradition.”",
+      "korean": "traditie",
+      "english": "Usage focus for \"traditie\": “Tradition.” A useful bridge noun for cultural explanation.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "Notice what the form is doing here: “That is an old tradition.”"
+    },
+    {
+      "type": "note",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "traditie",
+      "romanization": "tra-DEE-see",
+      "nativeText": "Contrast check for \"traditie\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "pronunciation": "tra-DEE-see",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is an old tradition.”",
+      "korean": "traditie",
+      "english": "Contrast check for \"traditie\": keep it when the intended meaning and setting match this lesson; do not choose it only because it resembles a word-for-word translation.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "The model shows the form inside a complete message rather than as an isolated dictionary item: “That is an old tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "traditie",
+      "romanization": "tra-DEE-see",
+      "nativeText": "Recall \"traditie\" from memory, then explain what would change if a nearby alternative replaced it in \"Dat is een oude traditie.\".",
+      "pronunciation": "tra-DEE-see",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "Self-check against the model before moving on: “That is an old tradition.”",
+      "korean": "traditie",
+      "english": "Recall \"traditie\" from memory, then explain what would change if a nearby alternative replaced it in \"Dat is een oude traditie.\".",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "Self-check against the model before moving on: “That is an old tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "traditie",
+      "romanization": "tra-DEE-see",
+      "nativeText": "Repair \"traditie\" inside \"Dat is een oude traditie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Tradition.” A useful bridge noun for cultural explanation.",
+      "pronunciation": "tra-DEE-see",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "Use the model as the repair target: “That is an old tradition.”",
+      "korean": "traditie",
+      "english": "Repair \"traditie\" inside \"Dat is een oude traditie.\" if the sentence starts sounding translated rather than natural. Use the note as the clue: “Tradition.” A useful bridge noun for cultural explanation.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "Use the model as the repair target: “That is an old tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "traditie",
+      "romanization": "tra-DEE-see",
+      "nativeText": "Transfer \"traditie\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dat is een oude traditie.\".",
+      "pronunciation": "tra-DEE-see",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is an old tradition.”",
+      "korean": "traditie",
+      "english": "Transfer \"traditie\" into one new personal sentence while preserving the same grammatical job and social tone shown by \"Dat is een oude traditie.\".",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "The learner should be able to leave the model behind without losing the point it demonstrates: “That is an old tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "traditie",
+      "romanization": "tra-DEE-see",
+      "nativeText": "Find one word or phrase that naturally travels with \"traditie\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "pronunciation": "tra-DEE-see",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "Use the model to notice what tends to appear beside the form: “That is an old tradition.”",
+      "korean": "traditie",
+      "english": "Find one word or phrase that naturally travels with \"traditie\" in this setting so it becomes usable language, not a stranded flashcard.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "Use the model to notice what tends to appear beside the form: “That is an old tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "traditie",
+      "romanization": "tra-DEE-see",
+      "nativeText": "Listen for \"traditie\" inside \"Dat is een oude traditie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "pronunciation": "tra-DEE-see",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is an old tradition.”",
+      "korean": "traditie",
+      "english": "Listen for \"traditie\" inside \"Dat is een oude traditie.\" and identify the smallest sound, ending, particle, or pronoun that carries the useful difference.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "The listening task is to catch the meaningful detail, not merely recognize the main vocabulary: “That is an old tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "traditie",
+      "romanization": "tra-DEE-see",
+      "nativeText": "Write \"traditie\" again without looking, then compare the exact written form against \"Dat is een oude traditie.\" before moving on.",
+      "pronunciation": "tra-DEE-see",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "Use the written model as the final correctness check: “That is an old tradition.”",
+      "korean": "traditie",
+      "english": "Write \"traditie\" again without looking, then compare the exact written form against \"Dat is een oude traditie.\" before moving on.",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "Use the written model as the final correctness check: “That is an old tradition.”"
+    },
+    {
+      "type": "practice",
+      "activityIds": [
+        "nl-level1unit19culturalholidays-vocabulary-1",
+        "nl-level1unit19culturalholidays-vocabulary-2",
+        "nl-level1unit19culturalholidays-grammar-1",
+        "nl-level1unit19culturalholidays-grammar-2",
+        "nl-level1unit19culturalholidays-reading",
+        "nl-level1unit19culturalholidays-listening",
+        "nl-level1unit19culturalholidays-writing",
+        "nl-level1unit19culturalholidays-task"
+      ],
+      "targetText": "traditie",
+      "romanization": "tra-DEE-see",
+      "nativeText": "Check whether \"traditie\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is an old tradition.”",
+      "pronunciation": "tra-DEE-see",
+      "exampleTarget": "Dat is een oude traditie.",
+      "exampleNative": "The meaning may survive a register shift, but the social fit may not: “That is an old tradition.”",
+      "korean": "traditie",
+      "english": "Check whether \"traditie\" would still fit with a friend, a stranger, and a professional counterpart. The example note gives the social clue: The meaning may survive a register shift, but the social fit may not: “That is an old tradition.”",
+      "example": "Dat is een oude traditie.",
+      "exampleEnglish": "The meaning may survive a register shift, but the social fit may not: “That is an old tradition.”"
+    }
+  ],
+  "targetLang": "nl",
+  "nativeLang": "en",
+  "track": "textbook"
+};
