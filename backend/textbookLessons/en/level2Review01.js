@@ -1,6 +1,6 @@
 module.exports = {
   "title": "Level 2 · Review 1 (Units 2-4)",
-  "category": "cross-topic",
+  "category": "review",
   "difficulty": "intermediate",
   "targetLang": "en",
   "nativeLang": "en",

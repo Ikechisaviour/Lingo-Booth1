@@ -13,23 +13,28 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid var(--border-light);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 26px rgba(36, 22, 11, 0.14);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, filter 0.2s ease;
 }
 
 .global-home-logo:hover,
 .global-home-logo:focus-visible {
   transform: translateY(-1px);
-  box-shadow: 0 14px 32px rgba(36, 22, 11, 0.18);
+  filter: drop-shadow(0 8px 14px rgba(36, 22, 11, 0.18));
 }
 
 .global-home-logo:focus-visible {
   outline: 3px solid var(--primary-light);
   outline-offset: 3px;
+}
+
+.global-home-logo .brand-logo-unit--mark {
+  width: 48px;
+  height: 48px;
 }
 
 .global-home-logo img {
@@ -45,9 +50,9 @@
     left: 10px;
     width: 48px;
     height: 48px;
-    border-radius: 12px;
   }
 
+  .global-home-logo .brand-logo-unit--mark,
   .global-home-logo img {
     width: 40px;
     height: 40px;

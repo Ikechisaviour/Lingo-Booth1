@@ -12,7 +12,10 @@
       "Bash(head *)",
       "Bash(tail *)",
       "PowerShell(Get-ChildItem *)",
-      "PowerShell(Get-Content *)"
+      "PowerShell(Get-Content *)",
+      "Bash(npm install *)",
+      "Bash(cd frontend *)",
+      "Read(//c/Users/Saviour ICT-CRC/Desktop/Personal Project/Personal Projects2/**)"
     ]
   }
 }

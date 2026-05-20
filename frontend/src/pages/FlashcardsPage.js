@@ -296,6 +296,18 @@ function FlashcardsPage() {
         if (cancelled) return;
       }
 
+      // Record the card as a hands-free recall so the XP decay timer resets
+      // for engaged listeners. Per backend xpRewards.js: hands_free awards
+      // 10% XP (currently 0 after floor) but still updates lastAnsweredAt
+      // because the event is active.
+      if (userId && card?._id) {
+        userService.recordLearningEvent(userId, {
+          eventType: 'flashcard_recall',
+          flashcardId: card._id,
+          mode: 'hands_free',
+        }).catch(() => {});
+      }
+
       // Pause before advancing — scale with text length for reading time
       const readingPause = Math.max(1500, (backText || '').split(/\s+/).length * 200);
       await speechService.waitAudio(readingPause);

@@ -77,7 +77,6 @@
     "reason": "कारण",
     "forgotPassword": "पासवर्ड भूल गए?",
     "googleFailed": "Google साइन-इन विफल रहा. कृपया पुन: प्रयास करें।",
-    "backToHome": "घर वापिस जा रहा हूँ",
     "sessionExpired": "आपका सत्र समाप्त हो गया. कृपया पुनः साइन इन करें."
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "एफ",
       "sat": "एस",
       "sun": "एस"
-    }
+    },
+    "supportAndPlans": "समर्थन और योजनाएँ"
   },
   "lessons": {
     "title": "{{language}} <1>पाठ</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "विविध सीखना",
     "diversifyLearningTip": "चारों कौशल का समान रूप से अभ्यास करें",
     "stayConsistent": "निरंतर रहें",
-    "stayConsistentTip": "सर्वोत्तम परिणामों के लिए हर दिन थोड़ा अध्ययन करें"
+    "stayConsistentTip": "सर्वोत्तम परिणामों के लिए हर दिन थोड़ा अध्ययन करें",
+    "analyticsMastered": "महारत हासिल",
+    "analyticsMasteredDetail": "वे वस्तुएँ जिन्हें आप अच्छी तरह संभाल सकते हैं",
+    "analyticsReviewDetail": "आज फिर से देखने लायक",
+    "analyticsActiveDaysDetail": "इस सप्ताह",
+    "analyticsSpeakingDetail": "हाल ही में आवाज अभ्यास",
+    "analyticsAria": "सीखने का विश्लेषण",
+    "analyticsKicker": "स्वास्थ्य सीखना",
+    "analyticsTitle": "आपकी गतिविधि हमें क्या बता रही है",
+    "analyticsSubtitle": "इसे गति, समीक्षा दबाव और अगले उपयोगी कदम पर एक सरल पढ़ने के रूप में उपयोग करें।",
+    "nextFocus": "अगला फोकस",
+    "keepBuilding": "गति बनाए रखें",
+    "nextFocusBody": "यह क्षेत्र अतिरिक्त अभ्यास के लिए स्पष्ट संकेत दिखा रहा है।",
+    "nextFocusEmptyBody": "थोड़ा और अभ्यास करें और यह और अधिक विशिष्ट हो जाएगा।",
+    "weeklyMomentum": "साप्ताहिक गति",
+    "weeklyMomentumDetail": "{{days}} सक्रिय दिन और {{sessions}} सत्र"
   },
   "profilePage": {
     "memberSince": "{{date}} से सदस्य",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "एक निर्देशित पाठ प्रारंभ करें",
     "firstThreeDayReviewBody": "आपने कल जो देखा उस पर एक बार लौटें ताकि पहली चीजें चिपकनी शुरू हो जाएं।",
     "firstThreeDaySpeakBody": "बोलने की छोटी बारी का उपयोग करें ताकि भाषा पृष्ठ को जल्दी छोड़ दे।",
-    "firstThreeDayLearnBody": "एक छोटे निर्देशित पाठ से शुरुआत करें ताकि जोड़ी के पास एक स्पष्ट प्रारंभिक बिंदु हो।"
+    "firstThreeDayLearnBody": "एक छोटे निर्देशित पाठ से शुरुआत करें ताकि जोड़ी के पास एक स्पष्ट प्रारंभिक बिंदु हो।",
+    "reviewSignalDetail": "{{count}} फिर से देखने लायक आइटम",
+    "weeklyPointsSignal": "साप्ताहिक अंक",
+    "sessionsCount": "{{count}} सत्र",
+    "activityThisWeek": "इस सप्ताह की गतिविधि",
+    "savedItemsThisWeek": "{{count}} इस सप्ताह बचाया गया",
+    "analyticsKicker": "सीखने के संकेत",
+    "analyticsTitle": "आपकी सीखने की तस्वीर",
+    "analyticsSubtitle": "आगे क्या करना है, किस चीज़ की समीक्षा की आवश्यकता है और आपका सप्ताह कैसा चल रहा है, इस पर एक त्वरित लेख पढ़ें।",
+    "viewFullProgress": "पूरी प्रगति देखें",
+    "nextActionSignalBody": "इसे आपकी नवीनतम कक्षा गतिविधि, समीक्षा कतार और वर्तमान भाषा-युग्म सेटअप से चुना जाता है।",
+    "startGuidedClass": "एक निर्देशित कक्षा प्रारंभ करें",
+    "pairSetupFriendlySummary": "{{level}} स्तर · {{goal}} लक्ष्य · {{pace}} गति",
+    "clearValue": "स्पष्ट",
+    "reviewClearDetail": "अभी कुछ भी बकाया नहीं है. एक वर्ग या सहेजे गए वाक्यांश के साथ कतार बनाएं।",
+    "weeklyPointsEmpty": "इस सप्ताह शुरू करने के लिए एक छोटा सत्र शुरू करें।",
+    "speakingTurnsEmpty": "जब आप तैयार हों तो एक छोटी बातचीत का प्रयास करें।",
+    "todayFocus": "आज का फोकस",
+    "primaryActionLivesAbove": "जब आप शुरू करने के लिए तैयार हों तो ऊपर दिए गए मुख्य बटन का उपयोग करें।",
+    "findFirstPhrase": "अपना पहला वाक्यांश ढूंढें",
+    "recentStudyEmpty": "इस सप्ताह आपकी पहली गतिविधि के बाद आपका अध्ययन पथ दिखाई देगा।",
+    "startToday": "आज शुरू करें",
+    "todaySection": "आज",
+    "guidanceTitle": "मार्गदर्शन",
+    "guidanceSubtitle": "छोटे-छोटे सुझाव जो पेज पर भीड़ पैदा किए बिना अगले सत्र को स्पष्ट रखते हैं।",
+    "secondaryStepsTitle": "मुख्य चरण के बाद",
+    "secondaryStepsEmpty": "अभी के लिए एक केंद्रित कार्रवाई ही काफी है। इसे ख़त्म करें, फिर अगला चरण यहां दिखाई देगा.",
+    "recentWordsEmptyAction": "सहेजे गए शब्द और उपयोगी वाक्यांश कक्षा या वार्तालाप अभ्यास के बाद यहां एकत्रित होंगे।",
+    "startAClass": "एक कक्षा प्रारंभ करें",
+    "milestonesEmptyAction": "आपका पहला पूर्ण पाठ, सहेजा गया वाक्यांश, या प्रमाणपत्र यहां दिखाई देगा।",
+    "earnFirstMilestone": "पहला मील का पत्थर अर्जित करें"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "कक्षा",
+      "conversation": "बातचीत",
+      "quiz": "प्रश्नोत्तरी",
+      "flashcards": "फ़्लैशकार्ड",
+      "writing": "लिखना",
+      "review": "समीक्षा",
+      "voice": "आवाज़",
+      "other": "अन्य"
+    },
+    "unknownSkill": "अज्ञात कौशल",
+    "title": "स्वास्थ्य सीखना",
+    "activeLearners": "सक्रिय शिक्षार्थी",
+    "lastSevenDays": "पिछले 7 दिन",
+    "learningEvents": "सीखने की घटनाएँ",
+    "classLessonsCompleted": "कक्षाएं पूरी हो गईं",
+    "conversationTurns": "बातचीत का रुख बदल जाता है",
+    "savedReviews": "सहेजी गई-आइटम समीक्षाएँ",
+    "dueNow": "{{count}} अभी देय है",
+    "tutorIssues": "ट्यूटर मुद्दे",
+    "featureUsage": "सुविधा का उपयोग",
+    "learnersCount": "{{count}} शिक्षार्थी",
+    "noFeatureUsage": "अभी तक कोई सीखने की घटना रिकॉर्ड नहीं की गई।",
+    "languagePairs": "भाषा युग्म",
+    "noLanguagePairs": "अभी तक कोई भाषा-युग्म गतिविधि नहीं.",
+    "weakSkills": "कौशल पर ध्यान देने की आवश्यकता है",
+    "averageScore": "औसत {{score}}%",
+    "noWeakSkills": "पिछले 30 दिनों में कोई कमजोर-कौशल रिकॉर्ड नहीं।",
+    "difficultContent": "कठिन सामग्री",
+    "unknownLesson": "अज्ञात पाठ",
+    "noDifficultContent": "अभी तक कोई कठिन-सामग्री पैटर्न नहीं मिला।"
+  },
+  "skills": {
+    "listening": "सुनना",
+    "speaking": "बोला जा रहा है",
+    "reading": "पढ़ना",
+    "writing": "लिखना"
   }
 }

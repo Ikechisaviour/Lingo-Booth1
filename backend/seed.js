@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Lesson = require('./models/Lesson');
 const Translation = require('./models/Translation');
 const { normalizeLessonForLanguagePair } = require('./utils/languageConcepts');
+const { buildPracticeLessonsForSupportedTargets } = require('./utils/targetAuthoredPracticeContent');
 require('dotenv').config();
 
 // Import real vocabulary lessons
@@ -1444,6 +1445,13 @@ multiLangData.forEach(langData => {
   const langLessons = Object.values(langData).filter(Boolean);
   lessons.push(...langLessons);
 });
+
+const targetAuthoredPracticeLessons = buildPracticeLessonsForSupportedTargets();
+if (targetAuthoredPracticeLessons.length > 0) {
+  lessons.length = 0;
+  lessons.push(...targetAuthoredPracticeLessons);
+  console.log(`Using ${targetAuthoredPracticeLessons.length} target-authored curriculum practice lessons for quiz seeding.`);
+}
 
 // Connect to MongoDB and seed data
 async function seedDatabase() {

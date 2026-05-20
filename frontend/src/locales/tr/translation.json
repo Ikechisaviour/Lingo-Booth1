@@ -77,7 +77,6 @@
     "reason": "Neden",
     "forgotPassword": "Şifrenizi mi unuttunuz?",
     "googleFailed": "Google ile giri? ba?ar?s?z oldu. L?tfen tekrar deneyin.",
-    "backToHome": "Ana sayfaya d?n",
     "sessionExpired": "Oturumunuz sona erdi. L?tfen tekrar giri? yap?n."
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "supportAndPlans": "Destek ve planlar"
   },
   "lessons": {
     "title": "{{language}} <1>Dersler</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "Öğrenmeyi Çeşitlendirin",
     "diversifyLearningTip": "Dört beceriyi de eşit şekilde çalışın",
     "stayConsistent": "Tutarlı Olun",
-    "stayConsistentTip": "En iyi sonuçlar için her gün biraz çalışın"
+    "stayConsistentTip": "En iyi sonuçlar için her gün biraz çalışın",
+    "analyticsMastered": "Ustalaşmış",
+    "analyticsMasteredDetail": "İyi idare edebileceğiniz öğeler",
+    "analyticsReviewDetail": "Bugün tekrar ziyaret etmeye değer",
+    "analyticsActiveDaysDetail": "Bu hafta",
+    "analyticsSpeakingDetail": "Son ses pratiği",
+    "analyticsAria": "Öğrenme analitiği",
+    "analyticsKicker": "Sağlığı öğrenmek",
+    "analyticsTitle": "Faaliyetiniz bize ne anlatıyor?",
+    "analyticsSubtitle": "Bunu momentum hakkında basit bir okuma, baskıyı gözden geçirme ve bir sonraki yararlı adım olarak kullanın.",
+    "nextFocus": "Sonraki odak",
+    "keepBuilding": "Hız kazanmaya devam edin",
+    "nextFocusBody": "Bu alan ekstra pratik için en net sinyali gösteriyor.",
+    "nextFocusEmptyBody": "Biraz daha pratik yapın ve bu daha spesifik hale gelecektir.",
+    "weeklyMomentum": "Haftalık momentum",
+    "weeklyMomentumDetail": "{{days}} aktif günler ve {{sessions}} oturumlar"
   },
   "profilePage": {
     "memberSince": "{{date}} tarihinden beri üye",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "Rehberli bir derse başlayın",
     "firstThreeDayReviewBody": "Dün gördüklerinize bir kez geri dönün, böylece ilk öğeler yapışmaya başlar.",
     "firstThreeDaySpeakBody": "Dilin sayfadan erken çıkması için kısa bir konuşma sırası kullanın.",
-    "firstThreeDayLearnBody": "Çiftin net bir başlangıç ​​noktasına sahip olması için küçük, rehberli bir dersle başlayın."
+    "firstThreeDayLearnBody": "Çiftin net bir başlangıç ​​noktasına sahip olması için küçük, rehberli bir dersle başlayın.",
+    "reviewSignalDetail": "{{count}} tekrar ziyaret etmeye değer öğeler",
+    "weeklyPointsSignal": "Haftalık puanlar",
+    "sessionsCount": "{{count}} oturumlar",
+    "activityThisWeek": "Bu haftaki etkinlik",
+    "savedItemsThisWeek": "{{count}} bu hafta kaydedildi",
+    "analyticsKicker": "Öğrenme sinyalleri",
+    "analyticsTitle": "Öğrenme resminiz",
+    "analyticsSubtitle": "Bundan sonra ne yapacağınız, nelerin gözden geçirilmesi gerektiği ve haftanızın nasıl ilerlediği hakkında hızlı bir okuma.",
+    "viewFullProgress": "İlerlemenin tamamını görüntüle",
+    "nextActionSignalBody": "Bu, en son sınıf etkinliğinizden, inceleme sıranızdan ve mevcut dil çifti kurulumunuzdan seçilir.",
+    "startGuidedClass": "Rehberli bir sınıf başlatın",
+    "pairSetupFriendlySummary": "{{level}} seviye · {{goal}} gol · {{pace}} tempo",
+    "clearValue": "Temizlemek",
+    "reviewClearDetail": "Şu anda vadesi gelen hiçbir şey yok. Sırayı bir sınıf veya kaydedilmiş ifadeyle oluşturun.",
+    "weeklyPointsEmpty": "Bu hafta başlamak üzere kısa bir oturum başlatın.",
+    "speakingTurnsEmpty": "Hazır olduğunuzda kısa bir konuşmayı deneyin.",
+    "todayFocus": "Bugünün odak noktası",
+    "primaryActionLivesAbove": "Başlamaya hazır olduğunuzda yukarıdaki ana düğmeyi kullanın.",
+    "findFirstPhrase": "İlk ifadenizi bulun",
+    "recentStudyEmpty": "Çalışma kaydınız bu haftaki ilk aktivitenizden sonra görünecek.",
+    "startToday": "Bugün başla",
+    "todaySection": "Bugün",
+    "guidanceTitle": "Rehberlik",
+    "guidanceSubtitle": "Sayfayı kalabalıklaştırmadan bir sonraki oturumu net tutacak küçük öneriler.",
+    "secondaryStepsTitle": "Ana adımdan sonra",
+    "secondaryStepsEmpty": "Şimdilik odaklanmış tek bir eylem yeterli. Bitirin, ardından bir sonraki adım burada görünecektir.",
+    "recentWordsEmptyAction": "Kaydedilen kelimeler ve faydalı ifadeler dersten veya konuşma pratiğinden sonra burada toplanacaktır.",
+    "startAClass": "Bir sınıf başlat",
+    "milestonesEmptyAction": "İlk tamamladığınız dersiniz, kayıtlı ifadeniz veya sertifikanız burada görünecektir.",
+    "earnFirstMilestone": "İlk kilometre taşını kazanın"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "Sınıf",
+      "conversation": "Konuşma",
+      "quiz": "Sınav",
+      "flashcards": "Bilgi Kartları",
+      "writing": "Yazma",
+      "review": "Gözden geçirmek",
+      "voice": "Ses",
+      "other": "Diğer"
+    },
+    "unknownSkill": "Bilinmeyen beceri",
+    "title": "Sağlığı öğrenmek",
+    "activeLearners": "Aktif öğrenciler",
+    "lastSevenDays": "Son 7 gün",
+    "learningEvents": "Öğrenme etkinlikleri",
+    "classLessonsCompleted": "Tamamlanan dersler",
+    "conversationTurns": "Konuşma dönüşleri",
+    "savedReviews": "Kaydedilen öğe incelemeleri",
+    "dueNow": "{{count}} şimdi çıkacak",
+    "tutorIssues": "Öğretmen sorunları",
+    "featureUsage": "Özellik kullanımı",
+    "learnersCount": "{{count}} öğrenciler",
+    "noFeatureUsage": "Henüz kayıtlı öğrenme etkinliği yok.",
+    "languagePairs": "Dil çiftleri",
+    "noLanguagePairs": "Henüz dil çifti etkinliği yok.",
+    "weakSkills": "Dikkat gerektiren beceriler",
+    "averageScore": "Ortalama {{score}}%",
+    "noWeakSkills": "Son 30 günde zayıf beceri kaydı yok.",
+    "difficultContent": "Zor içerik",
+    "unknownLesson": "Bilinmeyen ders",
+    "noDifficultContent": "Henüz zor içerikli bir model bulunamadı."
+  },
+  "skills": {
+    "listening": "Dinleme",
+    "speaking": "Konuşuyorum",
+    "reading": "Okuma",
+    "writing": "Yazma"
   }
 }

@@ -77,7 +77,6 @@
     "reason": "السبب",
     "forgotPassword": "هل نسيت كلمة المرور؟",
     "googleFailed": "فشل تسجيل الدخول إلى Google. يرجى المحاولة مرة أخرى.",
-    "backToHome": "العودة إلى المنزل",
     "sessionExpired": "انتهت جلستك. الرجاء تسجيل الدخول مرة أخرى."
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "ف",
       "sat": "س",
       "sun": "س"
-    }
+    },
+    "supportAndPlans": "الدعم والخطط"
   },
   "lessons": {
     "title": "{{language}} <1>دروس</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "تنويع التعلم",
     "diversifyLearningTip": "تدرب على المهارات الأربع بالتساوي",
     "stayConsistent": "كن مستمرًا",
-    "stayConsistentTip": "ادرس قليلاً كل يوم للحصول على أفضل النتائج"
+    "stayConsistentTip": "ادرس قليلاً كل يوم للحصول على أفضل النتائج",
+    "analyticsMastered": "يتقن",
+    "analyticsMasteredDetail": "العناصر التي يمكنك التعامل معها بشكل جيد",
+    "analyticsReviewDetail": "يستحق الزيارة اليوم",
+    "analyticsActiveDaysDetail": "هذا الاسبوع",
+    "analyticsSpeakingDetail": "الممارسة الصوتية الأخيرة",
+    "analyticsAria": "تحليلات التعلم",
+    "analyticsKicker": "تعلم الصحة",
+    "analyticsTitle": "ما يخبرنا به نشاطك",
+    "analyticsSubtitle": "استخدم هذا كقراءة بسيطة عن الزخم، وضغط المراجعة، والخطوة المفيدة التالية.",
+    "nextFocus": "التركيز التالي",
+    "keepBuilding": "استمر في بناء الزخم",
+    "nextFocusBody": "تُظهر هذه المنطقة أوضح إشارة لمزيد من التدريب.",
+    "nextFocusEmptyBody": "تدرب أكثر قليلاً وسيصبح هذا أكثر تحديدًا.",
+    "weeklyMomentum": "الزخم الأسبوعي",
+    "weeklyMomentumDetail": "{{days}} الأيام النشطة وجلسات {{sessions}}"
   },
   "profilePage": {
     "memberSince": "عضو منذ {{date}}",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "ابدأ درسًا موجهًا واحدًا",
     "firstThreeDayReviewBody": "عد مرة واحدة إلى ما رأيته بالأمس حتى تبدأ العناصر الأولى في الالتصاق.",
     "firstThreeDaySpeakBody": "استخدم منعطفًا قصيرًا في التحدث حتى تترك اللغة الصفحة مبكرًا.",
-    "firstThreeDayLearnBody": "ابدأ بدرس موجه صغير حتى يكون للزوجين نقطة بداية واضحة."
+    "firstThreeDayLearnBody": "ابدأ بدرس موجه صغير حتى يكون للزوجين نقطة بداية واضحة.",
+    "reviewSignalDetail": "{{count}} عناصر تستحق الزيارة",
+    "weeklyPointsSignal": "النقاط الأسبوعية",
+    "sessionsCount": "جلسات {{count}}",
+    "activityThisWeek": "النشاط هذا الاسبوع",
+    "savedItemsThisWeek": "{{count}} تم حفظه هذا الأسبوع",
+    "analyticsKicker": "إشارات التعلم",
+    "analyticsTitle": "صورة ‏تعلمك‏",
+    "analyticsSubtitle": "قراءة سريعة حول ما يجب فعله بعد ذلك، وما يحتاج إلى مراجعة، وكيف يتحرك أسبوعك.",
+    "viewFullProgress": "عرض التقدم الكامل",
+    "nextActionSignalBody": "يتم اختيار هذا من أحدث نشاط صفي، وقائمة انتظار المراجعة، وإعداد زوج اللغة الحالي.",
+    "startGuidedClass": "ابدأ فصلًا دراسيًا واحدًا",
+    "pairSetupFriendlySummary": "مستوى {{level}} · هدف {{goal}} · وتيرة {{pace}}",
+    "clearValue": "واضح",
+    "reviewClearDetail": "لا يوجد شيء مستحق الآن. أنشئ قائمة الانتظار بفصل واحد أو عبارة محفوظة.",
+    "weeklyPointsEmpty": "ابدأ جلسة قصيرة لتبدأ هذا الأسبوع.",
+    "speakingTurnsEmpty": "جرب محادثة قصيرة واحدة عندما تكون مستعدًا.",
+    "todayFocus": "التركيز اليوم",
+    "primaryActionLivesAbove": "استخدم الزر الرئيسي أعلاه عندما تكون مستعدًا للبدء.",
+    "findFirstPhrase": "ابحث عن العبارة الأولى",
+    "recentStudyEmpty": "سيظهر مسار دراستك بعد نشاطك الأول هذا الأسبوع.",
+    "startToday": "ابدأ اليوم",
+    "todaySection": "اليوم",
+    "guidanceTitle": "إرشاد",
+    "guidanceSubtitle": "اقتراحات صغيرة تجعل الجلسة التالية واضحة دون ازدحام الصفحة.",
+    "secondaryStepsTitle": "بعد الخطوة الرئيسية",
+    "secondaryStepsEmpty": "إجراء واحد مركّز يكفي في الوقت الحالي. قم بإنهائها، ثم ستظهر الخطوة التالية هنا.",
+    "recentWordsEmptyAction": "سيتم جمع الكلمات المحفوظة والعبارات المفيدة هنا بعد الفصل أو ممارسة المحادثة.",
+    "startAClass": "ابدأ الفصل",
+    "milestonesEmptyAction": "سيظهر هنا الدرس المكتمل أو العبارة المحفوظة أو الشهادة الأولى.",
+    "earnFirstMilestone": "كسب المعلم الأول"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "فصل",
+      "conversation": "محادثة",
+      "quiz": "لغز",
+      "flashcards": "البطاقات التعليمية",
+      "writing": "كتابة",
+      "review": "مراجعة",
+      "voice": "صوت",
+      "other": "آخر"
+    },
+    "unknownSkill": "مهارة غير معروفة",
+    "title": "تعلم الصحة",
+    "activeLearners": "المتعلمون النشطون",
+    "lastSevenDays": "آخر 7 أيام",
+    "learningEvents": "أحداث التعلم",
+    "classLessonsCompleted": "اكتملت الفصول",
+    "conversationTurns": "يتحول المحادثة",
+    "savedReviews": "مراجعات العناصر المحفوظة",
+    "dueNow": "{{count}} مستحق الآن",
+    "tutorIssues": "قضايا المعلم",
+    "featureUsage": "استخدام الميزة",
+    "learnersCount": "{{count}} المتعلمين",
+    "noFeatureUsage": "لم يتم تسجيل أي أحداث تعليمية حتى الآن.",
+    "languagePairs": "أزواج اللغة",
+    "noLanguagePairs": "لا يوجد نشاط للزوج اللغوي حتى الآن.",
+    "weakSkills": "المهارات التي تحتاج إلى الاهتمام",
+    "averageScore": "المتوسط ​​{{score}}%",
+    "noWeakSkills": "لا توجد سجلات للمهارات الضعيفة في آخر 30 يومًا.",
+    "difficultContent": "محتوى صعب",
+    "unknownLesson": "درس غير معروف",
+    "noDifficultContent": "لم يتم العثور على نمط المحتوى الصعب حتى الآن."
+  },
+  "skills": {
+    "listening": "الاستماع",
+    "speaking": "تكلم",
+    "reading": "قراءة",
+    "writing": "كتابة"
   }
 }

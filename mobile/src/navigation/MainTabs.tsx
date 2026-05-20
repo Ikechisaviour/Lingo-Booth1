@@ -658,6 +658,7 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
   const listeningRef = useRef(false);
   const tutorThreadRef = useRef<ScrollView>(null);
   const pendingWindowCentersRef = useRef<Set<number>>(new Set());
+  const viewedItemKeysRef = useRef<Set<string>>(new Set());
   const [lesson, setLesson] = useState<ClassLesson | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -880,6 +881,23 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
   }, [classLessonId, items, lesson, selectedIndex]);
 
   useEffect(() => {
+    if (!userId || !classLessonId || !selectedItemReady) return;
+    const key = `${classLessonId}:${selectedIndex}`;
+    if (viewedItemKeysRef.current.has(key)) return;
+    viewedItemKeysRef.current.add(key);
+    userService.recordLearningEvent(userId, {
+      eventType: 'class_item_viewed',
+      classLessonId,
+      itemIndex: selectedIndex,
+      activitySection: selectedActivity?.section || '',
+      activityTitle: selectedActivity?.title || '',
+      targetText: itemTarget(selectedItem),
+      nativeText: itemNative(selectedItem),
+      skills: activitySkills(selectedActivity),
+    }).catch(() => {});
+  }, [classLessonId, selectedActivity, selectedIndex, selectedItem, selectedItemReady, userId]);
+
+  useEffect(() => {
     let cancelled = false;
     if (!lesson || progressPercent < 100 || !token) {
       setCertificateStatus(null);
@@ -990,9 +1008,10 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
               targetLanguage || 'ko',
               nativeLanguage || 'en',
               language,
+              { singleVoice: true },
             )),
         ])
-        : spokenPartsForMessage(message, targetLanguage || 'ko', nativeLanguage || 'en');
+        : spokenPartsForMessage(message, targetLanguage || 'ko', nativeLanguage || 'en', { singleVoice: true });
       if (parts.length) {
         for (const part of parts) {
           if (part.text) {
@@ -1027,7 +1046,7 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
 
     try {
       await speechService.cancel();
-      const chunks = speechChunksForPart(part, targetLanguage || 'ko', nativeLanguage || 'en', part?.language);
+      const chunks = speechChunksForPart(part, targetLanguage || 'ko', nativeLanguage || 'en', part?.language, { singleVoice: true });
       for (const chunk of chunks) {
         if (!chunk.text) continue;
         const lang = ttsLocaleFor(chunk.language || part?.language || targetLanguage || 'ko', targetLanguage || 'ko');

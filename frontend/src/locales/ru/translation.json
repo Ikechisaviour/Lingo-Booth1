@@ -77,7 +77,6 @@
     "reason": "Причина",
     "forgotPassword": "Забыли пароль?",
     "googleFailed": "Не удалось войти в Google. Пожалуйста, попробуйте еще раз.",
-    "backToHome": "Вернуться домой",
     "sessionExpired": "Срок действия вашей сессии истек. Пожалуйста, войдите снова."
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "Ф",
       "sat": "С",
       "sun": "С"
-    }
+    },
+    "supportAndPlans": "Поддержка и планы"
   },
   "lessons": {
     "title": "Уроки <1>{{language}}</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "Разнообразие в обучении",
     "diversifyLearningTip": "Практикуйте все четыре навыка равномерно",
     "stayConsistent": "Регулярность",
-    "stayConsistentTip": "Занимайтесь понемногу каждый день для лучших результатов"
+    "stayConsistentTip": "Занимайтесь понемногу каждый день для лучших результатов",
+    "analyticsMastered": "Освоен",
+    "analyticsMasteredDetail": "Предметы, с которыми вы можете хорошо справиться",
+    "analyticsReviewDetail": "Стоит пересмотреть сегодня",
+    "analyticsActiveDaysDetail": "На этой неделе",
+    "analyticsSpeakingDetail": "Недавняя голосовая практика",
+    "analyticsAria": "Обучение аналитике",
+    "analyticsKicker": "Изучение здоровья",
+    "analyticsTitle": "О чем говорит нам ваша деятельность",
+    "analyticsSubtitle": "Используйте это как простое описание динамики, давления обзора и следующего полезного шага.",
+    "nextFocus": "Следующий фокус",
+    "keepBuilding": "Продолжайте наращивать темп",
+    "nextFocusBody": "Эта область дает четкий сигнал к необходимости дополнительной практики.",
+    "nextFocusEmptyBody": "Попрактикуйтесь еще немного, и это станет более конкретным.",
+    "weeklyMomentum": "Еженедельный импульс",
+    "weeklyMomentumDetail": "{{days}} активные дни и {{sessions}} сеансы"
   },
   "profilePage": {
     "memberSince": "Участник с {{date}}",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "Начать один урок с гидом",
     "firstThreeDayReviewBody": "Вернитесь один раз к тому, что вы видели вчера, чтобы первые предметы начали прилипать.",
     "firstThreeDaySpeakBody": "Используйте короткую речь, чтобы язык покинул страницу раньше.",
-    "firstThreeDayLearnBody": "Начните с одного небольшого урока, чтобы пара имела четкую отправную точку."
+    "firstThreeDayLearnBody": "Начните с одного небольшого урока, чтобы пара имела четкую отправную точку.",
+    "reviewSignalDetail": "{{count}} предметы, которые стоит посетить еще раз",
+    "weeklyPointsSignal": "Еженедельные баллы",
+    "sessionsCount": "сеансы {{count}}",
+    "activityThisWeek": "Активность на этой неделе",
+    "savedItemsThisWeek": "{{count}} сохранено на этой неделе",
+    "analyticsKicker": "Сигналы обучения",
+    "analyticsTitle": "Ваша учебная картинка",
+    "analyticsSubtitle": "Краткое описание того, что делать дальше, что необходимо пересмотреть и как проходит ваша неделя.",
+    "viewFullProgress": "Посмотреть полный прогресс",
+    "nextActionSignalBody": "Он выбирается из вашей последней активности в классе, очереди просмотра и текущих настроек языковой пары.",
+    "startGuidedClass": "Начать одно занятие с гидом",
+    "pairSetupFriendlySummary": "{{level}} уровень · {{goal}} цель · {{pace}} темп",
+    "clearValue": "Прозрачный",
+    "reviewClearDetail": "Сейчас ничего не подлежит оплате. Создайте очередь из одного класса или сохраненной фразы.",
+    "weeklyPointsEmpty": "На этой неделе начните короткую сессию.",
+    "speakingTurnsEmpty": "Когда будете готовы, попробуйте один короткий разговор.",
+    "todayFocus": "Сегодняшний фокус",
+    "primaryActionLivesAbove": "Используйте главную кнопку выше, когда будете готовы начать.",
+    "findFirstPhrase": "Найдите свою первую фразу",
+    "recentStudyEmpty": "Ваш учебный след появится после вашего первого занятия на этой неделе.",
+    "startToday": "Начни сегодня",
+    "todaySection": "Сегодня",
+    "guidanceTitle": "Руководство",
+    "guidanceSubtitle": "Небольшие предложения, которые сделают следующий сеанс понятным, не перегружая страницу.",
+    "secondaryStepsTitle": "После основного шага",
+    "secondaryStepsEmpty": "Одного целенаправленного действия на данный момент достаточно. Завершите его, и здесь появится следующий шаг.",
+    "recentWordsEmptyAction": "Сохраненные слова и полезные фразы будут собираться здесь после занятий или разговорной практики.",
+    "startAClass": "Начать урок",
+    "milestonesEmptyAction": "Здесь появится ваш первый пройденный урок, сохраненная фраза или сертификат.",
+    "earnFirstMilestone": "Заработайте первую веху"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "Сорт",
+      "conversation": "Беседа",
+      "quiz": "Контрольный опрос",
+      "flashcards": "Карточки",
+      "writing": "Письмо",
+      "review": "Обзор",
+      "voice": "Голос",
+      "other": "Другой"
+    },
+    "unknownSkill": "Неизвестный навык",
+    "title": "Изучение здоровья",
+    "activeLearners": "Активные ученики",
+    "lastSevenDays": "Последние 7 дней",
+    "learningEvents": "Обучающие мероприятия",
+    "classLessonsCompleted": "Занятия завершены",
+    "conversationTurns": "Разговор поворачивается",
+    "savedReviews": "Отзывы о сохраненных товарах",
+    "dueNow": "{{count}} срок оплаты сейчас",
+    "tutorIssues": "Проблемы с репетитором",
+    "featureUsage": "Использование функции",
+    "learnersCount": "{{count}} учащиеся",
+    "noFeatureUsage": "Обучающих мероприятий пока не зарегистрировано.",
+    "languagePairs": "Языковые пары",
+    "noLanguagePairs": "Пока нет активности языковых пар.",
+    "weakSkills": "Навыки, требующие внимания",
+    "averageScore": "Среднее {{score}}%",
+    "noWeakSkills": "Никаких записей о слабых навыках за последние 30 дней.",
+    "difficultContent": "Сложный контент",
+    "unknownLesson": "Неизвестный урок",
+    "noDifficultContent": "Шаблон сложного содержания пока не найден."
+  },
+  "skills": {
+    "listening": "Прослушивание",
+    "speaking": "Говорящий",
+    "reading": "Чтение",
+    "writing": "Письмо"
   }
 }

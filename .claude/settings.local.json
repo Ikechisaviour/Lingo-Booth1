@@ -10,7 +10,10 @@
       "Bash(node -e \"const f = require\\('./textbookLessons/en/level1Foundation'\\); const u = require\\('./textbookLessons/en/level1Unit01Greetings'\\); console.log\\('Foundation:', f.title, '|', f.targetLang, '| activities:', f.activities.length, '| content items:', f.content.length\\); console.log\\('Unit 1:', u.title, '|', u.targetLang, '| activities:', u.activities.length, '| content items:', u.content.length\\);\")",
       "Bash(npm run *)",
       "Bash(timeout 120 npm run i18n:fill-locales)",
-      "Read(//c/Users/Saviour ICT-CRC/Desktop/Personal Project/Personal Projects2/korean-learning-app/frontend/src/pages/**)"
+      "Read(//c/Users/Saviour ICT-CRC/Desktop/Personal Project/Personal Projects2/korean-learning-app/frontend/src/pages/**)",
+      "Bash(git checkout *)",
+      "Bash(git pull *)",
+      "Bash(git merge *)"
     ]
   }
 }

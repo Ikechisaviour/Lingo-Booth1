@@ -190,7 +190,7 @@ const lesson = {
   targetLang: 'zh',
   nativeLang: 'en',
   track: 'textbook',
-  lessonType: 'adult',
+  lessonType: 'workplace',
   activities,
   expressionPractice: [
     { id: 'raising-grievance', label: 'Raising a roommate grievance', goal: 'Use 是不是 + clause to surface a complaint (dishes, noise, dirt) as a confirmation question rather than a direct accusation.' },

@@ -228,16 +228,58 @@ function HomePage() {
       defaultValue: learningHub.nextAction.label || t('learningHub.continueLearning', 'Continue learning'),
     })
     : '';
+  const primaryActionLabel = nextActionLabel
+    || (lastActivity?.type === 'quiz'
+      ? t('home.continueLesson')
+      : lastActivity?.type === 'flashcard'
+        ? t('home.continueFlashcards')
+        : t('learningHub.startGuidedClass', 'Start one guided class'));
+  const primaryActionRoute = learningHub?.nextAction?.route
+    || (lastActivity?.type === 'quiz' && lastActivity.quizId ? `/quiz/${lastActivity.quizId}` : '')
+    || (lastActivity?.type === 'flashcard' ? '/flashcards' : '/class');
 
   const dueReviewCount = learningHub?.reviewQueue?.dueSavedItems?.length || 0;
   const totalReviewCount = learningHub?.reviewQueue?.counts?.total || dueReviewCount;
   const weeklySummary = learningHub?.weeklySummary || {};
+  const weeklyPoints = weeklySummary.points || 0;
+  const weeklyActiveDays = weeklySummary.activeDays || 0;
+  const weeklySessions = weeklySummary.sessions || 0;
+  const weeklySpeakingTurns = weeklySummary.speakingTurns || 0;
+  const weeklySavedItems = weeklySummary.newSavedItems || 0;
   const placement = learningHub?.placement || null;
   const recentWords = learningHub?.recentWords || [];
   const milestones = learningHub?.milestones || {};
   const firstThreeDays = learningHub?.firstThreeDays || null;
   const goalPath = learningHub?.goalPath || null;
   const currentOnboardingStep = firstThreeDays?.steps?.find((step) => step.current) || firstThreeDays?.steps?.[0] || null;
+  const dailyPlanSecondary = (learningHub?.dailyPlan || [])
+    .filter((action) => action?.route && action.route !== primaryActionRoute)
+    .slice(0, 3);
+  const hasStudyHistory = (learningHub?.studyHistory || []).some((day) => Number(day.events || 0) > 0);
+  const hasDailySpotlight = Boolean(learningHub?.dailySpotlight?.targetText);
+  const hasMilestoneProgress = Boolean(
+    (milestones.completedClassLessons || 0)
+    || (milestones.savedItems || 0)
+    || (milestones.certificates?.length || 0),
+  );
+  const goalPathActions = (goalPath?.actions || [])
+    .filter((action) => action?.route && action.route !== primaryActionRoute)
+    .slice(0, 3);
+  const showPlacementPrompt = placement?.status === 'needs_check';
+  const showGuidancePanel = Boolean(
+    dailyPlanSecondary.length
+    || firstThreeDays
+    || goalPathActions.length
+    || showPlacementPrompt
+    || usingOfflinePack,
+  );
+  const showLearningShelf = recentWords.length > 0 || hasMilestoneProgress;
+  const learningSetupSummaryText = t('learningHub.pairSetupFriendlySummary', {
+    level: t(`learningHub.levels.${pairProfileForm.currentLevel}`, pairProfileForm.currentLevel || t('common.notSet', 'Not set')),
+    goal: goalLabel(pairProfileForm.primaryGoal, goalOptions, t),
+    pace: t(`learningHub.paces.${pairProfileForm.pace}`, pairProfileForm.pace || t('common.notSet', 'Not set')),
+    defaultValue: '{{level}} level · {{goal}} goal · {{pace}} pace',
+  });
   const placementReasonText = (reasonKey) => {
     const defaults = {
       'learningHub.placementFromSetup': 'Based on the level you selected for this language pair.',
@@ -264,6 +306,63 @@ function HomePage() {
     }
     return t('learningHub.firstThreeDayLearnBody', 'Begin with one small guided lesson so the pair has a clear starting point.');
   };
+  const homeSignalCards = [
+    {
+      key: 'review',
+      label: t('learningHub.reviewDue', 'Review due'),
+      value: totalReviewCount || t('learningHub.clearValue', 'Clear'),
+      detail: totalReviewCount
+        ? t('learningHub.reviewSignalDetail', {
+          count: totalReviewCount,
+          defaultValue: '{{count}} items worth revisiting',
+        })
+        : t('learningHub.reviewClearDetail', 'Nothing is due right now. Build the queue with one class or saved phrase.'),
+      route: '/review',
+    },
+    {
+      key: 'points',
+      label: t('learningHub.weeklyPointsSignal', 'Weekly points'),
+      value: weeklyPoints,
+      detail: weeklyPoints
+        ? t('learningHub.sessionsCount', {
+          count: weeklySessions,
+          defaultValue: '{{count}} sessions',
+        })
+        : t('learningHub.weeklyPointsEmpty', 'Start a short session to begin this week.'),
+      route: '/progress',
+    },
+    {
+      key: 'days',
+      label: t('learningHub.activeDays', 'Active days'),
+      value: `${weeklyActiveDays}/7`,
+      detail: t('learningHub.activityThisWeek', 'Activity this week'),
+      route: '/progress',
+    },
+    {
+      key: 'voice',
+      label: t('learningHub.speakingTurns', 'Speaking turns'),
+      value: weeklySpeakingTurns,
+      detail: weeklySpeakingTurns
+        ? t('learningHub.savedItemsThisWeek', {
+          count: weeklySavedItems,
+          defaultValue: '{{count}} saved this week',
+        })
+        : t('learningHub.speakingTurnsEmpty', 'Try one short conversation when you are ready.'),
+      route: '/conversation',
+    },
+  ];
+  const informativeSignalCards = homeSignalCards.filter((signal) => {
+    if (signal.key === 'review') return totalReviewCount > 0;
+    if (signal.key === 'points') return weeklyPoints > 0;
+    if (signal.key === 'days') return weeklyActiveDays > 0;
+    if (signal.key === 'voice') return weeklySpeakingTurns > 0;
+    return false;
+  });
+  const showLearningAnalytics = Boolean(
+    informativeSignalCards.length
+    || hasDailySpotlight
+    || hasStudyHistory,
+  );
 
   const handleStartLearning = async () => {
     try {
@@ -312,17 +411,11 @@ function HomePage() {
                           : t('home.studyingFlashcards')
                         : t('home.readyForSession')}
                   </p>
-                  {(learningHub?.nextAction || lastActivity) && (
-                    <div className="hero-actions">
-                      <button className="btn btn-primary btn-lg" onClick={handleContinue}>
-                        {learningHub?.nextAction
-                          ? nextActionLabel
-                          : lastActivity.type === 'quiz'
-                            ? t('home.continueLesson')
-                            : t('home.continueFlashcards')} →
-                      </button>
-                    </div>
-                  )}
+                  <div className="hero-actions">
+                    <button className="btn btn-primary btn-lg" onClick={() => handleLearningAction({ route: primaryActionRoute })}>
+                      {primaryActionLabel} →
+                    </button>
+                  </div>
                 </>
               ) : (
                 <>
@@ -372,27 +465,59 @@ function HomePage() {
             </div>
           </section>
 
-          {!isGuest && learningHub && (
-            <section className="learning-hub-overview" aria-label={t('learningHub.homeOverviewAria', 'Learning overview')}>
-              <article className="learning-hub-card next">
-                <span>{t('learningHub.nextBestAction', 'Next best action')}</span>
-                <strong>{nextActionLabel}</strong>
-                <button type="button" onClick={() => navigate(learningHub.nextAction?.route || '/class')}>
-                  {t('learningHub.open', 'Open')}
+          {!isGuest && learningHub && showLearningAnalytics && (
+            <section className="learning-analytics-panel" aria-label={t('learningHub.homeOverviewAria', 'Learning overview')}>
+              <div className="learning-analytics-head">
+                <div>
+                  <span>{t('learningHub.analyticsKicker', 'Learning signals')}</span>
+                  <h2>{t('learningHub.analyticsTitle', 'Your learning picture')}</h2>
+                  <p>{t('learningHub.analyticsSubtitle', 'A quick read on what to do next, what needs review, and how your week is moving.')}</p>
+                </div>
+                <button type="button" className="btn btn-outline btn-sm" onClick={() => navigate('/progress')}>
+                  {t('learningHub.viewFullProgress', 'View full progress')}
                 </button>
-              </article>
-              <article className="learning-hub-card">
-                <span>{t('learningHub.reviewDue', 'Review due')}</span>
-                <strong>{totalReviewCount}</strong>
-                <button type="button" onClick={() => navigate('/review')}>
-                  {t('learningHub.reviewNow', 'Review now')}
-                </button>
-              </article>
-              <article className="learning-hub-card">
-                <span>{t('learningHub.wordOfDay', 'Word or phrase of the day')}</span>
-                <strong>{learningHub.dailySpotlight?.targetText || t('learningHub.noSpotlightYet', 'Save something useful to begin')}</strong>
-                <small>{learningHub.dailySpotlight?.nativeText || t('learningHub.spotlightHint', 'Your saved items become daily spotlights.')}</small>
-              </article>
+              </div>
+
+              {informativeSignalCards.length > 0 && (
+              <div className="learning-analytics-main">
+                {informativeSignalCards.length > 0 && (
+                  <div className="learning-signal-grid">
+                    {informativeSignalCards.map((signal) => (
+                    <button type="button" key={signal.key} className="learning-signal-card" onClick={() => navigate(signal.route)}>
+                      <span>{signal.label}</span>
+                      <strong>{signal.value}</strong>
+                      <small>{signal.detail}</small>
+                    </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              )}
+
+              {(hasDailySpotlight || hasStudyHistory) && (
+              <div className="learning-analytics-footer">
+                {hasDailySpotlight && (
+                <article className="learning-spotlight-card">
+                  <span>{t('learningHub.wordOfDay', 'Word or phrase of the day')}</span>
+                  <strong>{learningHub.dailySpotlight.targetText}</strong>
+                  {learningHub.dailySpotlight.nativeText && <small>{learningHub.dailySpotlight.nativeText}</small>}
+                </article>
+                )}
+                {hasStudyHistory && (
+                <article className="learning-week-card">
+                  <span>{t('learningHub.recentStudyTitle', 'Recent study')}</span>
+                  <div className="study-history-strip">
+                    {(learningHub.studyHistory || []).slice(-7).map((day) => (
+                      <span key={day.day} title={`${day.day}: ${day.events}`}>
+                        <strong>{day.events}</strong>
+                        <small>{day.day.slice(5)}</small>
+                      </span>
+                    ))}
+                  </div>
+                </article>
+                )}
+              </div>
+              )}
             </section>
           )}
 
@@ -400,13 +525,7 @@ function HomePage() {
             <section className="pair-profile-card pair-profile-summary" aria-label={t('learningHub.pairSetupSummary', 'Learning setup')}>
               <div>
                 <strong>{t('learningHub.pairSetupSummary', 'Learning setup')}</strong>
-                <span>
-                  {t(`learningHub.levels.${pairProfileForm.currentLevel}`, pairProfileForm.currentLevel || t('common.notSet', 'Not set'))}
-                  {' · '}
-                  {goalLabel(pairProfileForm.primaryGoal, goalOptions, t)}
-                  {' · '}
-                  {t(`learningHub.paces.${pairProfileForm.pace}`, pairProfileForm.pace || t('common.notSet', 'Not set'))}
-                </span>
+                <span>{learningSetupSummaryText}</span>
               </div>
               <button type="button" className="btn btn-outline btn-sm" onClick={() => setEditingPairProfile(true)}>
                 {t('learningHub.pairSetupEdit', 'Edit')}
@@ -466,128 +585,117 @@ function HomePage() {
             </section>
           )}
 
-          {!isGuest && learningHub && (
-            <section className="learning-plan-grid">
-              <article className="learning-plan-card">
-                <h2>{t('learningHub.dailyPlanTitle', 'Today\'s plan')}</h2>
-                {(learningHub.dailyPlan || []).map((action, index) => (
-                  <button type="button" key={`${action.type}-${index}`} onClick={() => navigate(action.route)}>
-                    <strong>{t(action.titleKey, { count: action.count, defaultValue: action.label || action.type })}</strong>
-                    {action.label && <span>{action.label}</span>}
-                  </button>
-                ))}
-              </article>
-              <article className="learning-plan-card">
-                <h2>{t('learningHub.weeklySummaryTitle', 'This week')}</h2>
-                <div className="learning-summary-row">
-                  <span>{t('learningHub.points', 'Points')}</span>
-                  <strong>{weeklySummary.points || 0}</strong>
+          {!isGuest && learningHub && showGuidancePanel && (
+            <section className="learning-guidance-panel" aria-label={t('learningHub.insightsAria', 'Learning guidance')}>
+              <div className="learning-section-head">
+                <div>
+                  <span>{t('learningHub.todaySection', 'Today')}</span>
+                  <h2>{t('learningHub.guidanceTitle', 'Guidance')}</h2>
                 </div>
-                <div className="learning-summary-row">
-                  <span>{t('learningHub.activeDays', 'Active days')}</span>
-                  <strong>{weeklySummary.activeDays || 0}</strong>
-                </div>
-                <div className="learning-summary-row">
-                  <span>{t('learningHub.sessions', 'Sessions')}</span>
-                  <strong>{weeklySummary.sessions || 0}</strong>
-                </div>
-                <div className="learning-summary-row">
-                  <span>{t('learningHub.speakingTurns', 'Speaking turns')}</span>
-                  <strong>{weeklySummary.speakingTurns || 0}</strong>
-                </div>
-                <div className="learning-summary-row">
-                  <span>{t('learningHub.newSavedItems', 'New saved items')}</span>
-                  <strong>{weeklySummary.newSavedItems || 0}</strong>
-                </div>
-              </article>
-              <article className="learning-plan-card">
-                <h2>{t('learningHub.recentStudyTitle', 'Recent study')}</h2>
-                <div className="study-history-strip">
-                  {(learningHub.studyHistory || []).slice(-7).map((day) => (
-                    <span key={day.day} title={`${day.day}: ${day.events}`}>
-                      <strong>{day.events}</strong>
-                      <small>{day.day.slice(5)}</small>
-                    </span>
-                  ))}
-                </div>
-              </article>
-            </section>
-          )}
+                <p>{t('learningHub.guidanceSubtitle', 'Small suggestions that keep the next session clear without crowding the page.')}</p>
+              </div>
 
-          {!isGuest && learningHub && (
-            <section className="learning-insight-grid" aria-label={t('learningHub.insightsAria', 'Learning guidance')}>
-              {firstThreeDays && (
-                <article className="learning-insight-card onboarding">
-                  <span>{t('learningHub.firstThreeDays', 'First three days')}</span>
-                  <strong>{t('learningHub.dayNumber', { day: firstThreeDays.day, defaultValue: 'Day {{day}}' })}</strong>
-                  <p>{currentOnboardingStep ? onboardingStepBody(currentOnboardingStep.bodyKey) : t('learningHub.firstThreeDaysBody', 'Build one small win today before adding more choices.')}</p>
-                  <div className="learning-step-list">
-                    {(firstThreeDays.steps || []).map((step) => (
-                      <button
-                        type="button"
-                        key={step.day}
-                        className={`${step.completed ? 'done' : ''} ${step.current ? 'current' : ''}`}
-                        onClick={() => handleLearningAction(step.action)}
-                      >
-                        <small>{t('learningHub.dayNumber', { day: step.day, defaultValue: 'Day {{day}}' })}</small>
-                        <strong>{onboardingStepTitle(step.titleKey)}</strong>
-                      </button>
-                    ))}
-                  </div>
-                </article>
-              )}
-              {goalPath && (
-                <article className="learning-insight-card">
-                  <span>{t('learningHub.goalPathTitle', 'Goal path')}</span>
-                  <strong>{goalLabel(goalPath.goal, goalOptions, t)}</strong>
-                  <p>{t('learningHub.goalPathBody', 'Your plan is leaning toward the situations you said matter most.')}</p>
+              <div className="learning-guidance-grid">
+                {dailyPlanSecondary.length > 0 && (
+                <article className="learning-guidance-card primary">
+                  <span>{t('learningHub.secondaryStepsTitle', 'After the main step')}</span>
                   <div className="learning-action-chips">
-                    {(goalPath.actions || []).map((action, index) => (
+                    {dailyPlanSecondary.map((action, index) => (
                       <button type="button" key={`${action.type}-${index}`} onClick={() => handleLearningAction(action)}>
                         {t(action.titleKey, { count: action.count, defaultValue: action.label || action.type })}
                       </button>
                     ))}
                   </div>
                 </article>
-              )}
-              {placement && (
-                <article className="learning-insight-card">
-                  <span>{t('learningHub.placementTitle', 'Placement')}</span>
-                  <strong>{t(`learningHub.levels.${placement.level}`, placement.level)}</strong>
-                  <p>{placementReasonText(placement.reasonKey)}</p>
-                  {placement.status === 'needs_check' && (
-                    <button type="button" onClick={() => navigate('/level-check')}>
-                      {t('learningHub.startLevelCheck', 'Start level check')}
-                    </button>
-                  )}
-                </article>
-              )}
-              <article className="learning-insight-card">
-                <span>{t(usingOfflinePack ? 'learningHub.offlinePackInUseTitle' : 'learningHub.offlineReadyTitle', usingOfflinePack ? 'Recent pack in use' : 'Recent pack ready')}</span>
-                <strong>{t(usingOfflinePack ? 'learningHub.offlinePackInUseValue' : 'learningHub.offlineReadyValue', usingOfflinePack ? 'Offline' : 'Ready')}</strong>
-                <p>{t(
-                  usingOfflinePack ? 'learningHub.offlinePackInUseBody' : 'learningHub.offlineReadyBody',
-                  usingOfflinePack
-                    ? 'Showing recently prepared material until the connection comes back.'
-                    : 'Recent useful material is kept nearby for a weaker connection.',
-                )}</p>
-              </article>
+                )}
+
+                {firstThreeDays && (
+                  <details className="learning-guidance-card">
+                    <summary>
+                      <span>{t('learningHub.firstThreeDays', 'First three days')}</span>
+                      <strong>{t('learningHub.dayNumber', { day: firstThreeDays.day, defaultValue: 'Day {{day}}' })}</strong>
+                    </summary>
+                    <p>{currentOnboardingStep ? onboardingStepBody(currentOnboardingStep.bodyKey) : t('learningHub.firstThreeDaysBody', 'Build one small win today before adding more choices.')}</p>
+                    <div className="learning-step-list">
+                      {(firstThreeDays.steps || []).map((step) => (
+                        <button
+                          type="button"
+                          key={step.day}
+                          className={`${step.completed ? 'done' : ''} ${step.current ? 'current' : ''}`}
+                          onClick={() => handleLearningAction(step.action)}
+                        >
+                          <small>{t('learningHub.dayNumber', { day: step.day, defaultValue: 'Day {{day}}' })}</small>
+                          <strong>{onboardingStepTitle(step.titleKey)}</strong>
+                        </button>
+                      ))}
+                    </div>
+                  </details>
+                )}
+
+                {goalPath && goalPathActions.length > 0 && (
+                  <details className="learning-guidance-card">
+                    <summary>
+                      <span>{t('learningHub.goalPathTitle', 'Goal path')}</span>
+                      <strong>{goalLabel(goalPath.goal, goalOptions, t)}</strong>
+                    </summary>
+                    <p>{t('learningHub.goalPathBody', 'Your plan is leaning toward the situations you said matter most.')}</p>
+                    <div className="learning-action-chips">
+                      {goalPathActions.map((action, index) => (
+                        <button type="button" key={`${action.type}-${index}`} onClick={() => handleLearningAction(action)}>
+                          {t(action.titleKey, { count: action.count, defaultValue: action.label || action.type })}
+                        </button>
+                      ))}
+                    </div>
+                  </details>
+                )}
+
+                {showPlacementPrompt && (
+                  <details className="learning-guidance-card">
+                    <summary>
+                      <span>{t('learningHub.placementTitle', 'Placement')}</span>
+                      <strong>{t(`learningHub.levels.${placement.level}`, placement.level)}</strong>
+                    </summary>
+                    <p>{placementReasonText(placement.reasonKey)}</p>
+                    {placement.status === 'needs_check' && (
+                      <button type="button" onClick={() => navigate('/level-check')}>
+                        {t('learningHub.startLevelCheck', 'Start level check')}
+                      </button>
+                    )}
+                  </details>
+                )}
+
+                {usingOfflinePack && (
+                <details className="learning-guidance-card">
+                  <summary>
+                    <span>{t(usingOfflinePack ? 'learningHub.offlinePackInUseTitle' : 'learningHub.offlineReadyTitle', usingOfflinePack ? 'Recent pack in use' : 'Recent pack ready')}</span>
+                    <strong>{t(usingOfflinePack ? 'learningHub.offlinePackInUseValue' : 'learningHub.offlineReadyValue', usingOfflinePack ? 'Offline' : 'Ready')}</strong>
+                  </summary>
+                  <p>{t(
+                    usingOfflinePack ? 'learningHub.offlinePackInUseBody' : 'learningHub.offlineReadyBody',
+                    usingOfflinePack
+                      ? 'Showing recently prepared material until the connection comes back.'
+                      : 'Recent useful material is kept nearby for a weaker connection.',
+                  )}</p>
+                </details>
+                )}
+              </div>
             </section>
           )}
 
-          {!isGuest && learningHub && (
+          {!isGuest && learningHub && showLearningShelf && (
             <section className="learning-shelf-grid" aria-label={t('learningHub.learningShelfAria', 'Learning shelf')}>
+              {recentWords.length > 0 && (
               <article className="learning-plan-card">
                 <h2>{t('learningHub.recentWordsTitle', 'Recent words')}</h2>
-                {recentWords.length ? recentWords.slice(0, 5).map((item) => (
+                {recentWords.slice(0, 5).map((item) => (
                   <button type="button" key={`${item.targetText}-${item.occurredAt || ''}`} onClick={() => navigate('/review')}>
                     <strong>{item.targetText}</strong>
                     {item.nativeText && <span>{item.nativeText}</span>}
                   </button>
-                )) : (
-                  <p>{t('learningHub.recentWordsEmpty', 'New words from class and conversation will gather here.')}</p>
-                )}
+                ))}
               </article>
+              )}
+              {hasMilestoneProgress && (
               <article className="learning-plan-card">
                 <h2>{t('learningHub.milestonesTitle', 'Milestones')}</h2>
                 <div className="learning-summary-row">
@@ -601,30 +709,32 @@ function HomePage() {
                 <div className="learning-summary-row">
                   <span>{t('learningHub.certificates', 'Certificates')}</span>
                   <strong>{milestones.certificates?.length || 0}</strong>
-                </div>
+                  </div>
                 <button type="button" onClick={() => navigate('/profile')}>{t('learningHub.viewMilestones', 'View milestones')}</button>
               </article>
+              )}
             </section>
           )}
 
-          <section className="home-contact-strip">
-            <div>
-              <strong>{t('contact.infoTitle')}</strong>
-              <span>{t('contact.subtitle')}</span>
-            </div>
-            <button type="button" className="btn btn-outline btn-sm" onClick={() => navigate('/contact')}>
-              {t('contact.navLabel')}
-            </button>
-          </section>
-
-          <section className="home-billing-strip">
-            <div>
-              <strong>{t('home.billingTitle')}</strong>
-              <span>{t('home.billingDesc')}</span>
-            </div>
-            <button type="button" className="btn btn-primary btn-sm" onClick={() => navigate('/pricing')}>
-              {t('home.billingAction')}
-            </button>
+          <section className="home-support-grid" aria-label={t('home.supportAndPlans', 'Support and plans')}>
+            <article className="home-support-card">
+              <div>
+                <strong>{t('contact.infoTitle')}</strong>
+                <span>{t('contact.subtitle')}</span>
+              </div>
+              <button type="button" className="btn btn-outline btn-sm" onClick={() => navigate('/contact')}>
+                {t('contact.navLabel')}
+              </button>
+            </article>
+            <article className="home-support-card">
+              <div>
+                <strong>{t('home.billingTitle')}</strong>
+                <span>{t('home.billingDesc')}</span>
+              </div>
+              <button type="button" className="btn btn-primary btn-sm" onClick={() => navigate('/pricing')}>
+                {t('home.billingAction')}
+              </button>
+            </article>
           </section>
 
         </main>
@@ -777,25 +887,16 @@ function HomePage() {
 
           {/* Admin Card - Only visible to admins */}
           {isAdmin && (
-            <div className="card sidebar-card admin-card" style={{
-              background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-              color: 'white'
-            }}>
-              <div className="card-header" style={{ borderBottom: 'none' }}>
+            <div className="card sidebar-card admin-card">
+              <div className="card-header">
                 <span className="card-icon">⚙️</span>
-                <h3 style={{ color: 'white' }}>{t('home.adminDashboard')}</h3>
+                <h3>{t('home.adminDashboard')}</h3>
               </div>
-              <p style={{ opacity: 0.9, fontSize: '0.9rem', marginBottom: '1rem' }}>
+              <p>
                 {t('home.adminDesc')}
               </p>
               <button
-                className="btn btn-sm"
-                style={{
-                  width: '100%',
-                  background: 'white',
-                  color: '#764ba2',
-                  fontWeight: '600'
-                }}
+                className="btn btn-outline btn-sm"
                 onClick={() => navigate('/admin')}
               >
                 {t('home.openDashboard')}

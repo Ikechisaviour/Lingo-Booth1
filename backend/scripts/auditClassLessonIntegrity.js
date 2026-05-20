@@ -6,6 +6,8 @@ const {
   looksLikeEnglishInstructionScaffold,
   normalizeTargetLayerForDisplay,
 } = require('../utils/targetLayerPolicy');
+const Lesson = require('../models/Lesson');
+const { loadTargetCurriculum } = require('../utils/loadTargetCurriculum');
 
 const repoRoot = path.resolve(__dirname, '..', '..');
 const issues = [];
@@ -111,6 +113,7 @@ const nonLatinCurricula = [
 ];
 
 const allCurricula = [
+  { lang: 'en', root: path.join(repoRoot, 'backend', 'textbookLessons', 'en') },
   { lang: 'ko', root: path.join(repoRoot, 'backend', 'textbookLessons') },
   { lang: 'zh', root: path.join(repoRoot, 'backend', 'textbookLessons', 'zh') },
   { lang: 'ja', root: path.join(repoRoot, 'backend', 'textbookLessons', 'ja') },
@@ -130,6 +133,11 @@ const allCurricula = [
   { lang: 'nl', root: path.join(repoRoot, 'backend', 'textbookLessons', 'nl') },
   { lang: 'ta', root: path.join(repoRoot, 'backend', 'textbookLessons', 'ta') },
   { lang: 'bn', root: path.join(repoRoot, 'backend', 'textbookLessons', 'bn') },
+];
+
+const supportedCurriculumLangs = [
+  'ko', 'zh', 'en', 'ja', 'es', 'fr', 'de', 'ar', 'he', 'hi',
+  'it', 'fil', 'id', 'pt', 'ru', 'tr', 'nl', 'ta', 'bn', 'ms',
 ];
 
 for (const { lang, root } of nonLatinCurricula) {
@@ -175,6 +183,20 @@ for (const { lang, root } of allCurricula) {
       });
     });
   }
+}
+
+for (const lang of supportedCurriculumLangs) {
+  const { curriculum } = loadTargetCurriculum(lang);
+  Object.entries(curriculum).forEach(([lessonKey, lesson]) => {
+    const doc = new Lesson({ ...lesson, curriculumKey: lessonKey });
+    const error = doc.validateSync();
+    if (error) {
+      const details = Object.values(error.errors)
+        .map((validationError) => `${validationError.path}="${validationError.value}"`)
+        .join(', ');
+      issues.push(`${lang}: lesson "${lessonKey}" fails Lesson schema validation: ${details}.`);
+    }
+  });
 }
 
 if (issues.length) {

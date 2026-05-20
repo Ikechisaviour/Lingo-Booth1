@@ -211,6 +211,64 @@ const ProgressScreen: React.FC = () => {
       ]
     : [];
   const realWorldRows = Object.entries(learningHub?.realWorldProgress || {});
+  const weeklySummary = learningHub?.weeklySummary || {};
+  const reviewCount = learningHub?.reviewQueue?.counts?.total || learningHub?.reviewQueue?.dueSavedItems?.length || 0;
+  const topWeakArea = learningHub?.reviewQueue?.weakAreas?.[0] || progress.strugglingAreas?.[0] || null;
+  const nextActionTitle = learningHub?.nextAction
+    ? t(learningHub.nextAction.titleKey, {
+        count: learningHub.nextAction.count,
+        defaultValue: learningHub.nextAction.label || t('learningHub.continueLearning', 'Continue learning'),
+      })
+    : t('learningHub.continueLearning', 'Continue learning');
+  const nextActionRoute = learningHub?.nextAction?.route || '/class';
+  const weeklyMomentum = Math.min(100, Math.round(((weeklySummary.activeDays || 0) / 7) * 100));
+  const progressSignals = [
+    {
+      key: 'mastered',
+      label: t('progress.analyticsMastered', 'Mastered'),
+      value: String(progress.mastered || 0),
+      detail: t('progress.analyticsMasteredDetail', 'Items you can handle well'),
+    },
+    {
+      key: 'review',
+      label: t('learningHub.reviewDue', 'Review due'),
+      value: String(reviewCount),
+      detail: t('progress.analyticsReviewDetail', 'Worth revisiting today'),
+    },
+    {
+      key: 'activeDays',
+      label: t('learningHub.activeDays', 'Active days'),
+      value: `${weeklySummary.activeDays || 0}/7`,
+      detail: t('progress.analyticsActiveDaysDetail', 'This week'),
+    },
+    {
+      key: 'speaking',
+      label: t('learningHub.speakingTurns', 'Speaking turns'),
+      value: String(weeklySummary.speakingTurns || 0),
+      detail: t('progress.analyticsSpeakingDetail', 'Recent voice practice'),
+    },
+  ];
+  const navigateLearningRoute = (routeValue?: string) => {
+    const route = String(routeValue || '');
+    if (route.startsWith('/class/')) {
+      navigation.navigate('Class', { screen: 'ClassLesson', params: { classLessonId: route.split('/').pop() } });
+    } else if (route.startsWith('/quiz/')) {
+      navigation.navigate('Exercise', {
+        screen: 'Quiz',
+        params: { screen: 'QuizDetail', params: { quizId: route.split('/').pop() } },
+      });
+    } else if (route === '/review') {
+      navigation.navigate('Exercise', { screen: 'Review' });
+    } else if (route === '/writing') {
+      navigation.navigate('Exercise', { screen: 'Writing' });
+    } else if (route === '/conversation') {
+      navigation.navigate('Conversation');
+    } else if (route === '/flashcards') {
+      navigation.navigate('Exercise', { screen: 'Flashcards' });
+    } else {
+      navigation.navigate('Class');
+    }
+  };
 
   return (
     <ScrollView
@@ -238,6 +296,59 @@ const ProgressScreen: React.FC = () => {
           </View>
         </View>
       )}
+
+      <Card style={styles.analyticsCard}>
+        <Card.Content style={styles.analyticsContent}>
+          <View style={styles.analyticsHeader}>
+            <Text style={styles.analyticsKicker}>{t('progress.analyticsKicker', 'Learning health')}</Text>
+            <Text style={styles.analyticsTitle}>{t('progress.analyticsTitle', 'What your activity is telling us')}</Text>
+            <Text style={styles.analyticsSubtitle}>
+              {t('progress.analyticsSubtitle', 'Use this as a simple read on momentum, review pressure, and the next useful step.')}
+            </Text>
+          </View>
+          <View style={styles.focusRow}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.analyticsLabel}>{t('learningHub.nextBestAction', 'Next best action')}</Text>
+              <Text style={styles.focusTitle}>{nextActionTitle}</Text>
+            </View>
+            <Button mode="contained" compact onPress={() => navigateLearningRoute(nextActionRoute)}>
+              {t('learningHub.open', 'Open')}
+            </Button>
+          </View>
+          <View style={styles.signalGrid}>
+            {progressSignals.map((signal) => (
+              <View key={signal.key} style={styles.signalCard}>
+                <Text style={styles.analyticsLabel}>{signal.label}</Text>
+                <Text style={styles.signalValue}>{signal.value}</Text>
+                <Text style={styles.signalDetail}>{signal.detail}</Text>
+              </View>
+            ))}
+          </View>
+          <View style={styles.lowerInsightGrid}>
+            <View style={styles.insightCard}>
+              <Text style={styles.analyticsLabel}>{t('progress.nextFocus', 'Next focus')}</Text>
+              <Text style={styles.focusTitle}>
+                {topWeakArea?.title || topWeakArea?.lessonTitle || topWeakArea?.category || t('progress.keepBuilding', 'Keep building momentum')}
+              </Text>
+              <Text style={styles.signalDetail}>
+                {topWeakArea ? t('progress.nextFocusBody', 'This area is showing the clearest signal for extra practice.') : t('progress.nextFocusEmptyBody', 'Practice a little more and this will become more specific.')}
+              </Text>
+            </View>
+            <View style={styles.insightCard}>
+              <Text style={styles.analyticsLabel}>{t('progress.weeklyMomentum', 'Weekly momentum')}</Text>
+              <Text style={styles.signalValue}>{weeklyMomentum}%</Text>
+              <ProgressBar progress={weeklyMomentum / 100} color={colors.primary} style={styles.momentumBar} />
+              <Text style={styles.signalDetail}>
+                {t('progress.weeklyMomentumDetail', {
+                  days: weeklySummary.activeDays || 0,
+                  sessions: weeklySummary.sessions || 0,
+                  defaultValue: '{{days}} active days and {{sessions}} sessions',
+                })}
+              </Text>
+            </View>
+          </View>
+        </Card.Content>
+      </Card>
 
       {/* Mastery Stats */}
       <View style={styles.masteryGrid}>
@@ -454,6 +565,86 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   achievementIcon: { fontSize: isCompact ? 32 : 40 },
   achievementTitle: { fontSize: isCompact ? 18 : 20, fontWeight: '800', color: '#fff' },
   achievementXp: { color: 'rgba(255,255,255,0.9)', fontWeight: '600', fontSize: 14, marginTop: 2 },
+  analyticsCard: {
+    backgroundColor: colors.surface,
+    borderRadius: isCompact ? 12 : 18,
+    marginBottom: isCompact ? 8 : 12,
+    borderWidth: 1,
+    borderColor: colors.primary + '40',
+    elevation: 2,
+  },
+  analyticsContent: { gap: isCompact ? 10 : 12 },
+  analyticsHeader: { gap: 3 },
+  analyticsKicker: {
+    color: colors.primary,
+    fontSize: 11,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  analyticsTitle: {
+    color: colors.textPrimary,
+    fontSize: isCompact ? 18 : 20,
+    fontWeight: '900',
+  },
+  analyticsSubtitle: {
+    color: colors.textSecondary,
+    lineHeight: isCompact ? 18 : 20,
+  },
+  focusRow: {
+    flexDirection: isCompact ? 'column' : 'row',
+    alignItems: isCompact ? 'stretch' : 'center',
+    gap: 10,
+    padding: isCompact ? 10 : 12,
+    borderRadius: isCompact ? 10 : 14,
+    backgroundColor: colors.primary + '12',
+    borderWidth: 1,
+    borderColor: colors.primary + '30',
+  },
+  analyticsLabel: {
+    color: colors.primary,
+    fontSize: 11,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+    letterSpacing: 0.4,
+  },
+  focusTitle: {
+    color: colors.textPrimary,
+    fontSize: isCompact ? 14 : 16,
+    fontWeight: '800',
+    marginTop: 3,
+  },
+  signalGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  signalCard: {
+    width: isCompact ? '100%' : '48%',
+    minHeight: isCompact ? 88 : 102,
+    gap: 5,
+    padding: isCompact ? 10 : 12,
+    borderRadius: isCompact ? 10 : 14,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.background,
+  },
+  signalValue: {
+    color: colors.textPrimary,
+    fontSize: isCompact ? 22 : 26,
+    fontWeight: '900',
+  },
+  signalDetail: {
+    color: colors.textSecondary,
+    lineHeight: isCompact ? 16 : 18,
+  },
+  lowerInsightGrid: { flexDirection: isCompact ? 'column' : 'row', gap: 8 },
+  insightCard: {
+    flex: 1,
+    gap: 5,
+    padding: isCompact ? 10 : 12,
+    borderRadius: isCompact ? 10 : 14,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: colors.background,
+  },
+  momentumBar: { height: 8, borderRadius: 999 },
 
   masteryGrid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between', marginBottom: 8 },
   masteryCard: {

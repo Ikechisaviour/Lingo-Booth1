@@ -77,7 +77,6 @@
     "reason": "Raison",
     "forgotPassword": "Mot de passe oublié ?",
     "googleFailed": "La connexion avec Google a ?chou?. Veuillez r?essayer.",
-    "backToHome": "Retour ? l?accueil",
     "sessionExpired": "Votre session a expir?. Veuillez vous reconnecter."
   },
   "register": {
@@ -196,14 +195,15 @@
       "time": "Étudiez pendant {{minutes}} minutes"
     },
     "weekdays": {
-      "mon": "M",
+      "mon": "M.",
       "tue": "T",
       "wed": "W",
       "thu": "T",
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "supportAndPlans": "Accompagnement et plans"
   },
   "lessons": {
     "title": "{{language}} <1>Leçons</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "Diversifiez l'apprentissage",
     "diversifyLearningTip": "Pratiquez les quatre compétences de manière équilibrée",
     "stayConsistent": "Soyez régulier",
-    "stayConsistentTip": "Étudiez un peu chaque jour pour de meilleurs résultats"
+    "stayConsistentTip": "Étudiez un peu chaque jour pour de meilleurs résultats",
+    "analyticsMastered": "Maîtrisé",
+    "analyticsMasteredDetail": "Articles que vous pouvez bien gérer",
+    "analyticsReviewDetail": "A revoir aujourd'hui",
+    "analyticsActiveDaysDetail": "Cette semaine",
+    "analyticsSpeakingDetail": "Pratique vocale récente",
+    "analyticsAria": "Analyse de l'apprentissage",
+    "analyticsKicker": "Apprendre la santé",
+    "analyticsTitle": "Ce que nous dit votre activité",
+    "analyticsSubtitle": "Utilisez-le comme une simple lecture sur l’élan, examinez la pression et la prochaine étape utile.",
+    "nextFocus": "Focus suivant",
+    "keepBuilding": "Continuer à créer une dynamique",
+    "nextFocusBody": "Cette zone montre le signal le plus clair pour une pratique supplémentaire.",
+    "nextFocusEmptyBody": "Entraînez-vous un peu plus et cela deviendra plus précis.",
+    "weeklyMomentum": "Dynamique hebdomadaire",
+    "weeklyMomentumDetail": "{{days}} journées actives et séances {{sessions}}"
   },
   "profilePage": {
     "memberSince": "Membre depuis {{date}}",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "Commencer une leçon guidée",
     "firstThreeDayReviewBody": "Revenez une fois à ce que vous avez vu hier pour que les premiers éléments commencent à coller.",
     "firstThreeDaySpeakBody": "Utilisez un tour de parole court pour que la langue quitte la page plus tôt.",
-    "firstThreeDayLearnBody": "Commencez par une petite leçon guidée afin que le binôme ait un point de départ clair."
+    "firstThreeDayLearnBody": "Commencez par une petite leçon guidée afin que le binôme ait un point de départ clair.",
+    "reviewSignalDetail": "{{count}} articles à revoir",
+    "weeklyPointsSignal": "Points hebdomadaires",
+    "sessionsCount": "Séances {{count}}",
+    "activityThisWeek": "Activité cette semaine",
+    "savedItemsThisWeek": "{{count}} enregistré cette semaine",
+    "analyticsKicker": "Signaux d'apprentissage",
+    "analyticsTitle": "Votre image d'apprentissage",
+    "analyticsSubtitle": "Une lecture rapide de ce qu'il faut faire ensuite, de ce qui doit être révisé et de l'évolution de votre semaine.",
+    "viewFullProgress": "Voir la progression complète",
+    "nextActionSignalBody": "Ceci est choisi parmi votre dernière activité de cours, votre file d’attente de révision et la configuration actuelle de la paire de langues.",
+    "startGuidedClass": "Commencer un cours guidé",
+    "pairSetupFriendlySummary": "{{level}} niveau · {{goal}} objectif · {{pace}} rythme",
+    "clearValue": "Claire",
+    "reviewClearDetail": "Rien n'est dû pour le moment. Construisez la file d’attente avec une classe ou une phrase enregistrée.",
+    "weeklyPointsEmpty": "Commencez une courte session pour commencer cette semaine.",
+    "speakingTurnsEmpty": "Essayez une courte conversation lorsque vous êtes prêt.",
+    "todayFocus": "Le focus du jour",
+    "primaryActionLivesAbove": "Utilisez le bouton principal ci-dessus lorsque vous êtes prêt à commencer.",
+    "findFirstPhrase": "Trouvez votre première phrase",
+    "recentStudyEmpty": "Votre parcours d'étude apparaîtra après votre première activité cette semaine.",
+    "startToday": "Commencez aujourd'hui",
+    "todaySection": "Aujourd'hui",
+    "guidanceTitle": "Conseils",
+    "guidanceSubtitle": "De petites suggestions qui permettent de garder la prochaine session claire sans encombrer la page.",
+    "secondaryStepsTitle": "Après l'étape principale",
+    "secondaryStepsEmpty": "Une action ciblée suffit pour l’instant. Terminez-le, puis l'étape suivante apparaîtra ici.",
+    "recentWordsEmptyAction": "Les mots enregistrés et les phrases utiles seront collectés ici après le cours ou la pratique de la conversation.",
+    "startAClass": "Commencer un cours",
+    "milestonesEmptyAction": "Votre première leçon terminée, phrase enregistrée ou certificat apparaîtra ici.",
+    "earnFirstMilestone": "Gagnez le premier jalon"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "Classe",
+      "conversation": "Conversation",
+      "quiz": "Questionnaire",
+      "flashcards": "Cartes mémoire",
+      "writing": "En écrivant",
+      "review": "Revoir",
+      "voice": "Voix",
+      "other": "Autre"
+    },
+    "unknownSkill": "Compétence inconnue",
+    "title": "Apprendre la santé",
+    "activeLearners": "Apprenants actifs",
+    "lastSevenDays": "7 derniers jours",
+    "learningEvents": "Événements d'apprentissage",
+    "classLessonsCompleted": "Cours terminés",
+    "conversationTurns": "La conversation tourne",
+    "savedReviews": "Avis sur les articles enregistrés",
+    "dueNow": "{{count}} à venir maintenant",
+    "tutorIssues": "Problèmes de tuteur",
+    "featureUsage": "Utilisation des fonctionnalités",
+    "learnersCount": "{{count}} apprenants",
+    "noFeatureUsage": "Aucun événement d'apprentissage enregistré pour l'instant.",
+    "languagePairs": "Paires de langues",
+    "noLanguagePairs": "Aucune activité de paire de langues pour l'instant.",
+    "weakSkills": "Compétences nécessitant une attention",
+    "averageScore": "Moyenne {{score}}%",
+    "noWeakSkills": "Aucun enregistrement de compétences faibles au cours des 30 derniers jours.",
+    "difficultContent": "Contenu difficile",
+    "unknownLesson": "Leçon inconnue",
+    "noDifficultContent": "Aucun modèle de contenu difficile trouvé pour l'instant."
+  },
+  "skills": {
+    "listening": "Écoute",
+    "speaking": "Parlant",
+    "reading": "En lisant",
+    "writing": "En écrivant"
   }
 }

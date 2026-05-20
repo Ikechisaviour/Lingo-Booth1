@@ -3,6 +3,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import api, { authService } from '../services/api';
 import { applyPublicLanguage } from '../utils/publicLanguage';
+import BrandLogo from '../components/BrandLogo';
 import './Auth.css';
 
 function VerifyEmailPage() {
@@ -63,7 +64,7 @@ function VerifyEmailPage() {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
+        <BrandLogo variant="lockup" className="auth-logo" decorative={false} />
 
         {status === 'verifying' && (
           <div style={{ textAlign: 'center', padding: '8px 0' }}>

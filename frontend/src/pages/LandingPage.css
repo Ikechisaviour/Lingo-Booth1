@@ -49,10 +49,7 @@
   display: inline-flex;
   align-items: center;
   justify-self: start;
-  gap: 14px;
   padding: 0;
-  font-size: 1.8rem;
-  font-weight: 850;
 }
 
 .landing-brand:hover,
@@ -60,24 +57,14 @@
   transform: none;
 }
 
-.landing-brand-mark {
+.landing-brand .brand-logo-unit__mark {
   width: 46px;
   height: 46px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  border: 1px solid rgba(16, 25, 35, 0.1);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.78);
-  box-shadow: 0 10px 24px rgba(16, 25, 35, 0.12);
 }
 
-.landing-brand-mark img {
-  width: 40px;
-  height: 40px;
-  display: block;
-  object-fit: contain;
+.landing-brand .brand-logo-unit__wordmark {
+  width: 172px;
+  max-height: 42px;
 }
 
 .landing-nav-actions {
@@ -828,18 +815,14 @@
     min-height: 72px;
   }
 
-  .landing-brand span {
-    font-size: 1.2rem;
-  }
-
-  .landing-brand-mark {
+  .landing-brand .brand-logo-unit__mark {
     width: 34px;
     height: 34px;
   }
 
-  .landing-brand-mark img {
-    width: 30px;
-    height: 30px;
+  .landing-brand .brand-logo-unit__wordmark {
+    width: 126px;
+    max-height: 30px;
   }
 
   .landing-login {

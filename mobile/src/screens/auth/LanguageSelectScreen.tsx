@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet, Image, TouchableOpacity, SafeAreaView, Alert } from 'react-native';
+import { View, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView, Alert, useWindowDimensions } from 'react-native';
 import { Text, Button } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
@@ -10,7 +10,9 @@ import LANGUAGES, { getLanguageDisplayName, Language } from '../../config/langua
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
+import BrandLogo from '../../components/BrandLogo';
 import { classLessonService, userService } from '../../services/api';
+import { getResponsiveLayout } from '../../utils/responsiveLayout';
 import { colors } from '../../config/theme';
 
 type NavProp = NativeStackNavigationProp<AuthStackParamList, 'LanguageSelect'>;
@@ -22,6 +24,9 @@ const LanguageSelectScreen: React.FC = () => {
   const route = useRoute<RouteType>();
   const mode = route.params.mode;
   const insets = useSafeAreaInsets();
+  const { width: winWidth, height: winHeight } = useWindowDimensions();
+  const layout = getResponsiveLayout(winWidth, winHeight);
+  const useWideLayout = layout.isWide || layout.isFoldable || layout.isTablet;
 
   const { enterGuestMode, userId, setNeedsLanguageSetup, logout } = useAuthStore();
   const { nativeLanguage: savedNative, targetLanguage: savedTarget, setLanguages } = useSettingsStore();
@@ -100,6 +105,7 @@ const LanguageSelectScreen: React.FC = () => {
       key={code}
       style={[
         styles.langOption,
+        useWideLayout && styles.langOptionWide,
         selected && styles.langOptionSelected,
         disabled && styles.langOptionDisabled,
       ]}
@@ -120,14 +126,21 @@ const LanguageSelectScreen: React.FC = () => {
   return (
     <View style={styles.outer}>
       {/* Branded header */}
-      <View style={[styles.brandHeader, { paddingTop: insets.top + 16 }]}>
+      <View
+        style={[
+          styles.brandHeader,
+          useWideLayout && styles.brandHeaderWide,
+          { paddingTop: insets.top + (useWideLayout ? 12 : 16) },
+        ]}
+      >
         <TouchableOpacity style={styles.backButton} onPress={handleBack}>
           <Text style={styles.backButtonText}>← {t('common.back', 'Back')}</Text>
         </TouchableOpacity>
-        <Image
-          source={require('../../../assets/icon.png')}
-          style={styles.logo}
-          resizeMode="contain"
+        <BrandLogo
+          variant="lockup"
+          markSize={useWideLayout ? 70 : 58}
+          wordmarkWidth={useWideLayout ? 210 : 172}
+          style={styles.brandLogo}
         />
         <Text style={styles.headerTitle}>{t('languageSelect.title')}</Text>
         <Text style={styles.headerSubtitle}>{t('languageSelect.subtitle')}</Text>
@@ -136,11 +149,15 @@ const LanguageSelectScreen: React.FC = () => {
       {/* Scrollable content sheet */}
       <ScrollView
         style={styles.scroll}
-        contentContainerStyle={[styles.scrollContent, { paddingBottom: insets.bottom + 24 }]}
+        contentContainerStyle={[
+          styles.scrollContent,
+          useWideLayout && styles.scrollContentWide,
+          { paddingBottom: insets.bottom + 24 },
+        ]}
         keyboardShouldPersistTaps="handled"
         showsVerticalScrollIndicator={false}
       >
-        <View style={styles.contentSheet}>
+        <View style={[styles.contentSheet, useWideLayout && styles.contentSheetWide]}>
           {/* Native language */}
           <View style={styles.sectionHeader}>
             <Text style={styles.sectionLabel}>{t('languageSelect.iSpeak')}</Text>
@@ -208,11 +225,10 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     alignItems: 'center',
   },
-  logo: {
-    width: 60,
-    height: 60,
-    marginBottom: 10,
+  brandHeaderWide: {
+    paddingBottom: 16,
   },
+  brandLogo: { marginBottom: 10 },
   headerTitle: {
     color: '#fff',
     fontSize: 22,
@@ -228,12 +244,23 @@ const styles = StyleSheet.create({
 
   scroll: { flex: 1 },
   scrollContent: { flexGrow: 1 },
+  scrollContentWide: {
+    alignItems: 'center',
+  },
   contentSheet: {
     backgroundColor: colors.surface,
     borderTopLeftRadius: 28,
     borderTopRightRadius: 28,
     padding: 24,
     minHeight: 400,
+  },
+  contentSheetWide: {
+    width: '100%',
+    maxWidth: 920,
+    borderRadius: 28,
+    minHeight: 0,
+    marginTop: 10,
+    marginHorizontal: 24,
   },
 
   sectionHeader: {
@@ -268,6 +295,9 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.border,
     width: '48%',
+  },
+  langOptionWide: {
+    width: '31.8%',
   },
   langOptionSelected: {
     borderColor: colors.primary,

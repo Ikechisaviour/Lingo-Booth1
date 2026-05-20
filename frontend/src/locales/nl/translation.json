@@ -77,7 +77,6 @@
     "reason": "Reden",
     "forgotPassword": "Wachtwoord vergeten?",
     "googleFailed": "Inloggen met Google is mislukt. Probeer het opnieuw.",
-    "backToHome": "Terug naar home",
     "sessionExpired": "Je sessie is verlopen. Log opnieuw in."
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "supportAndPlans": "Ondersteuning en plannen"
   },
   "lessons": {
     "title": "{{language}} <1>Lessen</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "Diversifieer het leren",
     "diversifyLearningTip": "Oefen alle vier vaardigheden gelijkmatig",
     "stayConsistent": "Wees consistent",
-    "stayConsistentTip": "Studeer elke dag een beetje voor de beste resultaten"
+    "stayConsistentTip": "Studeer elke dag een beetje voor de beste resultaten",
+    "analyticsMastered": "Beheerst",
+    "analyticsMasteredDetail": "Items waar je goed mee om kunt gaan",
+    "analyticsReviewDetail": "De moeite waard om vandaag nog eens te bekijken",
+    "analyticsActiveDaysDetail": "Deze week",
+    "analyticsSpeakingDetail": "Recente stemoefening",
+    "analyticsAria": "Leeranalyse",
+    "analyticsKicker": "Gezondheid leren",
+    "analyticsTitle": "Wat uw activiteit ons vertelt",
+    "analyticsSubtitle": "Gebruik dit als een eenvoudige lezing over momentum, beoordelingsdruk en de volgende nuttige stap.",
+    "nextFocus": "Volgende focus",
+    "keepBuilding": "Blijf momentum opbouwen",
+    "nextFocusBody": "Dit gebied geeft het duidelijkste signaal voor extra oefening.",
+    "nextFocusEmptyBody": "Oefen nog een beetje en dit zal specifieker worden.",
+    "weeklyMomentum": "Wekelijks momentum",
+    "weeklyMomentumDetail": "{{days}} actieve dagen en {{sessions}} sessies"
   },
   "profilePage": {
     "memberSince": "Lid sinds {{date}}",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "Start één begeleide les",
     "firstThreeDayReviewBody": "Keer een keer terug naar wat je gisteren zag, zodat de eerste items blijven hangen.",
     "firstThreeDaySpeakBody": "Gebruik een korte spreekbeurt, zodat de taal vroegtijdig de pagina verlaat.",
-    "firstThreeDayLearnBody": "Begin met één kleine begeleide les, zodat het tweetal een duidelijk startpunt heeft."
+    "firstThreeDayLearnBody": "Begin met één kleine begeleide les, zodat het tweetal een duidelijk startpunt heeft.",
+    "reviewSignalDetail": "{{count}} items die de moeite waard zijn om opnieuw te bezoeken",
+    "weeklyPointsSignal": "Wekelijkse punten",
+    "sessionsCount": "{{count}} sessies",
+    "activityThisWeek": "Activiteit deze week",
+    "savedItemsThisWeek": "{{count}} deze week opgeslagen",
+    "analyticsKicker": "Leersignalen",
+    "analyticsTitle": "Jouw leerfoto",
+    "analyticsSubtitle": "Lees snel wat u vervolgens moet doen, wat moet worden herzien en hoe uw week verloopt.",
+    "viewFullProgress": "Bekijk de volledige voortgang",
+    "nextActionSignalBody": "Dit wordt gekozen op basis van uw laatste lesactiviteit, de beoordelingswachtrij en de huidige configuratie van het taalpaar.",
+    "startGuidedClass": "Start één begeleide les",
+    "pairSetupFriendlySummary": "{{level}} niveau · {{goal}} doel · {{pace}} tempo",
+    "clearValue": "Duidelijk",
+    "reviewClearDetail": "Er is op dit moment niets verschuldigd. Bouw de wachtrij met één klasse of opgeslagen zin.",
+    "weeklyPointsEmpty": "Start deze week een korte sessie.",
+    "speakingTurnsEmpty": "Probeer een kort gesprek als je er klaar voor bent.",
+    "todayFocus": "De focus van vandaag",
+    "primaryActionLivesAbove": "Gebruik de hoofdknop hierboven wanneer u klaar bent om te beginnen.",
+    "findFirstPhrase": "Zoek je eerste zin",
+    "recentStudyEmpty": "Je studietraject verschijnt na je eerste activiteit deze week.",
+    "startToday": "Begin vandaag nog",
+    "todaySection": "Vandaag",
+    "guidanceTitle": "Begeleiding",
+    "guidanceSubtitle": "Kleine suggesties die de volgende sessie overzichtelijk houden zonder de pagina te verdringen.",
+    "secondaryStepsTitle": "Na de hoofdstap",
+    "secondaryStepsEmpty": "Eén gerichte actie is voorlopig voldoende. Maak het af, dan verschijnt de volgende stap hier.",
+    "recentWordsEmptyAction": "Opgeslagen woorden en nuttige zinnen worden hier verzameld na de les of gespreksoefeningen.",
+    "startAClass": "Begin een les",
+    "milestonesEmptyAction": "Je eerste voltooide les, opgeslagen zin of certificaat verschijnt hier.",
+    "earnFirstMilestone": "Verdien de eerste mijlpaal"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "Klas",
+      "conversation": "Gesprek",
+      "quiz": "Quiz",
+      "flashcards": "Flitskaarten",
+      "writing": "Schrijven",
+      "review": "Beoordeling",
+      "voice": "Stem",
+      "other": "Ander"
+    },
+    "unknownSkill": "Onbekende vaardigheid",
+    "title": "Gezondheid leren",
+    "activeLearners": "Actieve leerlingen",
+    "lastSevenDays": "Laatste 7 dagen",
+    "learningEvents": "Leerevenementen",
+    "classLessonsCompleted": "Klassen voltooid",
+    "conversationTurns": "Het gesprek verandert",
+    "savedReviews": "Beoordelingen van opgeslagen items",
+    "dueNow": "{{count}} moet nu klaar zijn",
+    "tutorIssues": "Problemen met docenten",
+    "featureUsage": "Functiegebruik",
+    "learnersCount": "{{count}} leerlingen",
+    "noFeatureUsage": "Er zijn nog geen leergebeurtenissen geregistreerd.",
+    "languagePairs": "Taalparen",
+    "noLanguagePairs": "Nog geen taalpaaractiviteit.",
+    "weakSkills": "Vaardigheden die aandacht behoeven",
+    "averageScore": "Gemiddeld {{score}}%",
+    "noWeakSkills": "Geen zwakke vaardigheidsrecords in de afgelopen 30 dagen.",
+    "difficultContent": "Moeilijke inhoud",
+    "unknownLesson": "Onbekende les",
+    "noDifficultContent": "Er is nog geen patroon met moeilijke inhoud gevonden."
+  },
+  "skills": {
+    "listening": "Luisteren",
+    "speaking": "Spreken",
+    "reading": "Lezing",
+    "writing": "Schrijven"
   }
 }

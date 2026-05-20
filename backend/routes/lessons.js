@@ -674,6 +674,7 @@ async function warmClassLessonPair(targetLang, nativeLang, userId = '') {
   const lessons = await sortLessonsByCourseOrder(await Lesson.find({
     track: CLASS_LESSON_TRACK,
     targetLang: normalizedTargetLang,
+    curriculumStatus: { $ne: 'archived' },
   }), normalizedTargetLang);
 
   if (!lessons.length) return;
@@ -756,6 +757,7 @@ router.get('/', optionalAuth, async (req, res) => {
     }
     if (contentKind === 'classLesson') {
       filter.track = CLASS_LESSON_TRACK;
+      filter.curriculumStatus = { $ne: 'archived' };
     } else if (contentKind === 'quiz') {
       filter.track = { $ne: CLASS_LESSON_TRACK };
     } else if (track && VALID_TRACKS.includes(track)) {

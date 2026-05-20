@@ -10,6 +10,7 @@ const files = {
   lessonsRoute: path.join(repoRoot, 'backend', 'routes', 'lessons.js'),
   flashcardsRoute: path.join(repoRoot, 'backend', 'routes', 'flashcards.js'),
   translationService: path.join(repoRoot, 'backend', 'utils', 'translationService.js'),
+  backendPackage: path.join(repoRoot, 'backend', 'package.json'),
   webPolicy: path.join(repoRoot, 'frontend', 'src', 'utils', 'languagePairPolicy.js'),
   mobilePolicy: path.join(repoRoot, 'mobile', 'src', 'utils', 'languagePairPolicy.ts'),
 };
@@ -122,6 +123,13 @@ if (fs.existsSync(files.flashcardsRoute)) {
   const source = read(files.flashcardsRoute);
   if (!source.includes('results[k]?.failed')) {
     issues.push('backend/routes/flashcards.js must check failed translation results before rendering native flashcard text.');
+  }
+}
+
+if (fs.existsSync(files.backendPackage)) {
+  const source = read(files.backendPackage);
+  if (!source.includes('auditQuizFlashcardConcepts.js')) {
+    issues.push('backend/package.json audit:language-guardrails must run auditQuizFlashcardConcepts.js so quiz/flashcard target contamination cannot bypass npm run audit:all.');
   }
 }
 

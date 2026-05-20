@@ -9,6 +9,7 @@ const {
   reviewIntervalDays,
   searchLearningItems,
 } = require('../utils/learningHub');
+const { recordLearningEvent } = require('../utils/xpRewards');
 
 const router = express.Router();
 router.use(verifyToken);
@@ -50,6 +51,14 @@ async function findPairProfile(userId, pair) {
     inherited: true,
     inheritedFromNativeLanguage: inherited.nativeLanguage,
   };
+}
+
+async function recordLearningAnalytics(userId, payload) {
+  try {
+    await recordLearningEvent(userId, payload);
+  } catch (error) {
+    console.warn('Learning analytics event skipped:', error.message);
+  }
 }
 
 router.get('/overview', async (req, res) => {
@@ -125,6 +134,18 @@ router.post('/saved-items', async (req, res) => {
       },
       { upsert: true, new: true, setDefaultsOnInsert: true },
     );
+    await recordLearningAnalytics(req.userId, {
+      eventType: 'saved_item_created',
+      itemId: String(item._id),
+      itemType: item.itemType,
+      sourceType: item.sourceType,
+      sourceRef: item.sourceRef,
+      sourceLabel: item.sourceLabel,
+      targetText: item.targetText,
+      nativeText: item.nativeText,
+      targetLanguage: item.targetLanguage,
+      nativeLanguage: item.nativeLanguage,
+    });
     res.status(201).json(item);
   } catch (error) {
     console.error('Save study item error:', error);
@@ -142,6 +163,18 @@ router.put('/saved-items/:itemId/review', async (req, res) => {
     item.ease = reviewEase(item.ease || 2.5, result);
     item.nextReviewAt = new Date(Date.now() + reviewIntervalDays(item.reviewCount, result) * 24 * 60 * 60 * 1000);
     await item.save();
+    await recordLearningAnalytics(req.userId, {
+      eventType: 'saved_item_reviewed',
+      itemId: String(item._id),
+      itemType: item.itemType,
+      sourceType: item.sourceType,
+      result,
+      reviewCount: item.reviewCount,
+      targetText: item.targetText,
+      nativeText: item.nativeText,
+      targetLanguage: item.targetLanguage,
+      nativeLanguage: item.nativeLanguage,
+    });
     res.json(item);
   } catch (error) {
     console.error('Review study item error:', error);

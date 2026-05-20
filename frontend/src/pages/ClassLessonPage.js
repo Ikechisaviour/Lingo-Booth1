@@ -480,6 +480,7 @@ function ClassLessonPage() {
   const recognitionRef = useRef(null);
   const tutorRequestInFlightRef = useRef(false);
   const pendingWindowCentersRef = useRef(new Set());
+  const viewedItemKeysRef = useRef(new Set());
   const [lesson, setLesson] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -767,6 +768,23 @@ function ClassLessonPage() {
   }, [items, selectedIndex, selectedItem, selectedItemReady, targetLanguage]);
 
   useEffect(() => {
+    if (!userId || !classLessonId || !selectedItemReady) return;
+    const key = `${classLessonId}:${selectedIndex}`;
+    if (viewedItemKeysRef.current.has(key)) return;
+    viewedItemKeysRef.current.add(key);
+    userService.recordLearningEvent(userId, {
+      eventType: 'class_item_viewed',
+      classLessonId,
+      itemIndex: selectedIndex,
+      activitySection: selectedActivity?.section || '',
+      activityTitle: selectedActivity?.title || '',
+      targetText: itemTarget(selectedItem),
+      nativeText: itemNative(selectedItem),
+      skills: activitySkills(selectedActivity),
+    }).catch(() => {});
+  }, [classLessonId, selectedActivity, selectedIndex, selectedItem, selectedItemReady, userId]);
+
+  useEffect(() => {
     let cancelled = false;
     if (!lesson || progressPercent < 100 || !isAuthenticated) {
       setCertificateStatus(null);
@@ -883,10 +901,11 @@ function ClassLessonPage() {
             { ...part, language: part.language || message?.language },
             targetLanguage,
             nativeLanguage,
-            message?.language
+            message?.language,
+            { singleVoice: true }
           )),
       ])
-      : spokenPartsForMessage(message, targetLanguage, nativeLanguage);
+      : spokenPartsForMessage(message, targetLanguage, nativeLanguage, { singleVoice: true });
     try {
       if (speechParts.length) {
         for (const part of speechParts) {
@@ -921,7 +940,7 @@ function ClassLessonPage() {
 
     try {
       await speechService.cancel();
-      const chunks = speechChunksForPart(part, targetLanguage, nativeLanguage, part?.language);
+      const chunks = speechChunksForPart(part, targetLanguage, nativeLanguage, part?.language, { singleVoice: true });
       for (const chunk of chunks) {
         if (!chunk.text) continue;
         const lang = ttsLocaleFor(chunk.language || part?.language || targetLanguage, targetLanguage);

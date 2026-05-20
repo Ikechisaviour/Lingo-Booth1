@@ -77,7 +77,6 @@
     "reason": "Razón",
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "googleFailed": "Error al iniciar sesi?n con Google. Int?ntalo de nuevo.",
-    "backToHome": "Volver al inicio",
     "sessionExpired": "Tu sesi?n expir?. Inicia sesi?n de nuevo."
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "supportAndPlans": "Soporte y planes"
   },
   "lessons": {
     "title": "{{language}} <1>Lecciones</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "Diversifica el aprendizaje",
     "diversifyLearningTip": "Practica las cuatro habilidades por igual",
     "stayConsistent": "Sé constante",
-    "stayConsistentTip": "Estudia un poco cada día para mejores resultados"
+    "stayConsistentTip": "Estudia un poco cada día para mejores resultados",
+    "analyticsMastered": "Dominada",
+    "analyticsMasteredDetail": "Artículos que puedes manejar bien",
+    "analyticsReviewDetail": "Vale la pena volver a visitarlo hoy.",
+    "analyticsActiveDaysDetail": "Esta semana",
+    "analyticsSpeakingDetail": "Práctica de voz reciente",
+    "analyticsAria": "Análisis de aprendizaje",
+    "analyticsKicker": "Aprendiendo salud",
+    "analyticsTitle": "Qué nos dice tu actividad",
+    "analyticsSubtitle": "Utilice esto como una lectura sencilla sobre el impulso, la presión de revisión y el siguiente paso útil.",
+    "nextFocus": "Siguiente enfoque",
+    "keepBuilding": "Sigue ganando impulso",
+    "nextFocusBody": "Esta área muestra la señal más clara para practicar más.",
+    "nextFocusEmptyBody": "Practica un poco más y esto será más específico.",
+    "weeklyMomentum": "Impulso semanal",
+    "weeklyMomentumDetail": "{{days}} días activos y {{sessions}} sesiones"
   },
   "profilePage": {
     "memberSince": "Miembro desde {{date}}",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "Iniciar una lección guiada",
     "firstThreeDayReviewBody": "Vuelve una vez a lo que viste ayer para que los primeros elementos empiecen a fijarse.",
     "firstThreeDaySpeakBody": "Utilice un turno de habla breve para que el idioma abandone la página antes.",
-    "firstThreeDayLearnBody": "Comience con una pequeña lección guiada para que la pareja tenga un punto de partida claro."
+    "firstThreeDayLearnBody": "Comience con una pequeña lección guiada para que la pareja tenga un punto de partida claro.",
+    "reviewSignalDetail": "{{count}} elementos que vale la pena volver a visitar",
+    "weeklyPointsSignal": "Puntos semanales",
+    "sessionsCount": "{{count}} sesiones",
+    "activityThisWeek": "Actividad esta semana",
+    "savedItemsThisWeek": "{{count}} guardado esta semana",
+    "analyticsKicker": "Señales de aprendizaje",
+    "analyticsTitle": "Tu imagen de aprendizaje",
+    "analyticsSubtitle": "Una lectura rápida sobre qué hacer a continuación, qué necesita revisión y cómo avanza su semana.",
+    "viewFullProgress": "Ver progreso completo",
+    "nextActionSignalBody": "Esto se elige entre la última actividad de clase, la cola de revisión y la configuración actual del par de idiomas.",
+    "startGuidedClass": "Iniciar una clase guiada",
+    "pairSetupFriendlySummary": "{{level}} nivel · {{goal}} objetivo · {{pace}} ritmo",
+    "clearValue": "Clara",
+    "reviewClearDetail": "No vence nada en este momento. Cree la cola con una clase o frase guardada.",
+    "weeklyPointsEmpty": "Inicie una sesión corta para comenzar esta semana.",
+    "speakingTurnsEmpty": "Pruebe una conversación breve cuando esté listo.",
+    "todayFocus": "El enfoque de hoy",
+    "primaryActionLivesAbove": "Utilice el botón principal de arriba cuando esté listo para comenzar.",
+    "findFirstPhrase": "Encuentra tu primera frase",
+    "recentStudyEmpty": "Tu ruta de estudio aparecerá después de tu primera actividad esta semana.",
+    "startToday": "Empieza hoy",
+    "todaySection": "Hoy",
+    "guidanceTitle": "Guía",
+    "guidanceSubtitle": "Pequeñas sugerencias que mantienen clara la siguiente sesión sin saturar la página.",
+    "secondaryStepsTitle": "Después del paso principal",
+    "secondaryStepsEmpty": "Una acción enfocada es suficiente por ahora. Termínelo, luego el siguiente paso aparecerá aquí.",
+    "recentWordsEmptyAction": "Las palabras guardadas y las frases útiles se recopilarán aquí después de la clase o la práctica de conversación.",
+    "startAClass": "empezar una clase",
+    "milestonesEmptyAction": "Su primera lección completa, frase guardada o certificado aparecerá aquí.",
+    "earnFirstMilestone": "Gana el primer hito"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "Clase",
+      "conversation": "Conversación",
+      "quiz": "Prueba",
+      "flashcards": "Tarjetas didácticas",
+      "writing": "Escribiendo",
+      "review": "Revisar",
+      "voice": "Voz",
+      "other": "Otra"
+    },
+    "unknownSkill": "Habilidad desconocida",
+    "title": "Aprendiendo salud",
+    "activeLearners": "Estudiantes activos",
+    "lastSevenDays": "últimos 7 días",
+    "learningEvents": "Eventos de aprendizaje",
+    "classLessonsCompleted": "Clases completadas",
+    "conversationTurns": "La conversación gira",
+    "savedReviews": "Reseñas de elementos guardados",
+    "dueNow": "{{count}} vence ahora",
+    "tutorIssues": "Problemas con el tutor",
+    "featureUsage": "Uso de funciones",
+    "learnersCount": "{{count}} estudiantes",
+    "noFeatureUsage": "Aún no se han registrado eventos de aprendizaje.",
+    "languagePairs": "Pares de idiomas",
+    "noLanguagePairs": "Aún no hay actividad en pares de idiomas.",
+    "weakSkills": "Habilidades que necesitan atención",
+    "averageScore": "Promedio {{score}}%",
+    "noWeakSkills": "No hay registros de habilidades débiles en los últimos 30 días.",
+    "difficultContent": "Contenido difícil",
+    "unknownLesson": "Lección desconocida",
+    "noDifficultContent": "Aún no se ha encontrado ningún patrón de contenido difícil."
+  },
+  "skills": {
+    "listening": "Escuchando",
+    "speaking": "Discurso",
+    "reading": "Lectura",
+    "writing": "Escribiendo"
   }
 }

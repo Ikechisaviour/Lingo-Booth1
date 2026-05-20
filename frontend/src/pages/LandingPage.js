@@ -21,6 +21,7 @@ import {
   FiTablet,
   FiVolume2,
 } from 'react-icons/fi';
+import BrandLogo from '../components/BrandLogo';
 import './LandingPage.css';
 
 const highlightIcons = [FiBookOpen, FiMessageCircle, FiVolume2, FiRefreshCw];
@@ -648,10 +649,7 @@ function LandingPage() {
     <div className={`landing-page${landing.isRtl ? ' landing-rtl' : ''}`} lang={landing.nativeCode} dir={landing.isRtl ? 'rtl' : 'ltr'}>
       <header className="landing-nav">
         <button type="button" className="landing-brand" onClick={() => navigate('/')} aria-label={t('common.backToHome')}>
-          <span className="landing-brand-mark" aria-hidden="true">
-            <img src="/images/logo.png" alt="" />
-          </span>
-          <span>Lingo Booth</span>
+          <BrandLogo variant="lockup" decorative />
         </button>
         <div className="landing-nav-actions">
           <label className="landing-language-select">

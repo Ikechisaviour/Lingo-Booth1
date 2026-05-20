@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { View, ScrollView, StyleSheet, Image, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, ScrollView, StyleSheet, KeyboardAvoidingView, Platform, useWindowDimensions } from 'react-native';
 import { Text, TextInput, Button } from 'react-native-paper';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { AuthStackParamList } from '../../navigation/AuthStack';
+import BrandLogo from '../../components/BrandLogo';
 import { authService } from '../../services/api';
+import { getResponsiveLayout } from '../../utils/responsiveLayout';
 import { colors } from '../../config/theme';
 
 type NavProp = NativeStackNavigationProp<AuthStackParamList, 'ForgotPassword'>;
@@ -15,6 +17,9 @@ const ForgotPasswordScreen: React.FC = () => {
   const { t } = useTranslation();
   const navigation = useNavigation<NavProp>();
   const insets = useSafeAreaInsets();
+  const { height: winHeight, width: winWidth } = useWindowDimensions();
+  const layout = getResponsiveLayout(winWidth, winHeight);
+  const useWideLayout = layout.isWide || layout.isFoldable || layout.isTablet;
 
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -41,21 +46,32 @@ const ForgotPasswordScreen: React.FC = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <View style={styles.outer}>
-        <View style={[styles.brandTop, { paddingTop: insets.top + 24 }]}>
-          <Image
-            source={require('../../../assets/icon.png')}
-            style={styles.logo}
-            resizeMode="contain"
-          />
-          <Text style={styles.brandName}>Lingo Booth</Text>
-        </View>
+        <View style={[styles.authLayout, useWideLayout && styles.authLayoutWide]}>
+          <View
+            style={[
+              styles.brandTop,
+              useWideLayout && styles.brandTopWide,
+              { paddingTop: useWideLayout ? insets.top + 12 : insets.top + 24 },
+            ]}
+          >
+            <BrandLogo
+              variant="lockup"
+              markSize={useWideLayout ? 76 : 62}
+              wordmarkWidth={useWideLayout ? 218 : 180}
+              style={styles.brandLogo}
+            />
+          </View>
 
-        <ScrollView
-          style={styles.formScroll}
-          contentContainerStyle={[styles.formContent, { paddingBottom: insets.bottom + 28 }]}
-          keyboardShouldPersistTaps="handled"
-        >
-          <View style={styles.formCard}>
+          <ScrollView
+            style={[styles.formScroll, useWideLayout && styles.formScrollWide]}
+            contentContainerStyle={[
+              styles.formContent,
+              useWideLayout && styles.formContentWide,
+              { paddingBottom: useWideLayout ? insets.bottom + 20 : insets.bottom + 28 },
+            ]}
+            keyboardShouldPersistTaps="handled"
+          >
+            <View style={[styles.formCard, useWideLayout && styles.formCardWide]}>
             <Text variant="headlineMedium" style={styles.title}>
               {t('forgotPassword.title', 'Forgot Password')}
             </Text>
@@ -111,8 +127,9 @@ const ForgotPasswordScreen: React.FC = () => {
             >
               {t('forgotPassword.backToLogin', 'Back to Login')}
             </Text>
-          </View>
-        </ScrollView>
+            </View>
+          </ScrollView>
+        </View>
       </View>
     </KeyboardAvoidingView>
   );
@@ -121,15 +138,37 @@ const ForgotPasswordScreen: React.FC = () => {
 const styles = StyleSheet.create({
   flex: { flex: 1 },
   outer: { flex: 1, backgroundColor: colors.primary },
+  authLayout: { flex: 1 },
+  authLayoutWide: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 32,
+    paddingVertical: 18,
+    gap: 28,
+  },
   brandTop: {
     alignItems: 'center',
     paddingHorizontal: 24,
     paddingBottom: 28,
   },
-  logo: { width: 76, height: 76, marginBottom: 12 },
-  brandName: { color: '#fff', fontSize: 28, fontWeight: '800', letterSpacing: 0.5 },
+  brandTopWide: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+    paddingBottom: 0,
+  },
+  brandLogo: { marginBottom: 12 },
   formScroll: { flex: 1 },
   formContent: { flexGrow: 1 },
+  formScrollWide: {
+    flex: 1.1,
+    maxWidth: 620,
+  },
+  formContentWide: {
+    justifyContent: 'center',
+    paddingVertical: 18,
+  },
   formCard: {
     backgroundColor: colors.surface,
     borderTopLeftRadius: 32,
@@ -138,6 +177,13 @@ const styles = StyleSheet.create({
     paddingTop: 32,
     paddingBottom: 8,
     flex: 1,
+  },
+  formCardWide: {
+    width: '100%',
+    borderRadius: 30,
+    flex: 0,
+    paddingHorizontal: 32,
+    paddingVertical: 30,
   },
   title: { fontWeight: '700', color: colors.textPrimary, marginBottom: 4 },
   subtitle: { color: colors.textSecondary, marginBottom: 24 },

@@ -77,7 +77,6 @@
     "reason": "Alasan",
     "forgotPassword": "Lupa kata sandi?",
     "googleFailed": "Login dengan Google gagal. Silakan coba lagi.",
-    "backToHome": "Kembali ke beranda",
     "sessionExpired": "Sesi Anda telah berakhir. Silakan masuk lagi."
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "supportAndPlans": "Dukungan dan rencana"
   },
   "lessons": {
     "title": "Pelajaran <1>{{language}}</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "Variasikan Pembelajaran",
     "diversifyLearningTip": "Latih keempat keterampilan secara merata",
     "stayConsistent": "Tetap Konsisten",
-    "stayConsistentTip": "Belajar sedikit setiap hari untuk hasil terbaik"
+    "stayConsistentTip": "Belajar sedikit setiap hari untuk hasil terbaik",
+    "analyticsMastered": "Dikuasai",
+    "analyticsMasteredDetail": "Barang yang dapat Anda tangani dengan baik",
+    "analyticsReviewDetail": "Layak dikunjungi kembali hari ini",
+    "analyticsActiveDaysDetail": "Minggu ini",
+    "analyticsSpeakingDetail": "Latihan suara terkini",
+    "analyticsAria": "Analisis pembelajaran",
+    "analyticsKicker": "Belajar kesehatan",
+    "analyticsTitle": "Apa yang diungkapkan aktivitas Anda kepada kami",
+    "analyticsSubtitle": "Gunakan ini sebagai bacaan sederhana tentang momentum, tinjauan tekanan, dan langkah berguna berikutnya.",
+    "nextFocus": "Fokus selanjutnya",
+    "keepBuilding": "Terus bangun momentum",
+    "nextFocusBody": "Area ini menunjukkan sinyal paling jelas untuk latihan ekstra.",
+    "nextFocusEmptyBody": "Berlatihlah lebih banyak dan ini akan menjadi lebih spesifik.",
+    "weeklyMomentum": "Momentum mingguan",
+    "weeklyMomentumDetail": "{{days}} hari aktif dan sesi {{sessions}}"
   },
   "profilePage": {
     "memberSince": "Anggota sejak {{date}}",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "Mulailah satu pelajaran yang dipandu",
     "firstThreeDayReviewBody": "Kembalilah sekali ke apa yang Anda lihat kemarin sehingga item pertama mulai melekat.",
     "firstThreeDaySpeakBody": "Gunakan giliran bicara singkat agar bahasa meninggalkan halaman lebih awal.",
-    "firstThreeDayLearnBody": "Mulailah dengan satu pelajaran kecil terpandu sehingga pasangan memiliki titik awal yang jelas."
+    "firstThreeDayLearnBody": "Mulailah dengan satu pelajaran kecil terpandu sehingga pasangan memiliki titik awal yang jelas.",
+    "reviewSignalDetail": "{{count}} item yang layak untuk dikunjungi kembali",
+    "weeklyPointsSignal": "Poin mingguan",
+    "sessionsCount": "{{count}} sesi",
+    "activityThisWeek": "Aktivitas minggu ini",
+    "savedItemsThisWeek": "{{count}} disimpan minggu ini",
+    "analyticsKicker": "Sinyal pembelajaran",
+    "analyticsTitle": "Gambar pembelajaran Anda",
+    "analyticsSubtitle": "Bacaan singkat tentang apa yang harus dilakukan selanjutnya, apa yang perlu ditinjau, dan bagaimana minggu Anda berjalan.",
+    "viewFullProgress": "Lihat kemajuan penuh",
+    "nextActionSignalBody": "Ini dipilih dari aktivitas kelas terbaru Anda, antrean tinjauan, dan pengaturan pasangan bahasa saat ini.",
+    "startGuidedClass": "Mulai satu kelas terpandu",
+    "pairSetupFriendlySummary": "{{level}} level · {{goal}} sasaran · {{pace}} kecepatan",
+    "clearValue": "Jernih",
+    "reviewClearDetail": "Tidak ada yang harus dibayar saat ini. Bangun antrian dengan satu kelas atau frase tersimpan.",
+    "weeklyPointsEmpty": "Mulailah sesi singkat untuk memulai minggu ini.",
+    "speakingTurnsEmpty": "Cobalah satu percakapan singkat ketika Anda siap.",
+    "todayFocus": "Fokus hari ini",
+    "primaryActionLivesAbove": "Gunakan tombol utama di atas saat Anda siap untuk memulai.",
+    "findFirstPhrase": "Temukan frasa pertama Anda",
+    "recentStudyEmpty": "Jejak belajar Anda akan muncul setelah aktivitas pertama Anda minggu ini.",
+    "startToday": "Mulai hari ini",
+    "todaySection": "Hari ini",
+    "guidanceTitle": "Panduan",
+    "guidanceSubtitle": "Saran kecil yang membuat sesi berikutnya tetap jelas tanpa memadati halaman.",
+    "secondaryStepsTitle": "Setelah langkah utama",
+    "secondaryStepsEmpty": "Satu tindakan terfokus sudah cukup untuk saat ini. Selesaikan, maka langkah selanjutnya akan muncul di sini.",
+    "recentWordsEmptyAction": "Kata-kata tersimpan dan frasa berguna akan dikumpulkan di sini setelah kelas atau latihan percakapan.",
+    "startAClass": "Mulai kelas",
+    "milestonesEmptyAction": "Pelajaran pertama Anda yang telah diselesaikan, frasa tersimpan, atau sertifikat akan muncul di sini.",
+    "earnFirstMilestone": "Dapatkan pencapaian pertama"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "Kelas",
+      "conversation": "Percakapan",
+      "quiz": "Kuis",
+      "flashcards": "Kartu flash",
+      "writing": "Menulis",
+      "review": "Tinjauan",
+      "voice": "Suara",
+      "other": "Lainnya"
+    },
+    "unknownSkill": "Keterampilan tidak diketahui",
+    "title": "Belajar kesehatan",
+    "activeLearners": "Pembelajar aktif",
+    "lastSevenDays": "7 hari terakhir",
+    "learningEvents": "Acara pembelajaran",
+    "classLessonsCompleted": "Kelas selesai",
+    "conversationTurns": "Percakapan berubah",
+    "savedReviews": "Ulasan item yang disimpan",
+    "dueNow": "{{count}} jatuh tempo sekarang",
+    "tutorIssues": "Masalah guru",
+    "featureUsage": "Penggunaan fitur",
+    "learnersCount": "{{count}} pelajar",
+    "noFeatureUsage": "Belum ada peristiwa pembelajaran yang dicatat.",
+    "languagePairs": "Pasangan bahasa",
+    "noLanguagePairs": "Belum ada aktivitas pasangan bahasa.",
+    "weakSkills": "Keterampilan yang memerlukan perhatian",
+    "averageScore": "Rata-rata {{score}}%",
+    "noWeakSkills": "Tidak ada catatan keterampilan lemah dalam 30 hari terakhir.",
+    "difficultContent": "Konten yang sulit",
+    "unknownLesson": "Pelajaran yang tidak diketahui",
+    "noDifficultContent": "Belum ditemukan pola konten sulit."
+  },
+  "skills": {
+    "listening": "Mendengarkan",
+    "speaking": "Berbicara",
+    "reading": "Membaca",
+    "writing": "Menulis"
   }
 }

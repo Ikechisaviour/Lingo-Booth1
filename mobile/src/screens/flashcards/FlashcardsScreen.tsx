@@ -28,6 +28,7 @@ import { useSettingsStore } from '../../stores/settingsStore';
 import LANGUAGES, { getLangName, getLangField, langHasRomanization } from '../../config/languages';
 import PronunciationGuide from '../../components/PronunciationGuide';
 import { useAppColors, type AppColors } from '../../config/theme';
+import { getResponsiveLayout, type ResponsiveLayout } from '../../utils/responsiveLayout';
 
 
 const normalizeCategory = (cat: any): string[] => {
@@ -44,8 +45,12 @@ const FlashcardsScreen: React.FC = () => {
   const { targetLanguage, nativeLanguage } = useSettingsStore();
   const colors = useAppColors();
   const { width: winWidth, height: winHeight } = useWindowDimensions();
-  const isCompact = winHeight < 450 || winWidth < 380;
-  const styles = useMemo(() => createStyles(colors, winWidth, winHeight, isCompact), [colors, winWidth, winHeight, isCompact]);
+  const layout = getResponsiveLayout(winWidth, winHeight);
+  const isCompact = layout.isCompact;
+  const styles = useMemo(
+    () => createStyles(colors, winWidth, winHeight, isCompact, layout),
+    [colors, winWidth, winHeight, isCompact, layout.isWide, layout.isFoldable, layout.isTablet, layout.isWideShort],
+  );
 
   const [flashcards, setFlashcards] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -517,6 +522,18 @@ const FlashcardsScreen: React.FC = () => {
       if (backText) {
         await speechService.speakAsync(backText, { lang: backLocale });
         if (cancelled) return;
+      }
+
+      // Record the card as a hands-free recall so the XP decay timer resets
+      // for engaged listeners. Per backend xpRewards.js: hands_free awards
+      // 10% XP (currently 0 after floor) but still updates lastAnsweredAt
+      // because the event is active.
+      if (userId && card?._id) {
+        userService.recordLearningEvent(userId, {
+          eventType: 'flashcard_recall',
+          flashcardId: card._id,
+          mode: 'hands_free',
+        }).catch(() => {});
       }
 
       // Scale pause with text length for reading time
@@ -1311,7 +1328,25 @@ const FlashcardsScreen: React.FC = () => {
   );
 };
 
-const createStyles = (colors: AppColors, winWidth: number, winHeight: number, isCompact: boolean) => StyleSheet.create({
+const createStyles = (
+  colors: AppColors,
+  winWidth: number,
+  winHeight: number,
+  isCompact: boolean,
+  layout: ResponsiveLayout,
+) => {
+  const isLargeHandheld = layout.isWide || layout.isFoldable || layout.isTablet;
+  const horizontalPadding = isLargeHandheld ? layout.pageGutter : isCompact ? 10 : 20;
+  const availableCardWidth = Math.max(1, winWidth - horizontalPadding * 2);
+  const maxCardWidth = layout.isTablet ? 760 : layout.isFoldable || layout.isWide ? 680 : availableCardWidth;
+  const cardWidth = Math.min(availableCardWidth, maxCardWidth);
+  const cardHeight = isCompact
+    ? Math.max(Math.min(winHeight * 0.42, 260), 120)
+    : isLargeHandheld
+      ? Math.min(Math.max(winHeight * 0.34, 220), 320)
+      : 280;
+
+  return StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
   centered: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24 },
   loadingText: { marginTop: 12, color: colors.textSecondary },
@@ -1325,8 +1360,8 @@ const createStyles = (colors: AppColors, winWidth: number, winHeight: number, is
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: isCompact ? 8 : 16,
-    paddingTop: isCompact ? 8 : 48,
+    paddingHorizontal: isLargeHandheld ? horizontalPadding : isCompact ? 8 : 16,
+    paddingTop: isLargeHandheld ? 18 : isCompact ? 8 : 48,
     paddingBottom: isCompact ? 4 : 8,
     backgroundColor: colors.surface,
   },
@@ -1348,14 +1383,15 @@ const createStyles = (colors: AppColors, winWidth: number, winHeight: number, is
   // Card
   cardContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: isLargeHandheld ? 'flex-start' : 'center',
     alignItems: 'center',
-    paddingHorizontal: isCompact ? 10 : 20,
-    paddingVertical: isCompact ? 4 : 0,
+    paddingHorizontal: horizontalPadding,
+    paddingTop: isLargeHandheld ? 28 : isCompact ? 4 : 0,
+    paddingBottom: isCompact ? 4 : 0,
   },
   cardTouchable: {
-    width: winWidth - (isCompact ? 20 : 40),
-    height: isCompact ? Math.max(winHeight * 0.45, 120) : 280,
+    width: cardWidth,
+    height: cardHeight,
   },
   card: {
     position: 'absolute',
@@ -1404,8 +1440,11 @@ const createStyles = (colors: AppColors, winWidth: number, winHeight: number, is
   actionRow: {
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: isCompact ? 8 : 24,
+    gap: isLargeHandheld ? 14 : isCompact ? 8 : 24,
     paddingVertical: isCompact ? 2 : 4,
+    flexWrap: 'wrap',
+    alignSelf: 'center',
+    maxWidth: isLargeHandheld ? 760 : undefined,
   },
   actionBtn: {
     backgroundColor: colors.surface,
@@ -1428,6 +1467,9 @@ const createStyles = (colors: AppColors, winWidth: number, winHeight: number, is
     paddingBottom: 24,
     paddingTop: 8,
     gap: 12,
+    width: '100%',
+    maxWidth: isLargeHandheld ? 760 : undefined,
+    alignSelf: 'center',
   },
   navBtn: { flex: 1, borderRadius: 8 },
 
@@ -1567,6 +1609,7 @@ const createStyles = (colors: AppColors, winWidth: number, winHeight: number, is
     marginTop: 4,
   },
   retryBtnText: { fontSize: 14, color: colors.primary, fontWeight: '600' as const },
-});
+  });
+};
 
 export default FlashcardsScreen;

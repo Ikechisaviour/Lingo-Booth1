@@ -1,6 +1,6 @@
 module.exports = {
   "title": "Level 1 · Unit 19: We celebrate together — Cultural Holidays",
-  "category": "cultural",
+  "category": "culture",
   "difficulty": "beginner",
   "targetLang": "en",
   "nativeLang": "en",

@@ -10,6 +10,7 @@ import {
   targetLanguageForPublicNative,
 } from '../utils/publicLanguage';
 import { normalizeLanguageCode } from '../utils/languagePairPolicy';
+import BrandLogo from '../components/BrandLogo';
 import './LanguageSelectPage.css';
 
 function LanguageSelectPage({ setIsGuest, onLogout }) {
@@ -116,7 +117,7 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
         <button className="back-to-login" onClick={handleBack} type="button">
           ← {t('common.back', 'Back')}
         </button>
-        <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
+        <BrandLogo variant="lockup" className="auth-logo" decorative={false} />
         <h1>{t('languageSelect.title')}</h1>
         <p className="auth-subtitle">{t('languageSelect.subtitle')}</p>
 
