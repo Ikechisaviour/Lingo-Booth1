@@ -127,7 +127,25 @@ async function applyNativePhonetics(cards, targetLang, nativeLang) {
  * For cards missing the native field, translate NOW before sending the response,
  * then persist translations to DB in the background for future cache hits.
  */
-async function fillNativeTranslations(cards, nativeLang) {
+function normalizeLangCode(code) {
+  const value = String(code || '').trim().toLowerCase();
+  const aliases = { kr: 'ko', cn: 'zh', jp: 'ja', iw: 'he', in: 'id', tl: 'fil' };
+  if (aliases[value]) return aliases[value];
+  const base = value.split(/[-_]/)[0];
+  return aliases[base] || base || value;
+}
+
+function nativeTranslationSource(card, targetLang) {
+  const target = normalizeLangCode(targetLang);
+  const conceptGloss = String(card?.conceptGloss || '').trim();
+  const english = String(card?.english || '').trim();
+  if (conceptGloss && (target === 'en' || card?.usage?.targetAuthored)) {
+    return conceptGloss;
+  }
+  return conceptGloss || english;
+}
+
+async function fillNativeTranslations(cards, nativeLang, targetLang = '') {
   if (nativeLang === 'en') return cards;
 
   const nativeField = nativeLang === 'ko' ? 'korean' : nativeLang;
@@ -136,9 +154,10 @@ async function fillNativeTranslations(cards, nativeLang) {
   const missingIndices = [];
   const missingTexts = [];
   for (let i = 0; i < cards.length; i++) {
-    if (!cards[i][nativeField] && cards[i].english) {
+    const sourceText = nativeTranslationSource(cards[i], targetLang);
+    if (!cards[i][nativeField] && sourceText) {
       missingIndices.push(i);
-      missingTexts.push(cards[i].english);
+      missingTexts.push(sourceText);
     }
   }
   if (missingIndices.length === 0) return cards;
@@ -313,7 +332,7 @@ router.get('/category-cards', async (req, res) => {
       }));
 
     // Translate missing native fields (same logic as main flashcard routes)
-    await fillNativeTranslations(filtered, nativeLang);
+    await fillNativeTranslations(filtered, nativeLang, targetLang);
     await enrichFlashcardsWithPronunciation(filtered, targetLang, nativeLang);
 
     // Strip helper fields before sending
@@ -401,7 +420,7 @@ router.get('/guest', async (req, res) => {
     const pageCards = processed.slice(start, start + limit);
 
     // Translate missing native language fields (English → native), with DB caching
-    await fillNativeTranslations(pageCards, nativeLang);
+    await fillNativeTranslations(pageCards, nativeLang, targetLang);
     await enrichFlashcardsWithPronunciation(pageCards, targetLang, nativeLang);
 
     res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });
@@ -467,7 +486,7 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
     const pageCards = processed.slice(start, start + limit);
 
     // Translate missing native language fields (English → native), with DB caching
-    await fillNativeTranslations(pageCards, nativeLang);
+    await fillNativeTranslations(pageCards, nativeLang, targetLang);
     await enrichFlashcardsWithPronunciation(pageCards, targetLang, nativeLang);
 
     res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });

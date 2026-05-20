@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { userService } from '../services/api';
+import BrandLogo from './BrandLogo';
 import './Navbar.css';
 
 function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
@@ -90,7 +91,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
     <nav className={`navbar${challengeMode ? ' challenge-active' : ''}`}>
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
-          <img src="/images/logo.png" alt="Lingo Booth" className="brand-logo" />
+          <BrandLogo variant="mark" className="brand-logo" decorative={false} />
         </Link>
 
         {!isGuest && activityState && getContinueLink() && (

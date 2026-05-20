@@ -24,7 +24,18 @@ const ACTIVE_EVENT_TYPES = new Set([
   'roleplay_complete',
   'writing_complete',
   'speaking_practice_complete',
+  'saved_item_reviewed',
+  'review_session_complete',
+  'speech_input_used',
+  'study_heartbeat',
 ]);
+
+// Heartbeat bucket size: a heartbeat lands in one Nm window so the client
+// can fire frequently without spamming the LearningEvent collection. Each
+// heartbeat awards 0 XP — its only job is to update `lastAnsweredAt` so
+// passive engagement (autoplay, replay, browsing flashcards, listening to
+// a tutor reply) doesn't accumulate XP decay.
+const STUDY_HEARTBEAT_BUCKET_MS = 2 * 60 * 1000;
 
 function text(value, max = 120) {
   return String(value || '').trim().slice(0, max);
@@ -56,8 +67,14 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
   const roleplayId = text(body.roleplayId, 160);
   const itemId = text(body.itemId, 160);
   const promptId = text(body.promptId, 160);
+  const sourceType = text(body.sourceType, 40);
+  const itemType = text(body.itemType, 40);
+  const result = text(body.result, 40);
+  const errorCode = text(body.errorCode, 80);
+  const errorMessage = text(body.errorMessage, 240);
   const contentIndex = number(body.contentIndex);
   const itemIndex = number(body.itemIndex);
+  const reviewCount = number(body.reviewCount);
   const difficulty = text(body.difficulty, 40).toLowerCase();
   const writingMode = text(body.writingMode || body.mode, 40).toLowerCase();
   const mode = text(body.mode, 40).toLowerCase();
@@ -87,6 +104,11 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
     skills,
     targetLanguage,
     nativeLanguage,
+    sourceType,
+    itemType,
+    result,
+    errorCode,
+    errorMessage,
   };
 
   switch (eventType) {
@@ -190,6 +212,93 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         active: true,
         refs: { promptId },
       };
+    case 'class_item_viewed':
+      if (!classLessonId || itemIndex === null) throw new Error('classLessonId and itemIndex are required');
+      return {
+        eventType,
+        dedupeKey: `daily:${today}:class-view:${classLessonId}:${itemIndex}`,
+        dayKey: today,
+        metadata: { ...metadata, classLessonId, itemIndex },
+        active: false,
+        refs: { classLessonId, itemIndex },
+      };
+    case 'saved_item_created':
+      if (!itemId) throw new Error('itemId is required');
+      return {
+        eventType,
+        dedupeKey: `lifetime:saved-item:${itemId}:created`,
+        dayKey: null,
+        metadata: { ...metadata, itemId },
+        active: false,
+        refs: { itemId },
+      };
+    case 'saved_item_reviewed':
+      if (!itemId) throw new Error('itemId is required');
+      return {
+        eventType,
+        dedupeKey: `lifetime:saved-item:${itemId}:review:${reviewCount || today}`,
+        dayKey: today,
+        metadata: { ...metadata, itemId, reviewCount },
+        active: true,
+        refs: { itemId, reviewCount },
+      };
+    case 'review_session_complete':
+      if (!sessionId) throw new Error('sessionId is required');
+      return {
+        eventType,
+        dedupeKey: `daily:${today}:review-session:${sessionId}`,
+        dayKey: today,
+        metadata: { ...metadata, sessionId },
+        active: true,
+        refs: { sessionId },
+      };
+    case 'voice_played':
+      if (!itemId && !promptId && !classLessonId && !sessionId) {
+        throw new Error('itemId, promptId, classLessonId, or sessionId is required');
+      }
+      return {
+        eventType,
+        dedupeKey: `daily:${today}:voice:${itemId || promptId || classLessonId || sessionId}:${mode || source || 'play'}`,
+        dayKey: today,
+        metadata: { ...metadata, itemId, promptId, classLessonId, sessionId },
+        active: false,
+        refs: { itemId, promptId, classLessonId, sessionId },
+      };
+    case 'speech_input_used':
+      if (!sessionId && !promptId && !itemId) throw new Error('sessionId, promptId, or itemId is required');
+      return {
+        eventType,
+        dedupeKey: `daily:${today}:speech-input:${sessionId || promptId || itemId}:${turnId || reviewCount || 'turn'}`,
+        dayKey: today,
+        metadata: { ...metadata, sessionId, promptId, itemId, turnId },
+        active: true,
+        refs: { sessionId, promptId, itemId, turnId },
+      };
+    case 'conversation_reply_failed':
+    case 'tutor_reply_failed':
+      if (!sessionId && !classLessonId) throw new Error('sessionId or classLessonId is required');
+      return {
+        eventType,
+        dedupeKey: `daily:${today}:${eventType}:${sessionId || classLessonId}:${turnId || Date.now()}`,
+        dayKey: today,
+        metadata: { ...metadata, sessionId, classLessonId, turnId },
+        active: false,
+        refs: { sessionId, classLessonId, turnId },
+      };
+    case 'study_heartbeat': {
+      // One row per N-minute bucket per user. Bucket from current time so
+      // anything-goes clients can fire without DB bloat. `active: true` is
+      // what makes lastAnsweredAt update.
+      const bucket = Math.floor(Date.now() / STUDY_HEARTBEAT_BUCKET_MS);
+      return {
+        eventType,
+        dedupeKey: `daily:${today}:heartbeat:${bucket}`,
+        dayKey: today,
+        metadata: { ...metadata },
+        active: true,
+        refs: {},
+      };
+    }
     default:
       throw new Error('Unsupported learning event type');
   }
@@ -218,8 +327,16 @@ async function pointsForEvent(userId, event) {
         alreadyAnswered: !!existing,
       };
     }
-    case 'flashcard_recall':
-      return { points: 1 };
+    case 'flashcard_recall': {
+      // Hands-free auto-play counts as engagement (decay stops, streak counts)
+      // but earns 10% of an active recall to avoid grinding XP by passive
+      // listening. `mode` comes from the client metadata. 1 base × 0.1 = 0
+      // after floor — so hands-free awards no XP today, but lastAnsweredAt
+      // still updates because the event is `active: true`.
+      const isHandsFree = event.metadata?.mode === 'hands_free';
+      const basePoints = 1;
+      return { points: isHandsFree ? Math.floor(basePoints * 0.1) : basePoints };
+    }
     case 'class_item_complete':
       return { points: 2 };
     case 'class_activity_complete':
@@ -247,6 +364,11 @@ async function pointsForEvent(userId, event) {
     }
     case 'speaking_practice_complete':
       return { points: 2 };
+    case 'study_heartbeat':
+      // Heartbeats award 0 XP by design — they exist purely to reset the
+      // decay timer when the learner is engaged but not "answering"
+      // (autoplay flashcards, replaying a tutor reply, browsing items).
+      return { points: 0 };
     case 'quiz_high_score':
     default:
       return { points: 0 };

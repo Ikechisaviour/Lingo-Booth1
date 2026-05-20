@@ -77,7 +77,6 @@
     "reason": "কারণ",
     "forgotPassword": "পাসওয়ার্ড ভুলে গেছেন?",
     "googleFailed": "Google সাইন-ইন ব্যর্থ হয়েছে৷ আবার চেষ্টা করুন.",
-    "backToHome": "বাড়িতে ফিরে",
     "sessionExpired": "আপনার সেশনের মেয়াদ শেষ হয়েছে। আবার সাইন ইন করুন."
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "চ",
       "sat": "এস",
       "sun": "এস"
-    }
+    },
+    "supportAndPlans": "সমর্থন এবং পরিকল্পনা"
   },
   "lessons": {
     "title": "{{language}} <1>পাঠ</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "শেখার বৈচিত্র্য আনুন",
     "diversifyLearningTip": "চারটি দক্ষতাই সমানভাবে অনুশীলন করুন",
     "stayConsistent": "ধারাবাহিক থাকুন",
-    "stayConsistentTip": "সেরা ফলাফলের জন্য প্রতিদিন একটু একটু পড়ুন"
+    "stayConsistentTip": "সেরা ফলাফলের জন্য প্রতিদিন একটু একটু পড়ুন",
+    "analyticsMastered": "আয়ত্ত করেছে",
+    "analyticsMasteredDetail": "আইটেম আপনি ভাল পরিচালনা করতে পারেন",
+    "analyticsReviewDetail": "আজ পুনর্বিবেচনা মূল্য",
+    "analyticsActiveDaysDetail": "এই সপ্তাহে",
+    "analyticsSpeakingDetail": "সাম্প্রতিক ভয়েস অনুশীলন",
+    "analyticsAria": "শেখার বিশ্লেষণ",
+    "analyticsKicker": "স্বাস্থ্য শেখা",
+    "analyticsTitle": "আপনার কার্যকলাপ আমাদের কি বলছে",
+    "analyticsSubtitle": "গতিবেগ, পর্যালোচনা চাপ এবং পরবর্তী দরকারী পদক্ষেপের উপর একটি সাধারণ পাঠ হিসাবে এটি ব্যবহার করুন।",
+    "nextFocus": "পরবর্তী ফোকাস",
+    "keepBuilding": "বিল্ডিং গতি রাখুন",
+    "nextFocusBody": "এই এলাকাটি অতিরিক্ত অনুশীলনের জন্য সবচেয়ে পরিষ্কার সংকেত দেখাচ্ছে।",
+    "nextFocusEmptyBody": "একটু বেশি অনুশীলন করুন এবং এটি আরও নির্দিষ্ট হয়ে যাবে।",
+    "weeklyMomentum": "সাপ্তাহিক গতিবেগ",
+    "weeklyMomentumDetail": "{{days}} সক্রিয় দিন এবং {{sessions}} সেশন"
   },
   "profilePage": {
     "memberSince": "{{date}} থেকে সদস্য",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "একটি নির্দেশিত পাঠ শুরু করুন",
     "firstThreeDayReviewBody": "আপনি গতকাল যা দেখেছেন তাতে একবার ফিরে আসুন যাতে প্রথম আইটেমগুলি আটকে যেতে শুরু করে।",
     "firstThreeDaySpeakBody": "একটি সংক্ষিপ্ত কথা বলার পালা ব্যবহার করুন যাতে ভাষাটি পৃষ্ঠাটি তাড়াতাড়ি ছেড়ে যায়।",
-    "firstThreeDayLearnBody": "একটি ছোট নির্দেশিত পাঠ দিয়ে শুরু করুন যাতে এই জুটির একটি স্পষ্ট সূচনা বিন্দু থাকে।"
+    "firstThreeDayLearnBody": "একটি ছোট নির্দেশিত পাঠ দিয়ে শুরু করুন যাতে এই জুটির একটি স্পষ্ট সূচনা বিন্দু থাকে।",
+    "reviewSignalDetail": "{{count}} আইটেমগুলি আবার দেখার মতো",
+    "weeklyPointsSignal": "সাপ্তাহিক পয়েন্ট",
+    "sessionsCount": "{{count}} সেশন",
+    "activityThisWeek": "এই সপ্তাহের কার্যকলাপ",
+    "savedItemsThisWeek": "{{count}} এই সপ্তাহে সংরক্ষিত",
+    "analyticsKicker": "শেখার সংকেত",
+    "analyticsTitle": "আপনার শেখার ছবি",
+    "analyticsSubtitle": "পরবর্তীতে কী করতে হবে, কী পর্যালোচনার প্রয়োজন এবং আপনার সপ্তাহ কীভাবে চলছে সে সম্পর্কে একটি দ্রুত পড়া।",
+    "viewFullProgress": "সম্পূর্ণ অগ্রগতি দেখুন",
+    "nextActionSignalBody": "এটি আপনার সাম্প্রতিক ক্লাস অ্যাক্টিভিটি, পর্যালোচনা সারি এবং বর্তমান ভাষা-জোড়া সেটআপ থেকে বেছে নেওয়া হয়েছে।",
+    "startGuidedClass": "একটি নির্দেশিত ক্লাস শুরু করুন",
+    "pairSetupFriendlySummary": "{{level}} স্তর · {{goal}} লক্ষ্য · {{pace}} গতি",
+    "clearValue": "পরিষ্কার",
+    "reviewClearDetail": "এখন কিছুই বকেয়া নেই। একটি শ্রেণী বা সংরক্ষিত বাক্যাংশ দিয়ে সারি তৈরি করুন।",
+    "weeklyPointsEmpty": "এই সপ্তাহে শুরু করার জন্য একটি ছোট সেশন শুরু করুন।",
+    "speakingTurnsEmpty": "আপনি প্রস্তুত হলে একটি ছোট কথোপকথন চেষ্টা করুন.",
+    "todayFocus": "আজকের ফোকাস",
+    "primaryActionLivesAbove": "আপনি যখন শুরু করতে প্রস্তুত তখন উপরের প্রধান বোতামটি ব্যবহার করুন।",
+    "findFirstPhrase": "আপনার প্রথম বাক্যাংশ খুঁজুন",
+    "recentStudyEmpty": "এই সপ্তাহে আপনার প্রথম কার্যকলাপের পরে আপনার অধ্যয়নের পথ দেখা যাবে।",
+    "startToday": "আজই শুরু করুন",
+    "todaySection": "আজ",
+    "guidanceTitle": "নির্দেশনা",
+    "guidanceSubtitle": "ছোট পরামর্শ যা পৃষ্ঠায় ভিড় না করে পরবর্তী সেশনটি পরিষ্কার রাখে।",
+    "secondaryStepsTitle": "মূল ধাপের পর",
+    "secondaryStepsEmpty": "আপাতত একটি ফোকাসড অ্যাকশনই যথেষ্ট। এটি শেষ করুন, তারপর পরবর্তী ধাপ এখানে প্রদর্শিত হবে।",
+    "recentWordsEmptyAction": "সংরক্ষিত শব্দ এবং দরকারী বাক্যাংশ ক্লাস বা কথোপকথন অনুশীলনের পরে এখানে সংগ্রহ করা হবে।",
+    "startAClass": "একটি ক্লাস শুরু করুন",
+    "milestonesEmptyAction": "আপনার প্রথম সমাপ্ত পাঠ, সংরক্ষিত বাক্যাংশ, বা শংসাপত্র এখানে প্রদর্শিত হবে।",
+    "earnFirstMilestone": "প্রথম মাইলফলক অর্জন করুন"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "ক্লাস",
+      "conversation": "কথোপকথন",
+      "quiz": "কুইজ",
+      "flashcards": "ফ্ল্যাশকার্ড",
+      "writing": "লেখা",
+      "review": "পর্যালোচনা",
+      "voice": "ভয়েস",
+      "other": "অন্যান্য"
+    },
+    "unknownSkill": "অজানা দক্ষতা",
+    "title": "স্বাস্থ্য শেখা",
+    "activeLearners": "সক্রিয় শিক্ষার্থীরা",
+    "lastSevenDays": "গত ৭ দিন",
+    "learningEvents": "শেখার ঘটনা",
+    "classLessonsCompleted": "ক্লাস শেষ",
+    "conversationTurns": "কথোপকথন মোড় নেয়",
+    "savedReviews": "সংরক্ষিত আইটেম পর্যালোচনা",
+    "dueNow": "{{count}} এখন বকেয়া",
+    "tutorIssues": "টিউটরের সমস্যা",
+    "featureUsage": "বৈশিষ্ট্য ব্যবহার",
+    "learnersCount": "{{count}} শিক্ষার্থী",
+    "noFeatureUsage": "কোন শেখার ঘটনা এখনও রেকর্ড করা.",
+    "languagePairs": "ভাষার জোড়া",
+    "noLanguagePairs": "এখনও কোন ভাষা-জোড়া কার্যকলাপ.",
+    "weakSkills": "মনোযোগ প্রয়োজন দক্ষতা",
+    "averageScore": "গড় {{score}}%",
+    "noWeakSkills": "গত 30 দিনে কোনো দুর্বল-দক্ষতার রেকর্ড নেই।",
+    "difficultContent": "কঠিন বিষয়বস্তু",
+    "unknownLesson": "অজানা পাঠ",
+    "noDifficultContent": "কোন কঠিন বিষয়বস্তু প্যাটার্ন এখনও পাওয়া যায়নি."
+  },
+  "skills": {
+    "listening": "শুনছেন",
+    "speaking": "কথা বলছি",
+    "reading": "পড়া",
+    "writing": "লেখা"
   }
 }

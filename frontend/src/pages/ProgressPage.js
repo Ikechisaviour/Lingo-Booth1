@@ -64,6 +64,43 @@ function ProgressPage() {
 
   const skillStats = progress.skillStats || {};
   const totalItems = progress.mastered + progress.comfortable + progress.learning + progress.struggling || 1;
+  const weeklySummary = learningHub?.weeklySummary || {};
+  const reviewCount = learningHub?.reviewQueue?.counts?.total || learningHub?.reviewQueue?.dueSavedItems?.length || 0;
+  const topWeakArea = learningHub?.reviewQueue?.weakAreas?.[0] || progress.strugglingAreas?.[0] || null;
+  const nextActionTitle = learningHub?.nextAction
+    ? t(learningHub.nextAction.titleKey, {
+      count: learningHub.nextAction.count,
+      defaultValue: learningHub.nextAction.label || t('learningHub.continueLearning', 'Continue learning'),
+    })
+    : t('learningHub.continueLearning', 'Continue learning');
+  const nextActionRoute = learningHub?.nextAction?.route || '/class';
+  const learningLoad = Math.min(100, Math.round(((weeklySummary.activeDays || 0) / 7) * 100));
+  const progressSignals = [
+    {
+      key: 'mastered',
+      label: t('progress.analyticsMastered', 'Mastered'),
+      value: progress.mastered || 0,
+      detail: t('progress.analyticsMasteredDetail', 'Items you can handle well'),
+    },
+    {
+      key: 'review',
+      label: t('learningHub.reviewDue', 'Review due'),
+      value: reviewCount,
+      detail: t('progress.analyticsReviewDetail', 'Worth revisiting today'),
+    },
+    {
+      key: 'activeDays',
+      label: t('learningHub.activeDays', 'Active days'),
+      value: `${weeklySummary.activeDays || 0}/7`,
+      detail: t('progress.analyticsActiveDaysDetail', 'This week'),
+    },
+    {
+      key: 'speaking',
+      label: t('learningHub.speakingTurns', 'Speaking turns'),
+      value: weeklySummary.speakingTurns || 0,
+      detail: t('progress.analyticsSpeakingDetail', 'Recent voice practice'),
+    },
+  ];
 
   const skills = [
     { name: 'listening', label: t('progress.listening'), icon: '👂', color: '#1cb0f6' },
@@ -106,6 +143,51 @@ function ProgressPage() {
             <span className="xp-label">{t('progress.xpEarned')}</span>
           </div>
         </div>
+
+        <section className="progress-analytics-board" aria-label={t('progress.analyticsAria', 'Learning analytics')}>
+          <div className="progress-analytics-copy">
+            <span>{t('progress.analyticsKicker', 'Learning health')}</span>
+            <h2>{t('progress.analyticsTitle', 'What your activity is telling us')}</h2>
+            <p>{t('progress.analyticsSubtitle', 'Use this as a simple read on momentum, review pressure, and the next useful step.')}</p>
+          </div>
+          <div className="progress-focus-strip">
+            <div>
+              <span>{t('learningHub.nextBestAction', 'Next best action')}</span>
+              <strong>{nextActionTitle}</strong>
+            </div>
+            <Link to={nextActionRoute} className="btn-review">
+              {t('learningHub.open', 'Open')}
+            </Link>
+          </div>
+          <div className="progress-signal-grid">
+            {progressSignals.map((signal) => (
+              <article key={signal.key} className="progress-signal-card">
+                <span>{signal.label}</span>
+                <strong>{signal.value}</strong>
+                <small>{signal.detail}</small>
+              </article>
+            ))}
+          </div>
+          <div className="progress-lower-grid">
+            <article className="progress-focus-note">
+              <span>{t('progress.nextFocus', 'Next focus')}</span>
+              <strong>{topWeakArea?.title || topWeakArea?.lessonTitle || topWeakArea?.category || t('progress.keepBuilding', 'Keep building momentum')}</strong>
+              <p>{topWeakArea ? t('progress.nextFocusBody', 'This area is showing the clearest signal for extra practice.') : t('progress.nextFocusEmptyBody', 'Practice a little more and this will become more specific.')}</p>
+            </article>
+            <article className="progress-week-meter">
+              <span>{t('progress.weeklyMomentum', 'Weekly momentum')}</span>
+              <strong>{learningLoad}%</strong>
+              <div className="progress-week-track" aria-hidden="true">
+                <span style={{ width: `${learningLoad}%` }}></span>
+              </div>
+              <small>{t('progress.weeklyMomentumDetail', {
+                days: weeklySummary.activeDays || 0,
+                sessions: weeklySummary.sessions || 0,
+                defaultValue: '{{days}} active days and {{sessions}} sessions',
+              })}</small>
+            </article>
+          </div>
+        </section>
 
         {/* Mastery Stats Grid */}
         <div className="stats-grid">

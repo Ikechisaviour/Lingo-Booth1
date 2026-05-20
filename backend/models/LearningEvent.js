@@ -11,6 +11,14 @@ const LEARNING_EVENT_TYPES = [
   'roleplay_complete',
   'writing_complete',
   'speaking_practice_complete',
+  'class_item_viewed',
+  'saved_item_created',
+  'saved_item_reviewed',
+  'review_session_complete',
+  'voice_played',
+  'speech_input_used',
+  'conversation_reply_failed',
+  'tutor_reply_failed',
 ];
 
 const learningEventSchema = new mongoose.Schema({

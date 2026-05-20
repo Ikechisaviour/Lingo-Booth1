@@ -9,6 +9,8 @@ const GuestSession = require('../models/GuestSession');
 const ErrorReport = require('../models/ErrorReport');
 const ContactMessage = require('../models/ContactMessage');
 const Pronunciation = require('../models/Pronunciation');
+const LearningEvent = require('../models/LearningEvent');
+const StudyItem = require('../models/StudyItem');
 const { verifyToken, isAdmin } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
 const { recordServerError } = require('../utils/errorReporting');
@@ -24,6 +26,17 @@ function withEffectiveSubscription(user) {
     subscriptionTier: aiEntitlements.subscriptionTier,
     aiEntitlements,
   };
+}
+
+function learningFeatureForEvent(eventType = '') {
+  if (eventType.startsWith('quiz_')) return 'quiz';
+  if (eventType.startsWith('flashcard_')) return 'flashcards';
+  if (eventType.startsWith('class_') || eventType === 'tutor_reply_failed') return 'class';
+  if (eventType.startsWith('conversation_') || eventType === 'roleplay_complete') return 'conversation';
+  if (eventType.startsWith('writing_')) return 'writing';
+  if (eventType.startsWith('saved_item_') || eventType === 'review_session_complete') return 'review';
+  if (eventType === 'voice_played' || eventType === 'speech_input_used' || eventType === 'speaking_practice_complete') return 'voice';
+  return 'other';
 }
 
 function safeConversationHistory(history = []) {
@@ -379,7 +392,7 @@ router.get('/stats', async (req, res) => {
     // Basic counts
     const [totalUsers, totalLessons, totalFlashcards, totalProgress, totalGuestSessions, totalErrorReports, openErrorReports, totalContactMessages, openContactMessages] = await Promise.all([
       User.countDocuments(),
-      Lesson.countDocuments(),
+      Lesson.countDocuments({ curriculumStatus: { $ne: 'archived' } }),
       Flashcard.countDocuments({ isDefault: { $ne: true } }),
       Progress.countDocuments(),
       GuestSession.countDocuments(),
@@ -469,6 +482,254 @@ router.get('/stats', async (req, res) => {
       count: growthCountMap.get(date) || 0,
     }));
 
+    const [
+      eventTypeStatsRaw,
+      eventTotals30Raw,
+      eventDailyRaw,
+      languagePairRaw,
+      savedItemsTotal,
+      savedItemsLastMonth,
+      savedItemsDueNow,
+      weakSkillRaw,
+      difficultContentRaw,
+      tutorFailuresLastWeek,
+      voiceFailuresLastWeek,
+      failureBreakdownRaw,
+    ] = await Promise.all([
+      LearningEvent.aggregate([
+        { $match: { occurredAt: { $gte: lastWeek } } },
+        {
+          $group: {
+            _id: '$eventType',
+            count: { $sum: 1 },
+            users: { $addToSet: '$userId' },
+          },
+        },
+        { $sort: { count: -1 } },
+      ]),
+      LearningEvent.aggregate([
+        { $match: { occurredAt: { $gte: lastMonth } } },
+        {
+          $group: {
+            _id: null,
+            count: { $sum: 1 },
+            users: { $addToSet: '$userId' },
+          },
+        },
+      ]),
+      LearningEvent.aggregate([
+        { $match: { occurredAt: { $gte: growthStart, $lte: growthEnd } } },
+        {
+          $group: {
+            _id: { $dateToString: { format: '%Y-%m-%d', date: '$occurredAt' } },
+            count: { $sum: 1 },
+            users: { $addToSet: '$userId' },
+          },
+        },
+      ]),
+      LearningEvent.aggregate([
+        {
+          $match: {
+            occurredAt: { $gte: lastWeek },
+            'metadata.targetLanguage': { $exists: true, $ne: '' },
+          },
+        },
+        {
+          $group: {
+            _id: {
+              targetLanguage: '$metadata.targetLanguage',
+              nativeLanguage: '$metadata.nativeLanguage',
+            },
+            count: { $sum: 1 },
+            users: { $addToSet: '$userId' },
+          },
+        },
+        { $sort: { count: -1 } },
+        { $limit: 8 },
+      ]),
+      StudyItem.countDocuments(),
+      StudyItem.countDocuments({ createdAt: { $gte: lastMonth } }),
+      StudyItem.countDocuments({ nextReviewAt: { $lte: now } }),
+      Progress.aggregate([
+        { $match: { timestamp: { $gte: lastMonth } } },
+        {
+          $group: {
+            _id: '$skillType',
+            avgScore: { $avg: '$score' },
+            records: { $sum: 1 },
+            struggling: {
+              $sum: {
+                $cond: [
+                  {
+                    $or: [
+                      { $eq: ['$masteryStatus', 'struggling'] },
+                      { $lt: ['$score', 60] },
+                    ],
+                  },
+                  1,
+                  0,
+                ],
+              },
+            },
+          },
+        },
+        { $sort: { struggling: -1, avgScore: 1 } },
+      ]),
+      Progress.aggregate([
+        {
+          $match: {
+            timestamp: { $gte: lastMonth },
+            lessonId: { $ne: null },
+            $or: [
+              { masteryStatus: 'struggling' },
+              { score: { $lt: 60 } },
+            ],
+          },
+        },
+        {
+          $group: {
+            _id: { lessonId: '$lessonId', skillType: '$skillType' },
+            records: { $sum: 1 },
+            avgScore: { $avg: '$score' },
+          },
+        },
+        { $sort: { records: -1, avgScore: 1 } },
+        { $limit: 8 },
+        {
+          $lookup: {
+            from: 'lessons',
+            localField: '_id.lessonId',
+            foreignField: '_id',
+            as: 'lesson',
+          },
+        },
+        { $unwind: { path: '$lesson', preserveNullAndEmptyArrays: true } },
+      ]),
+      ErrorReport.countDocuments({
+        createdAt: { $gte: lastWeek },
+        $or: [
+          { 'api.url': /\/ai\/conversation/i },
+          { message: /tutor|conversation|practice partner/i },
+        ],
+      }),
+      ErrorReport.countDocuments({
+        createdAt: { $gte: lastWeek },
+        $or: [
+          { 'api.url': /\/tts/i },
+          { message: /speech|voice|audio|tts/i },
+        ],
+      }),
+      ErrorReport.aggregate([
+        { $match: { createdAt: { $gte: lastWeek } } },
+        {
+          $group: {
+            _id: { source: '$source', kind: '$kind', severity: '$severity' },
+            count: { $sum: 1 },
+          },
+        },
+        { $sort: { count: -1 } },
+        { $limit: 8 },
+      ]),
+    ]);
+
+    const sevenDayLearnerIds = new Set();
+    const featureUsageMap = new Map();
+    const eventCounts = eventTypeStatsRaw.map((entry) => {
+      const usersForType = entry.users || [];
+      usersForType.forEach((userId) => sevenDayLearnerIds.add(String(userId)));
+      const feature = learningFeatureForEvent(entry._id);
+      const existing = featureUsageMap.get(feature) || { feature, count: 0, users: new Set() };
+      existing.count += entry.count || 0;
+      usersForType.forEach((userId) => existing.users.add(String(userId)));
+      featureUsageMap.set(feature, existing);
+      return {
+        eventType: entry._id,
+        count: entry.count || 0,
+        userCount: usersForType.length,
+      };
+    });
+
+    const featureUsage = Array.from(featureUsageMap.values())
+      .map((entry) => ({
+        feature: entry.feature,
+        count: entry.count,
+        userCount: entry.users.size,
+      }))
+      .sort((a, b) => b.count - a.count);
+
+    const eventCountMap = new Map(eventCounts.map((entry) => [entry.eventType, entry.count]));
+    const eventTotals30 = eventTotals30Raw[0] || { count: 0, users: [] };
+    const dailyEventMap = new Map(eventDailyRaw.map((entry) => [entry._id, entry]));
+    const dailyLearning = growthDays.map(({ date }) => {
+      const entry = dailyEventMap.get(date);
+      return {
+        date,
+        count: entry?.count || 0,
+        activeLearners: entry?.users?.length || 0,
+      };
+    });
+
+    const languagePairs = languagePairRaw.map((entry) => ({
+      targetLanguage: entry._id?.targetLanguage || '',
+      nativeLanguage: entry._id?.nativeLanguage || '',
+      count: entry.count || 0,
+      userCount: entry.users?.length || 0,
+    }));
+
+    const weakSkills = weakSkillRaw.map((entry) => ({
+      skillType: entry._id || 'unknown',
+      avgScore: Math.round(entry.avgScore || 0),
+      records: entry.records || 0,
+      struggling: entry.struggling || 0,
+    }));
+
+    const difficultContent = difficultContentRaw.map((entry) => ({
+      lessonId: entry._id?.lessonId,
+      skillType: entry._id?.skillType || 'unknown',
+      title: entry.lesson?.title || 'Unknown lesson',
+      targetLanguage: entry.lesson?.targetLang || '',
+      category: entry.lesson?.category || '',
+      records: entry.records || 0,
+      avgScore: Math.round(entry.avgScore || 0),
+    }));
+
+    const failureBreakdown = failureBreakdownRaw.map((entry) => ({
+      source: entry._id?.source || 'unknown',
+      kind: entry._id?.kind || 'unknown',
+      severity: entry._id?.severity || 'error',
+      count: entry.count || 0,
+    }));
+
+    const learningAnalytics = {
+      totals: {
+        eventsLast7Days: eventCounts.reduce((sum, entry) => sum + entry.count, 0),
+        eventsLast30Days: eventTotals30.count || 0,
+        activeLearnersLast7Days: sevenDayLearnerIds.size,
+        activeLearnersLast30Days: eventTotals30.users?.length || 0,
+        savedItemsTotal,
+        savedItemsLast30Days: savedItemsLastMonth,
+        savedItemsDueNow,
+        conversationTurnsLast7Days: eventCountMap.get('conversation_turn') || 0,
+        roleplaysCompletedLast7Days: eventCountMap.get('roleplay_complete') || 0,
+        classItemsCompletedLast7Days: eventCountMap.get('class_item_complete') || 0,
+        classLessonsCompletedLast7Days: eventCountMap.get('class_lesson_complete') || 0,
+        writingCompletionsLast7Days: eventCountMap.get('writing_complete') || 0,
+        speakingPracticeLast7Days: eventCountMap.get('speaking_practice_complete') || 0,
+        speechInputsLast7Days: eventCountMap.get('speech_input_used') || 0,
+        voicePlaysLast7Days: eventCountMap.get('voice_played') || 0,
+        savedReviewsLast7Days: eventCountMap.get('saved_item_reviewed') || 0,
+        tutorFailuresLast7Days: tutorFailuresLastWeek,
+        voiceFailuresLast7Days: voiceFailuresLastWeek,
+      },
+      eventCounts,
+      featureUsage,
+      languagePairs,
+      dailyLearning,
+      weakSkills,
+      difficultContent,
+      failureBreakdown,
+    };
+
     // Recent activity (last 10 users who were active)
     const recentActiveUsers = await User.find({ lastActive: { $exists: true } })
       .select('username email lastActive totalTimeSpent xpDecayEnabled lastActivityType')
@@ -494,6 +755,20 @@ router.get('/stats', async (req, res) => {
         openErrorReports,
         totalContactMessages,
         openContactMessages,
+        avgTimeSpent,
+        activeToday: activeUsersToday,
+        newUsersThisWeek: newUsersLastWeek,
+      },
+      contentOverview: {
+        lessons: totalLessons,
+        flashcards: totalFlashcards,
+        progressRecords: totalProgress,
+        totalLogins,
+        admins: adminCount,
+      },
+      modeBreakdown: {
+        challenge: challengeModeUsers,
+        relaxed: relaxedModeUsers,
       },
       activity: {
         activeUsersToday,
@@ -504,6 +779,7 @@ router.get('/stats', async (req, res) => {
       },
       userGrowth,
       recentActiveUsers,
+      learningAnalytics,
     });
   } catch (error) {
     console.error('Admin stats error:', error);
@@ -1142,6 +1418,7 @@ router.post('/seed-flashcards', async (req, res) => {
   try {
     const Flashcard = require('../models/Flashcard');
     const { prepareDefaultFlashcardsForSeed } = require('../utils/languageConcepts');
+    const { buildDefaultFlashcardSourceForLanguage } = require('../utils/targetAuthoredPracticeContent');
     const existingLangs = await Flashcard.distinct('targetLang', { isDefault: true });
 
     const langDataMap = {};
@@ -1158,8 +1435,9 @@ router.post('/seed-flashcards', async (req, res) => {
     let inserted = 0;
     const normalizedCounts = {};
     for (const [lang, cards] of Object.entries(langDataMap)) {
-      const docs = prepareDefaultFlashcardsForSeed(cards, lang, 0);
-      normalizedCounts[lang] = { source: cards.length, inserted: docs.length };
+      const sourceCards = buildDefaultFlashcardSourceForLanguage(lang, cards);
+      const docs = prepareDefaultFlashcardsForSeed(sourceCards, lang, 0);
+      normalizedCounts[lang] = { source: sourceCards.length, inserted: docs.length };
       if (docs.length > 0) {
         const result = await Flashcard.insertMany(docs);
         inserted += result.length;

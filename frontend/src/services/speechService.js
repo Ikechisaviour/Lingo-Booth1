@@ -763,7 +763,7 @@ class SpeechService {
       artist: artist || 'Flashcards',
       album: album || 'Lingo Booth',
       artwork: artwork || [
-        { src: '/images/logo.png', sizes: '512x512', type: 'image/png' },
+        { src: '/images/brand/logo-mark.png', sizes: '512x512', type: 'image/png' },
       ],
     });
     navigator.mediaSession.setActionHandler('play', onPlay || null);

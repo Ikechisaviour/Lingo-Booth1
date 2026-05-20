@@ -73,6 +73,24 @@ const lessonSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  curriculumSourceHash: {
+    type: String,
+    default: '',
+    trim: true,
+  },
+  curriculumSeededAt: {
+    type: Date,
+    default: null,
+  },
+  curriculumStatus: {
+    type: String,
+    enum: ['active', 'archived'],
+    default: 'active',
+  },
+  curriculumArchivedAt: {
+    type: Date,
+    default: null,
+  },
   title: {
     type: String,
     required: true,
@@ -198,6 +216,7 @@ const lessonSchema = new mongoose.Schema({
 lessonSchema.index({ targetLang: 1, category: 1, difficulty: 1 });
 lessonSchema.index({ track: 1, targetLang: 1 });
 lessonSchema.index({ targetLang: 1, curriculumKey: 1 }, { sparse: true });
+lessonSchema.index({ track: 1, targetLang: 1, curriculumStatus: 1 });
 
 // Virtual getters: resolve generic fields, falling back to legacy fields
 lessonSchema.set('toJSON', { virtuals: false, transform: function(doc, ret) {

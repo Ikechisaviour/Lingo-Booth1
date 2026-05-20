@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback } from 'react';
-import { AppState, View, StyleSheet, Image, ActivityIndicator } from 'react-native';
-import { Text } from 'react-native-paper';
+import { AppState, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { NavigationContainer, LinkingOptions } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import * as Linking from 'expo-linking';
@@ -13,6 +12,7 @@ import {
   registerPracticeNotificationResponseHandler,
 } from '../services/practicePromptService';
 import { colors } from '../config/theme';
+import BrandLogo from '../components/BrandLogo';
 import AuthStack from './AuthStack';
 import MainTabs from './MainTabs';
 import LanguageSelectScreen from '../screens/auth/LanguageSelectScreen';
@@ -58,12 +58,7 @@ const SetupStack: React.FC = () => (
 
 const SplashScreen: React.FC = () => (
   <View style={splashStyles.container}>
-    <Image
-      source={require('../../assets/icon.png')}
-      style={splashStyles.logo}
-      resizeMode="contain"
-    />
-    <Text style={splashStyles.brandName}>Lingo Booth</Text>
+    <BrandLogo variant="lockup" markSize={86} wordmarkWidth={220} style={splashStyles.logo} />
     <ActivityIndicator size="small" color="#fff" style={splashStyles.spinner} />
   </View>
 );
@@ -75,8 +70,7 @@ const splashStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  logo: { width: 100, height: 100, marginBottom: 16 },
-  brandName: { color: '#fff', fontSize: 32, fontWeight: '800', letterSpacing: 0.5 },
+  logo: { marginBottom: 16 },
   spinner: { marginTop: 32 },
 });
 

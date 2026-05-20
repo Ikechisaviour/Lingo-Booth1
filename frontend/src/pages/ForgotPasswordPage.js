@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { authService } from '../services/api';
 import { applyPublicLanguage } from '../utils/publicLanguage';
+import BrandLogo from '../components/BrandLogo';
 import './Auth.css';
 
 function ForgotPasswordPage() {
@@ -33,7 +34,7 @@ function ForgotPasswordPage() {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
+        <BrandLogo variant="lockup" className="auth-logo" decorative={false} />
         <h1>{t('forgotPassword.title', 'Forgot Password')}</h1>
         <p className="auth-subtitle">
           {t('forgotPassword.subtitle', "Enter your email and we'll send you a link to reset your password.")}

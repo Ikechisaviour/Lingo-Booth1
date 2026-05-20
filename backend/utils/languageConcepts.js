@@ -1,4 +1,8 @@
 const LANGUAGE_FIELDS = ['korean', 'english', 'es', 'fr', 'de', 'zh', 'ja', 'hi', 'ar', 'he', 'pt', 'it', 'nl', 'ru', 'id', 'ms', 'fil', 'tr', 'bn', 'ta', 'th'];
+const {
+  clearUnsafeSeededPronunciation,
+  findTargetContentIssues,
+} = require('./targetContentQuality');
 
 const YOU_FORM_OVERRIDES = {
   bn: { informal: 'তুমি', formal: 'আপনি' },
@@ -318,6 +322,7 @@ function normalizeLessonForLanguagePair(lessonObj, targetLang, nativeLang, optio
       targetLang,
     })
     : normalizedContent;
+  lessonObj.content = filterLearningItemsForTarget(lessonObj.content, targetLang, 'lesson');
   return lessonObj;
 }
 
@@ -329,6 +334,7 @@ function normalizeFlashcardsForLanguagePair(cards, targetLang, nativeLang) {
 
   for (const sourceCard of cards) {
     const card = sourceCard;
+    clearUnsafeSeededPronunciation(card, targetLang);
     const currentTarget = card[targetField] || card.korean || card.english || '';
     const beforeGloss = card.conceptGloss || card.english || '';
     applyConceptToLearningItem(card, targetLang, {
@@ -349,9 +355,47 @@ function normalizeFlashcardsForLanguagePair(cards, targetLang, nativeLang) {
     normalized.push(card);
   }
 
-  return mergeLearningItemsByTarget(normalized, targetField, 'english', {
+  const merged = mergeLearningItemsByTarget(normalized, targetField, 'english', {
     includeType: false,
     targetLang,
+  });
+  return filterLearningItemsForTarget(merged, targetLang, 'flashcard');
+}
+
+function targetQualityFields(item, targetLang, kind) {
+  const targetField = kind === 'flashcard' ? languageField(targetLang) : 'targetText';
+  const fields = [
+    { name: targetField, value: item?.[targetField] || item?.targetText || item?.korean, kind: 'target' },
+    { name: 'exampleTarget', value: item?.exampleTarget || item?.example, kind: 'target-example' },
+  ];
+
+  if (kind === 'flashcard') {
+    fields.push(
+      { name: 'english', value: item?.english, kind: 'canonical-gloss' },
+      { name: 'conceptGloss', value: item?.conceptGloss, kind: 'canonical-gloss' },
+    );
+  } else {
+    fields.push(
+      { name: 'nativeText', value: item?.nativeText, kind: 'canonical-gloss' },
+      { name: 'conceptGloss', value: item?.conceptGloss, kind: 'canonical-gloss' },
+    );
+    if (Array.isArray(item?.breakdown)) {
+      item.breakdown.forEach((part, index) => {
+        fields.push({ name: `breakdown[${index}].target`, value: part?.target || part?.korean, kind: 'target-breakdown' });
+        fields.push({ name: `breakdown[${index}].native`, value: part?.native || part?.english, kind: 'canonical-gloss' });
+      });
+    }
+  }
+
+  return fields;
+}
+
+function filterLearningItemsForTarget(items, targetLang, kind = 'lesson') {
+  if (!Array.isArray(items)) return items;
+  return items.filter((item) => {
+    if (kind === 'flashcard' && item && item.isDefault === false) return true;
+    const fields = targetQualityFields(item, targetLang, kind);
+    return findTargetContentIssues(item, targetLang, { fields }).length === 0;
   });
 }
 
@@ -505,6 +549,13 @@ function prepareDefaultFlashcardForSeed(card, targetLang, index) {
     officialPronunciation: card.officialPronunciation || card.romanization || '',
     learnerPronunciation: card.learnerPronunciation || '',
     pronunciationConfidence: card.pronunciationConfidence || undefined,
+    officialPronunciationSource: card.officialPronunciationSource || '',
+    learnerPronunciationSource: card.learnerPronunciationSource || '',
+    conceptId: card.conceptId || '',
+    conceptGloss: card.conceptGloss || card.english || '',
+    usage: card.usage && typeof card.usage === 'object' && !Array.isArray(card.usage)
+      ? { ...card.usage }
+      : {},
     category: Array.isArray(card.category) ? card.category : [card.category || 'uncategorized'],
     isDefault: true,
     defaultIndex: index,

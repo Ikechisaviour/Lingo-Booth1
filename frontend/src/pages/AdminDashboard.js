@@ -25,6 +25,16 @@ function AdminDashboard() {
     activity: { activeUsersToday: 0, activeUsersThisWeek: 0, avgTimeSpent: 0, newUsersLastWeek: 0, newUsersLastMonth: 0 },
     userGrowth: [],
     recentActiveUsers: [],
+    learningAnalytics: {
+      totals: {},
+      eventCounts: [],
+      featureUsage: [],
+      languagePairs: [],
+      dailyLearning: [],
+      weakSkills: [],
+      difficultContent: [],
+      failureBreakdown: [],
+    },
   });
   const [users, setUsers] = useState([]);
   const [userFlashcards, setUserFlashcards] = useState([]);
@@ -261,6 +271,7 @@ function AdminDashboard() {
         activity: { ...prev.activity, ...(data.activity || {}) },
         userGrowth: data.userGrowth || [],
         recentActiveUsers: data.recentActiveUsers || [],
+        learningAnalytics: data.learningAnalytics || prev.learningAnalytics,
       }));
       setUsers(usersResponse.data || []);
       setUserFlashcards(flashcardsResponse.data || []);
@@ -691,6 +702,34 @@ function AdminDashboard() {
     return `${Math.floor(minutes / 60)}h ${minutes % 60}m`;
   };
 
+  const analyticsFeatureLabel = (feature) => {
+    const labels = {
+      class: t('adminAnalytics.features.class', 'Class'),
+      conversation: t('adminAnalytics.features.conversation', 'Conversation'),
+      quiz: t('adminAnalytics.features.quiz', 'Quiz'),
+      flashcards: t('adminAnalytics.features.flashcards', 'Flashcards'),
+      writing: t('adminAnalytics.features.writing', 'Writing'),
+      review: t('adminAnalytics.features.review', 'Review'),
+      voice: t('adminAnalytics.features.voice', 'Voice'),
+      other: t('adminAnalytics.features.other', 'Other'),
+    };
+    return labels[feature] || feature;
+  };
+
+  const analyticsSkillLabel = (skill) => {
+    const labels = {
+      listening: t('skills.listening', 'Listening'),
+      speaking: t('skills.speaking', 'Speaking'),
+      reading: t('skills.reading', 'Reading'),
+      writing: t('skills.writing', 'Writing'),
+      unknown: t('adminAnalytics.unknownSkill', 'Unknown skill'),
+    };
+    return labels[skill] || skill;
+  };
+
+  const learningAnalytics = stats?.learningAnalytics || {};
+  const analyticsTotals = learningAnalytics.totals || {};
+
   const langPair = (native, target) => {
     const nl = LANGUAGES[native];
     const tl = LANGUAGES[target];
@@ -840,6 +879,136 @@ function AdminDashboard() {
                   <span className="stat-emoji">😊</span>
                   <span className="stat-number">{stats?.overview?.relaxedModeUsers || 0}</span>
                   <span className="stat-label">{t('admin.relaxedMode')}</span>
+                </div>
+              </div>
+
+              <div className="section-title"><h2>{t('adminAnalytics.title', 'Learning health')}</h2></div>
+              <div className="stats-row analytics-summary">
+                {[
+                  {
+                    marker: '7d',
+                    value: analyticsTotals.activeLearnersLast7Days || 0,
+                    label: t('adminAnalytics.activeLearners', 'Active learners'),
+                    sub: t('adminAnalytics.lastSevenDays', 'Last 7 days'),
+                  },
+                  {
+                    marker: 'EV',
+                    value: analyticsTotals.eventsLast7Days || 0,
+                    label: t('adminAnalytics.learningEvents', 'Learning events'),
+                    sub: t('adminAnalytics.lastSevenDays', 'Last 7 days'),
+                  },
+                  {
+                    marker: 'CL',
+                    value: analyticsTotals.classLessonsCompletedLast7Days || 0,
+                    label: t('adminAnalytics.classLessonsCompleted', 'Classes completed'),
+                    sub: t('adminAnalytics.lastSevenDays', 'Last 7 days'),
+                  },
+                  {
+                    marker: 'CV',
+                    value: analyticsTotals.conversationTurnsLast7Days || 0,
+                    label: t('adminAnalytics.conversationTurns', 'Conversation turns'),
+                    sub: t('adminAnalytics.lastSevenDays', 'Last 7 days'),
+                  },
+                  {
+                    marker: 'RV',
+                    value: analyticsTotals.savedReviewsLast7Days || 0,
+                    label: t('adminAnalytics.savedReviews', 'Saved-item reviews'),
+                    sub: t('adminAnalytics.dueNow', '{{count}} due now', { count: analyticsTotals.savedItemsDueNow || 0 }),
+                  },
+                  {
+                    marker: 'ER',
+                    value: analyticsTotals.tutorFailuresLast7Days || 0,
+                    label: t('adminAnalytics.tutorIssues', 'Tutor issues'),
+                    sub: t('adminAnalytics.lastSevenDays', 'Last 7 days'),
+                  },
+                ].map((item) => (
+                  <div key={item.label} className="stat-card">
+                    <span className="stat-emoji analytics-marker">{item.marker}</span>
+                    <span className="stat-number">{item.value}</span>
+                    <span className="stat-label">{item.label}</span>
+                    <span className="stat-sub">{item.sub}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="analytics-grid">
+                <div className="card analytics-card">
+                  <h3>{t('adminAnalytics.featureUsage', 'Feature usage')}</h3>
+                  {(learningAnalytics.featureUsage || []).length > 0 ? (
+                    <div className="analytics-list">
+                      {(learningAnalytics.featureUsage || []).slice(0, 8).map((entry) => {
+                        const max = Math.max(...(learningAnalytics.featureUsage || []).map((item) => item.count || 0), 1);
+                        return (
+                          <div key={entry.feature} className="analytics-row">
+                            <div>
+                              <strong>{analyticsFeatureLabel(entry.feature)}</strong>
+                              <span>{t('adminAnalytics.learnersCount', '{{count}} learners', { count: entry.userCount || 0 })}</span>
+                            </div>
+                            <div className="analytics-bar-wrap">
+                              <div className="analytics-bar-fill" style={{ width: `${Math.max(((entry.count || 0) / max) * 100, 6)}%` }} />
+                            </div>
+                            <b>{entry.count || 0}</b>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="no-data">{t('adminAnalytics.noFeatureUsage', 'No learning events recorded yet.')}</div>
+                  )}
+                </div>
+
+                <div className="card analytics-card">
+                  <h3>{t('adminAnalytics.languagePairs', 'Language pairs')}</h3>
+                  {(learningAnalytics.languagePairs || []).length > 0 ? (
+                    <div className="analytics-list compact">
+                      {(learningAnalytics.languagePairs || []).map((pair) => (
+                        <div key={`${pair.nativeLanguage}-${pair.targetLanguage}`} className="analytics-row simple">
+                          <span>{langPair(pair.nativeLanguage, pair.targetLanguage)}</span>
+                          <b>{pair.count || 0}</b>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="no-data">{t('adminAnalytics.noLanguagePairs', 'No language-pair activity yet.')}</div>
+                  )}
+                </div>
+
+                <div className="card analytics-card">
+                  <h3>{t('adminAnalytics.weakSkills', 'Skills needing attention')}</h3>
+                  {(learningAnalytics.weakSkills || []).length > 0 ? (
+                    <div className="analytics-list compact">
+                      {(learningAnalytics.weakSkills || []).map((skill) => (
+                        <div key={skill.skillType} className="analytics-row simple">
+                          <span>
+                            <strong>{analyticsSkillLabel(skill.skillType)}</strong>
+                            <small>{t('adminAnalytics.averageScore', 'Average {{score}}%', { score: skill.avgScore || 0 })}</small>
+                          </span>
+                          <b>{skill.struggling || 0}</b>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="no-data">{t('adminAnalytics.noWeakSkills', 'No weak-skill records in the last 30 days.')}</div>
+                  )}
+                </div>
+
+                <div className="card analytics-card">
+                  <h3>{t('adminAnalytics.difficultContent', 'Difficult content')}</h3>
+                  {(learningAnalytics.difficultContent || []).length > 0 ? (
+                    <div className="analytics-list compact">
+                      {(learningAnalytics.difficultContent || []).slice(0, 5).map((item) => (
+                        <div key={`${item.lessonId}-${item.skillType}`} className="analytics-row simple">
+                          <span>
+                            <strong>{item.title || t('adminAnalytics.unknownLesson', 'Unknown lesson')}</strong>
+                            <small>{analyticsSkillLabel(item.skillType)} - {(item.targetLanguage || '').toUpperCase()}</small>
+                          </span>
+                          <b>{item.avgScore || 0}%</b>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="no-data">{t('adminAnalytics.noDifficultContent', 'No difficult-content pattern found yet.')}</div>
+                  )}
                 </div>
               </div>
 

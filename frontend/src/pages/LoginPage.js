@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { GoogleLogin } from '@react-oauth/google';
 import { authService, userService, guestXPHelper } from '../services/api';
 import { applyPublicLanguage, getPreferredPublicLanguage, googleLocaleForPublicLanguage } from '../utils/publicLanguage';
+import BrandLogo from '../components/BrandLogo';
 import './Auth.css';
 
 function getEffectiveSubscriptionTier(user = {}) {
@@ -196,14 +197,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <button
-          type="button"
-          className="auth-home-link"
-          onClick={() => navigate('/')}
-        >
-          {t('login.backToHome', 'Back to home')}
-        </button>
-        <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
+        <BrandLogo variant="lockup" className="auth-logo" decorative={false} />
         <h1>{t('login.welcomeBack')}</h1>
         <p className="auth-subtitle">{t('login.subtitle')}</p>
 

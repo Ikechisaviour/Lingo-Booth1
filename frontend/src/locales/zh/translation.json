@@ -77,7 +77,6 @@
     "reason": "原因",
     "forgotPassword": "忘记密码？",
     "googleFailed": "谷歌登录失败。 请再试一次。",
-    "backToHome": "回到家",
     "sessionExpired": "您的会话已过期。 请重新登录。"
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "supportAndPlans": "支持和计划"
   },
   "lessons": {
     "title": "{{language}} <1>课程</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "多元化学习",
     "diversifyLearningTip": "均衡练习四种技能",
     "stayConsistent": "保持坚持",
-    "stayConsistentTip": "每天学一点，效果最佳"
+    "stayConsistentTip": "每天学一点，效果最佳",
+    "analyticsMastered": "掌握",
+    "analyticsMasteredDetail": "您可以轻松处理的物品",
+    "analyticsReviewDetail": "今天值得重温",
+    "analyticsActiveDaysDetail": "本星期",
+    "analyticsSpeakingDetail": "最近练习发声",
+    "analyticsAria": "学习分析",
+    "analyticsKicker": "学习健康",
+    "analyticsTitle": "您的活动告诉我们什么",
+    "analyticsSubtitle": "将此作为对动力、复习压力和下一个有用步骤的简单解读。",
+    "nextFocus": "下一个焦点",
+    "keepBuilding": "继续积蓄动力",
+    "nextFocusBody": "该区域显示出最清晰的额外练习信号。",
+    "nextFocusEmptyBody": "多练习一点，这就会变得更加具体。",
+    "weeklyMomentum": "每周动力",
+    "weeklyMomentumDetail": "{{days}} 活跃天数和 {{sessions}} 会话数"
   },
   "profilePage": {
     "memberSince": "{{date}}加入",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "开始一节指导课",
     "firstThreeDayReviewBody": "返回到昨天看到的内容，以便第一个项目开始粘住。",
     "firstThreeDaySpeakBody": "使用简短的说话轮流，以便语言尽早离开页面。",
-    "firstThreeDayLearnBody": "从一节小型指导课开始，这样两人就有一个明确的起点。"
+    "firstThreeDayLearnBody": "从一节小型指导课开始，这样两人就有一个明确的起点。",
+    "reviewSignalDetail": "{{count}} 值得重温的项目",
+    "weeklyPointsSignal": "每周积分",
+    "sessionsCount": "{{count}} 会话",
+    "activityThisWeek": "本周活动",
+    "savedItemsThisWeek": "本周已保存{{count}}",
+    "analyticsKicker": "学习信号",
+    "analyticsTitle": "你的学习图",
+    "analyticsSubtitle": "快速了解下一步该做什么、需要回顾什么以及您的一周进展如何。",
+    "viewFullProgress": "查看完整进度",
+    "nextActionSignalBody": "这是从您最新的课堂活动、复习队列和当前语言对设置中选择的。",
+    "startGuidedClass": "开始一堂指导课程",
+    "pairSetupFriendlySummary": "{{level}} 等级 · {{goal}} 目标 · {{pace}} 步伐",
+    "clearValue": "清除",
+    "reviewClearDetail": "现在还没有什么到期的事。 使用一类或保存的短语构建队列。",
+    "weeklyPointsEmpty": "从本周开始进行一个简短的会议。",
+    "speakingTurnsEmpty": "准备好后尝试进行一段简短的对话。",
+    "todayFocus": "今日焦点",
+    "primaryActionLivesAbove": "当您准备好开始时，请使用上面的主按钮。",
+    "findFirstPhrase": "找到你的第一个短语",
+    "recentStudyEmpty": "您的学习轨迹将在您本周的第一次活动之后出现。",
+    "startToday": "从今天开始",
+    "todaySection": "今天",
+    "guidanceTitle": "指导",
+    "guidanceSubtitle": "一些小建议，可以让下一个会话保持清晰，而不会使页面拥挤。",
+    "secondaryStepsTitle": "主要步骤之后",
+    "secondaryStepsEmpty": "目前，一项集中行动就足够了。 完成后，下一步就会出现在这里。",
+    "recentWordsEmptyAction": "保存的单词和有用的短语将在课后或会话练习后收集到这里。",
+    "startAClass": "开始上课",
+    "milestonesEmptyAction": "您完成的第一个课程、保存的短语或证书将显示在此处。",
+    "earnFirstMilestone": "赢得第一个里程碑"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "班级",
+      "conversation": "对话",
+      "quiz": "测验",
+      "flashcards": "抽认卡",
+      "writing": "写作",
+      "review": "审查",
+      "voice": "嗓音",
+      "other": "其他"
+    },
+    "unknownSkill": "未知技能",
+    "title": "学习健康",
+    "activeLearners": "积极的学习者",
+    "lastSevenDays": "过去 7 天",
+    "learningEvents": "学习活动",
+    "classLessonsCompleted": "已完成课程",
+    "conversationTurns": "话锋一转",
+    "savedReviews": "已保存项目评论",
+    "dueNow": "{{count}} 现在到期",
+    "tutorIssues": "导师问题",
+    "featureUsage": "功能使用",
+    "learnersCount": "{{count}} 学习者",
+    "noFeatureUsage": "尚未记录任何学习事件。",
+    "languagePairs": "语言对",
+    "noLanguagePairs": "还没有语言对活动。",
+    "weakSkills": "需要注意的技能",
+    "averageScore": "平均{{score}}%",
+    "noWeakSkills": "近30天内无弱技能记录。",
+    "difficultContent": "较难的内容",
+    "unknownLesson": "未知的教训",
+    "noDifficultContent": "尚未发现困难内容模式。"
+  },
+  "skills": {
+    "listening": "听力",
+    "speaking": "请讲",
+    "reading": "阅读",
+    "writing": "写作"
   }
 }

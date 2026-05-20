@@ -24,6 +24,10 @@ function scriptCount(text: string, language?: string) {
   return (String(text || '').match(pattern) || []).length;
 }
 
+function latinLetterCount(text: string) {
+  return (String(text || '').match(/[A-Za-z\u00c0-\u024f]/g) || []).length;
+}
+
 function hasScriptLanguage(language?: string) {
   return !!SCRIPT_PATTERNS[normalizeLanguage(language)];
 }
@@ -88,9 +92,28 @@ function inferLanguage(text: string, targetLanguage?: string, nativeLanguage?: s
   const native = normalizeLanguage(nativeLanguage) || 'en';
   const fallback = normalizeLanguage(fallbackLanguage);
   const value = String(text || '');
+  const targetScriptCount = scriptCount(value, target);
+  const nativeScriptCount = scriptCount(value, native);
+  const latinCount = latinLetterCount(value);
+  const targetIsLatin = !hasScriptLanguage(target) && LATIN_LANGUAGES.has(target);
+  const nativeIsLatin = !hasScriptLanguage(native) && LATIN_LANGUAGES.has(native);
+  const preferredLatinLanguage = fallback && !hasScriptLanguage(fallback) && (fallback === target || fallback === native)
+    ? fallback
+    : (nativeIsLatin ? native : (targetIsLatin ? target : ''));
 
-  if (scriptCount(value, target) > 0) return target;
-  if (scriptCount(value, native) > 0) return native;
+  if (latinCount && (targetScriptCount || nativeScriptCount) && preferredLatinLanguage) {
+    const strongestScriptCount = Math.max(targetScriptCount, nativeScriptCount);
+    if (latinCount >= Math.max(8, strongestScriptCount * 2)) {
+      return preferredLatinLanguage;
+    }
+  }
+
+  if (targetScriptCount || nativeScriptCount) {
+    if (targetScriptCount > nativeScriptCount) return target;
+    if (nativeScriptCount > targetScriptCount) return native;
+    if (fallback === target || fallback === native) return fallback;
+    return targetScriptCount ? target : native;
+  }
   if (/[A-Za-z]/.test(value)) {
     if (fallback && !hasScriptLanguage(fallback) && (fallback === target || fallback === native)) return fallback;
     if (!hasScriptLanguage(native) && LATIN_LANGUAGES.has(native)) return native;
@@ -141,6 +164,7 @@ export function speechChunksForPart(
   targetLanguage?: string,
   nativeLanguage?: string,
   fallbackLanguage?: string,
+  options: { singleVoice?: boolean } = {},
 ): LanguageSegment[] {
   const text = String(part?.text || '').trim();
   if (!text) return [];
@@ -148,7 +172,12 @@ export function speechChunksForPart(
   const target = normalizeLanguage(targetLanguage) || 'ko';
   const native = normalizeLanguage(nativeLanguage) || 'en';
   const fallback = normalizeLanguage(part?.language || fallbackLanguage);
-  const language = inferLanguage(text, target, native, fallback);
+  const typedLanguage = part?.type === 'target' || part?.type === 'romanization'
+    ? target
+    : part?.type === 'native' || part?.type === 'meta'
+      ? native
+      : '';
+  const language = typedLanguage || inferLanguage(text, target, native, fallback);
   const basePart: LanguageSegment = {
     language,
     text,
@@ -156,6 +185,8 @@ export function speechChunksForPart(
     type: part?.type,
     speak: part?.speak,
   };
+  if (options.singleVoice) return [basePart];
+
   const scriptLanguage = [target, native]
     .find(code => hasScriptLanguage(code) && scriptCount(text, code) > 0);
   const latinLanguage = latinLanguageForSpeech(target, native, fallback);
@@ -290,9 +321,15 @@ export function displayPartsForMessage(
     ? message.displayParts
       .map((part) => {
         const text = String(part?.text || '').trim();
+        const declaredLanguage = normalizeLanguage(part?.language || message?.language);
+        const typedLanguage = part?.type === 'target' || part?.type === 'romanization'
+          ? (normalizeLanguage(targetLanguage) || declaredLanguage)
+          : part?.type === 'native' || part?.type === 'meta'
+            ? (normalizeLanguage(nativeLanguage) || declaredLanguage)
+            : '';
         return withSpeaker({
           type: part?.type || '',
-          language: inferLanguage(text, targetLanguage, nativeLanguage, part?.language || message?.language),
+          language: typedLanguage || inferLanguage(text, targetLanguage, nativeLanguage, declaredLanguage),
           text,
           speaker: part?.speaker,
           section: part?.section || '',
@@ -320,12 +357,13 @@ export function spokenPartsForMessage(
   message: { content?: string; language?: string; speechParts?: LanguageSegment[]; displayParts?: LanguageSegment[] } | undefined,
   targetLanguage?: string,
   nativeLanguage?: string,
+  options: { singleVoice?: boolean } = {},
 ) {
   const content = String(message?.content || '').trim();
   if (Array.isArray(message?.displayParts) && message.displayParts.length) {
     return displayPartsForMessage(message, targetLanguage, nativeLanguage)
       .filter(part => !isSilentPart(part))
-      .flatMap(part => speechChunksForPart(part, targetLanguage, nativeLanguage, message?.language));
+      .flatMap(part => speechChunksForPart(part, targetLanguage, nativeLanguage, message?.language, options));
   }
 
   const parts = Array.isArray(message?.speechParts)
@@ -334,14 +372,14 @@ export function spokenPartsForMessage(
         language: normalizeLanguage(part?.language || message?.language),
         text: String(part?.text || '').trim(),
         speaker: part?.speaker || '',
-      }, targetLanguage, nativeLanguage, message?.language))
+      }, targetLanguage, nativeLanguage, message?.language, options))
       .filter(part => part.text)
     : [];
 
   if (!content) return parts;
   if (!parts.length) {
     return splitLanguageSegments(content, targetLanguage, nativeLanguage, message?.language)
-      .flatMap(part => speechChunksForPart(part, targetLanguage, nativeLanguage, message?.language));
+      .flatMap(part => speechChunksForPart(part, targetLanguage, nativeLanguage, message?.language, options));
   }
 
   const partText = parts.map(part => part.text).join(' ');
@@ -353,6 +391,6 @@ export function spokenPartsForMessage(
 
   return missingTarget || missingNative || tooShort
     ? splitLanguageSegments(content, targetLanguage, nativeLanguage, message?.language)
-      .flatMap(part => speechChunksForPart(part, targetLanguage, nativeLanguage, message?.language))
+      .flatMap(part => speechChunksForPart(part, targetLanguage, nativeLanguage, message?.language, options))
     : parts;
 }

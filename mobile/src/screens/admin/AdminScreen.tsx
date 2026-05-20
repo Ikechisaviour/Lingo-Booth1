@@ -391,6 +391,28 @@ const AdminScreen: React.FC = () => {
     }
   };
 
+  const analyticsFeatureLabel = (feature?: string) => {
+    if (feature === 'class') return t('adminAnalytics.features.class', 'Class');
+    if (feature === 'conversation') return t('adminAnalytics.features.conversation', 'Conversation');
+    if (feature === 'quiz') return t('adminAnalytics.features.quiz', 'Quiz');
+    if (feature === 'flashcards') return t('adminAnalytics.features.flashcards', 'Flashcards');
+    if (feature === 'writing') return t('adminAnalytics.features.writing', 'Writing');
+    if (feature === 'review') return t('adminAnalytics.features.review', 'Review');
+    if (feature === 'voice') return t('adminAnalytics.features.voice', 'Voice');
+    return t('adminAnalytics.features.other', 'Other');
+  };
+
+  const analyticsSkillLabel = (skill?: string) => {
+    if (skill === 'listening') return t('skills.listening', 'Listening');
+    if (skill === 'speaking') return t('skills.speaking', 'Speaking');
+    if (skill === 'reading') return t('skills.reading', 'Reading');
+    if (skill === 'writing') return t('skills.writing', 'Writing');
+    return t('adminAnalytics.unknownSkill', 'Unknown skill');
+  };
+
+  const learningAnalytics = stats?.learningAnalytics || {};
+  const analyticsTotals = learningAnalytics?.totals || {};
+
   const sendDemoTurn = async () => {
     const text = demoTurn.trim();
     if (!text) return;
@@ -490,7 +512,7 @@ const AdminScreen: React.FC = () => {
               </Card>
               <Card style={styles.statCard}>
                 <Card.Content style={styles.statContent}>
-                  <Text style={styles.statNumber}>{stats.overview?.activeUsers || 0}</Text>
+                  <Text style={styles.statNumber}>{stats.activity?.activeUsersThisWeek || stats.overview?.activeUsers || 0}</Text>
                   <Text style={styles.statLabel}>{t('admin.activeUsers', 'Active (7d)')}</Text>
                 </Card.Content>
               </Card>
@@ -502,23 +524,90 @@ const AdminScreen: React.FC = () => {
               </Card>
               <Card style={styles.statCard}>
                 <Card.Content style={styles.statContent}>
-                  <Text style={styles.statNumber}>{stats.overview?.avgTimeSpent || 0}m</Text>
+                  <Text style={styles.statNumber}>{stats.activity?.avgTimeSpent || stats.overview?.avgTimeSpent || 0}m</Text>
                   <Text style={styles.statLabel}>{t('admin.avgTime', 'Avg Time')}</Text>
                 </Card.Content>
               </Card>
               <Card style={styles.statCard}>
                 <Card.Content style={styles.statContent}>
-                  <Text style={styles.statNumber}>{stats.overview?.activeToday || 0}</Text>
+                  <Text style={styles.statNumber}>{stats.activity?.activeUsersToday || stats.overview?.activeToday || 0}</Text>
                   <Text style={styles.statLabel}>{t('admin.activeToday', 'Active Today')}</Text>
                 </Card.Content>
               </Card>
               <Card style={styles.statCard}>
                 <Card.Content style={styles.statContent}>
-                  <Text style={styles.statNumber}>{stats.overview?.newUsersThisWeek || 0}</Text>
+                  <Text style={styles.statNumber}>{stats.activity?.newUsersLastWeek || stats.overview?.newUsersThisWeek || 0}</Text>
                   <Text style={styles.statLabel}>{t('admin.newThisWeek', 'New This Week')}</Text>
                 </Card.Content>
               </Card>
             </View>
+
+            <Card style={styles.card}>
+              <Card.Content>
+                <Text variant="titleMedium" style={styles.cardTitle}>{t('adminAnalytics.title', 'Learning health')}</Text>
+                <View style={styles.analyticsStatsGrid}>
+                  {[
+                    { value: analyticsTotals.activeLearnersLast7Days || 0, label: t('adminAnalytics.activeLearners', 'Active learners') },
+                    { value: analyticsTotals.eventsLast7Days || 0, label: t('adminAnalytics.learningEvents', 'Learning events') },
+                    { value: analyticsTotals.classLessonsCompletedLast7Days || 0, label: t('adminAnalytics.classLessonsCompleted', 'Classes completed') },
+                    { value: analyticsTotals.conversationTurnsLast7Days || 0, label: t('adminAnalytics.conversationTurns', 'Conversation turns') },
+                    { value: analyticsTotals.savedReviewsLast7Days || 0, label: t('adminAnalytics.savedReviews', 'Saved-item reviews') },
+                    { value: analyticsTotals.tutorFailuresLast7Days || 0, label: t('adminAnalytics.tutorIssues', 'Tutor issues') },
+                  ].map((item) => (
+                    <View key={item.label} style={styles.analyticsStatPill}>
+                      <Text style={styles.analyticsStatNumber}>{item.value}</Text>
+                      <Text style={styles.analyticsStatLabel}>{item.label}</Text>
+                    </View>
+                  ))}
+                </View>
+                <Text style={styles.analyticsCaption}>{t('adminAnalytics.lastSevenDays', 'Last 7 days')}</Text>
+              </Card.Content>
+            </Card>
+
+            {(learningAnalytics.featureUsage || []).length > 0 && (
+              <Card style={styles.card}>
+                <Card.Content>
+                  <Text variant="titleMedium" style={styles.cardTitle}>{t('adminAnalytics.featureUsage', 'Feature usage')}</Text>
+                  {(learningAnalytics.featureUsage || []).slice(0, 8).map((entry: any) => {
+                    const max = Math.max(...(learningAnalytics.featureUsage || []).map((item: any) => item.count || 0), 1);
+                    return (
+                      <View key={entry.feature} style={styles.analyticsRow}>
+                        <View style={{ flex: 1 }}>
+                          <Text style={styles.analyticsRowTitle}>{analyticsFeatureLabel(entry.feature)}</Text>
+                          <Text style={styles.analyticsRowMeta}>
+                            {t('adminAnalytics.learnersCount', '{{count}} learners', { count: entry.userCount || 0 })}
+                          </Text>
+                          <View style={styles.analyticsBar}>
+                            <View style={[styles.analyticsBarFill, { width: `${Math.max(((entry.count || 0) / max) * 100, 6)}%` }]} />
+                          </View>
+                        </View>
+                        <Text style={styles.analyticsRowValue}>{entry.count || 0}</Text>
+                      </View>
+                    );
+                  })}
+                </Card.Content>
+              </Card>
+            )}
+
+            {((learningAnalytics.weakSkills || []).length > 0 || (learningAnalytics.languagePairs || []).length > 0) && (
+              <Card style={styles.card}>
+                <Card.Content>
+                  <Text variant="titleMedium" style={styles.cardTitle}>{t('adminAnalytics.learningSignals', 'Learning signals')}</Text>
+                  {(learningAnalytics.weakSkills || []).slice(0, 4).map((skill: any) => (
+                    <View key={skill.skillType} style={styles.contentRow}>
+                      <Text style={styles.contentLabel}>{analyticsSkillLabel(skill.skillType)}</Text>
+                      <Text style={styles.contentValue}>{skill.struggling || 0} / {skill.avgScore || 0}%</Text>
+                    </View>
+                  ))}
+                  {(learningAnalytics.languagePairs || []).slice(0, 4).map((pair: any) => (
+                    <View key={`${pair.nativeLanguage}-${pair.targetLanguage}`} style={styles.contentRow}>
+                      <Text style={styles.contentLabel}>{(pair.nativeLanguage || '?').toUpperCase()} - {(pair.targetLanguage || '?').toUpperCase()}</Text>
+                      <Text style={styles.contentValue}>{pair.count || 0}</Text>
+                    </View>
+                  ))}
+                </Card.Content>
+              </Card>
+            )}
 
             {/* Content stats */}
             {stats.contentOverview && (
@@ -1076,6 +1165,38 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   modeIcon: { fontSize: 28 },
   modeCount: { fontSize: 22, fontWeight: '800', color: colors.textPrimary, marginTop: 4 },
   modeLabel: { fontSize: 12, color: colors.textMuted },
+
+  analyticsStatsGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  analyticsStatPill: {
+    width: '48%',
+    backgroundColor: colors.background,
+    borderColor: colors.border,
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
+  },
+  analyticsStatNumber: { color: colors.primary, fontSize: 20, fontWeight: '800' },
+  analyticsStatLabel: { color: colors.textSecondary, fontSize: 11, marginTop: 2 },
+  analyticsCaption: { color: colors.textMuted, fontSize: 12, marginTop: 10 },
+  analyticsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingVertical: 10,
+    borderBottomColor: colors.border,
+    borderBottomWidth: 1,
+  },
+  analyticsRowTitle: { color: colors.textPrimary, fontSize: 14, fontWeight: '700' },
+  analyticsRowMeta: { color: colors.textSecondary, fontSize: 12, marginTop: 2 },
+  analyticsRowValue: { color: colors.textPrimary, fontSize: 16, fontWeight: '800' },
+  analyticsBar: {
+    height: 8,
+    backgroundColor: colors.border,
+    borderRadius: 999,
+    overflow: 'hidden',
+    marginTop: 8,
+  },
+  analyticsBarFill: { height: '100%', backgroundColor: colors.primary, borderRadius: 999 },
 
   searchbar: { marginBottom: 8, elevation: 0, backgroundColor: colors.surface },
   filterRow: { flexDirection: 'row', gap: 6, marginBottom: 12 },

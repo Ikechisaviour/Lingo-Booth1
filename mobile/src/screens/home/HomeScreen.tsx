@@ -188,27 +188,6 @@ const HomeScreen: React.FC = () => {
   const questIcons: Record<string, string> = { xp: '⚡', lessons: '🎯', time: '⏱️' };
   const leagueBadges: Record<string, string> = { bronze: '🥉', silver: '🥈', gold: '🥇', diamond: '💎' };
 
-  const handleContinue = () => {
-    if (learningHub?.nextAction?.route) {
-      navigateLearningRoute(learningHub.nextAction.route);
-      return;
-    }
-    if (!lastActivity) return;
-    if (lastActivity.type === 'flashcard') {
-      navigation.navigate('Exercise', { screen: 'Flashcards' });
-    } else if (lastActivity.quizId) {
-      navigation.navigate('Exercise', {
-        screen: 'Quiz',
-        params: {
-          screen: 'QuizDetail',
-          params: { quizId: lastActivity.quizId },
-        },
-      });
-    } else {
-      navigation.navigate('Exercise', { screen: 'Quiz' });
-    }
-  };
-
   const navigateLearningRoute = (routeValue: string | undefined) => {
     const route = String(routeValue || '');
     if (route.startsWith('/class/')) {
@@ -226,6 +205,8 @@ const HomeScreen: React.FC = () => {
       navigation.navigate('Exercise', { screen: 'Writing' });
     } else if (route === '/flashcards') {
       navigation.navigate('Exercise', { screen: 'Flashcards' });
+    } else if (route === '/progress') {
+      navigation.navigate('Progress');
     } else {
       navigation.navigate('Class');
     }
@@ -237,7 +218,21 @@ const HomeScreen: React.FC = () => {
       defaultValue: learningHub.nextAction.label || t('learningHub.continueLearning', 'Continue learning'),
     })
     : '';
+  const primaryActionLabel = nextActionLabel
+    || (lastActivity?.type === 'quiz'
+      ? t('home.continueLesson')
+      : lastActivity?.type === 'flashcard'
+        ? t('home.continueFlashcards')
+        : t('learningHub.startGuidedClass', 'Start one guided class'));
+  const primaryActionRoute = learningHub?.nextAction?.route
+    || (lastActivity?.type === 'quiz' && lastActivity.quizId ? `/quiz/${lastActivity.quizId}` : '')
+    || (lastActivity?.type === 'flashcard' ? '/flashcards' : '/class');
   const weeklySummary = learningHub?.weeklySummary || {};
+  const weeklyPoints = weeklySummary.points || 0;
+  const weeklyActiveDays = weeklySummary.activeDays || 0;
+  const weeklySessions = weeklySummary.sessions || 0;
+  const weeklySpeakingTurns = weeklySummary.speakingTurns || 0;
+  const weeklySavedItems = weeklySummary.newSavedItems || 0;
   const totalReviewCount = learningHub?.reviewQueue?.counts?.total || learningHub?.reviewQueue?.dueSavedItems?.length || 0;
   const recentWords = learningHub?.recentWords || [];
   const firstThreeDays = learningHub?.firstThreeDays || null;
@@ -245,6 +240,34 @@ const HomeScreen: React.FC = () => {
   const currentOnboardingStep = firstThreeDays?.steps?.find((step: any) => step.current) || firstThreeDays?.steps?.[0] || null;
   const placement = learningHub?.placement || null;
   const milestones = learningHub?.milestones || {};
+  const dailyPlanSecondary = (learningHub?.dailyPlan || [])
+    .filter((action: any) => action?.route && action.route !== primaryActionRoute)
+    .slice(0, 3);
+  const hasStudyHistory = (learningHub?.studyHistory || []).some((day: any) => Number(day.events || 0) > 0);
+  const hasDailySpotlight = Boolean(learningHub?.dailySpotlight?.targetText);
+  const hasMilestoneProgress = Boolean(
+    (milestones.completedClassLessons || 0)
+    || (milestones.savedItems || 0)
+    || (milestones.certificates?.length || 0),
+  );
+  const goalPathActions = (goalPath?.actions || [])
+    .filter((action: any) => action?.route && action.route !== primaryActionRoute)
+    .slice(0, 3);
+  const showPlacementPrompt = placement?.status === 'needs_check';
+  const showGuidancePanel = Boolean(
+    dailyPlanSecondary.length
+    || firstThreeDays
+    || goalPathActions.length
+    || showPlacementPrompt
+    || usingOfflinePack,
+  );
+  const showLearningShelf = recentWords.length > 0 || hasMilestoneProgress;
+  const learningSetupSummaryText = t('learningHub.pairSetupFriendlySummary', {
+    level: t(`learningHub.levels.${pairProfileForm.currentLevel}`, pairProfileForm.currentLevel || t('common.notSet', 'Not set')),
+    goal: goalLabel(pairProfileForm.primaryGoal, goalOptions, t),
+    pace: t(`learningHub.paces.${pairProfileForm.pace}`, pairProfileForm.pace || t('common.notSet', 'Not set')),
+    defaultValue: '{{level}} level · {{goal}} goal · {{pace}} pace',
+  });
   const placementReasonText = (reasonKey?: string) => {
     const defaults: Record<string, string> = {
       'learningHub.placementFromSetup': 'Based on the level you selected for this language pair.',
@@ -281,6 +304,63 @@ const HomeScreen: React.FC = () => {
     count: action.count,
     defaultValue: action.label || action.type,
   });
+  const signalCards = [
+    {
+      key: 'review',
+      label: t('learningHub.reviewDue', 'Review due'),
+      value: totalReviewCount ? String(totalReviewCount) : t('learningHub.clearValue', 'Clear'),
+      detail: totalReviewCount
+        ? t('learningHub.reviewSignalDetail', {
+          count: totalReviewCount,
+          defaultValue: '{{count}} items worth revisiting',
+        })
+        : t('learningHub.reviewClearDetail', 'Nothing is due right now. Build the queue with one class or saved phrase.'),
+      route: '/review',
+    },
+    {
+      key: 'points',
+      label: t('learningHub.weeklyPointsSignal', 'Weekly points'),
+      value: String(weeklyPoints),
+      detail: weeklyPoints
+        ? t('learningHub.sessionsCount', {
+          count: weeklySessions,
+          defaultValue: '{{count}} sessions',
+        })
+        : t('learningHub.weeklyPointsEmpty', 'Start a short session to begin this week.'),
+      route: '/progress',
+    },
+    {
+      key: 'days',
+      label: t('learningHub.activeDays', 'Active days'),
+      value: `${weeklyActiveDays}/7`,
+      detail: t('learningHub.activityThisWeek', 'Activity this week'),
+      route: '/progress',
+    },
+    {
+      key: 'voice',
+      label: t('learningHub.speakingTurns', 'Speaking turns'),
+      value: String(weeklySpeakingTurns),
+      detail: weeklySpeakingTurns
+        ? t('learningHub.savedItemsThisWeek', {
+          count: weeklySavedItems,
+          defaultValue: '{{count}} saved this week',
+        })
+        : t('learningHub.speakingTurnsEmpty', 'Try one short conversation when you are ready.'),
+      route: '/conversation',
+    },
+  ];
+  const informativeSignalCards = signalCards.filter((signal) => {
+    if (signal.key === 'review') return totalReviewCount > 0;
+    if (signal.key === 'points') return weeklyPoints > 0;
+    if (signal.key === 'days') return weeklyActiveDays > 0;
+    if (signal.key === 'voice') return weeklySpeakingTurns > 0;
+    return false;
+  });
+  const showLearningAnalytics = Boolean(
+    informativeSignalCards.length
+    || hasDailySpotlight
+    || hasStudyHistory,
+  );
   const onboardingStepTitle = (titleKey?: string) => {
     if (titleKey === 'learningHub.firstThreeDayReviewTitle') {
       return t('learningHub.firstThreeDayReviewTitle', 'Review what you met');
@@ -324,22 +404,16 @@ const HomeScreen: React.FC = () => {
                     : t('home.studyingFlashcards')
                   : t('home.readyForSession')}
             </Text>
-            {(learningHub?.nextAction || lastActivity) && (
-              <Button
-                mode="contained"
-                onPress={handleContinue}
-                buttonColor="rgba(255,255,255,0.95)"
-                textColor={activeColor}
-                style={styles.heroButton}
-                labelStyle={styles.heroButtonLabel}
-              >
-                {learningHub?.nextAction
-                  ? nextActionLabel
-                  : lastActivity.type === 'quiz'
-                    ? t('home.continueLesson')
-                    : t('home.continueFlashcards')} →
-              </Button>
-            )}
+            <Button
+              mode="contained"
+              onPress={() => navigateLearningRoute(primaryActionRoute)}
+              buttonColor="rgba(255,255,255,0.95)"
+              textColor={activeColor}
+              style={styles.heroButton}
+              labelStyle={styles.heroButtonLabel}
+            >
+              {primaryActionLabel} →
+            </Button>
           </>
         ) : (
           <>
@@ -426,36 +500,57 @@ const HomeScreen: React.FC = () => {
           </TouchableOpacity>
         </View>
 
-        {!isGuest && learningHub && (
-          <View style={styles.learningOverview}>
-            <Card style={styles.learningCard}>
-              <Card.Content>
-                <Text style={styles.learningLabel}>{t('learningHub.nextBestAction', 'Next best action')}</Text>
-                <Text style={styles.learningValue}>{nextActionLabel}</Text>
-                <Button mode="text" onPress={handleContinue}>
-                  {t('learningHub.open', 'Open')}
+        {!isGuest && learningHub && showLearningAnalytics && (
+          <Card style={styles.analyticsPanel}>
+            <Card.Content style={styles.analyticsContent}>
+              <View style={styles.analyticsHeader}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.analyticsKicker}>{t('learningHub.analyticsKicker', 'Learning signals')}</Text>
+                  <Text style={styles.analyticsTitle}>{t('learningHub.analyticsTitle', 'Your learning picture')}</Text>
+                  <Text style={styles.analyticsSubtitle}>
+                    {t('learningHub.analyticsSubtitle', 'A quick read on what to do next, what needs review, and how your week is moving.')}
+                  </Text>
+                </View>
+                <Button mode="outlined" compact onPress={() => navigation.navigate('Progress')}>
+                  {t('learningHub.viewFullProgress', 'View full progress')}
                 </Button>
-              </Card.Content>
-            </Card>
-            <Card style={styles.learningCard}>
-              <Card.Content>
-                <Text style={styles.learningLabel}>{t('learningHub.reviewDue', 'Review due')}</Text>
-                <Text style={styles.learningValue}>{totalReviewCount}</Text>
-                <Button mode="text" onPress={() => navigation.navigate('Exercise', { screen: 'Review' })}>
-                  {t('learningHub.reviewNow', 'Review now')}
-                </Button>
-              </Card.Content>
-            </Card>
-            <Card style={styles.learningCard}>
-              <Card.Content>
+              </View>
+
+              {informativeSignalCards.length > 0 && (
+              <View style={styles.signalGrid}>
+                {informativeSignalCards.map((signal) => (
+                  <TouchableOpacity key={signal.key} style={styles.signalCard} onPress={() => navigateLearningRoute(signal.route)}>
+                    <Text style={styles.learningLabel}>{signal.label}</Text>
+                    <Text style={styles.signalValue}>{signal.value}</Text>
+                    <Text style={styles.learningMeta}>{signal.detail}</Text>
+                  </TouchableOpacity>
+                ))}
+              </View>
+              )}
+
+              {hasDailySpotlight && (
+              <View style={styles.spotlightCard}>
                 <Text style={styles.learningLabel}>{t('learningHub.wordOfDay', 'Word or phrase of the day')}</Text>
-                <Text style={styles.learningValue}>{learningHub.dailySpotlight?.targetText || t('learningHub.noSpotlightYet', 'Save something useful to begin')}</Text>
-                <Text style={styles.learningMeta}>
-                  {learningHub.dailySpotlight?.nativeText || t('learningHub.spotlightHint', 'Your saved items become daily spotlights.')}
-                </Text>
-              </Card.Content>
-            </Card>
-          </View>
+                <Text style={styles.learningValue}>{learningHub.dailySpotlight.targetText}</Text>
+                {!!learningHub.dailySpotlight.nativeText && <Text style={styles.learningMeta}>{learningHub.dailySpotlight.nativeText}</Text>}
+              </View>
+              )}
+
+              {hasStudyHistory && (
+              <View style={styles.spotlightCard}>
+                <Text style={styles.learningLabel}>{t('learningHub.recentStudyTitle', 'Recent study')}</Text>
+                <View style={styles.studyHistoryStrip}>
+                  {(learningHub.studyHistory || []).slice(-7).map((day: any) => (
+                    <View key={day.day} style={styles.studyDay}>
+                      <Text style={styles.studyEvents}>{day.events}</Text>
+                      <Text style={styles.studyDate}>{day.day.slice(5)}</Text>
+                    </View>
+                  ))}
+                </View>
+              </View>
+              )}
+            </Card.Content>
+          </Card>
         )}
 
         {!isGuest && learningHub && learningHub.pairProfile?.completedAt && !editingPairProfile && (
@@ -463,13 +558,7 @@ const HomeScreen: React.FC = () => {
             <Card.Content style={styles.pairSummaryContent}>
               <View style={styles.pairSummaryText}>
                 <Text style={styles.cardTitle}>{t('learningHub.pairSetupSummary', 'Learning setup')}</Text>
-                <Text style={styles.pairSetupBody}>
-                  {t(`learningHub.levels.${pairProfileForm.currentLevel}`, pairProfileForm.currentLevel || t('common.notSet', 'Not set'))}
-                  {' · '}
-                  {goalLabel(pairProfileForm.primaryGoal, goalOptions, t)}
-                  {' · '}
-                  {t(`learningHub.paces.${pairProfileForm.pace}`, pairProfileForm.pace || t('common.notSet', 'Not set'))}
-                </Text>
+                <Text style={styles.pairSetupBody}>{learningSetupSummaryText}</Text>
               </View>
               <Button mode="outlined" compact onPress={() => setEditingPairProfile(true)}>
                 {t('learningHub.pairSetupEdit', 'Edit')}
@@ -534,34 +623,19 @@ const HomeScreen: React.FC = () => {
 
         {!isGuest && learningHub && (
           <>
+            {dailyPlanSecondary.length > 0 && (
             <Card style={styles.card}>
               <Card.Content>
                 <View style={styles.cardHeader}>
                   <Text style={styles.cardIcon}>🧭</Text>
-                  <Text style={styles.cardTitle}>{t('learningHub.dailyPlanTitle', 'Today\'s plan')}</Text>
+                  <Text style={styles.cardTitle}>{t('learningHub.secondaryStepsTitle', 'After the main step')}</Text>
                 </View>
                 <View style={styles.planList}>
-                  {(learningHub.dailyPlan || []).map((action: any, index: number) => (
+                  {dailyPlanSecondary.length ? dailyPlanSecondary.map((action: any, index: number) => (
                     <TouchableOpacity
                       key={`${action.type}-${index}`}
                       style={styles.planRow}
-                      onPress={() => {
-                        const route = String(action.route || '');
-                        if (route.startsWith('/class/')) {
-                          navigation.navigate('Class', { screen: 'ClassLesson', params: { classLessonId: route.split('/').pop() } });
-                        } else if (route.startsWith('/quiz/')) {
-                          navigation.navigate('Exercise', {
-                            screen: 'Quiz',
-                            params: { screen: 'QuizDetail', params: { quizId: route.split('/').pop() } },
-                          });
-                        } else if (route === '/review') {
-                          navigation.navigate('Exercise', { screen: 'Review' });
-                        } else if (route === '/writing') {
-                          navigation.navigate('Exercise', { screen: 'Writing' });
-                        } else if (route === '/conversation') {
-                          navigation.navigate('Conversation');
-                        }
-                      }}
+                      onPress={() => navigateLearningRoute(action.route)}
                     >
                       <View style={styles.planText}>
                         <Text style={styles.planTitle}>{actionLabel(action)}</Text>
@@ -569,45 +643,15 @@ const HomeScreen: React.FC = () => {
                       </View>
                       <Text style={styles.quickArrow}>›</Text>
                     </TouchableOpacity>
-                  ))}
+                  )) : (
+                    <Text style={styles.learningMeta}>{t('learningHub.secondaryStepsEmpty', 'One focused action is enough for now. Finish it, then the next step will appear here.')}</Text>
+                  )}
                 </View>
               </Card.Content>
             </Card>
+            )}
 
-            <View style={styles.learningSummaryGrid}>
-              <Card style={styles.summaryCard}>
-                <Card.Content>
-                  <Text style={styles.learningLabel}>{t('learningHub.weeklySummaryTitle', 'This week')}</Text>
-                  <Text style={styles.summaryValue}>{weeklySummary.points || 0}</Text>
-                  <Text style={styles.learningMeta}>{t('learningHub.points', 'Points')}</Text>
-                </Card.Content>
-              </Card>
-              <Card style={styles.summaryCard}>
-                <Card.Content>
-                  <Text style={styles.learningLabel}>{t('learningHub.activeDays', 'Active days')}</Text>
-                  <Text style={styles.summaryValue}>{weeklySummary.activeDays || 0}</Text>
-                  <Text style={styles.learningMeta}>{t('learningHub.sessions', 'Sessions')}: {weeklySummary.sessions || 0}</Text>
-                </Card.Content>
-              </Card>
-            </View>
-
-            <View style={styles.learningSummaryGrid}>
-              <Card style={styles.summaryCard}>
-                <Card.Content>
-                  <Text style={styles.learningLabel}>{t('learningHub.speakingTurns', 'Speaking turns')}</Text>
-                  <Text style={styles.summaryValue}>{weeklySummary.speakingTurns || 0}</Text>
-                  <Text style={styles.learningMeta}>{t('learningHub.newSavedItems', 'New saved items')}: {weeklySummary.newSavedItems || 0}</Text>
-                </Card.Content>
-              </Card>
-              <Card style={styles.summaryCard}>
-                <Card.Content>
-                  <Text style={styles.learningLabel}>{t('learningHub.completedLessons', 'Completed lessons')}</Text>
-                  <Text style={styles.summaryValue}>{milestones.completedClassLessons || 0}</Text>
-                  <Text style={styles.learningMeta}>{t('learningHub.certificates', 'Certificates')}: {milestones.certificates?.length || 0}</Text>
-                </Card.Content>
-              </Card>
-            </View>
-
+            {showGuidancePanel && (
             <Card style={styles.card}>
                 <Card.Content>
                   <View style={styles.cardHeader}>
@@ -641,14 +685,14 @@ const HomeScreen: React.FC = () => {
                       </View>
                     </View>
                   )}
-                  {!!goalPath && (
+                  {!!goalPath && goalPathActions.length > 0 && (
                     <View style={styles.guidanceBlock}>
                       <View style={styles.guidanceRow}>
                         <Text style={styles.guidanceTitle}>{t('learningHub.goalPathTitle', 'Goal path')}</Text>
                         <Text style={styles.guidanceMeta}>{goalLabel(goalPath.goal, goalOptions, t)}</Text>
                       </View>
                       <View style={styles.goalActionRow}>
-                        {(goalPath.actions || []).map((action: any, index: number) => (
+                        {goalPathActions.map((action: any, index: number) => (
                           <Button
                             key={`${action.type}-${index}`}
                             compact
@@ -661,7 +705,7 @@ const HomeScreen: React.FC = () => {
                       </View>
                     </View>
                   )}
-                  {!!placement && (
+                  {showPlacementPrompt && (
                     <View style={styles.guidanceRow}>
                       <Text style={styles.guidanceTitle}>{t('learningHub.placementTitle', 'Placement')}</Text>
                       <Text style={styles.guidanceMeta}>{String(t(`learningHub.levels.${placement.level}`, placement.level))}</Text>
@@ -673,6 +717,7 @@ const HomeScreen: React.FC = () => {
                       )}
                     </View>
                   )}
+                  {usingOfflinePack && (
                   <View style={styles.guidanceRow}>
                     <Text style={styles.guidanceTitle}>
                       {t(usingOfflinePack ? 'learningHub.offlinePackInUseTitle' : 'learningHub.offlineReadyTitle', usingOfflinePack ? 'Recent pack in use' : 'Recent pack ready')}
@@ -686,42 +731,53 @@ const HomeScreen: React.FC = () => {
                       )}
                     </Text>
                   </View>
+                  )}
                 </Card.Content>
               </Card>
+            )}
 
+            {showLearningShelf && recentWords.length > 0 && (
             <Card style={styles.card}>
               <Card.Content>
                 <View style={styles.cardHeader}>
                   <Text style={styles.cardIcon}>🗂</Text>
                   <Text style={styles.cardTitle}>{t('learningHub.recentWordsTitle', 'Recent words')}</Text>
                 </View>
-                {recentWords.length ? recentWords.slice(0, 5).map((item: any) => (
+                {recentWords.slice(0, 5).map((item: any) => (
                   <TouchableOpacity key={`${item.targetText}-${item.occurredAt || ''}`} style={styles.recentWordRow} onPress={() => navigation.navigate('Exercise', { screen: 'Review' })}>
                     <Text style={styles.planTitle}>{item.targetText}</Text>
                     {!!item.nativeText && <Text style={styles.planMeta}>{item.nativeText}</Text>}
                   </TouchableOpacity>
-                )) : (
-                  <Text style={styles.learningMeta}>{t('learningHub.recentWordsEmpty', 'New words from class and conversation will gather here.')}</Text>
-                )}
+                ))}
               </Card.Content>
             </Card>
+            )}
 
+            {showLearningShelf && hasMilestoneProgress && (
             <Card style={styles.card}>
               <Card.Content>
                 <View style={styles.cardHeader}>
-                  <Text style={styles.cardIcon}>📅</Text>
-                  <Text style={styles.cardTitle}>{t('learningHub.recentStudyTitle', 'Recent study')}</Text>
+                  <Text style={styles.cardIcon}>🏅</Text>
+                  <Text style={styles.cardTitle}>{t('learningHub.milestonesTitle', 'Milestones')}</Text>
                 </View>
-                <View style={styles.studyHistoryStrip}>
-                  {(learningHub.studyHistory || []).slice(-7).map((day: any) => (
-                    <View key={day.day} style={styles.studyDay}>
-                      <Text style={styles.studyEvents}>{day.events}</Text>
-                      <Text style={styles.studyDate}>{day.day.slice(5)}</Text>
-                    </View>
-                  ))}
+                <View style={styles.milestoneRows}>
+                  <View style={styles.xpDetailRow}>
+                    <Text style={styles.xpDetailLabel}>{t('learningHub.completedLessons', 'Completed lessons')}</Text>
+                    <Text style={styles.xpDetailValue}>{milestones.completedClassLessons || 0}</Text>
+                  </View>
+                  <View style={styles.xpDetailRow}>
+                    <Text style={styles.xpDetailLabel}>{t('learningHub.savedItems', 'Saved items')}</Text>
+                    <Text style={styles.xpDetailValue}>{milestones.savedItems || 0}</Text>
+                  </View>
+                  <View style={styles.xpDetailRow}>
+                    <Text style={styles.xpDetailLabel}>{t('learningHub.certificates', 'Certificates')}</Text>
+                    <Text style={styles.xpDetailValue}>{milestones.certificates?.length || 0}</Text>
+                  </View>
                 </View>
               </Card.Content>
             </Card>
+            )}
+
           </>
         )}
 
@@ -880,15 +936,15 @@ const HomeScreen: React.FC = () => {
         )}
 
         {/* Admin Card */}
-        {isAdmin && (
+        {false && isAdmin && (
           <Card style={[styles.card, styles.adminCard]}>
             <Card.Content>
               <View style={styles.cardHeader}>
                 <Text style={styles.cardIcon}>⚙️</Text>
-                <Text style={[styles.cardTitle, { color: '#fff' }]}>{t('home.adminDashboard')}</Text>
+                <Text style={styles.cardTitle}>{t('home.adminDashboard')}</Text>
               </View>
               <Text style={styles.adminDesc}>{t('home.adminDesc')}</Text>
-              <Button mode="contained" onPress={() => navigation.navigate('Profile', { screen: 'Admin' })} buttonColor="#fff" textColor="#764ba2" style={styles.adminBtn}>
+              <Button mode="outlined" onPress={() => navigation.navigate('Profile', { screen: 'Admin' })} style={styles.adminBtn}>
                 {t('home.openDashboard')}
               </Button>
             </Card.Content>
@@ -959,25 +1015,97 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   },
 
   // Quick Actions
-  quickActions: { marginBottom: 12, gap: 8 },
+  quickActions: { flexDirection: 'row', flexWrap: 'wrap', marginBottom: 12, gap: 10 },
   quickAction: {
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
-    borderRadius: 14,
-    padding: 16,
+    borderRadius: 16,
+    padding: isCompact ? 12 : 14,
     elevation: 1,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.06,
-    shadowRadius: 3,
-    borderLeftWidth: 5,
+    shadowOpacity: 0.04,
+    shadowRadius: 8,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderLeftWidth: 0,
+    flexGrow: 1,
+    flexBasis: isCompact ? '100%' : '48%',
   },
-  quickIcon: { fontSize: 26, marginRight: 14 },
+  quickIcon: { fontSize: 22, marginRight: 12 },
   quickTextCol: { flex: 1 },
   quickTitle: { fontWeight: '700', fontSize: 15, color: colors.textPrimary },
   quickDesc: { fontSize: 13, color: colors.textSecondary, marginTop: 2 },
   quickArrow: { fontSize: 22, color: colors.textMuted, fontWeight: '300', marginLeft: 8 },
+  analyticsPanel: {
+    backgroundColor: colors.surface,
+    borderRadius: isCompact ? 14 : 20,
+    marginBottom: isCompact ? 8 : 12,
+    borderWidth: 1,
+    borderColor: colors.border,
+    elevation: 1,
+  },
+  analyticsContent: { gap: isCompact ? 10 : 14 },
+  analyticsHeader: {
+    flexDirection: isCompact ? 'column' : 'row',
+    alignItems: isCompact ? 'stretch' : 'flex-start',
+    gap: 10,
+  },
+  analyticsKicker: {
+    color: colors.primary,
+    fontSize: 11,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
+  },
+  analyticsTitle: {
+    color: colors.textPrimary,
+    fontSize: isCompact ? 18 : 20,
+    fontWeight: '900',
+    marginTop: 2,
+  },
+  analyticsSubtitle: {
+    color: colors.textSecondary,
+    lineHeight: isCompact ? 18 : 20,
+    marginTop: 2,
+  },
+  focusCard: {
+    gap: 6,
+    padding: isCompact ? 12 : 14,
+    borderRadius: isCompact ? 12 : 16,
+    backgroundColor: colors.primary + '10',
+    borderWidth: 1,
+    borderColor: colors.primary + '26',
+  },
+  focusButton: { alignSelf: 'flex-start', marginTop: 4 },
+  signalGrid: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
+  signalCard: {
+    flexGrow: 1,
+    flexBasis: isCompact ? '100%' : '48%',
+    minHeight: isCompact ? 82 : 96,
+    gap: 5,
+    padding: isCompact ? 10 : 12,
+    borderRadius: isCompact ? 10 : 14,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: '#fff',
+  },
+  signalValue: {
+    color: colors.textPrimary,
+    fontSize: isCompact ? 22 : 26,
+    fontWeight: '900',
+  },
+  spotlightCard: {
+    gap: 5,
+    padding: isCompact ? 10 : 12,
+    borderRadius: isCompact ? 10 : 14,
+    borderWidth: 1,
+    borderColor: colors.border,
+    backgroundColor: '#fff',
+  },
+  inlineAction: { alignSelf: 'flex-start', marginTop: 4 },
+  emptyActionBlock: { gap: 8 },
   learningOverview: { gap: 8, marginBottom: 12 },
   learningCard: {
     backgroundColor: '#fff',
@@ -1036,6 +1164,14 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
     borderTopWidth: 1,
     borderTopColor: colors.border,
   },
+  guidanceBlockPrimary: {
+    padding: 12,
+    borderTopWidth: 0,
+    borderRadius: 12,
+    backgroundColor: colors.primary + '12',
+    borderWidth: 1,
+    borderColor: colors.primary + '30',
+  },
   guidanceTitle: { color: colors.textPrimary, fontWeight: '800' },
   guidanceMeta: { color: colors.textSecondary },
   onboardingStepRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8 },
@@ -1076,13 +1212,19 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   },
   studyEvents: { color: colors.textPrimary, fontWeight: '900' },
   studyDate: { color: colors.textMuted, fontSize: 11, marginTop: 2 },
+  milestoneRows: { gap: 8 },
 
   // Card
   card: {
     backgroundColor: '#fff',
-    borderRadius: 14,
+    borderRadius: 18,
     marginBottom: 12,
     elevation: 1,
+    shadowColor: '#000',
+    shadowOpacity: 0.04,
+    shadowRadius: 8,
+    borderWidth: 1,
+    borderColor: colors.border,
   },
   cardHeader: { flexDirection: 'row', alignItems: 'center', marginBottom: 12 },
   cardIcon: { fontSize: 22, marginRight: 8 },
@@ -1090,7 +1232,7 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
 
   // Streak
   streakDisplay: { alignItems: 'center', marginVertical: 8 },
-  streakNumber: { fontSize: isCompact ? 28 : 42, fontWeight: '800' },
+  streakNumber: { fontSize: isCompact ? 26 : 34, fontWeight: '800' },
   streakLabel: { fontSize: 14, color: colors.textSecondary },
   streakCalendar: { flexDirection: 'row', justifyContent: 'space-between', marginTop: 12 },
   calDay: {
@@ -1143,14 +1285,14 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   badge_off: { backgroundColor: 'rgba(88, 204, 2, 0.1)' },
   badge_safe: { backgroundColor: 'rgba(88, 204, 2, 0.15)' },
   badge_grace: { backgroundColor: 'rgba(255, 200, 0, 0.15)' },
-  badge_decaying: { backgroundColor: 'rgba(255, 75, 75, 0.15)' },
+  badge_decaying: { backgroundColor: '#fff1f0' },
   badgeText_off: { color: colors.accentGreen, fontSize: 11, fontWeight: '600' },
   badgeText_safe: { color: colors.accentGreen, fontSize: 11, fontWeight: '600' },
   badgeText_grace: { color: '#e6a800', fontSize: 11, fontWeight: '600' },
-  badgeText_decaying: { color: '#ff4b4b', fontSize: 11, fontWeight: '600' },
+  badgeText_decaying: { color: '#b42318', fontSize: 11, fontWeight: '600' },
   xpStatusText: { fontSize: 11, fontWeight: '600' },
   xpTotal: { alignItems: 'center', marginVertical: 8 },
-  xpNumber: { fontSize: isCompact ? 24 : 38, fontWeight: '800' },
+  xpNumber: { fontSize: isCompact ? 24 : 32, fontWeight: '800' },
   xpLabel: { fontSize: 13, color: colors.textSecondary },
   xpDetails: { gap: 6 },
   xpDetailRow: { flexDirection: 'row', justifyContent: 'space-between' },
@@ -1158,8 +1300,8 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   xpDetailValue: { fontSize: 13, fontWeight: '600', color: colors.textPrimary },
   decayWarning: {
     marginTop: 8,
-    backgroundColor: '#fef2f2',
-    color: colors.error,
+    backgroundColor: '#fff1f0',
+    color: '#b42318',
     padding: 10,
     borderRadius: 8,
     fontSize: 13,
@@ -1167,8 +1309,8 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   },
 
   // Admin
-  adminCard: { backgroundColor: '#764ba2' },
-  adminDesc: { color: 'rgba(255,255,255,0.9)', fontSize: 14, marginBottom: 12 },
+  adminCard: { backgroundColor: '#fff' },
+  adminDesc: { color: colors.textSecondary, fontSize: 14, marginBottom: 12, lineHeight: 20 },
   adminBtn: { borderRadius: 8 },
 
   // Modal

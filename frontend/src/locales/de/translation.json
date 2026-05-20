@@ -77,7 +77,6 @@
     "reason": "Grund",
     "forgotPassword": "Passwort vergessen?",
     "googleFailed": "Google-Anmeldung fehlgeschlagen. Bitte versuche es erneut.",
-    "backToHome": "Zur?ck zur Startseite",
     "sessionExpired": "Deine Sitzung ist abgelaufen. Bitte melde dich erneut an."
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "supportAndPlans": "Unterstützung und Pläne"
   },
   "lessons": {
     "title": "{{language}} <1>Lektionen</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "Lernen diversifizieren",
     "diversifyLearningTip": "Übe alle vier Fähigkeiten gleichmäßig",
     "stayConsistent": "Bleib dran",
-    "stayConsistentTip": "Lerne jeden Tag ein bisschen für die besten Ergebnisse"
+    "stayConsistentTip": "Lerne jeden Tag ein bisschen für die besten Ergebnisse",
+    "analyticsMastered": "Gemeistert",
+    "analyticsMasteredDetail": "Gegenstände, mit denen Sie gut umgehen können",
+    "analyticsReviewDetail": "Es lohnt sich, heute noch einmal vorbeizuschauen",
+    "analyticsActiveDaysDetail": "Diese Woche",
+    "analyticsSpeakingDetail": "Aktuelle Stimmpraxis",
+    "analyticsAria": "Lernanalytik",
+    "analyticsKicker": "Gesundheit lernen",
+    "analyticsTitle": "Was uns Ihre Aktivität sagt",
+    "analyticsSubtitle": "Nutzen Sie dies als einfache Lektüre zur Dynamik, zum Bewertungsdruck und zum nächsten nützlichen Schritt.",
+    "nextFocus": "Nächster Fokus",
+    "keepBuilding": "Bauen Sie weiterhin Schwung auf",
+    "nextFocusBody": "Dieser Bereich zeigt das deutlichste Signal für zusätzliches Üben.",
+    "nextFocusEmptyBody": "Üben Sie noch ein wenig, dann wird es konkreter.",
+    "weeklyMomentum": "Wöchentliche Dynamik",
+    "weeklyMomentumDetail": "{{days}} aktive Tage und {{sessions}} Sitzungen"
   },
   "profilePage": {
     "memberSince": "Mitglied seit {{date}}",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "Beginnen Sie eine geführte Lektion",
     "firstThreeDayReviewBody": "Kehren Sie noch einmal zu dem zurück, was Sie gestern gesehen haben, damit die ersten Gegenstände haften bleiben.",
     "firstThreeDaySpeakBody": "Verwenden Sie eine kurze Sprechrunde, damit die Sprache frühzeitig die Seite verlässt.",
-    "firstThreeDayLearnBody": "Beginnen Sie mit einer kleinen geführten Lektion, damit das Paar einen klaren Ausgangspunkt hat."
+    "firstThreeDayLearnBody": "Beginnen Sie mit einer kleinen geführten Lektion, damit das Paar einen klaren Ausgangspunkt hat.",
+    "reviewSignalDetail": "{{count}} Artikel, die einen erneuten Besuch wert sind",
+    "weeklyPointsSignal": "Wöchentliche Punkte",
+    "sessionsCount": "{{count}} Sitzungen",
+    "activityThisWeek": "Aktivität diese Woche",
+    "savedItemsThisWeek": "{{count}} wurde diese Woche gespeichert",
+    "analyticsKicker": "Lernsignale",
+    "analyticsTitle": "Ihr Lernbild",
+    "analyticsSubtitle": "Lesen Sie kurz, was als nächstes zu tun ist, was überprüft werden muss und wie Ihre Woche verläuft.",
+    "viewFullProgress": "Vollständigen Fortschritt anzeigen",
+    "nextActionSignalBody": "Dies wird aus Ihrer letzten Kursaktivität, der Überprüfungswarteschlange und der aktuellen Sprachpaarkonfiguration ausgewählt.",
+    "startGuidedClass": "Starten Sie einen geführten Kurs",
+    "pairSetupFriendlySummary": "{{level}} Level · {{goal}} Ziel · {{pace}} Tempo",
+    "clearValue": "Klar",
+    "reviewClearDetail": "Im Moment ist nichts fällig. Erstellen Sie die Warteschlange mit einer Klasse oder gespeicherten Phrase.",
+    "weeklyPointsEmpty": "Beginnen Sie diese Woche mit einer kurzen Sitzung.",
+    "speakingTurnsEmpty": "Versuchen Sie es mit einem kurzen Gespräch, wenn Sie dazu bereit sind.",
+    "todayFocus": "Der heutige Schwerpunkt",
+    "primaryActionLivesAbove": "Benutzen Sie die Hauptschaltfläche oben, wenn Sie startbereit sind.",
+    "findFirstPhrase": "Finden Sie Ihren ersten Satz",
+    "recentStudyEmpty": "Ihr Lernpfad wird nach Ihrer ersten Aktivität in dieser Woche angezeigt.",
+    "startToday": "Beginnen Sie noch heute",
+    "todaySection": "Heute",
+    "guidanceTitle": "Anleitung",
+    "guidanceSubtitle": "Kleine Vorschläge, die die nächste Sitzung übersichtlich halten, ohne die Seite zu überfüllen.",
+    "secondaryStepsTitle": "Nach dem Hauptschritt",
+    "secondaryStepsEmpty": "Eine gezielte Aktion reicht vorerst aus. Beenden Sie es, dann erscheint hier der nächste Schritt.",
+    "recentWordsEmptyAction": "Gespeicherte Wörter und nützliche Phrasen werden hier nach dem Unterricht oder der Konversationsübung gesammelt.",
+    "startAClass": "Starten Sie einen Kurs",
+    "milestonesEmptyAction": "Hier wird Ihre erste abgeschlossene Lektion, gespeicherte Phrase oder Ihr erstes Zertifikat angezeigt.",
+    "earnFirstMilestone": "Erreiche den ersten Meilenstein"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "Klasse",
+      "conversation": "Gespräch",
+      "quiz": "Quiz",
+      "flashcards": "Karteikarten",
+      "writing": "Schreiben",
+      "review": "Rezension",
+      "voice": "Stimme",
+      "other": "Andere"
+    },
+    "unknownSkill": "Unbekannte Fähigkeit",
+    "title": "Gesundheit lernen",
+    "activeLearners": "Aktive Lernende",
+    "lastSevenDays": "Letzte 7 Tage",
+    "learningEvents": "Lernveranstaltungen",
+    "classLessonsCompleted": "Unterricht abgeschlossen",
+    "conversationTurns": "Das Gespräch dreht sich",
+    "savedReviews": "Rezensionen zu gespeicherten Artikeln",
+    "dueNow": "{{count}} jetzt fällig",
+    "tutorIssues": "Probleme mit dem Lehrer",
+    "featureUsage": "Funktionsnutzung",
+    "learnersCount": "{{count}} Lernende",
+    "noFeatureUsage": "Es wurden noch keine Lernveranstaltungen erfasst.",
+    "languagePairs": "Sprachpaare",
+    "noLanguagePairs": "Noch keine Sprachpaaraktivität.",
+    "weakSkills": "Fähigkeiten, die Aufmerksamkeit erfordern",
+    "averageScore": "Durchschnittlich {{score}}%",
+    "noWeakSkills": "Keine Weak-Skill-Aufzeichnungen in den letzten 30 Tagen.",
+    "difficultContent": "Schwieriger Inhalt",
+    "unknownLesson": "Unbekannte Lektion",
+    "noDifficultContent": "Es wurde noch kein Muster für schwierige Inhalte gefunden."
+  },
+  "skills": {
+    "listening": "Hören",
+    "speaking": "Apropos",
+    "reading": "Lektüre",
+    "writing": "Schreiben"
   }
 }

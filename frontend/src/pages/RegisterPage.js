@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { GoogleLogin } from '@react-oauth/google';
 import { authService, guestXPHelper } from '../services/api';
 import { applyPublicLanguage, getPreferredPublicLanguage, googleLocaleForPublicLanguage } from '../utils/publicLanguage';
+import BrandLogo from '../components/BrandLogo';
 import './Auth.css';
 
 function getEffectiveSubscriptionTier(user = {}) {
@@ -201,7 +202,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
             <polyline points="15 18 9 12 15 6"/>
           </svg>
         </button>
-        <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
+        <BrandLogo variant="lockup" className="auth-logo" decorative={false} />
         <h1>{t('register.title')}</h1>
         <p className="auth-subtitle">{t('register.subtitle')}</p>
 

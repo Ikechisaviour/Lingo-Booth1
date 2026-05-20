@@ -77,7 +77,6 @@
     "reason": "סיבה",
     "forgotPassword": "שכחת סיסמה?",
     "googleFailed": "הכניסה של Google נכשלה. אנא נסה שוב.",
-    "backToHome": "חזרה הביתה",
     "sessionExpired": "פג תוקף ההפעלה שלך. נא להיכנס שוב."
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "ו",
       "sat": "ס",
       "sun": "ס"
-    }
+    },
+    "supportAndPlans": "תמיכה ותוכניות"
   },
   "lessons": {
     "title": "{{language}} <1>שיעורים</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "גוון את הלמידה",
     "diversifyLearningTip": "תרגל את כל ארבע המיומנויות באופן שווה",
     "stayConsistent": "היה עקבי",
-    "stayConsistentTip": "למד קצת כל יום לתוצאות הטובות ביותר"
+    "stayConsistentTip": "למד קצת כל יום לתוצאות הטובות ביותר",
+    "analyticsMastered": "מאסטר",
+    "analyticsMasteredDetail": "פריטים שאתה יכול להתמודד היטב",
+    "analyticsReviewDetail": "שווה לחזור היום",
+    "analyticsActiveDaysDetail": "השבוע",
+    "analyticsSpeakingDetail": "תרגול קול לאחרונה",
+    "analyticsAria": "למידה אנליטית",
+    "analyticsKicker": "לימוד בריאות",
+    "analyticsTitle": "מה הפעילות שלך אומרת לנו",
+    "analyticsSubtitle": "השתמש בזה כקריאה פשוטה על מומנטום, סקירת לחץ והשלב השימושי הבא.",
+    "nextFocus": "הפוקוס הבא",
+    "keepBuilding": "תמשיך לבנות מומנטום",
+    "nextFocusBody": "אזור זה מראה את האות הברור ביותר לתרגול נוסף.",
+    "nextFocusEmptyBody": "תתאמן קצת יותר וזה יהפוך ספציפי יותר.",
+    "weeklyMomentum": "מומנטום שבועי",
+    "weeklyMomentumDetail": "{{days}} ימים פעילים ו{{sessions}} הפעלות"
   },
   "profilePage": {
     "memberSince": "חבר מאז {{date}}",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "התחל שיעור מודרך אחד",
     "firstThreeDayReviewBody": "חזור פעם אחת למה שראית אתמול כדי שהפריטים הראשונים יתחילו להידבק.",
     "firstThreeDaySpeakBody": "השתמש בסיבוב דיבור קצר כדי שהשפה תצא מוקדם מהדף.",
-    "firstThreeDayLearnBody": "התחילו בשיעור מודרך אחד קטן כדי שתהיה לזוג נקודת התחלה ברורה."
+    "firstThreeDayLearnBody": "התחילו בשיעור מודרך אחד קטן כדי שתהיה לזוג נקודת התחלה ברורה.",
+    "reviewSignalDetail": "{{count}} פריטים שכדאי לבקר בהם מחדש",
+    "weeklyPointsSignal": "נקודות שבועיות",
+    "sessionsCount": "{{count}} הפעלות",
+    "activityThisWeek": "פעילות השבוע",
+    "savedItemsThisWeek": "{{count}} נשמר השבוע",
+    "analyticsKicker": "לימוד אותות",
+    "analyticsTitle": "תמונת הלמידה שלך",
+    "analyticsSubtitle": "קריאה מהירה על מה לעשות הלאה, מה צריך סקירה ואיך השבוע שלך מתקדם.",
+    "viewFullProgress": "הצג את ההתקדמות המלאה",
+    "nextActionSignalBody": "זה נבחר מתוך הפעילות האחרונה שלך בכיתה, תור הסקירה וההגדרה הנוכחית של צמד שפות.",
+    "startGuidedClass": "התחל שיעור מודרך אחד",
+    "pairSetupFriendlySummary": "רמת {{level}} · {{goal}} יעד · קצב {{pace}}",
+    "clearValue": "בָּרוּר",
+    "reviewClearDetail": "שום דבר לא מגיע כרגע. בנה את התור עם מחלקה אחת או ביטוי שמור.",
+    "weeklyPointsEmpty": "התחל מפגש קצר להתחיל השבוע.",
+    "speakingTurnsEmpty": "נסה שיחה אחת קצרה כשתהיה מוכן.",
+    "todayFocus": "הפוקוס של היום",
+    "primaryActionLivesAbove": "השתמש בלחצן הראשי למעלה כאשר אתה מוכן להתחיל.",
+    "findFirstPhrase": "מצא את הביטוי הראשון שלך",
+    "recentStudyEmpty": "מסלול הלימודים שלך יופיע לאחר הפעילות הראשונה שלך השבוע.",
+    "startToday": "התחל היום",
+    "todaySection": "הַיוֹם",
+    "guidanceTitle": "הַדְרָכָה",
+    "guidanceSubtitle": "הצעות קטנות ששומרות את הפגישה הבאה ברורה מבלי להעמיס את הדף.",
+    "secondaryStepsTitle": "אחרי השלב העיקרי",
+    "secondaryStepsEmpty": "פעולה ממוקדת אחת מספיקה לעת עתה. סיים אותו, ואז השלב הבא יופיע כאן.",
+    "recentWordsEmptyAction": "מילים שמורות וביטויים שימושיים יאספו כאן לאחר תרגול השיעור או השיחה.",
+    "startAClass": "התחל שיעור",
+    "milestonesEmptyAction": "השיעור הראשון שהושלמו, הביטוי השמור או התעודה יופיעו כאן.",
+    "earnFirstMilestone": "להרוויח את אבן הדרך הראשונה"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "מַחלָקָה",
+      "conversation": "שִׂיחָה",
+      "quiz": "חִידוֹן",
+      "flashcards": "כרטיסי פלאש",
+      "writing": "כְּתִיבָה",
+      "review": "סְקִירָה",
+      "voice": "קוֹל",
+      "other": "אַחֵר"
+    },
+    "unknownSkill": "מיומנות לא ידועה",
+    "title": "לימוד בריאות",
+    "activeLearners": "לומדים פעילים",
+    "lastSevenDays": "7 ימים אחרונים",
+    "learningEvents": "אירועי למידה",
+    "classLessonsCompleted": "השיעורים הסתיימו",
+    "conversationTurns": "השיחה הופכת",
+    "savedReviews": "ביקורות על פריטים נשמרים",
+    "dueNow": "{{count}} לפירעון כעת",
+    "tutorIssues": "בעיות של מורה",
+    "featureUsage": "שימוש בתכונות",
+    "learnersCount": "{{count}} לומדים",
+    "noFeatureUsage": "עדיין לא נרשמו אירועי למידה.",
+    "languagePairs": "צמדי שפות",
+    "noLanguagePairs": "עדיין אין פעילות של צמד שפות.",
+    "weakSkills": "מיומנויות הדורשות תשומת לב",
+    "averageScore": "ממוצע {{score}}%",
+    "noWeakSkills": "אין רישומי מיומנות חלשה ב-30 הימים האחרונים.",
+    "difficultContent": "תוכן קשה",
+    "unknownLesson": "שיעור לא ידוע",
+    "noDifficultContent": "עדיין לא נמצא דפוס תוכן קשה."
+  },
+  "skills": {
+    "listening": "הַקשָׁבָה",
+    "speaking": "מדבר",
+    "reading": "קְרִיאָה",
+    "writing": "כְּתִיבָה"
   }
 }

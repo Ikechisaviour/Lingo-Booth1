@@ -15,6 +15,16 @@ const {
   languageField,
   normalizeConceptKey,
 } = require('../utils/languageConcepts');
+const {
+  buildDefaultFlashcardSourceForLanguage,
+  buildPracticeLessonsForLanguage,
+  getTargetTeachingProfile,
+} = require('../utils/targetAuthoredPracticeContent');
+const {
+  findTargetContentIssues,
+  seededPronunciationLooksWrong,
+} = require('../utils/targetContentQuality');
+const { SUPPORTED_LANGUAGES } = require('../config/languages');
 
 const ROOT = path.join(__dirname, '..');
 const KNOWN_LEAK_PATTERNS = [
@@ -42,15 +52,98 @@ function auditFlashcards() {
 
   for (const { lang, rawCards } of sources) {
     const targetField = languageField(lang);
-    const cards = rawCards.map((card, index) => ({
+    const authoredSource = buildDefaultFlashcardSourceForLanguage(lang, rawCards);
+    const cards = authoredSource.map((card, index) => ({
       ...card,
       _id: `${lang}:${index}`,
       isDefault: true,
       [targetField]: card[targetField] || card.korean || '',
     }));
     const normalized = normalizeFlashcardsForLanguagePair(cards, lang, 'en');
+    const profile = getTargetTeachingProfile(lang);
+    const authoredSources = new Set(normalized.map(card => card.usage?.source).filter(Boolean));
+
+    if (profile && !authoredSources.has('target-profile')) {
+      issues.push({
+        area: 'flashcards',
+        type: 'missing-target-profile-cards',
+        lang,
+      });
+    }
+
+      if (profile && lang !== 'ko') {
+        const legacyLike = normalized.find(card => !['target-profile', 'target-curriculum'].includes(card.usage?.source));
+        if (legacyLike) {
+          issues.push({
+            area: 'flashcards',
+          type: 'non-authored-default-card',
+          lang,
+          target: legacyLike[targetField],
+          gloss: legacyLike.english,
+        });
+      }
+    }
+
+    if (lang === 'en') {
+      const missingEnglishTeachingGloss = normalized.find((card) => {
+        const targetText = card[targetField] || card.korean || '';
+        const gloss = card.conceptGloss || '';
+        return !gloss || normalizeConceptKey(gloss) === normalizeConceptKey(targetText);
+      });
+      if (missingEnglishTeachingGloss) {
+        issues.push({
+          area: 'flashcards',
+          type: 'english-target-missing-teaching-gloss',
+          lang,
+          target: missingEnglishTeachingGloss[targetField],
+          gloss: missingEnglishTeachingGloss.conceptGloss,
+        });
+      }
+    }
+
+    const teachingFocuses = new Set(normalized.map(card => card.usage?.teachingFocus).filter(Boolean));
+    if (profile && teachingFocuses.size < Math.min(5, profile.cards.length)) {
+      issues.push({
+        area: 'flashcards',
+        type: 'thin-target-teaching-profile',
+        lang,
+        focusCount: teachingFocuses.size,
+      });
+    }
+
     const seenTargets = new Map();
     normalized.forEach((card, index) => {
+      const targetQualityIssues = findTargetContentIssues(card, lang, {
+        fields: [
+          { name: targetField, value: card[targetField] || card.korean, kind: 'target' },
+          { name: 'english', value: card.english, kind: 'canonical-gloss' },
+          { name: 'conceptGloss', value: card.conceptGloss, kind: 'canonical-gloss' },
+        ],
+      });
+      targetQualityIssues.forEach((qualityIssue) => {
+        issues.push({
+          area: 'flashcards',
+          type: 'target-content-carryover',
+          lang,
+          index,
+          target: card[targetField],
+          gloss: card.english,
+          reason: qualityIssue.reason,
+          field: qualityIssue.field,
+        });
+      });
+
+      if (seededPronunciationLooksWrong(card, lang)) {
+        issues.push({
+          area: 'flashcards',
+          type: 'seeded-pronunciation-carryover',
+          lang,
+          index,
+          target: card[targetField],
+          pronunciation: card.romanization || card.officialPronunciation || card.pronunciation,
+        });
+      }
+
       if (lang !== 'ko' && (hasLeak(card[targetField]) || hasLeak(card.english))) {
         issues.push({
           area: 'flashcards',
@@ -86,22 +179,73 @@ function auditLessons() {
   const dir = path.join(ROOT, 'lessonData');
   const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter(file => file.endsWith('.js')) : [];
 
-  for (const file of files) {
-    const lang = path.basename(file, '.js');
+  for (const lang of SUPPORTED_LANGUAGES) {
+    const file = `${lang}.js`;
     const modulePath = path.join(dir, file);
-    const lessons = Object.values(require(modulePath)).filter(Boolean);
-    lessons.forEach((lesson, lessonIndex) => {
+    const lessons = buildPracticeLessonsForLanguage(lang);
+    const fallbackLessons = fs.existsSync(modulePath) ? Object.values(require(modulePath)).filter(Boolean) : [];
+    const sourceLessons = lessons.length ? lessons : fallbackLessons;
+
+    if (getTargetTeachingProfile(lang) && !lessons.length) {
+      issues.push({
+        area: 'quiz',
+        type: 'missing-target-authored-practice-lessons',
+        lang,
+      });
+    }
+
+    const sourceNames = new Set(
+      sourceLessons
+        .flatMap(lesson => (lesson.content || []).map(item => item.usage?.source))
+        .filter(Boolean),
+    );
+    if (lessons.length && !sourceNames.has('target-curriculum')) {
+      issues.push({
+        area: 'quiz',
+        type: 'practice-lessons-not-curriculum-derived',
+        lang,
+      });
+    }
+
+    const moduleLang = path.basename(file, '.js');
+    sourceLessons.forEach((lesson, lessonIndex) => {
       const normalized = normalizeLessonForLanguagePair(
         JSON.parse(JSON.stringify(lesson)),
-        lesson.targetLang || lang,
+        lesson.targetLang || moduleLang,
         'en',
       );
       const seenTargets = new Map();
       (normalized.content || []).forEach((item, itemIndex) => {
-        if (hasLeak(item.targetText) || hasLeak(item.nativeText)) {
+        const targetQualityIssues = findTargetContentIssues(item, lang, {
+          fields: [
+            { name: 'targetText', value: item.targetText, kind: 'target' },
+            { name: 'exampleTarget', value: item.exampleTarget || item.example, kind: 'target-example' },
+            { name: 'nativeText', value: item.nativeText, kind: 'canonical-gloss' },
+            { name: 'conceptGloss', value: item.conceptGloss, kind: 'canonical-gloss' },
+            ...((item.breakdown || []).flatMap((part, index) => ([
+              { name: `breakdown[${index}].target`, value: part.target || part.korean, kind: 'target-breakdown' },
+              { name: `breakdown[${index}].native`, value: part.native || part.english, kind: 'canonical-gloss' },
+            ]))),
+          ],
+        });
+        targetQualityIssues.forEach((qualityIssue) => {
           issues.push({
             area: 'quiz',
-            lang,
+            type: 'target-content-carryover',
+            lang: moduleLang,
+            lessonIndex,
+            itemIndex,
+            target: item.targetText,
+            gloss: item.nativeText,
+            reason: qualityIssue.reason,
+            field: qualityIssue.field,
+          });
+        });
+
+        if (moduleLang !== 'ko' && (hasLeak(item.targetText) || hasLeak(item.nativeText))) {
+          issues.push({
+            area: 'quiz',
+            lang: moduleLang,
             lessonIndex,
             itemIndex,
             target: item.targetText,
@@ -113,10 +257,10 @@ function auditLessons() {
         if (!normalizeConceptKey(item.targetText)) return;
         if (seenTargets.has(targetKey)) {
           issues.push({
-            area: 'quiz',
-            type: 'duplicate-target',
-            lang,
-            lessonIndex,
+              area: 'quiz',
+              type: 'duplicate-target',
+              lang: moduleLang,
+              lessonIndex,
             firstItemIndex: seenTargets.get(targetKey),
             itemIndex,
             target: item.targetText,

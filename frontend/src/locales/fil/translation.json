@@ -77,7 +77,6 @@
     "reason": "Dahilan",
     "forgotPassword": "Nakalimutan ang password?",
     "googleFailed": "Nabigo ang pag-sign in gamit ang Google. Pakisubukan muli.",
-    "backToHome": "Bumalik sa home",
     "sessionExpired": "Nag-expire ang session mo. Mag-sign in muli."
   },
   "register": {
@@ -203,7 +202,8 @@
       "fri": "F",
       "sat": "S",
       "sun": "S"
-    }
+    },
+    "supportAndPlans": "Suporta at mga plano"
   },
   "lessons": {
     "title": "Mga Aralin sa <1>{{language}}</1>",
@@ -428,7 +428,22 @@
     "diversifyLearning": "Pag-iba-ibahin ang Pag-aaral",
     "diversifyLearningTip": "Magsanay sa lahat ng apat na kasanayan nang pantay-pantay",
     "stayConsistent": "Manatiling Consistent",
-    "stayConsistentTip": "Mag-aral nang kaunti araw-araw para sa pinakamahusay na resulta"
+    "stayConsistentTip": "Mag-aral nang kaunti araw-araw para sa pinakamahusay na resulta",
+    "analyticsMastered": "Kabisado",
+    "analyticsMasteredDetail": "Mga bagay na kaya mong hawakan nang maayos",
+    "analyticsReviewDetail": "Worth revisiting today",
+    "analyticsActiveDaysDetail": "Ngayong linggo",
+    "analyticsSpeakingDetail": "Kamakailang pagsasanay sa boses",
+    "analyticsAria": "Pag-aaral ng analytics",
+    "analyticsKicker": "Pag-aaral ng kalusugan",
+    "analyticsTitle": "Kung ano ang sinasabi sa amin ng iyong aktibidad",
+    "analyticsSubtitle": "Gamitin ito bilang isang simpleng pagbabasa sa momentum, pagsusuri ng presyon, at ang susunod na kapaki-pakinabang na hakbang.",
+    "nextFocus": "Susunod na focus",
+    "keepBuilding": "Panatilihin ang pagbuo ng momentum",
+    "nextFocusBody": "Ang lugar na ito ay nagpapakita ng pinakamalinaw na signal para sa karagdagang pagsasanay.",
+    "nextFocusEmptyBody": "Magsanay ng kaunti pa at ito ay magiging mas tiyak.",
+    "weeklyMomentum": "Lingguhang momentum",
+    "weeklyMomentumDetail": "{{days}} aktibong araw at {{sessions}} session"
   },
   "profilePage": {
     "memberSince": "Miyembro mula {{date}}",
@@ -1566,6 +1581,75 @@
     "firstThreeDayLearnTitle": "Magsimula ng isang gabay na aralin",
     "firstThreeDayReviewBody": "Bumalik ng isang beses sa nakita mo kahapon para magsimulang dumikit ang mga unang item.",
     "firstThreeDaySpeakBody": "Gumamit ng maikling pagsasalita upang ang wika ay umalis nang maaga sa pahina.",
-    "firstThreeDayLearnBody": "Magsimula sa isang maliit na may gabay na aralin upang ang pares ay may malinaw na panimulang punto."
+    "firstThreeDayLearnBody": "Magsimula sa isang maliit na may gabay na aralin upang ang pares ay may malinaw na panimulang punto.",
+    "reviewSignalDetail": "{{count}} mga item na sulit na bisitahin muli",
+    "weeklyPointsSignal": "Lingguhang puntos",
+    "sessionsCount": "{{count}} session",
+    "activityThisWeek": "Aktibidad ngayong linggo",
+    "savedItemsThisWeek": "{{count}} na-save ngayong linggo",
+    "analyticsKicker": "Mga senyales sa pag-aaral",
+    "analyticsTitle": "Ang iyong larawan sa pag-aaral",
+    "analyticsSubtitle": "Isang mabilis na pagbabasa sa kung ano ang susunod na gagawin, kung ano ang nangangailangan ng pagsusuri, at kung paano gumagalaw ang iyong linggo.",
+    "viewFullProgress": "Tingnan ang buong pag-unlad",
+    "nextActionSignalBody": "Pinili ito mula sa iyong pinakabagong aktibidad sa klase, pila sa pagsusuri, at kasalukuyang setup ng pares ng wika.",
+    "startGuidedClass": "Magsimula ng isang may gabay na klase",
+    "pairSetupFriendlySummary": "{{level}} antas · {{goal}} layunin · {{pace}} bilis",
+    "clearValue": "Maaliwalas",
+    "reviewClearDetail": "Walang dapat bayaran ngayon. Buuin ang pila gamit ang isang klase o naka-save na parirala.",
+    "weeklyPointsEmpty": "Magsimula ng maikling sesyon para magsimula ngayong linggo.",
+    "speakingTurnsEmpty": "Subukan ang isang maikling pag-uusap kapag handa ka na.",
+    "todayFocus": "Pokus ngayon",
+    "primaryActionLivesAbove": "Gamitin ang pangunahing button sa itaas kapag handa ka nang magsimula.",
+    "findFirstPhrase": "Hanapin ang iyong unang parirala",
+    "recentStudyEmpty": "Lalabas ang iyong study trail pagkatapos ng iyong unang aktibidad ngayong linggo.",
+    "startToday": "Magsimula ngayon",
+    "todaySection": "Ngayong araw",
+    "guidanceTitle": "Patnubay",
+    "guidanceSubtitle": "Mga maliliit na mungkahi na nagpapanatiling malinaw sa susunod na sesyon nang hindi nagsisisiksikan sa pahina.",
+    "secondaryStepsTitle": "Pagkatapos ng pangunahing hakbang",
+    "secondaryStepsEmpty": "Ang isang nakatutok na aksyon ay sapat na sa ngayon. Tapusin ito, pagkatapos ay lilitaw ang susunod na hakbang dito.",
+    "recentWordsEmptyAction": "Ang mga naka-save na salita at kapaki-pakinabang na parirala ay kokolektahin dito pagkatapos ng klase o pagsasanay sa pag-uusap.",
+    "startAClass": "Magsimula ng klase",
+    "milestonesEmptyAction": "Ang iyong unang natapos na aralin, naka-save na parirala, o sertipiko ay lalabas dito.",
+    "earnFirstMilestone": "Makamit ang unang milestone"
+  },
+  "adminAnalytics": {
+    "features": {
+      "class": "Klase",
+      "conversation": "Pag-uusap",
+      "quiz": "Pagsusulit",
+      "flashcards": "Mga flashcard",
+      "writing": "Pagsusulat",
+      "review": "Balik-aral",
+      "voice": "Boses",
+      "other": "Iba pa"
+    },
+    "unknownSkill": "Hindi kilalang kasanayan",
+    "title": "Pag-aaral ng kalusugan",
+    "activeLearners": "Mga aktibong mag-aaral",
+    "lastSevenDays": "Huling 7 araw",
+    "learningEvents": "Mga kaganapan sa pag-aaral",
+    "classLessonsCompleted": "Natapos ang mga klase",
+    "conversationTurns": "Lumiliko ang pag-uusap",
+    "savedReviews": "Mga review ng naka-save na item",
+    "dueNow": "{{count}} dapat bayaran ngayon",
+    "tutorIssues": "Mga isyu sa tutor",
+    "featureUsage": "Paggamit ng feature",
+    "learnersCount": "{{count}} mag-aaral",
+    "noFeatureUsage": "Wala pang naitalang mga kaganapan sa pag-aaral.",
+    "languagePairs": "Mga pares ng wika",
+    "noLanguagePairs": "Wala pang aktibidad na pares ng wika.",
+    "weakSkills": "Mga kasanayang nangangailangan ng pansin",
+    "averageScore": "Average na {{score}}%",
+    "noWeakSkills": "Walang mahinang mga rekord sa nakalipas na 30 araw.",
+    "difficultContent": "Mahirap na nilalaman",
+    "unknownLesson": "Hindi kilalang aral",
+    "noDifficultContent": "Wala pang nahanap na pattern ng mahirap na nilalaman."
+  },
+  "skills": {
+    "listening": "Nakikinig",
+    "speaking": "nagsasalita",
+    "reading": "Nagbabasa",
+    "writing": "Pagsusulat"
   }
 }

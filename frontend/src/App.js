@@ -4,8 +4,10 @@ import { useTranslation } from 'react-i18next';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { guestXPHelper, authService, userService } from './services/api';
 import { installGlobalErrorReporting } from './services/errorReporter';
+import { installStudyHeartbeat } from './services/studyHeartbeat';
 import guestActivityTracker from './services/guestActivityTracker';
 import Navbar from './components/Navbar';
+import BrandLogo from './components/BrandLogo';
 import EmailVerificationBanner from './components/EmailVerificationBanner';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
@@ -130,7 +132,7 @@ function GlobalHomeLogo({ hidden }) {
 
   return (
     <Link to="/" className="global-home-logo" aria-label={t('common.backToHome')}>
-      <img src="/images/logo.png" alt="" />
+      <BrandLogo variant="mark" decorative />
     </Link>
   );
 }
@@ -159,6 +161,11 @@ function App() {
 
   useEffect(() => {
     installGlobalErrorReporting();
+    // Heartbeat: fires `study_heartbeat` while the learner is interacting
+    // with the app so passive engagement (autoplay, replay, browsing) still
+    // resets the XP decay timer. Awards 0 XP — see services/studyHeartbeat.js.
+    const uninstall = installStudyHeartbeat();
+    return uninstall;
   }, []);
 
   useEffect(() => {

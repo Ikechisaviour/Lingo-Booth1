@@ -480,11 +480,12 @@ async function firstClassLesson(targetLanguage) {
       _id: firstCourseEntry.lessonId,
       track: 'textbook',
       targetLang: targetLanguage,
+      curriculumStatus: { $ne: 'archived' },
     }).select('_id title').lean();
     if (orderedLesson) return orderedLesson;
   }
 
-  return Lesson.findOne({ track: 'textbook', targetLang: targetLanguage })
+  return Lesson.findOne({ track: 'textbook', targetLang: targetLanguage, curriculumStatus: { $ne: 'archived' } })
     .select('_id title')
     .sort({ createdAt: 1 })
     .lean();
@@ -1065,6 +1066,7 @@ async function searchLearningItems(userId, targetLanguage, nativeLanguage, query
     Lesson.find({
       track: 'textbook',
       targetLang: targetLanguage,
+      curriculumStatus: { $ne: 'archived' },
       $or: classLessonSearchTerms,
     })
       .select('_id title category lessonType')

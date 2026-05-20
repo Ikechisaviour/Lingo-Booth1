@@ -77,20 +77,26 @@ Device coverage is non-optional for every user-facing layout change.
 
 - The web app must support **desktop, tablet, and phone** layouts. Do not treat desktop as the only real web target or allow tablet/mobile views to become cramped, clipped, overlapping, or unusable.
 - The mobile apps must support **phones, Android tablets, and iPads**. Do not ship handset-only layouts that merely stretch across larger screens; tablet layouts should make deliberate use of the extra space while remaining touch-friendly.
+- Foldable and dual-pane devices such as Galaxy Fold are explicit targets on both mobile and web. They must not fall into an awkward middle state where phone layouts stretch across tablet-width screens, tablet layouts waste vertical space in landscape, or browser split-screen/foldable widths clip controls.
 - A user-facing change is incomplete if it works only at one screen size, only in portrait phone view, or only on web while the equivalent mobile surface breaks on tablet/iPad.
 - Prefer responsive primitives, adaptive grids, content reflow, min/max constraints, and breakpoint-aware layouts over fixed widths/heights that assume one device class.
 - Dense desktop compositions must collapse intelligently on smaller web screens. Phone-first mobile screens must expand intelligently on tablets and iPads instead of leaving awkward empty space or oversized controls.
 - When changing navigation, headers, sidebars, chat/tutor threads, forms, cards, media, tables, or repeated grids, explicitly check that content remains reachable and readable at:
   - web phone width
   - web tablet width
+  - web foldable/split-screen width
   - web desktop width
   - mobile phone
+  - mobile foldable/dual-pane
   - mobile tablet/iPad
 - Tablet/iPad support is part of mobile parity. If a screen exists on mobile, supporting only phones is not enough.
 
 ## Shared Policies
 
 - Use shared utilities for language-pair behavior instead of repeating `if English/Korean` checks inside components.
+- Quiz and flashcard default data must be target-language clean. Do not let a deck for German, Spanish, Chinese, etc. inherit Korean-specific words, Korean romanization, Korea-only places/currency/names, or any other source-language carryover unless the item is explicitly marked as a curated loanword/borrowed-culture item. The served default deck and quiz payload must pass `backend/scripts/auditQuizFlashcardConcepts.js`.
+- Quiz and flashcard default data must also be **target-language authored**, not merely "not Korean." A German deck must deliberately teach German features such as articles, cases, separable verbs, word order, and umlauts; Spanish must teach Spanish gender, ser/estar, address forms, punctuation, and verb endings; Chinese must teach tones, particles, measure words, and Hanzi/Pinyin relationships; and the same target-specific standard applies to every supported language. Default flashcard and quiz seeds should come from target teaching profiles and target curriculum content, not from translating another language's deck.
+- Seeded pronunciation is target-language data. A non-Korean flashcard must not keep Korean romanization from an older Korean source deck; clear it and let the pronunciation pipeline generate the correct target/native guide.
 - Conversation/class history should clear when native or target language changes.
 - The selected landing-page language should be inherited by login, sign-up, guest setup, reset password, and other public pages.
 - Any pair-scoped detail load by ID (quiz, class lesson, certificate status tied to a class lesson, future lesson types) must send both active `targetLang` and `nativeLang`; the backend must reject the request if the stored document's `targetLang` does not match. A stale ID from a previous language pair must fail clearly instead of rendering the wrong target-language content.

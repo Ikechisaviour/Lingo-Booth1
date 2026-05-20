@@ -17,9 +17,11 @@ import { useNavigation } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import { GoogleSignin, isSuccessResponse, statusCodes } from '@react-native-google-signin/google-signin';
 import { AuthStackParamList } from '../../navigation/AuthStack';
+import BrandLogo from '../../components/BrandLogo';
 import { authService } from '../../services/api';
 import { useAuthStore } from '../../stores/authStore';
 import { useSettingsStore } from '../../stores/settingsStore';
+import { getResponsiveLayout } from '../../utils/responsiveLayout';
 import { colors } from '../../config/theme';
 
 const GOOGLE_WEB_CLIENT_ID =
@@ -42,7 +44,11 @@ const RegisterScreen: React.FC = () => {
   const { nativeLanguage, targetLanguage, setLanguages, setVoice, setVoiceMap } = useSettingsStore();
   const insets = useSafeAreaInsets();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
-  const isCompact = winHeight < 450 || winWidth < 380;
+  const layout = getResponsiveLayout(winWidth, winHeight);
+  const isCompact = layout.isCompact;
+  const useWideLayout = layout.isWide || layout.isFoldable || layout.isTablet;
+  const brandMarkSize = useWideLayout ? (layout.isWideShort ? 58 : 76) : isCompact ? 48 : 62;
+  const brandWordmarkWidth = useWideLayout ? (layout.isWideShort ? 172 : 218) : 180;
 
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -149,25 +155,49 @@ const RegisterScreen: React.FC = () => {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <View style={styles.outer}>
-        {/* Branded top section */}
-        <View style={[styles.brandTop, { paddingTop: insets.top + (isCompact ? 8 : 24), paddingBottom: isCompact ? 12 : 28 }]}>
-          <Image
-            source={require('../../../assets/icon.png')}
-            style={[styles.logo, isCompact && { width: 48, height: 48, marginBottom: 6 }]}
-            resizeMode="contain"
-          />
-          {!isCompact && <Text style={styles.brandName}>Lingo Booth</Text>}
-          {!isCompact && <Text style={styles.brandTagline}>{t('register.brandTagline', 'Start your journey')}</Text>}
-        </View>
+        <View style={[styles.authLayout, useWideLayout && styles.authLayoutWide]}>
+          {/* Branded top section */}
+          <View
+            style={[
+              styles.brandTop,
+              useWideLayout && styles.brandTopWide,
+              {
+                paddingTop: useWideLayout ? insets.top + 12 : insets.top + (isCompact ? 8 : 24),
+                paddingBottom: useWideLayout ? 0 : isCompact ? 12 : 28,
+              },
+            ]}
+          >
+            <BrandLogo
+              variant={isCompact && !useWideLayout ? 'mark' : 'lockup'}
+              markSize={brandMarkSize}
+              wordmarkWidth={brandWordmarkWidth}
+              style={isCompact && !useWideLayout ? styles.compactBrandLogo : styles.brandLogo}
+            />
+            {!(isCompact && !useWideLayout) && (
+              <Text style={[styles.brandTagline, useWideLayout && styles.brandTaglineWide]}>
+                {t('register.brandTagline', 'Start your journey')}
+              </Text>
+            )}
+          </View>
 
-        {/* Form card */}
-        <ScrollView
-          style={styles.formScroll}
-          contentContainerStyle={[styles.formContent, { paddingBottom: insets.bottom + 28 }]}
-          keyboardShouldPersistTaps="handled"
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={[styles.formCard, isCompact && { paddingHorizontal: 18, paddingTop: 18, minHeight: 0 }]}>
+          {/* Form card */}
+          <ScrollView
+            style={[styles.formScroll, useWideLayout && styles.formScrollWide]}
+            contentContainerStyle={[
+              styles.formContent,
+              useWideLayout && styles.formContentWide,
+              { paddingBottom: useWideLayout ? insets.bottom + 20 : insets.bottom + 28 },
+            ]}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}
+          >
+            <View
+              style={[
+                styles.formCard,
+                useWideLayout && styles.formCardWide,
+                isCompact && { paddingHorizontal: 18, paddingTop: 18, minHeight: 0 },
+              ]}
+            >
             <Text variant="headlineMedium" style={styles.title}>
               {t('register.title')}
             </Text>
@@ -296,8 +326,9 @@ const RegisterScreen: React.FC = () => {
                 {t('register.loginHere')}
               </Text>
             </View>
-          </View>
-        </ScrollView>
+            </View>
+          </ScrollView>
+        </View>
       </View>
     </KeyboardAvoidingView>
   );
@@ -306,31 +337,49 @@ const RegisterScreen: React.FC = () => {
 const styles = StyleSheet.create({
   flex: { flex: 1 },
   outer: { flex: 1, backgroundColor: colors.primary },
+  authLayout: { flex: 1 },
+  authLayoutWide: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 32,
+    paddingVertical: 18,
+    gap: 28,
+  },
 
   brandTop: {
     alignItems: 'center',
     paddingHorizontal: 24,
     paddingBottom: 28,
   },
-  logo: {
-    width: 76,
-    height: 76,
-    marginBottom: 12,
+  brandTopWide: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingHorizontal: 16,
   },
-  brandName: {
-    color: '#fff',
-    fontSize: 28,
-    fontWeight: '800',
-    letterSpacing: 0.5,
-  },
+  brandLogo: { marginBottom: 8 },
+  compactBrandLogo: { marginBottom: 6 },
   brandTagline: {
     color: 'rgba(255,255,255,0.82)',
     fontSize: 15,
     marginTop: 4,
   },
+  brandTaglineWide: {
+    fontSize: 17,
+    textAlign: 'center',
+    maxWidth: 300,
+  },
 
   formScroll: { flex: 1 },
   formContent: { flexGrow: 1 },
+  formScrollWide: {
+    flex: 1.1,
+    maxWidth: 620,
+  },
+  formContentWide: {
+    justifyContent: 'center',
+    paddingVertical: 18,
+  },
   formCard: {
     backgroundColor: colors.surface,
     borderTopLeftRadius: 32,
@@ -340,6 +389,14 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     flex: 1,
     minHeight: 480,
+  },
+  formCardWide: {
+    width: '100%',
+    borderRadius: 30,
+    flex: 0,
+    minHeight: 0,
+    paddingHorizontal: 32,
+    paddingVertical: 30,
   },
 
   title: { fontWeight: '700', color: colors.textPrimary, marginBottom: 4 },

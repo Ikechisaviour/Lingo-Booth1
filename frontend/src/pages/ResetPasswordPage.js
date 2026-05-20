@@ -3,6 +3,7 @@ import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { authService } from '../services/api';
 import { applyPublicLanguage } from '../utils/publicLanguage';
+import BrandLogo from '../components/BrandLogo';
 import './Auth.css';
 
 function ResetPasswordPage() {
@@ -44,7 +45,7 @@ function ResetPasswordPage() {
     return (
       <div className="auth-container">
         <div className="auth-card" style={{ textAlign: 'center' }}>
-          <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
+          <BrandLogo variant="lockup" className="auth-logo" decorative={false} />
           <h1>{t('resetPassword.invalidLink', 'Invalid Link')}</h1>
           <p className="auth-subtitle">
             {t('resetPassword.noToken', 'This password reset link is invalid or has expired.')}
@@ -60,7 +61,7 @@ function ResetPasswordPage() {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <img src="/images/logo.png" alt="Lingo Booth" className="auth-logo" />
+        <BrandLogo variant="lockup" className="auth-logo" decorative={false} />
         <h1>{t('resetPassword.title', 'Reset Password')}</h1>
         <p className="auth-subtitle">
           {t('resetPassword.subtitle', 'Enter your new password below.')}

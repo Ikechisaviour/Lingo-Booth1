@@ -16,6 +16,7 @@ for (const [surface, file] of Object.entries(files)) {
     'shouldSpeakTutorPart',
     'tutorVoiceForLocale',
     'contrastingVoiceForLocale',
+    'singleVoice: true',
     'classLesson.fallback.practiceLead',
     'classLesson.fallback.shortAnswer',
     'classLesson.fallback.continue',
