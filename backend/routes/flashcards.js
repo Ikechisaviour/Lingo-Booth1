@@ -8,6 +8,8 @@ const { getClientIp, getGeoInfo } = require('../utils/geo');
 const { batchTranslateRaw } = require('../utils/translationService');
 const { languageField, normalizeFlashcardsForLanguagePair } = require('../utils/languageConcepts');
 const { enrichFlashcardsWithPronunciation } = require('../utils/pronunciationService');
+const { clampRating, reviewStateForCard, scheduleFlashcardReview } = require('../utils/reviewScheduler');
+const { buildDefaultFlashcardSourceForLanguage } = require('../utils/targetAuthoredPracticeContent');
 
 // Normalize category: handles old string format and new array format
 const normalizeCategory = (cat) => {
@@ -227,6 +229,58 @@ async function persistNativeTranslations(updates, nativeField) {
 const defaultCardsCache = new Map(); // `${targetLang}` -> { cards, timestamp }
 const CACHE_TTL = 60 * 60 * 1000; // 1 hour
 
+function flashcardTargetKey(card, targetLang) {
+  const field = languageField(targetLang);
+  return String(card?.[field] || card?.korean || '').trim().toLowerCase();
+}
+
+function overlayGeneratedDefaultMetadata(cards, targetLang) {
+  const generated = buildDefaultFlashcardSourceForLanguage(targetLang, cards.map(card => ({ ...card })));
+  if (!generated.length) return cards;
+  const generatedByTarget = new Map(generated.map(card => [flashcardTargetKey(card, targetLang), card]));
+  const metadataFields = [
+    'conceptId',
+    'senseId',
+    'conceptGloss',
+    'learningLevel',
+    'firstIntroducedLevel',
+    'activeLevels',
+    'levelTrack',
+    'supportLevel',
+    'skillStrands',
+    'lessonRole',
+    'coreRequired',
+    'certificateEligible',
+    'branchType',
+    'lessonWeight',
+    'checkpointType',
+    'repairFocus',
+    'longActivityTypes',
+    'objective',
+    'sourceClassLessonKey',
+    'sourceClassLessonKeys',
+    'levelUses',
+    'quizOptionMode',
+    'writingMode',
+    'usage',
+  ];
+
+  return cards.map((card) => {
+    const source = generatedByTarget.get(flashcardTargetKey(card, targetLang));
+    if (!source) return card;
+    const next = { ...source, ...card };
+    metadataFields.forEach((field) => {
+      const value = card[field];
+      const isMissingArray = Array.isArray(value) && value.length === 0;
+      const isMissingObject = value && typeof value === 'object' && !Array.isArray(value) && Object.keys(value).length === 0;
+      if (value == null || value === '' || isMissingArray || isMissingObject) {
+        next[field] = source[field];
+      }
+    });
+    return next;
+  });
+}
+
 async function getDefaultCards(targetLang = 'ko') {
   const cacheKey = targetLang;
   const cached = defaultCardsCache.get(cacheKey);
@@ -236,8 +290,9 @@ async function getDefaultCards(targetLang = 'ko') {
   const cards = await Flashcard.find({ isDefault: true, targetLang })
     .sort({ defaultIndex: 1 })
     .lean();
-  defaultCardsCache.set(cacheKey, { cards, timestamp: Date.now() });
-  return cards;
+  const normalizedCards = overlayGeneratedDefaultMetadata(cards, targetLang);
+  defaultCardsCache.set(cacheKey, { cards: normalizedCards, timestamp: Date.now() });
+  return normalizedCards;
 }
 
 // --- Seeded PRNG and weighted shuffle ---
@@ -254,9 +309,59 @@ const MASTERY_WEIGHTS = { 1: 3.0, 2: 2.0, 3: 1.5, 4: 1.0, 5: 0.3 };
 function weightedShuffle(cards, seed) {
   const rng = seededRandom(seed);
   return cards
-    .map(card => ({ card, sort: -Math.log(rng()) / (MASTERY_WEIGHTS[card.masteryLevel] || 1) }))
+    .map((card) => {
+      const reviewState = card.reviewState || reviewStateForCard(card);
+      const dueWeight = reviewState.due ? 1.8 : 0.35;
+      const weight = (MASTERY_WEIGHTS[card.masteryLevel] || 1) * dueWeight;
+      return { card, sort: -Math.log(rng()) / weight };
+    })
     .sort((a, b) => a.sort - b.sort)
     .map(x => x.card);
+}
+
+function slugForConcept(text) {
+  const value = String(text || '').trim().toLowerCase();
+  const ascii = value
+    .replace(/['’]/g, '')
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '')
+    .slice(0, 72);
+  if (ascii) return ascii;
+  return value ? `u_${Buffer.from(value, 'utf8').toString('hex').slice(0, 72)}` : 'item';
+}
+
+function applyReviewState(card) {
+  const next = { ...card };
+  next.masteryLevel = clampRating(next.masteryLevel, 3);
+  next.reviewState = reviewStateForCard(next);
+  return next;
+}
+
+function preferencePayload(card, userId, scheduled, nativeLang = '') {
+  return {
+    userId,
+    cardId: card._id.toString(),
+    targetLang: card.targetLang,
+    nativeLang,
+    conceptId: card.conceptId || '',
+    senseId: card.senseId || '',
+    firstIntroducedLevel: card.firstIntroducedLevel || card.learningLevel,
+    activeLevels: card.activeLevels || (card.learningLevel ? [card.learningLevel] : []),
+    levelUses: card.levelUses || {},
+    lessonRole: card.lessonRole || card.usage?.lessonRole || '',
+    branchType: card.branchType || card.usage?.branchType || '',
+    lessonWeight: card.lessonWeight || card.usage?.lessonWeight,
+    checkpointType: card.checkpointType || card.usage?.checkpointType || '',
+    repairFocus: card.repairFocus || card.usage?.repairFocus || [],
+    longActivityTypes: card.longActivityTypes || card.usage?.longActivityTypes || [],
+    masteryLevel: scheduled.masteryLevel,
+    reviewCount: scheduled.reviewCount,
+    ease: scheduled.ease,
+    lastReviewedAt: scheduled.lastReviewedAt,
+    nextReviewAt: scheduled.nextReviewAt,
+    lastReviewResult: scheduled.lastReviewResult,
+    updatedAt: new Date(),
+  };
 }
 
 // --- Helper: parse shuffle/seed/categories from query ---
@@ -408,7 +513,7 @@ router.get('/guest', async (req, res) => {
     const allGuestCards = defaultCards.map((card) => {
       const c = { ...card, _id: card._id.toString(), masteryLevel: 3, correctCount: 0, incorrectCount: 0 };
       if (!c[targetFieldName] && c.korean) c[targetFieldName] = c.korean;
-      return c;
+      return applyReviewState(c);
     });
     const normalizedGuestCards = normalizeFlashcardsForLanguagePair(allGuestCards, targetLang, nativeLang);
 
@@ -457,26 +562,32 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
     }));
 
     // Merge persisted masteryLevel preferences into default cards
-    const preferences = await UserCardPreference.find({ userId });
-    const prefMap = new Map(preferences.map(p => [p.cardId, p.masteryLevel]));
+    const preferences = await UserCardPreference.find({ userId }).lean();
+    const prefMap = new Map(preferences.map(p => [p.cardId, p]));
 
     const targetFieldName = languageField(targetLang);
 
     const defaultCardsWithPrefs = defaultCards.map(card => {
       const cardIdStr = card._id.toString();
+      const pref = prefMap.get(cardIdStr);
       const c = {
         ...card,
         isDefault: true,
-        masteryLevel: prefMap.has(cardIdStr) ? prefMap.get(cardIdStr) : 3,
-        correctCount: 0,
-        incorrectCount: 0,
+        masteryLevel: pref ? pref.masteryLevel : 3,
+        correctCount: pref ? pref.correctCount || 0 : 0,
+        incorrectCount: pref ? pref.incorrectCount || 0 : 0,
+        reviewCount: pref ? pref.reviewCount || 0 : 0,
+        ease: pref ? pref.ease : 2.5,
+        lastReviewedAt: pref ? pref.lastReviewedAt : undefined,
+        nextReviewAt: pref ? pref.nextReviewAt : undefined,
+        lastReviewResult: pref ? pref.lastReviewResult : undefined,
       };
       if (!c[targetFieldName] && c.korean) c[targetFieldName] = c.korean;
-      return c;
+      return applyReviewState(c);
     });
     const normalizedDefaultCards = normalizeFlashcardsForLanguagePair(defaultCardsWithPrefs, targetLang, nativeLang);
 
-    const allCards = [...normalizedDefaultCards, ...normalizedUserCards];
+    const allCards = [...normalizedDefaultCards, ...normalizedUserCards.map(applyReviewState)];
 
     // Apply category filter + weighted shuffle
     const processed = applyFilterAndShuffle(allCards, { shuffle, seed, categoryFilter });
@@ -527,10 +638,24 @@ router.post('/', async (req, res) => {
     if (Object.keys(langData).length < 2) {
       return res.status(400).json({ message: 'Target and native text fields are required' });
     }
+    const targetField = languageField(targetLang);
+    const nativeField = languageField(nativeLang);
+    const targetText = langData[targetField] || langData.korean || '';
+    const nativeText = langData[nativeField] || langData.english || '';
+    const normalizedTargetLang = normalizeLangCode(targetLang);
+    const conceptId = req.body.conceptId || `user.${normalizedTargetLang}.${slugForConcept(targetText)}`;
+    const senseId = req.body.senseId || `${conceptId}.sense.${slugForConcept(nativeText || targetText)}`;
 
     const flashcard = new Flashcard({
       userId: req.userId,
       ...langData,
+      conceptId,
+      senseId,
+      conceptGloss: req.body.conceptGloss || nativeText,
+      learningLevel: req.body.learningLevel,
+      firstIntroducedLevel: req.body.firstIntroducedLevel || req.body.learningLevel,
+      activeLevels: req.body.activeLevels || (req.body.learningLevel ? [req.body.learningLevel] : []),
+      levelUses: req.body.levelUses || {},
       romanization,
       officialPronunciation,
       learnerPronunciation,
@@ -551,9 +676,12 @@ router.post('/', async (req, res) => {
 
 // Update flashcard (mark correct/incorrect) - verify ownership
 router.put('/:id', async (req, res) => {
-  const { isCorrect } = req.body;
+  const { isCorrect, masteryLevel, nativeLang } = req.body;
 
   try {
+    if (typeof isCorrect !== 'boolean' && masteryLevel === undefined) {
+      return res.status(400).json({ message: 'isCorrect or masteryLevel is required' });
+    }
     const flashcard = await Flashcard.findById(req.params.id).lean();
     if (!flashcard) {
       return res.status(404).json({ message: 'Flashcard not found' });
@@ -564,19 +692,39 @@ router.put('/:id', async (req, res) => {
       const existing = await UserCardPreference.findOne({
         userId: req.userId,
         cardId: req.params.id,
+      }).lean();
+      const scheduled = scheduleFlashcardReview({
+        currentRating: existing ? existing.masteryLevel : 3,
+        requestedRating: masteryLevel,
+        isCorrect,
+        reviewCount: existing ? existing.reviewCount : 0,
+        ease: existing ? existing.ease : 2.5,
       });
-      const currentLevel = existing ? existing.masteryLevel : 3;
-      const newLevel = isCorrect
-        ? Math.min(currentLevel + 1, 5)
-        : Math.max(currentLevel - 1, 1);
+      const update = {
+        $set: preferencePayload(flashcard, req.userId, scheduled, nativeLang || flashcard.nativeLang || ''),
+        $inc: {
+          correctCount: scheduled.correctIncrement,
+          incorrectCount: scheduled.incorrectIncrement,
+        },
+      };
 
-      await UserCardPreference.findOneAndUpdate(
+      const updatedPref = await UserCardPreference.findOneAndUpdate(
         { userId: req.userId, cardId: req.params.id },
-        { masteryLevel: newLevel, updatedAt: new Date() },
-        { upsert: true, new: true }
-      );
+        update,
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+      ).lean();
 
-      return res.json({ masteryLevel: newLevel });
+      return res.json(applyReviewState({
+        ...flashcard,
+        masteryLevel: updatedPref.masteryLevel,
+        correctCount: updatedPref.correctCount || 0,
+        incorrectCount: updatedPref.incorrectCount || 0,
+        reviewCount: updatedPref.reviewCount || 0,
+        ease: updatedPref.ease,
+        lastReviewedAt: updatedPref.lastReviewedAt,
+        nextReviewAt: updatedPref.nextReviewAt,
+        lastReviewResult: updatedPref.lastReviewResult,
+      }));
     }
 
     // User-created card — verify ownership and update directly
@@ -584,16 +732,30 @@ router.put('/:id', async (req, res) => {
       return res.status(403).json({ message: 'Access denied' });
     }
 
-    const newLevel = isCorrect
-      ? Math.min(flashcard.masteryLevel + 1, 5)
-      : Math.max(flashcard.masteryLevel - 1, 1);
+    const scheduled = scheduleFlashcardReview({
+      currentRating: flashcard.masteryLevel,
+      requestedRating: masteryLevel,
+      isCorrect,
+      reviewCount: flashcard.reviewCount || 0,
+      ease: flashcard.ease || 2.5,
+    });
     const update = {
-      $set: { lastReviewedAt: new Date(), masteryLevel: newLevel },
-      $inc: isCorrect ? { correctCount: 1 } : { incorrectCount: 1 },
+      $set: {
+        lastReviewedAt: scheduled.lastReviewedAt,
+        nextReviewAt: scheduled.nextReviewAt,
+        lastReviewResult: scheduled.lastReviewResult,
+        masteryLevel: scheduled.masteryLevel,
+        reviewCount: scheduled.reviewCount,
+        ease: scheduled.ease,
+      },
+      $inc: {
+        correctCount: scheduled.correctIncrement,
+        incorrectCount: scheduled.incorrectIncrement,
+      },
     };
 
-    const updated = await Flashcard.findByIdAndUpdate(req.params.id, update, { new: true });
-    res.json(updated);
+    const updated = await Flashcard.findByIdAndUpdate(req.params.id, update, { new: true }).lean();
+    res.json(applyReviewState(updated));
   } catch (error) {
     console.error('Update flashcard error:', error);
     res.status(500).json({ message: 'Server error' });

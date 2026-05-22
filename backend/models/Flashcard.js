@@ -29,7 +29,51 @@ const flashcardSchema = new mongoose.Schema({
   english: String,
   audioUrl: String,
   conceptId: String,
+  senseId: String,
   conceptGloss: String,
+  learningLevel: {
+    type: Number,
+    enum: [1, 2, 3, 4],
+  },
+  firstIntroducedLevel: {
+    type: Number,
+    enum: [1, 2, 3, 4],
+  },
+  activeLevels: [{
+    type: Number,
+    enum: [1, 2, 3, 4],
+  }],
+  levelTrack: String,
+  supportLevel: String,
+  skillStrands: [String],
+  lessonRole: String,
+  coreRequired: Boolean,
+  requiredForProgress: Boolean,
+  certificateEligible: Boolean,
+  branchType: String,
+  lessonWeight: {
+    type: Number,
+    enum: [1, 2, 3],
+  },
+  checkpointType: String,
+  repairFocus: [String],
+  longActivityTypes: [String],
+  manifestSource: String,
+  programLevelNameKey: String,
+  programLevelDescriptionKey: String,
+  unitOrder: Number,
+  sequenceOrder: Number,
+  skillFocus: [String],
+  prerequisiteConcepts: [String],
+  teachesConcepts: [String],
+  reviewsConcepts: [String],
+  objective: String,
+  sourceClassLessonKey: String,
+  sourceClassLessonKeys: [String],
+  levelUses: {
+    type: mongoose.Schema.Types.Mixed,
+    default: {},
+  },
   usage: {
     type: mongoose.Schema.Types.Mixed,
     default: {},
@@ -81,6 +125,19 @@ const flashcardSchema = new mongoose.Schema({
     default: 0,
   },
   lastReviewedAt: Date,
+  nextReviewAt: Date,
+  reviewCount: {
+    type: Number,
+    default: 0,
+  },
+  ease: {
+    type: Number,
+    default: 2.5,
+  },
+  lastReviewResult: {
+    type: String,
+    enum: ['correct', 'incorrect', 'manual'],
+  },
   createdAt: {
     type: Date,
     default: Date.now,
@@ -88,5 +145,8 @@ const flashcardSchema = new mongoose.Schema({
 });
 
 flashcardSchema.index({ isDefault: 1, defaultIndex: 1 });
+flashcardSchema.index({ targetLang: 1, conceptId: 1 });
+flashcardSchema.index({ targetLang: 1, senseId: 1 });
+flashcardSchema.index({ userId: 1, nextReviewAt: 1 });
 
 module.exports = mongoose.model('Flashcard', flashcardSchema);

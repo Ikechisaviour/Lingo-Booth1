@@ -26,6 +26,7 @@ const FlashcardsPage = lazy(() => import('./pages/FlashcardsPage'));
 const WritingPracticePage = lazy(() => import('./pages/WritingPracticePage'));
 const ReviewPage = lazy(() => import('./pages/ReviewPage'));
 const PlacementCheckPage = lazy(() => import('./pages/PlacementCheckPage'));
+const LevelTestPage = lazy(() => import('./pages/LevelTestPage'));
 const ConversationPage = lazy(() => import('./pages/ConversationPage'));
 const ContextPracticePage = lazy(() => import('./pages/ContextPracticePage'));
 const ProgressPage = lazy(() => import('./pages/ProgressPage'));
@@ -316,6 +317,7 @@ function App() {
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('userId');
     localStorage.removeItem('username');
+    localStorage.removeItem('userFullName');
     localStorage.removeItem('userEmail');
     localStorage.removeItem('userRole');
     localStorage.removeItem('subscriptionTier');
@@ -348,14 +350,19 @@ function App() {
   const needsLanguageSetup = localStorage.getItem('needsLanguageSetup') === 'true';
   const languagesReady = !!localStorage.getItem('nativeLanguage') && !!localStorage.getItem('targetLanguage');
   const localDemoPreviewAllowed = ['localhost', '127.0.0.1'].includes(window.location.hostname);
-  const showAppNavbar = canAccessApp && !needsLanguageSetup && languagesReady;
+  const pageSearchParams = new URLSearchParams(window.location.search);
+  const certificateRenderId = pageSearchParams.get('certificateRender') === '1'
+    ? pageSearchParams.get('certificateId') || ''
+    : '';
+  const isCertificateRender = !!certificateRenderId;
+  const showAppNavbar = canAccessApp && !needsLanguageSetup && languagesReady && !isCertificateRender;
 
   return (
     <GoogleOAuthProvider key={googleLocale} clientId={GOOGLE_CLIENT_ID} locale={googleLocale}>
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <AuthSessionListener onSessionEnded={handleSessionEnded} />
       <div className={`App${challengeMode ? ' challenge-theme' : ''}`}>
-        <GlobalHomeLogo hidden={showAppNavbar} />
+        <GlobalHomeLogo hidden={showAppNavbar || isCertificateRender} />
         {showAppNavbar && (
           <Navbar
             onLogout={handleLogout}
@@ -366,10 +373,10 @@ function App() {
           />
         )}
         <div className="app-content">
-        {isAuthenticated && !emailVerified && !isGuest && (
+        {isAuthenticated && !emailVerified && !isGuest && !isCertificateRender && (
           <EmailVerificationBanner />
         )}
-        {showGuestPrompt && isGuest && (
+        {showGuestPrompt && isGuest && !isCertificateRender && (
           <GuestSignupPrompt
             onClose={() => setShowGuestPrompt(false)}
             onGuestExit={handleGuestExit}
@@ -437,6 +444,7 @@ function App() {
           <Route
             path="/"
             element={
+              isCertificateRender ? <CertificateVerifyPage certificateIdOverride={certificateRenderId} /> :
               isAuthenticated && (needsLanguageSetup || !languagesReady) ? <Navigate to="/select-language?mode=google-setup" /> :
               canAccessApp ? <HomePage isGuest={isGuest} /> : <LandingPage />
             }
@@ -507,6 +515,12 @@ function App() {
             path="/level-check"
             element={
               isAuthenticated ? <PlacementCheckPage /> : <Navigate to="/login" />
+            }
+          />
+          <Route
+            path="/level-tests"
+            element={
+              isAuthenticated ? <LevelTestPage /> : <Navigate to="/login" />
             }
           />
           <Route

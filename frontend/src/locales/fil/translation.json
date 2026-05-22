@@ -44,7 +44,8 @@
     "search": "Maghanap",
     "notSet": "Hindi nakatakda",
     "goBack": "Bumalik ka",
-    "all": "Lahat"
+    "all": "Lahat",
+    "restart": "I-restart"
   },
   "languageSelect": {
     "title": "Piliin ang Iyong mga Wika",
@@ -100,7 +101,10 @@
     "passwordsMatch": "Magkatugma ang mga password",
     "registrationFailed": "Hindi makapag-rehistro",
     "googleFailed": "Nabigo ang pag-sign up gamit ang Google. Pakisubukan muli.",
-    "checkEmail": "Tingnan ang email mo para ma-verify ang account"
+    "checkEmail": "Tingnan ang email mo para ma-verify ang account",
+    "fullNameOptional": "Buong pangalan (opsyonal)",
+    "fullNamePlaceholder": "Pangalan na ipapakita sa mga certificate",
+    "fullNameHint": "Maaari mo itong idagdag ngayon o bago mag-isyu ng sertipiko."
   },
   "navbar": {
     "continue": "Magpatuloy",
@@ -203,7 +207,10 @@
       "sat": "S",
       "sun": "S"
     },
-    "supportAndPlans": "Suporta at mga plano"
+    "supportAndPlans": "Suporta at mga plano",
+    "decayBannerActive": "Ang XP ay nabubulok — araw-araw na pagkawala {{rate}}%. Sagutin ang isang tanong upang matigil ito.",
+    "decayBannerGrace": "Nagsisimula ang pagkabulok ng XP sa {{hours}}h — araw-araw na pagkawala {{rate}}%. Patuloy na mag-aral para maiwasan ito.",
+    "dashboard": "Dashboard"
   },
   "lessons": {
     "title": "Mga Aralin sa <1>{{language}}</1>",
@@ -298,7 +305,15 @@
     "translating": "Isinasalin...",
     "translationUnavailable": "Naglo-load ng salin...",
     "retryTranslation": "Subukan muli",
-    "quizUnavailable": "Hindi available ang pagsusulit — naglo-load ng salin..."
+    "quizUnavailable": "Hindi available ang pagsusulit — naglo-load ng salin...",
+    "howDoYouSayThisIn": "Paano mo ito nasasabi sa {{language}}?",
+    "quizMode": {
+      "nativeAssisted": "Maagang pagsusuri sa sarili: piliin ang kahulugan sa iyong sariling wika.",
+      "targetWithNativeHints": "Buuin ang paggunita: gamitin ang katutubong pahiwatig, pagkatapos ay piliin ang sagot sa target na wika.",
+      "targetDominant": "Independiyenteng pagsasanay: ang mga pagpipilian sa target na wika ay nagdadala ng karamihan sa gawain.",
+      "targetFirst": "Advanced na self-test: manatiling target-first at gumamit lang ng tulong kapag kinakailangan.",
+      "standard": "Pinatnubayang pagsusuri sa sarili."
+    }
   },
   "flashcards": {
     "title": "Magsanay ng <1>Flashcards</1>",
@@ -386,7 +401,8 @@
     "savedReason": "Nai-save mula sa mga flashcard para sa pagsasanay sa ibang pagkakataon.",
     "saveForReview": "I-save para sa pagsusuri",
     "bookmarkedReason": "Na-bookmark mula sa mga flashcard.",
-    "selfTestReason": "Na-save mula sa mga flashcard para sa isang mabilis na self-test."
+    "selfTestReason": "Na-save mula sa mga flashcard para sa isang mabilis na self-test.",
+    "setFamiliarityLevel": "Itakda ang pamilyar sa {{level}}"
   },
   "progress": {
     "title": "Ang Iyong <1>Progreso</1>",
@@ -523,7 +539,10 @@
     "systemDefault": "Default ng system",
     "voiceSettingsDesc": "Pumili ng magkahiwalay na boses para sa iyong target na wika at sa iyong katutubong wika upang natural na binibigkas ang mga halo-halong tugon.",
     "targetVoice": "Target na boses",
-    "nativeVoice": "Katutubong boses"
+    "nativeVoice": "Katutubong boses",
+    "fullName": "Buong pangalan",
+    "fullNamePlaceholder": "Pangalan na ipapakita sa mga certificate",
+    "fullNameMissing": "Magdagdag bago magbigay ng sertipiko"
   },
   "verifyEmail": {
     "verifying": "Vine-verify ang iyong email...",
@@ -985,7 +1004,46 @@
     "saveReply": "I-save ang tugon",
     "selfTestReason": "Na-save mula sa klase para sa isang mabilis na self-test.",
     "hideOutline": "Itago ang balangkas",
-    "showOutline": "Ipakita ang balangkas"
+    "showOutline": "Ipakita ang balangkas",
+    "wrapUpReviewBody": "Subukan muli ang dapat o mahinang mga item mula sa klase na ito.",
+    "wrapUpQuizBody": "Suriin ang pag-unawa nang hindi nilo-load ang pagsusulit hanggang sa magsimula ka.",
+    "wrapUpWritingBody": "Gamitin ang mode ng pagsulat o uri na naaangkop sa antas.",
+    "wrapUpConversationPrompt": "Tulungan akong gamitin ang natutunan ko sa isang maikling pag-uusap.",
+    "wrapUpConversationBody": "Gawing maikling roleplay ang aralin.",
+    "learningPlan": {
+      "unplacedLevel": "Antas ng pagkatuto",
+      "moreActivities": "{{count}} higit pa",
+      "level": "Antas",
+      "support": "Suporta",
+      "selfTest": "Pagsusulit sa sarili",
+      "writing": "Pagsusulat",
+      "activities": "Mahabang practice",
+      "ariaLabel": "Plano sa pagkatuto ng aralin"
+    },
+    "supportLevels": {
+      "nativeGuided": "Malakas na suporta sa katutubong wika",
+      "mixedGuided": "Balanseng target at katutubong suporta",
+      "targetFirst": "Target na wika muna",
+      "immersionWithHelp": "Karamihan sa target na wika ay may magagamit na tulong",
+      "standard": "May gabay na suporta"
+    },
+    "quizModes": {
+      "nativeAssisted": "Kahulugan ng mga pagpipilian sa iyong sariling wika",
+      "targetWithNativeHints": "Mga pagpipilian sa target na wika na may mga katutubong pahiwatig",
+      "targetDominant": "Karamihan sa mga pagpipilian sa target na wika",
+      "targetFirst": "Target-unang self-test",
+      "standard": "Pinatnubayang pagsusuri sa sarili"
+    },
+    "writingModes": {
+      "handwritingFirst": "Bakas o kopyahin muna",
+      "typeWithWriteOption": "Uri, na may magagamit na kasanayan sa pagsulat",
+      "typedProduction": "Nag-type ng mga sagot mula sa memorya",
+      "extendedTypedProduction": "Mga mas mahabang nai-type na tugon",
+      "standard": "Sumulat o mag-type"
+    },
+    "longActivities": {
+      "practice": "Magsanay"
+    }
   },
   "classList": {
     "heroAriaLabel": "Klase",
@@ -1021,15 +1079,45 @@
       "intermediateSubtitle": "Mga unit na batay sa paksa para sa mga opinyon, kultura, kalusugan, trabaho, at pang-araw-araw na kumpiyansa.",
       "professionalTitle": "Level {{level}} - Propesyonal {{language}}",
       "professionalSubtitle": "Praktikal na wika para sa trabaho, serbisyo, pabahay, kaligtasan, at pormal na sitwasyon.",
-      "grammarTitle": "Level {{level}} - Advanced na grammar",
-      "grammarSubtitle": "Mga pattern cluster na tumutulong sa iyong pagkonekta ng mga ideya na may higit na kontrol."
+      "grammarTitle": "Level {{level}} - Advanced {{language}}",
+      "grammarSubtitle": "Mga pattern cluster na tumutulong sa iyong pagkonekta ng mga ideya na may higit na kontrol.",
+      "survivalTitle": "Antas {{level}} - Mahalaga {{language}}",
+      "survivalSubtitle": "Bumuo ng mga praktikal na pangunahing kaalaman para sa mga pagbati, silid, lugar, gawain, pamimili, at pagkain.",
+      "everydayTitle": "Level {{level}} - Araw-araw {{language}}",
+      "everydaySubtitle": "Mga pangunahing aralin sa araw-araw para sa mga pagbati, pagkain, lugar, plano, at pang-araw-araw na sitwasyon.",
+      "bridgeTitle": "Level {{level}} - Tulay",
+      "bridgeSubtitle": "Suriin at ilipat ang mga unit na nagkokonekta sa pang-araw-araw na materyal sa mas malayang paggamit.",
+      "topicTitle": "Level {{level}} - Thematic {{language}}",
+      "topicSubtitle": "Mga unit na batay sa paksa para sa mga opinyon, kultura, kalusugan, mga plano, at pang-araw-araw na pagpapahayag ng kumpiyansa.",
+      "advancedTitle": "Level {{level}} - Advanced {{language}}",
+      "advancedSubtitle": "Mas mahabang pagbabasa, pakikinig, pagsasalita, at pagsusulat na may mas magaan na suporta sa katutubong wika."
     },
     "titlePrefix": {
       "unit": "Level {{level}} · Unit {{unit}}: {{title}}"
     },
     "retry": "Subukan muli",
     "progressAriaLabel": "Pag-unlad ng klase",
-    "progressCaption": "{{percent}}% kumpleto · {{completed}} ng {{total}} item"
+    "progressCaption": "{{percent}}% kumpleto · {{completed}} ng {{total}} item",
+    "lessonWeights": {
+      "deep": "Malalim",
+      "light": "Liwanag",
+      "standard": "Pamantayan"
+    },
+    "lessonPlanAriaLabel": "Lesson plan",
+    "requiredForProgress": "Kinakailangan",
+    "programLevels": {
+      "kicker": "Antas ng pagkatuto",
+      "statsAriaLabel": "Buod ng plano sa antas",
+      "coreCount": "{{count}} core",
+      "branchCount": "{{count}} mga sangay",
+      "checkpointCount": "{{count}} mga checkpoint"
+    },
+    "singleTrackGuidanceAriaLabel": "Isang gabay sa track ng aralin",
+    "singleTrackGuidanceKicker": "Bakit isang klase",
+    "singleTrackGuidanceTitle": "Magsimulang tumutok, pagkatapos ay sanga out",
+    "singleTrackGuidanceBody": "Ang track na ito ay sadyang compact kaya malinaw ang unang hakbang. Tapusin ang klase dito, pagkatapos ay lumipat sa susunod na track para sa mas malawak na pagsasanay.",
+    "singleTrackGuidanceStep1": "Buuin ang base",
+    "singleTrackGuidanceStep2": "Magpatuloy sa pang-araw-araw na paggamit"
   },
   "contextPractice": {
     "title": "Mga aral na nabuo sa paligid mo",
@@ -1147,7 +1235,8 @@
       "stroke": "Sundin ang gabay, pagkatapos ay gamitin ang lugar ng pagsulat upang magsanay.",
       "review": "Ihambing ang iyong isinulat sa sagot at markahan kung ano ang malakas.",
       "trace": "Sundan ang gabay, pagkatapos ay i-clear at isulat mula sa memorya.",
-      "copy": "Tingnang mabuti, pagkatapos ay kopyahin ang salita o pangungusap."
+      "copy": "Tingnang mabuti, pagkatapos ay kopyahin ang salita o pangungusap.",
+      "type": "I-type ang sagot mula sa memorya. Ito ang karaniwang paraan ng pagsulat pagkatapos ng maagang mga aralin sa sulat-kamay."
     },
     "title": "Pagsasanay sa pagsulat",
     "subtitle": "Subaybayan, kopyahin, makinig, alalahanin ayon sa kahulugan, pag-aralan ang pagkakasunud-sunod ng stroke, at panatilihin ang isang kuwaderno mula sa iyong mga aralin.",
@@ -1211,7 +1300,9 @@
     "savedReason": "Na-save mula sa pagsasanay sa pagsulat para sa isa pang pass.",
     "selfTestReason": "Na-save mula sa pagsasanay sa pagsulat para sa isang mabilis na pagsubok sa sarili.",
     "hideNotebook": "Itago ang notebook",
-    "showNotebook": "Ipakita ang kuwaderno"
+    "showNotebook": "Ipakita ang kuwaderno",
+    "typePlaceholder": "I-type ang iyong sagot dito...",
+    "typeAriaLabel": "Naka-type na sagot sa pagsulat"
   },
   "institution": {
     "kicker": "Institusyon",
@@ -1276,7 +1367,43 @@
     },
     "snapshotsKicker": "Mga snapshot ng mag-aaral",
     "needsHelpTitle": "Kailangan ng atensyon",
-    "noNeedsHelpLearners": "Walang mga mag-aaral sa kasalukuyan ang nangangailangan ng karagdagang atensyon."
+    "noNeedsHelpLearners": "Walang mga mag-aaral sa kasalukuyan ang nangangailangan ng karagdagang atensyon.",
+    "groupSaved": "Na-save ang pangkat.",
+    "groupSaveFailed": "Hindi ma-save ang grupong ito.",
+    "group": "Grupo",
+    "noGroup": "Walang grupo",
+    "allowedTargetLanguages": "Pinapayagan ang mga target na wika",
+    "allowedTargetLanguagesHelp": "Ang mga mag-aaral na gumagamit ng access sa institusyong ito ay maaari lamang pumili ng mga target na wikang ito.",
+    "defaultTargetLanguage": "Default na target na wika",
+    "noDefaultLanguage": "Walang default",
+    "allowLanguageRequests": "Pahintulutan ang mga mag-aaral na humiling ng ibang wika",
+    "groupsKicker": "Mga grupo",
+    "groupsTitle": "Mga pangkat sa pag-aaral",
+    "noGroupsYet": "Lumikha ng pangkat upang pamahalaan ang pag-access sa wika para sa isang klase, pangkat, o koponan.",
+    "groupUsesOrgPolicy": "Gumagamit ng patakaran sa wika ng organisasyon",
+    "groupName": "Pangalan ng grupo",
+    "groupNamePlaceholder": "Halimbawa: Beginner evening class",
+    "groupLanguages": "Grupo ng mga target na wika",
+    "groupLanguagesHelp": "Iwanang walang laman upang gamitin ang patakaran ng organisasyon, o pumili ng mga wika para sa grupong ito lamang.",
+    "createGroup": "Lumikha ng pangkat",
+    "testingKicker": "Mga pagsusuri sa antas",
+    "testingTitle": "Mga pagsubok at sertipiko",
+    "recentAttempts": "Kamakailang mga pagtatangka",
+    "certificatesIssued": "Mga sertipiko na ibinigay",
+    "learner": "Mag-aaral",
+    "noTestAttempts": "Wala pang mga level check na isinumite.",
+    "certificateLogoInvalid": "Gumamit ng PNG, JPG, o WebP na logo na wala pang 600 KB.",
+    "certificateLogoReadFailed": "Hindi mabasa ang logo na file na iyon.",
+    "certificateBrandingSaved": "Na-save ang pagba-brand ng certificate.",
+    "certificateBrandingFailed": "Hindi ma-save ang branding ng certificate. Gumamit ng PNG, JPG, o WebP na logo na wala pang 600 KB.",
+    "certificateBrandingRemoved": "Inalis ang logo ng certificate.",
+    "certificateBrandingKicker": "Mga sertipiko",
+    "certificateBrandingTitle": "Branding ng sertipiko",
+    "certificateBrandingHelp": "Ginagamit ng mga sertipiko ng institusyon ang parehong disenyo tulad ng mga personal na sertipiko, na may idinagdag na logo at pangalan ng institusyong ito.",
+    "chooseCertificateLogo": "Pumili ng logo",
+    "saveCertificateBranding": "I-save ang logo ng sertipiko",
+    "removeCertificateLogo": "Alisin ang logo",
+    "certificateLogoRequirement": "Gumamit ng malinis na PNG, JPG, o WebP na logo na wala pang 600 KB. Karaniwang pinakamaganda ang hitsura ng mga transparent na logo."
   },
   "certificates": {
     "kicker": "Sertipiko",
@@ -1308,7 +1435,32 @@
     "viewPlans": "Tingnan ang mga plano",
     "signIn": "Mag-sign in",
     "issuedSuccess": "Inisyu ang sertipiko.",
-    "issueFailed": "Hindi makapagbigay ng sertipiko."
+    "issueFailed": "Hindi makapagbigay ng sertipiko.",
+    "levelCertificateTitle": "Level {{level}} certificate",
+    "proficiencyTitle": "Sertipiko ng Kahusayan",
+    "institutionProficiencyTitle": "Sertipiko ng Kahusayan",
+    "levelCompletionTitle": "Sertipiko sa Pagkumpleto ng Antas",
+    "institutionCompletionTitle": "Sertipiko sa Pagkumpleto ng Antas",
+    "level": "Antas",
+    "levelNumber": "Antas {{level}}",
+    "score": "Puntos",
+    "organization": "Organisasyon",
+    "institutionLogoAlt": "{{organization}} logo",
+    "issuedThrough": "Inilabas sa pamamagitan ng",
+    "institution": "Institusyon",
+    "verifiedProficiency": "Na-verify na sertipiko ng kahusayan",
+    "verifiedCompletion": "Na-verify na sertipiko ng pagkumpleto",
+    "proficiencyStatement": "Ipinakita ang kahusayan para sa Antas {{level}}",
+    "levelCompletionStatement": "Nakumpleto ang Antas {{level}}",
+    "completionStatement": "Nakumpleto ang kinakailangang aktibidad sa pag-aaral",
+    "actions": "Mga aksyon sa sertipiko",
+    "downloading": "Inihahanda...",
+    "download": "I-download",
+    "nativeVersion": "Katutubong wika: {{language}}",
+    "targetVersion": "Target na wika: {{language}}",
+    "bilingualVersion": "Bilingual: katutubong + target",
+    "languageControl": "Wika ng sertipiko",
+    "certificateIssuedThrough": "Sertipiko na ibinigay sa pamamagitan ng"
   },
   "adminBilling": {
     "title": "Mga subscription at institusyon",
@@ -1611,7 +1763,10 @@
     "recentWordsEmptyAction": "Ang mga naka-save na salita at kapaki-pakinabang na parirala ay kokolektahin dito pagkatapos ng klase o pagsasanay sa pag-uusap.",
     "startAClass": "Magsimula ng klase",
     "milestonesEmptyAction": "Ang iyong unang natapos na aralin, naka-save na parirala, o sertipiko ay lalabas dito.",
-    "earnFirstMilestone": "Makamit ang unang milestone"
+    "earnFirstMilestone": "Makamit ang unang milestone",
+    "repairPlanTitle": "Ayusin ang focus",
+    "repairPlanValue": "Worth revisiting",
+    "repairPlanBody": "Ang ilang mahihina o checkpoint item ay handa na para sa nakatutok na pagsasanay bago ka sumulong nang napakalayo."
   },
   "adminAnalytics": {
     "features": {
@@ -1651,5 +1806,64 @@
     "speaking": "nagsasalita",
     "reading": "Nagbabasa",
     "writing": "Pagsusulat"
+  },
+  "levelTests": {
+    "kicker": "Mga pagsusuri sa antas",
+    "levelLabel": "Antas {{level}}",
+    "passed": "nakapasa",
+    "reviewRecommended": "Inirerekomenda ang pagsusuri",
+    "tasks": {
+      "chooseTarget": "Piliin ang target na sagot sa wika.",
+      "chooseMeaning": "Piliin ang pinakamahusay na kahulugan.",
+      "typeTarget": "I-type ang sagot sa target na wika.",
+      "shortResponse": "Sagutin sa target na wika, pagkatapos ay markahan ang iyong tugon.",
+      "default": "Sagutin ang tanong."
+    },
+    "skills": {
+      "general": "Heneral"
+    },
+    "institutionContext": "Institusyon",
+    "personalContext": "Personal",
+    "loadFailed": "Hindi ma-load ang pagsubok sa antas sa ngayon.",
+    "startFailed": "Ang pagsusulit na ito ay hindi pa handa.",
+    "submitted": "Naiskor na ang iyong pagsusulit.",
+    "submitFailed": "Hindi maisumite ang pagsusulit na ito.",
+    "certificateReady": "Handa na ang iyong sertipiko.",
+    "certificateFailed": "Hindi pa maibigay ang certificate na ito.",
+    "title": "Ipakita kung ano ang kaya mong gawin",
+    "subtitle": "Kumpletuhin ang isang level check para sa pag-unlad, o kumuha ng proficiency check kapag gusto mo ng mas malakas na patunay ng kakayahan.",
+    "verifyHint": "Maaaring ma-verify ang mga certificate gamit ang kanilang certificate ID.",
+    "certificates": "Mga sertipiko",
+    "context": "Konteksto",
+    "allowedLanguages": "Magagamit na mga target na wika",
+    "chooseLevel": "Pumili ng antas",
+    "testType": "Uri ng pagsubok",
+    "start": "Simulan ang check",
+    "restrictedTarget": "Ang target na wika na ito ay hindi magagamit sa konteksto ng institusyong ito.",
+    "recent": "Kamakailan",
+    "notSubmitted": "Hindi isinumite",
+    "noRecent": "Wala pang level check.",
+    "emptyTitle": "Pumili ng level check",
+    "emptyBody": "Makakakita ka ng balanseng hanay ng bokabularyo, gramatika, pagbabasa, pagsasalita, at pagsusulat ng mga gawain mula sa antas na iyong pinili.",
+    "resultTitle": "Iyong resulta",
+    "questionsTitle": "Sagutin ang bawat gawain",
+    "passedBody": "Maaari kang magbigay ng sertipiko para sa resultang ito.",
+    "reviewBody": "Suriin ang mahihinang kasanayan, pagkatapos ay subukang muli kapag handa na.",
+    "certificateIssued": "Inisyu ang sertipiko",
+    "issueCertificate": "Mag-isyu ng sertipiko",
+    "writeAnswer": "Isulat ang iyong sagot dito...",
+    "selfGood": "Mabuti",
+    "selfAlmost": "halos",
+    "selfNeedsWork": "Kailangan ng trabaho",
+    "correct": "Tama",
+    "missed": "Suriin ito",
+    "submit": "Isumite ang tseke",
+    "fullNameInvalid": "Maglagay ng hindi bababa sa dalawang character para sa iyong buong pangalan.",
+    "certificateNameKicker": "Pangalan ng sertipiko",
+    "fullNameRequiredTitle": "Idagdag ang iyong buong pangalan",
+    "fullNameRequiredBody": "Ilagay ang iyong buong pangalan nang eksakto kung paano ito dapat lumabas sa certificate na ito. Kailangan mo lang gawin ito bago mag-isyu ng sertipiko.",
+    "fullNameLabel": "Buong pangalan",
+    "fullNamePlaceholder": "Buong pangalan mo",
+    "saveNameAndIssue": "I-save ang pangalan at magbigay ng sertipiko"
   }
 }

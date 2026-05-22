@@ -15,7 +15,9 @@
       "PowerShell(Get-Content *)",
       "Bash(npm install *)",
       "Bash(cd frontend *)",
-      "Read(//c/Users/Saviour ICT-CRC/Desktop/Personal Project/Personal Projects2/**)"
+      "Read(//c/Users/Saviour ICT-CRC/Desktop/Personal Project/Personal Projects2/**)",
+      "Bash(sed -n '204,212p' frontend/src/index.css)",
+      "Bash(sed -n '79,96p' frontend/src/App.css)"
     ]
   }
 }

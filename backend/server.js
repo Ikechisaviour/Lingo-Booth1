@@ -5,6 +5,7 @@ const rateLimit = require('express-rate-limit');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const User = require('./models/User');
+const ensureCertificateIndexes = require('./utils/ensureCertificateIndexes');
 
 const app = express();
 
@@ -102,7 +103,14 @@ app.use('/api/contact', rateLimit({
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/korean-learning', { family: 4 })
-  .then(() => console.log('MongoDB connected'))
+  .then(async () => {
+    console.log('MongoDB connected');
+    try {
+      await ensureCertificateIndexes();
+    } catch (err) {
+      console.error('Certificate index check failed:', err.message);
+    }
+  })
   .catch(err => console.log('MongoDB connection error:', err));
 
 // Routes
@@ -111,6 +119,7 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/contact', require('./routes/contact'));
 app.use('/api/billing', require('./routes/billing'));
 app.use('/api/certificates', require('./routes/certificates'));
+app.use('/api/level-tests', require('./routes/levelTests'));
 app.use('/api/lessons', learningContentRouter); // legacy quiz-compatible route
 app.use('/api/quiz', learningContentRouter);
 app.use('/api/class-lessons', learningContentRouter);

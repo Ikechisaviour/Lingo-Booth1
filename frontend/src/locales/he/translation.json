@@ -44,7 +44,8 @@
     "search": "לְחַפֵּשׂ",
     "notSet": "לא מוגדר",
     "goBack": "לַחֲזוֹר",
-    "all": "כֹּל"
+    "all": "כֹּל",
+    "restart": "הפעל מחדש"
   },
   "languageSelect": {
     "title": "בחר את השפות שלך",
@@ -100,7 +101,10 @@
     "passwordsMatch": "הסיסמאות תואמות",
     "registrationFailed": "ההרשמה נכשלה",
     "googleFailed": "ההרשמה לגוגל נכשלה. אנא נסה שוב.",
-    "checkEmail": "בדוק את האימייל שלך כדי לאמת את חשבונך"
+    "checkEmail": "בדוק את האימייל שלך כדי לאמת את חשבונך",
+    "fullNameOptional": "שם מלא (לא חובה)",
+    "fullNamePlaceholder": "שם שיוצג בתעודות",
+    "fullNameHint": "אתה יכול להוסיף את זה עכשיו או לפני הנפקת אישור."
   },
   "navbar": {
     "continue": "המשך",
@@ -203,7 +207,10 @@
       "sat": "ס",
       "sun": "ס"
     },
-    "supportAndPlans": "תמיכה ותוכניות"
+    "supportAndPlans": "תמיכה ותוכניות",
+    "decayBannerActive": "XP מתכלה - הפסד יומי {{rate}}%. ענה על שאלה כדי להפסיק את זה.",
+    "decayBannerGrace": "דעיכת XP מתחילה בעוד {{hours}}h — הפסד יומי {{rate}}%. תמשיך ללמוד כדי למנוע את זה.",
+    "dashboard": "לוּחַ מַחווָנִים"
   },
   "lessons": {
     "title": "{{language}} <1>שיעורים</1>",
@@ -298,7 +305,15 @@
     "translating": "מתרגם...",
     "translationUnavailable": "טוען תרגום...",
     "retryTranslation": "נסה שוב",
-    "quizUnavailable": "החידון לא זמין — טוען תרגום..."
+    "quizUnavailable": "החידון לא זמין — טוען תרגום...",
+    "howDoYouSayThisIn": "איך אומרים את זה ב-{{language}}?",
+    "quizMode": {
+      "nativeAssisted": "מבחן עצמי מוקדם: בחר את המשמעות בשפת האם שלך.",
+      "targetWithNativeHints": "בנה זכירה: השתמש ברמז המקורי ולאחר מכן בחר את התשובה בשפת היעד.",
+      "targetDominant": "תרגול עצמאי: בחירת שפת המטרה נושאת את רוב העבודה.",
+      "targetFirst": "בדיקה עצמית מתקדמת: הישאר במקום הראשון במטרה והשתמש בעזרה רק בעת הצורך.",
+      "standard": "מבחן עצמי מודרך."
+    }
   },
   "flashcards": {
     "title": "תרגול <1>כרטיסיות</1>",
@@ -386,7 +401,8 @@
     "savedReason": "נשמר מכרטיסי פלאש לתרגול מאוחר יותר.",
     "saveForReview": "שמור לסקירה",
     "bookmarkedReason": "סימניה מכרטיסי פלאש.",
-    "selfTestReason": "נשמר מכרטיסי פלאש לבדיקה עצמית מהירה."
+    "selfTestReason": "נשמר מכרטיסי פלאש לבדיקה עצמית מהירה.",
+    "setFamiliarityLevel": "הגדר את היכרות ל-{{level}}"
   },
   "progress": {
     "title": "<1>ההתקדמות</1> שלך",
@@ -523,7 +539,10 @@
     "systemDefault": "ברירת המחדל של המערכת",
     "voiceSettingsDesc": "בחר קולות נפרדים לשפת היעד שלך ולשפת האם שלך כך שתשובות מעורבות מבוטאות באופן טבעי.",
     "targetVoice": "קול מטרה",
-    "nativeVoice": "קול יליד"
+    "nativeVoice": "קול יליד",
+    "fullName": "שם מלא",
+    "fullNamePlaceholder": "שם שיוצג בתעודות",
+    "fullNameMissing": "הוסף לפני הנפקת אישור"
   },
   "verifyEmail": {
     "verifying": "מאמת את האימייל שלך...",
@@ -985,7 +1004,46 @@
     "saveReply": "שמור תשובה",
     "selfTestReason": "נשמר מהכיתה לבדיקה עצמית מהירה.",
     "hideOutline": "הסתר קווי מתאר",
-    "showOutline": "הצג קווי מתאר"
+    "showOutline": "הצג קווי מתאר",
+    "wrapUpReviewBody": "נסה שוב פריטים חלשים או חלשים מכיתה זו.",
+    "wrapUpQuizBody": "בדוק הבנה מבלי לטעון את החידון עד שתתחיל.",
+    "wrapUpWritingBody": "השתמש במצב כתיבה או הקלדה המתאים לרמה.",
+    "wrapUpConversationPrompt": "עזור לי להשתמש במה שלמדתי זה עתה בשיחה קצרה.",
+    "wrapUpConversationBody": "הפוך את השיעור למשחק תפקידים קצר.",
+    "learningPlan": {
+      "unplacedLevel": "רמת למידה",
+      "moreActivities": "{{count}} יותר",
+      "level": "רָמָה",
+      "support": "תְמִיכָה",
+      "selfTest": "בדיקה עצמית",
+      "writing": "כְּתִיבָה",
+      "activities": "תרגול ארוך",
+      "ariaLabel": "תכנית לימוד שיעור"
+    },
+    "supportLevels": {
+      "nativeGuided": "תמיכה חזקה בשפת האם",
+      "mixedGuided": "מטרה מאוזנת ותמיכה מקומית",
+      "targetFirst": "קודם שפת יעד",
+      "immersionWithHelp": "בעיקר שפת יעד עם עזרה זמינה",
+      "standard": "תמיכה מודרכת"
+    },
+    "quizModes": {
+      "nativeAssisted": "משמעות בחירות בשפת האם שלך",
+      "targetWithNativeHints": "אפשרויות בחירה בשפת היעד עם רמזים מקוריים",
+      "targetDominant": "בעיקר בחירות בשפת היעד",
+      "targetFirst": "מבחן עצמי ראשון במטרה",
+      "standard": "מבחן עצמי מודרך"
+    },
+    "writingModes": {
+      "handwritingFirst": "עקוב אחר או העתק תחילה",
+      "typeWithWriteOption": "סוג, עם תרגול כתיבה זמין",
+      "typedProduction": "הקלד תשובות מהזיכרון",
+      "extendedTypedProduction": "תגובות מודפסות יותר",
+      "standard": "כתוב או הקלד"
+    },
+    "longActivities": {
+      "practice": "לְתַרְגֵל"
+    }
   },
   "classList": {
     "heroAriaLabel": "מַחלָקָה",
@@ -1021,15 +1079,45 @@
       "intermediateSubtitle": "יחידות מונחות נושא לדעות, תרבות, בריאות, עבודה וביטחון יומיומי.",
       "professionalTitle": "רמה {{level}} - מקצועי {{language}}",
       "professionalSubtitle": "שפה מעשית לעבודה, שירותים, דיור, בטיחות ומצבים פורמליים.",
-      "grammarTitle": "רמה {{level}} - דקדוק מתקדם",
-      "grammarSubtitle": "אשכולות דפוסים שעוזרים לך לחבר רעיונות עם יותר שליטה."
+      "grammarTitle": "רמה {{level}} - מתקדם {{language}}",
+      "grammarSubtitle": "אשכולות דפוסים שעוזרים לך לחבר רעיונות עם יותר שליטה.",
+      "survivalTitle": "רמה {{level}} - חיוני {{language}}",
+      "survivalSubtitle": "בנה יסודות מעשיים עבור ברכות, חדרים, מקומות, שגרות, קניות ואוכל.",
+      "everydayTitle": "רמה {{level}} - כל יום {{language}}",
+      "everydaySubtitle": "שיעורי ליבה יומיומיים עבור ברכות, אוכל, מקומות, תוכניות ומצבים יומיומיים.",
+      "bridgeTitle": "רמה {{level}} - גשר",
+      "bridgeSubtitle": "יחידות סקירה ומעבר המחברים חומר יומיומי לשימוש עצמאי יותר.",
+      "topicTitle": "רמה {{level}} - נושאי {{language}}",
+      "topicSubtitle": "יחידות מונחות נושא לדעות, תרבות, בריאות, תוכניות וביטוי יומיומי בטוח.",
+      "advancedTitle": "רמה {{level}} - מתקדם {{language}}",
+      "advancedSubtitle": "משימות קריאה, האזנה, דיבור וכתיבה ארוכות יותר עם תמיכה קלה יותר בשפת האם."
     },
     "titlePrefix": {
       "unit": "רמה {{level}} · יחידה {{unit}}: {{title}}"
     },
     "retry": "נסה שוב",
     "progressAriaLabel": "התקדמות הכיתה",
-    "progressCaption": "{{percent}}% הושלמו · {{completed}} מתוך {{total}} פריטים"
+    "progressCaption": "{{percent}}% הושלמו · {{completed}} מתוך {{total}} פריטים",
+    "lessonWeights": {
+      "deep": "עָמוֹק",
+      "light": "אוֹר",
+      "standard": "תֶקֶן"
+    },
+    "lessonPlanAriaLabel": "מערך שיעור",
+    "requiredForProgress": "דָרוּשׁ",
+    "programLevels": {
+      "kicker": "רמת למידה",
+      "statsAriaLabel": "סיכום תכנית רמה",
+      "coreCount": "ליבת {{count}}",
+      "branchCount": "{{count}} סניפים",
+      "checkpointCount": "{{count}} מחסומים"
+    },
+    "singleTrackGuidanceAriaLabel": "הדרכה במסלול שיעור יחיד",
+    "singleTrackGuidanceKicker": "למה שיעור אחד",
+    "singleTrackGuidanceTitle": "התחל ממוקד, ואז הסתעף",
+    "singleTrackGuidanceBody": "המסלול הזה הוא קומפקטי בכוונה כך שהשלב הראשון מרגיש ברור. סיים את השיעור כאן, ואז עבור למסלול הבא לתרגול רחב יותר.",
+    "singleTrackGuidanceStep1": "בנה את הבסיס",
+    "singleTrackGuidanceStep2": "המשך לשימוש יומיומי"
   },
   "contextPractice": {
     "title": "שיעורים שעוצבו סביבך",
@@ -1147,7 +1235,8 @@
       "stroke": "עקוב אחר המדריך ולאחר מכן השתמש באזור הכתיבה כדי להתאמן.",
       "review": "השווה את הכתיבה שלך עם התשובה וסמן מה היה חזק.",
       "trace": "עקוב אחר המדריך, ואז נקה וכתוב מהזיכרון.",
-      "copy": "הסתכלו היטב, ואז העתיקו את המילה או המשפט."
+      "copy": "הסתכלו היטב, ואז העתיקו את המילה או המשפט.",
+      "type": "הקלד את התשובה מהזיכרון. זהו מצב הכתיבה הסטנדרטי לאחר שיעורי כתב היד המוקדמים."
     },
     "title": "תרגול כתיבה",
     "subtitle": "עקבו, העתקו, האזינו, זכרו לפי משמעות, למדו את סדר השבץ, ושמרו מחברת מהשיעורים שלכם.",
@@ -1211,7 +1300,9 @@
     "savedReason": "נשמר מאימון כתיבה למעבר נוסף.",
     "selfTestReason": "נשמר מאימון כתיבה למבחן עצמי מהיר.",
     "hideNotebook": "הסתר מחברת",
-    "showNotebook": "הצג מחברת"
+    "showNotebook": "הצג מחברת",
+    "typePlaceholder": "הקלד את תשובתך כאן...",
+    "typeAriaLabel": "הקלדת תשובת כתיבה"
   },
   "institution": {
     "kicker": "מוֹסָד",
@@ -1276,7 +1367,43 @@
     },
     "snapshotsKicker": "צילומי מצב של לומד",
     "needsHelpTitle": "צריך תשומת לב",
-    "noNeedsHelpLearners": "אין לומד כרגע זקוק לתשומת לב נוספת."
+    "noNeedsHelpLearners": "אין לומד כרגע זקוק לתשומת לב נוספת.",
+    "groupSaved": "הקבוצה נשמרה.",
+    "groupSaveFailed": "לא ניתן לשמור את הקבוצה הזו.",
+    "group": "קְבוּצָה",
+    "noGroup": "אין קבוצה",
+    "allowedTargetLanguages": "שפות יעד מותרות",
+    "allowedTargetLanguagesHelp": "לומדים המשתמשים בגישה למוסד זה יכולים לבחור רק בשפות היעד הללו.",
+    "defaultTargetLanguage": "שפת יעד ברירת מחדל",
+    "noDefaultLanguage": "אין ברירת מחדל",
+    "allowLanguageRequests": "אפשר ללומדים לבקש שפה אחרת",
+    "groupsKicker": "קבוצות",
+    "groupsTitle": "קבוצות למידה",
+    "noGroupsYet": "צור קבוצה לניהול גישת שפה עבור כיתה, קבוצה או צוות.",
+    "groupUsesOrgPolicy": "משתמש במדיניות השפה הארגונית",
+    "groupName": "שם הקבוצה",
+    "groupNamePlaceholder": "דוגמה: שיעור ערב למתחילים",
+    "groupLanguages": "שפות יעד קבוצתיות",
+    "groupLanguagesHelp": "השאר ריק כדי להשתמש במדיניות הארגון, או בחר שפות לקבוצה זו בלבד.",
+    "createGroup": "צור קבוצה",
+    "testingKicker": "בדיקות רמה",
+    "testingTitle": "מבחנים ותעודות",
+    "recentAttempts": "ניסיונות אחרונים",
+    "certificatesIssued": "תעודות שהונפקו",
+    "learner": "לומד",
+    "noTestAttempts": "עדיין לא הוגשו בדיקות רמה.",
+    "certificateLogoInvalid": "השתמש בלוגו PNG, JPG או WebP מתחת ל-600 KB.",
+    "certificateLogoReadFailed": "לא ניתן לקרוא את קובץ הלוגו הזה.",
+    "certificateBrandingSaved": "מיתוג התעודה נשמר.",
+    "certificateBrandingFailed": "לא ניתן לשמור את מיתוג האישור. השתמש בלוגו PNG, JPG או WebP מתחת ל-600 KB.",
+    "certificateBrandingRemoved": "לוגו התעודה הוסר.",
+    "certificateBrandingKicker": "תעודות",
+    "certificateBrandingTitle": "מיתוג תעודה",
+    "certificateBrandingHelp": "תעודות מוסד משתמשות באותו עיצוב כמו תעודות אישיות, עם לוגו זה ושם המוסד.",
+    "chooseCertificateLogo": "בחר לוגו",
+    "saveCertificateBranding": "שמור לוגו תעודה",
+    "removeCertificateLogo": "הסר את הלוגו",
+    "certificateLogoRequirement": "השתמש בלוגו נקי של PNG, JPG או WebP מתחת ל-600 KB. לוגו שקוף בדרך כלל נראה הכי טוב."
   },
   "certificates": {
     "kicker": "תְעוּדָה",
@@ -1308,7 +1435,32 @@
     "viewPlans": "צפה בתוכניות",
     "signIn": "היכנס",
     "issuedSuccess": "הונפק תעודה.",
-    "issueFailed": "לא ניתן להנפיק אישור."
+    "issueFailed": "לא ניתן להנפיק אישור.",
+    "levelCertificateTitle": "תעודת רמה {{level}}",
+    "proficiencyTitle": "תעודת מיומנות",
+    "institutionProficiencyTitle": "תעודת מיומנות",
+    "levelCompletionTitle": "תעודת השלמה ברמה",
+    "institutionCompletionTitle": "תעודת השלמה ברמה",
+    "level": "רָמָה",
+    "levelNumber": "רמה {{level}}",
+    "score": "צִיוּן",
+    "organization": "אִרגוּן",
+    "institutionLogoAlt": "לוגו {{organization}}",
+    "issuedThrough": "הונפק דרך",
+    "institution": "מוֹסָד",
+    "verifiedProficiency": "תעודת מיומנות מאומתת",
+    "verifiedCompletion": "תעודת סיום מאומתת",
+    "proficiencyStatement": "מיומנות מוכחת לרמה {{level}}",
+    "levelCompletionStatement": "רמה הושלמה {{level}}",
+    "completionStatement": "סיים את פעילות הלמידה הנדרשת",
+    "actions": "פעולות תעודה",
+    "downloading": "עֲרִיכָה...",
+    "download": "הורד",
+    "nativeVersion": "שפת אם: {{language}}",
+    "targetVersion": "שפת יעד: {{language}}",
+    "bilingualVersion": "דו לשוני: יליד + יעד",
+    "languageControl": "שפת תעודה",
+    "certificateIssuedThrough": "תעודה שהונפקה באמצעות"
   },
   "adminBilling": {
     "title": "מינויים ומוסדות",
@@ -1611,7 +1763,10 @@
     "recentWordsEmptyAction": "מילים שמורות וביטויים שימושיים יאספו כאן לאחר תרגול השיעור או השיחה.",
     "startAClass": "התחל שיעור",
     "milestonesEmptyAction": "השיעור הראשון שהושלמו, הביטוי השמור או התעודה יופיעו כאן.",
-    "earnFirstMilestone": "להרוויח את אבן הדרך הראשונה"
+    "earnFirstMilestone": "להרוויח את אבן הדרך הראשונה",
+    "repairPlanTitle": "תיקון מיקוד",
+    "repairPlanValue": "שווה ביקור חוזר",
+    "repairPlanBody": "כמה פריטים חלשים או מחסומים מוכנים לתרגול ממוקד לפני שאתה מתקדם יותר מדי."
   },
   "adminAnalytics": {
     "features": {
@@ -1651,5 +1806,64 @@
     "speaking": "מדבר",
     "reading": "קְרִיאָה",
     "writing": "כְּתִיבָה"
+  },
+  "levelTests": {
+    "kicker": "בדיקות רמה",
+    "levelLabel": "רמה {{level}}",
+    "passed": "עבר",
+    "reviewRecommended": "סקירה מומלצת",
+    "tasks": {
+      "chooseTarget": "בחר את התשובה בשפת היעד.",
+      "chooseMeaning": "בחר את המשמעות הטובה ביותר.",
+      "typeTarget": "הקלד את התשובה בשפת היעד.",
+      "shortResponse": "ענה בשפת היעד ולאחר מכן ציון את התגובה שלך.",
+      "default": "תענה על השאלה."
+    },
+    "skills": {
+      "general": "כְּלָלִי"
+    },
+    "institutionContext": "מוֹסָד",
+    "personalContext": "אִישִׁי",
+    "loadFailed": "לא ניתן לטעון את בדיקת הרמה כרגע.",
+    "startFailed": "המבחן הזה עדיין לא מוכן.",
+    "submitted": "המבחן שלך קיבל ציון.",
+    "submitFailed": "לא ניתן היה להגיש מבחן זה.",
+    "certificateReady": "התעודה שלך מוכנה.",
+    "certificateFailed": "לא ניתן עדיין להנפיק אישור זה.",
+    "title": "הראה מה אתה יכול לעשות",
+    "subtitle": "השלם בדיקת רמה להתקדמות, או בצע בדיקת מיומנות כאשר אתה רוצה הוכחה חזקה יותר ליכולת.",
+    "verifyHint": "ניתן לאמת תעודות באמצעות מזהה התעודה שלהם.",
+    "certificates": "תעודות",
+    "context": "הֶקשֵׁר",
+    "allowedLanguages": "שפות יעד זמינות",
+    "chooseLevel": "בחר רמה",
+    "testType": "סוג בדיקה",
+    "start": "התחל לבדוק",
+    "restrictedTarget": "שפת יעד זו אינה זמינה בהקשר של מוסד זה.",
+    "recent": "לאחרונה",
+    "notSubmitted": "לא הוגש",
+    "noRecent": "עדיין אין בדיקות רמה.",
+    "emptyTitle": "בחר בדיקת רמה",
+    "emptyBody": "תראה מערך מאוזן של משימות אוצר מילים, דקדוק, קריאה, דיבור וכתיבה מהרמה שתבחר.",
+    "resultTitle": "התוצאה שלך",
+    "questionsTitle": "ענה על כל משימה",
+    "passedBody": "אתה יכול להנפיק אישור עבור תוצאה זו.",
+    "reviewBody": "סקור את הכישורים החלשים, ולאחר מכן נסה שוב כשתהיה מוכן.",
+    "certificateIssued": "הונפק תעודה",
+    "issueCertificate": "הנפק תעודה",
+    "writeAnswer": "כתבו את תשובתכם כאן...",
+    "selfGood": "טוֹב",
+    "selfAlmost": "כִּמעַט",
+    "selfNeedsWork": "צריך עבודה",
+    "correct": "נָכוֹן",
+    "missed": "סקור את זה",
+    "submit": "שלח צ'ק",
+    "fullNameInvalid": "הזן לפחות שני תווים עבור שמך המלא.",
+    "certificateNameKicker": "שם התעודה",
+    "fullNameRequiredTitle": "הוסף את שמך המלא",
+    "fullNameRequiredBody": "הזן את שמך המלא בדיוק כפי שהוא אמור להופיע בתעודה זו. אתה רק צריך לעשות זאת לפני הנפקת אישור.",
+    "fullNameLabel": "שם מלא",
+    "fullNamePlaceholder": "שמך המלא",
+    "saveNameAndIssue": "שמור שם והנפקת אישור"
   }
 }

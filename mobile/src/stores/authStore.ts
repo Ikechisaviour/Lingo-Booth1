@@ -28,6 +28,7 @@ interface AuthState {
   refreshToken: string | null;
   userId: string | null;
   username: string | null;
+  fullName: string | null;
   userRole: string | null;
   subscriptionTier: SubscriptionTier;
   aiEntitlements: AiEntitlements | null;
@@ -42,6 +43,7 @@ interface AuthState {
     user: {
       id: string;
       username: string;
+      fullName?: string;
       role: string;
       subscriptionTier?: SubscriptionTier;
       aiEntitlements?: AiEntitlements;
@@ -57,6 +59,7 @@ interface AuthState {
   addGuestXP: (points: number) => void;
   clearGuestXP: () => void;
   setUsername: (username: string) => void;
+  setFullName: (fullName: string | null) => void;
   setNeedsLanguageSetup: (val: boolean) => void;
 }
 
@@ -100,6 +103,7 @@ export const useAuthStore = create<AuthState>()(
       refreshToken: null,
       userId: null,
       username: null,
+      fullName: null,
       userRole: null,
       subscriptionTier: 'free',
       aiEntitlements: null,
@@ -114,6 +118,7 @@ export const useAuthStore = create<AuthState>()(
           refreshToken: data.refreshToken || null,
           userId: data.user.id,
           username: data.user.username,
+          fullName: data.user.fullName || null,
           userRole: data.user.role,
           subscriptionTier: effectiveSubscriptionTier(data.user),
           aiEntitlements: effectiveAiEntitlements(data.user),
@@ -130,6 +135,7 @@ export const useAuthStore = create<AuthState>()(
           refreshToken: null,
           userId: null,
           username: null,
+          fullName: null,
           userRole: null,
           subscriptionTier: 'free',
           aiEntitlements: null,
@@ -139,7 +145,7 @@ export const useAuthStore = create<AuthState>()(
         }),
 
       enterGuestMode: () =>
-        set({ isGuest: true, token: null, userId: null, username: null, userRole: null, subscriptionTier: 'free', aiEntitlements: null }),
+        set({ isGuest: true, token: null, userId: null, username: null, fullName: null, userRole: null, subscriptionTier: 'free', aiEntitlements: null }),
 
       exitGuestMode: () =>
         set({ isGuest: false, guestXP: 0 }),
@@ -155,6 +161,9 @@ export const useAuthStore = create<AuthState>()(
 
       setUsername: (username) =>
         set({ username }),
+
+      setFullName: (fullName) =>
+        set({ fullName }),
 
       setNeedsLanguageSetup: (val) =>
         set({ needsLanguageSetup: val }),

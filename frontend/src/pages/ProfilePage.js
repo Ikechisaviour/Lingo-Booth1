@@ -44,7 +44,7 @@ function ProfilePage({ onLogout }) {
     return params.get('tab') || 'profile';
   });
   const [isEditing, setIsEditing] = useState(false);
-  const [editData, setEditData] = useState({ username: '' });
+  const [editData, setEditData] = useState({ username: '', fullName: '' });
   const [passwordData, setPasswordData] = useState({
     currentPassword: '',
     newPassword: '',
@@ -93,7 +93,8 @@ function ProfilePage({ onLogout }) {
       setProgress(progressResponse.data);
       setLearningHub(learningHubResponse.data);
       setCertificates(certificateResponse.data?.certificates || []);
-      setEditData({ username: userResponse.data.username });
+      setEditData({ username: userResponse.data.username, fullName: userResponse.data.fullName || '' });
+      localStorage.setItem('userFullName', userResponse.data.fullName || '');
       const effectiveTier = userResponse.data.role === 'admin'
         ? 'pro'
         : userResponse.data.subscriptionTier;
@@ -151,12 +152,17 @@ function ProfilePage({ onLogout }) {
     try {
       await userService.updateProfile(userId, editData);
       localStorage.setItem('username', editData.username);
-      setUser({ ...user, username: editData.username });
+      localStorage.setItem('userFullName', editData.fullName || '');
+      setUser({ ...user, username: editData.username, fullName: editData.fullName || '' });
       setIsEditing(false);
       setSaveMessage(t('profilePage.profileUpdated'));
       setTimeout(() => setSaveMessage(''), 3000);
     } catch (err) {
-      setError(err.response?.data?.message || t('profilePage.failedToLoad'));
+      setError(
+        err.response?.data?.code === 'FULL_NAME_INVALID'
+          ? t('levelTests.fullNameInvalid', 'Enter at least two characters for your full name.')
+          : err.response?.data?.message || t('profilePage.failedToLoad')
+      );
     }
   };
 
@@ -442,6 +448,22 @@ function ProfilePage({ onLogout }) {
                     )}
                   </div>
                   <div className="info-item">
+                    <label>{t('profilePage.fullName', 'Full name')}</label>
+                    {isEditing ? (
+                      <input
+                        type="text"
+                        name="fullName"
+                        value={editData.fullName}
+                        onChange={handleEditChange}
+                        className="edit-input"
+                        placeholder={t('profilePage.fullNamePlaceholder', 'Name to show on certificates')}
+                        autoComplete="name"
+                      />
+                    ) : (
+                      <span>{user?.fullName || t('profilePage.fullNameMissing', 'Add before issuing a certificate')}</span>
+                    )}
+                  </div>
+                  <div className="info-item">
                     <label>{t('profilePage.email')}</label>
                     <span>{user?.email}</span>
                   </div>
@@ -541,7 +563,12 @@ function ProfilePage({ onLogout }) {
                         key={certificate._id}
                         onClick={() => navigate(`/certificates/verify/${certificate.certificateId}`)}
                       >
-                        <strong>{certificate.classLessonTitle || t('certificates.issuedTitle')}</strong>
+                        <strong>
+                          {certificate.classLessonTitle
+                            || (certificate.level
+                              ? t('certificates.levelCertificateTitle', 'Level {{level}} certificate', { level: certificate.level })
+                              : t('certificates.issuedTitle', 'Certificate issued'))}
+                        </strong>
                         <span>{certificate.issuedAt ? formatDate(certificate.issuedAt) : ''}</span>
                       </button>
                     ))}

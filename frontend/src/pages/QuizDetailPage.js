@@ -8,6 +8,23 @@ import { getTargetLangCode, getNativeLangCode, getTargetLangName, getNativeLangN
 import PronunciationGuide from '../components/PronunciationGuide';
 import './QuizDetailPage.css';
 
+function quizModeInstruction(value, t) {
+  const normalized = String(value || '').toLowerCase();
+  if (normalized === 'native-assisted') {
+    return t('lessonDetail.quizMode.nativeAssisted', 'Early self-test: choose the meaning in your native language.');
+  }
+  if (normalized === 'target-with-native-hints') {
+    return t('lessonDetail.quizMode.targetWithNativeHints', 'Build recall: use the native hint, then choose the target-language answer.');
+  }
+  if (normalized === 'target-dominant') {
+    return t('lessonDetail.quizMode.targetDominant', 'Independent practice: target-language choices carry most of the work.');
+  }
+  if (normalized === 'target-first') {
+    return t('lessonDetail.quizMode.targetFirst', 'Advanced self-test: stay target-first and use help only when needed.');
+  }
+  return t('lessonDetail.quizMode.standard', 'Guided self-test.');
+}
+
 function QuizDetailPage() {
   const { t } = useTranslation();
   const { quizId } = useParams();
@@ -252,15 +269,17 @@ function QuizDetailPage() {
     }
   };
 
-  const generateQuizOptions = useCallback((correctAnswer, allContent) => {
-    // Get other native-language translations from the lesson
+  const generateQuizOptions = useCallback((correctAnswer, allContent, answerField = 'nativeText') => {
+    // Get same-side answers from the lesson. Higher levels can ask for target
+    // language production instead of only native-language recognition.
     // Deduplicate to avoid identical-looking options
     const seen = new Set([correctAnswer]);
     const otherAnswers = [];
     for (const item of allContent) {
-      if (item.nativeText && !seen.has(item.nativeText)) {
-        seen.add(item.nativeText);
-        otherAnswers.push(item.nativeText);
+      const answer = item?.[answerField];
+      if (answer && !seen.has(answer)) {
+        seen.add(answer);
+        otherAnswers.push(answer);
       }
     }
 
@@ -363,7 +382,7 @@ function QuizDetailPage() {
   const handleAnswerSelect = (answer) => {
     setSelectedAnswer(answer);
     setQuizAttempted(true);
-    const correct = answer === content.nativeText;
+    const correct = answer === correctQuizAnswer;
     setIsCorrect(correct);
     setShowExplanation(true);
 
@@ -427,6 +446,7 @@ function QuizDetailPage() {
     const params = new URLSearchParams({
       savedText: content.targetText || '',
       nativeText: content.nativeText || '',
+      level: String(content.learningLevel || lesson?.learningLevel || ''),
     });
     if (surface === 'writing') {
       navigate(`/writing?${params.toString()}`);
@@ -535,11 +555,16 @@ function QuizDetailPage() {
   // Must be called before any early returns (React hooks rule)
   const content = lesson?.content?.[currentIndex];
   const translationPending = content?._translationPending || (!content?.nativeText && content?.targetText);
+  const quizMode = content?.quizOptionMode || lesson?.quizOptionMode || 'native-assisted';
+  const asksForTargetAnswer = ['target-with-native-hints', 'target-dominant', 'target-first'].includes(quizMode);
+  const quizAnswerField = asksForTargetAnswer ? 'targetText' : 'nativeText';
+  const quizQuestionText = asksForTargetAnswer ? content?.nativeText : content?.targetText;
+  const correctQuizAnswer = asksForTargetAnswer ? content?.targetText : content?.nativeText;
   const quizOptions = useMemo(() => {
     if (!content || !lesson) return [];
-    return generateQuizOptions(content.nativeText, lesson.content);
+    return generateQuizOptions(correctQuizAnswer, lesson.content, quizAnswerField);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- regenerate when currentIndex or lesson changes
-  }, [currentIndex, lesson, generateQuizOptions]);
+  }, [currentIndex, lesson, correctQuizAnswer, quizAnswerField, generateQuizOptions]);
 
   if (loading) {
     return <div className="loading">{t('lessonDetail.loadingLesson')}</div>;
@@ -746,16 +771,25 @@ function QuizDetailPage() {
                     </div>
                   ) : (
                     <>
+                      <p className="quiz-mode-note">{quizModeInstruction(quizMode, t)}</p>
                       <h3 className="quiz-question">
                         {studyMode === 'listening'
                           ? t('lessonDetail.whatDidYouHear')
-                          : t('lessonDetail.whatDoesMean', { word: content.targetText, language: t(`languages.${getNativeLangCode()}`, getNativeLangName()) })}
+                          : asksForTargetAnswer
+                            ? t('lessonDetail.howDoYouSayThisIn', {
+                              language: t(`languages.${getTargetLangCode()}`, getTargetLangName()),
+                              defaultValue: 'How do you say this in {{language}}?',
+                            })
+                            : t('lessonDetail.whatDoesMean', { word: quizQuestionText, language: t(`languages.${getNativeLangCode()}`, getNativeLangName()) })}
                       </h3>
+                      {asksForTargetAnswer && (
+                        <p className="quiz-prompt-text">{quizQuestionText}</p>
+                      )}
 
                       <div className="quiz-options">
                         {quizOptions.map((option, index) => {
                           const isSelected = selectedAnswer === option;
-                          const isCorrectAnswer = option === content.nativeText;
+                          const isCorrectAnswer = option === correctQuizAnswer;
 
                           let optionClass = 'quiz-option';
                           if (quizAttempted) {
@@ -800,7 +834,7 @@ function QuizDetailPage() {
                             <div>
                               <h4 className="quiz-feedback-title incorrect">✗ {t('lessonDetail.incorrect')}</h4>
                               <p className="quiz-feedback-text">
-                                <strong>{t('lessonDetail.correctAnswer')}:</strong> "{content.nativeText}"
+                                <strong>{t('lessonDetail.correctAnswer')}:</strong> "{correctQuizAnswer}"
                               </p>
                               <p className="quiz-feedback-text">
                                 <strong>{t('lessonDetail.explanation')}:</strong> {t('lessonDetail.means', { word: content.targetText, romanization: content.romanization, meaning: content.nativeText })}

@@ -286,6 +286,21 @@
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
+.mastery-star-button {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0 2px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.mastery-star-button:focus-visible {
+  outline: 2px solid var(--accent-green);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
 .star-filled {
   color: #ffc107;
 }

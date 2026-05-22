@@ -95,6 +95,13 @@
   font-size: 0.9rem;
 }
 
+.auth-field-hint {
+  margin: 7px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
 .form-group input {
   width: 100%;
   padding: 14px 16px;

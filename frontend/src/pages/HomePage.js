@@ -150,17 +150,6 @@ function HomePage() {
     }
   };
 
-  const formatTimeAgo = (dateStr) => {
-    if (!dateStr) return t('home.never');
-    const diff = Date.now() - new Date(dateStr).getTime();
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const days = Math.floor(hours / 24);
-    if (days > 0) return t('home.dAgo', { d: days, h: hours % 24 });
-    if (hours > 0) return t('home.hAgo', { h: hours });
-    const mins = Math.floor(diff / (1000 * 60));
-    return t('home.mAgo', { m: mins });
-  };
-
   const isReturningUser = userId && (learningHub?.nextAction || lastActivity || xpStats);
   const weekdayKeys = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
@@ -251,6 +240,7 @@ function HomePage() {
   const milestones = learningHub?.milestones || {};
   const firstThreeDays = learningHub?.firstThreeDays || null;
   const goalPath = learningHub?.goalPath || null;
+  const repairPlan = learningHub?.repairPlan || null;
   const currentOnboardingStep = firstThreeDays?.steps?.find((step) => step.current) || firstThreeDays?.steps?.[0] || null;
   const dailyPlanSecondary = (learningHub?.dailyPlan || [])
     .filter((action) => action?.route && action.route !== primaryActionRoute)
@@ -265,11 +255,15 @@ function HomePage() {
   const goalPathActions = (goalPath?.actions || [])
     .filter((action) => action?.route && action.route !== primaryActionRoute)
     .slice(0, 3);
+  const repairPlanActions = (repairPlan?.needed ? repairPlan.actions || [] : [])
+    .filter((action) => action?.route && action.route !== primaryActionRoute)
+    .slice(0, 3);
   const showPlacementPrompt = placement?.status === 'needs_check';
   const showGuidancePanel = Boolean(
     dailyPlanSecondary.length
     || firstThreeDays
     || goalPathActions.length
+    || repairPlanActions.length
     || showPlacementPrompt
     || usingOfflinePack,
   );
@@ -389,11 +383,37 @@ function HomePage() {
     }
   };
 
+  // Show a slim decay-warning banner above the welcome card when the user is
+  // about to lose XP or already is. Hidden in the safe / off states so the
+  // page stays calm when nothing's wrong.
+  const showDecayBanner = !!xpStats && (xpStats.status === 'decaying' || xpStats.status === 'grace');
+
   return (
     <div className="home-container">
       <div className="container home-layout">
-        {/* Main Content */}
+        {/* Main Content — single full-width column. The right rail was
+            removed because Streak + XP moved into Learning Signals; the
+            remaining cards (Quests, League, Teaser, Admin) render as a
+            secondary strip near the bottom (see .home-secondary below). */}
         <main className="main-content">
+          {showDecayBanner && (
+            <button
+              type="button"
+              className={`xp-decay-banner ${xpStats.status}`}
+              onClick={() => navigate('/profile')}
+              title={t('home.xpTracker')}
+            >
+              <span className="xp-decay-icon">
+                {xpStats.status === 'decaying' ? '📉' : '⏳'}
+              </span>
+              <span className="xp-decay-text">
+                {xpStats.status === 'decaying'
+                  ? t('home.decayBannerActive', { rate: xpStats.decayRate, defaultValue: 'XP is decaying — daily loss {{rate}}%. Answer a question to stop it.' })
+                  : t('home.decayBannerGrace', { hours: xpStats.hoursUntilDecay ?? 0, rate: xpStats.decayRate, defaultValue: 'XP decay starts in {{hours}}h — daily loss {{rate}}%. Keep studying to prevent it.' })}
+              </span>
+              <span className="xp-decay-cta">{t('home.xpTracker')} →</span>
+            </button>
+          )}
           {/* Hero Section */}
           <section className="hero-section">
             <div className="hero-content">
@@ -478,19 +498,57 @@ function HomePage() {
                 </button>
               </div>
 
-              {informativeSignalCards.length > 0 && (
+              {(informativeSignalCards.length > 0 || gamification || xpStats) && (
               <div className="learning-analytics-main">
-                {informativeSignalCards.length > 0 && (
-                  <div className="learning-signal-grid">
-                    {informativeSignalCards.map((signal) => (
+                <div className="learning-signal-grid">
+                  {informativeSignalCards.map((signal) => (
                     <button type="button" key={signal.key} className="learning-signal-card" onClick={() => navigate(signal.route)}>
                       <span>{signal.label}</span>
                       <strong>{signal.value}</strong>
                       <small>{signal.detail}</small>
                     </button>
-                    ))}
-                  </div>
-                )}
+                  ))}
+                  {/*
+                    Day Streak and Total XP previously lived in a right rail.
+                    Folded into Learning Signals so all dashboard telemetry
+                    sits in one grouped card. Decay urgency is surfaced via
+                    the slim banner above the hero, not buried here.
+                  */}
+                  {gamification && gamification.challengeMode && gamification.streak && (
+                    <button
+                      type="button"
+                      key="streak"
+                      className="learning-signal-card learning-signal-card--streak"
+                      onClick={() => navigate('/profile')}
+                    >
+                      <span>{t('home.dayStreak')}</span>
+                      <strong>{gamification.streak.current}</strong>
+                      <small className="streak-mini-calendar" aria-hidden="false">
+                        {weekdayKeys.map((dayKey, i) => (
+                          <span key={dayKey} className={`streak-mini-day${gamification.streak.history?.[i] ? ' active' : ''}`}>
+                            {gamification.streak.history?.[i] ? '🔥' : t(`home.weekdays.${dayKey}`, dayKey.slice(0, 1).toUpperCase())}
+                          </span>
+                        ))}
+                      </small>
+                    </button>
+                  )}
+                  {xpStats && (
+                    <button
+                      type="button"
+                      key="totalXp"
+                      className={`learning-signal-card learning-signal-card--xp ${xpStats.status}`}
+                      onClick={() => navigate('/profile')}
+                    >
+                      <span>{t('home.totalXP')}</span>
+                      <strong>{xpStats.totalXP}</strong>
+                      <small>
+                        {xpStats.status === 'off'
+                          ? t('home.relaxed')
+                          : t('home.intense')}
+                      </small>
+                    </button>
+                  )}
+                </div>
               </div>
               )}
 
@@ -527,9 +585,14 @@ function HomePage() {
                 <strong>{t('learningHub.pairSetupSummary', 'Learning setup')}</strong>
                 <span>{learningSetupSummaryText}</span>
               </div>
-              <button type="button" className="btn btn-outline btn-sm" onClick={() => setEditingPairProfile(true)}>
-                {t('learningHub.pairSetupEdit', 'Edit')}
-              </button>
+              <div className="pair-profile-actions">
+                <button type="button" className="btn btn-outline btn-sm" onClick={() => navigate('/level-tests')}>
+                  {t('levelTests.kicker', 'Level checks')}
+                </button>
+                <button type="button" className="btn btn-outline btn-sm" onClick={() => setEditingPairProfile(true)}>
+                  {t('learningHub.pairSetupEdit', 'Edit')}
+                </button>
+              </div>
             </section>
           )}
 
@@ -649,6 +712,23 @@ function HomePage() {
                   </details>
                 )}
 
+                {repairPlanActions.length > 0 && (
+                  <details className="learning-guidance-card repair-focus" open>
+                    <summary>
+                      <span>{t('learningHub.repairPlanTitle', 'Repair focus')}</span>
+                      <strong>{t('learningHub.repairPlanValue', 'Worth revisiting')}</strong>
+                    </summary>
+                    <p>{t('learningHub.repairPlanBody', 'A few weak or checkpoint items are ready for focused practice before you move too far ahead.')}</p>
+                    <div className="learning-action-chips">
+                      {repairPlanActions.map((action, index) => (
+                        <button type="button" key={`${action.type}-${index}`} onClick={() => handleLearningAction(action)}>
+                          {t(action.titleKey, { count: action.count, defaultValue: action.label || action.type })}
+                        </button>
+                      ))}
+                    </div>
+                  </details>
+                )}
+
                 {showPlacementPrompt && (
                   <details className="learning-guidance-card">
                     <summary>
@@ -737,173 +817,119 @@ function HomePage() {
             </article>
           </section>
 
-        </main>
-
-        {/* Sidebar - Duolingo style gamification */}
-        <aside className="sidebar">
-          {/* Gamification Cards — Challenge Mode only */}
-          {gamification && gamification.challengeMode ? (
-            <>
-              {/* Streak Card */}
-              <div className="card sidebar-card streak-card">
-                <div className="card-header">
-                  <span className="card-icon">🔥</span>
-                  <h3>{t('home.dayStreak')}</h3>
-                </div>
-                <div className="streak-display">
-                  <span className="streak-number">{gamification.streak.current}</span>
-                  <span className="streak-label">{gamification.streak.current !== 1 ? t('home.days') : t('home.day')}</span>
-                </div>
-                <div className="streak-calendar">
-                  {weekdayKeys.map((dayKey, i) => (
-                    <div key={i} className={`calendar-day ${gamification.streak.history[i] ? 'active' : ''}`}>
-                      {gamification.streak.history[i] ? '🔥' : t(`home.weekdays.${dayKey}`, dayKey.slice(0, 1).toUpperCase())}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Daily Quests Card */}
-              <div className="card sidebar-card quests-card">
-                <div className="card-header">
-                  <span className="card-icon">🎯</span>
-                  <h3>{t('home.dailyQuests')}</h3>
-                </div>
-                <ul className="quests-list">
-                  {gamification.quests.map((quest) => (
-                    <li key={quest.id} className={`quest-item ${quest.completed ? 'completed' : ''}`}>
-                      <span className="quest-icon">{questIcons[quest.id]}</span>
-                      <div className="quest-info">
-                        <span className="quest-task">{questTaskLabel(quest)}</span>
-                        <div className="quest-progress">
-                          <div
-                            className="quest-progress-fill"
-                            style={{ width: `${(quest.progress / quest.total) * 100}%` }}
-                          ></div>
+          {/* Secondary cards — quests, league, teaser, admin. Previously
+              lived in a right sidebar, but with Streak + XP moved into
+              Learning Signals, the rail had no consistent content. Stacking
+              them at the end of the main column avoids the dead-column
+              dead-space bug and keeps the page a single full-width flow. */}
+          {(
+            (gamification && gamification.challengeMode)
+            || (gamification && !gamification.challengeMode && userId)
+            || isAdmin
+          ) && (
+          <section className="home-secondary" aria-label={t('home.dashboard', 'Dashboard')}>
+            {gamification && gamification.challengeMode ? (
+              <>
+                {/* Daily Quests Card */}
+                <div className="card sidebar-card quests-card">
+                  <div className="card-header">
+                    <span className="card-icon">🎯</span>
+                    <h3>{t('home.dailyQuests')}</h3>
+                  </div>
+                  <ul className="quests-list">
+                    {gamification.quests.map((quest) => (
+                      <li key={quest.id} className={`quest-item ${quest.completed ? 'completed' : ''}`}>
+                        <span className="quest-icon">{questIcons[quest.id]}</span>
+                        <div className="quest-info">
+                          <span className="quest-task">{questTaskLabel(quest)}</span>
+                          <div className="quest-progress">
+                            <div
+                              className="quest-progress-fill"
+                              style={{ width: `${(quest.progress / quest.total) * 100}%` }}
+                            ></div>
+                          </div>
                         </div>
-                      </div>
-                      {quest.claimed ? (
-                        <span className="quest-claimed">✓</span>
-                      ) : quest.completed ? (
-                        <button
-                          className="btn-claim"
-                          onClick={() => handleClaimQuest(quest.id)}
-                          disabled={claimingQuest === quest.id}
-                        >
-                          +{quest.bonusXP} {t('common.xp')}
-                        </button>
-                      ) : (
-                        <span className="quest-count">{quest.progress}/{quest.total}</span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* League Card */}
-              <div className="card sidebar-card league-card">
-                <div className="card-header">
-                  <span className="card-icon">🏆</span>
-                  <h3>{t('home.league', { name: gamification.league.name })}</h3>
+                        {quest.claimed ? (
+                          <span className="quest-claimed">✓</span>
+                        ) : quest.completed ? (
+                          <button
+                            className="btn-claim"
+                            onClick={() => handleClaimQuest(quest.id)}
+                            disabled={claimingQuest === quest.id}
+                          >
+                            +{quest.bonusXP} {t('common.xp')}
+                          </button>
+                        ) : (
+                          <span className="quest-count">{quest.progress}/{quest.total}</span>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="league-info">
-                  <div className="league-rank">
-                    <span className="rank-badge">{leagueBadges[gamification.league.badge]}</span>
-                    <div className="rank-details">
-                      <span className="rank-position">#{gamification.league.rank}</span>
-                      <span className="rank-label">{t('home.yourRank')}</span>
+
+                {/* League Card — guarded against the case where league
+                    payload hasn't loaded or is null (was crashing on
+                    gamification.league.name when the API returned no
+                    league data for this user). */}
+                {gamification.league && (
+                <div className="card sidebar-card league-card">
+                  <div className="card-header">
+                    <span className="card-icon">🏆</span>
+                    <h3>{t('home.league', { name: gamification.league.name })}</h3>
+                  </div>
+                  <div className="league-info">
+                    <div className="league-rank">
+                      <span className="rank-badge">{leagueBadges[gamification.league.badge]}</span>
+                      <div className="rank-details">
+                        <span className="rank-position">#{gamification.league.rank}</span>
+                        <span className="rank-label">{t('home.yourRank')}</span>
+                      </div>
+                    </div>
+                    <div className="league-xp">
+                      <span className="xp-value">{gamification.league.weeklyXP} {t('common.xp')}</span>
+                      <span className="xp-label">{t('home.thisWeek')}</span>
                     </div>
                   </div>
-                  <div className="league-xp">
-                    <span className="xp-value">{gamification.league.weeklyXP} {t('common.xp')}</span>
-                    <span className="xp-label">{t('home.thisWeek')}</span>
-                  </div>
+                  <button className="btn btn-outline btn-sm" style={{ width: '100%' }} onClick={handleViewLeaderboard}>
+                    {t('home.viewLeague')}
+                  </button>
                 </div>
-                <button className="btn btn-outline btn-sm" style={{ width: '100%' }} onClick={handleViewLeaderboard}>
-                  {t('home.viewLeague')}
+                )}
+              </>
+            ) : gamification && !gamification.challengeMode && userId ? (
+              /* Teaser Card — Relaxed Mode users */
+              <div className="card sidebar-card teaser-card">
+                <div className="teaser-lock">🔒</div>
+                <h3>{t('home.unlockTitle')}</h3>
+                <p>{t('home.unlockDesc')}</p>
+                <button className="btn btn-primary btn-sm" style={{ width: '100%' }} onClick={() => navigate('/profile?tab=settings')}>
+                  {t('home.enableChallengeMode')}
                 </button>
               </div>
-            </>
-          ) : gamification && !gamification.challengeMode && userId ? (
-            /* Teaser Card — Relaxed Mode users */
-            <div className="card sidebar-card teaser-card">
-              <div className="teaser-lock">🔒</div>
-              <h3>{t('home.unlockTitle')}</h3>
-              <p>{t('home.unlockDesc')}</p>
-              <button className="btn btn-primary btn-sm" style={{ width: '100%' }} onClick={() => navigate('/profile?tab=settings')}>
-                {t('home.enableChallengeMode')}
-              </button>
-            </div>
-          ) : null}
+            ) : null}
 
-          {/* XP Tracker Card */}
-          {xpStats && (
-            <div className={`card sidebar-card xp-tracker-card ${xpStats.status}`}>
-              <div className="card-header">
-                <span className="card-icon">
-                  {xpStats.status === 'off' ? '🌿' : xpStats.status === 'decaying' ? '📉' : xpStats.status === 'grace' ? '⏳' : '✨'}
-                </span>
-                <h3>{t('home.xpTracker')}</h3>
-                <span className={`xp-status-badge ${xpStats.status}`}>
-                  {xpStats.status === 'off' ? t('home.relaxed') : t('home.intense')}
-                </span>
-              </div>
-
-              <div className="xp-tracker-total">
-                <span className="xp-tracker-number">{xpStats.totalXP}</span>
-                <span className="xp-tracker-label">{t('home.totalXP')}</span>
-              </div>
-
-              <div className="xp-tracker-details">
-                <div className="xp-detail-row">
-                  <span className="xp-detail-label">{t('home.lastAnswered')}</span>
-                  <span className="xp-detail-value">{formatTimeAgo(xpStats.lastAnsweredAt)}</span>
+            {/* Admin Card — only visible to admins */}
+            {isAdmin && (
+              <div className="card sidebar-card admin-card">
+                <div className="card-header">
+                  <span className="card-icon">⚙️</span>
+                  <h3>{t('home.adminDashboard')}</h3>
                 </div>
-                {xpStats.status !== 'safe' && xpStats.status !== 'off' && (
-                  <>
-                    <div className="xp-detail-row">
-                      <span className="xp-detail-label">
-                        {xpStats.status === 'grace' ? t('home.decayStartsIn') : t('home.nextDecayIn')}
-                      </span>
-                      <span className="xp-detail-value">
-                        {xpStats.hoursUntilDecay != null ? `${xpStats.hoursUntilDecay}h` : '—'}
-                      </span>
-                    </div>
-                    <div className="xp-detail-row">
-                      <span className="xp-detail-label">{t('home.dailyLossRate')}</span>
-                      <span className="xp-detail-value">{xpStats.decayRate}%</span>
-                    </div>
-                  </>
-                )}
+                <p>
+                  {t('home.adminDesc')}
+                </p>
+                <button
+                  className="btn btn-outline btn-sm"
+                  onClick={() => navigate('/admin')}
+                >
+                  {t('home.openDashboard')}
+                </button>
               </div>
-
-              {xpStats.status === 'decaying' && (
-                <div className="xp-tracker-warning">
-                  {t('home.stopDecayWarning')}
-                </div>
-              )}
-            </div>
+            )}
+          </section>
           )}
 
-          {/* Admin Card - Only visible to admins */}
-          {isAdmin && (
-            <div className="card sidebar-card admin-card">
-              <div className="card-header">
-                <span className="card-icon">⚙️</span>
-                <h3>{t('home.adminDashboard')}</h3>
-              </div>
-              <p>
-                {t('home.adminDesc')}
-              </p>
-              <button
-                className="btn btn-outline btn-sm"
-                onClick={() => navigate('/admin')}
-              >
-                {t('home.openDashboard')}
-              </button>
-            </div>
-          )}
-        </aside>
+        </main>
       </div>
 
       {/* Leaderboard Modal */}

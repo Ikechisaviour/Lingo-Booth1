@@ -261,6 +261,28 @@
   color: var(--text-primary);
 }
 
+.quiz-mode-note {
+  display: inline-flex;
+  margin: 0 0 12px;
+  padding: 7px 10px;
+  border: 1px solid var(--primary-border-soft);
+  border-radius: 999px;
+  background: var(--primary-light);
+  color: var(--primary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.quiz-prompt-text {
+  margin: -4px 0 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
 .quiz-options {
   display: flex;
   flex-direction: column;

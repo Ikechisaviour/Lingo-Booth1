@@ -44,7 +44,8 @@
     "search": "يبحث",
     "notSet": "لم يتم ضبطه",
     "goBack": "عُد",
-    "all": "الجميع"
+    "all": "الجميع",
+    "restart": "إعادة تشغيل"
   },
   "languageSelect": {
     "title": "اختر لغاتك",
@@ -100,7 +101,10 @@
     "passwordsMatch": "كلمتا المرور متطابقتان",
     "registrationFailed": "فشل التسجيل",
     "googleFailed": "فشل الاشتراك في جوجل. يرجى المحاولة مرة أخرى.",
-    "checkEmail": "تحقق من بريدك الإلكتروني للتحقق من حسابك"
+    "checkEmail": "تحقق من بريدك الإلكتروني للتحقق من حسابك",
+    "fullNameOptional": "الاسم الكامل (اختياري)",
+    "fullNamePlaceholder": "الاسم الذي سيظهر على الشهادات",
+    "fullNameHint": "يمكنك إضافة هذا الآن أو قبل إصدار الشهادة."
   },
   "navbar": {
     "continue": "متابعة",
@@ -203,7 +207,10 @@
       "sat": "س",
       "sun": "س"
     },
-    "supportAndPlans": "الدعم والخطط"
+    "supportAndPlans": "الدعم والخطط",
+    "decayBannerActive": "XP تتدهور — خسارة يومية تبلغ {{rate}}%. أجب عن سؤال لإيقافه.",
+    "decayBannerGrace": "يبدأ اضمحلال XP خلال {{hours}}h — الخسارة اليومية {{rate}}%. استمر في الدراسة لمنع ذلك.",
+    "dashboard": "لوحة القيادة"
   },
   "lessons": {
     "title": "{{language}} <1>دروس</1>",
@@ -298,7 +305,15 @@
     "translating": "جارٍ الترجمة...",
     "translationUnavailable": "جارٍ تحميل الترجمة...",
     "retryTranslation": "إعادة المحاولة",
-    "quizUnavailable": "الاختبار غير متاح — جارٍ تحميل الترجمة..."
+    "quizUnavailable": "الاختبار غير متاح — جارٍ تحميل الترجمة...",
+    "howDoYouSayThisIn": "كيف تقول هذا في {{language}}؟",
+    "quizMode": {
+      "nativeAssisted": "الاختبار الذاتي المبكر: اختر المعنى بلغتك الأم.",
+      "targetWithNativeHints": "إنشاء تذكر: استخدم التلميح الأصلي، ثم اختر إجابة اللغة المستهدفة.",
+      "targetDominant": "الممارسة المستقلة: اختيارات اللغة المستهدفة تحمل معظم العمل.",
+      "targetFirst": "الاختبار الذاتي المتقدم: حافظ على الهدف أولاً واستخدم المساعدة فقط عند الحاجة.",
+      "standard": "الاختبار الذاتي الموجه."
+    }
   },
   "flashcards": {
     "title": "تدريب <1>البطاقات التعليمية</1>",
@@ -386,7 +401,8 @@
     "savedReason": "تم الحفظ من البطاقات التعليمية للتدرب عليها لاحقًا.",
     "saveForReview": "حفظ للمراجعة",
     "bookmarkedReason": "إشارة مرجعية من البطاقات التعليمية.",
-    "selfTestReason": "تم الحفظ من البطاقات التعليمية لإجراء اختبار ذاتي سريع."
+    "selfTestReason": "تم الحفظ من البطاقات التعليمية لإجراء اختبار ذاتي سريع.",
+    "setFamiliarityLevel": "اضبط الألفة على {{level}}"
   },
   "progress": {
     "title": "<1>تقدمك</1>",
@@ -523,7 +539,10 @@
     "systemDefault": "الافتراضي للنظام",
     "voiceSettingsDesc": "اختر أصواتًا منفصلة للغتك المستهدفة ولغتك الأم حتى يتم نطق الردود المختلطة بشكل طبيعي.",
     "targetVoice": "صوت الهدف",
-    "nativeVoice": "صوت أصلي"
+    "nativeVoice": "صوت أصلي",
+    "fullName": "الاسم الكامل",
+    "fullNamePlaceholder": "الاسم الذي سيظهر على الشهادات",
+    "fullNameMissing": "أضف قبل إصدار الشهادة"
   },
   "verifyEmail": {
     "verifying": "جاري التحقق من بريدك الإلكتروني...",
@@ -985,7 +1004,46 @@
     "saveReply": "حفظ الرد",
     "selfTestReason": "تم الحفظ من الفصل لإجراء اختبار ذاتي سريع.",
     "hideOutline": "إخفاء المخطط التفصيلي",
-    "showOutline": "إظهار المخطط التفصيلي"
+    "showOutline": "إظهار المخطط التفصيلي",
+    "wrapUpReviewBody": "أعد محاولة العناصر المستحقة أو الضعيفة من هذه الفئة.",
+    "wrapUpQuizBody": "تحقق من الفهم دون تحميل الاختبار حتى تبدأ.",
+    "wrapUpWritingBody": "استخدم وضع الكتابة أو الكتابة المناسب للمستوى.",
+    "wrapUpConversationPrompt": "ساعدني في استخدام ما تعلمته للتو في محادثة قصيرة.",
+    "wrapUpConversationBody": "تحويل الدرس إلى لعب الأدوار قصيرة.",
+    "learningPlan": {
+      "unplacedLevel": "مستوى التعلم",
+      "moreActivities": "{{count}} المزيد",
+      "level": "مستوى",
+      "support": "يدعم",
+      "selfTest": "الاختبار الذاتي",
+      "writing": "كتابة",
+      "activities": "ممارسة طويلة",
+      "ariaLabel": "خطة تعلم الدرس"
+    },
+    "supportLevels": {
+      "nativeGuided": "دعم قوي للغة الأم",
+      "mixedGuided": "الهدف المتوازن والدعم الأصلي",
+      "targetFirst": "لغة الهدف أولا",
+      "immersionWithHelp": "اللغة المستهدفة في الغالب مع المساعدة المتاحة",
+      "standard": "الدعم الموجه"
+    },
+    "quizModes": {
+      "nativeAssisted": "معنى الاختيارات في لغتك الأم",
+      "targetWithNativeHints": "اختيارات اللغة المستهدفة مع تلميحات أصلية",
+      "targetDominant": "في الغالب اختيارات اللغة المستهدفة",
+      "targetFirst": "الهدف - الاختبار الذاتي الأول",
+      "standard": "الاختبار الذاتي الموجه"
+    },
+    "writingModes": {
+      "handwritingFirst": "تتبع أو نسخ أولا",
+      "typeWithWriteOption": "اكتب، مع توفر ممارسة الكتابة",
+      "typedProduction": "الإجابات المكتوبة من الذاكرة",
+      "extendedTypedProduction": "ردود مكتوبة أطول",
+      "standard": "اكتب أو اكتب"
+    },
+    "longActivities": {
+      "practice": "يمارس"
+    }
   },
   "classList": {
     "heroAriaLabel": "فصل",
@@ -1021,15 +1079,45 @@
       "intermediateSubtitle": "وحدات تعتمد على المواضيع للآراء والثقافة والصحة والعمل والثقة اليومية.",
       "professionalTitle": "المستوى {{level}} - الاحترافي {{language}}",
       "professionalSubtitle": "لغة عملية للعمل والخدمات والسكن والسلامة والمواقف الرسمية.",
-      "grammarTitle": "المستوى {{level}} - القواعد المتقدمة",
-      "grammarSubtitle": "مجموعات الأنماط التي تساعدك على ربط الأفكار بمزيد من التحكم."
+      "grammarTitle": "المستوى {{level}} - المتقدم {{language}}",
+      "grammarSubtitle": "مجموعات الأنماط التي تساعدك على ربط الأفكار بمزيد من التحكم.",
+      "survivalTitle": "المستوى {{level}} - أساسي {{language}}",
+      "survivalSubtitle": "قم ببناء أساسيات عملية للتحيات والغرف والأماكن والروتين والتسوق والطعام.",
+      "everydayTitle": "المستوى {{level}} - كل يوم {{language}}",
+      "everydaySubtitle": "الدروس اليومية الأساسية للتحيات والطعام والأماكن والخطط والمواقف اليومية.",
+      "bridgeTitle": "المستوى {{level}} - الجسر",
+      "bridgeSubtitle": "وحدات المراجعة والانتقال التي تربط المواد اليومية باستخدام أكثر استقلالية.",
+      "topicTitle": "المستوى {{level}} - الموضوعي {{language}}",
+      "topicSubtitle": "وحدات تعتمد على الموضوع للآراء والثقافة والصحة والخطط والتعبير اليومي الواثق.",
+      "advancedTitle": "المستوى {{level}} - المتقدم {{language}}",
+      "advancedSubtitle": "مهام القراءة والاستماع والتحدث والكتابة الأطول مع دعم أخف باللغة الأم."
     },
     "titlePrefix": {
       "unit": "المستوى {{level}} · الوحدة {{unit}}: {{title}}"
     },
     "retry": "حاول ثانية",
     "progressAriaLabel": "تقدم الصف",
-    "progressCaption": "{{percent}}% مكتمل · {{completed}} من {{total}} العناصر"
+    "progressCaption": "{{percent}}% مكتمل · {{completed}} من {{total}} العناصر",
+    "lessonWeights": {
+      "deep": "عميق",
+      "light": "ضوء",
+      "standard": "معيار"
+    },
+    "lessonPlanAriaLabel": "خطة الدرس",
+    "requiredForProgress": "مطلوب",
+    "programLevels": {
+      "kicker": "مستوى التعلم",
+      "statsAriaLabel": "ملخص خطة المستوى",
+      "coreCount": "{{count}} الأساسية",
+      "branchCount": "{{count}} الفروع",
+      "checkpointCount": "{{count}} نقاط التفتيش"
+    },
+    "singleTrackGuidanceAriaLabel": "توجيه مسار الدرس الواحد",
+    "singleTrackGuidanceKicker": "لماذا فئة واحدة",
+    "singleTrackGuidanceTitle": "ابدأ بالتركيز، ثم تفرع",
+    "singleTrackGuidanceBody": "هذا المسار مضغوط عمدًا لذا تبدو الخطوة الأولى واضحة. قم بإنهاء الفصل هنا، ثم انتقل إلى المسار التالي للتمرين على نطاق أوسع.",
+    "singleTrackGuidanceStep1": "بناء القاعدة",
+    "singleTrackGuidanceStep2": "استمر في الاستخدام اليومي"
   },
   "contextPractice": {
     "title": "الدروس تتشكل من حولك",
@@ -1147,7 +1235,8 @@
       "stroke": "اتبع الدليل، ثم استخدم منطقة الكتابة للتمرين.",
       "review": "قارن كتابتك بالإجابة وحدد ما هو قوي.",
       "trace": "تتبع الدليل، ثم امسحه واكتب من الذاكرة.",
-      "copy": "انظر بعناية، ثم انسخ الكلمة أو الجملة."
+      "copy": "انظر بعناية، ثم انسخ الكلمة أو الجملة.",
+      "type": "اكتب الإجابة من الذاكرة. هذا هو وضع الكتابة القياسي بعد دروس الكتابة اليدوية المبكرة."
     },
     "title": "ممارسة الكتابة",
     "subtitle": "تتبع، انسخ، استمع، استحضر بالمعنى، ادرس ترتيب الخطوط، واحتفظ بدفتر ملاحظات من دروسك.",
@@ -1211,7 +1300,9 @@
     "savedReason": "تم الحفظ من ممارسة الكتابة لتمريرة أخرى.",
     "selfTestReason": "تم الحفظ من ممارسة الكتابة لإجراء اختبار ذاتي سريع.",
     "hideNotebook": "إخفاء دفتر الملاحظات",
-    "showNotebook": "عرض دفتر الملاحظات"
+    "showNotebook": "عرض دفتر الملاحظات",
+    "typePlaceholder": "اكتب إجابتك هنا...",
+    "typeAriaLabel": "إجابة كتابية مكتوبة"
   },
   "institution": {
     "kicker": "مؤسسة",
@@ -1276,7 +1367,43 @@
     },
     "snapshotsKicker": "لقطات المتعلم",
     "needsHelpTitle": "يحتاج إلى اهتمام",
-    "noNeedsHelpLearners": "لا يحتاج أي متعلم حاليًا إلى اهتمام إضافي."
+    "noNeedsHelpLearners": "لا يحتاج أي متعلم حاليًا إلى اهتمام إضافي.",
+    "groupSaved": "تم حفظ المجموعة.",
+    "groupSaveFailed": "تعذر حفظ هذه المجموعة.",
+    "group": "مجموعة",
+    "noGroup": "لا توجد مجموعة",
+    "allowedTargetLanguages": "اللغات المستهدفة المسموح بها",
+    "allowedTargetLanguagesHelp": "يمكن للمتعلمين الذين يستخدمون وصول هذه المؤسسة اختيار هذه اللغات المستهدفة فقط.",
+    "defaultTargetLanguage": "اللغة الهدف الافتراضية",
+    "noDefaultLanguage": "لا الافتراضي",
+    "allowLanguageRequests": "السماح للمتعلمين بطلب لغة أخرى",
+    "groupsKicker": "المجموعات",
+    "groupsTitle": "مجموعات التعلم",
+    "noGroupsYet": "قم بإنشاء مجموعة لإدارة الوصول إلى اللغة لفصل دراسي أو مجموعة نموذجية أو فريق.",
+    "groupUsesOrgPolicy": "يستخدم سياسة لغة المنظمة",
+    "groupName": "اسم المجموعة",
+    "groupNamePlaceholder": "مثال: فصل مسائي للمبتدئين",
+    "groupLanguages": "مجموعة اللغات المستهدفة",
+    "groupLanguagesHelp": "اتركه فارغًا لاستخدام سياسة المؤسسة، أو حدد اللغات لهذه المجموعة فقط.",
+    "createGroup": "إنشاء مجموعة",
+    "testingKicker": "الشيكات المستوى",
+    "testingTitle": "الاختبارات والشهادات",
+    "recentAttempts": "المحاولات الأخيرة",
+    "certificatesIssued": "الشهادات الصادرة",
+    "learner": "المتعلم",
+    "noTestAttempts": "لم يتم تقديم أي فحوصات للمستوى حتى الآن.",
+    "certificateLogoInvalid": "استخدم شعار PNG أو JPG أو WebP بحجم أقل من 600 كيلو بايت.",
+    "certificateLogoReadFailed": "لا يمكن قراءة ملف الشعار هذا.",
+    "certificateBrandingSaved": "تم حفظ العلامة التجارية للشهادة.",
+    "certificateBrandingFailed": "تعذر حفظ العلامة التجارية للشهادة. استخدم شعار PNG أو JPG أو WebP بحجم أقل من 600 كيلو بايت.",
+    "certificateBrandingRemoved": "تمت إزالة شعار الشهادة.",
+    "certificateBrandingKicker": "الشهادات",
+    "certificateBrandingTitle": "العلامة التجارية للشهادة",
+    "certificateBrandingHelp": "تستخدم شهادات المؤسسة نفس تصميم الشهادات الشخصية، مع إضافة هذا الشعار واسم المؤسسة.",
+    "chooseCertificateLogo": "اختر الشعار",
+    "saveCertificateBranding": "حفظ شعار الشهادة",
+    "removeCertificateLogo": "إزالة الشعار",
+    "certificateLogoRequirement": "استخدم شعار PNG أو JPG أو WebP نظيف بحجم أقل من 600 كيلو بايت. الشعارات الشفافة عادة ما تبدو أفضل."
   },
   "certificates": {
     "kicker": "شهادة",
@@ -1308,7 +1435,32 @@
     "viewPlans": "عرض الخطط",
     "signIn": "تسجيل الدخول",
     "issuedSuccess": "صدرت الشهادة.",
-    "issueFailed": "لا يمكن إصدار الشهادة."
+    "issueFailed": "لا يمكن إصدار الشهادة.",
+    "levelCertificateTitle": "شهادة المستوى {{level}}",
+    "proficiencyTitle": "شهادة الكفاءة",
+    "institutionProficiencyTitle": "شهادة الكفاءة",
+    "levelCompletionTitle": "شهادة إتمام المستوى",
+    "institutionCompletionTitle": "شهادة إتمام المستوى",
+    "level": "مستوى",
+    "levelNumber": "المستوى {{level}}",
+    "score": "نتيجة",
+    "organization": "منظمة",
+    "institutionLogoAlt": "{{organization}} الشعار",
+    "issuedThrough": "صدر من خلال",
+    "institution": "مؤسسة",
+    "verifiedProficiency": "شهادة الكفاءة التي تم التحقق منها",
+    "verifiedCompletion": "شهادة إتمام معتمدة",
+    "proficiencyStatement": "إثبات الكفاءة للمستوى {{level}}",
+    "levelCompletionStatement": "المستوى المكتمل {{level}}",
+    "completionStatement": "أكملت النشاط التعليمي المطلوب",
+    "actions": "إجراءات الشهادة",
+    "downloading": "جارٍ التحضير...",
+    "download": "تحميل",
+    "nativeVersion": "اللغة الأم: {{language}}",
+    "targetVersion": "لغة الهدف: {{language}}",
+    "bilingualVersion": "ثنائي اللغة: أصلي + هدف",
+    "languageControl": "لغة الشهادة",
+    "certificateIssuedThrough": "الشهادة الصادرة من خلال"
   },
   "adminBilling": {
     "title": "الاشتراكات والمؤسسات",
@@ -1611,7 +1763,10 @@
     "recentWordsEmptyAction": "سيتم جمع الكلمات المحفوظة والعبارات المفيدة هنا بعد الفصل أو ممارسة المحادثة.",
     "startAClass": "ابدأ الفصل",
     "milestonesEmptyAction": "سيظهر هنا الدرس المكتمل أو العبارة المحفوظة أو الشهادة الأولى.",
-    "earnFirstMilestone": "كسب المعلم الأول"
+    "earnFirstMilestone": "كسب المعلم الأول",
+    "repairPlanTitle": "إصلاح التركيز",
+    "repairPlanValue": "يستحق إعادة النظر",
+    "repairPlanBody": "هناك عدد قليل من العناصر الضعيفة أو نقاط التفتيش جاهزة للتمرين المركز قبل المضي قدمًا كثيرًا."
   },
   "adminAnalytics": {
     "features": {
@@ -1651,5 +1806,64 @@
     "speaking": "تكلم",
     "reading": "قراءة",
     "writing": "كتابة"
+  },
+  "levelTests": {
+    "kicker": "الشيكات المستوى",
+    "levelLabel": "المستوى {{level}}",
+    "passed": "اجتاز",
+    "reviewRecommended": "يوصى بالمراجعة",
+    "tasks": {
+      "chooseTarget": "اختر الإجابة باللغة المستهدفة.",
+      "chooseMeaning": "اختر المعنى الأفضل.",
+      "typeTarget": "اكتب الإجابة باللغة الهدف.",
+      "shortResponse": "أجب باللغة المستهدفة، ثم سجل إجابتك.",
+      "default": "أجب عن السؤال."
+    },
+    "skills": {
+      "general": "عام"
+    },
+    "institutionContext": "مؤسسة",
+    "personalContext": "شخصي",
+    "loadFailed": "تعذر تحميل اختبار المستوى الآن.",
+    "startFailed": "هذا الاختبار ليس جاهزا بعد.",
+    "submitted": "لقد تم تسجيل الاختبار الخاص بك.",
+    "submitFailed": "لا يمكن تقديم هذا الاختبار.",
+    "certificateReady": "شهادتك جاهزة.",
+    "certificateFailed": "لا يمكن إصدار هذه الشهادة بعد.",
+    "title": "أظهر ما يمكنك فعله",
+    "subtitle": "أكمل فحص المستوى لمعرفة التقدم، أو قم بإجراء فحص الكفاءة عندما تريد دليلاً أقوى على القدرة.",
+    "verifyHint": "يمكن التحقق من الشهادات باستخدام معرف الشهادة الخاص بها.",
+    "certificates": "الشهادات",
+    "context": "سياق",
+    "allowedLanguages": "اللغات المستهدفة المتاحة",
+    "chooseLevel": "اختر المستوى",
+    "testType": "نوع الاختبار",
+    "start": "ابدأ بالفحص",
+    "restrictedTarget": "هذه اللغة الهدف غير متوفرة في سياق هذه المؤسسة.",
+    "recent": "مؤخرًا",
+    "notSubmitted": "لم يتم تقديمه",
+    "noRecent": "لم يتم فحص المستوى بعد.",
+    "emptyTitle": "اختر فحص المستوى",
+    "emptyBody": "سترى مجموعة متوازنة من المفردات والقواعد ومهام القراءة والتحدث والكتابة من المستوى الذي تختاره.",
+    "resultTitle": "النتيجة الخاصة بك",
+    "questionsTitle": "الإجابة على كل مهمة",
+    "passedBody": "يمكنك إصدار شهادة لهذه النتيجة.",
+    "reviewBody": "قم بمراجعة المهارات الضعيفة، ثم حاول مرة أخرى عندما تصبح جاهزًا.",
+    "certificateIssued": "صدرت الشهادة",
+    "issueCertificate": "إصدار الشهادة",
+    "writeAnswer": "أكتب إجابتك هنا...",
+    "selfGood": "جيد",
+    "selfAlmost": "بالكاد",
+    "selfNeedsWork": "يحتاج إلى عمل",
+    "correct": "صحيح",
+    "missed": "قم بمراجعة هذا",
+    "submit": "إرسال الشيك",
+    "fullNameInvalid": "أدخل حرفين على الأقل لاسمك الكامل.",
+    "certificateNameKicker": "اسم الشهادة",
+    "fullNameRequiredTitle": "أضف اسمك الكامل",
+    "fullNameRequiredBody": "أدخل اسمك الكامل تمامًا كما ينبغي أن يظهر في هذه الشهادة. ما عليك سوى القيام بذلك قبل إصدار الشهادة.",
+    "fullNameLabel": "الاسم الكامل",
+    "fullNamePlaceholder": "اسمك الكامل",
+    "saveNameAndIssue": "حفظ الاسم وإصدار الشهادة"
   }
 }

@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const { applyLearningArchitecture } = require('./learningArchitecture');
 
 const MANAGED_FIELDS = new Set([
   '_id',
@@ -53,12 +54,12 @@ function comparableLessonShape(Lesson, lesson) {
 }
 
 function preparedCurriculumLesson(Lesson, curriculumKey, lesson, seededAt = new Date()) {
-  const base = {
+  const base = applyLearningArchitecture({
     ...lesson,
     curriculumKey,
     curriculumStatus: 'active',
     curriculumArchivedAt: null,
-  };
+  }, lesson.course);
   const comparable = comparableLessonShape(Lesson, base);
   return {
     ...base,

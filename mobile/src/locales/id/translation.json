@@ -24,7 +24,8 @@
     "search": "Mencari",
     "notSet": "Tidak disetel",
     "all": "Semua",
-    "reset": "Mengatur ulang"
+    "reset": "Mengatur ulang",
+    "restart": "Mulai ulang"
   },
   "languages": {
     "en": "Inggris",
@@ -106,7 +107,9 @@
     "registrationFailed": "Pendaftaran gagal",
     "brandTagline": "Mulai perjalanan Anda",
     "googleFailed": "Gagal mendaftar dengan Google. Silakan coba lagi.",
-    "signUpWithGoogle": "Daftar dengan Google"
+    "signUpWithGoogle": "Daftar dengan Google",
+    "fullNameOptional": "Nama lengkap (opsional)",
+    "fullNameHint": "Anda dapat menambahkannya sekarang atau sebelum menerbitkan sertifikat."
   },
   "navbar": {
     "continue": "Lanjutkan",
@@ -220,7 +223,9 @@
       "sat": "S",
       "sun": "S"
     },
-    "contactDesc": "Pertanyaan, masukan, atau masalah untuk dilaporkan"
+    "contactDesc": "Pertanyaan, masukan, atau masalah untuk dilaporkan",
+    "decayBannerActive": "XP menurun — kerugian harian {{rate}}%. Jawab pertanyaan untuk menghentikannya.",
+    "decayBannerGrace": "Peluruhan XP dimulai pada {{hours}}h — kerugian harian {{rate}}%. Teruslah belajar untuk mencegahnya."
   },
   "lessons": {
     "title": "Pelajaran {{language}}",
@@ -339,7 +344,15 @@
     "studyMode": "Mode belajar",
     "defaultMode": "Bawaan",
     "readingMode": "Membaca",
-    "listeningMode": "Mendengarkan"
+    "listeningMode": "Mendengarkan",
+    "howDoYouSayThisIn": "Bagaimana Anda mengatakan ini di {{language}}?",
+    "quizMode": {
+      "nativeAssisted": "Tes mandiri awal: pilih arti dalam bahasa ibu Anda.",
+      "targetWithNativeHints": "Bangun ingatan: gunakan petunjuk asli, lalu pilih jawaban dalam bahasa target.",
+      "targetDominant": "Praktik mandiri: pilihan bahasa target merupakan tugas utama.",
+      "targetFirst": "Uji mandiri tingkat lanjut: tetap mengutamakan target dan menggunakan bantuan hanya jika diperlukan.",
+      "standard": "Tes mandiri yang dipandu."
+    }
   },
   "flashcards": {
     "title": "Latihan Kartu",
@@ -438,7 +451,8 @@
     "savedForReview": "Disimpan untuk ditinjau.",
     "saveForReviewFailed": "Tidak dapat menyimpan kartu ini sekarang.",
     "bookmarkedReason": "Ditandai dari kartu flash.",
-    "selfTestReason": "Disimpan dari kartu flash untuk tes mandiri cepat."
+    "selfTestReason": "Disimpan dari kartu flash untuk tes mandiri cepat.",
+    "setFamiliarityLevel": "Setel keakraban ke {{level}}"
   },
   "progress": {
     "title": "Kemajuan Anda",
@@ -621,7 +635,11 @@
     "practicePromptsHint": "Tampilkan pertanyaan kata singkat dengan tombol tindakan, sehingga Anda dapat menjawab dari bayangan notifikasi.",
     "notificationsAllowed": "Notifikasi diperbolehkan di perangkat ini.",
     "notificationsBlocked": "Notifikasi belum diperbolehkan.",
-    "sendTestPrompt": "Kirim perintah tes"
+    "sendTestPrompt": "Kirim perintah tes",
+    "failedToUpdate": "Gagal memperbarui",
+    "fullName": "Nama lengkap",
+    "fullNamePlaceholder": "Nama untuk ditampilkan pada sertifikat",
+    "fullNameMissing": "Tambahkan sebelum menerbitkan sertifikat"
   },
   "verifyEmail": {
     "verifying": "Memverifikasi email Anda...",
@@ -1034,7 +1052,41 @@
     },
     "snapshotsKicker": "Cuplikan peserta didik",
     "needsHelpTitle": "Perlu perhatian",
-    "noNeedsHelpLearners": "Saat ini tidak ada pembelajar yang memerlukan perhatian ekstra."
+    "noNeedsHelpLearners": "Saat ini tidak ada pembelajar yang memerlukan perhatian ekstra.",
+    "groupSaved": "Grup disimpan.",
+    "groupSaveFailed": "Tidak dapat menyimpan grup ini.",
+    "group": "Kelompok",
+    "noGroup": "Tidak ada grup",
+    "languagePolicy": "Kebijakan bahasa",
+    "allowedTargetLanguages": "Bahasa target yang diizinkan",
+    "allowedTargetLanguagesHelp": "Pelajar yang menggunakan akses institusi ini hanya dapat memilih bahasa target berikut.",
+    "defaultTargetLanguage": "Bahasa target bawaan",
+    "noDefaultLanguage": "Tidak ada bawaan",
+    "groupsKicker": "Grup",
+    "groupsTitle": "Kelompok belajar",
+    "groupUsesOrgPolicy": "Menggunakan kebijakan bahasa organisasi",
+    "noGroupsYet": "Buat grup untuk mengelola akses bahasa untuk kelas, kelompok, atau tim.",
+    "groupName": "Nama grup",
+    "groupNamePlaceholder": "Contoh: Kelas malam pemula",
+    "groupLanguages": "Kelompokkan bahasa target",
+    "createGroup": "Buat grup",
+    "testingKicker": "Pemeriksaan level",
+    "testingTitle": "Tes dan sertifikat",
+    "recentAttempts": "Upaya terbaru",
+    "certificatesIssued": "Sertifikat diterbitkan",
+    "learner": "Pelajar",
+    "mobileCertificateLogoName": "Logo sertifikat seluler",
+    "certificateBrandingSaved": "Pencitraan merek sertifikat disimpan.",
+    "certificateBrandingFailed": "Tidak dapat menyimpan pencitraan merek sertifikat. Gunakan URL gambar HTTPS, atau unggah logo PNG, JPG, atau WebP berukuran kurang dari 600 KB dari dasbor web.",
+    "certificateBrandingRemoved": "Logo sertifikat dihapus.",
+    "certificateBrandingKicker": "Sertifikat",
+    "certificateBrandingTitle": "Pencitraan merek sertifikat",
+    "certificateBrandingHelp": "Sertifikat institusi menggunakan desain yang sama dengan sertifikat pribadi, dengan tambahan logo dan nama institusi.",
+    "certificateLogoUrl": "URL logo sertifikat atau gambar data",
+    "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
+    "mobileCertificateLogoHelp": "Tempelkan URL gambar HTTPS di sini, atau gunakan dasbor web untuk mengunggah file PNG, JPG, atau WebP.",
+    "saveCertificateBranding": "Simpan logo sertifikat",
+    "removeCertificateLogo": "Hapus logo"
   },
   "errorBoundary": {
     "title": "Ada yang tidak beres",
@@ -1083,13 +1135,47 @@
       "intermediateSubtitle": "Unit berbasis topik untuk opini, budaya, kesehatan, pekerjaan, dan kepercayaan diri sehari-hari.",
       "professionalTitle": "Tingkat {{level}} - Profesional {{language}}",
       "professionalSubtitle": "Bahasa praktis untuk pekerjaan, layanan, perumahan, keselamatan, dan situasi formal.",
-      "grammarTitle": "Level {{level}} - Tata bahasa tingkat lanjut",
-      "grammarSubtitle": "Kelompok pola yang membantu Anda menghubungkan ide dengan kontrol lebih besar."
+      "grammarTitle": "Tingkat {{level}} - Lanjutan {{language}}",
+      "grammarSubtitle": "Kelompok pola yang membantu Anda menghubungkan ide dengan kontrol lebih besar.",
+      "survivalTitle": "Tingkat {{level}} - Penting {{language}}",
+      "survivalSubtitle": "Bangun dasar-dasar praktis untuk salam, ruangan, tempat, rutinitas, belanja, dan makanan.",
+      "everydayTitle": "Tingkat {{level}} - Setiap hari {{language}}",
+      "everydaySubtitle": "Pelajaran inti sehari-hari untuk salam, makanan, tempat, rencana, dan situasi sehari-hari.",
+      "bridgeTitle": "Tingkat {{level}} - Jembatan",
+      "bridgeSubtitle": "Tinjauan dan unit transisi yang menghubungkan materi sehari-hari ke penggunaan yang lebih mandiri.",
+      "topicTitle": "Tingkat {{level}} - Tematik {{language}}",
+      "topicSubtitle": "Unit berbasis topik untuk opini, budaya, kesehatan, rencana, dan ekspresi percaya diri sehari-hari.",
+      "advancedTitle": "Tingkat {{level}} - Lanjutan {{language}}",
+      "advancedSubtitle": "Tugas membaca, mendengarkan, berbicara, dan menulis lebih lama dengan dukungan bahasa asli yang lebih ringan."
     },
     "titlePrefix": {
       "unit": "Tingkat {{level}} · Satuan {{unit}}: {{title}}"
     },
-    "retry": "Coba lagi"
+    "retry": "Coba lagi",
+    "lessonsCount": "{{count}} pelajaran",
+    "lessonRoles": {
+      "branch": "Cabang tujuan",
+      "checkpoint": "Pos pemeriksaan",
+      "repair": "Memperbaiki",
+      "core": "Inti"
+    },
+    "lessonWeights": {
+      "deep": "Dalam",
+      "light": "Lampu",
+      "standard": "Standar"
+    },
+    "requiredForProgress": "Diperlukan",
+    "programLevels": {
+      "kicker": "Tingkat pembelajaran",
+      "coreCount": "{{count}} inti",
+      "branchCount": "{{count}} cabang",
+      "checkpointCount": "{{count}} pos pemeriksaan"
+    },
+    "singleTrackGuidanceKicker": "Kenapa satu kelas",
+    "singleTrackGuidanceTitle": "Mulailah fokus, lalu bercabang",
+    "singleTrackGuidanceBody": "Trek ini sengaja dibuat kompak agar langkah pertama terasa jelas. Selesaikan kelas di sini, lalu lanjutkan ke jalur berikutnya untuk latihan yang lebih luas.",
+    "singleTrackGuidanceStep1": "Bangun pangkalannya",
+    "singleTrackGuidanceStep2": "Lanjutkan ke penggunaan sehari-hari"
   },
   "classLesson": {
     "loading": "Memuat pelajaran kelas...",
@@ -1231,7 +1317,46 @@
     "selfTestReason": "Disimpan dari kelas untuk tes mandiri cepat.",
     "previous": "Sebelumnya",
     "lessonGuide": "Panduan pelajaran",
-    "activityXOfY": "Aktivitas {{current}} dari {{total}}"
+    "activityXOfY": "Aktivitas {{current}} dari {{total}}",
+    "wrapUpReviewBody": "Coba lagi item yang jatuh tempo atau lemah dari kelas ini.",
+    "wrapUpQuizBody": "Periksa pemahaman tanpa memuat kuis sampai Anda memulai.",
+    "wrapUpWritingBody": "Gunakan mode tulis atau ketik yang sesuai level.",
+    "wrapUpConversationPrompt": "Bantu saya menggunakan apa yang baru saya pelajari dalam percakapan singkat.",
+    "wrapUpConversationBody": "Ubah pelajaran menjadi permainan peran singkat.",
+    "learningPlan": {
+      "unplacedLevel": "Tingkat pembelajaran",
+      "moreActivities": "{{count}} lebih lanjut",
+      "level": "Tingkat",
+      "support": "Mendukung",
+      "selfTest": "Tes mandiri",
+      "writing": "Menulis",
+      "activities": "Latihan panjang",
+      "ariaLabel": "Rencana pembelajaran"
+    },
+    "supportLevels": {
+      "nativeGuided": "Dukungan bahasa asli yang kuat",
+      "mixedGuided": "Target seimbang dan dukungan asli",
+      "targetFirst": "Bahasa target terlebih dahulu",
+      "immersionWithHelp": "Sebagian besar bahasa target dengan bantuan tersedia",
+      "standard": "Dukungan terpandu"
+    },
+    "quizModes": {
+      "nativeAssisted": "Arti pilihan dalam bahasa ibu Anda",
+      "targetWithNativeHints": "Pilihan bahasa target dengan petunjuk asli",
+      "targetDominant": "Sebagian besar pilihan bahasa target",
+      "targetFirst": "Uji mandiri target-pertama",
+      "standard": "Tes mandiri yang dipandu"
+    },
+    "writingModes": {
+      "handwritingFirst": "Lacak atau salin terlebih dahulu",
+      "typeWithWriteOption": "Ketik, dengan latihan menulis tersedia",
+      "typedProduction": "Jawaban yang diketik dari memori",
+      "extendedTypedProduction": "Respons yang diketik lebih panjang",
+      "standard": "Tulis atau ketik"
+    },
+    "longActivities": {
+      "practice": "Praktik"
+    }
   },
   "exercise": {
     "kicker": "Latihan",
@@ -1390,7 +1515,8 @@
       "listen": "Dengarkan dulu, lalu tulis apa yang Anda dengar.",
       "meaning": "Gunakan maknanya untuk mengingat dan menulis teks sasaran.",
       "stroke": "Ikuti panduannya, lalu praktikkan di area menulis.",
-      "review": "Bandingkan tulisan Anda dengan jawabannya dan tandai mana yang kuat."
+      "review": "Bandingkan tulisan Anda dengan jawabannya dan tandai mana yang kuat.",
+      "type": "Ketikkan jawaban dari memori. Ini adalah mode menulis standar setelah pelajaran menulis tangan awal."
     },
     "status": {
       "loadingNotebook": "Memuat buku catatan menulis...",
@@ -1425,7 +1551,8 @@
     "selfTestReason": "Disimpan dari latihan menulis untuk tes mandiri cepat.",
     "hideNotebook": "Sembunyikan buku catatan",
     "showNotebook": "Tunjukkan buku catatan",
-    "hideAddPanel": "Sembunyikan panel tambahan"
+    "hideAddPanel": "Sembunyikan panel tambahan",
+    "typePlaceholder": "Ketik jawabanmu di sini..."
   },
   "certificates": {
     "kicker": "Sertifikat",
@@ -1457,7 +1584,30 @@
     "viewPlans": "Lihat rencana",
     "signIn": "Masuk",
     "issuedSuccess": "Sertifikat diterbitkan.",
-    "issueFailed": "Tidak dapat menerbitkan sertifikat."
+    "issueFailed": "Tidak dapat menerbitkan sertifikat.",
+    "levelCertificateTitle": "Sertifikat tingkat {{level}}",
+    "proficiencyTitle": "Sertifikat Kemahiran",
+    "institutionProficiencyTitle": "Sertifikat Kemahiran",
+    "levelCompletionTitle": "Sertifikat Penyelesaian Tingkat",
+    "institutionCompletionTitle": "Sertifikat Penyelesaian Tingkat",
+    "level": "Tingkat",
+    "levelNumber": "Tingkat {{level}}",
+    "score": "Skor",
+    "organization": "Organisasi",
+    "institutionLogoAlt": "logo {{organization}}",
+    "issuedThrough": "Dikeluarkan melalui",
+    "institution": "Lembaga",
+    "verifiedProficiency": "Sertifikat kemahiran terverifikasi",
+    "verifiedCompletion": "Sertifikat penyelesaian terverifikasi",
+    "proficiencyStatement": "Kemahiran yang ditunjukkan untuk Level {{level}}",
+    "levelCompletionStatement": "Tingkat Selesai {{level}}",
+    "completionStatement": "Menyelesaikan kegiatan pembelajaran yang diperlukan",
+    "download": "Unduh",
+    "languageControl": "Bahasa sertifikat",
+    "nativeVersionShort": "Warga asli",
+    "targetVersionShort": "Target",
+    "bilingualVersionShort": "Keduanya",
+    "certificateIssuedThrough": "Sertifikat dikeluarkan melalui"
   },
   "learningHub": {
     "continueLearning": "Lanjutkan belajar",
@@ -1619,7 +1769,10 @@
     "recentWordsEmptyAction": "Kata-kata tersimpan dan frasa berguna akan dikumpulkan di sini setelah kelas atau latihan percakapan.",
     "startAClass": "Mulai kelas",
     "milestonesEmptyAction": "Pelajaran pertama Anda yang telah diselesaikan, frasa tersimpan, atau sertifikat akan muncul di sini.",
-    "earnFirstMilestone": "Dapatkan pencapaian pertama"
+    "earnFirstMilestone": "Dapatkan pencapaian pertama",
+    "repairPlanTitle": "Perbaikan fokus",
+    "repairPlanValue": "Layak untuk dikunjungi kembali",
+    "repairPlanBody": "Beberapa item lemah atau pos pemeriksaan siap untuk latihan terfokus sebelum Anda melangkah terlalu jauh ke depan."
   },
   "resetPassword": {
     "title": "Atur ulang kata sandi",
@@ -1689,5 +1842,56 @@
     "speaking": "Berbicara",
     "reading": "Membaca",
     "writing": "Menulis"
+  },
+  "levelTests": {
+    "kicker": "Pemeriksaan level",
+    "levelLabel": "Tingkat {{level}}",
+    "passed": "Lulus",
+    "reviewRecommended": "Ulasan direkomendasikan",
+    "tasks": {
+      "chooseTarget": "Pilih jawaban bahasa target.",
+      "chooseMeaning": "Pilihlah arti yang terbaik.",
+      "typeTarget": "Ketikkan jawaban dalam bahasa target.",
+      "shortResponse": "Jawablah dalam bahasa target, lalu nilai tanggapan Anda.",
+      "default": "Jawab pertanyaannya."
+    },
+    "institutionContext": "Lembaga",
+    "personalContext": "Pribadi",
+    "skills": {
+      "general": "Umum"
+    },
+    "loadFailed": "Tidak dapat memuat pengujian level saat ini.",
+    "startFailed": "Tes ini belum siap.",
+    "submitFailed": "Tidak dapat mengirimkan tes ini.",
+    "certificateReady": "Sertifikat Anda sudah siap.",
+    "certificateFailed": "Belum dapat menerbitkan sertifikat ini.",
+    "title": "Tunjukkan apa yang bisa Anda lakukan",
+    "subtitle": "Selesaikan pemeriksaan level untuk mengetahui kemajuan, atau lakukan pemeriksaan kemahiran jika Anda menginginkan bukti kemampuan yang lebih kuat.",
+    "context": "Konteks",
+    "allowedLanguages": "Bahasa target yang tersedia",
+    "chooseLevel": "Pilih tingkat",
+    "testType": "Jenis tes",
+    "restrictedTarget": "Bahasa target ini tidak tersedia dalam konteks institusi ini.",
+    "start": "Mulai periksa",
+    "emptyTitle": "Pilih pemeriksaan level",
+    "emptyBody": "Anda akan melihat serangkaian tugas kosakata, tata bahasa, membaca, berbicara, dan menulis yang seimbang dari tingkat yang Anda pilih.",
+    "resultTitle": "Hasil Anda",
+    "questionsTitle": "Jawab setiap tugas",
+    "certificateIssued": "Sertifikat diterbitkan",
+    "issueCertificate": "Menerbitkan sertifikat",
+    "writeAnswer": "Tulis jawabanmu di sini...",
+    "selfNeedsWork": "Perlu pekerjaan",
+    "selfAlmost": "Hampir",
+    "selfGood": "Bagus",
+    "correct": "Benar",
+    "missed": "Tinjau ini",
+    "submit": "Kirimkan cek",
+    "fullNameInvalid": "Masukkan setidaknya dua karakter untuk nama lengkap Anda.",
+    "certificateNameKicker": "Nama sertifikat",
+    "fullNameRequiredTitle": "Tambahkan nama lengkap Anda",
+    "fullNameRequiredBody": "Masukkan nama lengkap Anda persis seperti yang tertera pada sertifikat ini. Anda hanya perlu melakukan ini sebelum menerbitkan sertifikat.",
+    "fullNameLabel": "Nama lengkap",
+    "fullNamePlaceholder": "Nama lengkap Anda",
+    "saveNameAndIssue": "Simpan nama dan terbitkan sertifikat"
   }
 }

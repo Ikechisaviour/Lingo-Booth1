@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   ActivityIndicator,
   Alert,
+  Image,
   RefreshControl,
   ScrollView,
   StyleSheet,
@@ -12,10 +13,12 @@ import { Button, Card, Text, TextInput } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
 import { billingService } from '../../services/api';
+import LANGUAGES, { getLanguageDisplayName } from '../../config/languages';
 import { shadows, type AppColors, useAppColors } from '../../config/theme';
 
 const roleOptions = ['learner', 'teacher', 'admin', 'owner'];
 const statusOptions = ['active', 'invited', 'removed'];
+const languageCodes = Object.keys(LANGUAGES);
 
 const formatDate = (value: string | null | undefined, fallback: string) => {
   if (!value) return fallback;
@@ -46,6 +49,19 @@ const InstitutionDashboardScreen: React.FC = () => {
   const [selectedOrganizationId, setSelectedOrganizationId] = useState('');
   const [inviteEmail, setInviteEmail] = useState('');
   const [inviteRole, setInviteRole] = useState('learner');
+  const [inviteGroupId, setInviteGroupId] = useState('');
+  const [groupForm, setGroupForm] = useState<any>({
+    name: '',
+    description: '',
+    allowedTargetLanguages: [],
+    defaultTargetLanguage: '',
+  });
+  const [languagePolicy, setLanguagePolicy] = useState<any>({
+    allowedTargetLanguages: [],
+    defaultTargetLanguage: '',
+    allowLanguageRequests: true,
+  });
+  const [certificateLogoValue, setCertificateLogoValue] = useState('');
 
   const organization = dashboard?.organization;
   const members = dashboard?.members || [];
@@ -59,6 +75,12 @@ const InstitutionDashboardScreen: React.FC = () => {
       setDashboard(res.data);
       const nextOrgId = res.data?.organization?._id;
       if (nextOrgId) setSelectedOrganizationId(String(nextOrgId));
+      setLanguagePolicy({
+        allowedTargetLanguages: res.data?.languagePolicy?.allowedTargetLanguages || res.data?.organization?.allowedTargetLanguages || [],
+        defaultTargetLanguage: res.data?.languagePolicy?.defaultTargetLanguage || res.data?.organization?.defaultTargetLanguage || '',
+        allowLanguageRequests: res.data?.languagePolicy?.allowLanguageRequests !== false,
+      });
+      setCertificateLogoValue('');
     } catch (err: any) {
       if (err.response?.status === 403) {
         setNoAccess(true);
@@ -83,6 +105,102 @@ const InstitutionDashboardScreen: React.FC = () => {
     loadDashboard(selectedOrganizationId);
   };
 
+  const toggleLanguage = (code: string) => {
+    setLanguagePolicy((current: any) => {
+      const set = new Set(current.allowedTargetLanguages || []);
+      if (set.has(code)) set.delete(code);
+      else set.add(code);
+      const next = Array.from(set) as string[];
+      return {
+        ...current,
+        allowedTargetLanguages: next,
+        defaultTargetLanguage: next.includes(current.defaultTargetLanguage) ? current.defaultTargetLanguage : (next[0] || ''),
+      };
+    });
+  };
+
+  const toggleGroupLanguage = (code: string) => {
+    setGroupForm((current: any) => {
+      const set = new Set(current.allowedTargetLanguages || []);
+      if (set.has(code)) set.delete(code);
+      else set.add(code);
+      const next = Array.from(set) as string[];
+      return {
+        ...current,
+        allowedTargetLanguages: next,
+        defaultTargetLanguage: next.includes(current.defaultTargetLanguage) ? current.defaultTargetLanguage : (next[0] || ''),
+      };
+    });
+  };
+
+  const saveLanguagePolicy = async () => {
+    if (!organization?._id) return;
+    setSaving(true);
+    try {
+      await billingService.updateInstitutionProfile(organization._id, languagePolicy);
+      setNotice(t('institution.profileSaved', 'Institution profile saved.'));
+      await loadDashboard(organization._id);
+    } catch {
+      Alert.alert(t('common.error', 'Error'), t('institution.profileFailed', 'Could not save institution profile.'));
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const saveCertificateBranding = async () => {
+    if (!organization?._id || !certificateLogoValue.trim()) return;
+    setSaving(true);
+    try {
+      await billingService.updateInstitutionCertificateBranding(organization._id, {
+        logoUrl: certificateLogoValue.trim(),
+        logoOriginalName: t('institution.mobileCertificateLogoName', 'Mobile certificate logo'),
+      });
+      setCertificateLogoValue('');
+      setNotice(t('institution.certificateBrandingSaved', 'Certificate branding saved.'));
+      await loadDashboard(organization._id);
+      } catch (err: any) {
+        Alert.alert(
+          t('common.error', 'Error'),
+          t('institution.certificateBrandingFailed', 'Could not save certificate branding. Use an HTTPS image URL, or upload a PNG, JPG, or WebP logo under 600 KB from the web dashboard.'),
+        );
+      } finally {
+        setSaving(false);
+      }
+  };
+
+  const removeCertificateBranding = async () => {
+    if (!organization?._id) return;
+    setSaving(true);
+    try {
+      await billingService.updateInstitutionCertificateBranding(organization._id, { removeLogo: true });
+      setCertificateLogoValue('');
+      setNotice(t('institution.certificateBrandingRemoved', 'Certificate logo removed.'));
+      await loadDashboard(organization._id);
+      } catch (err: any) {
+        Alert.alert(
+          t('common.error', 'Error'),
+          t('institution.certificateBrandingFailed', 'Could not save certificate branding. Use an HTTPS image URL, or upload a PNG, JPG, or WebP logo under 600 KB from the web dashboard.'),
+        );
+      } finally {
+        setSaving(false);
+      }
+  };
+
+  const createGroup = async () => {
+    if (!organization?._id || !groupForm.name.trim()) return;
+    setSaving(true);
+    try {
+      await billingService.createInstitutionGroup(organization._id, groupForm);
+      setGroupForm({ name: '', description: '', allowedTargetLanguages: [], defaultTargetLanguage: '' });
+      setNotice(t('institution.groupSaved', 'Group saved.'));
+      await loadDashboard(organization._id);
+    } catch {
+      Alert.alert(t('common.error', 'Error'), t('institution.groupSaveFailed', 'Could not save this group.'));
+    } finally {
+      setSaving(false);
+    }
+  };
+
   const addMember = async () => {
     if (!organization?._id || !inviteEmail.trim()) return;
     setSaving(true);
@@ -92,9 +210,11 @@ const InstitutionDashboardScreen: React.FC = () => {
       await billingService.addInstitutionMember(organization._id, {
         email: inviteEmail.trim(),
         role: inviteRole,
+        groupId: inviteGroupId,
       });
       setInviteEmail('');
       setInviteRole('learner');
+      setInviteGroupId('');
       setNotice(t('institution.memberAdded'));
       await loadDashboard(organization._id);
     } catch {
@@ -246,8 +366,188 @@ const InstitutionDashboardScreen: React.FC = () => {
                 </TouchableOpacity>
               ))}
             </View>
+            {(dashboard.groups || []).length > 0 && (
+              <>
+                <Text style={styles.memberProgress}>{t('institution.group', 'Group')}</Text>
+                <View style={styles.chipRow}>
+                  <TouchableOpacity
+                    style={[styles.smallChip, !inviteGroupId && styles.choiceChipActive]}
+                    onPress={() => setInviteGroupId('')}
+                    activeOpacity={0.75}
+                  >
+                    <Text style={[styles.smallChipText, !inviteGroupId && styles.choiceChipTextActive]}>
+                      {t('institution.noGroup', 'No group')}
+                    </Text>
+                  </TouchableOpacity>
+                  {(dashboard.groups || []).map((group: any) => (
+                    <TouchableOpacity
+                      key={group._id}
+                      style={[styles.smallChip, inviteGroupId === group._id && styles.choiceChipActive]}
+                      onPress={() => setInviteGroupId(group._id)}
+                      activeOpacity={0.75}
+                    >
+                      <Text style={[styles.smallChipText, inviteGroupId === group._id && styles.choiceChipTextActive]}>
+                        {group.name}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </>
+            )}
             <Button mode="contained" onPress={addMember} loading={saving} disabled={saving || !inviteEmail.trim()}>
               {t('institution.addMember')}
+            </Button>
+          </Card.Content>
+        </Card>
+      )}
+
+      {canManage && (
+        <Card style={styles.card}>
+          <Card.Content style={styles.cardContent}>
+            <Text style={styles.kicker}>{t('institution.languagePolicy', 'Language policy')}</Text>
+            <Text style={styles.sectionTitle}>{t('institution.allowedTargetLanguages', 'Allowed target languages')}</Text>
+            <Text style={styles.muted}>
+              {t('institution.allowedTargetLanguagesHelp', 'Learners using this institution access can choose only these target languages.')}
+            </Text>
+            <View style={styles.chipRow}>
+              {languageCodes.map((code) => {
+                const active = (languagePolicy.allowedTargetLanguages || []).includes(code);
+                return (
+                  <TouchableOpacity
+                    key={code}
+                    style={[styles.smallChip, active && styles.choiceChipActive]}
+                    onPress={() => toggleLanguage(code)}
+                    activeOpacity={0.75}
+                  >
+                    <Text style={[styles.smallChipText, active && styles.choiceChipTextActive]}>
+                      {getLanguageDisplayName(code, t)}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+            <Text style={styles.memberProgress}>
+              {t('institution.defaultTargetLanguage', 'Default target language')}: {languagePolicy.defaultTargetLanguage ? getLanguageDisplayName(languagePolicy.defaultTargetLanguage, t) : t('institution.noDefaultLanguage', 'No default')}
+            </Text>
+            <Button mode="contained" onPress={saveLanguagePolicy} loading={saving} disabled={saving}>
+              {t('common.save', 'Save')}
+            </Button>
+          </Card.Content>
+        </Card>
+      )}
+
+      {canManage && (
+        <Card style={styles.card}>
+          <Card.Content style={styles.cardContent}>
+            <Text style={styles.kicker}>{t('institution.certificateBrandingKicker', 'Certificates')}</Text>
+            <Text style={styles.sectionTitle}>{t('institution.certificateBrandingTitle', 'Certificate branding')}</Text>
+            <View style={styles.certificateBrandingPreview}>
+              <View style={styles.certificateLogoBox}>
+                {(certificateLogoValue || organization?.certificateBranding?.logoUrl) ? (
+                  <Image
+                    source={{ uri: certificateLogoValue || organization.certificateBranding.logoUrl }}
+                    style={styles.certificateLogoImage}
+                    resizeMode="contain"
+                  />
+                ) : (
+                  <Text style={styles.certificateLogoInitials}>
+                    {String(organization?.name || 'LB')
+                      .split(/\s+/)
+                      .filter(Boolean)
+                      .slice(0, 2)
+                      .map((part) => part[0]?.toUpperCase())
+                      .join('') || 'LB'}
+                  </Text>
+                )}
+              </View>
+              <View style={{ flex: 1, minWidth: 0 }}>
+                <Text style={styles.memberName}>{organization?.name}</Text>
+                <Text style={styles.memberProgress}>
+                  {t(
+                    'institution.certificateBrandingHelp',
+                    'Institution certificates use the same design as personal certificates, with this logo and institution name added.',
+                  )}
+                </Text>
+              </View>
+            </View>
+            <TextInput
+              value={certificateLogoValue}
+              onChangeText={setCertificateLogoValue}
+              label={t('institution.certificateLogoUrl', 'Certificate logo URL or data image')}
+              placeholder={t('institution.certificateLogoUrlPlaceholder', 'https://example.com/logo.png')}
+              mode="outlined"
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <Text style={styles.memberProgress}>
+              {t('institution.mobileCertificateLogoHelp', 'Paste an HTTPS image URL here, or use the web dashboard to upload a PNG, JPG, or WebP file.')}
+            </Text>
+            <View style={styles.brandingButtonRow}>
+              <Button mode="contained" onPress={saveCertificateBranding} loading={saving} disabled={saving || !certificateLogoValue.trim()}>
+                {t('institution.saveCertificateBranding', 'Save certificate logo')}
+              </Button>
+              <Button mode="outlined" onPress={removeCertificateBranding} disabled={saving || !organization?.certificateBranding?.logoUrl}>
+                {t('institution.removeCertificateLogo', 'Remove logo')}
+              </Button>
+            </View>
+          </Card.Content>
+        </Card>
+      )}
+
+      {canManage && (
+        <Card style={styles.card}>
+          <Card.Content style={styles.cardContent}>
+            <Text style={styles.kicker}>{t('institution.groupsKicker', 'Groups')}</Text>
+            <Text style={styles.sectionTitle}>{t('institution.groupsTitle', 'Learning groups')}</Text>
+            {(dashboard.groups || []).length ? (
+              (dashboard.groups || []).map((group: any) => (
+                <View key={group._id} style={styles.memberCard}>
+                  <Text style={styles.memberName}>{group.name}</Text>
+                  {!!group.description && <Text style={styles.memberProgress}>{group.description}</Text>}
+                  <Text style={styles.memberProgress}>
+                    {(group.allowedTargetLanguages || []).length
+                      ? (group.allowedTargetLanguages || []).map((code: string) => getLanguageDisplayName(code, t)).join(', ')
+                      : t('institution.groupUsesOrgPolicy', 'Uses organization language policy')}
+                  </Text>
+                </View>
+              ))
+            ) : (
+              <Text style={styles.muted}>{t('institution.noGroupsYet', 'Create a group to manage language access for a class, cohort, or team.')}</Text>
+            )}
+            <TextInput
+              value={groupForm.name}
+              onChangeText={(name) => setGroupForm((current: any) => ({ ...current, name }))}
+              label={t('institution.groupName', 'Group name')}
+              placeholder={t('institution.groupNamePlaceholder', 'Example: Beginner evening class')}
+              mode="outlined"
+            />
+            <TextInput
+              value={groupForm.description}
+              onChangeText={(description) => setGroupForm((current: any) => ({ ...current, description }))}
+              label={t('pricing.message')}
+              multiline
+              mode="outlined"
+            />
+            <Text style={styles.memberProgress}>{t('institution.groupLanguages', 'Group target languages')}</Text>
+            <View style={styles.chipRow}>
+              {languageCodes.map((code) => {
+                const active = (groupForm.allowedTargetLanguages || []).includes(code);
+                return (
+                  <TouchableOpacity
+                    key={code}
+                    style={[styles.smallChip, active && styles.choiceChipActive]}
+                    onPress={() => toggleGroupLanguage(code)}
+                    activeOpacity={0.75}
+                  >
+                    <Text style={[styles.smallChipText, active && styles.choiceChipTextActive]}>
+                      {getLanguageDisplayName(code, t)}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+            <Button mode="contained" onPress={createGroup} loading={saving} disabled={saving || !groupForm.name.trim()}>
+              {t('institution.createGroup', 'Create group')}
             </Button>
           </Card.Content>
         </Card>
@@ -320,6 +620,36 @@ const InstitutionDashboardScreen: React.FC = () => {
                         </TouchableOpacity>
                       ))}
                     </View>
+                    {(dashboard.groups || []).length > 0 && (
+                      <View style={styles.chipRow}>
+                        <TouchableOpacity
+                          style={[styles.smallChip, !(member.groupId?._id || member.groupId) && styles.choiceChipActive]}
+                          onPress={() => updateMember(member, { groupId: '' })}
+                          disabled={saving}
+                          activeOpacity={0.75}
+                        >
+                          <Text style={[styles.smallChipText, !(member.groupId?._id || member.groupId) && styles.choiceChipTextActive]}>
+                            {t('institution.noGroup', 'No group')}
+                          </Text>
+                        </TouchableOpacity>
+                        {(dashboard.groups || []).map((group: any) => {
+                          const active = (member.groupId?._id || member.groupId) === group._id;
+                          return (
+                            <TouchableOpacity
+                              key={group._id}
+                              style={[styles.smallChip, active && styles.choiceChipActive]}
+                              onPress={() => updateMember(member, { groupId: group._id })}
+                              disabled={saving}
+                              activeOpacity={0.75}
+                            >
+                              <Text style={[styles.smallChipText, active && styles.choiceChipTextActive]}>
+                                {group.name}
+                              </Text>
+                            </TouchableOpacity>
+                          );
+                        })}
+                      </View>
+                    )}
                   </>
                 )}
               </View>
@@ -370,6 +700,29 @@ const InstitutionDashboardScreen: React.FC = () => {
           <Button mode="outlined" onPress={() => navigation.navigate('Billing')}>
             {t('billing.viewPlans')}
           </Button>
+        </Card.Content>
+      </Card>
+
+      <Card style={styles.card}>
+        <Card.Content style={styles.cardContent}>
+          <Text style={styles.kicker}>{t('institution.testingKicker', 'Level checks')}</Text>
+          <Text style={styles.sectionTitle}>{t('institution.testingTitle', 'Tests and certificates')}</Text>
+          <View style={styles.detailRow}>
+            <Text style={styles.detailLabel}>{t('institution.recentAttempts', 'Recent attempts')}</Text>
+            <Text style={styles.detailValue}>{dashboard.testing?.attempts?.length || 0}</Text>
+          </View>
+          <View style={styles.detailRow}>
+            <Text style={styles.detailLabel}>{t('institution.certificatesIssued', 'Certificates issued')}</Text>
+            <Text style={styles.detailValue}>{dashboard.testing?.certificates?.length || 0}</Text>
+          </View>
+          {(dashboard.testing?.attempts || []).slice(0, 4).map((attempt: any) => (
+            <View key={attempt._id} style={styles.memberCard}>
+              <Text style={styles.memberName}>{attempt.user?.username || attempt.user?.email || t('institution.learner', 'Learner')}</Text>
+              <Text style={styles.memberProgress}>
+                {t('levelTests.levelLabel', 'Level {{level}}', { level: attempt.level })} · {attempt.score}% · {attempt.passed ? t('levelTests.passed', 'Passed') : t('levelTests.reviewRecommended', 'Review recommended')}
+              </Text>
+            </View>
+          ))}
         </Card.Content>
       </Card>
     </ScrollView>
@@ -583,6 +936,38 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   memberProgress: {
     color: colors.textMuted,
     fontSize: 12,
+  },
+  certificateBrandingPreview: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    padding: 12,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: colors.primary + '38',
+    backgroundColor: colors.primary + '10',
+  },
+  certificateLogoBox: {
+    width: 58,
+    height: 58,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: colors.primary + '38',
+    backgroundColor: colors.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+  certificateLogoImage: {
+    width: 54,
+    height: 54,
+  },
+  certificateLogoInitials: {
+    color: colors.primary,
+    fontWeight: '900',
+  },
+  brandingButtonRow: {
+    gap: 10,
   },
   detailRow: {
     flexDirection: 'row',

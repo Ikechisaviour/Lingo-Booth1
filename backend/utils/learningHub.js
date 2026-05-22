@@ -8,6 +8,7 @@ const Flashcard = require('../models/Flashcard');
 const CompletionCertificate = require('../models/CompletionCertificate');
 const Translation = require('../models/Translation');
 const { languageField } = require('./languageConcepts');
+const { applyLearningArchitecture } = require('./learningArchitecture');
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 const RECENT_ACTIVITY_WINDOW_MS = 3 * DAY_MS;
@@ -457,7 +458,17 @@ function buildReviewQueue(dueSavedItems = [], progressRecords = []) {
 }
 
 async function firstClassLesson(targetLanguage) {
-  const trackOrder = { foundation: 1, thematic: 2, adult: 3, grammar: 4 };
+  const trackOrder = {
+    foundation: 1,
+    survival: 2,
+    everyday: 3,
+    bridge: 4,
+    thematic: 5,
+    professional: 6,
+    adult: 6,
+    advanced: 7,
+    grammar: 7,
+  };
   const courses = await Course.find({ targetLang: targetLanguage })
     .select('level track lessons')
     .lean();
@@ -548,6 +559,17 @@ function actionForType(type, { recentActivity, lesson, weakArea } = {}) {
       }
       : null;
   }
+  if (type === 'repair') {
+    if (lesson?._id) {
+      return {
+        type,
+        route: `/class/${lesson._id}`,
+        titleKey: 'learningHub.practiceArea',
+        label: lesson.title,
+      };
+    }
+    return actionForType('review');
+  }
   if (type === 'quiz') {
     return weakArea?.lessonId
       ? {
@@ -580,6 +602,114 @@ function actionForType(type, { recentActivity, lesson, weakArea } = {}) {
     };
   }
   return null;
+}
+
+function skillForLongActivity(activityType = '') {
+  const normalized = String(activityType || '').toLowerCase();
+  if (normalized.includes('writing') || normalized.includes('trace') || normalized.includes('copy')) return 'writing';
+  if (normalized.includes('storytelling') || normalized.includes('dialogue') || normalized.includes('repeat')) return 'speaking';
+  if (normalized.includes('hearing') || normalized.includes('listening') || normalized.includes('pronunciation')) return 'listening';
+  if (normalized.includes('comprehension') || normalized.includes('review')) return 'reading';
+  return '';
+}
+
+function lessonRepairScore(lesson = {}, weakAreas = [], weakSkill = null) {
+  const learning = lesson.learning || {};
+  const text = compact([
+    lesson.title,
+    lesson.category,
+    lesson.lessonType,
+    learning.levelTrack,
+    learning.supportLevel,
+    learning.writingMode,
+    (learning.skillStrands || []).join(' '),
+    (lesson.repairFocus || []).join(' '),
+    (lesson.longActivityTypes || []).join(' '),
+  ].join(' '), 1000).toLowerCase();
+  const longSkills = new Set((lesson.longActivityTypes || []).map(skillForLongActivity).filter(Boolean));
+  const focusSkills = new Set([
+    ...(learning.skillStrands || []),
+    ...(lesson.repairFocus || []),
+    ...longSkills,
+  ].map((value) => String(value || '').toLowerCase()).filter(Boolean));
+  const topSkill = String(weakSkill?.skill || '').toLowerCase();
+  let score = 0;
+
+  if (lesson.lessonRole === 'repair') score += 70;
+  if (lesson.lessonRole === 'checkpoint') score += 45;
+  if ((lesson.longActivityTypes || []).includes('repair-drill')) score += 40;
+  if (topSkill && focusSkills.has(topSkill)) score += 35;
+  if (lesson.coreRequired) score += 8;
+  score += Math.max(0, 12 - Number(lesson.lessonWeight || 2) * 2);
+
+  weakAreas.slice(0, 6).forEach((area) => {
+    const skill = String(area.skillType || '').toLowerCase();
+    const title = String(area.title || area.category || '').toLowerCase();
+    if (skill && focusSkills.has(skill)) score += 14;
+    if (title && text.includes(title.slice(0, 30))) score += 8;
+  });
+
+  return score;
+}
+
+async function buildRepairPlan(targetLanguage, reviewQueue = {}, abilityProgress = {}, firstLesson = null) {
+  const weakAreas = reviewQueue.weakAreas || [];
+  const weakSkill = weakestSkill(abilityProgress);
+  const needsRepair = weakAreas.length > 0
+    || (weakSkill?.metric?.score != null && Number(weakSkill.metric.score) < 70);
+
+  const candidateLessons = await Lesson.find({
+    track: 'textbook',
+    targetLang: targetLanguage,
+    curriculumStatus: { $ne: 'archived' },
+    $or: [
+      { lessonRole: { $in: ['repair', 'checkpoint'] } },
+      { longActivityTypes: { $in: ['repair-drill', 'checkpoint-review'] } },
+      { title: /review|checkpoint|repair|bridge|weak|mistake|practice/i },
+      { category: /review|checkpoint|repair|bridge|practice/i },
+    ],
+  })
+    .select('_id title category lessonType learningLevel lessonRole branchType lessonWeight coreRequired certificateEligible longActivityTypes repairFocus learning')
+    .limit(32)
+    .lean();
+
+  const fallback = firstLesson ? [firstLesson] : [];
+  const rankedLessons = (candidateLessons.length ? candidateLessons : fallback)
+    .map((lesson) => applyLearningArchitecture({ ...lesson }))
+    .map((lesson) => ({
+      _id: lesson._id,
+      title: lesson.title,
+      category: lesson.category,
+      lessonType: lesson.lessonType,
+      learningLevel: lesson.learningLevel,
+      lessonRole: lesson.lessonRole,
+      branchType: lesson.branchType,
+      lessonWeight: lesson.lessonWeight,
+      longActivityTypes: lesson.longActivityTypes || [],
+      score: lessonRepairScore(lesson, weakAreas, weakSkill),
+      action: actionForType('repair', { lesson }),
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 5);
+
+  const actions = [];
+  appendUniqueAction(actions, actionForType('review'));
+  if (weakAreas[0]?.lessonId) appendUniqueAction(actions, actionForType('quiz', { weakArea: weakAreas[0] }));
+  if (weakSkill?.skill === 'writing') appendUniqueAction(actions, actionForType('writing'));
+  if (['speaking', 'listening'].includes(weakSkill?.skill)) appendUniqueAction(actions, actionForType('conversation'));
+  rankedLessons.forEach((lesson) => appendUniqueAction(actions, lesson.action));
+
+  return {
+    needed: needsRepair,
+    focusSkill: weakSkill?.skill || '',
+    weakAreas: weakAreas.slice(0, 5),
+    lessons: rankedLessons,
+    actions: actions.slice(0, 4),
+    counts: {
+      weakAreas: weakAreas.length,
+      repairLessons: rankedLessons.length,
+    },
+  };
 }
 
 function weakestSkill(abilityProgress = {}) {
@@ -947,6 +1077,7 @@ async function buildLearningHubOverview(userId, targetLanguage, nativeLanguage, 
   const miniSpeakingDrills = buildMiniSpeakingDrills(savedItems, reviewQueue);
   const goalPath = buildGoalPath(pairProfile, nextAction, firstLesson, reviewQueue.weakAreas[0]);
   const firstThreeDays = buildFirstThreeDaysPlan(pairProfile, studyHistory, nextAction, firstLesson);
+  const repairPlan = await buildRepairPlan(targetLanguage, reviewQueue, abilityProgress, firstLesson);
   const milestones = await buildMilestones(
     userId,
     targetLanguage,
@@ -979,6 +1110,7 @@ async function buildLearningHubOverview(userId, targetLanguage, nativeLanguage, 
     realWorldProgress,
     recentWords,
     miniSpeakingDrills,
+    repairPlan,
     goalPath,
     firstThreeDays,
     milestones,
@@ -997,6 +1129,7 @@ async function buildLearningHubOverview(userId, targetLanguage, nativeLanguage, 
         firstLesson,
       }),
       reviewItems: reviewQueue.unifiedItems.slice(0, 8),
+      repairPlan,
       recentWords: recentWords.slice(0, 8),
     },
   };

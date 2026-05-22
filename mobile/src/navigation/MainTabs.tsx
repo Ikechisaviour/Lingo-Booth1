@@ -28,6 +28,7 @@ import {
 
 import HomeScreen from '../screens/home/HomeScreen';
 import LevelCheckScreen from '../screens/home/LevelCheckScreen';
+import LevelTestScreen from '../screens/levelTests/LevelTestScreen';
 import QuizListScreen from '../screens/quiz/QuizListScreen';
 import QuizDetailScreen from '../screens/quiz/QuizDetailScreen';
 import FlashcardsScreen from '../screens/flashcards/FlashcardsScreen';
@@ -68,6 +69,36 @@ type ClassLesson = {
   difficulty?: string;
   track?: 'textbook' | 'practice' | string;
   lessonType?: 'foundation' | 'thematic' | 'workplace' | 'grammar' | 'review' | string;
+  learning?: {
+    level?: number;
+    levelTrack?: string;
+    supportLevel?: string;
+    quizOptionMode?: string;
+    writingMode?: string;
+    lessonRole?: string;
+    branchType?: string;
+    lessonWeight?: number;
+    longActivityTypes?: string[];
+    manifestSource?: string;
+    unitOrder?: number;
+    sequenceOrder?: number;
+  };
+  learningLevel?: number;
+  levelTrack?: string;
+  supportLevel?: string;
+  quizOptionMode?: string;
+  writingMode?: string;
+  skillStrands?: string[];
+  lessonRole?: 'core' | 'branch' | 'checkpoint' | 'repair' | string;
+  coreRequired?: boolean;
+  requiredForProgress?: boolean;
+  certificateEligible?: boolean;
+  branchType?: string;
+  lessonWeight?: number;
+  manifestSource?: string;
+  unitOrder?: number;
+  sequenceOrder?: number;
+  longActivityTypes?: string[];
   activities?: ClassActivity[];
   expressionPractice?: ClassExpressionPractice[];
   relatedPools?: string[];
@@ -111,6 +142,16 @@ type ClassLessonItem = {
   exampleEnglish?: string;
   _translationPending?: boolean;
   _windowPlaceholder?: boolean;
+  learningLevel?: number;
+  levelTrack?: string;
+  supportLevel?: string;
+  quizOptionMode?: string;
+  writingMode?: string;
+  skillStrands?: string[];
+  lessonRole?: string;
+  branchType?: string;
+  lessonWeight?: number;
+  longActivityTypes?: string[];
 };
 
 type TutorMessage = {
@@ -165,6 +206,307 @@ const defaultActivityPlan = (t: (key: string, options?: any) => string): ClassAc
   },
 ];
 
+const CLASS_TRACKS = [
+  {
+    level: 1,
+    track: 'foundation',
+    titleKey: 'classList.tracks.foundationTitle',
+    fallbackTitle: 'Level {{level}} - Foundation',
+  },
+  {
+    level: 1,
+    track: 'survival',
+    titleKey: 'classList.tracks.survivalTitle',
+    fallbackTitle: 'Level {{level}} - Essential {{language}}',
+  },
+  {
+    level: 1,
+    track: 'everyday',
+    titleKey: 'classList.tracks.everydayTitle',
+    fallbackTitle: 'Level {{level}} - Everyday {{language}}',
+  },
+  {
+    level: 2,
+    track: 'bridge',
+    titleKey: 'classList.tracks.bridgeTitle',
+    fallbackTitle: 'Level {{level}} - Bridge',
+  },
+  {
+    level: 2,
+    track: 'thematic',
+    titleKey: 'classList.tracks.topicTitle',
+    fallbackTitle: 'Level {{level}} - Thematic {{language}}',
+  },
+  {
+    level: 3,
+    track: 'professional',
+    titleKey: 'classList.tracks.professionalTitle',
+    fallbackTitle: 'Level {{level}} - Professional {{language}}',
+  },
+  {
+    level: 4,
+    track: 'advanced',
+    titleKey: 'classList.tracks.advancedTitle',
+    fallbackTitle: 'Level {{level}} - Advanced {{language}}',
+  },
+];
+
+const CLASS_PROGRAM_LEVELS = [
+  {
+    level: 1,
+    titleKey: 'classList.programLevels.level1.title',
+    subtitleKey: 'classList.programLevels.level1.description',
+    fallbackTitle: 'Level {{level}} - Foundation',
+    fallbackSubtitle: 'Build the sound system, first routines, and essential everyday control.',
+  },
+  {
+    level: 2,
+    titleKey: 'classList.programLevels.level2.title',
+    subtitleKey: 'classList.programLevels.level2.description',
+    fallbackTitle: 'Level {{level}} - Everyday Use',
+    fallbackSubtitle: 'Use the language across daily topics with more reading, typing, listening, and review.',
+  },
+  {
+    level: 3,
+    titleKey: 'classList.programLevels.level3.title',
+    subtitleKey: 'classList.programLevels.level3.description',
+    fallbackTitle: 'Level {{level}} - Independent Use',
+    fallbackSubtitle: 'Handle work, services, longer turns, and real-life problem solving with lighter support.',
+  },
+  {
+    level: 4,
+    titleKey: 'classList.programLevels.level4.title',
+    subtitleKey: 'classList.programLevels.level4.description',
+    fallbackTitle: 'Level {{level}} - Advanced Control',
+    fallbackSubtitle: 'Refine advanced grammar, extended writing, storytelling, and target-first comprehension.',
+  },
+];
+
+const CLASS_TRACK_ORDER: Record<string, number> = {
+  foundation: 1,
+  survival: 2,
+  everyday: 3,
+  bridge: 4,
+  thematic: 5,
+  professional: 6,
+  advanced: 7,
+};
+
+function interpolateClassCopy(template: string, values: Record<string, string | number>) {
+  return String(template || '').replace(/\{\{(\w+)\}\}/g, (_, key) => String(values[key] ?? ''));
+}
+
+function classifyClassLesson(lesson: ClassLesson) {
+  const course: any = (lesson as any).course || {};
+  const learning: any = lesson.learning || {};
+  const level = Number(course.level || lesson.learningLevel || learning.level || 0);
+  const track = course.track || lesson.levelTrack || learning.levelTrack || '';
+  if (level && track) {
+    return {
+      level,
+      track,
+      position: Number((lesson as any).sequenceOrder || course.sequenceOrder || course.position || 999),
+    };
+  }
+  if (lesson.lessonType === 'foundation') return { level: 1, track: 'foundation', position: 0 };
+  if (lesson.lessonType === 'workplace') return { level: 3, track: 'professional', position: 999 };
+  if (lesson.lessonType === 'grammar') return { level: 4, track: 'advanced', position: 999 };
+  if (lesson.lessonType === 'review') return { level: 2, track: 'bridge', position: 999 };
+  if (lesson.difficulty === 'beginner') return { level: 1, track: 'everyday', position: 999 };
+  if (lesson.difficulty === 'intermediate') return { level: 2, track: 'thematic', position: 999 };
+  if (lesson.difficulty === 'advanced') return { level: 4, track: 'advanced', position: 999 };
+  return { level: 9, track: 'other', position: 999 };
+}
+
+function classTrackTitle(group: { level: number; track: string }, targetName: string, t: (key: string, options?: any) => string) {
+  const info = CLASS_TRACKS.find((item) => item.level === group.level && item.track === group.track);
+  if (!info) return t('classList.classFallback', 'Class');
+  const values = { level: info.level, language: targetName };
+  return t(info.titleKey, {
+    ...values,
+    defaultValue: interpolateClassCopy(info.fallbackTitle, values),
+  });
+}
+
+function classProgramLevelCopy(levelInfo: typeof CLASS_PROGRAM_LEVELS[number], t: (key: string, options?: any) => string) {
+  const values = { level: levelInfo.level };
+  return {
+    title: t(levelInfo.titleKey, {
+      ...values,
+      defaultValue: interpolateClassCopy(levelInfo.fallbackTitle, values),
+    }),
+    subtitle: t(levelInfo.subtitleKey, levelInfo.fallbackSubtitle),
+  };
+}
+
+function classLevelAccent(level: number | undefined, colors: AppColors) {
+  const normalized = Number(level || 1);
+  if (normalized === 2) {
+    return {
+      accent: '#168fd2',
+      strong: '#0b6fa8',
+      soft: 'rgba(22, 143, 210, 0.11)',
+      panel: 'rgba(239, 249, 255, 0.94)',
+      border: 'rgba(22, 143, 210, 0.28)',
+    };
+  }
+  if (normalized === 3) {
+    return {
+      accent: '#7857d6',
+      strong: '#5f3ebf',
+      soft: 'rgba(120, 87, 214, 0.12)',
+      panel: 'rgba(247, 244, 255, 0.94)',
+      border: 'rgba(120, 87, 214, 0.3)',
+    };
+  }
+  if (normalized === 4) {
+    return {
+      accent: '#b7791f',
+      strong: '#8a5a13',
+      soft: 'rgba(183, 121, 31, 0.13)',
+      panel: 'rgba(255, 249, 235, 0.94)',
+      border: 'rgba(183, 121, 31, 0.3)',
+    };
+  }
+  return {
+    accent: colors.primary,
+    strong: colors.primaryHover,
+    soft: colors.primary + '12',
+    panel: colors.primary + '08',
+    border: colors.primary + '35',
+  };
+}
+
+function classRoleCounts(lessons: ClassLesson[]) {
+  return lessons.reduce((acc, lesson) => {
+    const role = String(lesson.lessonRole || lesson.learning?.lessonRole || 'core').toLowerCase();
+    if (role === 'branch') acc.branches += 1;
+    else if (role === 'checkpoint') acc.checkpoints += 1;
+    else if (role === 'repair') acc.repairs += 1;
+    else acc.core += 1;
+    return acc;
+  }, { core: 0, branches: 0, checkpoints: 0, repairs: 0 });
+}
+
+function classLessonRoleLabel(role: string | undefined, t: (key: string, options?: any) => string) {
+  const normalized = String(role || 'core').toLowerCase();
+  if (normalized === 'branch') return t('classList.lessonRoles.branch', 'Goal branch');
+  if (normalized === 'checkpoint') return t('classList.lessonRoles.checkpoint', 'Checkpoint');
+  if (normalized === 'repair') return t('classList.lessonRoles.repair', 'Repair');
+  return t('classList.lessonRoles.core', 'Core');
+}
+
+function classLessonWeightLabel(weight: number | undefined, t: (key: string, options?: any) => string) {
+  const value = Number(weight || 2);
+  if (value >= 3) return t('classList.lessonWeights.deep', 'Deep');
+  if (value <= 1) return t('classList.lessonWeights.light', 'Light');
+  return t('classList.lessonWeights.standard', 'Standard');
+}
+
+const CLASS_LEVEL_FALLBACKS: Record<number, string> = {
+  1: 'Level {{level}} - Foundation',
+  2: 'Level {{level}} - Everyday Use',
+  3: 'Level {{level}} - Independent Use',
+  4: 'Level {{level}} - Advanced Control',
+};
+
+function classLearningLevelLabel(level: number | undefined, t: (key: string, options?: any) => string) {
+  const value = Number(level || 0);
+  const fallback = CLASS_LEVEL_FALLBACKS[value]
+    ? interpolateClassCopy(CLASS_LEVEL_FALLBACKS[value], { level: value })
+    : t('classLesson.learningPlan.unplacedLevel', 'Learning level');
+  return t(`classList.programLevels.level${value}.title`, fallback);
+}
+
+function classSupportLevelLabel(value: string | undefined, t: (key: string, options?: any) => string) {
+  const normalized = String(value || '').toLowerCase();
+  if (normalized === 'native-guided') return t('classLesson.supportLevels.nativeGuided', 'Strong native-language support');
+  if (normalized === 'mixed-guided') return t('classLesson.supportLevels.mixedGuided', 'Balanced target and native support');
+  if (normalized === 'target-first') return t('classLesson.supportLevels.targetFirst', 'Target language first');
+  if (normalized === 'immersion-with-help') return t('classLesson.supportLevels.immersionWithHelp', 'Mostly target language with help available');
+  return t('classLesson.supportLevels.standard', 'Guided support');
+}
+
+function classQuizModeLabel(value: string | undefined, t: (key: string, options?: any) => string) {
+  const normalized = String(value || '').toLowerCase();
+  if (normalized === 'native-assisted') return t('classLesson.quizModes.nativeAssisted', 'Meaning choices in your native language');
+  if (normalized === 'target-with-native-hints') return t('classLesson.quizModes.targetWithNativeHints', 'Target-language choices with native hints');
+  if (normalized === 'target-dominant') return t('classLesson.quizModes.targetDominant', 'Mostly target-language choices');
+  if (normalized === 'target-first') return t('classLesson.quizModes.targetFirst', 'Target-first self-test');
+  return t('classLesson.quizModes.standard', 'Guided self-test');
+}
+
+function classWritingModeLabel(value: string | undefined, t: (key: string, options?: any) => string) {
+  const normalized = String(value || '').toLowerCase();
+  if (normalized === 'handwriting-first') return t('classLesson.writingModes.handwritingFirst', 'Trace or copy first');
+  if (normalized === 'type-with-write-option') return t('classLesson.writingModes.typeWithWriteOption', 'Type, with writing practice available');
+  if (normalized === 'typed-production') return t('classLesson.writingModes.typedProduction', 'Typed answers from memory');
+  if (normalized === 'extended-typed-production') return t('classLesson.writingModes.extendedTypedProduction', 'Longer typed responses');
+  return t('classLesson.writingModes.standard', 'Write or type');
+}
+
+function classLongActivityLabel(value: string | undefined, t: (key: string, options?: any) => string) {
+  const normalized = String(value || '').toLowerCase();
+  const labels: Record<string, [string, string]> = {
+    comprehension: ['classLesson.longActivities.comprehension', 'Comprehension'],
+    'copy-or-trace': ['classLesson.longActivities.copyOrTrace', 'Copy or trace'],
+    'typed-writing': ['classLesson.longActivities.typedWriting', 'Typed writing'],
+    'extended-writing': ['classLesson.longActivities.extendedWriting', 'Extended writing'],
+    storytelling: ['classLesson.longActivities.storytelling', 'Storytelling'],
+    'story-hearing': ['classLesson.longActivities.storyHearing', 'Story listening'],
+    'guided-dialogue': ['classLesson.longActivities.guidedDialogue', 'Guided dialogue'],
+    'listen-and-repeat': ['classLesson.longActivities.listenAndRepeat', 'Listen and repeat'],
+    'pronunciation-lab': ['classLesson.longActivities.pronunciationLab', 'Pronunciation lab'],
+    'checkpoint-review': ['classLesson.longActivities.checkpointReview', 'Checkpoint review'],
+    'repair-drill': ['classLesson.longActivities.repairDrill', 'Repair drill'],
+  };
+  const [key, fallback] = labels[normalized] || ['classLesson.longActivities.practice', 'Practice'];
+  return t(key, fallback);
+}
+
+function classLearningPlanCues(lesson: ClassLesson | null, item: ClassLessonItem | undefined, t: (key: string, options?: any) => string) {
+  const learning = lesson?.learning || {};
+  const level = Number(item?.learningLevel || lesson?.learningLevel || learning.level || 0);
+  const longActivities = Array.from(new Set([
+    ...(Array.isArray(item?.longActivityTypes) ? item.longActivityTypes : []),
+    ...(Array.isArray(lesson?.longActivityTypes) ? lesson.longActivityTypes : []),
+    ...(Array.isArray(learning.longActivityTypes) ? learning.longActivityTypes : []),
+  ])).filter(Boolean);
+  const visibleActivities = longActivities.slice(0, 3).map((activity) => classLongActivityLabel(activity, t));
+  const remainingActivities = Math.max(0, longActivities.length - visibleActivities.length);
+  const activitySummary = remainingActivities
+    ? t('classLesson.learningPlan.moreActivities', { count: remainingActivities, defaultValue: '{{count}} more' })
+    : '';
+
+  return [
+    {
+      key: 'level',
+      label: t('classLesson.learningPlan.level', 'Level'),
+      value: classLearningLevelLabel(level, t),
+    },
+    {
+      key: 'support',
+      label: t('classLesson.learningPlan.support', 'Support'),
+      value: classSupportLevelLabel(item?.supportLevel || lesson?.supportLevel || learning.supportLevel, t),
+    },
+    {
+      key: 'self-test',
+      label: t('classLesson.learningPlan.selfTest', 'Self-test'),
+      value: classQuizModeLabel((item as any)?.quizOptionMode || (lesson as any)?.quizOptionMode || (learning as any).quizOptionMode, t),
+    },
+    {
+      key: 'writing',
+      label: t('classLesson.learningPlan.writing', 'Writing'),
+      value: classWritingModeLabel(item?.writingMode || lesson?.writingMode || learning.writingMode, t),
+    },
+    {
+      key: 'activities',
+      label: t('classLesson.learningPlan.activities', 'Long practice'),
+      value: [...visibleActivities, activitySummary].filter(Boolean).join(', ') || t('classLesson.longActivities.practice', 'Practice'),
+    },
+  ];
+}
+
 function activitySkills(activity?: ClassActivity) {
   const section = String(activity?.section || '').toLowerCase();
   const skills: string[] = [];
@@ -188,6 +530,7 @@ const HomeStackScreen: React.FC = () => (
     <HomeStack.Screen name="HomeMain" component={HomeScreen} />
     <HomeStack.Screen name="Progress" component={ProgressScreen} />
     <HomeStack.Screen name="LevelCheck" component={LevelCheckScreen} />
+    <HomeStack.Screen name="LevelTests" component={LevelTestScreen} />
     <HomeStack.Screen name="Contact" component={ContactScreen} />
   </HomeStack.Navigator>
 );
@@ -544,7 +887,7 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
   const colors = useAppColors();
   const styles = createLocalStyles(colors);
   const { t } = useTranslation();
-  const { nativeLanguage } = useSettingsStore();
+  const { nativeLanguage, targetLanguage } = useSettingsStore();
   const [classLessons, setClassLessons] = useState<ClassLesson[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -561,15 +904,14 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
         const response = await classLessonService.getClassLessonSummaries();
         if (cancelled) return;
         const list = (Array.isArray(response.data) ? [...response.data] : []) as ClassLesson[];
-        const trackOrder: Record<string, number> = { foundation: 1, thematic: 2, adult: 3, grammar: 4 };
         list.sort((a, b) => {
-          const ac: any = (a as any).course || {};
-          const bc: any = (b as any).course || {};
+          const ac = classifyClassLesson(a);
+          const bc = classifyClassLesson(b);
           const aLevel = Number(ac.level || 99);
           const bLevel = Number(bc.level || 99);
           if (aLevel !== bLevel) return aLevel - bLevel;
-          const aTrack = trackOrder[ac.track] || 99;
-          const bTrack = trackOrder[bc.track] || 99;
+          const aTrack = CLASS_TRACK_ORDER[ac.track] || 99;
+          const bTrack = CLASS_TRACK_ORDER[bc.track] || 99;
           if (aTrack !== bTrack) return aTrack - bTrack;
           const aPosition = Number(ac.position || 999);
           const bPosition = Number(bc.position || 999);
@@ -591,6 +933,28 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
   }, [reloadKey]);
 
   const handleRetry = () => setReloadKey((n) => n + 1);
+  const targetName = localizedLanguageName(targetLanguage, t, t('voicePicker.targetFallback', 'your target language'));
+  const { width } = useWindowDimensions();
+  const isWideClassList = width >= 720;
+  const groupedLessons = useMemo(() => {
+    const groups = new Map<string, { level: number; track: string; lessons: ClassLesson[] }>();
+    classLessons.forEach((lesson) => {
+      const classify = classifyClassLesson(lesson);
+      const key = `${classify.level}:${classify.track}`;
+      if (!groups.has(key)) groups.set(key, { level: classify.level, track: classify.track, lessons: [] });
+      groups.get(key)?.lessons.push(lesson);
+    });
+    return Array.from(groups.values()).sort((a, b) => {
+      if (a.level !== b.level) return a.level - b.level;
+      return (CLASS_TRACK_ORDER[a.track] || 99) - (CLASS_TRACK_ORDER[b.track] || 99);
+    });
+  }, [classLessons]);
+
+  const programLevelGroups = useMemo(() => CLASS_PROGRAM_LEVELS.map((levelInfo) => {
+    const tracks = groupedLessons.filter((group) => group.level === levelInfo.level);
+    const lessons = tracks.flatMap((group) => group.lessons);
+    return { levelInfo, tracks, lessons, counts: classRoleCounts(lessons) };
+  }).filter((group) => group.tracks.length > 0), [groupedLessons]);
 
   return (
     <View style={styles.screen}>
@@ -598,6 +962,9 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
         <Text style={styles.kicker}>{t('classList.kicker', 'Class')}</Text>
         <Text variant="headlineSmall" style={styles.title}>{t('classList.title', 'Learn with your tutor')}</Text>
         <Text style={styles.subtitle}>{t('classList.subtitleShort', 'Pick a unit and practice it in conversation.')}</Text>
+        <Button mode="outlined" onPress={() => navigation.navigate('LevelTests')} style={styles.classLevelTestButton}>
+          {t('levelTests.kicker', 'Level checks')}
+        </Button>
 
         {loading && <Text style={styles.subtitle}>{t('classList.loading', 'Loading lessons...')}</Text>}
         {!!error && (
@@ -615,29 +982,109 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
           </View>
         )}
 
-        {classLessons.map((lesson) => {
-          const items = Array.isArray(lesson.content) ? lesson.content : [];
-          const vocab = Number(lesson.stats?.vocabulary ?? items.filter((item) => item.type === 'word').length);
-          const sentences = Number(lesson.stats?.grammar ?? items.filter((item) => item.type === 'sentence').length);
-          const conversations = Number(lesson.stats?.dialogues ?? items.filter((item) => item.type === 'conversation').length);
-
+        {programLevelGroups.map(({ levelInfo, tracks, counts }) => {
+          const levelCopy = classProgramLevelCopy(levelInfo, t);
+          const levelAccent = classLevelAccent(levelInfo.level, colors);
           return (
-            <TouchableOpacity
-              key={lesson._id}
-              style={styles.classLessonCard}
-              activeOpacity={0.75}
-              onPress={() => navigation.navigate('ClassLesson', { classLessonId: lesson._id })}
+            <View
+              key={levelInfo.level}
+              style={[
+                styles.classProgramLevelSection,
+                {
+                  borderColor: levelAccent.border,
+                  borderTopWidth: 5,
+                  borderTopColor: levelAccent.accent,
+                  backgroundColor: levelAccent.panel,
+                },
+              ]}
             >
-              <View style={styles.exerciseText}>
-                <Text style={styles.exerciseTitle}>
-                  {nativeScaffoldText(localizedLessonTitle(lesson.title || '', t), nativeLanguage, t, 'classList.untitled') || t('classList.untitled', 'Untitled lesson')}
-                </Text>
-                <Text style={styles.exerciseDesc}>
-                  {t('classList.cardStats', { vocab, sentences, conversations, defaultValue: '{{vocab}} vocabulary / {{sentences}} examples / {{conversations}} dialogues' })}
-                </Text>
+              <View style={styles.classProgramLevelHeader}>
+                <Text style={[styles.kicker, { color: levelAccent.strong }]}>{t('classList.programLevels.kicker', 'Learning level')}</Text>
+                <Text style={styles.classProgramLevelTitle}>{levelCopy.title}</Text>
+                <Text style={styles.classProgramLevelSubtitle}>{levelCopy.subtitle}</Text>
+                <View style={styles.classProgramLevelChips}>
+                  <Text style={[styles.classPlanBadge, { backgroundColor: levelAccent.soft, color: levelAccent.strong }]}>{t('classList.programLevels.coreCount', { count: counts.core, defaultValue: '{{count}} core' })}</Text>
+                  <Text style={[styles.classPlanBadge, { backgroundColor: levelAccent.soft, color: levelAccent.strong }]}>{t('classList.programLevels.branchCount', { count: counts.branches, defaultValue: '{{count}} branches' })}</Text>
+                  <Text style={[styles.classPlanBadge, { backgroundColor: levelAccent.soft, color: levelAccent.strong }]}>{t('classList.programLevels.checkpointCount', { count: counts.checkpoints, defaultValue: '{{count}} checkpoints' })}</Text>
+                </View>
               </View>
-              <MaterialCommunityIcons name="chevron-right" color={colors.textMuted} size={24} />
-            </TouchableOpacity>
+              {tracks.map((group) => (
+                <View key={`${group.level}:${group.track}`} style={styles.classTrackSection}>
+                  <View style={styles.classTrackHeader}>
+                    <Text style={styles.classTrackTitle}>{classTrackTitle(group, targetName, t)}</Text>
+                    <Text style={styles.classTrackCount}>{t('classList.lessonsCount', { count: group.lessons.length, defaultValue: '{{count}} lessons' })}</Text>
+                  </View>
+                  <View style={[styles.classTrackLessonList, group.lessons.length === 1 && isWideClassList ? styles.classTrackLessonListWide : null]}>
+                    {group.lessons.map((lesson) => {
+                      const items = Array.isArray(lesson.content) ? lesson.content : [];
+                      const vocab = Number(lesson.stats?.vocabulary ?? items.filter((item) => item.type === 'word').length);
+                      const sentences = Number(lesson.stats?.grammar ?? items.filter((item) => item.type === 'sentence').length);
+                      const conversations = Number(lesson.stats?.dialogues ?? items.filter((item) => item.type === 'conversation').length);
+                      const lessonAccent = classLevelAccent(classifyClassLesson(lesson).level || levelInfo.level, colors);
+
+                      return (
+                        <TouchableOpacity
+                          key={lesson._id}
+                          style={[
+                            styles.classLessonCard,
+                            group.lessons.length === 1 && isWideClassList ? styles.classLessonCardSingleWide : null,
+                            {
+                              borderColor: lessonAccent.border,
+                              borderLeftWidth: 5,
+                              borderLeftColor: lessonAccent.accent,
+                              backgroundColor: lessonAccent.panel,
+                            },
+                          ]}
+                          activeOpacity={0.75}
+                          onPress={() => navigation.navigate('ClassLesson', { classLessonId: lesson._id })}
+                        >
+                          <View style={styles.exerciseText}>
+                            <Text style={styles.exerciseTitle}>
+                              {nativeScaffoldText(localizedLessonTitle(lesson.title || '', t), nativeLanguage, t, 'classList.untitled') || t('classList.untitled', 'Untitled lesson')}
+                            </Text>
+                            <Text style={styles.exerciseDesc}>
+                              {t('classList.cardStats', { vocab, sentences, conversations, defaultValue: '{{vocab}} vocabulary / {{sentences}} examples / {{conversations}} dialogues' })}
+                            </Text>
+                            <View style={styles.classPlanBadges}>
+                              <Text style={[styles.classPlanBadge, { backgroundColor: lessonAccent.soft, color: lessonAccent.strong }]}>{classLessonRoleLabel(lesson.lessonRole || lesson.learning?.lessonRole, t)}</Text>
+                              <Text style={[styles.classPlanBadge, { backgroundColor: lessonAccent.soft, color: lessonAccent.strong }]}>{classLessonWeightLabel(lesson.lessonWeight || lesson.learning?.lessonWeight, t)}</Text>
+                              {(lesson.requiredForProgress || lesson.coreRequired) ? (
+                                <Text style={[styles.classPlanBadge, { backgroundColor: lessonAccent.soft, color: lessonAccent.strong }]}>{t('classList.requiredForProgress', 'Required')}</Text>
+                              ) : null}
+                            </View>
+                          </View>
+                          <MaterialCommunityIcons name="chevron-right" color={lessonAccent.strong} size={24} />
+                        </TouchableOpacity>
+                      );
+                    })}
+                    {group.lessons.length === 1 ? (
+                      <View
+                        style={[
+                          styles.classTrackGuidance,
+                          {
+                            borderColor: levelAccent.border,
+                            backgroundColor: levelAccent.soft,
+                          },
+                        ]}
+                      >
+                        <Text style={[styles.classTrackGuidanceKicker, { color: levelAccent.strong }]}>{t('classList.singleTrackGuidanceKicker', 'Why one class')}</Text>
+                        <Text style={styles.classTrackGuidanceTitle}>{t('classList.singleTrackGuidanceTitle', 'Start focused, then branch out')}</Text>
+                        <Text style={styles.classTrackGuidanceBody}>
+                          {t(
+                            'classList.singleTrackGuidanceBody',
+                            'This track is intentionally compact so the first step feels clear. Finish the class here, then move into the next track for broader practice.',
+                          )}
+                        </Text>
+                        <View style={styles.classTrackGuidanceSteps}>
+                          <Text style={[styles.classPlanBadge, { backgroundColor: colors.surface, color: levelAccent.strong }]}>{t('classList.singleTrackGuidanceStep1', 'Build the base')}</Text>
+                          <Text style={[styles.classPlanBadge, { backgroundColor: colors.surface, color: levelAccent.strong }]}>{t('classList.singleTrackGuidanceStep2', 'Continue into everyday use')}</Text>
+                        </View>
+                      </View>
+                    ) : null}
+                  </View>
+                </View>
+              ))}
+            </View>
           );
         })}
       </View>
@@ -846,6 +1293,11 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
   }, [activityItemIndices, items]);
   const progressPercent = items.length ? Math.round((completedItems.length / items.length) * 100) : 0;
   const certificate = certificateStatus?.certificate;
+  const lessonPlanCues = useMemo(
+    () => classLearningPlanCues(lesson, selectedItem, t),
+    [lesson, selectedItem, t],
+  );
+  const lessonAccent = classLevelAccent(lesson?.learningLevel || lesson?.learning?.level || selectedItem?.learningLevel || 1, colors);
 
   const loadLessonWindow = async (center: number, { foreground = false } = {}) => {
     if (!classLessonId || !lesson) return;
@@ -1276,9 +1728,23 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
   const selectedPracticeParams = {
     savedText: itemTarget(selectedItem),
     nativeText: looksLikeRawEnglishForNative(itemNative(selectedItem), nativeLanguage || 'en') ? '' : itemNative(selectedItem),
+    sourceClassLessonKey: (lesson as any)?.curriculumKey || classLessonId,
+    classLessonId,
+    level: String(selectedItem?.learningLevel || lesson?.learningLevel || lesson?.learning?.level || ''),
   };
 
-  const openSelectedPracticeSurface = (surface: 'conversation' | 'writing' | 'flashcard') => {
+  const followUpParams = () => {
+    const learning = lesson?.learning || {};
+    const writingMode = lesson?.writingMode || learning.writingMode || selectedItem?.writingMode || '';
+    return {
+      sourceClassLessonKey: (lesson as any)?.curriculumKey || classLessonId,
+      classLessonId,
+      level: String(lesson?.learningLevel || learning.level || selectedItem?.learningLevel || ''),
+      mode: writingMode.includes('handwriting') ? 'trace' : 'type',
+    };
+  };
+
+  const openSelectedPracticeSurface = (surface: 'conversation' | 'writing' | 'flashcard' | 'quiz') => {
     if (!selectedItemReady) return;
     if (surface === 'conversation') {
       navigation.navigate('Conversation', {
@@ -1290,7 +1756,7 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
       return;
     }
     navigation.navigate('Exercise', {
-      screen: surface === 'writing' ? 'Writing' : 'Flashcards',
+      screen: surface === 'writing' ? 'Writing' : surface === 'quiz' ? 'Quiz' : 'Flashcards',
       params: selectedPracticeParams,
     });
   };
@@ -1630,10 +2096,20 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
           setStatus(t('classLesson.voiceUpdated', 'Voice updated. Tap a line to hear it.'));
         }}
       />
-      <Text style={styles.kicker}>{t('classLesson.kicker', 'Class')}</Text>
-      <Text variant="headlineSmall" style={styles.title}>{lesson.title || t('classLesson.lessonFallback', 'Class lesson')}</Text>
-      <Text style={styles.progressText}>{t('classLesson.percentComplete', { percent: progressPercent, defaultValue: '{{percent}}% complete' })}</Text>
-      <Text style={styles.subtitle}>{status}</Text>
+      <View style={[styles.lessonHeaderPanel, { borderColor: lessonAccent.border, borderTopColor: lessonAccent.accent, backgroundColor: lessonAccent.panel }]}>
+        <Text style={[styles.kicker, { color: lessonAccent.strong }]}>{t('classLesson.kicker', 'Class')}</Text>
+        <Text variant="headlineSmall" style={styles.title}>{lesson.title || t('classLesson.lessonFallback', 'Class lesson')}</Text>
+        <Text style={styles.progressText}>{t('classLesson.percentComplete', { percent: progressPercent, defaultValue: '{{percent}}% complete' })}</Text>
+        <Text style={styles.subtitle}>{status}</Text>
+      </View>
+      <View style={styles.lessonPlanCues} accessibilityLabel={t('classLesson.learningPlan.ariaLabel', 'Lesson learning plan')}>
+        {lessonPlanCues.map((cue) => (
+          <View key={cue.key} style={[styles.lessonPlanCue, { borderColor: lessonAccent.border, backgroundColor: lessonAccent.soft }]}>
+            <Text style={[styles.lessonPlanCueLabel, { color: lessonAccent.strong }]}>{cue.label}</Text>
+            <Text style={styles.lessonPlanCueValue} numberOfLines={2}>{cue.value}</Text>
+          </View>
+        ))}
+      </View>
 
       {progressPercent >= 100 && (
         <View style={styles.certificatePanel}>
@@ -1671,7 +2147,7 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
             <Text style={styles.kicker}>{t('classLesson.wrapUpKicker', 'Next step')}</Text>
             <Text style={styles.certificateTitle}>{t('classLesson.wrapUpTitle', 'Keep the lesson alive')}</Text>
             <Text style={styles.certificateBody}>
-              {t('classLesson.wrapUpBody', 'Review saved items, use them in conversation, or write them from memory while the lesson is still fresh.')}
+              {t('classLesson.wrapUpBody', 'Choose one focused practice that reinforces this class. The activity opens only when you choose it, so the class stays light and fast.')}
             </Text>
             <View style={styles.wrapUpStats}>
               <Text style={styles.wrapUpStat}>{t('classLesson.itemsCompleted', { count: completedItems.length, defaultValue: '{{count}} items completed' })}</Text>
@@ -1679,15 +2155,40 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
             </View>
           </View>
           <View style={styles.wrapUpActions}>
-            <Button mode="outlined" onPress={() => navigation.navigate('Exercise', { screen: 'Review' })}>
-              {t('classLesson.wrapUpReview', 'Review')}
-            </Button>
-            <Button mode="outlined" onPress={() => navigation.navigate('Conversation')}>
-              {t('classLesson.wrapUpConversation', 'Conversation')}
-            </Button>
-            <Button mode="outlined" onPress={() => navigation.navigate('Exercise', { screen: 'Writing' })}>
-              {t('classLesson.wrapUpWriting', 'Writing')}
-            </Button>
+            <TouchableOpacity
+              style={styles.wrapUpCard}
+              onPress={() => navigation.navigate('Exercise', { screen: 'Review' })}
+              activeOpacity={0.78}
+            >
+              <Text style={styles.wrapUpCardTitle}>{t('classLesson.wrapUpReview', 'Review')}</Text>
+              <Text style={styles.wrapUpCardBody}>{t('classLesson.wrapUpReviewBody', 'Retry due or weak items from this class.')}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.wrapUpCard}
+              onPress={() => navigation.navigate('Exercise', { screen: 'Quiz', params: followUpParams() })}
+              activeOpacity={0.78}
+            >
+              <Text style={styles.wrapUpCardTitle}>{t('learningHub.practiceQuiz', 'Self-test')}</Text>
+              <Text style={styles.wrapUpCardBody}>{t('classLesson.wrapUpQuizBody', 'Check understanding without loading the quiz until you start.')}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.wrapUpCard}
+              onPress={() => navigation.navigate('Exercise', { screen: 'Writing', params: followUpParams() })}
+              activeOpacity={0.78}
+            >
+              <Text style={styles.wrapUpCardTitle}>{t('classLesson.wrapUpWriting', 'Writing')}</Text>
+              <Text style={styles.wrapUpCardBody}>{t('classLesson.wrapUpWritingBody', 'Use the level-appropriate write or type mode.')}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.wrapUpCard}
+              onPress={() => navigation.navigate('Conversation', {
+                starter: t('classLesson.wrapUpConversationPrompt', 'Help me use what I just learned in a short conversation.'),
+              })}
+              activeOpacity={0.78}
+            >
+              <Text style={styles.wrapUpCardTitle}>{t('classLesson.wrapUpConversation', 'Conversation')}</Text>
+              <Text style={styles.wrapUpCardBody}>{t('classLesson.wrapUpConversationBody', 'Turn the lesson into a short roleplay.')}</Text>
+            </TouchableOpacity>
           </View>
         </View>
       )}
@@ -1904,6 +2405,7 @@ const ClassStackScreen: React.FC = () => (
   <ClassStack.Navigator screenOptions={{ headerShown: false }}>
     <ClassStack.Screen name="ClassHome" component={ClassHomeScreen} />
     <ClassStack.Screen name="ClassLesson" component={ClassLessonScreen} />
+    <ClassStack.Screen name="LevelTests" component={LevelTestScreen} />
   </ClassStack.Navigator>
 );
 
@@ -2138,6 +2640,10 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
     color: colors.textSecondary,
     lineHeight: 20,
   },
+  classLevelTestButton: {
+    alignSelf: 'flex-start',
+    borderRadius: 8,
+  },
   comingSoonBox: {
     minHeight: 160,
     alignItems: 'center',
@@ -2191,6 +2697,61 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
     color: colors.textSecondary,
     marginTop: 2,
   },
+  classTrackSection: {
+    marginTop: 18,
+    gap: 10,
+  },
+  classProgramLevelSection: {
+    marginTop: 22,
+    padding: 14,
+    borderWidth: 1,
+    borderColor: colors.primary + '35',
+    borderRadius: 8,
+    backgroundColor: colors.primary + '08',
+    gap: 12,
+  },
+  classProgramLevelHeader: {
+    gap: 6,
+  },
+  classProgramLevelTitle: {
+    color: colors.textPrimary,
+    fontSize: 20,
+    fontWeight: '900',
+  },
+  classProgramLevelSubtitle: {
+    color: colors.textSecondary,
+    lineHeight: 20,
+  },
+  classProgramLevelChips: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginTop: 4,
+  },
+  classTrackHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 12,
+  },
+  classTrackTitle: {
+    flex: 1,
+    color: colors.textPrimary,
+    fontSize: 17,
+    fontWeight: '900',
+  },
+  classTrackCount: {
+    color: colors.textSecondary,
+    fontSize: 12,
+    fontWeight: '800',
+  },
+  classTrackLessonList: {
+    gap: 10,
+  },
+  classTrackLessonListWide: {
+    flexDirection: 'row',
+    alignItems: 'stretch',
+  },
   classLessonCard: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -2200,6 +2761,54 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
     borderColor: colors.border,
     borderRadius: 8,
     backgroundColor: colors.surface,
+  },
+  classLessonCardSingleWide: {
+    flex: 0,
+    width: 360,
+  },
+  classTrackGuidance: {
+    flex: 1,
+    minHeight: 132,
+    gap: 8,
+    padding: 14,
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderRadius: 8,
+  },
+  classTrackGuidanceKicker: {
+    fontSize: 10,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+  },
+  classTrackGuidanceTitle: {
+    color: colors.textPrimary,
+    fontSize: 17,
+    fontWeight: '900',
+  },
+  classTrackGuidanceBody: {
+    color: colors.textSecondary,
+    lineHeight: 20,
+  },
+  classTrackGuidanceSteps: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginTop: 2,
+  },
+  classPlanBadges: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginTop: 8,
+  },
+  classPlanBadge: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 999,
+    backgroundColor: colors.primary + '12',
+    color: colors.textSecondary,
+    fontSize: 11,
+    fontWeight: '900',
   },
   errorText: {
     color: colors.error,
@@ -2220,6 +2829,13 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
   lessonContent: {
     padding: 18,
     gap: 14,
+  },
+  lessonHeaderPanel: {
+    gap: 5,
+    padding: 14,
+    borderWidth: 1,
+    borderTopWidth: 5,
+    borderRadius: 8,
   },
   lessonGuideToggle: {
     flexDirection: 'row',
@@ -2329,6 +2945,35 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
     fontSize: 13,
     fontWeight: '900',
   },
+  lessonPlanCues: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  lessonPlanCue: {
+    flexGrow: 1,
+    flexBasis: '30%',
+    minWidth: 140,
+    gap: 3,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 8,
+    backgroundColor: colors.surface,
+  },
+  lessonPlanCueLabel: {
+    color: colors.textSecondary,
+    fontSize: 10,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+  },
+  lessonPlanCueValue: {
+    color: colors.textPrimary,
+    fontSize: 12,
+    fontWeight: '800',
+    lineHeight: 16,
+  },
   certificatePanel: {
     gap: 12,
     padding: 14,
@@ -2374,6 +3019,26 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 8,
+  },
+  wrapUpCard: {
+    flexGrow: 1,
+    flexBasis: '48%',
+    minWidth: 150,
+    gap: 5,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderRadius: 8,
+    backgroundColor: colors.surface,
+  },
+  wrapUpCardTitle: {
+    color: colors.textPrimary,
+    fontWeight: '900',
+  },
+  wrapUpCardBody: {
+    color: colors.textSecondary,
+    fontSize: 12,
+    lineHeight: 17,
   },
   lessonCard: {
     gap: 8,

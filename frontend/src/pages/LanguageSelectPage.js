@@ -81,6 +81,7 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
       localStorage.removeItem('token');
       localStorage.removeItem('userId');
       localStorage.removeItem('username');
+      localStorage.removeItem('userFullName');
       localStorage.removeItem('userRole');
       localStorage.setItem('subscriptionTier', 'free');
       localStorage.setItem('aiEntitlements', JSON.stringify({

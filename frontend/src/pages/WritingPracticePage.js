@@ -13,6 +13,7 @@ const ATTEMPT_KEY = 'lingoWritingAttempts';
 const MODES = [
   { id: 'trace', label: 'Trace' },
   { id: 'copy', label: 'Copy' },
+  { id: 'type', label: 'Type' },
   { id: 'listen', label: 'Listen' },
   { id: 'meaning', label: 'Meaning' },
   { id: 'stroke', label: 'Stroke order' },
@@ -40,6 +41,15 @@ function canUsePracticeContext() {
 
 function compact(value, max = 120) {
   return String(value || '').replace(/\s+/g, ' ').trim().slice(0, max);
+}
+
+function modeForRequest(searchParams) {
+  const requested = String(searchParams.get('mode') || '').trim();
+  if (MODES.some((item) => item.id === requested)) return requested;
+  const level = Number(searchParams.get('level') || searchParams.get('learningLevel') || 0);
+  if (level >= 3) return 'type';
+  if (level === 2) return 'type';
+  return 'trace';
 }
 
 function targetText(item = {}) {
@@ -322,10 +332,11 @@ function WritingPracticePage() {
   const [items, setItems] = useState([]);
   const [selectedId, setSelectedId] = useState('');
   const [sourceFilter, setSourceFilter] = useState('all');
-  const [mode, setMode] = useState('trace');
+  const [mode, setMode] = useState(() => modeForRequest(searchParams));
   const [status, setStatus] = useState(() => t('writing.status.loadingNotebook', 'Loading writing notebook...'));
   const [strokeCount, setStrokeCount] = useState(0);
   const [review, setReview] = useState({ shape: false, spacing: false, memory: false });
+  const [typedResponse, setTypedResponse] = useState('');
   const [customTarget, setCustomTarget] = useState('');
   const [customNative, setCustomNative] = useState('');
   const [notebookOpen, setNotebookOpen] = useState(false);
@@ -383,6 +394,10 @@ function WritingPracticePage() {
     };
   }, [nativeLanguage, seededNative, seededTarget, targetLanguage, t]);
 
+  useEffect(() => {
+    setMode(modeForRequest(searchParams));
+  }, [searchParams]);
+
   const filteredItems = useMemo(() => (
     sourceFilter === 'all' ? items : items.filter((item) => item.source === sourceFilter)
   ), [items, sourceFilter]);
@@ -436,6 +451,7 @@ function WritingPracticePage() {
       mode,
       result,
       strokeCount,
+      typedResponse: compact(typedResponse, 2000),
       createdAt: new Date().toISOString(),
     }, ...attempts].slice(0, 120);
     localStorage.setItem(ATTEMPT_KEY, JSON.stringify(next));
@@ -486,7 +502,7 @@ function WritingPracticePage() {
     setSelectedId(item.id);
     setCustomTarget('');
     setCustomNative('');
-    setStatus(t('writing.status.addedNotebook', 'Added to your writing notebook.'));
+      setStatus(t('writing.status.addedNotebook', 'Added to your writing notebook.'));
   };
 
   const askTutorAboutSelected = () => {
@@ -529,10 +545,15 @@ function WritingPracticePage() {
     if (!selectedItem) return t('writing.instructions.addToBegin', 'Add a word or sentence to begin.');
     if (mode === 'listen') return t('writing.instructions.listen', 'Press Play, write what you hear, then reveal the answer.');
     if (mode === 'meaning') return t('writing.instructions.meaning', 'Write the {{language}} for this meaning.', { language: targetName });
+    if (mode === 'type') return t('writing.instructions.type', 'Type the answer from memory. This is the standard writing mode after the early handwriting lessons.');
     if (mode === 'stroke') return t('writing.instructions.stroke', 'Follow the guide, then use the writing area to practice.');
     if (mode === 'review') return t('writing.instructions.review', 'Compare your writing with the answer and mark what was strong.');
     return t(`writing.instructions.${modeConfig.id}`, modeConfig.label);
   };
+
+  useEffect(() => {
+    setTypedResponse('');
+  }, [mode, selectedItem?.id]);
 
   return (
     <div className="writing-page">
@@ -653,12 +674,22 @@ function WritingPracticePage() {
               </div>
             )}
 
-            <DrawingPad
-              ghostText={selectedItem?.target || ''}
-              showGhost={mode === 'trace' && !!selectedItem}
-              resetKey={resetKey}
-              onStrokeCount={setStrokeCount}
-            />
+            {mode === 'type' ? (
+              <textarea
+                className="writing-type-input"
+                value={typedResponse}
+                onChange={(event) => setTypedResponse(event.target.value)}
+                placeholder={t('writing.typePlaceholder', 'Type your answer here...')}
+                aria-label={t('writing.typeAriaLabel', 'Typed writing answer')}
+              />
+            ) : (
+              <DrawingPad
+                ghostText={selectedItem?.target || ''}
+                showGhost={mode === 'trace' && !!selectedItem}
+                resetKey={resetKey}
+                onStrokeCount={setStrokeCount}
+              />
+            )}
 
             {selectedItem && (mode === 'listen' || mode === 'meaning' || mode === 'review') && (
               <details className="writing-reveal">

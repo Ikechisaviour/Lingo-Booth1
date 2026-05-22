@@ -44,7 +44,8 @@
     "search": "Cari",
     "notSet": "Tidak ditetapkan",
     "goBack": "Pergi Balik",
-    "all": "Semua"
+    "all": "Semua",
+    "restart": "Mulakan semula"
   },
   "languageSelect": {
     "title": "Pilih Bahasa Anda",
@@ -100,7 +101,10 @@
     "passwordsMatch": "Kata laluan sepadan",
     "registrationFailed": "Pendaftaran gagal",
     "googleFailed": "Pendaftaran dengan Google gagal. Sila cuba lagi.",
-    "checkEmail": "Semak e-mel anda untuk mengesahkan akaun"
+    "checkEmail": "Semak e-mel anda untuk mengesahkan akaun",
+    "fullNameOptional": "Nama penuh (pilihan)",
+    "fullNamePlaceholder": "Nama untuk ditunjukkan pada sijil",
+    "fullNameHint": "Anda boleh menambah ini sekarang atau sebelum mengeluarkan sijil."
   },
   "navbar": {
     "continue": "Teruskan",
@@ -203,7 +207,10 @@
       "sat": "S",
       "sun": "S"
     },
-    "supportAndPlans": "Sokongan dan rancangan"
+    "supportAndPlans": "Sokongan dan rancangan",
+    "decayBannerActive": "XP semakin mereput — kerugian harian {{rate}}%. Jawab soalan untuk menghentikannya.",
+    "decayBannerGrace": "Pereputan XP bermula dalam {{hours}}j — kerugian harian {{rate}}%. Teruskan belajar untuk mencegahnya.",
+    "dashboard": "Papan pemuka"
   },
   "lessons": {
     "title": "Pelajaran <1>{{language}}</1>",
@@ -298,7 +305,15 @@
     "translating": "Menterjemah...",
     "translationUnavailable": "Memuatkan terjemahan...",
     "retryTranslation": "Cuba lagi",
-    "quizUnavailable": "Kuiz tidak tersedia — memuatkan terjemahan..."
+    "quizUnavailable": "Kuiz tidak tersedia — memuatkan terjemahan...",
+    "howDoYouSayThisIn": "Bagaimanakah anda mengatakan ini dalam {{language}}?",
+    "quizMode": {
+      "nativeAssisted": "Ujian kendiri awal: pilih makna dalam bahasa ibunda anda.",
+      "targetWithNativeHints": "Bina ingatan semula: gunakan pembayang asli, kemudian pilih jawapan bahasa sasaran.",
+      "targetDominant": "Amalan bebas: pilihan bahasa sasaran membawa sebahagian besar kerja.",
+      "targetFirst": "Ujian kendiri lanjutan: kekalkan sasaran dahulu dan gunakan bantuan hanya apabila diperlukan.",
+      "standard": "Ujian kendiri terbimbing."
+    }
   },
   "flashcards": {
     "title": "Latihan <1>Kad Imbas</1>",
@@ -386,7 +401,8 @@
     "savedReason": "Disimpan daripada kad imbas untuk latihan kemudian.",
     "saveForReview": "Simpan untuk semakan",
     "bookmarkedReason": "Ditandakan daripada kad imbas.",
-    "selfTestReason": "Disimpan daripada kad imbas untuk ujian kendiri yang pantas."
+    "selfTestReason": "Disimpan daripada kad imbas untuk ujian kendiri yang pantas.",
+    "setFamiliarityLevel": "Tetapkan kebiasaan kepada {{level}}"
   },
   "progress": {
     "title": "<1>Kemajuan</1> Anda",
@@ -523,7 +539,10 @@
     "systemDefault": "Sistem lalai",
     "voiceSettingsDesc": "Pilih suara yang berasingan untuk bahasa sasaran anda dan bahasa ibunda anda supaya balasan bercampur diucapkan secara semula jadi.",
     "targetVoice": "Suara sasaran",
-    "nativeVoice": "Suara asli"
+    "nativeVoice": "Suara asli",
+    "fullName": "Nama penuh",
+    "fullNamePlaceholder": "Nama untuk ditunjukkan pada sijil",
+    "fullNameMissing": "Tambah sebelum mengeluarkan sijil"
   },
   "verifyEmail": {
     "verifying": "Mengesahkan e-mel anda...",
@@ -985,7 +1004,46 @@
     "saveReply": "Simpan balasan",
     "selfTestReason": "Disimpan daripada kelas untuk ujian kendiri yang pantas.",
     "hideOutline": "Sembunyikan garis besar",
-    "showOutline": "Tunjukkan garis besar"
+    "showOutline": "Tunjukkan garis besar",
+    "wrapUpReviewBody": "Cuba semula item yang perlu atau lemah daripada kelas ini.",
+    "wrapUpQuizBody": "Semak pemahaman tanpa memuatkan kuiz sehingga anda mula.",
+    "wrapUpWritingBody": "Gunakan mod tulis atau taip yang sesuai tahap.",
+    "wrapUpConversationPrompt": "Bantu saya menggunakan apa yang baru saya pelajari dalam perbualan singkat.",
+    "wrapUpConversationBody": "Jadikan pelajaran sebagai lakonan pendek.",
+    "learningPlan": {
+      "unplacedLevel": "Tahap pembelajaran",
+      "moreActivities": "{{count}} lagi",
+      "level": "Tahap",
+      "support": "Sokongan",
+      "selfTest": "Ujian kendiri",
+      "writing": "Menulis",
+      "activities": "Latihan panjang",
+      "ariaLabel": "Rancangan pembelajaran pengajaran"
+    },
+    "supportLevels": {
+      "nativeGuided": "Sokongan bahasa ibunda yang kuat",
+      "mixedGuided": "Sasaran yang seimbang dan sokongan asli",
+      "targetFirst": "Bahasa sasaran dahulu",
+      "immersionWithHelp": "Kebanyakan bahasa sasaran dengan bantuan tersedia",
+      "standard": "Sokongan berpandu"
+    },
+    "quizModes": {
+      "nativeAssisted": "Maksud pilihan dalam bahasa ibunda anda",
+      "targetWithNativeHints": "Pilihan bahasa sasaran dengan pembayang asli",
+      "targetDominant": "Kebanyakan pilihan bahasa sasaran",
+      "targetFirst": "Sasaran-pertama ujian kendiri",
+      "standard": "Ujian kendiri terbimbing"
+    },
+    "writingModes": {
+      "handwritingFirst": "Jejak atau salin dahulu",
+      "typeWithWriteOption": "Taip, dengan latihan menulis tersedia",
+      "typedProduction": "Menaip jawapan dari ingatan",
+      "extendedTypedProduction": "Jawapan ditaip lebih panjang",
+      "standard": "Tulis atau taip"
+    },
+    "longActivities": {
+      "practice": "berlatih"
+    }
   },
   "classList": {
     "heroAriaLabel": "Kelas",
@@ -1021,15 +1079,45 @@
       "intermediateSubtitle": "Unit dipacu topik untuk pendapat, budaya, kesihatan, kerja dan keyakinan setiap hari.",
       "professionalTitle": "Tahap {{level}} - Profesional {{language}}",
       "professionalSubtitle": "Bahasa praktikal untuk kerja, perkhidmatan, perumahan, keselamatan dan situasi formal.",
-      "grammarTitle": "Tahap {{level}} - Tatabahasa lanjutan",
-      "grammarSubtitle": "Kelompok corak yang membantu anda menghubungkan idea dengan lebih kawalan."
+      "grammarTitle": "Tahap {{level}} - Lanjutan {{language}}",
+      "grammarSubtitle": "Kelompok corak yang membantu anda menghubungkan idea dengan lebih kawalan.",
+      "survivalTitle": "Tahap {{level}} - Penting {{language}}",
+      "survivalSubtitle": "Bina asas praktikal untuk ucapan, bilik, tempat, rutin, membeli-belah dan makanan.",
+      "everydayTitle": "Tahap {{level}} - Setiap Hari {{language}}",
+      "everydaySubtitle": "Pelajaran harian teras untuk ucapan, makanan, tempat, rancangan dan situasi harian.",
+      "bridgeTitle": "Aras {{level}} - Jambatan",
+      "bridgeSubtitle": "Semak dan peralihan unit yang menghubungkan bahan harian kepada penggunaan yang lebih bebas.",
+      "topicTitle": "Tahap {{level}} - Tematik {{language}}",
+      "topicSubtitle": "Unit dipacu topik untuk pendapat, budaya, kesihatan, rancangan dan ekspresi harian yang yakin.",
+      "advancedTitle": "Tahap {{level}} - Lanjutan {{language}}",
+      "advancedSubtitle": "Tugas membaca, mendengar, bertutur dan menulis lebih lama dengan sokongan bahasa ibunda yang lebih ringan."
     },
     "titlePrefix": {
       "unit": "Tahap {{level}} · Unit {{unit}}: {{title}}"
     },
     "retry": "Cuba lagi",
     "progressAriaLabel": "Kemajuan kelas",
-    "progressCaption": "{{percent}}% selesai · {{completed}} daripada {{total}} item"
+    "progressCaption": "{{percent}}% selesai · {{completed}} daripada {{total}} item",
+    "lessonWeights": {
+      "deep": "Dalam",
+      "light": "Cahaya",
+      "standard": "Standard"
+    },
+    "lessonPlanAriaLabel": "Rancangan pengajaran",
+    "requiredForProgress": "Diperlukan",
+    "programLevels": {
+      "kicker": "Tahap pembelajaran",
+      "statsAriaLabel": "Ringkasan pelan tahap",
+      "coreCount": "{{count}} teras",
+      "branchCount": "{{count}} cawangan",
+      "checkpointCount": "{{count}} pusat pemeriksaan"
+    },
+    "singleTrackGuidanceAriaLabel": "Bimbingan trek pelajaran tunggal",
+    "singleTrackGuidanceKicker": "Kenapa satu kelas",
+    "singleTrackGuidanceTitle": "Mula fokus, kemudian bercabang keluar",
+    "singleTrackGuidanceBody": "Trek ini sengaja padat supaya langkah pertama terasa jelas. Selesaikan kelas di sini, kemudian beralih ke trek seterusnya untuk latihan yang lebih luas.",
+    "singleTrackGuidanceStep1": "Bina pangkalan",
+    "singleTrackGuidanceStep2": "Teruskan ke penggunaan harian"
   },
   "contextPractice": {
     "title": "Pengajaran terbentuk di sekeliling anda",
@@ -1147,7 +1235,8 @@
       "stroke": "Ikuti panduan, kemudian gunakan kawasan menulis untuk berlatih.",
       "review": "Bandingkan tulisan anda dengan jawapan dan tandakan apa yang kuat.",
       "trace": "Jejaki panduan, kemudian kosongkan dan tulis dari ingatan.",
-      "copy": "Lihat dengan teliti, kemudian salin perkataan atau ayat."
+      "copy": "Lihat dengan teliti, kemudian salin perkataan atau ayat.",
+      "type": "Taip jawapan dari ingatan. Ini ialah mod penulisan standard selepas pelajaran awal tulisan tangan."
     },
     "title": "Latihan menulis",
     "subtitle": "Surih, salin, dengar, ingat kembali dengan makna, kaji susunan strok dan simpan buku nota daripada pelajaran anda.",
@@ -1211,7 +1300,9 @@
     "savedReason": "Disimpan daripada latihan menulis untuk pas yang lain.",
     "selfTestReason": "Disimpan daripada latihan menulis untuk ujian kendiri yang cepat.",
     "hideNotebook": "Sembunyikan buku nota",
-    "showNotebook": "Tunjukkan buku nota"
+    "showNotebook": "Tunjukkan buku nota",
+    "typePlaceholder": "Taip jawapan anda di sini...",
+    "typeAriaLabel": "Jawapan bertulis ditaip"
   },
   "institution": {
     "kicker": "Institusi",
@@ -1276,7 +1367,43 @@
     },
     "snapshotsKicker": "Gambar pelajar",
     "needsHelpTitle": "Perlu perhatian",
-    "noNeedsHelpLearners": "Tiada pelajar pada masa ini memerlukan perhatian tambahan."
+    "noNeedsHelpLearners": "Tiada pelajar pada masa ini memerlukan perhatian tambahan.",
+    "groupSaved": "Kumpulan disimpan.",
+    "groupSaveFailed": "Tidak dapat menyimpan kumpulan ini.",
+    "group": "Kumpulan",
+    "noGroup": "Tiada kumpulan",
+    "allowedTargetLanguages": "Bahasa sasaran yang dibenarkan",
+    "allowedTargetLanguagesHelp": "Pelajar yang menggunakan akses institusi ini boleh memilih bahasa sasaran ini sahaja.",
+    "defaultTargetLanguage": "Bahasa sasaran lalai",
+    "noDefaultLanguage": "Tiada lalai",
+    "allowLanguageRequests": "Benarkan pelajar meminta bahasa lain",
+    "groupsKicker": "Kumpulan",
+    "groupsTitle": "Kumpulan pembelajaran",
+    "noGroupsYet": "Buat kumpulan untuk mengurus akses bahasa untuk kelas, kohort atau pasukan.",
+    "groupUsesOrgPolicy": "Menggunakan dasar bahasa organisasi",
+    "groupName": "Nama kumpulan",
+    "groupNamePlaceholder": "Contoh: Kelas malam permulaan",
+    "groupLanguages": "Kumpulan bahasa sasaran",
+    "groupLanguagesHelp": "Biarkan kosong untuk menggunakan dasar organisasi atau pilih bahasa untuk kumpulan ini sahaja.",
+    "createGroup": "Buat kumpulan",
+    "testingKicker": "Pemeriksaan tahap",
+    "testingTitle": "Ujian dan sijil",
+    "recentAttempts": "Percubaan baru-baru ini",
+    "certificatesIssued": "Sijil dikeluarkan",
+    "learner": "pelajar",
+    "noTestAttempts": "Tiada semakan tahap diserahkan lagi.",
+    "certificateLogoInvalid": "Gunakan logo PNG, JPG atau WebP di bawah 600 KB.",
+    "certificateLogoReadFailed": "Tidak dapat membaca fail logo itu.",
+    "certificateBrandingSaved": "Penjenamaan sijil disimpan.",
+    "certificateBrandingFailed": "Tidak dapat menyimpan penjenamaan sijil. Gunakan logo PNG, JPG atau WebP di bawah 600 KB.",
+    "certificateBrandingRemoved": "Logo sijil dialih keluar.",
+    "certificateBrandingKicker": "Sijil",
+    "certificateBrandingTitle": "Penjenamaan sijil",
+    "certificateBrandingHelp": "Sijil institusi menggunakan reka bentuk yang sama seperti sijil peribadi, dengan logo dan nama institusi ini ditambah.",
+    "chooseCertificateLogo": "Pilih logo",
+    "saveCertificateBranding": "Simpan logo sijil",
+    "removeCertificateLogo": "Alih keluar logo",
+    "certificateLogoRequirement": "Gunakan logo PNG, JPG atau WebP yang bersih di bawah 600 KB. Logo telus biasanya kelihatan terbaik."
   },
   "certificates": {
     "kicker": "Sijil",
@@ -1308,7 +1435,32 @@
     "viewPlans": "Lihat rancangan",
     "signIn": "Log masuk",
     "issuedSuccess": "Sijil dikeluarkan.",
-    "issueFailed": "Tidak dapat mengeluarkan sijil."
+    "issueFailed": "Tidak dapat mengeluarkan sijil.",
+    "levelCertificateTitle": "Sijil tahap {{level}}",
+    "proficiencyTitle": "Sijil Kemahiran",
+    "institutionProficiencyTitle": "Sijil Kemahiran",
+    "levelCompletionTitle": "Sijil Tamat Tahap",
+    "institutionCompletionTitle": "Sijil Tamat Tahap",
+    "level": "Tahap",
+    "levelNumber": "Tahap {{level}}",
+    "score": "skor",
+    "organization": "Organisasi",
+    "institutionLogoAlt": "{{organization}} logo",
+    "issuedThrough": "Dikeluarkan melalui",
+    "institution": "Institusi",
+    "verifiedProficiency": "Sijil kecekapan yang disahkan",
+    "verifiedCompletion": "Sijil penyiapan yang disahkan",
+    "proficiencyStatement": "Menunjukkan kecekapan untuk Tahap {{level}}",
+    "levelCompletionStatement": "Tahap Selesai {{level}}",
+    "completionStatement": "Selesai aktiviti pembelajaran yang diperlukan",
+    "actions": "Tindakan sijil",
+    "downloading": "Menyediakan...",
+    "download": "Muat turun",
+    "nativeVersion": "Bahasa ibunda: {{language}}",
+    "targetVersion": "Bahasa sasaran: {{language}}",
+    "bilingualVersion": "Dwibahasa: asli + sasaran",
+    "languageControl": "Bahasa sijil",
+    "certificateIssuedThrough": "Sijil dikeluarkan melalui"
   },
   "adminBilling": {
     "title": "Langganan dan institusi",
@@ -1611,7 +1763,10 @@
     "recentWordsEmptyAction": "Perkataan yang disimpan dan frasa berguna akan dikumpulkan di sini selepas kelas atau latihan perbualan.",
     "startAClass": "Mulakan kelas",
     "milestonesEmptyAction": "Pelajaran pertama anda yang lengkap, frasa yang disimpan atau sijil akan dipaparkan di sini.",
-    "earnFirstMilestone": "Dapatkan pencapaian pertama"
+    "earnFirstMilestone": "Dapatkan pencapaian pertama",
+    "repairPlanTitle": "Membaiki fokus",
+    "repairPlanValue": "Patut dilawati semula",
+    "repairPlanBody": "Beberapa item lemah atau pusat pemeriksaan sedia untuk latihan terfokus sebelum anda bergerak terlalu jauh ke hadapan."
   },
   "adminAnalytics": {
     "features": {
@@ -1651,5 +1806,64 @@
     "speaking": "Bercakap",
     "reading": "Membaca",
     "writing": "Menulis"
+  },
+  "levelTests": {
+    "kicker": "Pemeriksaan tahap",
+    "levelLabel": "Tahap {{level}}",
+    "passed": "lulus",
+    "reviewRecommended": "Semakan disyorkan",
+    "tasks": {
+      "chooseTarget": "Pilih jawapan bahasa sasaran.",
+      "chooseMeaning": "Pilih makna yang terbaik.",
+      "typeTarget": "Taip jawapan bahasa sasaran.",
+      "shortResponse": "Jawab dalam bahasa sasaran, kemudian skor jawapan anda.",
+      "default": "Jawab soalan."
+    },
+    "skills": {
+      "general": "Umum"
+    },
+    "institutionContext": "Institusi",
+    "personalContext": "Peribadi",
+    "loadFailed": "Tidak dapat memuatkan ujian tahap sekarang.",
+    "startFailed": "Ujian ini belum siap lagi.",
+    "submitted": "Ujian anda telah mendapat markah.",
+    "submitFailed": "Tidak dapat menyerahkan ujian ini.",
+    "certificateReady": "Sijil anda sudah sedia.",
+    "certificateFailed": "Tidak dapat mengeluarkan sijil ini lagi.",
+    "title": "Tunjukkan apa yang anda boleh lakukan",
+    "subtitle": "Lengkapkan semakan tahap untuk kemajuan, atau ambil semakan kemahiran apabila anda mahukan bukti keupayaan yang lebih kukuh.",
+    "verifyHint": "Sijil boleh disahkan dengan ID sijil mereka.",
+    "certificates": "Sijil",
+    "context": "Konteks",
+    "allowedLanguages": "Bahasa sasaran yang tersedia",
+    "chooseLevel": "Pilih tahap",
+    "testType": "Jenis ujian",
+    "start": "Mula semak",
+    "restrictedTarget": "Bahasa sasaran ini tidak tersedia dalam konteks institusi ini.",
+    "recent": "Baru-baru ini",
+    "notSubmitted": "Tidak diserahkan",
+    "noRecent": "Tiada semakan tahap lagi.",
+    "emptyTitle": "Pilih semakan tahap",
+    "emptyBody": "Anda akan melihat set tugasan perbendaharaan kata, tatabahasa, membaca, bertutur dan menulis yang seimbang daripada tahap yang anda pilih.",
+    "resultTitle": "Keputusan anda",
+    "questionsTitle": "Jawab setiap tugasan",
+    "passedBody": "Anda boleh mengeluarkan sijil untuk keputusan ini.",
+    "reviewBody": "Semak kemahiran yang lemah, kemudian cuba lagi apabila bersedia.",
+    "certificateIssued": "Sijil dikeluarkan",
+    "issueCertificate": "Mengeluarkan sijil",
+    "writeAnswer": "Tulis jawapan anda di sini...",
+    "selfGood": "bagus",
+    "selfAlmost": "hampir",
+    "selfNeedsWork": "Perlu kerja",
+    "correct": "Betul",
+    "missed": "Semak semula ini",
+    "submit": "Hantar cek",
+    "fullNameInvalid": "Masukkan sekurang-kurangnya dua aksara untuk nama penuh anda.",
+    "certificateNameKicker": "Nama sijil",
+    "fullNameRequiredTitle": "Tambahkan nama penuh anda",
+    "fullNameRequiredBody": "Masukkan nama penuh anda tepat seperti yang sepatutnya tertera pada sijil ini. Anda hanya perlu melakukan ini sebelum mengeluarkan sijil.",
+    "fullNameLabel": "Nama penuh",
+    "fullNamePlaceholder": "nama penuh awak",
+    "saveNameAndIssue": "Simpan nama dan keluarkan sijil"
   }
 }

@@ -94,6 +94,113 @@ function defaultActivityPlan(t) {
   ];
 }
 
+const LEVEL_FALLBACKS = {
+  1: 'Level {{level}} - Foundation',
+  2: 'Level {{level}} - Everyday Use',
+  3: 'Level {{level}} - Independent Use',
+  4: 'Level {{level}} - Advanced Control',
+};
+
+function learningLevelLabel(level, t) {
+  const value = Number(level || 0);
+  const fallback = LEVEL_FALLBACKS[value]
+    ? LEVEL_FALLBACKS[value].replace('{{level}}', String(value))
+    : t('classLesson.learningPlan.unplacedLevel', 'Learning level');
+  return t(`classList.programLevels.level${value}.title`, fallback);
+}
+
+function supportLevelLabel(value, t) {
+  const normalized = String(value || '').toLowerCase();
+  if (normalized === 'native-guided') return t('classLesson.supportLevels.nativeGuided', 'Strong native-language support');
+  if (normalized === 'mixed-guided') return t('classLesson.supportLevels.mixedGuided', 'Balanced target and native support');
+  if (normalized === 'target-first') return t('classLesson.supportLevels.targetFirst', 'Target language first');
+  if (normalized === 'immersion-with-help') return t('classLesson.supportLevels.immersionWithHelp', 'Mostly target language with help available');
+  return t('classLesson.supportLevels.standard', 'Guided support');
+}
+
+function quizModeLabel(value, t) {
+  const normalized = String(value || '').toLowerCase();
+  if (normalized === 'native-assisted') return t('classLesson.quizModes.nativeAssisted', 'Meaning choices in your native language');
+  if (normalized === 'target-with-native-hints') return t('classLesson.quizModes.targetWithNativeHints', 'Target-language choices with native hints');
+  if (normalized === 'target-dominant') return t('classLesson.quizModes.targetDominant', 'Mostly target-language choices');
+  if (normalized === 'target-first') return t('classLesson.quizModes.targetFirst', 'Target-first self-test');
+  return t('classLesson.quizModes.standard', 'Guided self-test');
+}
+
+function writingModeLabel(value, t) {
+  const normalized = String(value || '').toLowerCase();
+  if (normalized === 'handwriting-first') return t('classLesson.writingModes.handwritingFirst', 'Trace or copy first');
+  if (normalized === 'type-with-write-option') return t('classLesson.writingModes.typeWithWriteOption', 'Type, with writing practice available');
+  if (normalized === 'typed-production') return t('classLesson.writingModes.typedProduction', 'Typed answers from memory');
+  if (normalized === 'extended-typed-production') return t('classLesson.writingModes.extendedTypedProduction', 'Longer typed responses');
+  return t('classLesson.writingModes.standard', 'Write or type');
+}
+
+function longActivityLabel(value, t) {
+  const normalized = String(value || '').toLowerCase();
+  const labels = {
+    comprehension: ['classLesson.longActivities.comprehension', 'Comprehension'],
+    'copy-or-trace': ['classLesson.longActivities.copyOrTrace', 'Copy or trace'],
+    'typed-writing': ['classLesson.longActivities.typedWriting', 'Typed writing'],
+    'extended-writing': ['classLesson.longActivities.extendedWriting', 'Extended writing'],
+    storytelling: ['classLesson.longActivities.storytelling', 'Storytelling'],
+    'story-hearing': ['classLesson.longActivities.storyHearing', 'Story listening'],
+    'guided-dialogue': ['classLesson.longActivities.guidedDialogue', 'Guided dialogue'],
+    'listen-and-repeat': ['classLesson.longActivities.listenAndRepeat', 'Listen and repeat'],
+    'pronunciation-lab': ['classLesson.longActivities.pronunciationLab', 'Pronunciation lab'],
+    'checkpoint-review': ['classLesson.longActivities.checkpointReview', 'Checkpoint review'],
+    'repair-drill': ['classLesson.longActivities.repairDrill', 'Repair drill'],
+  };
+  const [key, fallback] = labels[normalized] || ['classLesson.longActivities.practice', 'Practice'];
+  return t(key, fallback);
+}
+
+function learningPlanCuesForLesson(lesson = {}, item = {}, t) {
+  const learning = lesson?.learning || {};
+  const level = Number(item?.learningLevel || lesson?.learningLevel || learning.level || 0);
+  const longActivities = Array.from(new Set([
+    ...(Array.isArray(item?.longActivityTypes) ? item.longActivityTypes : []),
+    ...(Array.isArray(lesson?.longActivityTypes) ? lesson.longActivityTypes : []),
+    ...(Array.isArray(learning.longActivityTypes) ? learning.longActivityTypes : []),
+  ])).filter(Boolean);
+  const visibleActivities = longActivities.slice(0, 3).map((activity) => longActivityLabel(activity, t));
+  const remainingActivities = Math.max(0, longActivities.length - visibleActivities.length);
+  const activitySummary = remainingActivities
+    ? t('classLesson.learningPlan.moreActivities', {
+      count: remainingActivities,
+      defaultValue: '{{count}} more',
+    })
+    : '';
+
+  return [
+    {
+      key: 'level',
+      label: t('classLesson.learningPlan.level', 'Level'),
+      value: learningLevelLabel(level, t),
+    },
+    {
+      key: 'support',
+      label: t('classLesson.learningPlan.support', 'Support'),
+      value: supportLevelLabel(item?.supportLevel || lesson?.supportLevel || learning.supportLevel, t),
+    },
+    {
+      key: 'self-test',
+      label: t('classLesson.learningPlan.selfTest', 'Self-test'),
+      value: quizModeLabel(item?.quizOptionMode || lesson?.quizOptionMode || learning.quizOptionMode, t),
+    },
+    {
+      key: 'writing',
+      label: t('classLesson.learningPlan.writing', 'Writing'),
+      value: writingModeLabel(item?.writingMode || lesson?.writingMode || learning.writingMode, t),
+    },
+    {
+      key: 'activities',
+      label: t('classLesson.learningPlan.activities', 'Long practice'),
+      value: [...visibleActivities, activitySummary].filter(Boolean).join(', ') || t('classLesson.longActivities.practice', 'Practice'),
+    },
+  ];
+}
+
 const itemTarget = (item = {}) => firstText(item.targetText, item.korean);
 const itemNative = (item = {}) => firstText(item.nativeText, item.english);
 const normalizeStudyText = (value = '') => String(value || '').trim().toLowerCase();
@@ -701,12 +808,17 @@ function ClassLessonPage() {
       : [],
   })), [activityPlan, nativeLanguage, t]);
   const displaySelectedActivity = displayActivityPlan[selectedActivityIndex] || displayActivityPlan[0] || selectedActivity;
+  const lessonPlanCues = useMemo(
+    () => learningPlanCuesForLesson(lesson || {}, selectedItem || {}, t),
+    [lesson, selectedItem, t],
+  );
   const activityItemIndices = useMemo(
     () => itemIndicesForActivity(items, selectedActivity?.id),
     [items, selectedActivity?.id],
   );
   const positionInActivity = activityItemIndices.indexOf(selectedIndex);
   const progressPercent = items.length ? Math.round((completed.size / items.length) * 100) : 0;
+  const lessonAccentLevel = Math.max(1, Math.min(4, Number(lesson?.learningLevel || lesson?.learning?.level || selectedItem?.learningLevel || 1)));
   const contextClassPrompts = useMemo(() => {
     if (!canUsePracticeContextFeature) return [];
     return Array.from(new Set([
@@ -964,7 +1076,24 @@ function ClassLessonPage() {
   const selectedPracticeParams = () => new URLSearchParams({
     savedText: itemTarget(selectedItem),
     nativeText: looksLikeRawEnglishForNative(itemNative(selectedItem), nativeLanguage) ? '' : itemNative(selectedItem),
+    sourceClassLessonKey: lesson?.curriculumKey || classLessonId,
+    classLessonId,
+    level: String(selectedItem?.learningLevel || lesson?.learningLevel || lesson?.learning?.level || ''),
   });
+
+  const followUpParams = (extra = {}) => {
+    const learning = lesson?.learning || {};
+    const writingMode = lesson?.writingMode || learning.writingMode || selectedItem?.writingMode || '';
+    const mode = writingMode.includes('handwriting') ? 'trace' : 'type';
+    const params = new URLSearchParams({
+      sourceClassLessonKey: lesson?.curriculumKey || classLessonId,
+      classLessonId,
+      level: String(lesson?.learningLevel || learning.level || selectedItem?.learningLevel || ''),
+      mode,
+      ...extra,
+    });
+    return params.toString();
+  };
 
   const openSelectedPracticeSurface = (surface) => {
     if (!selectedItemReady) return;
@@ -980,35 +1109,12 @@ function ClassLessonPage() {
       navigate(`/writing?${selectedPracticeParams().toString()}`);
       return;
     }
-    if (surface === 'flashcard') {
-      navigate(`/flashcards?${selectedPracticeParams().toString()}`);
-    }
-  };
-
-  const selfTestSelectedItem = async () => {
-    if (!userId || !selectedItemReady) {
-      setStatus(t('classLesson.status.signInToSave', 'Sign in to save study items across devices.'));
+    if (surface === 'quiz') {
+      navigate(`/quiz?${selectedPracticeParams().toString()}`);
       return;
     }
-    try {
-      const response = await learningHubService.saveItem({
-        itemType: selectedItem.type === 'word' ? 'word' : 'phrase',
-        targetText: itemTarget(selectedItem),
-        nativeText: looksLikeRawEnglishForNative(itemNative(selectedItem), nativeLanguage) ? '' : itemNative(selectedItem),
-        romanization: selectedItem.officialPronunciation || selectedItem.romanization || selectedItem.pronunciation || '',
-        sourceType: 'class',
-        sourceRef: classLessonId,
-        sourceLabel: lesson?.title || '',
-        reason: t('classLesson.selfTestReason', 'Saved from class for a quick self-test.'),
-        metadata: {
-          route: `/class/${classLessonId}`,
-          itemIndex: selectedIndex,
-          activityId: selectedActivity?.id || '',
-        },
-      });
-      navigate('/review', { state: { quickQuizItem: response.data } });
-    } catch (_) {
-      setStatus(t('classLesson.status.saveFailed', 'Could not save this item right now.'));
+    if (surface === 'flashcard') {
+      navigate(`/flashcards?${selectedPracticeParams().toString()}`);
     }
   };
 
@@ -1540,7 +1646,7 @@ function ClassLessonPage() {
   }
 
   return (
-    <div className={`class-lesson-page ${progressPercent >= 100 ? 'has-certificate-banner' : ''}`}>
+    <div className={`class-lesson-page class-level-${lessonAccentLevel} ${progressPercent >= 100 ? 'has-certificate-banner' : ''}`}>
       <VoicePickerModal
         open={showVoicePicker}
         targetLangCode={targetLanguage}
@@ -1568,6 +1674,14 @@ function ClassLessonPage() {
           <p className="class-kicker">{t('classLesson.kicker', 'Class')}</p>
           <h1>{lesson.title}</h1>
           <p>{nativeName} -> {targetName}</p>
+          <div className="class-learning-cues" aria-label={t('classLesson.learningPlan.ariaLabel', 'Lesson learning plan')}>
+            {lessonPlanCues.map((cue) => (
+              <span key={cue.key} className="class-learning-cue">
+                <small>{cue.label}</small>
+                <strong>{cue.value}</strong>
+              </span>
+            ))}
+          </div>
         </div>
         <div className="class-header-tools">
           <button
@@ -1634,16 +1748,29 @@ function ClassLessonPage() {
           <div>
             <p className="class-kicker">{t('classLesson.wrapUpKicker', 'Next step')}</p>
             <h2>{t('classLesson.wrapUpTitle', 'Keep the lesson alive')}</h2>
-            <p>{t('classLesson.wrapUpBody', 'Review saved items, use them in conversation, or write them from memory while the lesson is still fresh.')}</p>
+            <p>{t('classLesson.wrapUpBody', 'Choose one focused practice that reinforces this class. The activity opens only when you choose it, so the class stays light and fast.')}</p>
             <div className="class-wrap-up-stats">
               <span>{t('classLesson.itemsCompleted', { count: completed.size, defaultValue: '{{count}} items completed' })}</span>
               <span>{t('classLesson.lessonItemsTotal', { count: items.length, defaultValue: '{{count}} lesson items' })}</span>
             </div>
           </div>
           <div className="class-wrap-up-actions">
-            <button type="button" onClick={() => navigate('/review')}>{t('classLesson.wrapUpReview', 'Review')}</button>
-            <button type="button" onClick={() => navigate('/conversation')}>{t('classLesson.wrapUpConversation', 'Conversation')}</button>
-            <button type="button" onClick={() => navigate('/writing')}>{t('classLesson.wrapUpWriting', 'Writing')}</button>
+            <button type="button" onClick={() => navigate('/review')} className="class-wrap-up-card">
+              <strong>{t('classLesson.wrapUpReview', 'Review')}</strong>
+              <span>{t('classLesson.wrapUpReviewBody', 'Retry due or weak items from this class.')}</span>
+            </button>
+            <button type="button" onClick={() => navigate(`/quiz?${followUpParams({ source: 'class-complete' })}`)} className="class-wrap-up-card">
+              <strong>{t('learningHub.practiceQuiz', 'Self-test')}</strong>
+              <span>{t('classLesson.wrapUpQuizBody', 'Check understanding without loading the quiz until you start.')}</span>
+            </button>
+            <button type="button" onClick={() => navigate(`/writing?${followUpParams({ source: 'class-complete' })}`)} className="class-wrap-up-card">
+              <strong>{t('classLesson.wrapUpWriting', 'Writing')}</strong>
+              <span>{t('classLesson.wrapUpWritingBody', 'Use the level-appropriate write or type mode.')}</span>
+            </button>
+            <button type="button" onClick={() => navigate(`/conversation?prompt=${encodeURIComponent(t('classLesson.wrapUpConversationPrompt', 'Help me use what I just learned in a short conversation.'))}`)} className="class-wrap-up-card">
+              <strong>{t('classLesson.wrapUpConversation', 'Conversation')}</strong>
+              <span>{t('classLesson.wrapUpConversationBody', 'Turn the lesson into a short roleplay.')}</span>
+            </button>
           </div>
         </section>
       )}
@@ -1913,7 +2040,7 @@ function ClassLessonPage() {
             <button type="button" onClick={() => openSelectedPracticeSurface('conversation')} disabled={!selectedItemReady}>{t('conversation.practiceLabel', 'Conversation practice')}</button>
             <button type="button" onClick={() => openSelectedPracticeSurface('writing')} disabled={!selectedItemReady}>{t('learningHub.practiceWriting', 'Write')}</button>
             <button type="button" onClick={() => openSelectedPracticeSurface('flashcard')} disabled={!selectedItemReady}>{t('learningHub.practiceFlashcard', 'Flashcard')}</button>
-            <button type="button" onClick={selfTestSelectedItem} disabled={!selectedItemReady}>{t('learningHub.practiceQuiz', 'Self-test')}</button>
+            <button type="button" onClick={() => openSelectedPracticeSurface('quiz')} disabled={!selectedItemReady}>{t('learningHub.practiceQuiz', 'Self-test')}</button>
           </div>
         </section>
 

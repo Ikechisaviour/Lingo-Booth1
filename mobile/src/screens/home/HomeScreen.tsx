@@ -237,6 +237,7 @@ const HomeScreen: React.FC = () => {
   const recentWords = learningHub?.recentWords || [];
   const firstThreeDays = learningHub?.firstThreeDays || null;
   const goalPath = learningHub?.goalPath || null;
+  const repairPlan = learningHub?.repairPlan || null;
   const currentOnboardingStep = firstThreeDays?.steps?.find((step: any) => step.current) || firstThreeDays?.steps?.[0] || null;
   const placement = learningHub?.placement || null;
   const milestones = learningHub?.milestones || {};
@@ -253,11 +254,15 @@ const HomeScreen: React.FC = () => {
   const goalPathActions = (goalPath?.actions || [])
     .filter((action: any) => action?.route && action.route !== primaryActionRoute)
     .slice(0, 3);
+  const repairPlanActions = (repairPlan?.needed ? repairPlan.actions || [] : [])
+    .filter((action: any) => action?.route && action.route !== primaryActionRoute)
+    .slice(0, 3);
   const showPlacementPrompt = placement?.status === 'needs_check';
   const showGuidancePanel = Boolean(
     dailyPlanSecondary.length
     || firstThreeDays
     || goalPathActions.length
+    || repairPlanActions.length
     || showPlacementPrompt
     || usingOfflinePack,
   );
@@ -380,6 +385,8 @@ const HomeScreen: React.FC = () => {
     return t('learningHub.firstThreeDayLearnBody', 'Begin with one small guided lesson so the pair has a clear starting point.');
   };
 
+  const showDecayBanner = !!xpStats && (xpStats.status === 'decaying' || xpStats.status === 'grace');
+
   return (
     <ScrollView
       style={[styles.scrollView, { backgroundColor: activeColor }]}
@@ -388,6 +395,21 @@ const HomeScreen: React.FC = () => {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#fff']} tintColor="#fff" />
       }
     >
+      {showDecayBanner && (
+        <TouchableOpacity
+          style={[styles.decayBanner, xpStats.status === 'decaying' && styles.decayBannerDanger]}
+          onPress={() => navigation.navigate('Profile')}
+          accessibilityLabel={t('home.xpTracker')}
+        >
+          <Text style={styles.decayBannerIcon}>{xpStats.status === 'decaying' ? '📉' : '⏳'}</Text>
+          <Text style={styles.decayBannerText}>
+            {xpStats.status === 'decaying'
+              ? t('home.decayBannerActive', { rate: xpStats.decayRate, defaultValue: 'XP is decaying — daily loss {{rate}}%. Answer a question to stop it.' })
+              : t('home.decayBannerGrace', { hours: xpStats.hoursUntilDecay ?? 0, rate: xpStats.decayRate, defaultValue: 'XP decay starts in {{hours}}h — daily loss {{rate}}%. Keep studying to prevent it.' })}
+          </Text>
+          <Text style={styles.decayBannerCta}>{t('home.xpTracker')} →</Text>
+        </TouchableOpacity>
+      )}
       {/* Hero Section — colored background */}
       <View style={[styles.heroSection, { paddingTop: insets.top + (isCompact ? 4 : 16) }]}>
         {isReturningUser ? (
@@ -516,7 +538,7 @@ const HomeScreen: React.FC = () => {
                 </Button>
               </View>
 
-              {informativeSignalCards.length > 0 && (
+              {(informativeSignalCards.length > 0 || gamification || xpStats) && (
               <View style={styles.signalGrid}>
                 {informativeSignalCards.map((signal) => (
                   <TouchableOpacity key={signal.key} style={styles.signalCard} onPress={() => navigateLearningRoute(signal.route)}>
@@ -525,6 +547,54 @@ const HomeScreen: React.FC = () => {
                     <Text style={styles.learningMeta}>{signal.detail}</Text>
                   </TouchableOpacity>
                 ))}
+                {/* Day Streak and Total XP previously lived in standalone
+                    cards lower on the scroll. Merging them into Learning
+                    Signals keeps all dashboard telemetry in one grouped
+                    card and matches the web layout. */}
+                {gamification?.challengeMode && gamification.streak && (
+                  <TouchableOpacity
+                    key="streak"
+                    style={styles.signalCard}
+                    onPress={() => navigation.navigate('Profile')}
+                  >
+                    <Text style={styles.learningLabel}>{t('home.dayStreak')}</Text>
+                    <Text style={styles.signalValue}>{gamification.streak.current}</Text>
+                    <View style={styles.streakMiniCalendar}>
+                      {weekdayKeys.map((dayKey, i) => (
+                        <View
+                          key={dayKey}
+                          style={[
+                            styles.streakMiniDay,
+                            gamification.streak.history?.[i] && styles.streakMiniDayActive,
+                          ]}
+                        >
+                          <Text style={styles.streakMiniDayText}>
+                            {gamification.streak.history?.[i]
+                              ? '🔥'
+                              : t(`home.weekdays.${dayKey}`, dayKey.slice(0, 1).toUpperCase())}
+                          </Text>
+                        </View>
+                      ))}
+                    </View>
+                  </TouchableOpacity>
+                )}
+                {xpStats && (
+                  <TouchableOpacity
+                    key="totalXp"
+                    style={[
+                      styles.signalCard,
+                      xpStats.status === 'grace' && styles.signalCardWarn,
+                      xpStats.status === 'decaying' && styles.signalCardDanger,
+                    ]}
+                    onPress={() => navigation.navigate('Profile')}
+                  >
+                    <Text style={styles.learningLabel}>{t('home.totalXP')}</Text>
+                    <Text style={styles.signalValue}>{xpStats.totalXP}</Text>
+                    <Text style={styles.learningMeta}>
+                      {xpStats.status === 'off' ? t('home.relaxed') : t('home.intense')}
+                    </Text>
+                  </TouchableOpacity>
+                )}
               </View>
               )}
 
@@ -562,6 +632,9 @@ const HomeScreen: React.FC = () => {
               </View>
               <Button mode="outlined" compact onPress={() => setEditingPairProfile(true)}>
                 {t('learningHub.pairSetupEdit', 'Edit')}
+              </Button>
+              <Button mode="outlined" compact onPress={() => navigation.navigate('LevelTests')}>
+                {t('levelTests.kicker', 'Level checks')}
               </Button>
             </Card.Content>
           </Card>
@@ -705,6 +778,29 @@ const HomeScreen: React.FC = () => {
                       </View>
                     </View>
                   )}
+                  {repairPlanActions.length > 0 && (
+                    <View style={[styles.guidanceBlock, styles.guidanceBlockPrimary]}>
+                      <View style={styles.guidanceRowCompact}>
+                        <Text style={styles.guidanceTitle}>{t('learningHub.repairPlanTitle', 'Repair focus')}</Text>
+                        <Text style={styles.guidanceMeta}>{t('learningHub.repairPlanValue', 'Worth revisiting')}</Text>
+                      </View>
+                      <Text style={styles.guidanceMeta}>
+                        {t('learningHub.repairPlanBody', 'A few weak or checkpoint items are ready for focused practice before you move too far ahead.')}
+                      </Text>
+                      <View style={styles.goalActionRow}>
+                        {repairPlanActions.map((action: any, index: number) => (
+                          <Button
+                            key={`${action.type}-${index}`}
+                            compact
+                            mode="outlined"
+                            onPress={() => navigateLearningRoute(action.route)}
+                          >
+                            {actionLabel(action)}
+                          </Button>
+                        ))}
+                      </View>
+                    </View>
+                  )}
                   {showPlacementPrompt && (
                     <View style={styles.guidanceRow}>
                       <Text style={styles.guidanceTitle}>{t('learningHub.placementTitle', 'Placement')}</Text>
@@ -784,30 +880,7 @@ const HomeScreen: React.FC = () => {
         {/* Gamification Cards — Challenge Mode */}
         {gamification?.challengeMode && (
           <>
-            {/* Streak Card */}
-            <Card style={styles.card}>
-              <Card.Content>
-                <View style={styles.cardHeader}>
-                  <Text style={styles.cardIcon}>🔥</Text>
-                  <Text style={styles.cardTitle}>{t('home.dayStreak')}</Text>
-                </View>
-                <View style={styles.streakDisplay}>
-                  <Text style={[styles.streakNumber, { color: activeColor }]}>{gamification.streak.current}</Text>
-                  <Text style={styles.streakLabel}>
-                    {gamification.streak.current !== 1 ? t('home.days') : t('home.day')}
-                  </Text>
-                </View>
-                <View style={styles.streakCalendar}>
-                  {weekdayKeys.map((dayKey, i) => (
-                    <View key={i} style={[styles.calDay, gamification.streak.history[i] && styles.calDayActive]}>
-                      <Text style={styles.calDayText}>
-                        {gamification.streak.history[i] ? '🔥' : t(`home.weekdays.${dayKey}`, dayKey.slice(0, 1).toUpperCase())}
-                      </Text>
-                    </View>
-                  ))}
-                </View>
-              </Card.Content>
-            </Card>
+            {/* Streak card moved into Learning Signals as a tile. */}
 
             {/* Daily Quests */}
             <Card style={styles.card}>
@@ -887,53 +960,8 @@ const HomeScreen: React.FC = () => {
           </Card>
         )}
 
-        {/* XP Tracker */}
-        {xpStats && (
-          <Card style={styles.card}>
-            <Card.Content>
-              <View style={styles.cardHeader}>
-                <Text style={styles.cardIcon}>
-                  {xpStats.status === 'off' ? '🌿' : xpStats.status === 'decaying' ? '📉' : xpStats.status === 'grace' ? '⏳' : '✨'}
-                </Text>
-                <Text style={styles.cardTitle}>{t('home.xpTracker')}</Text>
-                <View style={[styles.xpStatusBadge, xpBadgeStyles[xpStatus]]}>
-                  <Text style={[styles.xpStatusText, xpBadgeTextStyles[xpStatus]]}>
-                    {xpStats.status === 'off' ? t('home.relaxed') : t('home.intense')}
-                  </Text>
-                </View>
-              </View>
-              <View style={styles.xpTotal}>
-                <Text style={[styles.xpNumber, { color: activeColor }]}>{xpStats.totalXP}</Text>
-                <Text style={styles.xpLabel}>{t('home.totalXP')}</Text>
-              </View>
-              <View style={styles.xpDetails}>
-                <View style={styles.xpDetailRow}>
-                  <Text style={styles.xpDetailLabel}>{t('home.lastAnswered')}</Text>
-                  <Text style={styles.xpDetailValue}>{formatTimeAgo(xpStats.lastAnsweredAt)}</Text>
-                </View>
-                {xpStats.status !== 'safe' && xpStats.status !== 'off' && (
-                  <>
-                    <View style={styles.xpDetailRow}>
-                      <Text style={styles.xpDetailLabel}>
-                        {xpStats.status === 'grace' ? t('home.decayStartsIn') : t('home.nextDecayIn')}
-                      </Text>
-                      <Text style={styles.xpDetailValue}>
-                        {xpStats.hoursUntilDecay != null ? `${xpStats.hoursUntilDecay}h` : '—'}
-                      </Text>
-                    </View>
-                    <View style={styles.xpDetailRow}>
-                      <Text style={styles.xpDetailLabel}>{t('home.dailyLossRate')}</Text>
-                      <Text style={styles.xpDetailValue}>{xpStats.decayRate}%</Text>
-                    </View>
-                  </>
-                )}
-              </View>
-              {xpStats.status === 'decaying' && (
-                <Text style={styles.decayWarning}>{t('home.stopDecayWarning')}</Text>
-              )}
-            </Card.Content>
-          </Card>
-        )}
+        {/* XP Tracker card moved into Learning Signals as a tile + a
+            decay-warning banner above the welcome card. */}
 
         {/* Admin Card */}
         {false && isAdmin && (
@@ -1091,10 +1119,67 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
     borderColor: colors.border,
     backgroundColor: '#fff',
   },
+  signalCardWarn: {
+    borderColor: '#f59e0b',
+  },
+  signalCardDanger: {
+    borderColor: '#ef4444',
+  },
   signalValue: {
     color: colors.textPrimary,
     fontSize: isCompact ? 22 : 26,
     fontWeight: '900',
+  },
+  streakMiniCalendar: {
+    flexDirection: 'row',
+    gap: 3,
+    marginTop: 2,
+  },
+  streakMiniDay: {
+    width: 18,
+    height: 18,
+    borderRadius: 9,
+    backgroundColor: colors.background,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  streakMiniDayActive: {
+    backgroundColor: 'transparent',
+  },
+  streakMiniDayText: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: colors.textMuted,
+  },
+  decayBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    margin: 12,
+    marginBottom: 0,
+    padding: 12,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#f59e0b',
+    backgroundColor: '#fff7ed',
+  },
+  decayBannerDanger: {
+    borderColor: '#ef4444',
+    backgroundColor: '#fef2f2',
+  },
+  decayBannerIcon: {
+    fontSize: 16,
+  },
+  decayBannerText: {
+    flex: 1,
+    fontSize: 12,
+    fontWeight: '600',
+    color: colors.textPrimary,
+  },
+  decayBannerCta: {
+    fontSize: 12,
+    fontWeight: '800',
+    color: colors.primary,
   },
   spotlightCard: {
     gap: 5,
@@ -1157,6 +1242,12 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
     paddingVertical: 8,
     borderTopWidth: 1,
     borderTopColor: colors.border,
+  },
+  guidanceRowCompact: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: 8,
   },
   guidanceBlock: {
     gap: 8,

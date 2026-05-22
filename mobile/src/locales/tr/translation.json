@@ -24,7 +24,8 @@
     "search": "Aramak",
     "notSet": "Ayarlanmadı",
     "all": "Tüm",
-    "reset": "Sıfırla"
+    "reset": "Sıfırla",
+    "restart": "Tekrar başlat"
   },
   "languages": {
     "en": "İngilizce",
@@ -106,7 +107,9 @@
     "registrationFailed": "Kayıt başarısız",
     "brandTagline": "Yolculuğunuza başlayın",
     "googleFailed": "Google ile kayıt başarısız. Lütfen tekrar deneyin.",
-    "signUpWithGoogle": "Google'a kaydolun"
+    "signUpWithGoogle": "Google'a kaydolun",
+    "fullNameOptional": "Tam ad (isteğe bağlı)",
+    "fullNameHint": "Bunu şimdi veya sertifika vermeden önce ekleyebilirsiniz."
   },
   "navbar": {
     "continue": "Devam Et",
@@ -220,7 +223,9 @@
       "sat": "S",
       "sun": "S"
     },
-    "contactDesc": "Sorular, geri bildirimler veya bildirilecek bir sorun"
+    "contactDesc": "Sorular, geri bildirimler veya bildirilecek bir sorun",
+    "decayBannerActive": "XP azalıyor; günlük kayıp %{{rate}}. Bunu durdurmak için bir soruyu yanıtlayın.",
+    "decayBannerGrace": "XP azalması {{hours}}saatte başlıyor — günlük kayıp %{{rate}}. Bunu önlemek için okumaya devam edin."
   },
   "lessons": {
     "title": "{{language}} Dersler",
@@ -339,7 +344,15 @@
     "studyMode": "Çalışma modu",
     "defaultMode": "Varsayılan",
     "readingMode": "Okuma",
-    "listeningMode": "Dinleme"
+    "listeningMode": "Dinleme",
+    "howDoYouSayThisIn": "Bunu {{language}} dilinde nasıl dersiniz?",
+    "quizMode": {
+      "nativeAssisted": "Erken kendi kendine test: ana dilinizdeki anlamı seçin.",
+      "targetWithNativeHints": "Hatırlama oluşturma: yerel ipucunu kullanın, ardından hedef dil yanıtını seçin.",
+      "targetDominant": "Bağımsız uygulama: İşin çoğunu hedef dil seçimleri üstlenir.",
+      "targetFirst": "Gelişmiş kendi kendine test: Önce hedefe odaklanın ve yardımı yalnızca gerektiğinde kullanın.",
+      "standard": "Rehberli kendi kendine test."
+    }
   },
   "flashcards": {
     "title": "Kart Pratiği",
@@ -438,7 +451,8 @@
     "savedForReview": "İncelenmek üzere kaydedildi.",
     "saveForReviewFailed": "Bu kart şu anda kaydedilemedi.",
     "bookmarkedReason": "Bilgi kartlarından yer imlerine eklendi.",
-    "selfTestReason": "Hızlı bir kendi kendine test için bilgi kartlarından kaydedildi."
+    "selfTestReason": "Hızlı bir kendi kendine test için bilgi kartlarından kaydedildi.",
+    "setFamiliarityLevel": "Tanıdıklığı {{level}} olarak ayarlayın"
   },
   "progress": {
     "title": "İlerlemeniz Raporu",
@@ -621,7 +635,11 @@
     "practicePromptsHint": "Eylem düğmeleriyle hızlı bir kelime sorusu gösterin, böylece bildirim gölgesinden yanıt verebilirsiniz.",
     "notificationsAllowed": "Bu cihazda bildirimlere izin veriliyor.",
     "notificationsBlocked": "Bildirimlere henüz izin verilmiyor.",
-    "sendTestPrompt": "Test istemi gönder"
+    "sendTestPrompt": "Test istemi gönder",
+    "failedToUpdate": "Güncelleme başarısız oldu",
+    "fullName": "Ad Soyad",
+    "fullNamePlaceholder": "Sertifikalarda gösterilecek ad",
+    "fullNameMissing": "Sertifika vermeden önce ekleyin"
   },
   "verifyEmail": {
     "verifying": "E-postanız doğrulanıyor...",
@@ -1034,7 +1052,41 @@
     },
     "snapshotsKicker": "Öğrenci anlık görüntüleri",
     "needsHelpTitle": "Dikkat edilmesi gerekiyor",
-    "noNeedsHelpLearners": "Şu anda hiçbir öğrencinin ekstra ilgiye ihtiyacı yok."
+    "noNeedsHelpLearners": "Şu anda hiçbir öğrencinin ekstra ilgiye ihtiyacı yok.",
+    "groupSaved": "Grup kaydedildi.",
+    "groupSaveFailed": "Bu grup kaydedilemedi.",
+    "group": "Grup",
+    "noGroup": "Grup yok",
+    "languagePolicy": "Dil politikası",
+    "allowedTargetLanguages": "İzin verilen hedef diller",
+    "allowedTargetLanguagesHelp": "Bu kurumun erişimini kullanan öğrenciler yalnızca bu hedef dilleri seçebilir.",
+    "defaultTargetLanguage": "Varsayılan hedef dil",
+    "noDefaultLanguage": "Varsayılan yok",
+    "groupsKicker": "Gruplar",
+    "groupsTitle": "Öğrenme grupları",
+    "groupUsesOrgPolicy": "Kuruluşun dil politikasını kullanır",
+    "noGroupsYet": "Bir sınıf, grup veya ekip için dil erişimini yönetmek üzere bir grup oluşturun.",
+    "groupName": "Grup adı",
+    "groupNamePlaceholder": "Örnek: Başlangıç ​​akşam dersi",
+    "groupLanguages": "Hedef dilleri gruplandırın",
+    "createGroup": "Grup oluştur",
+    "testingKicker": "Seviye kontrolleri",
+    "testingTitle": "Testler ve sertifikalar",
+    "recentAttempts": "Son denemeler",
+    "certificatesIssued": "Verilen sertifikalar",
+    "learner": "Öğrenci",
+    "mobileCertificateLogoName": "Mobil sertifika logosu",
+    "certificateBrandingSaved": "Sertifika markası kaydedildi.",
+    "certificateBrandingFailed": "Sertifika markası kaydedilemedi. Bir HTTPS resim URL'si kullanın veya web kontrol panelinden 600 KB'ın altında bir PNG, JPG veya WebP logosu yükleyin.",
+    "certificateBrandingRemoved": "Sertifika logosu kaldırıldı.",
+    "certificateBrandingKicker": "Sertifikalar",
+    "certificateBrandingTitle": "Sertifika markalaması",
+    "certificateBrandingHelp": "Kurum sertifikaları kişisel sertifikalarla aynı tasarımı kullanır ve bu logo ve kurum adı eklenir.",
+    "certificateLogoUrl": "Sertifika logosu URL'si veya veri resmi",
+    "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
+    "mobileCertificateLogoHelp": "Buraya bir HTTPS resim URL'si yapıştırın veya PNG, JPG veya WebP dosyası yüklemek için web kontrol panelini kullanın.",
+    "saveCertificateBranding": "Sertifika logosunu kaydet",
+    "removeCertificateLogo": "Logoyu kaldır"
   },
   "errorBoundary": {
     "title": "Bir şeyler ters gitti",
@@ -1083,13 +1135,47 @@
       "intermediateSubtitle": "Fikirler, kültür, sağlık, iş ve günlük güvene yönelik konu odaklı birimler.",
       "professionalTitle": "Seviye {{level}} - Profesyonel {{language}}",
       "professionalSubtitle": "İş, hizmetler, barınma, güvenlik ve resmi durumlar için pratik dil.",
-      "grammarTitle": "Seviye {{level}} - İleri düzey dilbilgisi",
-      "grammarSubtitle": "Fikirleri daha fazla kontrolle birleştirmenize yardımcı olan desen kümeleri."
+      "grammarTitle": "Seviye {{level}} - İleri {{language}}",
+      "grammarSubtitle": "Fikirleri daha fazla kontrolle birleştirmenize yardımcı olan desen kümeleri.",
+      "survivalTitle": "Seviye {{level}} - Temel {{language}}",
+      "survivalSubtitle": "Selamlaşmalar, odalar, yerler, rutinler, alışveriş ve yemek için pratik temeller oluşturun.",
+      "everydayTitle": "Seviye {{level}} - Her gün {{language}}",
+      "everydaySubtitle": "Selamlaşma, yemek, yerler, planlar ve günlük durumlara ilişkin temel günlük dersler.",
+      "bridgeTitle": "Seviye {{level}} - Köprü",
+      "bridgeSubtitle": "Gündelik materyalleri daha bağımsız kullanıma bağlayan inceleme ve geçiş birimleri.",
+      "topicTitle": "Seviye {{level}} - Tematik {{language}}",
+      "topicSubtitle": "Fikirler, kültür, sağlık, planlar ve kendinden emin günlük ifadeler için konu odaklı birimler.",
+      "advancedTitle": "Seviye {{level}} - İleri {{language}}",
+      "advancedSubtitle": "Daha hafif ana dil desteğiyle daha uzun okuma, dinleme, konuşma ve yazma görevleri."
     },
     "titlePrefix": {
       "unit": "Seviye {{level}} · Birim {{unit}}: {{title}}"
     },
-    "retry": "Tekrar deneyin"
+    "retry": "Tekrar deneyin",
+    "lessonsCount": "{{count}} dersler",
+    "lessonRoles": {
+      "branch": "Hedef dalı",
+      "checkpoint": "Kontrol noktası",
+      "repair": "Tamirat",
+      "core": "Çekirdek"
+    },
+    "lessonWeights": {
+      "deep": "Derin",
+      "light": "Işık",
+      "standard": "Standart"
+    },
+    "requiredForProgress": "Gerekli",
+    "programLevels": {
+      "kicker": "Öğrenme seviyesi",
+      "coreCount": "{{count}} çekirdek",
+      "branchCount": "{{count}} şubeler",
+      "checkpointCount": "{{count}} kontrol noktaları"
+    },
+    "singleTrackGuidanceKicker": "Neden tek sınıf",
+    "singleTrackGuidanceTitle": "Odaklanmaya başlayın, ardından dallara ayrılın",
+    "singleTrackGuidanceBody": "Bu pist özellikle kompakt olduğundan ilk adım net hissedilir. Dersi burada bitirin, ardından daha kapsamlı pratik yapmak için bir sonraki bölüme geçin.",
+    "singleTrackGuidanceStep1": "Üssü inşa et",
+    "singleTrackGuidanceStep2": "Günlük kullanıma devam edin"
   },
   "classLesson": {
     "loading": "Sınıf dersi yükleniyor...",
@@ -1231,7 +1317,46 @@
     "selfTestReason": "Hızlı bir kendi kendine test için sınıftan kaydedildi.",
     "previous": "Öncesi",
     "lessonGuide": "Ders kılavuzu",
-    "activityXOfY": "Etkinlik {{current}} / {{total}}"
+    "activityXOfY": "Etkinlik {{current}} / {{total}}",
+    "wrapUpReviewBody": "Bu sınıftan vadesi gelmiş veya zayıf öğeleri yeniden deneyin.",
+    "wrapUpQuizBody": "Başlayana kadar testi yüklemeden anlayıp anlamadığınızı kontrol edin.",
+    "wrapUpWritingBody": "Seviyeye uygun yazma veya yazma modunu kullanın.",
+    "wrapUpConversationPrompt": "Kısa bir sohbette öğrendiklerimi kullanmama yardım et.",
+    "wrapUpConversationBody": "Dersi kısa bir rol oyununa dönüştürün.",
+    "learningPlan": {
+      "unplacedLevel": "Öğrenme seviyesi",
+      "moreActivities": "{{count}} daha fazla",
+      "level": "Seviye",
+      "support": "Destek",
+      "selfTest": "Kendi kendine test",
+      "writing": "Yazma",
+      "activities": "Uzun pratik",
+      "ariaLabel": "Ders öğrenme planı"
+    },
+    "supportLevels": {
+      "nativeGuided": "Güçlü ana dil desteği",
+      "mixedGuided": "Dengeli hedef ve yerel destek",
+      "targetFirst": "Önce dili hedefleyin",
+      "immersionWithHelp": "Yardımın mevcut olduğu çoğunlukla hedef dil",
+      "standard": "Rehberli destek"
+    },
+    "quizModes": {
+      "nativeAssisted": "Ana dilinizdeki anlam seçimleri",
+      "targetWithNativeHints": "Yerel ipuçlarıyla hedef dil seçenekleri",
+      "targetDominant": "Çoğunlukla hedef dil seçenekleri",
+      "targetFirst": "Hedef öncelikli otomatik test",
+      "standard": "Rehberli kendi kendine test"
+    },
+    "writingModes": {
+      "handwritingFirst": "Önce izleyin veya kopyalayın",
+      "typeWithWriteOption": "Tip, yazma pratiği mevcut",
+      "typedProduction": "Bellekten yazılan yanıtlar",
+      "extendedTypedProduction": "Daha uzun yazılan yanıtlar",
+      "standard": "Yaz veya yaz"
+    },
+    "longActivities": {
+      "practice": "Pratik"
+    }
   },
   "exercise": {
     "kicker": "Egzersiz yapmak",
@@ -1390,7 +1515,8 @@
       "listen": "Önce dinleyin, sonra duyduklarınızı yazın.",
       "meaning": "Hedef metni hatırlamak ve yazmak için anlamı kullanın.",
       "stroke": "Kılavuzu takip edin ve ardından yazma alanında pratik yapın.",
-      "review": "Yazınızı cevapla karşılaştırın ve neyin güçlü olduğunu işaretleyin."
+      "review": "Yazınızı cevapla karşılaştırın ve neyin güçlü olduğunu işaretleyin.",
+      "type": "Cevabı hafızadan yazın. Bu, ilk el yazısı derslerinden sonraki standart yazma modudur."
     },
     "status": {
       "loadingNotebook": "Not defteri yükleniyor...",
@@ -1425,7 +1551,8 @@
     "selfTestReason": "Hızlı bir kendi kendine test için yazma alıştırmasından kurtarıldı.",
     "hideNotebook": "Not defterini gizle",
     "showNotebook": "Not defterini göster",
-    "hideAddPanel": "Ekleme panelini gizle"
+    "hideAddPanel": "Ekleme panelini gizle",
+    "typePlaceholder": "Cevabınızı buraya yazın..."
   },
   "certificates": {
     "kicker": "Sertifika",
@@ -1457,7 +1584,30 @@
     "viewPlans": "Planları görüntüle",
     "signIn": "Oturum aç",
     "issuedSuccess": "Sertifika verildi.",
-    "issueFailed": "Sertifika verilemedi."
+    "issueFailed": "Sertifika verilemedi.",
+    "levelCertificateTitle": "Seviye {{level}} sertifikası",
+    "proficiencyTitle": "Yeterlilik Belgesi",
+    "institutionProficiencyTitle": "Yeterlilik Belgesi",
+    "levelCompletionTitle": "Seviye Bitirme Sertifikası",
+    "institutionCompletionTitle": "Seviye Bitirme Sertifikası",
+    "level": "Seviye",
+    "levelNumber": "Seviye {{level}}",
+    "score": "Gol",
+    "organization": "Organizasyon",
+    "institutionLogoAlt": "{{organization}} logosu",
+    "issuedThrough": "aracılığıyla yayınlandı",
+    "institution": "Kurum",
+    "verifiedProficiency": "Doğrulanmış yeterlilik belgesi",
+    "verifiedCompletion": "Doğrulanmış tamamlama sertifikası",
+    "proficiencyStatement": "{{level}} Seviyesi için kanıtlanmış yeterlilik",
+    "levelCompletionStatement": "Tamamlanan Seviye {{level}}",
+    "completionStatement": "Gerekli öğrenme etkinliğini tamamladı",
+    "download": "İndirmek",
+    "languageControl": "Sertifika dili",
+    "nativeVersionShort": "Yerli",
+    "targetVersionShort": "Hedef",
+    "bilingualVersionShort": "İkisi birden",
+    "certificateIssuedThrough": "aracılığıyla verilen sertifika"
   },
   "learningHub": {
     "continueLearning": "Öğrenmeye devam et",
@@ -1619,7 +1769,10 @@
     "recentWordsEmptyAction": "Kaydedilen kelimeler ve faydalı ifadeler dersten veya konuşma pratiğinden sonra burada toplanacaktır.",
     "startAClass": "Bir sınıf başlat",
     "milestonesEmptyAction": "İlk tamamladığınız dersiniz, kayıtlı ifadeniz veya sertifikanız burada görünecektir.",
-    "earnFirstMilestone": "İlk kilometre taşını kazanın"
+    "earnFirstMilestone": "İlk kilometre taşını kazanın",
+    "repairPlanTitle": "Onarım odağı",
+    "repairPlanValue": "Tekrar ziyaret etmeye değer",
+    "repairPlanBody": "Birkaç zayıf veya kontrol noktası öğesi, çok ileri gitmeden önce odaklanmış uygulamaya hazırdır."
   },
   "resetPassword": {
     "title": "Şifre sıfırla",
@@ -1689,5 +1842,56 @@
     "speaking": "Konuşuyorum",
     "reading": "Okuma",
     "writing": "Yazma"
+  },
+  "levelTests": {
+    "kicker": "Seviye kontrolleri",
+    "levelLabel": "Seviye {{level}}",
+    "passed": "Geçti",
+    "reviewRecommended": "İnceleme önerildi",
+    "tasks": {
+      "chooseTarget": "Hedef dil cevabını seçin.",
+      "chooseMeaning": "En iyi anlamı seçin.",
+      "typeTarget": "Hedef dil cevabını yazın.",
+      "shortResponse": "Hedef dilde cevap verin, ardından yanıtınızı puanlayın.",
+      "default": "Soruyu cevapla."
+    },
+    "institutionContext": "Kurum",
+    "personalContext": "Kişisel",
+    "skills": {
+      "general": "Genel"
+    },
+    "loadFailed": "Seviye testi şu anda yüklenemedi.",
+    "startFailed": "Bu test henüz hazır değil.",
+    "submitFailed": "Bu test gönderilemedi.",
+    "certificateReady": "Sertifikanız hazır.",
+    "certificateFailed": "Bu sertifika henüz verilemedi.",
+    "title": "Ne yapabileceğini göster",
+    "subtitle": "İlerleme için seviye kontrolünü tamamlayın veya daha güçlü bir yetenek kanıtı istediğinizde yeterlilik kontrolüne girin.",
+    "context": "Bağlam",
+    "allowedLanguages": "Mevcut hedef diller",
+    "chooseLevel": "Seviye seçin",
+    "testType": "Test türü",
+    "restrictedTarget": "Bu hedef dil bu kurum bağlamında mevcut değil.",
+    "start": "Kontrolü başlat",
+    "emptyTitle": "Bir seviye kontrolü seçin",
+    "emptyBody": "Seçtiğiniz seviyede dengeli bir kelime dağarcığı, dil bilgisi, okuma, konuşma ve yazma görevleri göreceksiniz.",
+    "resultTitle": "Sonucunuz",
+    "questionsTitle": "Her görevi yanıtlayın",
+    "certificateIssued": "Sertifika verildi",
+    "issueCertificate": "Sertifikayı yayınla",
+    "writeAnswer": "Cevabınızı buraya yazın...",
+    "selfNeedsWork": "Çalışmaya ihtiyaç var",
+    "selfAlmost": "Neredeyse",
+    "selfGood": "İyi",
+    "correct": "Doğru",
+    "missed": "Bunu inceleyin",
+    "submit": "Çek gönder",
+    "fullNameInvalid": "Tam adınız için en az iki karakter girin.",
+    "certificateNameKicker": "Sertifika adı",
+    "fullNameRequiredTitle": "Tam adınızı ekleyin",
+    "fullNameRequiredBody": "Tam adınızı tam olarak bu sertifikada görünmesi gerektiği gibi girin. Bunu yalnızca sertifika vermeden önce yapmanız gerekir.",
+    "fullNameLabel": "Ad Soyad",
+    "fullNamePlaceholder": "Tam adınız",
+    "saveNameAndIssue": "Adı kaydedin ve sertifikayı verin"
   }
 }

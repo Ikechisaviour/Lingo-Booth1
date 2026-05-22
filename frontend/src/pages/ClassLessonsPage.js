@@ -22,9 +22,19 @@ const TRACK_GROUPS = [
   },
   {
     level: 1,
-    track: 'thematic',
-    titleKey: 'classList.tracks.thematicTitle',
-    subtitleKey: 'classList.tracks.thematicSubtitle',
+    track: 'survival',
+    titleKey: 'classList.tracks.survivalTitle',
+    subtitleKey: 'classList.tracks.survivalSubtitle',
+    fallbackTitle: 'Level {{level}} - Essential {{language}}',
+    fallbackSubtitle: 'Build practical basics for greetings, rooms, places, routines, shopping, and food.',
+    accent: 'lime',
+    icon: FiTarget,
+  },
+  {
+    level: 1,
+    track: 'everyday',
+    titleKey: 'classList.tracks.everydayTitle',
+    subtitleKey: 'classList.tracks.everydaySubtitle',
     fallbackTitle: 'Level {{level}} - Everyday {{language}}',
     fallbackSubtitle: 'Core everyday lessons for greetings, food, places, plans, and daily situations.',
     accent: 'lime',
@@ -32,17 +42,27 @@ const TRACK_GROUPS = [
   },
   {
     level: 2,
-    track: 'thematic',
-    titleKey: 'classList.tracks.intermediateTitle',
-    subtitleKey: 'classList.tracks.intermediateSubtitle',
-    fallbackTitle: 'Level {{level}} - Intermediate {{language}}',
-    fallbackSubtitle: 'Topic-driven units for opinions, culture, health, work, and everyday confidence.',
+    track: 'bridge',
+    titleKey: 'classList.tracks.bridgeTitle',
+    subtitleKey: 'classList.tracks.bridgeSubtitle',
+    fallbackTitle: 'Level {{level}} - Bridge',
+    fallbackSubtitle: 'Review and transition units that connect everyday material to more independent use.',
     accent: 'sky',
     icon: FiLayers,
   },
   {
     level: 2,
-    track: 'adult',
+    track: 'thematic',
+    titleKey: 'classList.tracks.topicTitle',
+    subtitleKey: 'classList.tracks.topicSubtitle',
+    fallbackTitle: 'Level {{level}} - Thematic {{language}}',
+    fallbackSubtitle: 'Topic-driven units for opinions, culture, health, plans, and confident everyday expression.',
+    accent: 'violet',
+    icon: FiTarget,
+  },
+  {
+    level: 3,
+    track: 'professional',
     titleKey: 'classList.tracks.professionalTitle',
     subtitleKey: 'classList.tracks.professionalSubtitle',
     fallbackTitle: 'Level {{level}} - Professional {{language}}',
@@ -51,14 +71,45 @@ const TRACK_GROUPS = [
     icon: FiMessageCircle,
   },
   {
-    level: 3,
-    track: 'grammar',
-    titleKey: 'classList.tracks.grammarTitle',
-    subtitleKey: 'classList.tracks.grammarSubtitle',
-    fallbackTitle: 'Level {{level}} - Advanced grammar',
-    fallbackSubtitle: 'Pattern clusters that help you connect ideas with more control.',
+    level: 4,
+    track: 'advanced',
+    titleKey: 'classList.tracks.advancedTitle',
+    subtitleKey: 'classList.tracks.advancedSubtitle',
+    fallbackTitle: 'Level {{level}} - Advanced {{language}}',
+    fallbackSubtitle: 'Longer reading, listening, speaking, and writing tasks with lighter native-language support.',
     accent: 'violet',
     icon: FiCheckCircle,
+  },
+];
+
+const PROGRAM_LEVELS = [
+  {
+    level: 1,
+    titleKey: 'classList.programLevels.level1.title',
+    subtitleKey: 'classList.programLevels.level1.description',
+    fallbackTitle: 'Level {{level}} - Foundation',
+    fallbackSubtitle: 'Build the sound system, first routines, and essential everyday control.',
+  },
+  {
+    level: 2,
+    titleKey: 'classList.programLevels.level2.title',
+    subtitleKey: 'classList.programLevels.level2.description',
+    fallbackTitle: 'Level {{level}} - Everyday Use',
+    fallbackSubtitle: 'Use the language across daily topics with more reading, typing, listening, and review.',
+  },
+  {
+    level: 3,
+    titleKey: 'classList.programLevels.level3.title',
+    subtitleKey: 'classList.programLevels.level3.description',
+    fallbackTitle: 'Level {{level}} - Independent Use',
+    fallbackSubtitle: 'Handle work, services, longer turns, and real-life problem solving with lighter support.',
+  },
+  {
+    level: 4,
+    titleKey: 'classList.programLevels.level4.title',
+    subtitleKey: 'classList.programLevels.level4.description',
+    fallbackTitle: 'Level {{level}} - Advanced Control',
+    fallbackSubtitle: 'Refine advanced grammar, extended writing, storytelling, and target-first comprehension.',
   },
 ];
 
@@ -88,26 +139,39 @@ function parsePosition(title = '') {
   return 99;
 }
 
+function parseLearningPosition(title = '') {
+  if (/foundation/i.test(title)) return 0;
+  const reviewMatch = title.match(/review\s*(\d+)/i);
+  if (reviewMatch) return parseInt(reviewMatch[1], 10) * 3 + 0.5;
+  const translatedUnitMatch = title.match(/(?:unit|unidad|unidade|einheit|lesson|lektion|course|class)\s*(\d+)/i);
+  if (translatedUnitMatch) return parseInt(translatedUnitMatch[1], 10);
+  return parsePosition(title);
+}
+
 // Classify a lesson into (level, track, position) using its metadata + title.
 function classifyLesson(lesson) {
   if (lesson?.course?.level && lesson?.course?.track) {
     return {
       level: lesson.course.level,
       track: lesson.course.track,
-      position: Number(lesson.course.position || 99),
+      position: Number(lesson.sequenceOrder || lesson.course.sequenceOrder || lesson.course.position || 99),
     };
   }
 
   const { difficulty, lessonType, title = '' } = lesson;
-  const position = parsePosition(title);
+  const position = parseLearningPosition(title);
+  const learningLevel = Number(lesson?.learningLevel || lesson?.learning?.level || 0);
+  const levelTrack = lesson?.levelTrack || lesson?.learning?.levelTrack;
+
+  if (learningLevel && levelTrack) return { level: learningLevel, track: levelTrack, position: Number(lesson.sequenceOrder || position) };
 
   if (lessonType === 'foundation') return { level: 1, track: 'foundation', position };
-  if (lessonType === 'workplace') return { level: 2, track: 'adult', position };
-  if (lessonType === 'grammar') return { level: 3, track: 'grammar', position };
-  if (lessonType === 'review') return { level: 2, track: 'thematic', position };
-  if (difficulty === 'beginner') return { level: 1, track: 'thematic', position };
+  if (lessonType === 'workplace') return { level: 3, track: 'professional', position };
+  if (lessonType === 'grammar') return { level: 4, track: 'advanced', position };
+  if (lessonType === 'review') return { level: 2, track: 'bridge', position };
+  if (difficulty === 'beginner') return { level: 1, track: 'everyday', position };
   if (difficulty === 'intermediate') return { level: 2, track: 'thematic', position };
-  if (difficulty === 'advanced') return { level: 3, track: 'grammar', position };
+  if (difficulty === 'advanced') return { level: 4, track: 'advanced', position };
   return { level: 9, track: 'other', position };
 }
 
@@ -179,9 +243,50 @@ function trackCopyFor(trackInfo, t, targetName) {
   };
 }
 
+function programLevelCopyFor(levelInfo, t) {
+  const values = { level: levelInfo.level };
+  return {
+    label: t(levelInfo.titleKey, {
+      ...values,
+      defaultValue: interpolateFallback(levelInfo.fallbackTitle, values),
+    }),
+    subtitle: t(levelInfo.subtitleKey, levelInfo.fallbackSubtitle),
+  };
+}
+
 function trackLabelFor(classify, t, targetName) {
   const trackInfo = TRACK_GROUPS.find((item) => item.level === classify.level && item.track === classify.track);
   return trackInfo ? trackCopyFor(trackInfo, t, targetName).label : t('classList.classFallback', 'Class');
+}
+
+function lessonRoleLabel(role, t) {
+  const normalized = String(role || 'core').toLowerCase();
+  const labels = {
+    core: ['classList.lessonRoles.core', 'Core'],
+    branch: ['classList.lessonRoles.branch', 'Goal branch'],
+    checkpoint: ['classList.lessonRoles.checkpoint', 'Checkpoint'],
+    repair: ['classList.lessonRoles.repair', 'Repair'],
+  };
+  const [key, fallback] = labels[normalized] || labels.core;
+  return t(key, fallback);
+}
+
+function lessonWeightLabel(weight, t) {
+  const value = Number(weight || 2);
+  if (value >= 3) return t('classList.lessonWeights.deep', 'Deep');
+  if (value <= 1) return t('classList.lessonWeights.light', 'Light');
+  return t('classList.lessonWeights.standard', 'Standard');
+}
+
+function lessonRoleCounts(lessons = []) {
+  return lessons.reduce((acc, lesson) => {
+    const role = String(lesson.lessonRole || lesson.learning?.lessonRole || 'core').toLowerCase();
+    if (role === 'branch') acc.branches += 1;
+    else if (role === 'checkpoint') acc.checkpoints += 1;
+    else if (role === 'repair') acc.repairs += 1;
+    else acc.core += 1;
+    return acc;
+  }, { core: 0, branches: 0, checkpoints: 0, repairs: 0 });
 }
 
 function localizedLessonTitle(title = '', t) {
@@ -317,6 +422,14 @@ function ClassLessonsPage() {
                 <FiBookOpen aria-hidden="true" />
                 {t('classList.startFirst', 'Start first available class')}
               </button>
+              <button
+                type="button"
+                className="class-secondary-action"
+                onClick={() => navigate('/level-tests')}
+              >
+                <FiCheckCircle aria-hidden="true" />
+                {t('levelTests.kicker', 'Level checks')}
+              </button>
               <span className="class-hero-note">{t('classList.note', 'Built for guided lessons, not quick drills.')}</span>
             </div>
           </div>
@@ -387,58 +500,116 @@ function ClassLessonsPage() {
             </div>
           )}
 
-          {!loading && !error && TRACK_GROUPS.map(({ level, track }) => {
-            const lessons = groups.get(`${level}:${track}`);
-            if (!lessons || lessons.length === 0) return null;
-            const trackInfo = TRACK_GROUPS.find((item) => item.level === level && item.track === track);
-            const { label, subtitle } = trackCopyFor(trackInfo, t, targetName);
-            const TrackIcon = trackInfo?.icon || FiBookOpen;
+          {!loading && !error && PROGRAM_LEVELS.map((levelInfo) => {
+            const trackSections = TRACK_GROUPS
+              .filter(({ level }) => level === levelInfo.level)
+              .map((trackInfo) => ({
+                trackInfo,
+                lessons: groups.get(`${trackInfo.level}:${trackInfo.track}`) || [],
+              }))
+              .filter(({ lessons }) => lessons.length > 0);
+            if (!trackSections.length) return null;
+            const levelLessons = trackSections.flatMap(({ lessons }) => lessons);
+            const counts = lessonRoleCounts(levelLessons);
+            const levelCopy = programLevelCopyFor(levelInfo, t);
+
             return (
-              <section key={`${level}:${track}`} className={`class-track class-track-${trackInfo?.accent || 'lime'}`} aria-label={label}>
-                <header className="class-track-header">
-                  <div className="class-track-title">
-                    <span className="class-track-icon"><TrackIcon aria-hidden="true" /></span>
-                    <div>
-                      <h2>{label}</h2>
-                      <p className="class-track-subtitle">{subtitle}</p>
-                    </div>
+              <section
+                key={levelInfo.level}
+                className={`class-program-level class-level-${levelInfo.level}`}
+                aria-label={levelCopy.label}
+              >
+                <header className="class-program-level-header">
+                  <div>
+                    <p className="class-kicker">{t('classList.programLevels.kicker', 'Learning level')}</p>
+                    <h2>{levelCopy.label}</h2>
+                    <p>{levelCopy.subtitle}</p>
                   </div>
-                  <span className="class-track-count">{t('classList.lessonsCount', { count: lessons.length, defaultValue: '{{count}} lessons' })}</span>
+                  <div className="class-program-level-stats" aria-label={t('classList.programLevels.statsAriaLabel', 'Level plan summary')}>
+                    <span>{t('classList.programLevels.coreCount', { count: counts.core, defaultValue: '{{count}} core' })}</span>
+                    <span>{t('classList.programLevels.branchCount', { count: counts.branches, defaultValue: '{{count}} branches' })}</span>
+                    <span>{t('classList.programLevels.checkpointCount', { count: counts.checkpoints, defaultValue: '{{count}} checkpoints' })}</span>
+                  </div>
                 </header>
-                <div className="class-grid">
-                  {lessons.map((classLesson) => {
-                    const stats = lessonStats(classLesson);
-                    const displayTitle = nativeScaffoldText(localizedLessonTitle(classLesson.title, t), nativeLanguage, t);
-                    const titleParts = String(displayTitle || '').split(/\s*\((.+)\)\s*$/).filter(Boolean);
-                    const primaryTitle = titleParts[0] || displayTitle;
-                    const secondaryTitle = titleParts[1] || '';
-                    return (
-                      <article key={classLesson._id} className="class-card">
-                        <header className="class-card-header">
-                          <span className="class-card-track">{trackLabelFor(classLesson._classify, t, targetName)}</span>
-                          <span className="class-card-meta">{readableDifficulty(classLesson.difficulty, t)}</span>
-                        </header>
-                        <div className="class-card-title-block">
-                          <h3>{primaryTitle}</h3>
-                          {secondaryTitle && <p>{secondaryTitle}</p>}
+
+                {trackSections.map(({ trackInfo, lessons }) => {
+                  const { label, subtitle } = trackCopyFor(trackInfo, t, targetName);
+                  const TrackIcon = trackInfo?.icon || FiBookOpen;
+                  return (
+                    <section key={`${trackInfo.level}:${trackInfo.track}`} className={`class-track class-track-${trackInfo?.accent || 'lime'}`} aria-label={label}>
+                      <header className="class-track-header">
+                        <div className="class-track-title">
+                          <span className="class-track-icon"><TrackIcon aria-hidden="true" /></span>
+                          <div>
+                            <h3>{label}</h3>
+                            <p className="class-track-subtitle">{subtitle}</p>
+                          </div>
                         </div>
-                        <ul className="class-card-stats">
-                          <li><strong>{stats.vocab}</strong><span>{t('classList.statVocabulary', 'Vocabulary')}</span></li>
-                          <li><strong>{stats.grammar}</strong><span>{t('classList.cardGrammar', 'Grammar')}</span></li>
-                          <li><strong>{stats.dialogues}</strong><span>{t('classList.statDialogues', 'Dialogues')}</span></li>
-                        </ul>
-                        <div className="class-card-footer">
-                          <span>{t('classList.activitiesCount', { count: stats.total, defaultValue: '{{count}} activities' })}</span>
-                          <span>{t('classList.guidedTutor', 'Guided tutor')}</span>
-                        </div>
-                        <button type="button" className="class-card-cta" onClick={() => startClassLesson(classLesson._id)}>
-                          {t('classList.startClass', 'Start class')}
-                          <FiArrowRight aria-hidden="true" />
-                        </button>
-                      </article>
-                    );
-                  })}
-                </div>
+                        <span className="class-track-count">{t('classList.lessonsCount', { count: lessons.length, defaultValue: '{{count}} lessons' })}</span>
+                      </header>
+                      <div className={`class-grid${lessons.length === 1 ? ' class-grid-single' : ''}`}>
+                        {lessons.map((classLesson) => {
+                          const stats = lessonStats(classLesson);
+                          const displayTitle = nativeScaffoldText(localizedLessonTitle(classLesson.title, t), nativeLanguage, t);
+                          const titleParts = String(displayTitle || '').split(/\s*\((.+)\)\s*$/).filter(Boolean);
+                          const primaryTitle = titleParts[0] || displayTitle;
+                          const secondaryTitle = titleParts[1] || '';
+                          const roleLabel = lessonRoleLabel(classLesson.lessonRole || classLesson.learning?.lessonRole, t);
+                          const weightLabel = lessonWeightLabel(classLesson.lessonWeight || classLesson.learning?.lessonWeight, t);
+                          return (
+                            <article
+                              key={classLesson._id}
+                              className={`class-card class-level-${classLesson._classify?.level || levelInfo.level}`}
+                            >
+                              <header className="class-card-header">
+                                <span className="class-card-track">{trackLabelFor(classLesson._classify, t, targetName)}</span>
+                                <span className="class-card-meta">{readableDifficulty(classLesson.difficulty, t)}</span>
+                              </header>
+                              <div className="class-card-title-block">
+                                <h4>{primaryTitle}</h4>
+                                {secondaryTitle && <p>{secondaryTitle}</p>}
+                              </div>
+                              <div className="class-card-plan" aria-label={t('classList.lessonPlanAriaLabel', 'Lesson plan')}>
+                                <span>{roleLabel}</span>
+                                <span>{weightLabel}</span>
+                                {(classLesson.requiredForProgress || classLesson.coreRequired) && <span>{t('classList.requiredForProgress', 'Required')}</span>}
+                              </div>
+                              <ul className="class-card-stats">
+                                <li><strong>{stats.vocab}</strong><span>{t('classList.statVocabulary', 'Vocabulary')}</span></li>
+                                <li><strong>{stats.grammar}</strong><span>{t('classList.cardGrammar', 'Grammar')}</span></li>
+                                <li><strong>{stats.dialogues}</strong><span>{t('classList.statDialogues', 'Dialogues')}</span></li>
+                              </ul>
+                              <div className="class-card-footer">
+                                <span>{t('classList.activitiesCount', { count: stats.total, defaultValue: '{{count}} activities' })}</span>
+                                <span>{t('classList.guidedTutor', 'Guided tutor')}</span>
+                              </div>
+                              <button type="button" className="class-card-cta" onClick={() => startClassLesson(classLesson._id)}>
+                                {t('classList.startClass', 'Start class')}
+                                <FiArrowRight aria-hidden="true" />
+                              </button>
+                            </article>
+                          );
+                        })}
+                        {lessons.length === 1 && (
+                          <aside className="class-track-guidance" aria-label={t('classList.singleTrackGuidanceAriaLabel', 'Single lesson track guidance')}>
+                            <p className="class-track-guidance-kicker">{t('classList.singleTrackGuidanceKicker', 'Why one class')}</p>
+                            <h4>{t('classList.singleTrackGuidanceTitle', 'Start focused, then branch out')}</h4>
+                            <p>
+                              {t(
+                                'classList.singleTrackGuidanceBody',
+                                'This track is intentionally compact so the first step feels clear. Finish the class here, then move into the next track for broader practice.',
+                              )}
+                            </p>
+                            <div className="class-track-guidance-steps">
+                              <span>{t('classList.singleTrackGuidanceStep1', 'Build the base')}</span>
+                              <span>{t('classList.singleTrackGuidanceStep2', 'Continue into everyday use')}</span>
+                            </div>
+                          </aside>
+                        )}
+                      </div>
+                    </section>
+                  );
+                })}
               </section>
             );
           })}

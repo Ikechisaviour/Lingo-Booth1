@@ -69,6 +69,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
     if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
     localStorage.setItem('userId', user.id);
     localStorage.setItem('username', user.username);
+    localStorage.setItem('userFullName', user.fullName || '');
     localStorage.setItem('userEmail', user.email || '');
     localStorage.setItem('userRole', user.role || 'user');
     localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
@@ -159,6 +160,7 @@ function LoginPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
         localStorage.setItem('userId', user.id);
         localStorage.setItem('username', user.username);
+        localStorage.setItem('userFullName', user.fullName || '');
         localStorage.setItem('userEmail', user.email || '');
         localStorage.setItem('userRole', user.role || 'user');
         localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));

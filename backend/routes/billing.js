@@ -11,8 +11,12 @@ const BillingPlanOverride = require('../models/BillingPlanOverride');
 const DiscountCode = require('../models/DiscountCode');
 const Progress = require('../models/Progress');
 const ClassLessonProgress = require('../models/ClassLessonProgress');
+const InstitutionGroup = require('../models/InstitutionGroup');
+const LevelTestAttempt = require('../models/LevelTestAttempt');
+const CompletionCertificate = require('../models/CompletionCertificate');
 const { verifyToken, optionalAuth, isAdmin } = require('../middleware/auth');
 const { getClientIp } = require('../utils/geo');
+const { ALL_TARGET_LANGUAGES, cleanLanguageList } = require('../utils/learningContext');
 const {
   getAiEntitlements,
   getSubscriptionSummary,
@@ -34,7 +38,7 @@ const {
 const router = express.Router();
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const ORG_TYPES = ['school', 'company', 'church', 'language_center', 'nonprofit', 'government', 'other'];
+const ORG_TYPES = ['school', 'company', 'religious', 'church', 'language_center', 'nonprofit', 'government', 'other'];
 const ORG_STATUSES = ['lead', 'trialing', 'active', 'past_due', 'cancelled', 'suspended'];
 const ORG_ROLES = ['owner', 'admin', 'teacher', 'learner'];
 const ORG_MANAGER_ROLES = ['owner', 'admin'];
@@ -42,6 +46,10 @@ const ORG_OVERSIGHT_ROLES = ['owner', 'admin', 'teacher'];
 const DISCOUNT_TYPES = ['percent', 'fixed'];
 const DISCOUNT_AUDIENCES = ['all', 'individual', 'institution'];
 const DISCOUNT_APPLICATION_MODES = ['code', 'automatic'];
+const CERTIFICATE_LOGO_MAX_BYTES = 600 * 1024;
+const CERTIFICATE_LOGO_URL_MAX_LENGTH = 1200;
+const CERTIFICATE_LOGO_DATA_URL_MAX_LENGTH = 900000;
+const CERTIFICATE_LOGO_MIME_TYPES = new Set(['image/png', 'image/jpeg', 'image/webp']);
 
 function cleanText(value, maxLength) {
   return String(value || '').trim().slice(0, maxLength);
@@ -49,6 +57,64 @@ function cleanText(value, maxLength) {
 
 function cleanLine(value, maxLength) {
   return cleanText(value, maxLength).replace(/[\r\n]+/g, ' ');
+}
+
+function certificateBrandingPayload(body = {}, userId) {
+  if (body.removeLogo === true) {
+    return {
+      logoUrl: '',
+      logoOriginalName: '',
+      logoMimeType: '',
+      logoUploadedAt: null,
+      logoUpdatedBy: userId,
+    };
+  }
+
+  const rawLogo = String(body.logoDataUrl || body.logoUrl || '').trim();
+  if (!rawLogo) {
+    const error = new Error('Choose a certificate logo before saving');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  const dataUrlMatch = rawLogo.match(/^data:(image\/png|image\/jpeg|image\/webp);base64,([A-Za-z0-9+/=\s]+)$/);
+  if (dataUrlMatch) {
+    const mimeType = dataUrlMatch[1];
+    const base64 = dataUrlMatch[2].replace(/\s+/g, '');
+    const byteLength = Buffer.byteLength(base64, 'base64');
+    if (!CERTIFICATE_LOGO_MIME_TYPES.has(mimeType) || byteLength > CERTIFICATE_LOGO_MAX_BYTES) {
+      const error = new Error('Certificate logo must be a PNG, JPG, or WebP image under 600 KB');
+      error.statusCode = 400;
+      throw error;
+    }
+    const logoUrl = `data:${mimeType};base64,${base64}`;
+    if (logoUrl.length > CERTIFICATE_LOGO_DATA_URL_MAX_LENGTH) {
+      const error = new Error('Certificate logo is too large');
+      error.statusCode = 400;
+      throw error;
+    }
+    return {
+      logoUrl,
+      logoOriginalName: cleanLine(body.logoOriginalName || body.fileName, 180),
+      logoMimeType: mimeType,
+      logoUploadedAt: new Date(),
+      logoUpdatedBy: userId,
+    };
+  }
+
+  if (/^https:\/\/[^\s]+$/i.test(rawLogo) && rawLogo.length <= CERTIFICATE_LOGO_URL_MAX_LENGTH) {
+    return {
+      logoUrl: rawLogo,
+      logoOriginalName: cleanLine(body.logoOriginalName || 'Remote logo', 180),
+      logoMimeType: 'image/remote',
+      logoUploadedAt: new Date(),
+      logoUpdatedBy: userId,
+    };
+  }
+
+  const error = new Error('Certificate logo must be an HTTPS image URL or a PNG, JPG, or WebP data image');
+  error.statusCode = 400;
+  throw error;
 }
 
 function slugify(value) {
@@ -887,14 +953,28 @@ router.get('/institution/dashboard', async (req, res) => {
     )) || availableMemberships[0];
     const organization = activeMembership.organizationId;
 
-    const [members, subscriptions] = await Promise.all([
+    const [members, subscriptions, groups, testAttempts, certificates] = await Promise.all([
       OrganizationMembership.find({ organizationId: organization._id, status: { $ne: 'removed' } })
         .sort({ role: 1, email: 1 })
         .populate('userId', 'username email totalXP lastActive lastLogin nativeLanguage targetLanguage subscriptionTier xpDecayEnabled')
+        .populate('groupId')
         .lean(),
       SubscriptionRecord.find({ ownerType: 'organization', ownerId: organization._id })
         .sort({ createdAt: -1 })
         .limit(10)
+        .lean(),
+      InstitutionGroup.find({ organizationId: organization._id, status: 'active' })
+        .sort({ name: 1 })
+        .lean(),
+      LevelTestAttempt.find({ organizationId: organization._id, status: 'submitted' })
+        .sort({ submittedAt: -1 })
+        .limit(50)
+        .populate('userId', 'username email')
+        .lean(),
+      CompletionCertificate.find({ organizationId: organization._id, status: 'active' })
+        .sort({ issuedAt: -1 })
+        .limit(50)
+        .populate('userId', 'username email')
         .lean(),
     ]);
 
@@ -1001,6 +1081,13 @@ router.get('/institution/dashboard', async (req, res) => {
         },
       })),
       organization,
+      languagePolicy: {
+        allowedTargetLanguages: cleanLanguageList(organization.allowedTargetLanguages).length
+          ? cleanLanguageList(organization.allowedTargetLanguages)
+          : ALL_TARGET_LANGUAGES,
+        defaultTargetLanguage: organization.defaultTargetLanguage || '',
+        allowLanguageRequests: organization.allowLanguageRequests !== false,
+      },
       currentMembership: {
         _id: activeMembership._id,
         role: activeMembership.role,
@@ -1035,6 +1122,34 @@ router.get('/institution/dashboard', async (req, res) => {
         .slice(0, 8),
       needsHelpLearners,
       subscriptions,
+      groups,
+      testing: {
+        attempts: testAttempts.map((attempt) => ({
+          _id: attempt._id,
+          user: attempt.userId,
+          level: attempt.level,
+          mode: attempt.mode,
+          targetLanguage: attempt.targetLanguage,
+          nativeLanguage: attempt.nativeLanguage,
+          score: attempt.score,
+          passed: attempt.passed,
+          readiness: attempt.readiness,
+          weakSkills: attempt.weakSkills || [],
+          submittedAt: attempt.submittedAt,
+        })),
+        certificates: certificates.map((certificate) => ({
+          _id: certificate._id,
+          certificateId: certificate.certificateId,
+          certificateType: certificate.certificateType,
+          user: certificate.userId,
+          level: certificate.level,
+          targetLanguage: certificate.targetLanguage,
+          nativeLanguage: certificate.nativeLanguage,
+          score: certificate.score,
+          readiness: certificate.readiness,
+          issuedAt: certificate.issuedAt,
+        })),
+      },
     });
   } catch (error) {
     console.error('Institution dashboard error:', error);
@@ -1052,6 +1167,19 @@ router.put('/institution/organizations/:organizationId', async (req, res) => {
     if (req.body?.type && ORG_TYPES.includes(req.body.type)) org.type = req.body.type;
     if (req.body?.billingEmail !== undefined) org.billingEmail = cleanLine(req.body.billingEmail, 254).toLowerCase();
     if (req.body?.notes !== undefined) org.notes = cleanText(req.body.notes, 3000);
+    if (req.body?.allowedTargetLanguages !== undefined) {
+      org.allowedTargetLanguages = cleanLanguageList(req.body.allowedTargetLanguages);
+    }
+    if (req.body?.defaultTargetLanguage !== undefined) {
+      const normalizedDefault = cleanLanguageList([req.body.defaultTargetLanguage])[0] || '';
+      org.defaultTargetLanguage = normalizedDefault;
+      if (normalizedDefault && org.allowedTargetLanguages.length && !org.allowedTargetLanguages.includes(normalizedDefault)) {
+        org.allowedTargetLanguages.push(normalizedDefault);
+      }
+    }
+    if (req.body?.allowLanguageRequests !== undefined) {
+      org.allowLanguageRequests = req.body.allowLanguageRequests !== false;
+    }
     await org.save();
 
     await BillingEvent.create({
@@ -1066,6 +1194,98 @@ router.put('/institution/organizations/:organizationId', async (req, res) => {
     res.json({ organization: org });
   } catch (error) {
     res.status(500).json({ message: 'Could not update institution profile' });
+  }
+});
+
+router.put('/institution/organizations/:organizationId/certificate-branding', async (req, res) => {
+  try {
+    const membership = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
+    if (!membership) return res.status(403).json({ message: 'Institution manager access is required' });
+
+    const org = membership.organizationId;
+    org.certificateBranding = certificateBrandingPayload(req.body, req.userId);
+    await org.save();
+
+    await BillingEvent.create({
+      provider: 'manual',
+      type: 'institution.certificate_branding.updated',
+      status: 'processed',
+      organizationId: org._id,
+      userId: req.userId,
+      payload: {
+        updatedBy: req.userId,
+        hasLogo: !!org.certificateBranding?.logoUrl,
+        logoMimeType: org.certificateBranding?.logoMimeType || '',
+      },
+    });
+
+    res.json({
+      organization: org,
+      certificateBranding: org.certificateBranding,
+    });
+  } catch (error) {
+    console.error('Institution certificate branding update error:', error);
+    res.status(error.statusCode || 500).json({ message: error.message || 'Could not update certificate branding' });
+  }
+});
+
+router.post('/institution/organizations/:organizationId/groups', async (req, res) => {
+  try {
+    const membership = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
+    if (!membership) return res.status(403).json({ message: 'Institution manager access is required' });
+
+    const org = membership.organizationId;
+    const name = cleanLine(req.body?.name, 120);
+    if (!name) return res.status(400).json({ message: 'Group name is required' });
+    const allowedTargetLanguages = cleanLanguageList(req.body?.allowedTargetLanguages);
+    const defaultTargetLanguage = cleanLanguageList([req.body?.defaultTargetLanguage])[0]
+      || allowedTargetLanguages[0]
+      || org.defaultTargetLanguage
+      || '';
+
+    const group = await InstitutionGroup.findOneAndUpdate(
+      { organizationId: org._id, name },
+      {
+        $set: {
+          description: cleanText(req.body?.description, 1000),
+          allowedTargetLanguages,
+          defaultTargetLanguage,
+          status: ['active', 'archived'].includes(req.body?.status) ? req.body.status : 'active',
+          createdBy: req.userId,
+        },
+      },
+      { upsert: true, new: true },
+    );
+
+    res.status(201).json({ group });
+  } catch (error) {
+    console.error('Institution group create error:', error);
+    res.status(500).json({ message: 'Could not save institution group' });
+  }
+});
+
+router.put('/institution/organizations/:organizationId/groups/:groupId', async (req, res) => {
+  try {
+    const membership = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
+    if (!membership) return res.status(403).json({ message: 'Institution manager access is required' });
+
+    const group = await InstitutionGroup.findOne({
+      _id: req.params.groupId,
+      organizationId: membership.organizationId._id,
+    });
+    if (!group) return res.status(404).json({ message: 'Group not found' });
+
+    if (req.body?.name) group.name = cleanLine(req.body.name, 120);
+    if (req.body?.description !== undefined) group.description = cleanText(req.body.description, 1000);
+    if (req.body?.allowedTargetLanguages !== undefined) group.allowedTargetLanguages = cleanLanguageList(req.body.allowedTargetLanguages);
+    if (req.body?.defaultTargetLanguage !== undefined) group.defaultTargetLanguage = cleanLanguageList([req.body.defaultTargetLanguage])[0] || '';
+    if (req.body?.status && ['active', 'archived'].includes(req.body.status)) group.status = req.body.status;
+    await group.save();
+
+    res.json({ group });
+  } catch (error) {
+    console.error('Institution group update error:', error);
+    res.status(500).json({ message: 'Could not update institution group' });
   }
 });
 
@@ -1087,6 +1307,10 @@ router.post('/institution/organizations/:organizationId/members', async (req, re
 
     const user = await User.findOne({ email });
     const role = ORG_ROLES.includes(req.body?.role) ? req.body.role : 'learner';
+    const groupId = req.body?.groupId && mongoose.Types.ObjectId.isValid(String(req.body.groupId))
+      ? req.body.groupId
+      : null;
+    const allowedTargetLanguages = cleanLanguageList(req.body?.allowedTargetLanguages);
     const member = await OrganizationMembership.findOneAndUpdate(
       { organizationId: org._id, email },
       {
@@ -1094,12 +1318,16 @@ router.post('/institution/organizations/:organizationId/members', async (req, re
           userId: user?._id || null,
           role,
           status: user ? 'active' : 'invited',
+          groupId,
+          allowedTargetLanguages,
           invitedBy: req.userId,
           joinedAt: user ? new Date() : null,
         },
       },
       { new: true, upsert: true },
-    ).populate('userId', 'username email totalXP lastActive lastLogin nativeLanguage targetLanguage subscriptionTier xpDecayEnabled');
+    )
+      .populate('userId', 'username email totalXP lastActive lastLogin nativeLanguage targetLanguage subscriptionTier xpDecayEnabled')
+      .populate('groupId');
 
     if (user) await setUserInstitutionalAccess(user._id, org, member);
     org.seatsUsed = await updateOrganizationSeatCount(org._id);
@@ -1129,7 +1357,9 @@ router.put('/institution/organizations/:organizationId/members/:membershipId', a
     const member = await OrganizationMembership.findOne({
       _id: req.params.membershipId,
       organizationId: org._id,
-    }).populate('userId', 'username email totalXP lastActive lastLogin nativeLanguage targetLanguage subscriptionTier xpDecayEnabled');
+    })
+      .populate('userId', 'username email totalXP lastActive lastLogin nativeLanguage targetLanguage subscriptionTier xpDecayEnabled')
+      .populate('groupId');
 
     if (!member) return res.status(404).json({ message: 'Member not found' });
 
@@ -1151,6 +1381,12 @@ router.put('/institution/organizations/:organizationId/members/:membershipId', a
 
     member.role = nextRole;
     member.status = nextStatus;
+    if (req.body?.groupId !== undefined) {
+      member.groupId = req.body.groupId && mongoose.Types.ObjectId.isValid(String(req.body.groupId)) ? req.body.groupId : null;
+    }
+    if (req.body?.allowedTargetLanguages !== undefined) {
+      member.allowedTargetLanguages = cleanLanguageList(req.body.allowedTargetLanguages);
+    }
     if (nextStatus === 'active' && !member.joinedAt) member.joinedAt = new Date();
     await member.save();
 
@@ -1478,7 +1714,7 @@ router.post('/admin/organizations', async (req, res) => {
     const org = await Organization.create({
       name,
       slug: `${slugify(name)}-${Date.now().toString(36)}`,
-      type: ['school', 'company', 'church', 'language_center', 'nonprofit', 'government', 'other'].includes(body.type) ? body.type : 'other',
+      type: ORG_TYPES.includes(body.type) ? body.type : 'other',
       planId: plan.id,
       effectiveTier: plan.tier,
       status: ['lead', 'trialing', 'active', 'past_due', 'cancelled', 'suspended'].includes(body.status) ? body.status : 'active',
@@ -1486,6 +1722,9 @@ router.post('/admin/organizations', async (req, res) => {
       billingSource: 'manual',
       billingEmail: cleanLine(body.billingEmail, 254).toLowerCase(),
       notes: cleanText(body.notes, 3000),
+      allowedTargetLanguages: cleanLanguageList(body.allowedTargetLanguages),
+      defaultTargetLanguage: cleanLanguageList([body.defaultTargetLanguage])[0] || '',
+      allowLanguageRequests: body.allowLanguageRequests !== false,
       expiresAt: body.expiresAt ? new Date(body.expiresAt) : null,
     });
 
@@ -1511,7 +1750,7 @@ router.put('/admin/organizations/:organizationId', async (req, res) => {
 
     const plan = body.planId ? await effectiveInstitutionalPlan(body.planId, 'institution_basic') : null;
     if (body.name) org.name = cleanLine(body.name, 180);
-    if (body.type && ['school', 'company', 'church', 'language_center', 'nonprofit', 'government', 'other'].includes(body.type)) {
+    if (body.type && ORG_TYPES.includes(body.type)) {
       org.type = body.type;
     }
     if (plan) {
@@ -1524,6 +1763,15 @@ router.put('/admin/organizations/:organizationId', async (req, res) => {
     if (body.seatsPurchased !== undefined) org.seatsPurchased = Math.max(parseInt(body.seatsPurchased, 10) || org.seatsPurchased, 1);
     if (body.billingEmail !== undefined) org.billingEmail = cleanLine(body.billingEmail, 254).toLowerCase();
     if (body.notes !== undefined) org.notes = cleanText(body.notes, 3000);
+    if (body.allowedTargetLanguages !== undefined) org.allowedTargetLanguages = cleanLanguageList(body.allowedTargetLanguages);
+    if (body.defaultTargetLanguage !== undefined) {
+      const normalizedDefault = cleanLanguageList([body.defaultTargetLanguage])[0] || '';
+      org.defaultTargetLanguage = normalizedDefault;
+      if (normalizedDefault && org.allowedTargetLanguages.length && !org.allowedTargetLanguages.includes(normalizedDefault)) {
+        org.allowedTargetLanguages.push(normalizedDefault);
+      }
+    }
+    if (body.allowLanguageRequests !== undefined) org.allowLanguageRequests = body.allowLanguageRequests !== false;
     if (body.expiresAt !== undefined) org.expiresAt = body.expiresAt ? new Date(body.expiresAt) : null;
     await org.save();
 

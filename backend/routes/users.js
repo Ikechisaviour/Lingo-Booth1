@@ -11,6 +11,7 @@ const { getCurrentMondayUTC } = require('../utils/dateHelpers');
 const { ensureResetsApplied } = require('../utils/gamificationReset');
 const { getAiEntitlements } = require('../utils/subscription');
 const { recordLearningEvent } = require('../utils/xpRewards');
+const { fullNameValidation } = require('../utils/fullName');
 
 // All user routes require authentication + ownership check
 router.use(verifyToken);
@@ -37,7 +38,7 @@ router.get('/:userId', isOwner('userId'), checkInactivityPenalty(), async (req, 
 // Update user profile (only own profile or admin)
 router.put('/:userId', isOwner('userId'), async (req, res) => {
   try {
-    const { username, preferredVoice, preferredVoices, nativeLanguage, targetLanguage } = req.body;
+    const { username, fullName, preferredVoice, preferredVoices, nativeLanguage, targetLanguage } = req.body;
 
     // Check if username is already taken by another user
     if (username) {
@@ -52,6 +53,16 @@ router.put('/:userId', isOwner('userId'), async (req, res) => {
 
     const updateData = {};
     if (username) updateData.username = username;
+    if (fullName !== undefined) {
+      const fullNameCheck = fullNameValidation(fullName);
+      if (!fullNameCheck.valid) {
+        return res.status(400).json({
+          code: fullNameCheck.code,
+          message: 'Please enter a valid full name',
+        });
+      }
+      updateData.fullName = fullNameCheck.fullName || null;
+    }
     if (preferredVoice !== undefined) updateData.preferredVoice = preferredVoice;
     if (preferredVoices !== undefined && preferredVoices && typeof preferredVoices === 'object' && !Array.isArray(preferredVoices)) {
       updateData.preferredVoices = Object.fromEntries(

@@ -16,7 +16,7 @@
     "curriculum:verify-target": "node scripts/verifyTargetCurriculum.js",
     "audit:concepts": "node scripts/auditQuizFlashcardConcepts.js",
     "audit:pronunciations": "node scripts/auditPronunciations.js",
-    "audit:language-guardrails": "node scripts/auditLanguageGuardrails.js && node scripts/auditQuizFlashcardConcepts.js && node scripts/auditBeginnerCurriculumCoverage.js && node scripts/auditTargetCurriculumProfiles.js && node scripts/auditCurriculumDepth.js && node scripts/auditCurriculumEditorialQuality.js && node scripts/auditClassLessonIntegrity.js && node scripts/auditTutorResponseShape.js"
+    "audit:language-guardrails": "node scripts/auditLanguageGuardrails.js && node scripts/auditQuizFlashcardConcepts.js && node scripts/auditLearningArchitecture.js && node scripts/auditBeginnerCurriculumCoverage.js && node scripts/auditTargetCurriculumProfiles.js && node scripts/auditCurriculumDepth.js && node scripts/auditCurriculumEditorialQuality.js && node scripts/auditClassLessonIntegrity.js && node scripts/auditTutorResponseShape.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
