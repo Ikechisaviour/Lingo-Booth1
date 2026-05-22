@@ -44,7 +44,8 @@
     "search": "検索",
     "notSet": "未設定",
     "goBack": "戻る",
-    "all": "全て"
+    "all": "全て",
+    "restart": "再起動"
   },
   "languageSelect": {
     "title": "言語を選択",
@@ -100,7 +101,10 @@
     "passwordsMatch": "パスワードが一致しました",
     "registrationFailed": "登録失敗",
     "googleFailed": "Google サインアップに失敗しました。 もう一度試してください。",
-    "checkEmail": "メールをチェックしてアカウントを確認してください"
+    "checkEmail": "メールをチェックしてアカウントを確認してください",
+    "fullNameOptional": "フルネーム (オプション)",
+    "fullNamePlaceholder": "証明書に表示する名前",
+    "fullNameHint": "これは今すぐ追加することも、証明書を発行する前に追加することもできます。"
   },
   "navbar": {
     "continue": "続ける",
@@ -203,7 +207,10 @@
       "sat": "S",
       "sun": "S"
     },
-    "supportAndPlans": "サポートとプラン"
+    "supportAndPlans": "サポートとプラン",
+    "decayBannerActive": "XP は減少しています — 毎日の損失 {{rate}}%。 停止するには質問に答えてください。",
+    "decayBannerGrace": "XP の減衰は {{hours}}h で始まります — 1 日あたりの損失 {{rate}}%。 そうならないためにも勉強を続けましょう。",
+    "dashboard": "ダッシュボード"
   },
   "lessons": {
     "title": "{{language}} <1>レッスン</1>",
@@ -298,7 +305,15 @@
     "translating": "翻訳中...",
     "translationUnavailable": "翻訳を読み込み中...",
     "retryTranslation": "再試行",
-    "quizUnavailable": "クイズ利用不可 — 翻訳を読み込み中..."
+    "quizUnavailable": "クイズ利用不可 — 翻訳を読み込み中...",
+    "howDoYouSayThisIn": "{{language}}でこれはどう言いますか？",
+    "quizMode": {
+      "nativeAssisted": "早期のセルフテスト: 母国語での意味を選択してください。",
+      "targetWithNativeHints": "ビルドリコール: ネイティブヒントを使用してから、ターゲット言語の答えを選択します。",
+      "targetDominant": "独立した実践: 目標言語の選択が作業のほとんどを担います。",
+      "targetFirst": "高度なセルフテスト: 目標を第一に考え、必要な場合にのみヘルプを使用します。",
+      "standard": "ガイド付きセルフテスト。"
+    }
   },
   "flashcards": {
     "title": "<1>フラッシュカード</1>で練習",
@@ -386,7 +401,8 @@
     "savedReason": "後の練習のためにフラッシュカードから保存されます。",
     "saveForReview": "レビュー用に保存する",
     "bookmarkedReason": "フラッシュカードからブックマークしました。",
-    "selfTestReason": "簡単なセルフテストのためにフラッシュカードから保存されています。"
+    "selfTestReason": "簡単なセルフテストのためにフラッシュカードから保存されています。",
+    "setFamiliarityLevel": "親密度を{{level}}に設定"
   },
   "progress": {
     "title": "あなたの<1>進捗</1>",
@@ -523,7 +539,10 @@
     "systemDefault": "システムのデフォルト",
     "voiceSettingsDesc": "ターゲット言語と母国語で別々の音声を選択すると、混合した返答が自然に発音されます。",
     "targetVoice": "ターゲットの声",
-    "nativeVoice": "ネイティブ音声"
+    "nativeVoice": "ネイティブ音声",
+    "fullName": "フルネーム",
+    "fullNamePlaceholder": "証明書に表示する名前",
+    "fullNameMissing": "証明書発行前に追加"
   },
   "verifyEmail": {
     "verifying": "メールを確認中...",
@@ -985,7 +1004,46 @@
     "saveReply": "返信を保存する",
     "selfTestReason": "簡単なセルフテストのためにクラスから保存されました。",
     "hideOutline": "アウトラインを隠す",
-    "showOutline": "概要を表示"
+    "showOutline": "概要を表示",
+    "wrapUpReviewBody": "このクラスの期限切れアイテムまたは弱いアイテムを再試行してください。",
+    "wrapUpQuizBody": "開始するまでクイズをロードせずに理解度を確認してください。",
+    "wrapUpWritingBody": "レベルに応じた書き込みモードまたは入力モードを使用してください。",
+    "wrapUpConversationPrompt": "学んだことを短い会話の中で活用できるように手伝ってください。",
+    "wrapUpConversationBody": "レッスンを短いロールプレイに変えます。",
+    "learningPlan": {
+      "unplacedLevel": "学習レベル",
+      "moreActivities": "{{count}} 詳細",
+      "level": "レベル",
+      "support": "サポート",
+      "selfTest": "セルフテスト",
+      "writing": "書き込み",
+      "activities": "長い練習",
+      "ariaLabel": "レッスン学習計画"
+    },
+    "supportLevels": {
+      "nativeGuided": "強力な母語サポート",
+      "mixedGuided": "バランスのとれたターゲットとネイティブのサポート",
+      "targetFirst": "最初にターゲット言語を指定する",
+      "immersionWithHelp": "ほとんどがターゲット言語であり、ヘルプも利用可能",
+      "standard": "ガイド付きサポート"
+    },
+    "quizModes": {
+      "nativeAssisted": "母国語での選択肢の意味",
+      "targetWithNativeHints": "ネイティブのヒントによるターゲット言語の選択",
+      "targetDominant": "主にターゲット言語の選択",
+      "targetFirst": "ターゲットファーストのセルフテスト",
+      "standard": "ガイド付きセルフテスト"
+    },
+    "writingModes": {
+      "handwritingFirst": "まずはトレースまたはコピー",
+      "typeWithWriteOption": "タイプ、書き取り練習も可能",
+      "typedProduction": "記憶から入力した回答",
+      "extendedTypedProduction": "より長いタイプの応答",
+      "standard": "書くかタイプする"
+    },
+    "longActivities": {
+      "practice": "練習する"
+    }
   },
   "classList": {
     "heroAriaLabel": "クラス",
@@ -1021,15 +1079,45 @@
       "intermediateSubtitle": "意見、文化、健康、仕事、日常の自信に関するトピック主導のユニット。",
       "professionalTitle": "レベル {{level}} - プロフェッショナル {{language}}",
       "professionalSubtitle": "仕事、サービス、住宅、安全、フォーマルな状況に役立つ実用的な言語。",
-      "grammarTitle": "レベル {{level}} - 高度な文法",
-      "grammarSubtitle": "アイデアをさらに制御して結び付けるのに役立つパターン クラスター。"
+      "grammarTitle": "レベル {{level}} - 上級 {{language}}",
+      "grammarSubtitle": "アイデアをさらに制御して結び付けるのに役立つパターン クラスター。",
+      "survivalTitle": "レベル {{level}} - 必須 {{language}}",
+      "survivalSubtitle": "挨拶、部屋、場所、日課、買い物、食事などの実践的な基礎を築きます。",
+      "everydayTitle": "レベル {{level}} - 日常 {{language}}",
+      "everydaySubtitle": "挨拶、食べ物、場所、計画、日常の状況など、毎日の基本的なレッスン。",
+      "bridgeTitle": "レベル {{level}} - 橋",
+      "bridgeSubtitle": "日常の資料をより独立した使用に結び付けるためのユニットを確認および移行します。",
+      "topicTitle": "レベル {{level}} - テーマ {{language}}",
+      "topicSubtitle": "意見、文化、健康、計画、自信を持った日常の表現のためのトピック主導のユニット。",
+      "advancedTitle": "レベル {{level}} - 上級 {{language}}",
+      "advancedSubtitle": "より軽い母語サポートによる、長時間の読み、聞き、話し、書きのタスク。"
     },
     "titlePrefix": {
       "unit": "レベル {{level}} · ユニット {{unit}}: {{title}}"
     },
     "retry": "もう一度やり直してください",
     "progressAriaLabel": "授業の進み具合",
-    "progressCaption": "{{percent}}% 完了 · {{total}} アイテム中 {{completed}}"
+    "progressCaption": "{{percent}}% 完了 · {{total}} アイテム中 {{completed}}",
+    "lessonWeights": {
+      "deep": "深い",
+      "light": "ライト",
+      "standard": "標準"
+    },
+    "lessonPlanAriaLabel": "授業計画",
+    "requiredForProgress": "必須",
+    "programLevels": {
+      "kicker": "学習レベル",
+      "statsAriaLabel": "レベルプランの概要",
+      "coreCount": "{{count}}コア",
+      "branchCount": "{{count}} 支店",
+      "checkpointCount": "{{count}} チェックポイント"
+    },
+    "singleTrackGuidanceAriaLabel": "単発レッスントラックガイダンス",
+    "singleTrackGuidanceKicker": "なぜ1クラスなのか",
+    "singleTrackGuidanceTitle": "集中して始めて、次に枝を広げる",
+    "singleTrackGuidanceBody": "このトラックは意図的にコンパクトなので、最初のステップが明確に感じられます。 ここでクラスを終了し、次のトラックに進んでより広範な練習を行ってください。",
+    "singleTrackGuidanceStep1": "ベースを構築する",
+    "singleTrackGuidanceStep2": "日常使いを続ける"
   },
   "contextPractice": {
     "title": "あなたを中心に形作られたレッスン",
@@ -1147,7 +1235,8 @@
       "stroke": "ガイドに従って、書き込み領域を使用して練習してください。",
       "review": "自分の文章と答えを比較し、優れた点をマークしてください。",
       "trace": "ガイドをなぞり、記憶を消去して書き込みます。",
-      "copy": "注意深く見て、単語または文をコピーしてください。"
+      "copy": "注意深く見て、単語または文をコピーしてください。",
+      "type": "記憶から答えを入力します。 これは、初期の手書きレッスン後の標準的な書き込みモードです。"
     },
     "title": "ライティングの練習",
     "subtitle": "なぞったり、コピーしたり、聞いたり、意味を思い出したり、書き順を勉強したり、レッスンの内容をノートに書き留めたりしましょう。",
@@ -1211,7 +1300,9 @@
     "savedReason": "別の合格のために書く練習から救われました。",
     "selfTestReason": "簡単な自己テストのためのライティング練習から保存されました。",
     "hideNotebook": "ノートを隠す",
-    "showNotebook": "ノートブックを表示"
+    "showNotebook": "ノートブックを表示",
+    "typePlaceholder": "ここに答えを入力してください...",
+    "typeAriaLabel": "入力された書き込み回答"
   },
   "institution": {
     "kicker": "機関",
@@ -1276,7 +1367,43 @@
     },
     "snapshotsKicker": "学習者のスナップショット",
     "needsHelpTitle": "注意が必要です",
-    "noNeedsHelpLearners": "現在、特別な注意を必要とする学習者はいません。"
+    "noNeedsHelpLearners": "現在、特別な注意を必要とする学習者はいません。",
+    "groupSaved": "グループが保存されました。",
+    "groupSaveFailed": "このグループを保存できませんでした。",
+    "group": "グループ",
+    "noGroup": "グループなし",
+    "allowedTargetLanguages": "許可されるターゲット言語",
+    "allowedTargetLanguagesHelp": "この教育機関へのアクセスを使用する学習者は、これらのターゲット言語のみを選択できます。",
+    "defaultTargetLanguage": "デフォルトのターゲット言語",
+    "noDefaultLanguage": "デフォルトなし",
+    "allowLanguageRequests": "学習者が別の言語をリクエストできるようにする",
+    "groupsKicker": "グループ",
+    "groupsTitle": "学習グループ",
+    "noGroupsYet": "グループを作成して、クラス、集団、またはチームの言語アクセスを管理します。",
+    "groupUsesOrgPolicy": "組織の言語ポリシーを使用する",
+    "groupName": "グループ名",
+    "groupNamePlaceholder": "例：初心者夜間クラス",
+    "groupLanguages": "グループのターゲット言語",
+    "groupLanguagesHelp": "組織ポリシーを使用する場合は空のままにするか、このグループのみの言語を選択します。",
+    "createGroup": "グループの作成",
+    "testingKicker": "レベルチェック",
+    "testingTitle": "テストと証明書",
+    "recentAttempts": "最近の試み",
+    "certificatesIssued": "発行された証明書",
+    "learner": "学習者",
+    "noTestAttempts": "レベルチェックはまだ送信されていません。",
+    "certificateLogoInvalid": "600 KB 未満の PNG、JPG、または WebP ロゴを使用してください。",
+    "certificateLogoReadFailed": "そのロゴ ファイルを読み取れませんでした。",
+    "certificateBrandingSaved": "証明書のブランディングが保存されました。",
+    "certificateBrandingFailed": "証明書のブランドを保存できませんでした。 600 KB 未満の PNG、JPG、または WebP ロゴを使用してください。",
+    "certificateBrandingRemoved": "証明書のロゴが削除されました。",
+    "certificateBrandingKicker": "証明書",
+    "certificateBrandingTitle": "証明書のブランディング",
+    "certificateBrandingHelp": "機関証明書は個人証明書と同じデザインに、このロゴと機関名が追加されています。",
+    "chooseCertificateLogo": "ロゴを選択してください",
+    "saveCertificateBranding": "証明書のロゴを保存する",
+    "removeCertificateLogo": "ロゴを削除する",
+    "certificateLogoRequirement": "600 KB 未満のきれいな PNG、JPG、または WebP ロゴを使用してください。 通常、透明なロゴが最も美しく見えます。"
   },
   "certificates": {
     "kicker": "証明書",
@@ -1308,7 +1435,32 @@
     "viewPlans": "プランを見る",
     "signIn": "サインイン",
     "issuedSuccess": "証明書が発行されました。",
-    "issueFailed": "証明書を発行できませんでした。"
+    "issueFailed": "証明書を発行できませんでした。",
+    "levelCertificateTitle": "レベル{{level}}証明書",
+    "proficiencyTitle": "技能証明書",
+    "institutionProficiencyTitle": "技能証明書",
+    "levelCompletionTitle": "レベル修了証明書",
+    "institutionCompletionTitle": "レベル修了証明書",
+    "level": "レベル",
+    "levelNumber": "レベル{{level}}",
+    "score": "スコア",
+    "organization": "組織",
+    "institutionLogoAlt": "{{organization}} ロゴ",
+    "issuedThrough": "を通じて発行されました",
+    "institution": "機関",
+    "verifiedProficiency": "認定された技能証明書",
+    "verifiedCompletion": "検証済み修了証明書",
+    "proficiencyStatement": "レベル{{level}}の熟練度を実証",
+    "levelCompletionStatement": "完了レベル {{level}}",
+    "completionStatement": "必要な学習活動を完了した",
+    "actions": "証明書アクション",
+    "downloading": "準備中...",
+    "download": "ダウンロード",
+    "nativeVersion": "母語: {{language}}",
+    "targetVersion": "ターゲット言語: {{language}}",
+    "bilingualVersion": "バイリンガル: ネイティブ + ターゲット",
+    "languageControl": "証明書の言語",
+    "certificateIssuedThrough": "発行された証明書"
   },
   "adminBilling": {
     "title": "サブスクリプションと機関",
@@ -1611,7 +1763,10 @@
     "recentWordsEmptyAction": "保存した単語や便利なフレーズは、授業や会話練習後にここに集まります。",
     "startAClass": "クラスを開始する",
     "milestonesEmptyAction": "最初に完了したレッスン、保存したフレーズ、または証明書がここに表示されます。",
-    "earnFirstMilestone": "最初のマイルストーンを獲得する"
+    "earnFirstMilestone": "最初のマイルストーンを獲得する",
+    "repairPlanTitle": "修理の焦点",
+    "repairPlanValue": "再訪する価値がある",
+    "repairPlanBody": "いくつかの弱い項目やチェックポイント項目は、先に進みすぎる前に集中的に練習できるように準備されています。"
   },
   "adminAnalytics": {
     "features": {
@@ -1651,5 +1806,64 @@
     "speaking": "話し中",
     "reading": "読む",
     "writing": "書き込み"
+  },
+  "levelTests": {
+    "kicker": "レベルチェック",
+    "levelLabel": "レベル{{level}}",
+    "passed": "合格した",
+    "reviewRecommended": "レビューをお勧めします",
+    "tasks": {
+      "chooseTarget": "ターゲット言語の答えを選択してください。",
+      "chooseMeaning": "最も良い意味を選択してください。",
+      "typeTarget": "ターゲット言語の答えを入力します。",
+      "shortResponse": "ターゲット言語で回答し、回答を採点します。",
+      "default": "質問に答えてください。"
+    },
+    "skills": {
+      "general": "一般的な"
+    },
+    "institutionContext": "機関",
+    "personalContext": "個人的",
+    "loadFailed": "現在レベルテストをロードできませんでした。",
+    "startFailed": "このテストはまだ準備ができていません。",
+    "submitted": "テストの採点が完了しました。",
+    "submitFailed": "このテストを送信できませんでした。",
+    "certificateReady": "証明書の準備ができました。",
+    "certificateFailed": "この証明書はまだ発行できません。",
+    "title": "自分に何ができるかを示す",
+    "subtitle": "レベルチェックを完了して進歩を確認するか、より強力な能力の証明が必要な場合は熟練度チェックを受けてください。",
+    "verifyHint": "証明書は証明書 ID で検証できます。",
+    "certificates": "証明書",
+    "context": "コンテクスト",
+    "allowedLanguages": "利用可能なターゲット言語",
+    "chooseLevel": "レベルを選択してください",
+    "testType": "テストの種類",
+    "start": "スタートチェック",
+    "restrictedTarget": "このターゲット言語は、この教育機関のコンテキストでは利用できません。",
+    "recent": "最近の",
+    "notSubmitted": "未提出",
+    "noRecent": "まだレベルチェックはありません。",
+    "emptyTitle": "レベルチェックを選択してください",
+    "emptyBody": "選択したレベルに応じて、語彙、文法、リーディング、スピーキング、ライティングのバランスの取れたセットが表示されます。",
+    "resultTitle": "あなたの結果",
+    "questionsTitle": "それぞれのタスクに答えます",
+    "passedBody": "この結果に対して証明書を発行できます。",
+    "reviewBody": "弱いスキルを確認し、準備ができたらもう一度試してください。",
+    "certificateIssued": "証明書の発行",
+    "issueCertificate": "証明書の発行",
+    "writeAnswer": "ここに答えを書いてください...",
+    "selfGood": "良い",
+    "selfAlmost": "ほとんど",
+    "selfNeedsWork": "仕事が必要です",
+    "correct": "正しい",
+    "missed": "これを確認してください",
+    "submit": "小切手を送信する",
+    "fullNameInvalid": "フルネームを 2 文字以上入力してください。",
+    "certificateNameKicker": "証明書名",
+    "fullNameRequiredTitle": "フルネームを追加してください",
+    "fullNameRequiredBody": "この証明書に表示されるフルネームを正確に入力してください。 これを行う必要があるのは、証明書を発行する前のみです。",
+    "fullNameLabel": "フルネーム",
+    "fullNamePlaceholder": "あなたのフルネーム",
+    "saveNameAndIssue": "名前を保存して証明書を発行する"
   }
 }

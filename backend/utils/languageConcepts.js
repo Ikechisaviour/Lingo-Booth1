@@ -522,9 +522,53 @@ function mergeLearningItemsByTarget(items, targetField, meaningField, options = 
       mergedCount: (existing.usage?.mergedCount || 1) + 1,
     };
 
+    const activeLevels = uniqueByNormalized([
+      ...(Array.isArray(existing.activeLevels) ? existing.activeLevels.map(String) : []),
+      ...(Array.isArray(item.activeLevels) ? item.activeLevels.map(String) : []),
+      existing.learningLevel,
+      item.learningLevel,
+    ]).map(Number).filter(level => [1, 2, 3, 4].includes(level)).sort((a, b) => a - b);
+    if (activeLevels.length) {
+      existing.activeLevels = activeLevels;
+      existing.firstIntroducedLevel = Math.min(
+        Number(existing.firstIntroducedLevel || activeLevels[0]),
+        Number(item.firstIntroducedLevel || activeLevels[0])
+      );
+    }
+    existing.sourceClassLessonKeys = uniqueByNormalized([
+      ...(Array.isArray(existing.sourceClassLessonKeys) ? existing.sourceClassLessonKeys : []),
+      ...(Array.isArray(item.sourceClassLessonKeys) ? item.sourceClassLessonKeys : []),
+      existing.sourceClassLessonKey,
+      item.sourceClassLessonKey,
+    ]);
+    existing.levelUses = {
+      ...(existing.levelUses && typeof existing.levelUses === 'object' && !Array.isArray(existing.levelUses) ? existing.levelUses : {}),
+      ...(item.levelUses && typeof item.levelUses === 'object' && !Array.isArray(item.levelUses) ? item.levelUses : {}),
+    };
+    existing.lessonRole = existing.lessonRole || item.lessonRole || item.usage?.lessonRole || '';
+    existing.branchType = existing.branchType || item.branchType || item.usage?.branchType || '';
+    existing.lessonWeight = Math.min(
+      3,
+      Math.max(Number(existing.lessonWeight || 0), Number(item.lessonWeight || item.usage?.lessonWeight || 0))
+    ) || existing.lessonWeight || item.lessonWeight;
+    existing.checkpointType = existing.checkpointType || item.checkpointType || item.usage?.checkpointType || '';
+    existing.repairFocus = uniqueByNormalized([
+      ...(Array.isArray(existing.repairFocus) ? existing.repairFocus : []),
+      ...(Array.isArray(item.repairFocus) ? item.repairFocus : []),
+      ...(Array.isArray(item.usage?.repairFocus) ? item.usage.repairFocus : []),
+    ]);
+    existing.longActivityTypes = uniqueByNormalized([
+      ...(Array.isArray(existing.longActivityTypes) ? existing.longActivityTypes : []),
+      ...(Array.isArray(item.longActivityTypes) ? item.longActivityTypes : []),
+      ...(Array.isArray(item.usage?.longActivityTypes) ? item.usage.longActivityTypes : []),
+    ]);
+
     const conceptIds = uniqueByNormalized(nextMeanings.map(meaning => meaning.conceptId).filter(Boolean));
     if (conceptIds.length > 1 || !existing.conceptId) {
       existing.conceptId = `lexeme.${slugifyConcept(targetText)}`;
+    }
+    if (!existing.senseId) {
+      existing.senseId = `${existing.conceptId || `lexeme.${slugifyConcept(targetText)}`}.sense.${slugifyConcept(displayMeaning || targetText)}`;
     }
   }
 
@@ -552,7 +596,26 @@ function prepareDefaultFlashcardForSeed(card, targetLang, index) {
     officialPronunciationSource: card.officialPronunciationSource || '',
     learnerPronunciationSource: card.learnerPronunciationSource || '',
     conceptId: card.conceptId || '',
+    senseId: card.senseId || '',
     conceptGloss: card.conceptGloss || card.english || '',
+    learningLevel: card.learningLevel,
+    firstIntroducedLevel: card.firstIntroducedLevel,
+    activeLevels: card.activeLevels || (card.learningLevel ? [card.learningLevel] : []),
+    levelTrack: card.levelTrack || '',
+    supportLevel: card.supportLevel || '',
+    skillStrands: card.skillStrands || [],
+    lessonRole: card.lessonRole || '',
+    coreRequired: card.coreRequired === true,
+    certificateEligible: card.certificateEligible === true,
+    branchType: card.branchType || '',
+    lessonWeight: card.lessonWeight,
+    checkpointType: card.checkpointType || '',
+    repairFocus: card.repairFocus || [],
+    longActivityTypes: card.longActivityTypes || [],
+    objective: card.objective || '',
+    sourceClassLessonKey: card.sourceClassLessonKey || '',
+    sourceClassLessonKeys: card.sourceClassLessonKeys || (card.sourceClassLessonKey ? [card.sourceClassLessonKey] : []),
+    levelUses: card.levelUses || {},
     usage: card.usage && typeof card.usage === 'object' && !Array.isArray(card.usage)
       ? { ...card.usage }
       : {},

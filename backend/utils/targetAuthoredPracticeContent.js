@@ -1,5 +1,6 @@
 const { SUPPORTED_LANGUAGES } = require('../config/languages');
 const { loadTargetCurriculum } = require('./loadTargetCurriculum');
+const { inferLearningArchitecture } = require('./learningArchitecture');
 
 const MAX_CURRICULUM_FLASHCARDS_PER_LANGUAGE = 900;
 const MAX_PRACTICE_ITEMS_PER_LESSON = 32;
@@ -31,11 +32,189 @@ function keyFor(text) {
   return cleanText(text).toLowerCase();
 }
 
+function slugFor(text) {
+  const ascii = keyFor(text)
+    .replace(/['’]/g, '')
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '')
+    .slice(0, 72);
+  if (ascii) return ascii;
+  const raw = keyFor(text);
+  return raw ? `u_${Buffer.from(raw, 'utf8').toString('hex').slice(0, 72)}` : 'item';
+}
+
+function uniqueValues(values) {
+  const seen = new Set();
+  const result = [];
+  values.forEach((value) => {
+    const text = cleanText(value);
+    if (!text) return;
+    const key = keyFor(text);
+    if (seen.has(key)) return;
+    seen.add(key);
+    result.push(text);
+  });
+  return result;
+}
+
+function uniqueNumbers(values) {
+  return Array.from(new Set(values.map(Number).filter(value => [1, 2, 3, 4].includes(value)))).sort((a, b) => a - b);
+}
+
+function mergeObjects(first = {}, second = {}) {
+  return {
+    ...(first && typeof first === 'object' && !Array.isArray(first) ? first : {}),
+    ...(second && typeof second === 'object' && !Array.isArray(second) ? second : {}),
+  };
+}
+
+function cardTargetText(card) {
+  return cleanText(card.korean || card[languageField(card.targetLang)] || '');
+}
+
+function cardMeaningText(card) {
+  return cleanText(card.conceptGloss || card.english || card.nativeText || '');
+}
+
+function cardSense(card) {
+  return {
+    senseId: card.senseId,
+    meaning: cardMeaningText(card),
+    learningLevel: card.learningLevel,
+    levelTrack: card.levelTrack,
+    lessonRole: card.lessonRole,
+    branchType: card.branchType,
+    lessonWeight: card.lessonWeight,
+    checkpointType: card.checkpointType,
+    repairFocus: card.repairFocus,
+    manifestSource: card.manifestSource,
+    programLevelNameKey: card.programLevelNameKey,
+    programLevelDescriptionKey: card.programLevelDescriptionKey,
+    unitOrder: card.unitOrder,
+    sequenceOrder: card.sequenceOrder,
+    skillFocus: card.skillFocus,
+    sourceClassLessonKey: card.sourceClassLessonKey || card.usage?.lessonKey || '',
+    objective: card.objective || card.usage?.lessonTitle || '',
+  };
+}
+
+function ensureCardLearningIdentity(card) {
+  if (!card) return card;
+  const lang = normalizeLang(card.targetLang);
+  const target = cardTargetText(card);
+  const meaning = cardMeaningText(card);
+  const level = Number(card.learningLevel || card.usage?.learningLevel || 2);
+  const sourceKey = cleanText(card.sourceClassLessonKey || card.usage?.lessonKey || '');
+  const lessonRole = cleanText(card.lessonRole || card.usage?.lessonRole || 'core');
+  const branchType = cleanText(card.branchType || card.usage?.branchType || 'general');
+  const lessonWeight = Number(card.lessonWeight || card.usage?.lessonWeight || 2);
+  const checkpointType = cleanText(card.checkpointType || card.usage?.checkpointType || (lessonRole === 'checkpoint' ? 'level-check' : ''));
+  const repairFocus = Array.isArray(card.repairFocus) && card.repairFocus.length
+    ? card.repairFocus
+    : (Array.isArray(card.usage?.repairFocus) ? card.usage.repairFocus : []);
+  const longActivityTypes = Array.isArray(card.longActivityTypes) && card.longActivityTypes.length
+    ? card.longActivityTypes
+    : (Array.isArray(card.usage?.longActivityTypes) ? card.usage.longActivityTypes : []);
+  const manifestSource = cleanText(card.manifestSource || card.usage?.manifestSource || 'four-level-curriculum-plan');
+  const programLevelNameKey = cleanText(card.programLevelNameKey || card.usage?.programLevelNameKey || `classList.programLevels.level${level}.title`);
+  const programLevelDescriptionKey = cleanText(card.programLevelDescriptionKey || card.usage?.programLevelDescriptionKey || `classList.programLevels.level${level}.description`);
+  const unitOrder = Number(card.unitOrder || card.usage?.unitOrder || level);
+  const sequenceOrder = Number(card.sequenceOrder || card.usage?.sequenceOrder || ((level * 1000) + unitOrder));
+  const skillFocus = Array.isArray(card.skillFocus) && card.skillFocus.length
+    ? card.skillFocus
+    : (Array.isArray(card.usage?.skillFocus) ? card.usage.skillFocus : []);
+  const conceptId = cleanText(card.conceptId) || `lexeme.${lang}.${slugFor(target)}`;
+  const senseId = cleanText(card.senseId) || `${conceptId}.sense.${slugFor(meaning || target)}`;
+  const activeLevels = uniqueNumbers([...(card.activeLevels || []), level]);
+  const firstIntroducedLevel = Number(card.firstIntroducedLevel || activeLevels[0] || level || 2);
+  const sourceClassLessonKeys = uniqueValues([
+    ...(Array.isArray(card.sourceClassLessonKeys) ? card.sourceClassLessonKeys : []),
+    sourceKey,
+  ]);
+  const levelUses = mergeObjects(card.levelUses, {
+    [level]: {
+      meaning,
+      objective: card.objective || card.usage?.lessonTitle || '',
+      sourceClassLessonKey: sourceKey,
+      levelTrack: card.levelTrack || card.usage?.levelTrack || '',
+      lessonRole,
+      branchType,
+      lessonWeight,
+      checkpointType,
+      repairFocus,
+      longActivityTypes,
+      manifestSource,
+      programLevelNameKey,
+      programLevelDescriptionKey,
+      unitOrder,
+      sequenceOrder,
+      skillFocus,
+    },
+  });
+
+  card.conceptId = conceptId;
+  card.senseId = senseId;
+  card.firstIntroducedLevel = [1, 2, 3, 4].includes(firstIntroducedLevel) ? firstIntroducedLevel : level;
+  card.activeLevels = activeLevels.length ? activeLevels : [level];
+  card.sourceClassLessonKeys = sourceClassLessonKeys;
+  card.levelUses = levelUses;
+  card.lessonRole = lessonRole;
+  card.branchType = branchType;
+  card.lessonWeight = [1, 2, 3].includes(lessonWeight) ? lessonWeight : 2;
+  card.checkpointType = checkpointType;
+  card.repairFocus = repairFocus;
+  card.longActivityTypes = longActivityTypes;
+  card.coreRequired = card.coreRequired != null ? card.coreRequired : (lessonRole === 'core' || lessonRole === 'checkpoint');
+  card.requiredForProgress = card.requiredForProgress != null ? card.requiredForProgress : card.coreRequired;
+  card.certificateEligible = card.certificateEligible != null ? card.certificateEligible : card.coreRequired;
+  card.manifestSource = manifestSource;
+  card.programLevelNameKey = programLevelNameKey;
+  card.programLevelDescriptionKey = programLevelDescriptionKey;
+  card.unitOrder = Number.isFinite(unitOrder) ? unitOrder : level;
+  card.sequenceOrder = Number.isFinite(sequenceOrder) ? sequenceOrder : ((level * 1000) + card.unitOrder);
+  card.skillFocus = skillFocus;
+  card.prerequisiteConcepts = Array.isArray(card.prerequisiteConcepts) ? card.prerequisiteConcepts : [];
+  card.teachesConcepts = Array.isArray(card.teachesConcepts) ? card.teachesConcepts : [];
+  card.reviewsConcepts = Array.isArray(card.reviewsConcepts) ? card.reviewsConcepts : [];
+  card.usage = {
+    ...(card.usage && typeof card.usage === 'object' && !Array.isArray(card.usage) ? card.usage : {}),
+    conceptId,
+    senseId,
+    firstIntroducedLevel: card.firstIntroducedLevel,
+    activeLevels: card.activeLevels,
+    levelUses,
+    lessonRole: card.lessonRole,
+    branchType: card.branchType,
+    lessonWeight: card.lessonWeight,
+    checkpointType: card.checkpointType,
+    repairFocus: card.repairFocus,
+    longActivityTypes: card.longActivityTypes,
+    manifestSource: card.manifestSource,
+    programLevelNameKey: card.programLevelNameKey,
+    programLevelDescriptionKey: card.programLevelDescriptionKey,
+    unitOrder: card.unitOrder,
+    sequenceOrder: card.sequenceOrder,
+    skillFocus: card.skillFocus,
+    prerequisiteConcepts: card.prerequisiteConcepts,
+    teachesConcepts: card.teachesConcepts,
+    reviewsConcepts: card.reviewsConcepts,
+  };
+  return card;
+}
+
 function authoredCard(targetLang, target, gloss, category, usage = {}, pronunciation = '') {
   const lang = normalizeLang(targetLang);
+  const learning = inferLearningArchitecture({
+    curriculumKey: usage.sourceClassLessonKey || 'level1Foundation',
+    lessonType: usage.learningLevel && usage.learningLevel > 1 ? 'thematic' : 'foundation',
+    difficulty: usage.learningLevel && usage.learningLevel > 2 ? 'intermediate' : 'beginner',
+    title: usage.objective || cleanText(categoryList(category).join(' ')),
+    content: [{ type: categoryList(category).includes('grammar') ? 'sentence' : 'word' }],
+  });
   const targetText = cleanText(target);
   const english = cleanText(gloss);
   const field = languageField(lang);
+  const sourceClassLessonKey = usage.sourceClassLessonKey || 'level1Foundation';
   const card = {
     korean: targetText,
     english,
@@ -45,15 +224,55 @@ function authoredCard(targetLang, target, gloss, category, usage = {}, pronuncia
     category: categoryList(category),
     targetLang: lang,
     conceptGloss: english,
+    learningLevel: usage.learningLevel || learning.level,
+    levelTrack: usage.levelTrack || learning.levelTrack,
+    supportLevel: usage.supportLevel || learning.supportLevel,
+    skillStrands: usage.skillStrands || learning.skillStrands,
+    lessonRole: usage.lessonRole || learning.lessonRole,
+    coreRequired: usage.coreRequired != null ? usage.coreRequired : learning.coreRequired,
+    requiredForProgress: usage.requiredForProgress != null ? usage.requiredForProgress : learning.requiredForProgress,
+    certificateEligible: usage.certificateEligible != null ? usage.certificateEligible : learning.certificateEligible,
+    branchType: usage.branchType || learning.branchType,
+    lessonWeight: usage.lessonWeight || learning.lessonWeight,
+    checkpointType: usage.checkpointType || learning.checkpointType,
+    repairFocus: usage.repairFocus || learning.repairFocus,
+    longActivityTypes: usage.longActivityTypes || learning.longActivityTypes,
+    manifestSource: usage.manifestSource || learning.manifestSource,
+    programLevelNameKey: usage.programLevelNameKey || learning.programLevelNameKey,
+    programLevelDescriptionKey: usage.programLevelDescriptionKey || learning.programLevelDescriptionKey,
+    unitOrder: usage.unitOrder || learning.unitOrder,
+    sequenceOrder: usage.sequenceOrder || learning.sequenceOrder,
+    skillFocus: usage.skillFocus || learning.skillFocus,
+    prerequisiteConcepts: usage.prerequisiteConcepts || learning.prerequisiteConcepts,
+    teachesConcepts: usage.teachesConcepts || learning.teachesConcepts,
+    reviewsConcepts: usage.reviewsConcepts || learning.reviewsConcepts,
+    objective: usage.objective || english,
+    sourceClassLessonKey,
     usage: {
       source: 'target-profile',
       targetAuthored: true,
+      sourceClassLessonKey,
+      lessonRole: usage.lessonRole || learning.lessonRole,
+      branchType: usage.branchType || learning.branchType,
+      lessonWeight: usage.lessonWeight || learning.lessonWeight,
+      checkpointType: usage.checkpointType || learning.checkpointType,
+      repairFocus: usage.repairFocus || learning.repairFocus,
+      longActivityTypes: usage.longActivityTypes || learning.longActivityTypes,
+      manifestSource: usage.manifestSource || learning.manifestSource,
+      programLevelNameKey: usage.programLevelNameKey || learning.programLevelNameKey,
+      programLevelDescriptionKey: usage.programLevelDescriptionKey || learning.programLevelDescriptionKey,
+      unitOrder: usage.unitOrder || learning.unitOrder,
+      sequenceOrder: usage.sequenceOrder || learning.sequenceOrder,
+      skillFocus: usage.skillFocus || learning.skillFocus,
+      prerequisiteConcepts: usage.prerequisiteConcepts || learning.prerequisiteConcepts,
+      teachesConcepts: usage.teachesConcepts || learning.teachesConcepts,
+      reviewsConcepts: usage.reviewsConcepts || learning.reviewsConcepts,
       ...(cleanText(pronunciation) ? { pronunciationSource: 'target-authored' } : {}),
       ...usage,
     },
   };
   card[field] = targetText;
-  return card;
+  return ensureCardLearningIdentity(card);
 }
 
 const TARGET_TEACHING_PROFILES = {
@@ -305,6 +524,7 @@ function lessonActivityHint(item = {}) {
 }
 
 function sourceCardFromLessonItem(targetLang, lessonKey, lesson, item, index, variant = 'main') {
+  const learning = inferLearningArchitecture({ ...lesson, curriculumKey: lessonKey });
   const hint = lessonActivityHint(item);
   const isPronunciation = hint.includes('pronunciation');
   const isGrammar = hint.includes('grammar') || item.type === 'grammar';
@@ -337,6 +557,30 @@ function sourceCardFromLessonItem(targetLang, lessonKey, lesson, item, index, va
     korean: target,
     english: gloss,
     conceptGloss: gloss,
+    learningLevel: learning.level,
+    levelTrack: learning.levelTrack,
+    supportLevel: learning.supportLevel,
+    skillStrands: learning.skillStrands,
+    lessonRole: learning.lessonRole,
+    coreRequired: learning.coreRequired,
+    requiredForProgress: learning.requiredForProgress,
+    certificateEligible: learning.certificateEligible,
+    branchType: learning.branchType,
+    lessonWeight: learning.lessonWeight,
+    checkpointType: learning.checkpointType,
+    repairFocus: learning.repairFocus,
+    longActivityTypes: learning.longActivityTypes,
+    manifestSource: learning.manifestSource,
+    programLevelNameKey: learning.programLevelNameKey,
+    programLevelDescriptionKey: learning.programLevelDescriptionKey,
+    unitOrder: learning.unitOrder,
+    sequenceOrder: learning.sequenceOrder,
+    skillFocus: learning.skillFocus,
+    prerequisiteConcepts: learning.prerequisiteConcepts,
+    teachesConcepts: learning.teachesConcepts,
+    reviewsConcepts: learning.reviewsConcepts,
+    objective: lesson.title || lessonKey,
+    sourceClassLessonKey: lessonKey,
     romanization: pronunciation,
     officialPronunciation: pronunciation,
     officialPronunciationSource: pronunciation ? 'target-authored' : '',
@@ -347,6 +591,26 @@ function sourceCardFromLessonItem(targetLang, lessonKey, lesson, item, index, va
       targetAuthored: true,
       ...(pronunciation ? { pronunciationSource: 'target-authored' } : {}),
       lessonKey,
+      learningLevel: learning.level,
+      levelTrack: learning.levelTrack,
+      supportLevel: learning.supportLevel,
+      lessonRole: learning.lessonRole,
+      branchType: learning.branchType,
+      lessonWeight: learning.lessonWeight,
+      checkpointType: learning.checkpointType,
+      repairFocus: learning.repairFocus,
+      longActivityTypes: learning.longActivityTypes,
+      manifestSource: learning.manifestSource,
+      programLevelNameKey: learning.programLevelNameKey,
+      programLevelDescriptionKey: learning.programLevelDescriptionKey,
+      unitOrder: learning.unitOrder,
+      sequenceOrder: learning.sequenceOrder,
+      skillFocus: learning.skillFocus,
+      prerequisiteConcepts: learning.prerequisiteConcepts,
+      teachesConcepts: learning.teachesConcepts,
+      reviewsConcepts: learning.reviewsConcepts,
+      quizOptionMode: learning.quizOptionMode,
+      writingMode: learning.writingMode,
       lessonTitle: lesson.title,
       lessonType: lesson.lessonType || '',
       itemType: item.type || '',
@@ -356,7 +620,7 @@ function sourceCardFromLessonItem(targetLang, lessonKey, lesson, item, index, va
     },
   };
   card[field] = target;
-  return card;
+  return ensureCardLearningIdentity(card);
 }
 
 function uniqueCards(cards) {
@@ -371,17 +635,90 @@ function uniqueCards(cards) {
   return unique;
 }
 
-function uniqueCardsByTarget(cards) {
-  const seen = new Set();
-  const unique = [];
-  for (const card of cards) {
-    const target = card.korean || card[languageField(card.targetLang)];
-    const key = `${normalizeLang(card.targetLang)}|${keyFor(target)}`;
-    if (seen.has(key)) continue;
-    seen.add(key);
-    unique.push(card);
+function mergeCardsByTarget(cards) {
+  const byTarget = new Map();
+  const merged = [];
+
+  for (const rawCard of cards) {
+    const card = ensureCardLearningIdentity(rawCard);
+    const lang = normalizeLang(card.targetLang);
+    const target = cardTargetText(card);
+    const key = `${lang}|${keyFor(target)}`;
+    if (!byTarget.has(key)) {
+      card.usage = {
+        ...(card.usage || {}),
+        senses: [cardSense(card)],
+      };
+      byTarget.set(key, card);
+      merged.push(card);
+      continue;
+    }
+
+    const existing = byTarget.get(key);
+    const existingSenses = Array.isArray(existing.usage?.senses) ? existing.usage.senses : [cardSense(existing)];
+    const senses = [...existingSenses, cardSense(card)].filter(sense => sense.meaning);
+    const uniqueSenses = [];
+    const seenSense = new Set();
+    senses.forEach((sense) => {
+      const senseKey = `${sense.senseId}|${keyFor(sense.meaning)}`;
+      if (seenSense.has(senseKey)) return;
+      seenSense.add(senseKey);
+      uniqueSenses.push(sense);
+    });
+
+    const meanings = uniqueValues(uniqueSenses.map(sense => sense.meaning));
+    const displayMeaning = meanings.join(' / ');
+    if (displayMeaning) {
+      existing.english = displayMeaning;
+      existing.conceptGloss = displayMeaning;
+    }
+    existing.senseId = uniqueSenses.length > 1 ? `${existing.conceptId}.sense.multi` : (uniqueSenses[0]?.senseId || existing.senseId);
+    existing.activeLevels = uniqueNumbers([...(existing.activeLevels || []), ...(card.activeLevels || []), card.learningLevel]);
+    existing.firstIntroducedLevel = Math.min(...existing.activeLevels);
+    existing.sourceClassLessonKeys = uniqueValues([
+      ...(existing.sourceClassLessonKeys || []),
+      ...(card.sourceClassLessonKeys || []),
+      card.sourceClassLessonKey,
+    ]);
+    existing.category = uniqueValues([
+      ...(Array.isArray(existing.category) ? existing.category : [existing.category]),
+      ...(Array.isArray(card.category) ? card.category : [card.category]),
+    ]);
+    existing.levelUses = mergeObjects(existing.levelUses, card.levelUses);
+    existing.lessonRole = existing.lessonRole || card.lessonRole;
+    existing.branchType = existing.branchType || card.branchType;
+    existing.lessonWeight = Math.min(3, Math.max(Number(existing.lessonWeight || 0), Number(card.lessonWeight || 0))) || card.lessonWeight;
+    existing.checkpointType = existing.checkpointType || card.checkpointType;
+    existing.repairFocus = uniqueValues([
+      ...(Array.isArray(existing.repairFocus) ? existing.repairFocus : []),
+      ...(Array.isArray(card.repairFocus) ? card.repairFocus : []),
+    ]);
+    existing.longActivityTypes = uniqueValues([
+      ...(Array.isArray(existing.longActivityTypes) ? existing.longActivityTypes : []),
+      ...(Array.isArray(card.longActivityTypes) ? card.longActivityTypes : []),
+    ]);
+    if (!existing.officialPronunciation && card.officialPronunciation) {
+      existing.officialPronunciation = card.officialPronunciation;
+      existing.romanization = existing.romanization || card.romanization;
+    }
+    existing.usage = {
+      ...(existing.usage || {}),
+      senses: uniqueSenses,
+      multiMeaning: uniqueSenses.length > 1,
+      activeLevels: existing.activeLevels,
+      firstIntroducedLevel: existing.firstIntroducedLevel,
+      levelUses: existing.levelUses,
+      sourceClassLessonKeys: existing.sourceClassLessonKeys,
+      lessonRole: existing.lessonRole,
+      branchType: existing.branchType,
+      lessonWeight: existing.lessonWeight,
+      checkpointType: existing.checkpointType,
+      repairFocus: existing.repairFocus,
+      longActivityTypes: existing.longActivityTypes,
+    };
   }
-  return unique;
+
+  return merged;
 }
 
 function buildCurriculumFlashcardsForLanguage(targetLang, options = {}) {
@@ -401,7 +738,7 @@ function buildCurriculumFlashcardsForLanguage(targetLang, options = {}) {
     });
   }
 
-  return uniqueCardsByTarget(uniqueCards(cards)).slice(0, limit);
+  return mergeCardsByTarget(uniqueCards(cards)).slice(0, limit);
 }
 
 function buildDefaultFlashcardSourceForLanguage(targetLang, legacyCards = []) {
@@ -410,7 +747,7 @@ function buildDefaultFlashcardSourceForLanguage(targetLang, legacyCards = []) {
   const curriculumCards = buildCurriculumFlashcardsForLanguage(lang);
 
   if (profileCards.length || curriculumCards.length) {
-    return uniqueCardsByTarget(uniqueCards([...profileCards, ...curriculumCards]));
+    return mergeCardsByTarget(uniqueCards([...profileCards, ...curriculumCards]));
   }
 
   return legacyCards;
@@ -423,6 +760,7 @@ function buildPracticeLessonsForLanguage(targetLang) {
 
   return Object.entries(curriculum)
     .map(([lessonKey, lesson]) => {
+      const learning = inferLearningArchitecture({ ...lesson, curriculumKey: lessonKey });
       const content = [];
       const lessonContent = Array.isArray(lesson.content) ? lesson.content : [];
 
@@ -440,7 +778,39 @@ function buildPracticeLessonsForLanguage(targetLang) {
             pronunciation: main.officialPronunciation || main.romanization || '',
             exampleTarget: cleanText(item.exampleTarget || item.example || main.korean),
             exampleNative: cleanText(item.exampleNative || item.exampleEnglish || main.english),
+            conceptId: main.conceptId,
+            senseId: main.senseId,
             conceptGloss: main.conceptGloss,
+            learningLevel: learning.level,
+            firstIntroducedLevel: main.firstIntroducedLevel,
+            activeLevels: main.activeLevels,
+            levelTrack: learning.levelTrack,
+            supportLevel: learning.supportLevel,
+            quizOptionMode: learning.quizOptionMode,
+            writingMode: learning.writingMode,
+            skillStrands: learning.skillStrands,
+            lessonRole: learning.lessonRole,
+            coreRequired: learning.coreRequired,
+            requiredForProgress: learning.requiredForProgress,
+            certificateEligible: learning.certificateEligible,
+            branchType: learning.branchType,
+            lessonWeight: learning.lessonWeight,
+            checkpointType: learning.checkpointType,
+            repairFocus: learning.repairFocus,
+            longActivityTypes: learning.longActivityTypes,
+            manifestSource: learning.manifestSource,
+            programLevelNameKey: learning.programLevelNameKey,
+            programLevelDescriptionKey: learning.programLevelDescriptionKey,
+            unitOrder: learning.unitOrder,
+            sequenceOrder: learning.sequenceOrder,
+            skillFocus: learning.skillFocus,
+            prerequisiteConcepts: learning.prerequisiteConcepts,
+            teachesConcepts: learning.teachesConcepts,
+            reviewsConcepts: learning.reviewsConcepts,
+            objective: lesson.title || lessonKey,
+            sourceClassLessonKey: lessonKey,
+            sourceClassLessonKeys: main.sourceClassLessonKeys,
+            levelUses: main.levelUses,
             usage: main.usage,
             breakdown: Array.isArray(item.breakdown)
               ? item.breakdown.map(part => ({ target: part.target || part.korean || '', native: part.native || part.english || '' }))
@@ -458,6 +828,30 @@ function buildPracticeLessonsForLanguage(targetLang) {
         nativeLang: 'en',
         track: 'practice',
         lessonType: lesson.lessonType || 'thematic',
+        learningLevel: learning.level,
+        levelTrack: learning.levelTrack,
+        supportLevel: learning.supportLevel,
+        quizOptionMode: learning.quizOptionMode,
+        writingMode: learning.writingMode,
+        skillStrands: learning.skillStrands,
+        lessonRole: learning.lessonRole,
+        coreRequired: learning.coreRequired,
+        requiredForProgress: learning.requiredForProgress,
+        certificateEligible: learning.certificateEligible,
+        branchType: learning.branchType,
+        lessonWeight: learning.lessonWeight,
+        checkpointType: learning.checkpointType,
+        repairFocus: learning.repairFocus,
+        longActivityTypes: learning.longActivityTypes,
+        manifestSource: learning.manifestSource,
+        programLevelNameKey: learning.programLevelNameKey,
+        programLevelDescriptionKey: learning.programLevelDescriptionKey,
+        unitOrder: learning.unitOrder,
+        sequenceOrder: learning.sequenceOrder,
+        skillFocus: learning.skillFocus,
+        prerequisiteConcepts: learning.prerequisiteConcepts,
+        teachesConcepts: learning.teachesConcepts,
+        reviewsConcepts: learning.reviewsConcepts,
         curriculumKey: `${lessonKey}Practice`,
         content,
       };

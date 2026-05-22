@@ -27,13 +27,46 @@ const completionCertificateSchema = new mongoose.Schema({
   classLessonId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Lesson',
-    required: true,
+    default: null,
     index: true,
   },
   classLessonTitle: {
     type: String,
-    required: true,
+    default: '',
     maxlength: 240,
+  },
+  level: {
+    type: Number,
+    enum: [1, 2, 3, 4],
+    default: null,
+    index: true,
+  },
+  contextType: {
+    type: String,
+    enum: ['personal', 'institution'],
+    default: 'personal',
+    index: true,
+  },
+  organizationId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Organization',
+    default: null,
+    index: true,
+  },
+  organizationName: {
+    type: String,
+    maxlength: 180,
+    default: '',
+  },
+  institutionMembershipId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'OrganizationMembership',
+    default: null,
+  },
+  testAttemptId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'LevelTestAttempt',
+    default: null,
   },
   targetLanguage: {
     type: String,
@@ -64,8 +97,36 @@ const completionCertificateSchema = new mongoose.Schema({
   },
   certificateType: {
     type: String,
-    enum: ['class_lesson_completion'],
+    enum: [
+      'class_lesson_completion',
+      'level_completion',
+      'level_proficiency',
+      'institution_completion',
+      'institution_proficiency',
+    ],
     default: 'class_lesson_completion',
+  },
+  score: {
+    type: Number,
+    min: 0,
+    max: 100,
+    default: null,
+  },
+  skillScores: [{
+    skill: String,
+    score: Number,
+    correct: Number,
+    total: Number,
+  }],
+  readiness: {
+    type: String,
+    enum: ['ready', 'review_recommended', 'not_ready', 'complete'],
+    default: 'complete',
+  },
+  issuedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    default: null,
   },
   paymentStatus: {
     type: String,
@@ -112,7 +173,20 @@ const completionCertificateSchema = new mongoose.Schema({
 
 completionCertificateSchema.index(
   { userId: 1, classLessonId: 1, nativeLanguage: 1, targetLanguage: 1 },
-  { unique: true },
+  {
+    unique: true,
+    partialFilterExpression: { certificateType: 'class_lesson_completion' },
+    name: 'class_lesson_certificate_unique',
+  },
 );
+completionCertificateSchema.index({
+  userId: 1,
+  certificateType: 1,
+  contextType: 1,
+  organizationId: 1,
+  targetLanguage: 1,
+  nativeLanguage: 1,
+  level: 1,
+}, { name: 'certificate_level_context_lookup' });
 
 module.exports = mongoose.model('CompletionCertificate', completionCertificateSchema);

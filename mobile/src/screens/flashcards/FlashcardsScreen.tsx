@@ -151,7 +151,7 @@ const FlashcardsScreen: React.FC = () => {
         _id: `review-seed-${seededTarget}`,
         [targetField]: seededTarget,
         [nativeField]: seededNative,
-        masteryLevel: 0,
+        masteryLevel: 3,
         category: ['saved-review'],
         isDefault: true,
       } : null;
@@ -612,17 +612,33 @@ const FlashcardsScreen: React.FC = () => {
   handleNextRef.current = handleNext;
   handlePrevRef.current = handlePrev;
 
+  const clampMasteryLevel = (level: any) => Math.max(1, Math.min(5, Number(level) || 3));
+
+  const mergeUpdatedCard = (card: any, updatedFields: Record<string, any>) => {
+    setFlashcards((prev) =>
+      prev.map((c) => (c._id === card._id ? { ...c, ...updatedFields } : c)),
+    );
+  };
+
+  const persistFlashcardReview = async (card: any, payload: Record<string, any>) => {
+    if (!userId || card?.isReviewSeed) return null;
+    const response = await flashcardService.updateFlashcard(card._id, {
+      ...payload,
+      nativeLang: nativeLanguage,
+    });
+    return response.data || null;
+  };
+
   // Mastery: correct / incorrect
   const handleCorrect = async () => {
     const card = displayedCards[currentIndex];
-    if (!card || (card.masteryLevel || 0) >= 5) return;
+    if (!card) return;
 
-    const newLevel = Math.min((card.masteryLevel || 0) + 1, 5);
+    const currentLevel = clampMasteryLevel(card.masteryLevel);
+    const newLevel = Math.min(currentLevel + 1, 5);
 
     // Optimistic update — stars change immediately for everyone
-    setFlashcards((prev) =>
-      prev.map((c) => (c._id === card._id ? { ...c, masteryLevel: newLevel } : c)),
-    );
+    mergeUpdatedCard(card, { masteryLevel: newLevel });
     setStarPulse('up');
     setTimeout(() => setStarPulse(null), 600);
 
@@ -630,7 +646,11 @@ const FlashcardsScreen: React.FC = () => {
       addGuestXP(1);
       guestActivityTracker.trackCard(true);
     } else if (userId) {
-      flashcardService.updateFlashcard(card._id, { masteryLevel: newLevel }).catch(() => {});
+      persistFlashcardReview(card, { isCorrect: true })
+        .then((serverCard) => {
+          if (serverCard) mergeUpdatedCard(card, serverCard);
+        })
+        .catch(() => {});
       userService.recordLearningEvent(userId, {
         eventType: 'flashcard_recall',
         flashcardId: card._id,
@@ -641,21 +661,44 @@ const FlashcardsScreen: React.FC = () => {
 
   const handleIncorrect = async () => {
     const card = displayedCards[currentIndex];
-    if (!card || (card.masteryLevel || 0) <= 0) return;
+    if (!card) return;
 
-    const newLevel = Math.max((card.masteryLevel || 0) - 1, 0);
+    const currentLevel = clampMasteryLevel(card.masteryLevel);
+    const newLevel = Math.max(currentLevel - 1, 1);
 
     // Optimistic update — stars change immediately for everyone
-    setFlashcards((prev) =>
-      prev.map((c) => (c._id === card._id ? { ...c, masteryLevel: newLevel } : c)),
-    );
+    mergeUpdatedCard(card, { masteryLevel: newLevel });
     setStarPulse('down');
     setTimeout(() => setStarPulse(null), 600);
 
     if (isGuest) {
       guestActivityTracker.trackCard(false);
     } else if (userId) {
-      flashcardService.updateFlashcard(card._id, { masteryLevel: newLevel }).catch(() => {});
+      persistFlashcardReview(card, { isCorrect: false })
+        .then((serverCard) => {
+          if (serverCard) mergeUpdatedCard(card, serverCard);
+        })
+        .catch(() => {});
+    }
+  };
+
+  const handleMasteryRating = (level: number) => {
+    const card = displayedCards[currentIndex];
+    if (!card) return;
+    const masteryLevel = clampMasteryLevel(level);
+    const previousLevel = clampMasteryLevel(card.masteryLevel);
+    mergeUpdatedCard(card, { masteryLevel });
+    setStarPulse(masteryLevel >= previousLevel ? 'up' : 'down');
+    setTimeout(() => setStarPulse(null), 600);
+
+    if (userId && !isGuest) {
+      persistFlashcardReview(card, { masteryLevel })
+        .then((serverCard) => {
+          if (serverCard) mergeUpdatedCard(card, serverCard);
+        })
+        .catch(() => {
+          mergeUpdatedCard(card, { masteryLevel: previousLevel });
+        });
     }
   };
 
@@ -741,6 +784,7 @@ const FlashcardsScreen: React.FC = () => {
       params: {
         savedText: card[targetField] || '',
         nativeText: card[nativeField] || '',
+        level: String(card.learningLevel || card.firstIntroducedLevel || ''),
       },
     });
   };
@@ -839,7 +883,7 @@ const FlashcardsScreen: React.FC = () => {
   const frontLocale = showsTargetFirst ? targetLocale : nativeLocale;
   const backLocale = showsTargetFirst ? nativeLocale : targetLocale;
   const translationPending = !!(card as any)?._translationPending && !backText;
-  const mastery = card.masteryLevel || 0;
+  const mastery = clampMasteryLevel(card.masteryLevel);
 
   return (
     <View style={styles.screen}>
@@ -976,9 +1020,20 @@ const FlashcardsScreen: React.FC = () => {
           <Text style={styles.masteryLabel}>{t('flashcards.familiarity', 'Familiarity')}</Text>
           <View style={styles.masteryStars}>
             {[1, 2, 3, 4, 5].map((star) => (
-              <Text key={star} style={[styles.masteryStar, star <= mastery && styles.masteryStarActive]}>
-                ★
-              </Text>
+              <TouchableOpacity
+                key={star}
+                accessibilityRole="button"
+                accessibilityLabel={t('flashcards.setFamiliarityLevel', {
+                  level: star,
+                  defaultValue: 'Set familiarity to {{level}}',
+                })}
+                onPress={() => handleMasteryRating(star)}
+                style={styles.masteryStarButton}
+              >
+                <Text style={[styles.masteryStar, star <= mastery && styles.masteryStarActive]}>
+                  {'\u2605'}
+                </Text>
+              </TouchableOpacity>
             ))}
           </View>
         </View>
@@ -1433,6 +1488,7 @@ const createStyles = (
   masteryRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', paddingVertical: 8, gap: 6 },
   masteryLabel: { fontSize: 12, color: colors.textMuted, marginRight: 4 },
   masteryStars: { flexDirection: 'row', gap: 4 },
+  masteryStarButton: { minWidth: 32, minHeight: 32, alignItems: 'center', justifyContent: 'center' },
   masteryStar: { fontSize: 24, color: colors.border },
   masteryStarActive: { color: colors.accentYellow },
 

@@ -44,7 +44,8 @@
     "search": "Search",
     "notSet": "Not set",
     "goBack": "Go Back",
-    "all": "All"
+    "all": "All",
+    "restart": "Restart"
   },
   "languageSelect": {
     "title": "Choose Your Languages",
@@ -100,7 +101,10 @@
     "passwordsMatch": "Passwords match",
     "registrationFailed": "Registration failed",
     "googleFailed": "Google sign-up failed. Please try again.",
-    "checkEmail": "Check your email to verify your account"
+    "checkEmail": "Check your email to verify your account",
+    "fullNameOptional": "Full name (optional)",
+    "fullNamePlaceholder": "Name to show on certificates",
+    "fullNameHint": "You can add this now or before issuing a certificate."
   },
   "navbar": {
     "continue": "Continue",
@@ -203,7 +207,10 @@
       "sat": "S",
       "sun": "S"
     },
-    "supportAndPlans": "Support and plans"
+    "supportAndPlans": "Support and plans",
+    "decayBannerActive": "XP is decaying — daily loss {{rate}}%. Answer a question to stop it.",
+    "decayBannerGrace": "XP decay starts in {{hours}}h — daily loss {{rate}}%. Keep studying to prevent it.",
+    "dashboard": "Dashboard"
   },
   "lessons": {
     "title": "{{language}} <1>Lessons</1>",
@@ -298,7 +305,15 @@
     "translating": "Translating...",
     "translationUnavailable": "Translation loading...",
     "retryTranslation": "Retry",
-    "quizUnavailable": "Quiz unavailable — translation loading..."
+    "quizUnavailable": "Quiz unavailable — translation loading...",
+    "howDoYouSayThisIn": "How do you say this in {{language}}?",
+    "quizMode": {
+      "nativeAssisted": "Early self-test: choose the meaning in your native language.",
+      "targetWithNativeHints": "Build recall: use the native hint, then choose the target-language answer.",
+      "targetDominant": "Independent practice: target-language choices carry most of the work.",
+      "targetFirst": "Advanced self-test: stay target-first and use help only when needed.",
+      "standard": "Guided self-test."
+    }
   },
   "flashcards": {
     "title": "Practice <1>Flashcards</1>",
@@ -386,7 +401,8 @@
     "savedReason": "Saved from flashcards for later practice.",
     "saveForReview": "Save for review",
     "bookmarkedReason": "Bookmarked from flashcards.",
-    "selfTestReason": "Saved from flashcards for a quick self-test."
+    "selfTestReason": "Saved from flashcards for a quick self-test.",
+    "setFamiliarityLevel": "Set familiarity to {{level}}"
   },
   "progress": {
     "title": "Your <1>Progress</1>",
@@ -523,7 +539,10 @@
     "systemDefault": "System default",
     "voiceSettingsDesc": "Choose separate voices for your target language and your native language so mixed replies are pronounced naturally.",
     "targetVoice": "Target voice",
-    "nativeVoice": "Native voice"
+    "nativeVoice": "Native voice",
+    "fullName": "Full name",
+    "fullNamePlaceholder": "Name to show on certificates",
+    "fullNameMissing": "Add before issuing a certificate"
   },
   "forgotPassword": {
     "title": "Forgot Password",
@@ -985,7 +1004,46 @@
     "saveReply": "Save reply",
     "selfTestReason": "Saved from class for a quick self-test.",
     "hideOutline": "Hide outline",
-    "showOutline": "Show outline"
+    "showOutline": "Show outline",
+    "wrapUpReviewBody": "Retry due or weak items from this class.",
+    "wrapUpQuizBody": "Check understanding without loading the quiz until you start.",
+    "wrapUpWritingBody": "Use the level-appropriate write or type mode.",
+    "wrapUpConversationPrompt": "Help me use what I just learned in a short conversation.",
+    "wrapUpConversationBody": "Turn the lesson into a short roleplay.",
+    "learningPlan": {
+      "unplacedLevel": "Learning level",
+      "moreActivities": "{{count}} more",
+      "level": "Level",
+      "support": "Support",
+      "selfTest": "Self-test",
+      "writing": "Writing",
+      "activities": "Long practice",
+      "ariaLabel": "Lesson learning plan"
+    },
+    "supportLevels": {
+      "nativeGuided": "Strong native-language support",
+      "mixedGuided": "Balanced target and native support",
+      "targetFirst": "Target language first",
+      "immersionWithHelp": "Mostly target language with help available",
+      "standard": "Guided support"
+    },
+    "quizModes": {
+      "nativeAssisted": "Meaning choices in your native language",
+      "targetWithNativeHints": "Target-language choices with native hints",
+      "targetDominant": "Mostly target-language choices",
+      "targetFirst": "Target-first self-test",
+      "standard": "Guided self-test"
+    },
+    "writingModes": {
+      "handwritingFirst": "Trace or copy first",
+      "typeWithWriteOption": "Type, with writing practice available",
+      "typedProduction": "Typed answers from memory",
+      "extendedTypedProduction": "Longer typed responses",
+      "standard": "Write or type"
+    },
+    "longActivities": {
+      "practice": "Practice"
+    }
   },
   "classList": {
     "heroAriaLabel": "Class",
@@ -1021,15 +1079,43 @@
     "tracks": {
       "foundationTitle": "Level {{level}} - Foundation",
       "foundationSubtitle": "Start here with the sound and writing system for {{language}}.",
-      "thematicTitle": "Level {{level}} - Everyday {{language}}",
-      "thematicSubtitle": "Core everyday lessons for greetings, food, places, plans, and daily situations.",
-      "intermediateTitle": "Level {{level}} - Intermediate {{language}}",
-      "intermediateSubtitle": "Topic-driven units for opinions, culture, health, work, and everyday confidence.",
+      "survivalTitle": "Level {{level}} - Essential {{language}}",
+      "survivalSubtitle": "Build practical basics for greetings, rooms, places, routines, shopping, and food.",
+      "everydayTitle": "Level {{level}} - Everyday {{language}}",
+      "everydaySubtitle": "Core everyday lessons for greetings, food, places, plans, and daily situations.",
+      "bridgeTitle": "Level {{level}} - Bridge",
+      "bridgeSubtitle": "Review and transition units that connect everyday material to more independent use.",
+      "thematicTitle": "Level {{level}} - Thematic {{language}}",
+      "thematicSubtitle": "Topic-driven units for opinions, culture, health, plans, and confident everyday expression.",
+      "topicTitle": "Level {{level}} - Thematic {{language}}",
+      "topicSubtitle": "Topic-driven units for opinions, culture, health, plans, and confident everyday expression.",
       "professionalTitle": "Level {{level}} - Professional {{language}}",
       "professionalSubtitle": "Practical language for work, services, housing, safety, and formal situations.",
-      "grammarTitle": "Level {{level}} - Advanced grammar",
-      "grammarSubtitle": "Pattern clusters that help you connect ideas with more control."
-    }
+      "grammarTitle": "Level {{level}} - Advanced {{language}}",
+      "grammarSubtitle": "Longer reading, listening, speaking, and writing tasks with lighter native-language support.",
+      "advancedTitle": "Level {{level}} - Advanced {{language}}",
+      "advancedSubtitle": "Longer reading, listening, speaking, and writing tasks with lighter native-language support."
+    },
+    "lessonWeights": {
+      "deep": "Deep",
+      "light": "Light",
+      "standard": "Standard"
+    },
+    "lessonPlanAriaLabel": "Lesson plan",
+    "requiredForProgress": "Required",
+    "programLevels": {
+      "kicker": "Learning level",
+      "statsAriaLabel": "Level plan summary",
+      "coreCount": "{{count}} core",
+      "branchCount": "{{count}} branches",
+      "checkpointCount": "{{count}} checkpoints"
+    },
+    "singleTrackGuidanceAriaLabel": "Single lesson track guidance",
+    "singleTrackGuidanceKicker": "Why one class",
+    "singleTrackGuidanceTitle": "Start focused, then branch out",
+    "singleTrackGuidanceBody": "This track is intentionally compact so the first step feels clear. Finish the class here, then move into the next track for broader practice.",
+    "singleTrackGuidanceStep1": "Build the base",
+    "singleTrackGuidanceStep2": "Continue into everyday use"
   },
   "contextPractice": {
     "title": "Lessons shaped around you",
@@ -1164,7 +1250,8 @@
       "listen": "Press Play, write what you hear, then reveal the answer.",
       "meaning": "Write the {{language}} for this meaning.",
       "stroke": "Follow the guide, then use the writing area to practice.",
-      "review": "Compare your writing with the answer and mark what was strong."
+      "review": "Compare your writing with the answer and mark what was strong.",
+      "type": "Type the answer from memory. This is the standard writing mode after the early handwriting lessons."
     },
     "status": {
       "loadingNotebook": "Loading writing notebook...",
@@ -1211,7 +1298,9 @@
     "savedReason": "Saved from writing practice for another pass.",
     "selfTestReason": "Saved from writing practice for a quick self-test.",
     "hideNotebook": "Hide notebook",
-    "showNotebook": "Show notebook"
+    "showNotebook": "Show notebook",
+    "typePlaceholder": "Type your answer here...",
+    "typeAriaLabel": "Typed writing answer"
   },
   "institution": {
     "kicker": "Institution",
@@ -1276,7 +1365,43 @@
     },
     "snapshotsKicker": "Learner snapshots",
     "needsHelpTitle": "Needs attention",
-    "noNeedsHelpLearners": "No learners currently need extra attention."
+    "noNeedsHelpLearners": "No learners currently need extra attention.",
+    "groupSaved": "Group saved.",
+    "groupSaveFailed": "Could not save this group.",
+    "group": "Group",
+    "noGroup": "No group",
+    "allowedTargetLanguages": "Allowed target languages",
+    "allowedTargetLanguagesHelp": "Learners using this institution access can choose only these target languages.",
+    "defaultTargetLanguage": "Default target language",
+    "noDefaultLanguage": "No default",
+    "allowLanguageRequests": "Allow learners to request another language",
+    "groupsKicker": "Groups",
+    "groupsTitle": "Learning groups",
+    "noGroupsYet": "Create a group to manage language access for a class, cohort, or team.",
+    "groupUsesOrgPolicy": "Uses organization language policy",
+    "groupName": "Group name",
+    "groupNamePlaceholder": "Example: Beginner evening class",
+    "groupLanguages": "Group target languages",
+    "groupLanguagesHelp": "Leave empty to use the organization policy, or select languages for this group only.",
+    "createGroup": "Create group",
+    "testingKicker": "Level checks",
+    "testingTitle": "Tests and certificates",
+    "recentAttempts": "Recent attempts",
+    "certificatesIssued": "Certificates issued",
+    "learner": "Learner",
+    "noTestAttempts": "No level checks submitted yet.",
+    "certificateLogoInvalid": "Use a PNG, JPG, or WebP logo under 600 KB.",
+    "certificateLogoReadFailed": "Could not read that logo file.",
+    "certificateBrandingSaved": "Certificate branding saved.",
+    "certificateBrandingFailed": "Could not save certificate branding. Use a PNG, JPG, or WebP logo under 600 KB.",
+    "certificateBrandingRemoved": "Certificate logo removed.",
+    "certificateBrandingKicker": "Certificates",
+    "certificateBrandingTitle": "Certificate branding",
+    "certificateBrandingHelp": "Institution certificates use the same design as personal certificates, with this logo and institution name added.",
+    "chooseCertificateLogo": "Choose logo",
+    "saveCertificateBranding": "Save certificate logo",
+    "removeCertificateLogo": "Remove logo",
+    "certificateLogoRequirement": "Use a clean PNG, JPG, or WebP logo under 600 KB. Transparent logos usually look best."
   },
   "certificates": {
     "kicker": "Certificate",
@@ -1308,7 +1433,32 @@
     "viewPlans": "View plans",
     "signIn": "Sign in",
     "issuedSuccess": "Certificate issued.",
-    "issueFailed": "Could not issue certificate."
+    "issueFailed": "Could not issue certificate.",
+    "levelCertificateTitle": "Level {{level}} certificate",
+    "proficiencyTitle": "Proficiency Certificate",
+    "institutionProficiencyTitle": "Proficiency Certificate",
+    "levelCompletionTitle": "Level Completion Certificate",
+    "institutionCompletionTitle": "Level Completion Certificate",
+    "level": "Level",
+    "levelNumber": "Level {{level}}",
+    "score": "Score",
+    "organization": "Organization",
+    "institutionLogoAlt": "{{organization}} logo",
+    "issuedThrough": "Issued through",
+    "certificateIssuedThrough": "Certificate issued through",
+    "institution": "Institution",
+    "verifiedProficiency": "Verified proficiency certificate",
+    "verifiedCompletion": "Verified completion certificate",
+    "proficiencyStatement": "Demonstrated proficiency for Level {{level}}",
+    "levelCompletionStatement": "Completed Level {{level}}",
+    "completionStatement": "Completed the required learning activity",
+    "actions": "Certificate actions",
+    "downloading": "Preparing...",
+    "download": "Download",
+    "nativeVersion": "Native language: {{language}}",
+    "targetVersion": "Target language: {{language}}",
+    "bilingualVersion": "Bilingual: native + target",
+    "languageControl": "Certificate language"
   },
   "adminBilling": {
     "title": "Subscriptions and institutions",
@@ -1611,7 +1761,10 @@
     "recentWordsEmptyAction": "Saved words and useful phrases will collect here after class or conversation practice.",
     "startAClass": "Start a class",
     "milestonesEmptyAction": "Your first completed lesson, saved phrase, or certificate will appear here.",
-    "earnFirstMilestone": "Earn the first milestone"
+    "earnFirstMilestone": "Earn the first milestone",
+    "repairPlanTitle": "Repair focus",
+    "repairPlanValue": "Worth revisiting",
+    "repairPlanBody": "A few weak or checkpoint items are ready for focused practice before you move too far ahead."
   },
   "adminAnalytics": {
     "features": {
@@ -1651,5 +1804,64 @@
     "speaking": "Speaking",
     "reading": "Reading",
     "writing": "Writing"
+  },
+  "levelTests": {
+    "kicker": "Level checks",
+    "levelLabel": "Level {{level}}",
+    "passed": "Passed",
+    "reviewRecommended": "Review recommended",
+    "tasks": {
+      "chooseTarget": "Choose the target-language answer.",
+      "chooseMeaning": "Choose the best meaning.",
+      "typeTarget": "Type the target-language answer.",
+      "shortResponse": "Answer in the target language, then score your response.",
+      "default": "Answer the question."
+    },
+    "skills": {
+      "general": "General"
+    },
+    "institutionContext": "Institution",
+    "personalContext": "Personal",
+    "loadFailed": "Could not load level testing right now.",
+    "startFailed": "This test is not ready yet.",
+    "submitted": "Your test has been scored.",
+    "submitFailed": "Could not submit this test.",
+    "certificateReady": "Your certificate is ready.",
+    "certificateFailed": "Could not issue this certificate yet.",
+    "title": "Show what you can do",
+    "subtitle": "Complete a level check for progress, or take a proficiency check when you want stronger proof of ability.",
+    "verifyHint": "Certificates can be verified with their certificate ID.",
+    "certificates": "Certificates",
+    "context": "Context",
+    "allowedLanguages": "Available target languages",
+    "chooseLevel": "Choose level",
+    "testType": "Test type",
+    "start": "Start check",
+    "restrictedTarget": "This target language is not available in this institution context.",
+    "recent": "Recent",
+    "notSubmitted": "Not submitted",
+    "noRecent": "No level checks yet.",
+    "emptyTitle": "Choose a level check",
+    "emptyBody": "You will see a balanced set of vocabulary, grammar, reading, speaking, and writing tasks from the level you choose.",
+    "resultTitle": "Your result",
+    "questionsTitle": "Answer each task",
+    "passedBody": "You can issue a certificate for this result.",
+    "reviewBody": "Review the weak skills, then try again when ready.",
+    "certificateIssued": "Certificate issued",
+    "issueCertificate": "Issue certificate",
+    "writeAnswer": "Write your answer here...",
+    "selfGood": "Good",
+    "selfAlmost": "Almost",
+    "selfNeedsWork": "Needs work",
+    "correct": "Correct",
+    "missed": "Review this",
+    "submit": "Submit check",
+    "fullNameInvalid": "Enter at least two characters for your full name.",
+    "certificateNameKicker": "Certificate name",
+    "fullNameRequiredTitle": "Add your full name",
+    "fullNameRequiredBody": "Enter your full name exactly as it should appear on this certificate. You only need to do this before issuing a certificate.",
+    "fullNameLabel": "Full name",
+    "fullNamePlaceholder": "Your full name",
+    "saveNameAndIssue": "Save name and issue certificate"
   }
 }

@@ -24,7 +24,8 @@
     "search": "Buscar",
     "notSet": "No establecido",
     "all": "Toda",
-    "reset": "Reiniciar"
+    "reset": "Reiniciar",
+    "restart": "Reanudar"
   },
   "languages": {
     "en": "Inglés",
@@ -106,7 +107,9 @@
     "registrationFailed": "Error en el registro",
     "brandTagline": "Comienza tu viaje",
     "googleFailed": "Error al registrarse con Google. Por favor, inténtalo de nuevo.",
-    "signUpWithGoogle": "Regístrate con Google"
+    "signUpWithGoogle": "Regístrate con Google",
+    "fullNameOptional": "Nombre completo (opcional)",
+    "fullNameHint": "Puede agregar esto ahora o antes de emitir un certificado."
   },
   "navbar": {
     "continue": "Continuar",
@@ -220,7 +223,9 @@
       "sat": "S",
       "sun": "S"
     },
-    "contactDesc": "Preguntas, comentarios o un problema que informar"
+    "contactDesc": "Preguntas, comentarios o un problema que informar",
+    "decayBannerActive": "XP está decayendo: pérdida diaria {{rate}}%. Responde una pregunta para detenerlo.",
+    "decayBannerGrace": "La caída de XP comienza en {{hours}}h: pérdida diaria {{rate}}%. Sigue estudiando para prevenirlo."
   },
   "lessons": {
     "title": "{{language}} Lecciones",
@@ -339,7 +344,15 @@
     "studyMode": "Modo de estudio",
     "defaultMode": "Predeterminado",
     "readingMode": "Lectura",
-    "listeningMode": "Escucha"
+    "listeningMode": "Escucha",
+    "howDoYouSayThisIn": "¿Cómo se dice esto en {{language}}?",
+    "quizMode": {
+      "nativeAssisted": "Autoevaluación temprana: elija el significado en su idioma nativo.",
+      "targetWithNativeHints": "Construya el recuerdo: utilice la sugerencia nativa y luego elija la respuesta en el idioma de destino.",
+      "targetDominant": "Práctica independiente: la elección del idioma de destino supone la mayor parte del trabajo.",
+      "targetFirst": "Autoprueba avanzada: manténgase en el objetivo primero y utilice la ayuda solo cuando sea necesario.",
+      "standard": "Autotest guiado."
+    }
   },
   "flashcards": {
     "title": "Practicar Tarjetas",
@@ -438,7 +451,8 @@
     "savedForReview": "Guardado para revisión.",
     "saveForReviewFailed": "No se pudo guardar esta tarjeta en este momento.",
     "bookmarkedReason": "Marcado a partir de tarjetas didácticas.",
-    "selfTestReason": "Guardado de tarjetas didácticas para una autoevaluación rápida."
+    "selfTestReason": "Guardado de tarjetas didácticas para una autoevaluación rápida.",
+    "setFamiliarityLevel": "Establezca familiaridad en {{level}}"
   },
   "progress": {
     "title": "Tu progreso",
@@ -621,7 +635,11 @@
     "practicePromptsHint": "Muestra una pregunta de palabras rápidas con botones de acción, para que puedas responder desde la pantalla de notificación.",
     "notificationsAllowed": "Se permiten notificaciones en este dispositivo.",
     "notificationsBlocked": "Aún no se permiten notificaciones.",
-    "sendTestPrompt": "Enviar mensaje de prueba"
+    "sendTestPrompt": "Enviar mensaje de prueba",
+    "failedToUpdate": "No se pudo actualizar",
+    "fullName": "Nombre completo",
+    "fullNamePlaceholder": "Nombre para mostrar en los certificados",
+    "fullNameMissing": "Agregar antes de emitir un certificado"
   },
   "verifyEmail": {
     "verifying": "Verificando tu correo...",
@@ -1034,7 +1052,41 @@
     },
     "snapshotsKicker": "Instantáneas del alumno",
     "needsHelpTitle": "necesita atencion",
-    "noNeedsHelpLearners": "Actualmente, ningún alumno necesita atención adicional."
+    "noNeedsHelpLearners": "Actualmente, ningún alumno necesita atención adicional.",
+    "groupSaved": "Grupo guardado.",
+    "groupSaveFailed": "No se pudo guardar este grupo.",
+    "group": "Grupo",
+    "noGroup": "Ningún grupo",
+    "languagePolicy": "Política lingüística",
+    "allowedTargetLanguages": "Idiomas de destino permitidos",
+    "allowedTargetLanguagesHelp": "Los estudiantes que utilizan el acceso a esta institución pueden elegir solo estos idiomas de destino.",
+    "defaultTargetLanguage": "Idioma de destino predeterminado",
+    "noDefaultLanguage": "Sin valor predeterminado",
+    "groupsKicker": "Grupos",
+    "groupsTitle": "Grupos de aprendizaje",
+    "groupUsesOrgPolicy": "Utiliza la política lingüística de la organización.",
+    "noGroupsYet": "Cree un grupo para administrar el acceso al idioma para una clase, cohorte o equipo.",
+    "groupName": "Nombre del grupo",
+    "groupNamePlaceholder": "Ejemplo: clase nocturna para principiantes",
+    "groupLanguages": "Idiomas de destino del grupo",
+    "createGroup": "Crear grupo",
+    "testingKicker": "controles de nivel",
+    "testingTitle": "Pruebas y certificados",
+    "recentAttempts": "Intentos recientes",
+    "certificatesIssued": "Certificados emitidos",
+    "learner": "Aprendiza",
+    "mobileCertificateLogoName": "Logotipo de certificado móvil",
+    "certificateBrandingSaved": "Marca del certificado guardada.",
+    "certificateBrandingFailed": "No se pudo guardar la marca del certificado. Utilice una URL de imagen HTTPS o cargue un logotipo PNG, JPG o WebP de menos de 600 KB desde el panel web.",
+    "certificateBrandingRemoved": "Se eliminó el logotipo del certificado.",
+    "certificateBrandingKicker": "Certificados",
+    "certificateBrandingTitle": "Marca de certificado",
+    "certificateBrandingHelp": "Los certificados institucionales utilizan el mismo diseño que los certificados personales, con este logotipo y el nombre de la institución agregados.",
+    "certificateLogoUrl": "URL del logotipo del certificado o imagen de datos",
+    "certificateLogoUrlPlaceholder": "https://ejemplo.com/logo.png",
+    "mobileCertificateLogoHelp": "Pegue aquí la URL de una imagen HTTPS o utilice el panel web para cargar un archivo PNG, JPG o WebP.",
+    "saveCertificateBranding": "Guardar logotipo del certificado",
+    "removeCertificateLogo": "Quitar logotipo"
   },
   "errorBoundary": {
     "title": "algo salió mal",
@@ -1083,13 +1135,47 @@
       "intermediateSubtitle": "Unidades por tema para opiniones, cultura, salud, trabajo y confianza diaria.",
       "professionalTitle": "Nivel {{level}} - {{language}} profesional",
       "professionalSubtitle": "Lenguaje práctico para trabajo, servicios, vivienda, seguridad y situaciones formales.",
-      "grammarTitle": "Nivel {{level}} - Gramática avanzada",
-      "grammarSubtitle": "Grupos de patrones para conectar ideas con más control."
+      "grammarTitle": "Nivel {{level}} - Avanzado {{language}}",
+      "grammarSubtitle": "Grupos de patrones para conectar ideas con más control.",
+      "survivalTitle": "Nivel {{level}} - Esencial {{language}}",
+      "survivalSubtitle": "Desarrolle conceptos básicos prácticos para saludos, habitaciones, lugares, rutinas, compras y comida.",
+      "everydayTitle": "Nivel {{level}} - Todos los días {{language}}",
+      "everydaySubtitle": "Lecciones básicas cotidianas sobre saludos, comida, lugares, planes y situaciones diarias.",
+      "bridgeTitle": "Nivel {{level}} - Puente",
+      "bridgeSubtitle": "Unidades de revisión y transición que conectan el material cotidiano con un uso más independiente.",
+      "topicTitle": "Nivel {{level}} - Temático {{language}}",
+      "topicSubtitle": "Unidades temáticas para opiniones, cultura, salud, planes y expresión cotidiana segura.",
+      "advancedTitle": "Nivel {{level}} - Avanzado {{language}}",
+      "advancedSubtitle": "Tareas más largas de lectura, comprensión auditiva, expresión oral y escritura con un apoyo más ligero en el idioma nativo."
     },
     "titlePrefix": {
       "unit": "Nivel {{level}} · Unidad {{unit}}: {{title}}"
     },
-    "retry": "Intentar otra vez"
+    "retry": "Intentar otra vez",
+    "lessonsCount": "{{count}} lecciones",
+    "lessonRoles": {
+      "branch": "Rama de meta",
+      "checkpoint": "Control",
+      "repair": "Reparar",
+      "core": "Centro"
+    },
+    "lessonWeights": {
+      "deep": "Profunda",
+      "light": "Ligera",
+      "standard": "Estándar"
+    },
+    "requiredForProgress": "Requerida",
+    "programLevels": {
+      "kicker": "Nivel de aprendizaje",
+      "coreCount": "{{count}} núcleo",
+      "branchCount": "{{count}} sucursales",
+      "checkpointCount": "{{count}} puntos de control"
+    },
+    "singleTrackGuidanceKicker": "¿Por qué una clase?",
+    "singleTrackGuidanceTitle": "Comience enfocado y luego diversifique",
+    "singleTrackGuidanceBody": "Esta pista es intencionalmente compacta para que el primer paso parezca claro. Termine la clase aquí, luego pase al siguiente tema para una práctica más amplia.",
+    "singleTrackGuidanceStep1": "construir la base",
+    "singleTrackGuidanceStep2": "Continuar con el uso diario"
   },
   "classLesson": {
     "loading": "Cargando lección de clase...",
@@ -1231,7 +1317,46 @@
     "selfTestReason": "Guardado de clase para una autoevaluación rápida.",
     "previous": "Previa",
     "lessonGuide": "guía de lecciones",
-    "activityXOfY": "Actividad {{current}} de {{total}}"
+    "activityXOfY": "Actividad {{current}} de {{total}}",
+    "wrapUpReviewBody": "Vuelva a intentar elementos vencidos o débiles de esta clase.",
+    "wrapUpQuizBody": "Verifique su comprensión sin cargar el cuestionario hasta que comience.",
+    "wrapUpWritingBody": "Utilice el modo de escritura o escritura apropiado para el nivel.",
+    "wrapUpConversationPrompt": "Ayúdame a utilizar lo que acabo de aprender en una breve conversación.",
+    "wrapUpConversationBody": "Convierta la lección en un breve juego de roles.",
+    "learningPlan": {
+      "unplacedLevel": "Nivel de aprendizaje",
+      "moreActivities": "{{count}} más",
+      "level": "Nivel",
+      "support": "Apoyo",
+      "selfTest": "Autoprueba",
+      "writing": "Escribiendo",
+      "activities": "Larga practica",
+      "ariaLabel": "plan de aprendizaje de lecciones"
+    },
+    "supportLevels": {
+      "nativeGuided": "Fuerte soporte en idioma nativo",
+      "mixedGuided": "Objetivo equilibrado y soporte nativo",
+      "targetFirst": "Idioma de destino primero",
+      "immersionWithHelp": "Principalmente idioma de destino con ayuda disponible",
+      "standard": "Apoyo guiado"
+    },
+    "quizModes": {
+      "nativeAssisted": "Opciones de significado en tu lengua materna",
+      "targetWithNativeHints": "Opciones de idioma de destino con sugerencias nativas",
+      "targetDominant": "Principalmente opciones de idioma de destino",
+      "targetFirst": "Autoprueba del objetivo primero",
+      "standard": "Autotest guiado"
+    },
+    "writingModes": {
+      "handwritingFirst": "Trazar o copiar primero",
+      "typeWithWriteOption": "Escriba, con práctica de escritura disponible.",
+      "typedProduction": "Respuestas escritas de memoria",
+      "extendedTypedProduction": "Respuestas escritas más largas",
+      "standard": "Escribir o escribir"
+    },
+    "longActivities": {
+      "practice": "Práctica"
+    }
   },
   "exercise": {
     "kicker": "Ejercicio",
@@ -1390,7 +1515,8 @@
       "listen": "Escuche primero, luego escriba lo que escuche.",
       "meaning": "Utilice el significado para recordar y escribir el texto de destino.",
       "stroke": "Siga la guía y luego practique en el área de escritura.",
-      "review": "Compara tu escritura con la respuesta y marca lo que fue fuerte."
+      "review": "Compara tu escritura con la respuesta y marca lo que fue fuerte.",
+      "type": "Escriba la respuesta de memoria. Este es el modo de escritura estándar después de las primeras lecciones de escritura a mano."
     },
     "status": {
       "loadingNotebook": "Cargando cuaderno de escritura...",
@@ -1425,7 +1551,8 @@
     "selfTestReason": "Guardado de la práctica de escritura para una autoevaluación rápida.",
     "hideNotebook": "Ocultar cuaderno",
     "showNotebook": "Mostrar cuaderno",
-    "hideAddPanel": "Ocultar agregar panel"
+    "hideAddPanel": "Ocultar agregar panel",
+    "typePlaceholder": "Escribe tu respuesta aquí..."
   },
   "certificates": {
     "kicker": "Certificado",
@@ -1457,7 +1584,30 @@
     "viewPlans": "Ver planos",
     "signIn": "Iniciar sesión",
     "issuedSuccess": "Certificado emitido.",
-    "issueFailed": "No se pudo emitir el certificado."
+    "issueFailed": "No se pudo emitir el certificado.",
+    "levelCertificateTitle": "Certificado de nivel {{level}}",
+    "proficiencyTitle": "Certificado de competencia",
+    "institutionProficiencyTitle": "Certificado de competencia",
+    "levelCompletionTitle": "Certificado de finalización de nivel",
+    "institutionCompletionTitle": "Certificado de finalización de nivel",
+    "level": "Nivel",
+    "levelNumber": "Nivel {{level}}",
+    "score": "Puntaje",
+    "organization": "Organización",
+    "institutionLogoAlt": "Logotipo {{organization}}",
+    "issuedThrough": "Emitido a través de",
+    "institution": "Institución",
+    "verifiedProficiency": "Certificado de competencia verificado",
+    "verifiedCompletion": "Certificado de finalización verificado",
+    "proficiencyStatement": "Competencia demostrada para el nivel {{level}}",
+    "levelCompletionStatement": "Nivel completado {{level}}",
+    "completionStatement": "Completó la actividad de aprendizaje requerida.",
+    "download": "Descargar",
+    "languageControl": "Idioma del certificado",
+    "nativeVersionShort": "Nativa",
+    "targetVersionShort": "Objetivo",
+    "bilingualVersionShort": "Ambas",
+    "certificateIssuedThrough": "Certificado emitido a través de"
   },
   "learningHub": {
     "continueLearning": "Continuar aprendiendo",
@@ -1619,7 +1769,10 @@
     "recentWordsEmptyAction": "Las palabras guardadas y las frases útiles se recopilarán aquí después de la clase o la práctica de conversación.",
     "startAClass": "empezar una clase",
     "milestonesEmptyAction": "Su primera lección completa, frase guardada o certificado aparecerá aquí.",
-    "earnFirstMilestone": "Gana el primer hito"
+    "earnFirstMilestone": "Gana el primer hito",
+    "repairPlanTitle": "Enfoque de reparación",
+    "repairPlanValue": "Vale la pena volver a visitar",
+    "repairPlanBody": "Algunos puntos débiles o puntos de control están listos para una práctica concentrada antes de avanzar demasiado."
   },
   "resetPassword": {
     "title": "Restablecer contraseña",
@@ -1689,5 +1842,56 @@
     "speaking": "Discurso",
     "reading": "Lectura",
     "writing": "Escribiendo"
+  },
+  "levelTests": {
+    "kicker": "controles de nivel",
+    "levelLabel": "Nivel {{level}}",
+    "passed": "Aprobado",
+    "reviewRecommended": "Revisión recomendada",
+    "tasks": {
+      "chooseTarget": "Elija la respuesta en el idioma de destino.",
+      "chooseMeaning": "Elige el mejor significado.",
+      "typeTarget": "Escriba la respuesta en el idioma de destino.",
+      "shortResponse": "Responda en el idioma de destino y luego califique su respuesta.",
+      "default": "Responde la pregunta."
+    },
+    "institutionContext": "Institución",
+    "personalContext": "Personal",
+    "skills": {
+      "general": "General"
+    },
+    "loadFailed": "No se pudieron cargar las pruebas de nivel en este momento.",
+    "startFailed": "Esta prueba aún no está lista.",
+    "submitFailed": "No se pudo enviar esta prueba.",
+    "certificateReady": "Su certificado está listo.",
+    "certificateFailed": "Aún no se ha podido emitir este certificado.",
+    "title": "Muestra lo que puedes hacer",
+    "subtitle": "Complete una verificación de nivel para verificar su progreso o realice una verificación de competencia cuando desee una prueba más sólida de su capacidad.",
+    "context": "Contexto",
+    "allowedLanguages": "Idiomas de destino disponibles",
+    "chooseLevel": "Elige nivel",
+    "testType": "Tipo de prueba",
+    "restrictedTarget": "Este idioma de destino no está disponible en el contexto de esta institución.",
+    "start": "Iniciar verificación",
+    "emptyTitle": "Elija una verificación de nivel",
+    "emptyBody": "Verás un conjunto equilibrado de tareas de vocabulario, gramática, lectura, expresión oral y escritura del nivel que elijas.",
+    "resultTitle": "tu resultado",
+    "questionsTitle": "Responde cada tarea",
+    "certificateIssued": "Certificado emitido",
+    "issueCertificate": "Certificado de emisión",
+    "writeAnswer": "Escribe tu respuesta aquí...",
+    "selfNeedsWork": "necesita trabajo",
+    "selfAlmost": "Casi",
+    "selfGood": "Buena",
+    "correct": "Correcta",
+    "missed": "Revisa esto",
+    "submit": "enviar cheque",
+    "fullNameInvalid": "Ingrese al menos dos caracteres para su nombre completo.",
+    "certificateNameKicker": "Nombre del certificado",
+    "fullNameRequiredTitle": "Añade tu nombre completo",
+    "fullNameRequiredBody": "Ingrese su nombre completo exactamente como debería aparecer en este certificado. Solo necesita hacer esto antes de emitir un certificado.",
+    "fullNameLabel": "Nombre completo",
+    "fullNamePlaceholder": "Tu nombre completo",
+    "saveNameAndIssue": "Guardar nombre y emitir certificado"
   }
 }

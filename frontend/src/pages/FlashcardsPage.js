@@ -736,14 +736,32 @@ function FlashcardsPage() {
   handleNextRef.current = handleNext;
   handlePrevRef.current = handlePrev;
 
+  const mergeUpdatedCard = (flashcard, updatedFields = {}) => {
+    setFlashcards(prev => prev.map(fc =>
+      fc._id === flashcard._id ? { ...fc, ...updatedFields } : fc
+    ));
+  };
+
+  const clampMasteryLevel = (level) => Math.max(1, Math.min(5, Number(level) || 3));
+
+  const persistFlashcardReview = async (flashcard, payload) => {
+    if (!userId || flashcard?.isReviewSeed) return null;
+    const response = await flashcardService.updateFlashcard(flashcard._id, {
+      ...payload,
+      nativeLang: nativeLangCode,
+    });
+    return response.data || null;
+  };
+
   // Fade — user knows this card, increase mastery (stay on card)
   const handleCorrect = async () => {
     try {
       const flashcard = activeFlashcards[currentIndex];
-      if (flashcard.masteryLevel >= 5) return; // already maxed
+      const currentLevel = clampMasteryLevel(flashcard.masteryLevel);
 
+      let serverCard = null;
       if (userId) {
-        await flashcardService.updateFlashcard(flashcard._id, { isCorrect: true });
+        serverCard = await persistFlashcardReview(flashcard, { isCorrect: true });
         await progressService.recordProgress({
           userId,
           skillType: 'reading',
@@ -764,15 +782,16 @@ function FlashcardsPage() {
       const updatedFlashcards = flashcards.map(fc =>
         fc._id === flashcard._id ? {
           ...fc,
-          correctCount: fc.correctCount + 1,
-          masteryLevel: Math.min(fc.masteryLevel + 1, 5),
+          correctCount: (fc.correctCount || 0) + 1,
+          masteryLevel: Math.min(currentLevel + 1, 5),
+          ...(serverCard || {}),
         } : fc
       );
       setFlashcards(updatedFlashcards);
       setStarPulse('up');
       setTimeout(() => setStarPulse(null), 600);
     } catch (err) {
-      setError(t('flashcards.failedToRecord'));
+      setError(t('flashcards.failedToRecord', 'Could not save this review yet.'));
       console.error('Error:', err);
     }
   };
@@ -781,12 +800,13 @@ function FlashcardsPage() {
   const handleIncorrect = async () => {
     try {
       const flashcard = activeFlashcards[currentIndex];
-      if (flashcard.masteryLevel <= 1) return; // already at minimum
+      const currentLevel = clampMasteryLevel(flashcard.masteryLevel);
 
       const isDefaultCard = flashcard.isDefault === true;
 
+      let serverCard = null;
       if (userId) {
-        await flashcardService.updateFlashcard(flashcard._id, { isCorrect: false });
+        serverCard = await persistFlashcardReview(flashcard, { isCorrect: false });
         if (!isDefaultCard) {
           await progressService.recordProgress({
             userId,
@@ -803,16 +823,38 @@ function FlashcardsPage() {
       const updatedFlashcards = flashcards.map(fc =>
         fc._id === flashcard._id ? {
           ...fc,
-          incorrectCount: fc.incorrectCount + 1,
-          masteryLevel: Math.max(fc.masteryLevel - 1, 1),
+          incorrectCount: (fc.incorrectCount || 0) + 1,
+          masteryLevel: Math.max(currentLevel - 1, 1),
+          ...(serverCard || {}),
         } : fc
       );
       setFlashcards(updatedFlashcards);
       setStarPulse('down');
       setTimeout(() => setStarPulse(null), 600);
     } catch (err) {
-      setError(t('flashcards.failedToRecord'));
+      setError(t('flashcards.failedToRecord', 'Could not save this review yet.'));
       console.error('Error:', err);
+    }
+  };
+
+  const handleMasteryRating = async (level) => {
+    const flashcard = activeFlashcards[currentIndex];
+    if (!flashcard) return;
+
+    const masteryLevel = clampMasteryLevel(level);
+    const previousLevel = clampMasteryLevel(flashcard.masteryLevel);
+    mergeUpdatedCard(flashcard, { masteryLevel });
+    setStarPulse(masteryLevel >= previousLevel ? 'up' : 'down');
+    setTimeout(() => setStarPulse(null), 600);
+
+    try {
+      const serverCard = await persistFlashcardReview(flashcard, { masteryLevel });
+      if (serverCard) {
+        mergeUpdatedCard(flashcard, serverCard);
+      }
+    } catch (err) {
+      setError(t('flashcards.failedToRecord', 'Could not save this review yet.'));
+      mergeUpdatedCard(flashcard, { masteryLevel: previousLevel });
     }
   };
 
@@ -877,6 +919,7 @@ function FlashcardsPage() {
     const params = new URLSearchParams({
       savedText: displayTarget,
       nativeText: displayNative || '',
+      level: String(current?.learningLevel || current?.firstIntroducedLevel || ''),
     });
     navigate(`/writing?${params.toString()}`);
   };
@@ -899,21 +942,38 @@ function FlashcardsPage() {
     } catch (_) {}
   };
 
-  const getMasteryStars = (level, animated = false) => {
+  const getMasteryStars = (level, animated = false, interactive = false) => {
+    const safeLevel = clampMasteryLevel(level);
     return Array.from({ length: 5 }, (_, i) => {
-      const filled = i < level;
+      const starLevel = i + 1;
+      const filled = starLevel <= safeLevel;
       // Highlight the star that just changed
       const isChangingStar = animated && starPulse && (
-        (starPulse === 'up' && i === level - 1) ||
-        (starPulse === 'down' && i === level)
+        (starPulse === 'up' && starLevel === safeLevel) ||
+        (starPulse === 'down' && starLevel === safeLevel + 1)
       );
-      return (
+      const star = (
         <span
-          key={i}
           className={`mastery-star ${filled ? 'star-filled' : 'star-empty'}${isChangingStar ? ' star-pulse' : ''}`}
+          aria-hidden="true"
         >
           {filled ? '★' : '☆'}
         </span>
+      );
+      if (!interactive) return <span key={starLevel}>{star}</span>;
+      return (
+        <button
+          type="button"
+          key={starLevel}
+          className="mastery-star-button"
+          onClick={() => handleMasteryRating(starLevel)}
+          aria-label={t('flashcards.setFamiliarityLevel', {
+            level: starLevel,
+            defaultValue: 'Set familiarity to {{level}}',
+          })}
+        >
+          {star}
+        </button>
       );
     });
   };
@@ -1181,7 +1241,7 @@ function FlashcardsPage() {
                   <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: (selectedCategories.size > 0 || selectedCardIds.size > 0) ? activeFlashcards.length : (totalCards || activeFlashcards.length) })}</span>
                   <span className="mastery-display">
                     <span className="mastery-label">{t('flashcards.familiarity', 'Familiarity')}</span>
-                    {getMasteryStars(current?.masteryLevel, true)}
+                    {getMasteryStars(current?.masteryLevel, true, true)}
                   </span>
                 </div>
                 <div className="progress-bar">
@@ -1204,7 +1264,7 @@ function FlashcardsPage() {
                   <div className="progress-text">
                     <span>{t('flashcards.cardXOfY', { current: currentIndex + 1, total: (selectedCategories.size > 0 || selectedCardIds.size > 0) ? activeFlashcards.length : (totalCards || activeFlashcards.length) })}</span>
                     <span className="mastery-display">
-                      {getMasteryStars(current?.masteryLevel, true)}
+                      {getMasteryStars(current?.masteryLevel, true, true)}
                     </span>
                   </div>
                   <div className="progress-bar">

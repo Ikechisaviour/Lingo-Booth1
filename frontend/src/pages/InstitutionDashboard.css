@@ -237,7 +237,7 @@
 
 .institution-invite-form {
   display: grid;
-  grid-template-columns: minmax(180px, 1fr) 150px auto;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 12px;
   padding: 14px;
   margin-bottom: 16px;
@@ -286,13 +286,19 @@
 
 .institution-profile-form,
 .institution-plan-list,
-.institution-recent-list {
+.institution-recent-list,
+.institution-group-form,
+.institution-group-list,
+.institution-language-policy,
+.institution-test-list,
+.institution-certificate-branding {
   display: grid;
   gap: 12px;
 }
 
 .institution-plan-list > div,
-.institution-recent-list > div {
+.institution-recent-list > div,
+.institution-test-list > div {
   display: flex;
   justify-content: space-between;
   gap: 12px;
@@ -300,6 +306,163 @@
   border-radius: 12px;
   background: var(--bg-secondary);
   border: 1px solid var(--border-light);
+}
+
+.institution-member-controls,
+.institution-group-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.institution-group-form input,
+.institution-group-form textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font: inherit;
+}
+
+.institution-group-form input {
+  min-height: 42px;
+  padding: 0 12px;
+}
+
+.institution-group-form textarea {
+  padding: 12px;
+  resize: vertical;
+}
+
+.institution-group-card {
+  display: grid;
+  gap: 5px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  background: var(--bg-secondary);
+}
+
+.institution-group-card span,
+.institution-group-card small {
+  color: var(--text-secondary);
+}
+
+.institution-language-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.institution-language-grid button {
+  min-height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 800;
+  text-align: left;
+  padding: 0 10px;
+}
+
+.institution-language-grid button.active {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.institution-inline-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.institution-inline-check input {
+  width: 18px;
+  height: 18px;
+}
+
+.institution-certificate-preview {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid var(--primary-border-soft);
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--surface), var(--primary-soft));
+}
+
+.institution-certificate-preview span,
+.institution-certificate-preview small {
+  display: block;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.institution-certificate-preview strong {
+  display: block;
+  margin: 4px 0;
+  color: var(--text-primary);
+}
+
+.institution-certificate-logo-preview {
+  width: 64px;
+  height: 64px;
+  flex: 0 0 64px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid var(--primary-border-soft);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.institution-certificate-logo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
+
+.institution-certificate-logo-preview span {
+  color: var(--primary);
+  font-size: 1.05rem;
+  font-weight: 900;
+}
+
+.institution-file-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px dashed var(--primary-border-soft);
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.institution-file-button input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.institution-branding-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.institution-branding-note {
+  margin: 0;
+  font-size: 0.86rem;
 }
 
 @media (max-width: 980px) {
@@ -330,6 +493,14 @@
 
   .institution-panel {
     padding: 16px;
+  }
+
+  .institution-certificate-preview {
+    align-items: flex-start;
+  }
+
+  .institution-branding-actions {
+    grid-template-columns: 1fr;
   }
 
   .institution-primary,

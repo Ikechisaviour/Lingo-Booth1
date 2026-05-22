@@ -51,6 +51,7 @@ const RegisterScreen: React.FC = () => {
   const brandWordmarkWidth = useWideLayout ? (layout.isWideShort ? 172 : 218) : 180;
 
   const [username, setUsername] = useState('');
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -138,12 +139,17 @@ const RegisterScreen: React.FC = () => {
         guestXP,
         nativeLanguage,
         targetLanguage,
+        fullName.trim(),
       );
       clearGuestXP();
       const { token, user } = response.data;
       login({ token, user });
     } catch (err: any) {
-      setError(err.response?.data?.message || t('register.registrationFailed'));
+      setError(
+        err.response?.data?.code === 'FULL_NAME_INVALID'
+          ? t('levelTests.fullNameInvalid', 'Enter at least two characters for your full name.')
+          : err.response?.data?.message || t('register.registrationFailed')
+      );
     } finally {
       setLoading(false);
     }
@@ -247,6 +253,21 @@ const RegisterScreen: React.FC = () => {
               outlineColor={colors.border}
               activeOutlineColor={colors.primary}
             />
+
+            <TextInput
+              label={t('register.fullNameOptional', 'Full name (optional)')}
+              value={fullName}
+              onChangeText={setFullName}
+              mode="outlined"
+              autoCapitalize="words"
+              autoComplete="name"
+              style={styles.input}
+              outlineColor={colors.border}
+              activeOutlineColor={colors.primary}
+            />
+            <Text style={styles.fieldHint}>
+              {t('register.fullNameHint', 'You can add this now or before issuing a certificate.')}
+            </Text>
 
             <TextInput
               label={t('register.email')}
@@ -403,6 +424,7 @@ const styles = StyleSheet.create({
   subtitle: { color: colors.textSecondary, marginBottom: 20 },
   input: { marginBottom: 12, backgroundColor: colors.surface },
   validationText: { fontSize: 13, marginTop: -8, marginBottom: 8, marginLeft: 4 },
+  fieldHint: { color: colors.textSecondary, fontSize: 12, marginTop: -8, marginBottom: 10, marginLeft: 4 },
   primaryButton: { marginTop: 8, borderRadius: 10, backgroundColor: colors.primary },
   buttonLabel: { fontSize: 16, fontWeight: '600', paddingVertical: 4 },
   googleButton: {

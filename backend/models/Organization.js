@@ -16,8 +16,50 @@ const organizationSchema = new mongoose.Schema({
   },
   type: {
     type: String,
-    enum: ['school', 'company', 'church', 'language_center', 'nonprofit', 'government', 'other'],
+    enum: ['school', 'company', 'church', 'religious', 'language_center', 'nonprofit', 'government', 'other'],
     default: 'other',
+  },
+  allowedTargetLanguages: {
+    type: [String],
+    default: [],
+  },
+  defaultTargetLanguage: {
+    type: String,
+    maxlength: 20,
+    default: '',
+    trim: true,
+  },
+  allowLanguageRequests: {
+    type: Boolean,
+    default: true,
+  },
+  certificateBranding: {
+    logoUrl: {
+      type: String,
+      default: '',
+      maxlength: 900000,
+    },
+    logoOriginalName: {
+      type: String,
+      default: '',
+      maxlength: 180,
+      trim: true,
+    },
+    logoMimeType: {
+      type: String,
+      default: '',
+      maxlength: 40,
+      trim: true,
+    },
+    logoUploadedAt: {
+      type: Date,
+      default: null,
+    },
+    logoUpdatedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
+    },
   },
   planId: {
     type: String,

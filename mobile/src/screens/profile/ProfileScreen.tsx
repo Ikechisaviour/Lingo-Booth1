@@ -40,7 +40,7 @@ const ProfileScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
-  const { userId, username, userRole, subscriptionTier, aiEntitlements, logout, setChallengeMode, challengeMode } = useAuthStore();
+  const { userId, username, fullName, userRole, subscriptionTier, aiEntitlements, logout, setChallengeMode, challengeMode, setFullName } = useAuthStore();
   const {
     nativeLanguage,
     targetLanguage,
@@ -68,6 +68,7 @@ const ProfileScreen: React.FC = () => {
   // Edit state
   const [isEditing, setIsEditing] = useState(false);
   const [editUsername, setEditUsername] = useState(username || '');
+  const [editFullName, setEditFullName] = useState(fullName || '');
   const [saveMessage, setSaveMessage] = useState('');
 
   // Password state
@@ -137,6 +138,8 @@ const ProfileScreen: React.FC = () => {
       setLearningHub(hubRes.data);
       setCertificates(certRes.data?.certificates || []);
       setEditUsername(userRes.data.username);
+      setEditFullName(userRes.data.fullName || '');
+      setFullName(userRes.data.fullName || null);
       if (userRes.data.preferredVoices && typeof userRes.data.preferredVoices === 'object') {
         setVoiceMap(userRes.data.preferredVoices);
       }
@@ -147,7 +150,7 @@ const ProfileScreen: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  }, [userId, t]);
+  }, [userId, t, setFullName]);
 
   useEffect(() => {
     fetchData();
@@ -245,16 +248,23 @@ const ProfileScreen: React.FC = () => {
     }
   };
 
-  const handleSaveUsername = async () => {
+  const handleSaveProfile = async () => {
     if (!userId || !editUsername.trim()) return;
     try {
-      await userService.updateProfile(userId, { username: editUsername.trim() });
+      await userService.updateProfile(userId, { username: editUsername.trim(), fullName: editFullName.trim() });
       useAuthStore.getState().setUsername(editUsername.trim());
+      setFullName(editFullName.trim() || null);
+      setUser((current: any) => ({ ...(current || {}), username: editUsername.trim(), fullName: editFullName.trim() || '' }));
       setIsEditing(false);
       setSaveMessage(t('profilePage.saved', 'Saved!'));
       setTimeout(() => setSaveMessage(''), 2000);
     } catch (err: any) {
-      Alert.alert('Error', err.response?.data?.message || 'Failed to update');
+      Alert.alert(
+        t('common.error', 'Error'),
+        err.response?.data?.code === 'FULL_NAME_INVALID'
+          ? t('levelTests.fullNameInvalid', 'Enter at least two characters for your full name.')
+          : err.response?.data?.message || t('profilePage.failedToUpdate', 'Failed to update')
+      );
     }
   };
 
@@ -437,10 +447,10 @@ const ProfileScreen: React.FC = () => {
                   </Button>
                 ) : (
                   <View style={{ flexDirection: 'row', gap: 8 }}>
-                    <Button mode="text" onPress={() => { setIsEditing(false); setEditUsername(user?.username || ''); }} compact>
+                    <Button mode="text" onPress={() => { setIsEditing(false); setEditUsername(user?.username || ''); setEditFullName(user?.fullName || ''); }} compact>
                       {t('common.cancel', 'Cancel')}
                     </Button>
-                    <Button mode="contained" onPress={handleSaveUsername} compact>
+                    <Button mode="contained" onPress={handleSaveProfile} compact>
                       {t('profilePage.save', 'Save')}
                     </Button>
                   </View>
@@ -449,18 +459,34 @@ const ProfileScreen: React.FC = () => {
               {saveMessage && <Text style={styles.successMsg}>{saveMessage}</Text>}
 
               {isEditing ? (
-                <TextInput
-                  label={t('profilePage.username', 'Username')}
-                  value={editUsername}
-                  onChangeText={setEditUsername}
-                  mode="outlined"
-                  style={styles.input}
-                />
+                <>
+                  <TextInput
+                    label={t('profilePage.username', 'Username')}
+                    value={editUsername}
+                    onChangeText={setEditUsername}
+                    mode="outlined"
+                    style={styles.input}
+                  />
+                  <TextInput
+                    label={t('profilePage.fullName', 'Full name')}
+                    value={editFullName}
+                    onChangeText={setEditFullName}
+                    mode="outlined"
+                    autoCapitalize="words"
+                    autoComplete="name"
+                    placeholder={t('profilePage.fullNamePlaceholder', 'Name to show on certificates')}
+                    style={styles.input}
+                  />
+                </>
               ) : (
                 <>
                   <View style={styles.infoRow}>
                     <Text style={styles.infoLabel}>{t('profilePage.username', 'Username')}</Text>
                     <Text style={styles.infoValue}>{user?.username || username || t('profilePage.unknown', 'Unknown')}</Text>
+                  </View>
+                  <View style={styles.infoRow}>
+                    <Text style={styles.infoLabel}>{t('profilePage.fullName', 'Full name')}</Text>
+                    <Text style={styles.infoValue}>{user?.fullName || fullName || t('profilePage.fullNameMissing', 'Add before issuing a certificate')}</Text>
                   </View>
                   <View style={styles.infoRow}>
                     <Text style={styles.infoLabel}>{t('profilePage.email', 'Email')}</Text>
@@ -526,7 +552,12 @@ const ProfileScreen: React.FC = () => {
               </View>
               {certificates.slice(0, 4).map((certificate: any) => (
                 <View key={certificate.certificateId} style={styles.historyRow}>
-                  <Text style={styles.historyTitle}>{certificate.classLessonTitle || t('certificates.issuedTitle')}</Text>
+                  <Text style={styles.historyTitle}>
+                    {certificate.classLessonTitle
+                      || (certificate.level
+                        ? t('certificates.levelCertificateTitle', 'Level {{level}} certificate', { level: certificate.level })
+                        : t('certificates.issuedTitle', 'Certificate issued'))}
+                  </Text>
                   <Text style={styles.hintText}>{certificate.issuedAt ? new Date(certificate.issuedAt).toLocaleDateString() : ''}</Text>
                 </View>
               ))}

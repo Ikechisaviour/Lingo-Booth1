@@ -1,0 +1,415 @@
+.level-test-page {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 28px 0 56px;
+  color: var(--text-primary);
+}
+
+.level-test-hero,
+.level-test-card,
+.level-test-workspace,
+.level-test-notice {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 18px;
+  box-shadow: var(--card-shadow);
+}
+
+.level-test-hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 28px;
+  background:
+    radial-gradient(circle at top left, rgba(82, 204, 0, 0.12), transparent 32%),
+    var(--surface);
+}
+
+.level-test-kicker {
+  margin: 0 0 8px;
+  color: var(--primary);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.level-test-hero h1,
+.level-test-workspace h2 {
+  margin: 0;
+  line-height: 1.08;
+}
+
+.level-test-hero h1 {
+  font-size: clamp(2rem, 4vw, 3.6rem);
+}
+
+.level-test-hero p,
+.level-test-hint,
+.level-test-question-head p {
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.level-test-pair {
+  display: inline-flex;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-weight: 800;
+}
+
+.level-test-shell {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
+  gap: 18px;
+  margin-top: 18px;
+  align-items: start;
+}
+
+.level-test-setup {
+  display: grid;
+  gap: 14px;
+  position: sticky;
+  top: 92px;
+}
+
+.level-test-card {
+  padding: 18px;
+}
+
+.level-test-contexts,
+.level-test-levels,
+.level-test-modes,
+.level-test-options,
+.level-test-self-score {
+  display: grid;
+  gap: 8px;
+}
+
+.level-test-levels {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.level-test-modes button {
+  display: grid;
+  gap: 4px;
+  text-align: left;
+}
+
+.level-test-modes span {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.level-test-contexts button,
+.level-test-levels button,
+.level-test-modes button,
+.level-test-options button,
+.level-test-self-score button,
+.level-test-secondary,
+.level-test-primary {
+  min-height: 42px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text-primary);
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.level-test-contexts button.active,
+.level-test-levels button.active,
+.level-test-modes button.active,
+.level-test-options button.selected,
+.level-test-self-score button.selected {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.level-test-primary,
+.level-test-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+}
+
+.level-test-primary {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: white;
+  box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.12);
+}
+
+.level-test-primary.full {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.level-test-primary.submit {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.level-test-primary:disabled,
+.level-test-secondary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.level-test-notice {
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-color: rgba(82, 204, 0, 0.35);
+  background: rgba(82, 204, 0, 0.08);
+  color: var(--primary);
+  font-weight: 800;
+}
+
+.level-test-notice.error {
+  border-color: rgba(255, 80, 80, 0.35);
+  background: rgba(255, 80, 80, 0.08);
+  color: var(--accent-red);
+}
+
+.level-test-workspace {
+  min-height: 680px;
+  padding: 20px;
+}
+
+.level-test-empty {
+  min-height: 520px;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.level-test-empty svg {
+  width: 42px;
+  height: 42px;
+  color: var(--primary);
+}
+
+.level-test-workspace-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.level-test-result {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+}
+
+.level-test-result strong {
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  line-height: 1;
+}
+
+.level-test-result.passed {
+  border-color: rgba(82, 204, 0, 0.45);
+  background: rgba(82, 204, 0, 0.08);
+}
+
+.level-test-weak {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.level-test-weak span,
+.level-test-recent {
+  border-radius: 999px;
+  background: var(--bg-secondary);
+  padding: 7px 10px;
+  font-weight: 800;
+}
+
+.level-test-questions {
+  display: grid;
+  gap: 14px;
+}
+
+.level-test-question {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--bg-secondary);
+}
+
+.level-test-question-head {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.level-test-question-head > span {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.level-test-stem {
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.level-test-stem.target {
+  font-size: 1.1rem;
+}
+
+.level-test-options {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.level-test-options button {
+  min-height: 56px;
+  padding: 10px 12px;
+  text-align: left;
+  white-space: normal;
+  line-height: 1.35;
+}
+
+.level-test-written textarea {
+  width: 100%;
+  min-height: 104px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 12px;
+  resize: vertical;
+  font: inherit;
+}
+
+.level-test-self-score {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 8px;
+}
+
+.level-test-correctness {
+  font-weight: 900;
+  color: var(--accent-red);
+}
+
+.level-test-correctness.correct {
+  color: var(--primary);
+}
+
+.level-test-recent {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 12px;
+  margin-top: 8px;
+}
+
+.level-test-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(11, 16, 38, 0.38);
+}
+
+.level-test-name-modal {
+  width: min(100%, 480px);
+  display: grid;
+  gap: 12px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  box-shadow: 0 24px 80px rgba(11, 16, 38, 0.22);
+}
+
+.level-test-name-modal h2,
+.level-test-name-modal p {
+  margin: 0;
+}
+
+.level-test-name-modal label {
+  font-weight: 900;
+}
+
+.level-test-name-modal input {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0 14px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font: inherit;
+}
+
+.level-test-name-modal input:focus {
+  outline: 2px solid var(--primary-soft);
+  border-color: var(--primary);
+}
+
+.level-test-name-error {
+  color: var(--accent-red);
+  font-weight: 800;
+}
+
+.level-test-name-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .level-test-page {
+    width: min(100% - 20px, 720px);
+    padding-top: 14px;
+  }
+
+  .level-test-hero,
+  .level-test-workspace-head {
+    flex-direction: column;
+  }
+
+  .level-test-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .level-test-setup {
+    position: static;
+  }
+
+  .level-test-options,
+  .level-test-self-score {
+    grid-template-columns: 1fr;
+  }
+}

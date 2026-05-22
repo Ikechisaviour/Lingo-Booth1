@@ -170,8 +170,8 @@ api.interceptors.response.use(
 // --- Service objects ---
 
 export const authService = {
-  register: (username: string, email: string, password: string, guestXP: number, nativeLanguage: string, targetLanguage: string) =>
-    api.post('/auth/register', { username, email, password, guestXP, nativeLanguage, targetLanguage }),
+  register: (username: string, email: string, password: string, guestXP: number, nativeLanguage: string, targetLanguage: string, fullName: string = '') =>
+    api.post('/auth/register', { username, email, password, guestXP, nativeLanguage, targetLanguage, fullName }),
   login: (email: string, password: string, guestXP: number) =>
     api.post('/auth/login', { email, password, guestXP }),
   trackActivity: (userId: string, timeSpent: number) =>
@@ -323,6 +323,11 @@ export const certificateService = {
     api.get('/certificates'),
   verify: (certificateId: string) =>
     api.get(`/certificates/verify/${certificateId}`),
+  downloadUrl: (certificateId: string, certificateLanguage = 'en') => {
+    const baseUrl = API_URL.replace(/\/+$/, '');
+    const language = encodeURIComponent(normalizeLanguageCode(certificateLanguage) || 'en');
+    return `${baseUrl}/certificates/verify/${encodeURIComponent(certificateId)}/download?certLang=${language}`;
+  },
   getClassLessonStatus: (classLessonId: string) => {
     const { targetLang, nativeLang } = currentLanguageParams();
     return api.get(`/certificates/class-lessons/${classLessonId}/status`, {
@@ -363,10 +368,56 @@ export const billingService = {
     api.post('/billing/institutional-inquiry', { ...payload, source: 'mobile' }, { timeout: 30000 }),
   getInstitutionDashboard: (organizationId = '') =>
     api.get('/billing/institution/dashboard', { params: organizationId ? { organizationId } : {} }),
+  updateInstitutionProfile: (organizationId: string, payload: Record<string, any>) =>
+    api.put(`/billing/institution/organizations/${organizationId}`, payload),
+  updateInstitutionCertificateBranding: (organizationId: string, payload: Record<string, any>) =>
+    api.put(`/billing/institution/organizations/${organizationId}/certificate-branding`, payload),
+  createInstitutionGroup: (organizationId: string, payload: Record<string, any>) =>
+    api.post(`/billing/institution/organizations/${organizationId}/groups`, payload),
+  updateInstitutionGroup: (organizationId: string, groupId: string, payload: Record<string, any>) =>
+    api.put(`/billing/institution/organizations/${organizationId}/groups/${groupId}`, payload),
   addInstitutionMember: (organizationId: string, payload: Record<string, any>) =>
     api.post(`/billing/institution/organizations/${organizationId}/members`, payload),
   updateInstitutionMember: (organizationId: string, membershipId: string, payload: Record<string, any>) =>
     api.put(`/billing/institution/organizations/${organizationId}/members/${membershipId}`, payload),
+};
+
+export const levelTestService = {
+  getContexts: () =>
+    api.get('/level-tests/contexts'),
+  getOverview: (params: { contextType?: string; organizationId?: string; targetLanguage?: string; nativeLanguage?: string } = {}) => {
+    const stored = currentLanguageParams();
+    return api.get('/level-tests/overview', {
+      params: {
+        contextType: params.contextType || 'personal',
+        organizationId: params.organizationId || '',
+        targetLang: params.targetLanguage || stored.targetLang,
+        nativeLang: params.nativeLanguage || stored.nativeLang,
+      },
+    });
+  },
+  start: (payload: { level: number; mode: string; contextType?: string; organizationId?: string; targetLanguage?: string; nativeLanguage?: string }) => {
+    const stored = currentLanguageParams();
+    return api.post('/level-tests/start', {
+      ...payload,
+      contextType: payload.contextType || 'personal',
+      organizationId: payload.organizationId || '',
+      targetLanguage: payload.targetLanguage || stored.targetLang,
+      nativeLanguage: payload.nativeLanguage || stored.nativeLang,
+    }, { expectedStatuses: [403, 404] } as any);
+  },
+  getAttempt: (attemptId: string) =>
+    api.get(`/level-tests/attempts/${attemptId}`),
+  submit: (attemptId: string, answers: Array<Record<string, any>>) =>
+    api.post(`/level-tests/attempts/${attemptId}/submit`, { answers }),
+  issueCertificate: (attemptId: string, payload: Record<string, any> = {}) =>
+    api.post(`/level-tests/attempts/${attemptId}/certificate`, payload, { expectedStatuses: [400, 409] } as any),
+  getInstitutionReport: (organizationId: string, targetLanguage?: string) => {
+    const stored = currentLanguageParams();
+    return api.get(`/level-tests/institution/${organizationId}/report`, {
+      params: { targetLang: targetLanguage || stored.targetLang },
+    });
+  },
 };
 
 export const flashcardService = {

@@ -207,7 +207,10 @@
   width: min(100%, 690px);
   height: auto;
   display: block;
-  mix-blend-mode: multiply;
+  /* Image is true RGBA (white background was baked into alpha via
+     scripts/transparentizeWhitePng.js). No blend mode needed — mobile
+     Chrome/WebView used to render the multiply hack as a white rectangle
+     because it doesn't reliably apply mix-blend-mode to <img>. */
 }
 
 .landing-highlights {

@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
-// A `Course` is one ordered track of class lessons. Levels 1, 2, and 3 each
-// publish at least one Course; Level 2 publishes two (the adult-workplace
-// track and the academic-thematic track). The Course owns the lesson
+// A `Course` is one ordered track of class lessons. The learner-facing product
+// exposes four levels; legacy seeded course rows may still use the older
+// textbook grouping, so route helpers normalize them through learningArchitecture.
+// The Course owns the lesson
 // ordering and the per-position metadata (foundation/unit/review). Lessons
 // themselves stay generic — only the Course decides which lesson appears
 // where in a learner's flow.
@@ -11,12 +12,12 @@ const mongoose = require('mongoose');
 const courseSchema = new mongoose.Schema({
   level: {
     type: Number,
-    enum: [1, 2, 3],
+    enum: [1, 2, 3, 4],
     required: true,
   },
   track: {
     type: String,
-    enum: ['foundation', 'adult', 'thematic', 'grammar'],
+    enum: ['foundation', 'survival', 'everyday', 'bridge', 'thematic', 'independent', 'professional', 'advanced', 'adult', 'grammar'],
     required: true,
   },
   title: { type: String, required: true },
@@ -32,9 +33,32 @@ const courseSchema = new mongoose.Schema({
     },
     kind: {
       type: String,
-      enum: ['unit', 'review', 'foundation'],
+      enum: ['unit', 'review', 'foundation', 'branch', 'checkpoint', 'repair'],
       default: 'unit',
     },
+    lessonRole: {
+      type: String,
+      enum: ['core', 'branch', 'checkpoint', 'repair'],
+    },
+    branchType: String,
+    lessonWeight: {
+      type: Number,
+      enum: [1, 2, 3],
+    },
+    checkpointType: String,
+    repairFocus: [String],
+    longActivityTypes: [String],
+    manifestSource: String,
+    programLevelNameKey: String,
+    programLevelDescriptionKey: String,
+    unitOrder: Number,
+    sequenceOrder: Number,
+    requiredForProgress: Boolean,
+    skillFocus: [String],
+    prerequisiteConcepts: [String],
+    teachesConcepts: [String],
+    reviewsConcepts: [String],
+    certificateEligible: Boolean,
   }],
   createdAt: { type: Date, default: Date.now },
 });

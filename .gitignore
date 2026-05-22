@@ -29,3 +29,7 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Local debug / preview artifacts
+.tmp_cert_previews/
+**/*.original.png

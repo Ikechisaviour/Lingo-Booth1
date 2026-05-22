@@ -25,6 +25,16 @@ const organizationMembershipSchema = new mongoose.Schema({
     enum: ['owner', 'admin', 'teacher', 'learner'],
     default: 'learner',
   },
+  groupId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'InstitutionGroup',
+    default: null,
+    index: true,
+  },
+  allowedTargetLanguages: {
+    type: [String],
+    default: [],
+  },
   status: {
     type: String,
     enum: ['invited', 'active', 'removed'],

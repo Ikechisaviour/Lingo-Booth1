@@ -4,6 +4,11 @@ const router = express.Router();
 const Lesson = require('../models/Lesson');
 const Course = require('../models/Course');
 const ClassLessonProgress = require('../models/ClassLessonProgress');
+const {
+  applyLearningArchitecture,
+  inferLearningArchitecture,
+  sortByLearningArchitecture,
+} = require('../utils/learningArchitecture');
 const { verifyToken, optionalAuth, isAdmin } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
 const {
@@ -206,30 +211,63 @@ async function addCourseOrderingMetadata(lessonsJson, targetLang) {
         description: course.description || '',
         position: entry.position,
         kind: entry.kind,
+        lessonRole: entry.lessonRole,
+        branchType: entry.branchType,
+        lessonWeight: entry.lessonWeight,
+        checkpointType: entry.checkpointType,
+        repairFocus: entry.repairFocus,
+        longActivityTypes: entry.longActivityTypes,
+        manifestSource: entry.manifestSource,
+        programLevelNameKey: entry.programLevelNameKey,
+        programLevelDescriptionKey: entry.programLevelDescriptionKey,
+        unitOrder: entry.unitOrder,
+        sequenceOrder: entry.sequenceOrder,
+        requiredForProgress: entry.requiredForProgress,
+        skillFocus: entry.skillFocus,
+        prerequisiteConcepts: entry.prerequisiteConcepts,
+        teachesConcepts: entry.teachesConcepts,
+        reviewsConcepts: entry.reviewsConcepts,
+        certificateEligible: entry.certificateEligible,
       });
     });
   });
 
-  const trackOrder = { foundation: 1, thematic: 2, adult: 3, grammar: 4 };
   lessonsJson.forEach((lesson) => {
     const course = orderMap.get(String(lesson._id));
-    lesson.course = course || inferCourseOrderingMetadata(lesson);
+    const inferredCourse = course || inferCourseOrderingMetadata(lesson);
+    applyLearningArchitecture(lesson, inferredCourse);
+    lesson.course = {
+      ...inferredCourse,
+      sourceLevel: inferredCourse.level,
+      sourceTrack: inferredCourse.track,
+      level: lesson.learning.level,
+      track: lesson.learning.levelTrack,
+      supportLevel: lesson.learning.supportLevel,
+      quizOptionMode: lesson.learning.quizOptionMode,
+      writingMode: lesson.learning.writingMode,
+      lessonRole: lesson.learning.lessonRole,
+      coreRequired: lesson.learning.coreRequired,
+      requiredForProgress: lesson.learning.requiredForProgress,
+      certificateEligible: lesson.learning.certificateEligible,
+      branchType: lesson.learning.branchType,
+      lessonWeight: lesson.learning.lessonWeight,
+      weightReason: lesson.learning.weightReason,
+      checkpointType: lesson.learning.checkpointType,
+      repairFocus: lesson.learning.repairFocus,
+      longActivityTypes: lesson.learning.longActivityTypes,
+      manifestSource: lesson.learning.manifestSource,
+      programLevelNameKey: lesson.learning.programLevelNameKey,
+      programLevelDescriptionKey: lesson.learning.programLevelDescriptionKey,
+      unitOrder: lesson.learning.unitOrder,
+      sequenceOrder: lesson.learning.sequenceOrder,
+      skillFocus: lesson.learning.skillFocus,
+      prerequisiteConcepts: lesson.learning.prerequisiteConcepts,
+      teachesConcepts: lesson.learning.teachesConcepts,
+      reviewsConcepts: lesson.learning.reviewsConcepts,
+    };
   });
 
-  lessonsJson.sort((a, b) => {
-    const ac = a.course || {};
-    const bc = b.course || {};
-    const aLevel = Number(ac.level || 99);
-    const bLevel = Number(bc.level || 99);
-    if (aLevel !== bLevel) return aLevel - bLevel;
-    const aTrack = trackOrder[ac.track] || 99;
-    const bTrack = trackOrder[bc.track] || 99;
-    if (aTrack !== bTrack) return aTrack - bTrack;
-    const aPosition = Number(ac.position || 999);
-    const bPosition = Number(bc.position || 999);
-    if (aPosition !== bPosition) return aPosition - bPosition;
-    return String(a.title || '').localeCompare(String(b.title || ''), 'ko');
-  });
+  lessonsJson.sort(sortByLearningArchitecture);
 
   return lessonsJson;
 }
@@ -264,17 +302,22 @@ function inferCourseOrderingMetadata(lesson = {}) {
 
   const level1UnitPosition = matchPosition(/^level1Unit(\d+)/i);
   if (level1UnitPosition != null) {
-    return { level: 1, track: 'thematic', position: level1UnitPosition, kind: 'unit' };
+    return {
+      level: 1,
+      track: level1UnitPosition <= 9 ? 'survival' : 'everyday',
+      position: level1UnitPosition,
+      kind: 'unit',
+    };
   }
 
   const adultPosition = matchPosition(/^level2AdultUnit(\d+)/i);
   if (adultPosition != null || lessonType === 'workplace') {
-    return { level: 2, track: 'adult', position: adultPosition ?? fallbackPosition(), kind: 'unit' };
+    return { level: 3, track: 'professional', position: adultPosition ?? fallbackPosition(), kind: 'unit' };
   }
 
   const reviewPosition = matchPosition(/^level2Review(\d+)/i);
   if (reviewPosition != null || lessonType === 'review') {
-    return { level: 2, track: 'thematic', position: reviewPosition != null ? reviewPosition * 3 + 0.5 : fallbackPosition(), kind: 'review' };
+    return { level: 2, track: 'bridge', position: reviewPosition != null ? reviewPosition * 3 + 0.5 : fallbackPosition(), kind: 'review' };
   }
 
   const level2UnitPosition = matchPosition(/^level2Unit(\d+)/i);
@@ -284,11 +327,11 @@ function inferCourseOrderingMetadata(lesson = {}) {
 
   const grammarPosition = matchPosition(/^level3Cluster(\d+)/i);
   if (grammarPosition != null || lessonType === 'grammar' || difficulty === 'advanced') {
-    return { level: 3, track: 'grammar', position: grammarPosition ?? fallbackPosition(), kind: 'unit' };
+    return { level: 4, track: 'advanced', position: grammarPosition ?? fallbackPosition(), kind: 'unit' };
   }
 
   if (difficulty === 'beginner') {
-    return { level: 1, track: 'thematic', position: fallbackPosition(), kind: 'unit' };
+    return { level: 1, track: 'everyday', position: fallbackPosition(), kind: 'unit' };
   }
 
   return { level: 9, track: 'other', position: fallbackPosition(), kind: 'unit' };
@@ -323,7 +366,94 @@ function classLessonStats(content = []) {
   });
 }
 
+function slugForLearningId(value) {
+  const text = String(value || '').trim().toLowerCase();
+  const ascii = text
+    .replace(/['’]/g, '')
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '')
+    .slice(0, 72);
+  if (ascii) return ascii;
+  return text ? `u_${Buffer.from(text, 'utf8').toString('hex').slice(0, 72)}` : 'item';
+}
+
+function uniqueLearningLevels(values) {
+  return Array.from(new Set(values.map(Number).filter(level => [1, 2, 3, 4].includes(level)))).sort((a, b) => a - b);
+}
+
+function lessonItemTargetText(item = {}) {
+  return String(item.targetText || item.korean || item.exampleTarget || item.example || '').trim();
+}
+
+function lessonItemNativeText(item = {}) {
+  return String(item.nativeText || item.english || item.exampleNative || item.exampleEnglish || '').trim();
+}
+
+function classLessonItemIdentity(item = {}, lesson = {}, index = 0) {
+  const level = Number(item.learningLevel || lesson.learningLevel || 2);
+  const targetLang = normalizeLang(lesson.targetLang || item.targetLang || 'ko', 'ko');
+  const targetText = lessonItemTargetText(item) || `${lesson.curriculumKey || 'lesson'}-${index}`;
+  const nativeText = lessonItemNativeText(item) || targetText;
+  const conceptId = item.conceptId || `lexeme.${targetLang}.${slugForLearningId(targetText)}`;
+  const senseId = item.senseId || `${conceptId}.sense.${slugForLearningId(nativeText)}`;
+  const activeLevels = uniqueLearningLevels([...(Array.isArray(item.activeLevels) ? item.activeLevels : []), level]);
+  const sourceClassLessonKey = item.sourceClassLessonKey || lesson.curriculumKey || '';
+  const levelUses = {
+    ...(item.levelUses && typeof item.levelUses === 'object' && !Array.isArray(item.levelUses) ? item.levelUses : {}),
+    [level]: {
+      meaning: nativeText,
+      objective: item.objective || lesson.title || '',
+      sourceClassLessonKey,
+      levelTrack: item.levelTrack || lesson.levelTrack || '',
+      lessonRole: item.lessonRole || lesson.lessonRole || '',
+      branchType: item.branchType || lesson.branchType || '',
+      lessonWeight: item.lessonWeight || lesson.lessonWeight,
+      checkpointType: item.checkpointType || lesson.checkpointType || '',
+      repairFocus: item.repairFocus || lesson.repairFocus || [],
+      longActivityTypes: item.longActivityTypes || lesson.longActivityTypes || [],
+      manifestSource: item.manifestSource || lesson.manifestSource || '',
+      programLevelNameKey: item.programLevelNameKey || lesson.programLevelNameKey || '',
+      programLevelDescriptionKey: item.programLevelDescriptionKey || lesson.programLevelDescriptionKey || '',
+      unitOrder: item.unitOrder || lesson.unitOrder,
+      sequenceOrder: item.sequenceOrder || lesson.sequenceOrder,
+      skillFocus: item.skillFocus || lesson.skillFocus || [],
+      prerequisiteConcepts: item.prerequisiteConcepts || lesson.prerequisiteConcepts || [],
+      teachesConcepts: item.teachesConcepts || lesson.teachesConcepts || [],
+      reviewsConcepts: item.reviewsConcepts || lesson.reviewsConcepts || [],
+    },
+  };
+
+  return {
+    conceptId,
+    senseId,
+    firstIntroducedLevel: Number(item.firstIntroducedLevel || activeLevels[0] || level),
+    activeLevels,
+    sourceClassLessonKey,
+    sourceClassLessonKeys: Array.from(new Set([
+      ...(Array.isArray(item.sourceClassLessonKeys) ? item.sourceClassLessonKeys : []),
+      sourceClassLessonKey,
+    ].filter(Boolean))),
+    levelUses,
+    lessonRole: item.lessonRole || lesson.lessonRole || '',
+    branchType: item.branchType || lesson.branchType || '',
+    lessonWeight: item.lessonWeight || lesson.lessonWeight,
+    checkpointType: item.checkpointType || lesson.checkpointType || '',
+    repairFocus: item.repairFocus || lesson.repairFocus || [],
+    longActivityTypes: item.longActivityTypes || lesson.longActivityTypes || [],
+    manifestSource: item.manifestSource || lesson.manifestSource || '',
+    programLevelNameKey: item.programLevelNameKey || lesson.programLevelNameKey || '',
+    programLevelDescriptionKey: item.programLevelDescriptionKey || lesson.programLevelDescriptionKey || '',
+    unitOrder: item.unitOrder || lesson.unitOrder,
+    sequenceOrder: item.sequenceOrder || lesson.sequenceOrder,
+    skillFocus: item.skillFocus || lesson.skillFocus || [],
+    prerequisiteConcepts: item.prerequisiteConcepts || lesson.prerequisiteConcepts || [],
+    teachesConcepts: item.teachesConcepts || lesson.teachesConcepts || [],
+    reviewsConcepts: item.reviewsConcepts || lesson.reviewsConcepts || [],
+  };
+}
+
 function classLessonSummary(lesson = {}) {
+  applyLearningArchitecture(lesson, lesson.course);
   const stats = classLessonStats(lesson.content);
   return {
     _id: lesson._id,
@@ -335,11 +465,38 @@ function classLessonSummary(lesson = {}) {
     targetLang: lesson.targetLang,
     nativeLang: lesson.nativeLang,
     course: lesson.course,
+    learning: lesson.learning,
+    learningLevel: lesson.learningLevel,
+    levelTrack: lesson.levelTrack,
+    supportLevel: lesson.supportLevel,
+    quizOptionMode: lesson.quizOptionMode,
+    writingMode: lesson.writingMode,
+    skillStrands: lesson.skillStrands,
+    lessonRole: lesson.lessonRole,
+    coreRequired: lesson.coreRequired,
+    requiredForProgress: lesson.requiredForProgress,
+    certificateEligible: lesson.certificateEligible,
+    branchType: lesson.branchType,
+    lessonWeight: lesson.lessonWeight,
+    weightReason: lesson.weightReason,
+    checkpointType: lesson.checkpointType,
+    repairFocus: lesson.repairFocus,
+    longActivityTypes: lesson.longActivityTypes,
+    manifestSource: lesson.manifestSource,
+    programLevelNameKey: lesson.programLevelNameKey,
+    programLevelDescriptionKey: lesson.programLevelDescriptionKey,
+    unitOrder: lesson.unitOrder,
+    sequenceOrder: lesson.sequenceOrder,
+    skillFocus: lesson.skillFocus,
+    prerequisiteConcepts: lesson.prerequisiteConcepts,
+    teachesConcepts: lesson.teachesConcepts,
+    reviewsConcepts: lesson.reviewsConcepts,
     stats,
   };
 }
 
 function classLessonShell(lesson = {}) {
+  applyLearningArchitecture(lesson, lesson.course);
   const stats = classLessonStats(lesson.content);
   return {
     ...lesson,
@@ -347,9 +504,31 @@ function classLessonShell(lesson = {}) {
     contentTotal: stats.total,
     contentStats: stats,
     contentIndex: (Array.isArray(lesson.content) ? lesson.content : []).map((item, index) => ({
+      ...classLessonItemIdentity(item, lesson, index),
       index,
       type: item?.type || '',
       activityIds: Array.isArray(item?.activityIds) ? item.activityIds : [],
+      learningLevel: item?.learningLevel || lesson.learningLevel,
+      levelTrack: item?.levelTrack || lesson.levelTrack,
+      supportLevel: item?.supportLevel || lesson.supportLevel,
+      quizOptionMode: item?.quizOptionMode || lesson.quizOptionMode,
+      writingMode: item?.writingMode || lesson.writingMode,
+      skillStrands: Array.isArray(item?.skillStrands) ? item.skillStrands : lesson.skillStrands,
+      lessonRole: item?.lessonRole || lesson.lessonRole,
+      branchType: item?.branchType || lesson.branchType,
+      lessonWeight: item?.lessonWeight || lesson.lessonWeight,
+      checkpointType: item?.checkpointType || lesson.checkpointType,
+      repairFocus: Array.isArray(item?.repairFocus) && item.repairFocus.length ? item.repairFocus : lesson.repairFocus,
+      longActivityTypes: Array.isArray(item?.longActivityTypes) && item.longActivityTypes.length ? item.longActivityTypes : lesson.longActivityTypes,
+      manifestSource: item?.manifestSource || lesson.manifestSource,
+      programLevelNameKey: item?.programLevelNameKey || lesson.programLevelNameKey,
+      programLevelDescriptionKey: item?.programLevelDescriptionKey || lesson.programLevelDescriptionKey,
+      unitOrder: item?.unitOrder || lesson.unitOrder,
+      sequenceOrder: item?.sequenceOrder || lesson.sequenceOrder,
+      skillFocus: Array.isArray(item?.skillFocus) && item.skillFocus.length ? item.skillFocus : lesson.skillFocus,
+      prerequisiteConcepts: Array.isArray(item?.prerequisiteConcepts) ? item.prerequisiteConcepts : lesson.prerequisiteConcepts,
+      teachesConcepts: Array.isArray(item?.teachesConcepts) ? item.teachesConcepts : lesson.teachesConcepts,
+      reviewsConcepts: Array.isArray(item?.reviewsConcepts) ? item.reviewsConcepts : lesson.reviewsConcepts,
     })),
   };
 }
@@ -362,6 +541,7 @@ function clampWindowStart(center, total, limit) {
 }
 
 function classLessonWindow(lesson = {}, center = 0, limit = 8) {
+  applyLearningArchitecture(lesson, lesson.course);
   const items = Array.isArray(lesson.content) ? lesson.content : [];
   const total = items.length;
   const safeLimit = Math.max(1, Math.min(Number(limit) || 8, 24));
@@ -370,6 +550,29 @@ function classLessonWindow(lesson = {}, center = 0, limit = 8) {
   return {
     items: items.slice(start, end).map((item, offset) => ({
       ...item,
+      ...classLessonItemIdentity(item, lesson, start + offset),
+      learningLevel: item?.learningLevel || lesson.learningLevel,
+      levelTrack: item?.levelTrack || lesson.levelTrack,
+      supportLevel: item?.supportLevel || lesson.supportLevel,
+      quizOptionMode: item?.quizOptionMode || lesson.quizOptionMode,
+      writingMode: item?.writingMode || lesson.writingMode,
+      skillStrands: Array.isArray(item?.skillStrands) && item.skillStrands.length ? item.skillStrands : lesson.skillStrands,
+      lessonRole: item?.lessonRole || lesson.lessonRole,
+      branchType: item?.branchType || lesson.branchType,
+      lessonWeight: item?.lessonWeight || lesson.lessonWeight,
+      checkpointType: item?.checkpointType || lesson.checkpointType,
+      repairFocus: Array.isArray(item?.repairFocus) && item.repairFocus.length ? item.repairFocus : lesson.repairFocus,
+      longActivityTypes: Array.isArray(item?.longActivityTypes) && item.longActivityTypes.length ? item.longActivityTypes : lesson.longActivityTypes,
+      manifestSource: item?.manifestSource || lesson.manifestSource,
+      programLevelNameKey: item?.programLevelNameKey || lesson.programLevelNameKey,
+      programLevelDescriptionKey: item?.programLevelDescriptionKey || lesson.programLevelDescriptionKey,
+      unitOrder: item?.unitOrder || lesson.unitOrder,
+      sequenceOrder: item?.sequenceOrder || lesson.sequenceOrder,
+      skillFocus: Array.isArray(item?.skillFocus) && item.skillFocus.length ? item.skillFocus : lesson.skillFocus,
+      prerequisiteConcepts: Array.isArray(item?.prerequisiteConcepts) ? item.prerequisiteConcepts : lesson.prerequisiteConcepts,
+      teachesConcepts: Array.isArray(item?.teachesConcepts) ? item.teachesConcepts : lesson.teachesConcepts,
+      reviewsConcepts: Array.isArray(item?.reviewsConcepts) ? item.reviewsConcepts : lesson.reviewsConcepts,
+      sourceClassLessonKey: item?.sourceClassLessonKey || lesson.curriculumKey,
       index: start + offset,
     })),
     window: {
@@ -636,6 +839,7 @@ async function localizeLessonForPair(lesson, contentKind, normalizedNativeLang) 
 
   cleanTargetExamplesForNativeDisplay(lessonObj, targetLang, normalizedNativeLang);
   normalizeTargetLayerForDisplay(lessonObj, targetLang);
+  applyLearningArchitecture(lessonObj, lessonObj.course);
   await enrichLessonWithPronunciation(lessonObj, targetLang, normalizedNativeLang);
   if (localizedLessonCache.size > 200) {
     const now = Date.now();

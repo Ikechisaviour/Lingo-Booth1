@@ -11,6 +11,7 @@ const { getClientIp, getGeoInfo } = require('../utils/geo');
 const { sendVerificationEmail, sendPasswordResetEmail } = require('../utils/emailService');
 const { verifyToken } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
+const { cleanFullName, fullNameValidation } = require('../utils/fullName');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -22,6 +23,7 @@ function buildUserResponse(user) {
   return {
     id: user._id,
     username: user.username,
+    fullName: user.fullName || '',
     email: user.email,
     role: user.role,
     subscriptionTier: aiEntitlements.subscriptionTier,
@@ -68,7 +70,7 @@ function setVerificationToken(user) {
 // Register
 router.post('/register', async (req, res) => {
   try {
-    const { username, email, password, guestXP, nativeLanguage, targetLanguage } = req.body;
+    const { username, email, password, guestXP, nativeLanguage, targetLanguage, fullName } = req.body;
 
     if (!username || !email || !password) {
       return res.status(400).json({ message: 'All fields are required' });
@@ -80,6 +82,14 @@ router.post('/register', async (req, res) => {
 
     if (password.length < 6) {
       return res.status(400).json({ message: 'Password must be at least 6 characters' });
+    }
+
+    const fullNameCheck = fullNameValidation(fullName);
+    if (!fullNameCheck.valid) {
+      return res.status(400).json({
+        code: fullNameCheck.code,
+        message: 'Please enter a valid full name',
+      });
     }
 
     let user = await User.findOne({ $or: [{ email }, { username }] });
@@ -96,6 +106,7 @@ router.post('/register', async (req, res) => {
     user = new User({
       username,
       email,
+      fullName: fullNameCheck.fullName || null,
       password,
       totalXP: transferXP,
       loginCount: 1,
@@ -325,6 +336,11 @@ router.post('/google', async (req, res) => {
         user.authProviders.push({ provider: 'google', providerId: googleId });
       }
 
+      const googleFullName = cleanFullName(name);
+      if (!user.fullName && googleFullName) {
+        user.fullName = googleFullName;
+      }
+
       user.emailVerified = true;
       user.verificationToken = null;
       user.verificationTokenExpires = null;
@@ -369,6 +385,7 @@ router.post('/google', async (req, res) => {
       user = new User({
         username,
         email,
+        fullName: cleanFullName(name) || null,
         password: null,
         emailVerified: true,
         authProviders: [{ provider: 'google', providerId: googleId }],

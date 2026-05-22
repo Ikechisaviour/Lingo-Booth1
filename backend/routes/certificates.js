@@ -8,6 +8,7 @@ const ClassLessonProgress = require('../models/ClassLessonProgress');
 const Lesson = require('../models/Lesson');
 const { verifyToken } = require('../middleware/auth');
 const { getBillingSource, getEffectiveSubscriptionTier } = require('../utils/subscription');
+const { renderCertificatePdf } = require('../utils/certificatePdfRenderer');
 
 const CLASS_LESSON_TRACK = 'textbook';
 const INCLUDED_CERTIFICATE_TIERS = new Set(['pro', 'ultra']);
@@ -46,21 +47,137 @@ function sanitizeCompletedItems(items, totalItemCount) {
 function publicCertificate(certificate) {
   if (!certificate) return null;
   const cert = typeof certificate.toObject === 'function' ? certificate.toObject() : certificate;
+  const organization = cert.organizationId && typeof cert.organizationId === 'object'
+    ? cert.organizationId
+    : null;
+  const certificateBranding = organization?.certificateBranding || {};
   return {
     certificateId: cert.certificateId,
     certificateType: cert.certificateType,
     userName: cert.userName,
     classLessonId: cert.classLessonId,
     classLessonTitle: cert.classLessonTitle,
+    level: cert.level,
+    contextType: cert.contextType,
+    organizationId: organization?._id || cert.organizationId,
+    organizationName: cert.organizationName || organization?.name || '',
+    organizationLogoUrl: certificateBranding.logoUrl || '',
+    organizationLogoOriginalName: certificateBranding.logoOriginalName || '',
     targetLanguage: cert.targetLanguage,
     nativeLanguage: cert.nativeLanguage,
     completedItemCount: cert.completedItemCount,
     totalItemCount: cert.totalItemCount,
     completionPercent: cert.completionPercent,
+    score: cert.score,
+    readiness: cert.readiness,
     issuedAt: cert.issuedAt,
     expiresAt: cert.expiresAt,
     status: cert.status,
   };
+}
+
+function sampleCertificate(certificateId) {
+  const issuedAt = new Date('2026-05-22T09:00:00.000Z');
+  const samples = {
+    'LB-SAMPLE-CLASS': {
+      certificateId: 'LB-SAMPLE-CLASS',
+      certificateType: 'class_lesson_completion',
+      userName: 'Sample Learner',
+      classLessonTitle: 'Ordering at a cafe',
+      level: 1,
+      contextType: 'personal',
+      organizationName: '',
+      targetLanguage: 'ko',
+      nativeLanguage: 'en',
+      completedItemCount: 26,
+      totalItemCount: 26,
+      completionPercent: 100,
+      score: null,
+      readiness: 'complete',
+      issuedAt,
+      expiresAt: null,
+      status: 'active',
+    },
+    'LB-SAMPLE-LEVEL': {
+      certificateId: 'LB-SAMPLE-LEVEL',
+      certificateType: 'level_completion',
+      userName: 'Sample Learner',
+      classLessonTitle: '',
+      level: 2,
+      contextType: 'personal',
+      organizationName: '',
+      targetLanguage: 'es',
+      nativeLanguage: 'en',
+      completedItemCount: 48,
+      totalItemCount: 52,
+      completionPercent: 92,
+      score: 84,
+      readiness: 'ready',
+      issuedAt,
+      expiresAt: null,
+      status: 'active',
+    },
+    'LB-SAMPLE-PROFICIENCY': {
+      certificateId: 'LB-SAMPLE-PROFICIENCY',
+      certificateType: 'level_proficiency',
+      userName: 'Sample Learner',
+      classLessonTitle: '',
+      level: 3,
+      contextType: 'personal',
+      organizationName: '',
+      targetLanguage: 'fr',
+      nativeLanguage: 'en',
+      completedItemCount: 16,
+      totalItemCount: 16,
+      completionPercent: 100,
+      score: 91,
+      readiness: 'ready',
+      issuedAt,
+      expiresAt: null,
+      status: 'active',
+    },
+    'LB-SAMPLE-INSTITUTION': {
+      certificateId: 'LB-SAMPLE-INSTITUTION',
+      certificateType: 'institution_proficiency',
+      userName: 'Sample Learner',
+      classLessonTitle: '',
+      level: 4,
+      contextType: 'institution',
+      organizationName: 'Sample Language Academy',
+      organizationLogoUrl: '',
+      targetLanguage: 'zh',
+      nativeLanguage: 'en',
+      completedItemCount: 16,
+      totalItemCount: 16,
+      completionPercent: 100,
+      score: 88,
+      readiness: 'ready',
+      issuedAt,
+      expiresAt: null,
+      status: 'active',
+    },
+    'LB-SAMPLE-INSTITUTION-COMPLETION': {
+      certificateId: 'LB-SAMPLE-INSTITUTION-COMPLETION',
+      certificateType: 'institution_completion',
+      userName: 'Sample Learner',
+      classLessonTitle: '',
+      level: 2,
+      contextType: 'institution',
+      organizationName: 'Sample Language Academy',
+      organizationLogoUrl: '',
+      targetLanguage: 'ja',
+      nativeLanguage: 'en',
+      completedItemCount: 48,
+      totalItemCount: 48,
+      completionPercent: 100,
+      score: 86,
+      readiness: 'ready',
+      issuedAt,
+      expiresAt: null,
+      status: 'active',
+    },
+  };
+  return samples[certificateId] || null;
 }
 
 function certificateAccessForUser(user) {
@@ -185,6 +302,44 @@ async function createCertificate({ user, classLessonId, nativeLanguage, targetLa
   throw new Error('Could not issue certificate');
 }
 
+async function findVerifiedCertificate(certificateId) {
+  const normalizedId = String(certificateId || '').trim().toUpperCase();
+  const sample = sampleCertificate(normalizedId);
+  if (sample) {
+    return { sample: true, certificate: sample };
+  }
+
+  const certificate = await CompletionCertificate.findOne({
+    certificateId: normalizedId,
+    status: 'active',
+  })
+    .populate('organizationId', 'name certificateBranding')
+    .lean();
+
+  if (!certificate) {
+    const error = new Error('Certificate not found');
+    error.statusCode = 404;
+    throw error;
+  }
+
+  return { sample: false, certificate: publicCertificate(certificate) };
+}
+
+function safeCertificateFilename(certificate, fallbackId) {
+  const base = [
+    'lingo-booth-certificate',
+    certificate?.certificateId || fallbackId,
+    certificate?.userName,
+  ]
+    .filter(Boolean)
+    .join('-');
+  return base
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '')
+    .slice(0, 90) || 'lingo-booth-certificate';
+}
+
 router.get('/', verifyToken, async (req, res) => {
   try {
     const certificates = await CompletionCertificate.find({
@@ -272,22 +427,36 @@ router.post('/class-lessons/:classLessonId/issue', verifyToken, async (req, res)
   }
 });
 
-router.get('/verify/:certificateId', async (req, res) => {
+router.get('/verify/:certificateId/download', async (req, res) => {
   try {
     const certificateId = String(req.params.certificateId || '').trim().toUpperCase();
-    const certificate = await CompletionCertificate.findOne({
-      certificateId,
-      status: 'active',
-    }).lean();
+    const certificateLanguage = normalizeLang(req.query.certLang || req.query.language, 'en');
+    const { certificate } = await findVerifiedCertificate(certificateId);
+    const pdf = await renderCertificatePdf({ certificateId, certificateLanguage });
+    const filename = `${safeCertificateFilename(certificate, certificateId)}.pdf`;
 
-    if (!certificate) {
-      return res.status(404).json({ valid: false, message: 'Certificate not found' });
-    }
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+    res.setHeader('Cache-Control', 'private, no-store');
+    return res.send(pdf);
+  } catch (error) {
+    console.error('Download certificate error:', error);
+    return res.status(error.statusCode || 500).json({
+      message: error.message || 'Could not prepare certificate download',
+    });
+  }
+});
 
-    res.json({ valid: true, certificate: publicCertificate(certificate) });
+router.get('/verify/:certificateId', async (req, res) => {
+  try {
+    const { sample, certificate } = await findVerifiedCertificate(req.params.certificateId);
+    res.json({ valid: true, sample, certificate });
   } catch (error) {
     console.error('Verify certificate error:', error);
-    res.status(500).json({ valid: false, message: 'Could not verify certificate' });
+    res.status(error.statusCode || 500).json({
+      valid: false,
+      message: error.message || 'Could not verify certificate',
+    });
   }
 });
 

@@ -1,4 +1,10 @@
 .class-lesson-page {
+  --level-accent: var(--primary);
+  --level-accent-strong: var(--primary-hover);
+  --level-accent-soft: var(--primary-soft);
+  --level-accent-panel: rgba(255, 255, 255, 0.96);
+  --level-accent-border: var(--primary-border-soft);
+  --level-accent-shadow: var(--primary-shadow-color);
   max-width: 1480px;
   height: calc(100vh - 64px);
   height: calc(100dvh - 64px);
@@ -6,6 +12,51 @@
   padding: 16px 18px;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+.class-lesson-page.class-level-1 {
+  --level-accent: var(--primary);
+  --level-accent-strong: var(--primary-hover);
+  --level-accent-soft: var(--primary-soft);
+  --level-accent-panel: rgba(255, 248, 243, 0.96);
+  --level-accent-border: var(--primary-border-soft);
+  --level-accent-shadow: var(--primary-shadow-color);
+}
+
+.class-lesson-page.class-level-2 {
+  --level-accent: #168fd2;
+  --level-accent-strong: #0b6fa8;
+  --level-accent-soft: rgba(22, 143, 210, 0.11);
+  --level-accent-panel: rgba(239, 249, 255, 0.92);
+  --level-accent-border: rgba(22, 143, 210, 0.28);
+  --level-accent-shadow: rgba(22, 143, 210, 0.13);
+}
+
+.class-lesson-page.class-level-3 {
+  --level-accent: #7857d6;
+  --level-accent-strong: #5f3ebf;
+  --level-accent-soft: rgba(120, 87, 214, 0.12);
+  --level-accent-panel: rgba(247, 244, 255, 0.94);
+  --level-accent-border: rgba(120, 87, 214, 0.3);
+  --level-accent-shadow: rgba(120, 87, 214, 0.14);
+}
+
+.class-lesson-page.class-level-4 {
+  --level-accent: #b7791f;
+  --level-accent-strong: #8a5a13;
+  --level-accent-soft: rgba(183, 121, 31, 0.13);
+  --level-accent-panel: rgba(255, 249, 235, 0.94);
+  --level-accent-border: rgba(183, 121, 31, 0.3);
+  --level-accent-shadow: rgba(183, 121, 31, 0.14);
+}
+
+.challenge-theme .class-lesson-page.class-level-1 {
+  --level-accent: var(--primary);
+  --level-accent-strong: var(--primary-hover);
+  --level-accent-soft: var(--primary-soft);
+  --level-accent-panel: rgba(245, 255, 238, 0.94);
+  --level-accent-border: var(--primary-border-soft);
+  --level-accent-shadow: var(--primary-shadow-color);
 }
 
 .class-audio-unlock {
@@ -54,10 +105,12 @@
   gap: 18px;
   margin-bottom: 12px;
   padding: 16px 18px;
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--level-accent-border);
+  border-top: 5px solid var(--level-accent);
   border-radius: 8px;
-  background: var(--surface);
-  box-shadow: var(--card-shadow);
+  background:
+    linear-gradient(135deg, var(--surface) 0%, var(--level-accent-panel) 100%);
+  box-shadow: var(--card-shadow), 0 12px 28px var(--level-accent-shadow);
 }
 
 .class-back {
@@ -88,6 +141,48 @@
 .class-lesson-header p {
   margin: 4px 0 0;
   color: var(--text-secondary);
+}
+
+.class-lesson-header .class-kicker {
+  color: var(--level-accent-strong);
+}
+
+.class-learning-cues {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.class-learning-cue {
+  display: inline-flex;
+  max-width: 260px;
+  min-height: 34px;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid var(--level-accent-border);
+  border-radius: 999px;
+  background: var(--level-accent-soft);
+  color: var(--text-primary);
+}
+
+.class-learning-cue small {
+  color: var(--level-accent-strong);
+  font-size: 0.68rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.class-learning-cue strong {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--text-primary);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .class-header-tools {
@@ -222,19 +317,38 @@
 }
 
 .class-wrap-up-actions {
-  display: flex;
+  display: grid;
+  min-width: min(520px, 100%);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  flex-wrap: wrap;
 }
 
 .class-wrap-up-actions button {
-  min-height: 42px;
-  padding: 0 14px;
+  min-height: 96px;
+  padding: 14px;
   border: 1px solid var(--border);
   border-radius: 10px;
   background: var(--surface);
   color: var(--text-primary);
   cursor: pointer;
+  text-align: left;
+}
+
+.class-wrap-up-card strong,
+.class-wrap-up-card span {
+  display: block;
+}
+
+.class-wrap-up-card strong {
+  color: var(--text-primary);
+  font-weight: 900;
+}
+
+.class-wrap-up-card span {
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: 0.83rem;
+  line-height: 1.35;
 }
 
 .class-agenda,
@@ -1139,6 +1253,11 @@
     flex-direction: column;
   }
 
+  .class-wrap-up-actions {
+    min-width: 0;
+    grid-template-columns: 1fr;
+  }
+
   .class-agenda {
     max-height: none;
   }
@@ -1218,6 +1337,15 @@
     width: 100%;
     min-height: 36px;
     padding: 8px 12px;
+  }
+
+  .class-learning-cues {
+    gap: 6px;
+  }
+
+  .class-learning-cue {
+    max-width: 100%;
+    border-radius: 8px;
   }
 
   .class-progress {

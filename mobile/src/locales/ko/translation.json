@@ -24,7 +24,8 @@
     "search": "찾다",
     "notSet": "설정되지 않음",
     "all": "모두",
-    "reset": "다시 놓기"
+    "reset": "다시 놓기",
+    "restart": "다시 시작"
   },
   "languages": {
     "en": "영어",
@@ -106,7 +107,9 @@
     "registrationFailed": "가입 실패",
     "brandTagline": "학습 여정을 시작하세요",
     "googleFailed": "Google 회원가입에 실패했습니다. 다시 시도해 주세요.",
-    "signUpWithGoogle": "Google에 가입"
+    "signUpWithGoogle": "Google에 가입",
+    "fullNameOptional": "성명(선택사항)",
+    "fullNameHint": "지금 추가하거나 인증서를 발급하기 전에 추가할 수 있습니다."
   },
   "navbar": {
     "continue": "계속",
@@ -220,7 +223,9 @@
       "sat": "토",
       "sun": "일"
     },
-    "contactDesc": "질문, 피드백 또는 보고할 문제"
+    "contactDesc": "질문, 피드백 또는 보고할 문제",
+    "decayBannerActive": "XP가 하락하고 있습니다. 일일 손실률은 {{rate}}%입니다. 중지하려면 질문에 답하세요.",
+    "decayBannerGrace": "XP 감소는 {{hours}}h부터 시작됩니다. 일일 손실은 {{rate}}%입니다. 예방하려면 계속 공부하세요."
   },
   "lessons": {
     "title": "{{language}} 레슨",
@@ -339,7 +344,15 @@
     "studyMode": "학습 모드",
     "defaultMode": "기본",
     "readingMode": "읽기",
-    "listeningMode": "듣기"
+    "listeningMode": "듣기",
+    "howDoYouSayThisIn": "{{language}}에서는 이것을 어떻게 말하나요?",
+    "quizMode": {
+      "nativeAssisted": "조기 자가 테스트: 모국어로 의미를 선택하세요.",
+      "targetWithNativeHints": "회상 구축: 기본 힌트를 사용한 다음 대상 언어 답변을 선택합니다.",
+      "targetDominant": "독립적인 연습: 목표 언어 선택이 대부분의 작업을 수행합니다.",
+      "targetFirst": "고급 자체 테스트: 목표 우선 순위를 유지하고 필요할 때만 도움을 사용하세요.",
+      "standard": "안내식 자가 테스트."
+    }
   },
   "flashcards": {
     "title": "플래시카드 연습",
@@ -438,7 +451,8 @@
     "savedForReview": "검토를 위해 저장되었습니다.",
     "saveForReviewFailed": "지금은 이 카드를 저장할 수 없습니다.",
     "bookmarkedReason": "플래시카드에서 북마크되었습니다.",
-    "selfTestReason": "빠른 자체 테스트를 위해 플래시카드에서 저장되었습니다."
+    "selfTestReason": "빠른 자체 테스트를 위해 플래시카드에서 저장되었습니다.",
+    "setFamiliarityLevel": "친숙도를 {{level}}로 설정"
   },
   "progress": {
     "title": "나의 진도",
@@ -621,7 +635,11 @@
     "practicePromptsHint": "작업 버튼이 포함된 빠른 단어 질문을 표시하면 알림 창에서 답변할 수 있습니다.",
     "notificationsAllowed": "이 기기에서는 알림이 허용됩니다.",
     "notificationsBlocked": "아직 알림이 허용되지 않습니다.",
-    "sendTestPrompt": "테스트 프롬프트 보내기"
+    "sendTestPrompt": "테스트 프롬프트 보내기",
+    "failedToUpdate": "업데이트하지 못했습니다.",
+    "fullName": "성명",
+    "fullNamePlaceholder": "인증서에 표시할 이름",
+    "fullNameMissing": "인증서 발급 전 추가"
   },
   "verifyEmail": {
     "verifying": "이메일 인증 중...",
@@ -1034,7 +1052,41 @@
     },
     "snapshotsKicker": "학습자 스냅샷",
     "needsHelpTitle": "주의가 필요함",
-    "noNeedsHelpLearners": "현재 특별한 주의가 필요한 학습자는 없습니다."
+    "noNeedsHelpLearners": "현재 특별한 주의가 필요한 학습자는 없습니다.",
+    "groupSaved": "그룹이 저장되었습니다.",
+    "groupSaveFailed": "이 그룹을 저장할 수 없습니다.",
+    "group": "그룹",
+    "noGroup": "그룹 없음",
+    "languagePolicy": "언어정책",
+    "allowedTargetLanguages": "허용되는 타겟 언어",
+    "allowedTargetLanguagesHelp": "이 교육기관 액세스를 사용하는 학습자는 이러한 대상 언어만 선택할 수 있습니다.",
+    "defaultTargetLanguage": "기본 타겟 언어",
+    "noDefaultLanguage": "기본값 없음",
+    "groupsKicker": "여러 떼",
+    "groupsTitle": "학습 그룹",
+    "groupUsesOrgPolicy": "조직 언어 정책을 사용합니다.",
+    "noGroupsYet": "학급, 집단 또는 팀의 언어 액세스를 관리하려면 그룹을 만드세요.",
+    "groupName": "그룹 이름",
+    "groupNamePlaceholder": "예: 초급 저녁 수업",
+    "groupLanguages": "그룹 타겟 언어",
+    "createGroup": "그룹 만들기",
+    "testingKicker": "레벨 확인",
+    "testingTitle": "테스트 및 인증서",
+    "recentAttempts": "최근 시도",
+    "certificatesIssued": "발급된 인증서",
+    "learner": "학습자",
+    "mobileCertificateLogoName": "모바일 인증서 로고",
+    "certificateBrandingSaved": "인증서 브랜딩이 저장되었습니다.",
+    "certificateBrandingFailed": "인증서 브랜딩을 저장할 수 없습니다. HTTPS 이미지 URL을 사용하거나 웹 대시보드에서 600KB 미만의 PNG, JPG 또는 WebP 로고를 업로드하세요.",
+    "certificateBrandingRemoved": "인증서 로고가 제거되었습니다.",
+    "certificateBrandingKicker": "인증서",
+    "certificateBrandingTitle": "인증서 브랜딩",
+    "certificateBrandingHelp": "기관 인증서는 개인 인증서와 동일한 디자인을 사용하며 이 로고와 기관 이름이 추가됩니다.",
+    "certificateLogoUrl": "인증서 로고 URL 또는 데이터 이미지",
+    "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
+    "mobileCertificateLogoHelp": "여기에 HTTPS 이미지 URL을 붙여넣거나 웹 대시보드를 사용하여 PNG, JPG 또는 WebP 파일을 업로드하세요.",
+    "saveCertificateBranding": "인증서 로고 저장",
+    "removeCertificateLogo": "로고 제거"
   },
   "errorBoundary": {
     "title": "문제가 발생했습니다.",
@@ -1086,10 +1138,44 @@
       "intermediateSubtitle": "의견, 문화, 건강, 일, 일상 자신감을 다루는 주제 중심 수업입니다.",
       "professionalTitle": "레벨 {{level}} · 실무 {{language}}",
       "professionalSubtitle": "업무, 서비스, 주거, 안전, 공식 상황에 필요한 표현을 연습합니다.",
-      "grammarTitle": "레벨 {{level}} · 고급 문법",
-      "grammarSubtitle": "생각을 더 정확하게 연결하도록 도와주는 문형 묶음입니다."
+      "grammarTitle": "레벨 {{level}} - 고급 {{language}}",
+      "grammarSubtitle": "생각을 더 정확하게 연결하도록 도와주는 문형 묶음입니다.",
+      "survivalTitle": "레벨 {{level}} - 필수 {{language}}",
+      "survivalSubtitle": "인사, 방, 장소, 일상, 쇼핑, 음식에 대한 실용적인 기본 사항을 구축합니다.",
+      "everydayTitle": "레벨 {{level}} - 매일 {{language}}",
+      "everydaySubtitle": "인사, 음식, 장소, 계획, 일상 상황에 대한 핵심 일상 수업입니다.",
+      "bridgeTitle": "레벨 {{level}} - 다리",
+      "bridgeSubtitle": "일상적인 자료를 보다 독립적인 사용에 연결하는 검토 및 전환 장치입니다.",
+      "topicTitle": "레벨 {{level}} - 테마 {{language}}",
+      "topicSubtitle": "의견, 문화, 건강, 계획, 자신감 있는 일상 표현을 위한 주제 중심 유닛입니다.",
+      "advancedTitle": "레벨 {{level}} - 고급 {{language}}",
+      "advancedSubtitle": "더 가벼운 모국어 지원으로 더 긴 읽기, 듣기, 말하기 및 쓰기 작업을 수행할 수 있습니다."
     },
-    "retry": "다시 시도하세요"
+    "retry": "다시 시도하세요",
+    "lessonsCount": "{{count}} 수업",
+    "lessonRoles": {
+      "branch": "목표 지점",
+      "checkpoint": "검문소",
+      "repair": "수리하다",
+      "core": "핵심"
+    },
+    "lessonWeights": {
+      "deep": "깊은",
+      "light": "빛",
+      "standard": "기준"
+    },
+    "requiredForProgress": "필수의",
+    "programLevels": {
+      "kicker": "학습 수준",
+      "coreCount": "{{count}} 코어",
+      "branchCount": "{{count}} 가지",
+      "checkpointCount": "{{count}} 검문소"
+    },
+    "singleTrackGuidanceKicker": "왜 하나의 수업인가?",
+    "singleTrackGuidanceTitle": "집중을 시작한 다음 밖으로 나갑니다.",
+    "singleTrackGuidanceBody": "이 트랙은 의도적으로 컴팩트하여 첫 번째 단계가 명확하게 느껴집니다. 여기에서 수업을 마친 후 더 폭넓은 연습을 위해 다음 트랙으로 이동하세요.",
+    "singleTrackGuidanceStep1": "기지를 건설하세요",
+    "singleTrackGuidanceStep2": "계속해서 일상적으로 사용"
   },
   "classLesson": {
     "loading": "수업 로드 중...",
@@ -1231,7 +1317,46 @@
     "selfTestReason": "빠른 자체 테스트를 위해 수업에서 저장되었습니다.",
     "previous": "이전의",
     "lessonGuide": "레슨 가이드",
-    "activityXOfY": "{{total}} 중 {{current}} 활동"
+    "activityXOfY": "{{total}} 중 {{current}} 활동",
+    "wrapUpReviewBody": "이 클래스의 기한이 지났거나 약한 항목을 다시 시도하세요.",
+    "wrapUpQuizBody": "시작할 때까지 퀴즈를 로드하지 않고 이해도를 확인하세요.",
+    "wrapUpWritingBody": "레벨에 맞는 쓰기 또는 유형 모드를 사용하십시오.",
+    "wrapUpConversationPrompt": "방금 배운 내용을 짧은 대화에 활용하도록 도와주세요.",
+    "wrapUpConversationBody": "수업을 짧은 역할극으로 전환하세요.",
+    "learningPlan": {
+      "unplacedLevel": "학습 수준",
+      "moreActivities": "{{count}} 더보기",
+      "level": "수준",
+      "support": "지원하다",
+      "selfTest": "자가 테스트",
+      "writing": "글쓰기",
+      "activities": "오랜 연습",
+      "ariaLabel": "수업 학습 계획"
+    },
+    "supportLevels": {
+      "nativeGuided": "강력한 모국어 지원",
+      "mixedGuided": "균형 잡힌 대상 및 기본 지원",
+      "targetFirst": "대상 언어 우선",
+      "immersionWithHelp": "대부분 지원 가능한 대상 언어",
+      "standard": "안내 지원"
+    },
+    "quizModes": {
+      "nativeAssisted": "모국어로 의미 선택",
+      "targetWithNativeHints": "기본 힌트가 포함된 대상 언어 선택",
+      "targetDominant": "주로 타겟 언어 선택",
+      "targetFirst": "대상 우선 자체 테스트",
+      "standard": "안내식 자가 테스트"
+    },
+    "writingModes": {
+      "handwritingFirst": "먼저 추적 또는 복사",
+      "typeWithWriteOption": "타이핑, 작문 연습 가능",
+      "typedProduction": "기억에 있는 입력된 답변",
+      "extendedTypedProduction": "더 길게 입력된 응답",
+      "standard": "쓰기 또는 입력"
+    },
+    "longActivities": {
+      "practice": "관행"
+    }
   },
   "exercise": {
     "kicker": "연습",
@@ -1371,7 +1496,8 @@
       "listen": "먼저 듣고 들은 내용을 써 보세요.",
       "meaning": "뜻을 보고 대상 표현을 떠올려 써 보세요.",
       "stroke": "가이드를 따른 후 쓰기 영역에서 연습하세요.",
-      "review": "쓴 글과 답을 비교하고 잘된 부분을 표시하세요."
+      "review": "쓴 글과 답을 비교하고 잘된 부분을 표시하세요.",
+      "type": "기억에 있는 답을 입력하세요. 초기 필기 수업 이후의 표준 쓰기 모드입니다."
     },
     "status": {
       "loadingNotebook": "쓰기 노트를 불러오는 중...",
@@ -1425,7 +1551,8 @@
     "selfTestReason": "빠른 자가 테스트를 위해 글쓰기 연습을 저장했습니다.",
     "hideNotebook": "노트북 숨기기",
     "showNotebook": "노트북 표시",
-    "hideAddPanel": "추가 패널 숨기기"
+    "hideAddPanel": "추가 패널 숨기기",
+    "typePlaceholder": "여기에 답을 입력하세요..."
   },
   "certificates": {
     "kicker": "자격증",
@@ -1457,7 +1584,30 @@
     "viewPlans": "계획 보기",
     "signIn": "로그인",
     "issuedSuccess": "인증서가 발급되었습니다.",
-    "issueFailed": "인증서를 발급할 수 없습니다."
+    "issueFailed": "인증서를 발급할 수 없습니다.",
+    "levelCertificateTitle": "레벨 {{level}} 인증서",
+    "proficiencyTitle": "능력증명서",
+    "institutionProficiencyTitle": "능력증명서",
+    "levelCompletionTitle": "레벨 수료 증명서",
+    "institutionCompletionTitle": "레벨 수료 증명서",
+    "level": "수준",
+    "levelNumber": "레벨 {{level}}",
+    "score": "점수",
+    "organization": "조직",
+    "institutionLogoAlt": "{{organization}} 로고",
+    "issuedThrough": "발급기관",
+    "institution": "기관",
+    "verifiedProficiency": "검증된 능력 증명서",
+    "verifiedCompletion": "확인된 수료증",
+    "proficiencyStatement": "레벨 {{level}}의 숙련도 입증",
+    "levelCompletionStatement": "레벨 {{level}} 완료",
+    "completionStatement": "필수 학습 활동을 완료했습니다.",
+    "download": "다운로드",
+    "languageControl": "인증서 언어",
+    "nativeVersionShort": "토종의",
+    "targetVersionShort": "목표",
+    "bilingualVersionShort": "둘 다",
+    "certificateIssuedThrough": "를 통해 발급된 증명서"
   },
   "learningHub": {
     "continueLearning": "계속 학습",
@@ -1619,7 +1769,10 @@
     "recentWordsEmptyAction": "수업이나 대화 연습 후에 저장된 단어와 유용한 문구가 여기에 수집됩니다.",
     "startAClass": "수업 시작",
     "milestonesEmptyAction": "첫 번째 완료한 레슨, 저장된 문구 또는 인증서가 여기에 표시됩니다.",
-    "earnFirstMilestone": "첫 번째 마일스톤을 획득하세요"
+    "earnFirstMilestone": "첫 번째 마일스톤을 획득하세요",
+    "repairPlanTitle": "수리 중점",
+    "repairPlanValue": "다시 방문할 가치가 있는",
+    "repairPlanBody": "너무 앞서 나가기 전에 몇 가지 약한 항목이나 체크포인트 항목을 집중적으로 연습할 준비가 되어 있습니다."
   },
   "resetPassword": {
     "title": "비밀번호 재설정",
@@ -1689,5 +1842,56 @@
     "speaking": "말하기",
     "reading": "독서",
     "writing": "글쓰기"
+  },
+  "levelTests": {
+    "kicker": "레벨 확인",
+    "levelLabel": "레벨 {{level}}",
+    "passed": "합격",
+    "reviewRecommended": "리뷰 추천",
+    "tasks": {
+      "chooseTarget": "대상 언어 답변을 선택하세요.",
+      "chooseMeaning": "가장 좋은 의미를 선택하세요.",
+      "typeTarget": "대상 언어 답변을 입력하세요.",
+      "shortResponse": "대상 언어로 답변한 후 답변을 채점하세요.",
+      "default": "질문에 답하십시오."
+    },
+    "institutionContext": "기관",
+    "personalContext": "개인의",
+    "skills": {
+      "general": "일반적인"
+    },
+    "loadFailed": "지금은 레벨 테스트를 로드할 수 없습니다.",
+    "startFailed": "이 테스트는 아직 준비되지 않았습니다.",
+    "submitFailed": "이 테스트를 제출할 수 없습니다.",
+    "certificateReady": "인증서가 준비되었습니다.",
+    "certificateFailed": "아직 이 인증서를 발급할 수 없습니다.",
+    "title": "당신이 무엇을 할 수 있는지 보여주세요",
+    "subtitle": "진행 상황에 대한 레벨 확인을 완료하거나, 더 강력한 능력 증명을 원할 때 숙련도 확인을 수행하세요.",
+    "context": "문맥",
+    "allowedLanguages": "사용 가능한 타겟 언어",
+    "chooseLevel": "레벨 선택",
+    "testType": "테스트 유형",
+    "restrictedTarget": "이 대상 언어는 이 교육 기관 환경에서 사용할 수 없습니다.",
+    "start": "점검 시작",
+    "emptyTitle": "레벨 체크를 선택하세요",
+    "emptyBody": "선택한 레벨에 따라 균형 잡힌 어휘, 문법, 읽기, 말하기, 쓰기 과제가 제공됩니다.",
+    "resultTitle": "결과",
+    "questionsTitle": "각 작업에 응답",
+    "certificateIssued": "증명서 발급",
+    "issueCertificate": "인증서 발급",
+    "writeAnswer": "여기에 답을 적어주세요...",
+    "selfNeedsWork": "작업이 필요함",
+    "selfAlmost": "거의",
+    "selfGood": "좋은",
+    "correct": "옳은",
+    "missed": "이것을 검토하세요",
+    "submit": "수표 제출",
+    "fullNameInvalid": "성명은 2자 이상 입력하세요.",
+    "certificateNameKicker": "인증서 이름",
+    "fullNameRequiredTitle": "이름을 추가하세요",
+    "fullNameRequiredBody": "이 증명서에 표시되어야 하는 이름을 정확히 입력하세요. 인증서를 발급하기 전에만 이 작업을 수행하면 됩니다.",
+    "fullNameLabel": "이름",
+    "fullNamePlaceholder": "당신의 이름",
+    "saveNameAndIssue": "이름 저장 및 증명서 발급"
   }
 }

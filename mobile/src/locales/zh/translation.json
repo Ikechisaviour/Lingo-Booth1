@@ -24,7 +24,8 @@
     "search": "搜索",
     "notSet": "未设置",
     "all": "全部",
-    "reset": "重置"
+    "reset": "重置",
+    "restart": "重新启动"
   },
   "languages": {
     "en": "英语",
@@ -106,7 +107,9 @@
     "registrationFailed": "注册失败",
     "brandTagline": "开启你的学习之旅",
     "googleFailed": "Google注册失败。请重试。",
-    "signUpWithGoogle": "使用 Google 注册"
+    "signUpWithGoogle": "使用 Google 注册",
+    "fullNameOptional": "全名（可选）",
+    "fullNameHint": "您可以现在或在颁发证书之前添加此内容。"
   },
   "navbar": {
     "continue": "继续",
@@ -220,7 +223,9 @@
       "sat": "S",
       "sun": "S"
     },
-    "contactDesc": "问题、反馈或要报告的问题"
+    "contactDesc": "问题、反馈或要报告的问题",
+    "decayBannerActive": "XP 正在衰减 — 每日损失 {{rate}}%。 回答一个问题来阻止它。",
+    "decayBannerGrace": "XP 衰减从 {{hours}}h 开始 — 每日损失 {{rate}}%。 继续学习以预防它。"
   },
   "lessons": {
     "title": "{{language}} 课程",
@@ -339,7 +344,15 @@
     "studyMode": "学习模式",
     "defaultMode": "默认",
     "readingMode": "阅读",
-    "listeningMode": "听力"
+    "listeningMode": "听力",
+    "howDoYouSayThisIn": "这个在{{language}} 里怎么说？",
+    "quizMode": {
+      "nativeAssisted": "早期自测：选择您母语的含义。",
+      "targetWithNativeHints": "构建回忆：使用本机提示，然后选择目标语言答案。",
+      "targetDominant": "独立练习：目标语言的选择承担了大部分工作。",
+      "targetFirst": "高级自检：保持目标优先，仅在需要时使用帮助。",
+      "standard": "引导自检。"
+    }
   },
   "flashcards": {
     "title": "练习闪卡",
@@ -438,7 +451,8 @@
     "savedForReview": "已保存以供审核。",
     "saveForReviewFailed": "目前无法保存此卡。",
     "bookmarkedReason": "从抽认卡添加书签。",
-    "selfTestReason": "从抽认卡中保存以供快速自检。"
+    "selfTestReason": "从抽认卡中保存以供快速自检。",
+    "setFamiliarityLevel": "将熟悉度设置为{{level}}"
   },
   "progress": {
     "title": "你的进度",
@@ -621,7 +635,11 @@
     "practicePromptsHint": "使用操作按钮显示快速单词问题，以便您可以从通知栏进行回答。",
     "notificationsAllowed": "该设备允许发送通知。",
     "notificationsBlocked": "目前还不允许通知。",
-    "sendTestPrompt": "发送测试提示"
+    "sendTestPrompt": "发送测试提示",
+    "failedToUpdate": "更新失败",
+    "fullName": "姓名",
+    "fullNamePlaceholder": "证书上显示的姓名",
+    "fullNameMissing": "颁发证书前添加"
   },
   "verifyEmail": {
     "verifying": "正在验证你的邮箱...",
@@ -1034,7 +1052,41 @@
     },
     "snapshotsKicker": "学习者快照",
     "needsHelpTitle": "需要注意",
-    "noNeedsHelpLearners": "目前没有学习者需要额外的关注。"
+    "noNeedsHelpLearners": "目前没有学习者需要额外的关注。",
+    "groupSaved": "组已保存。",
+    "groupSaveFailed": "无法保存该组。",
+    "group": "团体",
+    "noGroup": "无组",
+    "languagePolicy": "语言政策",
+    "allowedTargetLanguages": "允许的目标语言",
+    "allowedTargetLanguagesHelp": "使用此机构访问权限的学习者只能选择这些目标语言。",
+    "defaultTargetLanguage": "默认目标语言",
+    "noDefaultLanguage": "无默认值",
+    "groupsKicker": "团体",
+    "groupsTitle": "学习小组",
+    "groupUsesOrgPolicy": "使用组织语言政策",
+    "noGroupsYet": "创建一个群组来管理班级、群组或团队的语言访问权限。",
+    "groupName": "团体名称",
+    "groupNamePlaceholder": "示例：初级晚间课程",
+    "groupLanguages": "群组目标语言",
+    "createGroup": "创建群组",
+    "testingKicker": "级别检查",
+    "testingTitle": "测试和证书",
+    "recentAttempts": "最近的尝试",
+    "certificatesIssued": "颁发证书",
+    "learner": "学习者",
+    "mobileCertificateLogoName": "移动证书标志",
+    "certificateBrandingSaved": "证书品牌已保存。",
+    "certificateBrandingFailed": "无法保存证书品牌。 使用 HTTPS 图像 URL，或从 Web 仪表板上传 600 KB 以下的 PNG、JPG 或 WebP 徽标。",
+    "certificateBrandingRemoved": "证书标志已删除。",
+    "certificateBrandingKicker": "证书",
+    "certificateBrandingTitle": "证书品牌",
+    "certificateBrandingHelp": "机构证书采用与个人证书相同的设计，添加了此标志和机构名称。",
+    "certificateLogoUrl": "证书徽标 URL 或数据图像",
+    "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
+    "mobileCertificateLogoHelp": "在此处粘贴 HTTPS 图像 URL，或使用 Web 仪表板上传 PNG、JPG 或 WebP 文件。",
+    "saveCertificateBranding": "保存证书标志",
+    "removeCertificateLogo": "删除标志"
   },
   "errorBoundary": {
     "title": "出了点问题",
@@ -1083,13 +1135,47 @@
       "intermediateSubtitle": "主题驱动的观点、文化、健康、工作和日常信心单元。",
       "professionalTitle": "级别{{level}} - 专业{{language}}",
       "professionalSubtitle": "适用于工作、服务、住房、安全和正式场合的实用语言。",
-      "grammarTitle": "级别{{level}} - 高级语法",
-      "grammarSubtitle": "模式集群可帮助您更好地控制连接想法。"
+      "grammarTitle": "级别{{level}} - 高级{{language}}",
+      "grammarSubtitle": "模式集群可帮助您更好地控制连接想法。",
+      "survivalTitle": "级别{{level}} - 基本{{language}}",
+      "survivalSubtitle": "建立有关问候、房间、地点、日常事务、购物和食物的实用基础知识。",
+      "everydayTitle": "级别{{level}} - 日常{{language}}",
+      "everydaySubtitle": "有关问候、食物、地点、计划和日常情况的核心日常课程。",
+      "bridgeTitle": "级别{{level}} - 桥",
+      "bridgeSubtitle": "审查和过渡将日常材料连接到更独立使用的单元。",
+      "topicTitle": "级别{{level}} - 主题{{language}}",
+      "topicSubtitle": "主题驱动的单元，涵盖观点、文化、健康、计划和自信的日常表达。",
+      "advancedTitle": "级别{{level}} - 高级{{language}}",
+      "advancedSubtitle": "更长的阅读、听力、口语和写作任务，并提供较轻的母语支持。"
     },
     "titlePrefix": {
       "unit": "级别{{level}} · 单位{{unit}}: {{title}}"
     },
-    "retry": "再试一次"
+    "retry": "再试一次",
+    "lessonsCount": "{{count}} 课程",
+    "lessonRoles": {
+      "branch": "目标分支",
+      "checkpoint": "检查站",
+      "repair": "维修",
+      "core": "核"
+    },
+    "lessonWeights": {
+      "deep": "深的",
+      "light": "光",
+      "standard": "标准"
+    },
+    "requiredForProgress": "必需的",
+    "programLevels": {
+      "kicker": "学习水平",
+      "coreCount": "{{count}}核心",
+      "branchCount": "{{count}} 分支",
+      "checkpointCount": "{{count}} 检查点"
+    },
+    "singleTrackGuidanceKicker": "为什么要一节课",
+    "singleTrackGuidanceTitle": "开始专注，然后分支",
+    "singleTrackGuidanceBody": "这条赛道故意设计得很紧凑，所以第一步感觉很清晰。 在这里完成课程，然后进入下一个轨道进行更广泛的练习。",
+    "singleTrackGuidanceStep1": "建立基地",
+    "singleTrackGuidanceStep2": "继续日常使用"
   },
   "classLesson": {
     "loading": "正在加载课程...",
@@ -1231,7 +1317,46 @@
     "selfTestReason": "从课堂上保存以供快速自检。",
     "previous": "以前的",
     "lessonGuide": "课程指导",
-    "activityXOfY": "{{total}} 的活动 {{current}}"
+    "activityXOfY": "{{total}} 的活动 {{current}}",
+    "wrapUpReviewBody": "重试此类中应有的或薄弱的项目。",
+    "wrapUpQuizBody": "在开始之前无需加载测验即可检查理解情况。",
+    "wrapUpWritingBody": "使用适合级别的写入或键入模式。",
+    "wrapUpConversationPrompt": "帮助我运用我刚刚在简短对话中学到的知识。",
+    "wrapUpConversationBody": "将课程变成一个简短的角色扮演。",
+    "learningPlan": {
+      "unplacedLevel": "学习水平",
+      "moreActivities": "{{count}}更多",
+      "level": "等级",
+      "support": "支持",
+      "selfTest": "自检",
+      "writing": "写作",
+      "activities": "长期练习",
+      "ariaLabel": "课程学习计划"
+    },
+    "supportLevels": {
+      "nativeGuided": "强大的母语支持",
+      "mixedGuided": "平衡的目标和本机支持",
+      "targetFirst": "目标语言优先",
+      "immersionWithHelp": "主要是目标语言并提供帮助",
+      "standard": "指导支持"
+    },
+    "quizModes": {
+      "nativeAssisted": "您的母语中的含义选择",
+      "targetWithNativeHints": "带有本地提示的目标语言选择",
+      "targetDominant": "主要是目标语言选择",
+      "targetFirst": "目标优先自检",
+      "standard": "引导式自检"
+    },
+    "writingModes": {
+      "handwritingFirst": "先描画或复制",
+      "typeWithWriteOption": "打字，可进行写作练习",
+      "typedProduction": "凭记忆输入答案",
+      "extendedTypedProduction": "较长的打字回复",
+      "standard": "书写或键入"
+    },
+    "longActivities": {
+      "practice": "实践"
+    }
   },
   "exercise": {
     "kicker": "锻炼",
@@ -1390,7 +1515,8 @@
       "listen": "先听，然后写下你所听到的。",
       "meaning": "根据意思回忆并写出目标文本。",
       "stroke": "按照指南进行操作，然后在书写区域进行练习。",
-      "review": "将你的写作与答案进行比较，并标记出哪些内容是有力的。"
+      "review": "将你的写作与答案进行比较，并标记出哪些内容是有力的。",
+      "type": "凭记忆输入答案。 这是早期书法课结束后的标准书写模式。"
     },
     "status": {
       "loadingNotebook": "正在加载书写笔记本...",
@@ -1425,7 +1551,8 @@
     "selfTestReason": "免去写作练习以进行快速自测。",
     "hideNotebook": "隐藏笔记本",
     "showNotebook": "显示笔记本",
-    "hideAddPanel": "隐藏添加面板"
+    "hideAddPanel": "隐藏添加面板",
+    "typePlaceholder": "在此输入您的答案..."
   },
   "certificates": {
     "kicker": "证书",
@@ -1457,7 +1584,30 @@
     "viewPlans": "查看计划",
     "signIn": "登入",
     "issuedSuccess": "颁发证书。",
-    "issueFailed": "无法颁发证书。"
+    "issueFailed": "无法颁发证书。",
+    "levelCertificateTitle": "{{level}}级证书",
+    "proficiencyTitle": "熟练程度证书",
+    "institutionProficiencyTitle": "熟练程度证书",
+    "levelCompletionTitle": "等级结业证书",
+    "institutionCompletionTitle": "等级结业证书",
+    "level": "等级",
+    "levelNumber": "等级{{level}}",
+    "score": "分数",
+    "organization": "组织",
+    "institutionLogoAlt": "{{organization}}标志",
+    "issuedThrough": "发行通过",
+    "institution": "机构",
+    "verifiedProficiency": "经验证的熟练程度证书",
+    "verifiedCompletion": "验证完成证​​书",
+    "proficiencyStatement": "表现出{{level}}级别的熟练程度",
+    "levelCompletionStatement": "已完成级别{{level}}",
+    "completionStatement": "完成所需的学习活动",
+    "download": "下载",
+    "languageControl": "证书语言",
+    "nativeVersionShort": "本国的",
+    "targetVersionShort": "目标",
+    "bilingualVersionShort": "两个都",
+    "certificateIssuedThrough": "证书颁发通过"
   },
   "learningHub": {
     "continueLearning": "继续学习",
@@ -1619,7 +1769,10 @@
     "recentWordsEmptyAction": "保存的单词和有用的短语将在课后或会话练习后收集到这里。",
     "startAClass": "开始上课",
     "milestonesEmptyAction": "您完成的第一个课程、保存的短语或证书将显示在此处。",
-    "earnFirstMilestone": "赢得第一个里程碑"
+    "earnFirstMilestone": "赢得第一个里程碑",
+    "repairPlanTitle": "修复重点",
+    "repairPlanValue": "值得重温",
+    "repairPlanBody": "在你走得太远之前，一些薄弱的或检查点的项目已经准备好进行集中练习。"
   },
   "resetPassword": {
     "title": "重置密码",
@@ -1689,5 +1842,56 @@
     "speaking": "请讲",
     "reading": "阅读",
     "writing": "写作"
+  },
+  "levelTests": {
+    "kicker": "级别检查",
+    "levelLabel": "等级{{level}}",
+    "passed": "通过",
+    "reviewRecommended": "评论推荐",
+    "tasks": {
+      "chooseTarget": "选择目标语言答案。",
+      "chooseMeaning": "选择最好的含义。",
+      "typeTarget": "输入目标语言答案。",
+      "shortResponse": "用目标语言回答，然后对你的回答进行评分。",
+      "default": "回答问题。"
+    },
+    "institutionContext": "机构",
+    "personalContext": "个人的",
+    "skills": {
+      "general": "一般的"
+    },
+    "loadFailed": "目前无法加载级别测试。",
+    "startFailed": "该测试尚未准备好。",
+    "submitFailed": "无法提交此测试。",
+    "certificateReady": "您的证书已准备好。",
+    "certificateFailed": "尚无法颁发此证书。",
+    "title": "展示你能做什么",
+    "subtitle": "完成进度水平检查，或者当您想要更强的能力证明时进行熟练程度检查。",
+    "context": "语境",
+    "allowedLanguages": "可用的目标语言",
+    "chooseLevel": "选择级别",
+    "testType": "测试类型",
+    "restrictedTarget": "此目标语言在此机构环境中不可用。",
+    "start": "开始检查",
+    "emptyTitle": "选择级别检查",
+    "emptyBody": "您将看到您选择的级别的一组均衡的词汇、语法、阅读、口语和写作任务。",
+    "resultTitle": "你的结果",
+    "questionsTitle": "回答每个任务",
+    "certificateIssued": "颁发证书",
+    "issueCertificate": "颁发证书",
+    "writeAnswer": "在这里写下你的答案...",
+    "selfNeedsWork": "需要工作",
+    "selfAlmost": "几乎",
+    "selfGood": "好的",
+    "correct": "正确的",
+    "missed": "回顾一下这个",
+    "submit": "提交支票",
+    "fullNameInvalid": "输入至少两个字符作为您的全名。",
+    "certificateNameKicker": "证书名称",
+    "fullNameRequiredTitle": "添加您的全名",
+    "fullNameRequiredBody": "请准确输入此证书上应显示的您的全名。 您只需在颁发证书之前执行此操作。",
+    "fullNameLabel": "姓名",
+    "fullNamePlaceholder": "你的全名",
+    "saveNameAndIssue": "保存姓名并颁发证书"
   }
 }

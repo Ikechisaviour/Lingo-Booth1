@@ -24,7 +24,8 @@
     "search": "Zoekopdracht",
     "notSet": "Niet ingesteld",
     "all": "Alle",
-    "reset": "Opnieuw instellen"
+    "reset": "Opnieuw instellen",
+    "restart": "Opnieuw opstarten"
   },
   "languages": {
     "en": "Engels",
@@ -106,7 +107,9 @@
     "registrationFailed": "Registratie mislukt",
     "brandTagline": "Begin je reis",
     "googleFailed": "Google-registratie mislukt. Probeer het opnieuw.",
-    "signUpWithGoogle": "Meld u aan bij Google"
+    "signUpWithGoogle": "Meld u aan bij Google",
+    "fullNameOptional": "Volledige naam (optioneel)",
+    "fullNameHint": "U kunt dit nu toevoegen of voordat u een certificaat afgeeft."
   },
   "navbar": {
     "continue": "Doorgaan",
@@ -220,7 +223,9 @@
       "sat": "S",
       "sun": "S"
     },
-    "contactDesc": "Vragen, feedback of een probleem om te melden"
+    "contactDesc": "Vragen, feedback of een probleem om te melden",
+    "decayBannerActive": "XP neemt af: dagelijks verlies {{rate}}%. Beantwoord een vraag om het te stoppen.",
+    "decayBannerGrace": "Het verval van XP begint over {{hours}}h – dagelijks verlies {{rate}}%. Blijf studeren om dit te voorkomen."
   },
   "lessons": {
     "title": "{{language}} Lessen",
@@ -339,7 +344,15 @@
     "studyMode": "Studiemodus",
     "defaultMode": "Standaard",
     "readingMode": "Lezen",
-    "listeningMode": "Luisteren"
+    "listeningMode": "Luisteren",
+    "howDoYouSayThisIn": "Hoe zeg je dit in {{language}}?",
+    "quizMode": {
+      "nativeAssisted": "Vroege zelftest: kies de betekenis in uw moedertaal.",
+      "targetWithNativeHints": "Creëer herinnering: gebruik de oorspronkelijke hint en kies vervolgens het antwoord in de doeltaal.",
+      "targetDominant": "Zelfstandig oefenen: de keuze van de doeltaal draagt ​​het meeste werk.",
+      "targetFirst": "Geavanceerde zelftest: blijf doelgericht en gebruik alleen hulp als dat nodig is.",
+      "standard": "Begeleide zelftest."
+    }
   },
   "flashcards": {
     "title": "Oefen Flashcards",
@@ -438,7 +451,8 @@
     "savedForReview": "Opgeslagen voor beoordeling.",
     "saveForReviewFailed": "Kan deze kaart momenteel niet opslaan.",
     "bookmarkedReason": "Bladwijzer gemaakt van flashcards.",
-    "selfTestReason": "Opgeslagen van flashcards voor een snelle zelftest."
+    "selfTestReason": "Opgeslagen van flashcards voor een snelle zelftest.",
+    "setFamiliarityLevel": "Stel bekendheid in op {{level}}"
   },
   "progress": {
     "title": "Je voortgang",
@@ -621,7 +635,11 @@
     "practicePromptsHint": "Toon een korte woordvraag met actieknoppen, zodat u deze kunt beantwoorden vanuit het meldingenpaneel.",
     "notificationsAllowed": "Meldingen zijn toegestaan ​​op dit apparaat.",
     "notificationsBlocked": "Meldingen zijn nog niet toegestaan.",
-    "sendTestPrompt": "Testprompt verzenden"
+    "sendTestPrompt": "Testprompt verzenden",
+    "failedToUpdate": "Updaten is mislukt",
+    "fullName": "Volledige naam",
+    "fullNamePlaceholder": "Naam die op certificaten moet worden weergegeven",
+    "fullNameMissing": "Voeg toe voordat u een certificaat uitgeeft"
   },
   "verifyEmail": {
     "verifying": "Je e-mail verifiëren...",
@@ -1034,7 +1052,41 @@
     },
     "snapshotsKicker": "Momentopnamen van leerlingen",
     "needsHelpTitle": "Heeft aandacht nodig",
-    "noNeedsHelpLearners": "Er zijn momenteel geen leerlingen die extra aandacht nodig hebben."
+    "noNeedsHelpLearners": "Er zijn momenteel geen leerlingen die extra aandacht nodig hebben.",
+    "groupSaved": "Groep opgeslagen.",
+    "groupSaveFailed": "Kan deze groep niet opslaan.",
+    "group": "Groep",
+    "noGroup": "Geen groep",
+    "languagePolicy": "Taalbeleid",
+    "allowedTargetLanguages": "Toegestane doeltalen",
+    "allowedTargetLanguagesHelp": "Studenten die deze instellingstoegang gebruiken, kunnen alleen deze doeltalen kiezen.",
+    "defaultTargetLanguage": "Standaard doeltaal",
+    "noDefaultLanguage": "Geen standaard",
+    "groupsKicker": "Groepen",
+    "groupsTitle": "Leergroepen",
+    "groupUsesOrgPolicy": "Maakt gebruik van het taalbeleid van de organisatie",
+    "noGroupsYet": "Maak een groep om de taaltoegang voor een klas, cohort of team te beheren.",
+    "groupName": "Groepsnaam",
+    "groupNamePlaceholder": "Voorbeeld: Avondles voor beginners",
+    "groupLanguages": "Doeltalen groeperen",
+    "createGroup": "Groep aanmaken",
+    "testingKicker": "Niveaucontroles",
+    "testingTitle": "Testen en certificaten",
+    "recentAttempts": "Recente pogingen",
+    "certificatesIssued": "Certificaten uitgegeven",
+    "learner": "Leerling",
+    "mobileCertificateLogoName": "Mobiel certificaatlogo",
+    "certificateBrandingSaved": "Certificaatbranding opgeslagen.",
+    "certificateBrandingFailed": "Kan certificaatbranding niet opslaan. Gebruik een HTTPS-afbeeldings-URL of upload een PNG-, JPG- of WebP-logo van minder dan 600 KB vanaf het webdashboard.",
+    "certificateBrandingRemoved": "Certificaatlogo verwijderd.",
+    "certificateBrandingKicker": "Certificaten",
+    "certificateBrandingTitle": "Certificaat branding",
+    "certificateBrandingHelp": "Instellingscertificaten gebruiken hetzelfde ontwerp als persoonlijke certificaten, met dit logo en de naam van de instelling toegevoegd.",
+    "certificateLogoUrl": "Certificaatlogo-URL of gegevensafbeelding",
+    "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
+    "mobileCertificateLogoHelp": "Plak hier een HTTPS-afbeeldings-URL of gebruik het webdashboard om een ​​PNG-, JPG- of WebP-bestand te uploaden.",
+    "saveCertificateBranding": "Certificaatlogo opslaan",
+    "removeCertificateLogo": "Logo verwijderen"
   },
   "errorBoundary": {
     "title": "Er is iets misgegaan",
@@ -1083,13 +1135,47 @@
       "intermediateSubtitle": "Onderwerpgestuurde eenheden voor meningen, cultuur, gezondheid, werk en alledaags vertrouwen.",
       "professionalTitle": "Niveau {{level}} - Professioneel {{language}}",
       "professionalSubtitle": "Praktische taal voor werk, dienstverlening, huisvesting, veiligheid en formele situaties.",
-      "grammarTitle": "Niveau {{level}} - Geavanceerde grammatica",
-      "grammarSubtitle": "Patroonclusters waarmee u ideeën met meer controle kunt verbinden."
+      "grammarTitle": "Niveau {{level}} - Gevorderd {{language}}",
+      "grammarSubtitle": "Patroonclusters waarmee u ideeën met meer controle kunt verbinden.",
+      "survivalTitle": "Niveau {{level}} - Essentieel {{language}}",
+      "survivalSubtitle": "Bouw praktische basisprincipes voor begroetingen, kamers, plaatsen, routines, winkelen en eten.",
+      "everydayTitle": "Niveau {{level}} - Elke dag {{language}}",
+      "everydaySubtitle": "Kernlessen voor dagelijks gebruik over groeten, eten, plaatsen, plannen en dagelijkse situaties.",
+      "bridgeTitle": "Niveau {{level}} - Brug",
+      "bridgeSubtitle": "Review en transitie units die alledaags materiaal verbinden met meer onafhankelijk gebruik.",
+      "topicTitle": "Niveau {{level}} - Thematisch {{language}}",
+      "topicSubtitle": "Onderwerpgestuurde eenheden voor meningen, cultuur, gezondheid, plannen en zelfverzekerde dagelijkse expressie.",
+      "advancedTitle": "Niveau {{level}} - Gevorderd {{language}}",
+      "advancedSubtitle": "Langere lees-, luister-, spreek- en schrijftaken met lichtere ondersteuning in de moedertaal."
     },
     "titlePrefix": {
       "unit": "Niveau {{level}} · Eenheid {{unit}}: {{title}}"
     },
-    "retry": "Probeer het opnieuw"
+    "retry": "Probeer het opnieuw",
+    "lessonsCount": "{{count}} lessen",
+    "lessonRoles": {
+      "branch": "Doeltak",
+      "checkpoint": "Controlepunt",
+      "repair": "Reparatie",
+      "core": "Kern"
+    },
+    "lessonWeights": {
+      "deep": "Diep",
+      "light": "Licht",
+      "standard": "Standaard"
+    },
+    "requiredForProgress": "Vereist",
+    "programLevels": {
+      "kicker": "Leerniveau",
+      "coreCount": "{{count}} kern",
+      "branchCount": "{{count}} takken",
+      "checkpointCount": "{{count}} controlepunten"
+    },
+    "singleTrackGuidanceKicker": "Waarom één klas",
+    "singleTrackGuidanceTitle": "Begin gefocust en ga dan verder",
+    "singleTrackGuidanceBody": "Deze track is bewust compact gehouden, zodat de eerste stap duidelijk aanvoelt. Beëindig de les hier en ga dan naar het volgende nummer voor een bredere oefening.",
+    "singleTrackGuidanceStep1": "Bouw de basis",
+    "singleTrackGuidanceStep2": "Ga door met dagelijks gebruik"
   },
   "classLesson": {
     "loading": "Lesles laden...",
@@ -1231,7 +1317,46 @@
     "selfTestReason": "Opgeslagen uit de les voor een snelle zelftest.",
     "previous": "Vorig",
     "lessonGuide": "Lesgids",
-    "activityXOfY": "Activiteit {{current}} van {{total}}"
+    "activityXOfY": "Activiteit {{current}} van {{total}}",
+    "wrapUpReviewBody": "Probeer de vervallen of zwakke items uit deze klasse opnieuw.",
+    "wrapUpQuizBody": "Controleer het begrip zonder de quiz te laden totdat u begint.",
+    "wrapUpWritingBody": "Gebruik de voor het niveau geschikte schrijf- of typmodus.",
+    "wrapUpConversationPrompt": "Help me om wat ik zojuist heb geleerd in een kort gesprek te gebruiken.",
+    "wrapUpConversationBody": "Maak van de les een kort rollenspel.",
+    "learningPlan": {
+      "unplacedLevel": "Leerniveau",
+      "moreActivities": "{{count}} meer",
+      "level": "Niveau",
+      "support": "Steun",
+      "selfTest": "Zelftest",
+      "writing": "Schrijven",
+      "activities": "Lange oefening",
+      "ariaLabel": "Les leerplan"
+    },
+    "supportLevels": {
+      "nativeGuided": "Sterke ondersteuning in de moedertaal",
+      "mixedGuided": "Evenwichtige doelgroep en native ondersteuning",
+      "targetFirst": "Doeltaal eerst",
+      "immersionWithHelp": "Meestal doeltaal, er is hulp beschikbaar",
+      "standard": "Begeleide ondersteuning"
+    },
+    "quizModes": {
+      "nativeAssisted": "Dat betekent keuzes in uw moedertaal",
+      "targetWithNativeHints": "Doeltaalkeuzes met native hints",
+      "targetDominant": "Meestal doeltaalkeuzes",
+      "targetFirst": "Doelgerichte zelftest",
+      "standard": "Begeleide zelftest"
+    },
+    "writingModes": {
+      "handwritingFirst": "Traceer of kopieer eerst",
+      "typeWithWriteOption": "Type, met schrijfoefening mogelijk",
+      "typedProduction": "Getypte antwoorden uit het geheugen",
+      "extendedTypedProduction": "Langere getypte reacties",
+      "standard": "Schrijf of typ"
+    },
+    "longActivities": {
+      "practice": "Oefening"
+    }
   },
   "exercise": {
     "kicker": "Oefening",
@@ -1390,7 +1515,8 @@
       "listen": "Luister eerst en schrijf dan op wat je hoort.",
       "meaning": "Gebruik de betekenis om de doeltekst op te roepen en te schrijven.",
       "stroke": "Volg de gids en oefen vervolgens in het schrijfgebied.",
-      "review": "Vergelijk je schrijfwijze met het antwoord en markeer wat sterk was."
+      "review": "Vergelijk je schrijfwijze met het antwoord en markeer wat sterk was.",
+      "type": "Typ het antwoord uit het geheugen. Dit is de standaard schrijfmodus na de vroege handschriftlessen."
     },
     "status": {
       "loadingNotebook": "Schrijfblok laden...",
@@ -1425,7 +1551,8 @@
     "selfTestReason": "Gered uit de schrijfoefening voor een snelle zelftest.",
     "hideNotebook": "Notitieboekje verbergen",
     "showNotebook": "Notitieboekje tonen",
-    "hideAddPanel": "Verberg het toevoegpaneel"
+    "hideAddPanel": "Verberg het toevoegpaneel",
+    "typePlaceholder": "Typ hier uw antwoord..."
   },
   "certificates": {
     "kicker": "Certificaat",
@@ -1457,7 +1584,30 @@
     "viewPlans": "Bekijk plannen",
     "signIn": "Log in",
     "issuedSuccess": "Certificaat afgegeven.",
-    "issueFailed": "Kan certificaat niet uitgeven."
+    "issueFailed": "Kan certificaat niet uitgeven.",
+    "levelCertificateTitle": "Niveau {{level}} certificaat",
+    "proficiencyTitle": "Vaardigheidscertificaat",
+    "institutionProficiencyTitle": "Vaardigheidscertificaat",
+    "levelCompletionTitle": "Niveau voltooiingscertificaat",
+    "institutionCompletionTitle": "Niveau voltooiingscertificaat",
+    "level": "Niveau",
+    "levelNumber": "Niveau {{level}}",
+    "score": "Scoren",
+    "organization": "Organisatie",
+    "institutionLogoAlt": "{{organization}}-logo",
+    "issuedThrough": "Uitgegeven via",
+    "institution": "Instelling",
+    "verifiedProficiency": "Geverifieerd bekwaamheidscertificaat",
+    "verifiedCompletion": "Geverifieerd voltooiingscertificaat",
+    "proficiencyStatement": "Aantoonbare vaardigheid voor niveau {{level}}",
+    "levelCompletionStatement": "Voltooid niveau {{level}}",
+    "completionStatement": "De vereiste leeractiviteit voltooid",
+    "download": "Downloaden",
+    "languageControl": "Certificaat taal",
+    "nativeVersionShort": "Oorspronkelijk",
+    "targetVersionShort": "Doel",
+    "bilingualVersionShort": "Beide",
+    "certificateIssuedThrough": "Certificaat uitgegeven via"
   },
   "learningHub": {
     "continueLearning": "Ga door met leren",
@@ -1619,7 +1769,10 @@
     "recentWordsEmptyAction": "Opgeslagen woorden en nuttige zinnen worden hier verzameld na de les of gespreksoefeningen.",
     "startAClass": "Begin een les",
     "milestonesEmptyAction": "Je eerste voltooide les, opgeslagen zin of certificaat verschijnt hier.",
-    "earnFirstMilestone": "Verdien de eerste mijlpaal"
+    "earnFirstMilestone": "Verdien de eerste mijlpaal",
+    "repairPlanTitle": "Reparatiefocus",
+    "repairPlanValue": "De moeite waard om opnieuw te bezoeken",
+    "repairPlanBody": "Een paar zwakke items of checkpoint-items zijn klaar om gericht te oefenen voordat je te ver vooruit gaat."
   },
   "resetPassword": {
     "title": "Wachtwoord opnieuw instellen",
@@ -1689,5 +1842,56 @@
     "speaking": "Spreken",
     "reading": "Lezing",
     "writing": "Schrijven"
+  },
+  "levelTests": {
+    "kicker": "Niveaucontroles",
+    "levelLabel": "Niveau {{level}}",
+    "passed": "Geslaagd",
+    "reviewRecommended": "Beoordeling aanbevolen",
+    "tasks": {
+      "chooseTarget": "Kies het doeltaalantwoord.",
+      "chooseMeaning": "Kies de beste betekenis.",
+      "typeTarget": "Typ het doeltaalantwoord.",
+      "shortResponse": "Antwoord in de doeltaal en scoor vervolgens uw antwoord.",
+      "default": "Beantwoord de vraag."
+    },
+    "institutionContext": "Instelling",
+    "personalContext": "Persoonlijk",
+    "skills": {
+      "general": "Algemeen"
+    },
+    "loadFailed": "Kan niveautesten momenteel niet laden.",
+    "startFailed": "Deze proef is nog niet klaar.",
+    "submitFailed": "Kan deze test niet indienen.",
+    "certificateReady": "Uw certificaat is klaar.",
+    "certificateFailed": "Kan dit certificaat nog niet uitgeven.",
+    "title": "Laat zien wat je kunt",
+    "subtitle": "Voltooi een niveautest voor voortgang, of doe een vaardigheidstest als je een sterker bewijs van bekwaamheid wilt.",
+    "context": "Context",
+    "allowedLanguages": "Beschikbare doeltalen",
+    "chooseLevel": "Kies niveau",
+    "testType": "Testtype",
+    "restrictedTarget": "Deze doeltaal is niet beschikbaar in deze instellingscontext.",
+    "start": "Controle starten",
+    "emptyTitle": "Kies voor een niveaucheck",
+    "emptyBody": "U krijgt een uitgebalanceerde reeks woordenschat-, grammatica-, lees-, spreek- en schrijftaken te zien vanaf het niveau dat u kiest.",
+    "resultTitle": "Jouw resultaat",
+    "questionsTitle": "Beantwoord elke taak",
+    "certificateIssued": "Certificaat afgegeven",
+    "issueCertificate": "Certificaat afgeven",
+    "writeAnswer": "Schrijf hier uw antwoord...",
+    "selfNeedsWork": "Heeft werk nodig",
+    "selfAlmost": "Bijna",
+    "selfGood": "Goed",
+    "correct": "Juist",
+    "missed": "Bekijk dit",
+    "submit": "Cheque indienen",
+    "fullNameInvalid": "Voer minimaal twee tekens in voor uw volledige naam.",
+    "certificateNameKicker": "Certificaatnaam",
+    "fullNameRequiredTitle": "Voeg uw volledige naam toe",
+    "fullNameRequiredBody": "Voer uw volledige naam precies in zoals deze op dit certificaat moet verschijnen. U hoeft dit alleen te doen voordat u een certificaat afgeeft.",
+    "fullNameLabel": "Volledige naam",
+    "fullNamePlaceholder": "Je volledige naam",
+    "saveNameAndIssue": "Naam opslaan en certificaat uitgeven"
   }
 }

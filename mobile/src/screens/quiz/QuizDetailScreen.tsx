@@ -20,6 +20,23 @@ import LANGUAGES, { getLangName } from '../../config/languages';
 import PronunciationGuide from '../../components/PronunciationGuide';
 import { useAppColors, type AppColors } from '../../config/theme';
 
+function quizModeInstruction(value: string | undefined, t: (key: string, options?: any) => string) {
+  const normalized = String(value || '').toLowerCase();
+  if (normalized === 'native-assisted') {
+    return t('lessonDetail.quizMode.nativeAssisted', 'Early self-test: choose the meaning in your native language.');
+  }
+  if (normalized === 'target-with-native-hints') {
+    return t('lessonDetail.quizMode.targetWithNativeHints', 'Build recall: use the native hint, then choose the target-language answer.');
+  }
+  if (normalized === 'target-dominant') {
+    return t('lessonDetail.quizMode.targetDominant', 'Independent practice: target-language choices carry most of the work.');
+  }
+  if (normalized === 'target-first') {
+    return t('lessonDetail.quizMode.targetFirst', 'Advanced self-test: stay target-first and use help only when needed.');
+  }
+  return t('lessonDetail.quizMode.standard', 'Guided self-test.');
+}
+
 type RouteParams = {
   QuizDetail: {
     quizId: string;
@@ -195,14 +212,15 @@ const QuizDetailScreen: React.FC = () => {
     }
   };
 
-  const generateQuizOptions = useCallback((correctAnswer: string, allContent: any[]) => {
+  const generateQuizOptions = useCallback((correctAnswer: string, allContent: any[], answerField = 'nativeText') => {
     // Deduplicate to avoid identical-looking options
     const seen = new Set([correctAnswer]);
     const otherAnswers: string[] = [];
     for (const item of allContent) {
-      if (item.nativeText && !seen.has(item.nativeText)) {
-        seen.add(item.nativeText);
-        otherAnswers.push(item.nativeText);
+      const answer = item?.[answerField];
+      if (answer && !seen.has(answer)) {
+        seen.add(answer);
+        otherAnswers.push(answer);
       }
     }
     const shuffled = [...otherAnswers].sort(() => Math.random() - 0.5);
@@ -210,15 +228,20 @@ const QuizDetailScreen: React.FC = () => {
     return [correctAnswer, ...wrong].sort(() => Math.random() - 0.5);
   }, []);
 
+  const quizMode = content?.quizOptionMode || lesson?.quizOptionMode || 'native-assisted';
+  const asksForTargetAnswer = ['target-with-native-hints', 'target-dominant', 'target-first'].includes(quizMode);
+  const quizAnswerField = asksForTargetAnswer ? 'targetText' : 'nativeText';
+  const quizQuestionText = asksForTargetAnswer ? content?.nativeText : content?.targetText;
+  const correctQuizAnswer = asksForTargetAnswer ? content?.targetText : content?.nativeText;
   const quizOptions = useMemo(() => {
-    if (!content?.nativeText || !lesson?.content) return [];
-    return generateQuizOptions(content.nativeText, lesson.content);
-  }, [content, lesson, generateQuizOptions]);
+    if (!correctQuizAnswer || !lesson?.content) return [];
+    return generateQuizOptions(correctQuizAnswer, lesson.content, quizAnswerField);
+  }, [correctQuizAnswer, lesson, generateQuizOptions, quizAnswerField]);
 
   const handleAnswerSelect = (answer: string) => {
     setSelectedAnswer(answer);
     setQuizAttempted(true);
-    const correct = answer === content.nativeText;
+    const correct = answer === correctQuizAnswer;
     setIsCorrect(correct);
 
     setQuizTotal((prev) => prev + 1);
@@ -270,6 +293,7 @@ const QuizDetailScreen: React.FC = () => {
       params: {
         savedText: content.targetText || '',
         nativeText: content.nativeText || '',
+        level: String(content.learningLevel || lesson?.learningLevel || ''),
       },
     });
   };
@@ -524,16 +548,25 @@ const QuizDetailScreen: React.FC = () => {
               </View>
             ) : (
               <View style={styles.quizSection}>
+                <Text style={styles.quizModeNote}>{quizModeInstruction(quizMode, t)}</Text>
                 <Text style={styles.quizQuestion}>
-                  {t('lessonDetail.whatDoesThisMean', 'What does this mean?')}
+                  {asksForTargetAnswer
+                    ? t('lessonDetail.howDoYouSayThisIn', {
+                      language: t(`languages.${targetLanguage}`, getLangName(targetLanguage)),
+                      defaultValue: 'How do you say this in {{language}}?',
+                    })
+                    : t('lessonDetail.whatDoesThisMean', 'What does this mean?')}
                 </Text>
+                {asksForTargetAnswer && (
+                  <Text style={styles.quizPromptText}>{quizQuestionText}</Text>
+                )}
                 {quizOptions.map((option, idx) => (
                   <TouchableOpacity
                     key={idx}
                     style={[
                       styles.quizOption,
-                      quizAttempted && option === content.nativeText && { borderColor: colors.accentGreen, backgroundColor: '#d1fae5' },
-                      quizAttempted && option === selectedAnswer && option !== content.nativeText && { borderColor: colors.error, backgroundColor: '#fef2f2' },
+                      quizAttempted && option === correctQuizAnswer && { borderColor: colors.accentGreen, backgroundColor: '#d1fae5' },
+                      quizAttempted && option === selectedAnswer && option !== correctQuizAnswer && { borderColor: colors.error, backgroundColor: '#fef2f2' },
                     ]}
                     onPress={() => !quizAttempted && handleAnswerSelect(option)}
                     disabled={quizAttempted}
@@ -702,7 +735,28 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
 
   quizStartBtn: { borderRadius: 8, marginBottom: 16 },
   quizSection: { marginTop: 8 },
+  quizModeNote: {
+    alignSelf: 'flex-start',
+    marginBottom: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 7,
+    borderRadius: 999,
+    backgroundColor: 'rgba(88, 204, 2, 0.12)',
+    color: colors.primary,
+    fontSize: 12,
+    fontWeight: '800',
+    lineHeight: 16,
+  },
   quizQuestion: { fontSize: 16, fontWeight: '700', color: colors.textPrimary, marginBottom: 12 },
+  quizPromptText: {
+    fontSize: 15,
+    lineHeight: 22,
+    color: colors.textSecondary,
+    backgroundColor: colors.background,
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 12,
+  },
   quizOption: {
     backgroundColor: colors.surface,
     borderRadius: 10,

@@ -44,7 +44,8 @@
     "search": "অনুসন্ধান করুন",
     "notSet": "সেট করা হয়নি",
     "goBack": "ফিরে যান",
-    "all": "সব"
+    "all": "সব",
+    "restart": "রিস্টার্ট করুন"
   },
   "languageSelect": {
     "title": "আপনার ভাষা নির্বাচন করুন",
@@ -100,7 +101,10 @@
     "passwordsMatch": "পাসওয়ার্ড মিলেছে",
     "registrationFailed": "নিবন্ধন ব্যর্থ হয়েছে",
     "googleFailed": "Google সাইন আপ ব্যর্থ হয়েছে৷ আবার চেষ্টা করুন.",
-    "checkEmail": "আপনার অ্যাকাউন্ট যাচাই করতে আপনার ইমেল চেক করুন"
+    "checkEmail": "আপনার অ্যাকাউন্ট যাচাই করতে আপনার ইমেল চেক করুন",
+    "fullNameOptional": "পুরো নাম (ঐচ্ছিক)",
+    "fullNamePlaceholder": "সার্টিফিকেট দেখানোর জন্য নাম",
+    "fullNameHint": "আপনি এখন বা একটি শংসাপত্র ইস্যু করার আগে এটি যোগ করতে পারেন।"
   },
   "navbar": {
     "continue": "চালিয়ে যান",
@@ -203,7 +207,10 @@
       "sat": "এস",
       "sun": "এস"
     },
-    "supportAndPlans": "সমর্থন এবং পরিকল্পনা"
+    "supportAndPlans": "সমর্থন এবং পরিকল্পনা",
+    "decayBannerActive": "XP ক্ষয় হচ্ছে — দৈনিক ক্ষতি {{rate}}%। এটি থামাতে একটি প্রশ্নের উত্তর দিন।",
+    "decayBannerGrace": "XP ক্ষয় {{hours}}h-এ শুরু হয় — দৈনিক ক্ষতি {{rate}}%৷ এটি প্রতিরোধ করার জন্য পড়াশোনা চালিয়ে যান।",
+    "dashboard": "ড্যাশবোর্ড"
   },
   "lessons": {
     "title": "{{language}} <1>পাঠ</1>",
@@ -298,7 +305,15 @@
     "translating": "অনুবাদ হচ্ছে...",
     "translationUnavailable": "অনুবাদ লোড হচ্ছে...",
     "retryTranslation": "পুনরায় চেষ্টা",
-    "quizUnavailable": "কুইজ অনুপলব্ধ — অনুবাদ লোড হচ্ছে..."
+    "quizUnavailable": "কুইজ অনুপলব্ধ — অনুবাদ লোড হচ্ছে...",
+    "howDoYouSayThisIn": "আপনি কীভাবে এটি {{language}} এ বলবেন?",
+    "quizMode": {
+      "nativeAssisted": "প্রারম্ভিক স্ব-পরীক্ষা: আপনার স্থানীয় ভাষায় অর্থ চয়ন করুন।",
+      "targetWithNativeHints": "বিল্ড রিকল: নেটিভ ইঙ্গিত ব্যবহার করুন, তারপর লক্ষ্য-ভাষা উত্তর চয়ন করুন।",
+      "targetDominant": "স্বাধীন অনুশীলন: লক্ষ্য-ভাষা পছন্দগুলি বেশিরভাগ কাজ বহন করে।",
+      "targetFirst": "উন্নত স্ব-পরীক্ষা: লক্ষ্য-প্রথমে থাকুন এবং প্রয়োজন হলেই সাহায্য ব্যবহার করুন।",
+      "standard": "নির্দেশিত স্ব-পরীক্ষা।"
+    }
   },
   "flashcards": {
     "title": "ফ্ল্যাশকার্ড <1>অনুশীলন</1>",
@@ -386,7 +401,8 @@
     "savedReason": "পরবর্তী অনুশীলনের জন্য ফ্ল্যাশকার্ড থেকে সংরক্ষিত।",
     "saveForReview": "পর্যালোচনার জন্য সংরক্ষণ করুন",
     "bookmarkedReason": "ফ্ল্যাশকার্ড থেকে বুকমার্ক করা হয়েছে।",
-    "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য ফ্ল্যাশকার্ড থেকে সংরক্ষিত।"
+    "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য ফ্ল্যাশকার্ড থেকে সংরক্ষিত।",
+    "setFamiliarityLevel": "পরিচিতি {{level}} এ সেট করুন"
   },
   "progress": {
     "title": "আপনার <1>অগ্রগতি</1>",
@@ -523,7 +539,10 @@
     "systemDefault": "সিস্টেম ডিফল্ট",
     "voiceSettingsDesc": "আপনার টার্গেট ভাষা এবং আপনার মাতৃভাষার জন্য পৃথক ভয়েস চয়ন করুন যাতে মিশ্র উত্তরগুলি স্বাভাবিকভাবে উচ্চারিত হয়।",
     "targetVoice": "টার্গেট ভয়েস",
-    "nativeVoice": "দেশীয় কণ্ঠস্বর"
+    "nativeVoice": "দেশীয় কণ্ঠস্বর",
+    "fullName": "পুরো নাম",
+    "fullNamePlaceholder": "সার্টিফিকেট দেখানোর জন্য নাম",
+    "fullNameMissing": "একটি শংসাপত্র প্রদানের আগে যোগ করুন"
   },
   "verifyEmail": {
     "verifying": "আপনার ইমেইল যাচাই করা হচ্ছে...",
@@ -985,7 +1004,46 @@
     "saveReply": "উত্তর সংরক্ষণ করুন",
     "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য ক্লাস থেকে সংরক্ষিত.",
     "hideOutline": "রূপরেখা লুকান",
-    "showOutline": "রূপরেখা দেখান"
+    "showOutline": "রূপরেখা দেখান",
+    "wrapUpReviewBody": "এই ক্লাস থেকে বকেয়া বা দুর্বল আইটেম পুনরায় চেষ্টা করুন.",
+    "wrapUpQuizBody": "আপনি শুরু না হওয়া পর্যন্ত কুইজ লোড না করে বোঝার পরীক্ষা করুন।",
+    "wrapUpWritingBody": "লেভেল-উপযুক্ত লেখা বা টাইপ মোড ব্যবহার করুন।",
+    "wrapUpConversationPrompt": "একটি ছোট কথোপকথনে আমি যা শিখেছি তা ব্যবহার করতে আমাকে সাহায্য করুন।",
+    "wrapUpConversationBody": "পাঠটিকে একটি সংক্ষিপ্ত ভূমিকায় পরিণত করুন।",
+    "learningPlan": {
+      "unplacedLevel": "শেখার স্তর",
+      "moreActivities": "{{count}} আরো",
+      "level": "স্তর",
+      "support": "সমর্থন",
+      "selfTest": "স্ব-পরীক্ষা",
+      "writing": "লেখা",
+      "activities": "দীর্ঘ অনুশীলন",
+      "ariaLabel": "পাঠ শেখার পরিকল্পনা"
+    },
+    "supportLevels": {
+      "nativeGuided": "শক্তিশালী মাতৃভাষা সমর্থন",
+      "mixedGuided": "সুষম লক্ষ্য এবং স্থানীয় সমর্থন",
+      "targetFirst": "প্রথমে লক্ষ্য ভাষা",
+      "immersionWithHelp": "সহজলভ্য সাহায্যের সাথে বেশিরভাগ টার্গেট ভাষা",
+      "standard": "নির্দেশিত সমর্থন"
+    },
+    "quizModes": {
+      "nativeAssisted": "আপনার স্থানীয় ভাষায় পছন্দের অর্থ",
+      "targetWithNativeHints": "নেটিভ ইঙ্গিত সহ টার্গেট-ভাষা পছন্দ",
+      "targetDominant": "বেশিরভাগ লক্ষ্য-ভাষা পছন্দ",
+      "targetFirst": "লক্ষ্য-প্রথম স্ব-পরীক্ষা",
+      "standard": "নির্দেশিত স্ব-পরীক্ষা"
+    },
+    "writingModes": {
+      "handwritingFirst": "প্রথমে ট্রেস বা কপি করুন",
+      "typeWithWriteOption": "টাইপ, লেখার অনুশীলন উপলব্ধ",
+      "typedProduction": "মেমরি থেকে টাইপ করা উত্তর",
+      "extendedTypedProduction": "দীর্ঘ টাইপ করা প্রতিক্রিয়া",
+      "standard": "লিখুন বা টাইপ করুন"
+    },
+    "longActivities": {
+      "practice": "অনুশীলন করুন"
+    }
   },
   "classList": {
     "heroAriaLabel": "ক্লাস",
@@ -1021,15 +1079,45 @@
       "intermediateSubtitle": "মতামত, সংস্কৃতি, স্বাস্থ্য, কাজ এবং দৈনন্দিন আত্মবিশ্বাসের জন্য বিষয়-চালিত ইউনিট।",
       "professionalTitle": "স্তর {{level}} - পেশাদার {{language}}",
       "professionalSubtitle": "কাজ, পরিষেবা, আবাসন, নিরাপত্তা, এবং আনুষ্ঠানিক পরিস্থিতির জন্য ব্যবহারিক ভাষা।",
-      "grammarTitle": "স্তর {{level}} - উন্নত ব্যাকরণ",
-      "grammarSubtitle": "প্যাটার্ন ক্লাস্টার যা আপনাকে আরও নিয়ন্ত্রণের সাথে ধারণাগুলিকে সংযুক্ত করতে সহায়তা করে।"
+      "grammarTitle": "স্তর {{level}} - উন্নত {{language}}",
+      "grammarSubtitle": "প্যাটার্ন ক্লাস্টার যা আপনাকে আরও নিয়ন্ত্রণের সাথে ধারণাগুলিকে সংযুক্ত করতে সহায়তা করে।",
+      "survivalTitle": "স্তর {{level}} - অপরিহার্য {{language}}",
+      "survivalSubtitle": "অভিবাদন, রুম, স্থান, রুটিন, কেনাকাটা এবং খাবারের জন্য ব্যবহারিক বুনিয়াদি তৈরি করুন।",
+      "everydayTitle": "স্তর {{level}} - প্রতিদিন {{language}}",
+      "everydaySubtitle": "অভিবাদন, খাবার, স্থান, পরিকল্পনা এবং দৈনন্দিন পরিস্থিতির জন্য মূল দৈনন্দিন পাঠ।",
+      "bridgeTitle": "স্তর {{level}} - সেতু",
+      "bridgeSubtitle": "রিভিউ এবং ট্রানজিশন ইউনিট যা দৈনন্দিন উপাদানকে আরও স্বাধীন ব্যবহারের সাথে সংযুক্ত করে।",
+      "topicTitle": "স্তর {{level}} - বিষয়ভিত্তিক {{language}}",
+      "topicSubtitle": "মতামত, সংস্কৃতি, স্বাস্থ্য, পরিকল্পনা, এবং আত্মবিশ্বাসী দৈনন্দিন অভিব্যক্তির জন্য বিষয়-চালিত ইউনিট।",
+      "advancedTitle": "স্তর {{level}} - উন্নত {{language}}",
+      "advancedSubtitle": "হালকা মাতৃভাষা সমর্থন সহ দীর্ঘক্ষণ পড়া, শোনা, কথা বলা এবং লেখার কাজগুলি।"
     },
     "titlePrefix": {
       "unit": "স্তর {{level}} · ইউনিট {{unit}}: {{title}}"
     },
     "retry": "আবার চেষ্টা করুন",
     "progressAriaLabel": "ক্লাসের অগ্রগতি",
-    "progressCaption": "{{percent}}% সম্পূর্ণ · {{total}} আইটেমের {{completed}}"
+    "progressCaption": "{{percent}}% সম্পূর্ণ · {{total}} আইটেমের {{completed}}",
+    "lessonWeights": {
+      "deep": "গভীর",
+      "light": "আলো",
+      "standard": "স্ট্যান্ডার্ড"
+    },
+    "lessonPlanAriaLabel": "পাঠ পরিকল্পনা",
+    "requiredForProgress": "প্রয়োজন",
+    "programLevels": {
+      "kicker": "শেখার স্তর",
+      "statsAriaLabel": "স্তর পরিকল্পনা সারাংশ",
+      "coreCount": "{{count}} কোর",
+      "branchCount": "{{count}} শাখা",
+      "checkpointCount": "{{count}} চেকপয়েন্ট"
+    },
+    "singleTrackGuidanceAriaLabel": "একক পাঠ ট্র্যাক নির্দেশিকা",
+    "singleTrackGuidanceKicker": "কেন এক ক্লাস",
+    "singleTrackGuidanceTitle": "ফোকাস শুরু করুন, তারপর শাখা আউট",
+    "singleTrackGuidanceBody": "এই ট্র্যাকটি ইচ্ছাকৃতভাবে কমপ্যাক্ট তাই প্রথম ধাপটি পরিষ্কার মনে হয়। এখানে ক্লাস শেষ করুন, তারপর বিস্তৃত অনুশীলনের জন্য পরবর্তী ট্র্যাকে যান।",
+    "singleTrackGuidanceStep1": "ভিত্তি তৈরি করুন",
+    "singleTrackGuidanceStep2": "দৈনন্দিন ব্যবহারে চালিয়ে যান"
   },
   "contextPractice": {
     "title": "পাঠ আপনার চারপাশে আকৃতির",
@@ -1147,7 +1235,8 @@
       "stroke": "গাইড অনুসরণ করুন, তারপর অনুশীলন করার জন্য লেখার ক্ষেত্রটি ব্যবহার করুন।",
       "review": "উত্তরের সাথে আপনার লেখার তুলনা করুন এবং কী শক্তিশালী ছিল তা চিহ্নিত করুন।",
       "trace": "গাইডের উপর ট্রেস করুন, তারপর মেমরি থেকে পরিষ্কার করুন এবং লিখুন।",
-      "copy": "সাবধানে দেখুন, তারপর শব্দ বা বাক্য অনুলিপি করুন।"
+      "copy": "সাবধানে দেখুন, তারপর শব্দ বা বাক্য অনুলিপি করুন।",
+      "type": "মেমরি থেকে উত্তর টাইপ করুন। প্রাথমিক হস্তাক্ষর পাঠের পর এটি আদর্শ লেখার মোড।"
     },
     "title": "লেখার অভ্যাস",
     "subtitle": "ট্রেস করুন, অনুলিপি করুন, শুনুন, অর্থ দ্বারা স্মরণ করুন, স্ট্রোক ক্রম অধ্যয়ন করুন এবং আপনার পাঠ থেকে একটি নোটবুক রাখুন।",
@@ -1211,7 +1300,9 @@
     "savedReason": "অন্য পাসের জন্য লেখার অনুশীলন থেকে বাঁচানো হয়েছে।",
     "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য লেখার অনুশীলন থেকে সংরক্ষিত।",
     "hideNotebook": "নোটবুক লুকান",
-    "showNotebook": "নোটবুক দেখান"
+    "showNotebook": "নোটবুক দেখান",
+    "typePlaceholder": "এখানে আপনার উত্তর টাইপ করুন...",
+    "typeAriaLabel": "টাইপ করা উত্তর"
   },
   "institution": {
     "kicker": "প্রতিষ্ঠান",
@@ -1276,7 +1367,43 @@
     },
     "snapshotsKicker": "শিক্ষার্থীর স্ন্যাপশট",
     "needsHelpTitle": "মনোযোগ প্রয়োজন",
-    "noNeedsHelpLearners": "বর্তমানে কোন শিক্ষার্থীর অতিরিক্ত মনোযোগের প্রয়োজন নেই।"
+    "noNeedsHelpLearners": "বর্তমানে কোন শিক্ষার্থীর অতিরিক্ত মনোযোগের প্রয়োজন নেই।",
+    "groupSaved": "গ্রুপ সংরক্ষিত.",
+    "groupSaveFailed": "এই দলটিকে সংরক্ষণ করা যায়নি৷",
+    "group": "গ্রুপ",
+    "noGroup": "কোন দল নেই",
+    "allowedTargetLanguages": "অনুমোদিত টার্গেট ভাষা",
+    "allowedTargetLanguagesHelp": "এই প্রতিষ্ঠান অ্যাক্সেস ব্যবহার করে শিক্ষার্থীরা শুধুমাত্র এই টার্গেট ভাষাগুলি বেছে নিতে পারে।",
+    "defaultTargetLanguage": "ডিফল্ট টার্গেট ভাষা",
+    "noDefaultLanguage": "কোন ডিফল্ট",
+    "allowLanguageRequests": "শিক্ষার্থীদের অন্য ভাষার অনুরোধ করার অনুমতি দিন",
+    "groupsKicker": "গোষ্ঠী",
+    "groupsTitle": "শেখার দল",
+    "noGroupsYet": "একটি শ্রেণী, দল বা দলের জন্য ভাষা অ্যাক্সেস পরিচালনা করতে একটি গোষ্ঠী তৈরি করুন৷",
+    "groupUsesOrgPolicy": "প্রতিষ্ঠানের ভাষা নীতি ব্যবহার করে",
+    "groupName": "গ্রুপের নাম",
+    "groupNamePlaceholder": "উদাহরণ: শিক্ষানবিস সান্ধ্য ক্লাস",
+    "groupLanguages": "গ্রুপ টার্গেট ভাষা",
+    "groupLanguagesHelp": "প্রতিষ্ঠানের নীতি ব্যবহার করতে খালি ছেড়ে দিন, অথবা শুধুমাত্র এই গোষ্ঠীর জন্য ভাষা নির্বাচন করুন।",
+    "createGroup": "গ্রুপ তৈরি করুন",
+    "testingKicker": "লেভেল চেক",
+    "testingTitle": "পরীক্ষা এবং সার্টিফিকেট",
+    "recentAttempts": "সাম্প্রতিক প্রচেষ্টা",
+    "certificatesIssued": "সার্টিফিকেট জারি করা হয়েছে",
+    "learner": "শিক্ষিকা",
+    "noTestAttempts": "এখনও কোন স্তর চেক জমা দেওয়া.",
+    "certificateLogoInvalid": "600 KB এর নিচে একটি PNG, JPG, বা WebP লোগো ব্যবহার করুন।",
+    "certificateLogoReadFailed": "সেই লোগো ফাইলটি পড়া যায়নি।",
+    "certificateBrandingSaved": "শংসাপত্র ব্র্যান্ডিং সংরক্ষিত.",
+    "certificateBrandingFailed": "শংসাপত্র ব্র্যান্ডিং সংরক্ষণ করা যায়নি. 600 KB এর নিচে একটি PNG, JPG, বা WebP লোগো ব্যবহার করুন।",
+    "certificateBrandingRemoved": "শংসাপত্রের লোগো সরানো হয়েছে।",
+    "certificateBrandingKicker": "সার্টিফিকেট",
+    "certificateBrandingTitle": "সার্টিফিকেট ব্র্যান্ডিং",
+    "certificateBrandingHelp": "প্রতিষ্ঠানের শংসাপত্রগুলি ব্যক্তিগত শংসাপত্রের মতো একই নকশা ব্যবহার করে, এই লোগো এবং প্রতিষ্ঠানের নাম যুক্ত করা হয়।",
+    "chooseCertificateLogo": "লোগো নির্বাচন করুন",
+    "saveCertificateBranding": "শংসাপত্রের লোগো সংরক্ষণ করুন",
+    "removeCertificateLogo": "লোগো সরান",
+    "certificateLogoRequirement": "600 KB এর নিচে একটি পরিষ্কার PNG, JPG, বা WebP লোগো ব্যবহার করুন। স্বচ্ছ লোগো সাধারণত সবচেয়ে ভালো দেখায়।"
   },
   "certificates": {
     "kicker": "সার্টিফিকেট",
@@ -1308,7 +1435,32 @@
     "viewPlans": "পরিকল্পনা দেখুন",
     "signIn": "সাইন ইন করুন",
     "issuedSuccess": "সার্টিফিকেট জারি করা হয়েছে।",
-    "issueFailed": "সার্টিফিকেট ইস্যু করা যায়নি।"
+    "issueFailed": "সার্টিফিকেট ইস্যু করা যায়নি।",
+    "levelCertificateTitle": "স্তর {{level}} শংসাপত্র",
+    "proficiencyTitle": "দক্ষতা সার্টিফিকেট",
+    "institutionProficiencyTitle": "দক্ষতা সার্টিফিকেট",
+    "levelCompletionTitle": "লেভেল কমপ্লিশন সার্টিফিকেট",
+    "institutionCompletionTitle": "লেভেল কমপ্লিশন সার্টিফিকেট",
+    "level": "স্তর",
+    "levelNumber": "স্তর {{level}}",
+    "score": "স্কোর",
+    "organization": "সংগঠন",
+    "institutionLogoAlt": "{{organization}} লোগো",
+    "issuedThrough": "মাধ্যমে জারি করা হয়",
+    "institution": "প্রতিষ্ঠান",
+    "verifiedProficiency": "যাচাইকৃত দক্ষতা শংসাপত্র",
+    "verifiedCompletion": "যাচাইকৃত সমাপ্তির শংসাপত্র",
+    "proficiencyStatement": "লেভেল {{level}} এর জন্য প্রমানিত দক্ষতা",
+    "levelCompletionStatement": "সমাপ্ত স্তর {{level}}",
+    "completionStatement": "প্রয়োজনীয় শেখার কার্যকলাপ সম্পন্ন",
+    "actions": "শংসাপত্র কর্ম",
+    "downloading": "প্রস্তুত হচ্ছে...",
+    "download": "ডাউনলোড করুন",
+    "nativeVersion": "স্থানীয় ভাষা: {{language}}",
+    "targetVersion": "লক্ষ্য ভাষা: {{language}}",
+    "bilingualVersion": "দ্বিভাষিক: নেটিভ + টার্গেট",
+    "languageControl": "শংসাপত্রের ভাষা",
+    "certificateIssuedThrough": "মাধ্যমে জারি করা সার্টিফিকেট"
   },
   "adminBilling": {
     "title": "সাবস্ক্রিপশন ও প্রতিষ্ঠান",
@@ -1611,7 +1763,10 @@
     "recentWordsEmptyAction": "সংরক্ষিত শব্দ এবং দরকারী বাক্যাংশ ক্লাস বা কথোপকথন অনুশীলনের পরে এখানে সংগ্রহ করা হবে।",
     "startAClass": "একটি ক্লাস শুরু করুন",
     "milestonesEmptyAction": "আপনার প্রথম সমাপ্ত পাঠ, সংরক্ষিত বাক্যাংশ, বা শংসাপত্র এখানে প্রদর্শিত হবে।",
-    "earnFirstMilestone": "প্রথম মাইলফলক অর্জন করুন"
+    "earnFirstMilestone": "প্রথম মাইলফলক অর্জন করুন",
+    "repairPlanTitle": "মেরামত ফোকাস",
+    "repairPlanValue": "পুনর্বিবেচনা মূল্য",
+    "repairPlanBody": "আপনি খুব বেশি এগিয়ে যাওয়ার আগে কয়েকটি দুর্বল বা চেকপয়েন্ট আইটেম মনোযোগী অনুশীলনের জন্য প্রস্তুত।"
   },
   "adminAnalytics": {
     "features": {
@@ -1651,5 +1806,64 @@
     "speaking": "কথা বলছি",
     "reading": "পড়া",
     "writing": "লেখা"
+  },
+  "levelTests": {
+    "kicker": "লেভেল চেক",
+    "levelLabel": "স্তর {{level}}",
+    "passed": "পাস করেছে",
+    "reviewRecommended": "পর্যালোচনা প্রস্তাবিত",
+    "tasks": {
+      "chooseTarget": "লক্ষ্য-ভাষা উত্তর চয়ন করুন.",
+      "chooseMeaning": "সেরা অর্থ চয়ন করুন।",
+      "typeTarget": "লক্ষ্য-ভাষা উত্তর টাইপ করুন.",
+      "shortResponse": "লক্ষ্য ভাষায় উত্তর দিন, তারপর আপনার প্রতিক্রিয়া স্কোর করুন।",
+      "default": "প্রশ্নের উত্তর দাও।"
+    },
+    "skills": {
+      "general": "সাধারণ"
+    },
+    "institutionContext": "প্রতিষ্ঠান",
+    "personalContext": "ব্যক্তিগত",
+    "loadFailed": "এই মুহূর্তে লেভেল টেস্টিং লোড করা যায়নি।",
+    "startFailed": "এই পরীক্ষা এখনও প্রস্তুত নয়.",
+    "submitted": "আপনার পরীক্ষা স্কোর হয়েছে.",
+    "submitFailed": "এই পরীক্ষা জমা দিতে পারেনি.",
+    "certificateReady": "আপনার সার্টিফিকেট প্রস্তুত.",
+    "certificateFailed": "এখনও এই শংসাপত্র ইস্যু করা যায়নি.",
+    "title": "আপনি কি করতে পারেন তা দেখান",
+    "subtitle": "অগ্রগতির জন্য একটি স্তর পরীক্ষা সম্পূর্ণ করুন, অথবা যখন আপনি সক্ষমতার শক্তিশালী প্রমাণ চান তখন একটি দক্ষতা পরীক্ষা নিন।",
+    "verifyHint": "সার্টিফিকেট তাদের সার্টিফিকেট আইডি দিয়ে যাচাই করা যেতে পারে।",
+    "certificates": "সার্টিফিকেট",
+    "context": "প্রসঙ্গ",
+    "allowedLanguages": "উপলব্ধ টার্গেট ভাষা",
+    "chooseLevel": "স্তর নির্বাচন করুন",
+    "testType": "পরীক্ষার ধরন",
+    "start": "চেক শুরু করুন",
+    "restrictedTarget": "এই লক্ষ্য ভাষা এই প্রতিষ্ঠানের প্রেক্ষাপটে উপলব্ধ নয়.",
+    "recent": "সাম্প্রতিক",
+    "notSubmitted": "জমা দেওয়া হয়নি",
+    "noRecent": "এখনও কোন স্তর চেক.",
+    "emptyTitle": "একটি স্তর চেক চয়ন করুন",
+    "emptyBody": "আপনি আপনার চয়ন করা স্তর থেকে শব্দভান্ডার, ব্যাকরণ, পড়া, কথা বলা এবং লেখার কাজগুলির একটি সুষম সেট দেখতে পাবেন।",
+    "resultTitle": "আপনার ফলাফল",
+    "questionsTitle": "প্রতিটি কাজের উত্তর দিন",
+    "passedBody": "আপনি এই ফলাফলের জন্য একটি শংসাপত্র জারি করতে পারেন।",
+    "reviewBody": "দুর্বল দক্ষতা পর্যালোচনা করুন, তারপর প্রস্তুত হলে আবার চেষ্টা করুন।",
+    "certificateIssued": "সার্টিফিকেট জারি করা হয়েছে",
+    "issueCertificate": "ইস্যু সার্টিফিকেট",
+    "writeAnswer": "আপনার উত্তর এখানে লিখুন...",
+    "selfGood": "ভাল",
+    "selfAlmost": "প্রায়",
+    "selfNeedsWork": "কাজ দরকার",
+    "correct": "সঠিক",
+    "missed": "এই পর্যালোচনা",
+    "submit": "চেক জমা দিন",
+    "fullNameInvalid": "আপনার পুরো নামের জন্য কমপক্ষে দুটি অক্ষর লিখুন।",
+    "certificateNameKicker": "শংসাপত্রের নাম",
+    "fullNameRequiredTitle": "আপনার পুরো নাম যোগ করুন",
+    "fullNameRequiredBody": "এই শংসাপত্রে আপনার পুরো নামটি ঠিক যেভাবে প্রদর্শিত হবে তা লিখুন। আপনাকে শুধুমাত্র একটি শংসাপত্র প্রদানের আগে এটি করতে হবে।",
+    "fullNameLabel": "পুরো নাম",
+    "fullNamePlaceholder": "আপনার পুরো নাম",
+    "saveNameAndIssue": "নাম সংরক্ষণ করুন এবং সার্টিফিকেট প্রদান করুন"
   }
 }

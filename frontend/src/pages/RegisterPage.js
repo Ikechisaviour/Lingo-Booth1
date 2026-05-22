@@ -50,6 +50,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
 
   const [formData, setFormData] = useState({
     username: '',
+    fullName: '',
     email: '',
     password: '',
     confirmPassword: '',
@@ -83,6 +84,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
         localStorage.setItem('userId', user.id);
         localStorage.setItem('username', user.username);
+        localStorage.setItem('userFullName', user.fullName || '');
         localStorage.setItem('userEmail', user.email || '');
         localStorage.setItem('userRole', user.role || 'user');
         localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
@@ -104,6 +106,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
       if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
       localStorage.setItem('userId', user.id);
       localStorage.setItem('username', user.username);
+      localStorage.setItem('userFullName', user.fullName || '');
       localStorage.setItem('userEmail', user.email || '');
       localStorage.setItem('userRole', user.role || 'user');
       localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
@@ -161,7 +164,8 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         formData.password,
         guestXP,
         nativeLanguage || '',
-        targetLanguage || ''
+        targetLanguage || '',
+        formData.fullName
       );
       const data = response.data;
       const user = data.user;
@@ -169,6 +173,7 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
       if (data.refreshToken) localStorage.setItem('refreshToken', data.refreshToken);
       localStorage.setItem('userId', user.id);
       localStorage.setItem('username', user.username);
+      localStorage.setItem('userFullName', user.fullName || '');
       localStorage.setItem('userEmail', user.email || '');
       localStorage.setItem('userRole', user.role);
       localStorage.setItem('subscriptionTier', getEffectiveSubscriptionTier(user));
@@ -183,7 +188,11 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
       setEmailVerified(!!user.emailVerified);
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.message || t('register.registrationFailed'));
+      setError(
+        err.response?.data?.code === 'FULL_NAME_INVALID'
+          ? t('levelTests.fullNameInvalid', 'Enter at least two characters for your full name.')
+          : err.response?.data?.message || t('register.registrationFailed')
+      );
     } finally {
       setLoading(false);
     }
@@ -235,6 +244,21 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
               placeholder={t('register.usernamePlaceholder')}
               required
             />
+          </div>
+          <div className="form-group">
+            <label htmlFor="fullName">{t('register.fullNameOptional', 'Full name (optional)')}</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              placeholder={t('register.fullNamePlaceholder', 'Name to show on certificates')}
+              autoComplete="name"
+            />
+            <p className="auth-field-hint">
+              {t('register.fullNameHint', 'You can add this now or before issuing a certificate.')}
+            </p>
           </div>
           <div className="form-group">
             <label htmlFor="email">{t('register.email')}</label>

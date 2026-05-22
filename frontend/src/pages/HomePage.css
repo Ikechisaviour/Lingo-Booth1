@@ -4,10 +4,98 @@
 }
 
 .home-layout {
+  display: block;
+}
+
+/* Streak + XP moved into Learning Signals, and the rest of what used to
+   live in the right rail (Quests, League, Teaser, Admin) now renders as a
+   secondary strip at the bottom of the main column. So the home page is a
+   single full-width flow on web — no more dead column. */
+.home-secondary {
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 32px;
-  align-items: start;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.home-secondary .sidebar-card {
+  margin: 0;
+}
+
+/* Slim decay-warning banner above the welcome card. Only renders when the
+   XP system is in `grace` or `decaying` state — the page stays calm when
+   nothing is wrong. Click-through to /profile for the full XP view. */
+.xp-decay-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin: 0 0 16px;
+  padding: 12px 18px;
+  border: 1px solid rgba(255, 138, 0, 0.35);
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(255, 138, 0, 0.10), rgba(255, 75, 75, 0.06));
+  color: var(--text-primary);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.xp-decay-banner.decaying {
+  border-color: rgba(255, 75, 75, 0.45);
+  background: linear-gradient(135deg, rgba(255, 75, 75, 0.12), rgba(255, 138, 0, 0.08));
+}
+.xp-decay-banner:hover,
+.xp-decay-banner:focus-visible {
+  border-color: var(--primary);
+  outline: none;
+}
+.xp-decay-icon {
+  font-size: 1.25rem;
+}
+.xp-decay-text {
+  flex: 1;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.xp-decay-cta {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--primary);
+  white-space: nowrap;
+}
+
+/* Streak tile inside Learning Signals — replaces the right-rail streak card.
+   The weekday-dot strip lives where the other tiles show their detail text. */
+.learning-signal-card--streak .streak-mini-calendar {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+}
+.learning-signal-card--streak .streak-mini-day {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+.learning-signal-card--streak .streak-mini-day.active {
+  background: transparent;
+  color: inherit;
+  font-size: 0.85rem;
+}
+
+/* XP tile reflects status via a subtle border accent. Decay urgency itself
+   is communicated by the banner above, not by yelling here. */
+.learning-signal-card--xp.grace {
+  border-color: rgba(255, 138, 0, 0.45);
+}
+.learning-signal-card--xp.decaying {
+  border-color: rgba(255, 75, 75, 0.5);
 }
 
 /* Main Content */
@@ -354,6 +442,15 @@
   gap: 4px;
 }
 
+.pair-profile-card .pair-profile-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .pair-profile-card > div span {
   color: var(--text-secondary);
 }
@@ -622,6 +719,11 @@
 .learning-guidance-card.primary {
   border-color: var(--primary-border-soft);
   background: linear-gradient(135deg, var(--surface), var(--primary-soft));
+}
+
+.learning-guidance-card.repair-focus {
+  border-color: color-mix(in srgb, var(--mode-accent) 32%, var(--border-light));
+  background: linear-gradient(135deg, var(--surface), color-mix(in srgb, var(--mode-surface) 58%, white));
 }
 
 .learning-guidance-card summary {

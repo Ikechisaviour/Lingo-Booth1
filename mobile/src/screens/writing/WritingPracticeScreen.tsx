@@ -32,11 +32,20 @@ type Point = { x: number; y: number };
 const modes = [
   { value: 'trace', label: 'Trace' },
   { value: 'copy', label: 'Copy' },
+  { value: 'type', label: 'Type' },
   { value: 'listen', label: 'Listen' },
   { value: 'meaning', label: 'Meaning' },
   { value: 'stroke', label: 'Stroke' },
   { value: 'review', label: 'Review' },
 ];
+
+function modeForRoute(params: any) {
+  const requested = compact(params?.mode, 40);
+  if (modes.some((item) => item.value === requested)) return requested;
+  const level = Number(params?.level || params?.learningLevel || 0);
+  if (level >= 2) return 'type';
+  return 'trace';
+}
 
 function isProOrUltraTier(tier?: string) {
   return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
@@ -278,9 +287,10 @@ const WritingPracticeScreen: React.FC = () => {
   const [items, setItems] = useState<WritingItem[]>([]);
   const [selectedId, setSelectedId] = useState('');
   const [sourceFilter, setSourceFilter] = useState('all');
-  const [mode, setMode] = useState('trace');
+  const [mode, setMode] = useState(() => modeForRoute(route.params));
   const [status, setStatus] = useState(() => t('writing.status.loadingNotebook', 'Loading writing notebook...'));
   const [strokeCount, setStrokeCount] = useState(0);
+  const [typedResponse, setTypedResponse] = useState('');
   const [customTarget, setCustomTarget] = useState('');
   const [customNative, setCustomNative] = useState('');
   const [review, setReview] = useState({ shape: false, spacing: false, memory: false });
@@ -369,6 +379,10 @@ const WritingPracticeScreen: React.FC = () => {
     };
   }, [canLoadContext, nativeLanguage, seededNative, seededTarget, targetLanguage, t]);
 
+  useEffect(() => {
+    setMode(modeForRoute(route.params));
+  }, [route.params]);
+
   const filteredItems = useMemo(() => (
     sourceFilter === 'all' ? items : items.filter((item) => item.source === sourceFilter)
   ), [items, sourceFilter]);
@@ -383,6 +397,7 @@ const WritingPracticeScreen: React.FC = () => {
 
   useEffect(() => {
     setAnswerVisible(false);
+    setTypedResponse('');
   }, [mode, selectedItem?.id]);
 
   const selectNext = () => {
@@ -438,6 +453,7 @@ const WritingPracticeScreen: React.FC = () => {
       mode,
       result,
       strokeCount,
+      typedResponse: compact(typedResponse, 2000),
       createdAt: new Date().toISOString(),
     }, ...attempts].slice(0, 120);
     await AsyncStorage.setItem(ATTEMPT_KEY, JSON.stringify(next));
@@ -513,6 +529,7 @@ const WritingPracticeScreen: React.FC = () => {
 
   const instruction = (() => {
     if (!selectedItem) return t('writing.instructions.addToBegin', 'Add a word or sentence to begin.');
+    if (mode === 'type') return t('writing.instructions.type', 'Type the answer from memory. This is the standard writing mode after the early handwriting lessons.');
     return t(`writing.instructions.${mode}`, 'Copy the target text carefully.');
   })();
 
@@ -635,13 +652,24 @@ const WritingPracticeScreen: React.FC = () => {
           </View>
         )}
 
-        <DrawingPad
-          ghostText={selectedItem?.target || ''}
-          showGhost={mode === 'trace' && !!selectedItem}
-          resetKey={resetKey}
-          onStrokeCount={setStrokeCount}
-          colors={colors}
-        />
+        {mode === 'type' ? (
+          <TextInput
+            mode="outlined"
+            value={typedResponse}
+            onChangeText={setTypedResponse}
+            placeholder={t('writing.typePlaceholder', 'Type your answer here...')}
+            multiline
+            style={styles.typedInput}
+          />
+        ) : (
+          <DrawingPad
+            ghostText={selectedItem?.target || ''}
+            showGhost={mode === 'trace' && !!selectedItem}
+            resetKey={resetKey}
+            onStrokeCount={setStrokeCount}
+            colors={colors}
+          />
+        )}
 
         {shouldHideAnswer && !!selectedItem && !answerVisible && (
           <Button mode="outlined" icon="eye" onPress={() => setAnswerVisible(true)} style={styles.revealButton}>
@@ -771,6 +799,12 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   itemNative: { color: colors.textSecondary, marginTop: 6, lineHeight: 18 },
   emptyText: { color: colors.textSecondary, padding: 12 },
   input: { backgroundColor: colors.surface, marginTop: 10 },
+  typedInput: {
+    minHeight: 180,
+    backgroundColor: colors.surface,
+    marginTop: 12,
+    textAlignVertical: 'top',
+  },
   actionButton: { marginTop: 12, borderRadius: 8 },
   modeRail: { gap: 8, paddingBottom: 12, paddingRight: 12 },
   practiceHead: { flexDirection: 'row', alignItems: 'center', gap: 10, marginBottom: 8 },
