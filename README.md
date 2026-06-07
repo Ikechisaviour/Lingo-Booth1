@@ -1,249 +1,115 @@
-# Korean Learning App
+# Lingo Booth
 
-A comprehensive full-stack application for learning Korean with lessons, flashcards, and personalized progress tracking.
+A full-stack, multi-language learning platform. Lingo Booth lets learners study any supported language from their own native language through guided lessons, conversation practice, flashcards, quizzes, and writing practice — with progress tracking, gamification, and subscriptions. It ships parallel **web** and **mobile** apps plus an **admin** surface, all kept at feature parity.
+
+## Supported Languages
+
+Lingo Booth supports 20 languages as both learning targets and interface/native languages:
+
+Arabic (ar), Bengali (bn), Chinese (zh), Dutch (nl), English (en), Filipino (fil), French (fr), German (de), Hebrew (he), Hindi (hi), Indonesian (id), Italian (it), Japanese (ja), Korean (ko), Malay (ms), Portuguese (pt), Russian (ru), Spanish (es), Tamil (ta), and Turkish (tr).
+
+Any native→target pair is supported (e.g. English→Korean, Korean→English, Spanish→Italian, Hindi→Chinese, Arabic→English). English/Korean is only one example pairing, not a built-in assumption. Right-to-left languages such as Arabic and Hebrew are fully supported. The canonical list lives in `backend/config/languages.js`.
 
 ## Features
 
-### 📚 Lessons Module
-- Structured lessons organized by categories (daily-life, business, travel, greetings, food, shopping, healthcare)
-- Multiple difficulty levels (beginner, intermediate, advanced)
-- Learn words, sentences, and conversations
-- Audio pronunciation guides
-- Usage examples with translations
-- Progress tracking for each lesson
+The learning experience is built to be language-agnostic. Lessons, decks, and quizzes are authored or generated per target language rather than translated from a single source language, and all user-facing copy flows through the i18n pipeline.
 
-### 🎴 Flashcard System
-- Create custom flashcards
-- Interactive spaced repetition learning
-- Mastery levels (0-5 stars)
-- Track correct and incorrect answers
-- Category-based organization
+- **Guided lessons & class lessons** — structured, target-authored content with resume-aware loading.
+- **Conversation practice** — a guided practice partner for spoken and written practice (relaxed and challenge modes).
+- **Flashcards** — spaced-repetition study with mastery tracking, seeded from target-language teaching profiles.
+- **Quizzes** — target-language-clean quiz decks validated against concept audits.
+- **Writing practice** — guided writing with localized modes, sources, and statuses.
+- **Progress & gamification** — XP, streaks, quests, and skill tracking.
+- **Certificates** — class-lesson certificates rendered to downloadable PDFs.
+- **Subscriptions & billing** — Free / Plus / Pro / Ultra tiers plus institution plans, via Stripe (web) and store products (mobile).
+- **Localization guardrails** — automated audits enforce that every surface is fully translated across all 20 locales, with no hardcoded English, mojibake, or leaked placeholders.
 
-### 📊 Progress Tracking
-- Monitor progress across 4 key skills:
-  - **Listening** 👂
-  - **Speaking** 🗣️
-  - **Reading** 📖
-  - **Writing** ✍️
-- Mastery status levels:
-  - 🟢 Mastered
-  - 🟡 Comfortable
-  - 🔵 Learning
-  - 🔴 Struggling
+## Architecture
 
-### 🎯 Personalized Learning
-- Identifies areas you're struggling with
-- Provides recommendations for improvement
-- Tracks success rates and attempt counts
-- Adaptive feedback based on performance
-
-## Project Structure
+Lingo Booth is an npm workspace with four parts:
 
 ```
-korean-learning-app/
-├── backend/              # Node.js/Express API
-│   ├── models/          # MongoDB schemas
-│   ├── routes/          # API endpoints
-│   ├── controllers/      # Business logic
-│   ├── server.js        # Main server file
-│   └── package.json
-├── frontend/            # React web application
-│   ├── public/          # Static assets
-│   ├── src/
-│   │   ├── components/  # Reusable components
-│   │   ├── pages/       # Page components
-│   │   ├── services/    # API service
-│   │   ├── App.js       # Main app component
-│   │   └── index.js     # Entry point
-│   └── package.json
-└── README.md
+lingo-booth/
+├── backend/          # Node.js/Express API, MongoDB, language + content pipelines
+├── frontend/         # React web application
+├── admin-frontend/   # React admin dashboard
+├── mobile/           # React Native / Expo app (iOS + Android)
+└── docs/             # Curriculum design, XP policy, guardrails, quality scorecards
 ```
+
+### Web / Mobile parity
+
+Almost every user-facing feature exists on both `frontend/` (React) and `mobile/` (React Native). Changes to shared UI, copy, behavior, or navigation must land on both surfaces in the same change. See `AGENTS.md` for the full parity, localization, device-coverage, and performance rules — they are the source of truth for implementation.
+
+### Device coverage
+
+The web app targets desktop, tablet, phone, and foldable/split-screen widths. The mobile apps target phones, Android tablets, and iPads, including foldables. Layouts must remain usable across all of these, not just one screen size.
 
 ## Tech Stack
 
-### Backend
-- **Runtime:** Node.js
-- **Framework:** Express.js
-- **Database:** MongoDB
-- **Authentication:** JWT
-- **Password Hashing:** bcryptjs
+**Backend** — Node.js, Express, MongoDB (Mongoose), JWT + Google OAuth auth, translation pipeline (`google-translate-api-x`), TTS (`msedge-tts`), email (Resend), Stripe billing.
 
-### Frontend
-- **Framework:** React 18
-- **Routing:** React Router v6
-- **HTTP Client:** Axios
-- **Styling:** CSS3
-- **State Management:** React Hooks
+**Web frontend** — React 18, React Router v6, i18next / react-i18next, Axios, Chart.js.
+
+**Mobile** — React Native, Expo, TypeScript.
 
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v14 or higher)
+
+- Node.js (v18+ recommended)
 - MongoDB (local or cloud instance)
-- npm or yarn
+- npm
 
-### Backend Setup
+### Backend
 
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
+```bash
+cd backend
+npm install
+cp .env.example .env    # then fill in values
+npm run dev
+```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+The API runs at `http://localhost:5001` by default.
 
-3. Create a `.env` file based on `.env.example`:
-   ```bash
-   MONGODB_URI=mongodb://localhost:27017/korean-learning
-   JWT_SECRET=your_secret_key_here
-   PORT=5000
-   NODE_ENV=development
-   ```
+### Web frontend
 
-4. Start the backend server:
-   ```bash
-   npm run dev
-   ```
+```bash
+cd frontend
+npm install
+npm start
+```
 
-The API will be available at `http://localhost:5000`
+The web app runs at `http://localhost:3000`.
 
-### Frontend Setup
+### Mobile
 
-1. Navigate to the frontend directory:
-   ```bash
-   cd frontend
-   ```
+```bash
+cd mobile
+npm install
+npx expo start
+```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+## Localization Workflow
 
-3. Start the development server:
-   ```bash
-   npm start
-   ```
+When adding user-facing strings, wrap them in `t('namespace.key', 'English default')`, then run, from the relevant package:
 
-The app will be available at `http://localhost:3000`
+```bash
+npm run i18n:harvest        # extract English defaults into en/translation.json
+npm run i18n:fill-locales   # translate into the other 19 locales
+npm run audit:guardrails    # verify no leaks/missing keys
+```
 
-## API Endpoints
+## Audits
 
-### Authentication
-- `POST /api/auth/register` - Register new user
-- `POST /api/auth/login` - Login user
+Localization and content quality are enforced by automated audits. From the repo root:
 
-### Lessons
-- `GET /api/lessons` - Get all lessons (with optional filters)
-- `GET /api/lessons/:id` - Get single lesson
-- `POST /api/lessons` - Create lesson (admin)
+```bash
+npm run audit:all
+```
 
-### Flashcards
-- `GET /api/flashcards/user/:userId` - Get user's flashcards
-- `POST /api/flashcards` - Create flashcard
-- `PUT /api/flashcards/:id` - Update flashcard
-- `DELETE /api/flashcards/:id` - Delete flashcard
-
-### Progress
-- `GET /api/progress/user/:userId` - Get user progress
-- `GET /api/progress/summary/:userId` - Get progress summary
-- `POST /api/progress` - Record progress
-
-### Users
-- `GET /api/users/:userId` - Get user profile
-
-## Usage Guide
-
-### 1. Register/Login
-Start by creating an account or logging in with existing credentials.
-
-### 2. Browse Lessons
-Navigate to the Lessons section to find lessons by category and difficulty. Click on a lesson to study it.
-
-### 3. Study with Flashcards
-Create flashcards or use lesson-based cards. Use the interactive flashcard UI to study and track mastery.
-
-### 4. Track Progress
-Visit the Progress page to see your performance across all four language skills and identify areas for improvement.
-
-### 5. Get Recommendations
-The app analyzes your performance and provides personalized recommendations for areas you're struggling with.
-
-## Database Schema
-
-### User
-- `username` (String, unique)
-- `email` (String, unique)
-- `password` (String, hashed)
-- `createdAt` (Date)
-
-### Lesson
-- `title` (String)
-- `category` (String, enum)
-- `difficulty` (String, enum)
-- `content` (Array of learning items)
-  - `type` (word/sentence/conversation)
-  - `korean` (String)
-  - `romanization` (String)
-  - `english` (String)
-  - `pronunciation` (String)
-  - `audioUrl` (String)
-  - `example` (String)
-  - `exampleEnglish` (String)
-
-### Flashcard
-- `userId` (ObjectId ref)
-- `korean` (String)
-- `english` (String)
-- `romanization` (String)
-- `category` (String)
-- `masteryLevel` (Number, 0-5)
-- `correctCount` (Number)
-- `incorrectCount` (Number)
-- `lastReviewedAt` (Date)
-
-### Progress
-- `userId` (ObjectId ref)
-- `lessonId` (ObjectId ref)
-- `skillType` (enum: listening/speaking/reading/writing)
-- `category` (String)
-- `score` (Number, 0-100)
-- `masteryStatus` (enum: struggling/learning/comfortable/mastered)
-- `attemptCount` (Number)
-- `correctAttempts` (Number)
-- `timestamp` (Date)
-
-## Future Enhancements
-
-- [ ] Audio recording for speaking practice
-- [ ] Speech recognition for pronunciation checking
-- [ ] Spaced repetition algorithm
-- [ ] Leaderboard and community features
-- [ ] Mobile app (React Native)
-- [ ] Advanced analytics dashboard
-- [ ] Integration with language exchange partners
-- [ ] Video lessons
-- [ ] AI-powered personalized tutoring
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
+This runs backend language guardrails, frontend guardrails, and mobile locale/key/leak/TypeScript checks. A change is not complete until `audit:all` passes. Do not weaken or bypass an audit to make it pass — fix the underlying issue. See `AGENTS.md` for details.
 
 ## License
 
 This project is open source and available under the MIT License.
-
-## Support
-
-For support, email support@koreanlearningapp.com or open an issue on GitHub.
-
-## Acknowledgments
-
-- Inspired by popular language learning platforms
-- Built with modern web technologies
-- Designed for effective language acquisition
-
----
-
-Happy learning! 🇰🇷 화이팅! (Hwaiting!)

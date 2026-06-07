@@ -1,6 +1,6 @@
 # Backend README
 
-Node.js/Express API server for the Korean Learning App.
+Node.js/Express API server for Lingo Booth, a multi-language learning platform.
 
 ## Setup
 

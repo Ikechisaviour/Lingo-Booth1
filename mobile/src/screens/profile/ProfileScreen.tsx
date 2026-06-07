@@ -16,7 +16,7 @@ import {
 import { Text, Button, TextInput, Card, Divider, SegmentedButtons, Switch } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
-import { certificateService, classLessonService, learningHubService, userService, progressService, ttsService } from '../../services/api';
+import { authService, billingService, certificateService, classLessonService, learningHubService, notificationService, userService, progressService, ttsService } from '../../services/api';
 import speechService from '../../services/speechService';
 import {
   getPracticeNotificationStatus,
@@ -40,7 +40,7 @@ const ProfileScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<any>();
   const insets = useSafeAreaInsets();
-  const { userId, username, fullName, userRole, subscriptionTier, aiEntitlements, logout, setChallengeMode, challengeMode, setFullName } = useAuthStore();
+  const { userId, username, fullName, userRole, subscriptionTier, aiEntitlements, logout, setChallengeMode, challengeMode, setFullName, setSubscriptionAccess } = useAuthStore();
   const {
     nativeLanguage,
     targetLanguage,
@@ -60,6 +60,8 @@ const ProfileScreen: React.FC = () => {
   const [progress, setProgress] = useState<any>(null);
   const [learningHub, setLearningHub] = useState<any>(null);
   const [certificates, setCertificates] = useState<any[]>([]);
+  const [billingAccount, setBillingAccount] = useState<any>(null);
+  const [unreadNotifications, setUnreadNotifications] = useState(0);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState('');
@@ -89,6 +91,7 @@ const ProfileScreen: React.FC = () => {
   const [practiceRemindersEnabled, setPracticeRemindersEnabledState] = useState(false);
   const [practiceNotificationsGranted, setPracticeNotificationsGranted] = useState(false);
   const [practiceNotificationBusy, setPracticeNotificationBusy] = useState(false);
+  const [switchingAccess, setSwitchingAccess] = useState('');
   const styles = useMemo(() => createStyles(colors, isCompact), [colors, isCompact]);
   const voiceLanguageCode = voiceLanguage === 'native' ? nativeLanguage : targetLanguage;
   const selectedVoice = preferredVoices?.[voiceLanguageCode] || (voiceLanguage === 'target' ? preferredVoice : null);
@@ -122,21 +125,69 @@ const ProfileScreen: React.FC = () => {
     aiEntitlements?.canManageOrganization
     || user?.aiEntitlements?.canManageOrganization
   );
+  const institutionalAccess = user?.aiEntitlements?.subscription?.institutionalAccess
+    || user?.institutionalAccess
+    || aiEntitlements?.subscription?.institutionalAccess
+    || null;
+  const hasInstitutionAccess = Boolean(
+    institutionalAccess?.organizationName
+    && ['active', 'trialing'].includes(String(institutionalAccess?.status || '').toLowerCase())
+  );
+  const billingSummary = billingAccount?.subscription || billingAccount?.entitlements?.subscription || {};
+  const activeInstitutionAccess = billingSummary.institutionalAccess || institutionalAccess || null;
+  const activeBillingSource = billingSummary.billingSource || user?.aiEntitlements?.billingSource || aiEntitlements?.billingSource || '';
+  const activeAccountTier = String(personalizationTier || 'free').toUpperCase();
+  const activeAccountTypeLabel = userRole === 'admin' || user?.role === 'admin'
+    ? `${t('profilePage.administrator', 'Administrator')} · Pro`
+    : activeBillingSource === 'institution'
+      ? [
+        t('billing.sources.institution', 'Institution seat'),
+        activeInstitutionAccess?.organizationName,
+        activeAccountTier,
+      ].filter(Boolean).join(' · ')
+      : `${t('profilePage.standardUser', 'Standard User')} · ${activeAccountTier}`;
+  const billingMemberships = billingAccount?.memberships || [];
+  const activeAccessKey = billingSummary.billingSource === 'institution' && billingSummary.institutionalAccess?.organizationId
+    ? `institution:${billingSummary.institutionalAccess.organizationId}`
+    : 'personal';
+  const accessOptions = [
+    {
+      key: 'personal',
+      contextType: 'personal',
+      label: t('billing.personalBilling', 'Personal billing'),
+      detail: billingSummary.personalSubscription?.status
+        ? t(`adminBilling.statuses.${billingSummary.personalSubscription.status}`, billingSummary.personalSubscription.status)
+        : t('billing.noPaidSubscription', 'No paid subscription'),
+    },
+    ...billingMemberships
+      .filter((membership: any) => membership.organizationId && ['active', 'trialing'].includes(String(membership.organizationId.status || membership.status || '').toLowerCase()))
+      .map((membership: any) => ({
+        key: `institution:${membership.organizationId._id}`,
+        contextType: 'institution',
+        organizationId: membership.organizationId._id,
+        label: membership.organizationId.name,
+        detail: `${String(membership.organizationId.effectiveTier || '').toUpperCase()} · ${String(t(`institution.roles.${membership.role}`, membership.role))}`,
+      })),
+  ];
 
   const fetchData = useCallback(async () => {
     if (!userId) return;
     try {
       setLoading(true);
-      const [userRes, progRes, hubRes, certRes] = await Promise.all([
+      const [userRes, progRes, hubRes, certRes, billingRes, notificationRes] = await Promise.all([
         userService.getProfile(userId),
         progressService.getSummary(userId),
         learningHubService.getOverview().catch(() => ({ data: null })),
         certificateService.list().catch(() => ({ data: { certificates: [] } })),
+        billingService.getAccount().catch(() => ({ data: null })),
+        notificationService.unreadCount().catch(() => ({ data: { unreadCount: 0 } })),
       ]);
       setUser(userRes.data);
       setProgress(progRes.data);
       setLearningHub(hubRes.data);
       setCertificates(certRes.data?.certificates || []);
+      setBillingAccount(billingRes.data || null);
+      setUnreadNotifications(notificationRes.data?.unreadCount || 0);
       setEditUsername(userRes.data.username);
       setEditFullName(userRes.data.fullName || '');
       setFullName(userRes.data.fullName || null);
@@ -151,6 +202,31 @@ const ProfileScreen: React.FC = () => {
       setLoading(false);
     }
   }, [userId, t, setFullName]);
+
+  const switchAccessContext = async (option: any) => {
+    if (!userId) return;
+    setSwitchingAccess(option.key);
+    try {
+      const res = await billingService.switchSubscriptionContext({
+        contextType: option.contextType,
+        organizationId: option.organizationId || '',
+      });
+      if (res.data?.entitlements) {
+        setSubscriptionAccess((res.data.entitlements.subscriptionTier || 'plus') as any, res.data.entitlements);
+      }
+      const [userRes, billingRes] = await Promise.all([
+        userService.getProfile(userId),
+        billingService.getAccount(),
+      ]);
+      setUser(userRes.data);
+      setBillingAccount(billingRes.data || null);
+      Alert.alert(t('billing.title'), t('billing.subscriptionContextUpdated', 'Subscription access switched.'));
+    } catch (error: any) {
+      Alert.alert(t('common.error'), error.response?.data?.message || t('billing.subscriptionContextFailed', 'Could not switch subscription access.'));
+    } finally {
+      setSwitchingAccess('');
+    }
+  };
 
   useEffect(() => {
     fetchData();
@@ -356,6 +432,9 @@ const ProfileScreen: React.FC = () => {
   };
 
   const handleLogout = async () => {
+    // Invalidate the refresh chain server-side so a stolen token can't be
+    // replayed after sign-out. Fire-and-forget; UI never blocks.
+    authService.logout();
     try { await GoogleSignin.signOut(); } catch {}
     logout();
   };
@@ -419,6 +498,22 @@ const ProfileScreen: React.FC = () => {
           </View>
         </View>
       </View>
+
+      <Card style={styles.card}>
+        <Card.Content style={styles.notificationSummary}>
+          <View>
+            <Text variant="titleMedium" style={styles.cardTitle}>{t('notifications.title', 'Notifications')}</Text>
+            <Text style={styles.mutedText}>
+              {unreadNotifications > 0
+                ? t('notifications.unreadCount', '{{count}} unread', { count: unreadNotifications })
+                : t('notifications.empty', 'No notifications yet.')}
+            </Text>
+          </View>
+          <Button mode="contained" icon="bell-outline" onPress={() => navigation.navigate('Notifications')}>
+            {t('notifications.openAction', 'Open')}
+          </Button>
+        </Card.Content>
+      </Card>
 
       {/* Tab selector */}
       <SegmentedButtons
@@ -493,8 +588,8 @@ const ProfileScreen: React.FC = () => {
                     <Text style={styles.infoValue}>{user?.email || t('profilePage.unknown', 'Unknown')}</Text>
                   </View>
                   <View style={styles.infoRow}>
-                    <Text style={styles.infoLabel}>{t('profilePage.role', 'Role')}</Text>
-                    <Text style={styles.infoValue}>{user?.role === 'admin' ? t('profilePage.adminRole', 'Admin') : t('profilePage.userRole', 'User')}</Text>
+                    <Text style={styles.infoLabel}>{t('profilePage.activeAccountType', 'Active account type')}</Text>
+                    <Text style={styles.infoValue}>{activeAccountTypeLabel}</Text>
                   </View>
                 </>
               )}
@@ -892,6 +987,38 @@ const ProfileScreen: React.FC = () => {
             </Card.Content>
           </Card>
 
+          {accessOptions.length > 1 && (
+            <Card style={styles.card}>
+              <Card.Content>
+                <Text style={styles.personalizationKicker}>{t('billing.accessSwitcherKicker', 'Access source')}</Text>
+                <Text variant="titleMedium" style={styles.cardTitle}>
+                  {t('billing.accessSwitcherTitle', 'Use subscription from')}
+                </Text>
+                <Text style={styles.hintText}>
+                  {t('billing.accessSwitcherHint', 'Choose whether this account uses personal billing or an institution seat for paid access.')}
+                </Text>
+                <View style={styles.accessOptionList}>
+                  {accessOptions.map((option: any) => {
+                    const active = option.key === activeAccessKey;
+                    return (
+                      <Button
+                        key={option.key}
+                        mode={active ? 'contained' : 'outlined'}
+                        onPress={() => switchAccessContext(option)}
+                        disabled={active || !!switchingAccess}
+                        style={styles.accessOptionButton}
+                      >
+                        {active
+                          ? `${option.label} · ${t('billing.currentAccessSource', 'Current')}`
+                          : option.label}
+                      </Button>
+                    );
+                  })}
+                </View>
+              </Card.Content>
+            </Card>
+          )}
+
           <Card style={styles.card}>
             <Card.Content>
               <Text variant="titleMedium" style={styles.cardTitle}>
@@ -905,6 +1032,29 @@ const ProfileScreen: React.FC = () => {
               </Button>
             </Card.Content>
           </Card>
+
+          {hasInstitutionAccess && (
+            <Card style={styles.card}>
+              <Card.Content>
+                <Text variant="titleMedium" style={styles.cardTitle}>
+                  {t('billing.institutionAccess')}
+                </Text>
+                <Text style={styles.hintText}>{institutionalAccess.organizationName}</Text>
+                <View style={styles.infoRow}>
+                  <Text style={styles.infoLabel}>{t('billing.currentPlan')}</Text>
+                  <Text style={styles.infoValue}>{String(institutionalAccess.effectiveTier || user?.subscriptionTier || '').toUpperCase()}</Text>
+                </View>
+                <View style={styles.infoRow}>
+                  <Text style={styles.infoLabel}>{t('institution.role')}</Text>
+                  <Text style={styles.infoValue}>{String(t(`institution.roles.${institutionalAccess.role}`, institutionalAccess.role))}</Text>
+                </View>
+                <View style={styles.infoRow}>
+                  <Text style={styles.infoLabel}>{t('institution.status')}</Text>
+                  <Text style={styles.infoValue}>{String(t(`institution.orgStatuses.${institutionalAccess.status}`, institutionalAccess.status))}</Text>
+                </View>
+              </Card.Content>
+            </Card>
+          )}
 
           {canManageInstitution && (
             <Card style={styles.card}>
@@ -994,6 +1144,8 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
   card: { backgroundColor: colors.surface, borderRadius: isCompact ? 10 : 14, marginBottom: isCompact ? 8 : 12, elevation: 1 },
   cardTitleRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 },
   cardTitle: { fontWeight: '700' },
+  notificationSummary: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', gap: 12 },
+  mutedText: { color: colors.textMuted, marginTop: 4 },
   personalizationCard: {
     borderRadius: isCompact ? 10 : 14,
     borderWidth: 1,
@@ -1045,6 +1197,13 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
     color: colors.primary,
     fontSize: 13,
     fontWeight: '800',
+  },
+  accessOptionList: {
+    gap: 8,
+    marginTop: 12,
+  },
+  accessOptionButton: {
+    alignSelf: 'stretch',
   },
   personalizationArrow: {
     color: colors.primary,

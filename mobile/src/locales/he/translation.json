@@ -639,7 +639,8 @@
     "failedToUpdate": "העדכון נכשל",
     "fullName": "שם מלא",
     "fullNamePlaceholder": "שם שיוצג בתעודות",
-    "fullNameMissing": "הוסף לפני הנפקת אישור"
+    "fullNameMissing": "הוסף לפני הנפקת אישור",
+    "activeAccountType": "סוג חשבון פעיל"
   },
   "verifyEmail": {
     "verifying": "מאמת את האימייל שלך...",
@@ -880,7 +881,7 @@
     "recommended": "מוּמלָץ",
     "startFree": "התחל בחינם",
     "choosePlan": "בחר {{plan}}",
-    "checkoutSetupNeeded": "התשלום המקוון מתבצע. אתה יכול לשלוח בקשה ואנו נעזור לך להמשיך.",
+    "checkoutSetupNeeded": "התשלום המקוון אינו זמין כרגע. אפשר לשלוח בקשה ונעזור לכם להמשיך.",
     "checkoutFailed": "לא ניתן היה להתחיל בקופה. אנא נסה שוב.",
     "loadFailed": "לא ניתן לטעון תוכניות. אנא נסה שוב.",
     "institutionalKicker": "מוסדות",
@@ -932,10 +933,10 @@
       "free": "פרי",
       "plus": "פלוס",
       "pro": "פרו",
-      "ultra": "אולטרה",
-      "institution_basic": "אינסטיטיושן בייסיק",
+      "ultra": "פרימיום",
+      "institution_basic": "אינסטיטיושן פלוס",
       "institution_pro": "אינסטיטיושן פרו",
-      "institution_enterprise": "אינסטיטיושן אנטרפרייז"
+      "institution_enterprise": "אינסטיטיושן פרימיום"
     },
     "planTaglines": {
       "free": "נסה את לולאת הלמידה עם מגבלות יומיות.",
@@ -951,7 +952,14 @@
     "discountUnavailable": "קוד הנחה זה אינו זמין עבור תוכנית זו.",
     "automaticDiscountApplied": "הנחה אוטומטית של {{discount}} הוחלה",
     "signInToChooseTitle": "צור חשבון כדי להמשיך",
-    "signInToChooseBody": "צור חשבון או היכנס לפני בחירת תוכנית בתשלום כדי שניתן יהיה לצרף את הגישה שלך אליך."
+    "signInToChooseBody": "צור חשבון או היכנס לפני בחירת תוכנית בתשלום כדי שניתן יהיה לצרף את הגישה שלך אליך.",
+    "entitlements": {
+      "placementLifetime": "{{count}} בדיקת מיקום",
+      "placementMonthly": "{{count}} בדיקות מיקום/חודש",
+      "proficiencyIncluded": "{{count}} בדיקות מיומנות/חודש כלול, ולאחר מכן {{price}} כל אחד",
+      "proficiencyPaid": "בדיקות מיומנות {{price}} כל אחת",
+      "dailyTokens": "{{count}} אסימוני שיחה יומיים"
+    }
   },
   "billing": {
     "kicker": "חיוב",
@@ -987,7 +995,13 @@
       "web": "תשלום באינטרנט",
       "ios": "רכישת iOS",
       "android": "רכישת אנדרואיד"
-    }
+    },
+    "subscriptionContextUpdated": "גישת המנוי התחלפה.",
+    "subscriptionContextFailed": "לא ניתן היה להחליף גישת מנוי.",
+    "accessSwitcherKicker": "מקור גישה",
+    "accessSwitcherTitle": "השתמש במנוי מ",
+    "accessSwitcherHint": "בחר אם חשבון זה משתמש בחיוב אישי או מושב מוסד לגישה בתשלום.",
+    "currentAccessSource": "נוֹכְחִי"
   },
   "institution": {
     "kicker": "מוֹסָד",
@@ -1086,7 +1100,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "הדבק כאן כתובת אתר של תמונת HTTPS, או השתמש בלוח המחוונים של האינטרנט כדי להעלות קובץ PNG, JPG או WebP.",
     "saveCertificateBranding": "שמור לוגו תעודה",
-    "removeCertificateLogo": "הסר את הלוגו"
+    "removeCertificateLogo": "הסר את הלוגו",
+    "progressDashboardKicker": "התקדמות הלומד",
+    "mastered": "מאסטר",
+    "comfortable": "נוֹחַ",
+    "learning": "לְמִידָה",
+    "struggling": "נאבק",
+    "classLessonsStarted": "שיעורי {{count}} התחילו",
+    "sampleCertificateFailed": "לא ניתן היה לפתוח את האישור לדוגמה.",
+    "previewSampleCertificate": "תצוגה מקדימה של תעודה לדוגמה"
   },
   "errorBoundary": {
     "title": "משהו השתבש",
@@ -1431,7 +1453,7 @@
     "backToProfile": "חזרה לפרופיל",
     "kicker": "לימוד התאמה אישית",
     "title": "שיעורים שעוצבו סביבך",
-    "lockedSubtitle": "Pro ו-Ultra יכולים לשמור מילים, ביטויים ומצבים מאושרים מהחיים האמיתיים כך שתרגול עתידי ירגיש רלוונטי יותר. Free and Plus יכולים להמשיך להשתמש בתרגול קבוע.",
+    "lockedSubtitle": "Pro ו-Premium יכולים לשמור מילים, ביטויים ומצבים מאושרים מהחיים האמיתיים כך שתרגול עתידי ירגיש רלוונטי יותר. Free and Plus יכולים להמשיך להשתמש בתרגול קבוע.",
     "upgradeTitle": "שדרג כדי להתאים אישית את התרגול",
     "upgradeBody": "שדרג כאשר אתה רוצה שיעורים, בדוק הנחיות ומשחקי תפקידים כדי להתאים את עצמך לשפה היומיומית שאתה מאשר.",
     "openConversation": "פתח שיחה",
@@ -1772,7 +1794,8 @@
     "earnFirstMilestone": "להרוויח את אבן הדרך הראשונה",
     "repairPlanTitle": "תיקון מיקוד",
     "repairPlanValue": "שווה ביקור חוזר",
-    "repairPlanBody": "כמה פריטים חלשים או מחסומים מוכנים לתרגול ממוקד לפני שאתה מתקדם יותר מדי."
+    "repairPlanBody": "כמה פריטים חלשים או מחסומים מוכנים לתרגול ממוקד לפני שאתה מתקדם יותר מדי.",
+    "placementLimitReached": "השתמשת בהמחאות המיקום הכלולים שלך עבור תוכנית זו."
   },
   "resetPassword": {
     "title": "איפוס סיסמה",
@@ -1892,6 +1915,63 @@
     "fullNameRequiredBody": "הזן את שמך המלא בדיוק כפי שהוא אמור להופיע בתעודה זו. אתה רק צריך לעשות זאת לפני הנפקת אישור.",
     "fullNameLabel": "שם מלא",
     "fullNamePlaceholder": "שמך המלא",
-    "saveNameAndIssue": "שמור שם והנפקת אישור"
+    "saveNameAndIssue": "שמור שם והנפקת אישור",
+    "proficiencyPaymentRequired": "בדיקת מיומנות זו היא {{price}} לאחר ההמחאות הכלולות שלך.",
+    "proficiencyAllowance": "{{remaining}} מתוך {{included}} כללו בדיקות מיומנות שנותרו החודש. המחאות הנוספות הן {{price}} כל אחת.",
+    "paymentSetupNeeded": "בדיקות מיומנות בתשלום אינן מוגדרות עדיין.",
+    "paymentStartFailed": "לא ניתן היה להתחיל בתשלום עבור בדיקת מיומנות זו.",
+    "proficiencyPaymentTitle": "נדרש תשלום",
+    "payProficiencyCheck": "שלם {{price}} עבור המחאה הזו"
+  },
+  "notifications": {
+    "title": "התראות",
+    "empty": "עדיין אין התראות.",
+    "markAllRead": "סמן הכל כנקראו",
+    "openAction": "לִפְתוֹחַ",
+    "dismiss": "לְפַטֵר",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "הגישה למוסד עודכנה",
+    "institutionLearnerAddedBody": "נוספת ל-{{organizationName}} בתור לומד.",
+    "institutionAdminAddedBody": "כעת תוכל לנהל את {{organizationName}} ממרכז השליטה של ​​המוסד שלך.",
+    "institutionAccessRemovedTitle": "הגישה למוסד הוסרה",
+    "institutionAccessRemovedBody": "הגישה שלך אל {{organizationName}} הוסרה.",
+    "lowSeatsTitle": "המושבים במוסד הולכים ואוזלים",
+    "lowSeatsBody": "ל-{{organizationName}} נותרו {{remaining}} מתוך {{purchased}} מושבים.",
+    "noSeatsTitle": "לא נותרו מושבים במוסד",
+    "noSeatsBody": "{{organizationName}} לא נותרו מושבים.",
+    "seatsAddedTitle": "נוספו מושבים במוסד",
+    "seatsAddedBody": "נוספו מושבים {{quantity}}. מושבים {{remaining}} זמינים כעת.",
+    "institutionPurchaseTitle": "מנוי למוסד הופעל",
+    "institutionPurchaseBody": "{{organizationName}} יש כעת {{quantity}} מושבים למוסד.",
+    "institutionSeatSuspendedTitle": "מושב המוסד מושעה",
+    "institutionSeatSuspendedBody": "המושב שלך עבור {{organizationName}} הושעה.",
+    "institutionSeatRestoredTitle": "מושב המוסד שוחזר",
+    "institutionSeatRestoredBody": "המושב שלך עבור {{organizationName}} פעיל שוב.",
+    "suspensionRequestedTitle": "הלומד ביקש השעיה",
+    "suspensionRequestedBody": "{{email}} ביקש השעיית מושב המוסד.",
+    "institutionRequestAcceptedTitle": "בקשת המוסד התקבלה",
+    "institutionRequestAcceptedBody": "בקשתך עבור {{organizationName}} התקבלה.",
+    "institutionRequestDeclinedTitle": "בקשת המוסד נדחתה",
+    "institutionRequestDeclinedBody": "בקשת המוסד שלך עבור {{organizationName}} נדחתה.",
+    "institutionSuspendedTitle": "המוסד הושעה",
+    "institutionSuspendedBody": "{{organizationName}} הושעה.",
+    "institutionReactivatedTitle": "המוסד הופעל מחדש",
+    "institutionReactivatedBody": "{{organizationName}} פעיל שוב.",
+    "xpDecayTitle": "רצף תרגול צריך תשומת לב",
+    "xpDecayBody": "{{penalty}} XP הופחת לאחר חוסר פעילות. הסכום הנוכחי שלך הוא {{totalXP}} XP.",
+    "viewProfileAction": "צפה בפרופיל",
+    "openInstitutionAction": "מוסד פתוח",
+    "manageSeatsAction": "ניהול מושבים",
+    "viewPlansAction": "צפה בתוכניות",
+    "resumePracticeAction": "המשך להתאמן",
+    "unreadCount": "{{count}} לא נקרא"
+  },
+  "stepUp": {
+    "verifyFailed": "לא ניתן היה לאמת את הסיסמה",
+    "title": "תאשר שזה אתה",
+    "message": "למען אבטחתך, אנא הזן מחדש את הסיסמה שלך כדי להמשיך בפעולה זו.",
+    "passwordPlaceholder": "סִיסמָה",
+    "confirm": "לְאַשֵׁר"
   }
 }

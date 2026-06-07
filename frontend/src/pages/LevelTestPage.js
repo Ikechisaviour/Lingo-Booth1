@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FiAward, FiCheckCircle, FiClipboard, FiLock, FiRefreshCw } from 'react-icons/fi';
-import { levelTestService } from '../services/api';
+import { FiAward, FiCheckCircle, FiClipboard, FiCreditCard, FiLock, FiRefreshCw } from 'react-icons/fi';
+import { billingService, levelTestService } from '../services/api';
 import { getLanguageDisplayName } from '../config/languages';
 import './LevelTestPage.css';
 
@@ -23,6 +23,8 @@ function skillLabel(t, skill) {
   return t(`levelTests.skills.${skill}`, skill || t('levelTests.skills.general', 'General'));
 }
 
+const formatPrice = (cents) => `$${((Number(cents) || 0) / 100).toFixed(0)}`;
+
 function contextLabel(t, context) {
   if (context.contextType === 'institution') {
     return context.organizationName || t('levelTests.institutionContext', 'Institution');
@@ -39,6 +41,8 @@ function LevelTestPage() {
   const [notice, setNotice] = useState('');
   const [contexts, setContexts] = useState([]);
   const [overview, setOverview] = useState(null);
+  const [testEntitlements, setTestEntitlements] = useState(null);
+  const [paymentRequired, setPaymentRequired] = useState(null);
   const [selectedContextKey, setSelectedContextKey] = useState('personal');
   const [selectedLevel, setSelectedLevel] = useState(1);
   const [selectedMode, setSelectedMode] = useState('completion');
@@ -78,6 +82,7 @@ function LevelTestPage() {
         nativeLanguage,
       });
       setOverview(overviewRes.data);
+      setTestEntitlements(overviewRes.data?.testEntitlements || null);
     } catch (err) {
       setError(t('levelTests.loadFailed', 'Could not load level testing right now.'));
     } finally {
@@ -94,6 +99,7 @@ function LevelTestPage() {
     setSaving(true);
     setError('');
     setNotice('');
+    setPaymentRequired(null);
     setCertificate(null);
     try {
       const res = await levelTestService.start({
@@ -105,9 +111,43 @@ function LevelTestPage() {
         nativeLanguage,
       });
       setAttempt(res.data.attempt);
+      setTestEntitlements(res.data.testEntitlements || testEntitlements);
       setAnswers({});
     } catch (err) {
-      setError(err.response?.data?.message || t('levelTests.startFailed', 'This test is not ready yet.'));
+      const code = err.response?.data?.code;
+      if (err.response?.data?.testEntitlements) setTestEntitlements(err.response.data.testEntitlements);
+      if (code === 'PROFICIENCY_TEST_PAYMENT_REQUIRED') {
+        const priceCents = err.response?.data?.priceCents || 1000;
+        setPaymentRequired({ priceCents });
+        setError(t('levelTests.proficiencyPaymentRequired', 'This proficiency check is {{price}} after your included checks.', { price: formatPrice(priceCents) }));
+      } else {
+        setError(err.response?.data?.message || t('levelTests.startFailed', 'This test is not ready yet.'));
+      }
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const startPaidProficiencyCheckout = async () => {
+    setSaving(true);
+    setError('');
+    try {
+      const origin = window.location.origin;
+      const res = await billingService.createLevelTestCheckoutSession({
+        successUrl: `${origin}/level-tests?checkout=success`,
+        cancelUrl: `${origin}/level-tests?checkout=cancelled`,
+      });
+      if (res.data?.checkoutUrl) {
+        window.location.assign(res.data.checkoutUrl);
+        return;
+      }
+      if (res.data?.requiresSetup) {
+        setError(t('levelTests.paymentSetupNeeded', 'Paid proficiency checks are not configured yet.'));
+        return;
+      }
+      setError(t('levelTests.paymentStartFailed', 'Could not start payment for this proficiency check.'));
+    } catch {
+      setError(t('levelTests.paymentStartFailed', 'Could not start payment for this proficiency check.'));
     } finally {
       setSaving(false);
     }
@@ -182,6 +222,7 @@ function LevelTestPage() {
   const scoreState = attempt?.status === 'submitted';
   const allowedTargetLanguages = selectedContext?.allowedTargetLanguages || [];
   const restricted = selectedContext?.contextType === 'institution' && !allowedTargetLanguages.includes(targetLanguage);
+  const proficiencyEntitlement = testEntitlements?.proficiencyTests || null;
 
   if (loading) {
     return <main className="level-test-page"><div className="loading">{t('common.loading', 'Loading...')}</div></main>;
@@ -302,6 +343,20 @@ function LevelTestPage() {
               {restricted ? <FiLock /> : <FiClipboard />}
               {saving ? t('common.loading', 'Loading...') : t('levelTests.start', 'Start check')}
             </button>
+            {selectedMode === 'proficiency' && proficiencyEntitlement && (
+              <p className="level-test-hint">
+                {t('levelTests.proficiencyAllowance', '{{remaining}} of {{included}} included proficiency checks left this month. Extra checks are {{price}} each.', {
+                  remaining: proficiencyEntitlement.remainingIncluded,
+                  included: proficiencyEntitlement.included,
+                  price: formatPrice(proficiencyEntitlement.paidPriceCents),
+                })}
+              </p>
+            )}
+            {paymentRequired && selectedMode === 'proficiency' && (
+              <button type="button" className="level-test-secondary full" onClick={startPaidProficiencyCheckout} disabled={saving}>
+                <FiCreditCard /> {t('levelTests.payProficiencyCheck', 'Pay {{price}} for this check', { price: formatPrice(paymentRequired.priceCents) })}
+              </button>
+            )}
             {restricted && (
               <p className="level-test-hint">
                 {t('levelTests.restrictedTarget', 'This target language is not available in this institution context.')}

@@ -639,7 +639,8 @@
     "failedToUpdate": "فشل التحديث",
     "fullName": "الاسم الكامل",
     "fullNamePlaceholder": "الاسم الذي سيظهر على الشهادات",
-    "fullNameMissing": "أضف قبل إصدار الشهادة"
+    "fullNameMissing": "أضف قبل إصدار الشهادة",
+    "activeAccountType": "نوع الحساب النشط"
   },
   "verifyEmail": {
     "verifying": "جاري التحقق من بريدك الإلكتروني...",
@@ -880,7 +881,7 @@
     "recommended": "مُستَحسَن",
     "startFree": "ابدأ مجانًا",
     "choosePlan": "اختر {{plan}}",
-    "checkoutSetupNeeded": "يتم الآن ربط الخروج عبر الإنترنت. يمكنك إرسال طلب وسنساعدك على الاستمرار.",
+    "checkoutSetupNeeded": "الدفع عبر الإنترنت غير متاح حاليا. يمكنك إرسال طلب وسنساعدك على المتابعة.",
     "checkoutFailed": "تعذر بدء الدفع. يرجى المحاولة مرة أخرى.",
     "loadFailed": "لا يمكن تحميل الخطط. يرجى المحاولة مرة أخرى.",
     "institutionalKicker": "المؤسسات",
@@ -932,10 +933,10 @@
       "free": "فري",
       "plus": "بلس",
       "pro": "برو",
-      "ultra": "ألترا",
-      "institution_basic": "إنستيتيوشن بيسك",
+      "ultra": "بريميوم",
+      "institution_basic": "إنستيتيوشن بلس",
       "institution_pro": "إنستيتيوشن برو",
-      "institution_enterprise": "إنستيتيوشن إنتربرايز"
+      "institution_enterprise": "إنستيتيوشن بريميوم"
     },
     "planTaglines": {
       "free": "جرب حلقة التعلم ذات الحدود اليومية.",
@@ -951,7 +952,14 @@
     "discountUnavailable": "رمز الخصم هذا غير متوفر لهذه الخطة.",
     "automaticDiscountApplied": "تم تطبيق خصم تلقائي {{discount}}",
     "signInToChooseTitle": "قم بإنشاء حساب للمتابعة",
-    "signInToChooseBody": "قم بإنشاء حساب أو قم بتسجيل الدخول قبل اختيار خطة مدفوعة حتى يمكن ربط وصولك بك."
+    "signInToChooseBody": "قم بإنشاء حساب أو قم بتسجيل الدخول قبل اختيار خطة مدفوعة حتى يمكن ربط وصولك بك.",
+    "entitlements": {
+      "placementLifetime": "{{count}} فحص التنسيب",
+      "placementMonthly": "{{count}} شيكات تحديد المستوى / شهر",
+      "proficiencyIncluded": "{{count}} اختبارات الكفاءة/الشهر متضمنة، ثم {{price}} لكل منهما",
+      "proficiencyPaid": "اختبارات الكفاءة {{price}} لكل منهما",
+      "dailyTokens": "{{count}} رموز المحادثة اليومية"
+    }
   },
   "billing": {
     "kicker": "الفواتير",
@@ -987,7 +995,13 @@
       "web": "الخروج على شبكة الإنترنت",
       "ios": "شراء دائرة الرقابة الداخلية",
       "android": "شراء أندرويد"
-    }
+    },
+    "subscriptionContextUpdated": "تم تبديل الوصول إلى الاشتراك.",
+    "subscriptionContextFailed": "تعذر تبديل الوصول إلى الاشتراك.",
+    "accessSwitcherKicker": "مصدر الوصول",
+    "accessSwitcherTitle": "استخدم الاشتراك من",
+    "accessSwitcherHint": "اختر ما إذا كان هذا الحساب يستخدم الفوترة الشخصية أو مقعدًا مؤسسيًا للوصول المدفوع.",
+    "currentAccessSource": "حاضِر"
   },
   "institution": {
     "kicker": "مؤسسة",
@@ -1086,7 +1100,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "الصق عنوان URL لصورة HTTPS هنا، أو استخدم لوحة معلومات الويب لتحميل ملف PNG أو JPG أو WebP.",
     "saveCertificateBranding": "حفظ شعار الشهادة",
-    "removeCertificateLogo": "إزالة الشعار"
+    "removeCertificateLogo": "إزالة الشعار",
+    "progressDashboardKicker": "تقدم المتعلم",
+    "mastered": "يتقن",
+    "comfortable": "مريح",
+    "learning": "تعلُّم",
+    "struggling": "يكافح",
+    "classLessonsStarted": "{{count}} بدأت الدروس",
+    "sampleCertificateFailed": "تعذر فتح نموذج الشهادة.",
+    "previewSampleCertificate": "معاينة نموذج الشهادة"
   },
   "errorBoundary": {
     "title": "حدث خطأ ما",
@@ -1431,7 +1453,7 @@
     "backToProfile": "العودة إلى الملف الشخصي",
     "kicker": "تخصيص التعلم",
     "title": "الدروس تتشكل من حولك",
-    "lockedSubtitle": "يمكن لـ Pro وUltra حفظ الكلمات والعبارات والمواقف المعتمدة من الحياة الواقعية حتى تبدو الممارسة المستقبلية أكثر أهمية. يمكن لبرنامج Free وPlus الاستمرار في استخدام الممارسة المنتظمة.",
+    "lockedSubtitle": "يمكن لـ Pro وPremium حفظ الكلمات والعبارات والمواقف المعتمدة من الحياة الواقعية حتى تبدو الممارسة المستقبلية أكثر أهمية. يمكن لبرنامج Free وPlus الاستمرار في استخدام الممارسة المنتظمة.",
     "upgradeTitle": "الترقية إلى تخصيص الممارسة",
     "upgradeBody": "قم بالترقية عندما تريد أن تتكيف الدروس ومطالبات المراجعة ولعب الأدوار مع اللغة اليومية التي توافق عليها.",
     "openConversation": "محادثة مفتوحة",
@@ -1772,7 +1794,8 @@
     "earnFirstMilestone": "كسب المعلم الأول",
     "repairPlanTitle": "إصلاح التركيز",
     "repairPlanValue": "يستحق إعادة النظر",
-    "repairPlanBody": "هناك عدد قليل من العناصر الضعيفة أو نقاط التفتيش جاهزة للتمرين المركز قبل أن تتقدم كثيرًا."
+    "repairPlanBody": "هناك عدد قليل من العناصر الضعيفة أو نقاط التفتيش جاهزة للتمرين المركز قبل أن تتقدم كثيرًا.",
+    "placementLimitReached": "لقد استخدمت فحوصات المواضع المضمنة لهذه الخطة."
   },
   "resetPassword": {
     "title": "إعادة تعيين كلمة المرور",
@@ -1892,6 +1915,63 @@
     "fullNameRequiredBody": "أدخل اسمك الكامل تمامًا كما ينبغي أن يظهر في هذه الشهادة. ما عليك سوى القيام بذلك قبل إصدار الشهادة.",
     "fullNameLabel": "الاسم الكامل",
     "fullNamePlaceholder": "اسمك الكامل",
-    "saveNameAndIssue": "حفظ الاسم وإصدار الشهادة"
+    "saveNameAndIssue": "حفظ الاسم وإصدار الشهادة",
+    "proficiencyPaymentRequired": "اختبار الكفاءة هذا هو {{price}} بعد اختباراتك المضمنة.",
+    "proficiencyAllowance": "{{remaining}} من {{included}} شملت اختبارات الكفاءة المتبقية هذا الشهر. الشيكات الإضافية هي {{price}} لكل منهما.",
+    "paymentSetupNeeded": "لم يتم تكوين اختبارات الكفاءة المدفوعة بعد.",
+    "paymentStartFailed": "تعذر بدء الدفع مقابل فحص الكفاءة هذا.",
+    "proficiencyPaymentTitle": "الدفع مطلوب",
+    "payProficiencyCheck": "ادفع {{price}} لهذا الشيك"
+  },
+  "notifications": {
+    "title": "إشعارات",
+    "empty": "لا توجد إخطارات حتى الآن.",
+    "markAllRead": "وضع علامة على كل قراءة",
+    "openAction": "يفتح",
+    "dismiss": "رفض",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "تم تحديث الوصول إلى المؤسسة",
+    "institutionLearnerAddedBody": "لقد تمت إضافتك إلى {{organizationName}} كمتعلم.",
+    "institutionAdminAddedBody": "يمكنك الآن إدارة {{organizationName}} من لوحة تحكم مؤسستك.",
+    "institutionAccessRemovedTitle": "تمت إزالة الوصول إلى المؤسسة",
+    "institutionAccessRemovedBody": "تمت إزالة وصولك إلى {{organizationName}}.",
+    "lowSeatsTitle": "مقاعد المؤسسة على وشك النفاد",
+    "lowSeatsBody": "{{organizationName}} لديه {{remaining}} من {{purchased}} المقاعد المتبقية.",
+    "noSeatsTitle": "لم يتبق أي مقاعد مؤسسية",
+    "noSeatsBody": "{{organizationName}} ليس لديه مقاعد متبقية.",
+    "seatsAddedTitle": "تمت إضافة مقاعد المؤسسة",
+    "seatsAddedBody": "تمت إضافة مقاعد {{quantity}}. {{remaining}} المقاعد متاحة الآن.",
+    "institutionPurchaseTitle": "تم تفعيل اشتراك المؤسسة",
+    "institutionPurchaseBody": "{{organizationName}} الآن لديه {{quantity}} مقاعد المؤسسة.",
+    "institutionSeatSuspendedTitle": "مقعد المؤسسة معلق",
+    "institutionSeatSuspendedBody": "تم تعليق مقعدك في {{organizationName}}.",
+    "institutionSeatRestoredTitle": "تمت استعادة مقعد المؤسسة",
+    "institutionSeatRestoredBody": "تم تفعيل مقعدك في {{organizationName}} مرة أخرى.",
+    "suspensionRequestedTitle": "طلب المتعلم التعليق",
+    "suspensionRequestedBody": "{{email}} طلب تعليق مقعد المؤسسة.",
+    "institutionRequestAcceptedTitle": "تم قبول طلب المؤسسة",
+    "institutionRequestAcceptedBody": "تم قبول طلبك لـ {{organizationName}}.",
+    "institutionRequestDeclinedTitle": "تم رفض طلب المؤسسة",
+    "institutionRequestDeclinedBody": "تم رفض طلب مؤسستك الخاص بـ {{organizationName}}.",
+    "institutionSuspendedTitle": "المؤسسة معلقة",
+    "institutionSuspendedBody": "{{organizationName}} تم تعليقه.",
+    "institutionReactivatedTitle": "تم إعادة تنشيط المؤسسة",
+    "institutionReactivatedBody": "{{organizationName}} نشط مرة أخرى.",
+    "xpDecayTitle": "خط الممارسة يحتاج إلى الاهتمام",
+    "xpDecayBody": "{{penalty}} تم تخفيض XP بعد عدم النشاط. مجموعك الحالي هو {{totalXP}} XP.",
+    "viewProfileAction": "عرض الملف الشخصي",
+    "openInstitutionAction": "مؤسسة مفتوحة",
+    "manageSeatsAction": "إدارة المقاعد",
+    "viewPlansAction": "عرض الخطط",
+    "resumePracticeAction": "استئناف الممارسة",
+    "unreadCount": "{{count}} غير مقروءة"
+  },
+  "stepUp": {
+    "verifyFailed": "لا يمكن التحقق من كلمة المرور",
+    "title": "تأكيد هويتك",
+    "message": "من أجل أمانك، يرجى إعادة إدخال كلمة المرور الخاصة بك لمتابعة هذا الإجراء.",
+    "passwordPlaceholder": "كلمة المرور",
+    "confirm": "يتأكد"
   }
 }

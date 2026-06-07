@@ -139,7 +139,7 @@ function ContextPracticePage() {
 
   const startListening = () => {
     if (!canUseContextPractice) {
-      setStatus('Learning Personalization is available on Pro and Ultra.');
+      setStatus(t('profilePage.personalizationTier', 'Pro or Premium'));
       return;
     }
 
@@ -197,7 +197,7 @@ function ContextPracticePage() {
 
   const analyze = async () => {
     if (!canUseContextPractice) {
-      setStatus('Learning Personalization is available on Pro and Ultra.');
+      setStatus(t('profilePage.personalizationTier', 'Pro or Premium'));
       return;
     }
 
@@ -236,7 +236,7 @@ function ContextPracticePage() {
 
   const saveSelected = async () => {
     if (!canUseContextPractice) {
-      setStatus('Learning Personalization is available on Pro and Ultra.');
+      setStatus(t('profilePage.personalizationTier', 'Pro or Premium'));
       return;
     }
 
@@ -293,7 +293,7 @@ function ContextPracticePage() {
             <p className="context-kicker">{t('profilePage.personalizationTitle')}</p>
             <h1>{t('contextPractice.title', 'Lessons shaped around you')}</h1>
             <p>
-              {t('contextPractice.lockedDesc', 'Pro and Ultra can save approved words, phrases, and situations from real life so future practice feels more relevant. Free and Plus can continue using the regular lessons and conversation practice.')}
+              {t('contextPractice.lockedDesc', 'Pro and Premium can save approved words, phrases, and situations from real life so future practice feels more relevant. Free and Plus can continue using the regular lessons and conversation practice.')}
             </p>
           </div>
           <div className="context-status">

@@ -1,13 +1,18 @@
 # Copilot Custom Instructions
 
-This workspace contains a comprehensive Korean Language Learning Application with the following structure and guidelines:
+This workspace contains **Lingo Booth**, a comprehensive multi-language learning platform (20 supported languages, any native→target pair) with the following structure and guidelines:
+
+> **Source of truth:** `AGENTS.md` at the repo root holds the non-negotiable rules for localization/parity, web↔mobile parity, device coverage, and performance. Read it before implementing user-facing changes. These instructions are a quick orientation only.
 
 ## Workspace Overview
 
 - **Backend:** Node.js/Express API with MongoDB
-- **Frontend:** React web application
+- **Frontend:** React web application (`frontend/`)
+- **Mobile:** React Native / Expo app (`mobile/`, iOS + Android) — kept at parity with web
+- **Admin:** React admin dashboard (`admin-frontend/`)
 - **Database:** MongoDB with Mongoose ODM
-- **Authentication:** JWT-based user authentication
+- **Authentication:** JWT + Google OAuth
+- **Localization:** Fully internationalized across 20 locales; user-facing copy must use i18n keys
 
 ## Development Guidelines
 
@@ -62,7 +67,7 @@ This workspace contains a comprehensive Korean Language Learning Application wit
 The app requires MongoDB connection. Update `.env` file in backend with your MongoDB URI.
 
 Default ports:
-- Backend API: `5000`
+- Backend API: `5001`
 - Frontend: `3000`
 
 ## Testing the App

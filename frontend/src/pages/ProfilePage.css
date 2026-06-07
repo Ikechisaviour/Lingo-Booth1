@@ -748,6 +748,47 @@
   flex-wrap: wrap;
 }
 
+.profile-card-kicker {
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.profile-access-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.profile-access-options button {
+  text-align: left;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  box-shadow: none;
+}
+
+.profile-access-options button.active {
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.profile-access-options strong,
+.profile-access-options span,
+.profile-access-options small {
+  display: block;
+}
+
+.profile-access-options span,
+.profile-access-options small {
+  margin-top: 5px;
+  color: var(--text-secondary);
+}
+
 /* Danger Zone */
 .danger-zone {
   border: 1px solid rgba(255, 75, 75, 0.3);

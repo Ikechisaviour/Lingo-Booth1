@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { userService } from '../services/api';
 import BrandLogo from './BrandLogo';
+import NotificationCenter from './NotificationCenter';
 import './Navbar.css';
 
 function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
@@ -108,6 +109,8 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
           </div>
         )}
 
+        <NotificationCenter isGuest={isGuest} />
+
         <ul className="nav-menu">
           <li className="nav-item">
             <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
@@ -181,7 +184,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
 
           {!isGuest && userRole === 'admin' && (
             <li className="nav-item">
-              <Link to="/admin" className={`nav-link nav-admin ${isActive('/admin') ? 'active' : ''}`}>
+              <Link to="/admin" className={`nav-link nav-admin ${isActiveSection(['/admin']) ? 'active' : ''}`}>
                 <span className="nav-icon">&#9881;</span>
                 <span className="nav-text">{t('navbar.admin')}</span>
               </Link>
@@ -204,7 +207,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
             </>
           ) : (
             <li className="nav-item">
-              <Link to="/profile" className={`nav-link ${isActive('/profile') ? 'active' : ''}`}>
+              <Link to="/profile" className={`nav-link ${isActiveSection(['/profile']) ? 'active' : ''}`}>
                 <span className="nav-icon">&#128100;</span>
                 <span className="nav-text">{username || t('navbar.profile')}</span>
               </Link>

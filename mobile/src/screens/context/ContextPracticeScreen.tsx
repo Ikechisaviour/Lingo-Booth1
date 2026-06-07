@@ -135,7 +135,7 @@ const ContextPracticeScreen: React.FC = () => {
 
   const startListening = async () => {
     if (!canUseContextPractice) {
-      setStatus('Learning Personalization is available on Pro and Ultra.');
+      setStatus(t('profilePage.personalizationTier', 'Pro or Premium'));
       return;
     }
 
@@ -209,7 +209,7 @@ const ContextPracticeScreen: React.FC = () => {
 
   const analyze = async () => {
     if (!canUseContextPractice) {
-      setStatus('Learning Personalization is available on Pro and Ultra.');
+      setStatus(t('profilePage.personalizationTier', 'Pro or Premium'));
       return;
     }
 
@@ -249,7 +249,7 @@ const ContextPracticeScreen: React.FC = () => {
 
   const saveSelected = async () => {
     if (!canUseContextPractice) {
-      setStatus('Learning Personalization is available on Pro and Ultra.');
+      setStatus(t('profilePage.personalizationTier', 'Pro or Premium'));
       return;
     }
 
@@ -317,7 +317,7 @@ const ContextPracticeScreen: React.FC = () => {
             <Text style={styles.kicker}>{t('context.kicker', 'Learning Personalization')}</Text>
             <Text variant="headlineSmall" style={styles.title}>{t('context.title', 'Lessons shaped around you')}</Text>
             <Text style={styles.subtitle}>
-              {t('context.lockedSubtitle', 'Pro and Ultra can save approved words, phrases, and situations from real life so future practice feels more relevant. Free and Plus can keep using regular practice.')}
+              {t('context.lockedSubtitle', 'Pro and Premium can save approved words, phrases, and situations from real life so future practice feels more relevant. Free and Plus can keep using regular practice.')}
             </Text>
           </View>
           <View style={styles.statusPill}>

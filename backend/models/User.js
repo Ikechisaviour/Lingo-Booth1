@@ -94,6 +94,26 @@ const userSchema = new mongoose.Schema({
       default: null,
     },
     expiresAt: { type: Date, default: null },
+    seatStatus: {
+      type: String,
+      enum: ['active', 'suspended', 'expired', 'none', null],
+      default: null,
+    },
+    seatExpiresAt: { type: Date, default: null },
+    seatActivatedAt: { type: Date, default: null },
+    updatedAt: { type: Date, default: null },
+  },
+  subscriptionContext: {
+    type: {
+      type: String,
+      enum: ['personal', 'institution'],
+      default: 'institution',
+    },
+    organizationId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Organization',
+      default: null,
+    },
     updatedAt: { type: Date, default: null },
   },
   billingOverride: {
@@ -279,6 +299,10 @@ userSchema.pre('validate', function normalizeNullableSubscriptionFields(next) {
     this.institutionalAccess.effectiveTier = normalizeNullableEnum(this.institutionalAccess.effectiveTier);
     this.institutionalAccess.role = normalizeNullableEnum(this.institutionalAccess.role);
     this.institutionalAccess.status = normalizeNullableEnum(this.institutionalAccess.status);
+  }
+
+  if (this.subscriptionContext?.type === 'personal') {
+    this.subscriptionContext.organizationId = null;
   }
 
   if (this.billingOverride) {

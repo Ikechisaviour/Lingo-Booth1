@@ -623,7 +623,7 @@
     "deleteAccountTitle": "கணக்கை நீக்கவா?",
     "deleteButton": "நீக்கு",
     "personalizationAvailable": "உங்கள் திட்டத்தில் கிடைக்கும்",
-    "personalizationTier": "ப்ரோ அல்லது அல்ட்ரா",
+    "personalizationTier": "ப்ரோ அல்லது Premium",
     "personalizationTitle": "தனிப்பயனாக்கம் கற்றல்",
     "personalizationDesc": "நிஜ வாழ்க்கையிலிருந்து அங்கீகரிக்கப்பட்ட வார்த்தைகள், சொற்றொடர்கள் மற்றும் சூழ்நிலைகளைச் சேமிக்கவும், அதனால் வகுப்பு, உரையாடல், வினாடி வினா, ஃபிளாஷ் கார்டுகள் மற்றும் எழுதும் பயிற்சி ஆகியவை உங்களுக்கு மிகவும் பொருத்தமானதாக இருக்கும்.",
     "managePersonalization": "தனிப்பயனாக்கத்தை நிர்வகிக்கவும்",
@@ -639,7 +639,8 @@
     "failedToUpdate": "புதுப்பிக்க முடியவில்லை",
     "fullName": "முழுப் பெயர்",
     "fullNamePlaceholder": "சான்றிதழ்களில் காட்ட வேண்டிய பெயர்",
-    "fullNameMissing": "சான்றிதழை வழங்குவதற்கு முன் சேர்க்கவும்"
+    "fullNameMissing": "சான்றிதழை வழங்குவதற்கு முன் சேர்க்கவும்",
+    "activeAccountType": "செயலில் உள்ள கணக்கு வகை"
   },
   "verifyEmail": {
     "verifying": "உங்கள் மின்னஞ்சல் சரிபார்க்கப்படுகிறது...",
@@ -880,12 +881,12 @@
     "recommended": "பரிந்துரைக்கப்படுகிறது",
     "startFree": "இலவசமாக தொடங்குங்கள்",
     "choosePlan": "{{plan}}ஐத் தேர்வு செய்யவும்",
-    "checkoutSetupNeeded": "ஆன்லைன் செக்அவுட் இணைக்கப்படுகிறது. நீங்கள் ஒரு கோரிக்கையை அனுப்பலாம், தொடர நாங்கள் உங்களுக்கு உதவுவோம்.",
+    "checkoutSetupNeeded": "ஆன்லைன் செலுத்துதல் தற்போது கிடைக்கவில்லை. நீங்கள் கோரிக்கை அனுப்பலாம்; தொடர நாங்கள் உதவுவோம்.",
     "checkoutFailed": "செக் அவுட் தொடங்க முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
     "loadFailed": "திட்டங்களை ஏற்ற முடியவில்லை. மீண்டும் முயற்சிக்கவும்.",
     "institutionalKicker": "நிறுவனங்கள்",
     "institutionalTitle": "பள்ளிகள், அணிகள், மத அமைப்புகள் மற்றும் குழுக்களுக்கான இருக்கைகள்",
-    "institutionalSubtitle": "நிறுவன சந்தாக்கள் தனிப்பட்ட திட்டங்களுக்கு அடுத்ததாக இருக்கும். உறுப்பினர்கள் தங்கள் தனிப்பட்ட கணக்கை மாற்றாமல் தங்கள் நிறுவனத்தின் மூலம் பிளஸ், ப்ரோ அல்லது அல்ட்ரா-லெவல் அணுகலைப் பெறலாம்.",
+    "institutionalSubtitle": "நிறுவன சந்தாக்கள் தனிப்பட்ட திட்டங்களுக்கு அடுத்ததாக இருக்கும். உறுப்பினர்கள் தங்கள் தனிப்பட்ட கணக்கை மாற்றாமல் தங்கள் நிறுவனத்தின் மூலம் பிளஸ், ப்ரோ அல்லது Premium-லெவல் அணுகலைப் பெறலாம்.",
     "customPricing": "விருப்ப விலை நிர்ணயம்",
     "seatPrice": "ஒரு இருக்கைக்கு {{price}}, குறைந்தபட்சம் {{seats}} இருக்கைகள்",
     "institutionalFormTitle": "நிறுவன அணுகலைக் கோருங்கள்",
@@ -932,10 +933,10 @@
       "free": "ஃப்ரீ",
       "plus": "பிளஸ்",
       "pro": "ப்ரோ",
-      "ultra": "அல்ட்ரா",
-      "institution_basic": "இன்ஸ்டிட்யூஷன் பேசிக்",
+      "ultra": "ப்ரீமியம்",
+      "institution_basic": "இன்ஸ்டிட்யூஷன் பிளஸ்",
       "institution_pro": "இன்ஸ்டிட்யூஷன் ப்ரோ",
-      "institution_enterprise": "இன்ஸ்டிட்யூஷன் என்டர்பிரைஸ்"
+      "institution_enterprise": "இன்ஸ்டிட்யூஷன் ப்ரீமியம்"
     },
     "planTaglines": {
       "free": "தினசரி வரம்புகளுடன் கற்றல் வளையத்தை முயற்சிக்கவும்.",
@@ -951,7 +952,14 @@
     "discountUnavailable": "இந்த திட்டத்திற்கு அந்த தள்ளுபடி குறியீடு கிடைக்கவில்லை.",
     "automaticDiscountApplied": "{{discount}} தானியங்கி தள்ளுபடி பயன்படுத்தப்பட்டது",
     "signInToChooseTitle": "தொடர கணக்கை உருவாக்கவும்",
-    "signInToChooseBody": "ஒரு கணக்கை உருவாக்கவும் அல்லது கட்டணத் திட்டத்தைத் தேர்ந்தெடுக்கும் முன் உள்நுழையவும், இதன் மூலம் உங்கள் அணுகலை உங்களுடன் இணைக்க முடியும்."
+    "signInToChooseBody": "ஒரு கணக்கை உருவாக்கவும் அல்லது கட்டணத் திட்டத்தைத் தேர்ந்தெடுக்கும் முன் உள்நுழையவும், இதன் மூலம் உங்கள் அணுகலை உங்களுடன் இணைக்க முடியும்.",
+    "entitlements": {
+      "placementLifetime": "{{count}} வேலை வாய்ப்பு சோதனை",
+      "placementMonthly": "{{count}} வேலை வாய்ப்பு சோதனைகள்/மாதம்",
+      "proficiencyIncluded": "{{count}} திறன் சோதனைகள்/மாதம் சேர்க்கப்பட்டுள்ளது, பின்னர் ஒவ்வொன்றும் {{price}}",
+      "proficiencyPaid": "திறன் சோதனைகள் ஒவ்வொன்றும் {{price}}",
+      "dailyTokens": "{{count}} தினசரி உரையாடல் டோக்கன்கள்"
+    }
   },
   "billing": {
     "kicker": "பில்லிங்",
@@ -987,7 +995,13 @@
       "web": "இணைய செக்அவுட்",
       "ios": "iOS வாங்குதல்",
       "android": "Android வாங்குதல்"
-    }
+    },
+    "subscriptionContextUpdated": "சந்தா அணுகல் மாற்றப்பட்டது.",
+    "subscriptionContextFailed": "சந்தா அணுகலை மாற்ற முடியவில்லை.",
+    "accessSwitcherKicker": "அணுகல் ஆதாரம்",
+    "accessSwitcherTitle": "இலிருந்து சந்தாவைப் பயன்படுத்தவும்",
+    "accessSwitcherHint": "இந்தக் கணக்கு தனிப்பட்ட பில்லிங் பயன்படுத்துகிறதா அல்லது கட்டண அணுகலுக்கான நிறுவன இருக்கையைப் பயன்படுத்துகிறதா என்பதைத் தேர்வுசெய்யவும்.",
+    "currentAccessSource": "தற்போதைய"
   },
   "institution": {
     "kicker": "நிறுவனம்",
@@ -1086,7 +1100,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "HTTPS பட URLஐ இங்கே ஒட்டவும் அல்லது PNG, JPG அல்லது WebP கோப்பைப் பதிவேற்ற இணைய டாஷ்போர்டைப் பயன்படுத்தவும்.",
     "saveCertificateBranding": "சான்றிதழ் லோகோவைச் சேமிக்கவும்",
-    "removeCertificateLogo": "லோகோவை அகற்று"
+    "removeCertificateLogo": "லோகோவை அகற்று",
+    "progressDashboardKicker": "கற்றவர் முன்னேற்றம்",
+    "mastered": "தேர்ச்சி பெற்றவர்",
+    "comfortable": "வசதியான",
+    "learning": "கற்றல்",
+    "struggling": "போராடுகிறது",
+    "classLessonsStarted": "{{count}} பாடங்கள் தொடங்கப்பட்டன",
+    "sampleCertificateFailed": "மாதிரி சான்றிதழை திறக்க முடியவில்லை.",
+    "previewSampleCertificate": "மாதிரி சான்றிதழை முன்னோட்டமிடவும்"
   },
   "errorBoundary": {
     "title": "ஏதோ தவறாகிவிட்டது",
@@ -1431,7 +1453,7 @@
     "backToProfile": "சுயவிவரத்திற்குத் திரும்பு",
     "kicker": "தனிப்பயனாக்கம் கற்றல்",
     "title": "உங்களைச் சுற்றி வடிவமைக்கப்பட்ட பாடங்கள்",
-    "lockedSubtitle": "ப்ரோ மற்றும் அல்ட்ரா நிஜ வாழ்க்கையிலிருந்து அங்கீகரிக்கப்பட்ட வார்த்தைகள், சொற்றொடர்கள் மற்றும் சூழ்நிலைகளைச் சேமிக்க முடியும், எனவே எதிர்கால நடைமுறை மிகவும் பொருத்தமானதாக உணர்கிறது. இலவசம் மற்றும் பிளஸ் வழக்கமான பயிற்சியை தொடர்ந்து பயன்படுத்தலாம்.",
+    "lockedSubtitle": "ப்ரோ மற்றும் Premium நிஜ வாழ்க்கையிலிருந்து அங்கீகரிக்கப்பட்ட வார்த்தைகள், சொற்றொடர்கள் மற்றும் சூழ்நிலைகளைச் சேமிக்க முடியும், எனவே எதிர்கால நடைமுறை மிகவும் பொருத்தமானதாக உணர்கிறது. இலவசம் மற்றும் பிளஸ் வழக்கமான பயிற்சியை தொடர்ந்து பயன்படுத்தலாம்.",
     "upgradeTitle": "பயிற்சியைத் தனிப்பயனாக்க மேம்படுத்தவும்",
     "upgradeBody": "நீங்கள் அங்கீகரிக்கும் அன்றாட மொழிக்கு ஏற்ப பாடங்கள், மறுபரிசீலனை அறிவுறுத்தல்கள் மற்றும் ரோல்ப்ளேக்கள் ஆகியவற்றை நீங்கள் விரும்பும் போது மேம்படுத்தவும்.",
     "openConversation": "உரையாடலைத் திறக்கவும்",
@@ -1772,7 +1794,8 @@
     "earnFirstMilestone": "முதல் மைல்கல்லைப் பெறுங்கள்",
     "repairPlanTitle": "பழுதுபார்க்கும் கவனம்",
     "repairPlanValue": "மறுபரிசீலனை செய்யத் தகுந்தது",
-    "repairPlanBody": "ஒரு சில பலவீனமான அல்லது சோதனைச் சாவடி உருப்படிகள் நீங்கள் வெகுதூரம் முன்னேறுவதற்கு முன், கவனம் செலுத்தும் பயிற்சிக்கு தயாராக உள்ளன."
+    "repairPlanBody": "ஒரு சில பலவீனமான அல்லது சோதனைச் சாவடி உருப்படிகள் நீங்கள் வெகுதூரம் முன்னேறுவதற்கு முன், கவனம் செலுத்தும் பயிற்சிக்கு தயாராக உள்ளன.",
+    "placementLimitReached": "இந்தத் திட்டத்திற்காக நீங்கள் சேர்க்கப்பட்ட வேலை வாய்ப்புச் சரிபார்ப்புகளைப் பயன்படுத்தியுள்ளீர்கள்."
   },
   "resetPassword": {
     "title": "கடவுச்சொல்லை மீட்டமைக்கவும்",
@@ -1892,6 +1915,63 @@
     "fullNameRequiredBody": "இந்த சான்றிதழில் உங்கள் முழுப் பெயரை உள்ளிடவும். சான்றிதழை வழங்குவதற்கு முன்பு நீங்கள் இதைச் செய்ய வேண்டும்.",
     "fullNameLabel": "முழுப் பெயர்",
     "fullNamePlaceholder": "உங்கள் முழு பெயர்",
-    "saveNameAndIssue": "பெயரைச் சேமித்து சான்றிதழ் வழங்கவும்"
+    "saveNameAndIssue": "பெயரைச் சேமித்து சான்றிதழ் வழங்கவும்",
+    "proficiencyPaymentRequired": "நீங்கள் சேர்த்த காசோலைகளுக்குப் பிறகு இந்தத் திறன் சரிபார்ப்பு {{price}} ஆகும்.",
+    "proficiencyAllowance": "{{remaining}} of {{included}} இல் இந்த மாதம் மீதமுள்ள திறன் காசோலைகள் அடங்கும். கூடுதல் காசோலைகள் ஒவ்வொன்றும் {{price}}.",
+    "paymentSetupNeeded": "பணம் செலுத்திய திறன் காசோலைகள் இன்னும் உள்ளமைக்கப்படவில்லை.",
+    "paymentStartFailed": "இந்த நிபுணத்துவச் சரிபார்ப்பிற்கான கட்டணத்தைத் தொடங்க முடியவில்லை.",
+    "proficiencyPaymentTitle": "கட்டணம் தேவை",
+    "payProficiencyCheck": "இந்த காசோலைக்கு {{price}} செலுத்தவும்"
+  },
+  "notifications": {
+    "title": "அறிவிப்புகள்",
+    "empty": "இதுவரை எந்த அறிவிப்பும் இல்லை.",
+    "markAllRead": "அனைத்தையும் படித்ததாகக் குறிக்கவும்",
+    "openAction": "திற",
+    "dismiss": "நிராகரி",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "நிறுவன அணுகல் புதுப்பிக்கப்பட்டது",
+    "institutionLearnerAddedBody": "நீங்கள் கற்றவராக {{organizationName}} இல் சேர்க்கப்பட்டீர்கள்.",
+    "institutionAdminAddedBody": "நீங்கள் இப்போது உங்கள் நிறுவன டாஷ்போர்டில் இருந்து {{organizationName}} ஐ நிர்வகிக்கலாம்.",
+    "institutionAccessRemovedTitle": "நிறுவன அணுகல் அகற்றப்பட்டது",
+    "institutionAccessRemovedBody": "{{organizationName}}க்கான உங்கள் அணுகல் அகற்றப்பட்டது.",
+    "lowSeatsTitle": "நிறுவன இருக்கைகள் குறைவாக உள்ளன",
+    "lowSeatsBody": "{{organizationName}} இல் {{remaining}} {{purchased}} இருக்கைகள் உள்ளன.",
+    "noSeatsTitle": "நிறுவன இருக்கைகள் எதுவும் இல்லை",
+    "noSeatsBody": "{{organizationName}} இல் இருக்கைகள் எதுவும் இல்லை.",
+    "seatsAddedTitle": "நிறுவன இடங்கள் சேர்க்கப்பட்டன",
+    "seatsAddedBody": "{{quantity}} இருக்கைகள் சேர்க்கப்பட்டன. {{remaining}} இருக்கைகள் இப்போது கிடைக்கின்றன.",
+    "institutionPurchaseTitle": "நிறுவன சந்தா செயல்படுத்தப்பட்டது",
+    "institutionPurchaseBody": "{{organizationName}} இப்போது {{quantity}} நிறுவன இருக்கைகளைக் கொண்டுள்ளது.",
+    "institutionSeatSuspendedTitle": "நிறுவன இருக்கை இடைநிறுத்தப்பட்டது",
+    "institutionSeatSuspendedBody": "{{organizationName}}க்கான உங்கள் இருக்கை இடைநிறுத்தப்பட்டது.",
+    "institutionSeatRestoredTitle": "நிறுவன இருக்கை மீட்டெடுக்கப்பட்டது",
+    "institutionSeatRestoredBody": "{{organizationName}}க்கான உங்கள் இருக்கை மீண்டும் செயலில் உள்ளது.",
+    "suspensionRequestedTitle": "கற்றவர் இடைநீக்கம் கோரினார்",
+    "suspensionRequestedBody": "{{email}} நிறுவனம் இருக்கை இடைநீக்கத்தைக் கோரியது.",
+    "institutionRequestAcceptedTitle": "நிறுவன கோரிக்கை ஏற்கப்பட்டது",
+    "institutionRequestAcceptedBody": "{{organizationName}}க்கான உங்கள் கோரிக்கை ஏற்கப்பட்டது.",
+    "institutionRequestDeclinedTitle": "நிறுவன கோரிக்கை நிராகரிக்கப்பட்டது",
+    "institutionRequestDeclinedBody": "{{organizationName}}க்கான உங்கள் நிறுவனக் கோரிக்கை நிராகரிக்கப்பட்டது.",
+    "institutionSuspendedTitle": "நிறுவனம் இடைநிறுத்தப்பட்டது",
+    "institutionSuspendedBody": "{{organizationName}} இடைநிறுத்தப்பட்டது.",
+    "institutionReactivatedTitle": "நிறுவனம் மீண்டும் செயல்படுத்தப்பட்டது",
+    "institutionReactivatedBody": "{{organizationName}} மீண்டும் செயலில் உள்ளது.",
+    "xpDecayTitle": "பயிற்சி ஸ்ட்ரீக்கில் கவனம் தேவை",
+    "xpDecayBody": "செயலற்ற நிலைக்குப் பிறகு {{penalty}} XP குறைக்கப்பட்டது. உங்களின் தற்போதைய மொத்தம் {{totalXP}} XP.",
+    "viewProfileAction": "சுயவிவரத்தைக் காண்க",
+    "openInstitutionAction": "திறந்த நிறுவனம்",
+    "manageSeatsAction": "இருக்கைகளை நிர்வகிக்கவும்",
+    "viewPlansAction": "திட்டங்களைப் பார்க்கவும்",
+    "resumePracticeAction": "பயிற்சியை மீண்டும் தொடரவும்",
+    "unreadCount": "{{count}} படிக்கவில்லை"
+  },
+  "stepUp": {
+    "verifyFailed": "கடவுச்சொல்லை சரிபார்க்க முடியவில்லை",
+    "title": "நீங்கள் தான் என்பதை உறுதிப்படுத்தவும்",
+    "message": "உங்கள் பாதுகாப்பிற்காக, இந்தச் செயலைத் தொடர உங்கள் கடவுச்சொல்லை மீண்டும் உள்ளிடவும்.",
+    "passwordPlaceholder": "கடவுச்சொல்",
+    "confirm": "உறுதிப்படுத்தவும்"
   }
 }

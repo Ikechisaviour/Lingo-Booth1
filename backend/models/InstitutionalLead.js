@@ -44,10 +44,20 @@ const institutionalLeadSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['open', 'contacted', 'converted', 'closed'],
+    enum: ['open', 'contacted', 'accepted', 'declined', 'converted', 'closed'],
     default: 'open',
     index: true,
   },
+  organizationId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Organization',
+    index: true,
+  },
+  reviewedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  reviewedAt: Date,
   source: {
     type: String,
     enum: ['web', 'mobile', 'admin'],

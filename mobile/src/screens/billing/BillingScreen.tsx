@@ -22,6 +22,7 @@ type Plan = {
   seatPriceMonthlyCents?: number | null;
   minimumSeats?: number;
   features?: string[];
+  entitlements?: Record<string, any>;
 };
 
 type DiscountSummary = {
@@ -33,6 +34,30 @@ type DiscountSummary = {
 
 const planNameKey = (plan: Plan) => `pricing.planNames.${plan.id}`;
 const planTaglineKey = (plan: Plan) => `pricing.planTaglines.${plan.id}`;
+
+const formatCount = (value: number | null | undefined) => Number(value || 0).toLocaleString();
+
+const planEntitlementLines = (plan: Plan, t: (key: string, options?: any) => string) => {
+  const entitlements = plan.entitlements || {};
+  const placement = entitlements.placementTests || {};
+  const proficiency = entitlements.proficiencyTests || {};
+  const lines: string[] = [];
+  if (placement.limit) {
+    lines.push(placement.period === 'lifetime'
+      ? t('pricing.entitlements.placementLifetime', { defaultValue: '{{count}} placement check', count: placement.limit })
+      : t('pricing.entitlements.placementMonthly', { defaultValue: '{{count}} placement checks/month', count: placement.limit }));
+  }
+  if (proficiency) {
+    const price = formatAmount(proficiency.paidPriceCents || 1000);
+    lines.push((proficiency.included || 0) > 0
+      ? t('pricing.entitlements.proficiencyIncluded', { defaultValue: '{{count}} proficiency checks/month included, then {{price}} each', count: proficiency.included, price })
+      : t('pricing.entitlements.proficiencyPaid', { defaultValue: 'Proficiency checks {{price}} each', price }));
+  }
+  if (entitlements.dailyConversationTokens) {
+    lines.push(t('pricing.entitlements.dailyTokens', { defaultValue: '{{count}} daily conversation tokens', count: formatCount(entitlements.dailyConversationTokens) }));
+  }
+  return lines;
+};
 
 const formatPrice = (
   cents: number | null | undefined,
@@ -221,6 +246,9 @@ const BillingScreen: React.FC = () => {
             </View>
             {(plan.features || []).slice(0, 5).map((feature) => (
               <Text key={feature} style={styles.feature}>- {t(`pricing.features.${feature}`, feature)}</Text>
+            ))}
+            {planEntitlementLines(plan, t).map((line) => (
+              <Text key={line} style={styles.feature}>- {line}</Text>
             ))}
             <Button
               mode={plan.id === 'pro' ? 'contained' : 'outlined'}

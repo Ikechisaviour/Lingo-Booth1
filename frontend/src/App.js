@@ -9,6 +9,7 @@ import guestActivityTracker from './services/guestActivityTracker';
 import Navbar from './components/Navbar';
 import BrandLogo from './components/BrandLogo';
 import EmailVerificationBanner from './components/EmailVerificationBanner';
+import StepUpModal from './components/StepUpModal';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -42,6 +43,7 @@ const PricingPage = lazy(() => import('./pages/PricingPage'));
 const BillingPage = lazy(() => import('./pages/BillingPage'));
 const InstitutionDashboard = lazy(() => import('./pages/InstitutionDashboard'));
 const CertificateVerifyPage = lazy(() => import('./pages/CertificateVerifyPage'));
+const CurriculumV2SessionShellPage = lazy(() => import('./pages/curriculumV2/SessionShellPage'));
 
 // Listens for auth changes that should remove the current user from the app.
 function AuthSessionListener({ onSessionEnded }) {
@@ -313,6 +315,10 @@ function App() {
   }, [isAuthenticated]);
 
   const handleLogout = () => {
+    // Invalidate the refresh chain server-side before clearing local state.
+    // Fire-and-forget — UI never blocks on this, but it stops a stolen refresh
+    // token from being replayed after the user signs out.
+    authService.logout();
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('userId');
@@ -361,6 +367,7 @@ function App() {
     <GoogleOAuthProvider key={googleLocale} clientId={GOOGLE_CLIENT_ID} locale={googleLocale}>
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <AuthSessionListener onSessionEnded={handleSessionEnded} />
+      <StepUpModal />
       <div className={`App${challengeMode ? ' challenge-theme' : ''}`}>
         <GlobalHomeLogo hidden={showAppNavbar || isCertificateRender} />
         {showAppNavbar && (
@@ -552,7 +559,7 @@ function App() {
             }
           />
           <Route
-            path="/profile"
+            path="/profile/:profileTab?"
             element={
               isAuthenticated ? <ProfilePage onLogout={handleLogout} /> : <Navigate to="/login" />
             }
@@ -570,9 +577,17 @@ function App() {
             }
           />
 
+          {/* Curriculum v2 pilot (feature-flag gated inside the component) */}
+          <Route
+            path="/learn/v2"
+            element={
+              isAuthenticated ? <CurriculumV2SessionShellPage /> : <Navigate to="/login" />
+            }
+          />
+
           {/* Admin Route */}
           <Route
-            path="/admin"
+            path="/admin/:adminTab?"
             element={
               isAuthenticated && localStorage.getItem('userRole') === 'admin' ? (
                 <AdminDashboard />

@@ -38,6 +38,7 @@ import ConversationScreen from '../screens/ai/ConversationScreen';
 import ContextPracticeScreen from '../screens/context/ContextPracticeScreen';
 import ProgressScreen from '../screens/progress/ProgressScreen';
 import ProfileScreen from '../screens/profile/ProfileScreen';
+import NotificationsScreen from '../screens/profile/NotificationsScreen';
 import BillingScreen from '../screens/billing/BillingScreen';
 import InstitutionDashboardScreen from '../screens/institution/InstitutionDashboardScreen';
 import AdminScreen from '../screens/admin/AdminScreen';
@@ -2490,6 +2491,7 @@ const ExerciseStackScreen: React.FC = () => (
 const ProfileStackScreen: React.FC = () => (
   <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
     <ProfileStack.Screen name="ProfileMain" component={ProfileScreen} />
+    <ProfileStack.Screen name="Notifications" component={NotificationsScreen} />
     <ProfileStack.Screen name="Billing" component={BillingScreen} />
     <ProfileStack.Screen name="Institution" component={InstitutionDashboardScreen} />
     <ProfileStack.Screen name="LearningPersonalization" component={ContextPracticeScreen} />

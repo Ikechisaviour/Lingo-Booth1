@@ -1,10 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminNavbar from './pages/AdminNavbar';
 import AdminSpeakingDemo from './pages/AdminSpeakingDemo';
 import './App.css';
+
+// Admin consoles run on shared/unattended workstations more often than the
+// learner app, so we apply a short idle-timeout policy here — but NOT on the
+// learner frontend, where forced logouts hurt retention.
+const ADMIN_IDLE_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
 
 const clearAdminSession = () => {
   localStorage.removeItem('adminToken');
@@ -60,6 +65,30 @@ function App() {
     setIsAuthenticated(false);
     setIsAdmin(false);
   };
+
+  // Idle timeout — admin consoles can be left open on shared workstations,
+  // so log out after 30 minutes of no input. Resets on mouse, keyboard, touch,
+  // or scroll. Only armed while the admin is signed in.
+  const idleTimerRef = useRef(null);
+  useEffect(() => {
+    if (!isAuthenticated || !isAdmin) return undefined;
+
+    const resetTimer = () => {
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      idleTimerRef.current = setTimeout(() => {
+        handleLogout();
+      }, ADMIN_IDLE_TIMEOUT_MS);
+    };
+
+    const events = ['mousemove', 'keydown', 'touchstart', 'scroll', 'click'];
+    events.forEach((event) => window.addEventListener(event, resetTimer, { passive: true }));
+    resetTimer();
+
+    return () => {
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      events.forEach((event) => window.removeEventListener(event, resetTimer));
+    };
+  }, [isAuthenticated, isAdmin]);
 
   if (loading) {
     return <div className="loading">Loading...</div>;

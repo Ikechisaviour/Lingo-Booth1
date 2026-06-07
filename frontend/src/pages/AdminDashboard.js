@@ -1,9 +1,19 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { adminService, billingService } from '../services/api';
+import { adminService, billingService, notificationService } from '../services/api';
 import LANGUAGES, { getTargetLangName, getNativeLangName, getTargetLangCode, getNativeLangCode, getTargetField, getNativeField } from '../config/languages';
 import AdminSpeakingDemo from './AdminSpeakingDemo';
 import './AdminDashboard.css';
+
+const adminTabs = ['dashboard', 'users', 'activity', 'guests', 'failures', 'messages', 'billing', 'flashcards', 'demo'];
+
+function resolveAdminTab(adminTab, search) {
+  if (adminTabs.includes(adminTab)) return adminTab;
+  const params = new URLSearchParams(search);
+  const queryTab = params.get('tab');
+  return adminTabs.includes(queryTab) ? queryTab : 'dashboard';
+}
 
 // Country code → flag emoji
 function countryFlag(code) {
@@ -15,6 +25,9 @@ function countryFlag(code) {
 
 function AdminDashboard() {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { adminTab } = useParams();
   const [stats, setStats] = useState({
     overview: {
       totalUsers: 0, activeUsers: 0, suspendedUsers: 0, adminCount: 0,
@@ -72,8 +85,7 @@ function AdminDashboard() {
     tagline: '',
     monthlyPrice: '',
     annualPrice: '',
-    seatPriceMonthly: '',
-    seatPriceAnnual: '',
+    pricePerSeat: '',
     minimumSeats: '',
     stripeMonthlyPriceId: '',
     stripeAnnualPriceId: '',
@@ -111,6 +123,19 @@ function AdminDashboard() {
     billingEmail: '',
     notes: '',
   });
+  const [institutionAdminForm, setInstitutionAdminForm] = useState({
+    organizationId: '',
+    email: '',
+  });
+  const [broadcastForm, setBroadcastForm] = useState({
+    target: 'all',
+    userEmail: '',
+    organizationId: '',
+    severity: 'info',
+    title: '',
+    message: '',
+    actionRoute: '',
+  });
   const [loading, setLoading] = useState(true);
   const [guestsLoading, setGuestsLoading] = useState(false);
   const [errorReportsLoading, setErrorReportsLoading] = useState(false);
@@ -118,7 +143,7 @@ function AdminDashboard() {
   const [contactMessagesLoading, setContactMessagesLoading] = useState(false);
   const [contactMessagesClearing, setContactMessagesClearing] = useState(false);
   const [error, setError] = useState('');
-  const [activeTab, setActiveTab] = useState('dashboard');
+  const [activeTab, setActiveTab] = useState(() => resolveAdminTab(adminTab, location.search));
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
   const [contactSenderFilter, setContactSenderFilter] = useState('all');
@@ -129,7 +154,36 @@ function AdminDashboard() {
   const [detailLoading, setDetailLoading] = useState(false);
   const [selectedGuest, setSelectedGuest] = useState(null);
 
+  useEffect(() => {
+    if (adminTab && !adminTabs.includes(adminTab)) {
+      setActiveTab('dashboard');
+      navigate('/admin', { replace: true });
+      return;
+    }
+    const tab = resolveAdminTab(adminTab, location.search);
+    setActiveTab(tab);
+    if (location.search) {
+      navigate(tab === 'dashboard' ? '/admin' : `/admin/${tab}`, { replace: true });
+    }
+  }, [adminTab, location.search, navigate]);
+
   useEffect(() => { fetchData(); }, []);
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    navigate(tab === 'dashboard' ? '/admin' : `/admin/${tab}`);
+  };
+
+  const handleBroadcastSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const res = await notificationService.adminBroadcast(broadcastForm);
+      showSuccess(t('notifications.adminBroadcastSent', 'Notification sent to {{count}} users.', { count: res.data?.sent || 0 }));
+      setBroadcastForm((current) => ({ ...current, title: '', message: '', actionRoute: '' }));
+    } catch (err) {
+      setError(err.response?.data?.message || t('notifications.adminBroadcastFailed', 'Could not send notification.'));
+    }
+  };
 
   const fetchGuests = useCallback(async (page = 1) => {
     try {
@@ -170,29 +224,37 @@ function AdminDashboard() {
   const fetchBillingAdmin = useCallback(async () => {
     try {
       setBillingLoading(true);
-      const res = await billingService.getAdminOverview();
+      const [overviewRes, organizationsRes] = await Promise.all([
+        billingService.getAdminOverview(),
+        billingService.getAdminOrganizations().catch(() => ({ data: null })),
+      ]);
+      const overview = overviewRes.data || {};
+      const organizations = organizationsRes.data?.organizations || overview.organizations || [];
       setBillingAdmin({
-        counts: res.data?.counts || { activeIndividual: 0, activeInstitutional: 0, openInstitutionLeads: 0 },
-        subscriptions: res.data?.subscriptions || [],
-        organizations: res.data?.organizations || [],
-        leads: res.data?.leads || [],
-        recentEvents: res.data?.recentEvents || [],
-        plans: res.data?.plans || { individual: [], institutional: [] },
-        planOverrides: res.data?.planOverrides || [],
-        discounts: res.data?.discounts || [],
+        counts: overview.counts || { activeIndividual: 0, activeInstitutional: 0, openInstitutionLeads: 0 },
+        subscriptions: overview.subscriptions || [],
+        organizations,
+        leads: overview.leads || [],
+        recentEvents: overview.recentEvents || [],
+        plans: overview.plans || { individual: [], institutional: [] },
+        planOverrides: overview.planOverrides || [],
+        discounts: overview.discounts || [],
       });
+      if (!institutionAdminForm.organizationId && organizations.length) {
+        setInstitutionAdminForm((prev) => ({ ...prev, organizationId: organizations[0]._id }));
+      }
     } catch (err) {
       console.error('Billing admin fetch error:', err);
     } finally {
       setBillingLoading(false);
     }
-  }, []);
+  }, [institutionAdminForm.organizationId]);
 
   useEffect(() => {
     if (activeTab === 'guests') fetchGuests(1);
     if (activeTab === 'failures') fetchErrorReports(1);
     if (activeTab === 'messages') fetchContactMessages(1);
-    if (activeTab === 'billing') fetchBillingAdmin();
+    if (activeTab === 'billing' || activeTab === 'dashboard') fetchBillingAdmin();
   }, [activeTab, fetchGuests, fetchErrorReports, fetchContactMessages, fetchBillingAdmin]);
 
   const billingPlans = [
@@ -248,8 +310,7 @@ function AdminDashboard() {
       tagline: override?.tagline || '',
       monthlyPrice: centsToPriceInput(override?.monthlyPriceCents),
       annualPrice: centsToPriceInput(override?.annualPriceCents),
-      seatPriceMonthly: centsToPriceInput(override?.seatPriceMonthlyCents),
-      seatPriceAnnual: centsToPriceInput(override?.seatPriceAnnualCents),
+      pricePerSeat: centsToPriceInput(override?.pricePerSeatCents),
       minimumSeats: override?.minimumSeats || '',
       stripeMonthlyPriceId: override?.stripeMonthlyPriceId || '',
       stripeAnnualPriceId: override?.stripeAnnualPriceId || '',
@@ -449,10 +510,11 @@ function AdminDashboard() {
   const handleOrganizationSubmit = async (event) => {
     event.preventDefault();
     try {
-      await billingService.createOrganization({
+      const res = await billingService.createOrganization({
         ...organizationForm,
         seatsPurchased: Number(organizationForm.seatsPurchased) || 1,
       });
+      const createdOrganizationId = res.data?.organization?._id || '';
       setOrganizationForm({
         name: '',
         type: 'school',
@@ -461,10 +523,38 @@ function AdminDashboard() {
         billingEmail: '',
         notes: '',
       });
+      if (createdOrganizationId) {
+        setInstitutionAdminForm((prev) => ({ ...prev, organizationId: createdOrganizationId }));
+      }
       showSuccess(t('adminBilling.organizationCreated'));
       fetchBillingAdmin();
     } catch (err) {
       setError(err.response?.data?.message || t('adminBilling.organizationCreateFailed'));
+    }
+  };
+
+  const handleInstitutionAdminSubmit = async (event) => {
+    event.preventDefault();
+    const organizationId = institutionAdminForm.organizationId || billingAdmin.organizations[0]?._id || '';
+    if (!organizationId) {
+      setError(t('adminBilling.institutionAdminSelectOrganization', 'Choose an institution first.'));
+      return;
+    }
+
+    try {
+      await billingService.assignInstitutionAdmin(organizationId, {
+        email: institutionAdminForm.email,
+      });
+      setInstitutionAdminForm({ organizationId, email: '' });
+      showSuccess(t('adminBilling.institutionAdminAssigned', 'Institution admin access updated.'));
+      fetchBillingAdmin();
+      fetchData();
+    } catch (err) {
+      setError(
+        err.response?.status === 404
+          ? t('adminBilling.institutionAdminAccountRequired', 'That email must belong to an existing account first.')
+          : (err.response?.data?.message || t('adminBilling.institutionAdminAssignFailed', 'Failed to update institution admin access.'))
+      );
     }
   };
 
@@ -478,8 +568,7 @@ function AdminDashboard() {
         tagline: planOverrideForm.tagline,
         monthlyPriceCents: selectedPricingPlan.audience === 'individual' ? priceInputToCents(planOverrideForm.monthlyPrice) : null,
         annualPriceCents: selectedPricingPlan.audience === 'individual' ? priceInputToCents(planOverrideForm.annualPrice) : null,
-        seatPriceMonthlyCents: selectedPricingPlan.audience === 'institution' ? priceInputToCents(planOverrideForm.seatPriceMonthly) : null,
-        seatPriceAnnualCents: selectedPricingPlan.audience === 'institution' ? priceInputToCents(planOverrideForm.seatPriceAnnual) : null,
+        pricePerSeatCents: selectedPricingPlan.audience === 'institution' ? priceInputToCents(planOverrideForm.pricePerSeat) : null,
         minimumSeats: selectedPricingPlan.audience === 'institution' ? planOverrideForm.minimumSeats : null,
         stripeMonthlyPriceId: selectedPricingPlan.audience === 'individual' ? planOverrideForm.stripeMonthlyPriceId : '',
         stripeAnnualPriceId: selectedPricingPlan.audience === 'individual' ? planOverrideForm.stripeAnnualPriceId : '',
@@ -550,10 +639,41 @@ function AdminDashboard() {
   const updateLeadStatus = async (leadId, status) => {
     try {
       await billingService.updateInstitutionalLeadStatus(leadId, status);
-      showSuccess(t('adminBilling.institutionRequestUpdated'));
+      showSuccess(
+        status === 'accepted'
+          ? t('adminBilling.institutionRequestAccepted', 'Institution request accepted.')
+          : status === 'declined'
+            ? t('adminBilling.institutionRequestDeclined', 'Institution request declined.')
+            : t('adminBilling.institutionRequestUpdated')
+      );
       fetchBillingAdmin();
     } catch (err) {
       setError(err.response?.data?.message || t('adminBilling.institutionRequestUpdateFailed'));
+    }
+  };
+
+  const toggleOrganizationSuspension = async (org) => {
+    const nextStatus = org.status === 'suspended' ? 'active' : 'suspended';
+    try {
+      await billingService.updateOrganization(org._id, { status: nextStatus });
+      showSuccess(
+        nextStatus === 'suspended'
+          ? t('adminBilling.organizationSuspended', 'Institution suspended.')
+          : t('adminBilling.organizationReactivated', 'Institution reactivated.')
+      );
+      fetchBillingAdmin();
+    } catch (err) {
+      setError(err.response?.data?.message || t('adminBilling.organizationUpdateFailed', 'Failed to update institution.'));
+    }
+  };
+
+  const removeInstitutionAdmin = async (org, membership) => {
+    try {
+      await billingService.removeInstitutionAdmin(org._id, membership._id);
+      showSuccess(t('adminBilling.institutionAdminRemoved', 'Institution admin removed.'));
+      fetchBillingAdmin();
+    } catch (err) {
+      setError(err.response?.data?.message || t('adminBilling.institutionAdminRemoveFailed', 'Failed to remove institution admin.'));
     }
   };
 
@@ -798,14 +918,14 @@ function AdminDashboard() {
             { id: 'billing', icon: '$', label: `${t('admin.billing', 'Billing')} (${billingAdmin.counts.openInstitutionLeads || 0})` },
             { id: 'demo', icon: '▶', label: t('admin.demo', 'Demo') },
           ].map(tab => (
-            <button key={tab.id} className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`} onClick={() => setActiveTab(tab.id)}>
+            <button key={tab.id} className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`} onClick={() => handleTabChange(tab.id)}>
               <span className="tab-icon">{tab.icon}</span>{tab.label}
             </button>
           ))}
-          <button className={`tab-btn ${activeTab === 'failures' ? 'active' : ''}`} onClick={() => setActiveTab('failures')}>
+          <button className={`tab-btn ${activeTab === 'failures' ? 'active' : ''}`} onClick={() => handleTabChange('failures')}>
             <span className="tab-icon">!</span>{t('admin.failures', 'Failures')} ({errorReports.openCount || stats?.overview?.openErrorReports || 0})
           </button>
-          <button className={`tab-btn ${activeTab === 'messages' ? 'active' : ''}`} onClick={() => setActiveTab('messages')}>
+          <button className={`tab-btn ${activeTab === 'messages' ? 'active' : ''}`} onClick={() => handleTabChange('messages')}>
             <span className="tab-icon">✉</span>{t('admin.messages', 'Messages')} ({contactMessages.openCount || stats?.overview?.openContactMessages || 0})
           </button>
         </div>
@@ -816,6 +936,90 @@ function AdminDashboard() {
           {/* ── Dashboard Tab ── */}
           {activeTab === 'dashboard' && (
             <div className="dashboard-section">
+              <form className="card billing-admin-form" onSubmit={handleBroadcastSubmit}>
+                <h2>{t('notifications.adminComposerTitle', 'Send in-app notice')}</h2>
+                <p className="card-description">
+                  {t('notifications.adminComposerHint', 'Send a system notice to one user, all users, or institution members.')}
+                </p>
+                <div className="billing-admin-grid">
+                  <label>
+                    {t('notifications.target', 'Target')}
+                    <select
+                      value={broadcastForm.target}
+                      onChange={(event) => setBroadcastForm((current) => ({ ...current, target: event.target.value }))}
+                    >
+                      <option value="all">{t('notifications.targets.all', 'All users')}</option>
+                      <option value="user">{t('notifications.targets.user', 'One user')}</option>
+                      <option value="organization">{t('notifications.targets.organization', 'Institution members')}</option>
+                      <option value="institution_admins">{t('notifications.targets.institutionAdmins', 'Institution admins')}</option>
+                    </select>
+                  </label>
+                  {broadcastForm.target === 'user' && (
+                    <label>
+                      {t('adminBilling.userEmailOrId')}
+                      <input
+                        type="email"
+                        value={broadcastForm.userEmail}
+                        onChange={(event) => setBroadcastForm((current) => ({ ...current, userEmail: event.target.value }))}
+                      />
+                    </label>
+                  )}
+                  {(broadcastForm.target === 'organization' || broadcastForm.target === 'institution_admins') && (
+                    <label>
+                      {t('adminBilling.organizations')}
+                      <select
+                        value={broadcastForm.organizationId}
+                        onChange={(event) => setBroadcastForm((current) => ({ ...current, organizationId: event.target.value }))}
+                      >
+                        <option value="">{t('adminBilling.chooseInstitution', 'Choose an institution')}</option>
+                        {billingAdmin.organizations.map((org) => (
+                          <option key={org._id} value={org._id}>{org.name}</option>
+                        ))}
+                      </select>
+                    </label>
+                  )}
+                  <label>
+                    {t('notifications.severity', 'Priority')}
+                    <select
+                      value={broadcastForm.severity}
+                      onChange={(event) => setBroadcastForm((current) => ({ ...current, severity: event.target.value }))}
+                    >
+                      <option value="info">{t('notifications.severities.info', 'Info')}</option>
+                      <option value="success">{t('notifications.severities.success', 'Success')}</option>
+                      <option value="warning">{t('notifications.severities.warning', 'Warning')}</option>
+                      <option value="critical">{t('notifications.severities.critical', 'Critical')}</option>
+                    </select>
+                  </label>
+                </div>
+                <label>
+                  {t('notifications.noticeTitle', 'Notice title')}
+                  <input
+                    value={broadcastForm.title}
+                    onChange={(event) => setBroadcastForm((current) => ({ ...current, title: event.target.value }))}
+                    required
+                  />
+                </label>
+                <label>
+                  {t('notifications.noticeMessage', 'Notice message')}
+                  <textarea
+                    value={broadcastForm.message}
+                    onChange={(event) => setBroadcastForm((current) => ({ ...current, message: event.target.value }))}
+                    rows={3}
+                    required
+                  />
+                </label>
+                <label>
+                  {t('notifications.actionRoute', 'Optional action route')}
+                  <input
+                    value={broadcastForm.actionRoute}
+                    onChange={(event) => setBroadcastForm((current) => ({ ...current, actionRoute: event.target.value }))}
+                    placeholder="/profile"
+                  />
+                </label>
+                <button className="btn btn-primary" type="submit">
+                  {t('notifications.sendNotice', 'Send notice')}
+                </button>
+              </form>
               <div className="stats-row">
                 <div className="stat-card large primary">
                   <div className="stat-icon-wrapper"><span className="stat-emoji">👥</span></div>
@@ -1702,7 +1906,7 @@ function AdminDashboard() {
                       <span>{t('adminBilling.currentPublicPrice')}</span>
                       <strong>
                         {selectedPricingPlan.audience === 'institution'
-                          ? t('adminBilling.pricePerSeat', { price: formatAdminPrice(selectedPricingPlan.seatPriceMonthlyCents) })
+                          ? t('adminBilling.pricePerSeat', { price: formatAdminPrice(selectedPricingPlan.pricePerSeatCents) })
                           : t('adminBilling.priceMonthly', { price: formatAdminPrice(selectedPricingPlan.monthlyPriceCents) })}
                       </strong>
                     </div>
@@ -1774,25 +1978,14 @@ function AdminDashboard() {
                   ) : (
                     <div className="billing-admin-form-row">
                       <label>
-                        {t('adminBilling.monthlySeatPrice')}
+                        {t('adminBilling.pricePerSeatLabel', 'Price per 30-day seat (USD)')}
                         <input
                           type="number"
                           min="0"
                           step="0.01"
-                          value={planOverrideForm.seatPriceMonthly}
-                          onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, seatPriceMonthly: event.target.value })}
-                          placeholder={centsToPriceInput(selectedPricingPlan?.seatPriceMonthlyCents)}
-                        />
-                      </label>
-                      <label>
-                        {t('adminBilling.annualSeatPrice')}
-                        <input
-                          type="number"
-                          min="0"
-                          step="0.01"
-                          value={planOverrideForm.seatPriceAnnual}
-                          onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, seatPriceAnnual: event.target.value })}
-                          placeholder={centsToPriceInput(selectedPricingPlan?.seatPriceAnnualCents)}
+                          value={planOverrideForm.pricePerSeat}
+                          onChange={(event) => setPlanOverrideForm({ ...planOverrideForm, pricePerSeat: event.target.value })}
+                          placeholder={centsToPriceInput(selectedPricingPlan?.pricePerSeatCents)}
                         />
                       </label>
                       <label>
@@ -2132,6 +2325,38 @@ function AdminDashboard() {
                   </label>
                   <button className="btn btn-primary" type="submit">{t('adminBilling.createInstitution')}</button>
                 </form>
+
+                <form className="card billing-admin-form" onSubmit={handleInstitutionAdminSubmit}>
+                  <h3>{t('adminBilling.assignInstitutionAdmin', 'Make institutional admin')}</h3>
+                  <p className="card-description">
+                    {t('adminBilling.assignInstitutionAdminHint', 'Give an existing platform account manager access to an institution dashboard.')}
+                  </p>
+                  <label>
+                    {t('adminBilling.organizations')}
+                    <select
+                      value={institutionAdminForm.organizationId}
+                      onChange={(event) => setInstitutionAdminForm({ ...institutionAdminForm, organizationId: event.target.value })}
+                      required
+                    >
+                      <option value="">{t('adminBilling.chooseInstitution', 'Choose an institution')}</option>
+                      {billingAdmin.organizations.map((org) => (
+                        <option key={org._id} value={org._id}>{org.name}</option>
+                      ))}
+                    </select>
+                  </label>
+                  <label>
+                    {t('adminBilling.userEmailOrId')}
+                    <input
+                      type="email"
+                      value={institutionAdminForm.email}
+                      onChange={(event) => setInstitutionAdminForm({ ...institutionAdminForm, email: event.target.value })}
+                      required
+                    />
+                  </label>
+                  <button className="btn btn-primary" type="submit">
+                    {t('adminBilling.makeInstitutionAdmin', 'Make admin')}
+                  </button>
+                </form>
               </div>
 
               <div className="billing-admin-panels">
@@ -2150,9 +2375,8 @@ function AdminDashboard() {
                             {lead.message && <p>{lead.message}</p>}
                           </div>
                           <div className="billing-admin-actions">
-                            <button type="button" className="btn btn-outline btn-sm" onClick={() => updateLeadStatus(lead._id, 'contacted')}>{adminLeadStatusLabel('contacted')}</button>
-                            <button type="button" className="btn btn-primary btn-sm" onClick={() => updateLeadStatus(lead._id, 'converted')}>{adminLeadStatusLabel('converted')}</button>
-                            <button type="button" className="btn btn-outline btn-sm" onClick={() => updateLeadStatus(lead._id, 'closed')}>{adminLeadStatusLabel('closed')}</button>
+                            <button type="button" className="btn btn-primary btn-sm" onClick={() => updateLeadStatus(lead._id, 'accepted')}>{adminLeadStatusLabel('accepted')}</button>
+                            <button type="button" className="btn btn-outline btn-sm" onClick={() => updateLeadStatus(lead._id, 'declined')}>{adminLeadStatusLabel('declined')}</button>
                           </div>
                         </div>
                       ))}
@@ -2184,7 +2408,29 @@ function AdminDashboard() {
                         <div>
                           <strong>{org.name}</strong>
                           <span>{adminPlanName(org.planId)} · {adminStatusLabel(org.status)}</span>
+                          {org.managers?.length > 0 && (
+                            <small>
+                              {t('adminBilling.institutionAdmins', 'Institution admins')}: {org.managers.map((manager) => manager.user?.email || manager.email).join(', ')}
+                            </small>
+                          )}
                           <small>{t('adminBilling.seatsUsedCount', { used: org.seatsUsed || 0, purchased: org.seatsPurchased || 0 })}</small>
+                        </div>
+                        <div className="billing-admin-actions">
+                          {org.managers?.slice(0, 2).map((manager) => (
+                            <button
+                              key={manager._id}
+                              type="button"
+                              className="btn btn-outline btn-sm"
+                              onClick={() => removeInstitutionAdmin(org, manager)}
+                            >
+                              {t('adminBilling.removeAdmin', 'Remove admin')}
+                            </button>
+                          ))}
+                          <button type="button" className="btn btn-outline btn-sm" onClick={() => toggleOrganizationSuspension(org)}>
+                            {org.status === 'suspended'
+                              ? t('adminBilling.reactivateInstitution', 'Reactivate')
+                              : t('adminBilling.suspendInstitution', 'Suspend')}
+                          </button>
                         </div>
                       </div>
                     ))}

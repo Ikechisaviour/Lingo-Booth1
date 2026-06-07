@@ -623,7 +623,7 @@
     "deleteAccountTitle": "Padam Akaun?",
     "deleteButton": "Padam",
     "personalizationAvailable": "Tersedia pada pelan anda",
-    "personalizationTier": "Pro atau Ultra",
+    "personalizationTier": "Pro atau Premium",
     "personalizationTitle": "Pemperibadian Pembelajaran",
     "personalizationDesc": "Simpan perkataan, frasa dan situasi yang diluluskan daripada kehidupan sebenar supaya kelas, perbualan, kuiz, kad imbas dan latihan menulis boleh menjadi lebih relevan kepada anda.",
     "managePersonalization": "Urus pemperibadian",
@@ -639,7 +639,8 @@
     "failedToUpdate": "Gagal mengemas kini",
     "fullName": "Nama penuh",
     "fullNamePlaceholder": "Nama untuk ditunjukkan pada sijil",
-    "fullNameMissing": "Tambah sebelum mengeluarkan sijil"
+    "fullNameMissing": "Tambah sebelum mengeluarkan sijil",
+    "activeAccountType": "Jenis akaun aktif"
   },
   "verifyEmail": {
     "verifying": "Mengesahkan e-mel anda...",
@@ -880,12 +881,12 @@
     "recommended": "Disyorkan",
     "startFree": "Mula percuma",
     "choosePlan": "Pilih {{plan}}",
-    "checkoutSetupNeeded": "Daftar keluar dalam talian sedang disambungkan. Anda boleh menghantar permintaan dan kami akan membantu anda meneruskan.",
+    "checkoutSetupNeeded": "Pembayaran dalam talian tidak tersedia buat masa ini. Anda boleh menghantar permintaan dan kami akan membantu anda meneruskan.",
     "checkoutFailed": "Tidak dapat memulakan pembayaran. Sila cuba lagi.",
     "loadFailed": "Tidak dapat memuatkan rancangan. Sila cuba lagi.",
     "institutionalKicker": "Institusi",
     "institutionalTitle": "Tempat duduk untuk sekolah, pasukan, organisasi keagamaan dan kumpulan",
-    "institutionalSubtitle": "Langganan institusi terletak di sebelah pelan individu. Ahli boleh menerima akses Plus, Pro atau Ultra-level melalui organisasi mereka tanpa menukar akaun peribadi mereka.",
+    "institutionalSubtitle": "Langganan institusi terletak di sebelah pelan individu. Ahli boleh menerima akses Plus, Pro atau Premium-level melalui organisasi mereka tanpa menukar akaun peribadi mereka.",
     "customPricing": "Harga tersuai",
     "seatPrice": "{{price}} setiap kerusi, minimum {{seats}} kerusi",
     "institutionalFormTitle": "Minta akses institusi",
@@ -932,10 +933,10 @@
       "free": "Free",
       "plus": "Plus",
       "pro": "Pro",
-      "ultra": "Ultra",
-      "institution_basic": "Institution Basic",
+      "ultra": "Premium",
+      "institution_basic": "Institution Plus",
       "institution_pro": "Institution Pro",
-      "institution_enterprise": "Institution Enterprise"
+      "institution_enterprise": "Institution Premium"
     },
     "planTaglines": {
       "free": "Cuba gelung pembelajaran dengan had harian.",
@@ -951,7 +952,14 @@
     "discountUnavailable": "Kod diskaun itu tidak tersedia untuk pelan ini.",
     "automaticDiscountApplied": "Diskaun automatik {{discount}} digunakan",
     "signInToChooseTitle": "Buat akaun untuk meneruskan",
-    "signInToChooseBody": "Buat akaun atau log masuk sebelum memilih pelan berbayar supaya akses anda boleh dilampirkan kepada anda."
+    "signInToChooseBody": "Buat akaun atau log masuk sebelum memilih pelan berbayar supaya akses anda boleh dilampirkan kepada anda.",
+    "entitlements": {
+      "placementLifetime": "{{count}} semakan penempatan",
+      "placementMonthly": "{{count}} cek penempatan/bulan",
+      "proficiencyIncluded": "{{count}} pemeriksaan kecekapan/bulan disertakan, kemudian {{price}} setiap satu",
+      "proficiencyPaid": "Semakan kecekapan {{price}} setiap satu",
+      "dailyTokens": "{{count}} token perbualan harian"
+    }
   },
   "billing": {
     "kicker": "Pengebilan",
@@ -987,7 +995,13 @@
       "web": "Daftar keluar web",
       "ios": "pembelian iOS",
       "android": "pembelian Android"
-    }
+    },
+    "subscriptionContextUpdated": "Akses langganan ditukar.",
+    "subscriptionContextFailed": "Tidak dapat menukar akses langganan.",
+    "accessSwitcherKicker": "Sumber akses",
+    "accessSwitcherTitle": "Gunakan langganan daripada",
+    "accessSwitcherHint": "Pilih sama ada akaun ini menggunakan pengebilan peribadi atau tempat duduk institusi untuk akses berbayar.",
+    "currentAccessSource": "semasa"
   },
   "institution": {
     "kicker": "Institusi",
@@ -1086,7 +1100,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "Tampal URL imej HTTPS di sini atau gunakan papan pemuka web untuk memuat naik fail PNG, JPG atau WebP.",
     "saveCertificateBranding": "Simpan logo sijil",
-    "removeCertificateLogo": "Alih keluar logo"
+    "removeCertificateLogo": "Alih keluar logo",
+    "progressDashboardKicker": "Kemajuan pelajar",
+    "mastered": "Menguasai",
+    "comfortable": "Selesa",
+    "learning": "Pembelajaran",
+    "struggling": "Berjuang",
+    "classLessonsStarted": "{{count}} pelajaran bermula",
+    "sampleCertificateFailed": "Tidak dapat membuka sijil sampel.",
+    "previewSampleCertificate": "Pratonton sijil sampel"
   },
   "errorBoundary": {
     "title": "Sesuatu telah berlaku",
@@ -1431,7 +1453,7 @@
     "backToProfile": "Kembali ke Profil",
     "kicker": "Pemperibadian Pembelajaran",
     "title": "Pengajaran terbentuk di sekeliling anda",
-    "lockedSubtitle": "Pro dan Ultra boleh menyimpan perkataan, frasa dan situasi yang diluluskan daripada kehidupan sebenar supaya amalan masa depan terasa lebih relevan. Percuma dan Plus boleh terus menggunakan amalan biasa.",
+    "lockedSubtitle": "Pro dan Premium boleh menyimpan perkataan, frasa dan situasi yang diluluskan daripada kehidupan sebenar supaya amalan masa depan terasa lebih relevan. Percuma dan Plus boleh terus menggunakan amalan biasa.",
     "upgradeTitle": "Tingkatkan untuk memperibadikan amalan",
     "upgradeBody": "Tingkatkan apabila anda mahukan pelajaran, semak gesaan dan lakonan untuk menyesuaikan diri dengan bahasa harian yang anda luluskan.",
     "openConversation": "Perbualan Terbuka",
@@ -1772,7 +1794,8 @@
     "earnFirstMilestone": "Dapatkan pencapaian pertama",
     "repairPlanTitle": "Membaiki fokus",
     "repairPlanValue": "Patut dilawati semula",
-    "repairPlanBody": "Beberapa item lemah atau pusat pemeriksaan sedia untuk latihan terfokus sebelum anda bergerak terlalu jauh ke hadapan."
+    "repairPlanBody": "Beberapa item lemah atau pusat pemeriksaan sedia untuk latihan terfokus sebelum anda bergerak terlalu jauh ke hadapan.",
+    "placementLimitReached": "Anda telah menggunakan semakan peletakan yang disertakan untuk pelan ini."
   },
   "resetPassword": {
     "title": "Tetapkan semula kata laluan",
@@ -1892,6 +1915,63 @@
     "fullNameRequiredBody": "Masukkan nama penuh anda tepat seperti yang sepatutnya tertera pada sijil ini. Anda hanya perlu melakukan ini sebelum mengeluarkan sijil.",
     "fullNameLabel": "Nama penuh",
     "fullNamePlaceholder": "nama penuh awak",
-    "saveNameAndIssue": "Simpan nama dan keluarkan sijil"
+    "saveNameAndIssue": "Simpan nama dan keluarkan sijil",
+    "proficiencyPaymentRequired": "Semakan kemahiran ini ialah {{price}} selepas semakan yang anda sertakan.",
+    "proficiencyAllowance": "{{remaining}} daripada {{included}} termasuk semakan kemahiran yang tinggal pada bulan ini. Pemeriksaan tambahan ialah {{price}} setiap satu.",
+    "paymentSetupNeeded": "Pemeriksaan kecekapan berbayar belum dikonfigurasikan lagi.",
+    "paymentStartFailed": "Tidak dapat memulakan pembayaran untuk semakan kemahiran ini.",
+    "proficiencyPaymentTitle": "Bayaran diperlukan",
+    "payProficiencyCheck": "Bayar {{price}} untuk cek ini"
+  },
+  "notifications": {
+    "title": "Pemberitahuan",
+    "empty": "Tiada pemberitahuan lagi.",
+    "markAllRead": "Tandakan semua sudah dibaca",
+    "openAction": "Buka",
+    "dismiss": "Tolak",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "Akses institusi dikemas kini",
+    "institutionLearnerAddedBody": "Anda telah ditambahkan pada {{organizationName}} sebagai pelajar.",
+    "institutionAdminAddedBody": "Anda kini boleh mengurus {{organizationName}} dari papan pemuka institusi anda.",
+    "institutionAccessRemovedTitle": "Akses institusi dialih keluar",
+    "institutionAccessRemovedBody": "Akses anda kepada {{organizationName}} telah dialih keluar.",
+    "lowSeatsTitle": "Kerusi institusi semakin berkurangan",
+    "lowSeatsBody": "{{organizationName}} mempunyai {{remaining}} daripada {{purchased}} tempat duduk yang tinggal.",
+    "noSeatsTitle": "Tiada kerusi institusi yang tinggal",
+    "noSeatsBody": "{{organizationName}} tiada tempat duduk lagi.",
+    "seatsAddedTitle": "Kerusi institusi ditambah",
+    "seatsAddedBody": "{{quantity}} tempat duduk telah ditambah. Tempat duduk {{remaining}} kini tersedia.",
+    "institutionPurchaseTitle": "Langganan institusi diaktifkan",
+    "institutionPurchaseBody": "{{organizationName}} kini mempunyai {{quantity}} kerusi institusi.",
+    "institutionSeatSuspendedTitle": "Kerusi institusi digantung",
+    "institutionSeatSuspendedBody": "Tempat duduk anda untuk {{organizationName}} telah digantung.",
+    "institutionSeatRestoredTitle": "Kerusi institusi dipulihkan",
+    "institutionSeatRestoredBody": "Tempat duduk anda untuk {{organizationName}} aktif semula.",
+    "suspensionRequestedTitle": "Pelajar meminta penggantungan",
+    "suspensionRequestedBody": "{{email}} meminta penggantungan kerusi institusi.",
+    "institutionRequestAcceptedTitle": "Permintaan institusi diterima",
+    "institutionRequestAcceptedBody": "Permintaan anda untuk {{organizationName}} telah diterima.",
+    "institutionRequestDeclinedTitle": "Permintaan institusi ditolak",
+    "institutionRequestDeclinedBody": "Permintaan institusi anda untuk {{organizationName}} telah ditolak.",
+    "institutionSuspendedTitle": "Institusi digantung",
+    "institutionSuspendedBody": "{{organizationName}} telah digantung.",
+    "institutionReactivatedTitle": "Institusi diaktifkan semula",
+    "institutionReactivatedBody": "{{organizationName}} aktif semula.",
+    "xpDecayTitle": "Pukulan latihan memerlukan perhatian",
+    "xpDecayBody": "{{penalty}} XP dikurangkan selepas tidak aktif. Jumlah semasa anda ialah {{totalXP}} XP.",
+    "viewProfileAction": "Lihat profil",
+    "openInstitutionAction": "Institusi terbuka",
+    "manageSeatsAction": "Uruskan tempat duduk",
+    "viewPlansAction": "Lihat rancangan",
+    "resumePracticeAction": "Sambung semula latihan",
+    "unreadCount": "{{count}} belum dibaca"
+  },
+  "stepUp": {
+    "verifyFailed": "Tidak dapat mengesahkan kata laluan",
+    "title": "Sahkan itu awak",
+    "message": "Untuk keselamatan anda, sila masukkan semula kata laluan anda untuk meneruskan tindakan ini.",
+    "passwordPlaceholder": "Kata laluan",
+    "confirm": "sahkan"
   }
 }

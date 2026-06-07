@@ -639,7 +639,8 @@
     "failedToUpdate": "更新に失敗しました",
     "fullName": "フルネーム",
     "fullNamePlaceholder": "証明書に表示する名前",
-    "fullNameMissing": "証明書発行前に追加"
+    "fullNameMissing": "証明書発行前に追加",
+    "activeAccountType": "アクティブなアカウントの種類"
   },
   "verifyEmail": {
     "verifying": "メールを確認中...",
@@ -880,12 +881,12 @@
     "recommended": "推奨",
     "startFree": "無料で始める",
     "choosePlan": "{{plan}}を選択してください",
-    "checkoutSetupNeeded": "オンラインチェックアウトが接続中です。 リクエストを送信していただければ、継続をお手伝いいたします。",
+    "checkoutSetupNeeded": "オンライン決済は現在ご利用いただけません。リクエストを送信していただければ、続行をお手伝いします。",
     "checkoutFailed": "チェックアウトを開始できませんでした。 もう一度試してください。",
     "loadFailed": "計画を読み込めませんでした。 もう一度試してください。",
     "institutionalKicker": "機関",
     "institutionalTitle": "学校、チーム、宗教団体、グループ向けの席",
-    "institutionalSubtitle": "法人向けサブスクリプションは個人プランの隣にあります。 メンバーは、個人アカウントを変更せずに、組織を通じて Plus、Pro、または Ultra レベルのアクセス権を受け取ることができます。",
+    "institutionalSubtitle": "法人向けサブスクリプションは個人プランの隣にあります。 メンバーは、個人アカウントを変更せずに、組織を通じて Plus、Pro、または Premium レベルのアクセス権を受け取ることができます。",
     "customPricing": "カスタム価格設定",
     "seatPrice": "座席あたり {{price}}、最低 {{seats}} 席",
     "institutionalFormTitle": "機関へのアクセスをリクエストする",
@@ -932,10 +933,10 @@
       "free": "フリー",
       "plus": "プラス",
       "pro": "プロ",
-      "ultra": "ウルトラ",
-      "institution_basic": "インスティテューション ベーシック",
+      "ultra": "プレミアム",
+      "institution_basic": "インスティテューション プラス",
       "institution_pro": "インスティテューション プロ",
-      "institution_enterprise": "インスティテューション エンタープライズ"
+      "institution_enterprise": "インスティテューション プレミアム"
     },
     "planTaglines": {
       "free": "1 日あたりの制限を設けた学習ループを試してください。",
@@ -951,7 +952,14 @@
     "discountUnavailable": "このプランではその割引コードは利用できません。",
     "automaticDiscountApplied": "{{discount}} の自動割引が適用されました",
     "signInToChooseTitle": "続行するにはアカウントを作成してください",
-    "signInToChooseBody": "有料プランを選択する前にアカウントを作成するかサインインして、アクセス権を付与できるようにしてください。"
+    "signInToChooseBody": "有料プランを選択する前にアカウントを作成するかサインインして、アクセス権を付与できるようにしてください。",
+    "entitlements": {
+      "placementLifetime": "{{count}} 配置チェック",
+      "placementMonthly": "{{count}} プレースメントチェック/月",
+      "proficiencyIncluded": "{{count}} 技能チェック/月が含まれ、その後はそれぞれ {{price}}",
+      "proficiencyPaid": "熟練度チェック {{price}} それぞれ",
+      "dailyTokens": "{{count}} 日常会話トークン"
+    }
   },
   "billing": {
     "kicker": "請求する",
@@ -987,7 +995,13 @@
       "web": "ウェブチェックアウト",
       "ios": "iOSの購入",
       "android": "アンドロイドの購入"
-    }
+    },
+    "subscriptionContextUpdated": "サブスクリプションアクセスが切り替えられました。",
+    "subscriptionContextFailed": "サブスクリプション アクセスを切り替えることができませんでした。",
+    "accessSwitcherKicker": "アクセス元",
+    "accessSwitcherTitle": "からのサブスクリプションを使用する",
+    "accessSwitcherHint": "このアカウントが個人請求を使用するか、有料アクセス用の教育機関のシートを使用するかを選択します。",
+    "currentAccessSource": "現在"
   },
   "institution": {
     "kicker": "機関",
@@ -1086,7 +1100,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "ここに HTTPS 画像 URL を貼り付けるか、Web ダッシュボードを使用して PNG、JPG、または WebP ファイルをアップロードします。",
     "saveCertificateBranding": "証明書のロゴを保存する",
-    "removeCertificateLogo": "ロゴを削除する"
+    "removeCertificateLogo": "ロゴを削除する",
+    "progressDashboardKicker": "学習者の進歩",
+    "mastered": "マスター済み",
+    "comfortable": "快適",
+    "learning": "学ぶ",
+    "struggling": "もがく",
+    "classLessonsStarted": "{{count}} レッスンが始まりました",
+    "sampleCertificateFailed": "サンプル証明書を開けませんでした。",
+    "previewSampleCertificate": "サンプル証明書のプレビュー"
   },
   "errorBoundary": {
     "title": "何か問題が発生しました",
@@ -1431,7 +1453,7 @@
     "backToProfile": "プロフィールに戻る",
     "kicker": "学習のパーソナライゼーション",
     "title": "あなたを中心に形作られたレッスン",
-    "lockedSubtitle": "Pro と Ultra では、承認された単語、フレーズ、状況を実際の生活から保存できるため、今後の練習がより意味のあるものに感じられます。 FreeとPlusは定期的な練習を続けることができます。",
+    "lockedSubtitle": "Pro と Premium では、承認された単語、フレーズ、状況を実際の生活から保存できるため、今後の練習がより意味のあるものに感じられます。 FreeとPlusは定期的な練習を続けることができます。",
     "upgradeTitle": "アップグレードして練習をパーソナライズする",
     "upgradeBody": "レッスン、レビュープロンプト、ロールプレイを、承認した日常言語に適応させたい場合は、アップグレードしてください。",
     "openConversation": "オープンな会話",
@@ -1772,7 +1794,8 @@
     "earnFirstMilestone": "最初のマイルストーンを獲得する",
     "repairPlanTitle": "修理の焦点",
     "repairPlanValue": "再訪する価値がある",
-    "repairPlanBody": "いくつかの弱い項目やチェックポイント項目は、先に進みすぎる前に集中的に練習できるように準備されています。"
+    "repairPlanBody": "いくつかの弱い項目やチェックポイント項目は、先に進みすぎる前に集中的に練習できるように準備されています。",
+    "placementLimitReached": "このプランには、含まれている配置チェックが使用されています。"
   },
   "resetPassword": {
     "title": "パスワードをリセット",
@@ -1892,6 +1915,63 @@
     "fullNameRequiredBody": "この証明書に表示されるフルネームを正確に入力してください。 これを行う必要があるのは、証明書を発行する前のみです。",
     "fullNameLabel": "フルネーム",
     "fullNamePlaceholder": "あなたのフルネーム",
-    "saveNameAndIssue": "名前を保存して証明書を発行する"
+    "saveNameAndIssue": "名前を保存して証明書を発行する",
+    "proficiencyPaymentRequired": "この熟練度チェックは、含まれているチェックの後、{{price}} になります。",
+    "proficiencyAllowance": "{{included}} の {{remaining}} には、今月残っている熟練度チェックが含まれています。 追加の小切手はそれぞれ {{price}} です。",
+    "paymentSetupNeeded": "有料の熟練度チェックはまだ設定されていません。",
+    "paymentStartFailed": "この能力チェックの支払いを開始できませんでした。",
+    "proficiencyPaymentTitle": "支払いが必要です",
+    "payProficiencyCheck": "この小切手に対して {{price}} を支払います"
+  },
+  "notifications": {
+    "title": "通知",
+    "empty": "まだ通知はありません。",
+    "markAllRead": "すべて既読としてマークする",
+    "openAction": "開ける",
+    "dismiss": "却下する",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "機関へのアクセスを更新しました",
+    "institutionLearnerAddedBody": "あなたは学習者として {{organizationName}} に追加されました。",
+    "institutionAdminAddedBody": "教育機関のダッシュボードから {{organizationName}} を管理できるようになりました。",
+    "institutionAccessRemovedTitle": "機関へのアクセスが削除されました",
+    "institutionAccessRemovedBody": "{{organizationName}} へのアクセスが削除されました。",
+    "lowSeatsTitle": "教育機関の座席が不足しています",
+    "lowSeatsBody": "{{organizationName}}には、{{purchased}}中{{remaining}}の席が残っています。",
+    "noSeatsTitle": "教育機関の座席が残っていない",
+    "noSeatsBody": "{{organizationName}}には残席がありません。",
+    "seatsAddedTitle": "教育機関の座席が追加されました",
+    "seatsAddedBody": "{{quantity}}席を追加しました。 {{remaining}} お席が空席になりました。",
+    "institutionPurchaseTitle": "教育機関のサブスクリプションが有効になりました",
+    "institutionPurchaseBody": "{{organizationName}} には {{quantity}} の機関席が割り当てられました。",
+    "institutionSeatSuspendedTitle": "機関席の停止",
+    "institutionSeatSuspendedBody": "{{organizationName}} の座席は停止されました。",
+    "institutionSeatRestoredTitle": "教育機関の座席が復元されました",
+    "institutionSeatRestoredBody": "{{organizationName}} の座席が再び有効になります。",
+    "suspensionRequestedTitle": "学習者が停学を申請しました",
+    "suspensionRequestedBody": "{{email}} は機関席の一時停止を要求しました。",
+    "institutionRequestAcceptedTitle": "機関のリクエストが受け入れられました",
+    "institutionRequestAcceptedBody": "{{organizationName}} のリクエストは受理されました。",
+    "institutionRequestDeclinedTitle": "教育機関のリクエストは拒否されました",
+    "institutionRequestDeclinedBody": "あなたの教育機関からの {{organizationName}} のリクエストは拒否されました。",
+    "institutionSuspendedTitle": "機関の停止",
+    "institutionSuspendedBody": "{{organizationName}}は停止されました。",
+    "institutionReactivatedTitle": "機関が再開されました",
+    "institutionReactivatedBody": "{{organizationName}} が再びアクティブになりました。",
+    "xpDecayTitle": "連続練習には注意が必要",
+    "xpDecayBody": "{{penalty}} 非アクティブになった後、XP が減少しました。 現在の合計は {{totalXP}} XP です。",
+    "viewProfileAction": "プロフィールを見る",
+    "openInstitutionAction": "開かれた機関",
+    "manageSeatsAction": "座席の管理",
+    "viewPlansAction": "プランを見る",
+    "resumePracticeAction": "練習を再開する",
+    "unreadCount": "{{count}} 未読"
+  },
+  "stepUp": {
+    "verifyFailed": "パスワードを確認できませんでした",
+    "title": "あなたであることを確認してください",
+    "message": "セキュリティのため、この操作を続行するにはパスワードを再入力してください。",
+    "passwordPlaceholder": "パスワード",
+    "confirm": "確認する"
   }
 }

@@ -639,7 +639,8 @@
     "failedToUpdate": "अद्यतन करने में विफल",
     "fullName": "पूरा नाम",
     "fullNamePlaceholder": "प्रमाणपत्रों पर दर्शाने योग्य नाम",
-    "fullNameMissing": "प्रमाणपत्र जारी करने से पहले जोड़ें"
+    "fullNameMissing": "प्रमाणपत्र जारी करने से पहले जोड़ें",
+    "activeAccountType": "सक्रिय खाता प्रकार"
   },
   "verifyEmail": {
     "verifying": "आपका ईमेल सत्यापित हो रहा है...",
@@ -880,7 +881,7 @@
     "recommended": "अनुशंसित",
     "startFree": "निःशुल्क प्रारंभ करें",
     "choosePlan": "{{plan}} चुनें",
-    "checkoutSetupNeeded": "ऑनलाइन चेकआउट कनेक्ट किया जा रहा है. आप एक अनुरोध भेज सकते हैं और हम आपको जारी रखने में मदद करेंगे।",
+    "checkoutSetupNeeded": "ऑनलाइन चेकआउट अभी उपलब्ध नहीं है। आप अनुरोध भेज सकते हैं और हम आगे बढ़ने में मदद करेंगे।",
     "checkoutFailed": "चेकआउट प्रारंभ नहीं किया जा सका. कृपया पुन: प्रयास करें।",
     "loadFailed": "योजनाएँ लोड नहीं हो सकीं. कृपया पुन: प्रयास करें।",
     "institutionalKicker": "संस्थानों",
@@ -932,10 +933,10 @@
       "free": "फ्री",
       "plus": "प्लस",
       "pro": "प्रो",
-      "ultra": "अल्ट्रा",
-      "institution_basic": "इंस्टिट्यूशन बेसिक",
+      "ultra": "प्रीमियम",
+      "institution_basic": "इंस्टिट्यूशन प्लस",
       "institution_pro": "इंस्टिट्यूशन प्रो",
-      "institution_enterprise": "इंस्टिट्यूशन एंटरप्राइज"
+      "institution_enterprise": "इंस्टिट्यूशन प्रीमियम"
     },
     "planTaglines": {
       "free": "दैनिक सीमाओं के साथ सीखने का चक्र आज़माएँ।",
@@ -951,7 +952,14 @@
     "discountUnavailable": "वह डिस्काउंट कोड इस योजना के लिए उपलब्ध नहीं है।",
     "automaticDiscountApplied": "{{discount}} की स्वचालित छूट लागू",
     "signInToChooseTitle": "जारी रखने के लिए एक खाता बनाएँ",
-    "signInToChooseBody": "सशुल्क योजना चुनने से पहले एक खाता बनाएं या साइन इन करें ताकि आपकी पहुंच आपसे जुड़ी रह सके।"
+    "signInToChooseBody": "सशुल्क योजना चुनने से पहले एक खाता बनाएं या साइन इन करें ताकि आपकी पहुंच आपसे जुड़ी रह सके।",
+    "entitlements": {
+      "placementLifetime": "{{count}} प्लेसमेंट जांच",
+      "placementMonthly": "{{count}} प्लेसमेंट जांच/माह",
+      "proficiencyIncluded": "{{count}} प्रवीणता जांच/माह शामिल, फिर {{price}} प्रत्येक",
+      "proficiencyPaid": "प्रवीणता प्रत्येक {{price}} की जाँच करती है",
+      "dailyTokens": "{{count}} दैनिक वार्तालाप टोकन"
+    }
   },
   "billing": {
     "kicker": "बिलिंग",
@@ -987,7 +995,13 @@
       "web": "वेब चेकआउट",
       "ios": "आईओएस खरीद",
       "android": "एंड्रॉइड खरीदारी"
-    }
+    },
+    "subscriptionContextUpdated": "सदस्यता पहुंच स्विच की गई.",
+    "subscriptionContextFailed": "सदस्यता पहुंच स्विच नहीं की जा सकी.",
+    "accessSwitcherKicker": "पहुँच स्रोत",
+    "accessSwitcherTitle": "से सदस्यता का उपयोग करें",
+    "accessSwitcherHint": "चुनें कि क्या यह खाता भुगतान पहुंच के लिए व्यक्तिगत बिलिंग या संस्थान सीट का उपयोग करता है।",
+    "currentAccessSource": "मौजूदा"
   },
   "institution": {
     "kicker": "संस्था",
@@ -1086,7 +1100,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "यहां एक HTTPS छवि URL चिपकाएँ, या PNG, JPG, या WebP फ़ाइल अपलोड करने के लिए वेब डैशबोर्ड का उपयोग करें।",
     "saveCertificateBranding": "प्रमाणपत्र लोगो सहेजें",
-    "removeCertificateLogo": "लोगो हटाएँ"
+    "removeCertificateLogo": "लोगो हटाएँ",
+    "progressDashboardKicker": "शिक्षार्थी की प्रगति",
+    "mastered": "महारत हासिल",
+    "comfortable": "आरामदायक",
+    "learning": "सीखना",
+    "struggling": "संघर्षरत",
+    "classLessonsStarted": "{{count}} पाठ प्रारंभ",
+    "sampleCertificateFailed": "नमूना प्रमाणपत्र नहीं खोला जा सका.",
+    "previewSampleCertificate": "नमूना प्रमाणपत्र का पूर्वावलोकन करें"
   },
   "errorBoundary": {
     "title": "कुछ गलत हो गया",
@@ -1772,7 +1794,8 @@
     "earnFirstMilestone": "पहला मील का पत्थर अर्जित करें",
     "repairPlanTitle": "फोकस की मरम्मत करें",
     "repairPlanValue": "दोबारा देखने लायक",
-    "repairPlanBody": "इससे पहले कि आप बहुत आगे बढ़ें, कुछ कमजोर या चेकपॉइंट आइटम केंद्रित अभ्यास के लिए तैयार हैं।"
+    "repairPlanBody": "इससे पहले कि आप बहुत आगे बढ़ें, कुछ कमजोर या चेकपॉइंट आइटम केंद्रित अभ्यास के लिए तैयार हैं।",
+    "placementLimitReached": "आपने इस योजना के लिए अपने सम्मिलित प्लेसमेंट चेक का उपयोग किया है।"
   },
   "resetPassword": {
     "title": "पासवर्ड रीसेट करें",
@@ -1892,6 +1915,63 @@
     "fullNameRequiredBody": "अपना पूरा नाम बिल्कुल वैसा ही दर्ज करें जैसा वह इस प्रमाणपत्र पर दिखना चाहिए। आपको केवल प्रमाणपत्र जारी करने से पहले ऐसा करना होगा.",
     "fullNameLabel": "पूरा नाम",
     "fullNamePlaceholder": "आपका पूरा नाम",
-    "saveNameAndIssue": "नाम सहेजें और प्रमाणपत्र जारी करें"
+    "saveNameAndIssue": "नाम सहेजें और प्रमाणपत्र जारी करें",
+    "proficiencyPaymentRequired": "आपके सम्मिलित जांच के बाद यह प्रवीणता जांच {{price}} है।",
+    "proficiencyAllowance": "{{included}} में से {{remaining}} में इस महीने छोड़ी गई दक्षता जांचें शामिल हैं। प्रत्येक अतिरिक्त जांच {{price}} है।",
+    "paymentSetupNeeded": "सशुल्क दक्षता जांच अभी तक कॉन्फ़िगर नहीं की गई हैं।",
+    "paymentStartFailed": "इस दक्षता जांच के लिए भुगतान प्रारंभ नहीं किया जा सका.",
+    "proficiencyPaymentTitle": "भुगतान आवश्यक",
+    "payProficiencyCheck": "इस चेक के लिए {{price}} का भुगतान करें"
+  },
+  "notifications": {
+    "title": "सूचनाएं",
+    "empty": "अभी तक कोई सूचना नहीं.",
+    "markAllRead": "सभी को पढ़ा दिखाएं",
+    "openAction": "खुला",
+    "dismiss": "नकार देना",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "संस्थान की पहुंच अपडेट की गई",
+    "institutionLearnerAddedBody": "आपको एक शिक्षार्थी के रूप में {{organizationName}} में जोड़ा गया है।",
+    "institutionAdminAddedBody": "अब आप अपने संस्थान के डैशबोर्ड से {{organizationName}} प्रबंधित कर सकते हैं।",
+    "institutionAccessRemovedTitle": "संस्थान की पहुंच हटा दी गई",
+    "institutionAccessRemovedBody": "{{organizationName}} तक आपकी पहुंच हटा दी गई थी।",
+    "lowSeatsTitle": "संस्थान की सीटें कम चल रही हैं",
+    "lowSeatsBody": "{{organizationName}} में {{purchased}} में से {{remaining}} सीटें शेष हैं।",
+    "noSeatsTitle": "संस्थान की कोई सीट शेष नहीं है",
+    "noSeatsBody": "{{organizationName}} में कोई सीट शेष नहीं है।",
+    "seatsAddedTitle": "संस्थान की सीटें जोड़ी गईं",
+    "seatsAddedBody": "{{quantity}} सीटें जोड़ी गईं। {{remaining}} सीटें अब उपलब्ध हैं।",
+    "institutionPurchaseTitle": "संस्था सदस्यता सक्रिय की गई",
+    "institutionPurchaseBody": "{{organizationName}} में अब {{quantity}} संस्था सीटें हैं।",
+    "institutionSeatSuspendedTitle": "संस्थान की सीट निलंबित",
+    "institutionSeatSuspendedBody": "{{organizationName}} के लिए आपकी सीट निलंबित कर दी गई थी।",
+    "institutionSeatRestoredTitle": "संस्थान की सीट बहाल",
+    "institutionSeatRestoredBody": "{{organizationName}} के लिए आपकी सीट फिर से सक्रिय है।",
+    "suspensionRequestedTitle": "शिक्षार्थी ने निलंबन का अनुरोध किया",
+    "suspensionRequestedBody": "{{email}} ने संस्थान सीट निलंबन का अनुरोध किया।",
+    "institutionRequestAcceptedTitle": "संस्था का अनुरोध स्वीकार किया गया",
+    "institutionRequestAcceptedBody": "{{organizationName}} के लिए आपका अनुरोध स्वीकार कर लिया गया।",
+    "institutionRequestDeclinedTitle": "संस्थान का अनुरोध अस्वीकार कर दिया गया",
+    "institutionRequestDeclinedBody": "{{organizationName}} के लिए आपके संस्थान का अनुरोध अस्वीकार कर दिया गया था।",
+    "institutionSuspendedTitle": "संस्था निलंबित",
+    "institutionSuspendedBody": "{{organizationName}} को निलंबित कर दिया गया है।",
+    "institutionReactivatedTitle": "संस्था पुनः सक्रिय हुई",
+    "institutionReactivatedBody": "{{organizationName}} फिर से सक्रिय है।",
+    "xpDecayTitle": "प्रैक्टिस स्ट्रीक पर ध्यान देने की जरूरत है",
+    "xpDecayBody": "{{penalty}} XP निष्क्रियता के बाद कम हो गया था। आपका वर्तमान कुल {{totalXP}} XP है।",
+    "viewProfileAction": "प्रोफ़ाइल देखें",
+    "openInstitutionAction": "खुली संस्था",
+    "manageSeatsAction": "सीटें प्रबंधित करें",
+    "viewPlansAction": "योजनाएं देखें",
+    "resumePracticeAction": "अभ्यास फिर से शुरू करें",
+    "unreadCount": "{{count}} अपठित"
+  },
+  "stepUp": {
+    "verifyFailed": "पासवर्ड सत्यापित नहीं किया जा सका",
+    "title": "पुष्टि करें कि यह आप ही हैं",
+    "message": "अपनी सुरक्षा के लिए, कृपया इस कार्रवाई को जारी रखने के लिए अपना पासवर्ड पुनः दर्ज करें।",
+    "passwordPlaceholder": "पासवर्ड",
+    "confirm": "पुष्टि करना"
   }
 }

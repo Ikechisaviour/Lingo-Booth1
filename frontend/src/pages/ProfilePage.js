@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { certificateService, classLessonService, learningHubService, userService, progressService } from '../services/api';
+import { billingService, certificateService, classLessonService, learningHubService, userService, progressService } from '../services/api';
 import speechService from '../services/speechService';
 import LANGUAGES, {
   getNativeLangCode,
@@ -12,6 +12,15 @@ import LANGUAGES, {
 import { normalizeLanguageCode } from '../utils/languagePairPolicy';
 import { formatVoiceOptions } from '../utils/voiceDisplay';
 import './ProfilePage.css';
+
+const profileTabs = ['profile', 'settings', 'account'];
+
+function resolveProfileTab(profileTab, search) {
+  if (profileTabs.includes(profileTab)) return profileTab;
+  const params = new URLSearchParams(search);
+  const queryTab = params.get('tab');
+  return profileTabs.includes(queryTab) ? queryTab : 'profile';
+}
 
 function isProOrUltraTier(tier) {
   return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
@@ -36,12 +45,13 @@ function ProfilePage({ onLogout }) {
   const [progress, setProgress] = useState(null);
   const [learningHub, setLearningHub] = useState(null);
   const [certificates, setCertificates] = useState([]);
+  const [billingAccount, setBillingAccount] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const location = useLocation();
+  const { profileTab } = useParams();
   const [activeTab, setActiveTab] = useState(() => {
-    const params = new URLSearchParams(location.search);
-    return params.get('tab') || 'profile';
+    return resolveProfileTab(profileTab, location.search);
   });
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({ username: '', fullName: '' });
@@ -58,14 +68,33 @@ function ProfilePage({ onLogout }) {
   const [xpDecayEnabled, setXpDecayEnabled] = useState(false);
   const [showModeConfirm, setShowModeConfirm] = useState(null); // 'enable' or 'disable'
   const [modeLoading, setModeLoading] = useState(false);
+  const [switchingAccess, setSwitchingAccess] = useState('');
   const navigate = useNavigate();
 
   const userId = localStorage.getItem('userId');
 
   useEffect(() => {
+    if (profileTab && !profileTabs.includes(profileTab)) {
+      setActiveTab('profile');
+      navigate('/profile', { replace: true });
+      return;
+    }
+    const tab = resolveProfileTab(profileTab, location.search);
+    setActiveTab(tab);
+    if (location.search) {
+      navigate(tab === 'profile' ? '/profile' : `/profile/${tab}`, { replace: true });
+    }
+  }, [profileTab, location.search, navigate]);
+
+  useEffect(() => {
     fetchUserData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    navigate(tab === 'profile' ? '/profile' : `/profile/${tab}`);
+  };
 
   // Load available voices for both languages from Edge TTS
   useEffect(() => {
@@ -83,16 +112,18 @@ function ProfilePage({ onLogout }) {
   const fetchUserData = async () => {
     try {
       setLoading(true);
-      const [userResponse, progressResponse, learningHubResponse, certificateResponse] = await Promise.all([
+      const [userResponse, progressResponse, learningHubResponse, certificateResponse, billingResponse] = await Promise.all([
         userService.getProfile(userId),
         progressService.getSummary(userId),
         learningHubService.getOverview().catch(() => ({ data: null })),
         certificateService.list().catch(() => ({ data: [] })),
+        billingService.getAccount().catch(() => ({ data: null })),
       ]);
       setUser(userResponse.data);
       setProgress(progressResponse.data);
       setLearningHub(learningHubResponse.data);
       setCertificates(certificateResponse.data?.certificates || []);
+      setBillingAccount(billingResponse.data || null);
       setEditData({ username: userResponse.data.username, fullName: userResponse.data.fullName || '' });
       localStorage.setItem('userFullName', userResponse.data.fullName || '');
       const effectiveTier = userResponse.data.role === 'admin'
@@ -341,6 +372,85 @@ function ProfilePage({ onLogout }) {
       && ['spoken', 'hands_free'].includes(event.metadata?.mode || '')
     ))
     .slice(0, 6);
+  let storedEntitlements = {};
+  try {
+    storedEntitlements = JSON.parse(localStorage.getItem('aiEntitlements') || '{}');
+  } catch (_) {
+    storedEntitlements = {};
+  }
+  const canManageInstitution = Boolean(
+    user?.aiEntitlements?.canManageOrganization
+    || storedEntitlements.canManageOrganization
+  );
+  const institutionalAccess = user?.aiEntitlements?.subscription?.institutionalAccess
+    || user?.institutionalAccess
+    || storedEntitlements.subscription?.institutionalAccess
+    || null;
+  const hasInstitutionAccess = Boolean(
+    institutionalAccess?.organizationName
+    && ['active', 'trialing'].includes(String(institutionalAccess?.status || '').toLowerCase())
+  );
+  const billingSummary = billingAccount?.subscription || billingAccount?.entitlements?.subscription || {};
+  const activeInstitutionAccess = billingSummary.institutionalAccess || institutionalAccess || null;
+  const activeBillingSource = billingSummary.billingSource || user?.aiEntitlements?.billingSource || storedEntitlements.billingSource || '';
+  const activeAccountTier = String(personalizationTier || 'plus').toUpperCase();
+  const activeAccountTypeLabel = user?.role === 'admin'
+    ? `${t('profilePage.administrator')} · Pro`
+    : activeBillingSource === 'institution'
+      ? [
+        t('billing.sources.institution', 'Institution seat'),
+        activeInstitutionAccess?.organizationName,
+        activeAccountTier,
+      ].filter(Boolean).join(' · ')
+      : `${t('profilePage.standardUser')} · ${activeAccountTier}`;
+  const billingMemberships = billingAccount?.memberships || [];
+  const activeAccessKey = billingSummary.billingSource === 'institution' && billingSummary.institutionalAccess?.organizationId
+    ? `institution:${billingSummary.institutionalAccess.organizationId}`
+    : 'personal';
+  const accessOptions = [
+    {
+      key: 'personal',
+      contextType: 'personal',
+      label: t('billing.personalBilling', 'Personal billing'),
+      detail: billingSummary.personalSubscription?.status
+        ? t(`adminBilling.statuses.${billingSummary.personalSubscription.status}`, billingSummary.personalSubscription.status)
+        : t('billing.noPaidSubscription'),
+    },
+    ...billingMemberships
+      .filter((membership) => membership.organizationId && ['active', 'trialing'].includes(String(membership.organizationId.status || membership.status || '').toLowerCase()))
+      .map((membership) => ({
+        key: `institution:${membership.organizationId._id}`,
+        contextType: 'institution',
+        organizationId: membership.organizationId._id,
+        label: membership.organizationId.name,
+        detail: `${String(membership.organizationId.effectiveTier || '').toUpperCase()} · ${t(`institution.roles.${membership.role}`, membership.role)}`,
+      })),
+  ];
+  const switchAccessContext = async (option) => {
+    setSwitchingAccess(option.key);
+    setSaveMessage('');
+    try {
+      const res = await billingService.switchSubscriptionContext({
+        contextType: option.contextType,
+        organizationId: option.organizationId || '',
+      });
+      if (res.data?.entitlements) {
+        localStorage.setItem('aiEntitlements', JSON.stringify(res.data.entitlements));
+        localStorage.setItem('subscriptionTier', res.data.entitlements.subscriptionTier || 'plus');
+      }
+      const [userResponse, billingResponse] = await Promise.all([
+        userService.getProfile(userId),
+        billingService.getAccount(),
+      ]);
+      setUser(userResponse.data);
+      setBillingAccount(billingResponse.data || null);
+      setSaveMessage(t('billing.subscriptionContextUpdated', 'Subscription access switched.'));
+    } catch (err) {
+      setError(err.response?.data?.message || t('billing.subscriptionContextFailed', 'Could not switch subscription access.'));
+    } finally {
+      setSwitchingAccess('');
+    }
+  };
   const replayTargetSpeech = (event) => {
     const targetSpeech = event?.metadata?.targetText || event?.metadata?.transcript;
     if (!targetSpeech) return;
@@ -388,21 +498,21 @@ function ProfilePage({ onLogout }) {
         <div className="profile-tabs">
           <button
             className={`tab-btn ${activeTab === 'profile' ? 'active' : ''}`}
-            onClick={() => setActiveTab('profile')}
+            onClick={() => handleTabChange('profile')}
           >
             <span className="tab-icon">👤</span>
             {t('profilePage.profileTab')}
           </button>
           <button
             className={`tab-btn ${activeTab === 'settings' ? 'active' : ''}`}
-            onClick={() => setActiveTab('settings')}
+            onClick={() => handleTabChange('settings')}
           >
             <span className="tab-icon">⚙️</span>
             {t('profilePage.settingsTab')}
           </button>
           <button
             className={`tab-btn ${activeTab === 'account' ? 'active' : ''}`}
-            onClick={() => setActiveTab('account')}
+            onClick={() => handleTabChange('account')}
           >
             <span className="tab-icon">🔐</span>
             {t('profilePage.accountTab')}
@@ -472,11 +582,9 @@ function ProfilePage({ onLogout }) {
                     <span>{user?.createdAt ? formatDate(user.createdAt) : t('profilePage.unknown')}</span>
                   </div>
                   <div className="info-item">
-                    <label>{t('profilePage.accountType')}</label>
+                    <label>{t('profilePage.activeAccountType', 'Active account type')}</label>
                     <span className="badge">
-                      {user?.role === 'admin'
-                        ? `${t('profilePage.administrator')} · Pro`
-                        : `${t('profilePage.standardUser')} · ${(user?.subscriptionTier || 'plus').toUpperCase()}`}
+                      {activeAccountTypeLabel}
                     </span>
                   </div>
                 </div>
@@ -837,6 +945,34 @@ function ProfilePage({ onLogout }) {
                   </button>
                 </div>
               </div>
+              {accessOptions.length > 1 && (
+                <div className="card support-zone profile-access-source">
+                  <p className="profile-card-kicker">{t('billing.accessSwitcherKicker', 'Access source')}</p>
+                  <h2>{t('billing.accessSwitcherTitle', 'Use subscription from')}</h2>
+                  <p className="card-description">
+                    {t('billing.accessSwitcherHint', 'Choose whether this account uses personal billing or an institution seat for paid access.')}
+                  </p>
+                  <div className="profile-access-options">
+                    {accessOptions.map((option) => {
+                      const active = option.key === activeAccessKey;
+                      return (
+                        <button
+                          type="button"
+                          key={option.key}
+                          className={active ? 'active' : ''}
+                          onClick={() => switchAccessContext(option)}
+                          disabled={active || !!switchingAccess}
+                        >
+                          <strong>{option.label}</strong>
+                          <span>{option.detail}</span>
+                          {active && <small>{t('billing.currentAccessSource', 'Current')}</small>}
+                          {switchingAccess === option.key && <small>{t('common.loading')}</small>}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
               <div className="card support-zone">
                 <h2>{t('contact.title')}</h2>
                 <p className="card-description">
@@ -846,6 +982,39 @@ function ProfilePage({ onLogout }) {
                   {t('contact.navLabel')}
                 </button>
               </div>
+              {hasInstitutionAccess && (
+                <div className="card support-zone">
+                  <h2>{t('billing.institutionAccess')}</h2>
+                  <p className="card-description">
+                    {institutionalAccess.organizationName}
+                  </p>
+                  <div className="info-grid">
+                    <div className="info-item">
+                      <label>{t('billing.currentPlan')}</label>
+                      <span>{String(institutionalAccess.effectiveTier || user?.subscriptionTier || '').toUpperCase()}</span>
+                    </div>
+                    <div className="info-item">
+                      <label>{t('institution.role')}</label>
+                      <span>{t(`institution.roles.${institutionalAccess.role}`, institutionalAccess.role)}</span>
+                    </div>
+                    <div className="info-item">
+                      <label>{t('institution.status')}</label>
+                      <span>{t(`institution.orgStatuses.${institutionalAccess.status}`, institutionalAccess.status)}</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {canManageInstitution && (
+                <div className="card support-zone">
+                  <h2>{t('institution.title')}</h2>
+                  <p className="card-description">
+                    {t('institution.subtitle')}
+                  </p>
+                  <button className="btn btn-primary" onClick={() => navigate('/institution')}>
+                    {t('navbar.institution')}
+                  </button>
+                </div>
+              )}
               <div className="card danger-zone">
                 <h2>{t('profilePage.resetProgress')}</h2>
                 <p className="card-description">

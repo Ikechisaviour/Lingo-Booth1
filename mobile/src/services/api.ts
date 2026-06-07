@@ -83,13 +83,40 @@ const isExpectedStatus = (config: any, status?: number) => {
   return Array.isArray(expected) && status != null && expected.includes(status);
 };
 
+// Step-up auth handler — UI registers this to prompt the user for their password
+// and resolve/reject the held request. Falls back to rejection if no handler
+// is registered (e.g., before the navigator mounts).
+type StepUpHandler = (detail: {
+  maxAgeMinutes?: number;
+  onComplete: () => void;
+  onCancel: () => void;
+}) => void;
+let stepUpHandler: StepUpHandler | null = null;
+export const registerStepUpHandler = (handler: StepUpHandler | null) => {
+  stepUpHandler = handler;
+};
+
 // Retry logic for GET 5xx / network errors + auto-refresh on 401 + suspension detection
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const config = error.config;
 
-    // Auto-refresh on 401 (expired access token)
+    // Step-up auth required — hold the original promise open while the UI
+    // prompts for a password, then transparently retry.
+    if (error.response?.status === 401 && error.response?.data?.code === 'STEP_UP_REQUIRED') {
+      if (!stepUpHandler) return Promise.reject(error);
+      return new Promise((resolve, reject) => {
+        stepUpHandler!({
+          maxAgeMinutes: error.response.data.maxAgeMinutes,
+          onComplete: () => api(config).then(resolve, reject),
+          onCancel: () => reject(error),
+        });
+      });
+    }
+
+    // Auto-refresh on 401 (expired access token). Refresh tokens rotate on
+    // every successful refresh — store both new tokens.
     if (
       error.response?.status === 401 &&
       config &&
@@ -108,7 +135,11 @@ api.interceptors.response.use(
               .post(`${API_URL}/auth/refresh`, { refreshToken })
               .then((res) => {
                 const newToken = res.data.token;
+                const newRefreshToken = res.data.refreshToken;
                 useAuthStore.getState().setToken(newToken);
+                if (newRefreshToken) {
+                  useAuthStore.getState().setRefreshToken(newRefreshToken);
+                }
                 return newToken;
               })
               .finally(() => { refreshPromise = null; });
@@ -188,6 +219,16 @@ export const authService = {
     api.post('/auth/reset-password', { token, password }),
   resendVerification: () =>
     api.post('/auth/resend-verification'),
+  // Server-side logout: invalidate the refresh chain so a stolen refresh token
+  // can't be replayed after the user signs out.
+  logout: () => {
+    const { refreshToken } = useAuthStore.getState();
+    if (!refreshToken) return Promise.resolve();
+    return axios.post(`${API_URL}/auth/logout`, { refreshToken }).catch(() => {});
+  },
+  // Step-up: re-verify password to mint a fresh authAt for sensitive actions.
+  stepUp: (password: string) =>
+    api.post('/auth/step-up', { password }),
 };
 
 export const contactService = {
@@ -305,6 +346,10 @@ export const learningHubService = {
     const { targetLang, nativeLang } = currentLanguageParams();
     return api.get('/learning-hub/pair-profile', { params: { targetLang, nativeLang } });
   },
+  startPlacementCheck: () => {
+    const { targetLang: targetLanguage, nativeLang: nativeLanguage } = currentLanguageParams();
+    return api.post('/learning-hub/placement-checks/start', { targetLanguage, nativeLanguage });
+  },
   savePairProfile: (payload: Record<string, any>) => {
     const { targetLang: targetLanguage, nativeLang: nativeLanguage } = currentLanguageParams();
     return api.put('/learning-hub/pair-profile', {
@@ -321,8 +366,10 @@ export const learningHubService = {
 export const certificateService = {
   list: () =>
     api.get('/certificates'),
-  verify: (certificateId: string) =>
-    api.get(`/certificates/verify/${certificateId}`),
+  verify: (certificateId: string, params: Record<string, any> = {}) =>
+    api.get(`/certificates/verify/${certificateId}`, { params }),
+  institutionSampleLink: (organizationId: string) =>
+    api.post(`/certificates/institution-samples/${organizationId}/link`),
   downloadUrl: (certificateId: string, certificateLanguage = 'en') => {
     const baseUrl = API_URL.replace(/\/+$/, '');
     const language = encodeURIComponent(normalizeLanguageCode(certificateLanguage) || 'en');
@@ -357,11 +404,28 @@ export const practiceContextService = {
     api.delete(`/practice-context/${contextId}`),
 };
 
+export const notificationService = {
+  list: (params: Record<string, any> = {}) =>
+    api.get('/notifications', { params }),
+  unreadCount: () =>
+    api.get('/notifications/unread-count'),
+  markRead: (notificationId: string) =>
+    api.put(`/notifications/${notificationId}/read`),
+  markAllRead: () =>
+    api.put('/notifications/read-all'),
+  archive: (notificationId: string) =>
+    api.delete(`/notifications/${notificationId}`),
+};
+
 export const billingService = {
   getPlans: () =>
     api.get('/billing/plans'),
   getAccount: () =>
     api.get('/billing/me'),
+  switchSubscriptionContext: (payload: Record<string, any>) =>
+    api.post('/billing/subscription-context', payload),
+  createLevelTestCheckoutSession: (payload: { successUrl?: string; cancelUrl?: string } = {}) =>
+    api.post('/billing/level-test-checkout-session', payload, { timeout: 30000, expectedStatuses: [202] } as any),
   verifyMobilePurchase: (payload: { platform: 'ios' | 'android'; planId: string; productId?: string; transactionId?: string; receipt?: string; purchaseToken?: string }) =>
     api.post('/billing/mobile/verify', payload, { timeout: 30000 }),
   sendInstitutionalInquiry: (payload: Record<string, any>) =>

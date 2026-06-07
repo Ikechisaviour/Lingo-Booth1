@@ -46,6 +46,22 @@ const billingPlanOverrideSchema = new mongoose.Schema({
     type: Number,
     min: 0,
   },
+  pricePerSeatCents: {
+    type: Number,
+    min: 0,
+  },
+  bulkPricing: {
+    type: [{
+      minSeats: { type: Number, min: 1, required: true },
+      pricePerSeatCents: { type: Number, min: 0, required: true },
+    }],
+    default: undefined,
+  },
+  stripeSeatPackPriceId: {
+    type: String,
+    maxlength: 200,
+    trim: true,
+  },
   minimumSeats: {
     type: Number,
     min: 1,

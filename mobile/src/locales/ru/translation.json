@@ -639,7 +639,8 @@
     "failedToUpdate": "Не удалось обновить",
     "fullName": "Полное имя",
     "fullNamePlaceholder": "Имя для отображения в сертификатах",
-    "fullNameMissing": "Добавить перед выдачей сертификата"
+    "fullNameMissing": "Добавить перед выдачей сертификата",
+    "activeAccountType": "Тип активной учетной записи"
   },
   "verifyEmail": {
     "verifying": "Подтверждение эл. почты...",
@@ -880,12 +881,12 @@
     "recommended": "Рекомендуется",
     "startFree": "Начни бесплатно",
     "choosePlan": "Выберите {{plan}}",
-    "checkoutSetupNeeded": "Онлайн-касса подключается. Вы можете отправить запрос и мы поможем Вам продолжить.",
+    "checkoutSetupNeeded": "Онлайн-оформление сейчас недоступно. Вы можете отправить запрос, и мы поможем вам продолжить.",
     "checkoutFailed": "Не удалось начать оформление заказа. Пожалуйста, попробуйте еще раз.",
     "loadFailed": "Не удалось загрузить планы. Пожалуйста, попробуйте еще раз.",
     "institutionalKicker": "Учреждения",
     "institutionalTitle": "Места для школ, команд, религиозных организаций и групп",
-    "institutionalSubtitle": "Институциональные подписки соседствуют с индивидуальными планами. Участники могут получить доступ уровня Plus, Pro или Ultra через свою организацию, не меняя свою личную учетную запись.",
+    "institutionalSubtitle": "Институциональные подписки соседствуют с индивидуальными планами. Участники могут получить доступ уровня Plus, Pro или Premium через свою организацию, не меняя свою личную учетную запись.",
     "customPricing": "Индивидуальные цены",
     "seatPrice": "{{price}} за место, минимум {{seats}} мест",
     "institutionalFormTitle": "Запросить институциональный доступ",
@@ -932,10 +933,10 @@
       "free": "Фри",
       "plus": "Плюс",
       "pro": "Про",
-      "ultra": "Ультра",
-      "institution_basic": "Инститьюшн Бейсик",
+      "ultra": "Премиум",
+      "institution_basic": "Инститьюшн Плюс",
       "institution_pro": "Инститьюшн Про",
-      "institution_enterprise": "Инститьюшн Энтерпрайз"
+      "institution_enterprise": "Инститьюшн Премиум"
     },
     "planTaglines": {
       "free": "Попробуйте цикл обучения с дневными лимитами.",
@@ -951,7 +952,14 @@
     "discountUnavailable": "Этот код скидки недоступен для этого плана.",
     "automaticDiscountApplied": "Автоматическая скидка {{discount}} применена",
     "signInToChooseTitle": "Создайте учетную запись, чтобы продолжить",
-    "signInToChooseBody": "Создайте учетную запись или войдите в нее, прежде чем выбирать платный план, чтобы ваш доступ мог быть закреплен за вами."
+    "signInToChooseBody": "Создайте учетную запись или войдите в нее, прежде чем выбирать платный план, чтобы ваш доступ мог быть закреплен за вами.",
+    "entitlements": {
+      "placementLifetime": "{{count}} проверка размещения",
+      "placementMonthly": "{{count}} чеков за размещение в месяц",
+      "proficiencyIncluded": "{{count}} проверок квалификации/месяц включено, затем {{price}} каждая",
+      "proficiencyPaid": "Проверки навыков {{price}} каждый",
+      "dailyTokens": "{{count}} жетоны ежедневных разговоров"
+    }
   },
   "billing": {
     "kicker": "Биллинг",
@@ -987,7 +995,13 @@
       "web": "Веб-касса",
       "ios": "покупка iOS",
       "android": "покупка Android"
-    }
+    },
+    "subscriptionContextUpdated": "Доступ по подписке переключен.",
+    "subscriptionContextFailed": "Не удалось переключить доступ к подписке.",
+    "accessSwitcherKicker": "Источник доступа",
+    "accessSwitcherTitle": "Используйте подписку от",
+    "accessSwitcherHint": "Выберите, будет ли эта учетная запись использовать личный счет или место в учреждении для платного доступа.",
+    "currentAccessSource": "Текущий"
   },
   "institution": {
     "kicker": "Учреждение",
@@ -1086,7 +1100,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "Вставьте сюда URL-адрес изображения HTTPS или воспользуйтесь веб-панелью, чтобы загрузить файл PNG, JPG или WebP.",
     "saveCertificateBranding": "Сохранить логотип сертификата",
-    "removeCertificateLogo": "Удалить логотип"
+    "removeCertificateLogo": "Удалить логотип",
+    "progressDashboardKicker": "Прогресс учащегося",
+    "mastered": "Освоен",
+    "comfortable": "Комфортный",
+    "learning": "Обучение",
+    "struggling": "Столкнувшийся с трудностями",
+    "classLessonsStarted": "{{count}} уроки начались",
+    "sampleCertificateFailed": "Не удалось открыть образец сертификата.",
+    "previewSampleCertificate": "Предварительный образец сертификата"
   },
   "errorBoundary": {
     "title": "Что-то пошло не так",
@@ -1431,7 +1453,7 @@
     "backToProfile": "Вернуться в профиль",
     "kicker": "Персонализация обучения",
     "title": "Уроки, сформированные вокруг вас",
-    "lockedSubtitle": "Pro и Ultra могут сохранять одобренные слова, фразы и ситуации из реальной жизни, чтобы будущая практика казалась более актуальной. Free и Plus могут продолжать регулярно практиковаться.",
+    "lockedSubtitle": "Pro и Premium могут сохранять одобренные слова, фразы и ситуации из реальной жизни, чтобы будущая практика казалась более актуальной. Free и Plus могут продолжать регулярно практиковаться.",
     "upgradeTitle": "Обновите, чтобы персонализировать практику",
     "upgradeBody": "Обновите версию, если вам нужны уроки, просмотр подсказок и ролевые игры, которые можно адаптировать к повседневному языку, который вы предпочитаете.",
     "openConversation": "Открытый разговор",
@@ -1772,7 +1794,8 @@
     "earnFirstMilestone": "Заработайте первую веху",
     "repairPlanTitle": "Ремонтный фокус",
     "repairPlanValue": "Стоит пересмотреть",
-    "repairPlanBody": "Несколько слабых или контрольных предметов готовы к целенаправленной практике, прежде чем вы продвинетесь слишком далеко вперед."
+    "repairPlanBody": "Несколько слабых или контрольных предметов готовы к целенаправленной практике, прежде чем вы продвинетесь слишком далеко вперед.",
+    "placementLimitReached": "Вы использовали включенные проверки размещения для этого плана."
   },
   "resetPassword": {
     "title": "Сброс пароля",
@@ -1892,6 +1915,63 @@
     "fullNameRequiredBody": "Введите свое полное имя точно так, как оно должно быть указано в этом сертификате. Сделать это нужно только перед выдачей сертификата.",
     "fullNameLabel": "Полное имя",
     "fullNamePlaceholder": "Ваше полное имя",
-    "saveNameAndIssue": "Сохранить имя и выдать сертификат"
+    "saveNameAndIssue": "Сохранить имя и выдать сертификат",
+    "proficiencyPaymentRequired": "Эта проверка квалификации стоит {{price}} после включенных вами проверок.",
+    "proficiencyAllowance": "{{remaining}} из {{included}} включает проверки квалификации, оставшиеся в этом месяце. Дополнительные проверки стоят {{price}} каждая.",
+    "paymentSetupNeeded": "Платные проверки квалификации пока не настроены.",
+    "paymentStartFailed": "Не удалось начать оплату этой проверки квалификации.",
+    "proficiencyPaymentTitle": "Требуется оплата",
+    "payProficiencyCheck": "Заплатите {{price}} за этот чек"
+  },
+  "notifications": {
+    "title": "Уведомления",
+    "empty": "Уведомлений пока нет.",
+    "markAllRead": "Отметить все прочитанными",
+    "openAction": "Открыть",
+    "dismiss": "Увольнять",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "Доступ к учреждению обновлен.",
+    "institutionLearnerAddedBody": "Вы добавлены в {{organizationName}} в качестве учащегося.",
+    "institutionAdminAddedBody": "Теперь вы можете управлять {{organizationName}} с панели управления вашего учреждения.",
+    "institutionAccessRemovedTitle": "Доступ к учреждению закрыт.",
+    "institutionAccessRemovedBody": "Ваш доступ к {{organizationName}} был закрыт.",
+    "lowSeatsTitle": "Места в институтах заканчиваются",
+    "lowSeatsBody": "У {{organizationName}} осталось {{remaining}} из {{purchased}} мест.",
+    "noSeatsTitle": "Мест в учреждении не осталось",
+    "noSeatsBody": "На {{organizationName}} не осталось мест.",
+    "seatsAddedTitle": "Добавлены места в институте",
+    "seatsAddedBody": "Добавлены места {{quantity}}. {{remaining}} места уже доступны.",
+    "institutionPurchaseTitle": "Подписка на учреждение активирована",
+    "institutionPurchaseBody": "{{organizationName}} теперь имеет {{quantity}} мест в учреждениях.",
+    "institutionSeatSuspendedTitle": "Место в учреждении приостановлено",
+    "institutionSeatSuspendedBody": "Ваше место на {{organizationName}} было приостановлено.",
+    "institutionSeatRestoredTitle": "Место учреждения восстановлено",
+    "institutionSeatRestoredBody": "Ваше место на {{organizationName}} снова активно.",
+    "suspensionRequestedTitle": "Учащийся запросил отстранение",
+    "suspensionRequestedBody": "{{email}} запросил отстранение от должности в учреждении.",
+    "institutionRequestAcceptedTitle": "Запрос учреждения принят",
+    "institutionRequestAcceptedBody": "Ваш запрос на {{organizationName}} был принят.",
+    "institutionRequestDeclinedTitle": "Запрос учреждения отклонен",
+    "institutionRequestDeclinedBody": "Запрос вашего учреждения на {{organizationName}} был отклонен.",
+    "institutionSuspendedTitle": "Учреждение приостановлено",
+    "institutionSuspendedBody": "{{organizationName}} заблокирован.",
+    "institutionReactivatedTitle": "Учреждение возобновлено",
+    "institutionReactivatedBody": "{{organizationName}} снова активен.",
+    "xpDecayTitle": "Серия тренировок требует внимания",
+    "xpDecayBody": "{{penalty}} Опыт был уменьшен после бездействия. Ваша текущая сумма составляет {{totalXP}} XP.",
+    "viewProfileAction": "Посмотреть профиль",
+    "openInstitutionAction": "Открытое учреждение",
+    "manageSeatsAction": "Управление местами",
+    "viewPlansAction": "Посмотреть планы",
+    "resumePracticeAction": "Возобновить практику",
+    "unreadCount": "{{count}} непрочитано"
+  },
+  "stepUp": {
+    "verifyFailed": "Не удалось проверить пароль",
+    "title": "Подтвердите, что это вы",
+    "message": "В целях вашей безопасности повторно введите свой пароль, чтобы продолжить это действие.",
+    "passwordPlaceholder": "Пароль",
+    "confirm": "Подтверждать"
   }
 }

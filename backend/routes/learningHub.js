@@ -1,7 +1,13 @@
 const express = require('express');
+const PlacementTestUsage = require('../models/PlacementTestUsage');
 const StudyItem = require('../models/StudyItem');
 const LanguagePairProfile = require('../models/LanguagePairProfile');
 const { verifyToken } = require('../middleware/auth');
+const {
+  getEffectiveSubscriptionTier,
+  getPlacementTestLimit,
+  getTestingEntitlements,
+} = require('../utils/subscription');
 const {
   buildLearningHubOverview,
   compact,
@@ -13,6 +19,10 @@ const { recordLearningEvent } = require('../utils/xpRewards');
 
 const router = express.Router();
 router.use(verifyToken);
+
+function monthKey(date = new Date()) {
+  return date.toISOString().slice(0, 7);
+}
 
 function languagePair(req) {
   return {
@@ -214,6 +224,56 @@ router.get('/pair-profile', async (req, res) => {
   } catch (error) {
     console.error('Get pair profile error:', error);
     res.status(500).json({ message: 'Server error' });
+  }
+});
+
+router.post('/placement-checks/start', async (req, res) => {
+  try {
+    const pair = validatePair(req, res);
+    if (!pair) return;
+
+    const tier = getEffectiveSubscriptionTier(req.user);
+    const placementLimit = getPlacementTestLimit(tier);
+    const periodKey = placementLimit.period === 'lifetime' ? 'lifetime' : monthKey();
+    const used = await PlacementTestUsage.countDocuments({
+      userId: req.userId,
+      period: placementLimit.period,
+      periodKey,
+    });
+
+    const entitlement = {
+      ...getTestingEntitlements(tier).placementTests,
+      used,
+      remaining: Math.max(0, placementLimit.limit - used),
+      periodKey,
+    };
+
+    if (used >= placementLimit.limit) {
+      return res.status(429).json({
+        code: 'PLACEMENT_TEST_LIMIT_REACHED',
+        message: 'Placement check limit reached',
+        entitlement,
+      });
+    }
+
+    await PlacementTestUsage.create({
+      userId: req.userId,
+      ...pair,
+      tier,
+      period: placementLimit.period,
+      periodKey,
+    });
+
+    res.status(201).json({
+      entitlement: {
+        ...entitlement,
+        used: used + 1,
+        remaining: Math.max(0, placementLimit.limit - used - 1),
+      },
+    });
+  } catch (error) {
+    console.error('Start placement check error:', error);
+    res.status(500).json({ message: 'Could not start placement check' });
   }
 });
 

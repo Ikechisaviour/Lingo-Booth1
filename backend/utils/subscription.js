@@ -9,8 +9,24 @@ const DAILY_AI_TOKEN_LIMITS = Object.freeze({
   [TIERS.FREE]: 5_000,
   [TIERS.PLUS]: 100_000,
   [TIERS.PRO]: 1_000_000,
-  [TIERS.ULTRA]: 1_000_000,
+  [TIERS.ULTRA]: 10_000_000,
 });
+
+const PLACEMENT_TEST_LIMITS = Object.freeze({
+  [TIERS.FREE]: { limit: 1, period: 'lifetime' },
+  [TIERS.PLUS]: { limit: 2, period: 'month' },
+  [TIERS.PRO]: { limit: 5, period: 'month' },
+  [TIERS.ULTRA]: { limit: 10, period: 'month' },
+});
+
+const PROFICIENCY_TEST_INCLUDED_LIMITS = Object.freeze({
+  [TIERS.FREE]: 0,
+  [TIERS.PLUS]: 0,
+  [TIERS.PRO]: 1,
+  [TIERS.ULTRA]: 5,
+});
+
+const PROFICIENCY_TEST_PRICE_CENTS = 1000;
 
 const TIER_RANK = Object.freeze({
   [TIERS.FREE]: 0,
@@ -55,7 +71,17 @@ function activePersonalTier(user) {
 
 function activeInstitutionTier(user) {
   const access = user?.institutionalAccess || {};
-  if (!access.effectiveTier || !isActiveStatus(access.status) || !isFutureDate(access.expiresAt)) return null;
+  // Orgs no longer have a recurring billing period; access.expiresAt may be
+  // null. The org's active/cancelled state is captured by access.status,
+  // which mirrors Organization.status.
+  if (!access.effectiveTier || !isActiveStatus(access.status)) return null;
+  // Learners must additionally have a live seat. Managers (owner/admin/teacher)
+  // are not seat-gated.
+  if (access.role === 'learner') {
+    const seatLive = (access.seatStatus === 'active' || access.seatStatus === 'suspended')
+      && isFutureDate(access.seatExpiresAt);
+    if (!seatLive) return null;
+  }
   return normalizeTier(access.effectiveTier, null);
 }
 
@@ -101,6 +127,34 @@ function getDailyAiTokenLimit(tier) {
   return DAILY_AI_TOKEN_LIMITS[normalizedTier] || DAILY_AI_TOKEN_LIMITS[TIERS.FREE];
 }
 
+function getPlacementTestLimit(tier) {
+  const normalizedTier = normalizeTier(tier, TIERS.FREE);
+  return PLACEMENT_TEST_LIMITS[normalizedTier] || PLACEMENT_TEST_LIMITS[TIERS.FREE];
+}
+
+function getProficiencyTestIncludedLimit(tier) {
+  const normalizedTier = normalizeTier(tier, TIERS.FREE);
+  return PROFICIENCY_TEST_INCLUDED_LIMITS[normalizedTier] ?? PROFICIENCY_TEST_INCLUDED_LIMITS[TIERS.FREE];
+}
+
+function getTestingEntitlements(tier) {
+  const normalizedTier = normalizeTier(tier, TIERS.FREE);
+  const placement = getPlacementTestLimit(normalizedTier);
+  return {
+    subscriptionTier: normalizedTier,
+    placementTests: {
+      limit: placement.limit,
+      period: placement.period,
+    },
+    proficiencyTests: {
+      included: getProficiencyTestIncludedLimit(normalizedTier),
+      period: 'month',
+      paidPriceCents: PROFICIENCY_TEST_PRICE_CENTS,
+    },
+    dailyConversationTokens: getDailyAiTokenLimit(normalizedTier),
+  };
+}
+
 function getPublicTokenUsage(tokenUsage = {}) {
   if (!tokenUsage) return null;
   return {
@@ -127,6 +181,7 @@ function getAiEntitlements(user, tokenUsage = null) {
     canManageOrganization: ['institution', 'manual'].includes(subscriptionSummary.billingSource)
       && ['owner', 'admin', 'teacher'].includes(String(user?.institutionalAccess?.role || '')),
     aiMemoryScope: hasCloudFeatures ? 'cloud' : subscriptionTier === TIERS.PLUS ? 'device' : 'none',
+    testing: getTestingEntitlements(subscriptionTier),
     subscription: subscriptionSummary,
   };
 
@@ -141,6 +196,9 @@ function getAiEntitlements(user, tokenUsage = null) {
 module.exports = {
   TIERS,
   DAILY_AI_TOKEN_LIMITS,
+  PLACEMENT_TEST_LIMITS,
+  PROFICIENCY_TEST_INCLUDED_LIMITS,
+  PROFICIENCY_TEST_PRICE_CENTS,
   TIER_RANK,
   ACTIVE_SUBSCRIPTION_STATUSES,
   isProOrUltraTier,
@@ -152,5 +210,8 @@ module.exports = {
   getSubscriptionSummary,
   getAiEntitlements,
   getDailyAiTokenLimit,
+  getPlacementTestLimit,
+  getProficiencyTestIncludedLimit,
+  getTestingEntitlements,
   getPublicTokenUsage,
 };

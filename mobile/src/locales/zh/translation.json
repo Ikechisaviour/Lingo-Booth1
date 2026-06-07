@@ -639,7 +639,8 @@
     "failedToUpdate": "更新失败",
     "fullName": "姓名",
     "fullNamePlaceholder": "证书上显示的姓名",
-    "fullNameMissing": "颁发证书前添加"
+    "fullNameMissing": "颁发证书前添加",
+    "activeAccountType": "活跃账户类型"
   },
   "verifyEmail": {
     "verifying": "正在验证你的邮箱...",
@@ -880,12 +881,12 @@
     "recommended": "受到推崇的",
     "startFree": "免费开始",
     "choosePlan": "选择{{plan}}",
-    "checkoutSetupNeeded": "正在连接在线结帐。 您可以发送请求，我们将帮助您继续。",
+    "checkoutSetupNeeded": "在线结账目前不可用。你可以发送请求，我们会帮助你继续。",
     "checkoutFailed": "无法开始结帐。 请再试一次。",
     "loadFailed": "无法加载计划。 请再试一次。",
     "institutionalKicker": "机构",
     "institutionalTitle": "面向学校、团队、宗教组织和团体的席位",
-    "institutionalSubtitle": "机构订阅位于个人计划旁边。 成员可以通过其组织获得 Plus、Pro 或 Ultra 级别的访问权限，而无需更改其个人帐户。",
+    "institutionalSubtitle": "机构订阅位于个人计划旁边。 成员可以通过其组织获得 Plus、Pro 或 Premium 级别的访问权限，而无需更改其个人帐户。",
     "customPricing": "定制定价",
     "seatPrice": "每个座位{{price}}，最少{{seats}} 座位",
     "institutionalFormTitle": "请求机构访问",
@@ -932,10 +933,10 @@
       "free": "Free",
       "plus": "Plus",
       "pro": "Pro",
-      "ultra": "Ultra",
-      "institution_basic": "Institution Basic",
+      "ultra": "Premium",
+      "institution_basic": "Institution Plus",
       "institution_pro": "Institution Pro",
-      "institution_enterprise": "Institution Enterprise"
+      "institution_enterprise": "Institution Premium"
     },
     "planTaglines": {
       "free": "尝试每日限制的学习循环。",
@@ -951,7 +952,14 @@
     "discountUnavailable": "该折扣代码不适用于此计划。",
     "automaticDiscountApplied": "已应用 {{discount}} 自动折扣",
     "signInToChooseTitle": "创建帐户以继续",
-    "signInToChooseBody": "在选择付费计划之前创建一个帐户或登录，以便为您附加访问权限。"
+    "signInToChooseBody": "在选择付费计划之前创建一个帐户或登录，以便为您附加访问权限。",
+    "entitlements": {
+      "placementLifetime": "{{count}} 安置检查",
+      "placementMonthly": "{{count}} 安置检查/月",
+      "proficiencyIncluded": "包括每月 {{count}} 熟练度检查，然后每次 {{price}}",
+      "proficiencyPaid": "熟练度检查{{price}}各",
+      "dailyTokens": "{{count}} 日常对话代币"
+    }
   },
   "billing": {
     "kicker": "计费",
@@ -987,7 +995,13 @@
       "web": "网上结帐",
       "ios": "iOS购买",
       "android": "安卓购买"
-    }
+    },
+    "subscriptionContextUpdated": "订阅访问已切换。",
+    "subscriptionContextFailed": "无法切换订阅访问权限。",
+    "accessSwitcherKicker": "访问源码",
+    "accessSwitcherTitle": "使用来自的订阅",
+    "accessSwitcherHint": "选择此帐户是使用个人计费还是使用机构席位进行付费访问。",
+    "currentAccessSource": "当前的"
   },
   "institution": {
     "kicker": "机构",
@@ -1086,7 +1100,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "在此处粘贴 HTTPS 图像 URL，或使用 Web 仪表板上传 PNG、JPG 或 WebP 文件。",
     "saveCertificateBranding": "保存证书标志",
-    "removeCertificateLogo": "删除标志"
+    "removeCertificateLogo": "删除标志",
+    "progressDashboardKicker": "学习者进步",
+    "mastered": "掌握",
+    "comfortable": "舒服的",
+    "learning": "学习",
+    "struggling": "挣扎",
+    "classLessonsStarted": "{{count}} 课程开始",
+    "sampleCertificateFailed": "无法打开样本证书。",
+    "previewSampleCertificate": "预览样本证书"
   },
   "errorBoundary": {
     "title": "出了点问题",
@@ -1431,7 +1453,7 @@
     "backToProfile": "返回个人资料",
     "kicker": "学习个性化",
     "title": "围绕你塑造的课程",
-    "lockedSubtitle": "Pro 和 Ultra 可以保存现实生活中认可的单词、短语和情况，因此未来的练习感觉更加相关。 Free和Plus可以继续使用常规练习。",
+    "lockedSubtitle": "Pro 和 Premium 可以保存现实生活中认可的单词、短语和情况，因此未来的练习感觉更加相关。 Free和Plus可以继续使用常规练习。",
     "upgradeTitle": "升级以实现个性化练习",
     "upgradeBody": "当您需要课程、复习提示和角色扮演以适应您认可的日常语言时，请升级。",
     "openConversation": "公开对话",
@@ -1772,7 +1794,8 @@
     "earnFirstMilestone": "赢得第一个里程碑",
     "repairPlanTitle": "修复重点",
     "repairPlanValue": "值得重温",
-    "repairPlanBody": "在你走得太远之前，一些薄弱的或检查点的项目已经准备好进行集中练习。"
+    "repairPlanBody": "在你走得太远之前，一些薄弱的或检查点的项目已经准备好进行集中练习。",
+    "placementLimitReached": "您已使用此计划包含的安置支票。"
   },
   "resetPassword": {
     "title": "重置密码",
@@ -1892,6 +1915,63 @@
     "fullNameRequiredBody": "请准确输入此证书上应显示的您的全名。 您只需在颁发证书之前执行此操作。",
     "fullNameLabel": "姓名",
     "fullNamePlaceholder": "你的全名",
-    "saveNameAndIssue": "保存姓名并颁发证书"
+    "saveNameAndIssue": "保存姓名并颁发证书",
+    "proficiencyPaymentRequired": "在您包含的检查之后，此能力检查为{{price}}。",
+    "proficiencyAllowance": "{{included}} 的{{remaining}} 包括本月剩余的能力检查。 每项额外检查费用为{{price}}。",
+    "paymentSetupNeeded": "付费能力检查尚未配置。",
+    "paymentStartFailed": "无法开始为此能力检查付款。",
+    "proficiencyPaymentTitle": "需要付款",
+    "payProficiencyCheck": "为这张支票支付 {{price}}"
+  },
+  "notifications": {
+    "title": "通知",
+    "empty": "还没有通知。",
+    "markAllRead": "标记全部已读",
+    "openAction": "打开",
+    "dismiss": "解雇",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "机构访问权限已更新",
+    "institutionLearnerAddedBody": "您已作为学习者添加到{{organizationName}}。",
+    "institutionAdminAddedBody": "您现在可以从机构仪表板管理{{organizationName}}。",
+    "institutionAccessRemovedTitle": "机构访问权限已删除",
+    "institutionAccessRemovedBody": "您对 {{organizationName}} 的访问权限已被删除。",
+    "lowSeatsTitle": "机构席位所剩无几",
+    "lowSeatsBody": "{{organizationName}} 还剩 {{remaining}} 或 {{purchased}} 个席位。",
+    "noSeatsTitle": "没有剩余机构席位",
+    "noSeatsBody": "{{organizationName}} 没有剩余座位。",
+    "seatsAddedTitle": "新增机构席位",
+    "seatsAddedBody": "增加了{{quantity}}座位。 {{remaining}} 座位现已开放。",
+    "institutionPurchaseTitle": "机构订阅已激活",
+    "institutionPurchaseBody": "{{organizationName}} 现在拥有 {{quantity}} 机构席位。",
+    "institutionSeatSuspendedTitle": "机构席位暂停",
+    "institutionSeatSuspendedBody": "您的{{organizationName}} 座位已暂停。",
+    "institutionSeatRestoredTitle": "机构席位恢复",
+    "institutionSeatRestoredBody": "您的{{organizationName}}席位再次激活。",
+    "suspensionRequestedTitle": "学员请求暂停",
+    "suspensionRequestedBody": "{{email}} 请求暂停机构席位。",
+    "institutionRequestAcceptedTitle": "机构请求已接受",
+    "institutionRequestAcceptedBody": "您对 {{organizationName}} 的请求已被接受。",
+    "institutionRequestDeclinedTitle": "机构请求被拒绝",
+    "institutionRequestDeclinedBody": "您的机构对 {{organizationName}} 的请求已被拒绝。",
+    "institutionSuspendedTitle": "机构暂停",
+    "institutionSuspendedBody": "{{organizationName}}已暂停。",
+    "institutionReactivatedTitle": "机构重新启动",
+    "institutionReactivatedBody": "{{organizationName}} 再次激活。",
+    "xpDecayTitle": "连续练习需要注意",
+    "xpDecayBody": "不活动后{{penalty}} XP 会减少。 您当前的总金额为 {{totalXP}} XP。",
+    "viewProfileAction": "查看个人资料",
+    "openInstitutionAction": "开放机构",
+    "manageSeatsAction": "管理座位",
+    "viewPlansAction": "查看计划",
+    "resumePracticeAction": "恢复练习",
+    "unreadCount": "{{count}} 未读"
+  },
+  "stepUp": {
+    "verifyFailed": "无法验证密码",
+    "title": "确认是你",
+    "message": "为了您的安全，请重新输入您的密码以继续执行此操作。",
+    "passwordPlaceholder": "密码",
+    "confirm": "确认"
   }
 }

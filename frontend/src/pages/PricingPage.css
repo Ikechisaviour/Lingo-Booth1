@@ -273,6 +273,43 @@
   margin-top: 4px;
 }
 
+.pricing-bulk-details {
+  grid-column: 2;
+}
+
+.pricing-bulk-details > summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--primary);
+  list-style: none;
+  width: fit-content;
+}
+
+.pricing-bulk-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.pricing-bulk-details > summary::before {
+  content: '▸ ';
+  display: inline-block;
+}
+
+.pricing-bulk-details[open] > summary::before {
+  content: '▾ ';
+}
+
+.pricing-bulk-tiers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 8px;
+}
+
+.pricing-bulk-tiers em {
+  font-style: normal;
+  white-space: nowrap;
+}
+
 .pricing-lead-form {
   display: grid;
   gap: 14px;

@@ -623,7 +623,7 @@
     "deleteButton": "Delete",
     "unknown": "Unknown",
     "personalizationAvailable": "Available on your plan",
-    "personalizationTier": "Pro or Ultra",
+    "personalizationTier": "Pro or Premium",
     "personalizationTitle": "Learning Personalization",
     "personalizationDesc": "Save approved words, phrases, and situations from real life so class, conversation, quiz, flashcards, and writing practice can become more relevant to you.",
     "managePersonalization": "Manage personalization",
@@ -639,7 +639,8 @@
     "failedToUpdate": "Failed to update",
     "fullName": "Full name",
     "fullNamePlaceholder": "Name to show on certificates",
-    "fullNameMissing": "Add before issuing a certificate"
+    "fullNameMissing": "Add before issuing a certificate",
+    "activeAccountType": "Active account type"
   },
   "verifyEmail": {
     "verifying": "Verifying your email...",
@@ -898,12 +899,12 @@
     "recommended": "Recommended",
     "startFree": "Start free",
     "choosePlan": "Choose {{plan}}",
-    "checkoutSetupNeeded": "Online checkout is being connected. You can send a request and we will help you continue.",
+    "checkoutSetupNeeded": "Online checkout is currently not available. You can send a request and we will help you continue.",
     "checkoutFailed": "Could not start checkout. Please try again.",
     "loadFailed": "Could not load plans. Please try again.",
     "institutionalKicker": "Institutions",
     "institutionalTitle": "Seats for schools, teams, religious organizations, and groups",
-    "institutionalSubtitle": "Institutional subscriptions sit beside individual plans. Members can receive Plus, Pro, or Ultra-level access through their organization without changing their personal account.",
+    "institutionalSubtitle": "Institutional subscriptions sit beside individual plans. Members can receive Plus, Pro, or Premium-level access through their organization without changing their personal account.",
     "customPricing": "Custom pricing",
     "seatPrice": "{{price}} per seat, minimum {{seats}} seats",
     "institutionalFormTitle": "Request institutional access",
@@ -952,10 +953,10 @@
       "free": "Free",
       "plus": "Plus",
       "pro": "Pro",
-      "ultra": "Ultra",
-      "institution_basic": "Institution Basic",
+      "ultra": "Premium",
+      "institution_basic": "Institution Plus",
       "institution_pro": "Institution Pro",
-      "institution_enterprise": "Institution Enterprise"
+      "institution_enterprise": "Institution Premium"
     },
     "planTaglines": {
       "free": "Try the learning loop with daily limits.",
@@ -969,7 +970,14 @@
     "discountCode": "Discount code",
     "discountPlaceholder": "Optional code",
     "discountUnavailable": "That discount code is not available for this plan.",
-    "automaticDiscountApplied": "Automatic {{discount}} discount applied"
+    "automaticDiscountApplied": "Automatic {{discount}} discount applied",
+    "entitlements": {
+      "placementLifetime": "{{count}} placement check",
+      "placementMonthly": "{{count}} placement checks/month",
+      "proficiencyIncluded": "{{count}} proficiency checks/month included, then {{price}} each",
+      "proficiencyPaid": "Proficiency checks {{price}} each",
+      "dailyTokens": "{{count}} daily conversation tokens"
+    }
   },
   "contact": {
     "navLabel": "Contact",
@@ -1026,7 +1034,13 @@
       "web": "Web checkout",
       "ios": "iOS purchase",
       "android": "Android purchase"
-    }
+    },
+    "subscriptionContextUpdated": "Subscription access switched.",
+    "subscriptionContextFailed": "Could not switch subscription access.",
+    "accessSwitcherKicker": "Access source",
+    "accessSwitcherTitle": "Use subscription from",
+    "accessSwitcherHint": "Choose whether this account uses personal billing or an institution seat for paid access.",
+    "currentAccessSource": "Current"
   },
   "institution": {
     "kicker": "Institution",
@@ -1125,7 +1139,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "Paste an HTTPS image URL here, or use the web dashboard to upload a PNG, JPG, or WebP file.",
     "saveCertificateBranding": "Save certificate logo",
-    "removeCertificateLogo": "Remove logo"
+    "removeCertificateLogo": "Remove logo",
+    "progressDashboardKicker": "Learner progress",
+    "mastered": "Mastered",
+    "comfortable": "Comfortable",
+    "learning": "Learning",
+    "struggling": "Struggling",
+    "classLessonsStarted": "{{count}} lessons started",
+    "sampleCertificateFailed": "Could not open the sample certificate.",
+    "previewSampleCertificate": "Preview sample certificate"
   },
   "errorBoundary": {
     "title": "Something went wrong",
@@ -1468,7 +1490,7 @@
     "backToProfile": "Back to Profile",
     "kicker": "Learning Personalization",
     "title": "Lessons shaped around you",
-    "lockedSubtitle": "Pro and Ultra can save approved words, phrases, and situations from real life so future practice feels more relevant. Free and Plus can keep using regular practice.",
+    "lockedSubtitle": "Pro and Premium can save approved words, phrases, and situations from real life so future practice feels more relevant. Free and Plus can keep using regular practice.",
     "upgradeTitle": "Upgrade to personalize practice",
     "upgradeBody": "Upgrade when you want lessons, review prompts, and roleplays to adapt to the everyday language you approve.",
     "openConversation": "Open Conversation",
@@ -1809,7 +1831,8 @@
     "earnFirstMilestone": "Earn the first milestone",
     "repairPlanTitle": "Repair focus",
     "repairPlanValue": "Worth revisiting",
-    "repairPlanBody": "A few weak or checkpoint items are ready for focused practice before you move too far ahead."
+    "repairPlanBody": "A few weak or checkpoint items are ready for focused practice before you move too far ahead.",
+    "placementLimitReached": "You have used your included placement checks for this plan."
   },
   "adminAnalytics": {
     "features": {
@@ -1890,6 +1913,63 @@
     "fullNameRequiredBody": "Enter your full name exactly as it should appear on this certificate. You only need to do this before issuing a certificate.",
     "fullNameLabel": "Full name",
     "fullNamePlaceholder": "Your full name",
-    "saveNameAndIssue": "Save name and issue certificate"
+    "saveNameAndIssue": "Save name and issue certificate",
+    "proficiencyPaymentRequired": "This proficiency check is {{price}} after your included checks.",
+    "proficiencyAllowance": "{{remaining}} of {{included}} included proficiency checks left this month. Extra checks are {{price}} each.",
+    "paymentSetupNeeded": "Paid proficiency checks are not configured yet.",
+    "paymentStartFailed": "Could not start payment for this proficiency check.",
+    "proficiencyPaymentTitle": "Payment needed",
+    "payProficiencyCheck": "Pay {{price}} for this check"
+  },
+  "notifications": {
+    "title": "Notifications",
+    "empty": "No notifications yet.",
+    "markAllRead": "Mark all read",
+    "openAction": "Open",
+    "dismiss": "Dismiss",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "Institution access updated",
+    "institutionLearnerAddedBody": "You have been added to {{organizationName}} as a learner.",
+    "institutionAdminAddedBody": "You can now manage {{organizationName}} from your institution dashboard.",
+    "institutionAccessRemovedTitle": "Institution access removed",
+    "institutionAccessRemovedBody": "Your access to {{organizationName}} was removed.",
+    "lowSeatsTitle": "Institution seats are running low",
+    "lowSeatsBody": "{{organizationName}} has {{remaining}} of {{purchased}} seats remaining.",
+    "noSeatsTitle": "No institution seats remaining",
+    "noSeatsBody": "{{organizationName}} has no seats remaining.",
+    "seatsAddedTitle": "Institution seats added",
+    "seatsAddedBody": "{{quantity}} seats were added. {{remaining}} seats are now available.",
+    "institutionPurchaseTitle": "Institution subscription activated",
+    "institutionPurchaseBody": "{{organizationName}} now has {{quantity}} institution seats.",
+    "institutionSeatSuspendedTitle": "Institution seat suspended",
+    "institutionSeatSuspendedBody": "Your seat for {{organizationName}} was suspended.",
+    "institutionSeatRestoredTitle": "Institution seat restored",
+    "institutionSeatRestoredBody": "Your seat for {{organizationName}} is active again.",
+    "suspensionRequestedTitle": "Learner requested suspension",
+    "suspensionRequestedBody": "{{email}} requested an institution seat suspension.",
+    "institutionRequestAcceptedTitle": "Institution request accepted",
+    "institutionRequestAcceptedBody": "Your request for {{organizationName}} was accepted.",
+    "institutionRequestDeclinedTitle": "Institution request declined",
+    "institutionRequestDeclinedBody": "Your institution request for {{organizationName}} was declined.",
+    "institutionSuspendedTitle": "Institution suspended",
+    "institutionSuspendedBody": "{{organizationName}} has been suspended.",
+    "institutionReactivatedTitle": "Institution reactivated",
+    "institutionReactivatedBody": "{{organizationName}} is active again.",
+    "xpDecayTitle": "Practice streak needs attention",
+    "xpDecayBody": "{{penalty}} XP was reduced after inactivity. Your current total is {{totalXP}} XP.",
+    "viewProfileAction": "View profile",
+    "openInstitutionAction": "Open institution",
+    "manageSeatsAction": "Manage seats",
+    "viewPlansAction": "View plans",
+    "resumePracticeAction": "Resume practice",
+    "unreadCount": "{{count}} unread"
+  },
+  "stepUp": {
+    "verifyFailed": "Could not verify password",
+    "title": "Confirm it's you",
+    "message": "For your security, please re-enter your password to continue with this action.",
+    "passwordPlaceholder": "Password",
+    "confirm": "Confirm"
   }
 }

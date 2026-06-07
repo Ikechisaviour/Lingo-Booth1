@@ -623,7 +623,7 @@
     "deleteAccountTitle": "Hapus Akun?",
     "deleteButton": "Hapus",
     "personalizationAvailable": "Tersedia di paket Anda",
-    "personalizationTier": "Pro atau Ultra",
+    "personalizationTier": "Pro atau Premium",
     "personalizationTitle": "Personalisasi Pembelajaran",
     "personalizationDesc": "Simpan kata, frasa, dan situasi yang disetujui dari kehidupan nyata sehingga kelas, percakapan, kuis, kartu flash, dan latihan menulis menjadi lebih relevan bagi Anda.",
     "managePersonalization": "Kelola personalisasi",
@@ -639,7 +639,8 @@
     "failedToUpdate": "Gagal memperbarui",
     "fullName": "Nama lengkap",
     "fullNamePlaceholder": "Nama untuk ditampilkan pada sertifikat",
-    "fullNameMissing": "Tambahkan sebelum menerbitkan sertifikat"
+    "fullNameMissing": "Tambahkan sebelum menerbitkan sertifikat",
+    "activeAccountType": "Jenis akun aktif"
   },
   "verifyEmail": {
     "verifying": "Memverifikasi email Anda...",
@@ -880,12 +881,12 @@
     "recommended": "Direkomendasikan",
     "startFree": "Mulai gratis",
     "choosePlan": "Pilih {{plan}}",
-    "checkoutSetupNeeded": "Pembayaran online sedang terhubung. Anda dapat mengirim permintaan dan kami akan membantu Anda melanjutkan.",
+    "checkoutSetupNeeded": "Checkout online saat ini tidak tersedia. Anda dapat mengirim permintaan dan kami akan membantu Anda melanjutkan.",
     "checkoutFailed": "Tidak dapat memulai pembayaran. Silakan coba lagi.",
     "loadFailed": "Tidak dapat memuat rencana. Silakan coba lagi.",
     "institutionalKicker": "Institusi",
     "institutionalTitle": "Kursi untuk sekolah, tim, organisasi keagamaan, dan grup",
-    "institutionalSubtitle": "Langganan institusional berada di samping paket individu. Anggota dapat menerima akses tingkat Plus, Pro, atau Ultra melalui organisasi mereka tanpa mengubah akun pribadi mereka.",
+    "institutionalSubtitle": "Langganan institusional berada di samping paket individu. Anggota dapat menerima akses tingkat Plus, Pro, atau Premium melalui organisasi mereka tanpa mengubah akun pribadi mereka.",
     "customPricing": "Harga khusus",
     "seatPrice": "{{price}} per kursi, minimum {{seats}} kursi",
     "institutionalFormTitle": "Minta akses institusional",
@@ -932,10 +933,10 @@
       "free": "Free",
       "plus": "Plus",
       "pro": "Pro",
-      "ultra": "Ultra",
-      "institution_basic": "Institution Basic",
+      "ultra": "Premium",
+      "institution_basic": "Institution Plus",
       "institution_pro": "Institution Pro",
-      "institution_enterprise": "Institution Enterprise"
+      "institution_enterprise": "Institution Premium"
     },
     "planTaglines": {
       "free": "Coba putaran pembelajaran dengan batas harian.",
@@ -951,7 +952,14 @@
     "discountUnavailable": "Kode diskon tersebut tidak tersedia untuk paket ini.",
     "automaticDiscountApplied": "Diskon otomatis {{discount}} diterapkan",
     "signInToChooseTitle": "Buat akun untuk melanjutkan",
-    "signInToChooseBody": "Buat akun atau masuk sebelum memilih paket berbayar sehingga akses Anda dapat dilampirkan ke Anda."
+    "signInToChooseBody": "Buat akun atau masuk sebelum memilih paket berbayar sehingga akses Anda dapat dilampirkan ke Anda.",
+    "entitlements": {
+      "placementLifetime": "{{count}} pemeriksaan penempatan",
+      "placementMonthly": "{{count}} cek penempatan/bulan",
+      "proficiencyIncluded": "{{count}} termasuk pemeriksaan kemahiran/bulan, lalu masing-masing {{price}}",
+      "proficiencyPaid": "Pemeriksaan kemahiran masing-masing {{price}}",
+      "dailyTokens": "{{count}} token percakapan harian"
+    }
   },
   "billing": {
     "kicker": "Penagihan",
@@ -987,7 +995,13 @@
       "web": "Pembayaran web",
       "ios": "pembelian iOS",
       "android": "pembelian Android"
-    }
+    },
+    "subscriptionContextUpdated": "Akses berlangganan dialihkan.",
+    "subscriptionContextFailed": "Tidak dapat mengalihkan akses berlangganan.",
+    "accessSwitcherKicker": "Sumber akses",
+    "accessSwitcherTitle": "Gunakan langganan dari",
+    "accessSwitcherHint": "Pilih apakah akun ini menggunakan penagihan pribadi atau lembaga untuk akses berbayar.",
+    "currentAccessSource": "Saat ini"
   },
   "institution": {
     "kicker": "Lembaga",
@@ -1086,7 +1100,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "Tempelkan URL gambar HTTPS di sini, atau gunakan dasbor web untuk mengunggah file PNG, JPG, atau WebP.",
     "saveCertificateBranding": "Simpan logo sertifikat",
-    "removeCertificateLogo": "Hapus logo"
+    "removeCertificateLogo": "Hapus logo",
+    "progressDashboardKicker": "Kemajuan pelajar",
+    "mastered": "Dikuasai",
+    "comfortable": "Nyaman",
+    "learning": "Sedang belajar",
+    "struggling": "Berjuang",
+    "classLessonsStarted": "{{count}} pelajaran dimulai",
+    "sampleCertificateFailed": "Tidak dapat membuka contoh sertifikat.",
+    "previewSampleCertificate": "Pratinjau contoh sertifikat"
   },
   "errorBoundary": {
     "title": "Ada yang tidak beres",
@@ -1431,7 +1453,7 @@
     "backToProfile": "Kembali ke Profil",
     "kicker": "Personalisasi Pembelajaran",
     "title": "Pelajaran terbentuk di sekitar Anda",
-    "lockedSubtitle": "Pro dan Ultra dapat menyimpan kata, frasa, dan situasi yang disetujui dari kehidupan nyata sehingga latihan di masa mendatang terasa lebih relevan. Gratis dan Plus bisa tetap menggunakan latihan rutin.",
+    "lockedSubtitle": "Pro dan Premium dapat menyimpan kata, frasa, dan situasi yang disetujui dari kehidupan nyata sehingga latihan di masa mendatang terasa lebih relevan. Gratis dan Plus bisa tetap menggunakan latihan rutin.",
     "upgradeTitle": "Tingkatkan untuk mempersonalisasi latihan",
     "upgradeBody": "Tingkatkan versi saat Anda menginginkan pelajaran, petunjuk ulasan, dan permainan peran untuk beradaptasi dengan bahasa sehari-hari yang Anda setujui.",
     "openConversation": "Buka Percakapan",
@@ -1772,7 +1794,8 @@
     "earnFirstMilestone": "Dapatkan pencapaian pertama",
     "repairPlanTitle": "Perbaikan fokus",
     "repairPlanValue": "Layak untuk dikunjungi kembali",
-    "repairPlanBody": "Beberapa item lemah atau pos pemeriksaan siap untuk latihan terfokus sebelum Anda melangkah terlalu jauh ke depan."
+    "repairPlanBody": "Beberapa item lemah atau pos pemeriksaan siap untuk latihan terfokus sebelum Anda melangkah terlalu jauh ke depan.",
+    "placementLimitReached": "Anda telah menggunakan cek penempatan yang disertakan untuk paket ini."
   },
   "resetPassword": {
     "title": "Atur ulang kata sandi",
@@ -1892,6 +1915,63 @@
     "fullNameRequiredBody": "Masukkan nama lengkap Anda persis seperti yang tertera pada sertifikat ini. Anda hanya perlu melakukan ini sebelum menerbitkan sertifikat.",
     "fullNameLabel": "Nama lengkap",
     "fullNamePlaceholder": "Nama lengkap Anda",
-    "saveNameAndIssue": "Simpan nama dan terbitkan sertifikat"
+    "saveNameAndIssue": "Simpan nama dan terbitkan sertifikat",
+    "proficiencyPaymentRequired": "Pemeriksaan kemahiran ini adalah {{price}} setelah pemeriksaan yang Anda sertakan.",
+    "proficiencyAllowance": "{{remaining}} dari {{included}} termasuk pemeriksaan kemahiran yang tersisa bulan ini. Cek tambahan masing-masing adalah {{price}}.",
+    "paymentSetupNeeded": "Pemeriksaan kemahiran berbayar belum dikonfigurasi.",
+    "paymentStartFailed": "Tidak dapat memulai pembayaran untuk pemeriksaan kemahiran ini.",
+    "proficiencyPaymentTitle": "Pembayaran diperlukan",
+    "payProficiencyCheck": "Bayar {{price}} untuk cek ini"
+  },
+  "notifications": {
+    "title": "Pemberitahuan",
+    "empty": "Belum ada pemberitahuan.",
+    "markAllRead": "Tandai semua telah dibaca",
+    "openAction": "Membuka",
+    "dismiss": "Membubarkan",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "Akses institusi diperbarui",
+    "institutionLearnerAddedBody": "Anda telah ditambahkan ke {{organizationName}} sebagai pelajar.",
+    "institutionAdminAddedBody": "Anda sekarang dapat mengelola {{organizationName}} dari dasbor institusi Anda.",
+    "institutionAccessRemovedTitle": "Akses institusi dihapus",
+    "institutionAccessRemovedBody": "Akses Anda ke {{organizationName}} telah dihapus.",
+    "lowSeatsTitle": "Kursi institusi semakin menipis",
+    "lowSeatsBody": "{{organizationName}} mempunyai sisa {{remaining}} dari {{purchased}} kursi.",
+    "noSeatsTitle": "Tidak ada kursi institusi yang tersisa",
+    "noSeatsBody": "{{organizationName}} tidak ada kursi tersisa.",
+    "seatsAddedTitle": "Kursi institusi ditambahkan",
+    "seatsAddedBody": "{{quantity}} kursi ditambahkan. {{remaining}} kursi kini tersedia.",
+    "institutionPurchaseTitle": "Langganan institusi diaktifkan",
+    "institutionPurchaseBody": "{{organizationName}} kini memiliki kursi institusi {{quantity}}.",
+    "institutionSeatSuspendedTitle": "Kursi institusi ditangguhkan",
+    "institutionSeatSuspendedBody": "Kursi Anda untuk {{organizationName}} ditangguhkan.",
+    "institutionSeatRestoredTitle": "Kursi institusi dipulihkan",
+    "institutionSeatRestoredBody": "Kursi Anda untuk {{organizationName}} aktif kembali.",
+    "suspensionRequestedTitle": "Pelajar meminta penangguhan",
+    "suspensionRequestedBody": "{{email}} meminta penangguhan kursi institusi.",
+    "institutionRequestAcceptedTitle": "Permintaan institusi diterima",
+    "institutionRequestAcceptedBody": "Permintaan Anda untuk {{organizationName}} diterima.",
+    "institutionRequestDeclinedTitle": "Permintaan institusi ditolak",
+    "institutionRequestDeclinedBody": "Permintaan institusi Anda untuk {{organizationName}} ditolak.",
+    "institutionSuspendedTitle": "Institusi ditangguhkan",
+    "institutionSuspendedBody": "{{organizationName}} telah ditangguhkan.",
+    "institutionReactivatedTitle": "Institusi diaktifkan kembali",
+    "institutionReactivatedBody": "{{organizationName}} aktif kembali.",
+    "xpDecayTitle": "Latihan beruntun perlu mendapat perhatian",
+    "xpDecayBody": "{{penalty}} XP berkurang setelah tidak aktif. Total Anda saat ini adalah {{totalXP}} XP.",
+    "viewProfileAction": "Lihat profil",
+    "openInstitutionAction": "Institusi terbuka",
+    "manageSeatsAction": "Kelola kursi",
+    "viewPlansAction": "Lihat rencana",
+    "resumePracticeAction": "Lanjutkan latihan",
+    "unreadCount": "{{count}} belum dibaca"
+  },
+  "stepUp": {
+    "verifyFailed": "Tidak dapat memverifikasi kata sandi",
+    "title": "Konfirmasikan bahwa itu memang Anda",
+    "message": "Demi keamanan Anda, silakan masukkan kembali kata sandi Anda untuk melanjutkan tindakan ini.",
+    "passwordPlaceholder": "Kata sandi",
+    "confirm": "Mengonfirmasi"
   }
 }

@@ -12,6 +12,7 @@ const { ensureResetsApplied } = require('../utils/gamificationReset');
 const { getAiEntitlements } = require('../utils/subscription');
 const { recordLearningEvent } = require('../utils/xpRewards');
 const { fullNameValidation } = require('../utils/fullName');
+const { syncInstitutionAccessForUser } = require('../utils/institutionAccess');
 
 // All user routes require authentication + ownership check
 router.use(verifyToken);
@@ -23,6 +24,7 @@ router.get('/:userId', isOwner('userId'), checkInactivityPenalty(), async (req, 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
+    await syncInstitutionAccessForUser(user);
     const userObj = user.toObject();
     userObj.hasPassword = !!user.password;
     userObj.aiEntitlements = getAiEntitlements(user);

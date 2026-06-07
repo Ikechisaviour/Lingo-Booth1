@@ -2,6 +2,7 @@
 import {
   ActivityIndicator,
   Alert,
+  Linking,
   Modal,
   ScrollView,
   StyleSheet,
@@ -11,7 +12,7 @@ import {
 } from 'react-native';
 import { Button, Card, Text, TextInput } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
-import { levelTestService } from '../../services/api';
+import { billingService, levelTestService } from '../../services/api';
 import { getLanguageDisplayName } from '../../config/languages';
 import { shadows, type AppColors, useAppColors } from '../../config/theme';
 import { useSettingsStore } from '../../stores/settingsStore';
@@ -38,6 +39,8 @@ const contextLabel = (t: any, context: any) => (
 
 const skillLabel = (t: any, skill: string) => t(`levelTests.skills.${skill}`, skill || t('levelTests.skills.general', 'General'));
 
+const formatPrice = (cents: number | null | undefined) => `$${((Number(cents) || 0) / 100).toFixed(0)}`;
+
 const LevelTestScreen: React.FC<any> = () => {
   const { t } = useTranslation();
   const colors = useAppColors();
@@ -49,6 +52,7 @@ const LevelTestScreen: React.FC<any> = () => {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [contexts, setContexts] = useState<any[]>([]);
+  const [testEntitlements, setTestEntitlements] = useState<any>(null);
   const [selectedContextKey, setSelectedContextKey] = useState('personal');
   const [selectedLevel, setSelectedLevel] = useState(1);
   const [selectedMode, setSelectedMode] = useState('completion');
@@ -70,13 +74,25 @@ const LevelTestScreen: React.FC<any> = () => {
     setLoading(true);
     try {
       const res = await levelTestService.getContexts();
-      setContexts(res.data?.contexts || []);
+      const nextContexts = res.data?.contexts || [];
+      const overviewContext = nextContexts.find((context: any) => {
+        const key = context.contextType === 'institution' ? `institution:${context.organizationId}` : 'personal';
+        return key === selectedContextKey;
+      }) || nextContexts[0] || { contextType: 'personal' };
+      setContexts(nextContexts);
+      const overview = await levelTestService.getOverview({
+        contextType: overviewContext?.contextType || 'personal',
+        organizationId: overviewContext?.organizationId || '',
+        targetLanguage,
+        nativeLanguage,
+      });
+      setTestEntitlements(overview.data?.testEntitlements || null);
     } catch {
       Alert.alert(t('common.error', 'Error'), t('levelTests.loadFailed', 'Could not load level testing right now.'));
     } finally {
       setLoading(false);
     }
-  }, [t]);
+  }, [nativeLanguage, selectedContextKey, targetLanguage, t]);
 
   useEffect(() => {
     load();
@@ -87,6 +103,26 @@ const LevelTestScreen: React.FC<any> = () => {
       ...current,
       [questionId]: { ...(current[questionId] || {}), questionId, ...patch },
     }));
+  };
+
+  const startPaidProficiencyCheckout = async () => {
+    setSaving(true);
+    try {
+      const res = await billingService.createLevelTestCheckoutSession();
+      if (res.data?.checkoutUrl) {
+        await Linking.openURL(res.data.checkoutUrl);
+        return;
+      }
+      if (res.data?.requiresSetup) {
+        Alert.alert(t('common.error', 'Error'), t('levelTests.paymentSetupNeeded', 'Paid proficiency checks are not configured yet.'));
+        return;
+      }
+      Alert.alert(t('common.error', 'Error'), t('levelTests.paymentStartFailed', 'Could not start payment for this proficiency check.'));
+    } catch {
+      Alert.alert(t('common.error', 'Error'), t('levelTests.paymentStartFailed', 'Could not start payment for this proficiency check.'));
+    } finally {
+      setSaving(false);
+    }
   };
 
   const start = async () => {
@@ -102,9 +138,27 @@ const LevelTestScreen: React.FC<any> = () => {
         nativeLanguage,
       });
       setAttempt(res.data.attempt);
+      setTestEntitlements(res.data.testEntitlements || testEntitlements);
       setAnswers({});
     } catch (err: any) {
-      Alert.alert(t('common.error', 'Error'), err.response?.data?.message || t('levelTests.startFailed', 'This test is not ready yet.'));
+      const code = err.response?.data?.code;
+      if (err.response?.data?.testEntitlements) setTestEntitlements(err.response.data.testEntitlements);
+      if (code === 'PROFICIENCY_TEST_PAYMENT_REQUIRED') {
+        const price = formatPrice(err.response?.data?.priceCents || 1000);
+        Alert.alert(
+          t('levelTests.proficiencyPaymentTitle', 'Payment needed'),
+          t('levelTests.proficiencyPaymentRequired', 'This proficiency check is {{price}} after your included checks.', { price }),
+          [
+            { text: t('common.cancel', 'Cancel'), style: 'cancel' },
+            { text: t('levelTests.payProficiencyCheck', 'Pay {{price}} for this check', { price }), onPress: startPaidProficiencyCheckout },
+          ],
+        );
+        return;
+      }
+      Alert.alert(
+        t('common.error', 'Error'),
+        err.response?.data?.message || t('levelTests.startFailed', 'This test is not ready yet.'),
+      );
     } finally {
       setSaving(false);
     }
@@ -170,6 +224,7 @@ const LevelTestScreen: React.FC<any> = () => {
   const submitted = attempt?.status === 'submitted';
   const allowedTargetLanguages = selectedContext?.allowedTargetLanguages || [];
   const restricted = selectedContext?.contextType === 'institution' && !allowedTargetLanguages.includes(targetLanguage);
+  const proficiencyEntitlement = testEntitlements?.proficiencyTests || null;
 
   return (
     <ScrollView style={styles.screen} contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
@@ -181,7 +236,7 @@ const LevelTestScreen: React.FC<any> = () => {
             {t('levelTests.subtitle', 'Complete a level check for progress, or take a proficiency check when you want stronger proof of ability.')}
           </Text>
           <Text style={styles.pair}>
-            {getLanguageDisplayName(nativeLanguage, t)} â†’ {getLanguageDisplayName(targetLanguage, t)}
+            {getLanguageDisplayName(nativeLanguage, t)} - {getLanguageDisplayName(targetLanguage, t)}
           </Text>
         </Card.Content>
       </Card>
@@ -278,6 +333,15 @@ const LevelTestScreen: React.FC<any> = () => {
               <Button mode="contained" onPress={start} loading={saving} disabled={saving || restricted}>
                 {restricted ? t('levelTests.restrictedTarget', 'This target language is not available in this institution context.') : t('levelTests.start', 'Start check')}
               </Button>
+              {selectedMode === 'proficiency' && proficiencyEntitlement && (
+                <Text style={styles.muted}>
+                  {t('levelTests.proficiencyAllowance', '{{remaining}} of {{included}} included proficiency checks left this month. Extra checks are {{price}} each.', {
+                    remaining: proficiencyEntitlement.remainingIncluded,
+                    included: proficiencyEntitlement.included,
+                    price: formatPrice(proficiencyEntitlement.paidPriceCents),
+                  })}
+                </Text>
+              )}
             </Card.Content>
           </Card>
         </View>

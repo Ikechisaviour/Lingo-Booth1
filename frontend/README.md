@@ -1,6 +1,6 @@
 # Frontend README
 
-React web application for the Korean Learning App.
+React web application for Lingo Booth, a multi-language learning platform.
 
 ## Setup
 
@@ -23,10 +23,12 @@ npm run build
 ## Features
 
 - **Authentication:** User registration and login
-- **Lessons:** Browse and study structured lessons
+- **Lessons:** Browse and study structured, target-language lessons and class lessons
+- **Conversation:** Guided practice partner (relaxed and challenge modes)
 - **Flashcards:** Create and study flashcards with spaced repetition
-- **Progress:** Track learning progress across 4 skills
-- **Dashboard:** View personalized recommendations
+- **Quizzes & Writing:** Target-language quizzes and guided writing practice
+- **Progress:** Track learning progress, XP, streaks, and quests
+- **Localization:** Fully internationalized across 20 locales (i18next)
 
 ## Project Structure
 

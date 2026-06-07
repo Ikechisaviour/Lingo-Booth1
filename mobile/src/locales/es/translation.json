@@ -623,7 +623,7 @@
     "deleteAccountTitle": "¿Eliminar cuenta?",
     "deleteButton": "Eliminar",
     "personalizationAvailable": "Disponible en tu plan",
-    "personalizationTier": "Pro o Ultra",
+    "personalizationTier": "Pro o Premium",
     "personalizationTitle": "Personalización del aprendizaje",
     "personalizationDesc": "Guarde palabras, frases y situaciones aprobadas de la vida real para que las clases, las conversaciones, los cuestionarios, las tarjetas didácticas y la práctica de escritura sean más relevantes para usted.",
     "managePersonalization": "Gestionar la personalización",
@@ -639,7 +639,8 @@
     "failedToUpdate": "No se pudo actualizar",
     "fullName": "Nombre completo",
     "fullNamePlaceholder": "Nombre para mostrar en los certificados",
-    "fullNameMissing": "Agregar antes de emitir un certificado"
+    "fullNameMissing": "Agregar antes de emitir un certificado",
+    "activeAccountType": "Tipo de cuenta activa"
   },
   "verifyEmail": {
     "verifying": "Verificando tu correo...",
@@ -880,12 +881,12 @@
     "recommended": "Recomendada",
     "startFree": "Empieza gratis",
     "choosePlan": "Elija {{plan}}",
-    "checkoutSetupNeeded": "Se está conectando el pago en línea. Puedes enviar una solicitud y te ayudaremos a continuar.",
+    "checkoutSetupNeeded": "El pago en línea no está disponible actualmente. Puedes enviar una solicitud y te ayudaremos a continuar.",
     "checkoutFailed": "No se pudo iniciar el pago. Por favor inténtalo de nuevo.",
     "loadFailed": "No se pudieron cargar los planes. Por favor inténtalo de nuevo.",
     "institutionalKicker": "Instituciones",
     "institutionalTitle": "Plazas para escuelas, equipos, organizaciones religiosas y grupos",
-    "institutionalSubtitle": "Las suscripciones institucionales se encuentran junto a los planes individuales. Los miembros pueden recibir acceso de nivel Plus, Pro o Ultra a través de su organización sin cambiar su cuenta personal.",
+    "institutionalSubtitle": "Las suscripciones institucionales se encuentran junto a los planes individuales. Los miembros pueden recibir acceso de nivel Plus, Pro o Premium a través de su organización sin cambiar su cuenta personal.",
     "customPricing": "Precios personalizados",
     "seatPrice": "{{price}} por asiento, mínimo {{seats}} asientos",
     "institutionalFormTitle": "Solicitar acceso institucional",
@@ -932,10 +933,10 @@
       "free": "Free",
       "plus": "Plus",
       "pro": "Pro",
-      "ultra": "Ultra",
-      "institution_basic": "Institution Basic",
+      "ultra": "Premium",
+      "institution_basic": "Institution Plus",
       "institution_pro": "Institution Pro",
-      "institution_enterprise": "Institution Enterprise"
+      "institution_enterprise": "Institution Premium"
     },
     "planTaglines": {
       "free": "Pruebe el circuito de aprendizaje con límites diarios.",
@@ -951,7 +952,14 @@
     "discountUnavailable": "Ese código de descuento no está disponible para este plan.",
     "automaticDiscountApplied": "Descuento automático de {{discount}} aplicado",
     "signInToChooseTitle": "Crea una cuenta para continuar",
-    "signInToChooseBody": "Cree una cuenta o inicie sesión antes de elegir un plan pago para que se le pueda adjuntar su acceso."
+    "signInToChooseBody": "Cree una cuenta o inicie sesión antes de elegir un plan pago para que se le pueda adjuntar su acceso.",
+    "entitlements": {
+      "placementLifetime": "{{count}} verificación de ubicación",
+      "placementMonthly": "{{count}} cheques de colocación/mes",
+      "proficiencyIncluded": "{{count}} controles de competencia/mes incluidos, luego {{price}} cada uno",
+      "proficiencyPaid": "Comprobaciones de competencia {{price}} cada una",
+      "dailyTokens": "{{count}} tokens de conversación diarios"
+    }
   },
   "billing": {
     "kicker": "Facturación",
@@ -987,7 +995,13 @@
       "web": "Pago web",
       "ios": "compra de iOS",
       "android": "compra de Android"
-    }
+    },
+    "subscriptionContextUpdated": "Acceso a suscripción cambiado.",
+    "subscriptionContextFailed": "No se pudo cambiar el acceso a la suscripción.",
+    "accessSwitcherKicker": "Fuente de acceso",
+    "accessSwitcherTitle": "Utilice la suscripción de",
+    "accessSwitcherHint": "Elija si esta cuenta utiliza facturación personal o una licencia institucional para acceso pago.",
+    "currentAccessSource": "Actual"
   },
   "institution": {
     "kicker": "Institución",
@@ -1086,7 +1100,15 @@
     "certificateLogoUrlPlaceholder": "https://ejemplo.com/logo.png",
     "mobileCertificateLogoHelp": "Pegue aquí la URL de una imagen HTTPS o utilice el panel web para cargar un archivo PNG, JPG o WebP.",
     "saveCertificateBranding": "Guardar logotipo del certificado",
-    "removeCertificateLogo": "Quitar logotipo"
+    "removeCertificateLogo": "Quitar logotipo",
+    "progressDashboardKicker": "Progreso del alumno",
+    "mastered": "Dominada",
+    "comfortable": "Cómoda",
+    "learning": "Aprendiendo",
+    "struggling": "Luchando",
+    "classLessonsStarted": "{{count}} lecciones iniciadas",
+    "sampleCertificateFailed": "No se pudo abrir el certificado de muestra.",
+    "previewSampleCertificate": "Vista previa del certificado de muestra"
   },
   "errorBoundary": {
     "title": "algo salió mal",
@@ -1431,7 +1453,7 @@
     "backToProfile": "Volver al perfil",
     "kicker": "Personalización del aprendizaje",
     "title": "Lecciones formadas a tu alrededor",
-    "lockedSubtitle": "Pro y Ultra pueden guardar palabras, frases y situaciones aprobadas de la vida real para que la práctica futura parezca más relevante. Free y Plus pueden seguir practicando con regularidad.",
+    "lockedSubtitle": "Pro y Premium pueden guardar palabras, frases y situaciones aprobadas de la vida real para que la práctica futura parezca más relevante. Free y Plus pueden seguir practicando con regularidad.",
     "upgradeTitle": "Actualice para personalizar la práctica",
     "upgradeBody": "Actualice cuando desee que las lecciones, las indicaciones de revisión y los juegos de roles se adapten al lenguaje cotidiano que apruebe.",
     "openConversation": "Conversación abierta",
@@ -1772,7 +1794,8 @@
     "earnFirstMilestone": "Gana el primer hito",
     "repairPlanTitle": "Enfoque de reparación",
     "repairPlanValue": "Vale la pena volver a visitar",
-    "repairPlanBody": "Algunos puntos débiles o puntos de control están listos para una práctica concentrada antes de avanzar demasiado."
+    "repairPlanBody": "Algunos puntos débiles o puntos de control están listos para una práctica concentrada antes de avanzar demasiado.",
+    "placementLimitReached": "Ha utilizado los controles de ubicación incluidos para este plan."
   },
   "resetPassword": {
     "title": "Restablecer contraseña",
@@ -1892,6 +1915,63 @@
     "fullNameRequiredBody": "Ingrese su nombre completo exactamente como debería aparecer en este certificado. Solo necesita hacer esto antes de emitir un certificado.",
     "fullNameLabel": "Nombre completo",
     "fullNamePlaceholder": "Tu nombre completo",
-    "saveNameAndIssue": "Guardar nombre y emitir certificado"
+    "saveNameAndIssue": "Guardar nombre y emitir certificado",
+    "proficiencyPaymentRequired": "Esta verificación de competencia es {{price}} después de las comprobaciones incluidas.",
+    "proficiencyAllowance": "{{remaining}} de {{included}} incluyó verificaciones de competencia restantes este mes. Los cheques adicionales cuestan {{price}} cada uno.",
+    "paymentSetupNeeded": "Las comprobaciones de competencia pagadas aún no están configuradas.",
+    "paymentStartFailed": "No se pudo iniciar el pago de esta verificación de competencia.",
+    "proficiencyPaymentTitle": "Pago necesario",
+    "payProficiencyCheck": "Pague {{price}} por este cheque"
+  },
+  "notifications": {
+    "title": "Notificaciones",
+    "empty": "Aún no hay notificaciones.",
+    "markAllRead": "Marcar todo como leído",
+    "openAction": "Abierta",
+    "dismiss": "Despedir",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "Acceso a la institución actualizado",
+    "institutionLearnerAddedBody": "Has sido agregada a {{organizationName}} como aprendiz.",
+    "institutionAdminAddedBody": "Ahora puede administrar {{organizationName}} desde el panel de su institución.",
+    "institutionAccessRemovedTitle": "Acceso a la institución eliminado",
+    "institutionAccessRemovedBody": "Se eliminó su acceso a {{organizationName}}.",
+    "lowSeatsTitle": "Las plazas institucionales se están agotando",
+    "lowSeatsBody": "{{organizationName}} tiene {{remaining}} de {{purchased}} asientos restantes.",
+    "noSeatsTitle": "No quedan plazas institucionales",
+    "noSeatsBody": "A {{organizationName}} no le quedan asientos.",
+    "seatsAddedTitle": "Se agregaron asientos institucionales",
+    "seatsAddedBody": "Se agregaron asientos {{quantity}}. Los asientos {{remaining}} ya están disponibles.",
+    "institutionPurchaseTitle": "Suscripción institucional activada",
+    "institutionPurchaseBody": "{{organizationName}} ahora tiene asientos institucionales {{quantity}}.",
+    "institutionSeatSuspendedTitle": "Asiento institucional suspendido",
+    "institutionSeatSuspendedBody": "Su asiento para {{organizationName}} fue suspendido.",
+    "institutionSeatRestoredTitle": "Sede institucional restaurada",
+    "institutionSeatRestoredBody": "Tu asiento para {{organizationName}} está activo nuevamente.",
+    "suspensionRequestedTitle": "El alumno solicitó la suspensión",
+    "suspensionRequestedBody": "{{email}} solicitó la suspensión de un asiento en la institución.",
+    "institutionRequestAcceptedTitle": "Solicitud de institución aceptada",
+    "institutionRequestAcceptedBody": "Su solicitud de {{organizationName}} fue aceptada.",
+    "institutionRequestDeclinedTitle": "Solicitud de institución rechazada",
+    "institutionRequestDeclinedBody": "La solicitud de su institución para {{organizationName}} fue rechazada.",
+    "institutionSuspendedTitle": "Institución suspendida",
+    "institutionSuspendedBody": "{{organizationName}} ha sido suspendida.",
+    "institutionReactivatedTitle": "Institución reactivada",
+    "institutionReactivatedBody": "{{organizationName}} está activa de nuevo.",
+    "xpDecayTitle": "La racha de práctica necesita atención",
+    "xpDecayBody": "{{penalty}} XP se redujo después de la inactividad. Su total actual es {{totalXP}} XP.",
+    "viewProfileAction": "Ver perfil",
+    "openInstitutionAction": "Institución abierta",
+    "manageSeatsAction": "Administrar asientos",
+    "viewPlansAction": "Ver planos",
+    "resumePracticeAction": "Reanudar la práctica",
+    "unreadCount": "{{count}} no leído"
+  },
+  "stepUp": {
+    "verifyFailed": "No se pudo verificar la contraseña",
+    "title": "Confirma que eres tú",
+    "message": "Por su seguridad, vuelva a ingresar su contraseña para continuar con esta acción.",
+    "passwordPlaceholder": "Contraseña",
+    "confirm": "Confirmar"
   }
 }

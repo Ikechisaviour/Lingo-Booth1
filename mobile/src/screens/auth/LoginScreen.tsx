@@ -45,7 +45,10 @@ const LoginScreen: React.FC = () => {
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const layout = getResponsiveLayout(winWidth, winHeight);
   const isCompact = layout.isCompact;
-  const useWideLayout = layout.isWide || layout.isFoldable || layout.isTablet;
+  const useWideLayout = winWidth >= 840 && winHeight >= 620;
+  const useCenteredCard = !useWideLayout && winWidth >= 560;
+  const useShortLayout = !useWideLayout && winHeight < 620;
+  const useCompactBrand = !useWideLayout && (isCompact || winWidth < 560 || useShortLayout);
   const brandMarkSize = useWideLayout ? (layout.isWideShort ? 58 : 76) : isCompact ? 48 : 62;
   const brandWordmarkWidth = useWideLayout ? (layout.isWideShort ? 172 : 218) : 180;
 
@@ -174,19 +177,21 @@ const LoginScreen: React.FC = () => {
             style={[
               styles.brandTop,
               useWideLayout && styles.brandTopWide,
+              useCenteredCard && styles.brandTopCentered,
+              useShortLayout && styles.brandTopShort,
               {
-                paddingTop: useWideLayout ? insets.top + 12 : insets.top + (isCompact ? 8 : 24),
-                paddingBottom: useWideLayout ? 0 : isCompact ? 12 : 28,
+                paddingTop: useWideLayout ? insets.top + 12 : insets.top + (useShortLayout ? 6 : isCompact ? 8 : 24),
+                paddingBottom: useWideLayout ? 0 : useCompactBrand ? 12 : 28,
               },
             ]}
           >
             <BrandLogo
-              variant={isCompact && !useWideLayout ? 'mark' : 'lockup'}
+              variant={useCompactBrand ? 'mark' : 'lockup'}
               markSize={brandMarkSize}
               wordmarkWidth={brandWordmarkWidth}
-              style={isCompact && !useWideLayout ? styles.compactBrandLogo : styles.brandLogo}
+              style={useCompactBrand ? styles.compactBrandLogo : styles.brandLogo}
             />
-            {!(isCompact && !useWideLayout) && (
+            {!useCompactBrand && (
               <Text style={[styles.brandTagline, useWideLayout && styles.brandTaglineWide]}>
                 {t('login.brandTagline', 'Learn any language')}
               </Text>
@@ -199,6 +204,8 @@ const LoginScreen: React.FC = () => {
             contentContainerStyle={[
               styles.formContent,
               useWideLayout && styles.formContentWide,
+              useCenteredCard && styles.formContentCentered,
+              useShortLayout && styles.formContentShort,
               { paddingBottom: useWideLayout ? insets.bottom + 20 : insets.bottom + 28 },
             ]}
             keyboardShouldPersistTaps="handled"
@@ -208,7 +215,8 @@ const LoginScreen: React.FC = () => {
               style={[
                 styles.formCard,
                 useWideLayout && styles.formCardWide,
-                isCompact && { paddingHorizontal: 18, paddingTop: 18, minHeight: 0 },
+                useCenteredCard && styles.formCardCentered,
+                useCompactBrand && { paddingHorizontal: 18, paddingTop: 18, minHeight: 0 },
               ]}
             >
             <Text variant="headlineMedium" style={styles.title}>
@@ -272,7 +280,7 @@ const LoginScreen: React.FC = () => {
               autoComplete="email"
               style={styles.input}
               outlineColor={colors.border}
-              activeOutlineColor={colors.primary}
+              activeOutlineColor={colors.accentGreen}
             />
 
             <TextInput
@@ -285,7 +293,7 @@ const LoginScreen: React.FC = () => {
               autoCapitalize="none"
               style={styles.input}
               outlineColor={colors.border}
-              activeOutlineColor={colors.primary}
+              activeOutlineColor={colors.accentGreen}
               right={
                 <TextInput.Icon
                   icon={showPassword ? 'eye-off' : 'eye'}
@@ -378,6 +386,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingHorizontal: 16,
   },
+  brandTopCentered: {
+    paddingBottom: 18,
+  },
+  brandTopShort: {
+    paddingHorizontal: 16,
+  },
   brandLogo: { marginBottom: 8 },
   compactBrandLogo: { marginBottom: 6 },
   brandTagline: {
@@ -401,6 +415,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingVertical: 18,
   },
+  formContentCentered: {
+    alignItems: 'center',
+    paddingHorizontal: 24,
+  },
+  formContentShort: {
+    paddingTop: 0,
+  },
   formCard: {
     backgroundColor: colors.surface,
     borderTopLeftRadius: 32,
@@ -417,6 +438,15 @@ const styles = StyleSheet.create({
     flex: 0,
     minHeight: 0,
     paddingHorizontal: 32,
+    paddingVertical: 30,
+  },
+  formCardCentered: {
+    width: '100%',
+    maxWidth: 560,
+    borderRadius: 30,
+    flex: 0,
+    minHeight: 0,
+    paddingHorizontal: 30,
     paddingVertical: 30,
   },
 
@@ -436,7 +466,7 @@ const styles = StyleSheet.create({
   primaryButton: {
     marginTop: 8,
     borderRadius: 10,
-    backgroundColor: colors.primary,
+    backgroundColor: colors.accentGreen,
   },
   buttonLabel: {
     fontSize: 16,
@@ -445,7 +475,7 @@ const styles = StyleSheet.create({
   },
   forgotPassword: {
     textAlign: 'right',
-    color: colors.primary,
+    color: colors.accentGreen,
     fontSize: 13,
     fontWeight: '500',
     marginTop: 8,
@@ -493,10 +523,10 @@ const styles = StyleSheet.create({
   },
   guestButton: {
     borderRadius: 10,
-    borderColor: colors.primary,
+    borderColor: colors.accentGreen,
   },
   guestButtonLabel: {
-    color: colors.primary,
+    color: colors.accentGreen,
     fontSize: 15,
   },
   guestNote: {
@@ -507,6 +537,7 @@ const styles = StyleSheet.create({
   },
   linkRow: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'center',
     marginTop: 20,
   },
@@ -515,7 +546,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   link: {
-    color: colors.primary,
+    color: colors.accentGreen,
     fontSize: 14,
     fontWeight: '600',
   },

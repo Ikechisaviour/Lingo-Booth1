@@ -1,4 +1,5 @@
 const { TIERS, DAILY_AI_TOKEN_LIMITS } = require('./subscription');
+const { getTestingEntitlements } = require('./subscription');
 
 const BILLING_SOURCES = Object.freeze({
   WEB: 'web',
@@ -111,10 +112,10 @@ const INDIVIDUAL_PLANS = Object.freeze([
     id: TIERS.ULTRA,
     tier: TIERS.ULTRA,
     audience: 'individual',
-    name: 'Ultra',
-    tagline: 'Everything in Pro, ready for future premium learning tools.',
-    monthlyPriceCents: 2999,
-    annualPriceCents: 29990,
+    name: 'Premium',
+    tagline: 'Everything in Pro, ready for premium learning tools.',
+    monthlyPriceCents: 4999,
+    annualPriceCents: 49990,
     dailyConversationTokens: DAILY_AI_TOKEN_LIMITS[TIERS.ULTRA],
     features: [
       PLAN_FEATURES.conversation,
@@ -136,16 +137,64 @@ const INDIVIDUAL_PLANS = Object.freeze([
   },
 ]);
 
+// Institutional plans are NOT subscriptions. Each "seat" is a single-use
+// 30-day learner voucher; once allocated to a learner it counts down for
+// 30 days then expires permanently. Institutions buy packs of seats up
+// front and top up whenever the wallet runs low. `pricePerSeatCents` is
+// the base per-seat price; `bulkPricing` is the discount ladder by pack
+// size. Pricing falls back to the base when no bulk tier applies.
+//
+// Seat pricing is DERIVED from the matching individual monthly plan, not
+// hand-set, via `buildInstitutionalLadder`:
+//   - 2-digit seat counts (10-99) cost the individual monthly price less
+//     10% (the "2-digit base").
+//   - Each additional seat-count digit compounds another 5% reduction off
+//     the PREVIOUS tier's per-seat price (×0.95 per digit, not additive).
+//   - The per-seat price is floored at 80% of the 2-digit base, so the
+//     deepest discount is 20% below that base no matter how large the pack.
+const INSTITUTIONAL_TWO_DIGIT_DISCOUNT = 0.10; // 10% off the individual monthly price at 10-99 seats
+const INSTITUTIONAL_PER_DIGIT_DISCOUNT = 0.05; // compounding reduction per extra seat-count digit
+const INSTITUTIONAL_MAX_DISCOUNT_FROM_BASE = 0.20; // floor: never more than 20% below the 2-digit base
+
+function individualMonthlyCentsForTier(tier) {
+  const plan = INDIVIDUAL_PLANS.find(p => p.tier === tier);
+  return plan ? plan.monthlyPriceCents : null;
+}
+
+// Build the per-seat discount ladder for an institutional plan from the
+// matching individual monthly price. Returns tiers keyed by `minSeats` at
+// each digit boundary (10, 100, 1000, …) until the discount floor is hit.
+function buildInstitutionalLadder(baseMonthlyCents) {
+  if (!baseMonthlyCents) return [];
+  const twoDigitBase = baseMonthlyCents * (1 - INSTITUTIONAL_TWO_DIGIT_DISCOUNT);
+  const floorCents = twoDigitBase * (1 - INSTITUTIONAL_MAX_DISCOUNT_FROM_BASE);
+  const ladder = [];
+  for (let digits = 2; digits <= 12; digits += 1) {
+    const raw = twoDigitBase * Math.pow(1 - INSTITUTIONAL_PER_DIGIT_DISCOUNT, digits - 2);
+    const capped = Math.max(raw, floorCents);
+    ladder.push({ minSeats: 10 ** (digits - 1), pricePerSeatCents: Math.round(capped) });
+    if (capped <= floorCents) break; // floor reached; deeper tiers are identical
+  }
+  return ladder;
+}
+
+function buildInstitutionalPlan(plan) {
+  const ladder = buildInstitutionalLadder(individualMonthlyCentsForTier(plan.tier));
+  return {
+    ...plan,
+    pricePerSeatCents: ladder.length > 0 ? ladder[0].pricePerSeatCents : null,
+    bulkPricing: ladder,
+  };
+}
+
 const INSTITUTIONAL_PLANS = Object.freeze([
-  {
+  buildInstitutionalPlan({
     id: 'institution_basic',
     tier: TIERS.PLUS,
     audience: 'institution',
-    name: 'Institution Basic',
-    tagline: 'Seats for groups that need guided learning and practice.',
+    name: 'Institution Plus',
+    tagline: 'Seat packs for groups that need guided learning and practice.',
     minimumSeats: 10,
-    seatPriceMonthlyCents: 799,
-    seatPriceAnnualCents: 7990,
     features: [
       PLAN_FEATURES.organizationSeats,
       PLAN_FEATURES.classLessons,
@@ -153,16 +202,14 @@ const INSTITUTIONAL_PLANS = Object.freeze([
       PLAN_FEATURES.deviceMemory,
       PLAN_FEATURES.manualInvoice,
     ],
-  },
-  {
+  }),
+  buildInstitutionalPlan({
     id: 'institution_pro',
     tier: TIERS.PRO,
     audience: 'institution',
     name: 'Institution Pro',
-    tagline: 'Synced learner memory, reports, and class management.',
-    minimumSeats: 25,
-    seatPriceMonthlyCents: 1299,
-    seatPriceAnnualCents: 12990,
+    tagline: 'Seat packs with synced learner memory, reports, and class tools.',
+    minimumSeats: 10,
     features: [
       PLAN_FEATURES.organizationSeats,
       PLAN_FEATURES.classroomTools,
@@ -171,16 +218,14 @@ const INSTITUTIONAL_PLANS = Object.freeze([
       PLAN_FEATURES.learningPersonalization,
       PLAN_FEATURES.manualInvoice,
     ],
-  },
-  {
+  }),
+  buildInstitutionalPlan({
     id: 'institution_enterprise',
     tier: TIERS.ULTRA,
     audience: 'institution',
-    name: 'Institution Enterprise',
-    tagline: 'Custom onboarding, reporting, and commercial terms.',
-    minimumSeats: 100,
-    seatPriceMonthlyCents: null,
-    seatPriceAnnualCents: null,
+    name: 'Institution Premium',
+    tagline: 'Custom seat packs with premium onboarding and commercial terms.',
+    minimumSeats: 10,
     features: [
       PLAN_FEATURES.organizationSeats,
       PLAN_FEATURES.classroomTools,
@@ -190,8 +235,31 @@ const INSTITUTIONAL_PLANS = Object.freeze([
       PLAN_FEATURES.customOnboarding,
       PLAN_FEATURES.manualInvoice,
     ],
-  },
+  }),
 ]);
+
+function getSeatPackPrice(plan, quantity) {
+  if (!plan || plan.audience !== 'institution') return null;
+  const qty = Math.max(1, Math.floor(Number(quantity) || 0));
+  if (!qty) return null;
+  if (plan.pricePerSeatCents == null) {
+    return { quantity: qty, pricePerSeatCents: null, totalCents: null, tierApplied: null };
+  }
+  const ladder = Array.isArray(plan.bulkPricing) && plan.bulkPricing.length > 0
+    ? [...plan.bulkPricing].sort((a, b) => (a.minSeats || 0) - (b.minSeats || 0))
+    : [{ minSeats: 1, pricePerSeatCents: plan.pricePerSeatCents }];
+  let tier = ladder[0];
+  for (const step of ladder) {
+    if (qty >= (step.minSeats || 0)) tier = step;
+  }
+  const pricePerSeatCents = tier?.pricePerSeatCents ?? plan.pricePerSeatCents;
+  return {
+    quantity: qty,
+    pricePerSeatCents,
+    totalCents: pricePerSeatCents * qty,
+    tierApplied: tier?.minSeats || 1,
+  };
+}
 
 const ALL_PLANS = Object.freeze([...INDIVIDUAL_PLANS, ...INSTITUTIONAL_PLANS]);
 
@@ -231,7 +299,8 @@ function providerPriceFor(plan, interval = 'monthly', provider = BILLING_SOURCES
 function priceCentsFor(plan, interval = 'monthly') {
   if (!plan) return null;
   if (plan.audience === 'institution') {
-    return interval === 'annual' ? plan.seatPriceAnnualCents : plan.seatPriceMonthlyCents;
+    // Institutions purchase one-time seat packs; price is per-seat.
+    return plan.pricePerSeatCents;
   }
   return interval === 'annual' ? plan.annualPriceCents : plan.monthlyPriceCents;
 }
@@ -243,11 +312,12 @@ function applyPlanOverride(plan, override = null) {
     'tagline',
     'monthlyPriceCents',
     'annualPriceCents',
-    'seatPriceMonthlyCents',
-    'seatPriceAnnualCents',
+    'pricePerSeatCents',
+    'bulkPricing',
     'minimumSeats',
     'stripeMonthlyPriceId',
     'stripeAnnualPriceId',
+    'stripeSeatPackPriceId',
   ];
   const merged = { ...plan, pricingOverrideActive: true };
   fields.forEach((field) => {
@@ -267,15 +337,16 @@ function publicPlan(plan) {
     tagline: plan.tagline,
     monthlyPriceCents: plan.monthlyPriceCents,
     annualPriceCents: plan.annualPriceCents,
-    seatPriceMonthlyCents: plan.seatPriceMonthlyCents,
-    seatPriceAnnualCents: plan.seatPriceAnnualCents,
+    pricePerSeatCents: plan.pricePerSeatCents,
+    bulkPricing: Array.isArray(plan.bulkPricing) ? plan.bulkPricing : [],
     minimumSeats: plan.minimumSeats,
     dailyConversationTokens: plan.dailyConversationTokens,
+    entitlements: getTestingEntitlements(plan.tier),
     features: plan.features,
     pricingOverrideActive: !!plan.pricingOverrideActive,
     webConfigured: plan.audience === 'individual'
       ? Boolean(providerPriceFor(plan, 'monthly', BILLING_SOURCES.WEB) || plan.monthlyPriceCents === 0)
-      : false,
+      : Boolean(plan.pricePerSeatCents),
     mobileConfigured: plan.audience === 'individual'
       ? Boolean(
         providerPriceFor(plan, 'monthly', BILLING_SOURCES.IOS)
@@ -296,6 +367,7 @@ module.exports = {
   getPlan,
   getIndividualPlan,
   getInstitutionalPlan,
+  getSeatPackPrice,
   providerPriceFor,
   priceCentsFor,
   applyPlanOverride,

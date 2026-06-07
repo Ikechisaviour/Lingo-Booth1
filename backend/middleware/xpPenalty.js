@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const { createNotification } = require('../utils/notifications');
 
 const GRACE_PERIOD_MS = 48 * 60 * 60 * 1000; // 48 hours grace period
 const INTERVAL_MS = 24 * 60 * 60 * 1000; // 24-hour intervals
@@ -60,6 +61,17 @@ const checkInactivityPenalty = (paramName = 'userId') => {
 
             if (result) {
               req.xpPenalty = penalty;
+              await createNotification({
+                userId,
+                category: 'learning',
+                severity: 'warning',
+                type: 'learning.xp_decay_applied',
+                titleKey: 'notifications.xpDecayTitle',
+                bodyKey: 'notifications.xpDecayBody',
+                params: { penalty, totalXP: result.totalXP },
+                action: { labelKey: 'notifications.resumePracticeAction', route: '/home' },
+                dedupeKey: `xp-decay:${userId}:${totalIntervals}`,
+              });
             }
           }
         }
