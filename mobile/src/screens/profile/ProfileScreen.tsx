@@ -24,7 +24,7 @@ import {
   setPracticeRemindersEnabled,
 } from '../../services/practicePromptService';
 import { useAuthStore } from '../../stores/authStore';
-import { useSettingsStore } from '../../stores/settingsStore';
+import { useSettingsStore, useCurriculumVersion } from '../../stores/settingsStore';
 import LANGUAGES, { getLanguageDisplayName, getLanguageOptionLabel } from '../../config/languages';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { useAppColors, type AppColors } from '../../config/theme';
@@ -51,7 +51,10 @@ const ProfileScreen: React.FC = () => {
     setVoiceMap,
     preferredVoice,
     preferredVoices,
+    setCurriculumPreference,
   } = useSettingsStore();
+  const curriculumVersion = useCurriculumVersion();
+  const [savingCurriculum, setSavingCurriculum] = useState<'v1' | 'v2' | ''>('');
   const colors = useAppColors();
   const { height: winHeight, width: winWidth } = useWindowDimensions();
   const isCompact = winHeight < 450 || winWidth < 380;
@@ -287,6 +290,26 @@ const ProfileScreen: React.FC = () => {
           ...(code === targetLanguage ? { preferredVoice: voiceName } : {}),
         });
       } catch {}
+    }
+  };
+
+  // Persist the v1/v2 curriculum choice to the server and mirror into the
+  // local store. Same endpoint web uses, so the preferences map stays one
+  // source of truth across surfaces. ClassHomeScreen's redirect effect
+  // picks up the v2 flag on the next render.
+  const handlePickCurriculumVersion = async (version: 'v1' | 'v2') => {
+    if (!userId || !targetLanguage || savingCurriculum) return;
+    setSavingCurriculum(version);
+    try {
+      await userService.updateCurriculumPreference(userId, {
+        targetLanguage,
+        version,
+      });
+      setCurriculumPreference(targetLanguage, version);
+    } catch (_) {
+      // Surface failure silently; the button resets and the learner can retry.
+    } finally {
+      setSavingCurriculum('');
     }
   };
 
@@ -820,6 +843,48 @@ const ProfileScreen: React.FC = () => {
               )}
             </Card.Content>
           </Card>
+
+          {/* Curriculum Version — only render when the active target has v2
+              available AND the learner has already made a choice (so the
+              chooser modal isn't duplicated for the first-run case). */}
+          {!curriculumVersion.isUnset && (
+            <Card style={styles.card}>
+              <Card.Content>
+                <Text variant="titleMedium" style={styles.cardTitle}>
+                  {t('curriculumVersion.settingsTitle', 'Curriculum version')}
+                </Text>
+                <Text style={styles.hintText}>
+                  {t(
+                    'curriculumVersion.settingsHint',
+                    'Switch between the classic and new {{language}} curriculum at any time.',
+                    { language: getLanguageDisplayName(targetLanguage, t) || targetLanguage },
+                  )}
+                </Text>
+                <View style={{ flexDirection: 'row', gap: 8, marginTop: 12, flexWrap: 'wrap' }}>
+                  <Button
+                    mode={curriculumVersion.isV2 ? 'contained' : 'outlined'}
+                    onPress={() => handlePickCurriculumVersion('v2')}
+                    disabled={!!savingCurriculum}
+                    icon={curriculumVersion.isV2 ? 'check' : 'lightning-bolt'}
+                  >
+                    {savingCurriculum === 'v2'
+                      ? t('common.saving', 'Saving…')
+                      : t('curriculumVersion.v2ShortLabel', 'New curriculum (v2)')}
+                  </Button>
+                  <Button
+                    mode={curriculumVersion.isV1 ? 'contained' : 'outlined'}
+                    onPress={() => handlePickCurriculumVersion('v1')}
+                    disabled={!!savingCurriculum}
+                    icon={curriculumVersion.isV1 ? 'check' : 'book-outline'}
+                  >
+                    {savingCurriculum === 'v1'
+                      ? t('common.saving', 'Saving…')
+                      : t('curriculumVersion.v1ShortLabel', 'Classic curriculum')}
+                  </Button>
+                </View>
+              </Card.Content>
+            </Card>
+          )}
 
           {/* Voice Selection */}
           <Card style={styles.card}>

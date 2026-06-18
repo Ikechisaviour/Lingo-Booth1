@@ -11,7 +11,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useAppColors, shadows, type AppColors } from '../config/theme';
 import { aiService, certificateService, classLessonService, learningHubService, userService } from '../services/api';
 import speechService from '../services/speechService';
-import { useSettingsStore } from '../stores/settingsStore';
+import { useSettingsStore, useCurriculumVersion } from '../stores/settingsStore';
 import LANGUAGES, { getLanguageDisplayName } from '../config/languages';
 import PronunciationGuide from '../components/PronunciationGuide';
 import { displayPartsForMessage, languageLabel, languageRole, speechChunksForPart, spokenPartsForMessage } from '../utils/languageSegments';
@@ -42,6 +42,10 @@ import NotificationsScreen from '../screens/profile/NotificationsScreen';
 import BillingScreen from '../screens/billing/BillingScreen';
 import InstitutionDashboardScreen from '../screens/institution/InstitutionDashboardScreen';
 import AdminScreen from '../screens/admin/AdminScreen';
+import V2HomeScreen from '../screens/curriculumV2/V2HomeScreen';
+import V2CatalogScreen from '../screens/curriculumV2/V2CatalogScreen';
+import V2ScriptOnboardingScreen from '../screens/curriculumV2/V2ScriptOnboardingScreen';
+import V2LessonRunnerScreen from '../screens/curriculumV2/V2LessonRunnerScreen';
 import ContactScreen from '../screens/support/ContactScreen';
 
 const Tab = createBottomTabNavigator();
@@ -889,10 +893,20 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
   const styles = createLocalStyles(colors);
   const { t } = useTranslation();
   const { nativeLanguage, targetLanguage } = useSettingsStore();
+  const curriculumVersion = useCurriculumVersion();
   const [classLessons, setClassLessons] = useState<ClassLesson[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [reloadKey, setReloadKey] = useState(0);
+
+  // V2 redirect — once a learner has picked v2 for the active target,
+  // the Class tab opens the v2 planner instead of the classic catalog.
+  // Switching back to v1 (from Profile) lets ClassHome render normally.
+  useEffect(() => {
+    if (curriculumVersion.isV2) {
+      navigation.replace('V2Home');
+    }
+  }, [curriculumVersion.isV2, navigation]);
 
   useEffect(() => {
     let cancelled = false;
@@ -958,7 +972,11 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
   }).filter((group) => group.tracks.length > 0), [groupedLessons]);
 
   return (
-    <View style={styles.screen}>
+    <ScrollView
+      style={styles.scrollScreen}
+      contentContainerStyle={styles.scrollScreenContent}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={styles.panel}>
         <Text style={styles.kicker}>{t('classList.kicker', 'Class')}</Text>
         <Text variant="headlineSmall" style={styles.title}>{t('classList.title', 'Learn with your tutor')}</Text>
@@ -1089,7 +1107,7 @@ const ClassHomeScreen: React.FC<any> = ({ navigation }) => {
           );
         })}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -2402,11 +2420,18 @@ const ClassLessonScreen: React.FC<any> = ({ route, navigation }) => {
   );
 };
 
+// Imported lazily-named so the ClassStack module list stays tidy. These
+// are the curriculum-v2 routes; ClassHomeScreen redirects to V2Home when
+// the learner has picked v2 (see useCurriculumVersionRedirect inside it).
 const ClassStackScreen: React.FC = () => (
   <ClassStack.Navigator screenOptions={{ headerShown: false }}>
     <ClassStack.Screen name="ClassHome" component={ClassHomeScreen} />
     <ClassStack.Screen name="ClassLesson" component={ClassLessonScreen} />
     <ClassStack.Screen name="LevelTests" component={LevelTestScreen} />
+    <ClassStack.Screen name="V2Home" component={V2HomeScreen} />
+    <ClassStack.Screen name="V2Catalog" component={V2CatalogScreen} />
+    <ClassStack.Screen name="V2ScriptOnboarding" component={V2ScriptOnboardingScreen} />
+    <ClassStack.Screen name="V2LessonRunner" component={V2LessonRunnerScreen} />
   </ClassStack.Navigator>
 );
 
@@ -2416,7 +2441,11 @@ const ExerciseHomeScreen: React.FC<any> = ({ navigation }) => {
   const { t } = useTranslation();
 
   return (
-    <View style={styles.screen}>
+    <ScrollView
+      style={styles.scrollScreen}
+      contentContainerStyle={styles.scrollScreenContent}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={styles.panel}>
         <Text style={styles.kicker}>{t('exercise.kicker', 'Exercise')}</Text>
         <Text variant="headlineSmall" style={styles.title}>{t('exercise.title', 'Choose an exercise')}</Text>
@@ -2474,7 +2503,7 @@ const ExerciseHomeScreen: React.FC<any> = ({ navigation }) => {
           <MaterialCommunityIcons name="chevron-right" color={colors.textMuted} size={24} />
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
@@ -2618,6 +2647,19 @@ const createLocalStyles = (colors: AppColors) => StyleSheet.create({
     backgroundColor: colors.background,
     padding: 18,
     justifyContent: 'center',
+  },
+  // Use this on screens whose content can exceed viewport height. The
+  // outer ScrollView gets `scrollScreen`; the inner contentContainerStyle
+  // gets `scrollScreenContent`. Do NOT add justifyContent: 'center' here
+  // — centering inside a ScrollView clips overflowing content.
+  scrollScreen: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  scrollScreenContent: {
+    padding: 18,
+    paddingBottom: 96,
+    flexGrow: 1,
   },
   panel: {
     backgroundColor: colors.surface,
