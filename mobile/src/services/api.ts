@@ -552,6 +552,17 @@ export const userService = {
       invalidateCachedGets((key) => key.includes(`/users/${userId}`));
       return response;
     }),
+  // Curriculum v2 per-target version preference (v1 = classic, v2 = next-gen).
+  // Persists server-side so a learner who picks v2 on web sees v2 on mobile
+  // and vice versa — one source of truth, no client-only state.
+  updateCurriculumPreference: (
+    userId: string,
+    payload: { targetLanguage: string; version: 'v1' | 'v2' }
+  ) =>
+    api.put(`/users/${userId}/curriculum-preference`, payload).then((response) => {
+      invalidateCachedGets((key) => key.includes(`/users/${userId}`));
+      return response;
+    }),
   changePassword: (userId: string, data: object) =>
     api.put(`/users/${userId}/password`, data),
   deleteAccount: (userId: string) =>
@@ -689,6 +700,124 @@ export const aiService = {
     cachedGet('/ai/entitlements', {}, 10000),
   sendConversationTurn: (data: object) =>
     api.post('/ai/conversation', data, { timeout: 60000 }),
+};
+
+// Curriculum v2 — the DB-backed next-gen curriculum. Mirrors
+// `curriculumV2Service` in `frontend/src/services/api.js` 1:1 so the same
+// backend endpoints serve web and mobile. Every method automatically
+// threads `targetLang` + `nativeLang` from the active language pair via
+// `currentLanguageParams()` (required by the class-language-policy audit).
+type V2EventOutcome = 'correct' | 'incorrect' | 'partial' | 'skipped';
+type V2SrsOutcome = 'again' | 'hard' | 'good' | 'easy';
+type V2ConceptKind = 'pattern' | 'vocab' | 'concept';
+type V2Skill = 'recognition' | 'production' | 'listening' | 'pronunciation';
+
+export const curriculumV2Service = {
+  listLessons: () => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get('/curriculum/v2/lessons', { params: { targetLang, nativeLang } });
+  },
+  getLesson: (id: string) => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get(`/curriculum/v2/lessons/${encodeURIComponent(id)}`, {
+      params: { targetLang, nativeLang },
+    });
+  },
+  getPlan: (params: { targetMinutes?: number } = {}) => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get('/curriculum/v2/plan', {
+      params: { ...params, targetLang, nativeLang },
+    });
+  },
+  markComplete: (id: string) =>
+    api.post(`/curriculum/v2/lessons/${encodeURIComponent(id)}/complete`),
+  getProgress: () => api.get('/curriculum/v2/progress'),
+  evaluateProduction: (payload: {
+    lessonId: string;
+    drillIndex: number;
+    fillerConceptId: string;
+    learnerText: string;
+  }) =>
+    api.post('/curriculum/v2/feedback', payload, { timeout: 30000 }),
+  evaluatePronunciation: (payload: { target: string; transcript: string }) =>
+    api.post('/curriculum/v2/pronunciation-check', payload, { timeout: 30000 }),
+  recordSrsReview: (payload: {
+    conceptId: string;
+    conceptKind: V2ConceptKind;
+    skill: V2Skill;
+    outcome: V2SrsOutcome;
+    targetLang?: string;
+  }) => {
+    const { targetLang } = currentLanguageParams();
+    return api.post(
+      '/curriculum/v2/srs/review',
+      { ...payload, targetLang: payload.targetLang || targetLang },
+      { timeout: 10000 },
+    );
+  },
+  recordEvent: (payload: {
+    conceptId: string;
+    lessonId: string;
+    lessonType: string;
+    outcome: V2EventOutcome;
+    hintUsed?: boolean;
+    latencyMs?: number;
+    sessionId?: string;
+    targetLang?: string;
+    contextSignal?: string;
+  }) => {
+    const { targetLang } = currentLanguageParams();
+    return api.post(
+      '/curriculum/v2/events',
+      { ...payload, targetLang: payload.targetLang || targetLang },
+      { timeout: 5000 },
+    );
+  },
+  // Script-onboarding (Hangul for Korean, hiragana set for Japanese, etc.).
+  // Names kept aligned with the backend route — historically "hangul".
+  getAlphabetGroups: () => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get('/curriculum/v2/hangul/groups', { params: { targetLang, nativeLang } });
+  },
+  getAlphabetProgress: () =>
+    api.get('/curriculum/v2/hangul/progress'),
+  completeAlphabetGroup: (groupId: string) =>
+    api.post(`/curriculum/v2/hangul/groups/${encodeURIComponent(groupId)}/complete`),
+  skipAlphabet: () => api.post('/curriculum/v2/hangul/skip'),
+  // Catalog
+  getCatalog: (params: object = {}) => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get('/curriculum/v2/catalog', { params: { ...params, targetLang, nativeLang } });
+  },
+  getConceptLessons: (conceptId: string, params: object = {}) => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    // `expectedStatuses` is a runtime hint read by `isExpectedStatus` in
+    // this file's response interceptor — it isn't part of Axios's typed
+    // config, so cast to `any` to thread it through without weakening
+    // the rest of the public surface.
+    return api.get(
+      `/curriculum/v2/concepts/${encodeURIComponent(conceptId)}/lessons`,
+      { params: { ...params, targetLang, nativeLang }, expectedStatuses: [404] } as any,
+    );
+  },
+  // Server-side ASR (Whisper)
+  getAsrStatus: () => api.get('/curriculum/v2/asr/status'),
+  transcribeAudio: (payload: {
+    audioBase64: string;
+    mimeType?: string;
+    language?: string;
+    prompt?: string;
+  }) =>
+    api.post(
+      '/curriculum/v2/asr/transcribe',
+      {
+        mimeType: 'audio/webm',
+        language: 'ko',
+        prompt: '',
+        ...payload,
+      },
+      { timeout: 35000, expectedStatuses: [400, 429, 502, 503] } as any,
+    ),
 };
 
 export default api;

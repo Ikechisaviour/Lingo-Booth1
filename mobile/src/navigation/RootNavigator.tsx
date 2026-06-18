@@ -18,6 +18,7 @@ import MainTabs from './MainTabs';
 import LanguageSelectScreen from '../screens/auth/LanguageSelectScreen';
 import EmailVerificationBanner from '../components/EmailVerificationBanner';
 import StepUpModal from '../components/StepUpModal';
+import CurriculumVersionModal from '../components/CurriculumVersionModal';
 
 const prefix = Linking.createURL('/');
 
@@ -141,6 +142,7 @@ const RootNavigator: React.FC = () => {
         </View>
       )}
       <StepUpModal />
+      <CurriculumVersionModal />
     </NavigationContainer>
   );
 };
