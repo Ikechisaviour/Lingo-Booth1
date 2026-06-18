@@ -129,6 +129,17 @@ const DIFFICULTIES = Object.freeze(['beginner', 'intermediate', 'advanced']);
  * @property {string[]} commonMistakes    Concrete wrong sentences English
  *                                        speakers produce, each followed by
  *                                        the correct version.
+ * @property {CulturalNote} [culturalNote] Optional culture/context callout —
+ *                                         e.g. age counting, family vocab by
+ *                                         relationship, bowing triggers. Kept
+ *                                         on ContrastNote rather than its own
+ *                                         lesson type to keep the type union
+ *                                         finite.
+ */
+/**
+ * @typedef {Object} CulturalNote
+ * @property {string} text                Short paragraph of context.
+ * @property {string} [example]           One illustrative example.
  */
 
 // ============================================================================

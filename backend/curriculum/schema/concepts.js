@@ -22,6 +22,14 @@ const { FUNCTIONS } = require('./functions');
  * @property {string} gloss           Short English description.
  * @property {string} [function]      Communicative function (from FUNCTIONS).
  * @property {string[]} [prerequisites]  Other concept IDs this depends on.
+ * @property {'A1'|'A2'|'B1'|'B2'|'C1'|'C2'} [cefr]   CEFR level tag.
+ * @property {1|2|3|4|5|6} [topik]                    TOPIK level tag.
+ * @property {string[]} [requiresConjugation]         Conjugation classes this
+ *                                                    pattern surfaces (e.g.
+ *                                                    'ㅂ-irregular'). Future
+ *                                                    ConjugationDrill lessons
+ *                                                    will harvest patterns
+ *                                                    by these tags.
  */
 
 const CONCEPTS = [
@@ -32,6 +40,9 @@ const CONCEPTS = [
     gloss: 'Have you ever V-ed?',
     function: FUNCTIONS.EXPERIENCE,
     prerequisites: [],
+    cefr: 'A2',
+    topik: 2,
+    requiresConjugation: ['아/어-stem'],
   },
   {
     id: 'pattern.preference.want_to',
@@ -39,6 +50,8 @@ const CONCEPTS = [
     gloss: 'I want to V',
     function: FUNCTIONS.PREFERENCE,
     prerequisites: [],
+    cefr: 'A1',
+    topik: 1,
   },
   {
     id: 'pattern.intention.going_to',
@@ -46,6 +59,9 @@ const CONCEPTS = [
     gloss: 'I will / am going to V',
     function: FUNCTIONS.INTENTION,
     prerequisites: [],
+    cefr: 'A1',
+    topik: 1,
+    requiresConjugation: ['(으)ㄹ-stem'],
   },
   {
     id: 'pattern.ability.can_cannot',
@@ -53,6 +69,9 @@ const CONCEPTS = [
     gloss: 'I can / cannot V',
     function: FUNCTIONS.ABILITY,
     prerequisites: [],
+    cefr: 'A1',
+    topik: 1,
+    requiresConjugation: ['(으)ㄹ-stem'],
   },
   {
     id: 'pattern.reason.because',
@@ -60,6 +79,9 @@ const CONCEPTS = [
     gloss: 'Because V/A, ...',
     function: FUNCTIONS.REASON,
     prerequisites: [],
+    cefr: 'A2',
+    topik: 2,
+    requiresConjugation: ['아/어-stem'],
   },
   {
     id: 'pattern.condition.if',
@@ -67,7 +89,100 @@ const CONCEPTS = [
     gloss: 'If V/A, ...',
     function: FUNCTIONS.CONDITION,
     prerequisites: [],
+    cefr: 'A2',
+    topik: 2,
+    requiresConjugation: ['(으)면'],
   },
+
+  // ─── A1 core (first authoring batch — identification + topic + subject + location + existence) ───
+  {
+    id: 'pattern.identification.be',
+    kind: 'pattern',
+    gloss: 'I am X / This is X — copula 이에요 / 예요',
+    function: FUNCTIONS.IDENTIFICATION,
+    prerequisites: [],
+    cefr: 'A1',
+    topik: 1,
+    requiresConjugation: ['copula-batchim-rule'],
+  },
+  {
+    id: 'pattern.topic.eun_neun',
+    kind: 'pattern',
+    gloss: 'Topic marker 은 / 는 ("as for X")',
+    function: FUNCTIONS.DESCRIPTION,
+    prerequisites: ['pattern.identification.be'],
+    cefr: 'A1',
+    topik: 1,
+    requiresConjugation: ['particle-batchim-rule'],
+  },
+  {
+    id: 'pattern.subject.i_ga',
+    kind: 'pattern',
+    gloss: 'Subject marker 이 / 가',
+    function: FUNCTIONS.DESCRIPTION,
+    prerequisites: ['pattern.identification.be'],
+    cefr: 'A1',
+    topik: 1,
+    requiresConjugation: ['particle-batchim-rule'],
+  },
+  {
+    id: 'pattern.location.e',
+    kind: 'pattern',
+    gloss: 'Location / destination particle 에 — at / to a place',
+    function: FUNCTIONS.LOCATION,
+    prerequisites: [],
+    cefr: 'A1',
+    topik: 1,
+  },
+  {
+    id: 'pattern.existence.iss_eobs',
+    kind: 'pattern',
+    gloss: 'Existence / possession — 있어요 / 없어요',
+    function: FUNCTIONS.EXISTENCE,
+    prerequisites: ['pattern.subject.i_ga'],
+    cefr: 'A1',
+    topik: 1,
+  },
+
+  // ─── Lexemes used by the A1 core batch ───
+  // People & roles
+  { id: 'lexeme.student',  kind: 'lexeme', gloss: 'student',          target: '학생',     native: 'student' },
+  { id: 'lexeme.teacher',  kind: 'lexeme', gloss: 'teacher',          target: '선생님',   native: 'teacher' },
+  { id: 'lexeme.doctor',   kind: 'lexeme', gloss: 'doctor',           target: '의사',     native: 'doctor' },
+  { id: 'lexeme.friend',   kind: 'lexeme', gloss: 'friend',           target: '친구',     native: 'friend' },
+  { id: 'lexeme.korean_person', kind: 'lexeme', gloss: 'Korean person', target: '한국 사람', native: 'Korean (person)' },
+  { id: 'lexeme.american_person', kind: 'lexeme', gloss: 'American person', target: '미국 사람', native: 'American (person)' },
+  // Names (treated as concepts so drills can substitute them; "Sarah" + "Minho" feel realistic for ko-en learners)
+  { id: 'lexeme.name_sarah', kind: 'lexeme', gloss: 'Sarah (name)',   target: '사라',     native: 'Sarah' },
+  { id: 'lexeme.name_minho', kind: 'lexeme', gloss: 'Minho (name)',   target: '민호',     native: 'Minho' },
+
+  // Places (school, home, work, common destinations)
+  { id: 'lexeme.school',   kind: 'lexeme', gloss: 'school',           target: '학교',     native: 'school' },
+  { id: 'lexeme.home',     kind: 'lexeme', gloss: 'home / house',     target: '집',       native: 'home / house' },
+  { id: 'lexeme.company',  kind: 'lexeme', gloss: 'company / office', target: '회사',     native: 'company / office' },
+  { id: 'lexeme.cafe',     kind: 'lexeme', gloss: 'café',             target: '카페',     native: 'café' },
+  { id: 'lexeme.library',  kind: 'lexeme', gloss: 'library',          target: '도서관',   native: 'library' },
+  { id: 'lexeme.restaurant', kind: 'lexeme', gloss: 'restaurant',     target: '식당',     native: 'restaurant' },
+  { id: 'lexeme.park',     kind: 'lexeme', gloss: 'park',             target: '공원',     native: 'park' },
+  { id: 'lexeme.market',   kind: 'lexeme', gloss: 'market',           target: '시장',     native: 'market' },
+
+  // Things — used in 있다/없다 and 이/가
+  { id: 'lexeme.book',     kind: 'lexeme', gloss: 'book',             target: '책',       native: 'book' },
+  { id: 'lexeme.water',    kind: 'lexeme', gloss: 'water',            target: '물',       native: 'water' },
+  { id: 'lexeme.bag',      kind: 'lexeme', gloss: 'bag',              target: '가방',     native: 'bag' },
+  { id: 'lexeme.phone',    kind: 'lexeme', gloss: 'phone',            target: '핸드폰',   native: 'phone' },
+  { id: 'lexeme.money',    kind: 'lexeme', gloss: 'money',            target: '돈',       native: 'money' },
+  { id: 'lexeme.dog',      kind: 'lexeme', gloss: 'dog',              target: '개',       native: 'dog' },
+  { id: 'lexeme.cat',      kind: 'lexeme', gloss: 'cat',              target: '고양이',   native: 'cat' },
+  { id: 'lexeme.car',      kind: 'lexeme', gloss: 'car',              target: '차',       native: 'car' },
+  { id: 'lexeme.time',     kind: 'lexeme', gloss: 'time',             target: '시간',     native: 'time' },
+
+  // Time-of-day / day-of-week (slot category TIME)
+  { id: 'lexeme.today',    kind: 'lexeme', gloss: 'today',            target: '오늘',     native: 'today' },
+  { id: 'lexeme.tomorrow', kind: 'lexeme', gloss: 'tomorrow',         target: '내일',     native: 'tomorrow' },
+  { id: 'lexeme.weekend',  kind: 'lexeme', gloss: 'weekend',          target: '주말',     native: 'weekend' },
+  { id: 'lexeme.monday',   kind: 'lexeme', gloss: 'Monday',           target: '월요일',   native: 'Monday' },
+  { id: 'lexeme.morning',  kind: 'lexeme', gloss: 'morning',          target: '아침',     native: 'morning' },
   // ---- Lexemes used as slot fillers in the "have you ever" slice ----
   // (these are also present in v1 Flashcards; we re-declare them here as
   //  concepts so the validator can verify references and so the API can

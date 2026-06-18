@@ -11,6 +11,7 @@ import LANGUAGES, {
 } from '../config/languages';
 import { normalizeLanguageCode } from '../utils/languagePairPolicy';
 import { formatVoiceOptions } from '../utils/voiceDisplay';
+import { hydrateCurriculumPreferences } from '../hooks/useCurriculumVersion';
 import './ProfilePage.css';
 
 const profileTabs = ['profile', 'settings', 'account'];
@@ -326,6 +327,25 @@ function ProfilePage({ onLogout }) {
       setError(err.response?.data?.message || t('profilePage.failedToLoad'));
     } finally {
       setModeLoading(false);
+    }
+  };
+
+  const handleCurriculumPreference = async (targetLanguage, version) => {
+    try {
+      const res = await userService.updateCurriculumPreference(userId, { targetLanguage, version });
+      setUser((prev) => ({
+        ...(prev || {}),
+        curriculumPreferences: res.data?.curriculumPreferences || prev?.curriculumPreferences,
+        curriculumV2: res.data?.curriculumV2 || prev?.curriculumV2,
+      }));
+      hydrateCurriculumPreferences(res.data?.curriculumV2);
+      setSaveMessage(t('profilePage.curriculumPreferenceSaved', 'Curriculum preference updated.'));
+      setTimeout(() => setSaveMessage(''), 4000);
+      if (version === 'v2') {
+        navigate('/learn/v2');
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || t('profilePage.failedToLoad'));
     }
   };
 
@@ -837,6 +857,53 @@ function ProfilePage({ onLogout }) {
                   selectedVoice: selectedNativeVoice,
                 })}
               </div>
+
+              {/* Curriculum version (per target language) — only shown when v2 is available */}
+              {Array.isArray(user?.curriculumV2?.availableTargets) && user.curriculumV2.availableTargets.length > 0 && (
+                <div className="card">
+                  <h2>{t('profilePage.curriculumVersion', 'Curriculum version')}</h2>
+                  <p className="voice-description">
+                    {t(
+                      'profilePage.curriculumVersionDesc',
+                      'Pick the version of the curriculum you want to use for each supported target language. You can switch any time.',
+                    )}
+                  </p>
+                  {user.curriculumV2.availableTargets.map((lang) => {
+                    const current = (user.curriculumV2.preferences || {})[lang] || null;
+                    const langName = getLanguageDisplayName(lang, t) || lang.toUpperCase();
+                    return (
+                      <div key={lang} className="xp-mode-selector" style={{ marginBottom: 12 }}>
+                        <div
+                          className={`xp-mode-option ${current === 'v2' ? 'active' : ''}`}
+                          onClick={() => current !== 'v2' && handleCurriculumPreference(lang, 'v2')}
+                          role="button"
+                          tabIndex={0}
+                        >
+                          <div className="xp-mode-icon">⚡</div>
+                          <div className="xp-mode-info">
+                            <span className="xp-mode-name">{t('profilePage.curriculumV2Name', '{{language}} — new curriculum', { language: langName })}</span>
+                            <span className="xp-mode-desc">{t('profilePage.curriculumV2Desc', 'Pattern drills, stories, cloze, vocab SRS, pronunciation — planner-sequenced.')}</span>
+                          </div>
+                          {current === 'v2' && <span className="voice-check">&#10003;</span>}
+                        </div>
+                        <div
+                          className={`xp-mode-option ${current === 'v1' ? 'active' : ''}`}
+                          onClick={() => current !== 'v1' && handleCurriculumPreference(lang, 'v1')}
+                          role="button"
+                          tabIndex={0}
+                        >
+                          <div className="xp-mode-icon">📘</div>
+                          <div className="xp-mode-info">
+                            <span className="xp-mode-name">{t('profilePage.curriculumV1Name', '{{language}} — classic curriculum', { language: langName })}</span>
+                            <span className="xp-mode-desc">{t('profilePage.curriculumV1Desc', 'Vocabulary lists and class lessons you already know.')}</span>
+                          </div>
+                          {current === 'v1' && <span className="voice-check">&#10003;</span>}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
 
               {/* XP Mode */}
               <div className="card">

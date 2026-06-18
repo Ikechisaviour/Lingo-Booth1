@@ -104,12 +104,17 @@ function loadLessons() {
   return CACHED_LESSONS;
 }
 
+const { userPrefersV2, isV2AvailableForTarget } = require('../curriculum/v2Availability');
+
 function isV2Enabled(req) {
-  // Pilot gate: admin role or an explicit user-level flag.
   if (req.user?.role === 'admin') return true;
   if (req.user?.featureFlags?.curriculumV2) return true;
-  // Permissive default during pilot — the frontend gate is what most users hit.
-  // Tighten this before any wider rollout.
+  // Learner opted in for their current target language via the version-picker
+  // modal or settings toggle.
+  const target = req.user?.targetLanguage;
+  if (target && isV2AvailableForTarget(target) && userPrefersV2(req.user, target)) {
+    return true;
+  }
   return Boolean(process.env.CURRICULUM_V2_OPEN_PILOT);
 }
 
@@ -419,6 +424,86 @@ router.post('/srs/review', verifyToken, async (req, res) => {
   } catch (err) {
     console.error('Curriculum v2 SRS review failed:', err.message || err);
     res.status(500).json({ message: 'Could not record review.' });
+  }
+});
+
+// ─── Hangul onboarding ──────────────────────────────────────────────────
+// Korean-only flow that sits outside the regular planner. Runs once before
+// A1 patterns are unlocked, but always reachable later as a refresher.
+const Hangul = require('../curriculum/hangul');
+const User = require('../models/User');
+
+router.get('/hangul/groups', verifyToken, (req, res) => {
+  res.json({ groups: Hangul.GROUPS });
+});
+
+router.get('/hangul/progress', verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select('hangulProgress');
+    const progress = user?.hangulProgress || { completedGroups: [], onboardingCompletedAt: null, lastVisitedAt: null };
+    res.json({
+      completedGroups: progress.completedGroups || [],
+      onboardingCompletedAt: progress.onboardingCompletedAt || null,
+      lastVisitedAt: progress.lastVisitedAt || null,
+      allGroupIds: Hangul.GROUP_IDS,
+      onboardingComplete: Hangul.isOnboardingComplete(progress),
+    });
+  } catch (err) {
+    console.error('Hangul progress fetch failed:', err.message || err);
+    res.status(500).json({ message: 'Could not load Hangul progress.' });
+  }
+});
+
+// Mark Hangul onboarding skipped without walking the lessons. Stamps
+// onboardingCompletedAt but leaves completedGroups untouched so the learner
+// can still return and complete individual groups any time.
+router.post('/hangul/skip', verifyToken, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    if (!user) return res.status(404).json({ message: 'User not found.' });
+    user.hangulProgress = user.hangulProgress || { completedGroups: [], onboardingCompletedAt: null, lastVisitedAt: null };
+    if (!user.hangulProgress.onboardingCompletedAt) {
+      user.hangulProgress.onboardingCompletedAt = new Date();
+    }
+    user.hangulProgress.lastVisitedAt = new Date();
+    await user.save();
+    res.json({
+      completedGroups: user.hangulProgress.completedGroups || [],
+      onboardingCompletedAt: user.hangulProgress.onboardingCompletedAt,
+      onboardingComplete: true,
+      skipped: true,
+    });
+  } catch (err) {
+    console.error('Hangul skip failed:', err.message || err);
+    res.status(500).json({ message: 'Could not skip onboarding.' });
+  }
+});
+
+router.post('/hangul/groups/:groupId/complete', verifyToken, async (req, res) => {
+  const groupId = String(req.params.groupId || '');
+  if (!Hangul.getGroup(groupId)) {
+    return res.status(404).json({ message: 'Unknown Hangul group.' });
+  }
+  try {
+    const user = await User.findById(req.userId);
+    if (!user) return res.status(404).json({ message: 'User not found.' });
+    user.hangulProgress = user.hangulProgress || { completedGroups: [], onboardingCompletedAt: null, lastVisitedAt: null };
+    const completed = new Set(user.hangulProgress.completedGroups || []);
+    completed.add(groupId);
+    user.hangulProgress.completedGroups = Array.from(completed);
+    user.hangulProgress.lastVisitedAt = new Date();
+    if (!user.hangulProgress.onboardingCompletedAt && Hangul.isOnboardingComplete(user.hangulProgress)) {
+      user.hangulProgress.onboardingCompletedAt = new Date();
+    }
+    await user.save();
+    res.json({
+      completedGroups: user.hangulProgress.completedGroups,
+      onboardingCompletedAt: user.hangulProgress.onboardingCompletedAt,
+      onboardingComplete: Hangul.isOnboardingComplete(user.hangulProgress),
+    });
+  } catch (err) {
+    console.error('Hangul group complete failed:', err.message || err);
+    res.status(500).json({ message: 'Could not save progress.' });
   }
 });
 

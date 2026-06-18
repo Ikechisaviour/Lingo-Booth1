@@ -1,0 +1,434 @@
+.hangul-page {
+  min-height: 100vh;
+  background: var(--bg, #fff);
+  padding: 32px clamp(16px, 4vw, 56px) 80px;
+  color: var(--text-primary, #101923);
+}
+
+.hangul-loading,
+.hangul-error {
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 24px;
+  text-align: center;
+  border-radius: 16px;
+  background: var(--surface, #fff);
+  border: 1px solid var(--border-light, #e7e1d8);
+}
+
+.hangul-error {
+  color: var(--heart-red, #c0392b);
+  border-color: rgba(192, 57, 43, 0.4);
+}
+
+.hangul-header {
+  max-width: 760px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.hangul-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-weight: 700;
+  color: var(--text-secondary, #5d6875);
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.hangul-skip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1.5px solid var(--border-light, #e7e1d8);
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-secondary, #5d6875);
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.hangul-skip:hover:not(:disabled) {
+  border-color: var(--primary, #58cc02);
+  color: var(--primary, #58cc02);
+}
+
+.hangul-skip:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+.hangul-link:hover {
+  color: var(--primary, #58cc02);
+}
+
+.hangul-kicker {
+  margin: 0 0 4px;
+  color: var(--primary, #58cc02);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hangul-header h1 {
+  margin: 0 0 8px;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+}
+
+.hangul-subtitle {
+  margin: 0;
+  color: var(--text-secondary, #5d6875);
+  font-size: 1.02rem;
+}
+
+.hangul-progress-track {
+  max-width: 760px;
+  margin: 0 auto 32px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 8px;
+}
+
+.hangul-progress-step {
+  background: var(--bg-secondary, #f7f3ed);
+  border: 1.5px solid var(--border-light, #e7e1d8);
+  border-radius: 999px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  color: var(--text-secondary, #5d6875);
+  font: inherit;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.hangul-progress-step:hover { transform: translateY(-1px); }
+
+.hangul-progress-step.active {
+  background: var(--primary, #58cc02);
+  border-color: var(--primary, #58cc02);
+  color: #fff;
+}
+
+.hangul-progress-step.done {
+  background: rgba(88, 204, 2, 0.12);
+  border-color: var(--primary, #58cc02);
+  color: var(--primary, #58cc02);
+}
+
+.hangul-card {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: var(--surface, #fff);
+  border-radius: 22px;
+  border: 1px solid var(--border-light, #e7e1d8);
+  box-shadow: 0 20px 48px rgba(16, 25, 35, 0.08);
+  padding: clamp(24px, 4vw, 36px);
+}
+
+.hangul-card-head {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.hangul-card-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: rgba(88, 204, 2, 0.12);
+  color: var(--primary, #58cc02);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.hangul-card-head h2 {
+  margin: 0 0 6px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.hangul-card-subtitle {
+  margin: 0;
+  color: var(--text-secondary, #5d6875);
+}
+
+.hangul-jamo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.hangul-jamo-card {
+  background: var(--bg-secondary, #f7f3ed);
+  border: 1px solid var(--border-light, #e7e1d8);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hangul-jamo-letter {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  position: relative;
+}
+
+.hangul-jamo-letter strong {
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.hangul-jamo-letter small {
+  color: var(--text-secondary, #5d6875);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.hangul-speak {
+  background: transparent;
+  border: 0;
+  padding: 6px;
+  font-size: 1rem;
+  color: var(--primary, #58cc02);
+  cursor: pointer;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hangul-speak:hover {
+  background: rgba(88, 204, 2, 0.12);
+}
+
+.hangul-speak-inline {
+  background: transparent;
+  border: 0;
+  padding: 2px 6px;
+  font-size: 0.9rem;
+  color: var(--primary, #58cc02);
+  cursor: pointer;
+  margin-right: 4px;
+}
+
+.hangul-jamo-sound {
+  margin: 0;
+  color: var(--text-secondary, #5d6875);
+  font-style: italic;
+}
+
+.hangul-jamo-examples {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hangul-jamo-examples li {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.hangul-jamo-examples strong {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.hangul-jamo-examples span {
+  color: var(--text-secondary, #5d6875);
+}
+
+.hangul-jamo-tips {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: var(--text-secondary, #5d6875);
+  border-top: 1px dashed var(--border-light, #e7e1d8);
+  padding-top: 8px;
+}
+
+.hangul-structure {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.hangul-structure-notes {
+  background: var(--bg-secondary, #f7f3ed);
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hangul-structure-notes li {
+  line-height: 1.6;
+}
+
+.hangul-structure-examples {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.hangul-structure-example {
+  background: var(--bg-secondary, #f7f3ed);
+  border: 1px solid var(--border-light, #e7e1d8);
+  border-radius: 14px;
+  padding: 14px 16px;
+  position: relative;
+}
+
+.hangul-structure-example strong {
+  display: block;
+  font-size: 2.4rem;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.hangul-structure-example small {
+  display: block;
+  color: var(--text-secondary, #5d6875);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.hangul-structure-example p {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: var(--text-secondary, #5d6875);
+}
+
+.hangul-structure-example em {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.hangul-practice {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hangul-practice-instructions {
+  margin: 0;
+  color: var(--text-secondary, #5d6875);
+  font-style: italic;
+}
+
+.hangul-practice-tier h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: var(--text-secondary, #5d6875);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.hangul-practice-tier ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+.hangul-practice-tier li {
+  background: var(--bg-secondary, #f7f3ed);
+  border: 1px solid var(--border-light, #e7e1d8);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.hangul-practice-tier strong {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.hangul-practice-tier details {
+  margin-left: auto;
+  font-size: 0.85rem;
+}
+
+.hangul-practice-tier summary {
+  cursor: pointer;
+  color: var(--primary, #58cc02);
+  font-weight: 700;
+}
+
+.hangul-card-foot {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hangul-primary,
+.hangul-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 14px;
+  font: inherit;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.hangul-primary {
+  background: var(--primary, #58cc02);
+  color: #fff;
+  border: 0;
+  box-shadow: 0 6px 0 var(--primary-hover, #4ba802);
+}
+
+.hangul-primary:hover:not(:disabled) { transform: translateY(-1px); }
+.hangul-primary:disabled { opacity: 0.6; cursor: progress; }
+
+.hangul-secondary {
+  background: var(--bg-secondary, #f7f3ed);
+  color: var(--text-primary);
+  border: 1px solid var(--border-light, #e7e1d8);
+}
+
+.hangul-secondary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+@media (max-width: 720px) {
+  .hangul-progress-track {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .hangul-jamo-grid {
+    grid-template-columns: 1fr;
+  }
+}

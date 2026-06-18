@@ -35,7 +35,27 @@ export default function SessionShellPage() {
   const [plan, setPlan] = useState({ sequence: [], totalMinutes: 0, reviewsSelected: 0, boostsApplied: [] });
   const [currentIdx, setCurrentIdx] = useState(0);
   const [doneIds, setDoneIds] = useState(new Set());
+  const [showRomanization, setShowRomanization] = useState(() => localStorage.getItem('showRomanization') === 'true');
   const sessionId = useMemo(() => makeSessionId(), []);
+
+  // Hangul gate — Korean learners must finish onboarding before A1 grammar.
+  // Once finished, the link stays available as a refresher.
+  useEffect(() => {
+    if (!enabled) return;
+    let cancelled = false;
+    (async () => {
+      try {
+        const { data } = await curriculumV2Service.getHangulProgress();
+        if (!cancelled && !data?.onboardingCompletedAt) {
+          navigate('/learn/v2/hangul', { replace: true });
+        }
+      } catch (_) {
+        // If the check fails (no backend, no auth, etc.) we don't block
+        // the learner — they can still try to load grammar.
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [enabled, navigate]);
 
   useEffect(() => {
     if (!enabled) return;
@@ -57,6 +77,23 @@ export default function SessionShellPage() {
     })();
     return () => { cancelled = true; };
   }, [enabled]);
+
+  const toggleRomanization = useCallback(() => {
+    setShowRomanization((prev) => {
+      const next = !prev;
+      localStorage.setItem('showRomanization', String(next));
+      if (typeof document !== 'undefined') {
+        document.documentElement.classList.toggle('show-romanization', next);
+      }
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return undefined;
+    document.documentElement.classList.toggle('show-romanization', showRomanization);
+    return () => document.documentElement.classList.remove('show-romanization');
+  }, [showRomanization]);
 
   const handleLessonComplete = useCallback(async () => {
     const lesson = plan.sequence[currentIdx];
@@ -144,6 +181,24 @@ export default function SessionShellPage() {
 
   return (
     <div className="v2-shell">
+      <div className="v2-shell__header-actions">
+        <button
+          type="button"
+          className="v2-shell__action-btn"
+          onClick={() => navigate('/learn/v2/hangul?mode=refresher')}
+          aria-label={t('curriculumV2.hangulRefresher', 'Review Hangul')}
+        >
+          {t('curriculumV2.hangulRefresher', 'Review Hangul')}
+        </button>
+        <label className="v2-shell__toggle">
+          <input
+            type="checkbox"
+            checked={showRomanization}
+            onChange={toggleRomanization}
+          />
+          <span>{t('curriculumV2.showRomanization', 'Show romanization')}</span>
+        </label>
+      </div>
       <div className="v2-shell__progress">
         {plan.sequence.map((l, i) => {
           const cls = doneIds.has(l.id) ? 'is-done' : i === currentIdx ? 'is-current' : '';

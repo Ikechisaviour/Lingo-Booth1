@@ -101,6 +101,8 @@ function LanguageSelectPage({ setIsGuest, onLogout }) {
         try {
           await userService.updateProfile(userId, { nativeLanguage: canonicalNative, targetLanguage: canonicalTarget });
           localStorage.removeItem('needsLanguageSetup');
+          // Tell the curriculum-version gate to re-evaluate (new target may have v2).
+          window.dispatchEvent(new CustomEvent('targetLanguageChanged', { detail: { targetLanguage: canonicalTarget } }));
           navigate('/');
         } catch {
           setSaving(false);

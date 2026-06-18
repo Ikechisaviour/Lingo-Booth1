@@ -13,6 +13,20 @@ const { getAiEntitlements } = require('../utils/subscription');
 const { recordLearningEvent } = require('../utils/xpRewards');
 const { fullNameValidation } = require('../utils/fullName');
 const { syncInstitutionAccessForUser } = require('../utils/institutionAccess');
+const {
+  V2_AVAILABLE_TARGETS,
+  isV2AvailableForTarget,
+  normalizeLang,
+} = require('../curriculum/v2Availability');
+
+function serializeCurriculumPreferences(user) {
+  const prefs = user?.curriculumPreferences;
+  if (!prefs) return {};
+  if (typeof prefs.entries === 'function') {
+    return Object.fromEntries(prefs.entries());
+  }
+  return { ...prefs };
+}
 
 // All user routes require authentication + ownership check
 router.use(verifyToken);
@@ -29,6 +43,16 @@ router.get('/:userId', isOwner('userId'), checkInactivityPenalty(), async (req, 
     userObj.hasPassword = !!user.password;
     userObj.aiEntitlements = getAiEntitlements(user);
     userObj.subscriptionTier = userObj.aiEntitlements.subscriptionTier;
+    userObj.curriculumPreferences = serializeCurriculumPreferences(user);
+    userObj.curriculumV2 = {
+      availableTargets: V2_AVAILABLE_TARGETS,
+      preferences: userObj.curriculumPreferences,
+      currentTarget: user.targetLanguage || null,
+      currentVersion: user.targetLanguage
+        ? (userObj.curriculumPreferences[normalizeLang(user.targetLanguage)] || null)
+        : null,
+      isV2AvailableForCurrentTarget: isV2AvailableForTarget(user.targetLanguage),
+    };
     delete userObj.password;
     res.json(userObj);
   } catch (error) {
@@ -96,6 +120,44 @@ router.put('/:userId', isOwner('userId'), async (req, res) => {
   } catch (error) {
     console.error('Update profile error:', error);
     res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Set/update the learner's curriculum-version preference for one target language.
+// Body: { targetLanguage: 'ko', version: 'v1' | 'v2' }
+router.put('/:userId/curriculum-preference', isOwner('userId'), async (req, res) => {
+  try {
+    const target = normalizeLang(req.body?.targetLanguage);
+    const version = String(req.body?.version || '').toLowerCase();
+    if (!target) return res.status(400).json({ message: 'targetLanguage is required' });
+    if (!['v1', 'v2'].includes(version)) {
+      return res.status(400).json({ message: "version must be 'v1' or 'v2'" });
+    }
+    if (version === 'v2' && !isV2AvailableForTarget(target)) {
+      return res.status(400).json({ message: 'Curriculum v2 is not available for that language yet.' });
+    }
+
+    const user = await User.findById(req.params.userId);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user.curriculumPreferences) user.curriculumPreferences = new Map();
+    user.curriculumPreferences.set(target, version);
+    await user.save();
+
+    res.json({
+      curriculumPreferences: serializeCurriculumPreferences(user),
+      curriculumV2: {
+        availableTargets: V2_AVAILABLE_TARGETS,
+        preferences: serializeCurriculumPreferences(user),
+        currentTarget: user.targetLanguage || null,
+        currentVersion: user.targetLanguage
+          ? (serializeCurriculumPreferences(user)[normalizeLang(user.targetLanguage)] || null)
+          : null,
+        isV2AvailableForCurrentTarget: isV2AvailableForTarget(user.targetLanguage),
+      },
+    });
+  } catch (error) {
+    console.error('Curriculum preference error:', error);
+    res.status(500).json({ message: 'Could not save curriculum preference' });
   }
 });
 
@@ -186,6 +248,55 @@ router.get('/:userId/activity-state', isOwner('userId'), checkInactivityPenalty(
     });
   } catch (error) {
     console.error('Get activity state error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// --- Flashcard shuffle seed (stable for 12h, shared across devices) ---
+const FLASHCARD_SEED_TTL_MS = 12 * 60 * 60 * 1000;
+
+function newShuffleSeed() {
+  // 1..2147483647 — never 0 (a 0 seed degenerates the client/server PRNG).
+  return Math.floor(Math.random() * 2147483646) + 1;
+}
+
+// GET resolves the current seed: reuse it if the 12h window is still open,
+// otherwise mint a fresh one and persist it. (Write-on-read is intentional.)
+router.get('/:userId/flashcard-seed', isOwner('userId'), async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId).select('flashcardShuffleSeed flashcardShuffleSeedAt');
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    const seededAt = user.flashcardShuffleSeedAt ? new Date(user.flashcardShuffleSeedAt).getTime() : 0;
+    const valid = user.flashcardShuffleSeed != null && (Date.now() - seededAt) < FLASHCARD_SEED_TTL_MS;
+    if (valid) {
+      return res.json({ seed: user.flashcardShuffleSeed, regenerated: false });
+    }
+    const seed = newShuffleSeed();
+    await User.findByIdAndUpdate(req.params.userId, {
+      flashcardShuffleSeed: seed,
+      flashcardShuffleSeedAt: new Date(),
+    });
+    return res.json({ seed, regenerated: true });
+  } catch (error) {
+    console.error('Resolve flashcard seed error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// POST forces a fresh seed and restarts the 12h window (manual reshuffle).
+router.post('/:userId/flashcard-seed', isOwner('userId'), async (req, res) => {
+  try {
+    const seed = newShuffleSeed();
+    const user = await User.findByIdAndUpdate(
+      req.params.userId,
+      { flashcardShuffleSeed: seed, flashcardShuffleSeedAt: new Date() },
+      { new: true }
+    ).select('flashcardShuffleSeed');
+    if (!user) return res.status(404).json({ message: 'User not found' });
+    res.json({ seed: user.flashcardShuffleSeed });
+  } catch (error) {
+    console.error('Refresh flashcard seed error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });

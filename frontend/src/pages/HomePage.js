@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import { learningHubService, userService, quizService } from '../services/api';
 import { getTargetLangName, getTargetLangCode } from '../config/languages';
+import { useCurriculumVersion } from '../hooks/useCurriculumVersion';
 import './HomePage.css';
 
 function pairGoalOptions(t) {
@@ -33,6 +34,7 @@ function HomePage() {
   const username = localStorage.getItem('username');
   const isAdmin = userRole === 'admin';
   const isGuest = localStorage.getItem('guestMode') === 'true';
+  const { isV2: onV2Curriculum } = useCurriculumVersion();
   const [xpStats, setXpStats] = useState(null);
   const [gamification, setGamification] = useState(null);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
@@ -173,6 +175,10 @@ function HomePage() {
   const leagueBadges = { bronze: '🥉', silver: '🥈', gold: '🥇', diamond: '💎' };
 
   const handleContinue = () => {
+    if (onV2Curriculum) {
+      navigate('/learn/v2');
+      return;
+    }
     if (learningHub?.nextAction?.route) {
       navigate(learningHub.nextAction.route);
       return;
@@ -186,6 +192,10 @@ function HomePage() {
   };
 
   const handleLearningAction = (action) => {
+    if (onV2Curriculum) {
+      navigate('/learn/v2');
+      return;
+    }
     if (action?.route) {
       navigate(action.route);
       return;
@@ -223,9 +233,11 @@ function HomePage() {
       : lastActivity?.type === 'flashcard'
         ? t('home.continueFlashcards')
         : t('learningHub.startGuidedClass', 'Start one guided class'));
-  const primaryActionRoute = learningHub?.nextAction?.route
-    || (lastActivity?.type === 'quiz' && lastActivity.quizId ? `/quiz/${lastActivity.quizId}` : '')
-    || (lastActivity?.type === 'flashcard' ? '/flashcards' : '/class');
+  const primaryActionRoute = onV2Curriculum
+    ? '/learn/v2'
+    : (learningHub?.nextAction?.route
+      || (lastActivity?.type === 'quiz' && lastActivity.quizId ? `/quiz/${lastActivity.quizId}` : '')
+      || (lastActivity?.type === 'flashcard' ? '/flashcards' : '/class'));
 
   const dueReviewCount = learningHub?.reviewQueue?.dueSavedItems?.length || 0;
   const totalReviewCount = learningHub?.reviewQueue?.counts?.total || dueReviewCount;

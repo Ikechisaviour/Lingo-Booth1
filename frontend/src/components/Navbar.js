@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { userService } from '../services/api';
+import { useCurriculumVersion } from '../hooks/useCurriculumVersion';
 import BrandLogo from './BrandLogo';
 import NotificationCenter from './NotificationCenter';
 import './Navbar.css';
@@ -22,6 +23,8 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
     }
   })();
   const canManageInstitution = !isGuest && !!storedEntitlements.canManageOrganization;
+  const { isV2: useV2 } = useCurriculumVersion();
+  const classPath = useV2 ? '/learn/v2' : '/class';
 
   // Sync challenge mode theme with DB state.
   useEffect(() => {
@@ -87,6 +90,9 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
     paths.some((path) => location.pathname === path || location.pathname.startsWith(`${path}/`));
 
   const exerciseActive = isActiveSection(['/exercise', '/quiz', '/flashcards', '/writing', '/review']);
+  const classActive = useV2
+    ? isActiveSection(['/learn/v2', '/learn'])
+    : isActiveSection(['/class']);
 
   return (
     <nav className={`navbar${challengeMode ? ' challenge-active' : ''}`}>
@@ -120,42 +126,49 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
           </li>
 
           <li className="nav-item">
-            <Link to="/class" className={`nav-link ${isActiveSection(['/class']) ? 'active' : ''}`}>
+            <Link to={classPath} className={`nav-link ${classActive ? 'active' : ''}`}>
               <span className="nav-icon">&#127979;</span>
-              <span className="nav-text">{t('navbar.class', 'Class')}</span>
+              <span className="nav-text">
+                {useV2 ? t('navbar.learn', 'Learn') : t('navbar.class', 'Class')}
+              </span>
+              {useV2 && <span className="nav-v2-badge" aria-label="Curriculum v2">v2</span>}
             </Link>
           </li>
 
-          <li className="nav-item nav-item-dropdown">
-            <Link
-              to="/exercise"
-              className={`nav-link ${exerciseActive ? 'active' : ''}`}
-              aria-haspopup="true"
-            >
-              <span className="nav-icon">&#9997;</span>
-              <span className="nav-text">{t('navbar.exercise', 'Exercise')}</span>
-            </Link>
-            <div className="nav-submenu" aria-label={t('navbar.exerciseOptions', 'Exercise options')}>
-              <Link to="/quiz" className={`nav-submenu-link ${isActiveSection(['/quiz']) ? 'active' : ''}`}>
-                <span>&#128221;</span>
-                {t('navbar.quiz', 'Quiz')}
+          {/* On v2 the planner folds Quiz / Flashcards / Writing / Review into every
+              session, so the standalone Exercise menu collapses. v1 users keep it. */}
+          {!useV2 && (
+            <li className="nav-item nav-item-dropdown">
+              <Link
+                to="/exercise"
+                className={`nav-link ${exerciseActive ? 'active' : ''}`}
+                aria-haspopup="true"
+              >
+                <span className="nav-icon">&#9997;</span>
+                <span className="nav-text">{t('navbar.exercise', 'Exercise')}</span>
               </Link>
-              <Link to="/flashcards" className={`nav-submenu-link ${isActiveSection(['/flashcards']) ? 'active' : ''}`}>
-                <span>&#127183;</span>
-                {t('navbar.flashcards', 'Flashcards')}
-              </Link>
-              <Link to="/writing" className={`nav-submenu-link ${isActiveSection(['/writing']) ? 'active' : ''}`}>
-                <span>&#9998;</span>
-                {t('navbar.writing')}
-              </Link>
-              {!isGuest && (
-                <Link to="/review" className={`nav-submenu-link ${isActiveSection(['/review']) ? 'active' : ''}`}>
-                  <span>&#8635;</span>
-                  {t('navbar.review', 'Review')}
+              <div className="nav-submenu" aria-label={t('navbar.exerciseOptions', 'Exercise options')}>
+                <Link to="/quiz" className={`nav-submenu-link ${isActiveSection(['/quiz']) ? 'active' : ''}`}>
+                  <span>&#128221;</span>
+                  {t('navbar.quiz', 'Quiz')}
                 </Link>
-              )}
-            </div>
-          </li>
+                <Link to="/flashcards" className={`nav-submenu-link ${isActiveSection(['/flashcards']) ? 'active' : ''}`}>
+                  <span>&#127183;</span>
+                  {t('navbar.flashcards', 'Flashcards')}
+                </Link>
+                <Link to="/writing" className={`nav-submenu-link ${isActiveSection(['/writing']) ? 'active' : ''}`}>
+                  <span>&#9998;</span>
+                  {t('navbar.writing')}
+                </Link>
+                {!isGuest && (
+                  <Link to="/review" className={`nav-submenu-link ${isActiveSection(['/review']) ? 'active' : ''}`}>
+                    <span>&#8635;</span>
+                    {t('navbar.review', 'Review')}
+                  </Link>
+                )}
+              </div>
+            </li>
+          )}
 
           <li className="nav-item">
             <Link to="/conversation" className={`nav-link ${isActive('/conversation') ? 'active' : ''}`}>

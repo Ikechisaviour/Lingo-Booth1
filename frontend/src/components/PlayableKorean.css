@@ -1,0 +1,63 @@
+.playable-korean {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--primary, #58cc02);
+  font: inherit;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.playable-korean:focus-visible {
+  outline: 2px solid var(--primary, #58cc02);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.playable-korean--icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  padding: 0;
+}
+
+.playable-korean--icon:hover {
+  background: rgba(88, 204, 2, 0.14);
+  transform: scale(1.05);
+}
+
+.playable-korean--icon.is-playing {
+  background: var(--primary, #58cc02);
+  color: #fff;
+  animation: playable-pulse 1.6s ease-in-out infinite;
+}
+
+.playable-korean--button {
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(88, 204, 2, 0.12);
+  color: var(--primary, #58cc02);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.playable-korean--button:hover {
+  background: rgba(88, 204, 2, 0.22);
+}
+
+.playable-korean--button.is-playing {
+  background: var(--primary, #58cc02);
+  color: #fff;
+}
+
+@keyframes playable-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(88, 204, 2, 0.4); }
+  50%      { box-shadow: 0 0 0 8px rgba(88, 204, 2, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .playable-korean--icon.is-playing { animation: none; }
+}

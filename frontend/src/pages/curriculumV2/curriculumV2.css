@@ -198,3 +198,55 @@
   border-radius: 4px;
 }
 .v2-mistake__correct { color: #166534; }
+
+/* Session-shell header actions: Hangul refresher + romanization toggle. */
+.v2-shell__header-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.v2-shell__action-btn {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.v2-shell__action-btn:hover {
+  border-color: #58cc02;
+  color: #58cc02;
+}
+
+.v2-shell__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+}
+
+.v2-shell__toggle input { cursor: pointer; }
+
+/* Romanization rendering — hidden by default; shell toggles a root class. */
+.v2-romanization {
+  display: none;
+  font-size: 0.78rem;
+  color: #64748b;
+  font-style: italic;
+  margin-left: 6px;
+}
+
+html.show-romanization .v2-romanization {
+  display: inline-block;
+}

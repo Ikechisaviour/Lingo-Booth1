@@ -8,6 +8,8 @@
 const FUNCTIONS = Object.freeze({
   GREETING: 'greeting',
   INTRODUCTION: 'introduction',
+  IDENTIFICATION: 'identification',   // I am X, this is X (copula)
+  EXISTENCE: 'existence',             // there is / there are, I have
   EXPERIENCE: 'experience',           // have you ever, I've been to
   PREFERENCE: 'preference',           // I like, I prefer
   ABILITY: 'ability',                 // can / cannot
@@ -20,7 +22,7 @@ const FUNCTIONS = Object.freeze({
   REASON: 'reason',                   // because, so
   CONDITION: 'condition',             // if, when
   COMPARISON: 'comparison',           // more than, less than
-  DESCRIPTION: 'description',         // it is, looks like
+  DESCRIPTION: 'description',         // it is, looks like (and topic/subject marking)
   NARRATION_PAST: 'narration_past',   // recounting past events
   PLANNING_FUTURE: 'planning_future', // future plans
   QUANTITY: 'quantity',               // how many, some, all

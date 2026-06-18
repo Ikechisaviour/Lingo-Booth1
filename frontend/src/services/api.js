@@ -631,6 +631,7 @@ export const flashcardService = {
     if (opts.categories) params.categories = opts.categories;
     if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
     if (opts.seed !== undefined) params.seed = opts.seed;
+    if (opts.scope && opts.scope !== 'all') params.scope = opts.scope;
     return api.get(`/flashcards/user/${userId}`, { params });
   },
   getGuestFlashcards: (page = 1, limit = 50, opts = {}) => {
@@ -641,10 +642,20 @@ export const flashcardService = {
     if (opts.seed !== undefined) params.seed = opts.seed;
     return api.get('/flashcards/guest', { params });
   },
-  createFlashcard: (flashcardData) =>
-    api.post('/flashcards', flashcardData),
+  createFlashcard: (flashcardData) => {
+    const { targetLang, nativeLang } = getLanguageParams();
+    return api.post('/flashcards', { targetLang, nativeLang, ...flashcardData });
+  },
   updateFlashcard: (id, data) =>
     api.put(`/flashcards/${id}`, data),
+  setCardFocus: (id, value) => {
+    const { targetLang, nativeLang } = getLanguageParams();
+    return api.put(`/flashcards/${id}/focus`, { value, targetLang, nativeLang });
+  },
+  getFocusIds: () => {
+    const { targetLang, nativeLang } = getLanguageParams();
+    return api.get('/flashcards/focus-ids', { params: { targetLang, nativeLang } });
+  },
   deleteFlashcard: (id) =>
     api.delete(`/flashcards/${id}`),
 };
@@ -675,6 +686,11 @@ export const userService = {
       invalidateCachedGets((key) => key.includes(`/users/${userId}`));
       return response;
     }),
+  updateCurriculumPreference: (userId, payload) =>
+    api.put(`/users/${userId}/curriculum-preference`, payload).then((response) => {
+      invalidateCachedGets((key) => key.includes(`/users/${userId}`));
+      return response;
+    }),
   changePassword: (userId, data) =>
     api.put(`/users/${userId}/password`, data),
   deleteAccount: (userId) =>
@@ -686,6 +702,12 @@ export const userService = {
     }),
   getActivityState: (userId) =>
     cachedGet(`/users/${userId}/activity-state`, {}, 5000),
+  // Resolve the current 12h-stable flashcard shuffle seed (server-side window).
+  getFlashcardSeed: (userId) =>
+    api.get(`/users/${userId}/flashcard-seed`),
+  // Force a fresh seed and restart the 12h window (manual reshuffle).
+  refreshFlashcardSeed: (userId) =>
+    api.post(`/users/${userId}/flashcard-seed`),
   addXP: (userId, points) =>
     api.post(`/users/${userId}/xp`, { points }).then((response) => {
       invalidateCachedGets((key) => (
@@ -836,6 +858,14 @@ export const curriculumV2Service = {
     api.post('/curriculum/v2/events',
       { conceptId, lessonId, lessonType, outcome, hintUsed, latencyMs, sessionId, targetLang, contextSignal },
       { timeout: 5000 }),
+  // Hangul onboarding
+  getHangulGroups: () => api.get('/curriculum/v2/hangul/groups'),
+  getHangulProgress: () => api.get('/curriculum/v2/hangul/progress'),
+  completeHangulGroup: (groupId) =>
+    api.post(`/curriculum/v2/hangul/groups/${encodeURIComponent(groupId)}/complete`),
+  skipHangul: () => api.post('/curriculum/v2/hangul/skip'),
+  // Catalog (Phase 3)
+  getCatalog: () => api.get('/curriculum/v2/catalog'),
 };
 
 export default api;
