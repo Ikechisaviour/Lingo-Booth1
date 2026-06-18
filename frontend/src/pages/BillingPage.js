@@ -1,9 +1,16 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FiArrowRight, FiBriefcase, FiCreditCard, FiShield, FiUsers } from 'react-icons/fi';
+import { FiArrowRight, FiBriefcase, FiClock, FiCreditCard, FiPauseCircle, FiShield, FiUsers } from 'react-icons/fi';
 import { billingService } from '../services/api';
 import './BillingPage.css';
+
+function daysUntil(value) {
+  if (!value) return null;
+  const ms = new Date(value).getTime() - Date.now();
+  if (!Number.isFinite(ms)) return null;
+  return Math.max(0, Math.ceil(ms / (24 * 60 * 60 * 1000)));
+}
 
 function BillingPage() {
   const { t, i18n } = useTranslation();
@@ -12,6 +19,9 @@ function BillingPage() {
   const [loading, setLoading] = useState(true);
   const [notice, setNotice] = useState('');
   const [portalLoading, setPortalLoading] = useState(false);
+  const [requestOpen, setRequestOpen] = useState(false);
+  const [requestNote, setRequestNote] = useState('');
+  const [requestSaving, setRequestSaving] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -43,6 +53,32 @@ function BillingPage() {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return t('billing.noRenewalDate');
     return date.toLocaleDateString(locale);
+  };
+
+  const currentSeat = account?.currentSeat || null;
+  const learnerMembership = useMemo(
+    () => memberships.find((membership) => membership.role === 'learner' && ['active', 'suspended'].includes(membership.status)),
+    [memberships],
+  );
+
+  const handleRequestSuspension = async () => {
+    if (!learnerMembership?.organizationId?._id || !learnerMembership?._id) return;
+    setRequestSaving(true);
+    setNotice('');
+    try {
+      await billingService.requestSeatSuspension(
+        learnerMembership.organizationId._id,
+        learnerMembership._id,
+        { note: requestNote.trim() },
+      );
+      setNotice(t('billing.suspensionRequested', 'Your suspension request was sent to your institution admin.'));
+      setRequestOpen(false);
+      setRequestNote('');
+    } catch (err) {
+      setNotice(t('billing.suspensionRequestFailed', 'Could not send suspension request. Try again later.'));
+    } finally {
+      setRequestSaving(false);
+    }
   };
 
   const handlePortal = async () => {
@@ -109,6 +145,74 @@ function BillingPage() {
           </div>
         </article>
       </section>
+
+      {learnerMembership && (
+        <section className="billing-seat-widget">
+          <article className="billing-card billing-seat-card">
+            <FiClock />
+            <div>
+              <span>{t('billing.currentSeat', 'Your institutional seat')}</span>
+              {currentSeat ? (
+                <>
+                  <strong>
+                    {currentSeat.state === 'suspended'
+                      ? t('billing.seatSuspendedDays', 'Suspended · {{days}} days left', { days: daysUntil(currentSeat.expiresAt) ?? 0 })
+                      : t('billing.seatActiveDays', '{{days}} days remaining', { days: daysUntil(currentSeat.expiresAt) ?? 0 })}
+                  </strong>
+                  <p>
+                    {currentSeat.state === 'suspended'
+                      ? t('billing.seatSuspendedNote', 'Your admin paused your seat. Access continues until expiry, then no new seat will be assigned.')
+                      : t('billing.seatActiveNote', 'Your next seat starts automatically the next time you study — provided your institution still has seats in their wallet.')}
+                  </p>
+                </>
+              ) : learnerMembership.status === 'suspended' ? (
+                <>
+                  <strong>{t('billing.seatSuspendedNoAccess', 'No access — seat suspended')}</strong>
+                  <p>{t('billing.seatSuspendedNoAccessNote', 'Contact your institution admin to be reactivated.')}</p>
+                </>
+              ) : (
+                <>
+                  <strong>{t('billing.seatPending', 'Ready to activate')}</strong>
+                  <p>{t('billing.seatPendingNote', 'Start a lesson and your next 30-day seat begins automatically.')}</p>
+                </>
+              )}
+            </div>
+            <div className="billing-seat-actions">
+              {learnerMembership.status === 'active' && (
+                <button type="button" className="billing-secondary" onClick={() => setRequestOpen(true)}>
+                  <FiPauseCircle /> {t('billing.requestSuspension', 'Request to pause')}
+                </button>
+              )}
+              {learnerMembership.suspensionRequest?.requestedAt && !learnerMembership.suspensionRequest?.handledAt && (
+                <small className="billing-seat-request-pending">
+                  {t('billing.suspensionRequestPending', 'Your suspension request is awaiting admin review.')}
+                </small>
+              )}
+            </div>
+          </article>
+
+          {requestOpen && (
+            <div className="billing-request-dialog">
+              <h3>{t('billing.requestSuspensionTitle', 'Tell your admin why you need to pause')}</h3>
+              <textarea
+                value={requestNote}
+                onChange={(event) => setRequestNote(event.target.value)}
+                maxLength={1000}
+                placeholder={t('billing.requestSuspensionPlaceholder', 'Optional — a quick note for context.')}
+                rows={4}
+              />
+              <div className="billing-request-actions">
+                <button type="button" className="billing-secondary" onClick={() => setRequestOpen(false)} disabled={requestSaving}>
+                  {t('common.cancel', 'Cancel')}
+                </button>
+                <button type="button" className="billing-primary" onClick={handleRequestSuspension} disabled={requestSaving}>
+                  {requestSaving ? t('common.saving') : t('billing.requestSuspensionSubmit', 'Send request')}
+                </button>
+              </div>
+            </div>
+          )}
+        </section>
+      )}
 
       <section className="billing-actions-panel">
         <div>

@@ -6,12 +6,48 @@ const router = express.Router();
 const CompletionCertificate = require('../models/CompletionCertificate');
 const ClassLessonProgress = require('../models/ClassLessonProgress');
 const Lesson = require('../models/Lesson');
+const Organization = require('../models/Organization');
+const OrganizationMembership = require('../models/OrganizationMembership');
 const { verifyToken } = require('../middleware/auth');
 const { getBillingSource, getEffectiveSubscriptionTier } = require('../utils/subscription');
 const { renderCertificatePdf } = require('../utils/certificatePdfRenderer');
 
 const CLASS_LESSON_TRACK = 'textbook';
 const INCLUDED_CERTIFICATE_TIERS = new Set(['pro', 'ultra']);
+const INSTITUTION_SAMPLE_CERTIFICATE_ID = 'LB-SAMPLE-INSTITUTION';
+const SAMPLE_TOKEN_MAX_AGE_MS = 15 * 60 * 1000;
+const SAMPLE_TOKEN_SECRET = process.env.JWT_SECRET || process.env.SESSION_SECRET || 'lingo-booth-sample-certificate';
+
+function base64UrlEncode(value) {
+  return Buffer.from(JSON.stringify(value)).toString('base64url');
+}
+
+function signSamplePayload(payload) {
+  return crypto
+    .createHmac('sha256', SAMPLE_TOKEN_SECRET)
+    .update(payload)
+    .digest('base64url');
+}
+
+function createInstitutionSampleToken(organizationId) {
+  const payload = base64UrlEncode({
+    organizationId: String(organizationId),
+    exp: Date.now() + SAMPLE_TOKEN_MAX_AGE_MS,
+  });
+  return `${payload}.${signSamplePayload(payload)}`;
+}
+
+function readInstitutionSampleToken(token) {
+  const [payload, signature] = String(token || '').split('.');
+  if (!payload || !signature || signSamplePayload(payload) !== signature) return null;
+  try {
+    const parsed = JSON.parse(Buffer.from(payload, 'base64url').toString('utf8'));
+    if (!parsed?.organizationId || Number(parsed.exp) < Date.now()) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
 
 function normalizeLang(code, fallback = 'en') {
   const value = String(code || fallback).trim().toLowerCase().slice(0, 20);
@@ -76,8 +112,10 @@ function publicCertificate(certificate) {
   };
 }
 
-function sampleCertificate(certificateId) {
+function sampleCertificate(certificateId, organization = null) {
   const issuedAt = new Date('2026-05-22T09:00:00.000Z');
+  const organizationName = organization?.name || 'Sample Language Academy';
+  const certificateBranding = organization?.certificateBranding || {};
   const samples = {
     'LB-SAMPLE-CLASS': {
       certificateId: 'LB-SAMPLE-CLASS',
@@ -143,8 +181,10 @@ function sampleCertificate(certificateId) {
       classLessonTitle: '',
       level: 4,
       contextType: 'institution',
-      organizationName: 'Sample Language Academy',
-      organizationLogoUrl: '',
+      organizationId: organization?._id || '',
+      organizationName,
+      organizationLogoUrl: certificateBranding.logoUrl || '',
+      organizationLogoOriginalName: certificateBranding.logoOriginalName || '',
       targetLanguage: 'zh',
       nativeLanguage: 'en',
       completedItemCount: 16,
@@ -163,8 +203,10 @@ function sampleCertificate(certificateId) {
       classLessonTitle: '',
       level: 2,
       contextType: 'institution',
-      organizationName: 'Sample Language Academy',
-      organizationLogoUrl: '',
+      organizationId: organization?._id || '',
+      organizationName,
+      organizationLogoUrl: certificateBranding.logoUrl || '',
+      organizationLogoOriginalName: certificateBranding.logoOriginalName || '',
       targetLanguage: 'ja',
       nativeLanguage: 'en',
       completedItemCount: 48,
@@ -302,9 +344,17 @@ async function createCertificate({ user, classLessonId, nativeLanguage, targetLa
   throw new Error('Could not issue certificate');
 }
 
-async function findVerifiedCertificate(certificateId) {
+async function loadSampleOrganizationFromToken(certificateId, sampleToken) {
+  if (!String(certificateId || '').startsWith('LB-SAMPLE-INSTITUTION')) return null;
+  const payload = readInstitutionSampleToken(sampleToken);
+  if (!payload?.organizationId || !mongoose.Types.ObjectId.isValid(payload.organizationId)) return null;
+  return Organization.findById(payload.organizationId).select('name certificateBranding status').lean();
+}
+
+async function findVerifiedCertificate(certificateId, { sampleToken = '' } = {}) {
   const normalizedId = String(certificateId || '').trim().toUpperCase();
-  const sample = sampleCertificate(normalizedId);
+  const sampleOrganization = await loadSampleOrganizationFromToken(normalizedId, sampleToken);
+  const sample = sampleCertificate(normalizedId, sampleOrganization);
   if (sample) {
     return { sample: true, certificate: sample };
   }
@@ -350,6 +400,40 @@ router.get('/', verifyToken, async (req, res) => {
   } catch (error) {
     console.error('List certificates error:', error);
     res.status(500).json({ message: 'Could not load certificates' });
+  }
+});
+
+router.post('/institution-samples/:organizationId/link', verifyToken, async (req, res) => {
+  try {
+    const membership = await OrganizationMembership.findOne({
+      organizationId: req.params.organizationId,
+      userId: req.userId,
+      status: 'active',
+      role: { $in: ['owner', 'admin'] },
+    }).populate('organizationId');
+
+    if (!membership?.organizationId) {
+      return res.status(403).json({ message: 'Institution manager access is required' });
+    }
+
+    const token = createInstitutionSampleToken(membership.organizationId._id);
+    const previewPath = `/certificates/verify/${INSTITUTION_SAMPLE_CERTIFICATE_ID}?sampleToken=${encodeURIComponent(token)}&previewOrgId=${encodeURIComponent(String(membership.organizationId._id))}`;
+    const origin = String(
+      req.get('origin')
+      || process.env.PUBLIC_APP_URL
+      || process.env.FRONTEND_URL
+      || process.env.CERTIFICATE_RENDER_URL
+      || 'https://lingobooth.com',
+    ).replace(/\/+$/, '');
+
+    res.json({
+      previewPath,
+      previewUrl: origin ? `${origin}${previewPath}` : previewPath,
+      expiresInSeconds: Math.floor(SAMPLE_TOKEN_MAX_AGE_MS / 1000),
+    });
+  } catch (error) {
+    console.error('Institution sample certificate link error:', error);
+    res.status(500).json({ message: 'Could not prepare sample certificate' });
   }
 });
 
@@ -431,8 +515,9 @@ router.get('/verify/:certificateId/download', async (req, res) => {
   try {
     const certificateId = String(req.params.certificateId || '').trim().toUpperCase();
     const certificateLanguage = normalizeLang(req.query.certLang || req.query.language, 'en');
-    const { certificate } = await findVerifiedCertificate(certificateId);
-    const pdf = await renderCertificatePdf({ certificateId, certificateLanguage });
+    const sampleToken = String(req.query.sampleToken || '');
+    const { certificate } = await findVerifiedCertificate(certificateId, { sampleToken });
+    const pdf = await renderCertificatePdf({ certificateId, certificateLanguage, sampleToken });
     const filename = `${safeCertificateFilename(certificate, certificateId)}.pdf`;
 
     res.setHeader('Content-Type', 'application/pdf');
@@ -449,7 +534,9 @@ router.get('/verify/:certificateId/download', async (req, res) => {
 
 router.get('/verify/:certificateId', async (req, res) => {
   try {
-    const { sample, certificate } = await findVerifiedCertificate(req.params.certificateId);
+    const { sample, certificate } = await findVerifiedCertificate(req.params.certificateId, {
+      sampleToken: req.query.sampleToken,
+    });
     res.json({ valid: true, sample, certificate });
   } catch (error) {
     console.error('Verify certificate error:', error);

@@ -2,6 +2,8 @@ const AnsweredQuestion = require('../models/AnsweredQuestion');
 const LearningEvent = require('../models/LearningEvent');
 const PeekCooldown = require('../models/PeekCooldown');
 const User = require('../models/User');
+const OrganizationMembership = require('../models/OrganizationMembership');
+const seats = require('./seats');
 const { getTodayUTC, getDayIndex } = require('./dateHelpers');
 const { ensureResetsApplied } = require('./gamificationReset');
 
@@ -404,6 +406,50 @@ async function saveDuplicateStudyActivity(user, event, today) {
   if (changed || event.active) await user.save();
 }
 
+async function maybeAllocateSeatForLearner(user, event) {
+  if (!event?.active) return null;
+  const access = user?.institutionalAccess;
+  if (!access || !access.organizationId || access.role !== 'learner') return null;
+
+  // Fast cache path: live seat already on file.
+  const cached = access.seatExpiresAt && access.seatExpiresAt.getTime
+    ? access.seatExpiresAt.getTime()
+    : (access.seatExpiresAt ? new Date(access.seatExpiresAt).getTime() : 0);
+  const cachedStatus = access.seatStatus;
+  if ((cachedStatus === 'active' || cachedStatus === 'suspended') && cached > Date.now()) {
+    return { state: cachedStatus, expiresAt: access.seatExpiresAt };
+  }
+
+  const membership = await OrganizationMembership.findOne({
+    userId: user._id,
+    organizationId: access.organizationId,
+    role: 'learner',
+  });
+  if (!membership) return null;
+  if (membership.status === 'removed') return null;
+  if (membership.status === 'suspended' && membership.suspensionReason === 'admin') {
+    return { state: 'suspended_admin', expiresAt: null };
+  }
+
+  const existing = await seats.currentSeat(user._id, access.organizationId);
+  if (existing) {
+    return { state: existing.state, expiresAt: existing.expiresAt };
+  }
+
+  const allocated = await seats.tryAllocateSeat({
+    userId: user._id,
+    orgId: access.organizationId,
+    membershipId: membership._id,
+    trigger: 'learner_heartbeat',
+    triggeredByUserId: user._id,
+  });
+  if (allocated) {
+    return { state: allocated.state, expiresAt: allocated.expiresAt };
+  }
+  // Pool empty → membership now auto-suspended.
+  return { state: 'suspended_pool_empty', expiresAt: null };
+}
+
 async function recordLearningEvent(userId, body = {}) {
   const today = getTodayUTC();
   const event = normalizeEvent(body, today);
@@ -473,6 +519,13 @@ async function recordLearningEvent(userId, body = {}) {
   if (event.active) markStudyActivity(user, today);
   if (resetsChanged || points > 0 || event.active) await user.save();
 
+  let seatStatus = null;
+  try {
+    seatStatus = await maybeAllocateSeatForLearner(user, event);
+  } catch (err) {
+    console.error('seat allocation on learning event failed:', err);
+  }
+
   return {
     totalXP: user.totalXP,
     xpAwarded: points,
@@ -481,6 +534,7 @@ async function recordLearningEvent(userId, body = {}) {
     cooldownActive: !!award.cooldownActive,
     capped: !!award.capped,
     alreadyAnswered: !!award.alreadyAnswered,
+    seatStatus,
   };
 }
 

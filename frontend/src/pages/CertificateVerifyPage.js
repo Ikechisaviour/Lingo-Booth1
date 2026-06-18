@@ -94,6 +94,31 @@ function downloadBlob(blob, filename) {
   window.setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
+// Maximum age for a preview handoff. The opener writes the just-picked logo to
+// localStorage right before opening this window; if the user navigates here
+// later (e.g. by re-opening a stale tab) we ignore the handoff and let the
+// backend's persisted logo win.
+const PREVIEW_OVERRIDE_TTL_MS = 5 * 60 * 1000;
+
+function certificatePreviewOverride(organizationId) {
+  if (!organizationId || typeof window === 'undefined') return null;
+  const key = `institutionCertificatePreview:${organizationId}`;
+  try {
+    const raw = window.localStorage.getItem(key);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    // Consume the handoff so a refresh of this tab, or a future preview, can't
+    // pick up a stale logo from a previous session.
+    window.localStorage.removeItem(key);
+    if (parsed?.createdAt && Date.now() - parsed.createdAt > PREVIEW_OVERRIDE_TTL_MS) {
+      return null;
+    }
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
 function filenameFromDisposition(contentDisposition) {
   const value = String(contentDisposition || '');
   const utfMatch = value.match(/filename\*=UTF-8''([^;]+)/i);
@@ -107,6 +132,8 @@ function CertificateVerifyPage({ certificateIdOverride = '' }) {
   const [searchParams] = useSearchParams();
   const { t, i18n } = useTranslation();
   const certificateId = certificateIdOverride || params.certificateId || searchParams.get('certificateId') || '';
+  const sampleToken = searchParams.get('sampleToken') || '';
+  const previewOrgId = searchParams.get('previewOrgId') || '';
   const requestedCertificateLanguage = normalizeLanguageCode(searchParams.get('certLang') || searchParams.get('language')) || '';
   const [state, setState] = useState({ loading: true, valid: false, certificate: null, message: '' });
   const [isDownloading, setIsDownloading] = useState(false);
@@ -114,13 +141,19 @@ function CertificateVerifyPage({ certificateIdOverride = '' }) {
 
   useEffect(() => {
     let cancelled = false;
-    certificateService.verify(certificateId)
+    certificateService.verify(certificateId, sampleToken ? { sampleToken } : {})
       .then((res) => {
         if (cancelled) return;
+        const certificate = res.data?.certificate || null;
+        const override = res.data?.sample ? certificatePreviewOverride(previewOrgId) : null;
         setState({
           loading: false,
           valid: !!res.data?.valid,
-          certificate: res.data?.certificate || null,
+          certificate: override && certificate ? {
+            ...certificate,
+            organizationName: override.organizationName || certificate.organizationName,
+            organizationLogoUrl: override.logoUrl || certificate.organizationLogoUrl,
+          } : certificate,
           message: res.data?.message || '',
         });
       })
@@ -136,7 +169,7 @@ function CertificateVerifyPage({ certificateIdOverride = '' }) {
     return () => {
       cancelled = true;
     };
-  }, [certificateId, t]);
+  }, [certificateId, previewOrgId, sampleToken, t]);
 
   const certificate = state.certificate;
   useEffect(() => {
@@ -168,7 +201,7 @@ function CertificateVerifyPage({ certificateIdOverride = '' }) {
     if (!certificate) return;
     setIsDownloading(true);
     try {
-      const response = await certificateService.download(certificateId, primaryCertificateLanguage);
+      const response = await certificateService.download(certificateId, primaryCertificateLanguage, sampleToken ? { sampleToken } : {});
       const filename = filenameFromDisposition(response.headers?.['content-disposition'])
         || `${safeCertificateFilename(certificate, certificateId)}.pdf`;
       downloadBlob(response.data, filename);

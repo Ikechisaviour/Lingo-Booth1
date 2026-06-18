@@ -12,6 +12,7 @@ const { sendVerificationEmail, sendPasswordResetEmail } = require('../utils/emai
 const { verifyToken } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
 const { cleanFullName, fullNameValidation } = require('../utils/fullName');
+const { syncInstitutionAccessForUser } = require('../utils/institutionAccess');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -39,20 +40,42 @@ function buildUserResponse(user) {
   };
 }
 
-// Helper: generate short-lived access token (1 hour)
-function generateToken(userId) {
-  return jwt.sign({ userId }, JWT_SECRET, { expiresIn: '1h' });
+// Absolute lifetime of a refresh-token chain. Once a session is older than this
+// (from the original password/OAuth login), the user must re-authenticate fresh
+// regardless of recent activity.
+const REFRESH_ABSOLUTE_LIFETIME_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
+const REFRESH_ABSOLUTE_LIFETIME_SEC = Math.floor(REFRESH_ABSOLUTE_LIFETIME_MS / 1000);
+
+// Helper: generate short-lived access token (1 hour).
+// `authAt` is the unix-seconds timestamp of the user's last fresh credential
+// proof (password or OAuth). It's preserved across refresh rotations so
+// step-up middleware can decide whether to demand re-auth for sensitive actions.
+function generateToken(userId, authAt) {
+  return jwt.sign({ userId, authAt }, JWT_SECRET, { expiresIn: '1h' });
 }
 
-// Helper: generate long-lived refresh token (30 days)
-function generateRefreshToken(userId) {
-  return jwt.sign({ userId, type: 'refresh' }, JWT_SECRET, { expiresIn: '30d' });
+// Helper: generate refresh token bound to an original-auth-time (oat).
+// The refresh chain is rotated on every use, but `oat` is preserved so the
+// 30-day absolute cap is enforced from the original login, not the latest
+// refresh.
+function generateRefreshToken(userId, authAt, oat) {
+  const remainingSec = Math.max(
+    60,
+    REFRESH_ABSOLUTE_LIFETIME_SEC - (Math.floor(Date.now() / 1000) - oat),
+  );
+  return jwt.sign(
+    { userId, type: 'refresh', authAt, oat },
+    JWT_SECRET,
+    { expiresIn: remainingSec },
+  );
 }
 
-// Helper: issue both tokens and store refresh token on user
+// Helper: issue a brand-new token pair for a fresh login (password/OAuth/register).
+// Resets the refresh-chain origin to "now" — this is the only path that does so.
 async function issueTokens(user) {
-  const token = generateToken(user._id);
-  const refreshToken = generateRefreshToken(user._id);
+  const now = Math.floor(Date.now() / 1000);
+  const token = generateToken(user._id, now);
+  const refreshToken = generateRefreshToken(user._id, now, now);
   user.refreshToken = refreshToken;
   await user.save();
   return { token, refreshToken };
@@ -143,6 +166,7 @@ router.post('/register', async (req, res) => {
       ).catch(() => {});
     } catch (_) {}
 
+    await syncInstitutionAccessForUser(user);
     const { token, refreshToken } = await issueTokens(user);
 
     res.status(201).json({
@@ -210,6 +234,7 @@ router.post('/login', async (req, res) => {
     user.lastCountry = loginGeo.country;
     user.lastCity = loginGeo.city;
 
+    await syncInstitutionAccessForUser(user);
     const { token, refreshToken } = await issueTokens(user);
 
     res.json({
@@ -413,6 +438,7 @@ router.post('/google', async (req, res) => {
       } catch (_) {}
     }
 
+    await syncInstitutionAccessForUser(user);
     const { token, refreshToken } = await issueTokens(user);
 
     res.json({
@@ -428,7 +454,11 @@ router.post('/google', async (req, res) => {
   }
 });
 
-// Refresh access token using a valid refresh token
+// Refresh access token using a valid refresh token.
+// Rotates the refresh token on every successful refresh — the previous token is
+// invalidated by being replaced on the user record. The `oat` (original-auth-time)
+// claim is preserved across rotations and enforces a hard 30-day cap from the
+// original login, regardless of activity.
 router.post('/refresh', async (req, res) => {
   try {
     const { refreshToken } = req.body;
@@ -449,6 +479,8 @@ router.post('/refresh', async (req, res) => {
 
     const user = await User.findById(decoded.userId);
     if (!user || user.refreshToken !== refreshToken) {
+      // Either the user is gone, has logged out, or this token was already
+      // rotated (potential replay). Reject and force re-login.
       return res.status(401).json({ message: 'Invalid refresh token' });
     }
 
@@ -456,12 +488,105 @@ router.post('/refresh', async (req, res) => {
       return res.status(403).json({ message: 'Account suspended' });
     }
 
-    // Issue new access token (keep same refresh token until it expires)
-    const token = generateToken(user._id);
+    const nowSec = Math.floor(Date.now() / 1000);
+    // Legacy tokens issued before rotation existed have no oat/authAt — treat
+    // their iat as both, so existing sessions keep working but still hit the
+    // 30-day absolute cap.
+    const oat = typeof decoded.oat === 'number' ? decoded.oat : decoded.iat;
+    const authAt = typeof decoded.authAt === 'number' ? decoded.authAt : decoded.iat;
 
-    res.json({ token });
+    if (nowSec - oat >= REFRESH_ABSOLUTE_LIFETIME_SEC) {
+      // Hit the absolute cap — invalidate the chain and require a fresh login.
+      user.refreshToken = null;
+      await user.save();
+      return res.status(401).json({
+        message: 'Session expired — please sign in again',
+        code: 'SESSION_EXPIRED',
+      });
+    }
+
+    const newToken = generateToken(user._id, authAt);
+    const newRefreshToken = generateRefreshToken(user._id, authAt, oat);
+    user.refreshToken = newRefreshToken;
+    await user.save();
+
+    res.json({ token: newToken, refreshToken: newRefreshToken });
   } catch (error) {
     console.error('Token refresh error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Logout — invalidate the current refresh chain server-side.
+// Idempotent: clients can call this without a valid access token, since by the
+// time you log out your token may already be expired.
+router.post('/logout', async (req, res) => {
+  try {
+    const { refreshToken } = req.body || {};
+    if (refreshToken) {
+      try {
+        const decoded = jwt.verify(refreshToken, JWT_SECRET, { ignoreExpiration: true });
+        if (decoded?.userId) {
+          await User.updateOne(
+            { _id: decoded.userId, refreshToken },
+            { $set: { refreshToken: null } },
+          );
+        }
+      } catch (_) {
+        // Malformed token — nothing to invalidate, but still respond OK.
+      }
+    }
+    res.json({ ok: true });
+  } catch (error) {
+    console.error('Logout error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Step-up authentication — re-verify password to mint a fresh `authAt`
+// without changing the refresh-chain origin (`oat`). Used to gate sensitive
+// actions like billing changes, password changes, and certificate downloads.
+router.post('/step-up', verifyToken, async (req, res) => {
+  try {
+    const { password } = req.body || {};
+    const user = await User.findById(req.userId);
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    if (!user.password) {
+      // Google-only accounts can't step up via password yet.
+      return res.status(400).json({
+        message: 'No password set — sign in with Google to confirm',
+        code: 'NO_PASSWORD',
+      });
+    }
+    if (!password) {
+      return res.status(400).json({ message: 'Password is required' });
+    }
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Incorrect password' });
+    }
+
+    // Mint a new access+refresh pair with authAt = now. Preserve the existing
+    // refresh chain's `oat` so step-up doesn't extend the absolute cap.
+    const nowSec = Math.floor(Date.now() / 1000);
+    let oat = nowSec;
+    if (user.refreshToken) {
+      try {
+        const decoded = jwt.verify(user.refreshToken, JWT_SECRET, { ignoreExpiration: true });
+        if (typeof decoded.oat === 'number') oat = decoded.oat;
+      } catch (_) {
+        // Stored token is corrupt — fall back to treating this as a fresh chain.
+      }
+    }
+    const token = generateToken(user._id, nowSec);
+    const refreshToken = generateRefreshToken(user._id, nowSec, oat);
+    user.refreshToken = refreshToken;
+    await user.save();
+
+    res.json({ token, refreshToken });
+  } catch (error) {
+    console.error('Step-up error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });

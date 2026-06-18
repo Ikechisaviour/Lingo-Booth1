@@ -43,7 +43,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
 app.use('/api/billing/webhook', express.raw({ type: 'application/json', limit: '1mb' }));
-app.use(express.json({ limit: '1mb' }));
+app.use(express.json({ limit: '2mb' }));
 
 // Rate limiting
 const trackRateLimitHit = async (req) => {
@@ -126,12 +126,14 @@ app.use('/api/class-lessons', learningContentRouter);
 app.use('/api/flashcards', require('./routes/flashcards'));
 app.use('/api/progress', require('./routes/progress'));
 app.use('/api/users', require('./routes/users'));
+app.use('/api/notifications', require('./routes/notifications'));
 app.use('/api/error-reports', require('./routes/errorReports'));
 app.use('/api/practice-context', require('./routes/practiceContext'));
 app.use('/api/learning-hub', require('./routes/learningHub'));
 app.use('/api/admin', require('./routes/admin'));
 app.use('/api/tts', require('./routes/tts'));
 app.use('/api/ai', require('./routes/ai'));
+app.use('/api/curriculum/v2', require('./routes/curriculumV2'));
 
 // Health check
 app.get('/health', (req, res) => {

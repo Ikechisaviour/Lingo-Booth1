@@ -17,6 +17,7 @@ import AuthStack from './AuthStack';
 import MainTabs from './MainTabs';
 import LanguageSelectScreen from '../screens/auth/LanguageSelectScreen';
 import EmailVerificationBanner from '../components/EmailVerificationBanner';
+import StepUpModal from '../components/StepUpModal';
 
 const prefix = Linking.createURL('/');
 
@@ -139,6 +140,7 @@ const RootNavigator: React.FC = () => {
           <MainTabs />
         </View>
       )}
+      <StepUpModal />
     </NavigationContainer>
   );
 };

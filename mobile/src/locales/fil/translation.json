@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Hindi ma-save ang card na ito sa ngayon.",
     "bookmarkedReason": "Na-bookmark mula sa mga flashcard.",
     "selfTestReason": "Na-save mula sa mga flashcard para sa isang mabilis na self-test.",
-    "setFamiliarityLevel": "Itakda ang pamilyar sa {{level}}"
+    "setFamiliarityLevel": "Itakda ang pamilyar sa {{level}}",
+    "deckAll": "Lahat",
+    "deckMine": "Aking Mga Kard",
+    "deckFocus": "Focus",
+    "addToFocus": "Idagdag sa Focus",
+    "removeFromFocus": "Alisin sa Focus",
+    "addToFocusOnCreate": "Idagdag sa aking Focus deck",
+    "focusFailed": "Hindi ma-update ang iyong Focus deck.",
+    "randomCountLabel": "Ilang card",
+    "studyNRandom": "Pag-aralan ang {{count}} random"
   },
   "progress": {
     "title": "Ang Iyong Progreso",
@@ -644,7 +653,7 @@
     "verificationSent": "Naipadala na ang verification email!",
     "deleteButton": "Burahin ang Account",
     "personalizationAvailable": "Available sa iyong plano",
-    "personalizationTier": "Pro o Ultra",
+    "personalizationTier": "Pro o Premium",
     "personalizationTitle": "Pag-aaral ng Personalization",
     "personalizationDesc": "I-save ang mga aprubadong salita, parirala, at sitwasyon mula sa totoong buhay para maging mas may kaugnayan sa iyo ang klase, pag-uusap, pagsusulit, flashcard, at kasanayan sa pagsusulat.",
     "managePersonalization": "Pamahalaan ang pag-personalize",
@@ -686,7 +695,8 @@
     "failedToUpdate": "Nabigong i-update",
     "fullName": "Buong pangalan",
     "fullNamePlaceholder": "Pangalan na ipapakita sa mga certificate",
-    "fullNameMissing": "Magdagdag bago magbigay ng sertipiko"
+    "fullNameMissing": "Magdagdag bago magbigay ng sertipiko",
+    "activeAccountType": "Aktibong uri ng account"
   },
   "verifyEmail": {
     "verifying": "Vine-verify ang iyong email...",
@@ -940,12 +950,12 @@
     "recommended": "Inirerekomenda",
     "startFree": "Magsimula nang libre",
     "choosePlan": "Piliin ang {{plan}}",
-    "checkoutSetupNeeded": "Konektado ang online na pag-checkout. Maaari kang magpadala ng kahilingan at tutulungan ka naming magpatuloy.",
+    "checkoutSetupNeeded": "Kasalukuyang hindi available ang online checkout. Maaari kang magpadala ng kahilingan at tutulungan ka naming magpatuloy.",
     "checkoutFailed": "Hindi masimulan ang pag-checkout. Pakisubukang muli.",
     "loadFailed": "Hindi ma-load ang mga plano. Pakisubukang muli.",
     "institutionalKicker": "Mga institusyon",
     "institutionalTitle": "Seats para sa schools, teams, religious organizations, at groups",
-    "institutionalSubtitle": "Ang mga institusyonal na subscription ay nasa tabi ng mga indibidwal na plano. Maaaring makatanggap ang mga miyembro ng Plus, Pro, o Ultra-level na access sa pamamagitan ng kanilang organisasyon nang hindi binabago ang kanilang personal na account.",
+    "institutionalSubtitle": "Ang mga institusyonal na subscription ay nasa tabi ng mga indibidwal na plano. Maaaring makatanggap ang mga miyembro ng Plus, Pro, o Premium-level na access sa pamamagitan ng kanilang organisasyon nang hindi binabago ang kanilang personal na account.",
     "customPricing": "Pasadyang pagpepresyo",
     "seatPrice": "{{price}} bawat upuan, pinakamababang {{seats}} upuan",
     "institutionalFormTitle": "Humiling ng pag-access sa institusyon",
@@ -992,10 +1002,10 @@
       "free": "Free",
       "plus": "Plus",
       "pro": "Pro",
-      "ultra": "Ultra",
-      "institution_basic": "Institution Basic",
+      "ultra": "Premium",
+      "institution_basic": "Institution Plus",
       "institution_pro": "Institution Pro",
-      "institution_enterprise": "Institution Enterprise"
+      "institution_enterprise": "Institution Premium"
     },
     "planTaglines": {
       "free": "Subukan ang learning loop na may mga pang-araw-araw na limitasyon.",
@@ -1011,7 +1021,14 @@
     "discountUnavailable": "Hindi available ang discount code na iyon para sa planong ito.",
     "automaticDiscountApplied": "Awtomatikong {{discount}} diskwento ang nailapat",
     "signInToChooseTitle": "Gumawa ng account para magpatuloy",
-    "signInToChooseBody": "Gumawa ng account o mag-sign in bago pumili ng bayad na plano para mai-attach sa iyo ang iyong access."
+    "signInToChooseBody": "Gumawa ng account o mag-sign in bago pumili ng bayad na plano para mai-attach sa iyo ang iyong access.",
+    "entitlements": {
+      "placementLifetime": "{{count}} placement check",
+      "placementMonthly": "{{count}} placement checks/buwan",
+      "proficiencyIncluded": "{{count}} mga pagsusuri sa kasanayan/buwan kasama, pagkatapos ay {{price}} bawat isa",
+      "proficiencyPaid": "Sinusuri ng kahusayan {{price}} bawat isa",
+      "dailyTokens": "{{count}} araw-araw na mga token sa pag-uusap"
+    }
   },
   "billing": {
     "kicker": "Pagsingil",
@@ -1047,7 +1064,13 @@
       "web": "Web checkout",
       "ios": "pagbili ng iOS",
       "android": "pagbili ng Android"
-    }
+    },
+    "subscriptionContextUpdated": "Inilipat ang access sa subscription.",
+    "subscriptionContextFailed": "Hindi mapalitan ang access sa subscription.",
+    "accessSwitcherKicker": "I-access ang pinagmulan",
+    "accessSwitcherTitle": "Gumamit ng subscription mula sa",
+    "accessSwitcherHint": "Piliin kung ang account na ito ay gumagamit ng personal na pagsingil o isang upuan ng institusyon para sa may bayad na pag-access.",
+    "currentAccessSource": "Kasalukuyan"
   },
   "institution": {
     "kicker": "Institusyon",
@@ -1146,7 +1169,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "Mag-paste ng URL ng larawan ng HTTPS dito, o gamitin ang web dashboard upang mag-upload ng PNG, JPG, o WebP file.",
     "saveCertificateBranding": "I-save ang logo ng sertipiko",
-    "removeCertificateLogo": "Alisin ang logo"
+    "removeCertificateLogo": "Alisin ang logo",
+    "progressDashboardKicker": "Pag-unlad ng mag-aaral",
+    "mastered": "Kabisado",
+    "comfortable": "Komportable",
+    "learning": "Pag-aaral",
+    "struggling": "Nagpupumiglas",
+    "classLessonsStarted": "{{count}} nagsimula ang mga aralin",
+    "sampleCertificateFailed": "Hindi mabuksan ang sample na certificate.",
+    "previewSampleCertificate": "I-preview ang sample na certificate"
   },
   "errorBoundary": {
     "title": "Nagkaproblema",
@@ -1491,7 +1522,7 @@
     "backToProfile": "Bumalik sa Profile",
     "kicker": "Pag-aaral ng Personalization",
     "title": "Mga aral na nabuo sa paligid mo",
-    "lockedSubtitle": "Maaaring i-save ng Pro at Ultra ang mga inaprubahang salita, parirala, at sitwasyon mula sa totoong buhay para maging mas may kaugnayan ang pagsasanay sa hinaharap. Ang Libre at Plus ay maaaring patuloy na gumamit ng regular na pagsasanay.",
+    "lockedSubtitle": "Maaaring i-save ng Pro at Premium ang mga inaprubahang salita, parirala, at sitwasyon mula sa totoong buhay para maging mas may kaugnayan ang pagsasanay sa hinaharap. Ang Libre at Plus ay maaaring patuloy na gumamit ng regular na pagsasanay.",
     "upgradeTitle": "Mag-upgrade para i-personalize ang pagsasanay",
     "upgradeBody": "Mag-upgrade kapag gusto mo ang mga aralin, suriin ang mga prompt, at roleplay na umangkop sa pang-araw-araw na wikang inaprubahan mo.",
     "openConversation": "Buksan ang Pag-uusap",
@@ -1832,7 +1863,8 @@
     "earnFirstMilestone": "Makamit ang unang milestone",
     "repairPlanTitle": "Ayusin ang focus",
     "repairPlanValue": "Worth revisiting",
-    "repairPlanBody": "Ang ilang mahihina o checkpoint item ay handa na para sa nakatutok na pagsasanay bago ka sumulong nang napakalayo."
+    "repairPlanBody": "Ang ilang mahihina o checkpoint item ay handa na para sa nakatutok na pagsasanay bago ka sumulong nang napakalayo.",
+    "placementLimitReached": "Nagamit mo na ang iyong mga kasamang placement check para sa planong ito."
   },
   "resetPassword": {
     "title": "I-reset ang password",
@@ -1952,6 +1984,63 @@
     "fullNameRequiredBody": "Ilagay ang iyong buong pangalan nang eksakto kung paano ito dapat lumabas sa certificate na ito. Kailangan mo lang gawin ito bago mag-isyu ng sertipiko.",
     "fullNameLabel": "Buong pangalan",
     "fullNamePlaceholder": "Buong pangalan mo",
-    "saveNameAndIssue": "I-save ang pangalan at magbigay ng sertipiko"
+    "saveNameAndIssue": "I-save ang pangalan at magbigay ng sertipiko",
+    "proficiencyPaymentRequired": "Ang proficiency check na ito ay {{price}} pagkatapos ng iyong mga kasamang tseke.",
+    "proficiencyAllowance": "Kasama sa {{remaining}} ng {{included}} ang mga proficiency check na natitira ngayong buwan. Ang mga karagdagang tseke ay {{price}} bawat isa.",
+    "paymentSetupNeeded": "Ang mga bayad na pagsusuri sa kahusayan ay hindi pa naka-configure.",
+    "paymentStartFailed": "Hindi masimulan ang pagbabayad para sa proficiency check na ito.",
+    "proficiencyPaymentTitle": "Kailangan ng pagbabayad",
+    "payProficiencyCheck": "Magbayad ng {{price}} para sa tsekeng ito"
+  },
+  "notifications": {
+    "title": "Mga abiso",
+    "empty": "Wala pang notification.",
+    "markAllRead": "Markahan lahat ng nabasa",
+    "openAction": "Bukas",
+    "dismiss": "I-dismiss",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "Na-update ang access sa institusyon",
+    "institutionLearnerAddedBody": "Naidagdag ka sa {{organizationName}} bilang isang mag-aaral.",
+    "institutionAdminAddedBody": "Maaari mo na ngayong pamahalaan ang {{organizationName}} mula sa dashboard ng iyong institusyon.",
+    "institutionAccessRemovedTitle": "Inalis ang access sa institusyon",
+    "institutionAccessRemovedBody": "Inalis ang iyong access sa {{organizationName}}.",
+    "lowSeatsTitle": "Umuubos na ang mga upuan sa institusyon",
+    "lowSeatsBody": "Ang {{organizationName}} ay may {{remaining}} ng {{purchased}} upuan ang natitira.",
+    "noSeatsTitle": "Walang natitirang upuan sa institusyon",
+    "noSeatsBody": "Ang {{organizationName}} ay walang natitirang upuan.",
+    "seatsAddedTitle": "Idinagdag ang mga upuan sa institusyon",
+    "seatsAddedBody": "{{quantity}} upuan ang idinagdag. Available na ang {{remaining}} na upuan.",
+    "institutionPurchaseTitle": "Na-activate ang subscription sa institusyon",
+    "institutionPurchaseBody": "Ang {{organizationName}} ay mayroon na ngayong {{quantity}} na upuan sa institusyon.",
+    "institutionSeatSuspendedTitle": "Nasuspinde ang upuan sa institusyon",
+    "institutionSeatSuspendedBody": "Ang iyong upuan para sa {{organizationName}} ay nasuspinde.",
+    "institutionSeatRestoredTitle": "Naibalik ang upuan sa institusyon",
+    "institutionSeatRestoredBody": "Ang iyong upuan para sa {{organizationName}} ay aktibo muli.",
+    "suspensionRequestedTitle": "Hiniling ng mag-aaral ang pagsususpinde",
+    "suspensionRequestedBody": "Humiling si {{email}} ng pagkakasuspinde sa upuan ng institusyon.",
+    "institutionRequestAcceptedTitle": "Tinanggap ang kahilingan sa institusyon",
+    "institutionRequestAcceptedBody": "Ang iyong kahilingan para sa {{organizationName}} ay tinanggap.",
+    "institutionRequestDeclinedTitle": "Tinanggihan ang kahilingan sa institusyon",
+    "institutionRequestDeclinedBody": "Tinanggihan ang iyong kahilingan sa institusyon para sa {{organizationName}}.",
+    "institutionSuspendedTitle": "Nasuspinde ang institusyon",
+    "institutionSuspendedBody": "Nasuspinde ang {{organizationName}}.",
+    "institutionReactivatedTitle": "Muling na-activate ang institusyon",
+    "institutionReactivatedBody": "Aktibo na muli ang {{organizationName}}.",
+    "xpDecayTitle": "Ang streak ng pagsasanay ay nangangailangan ng pansin",
+    "xpDecayBody": "Nabawasan ang {{penalty}} XP pagkatapos ng kawalan ng aktibidad. Ang iyong kasalukuyang kabuuan ay {{totalXP}} XP.",
+    "viewProfileAction": "Tingnan ang profile",
+    "openInstitutionAction": "Buksan ang institusyon",
+    "manageSeatsAction": "Pamahalaan ang mga upuan",
+    "viewPlansAction": "Tingnan ang mga plano",
+    "resumePracticeAction": "Ipagpatuloy ang pagsasanay",
+    "unreadCount": "{{count}} hindi pa nababasa"
+  },
+  "stepUp": {
+    "verifyFailed": "Hindi ma-verify ang password",
+    "title": "Kumpirmahin na ikaw ito",
+    "message": "Para sa iyong seguridad, mangyaring muling ilagay ang iyong password upang magpatuloy sa pagkilos na ito.",
+    "passwordPlaceholder": "Password",
+    "confirm": "Kumpirmahin"
   }
 }

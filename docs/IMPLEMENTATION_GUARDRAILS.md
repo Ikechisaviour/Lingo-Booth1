@@ -122,6 +122,42 @@ curl -s "http://localhost:5001/api/class-lessons/<lessonId>?nativeLang=hi" \
   | grep -E "[A-Za-z]{4,}"  # any 4+ letter Latin run is suspicious
 ```
 
+## Curriculum Lesson Page UX
+
+Every learner-facing lesson surface (script onboarding cards, curriculum v2 lesson types, future lesson types in any target language) must satisfy these rules. They are language- and lesson-type-agnostic — re-derive the specific behavior from the principle, not from a prior implementation.
+
+- **Whole-page audio is mandatory.** Every page has a single button that reads its entire visible content top-to-bottom. The page must be usable with the screen off. Each lesson-type component owns a `pageScript` derived from its currently-visible content and renders the shared `LessonAudioButton`.
+- **Per-section / per-item audio is opt-in but encouraged.** Any block a learner might want to re-hear in isolation (a contrast section, one mistake row, one anchor example, one card) gets its own play button.
+- **Back lives next to the primary forward action.** Back and the primary Continue/Next/Done button sit in the same footer row. Forward and reverse are the same kind of action and should be reachable together.
+- **Back rewinds intra-page state first, then steps to the previous lesson.** A page with multiple steps, stages, items, or pairs must undo ONE step on Back; it only steps to the previous lesson (the shell's `onBack`) when already at the page's first step. The learner's model of "back" is "undo my last Continue", not "leave this lesson." Each component defines a `handleBackClick()` that walks its own state machine and falls through to `onBack` at the start.
+- **Sequenced playback is cancellable.** Tapping any other play button or a stop control cuts the current sequence cleanly. A learner who heard what they needed shouldn't wait for the rest.
+- **Section headers are spoken before their body.** With the screen off the listener still needs to know what they're hearing.
+
+## Audio Quality (Lesson Surfaces)
+
+- **TTS is server-side neural only.** Route every spoken string through the shared speech service. The OS speech synthesizer (`window.speechSynthesis` / `SpeechSynthesisUtterance`) is forbidden in production paths — every platform's built-in voice sounds robotic.
+- **Mixed-script strings split per script before TTS.** Detect script runs and route each chunk to the voice of its own language. A target-language voice reading the native (and vice versa) is unintelligible. Maintain a per-target script-detection regex that covers EVERY Unicode block the writing system uses — not just the most common one. Test with edge characters (lone Hangul jamo, half-width kana, Arabic presentation forms, etc.).
+- **Target and native voices must match gender on the same page.** One consistent "speaker" feel, not a duet. Resolve gender from the user's saved target voice first, then pick a same-gender native voice; never the reverse.
+- **Pattern-template placeholders expand to natural words before TTS.** Single-letter stand-ins for word classes (`V`, `N`, `A`, `Adj`, ...) are substituted word-bounded with their full word ("verb", "noun", "adjective") so real words ("Voice", "Note") stay intact. A learner hearing "vee" for a verb slot learns nothing. Maintain a per-language placeholder map in the language profile.
+- **Parenthetical handling is content-aware, not project-wide.** Strip parens whose content is romanization or asides in the native script (visual scaffolding — e.g., `(appa)` next to `아빠`). Keep parens whose content is target-language script — they ARE the lesson (morphemes, alternations, sandhi — e.g., `(으)`, `(있어요)`). Decide per page based on what the lesson is teaching, not as a global flag. Detect by testing for target-script characters inside the parens.
+- **Grapheme buttons play the grapheme, not an example.** A button labeled with a single letter/character plays the minimal pronounceable form in the target script — never the example word. Where bare consonants or vowels aren't pronounceable, wrap with neutral support characters per the language's conventions (Korean: prepend `ㅇ` for bare vowels, append `ㅡ` for bare consonants; Arabic: short vowel marks; etc.). Document the wrapping rules in the per-language profile so the same code works across languages.
+- **Audio order on grapheme/character cards: the item first, then everything else.** Item → description → example announcer → example → tip. Hearing the description before the sound is backwards pedagogy.
+- **Numbered list items get a bilingual announcer.** Example numbers, mistake numbers, question numbers — render as `target announcer + native announcer` (e.g., `예시 1. Example 1.`) for items inside a target-language lesson. Both halves use `t()` with translated keys.
+- **Deny-listed voices substitute, never silence.** A saved learner preference for a removed voice falls back to a same-language same-gender alternative automatically. Removing a voice from the picker must not break learners who had it saved.
+
+## Curriculum Reading Semantics
+
+- **Read everything the learner sees.** Section titles, body, every mistake row, cultural notes, examples. An audio-mode learner gets parity with a screen-reading learner.
+- **Audio scripts are i18n strings, not English literals.** Spoken tokens (`blank` in cloze prompts, `Mistake N`, `For example`, `Question N`, the V/N/A placeholder expansions) are user-facing and must use `t()` with translations. A Hindi learner should hear the Hindi word for "blank", not the English literal. The voice doesn't translate for you.
+- **Audio reads the actual lesson text, not pronunciation guides.** Romanization, IPA, and similar artifacts are visual aids unless the learner has explicitly asked for pronunciation help.
+
+## Curriculum Authoring Discipline
+
+- **Lessons lead with the thing being taught, then describe it.** The first textual content on a letter / morpheme / pattern / word card is the item itself. The description follows. Description-first is backwards.
+- **Glosses are 1–3 sentences carrying real information** — register, usage context, contrast against a near-synonym, a common quirk. Never a bare one-word definition. The gloss seeds the translation pipeline serving every native language. See AGENTS.md → Gloss Richness for the full anti-pattern list.
+- **Per-language pain points are authored per language.** Korean particles, Spanish ser/estar, Chinese tones, Arabic root patterns — each target's lessons teach that target's grammar, not a translated clone of another language's syllabus.
+- **Display order: target language first, native gloss second.** Unless the learner explicitly asks for the reverse.
+
 ## Commands
 
 From repo root:

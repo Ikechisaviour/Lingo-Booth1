@@ -60,6 +60,9 @@ const LevelCheckScreen: React.FC = () => {
               difficulty,
             }));
         });
+        if (nextQuestions.length >= 3) {
+          await learningHubService.startPlacementCheck();
+        }
         if (!cancelled) {
           setProfile(profileRes.data || null);
           setQuestions(nextQuestions);
@@ -67,8 +70,13 @@ const LevelCheckScreen: React.FC = () => {
             setError(t('learningHub.levelCheckUnavailable', 'A level check is not ready for this language pair yet.'));
           }
         }
-      } catch {
-        if (!cancelled) setError(t('learningHub.levelCheckLoadFailed', 'The level check could not load right now.'));
+      } catch (err: any) {
+        if (!cancelled) {
+          const code = err.response?.data?.code;
+          setError(code === 'PLACEMENT_TEST_LIMIT_REACHED'
+            ? t('learningHub.placementLimitReached', 'You have used your included placement checks for this plan.')
+            : t('learningHub.levelCheckLoadFailed', 'The level check could not load right now.'));
+        }
       } finally {
         if (!cancelled) setLoading(false);
       }

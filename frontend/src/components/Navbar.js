@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { userService } from '../services/api';
+import { useCurriculumVersion } from '../hooks/useCurriculumVersion';
 import BrandLogo from './BrandLogo';
+import NotificationCenter from './NotificationCenter';
 import './Navbar.css';
 
 function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
@@ -21,6 +23,8 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
     }
   })();
   const canManageInstitution = !isGuest && !!storedEntitlements.canManageOrganization;
+  const { isV2: useV2 } = useCurriculumVersion();
+  const classPath = useV2 ? '/learn/v2' : '/class';
 
   // Sync challenge mode theme with DB state.
   useEffect(() => {
@@ -86,6 +90,9 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
     paths.some((path) => location.pathname === path || location.pathname.startsWith(`${path}/`));
 
   const exerciseActive = isActiveSection(['/exercise', '/quiz', '/flashcards', '/writing', '/review']);
+  const classActive = useV2
+    ? isActiveSection(['/learn/v2', '/learn'])
+    : isActiveSection(['/class']);
 
   return (
     <nav className={`navbar${challengeMode ? ' challenge-active' : ''}`}>
@@ -108,6 +115,8 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
           </div>
         )}
 
+        <NotificationCenter isGuest={isGuest} />
+
         <ul className="nav-menu">
           <li className="nav-item">
             <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
@@ -117,12 +126,18 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
           </li>
 
           <li className="nav-item">
-            <Link to="/class" className={`nav-link ${isActiveSection(['/class']) ? 'active' : ''}`}>
+            <Link to={classPath} className={`nav-link ${classActive ? 'active' : ''}`}>
               <span className="nav-icon">&#127979;</span>
-              <span className="nav-text">{t('navbar.class', 'Class')}</span>
+              <span className="nav-text">
+                {useV2 ? t('navbar.learn', 'Learn') : t('navbar.class', 'Class')}
+              </span>
+              {useV2 && <span className="nav-v2-badge" aria-label={t('navbar.curriculumV2', 'Curriculum v2')}>v2</span>}
             </Link>
           </li>
 
+          {/* Exercise (Quiz / Flashcards / Writing / Review) stays available for
+              every curriculum. On v2 the planner also folds these into each
+              session, but the standalone menu remains reachable. */}
           <li className="nav-item nav-item-dropdown">
             <Link
               to="/exercise"
@@ -181,7 +196,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
 
           {!isGuest && userRole === 'admin' && (
             <li className="nav-item">
-              <Link to="/admin" className={`nav-link nav-admin ${isActive('/admin') ? 'active' : ''}`}>
+              <Link to="/admin" className={`nav-link nav-admin ${isActiveSection(['/admin']) ? 'active' : ''}`}>
                 <span className="nav-icon">&#9881;</span>
                 <span className="nav-text">{t('navbar.admin')}</span>
               </Link>
@@ -204,7 +219,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
             </>
           ) : (
             <li className="nav-item">
-              <Link to="/profile" className={`nav-link ${isActive('/profile') ? 'active' : ''}`}>
+              <Link to="/profile" className={`nav-link ${isActiveSection(['/profile']) ? 'active' : ''}`}>
                 <span className="nav-icon">&#128100;</span>
                 <span className="nav-text">{username || t('navbar.profile')}</span>
               </Link>

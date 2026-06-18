@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Bu kart şu anda kaydedilemedi.",
     "bookmarkedReason": "Bilgi kartlarından yer imlerine eklendi.",
     "selfTestReason": "Hızlı bir kendi kendine test için bilgi kartlarından kaydedildi.",
-    "setFamiliarityLevel": "Tanıdıklığı {{level}} olarak ayarlayın"
+    "setFamiliarityLevel": "Tanıdıklığı {{level}} olarak ayarlayın",
+    "deckAll": "Tüm",
+    "deckMine": "Kartlarım",
+    "deckFocus": "Odak",
+    "addToFocus": "Odak'a Ekle",
+    "removeFromFocus": "Odaktan Kaldır",
+    "addToFocusOnCreate": "Odak desteme ekle",
+    "focusFailed": "Odak desteniz güncellenemedi.",
+    "randomCountLabel": "Kaç kart",
+    "studyNRandom": "{{count}} rastgele çalış"
   },
   "progress": {
     "title": "İlerlemeniz Raporu",
@@ -623,7 +632,7 @@
     "deleteAccountTitle": "Hesap Silinsin mi?",
     "deleteButton": "Sil",
     "personalizationAvailable": "Planınızda mevcut",
-    "personalizationTier": "Pro veya Ultra",
+    "personalizationTier": "Pro veya Premium",
     "personalizationTitle": "Kişiselleştirmeyi Öğrenme",
     "personalizationDesc": "Gerçek hayattan onaylanmış kelimeleri, cümleleri ve durumları kaydedin; böylece ders, konuşma, test, bilgi kartları ve yazma alıştırmaları size daha uygun hale gelebilir.",
     "managePersonalization": "Kişiselleştirmeyi yönet",
@@ -639,7 +648,8 @@
     "failedToUpdate": "Güncelleme başarısız oldu",
     "fullName": "Ad Soyad",
     "fullNamePlaceholder": "Sertifikalarda gösterilecek ad",
-    "fullNameMissing": "Sertifika vermeden önce ekleyin"
+    "fullNameMissing": "Sertifika vermeden önce ekleyin",
+    "activeAccountType": "Etkin hesap türü"
   },
   "verifyEmail": {
     "verifying": "E-postanız doğrulanıyor...",
@@ -880,12 +890,12 @@
     "recommended": "Tavsiye edilen",
     "startFree": "Ücretsiz başlayın",
     "choosePlan": "{{plan}}'ı seçin",
-    "checkoutSetupNeeded": "Çevrimiçi ödeme bağlanıyor. Bir istek gönderebilirsiniz; devam etmenize yardımcı olacağız.",
+    "checkoutSetupNeeded": "Online ödeme şu anda kullanılamıyor. Bir istek gönderebilirsiniz, devam etmenize yardımcı oluruz.",
     "checkoutFailed": "Ödeme işlemi başlatılamadı. Lütfen tekrar deneyin.",
     "loadFailed": "Planlar yüklenemedi. Lütfen tekrar deneyin.",
     "institutionalKicker": "Kurumlar",
     "institutionalTitle": "Okullar, ekipler, dini kuruluşlar ve gruplar için koltuklar",
-    "institutionalSubtitle": "Kurumsal abonelikler bireysel planların yanında yer alır. Üyeler, kişisel hesaplarını değiştirmeden kuruluşları aracılığıyla Plus, Pro veya Ultra düzeyde erişim alabilirler.",
+    "institutionalSubtitle": "Kurumsal abonelikler bireysel planların yanında yer alır. Üyeler, kişisel hesaplarını değiştirmeden kuruluşları aracılığıyla Plus, Pro veya Premium düzeyde erişim alabilirler.",
     "customPricing": "Özel fiyatlandırma",
     "seatPrice": "Koltuk başına {{price}}, minimum {{seats}} koltuk",
     "institutionalFormTitle": "Kurumsal erişim talep edin",
@@ -932,10 +942,10 @@
       "free": "Free",
       "plus": "Plus",
       "pro": "Pro",
-      "ultra": "Ultra",
-      "institution_basic": "Institution Basic",
+      "ultra": "Premium",
+      "institution_basic": "Institution Plus",
       "institution_pro": "Institution Pro",
-      "institution_enterprise": "Institution Enterprise"
+      "institution_enterprise": "Institution Premium"
     },
     "planTaglines": {
       "free": "Günlük limitlerle öğrenme döngüsünü deneyin.",
@@ -951,7 +961,14 @@
     "discountUnavailable": "Bu indirim kodu bu planda mevcut değil.",
     "automaticDiscountApplied": "Otomatik {{discount}} indirim uygulandı",
     "signInToChooseTitle": "Devam etmek için bir hesap oluşturun",
-    "signInToChooseBody": "Erişiminizin size bağlanabilmesi için ücretli bir plan seçmeden önce bir hesap oluşturun veya oturum açın."
+    "signInToChooseBody": "Erişiminizin size bağlanabilmesi için ücretli bir plan seçmeden önce bir hesap oluşturun veya oturum açın.",
+    "entitlements": {
+      "placementLifetime": "{{count}} yerleştirme kontrolü",
+      "placementMonthly": "{{count}} yerleştirme kontrolleri/ay",
+      "proficiencyIncluded": "{{count}} yeterlilik kontrolleri/ay dahil, ardından her biri {{price}}",
+      "proficiencyPaid": "Yeterlilik kontrolleri her biri {{price}}",
+      "dailyTokens": "{{count}} günlük konuşma jetonları"
+    }
   },
   "billing": {
     "kicker": "Faturalandırma",
@@ -987,7 +1004,13 @@
       "web": "Web ödemesi",
       "ios": "iOS satın alma",
       "android": "Android satın alma"
-    }
+    },
+    "subscriptionContextUpdated": "Abonelik erişimi değiştirildi.",
+    "subscriptionContextFailed": "Abonelik erişimi değiştirilemedi.",
+    "accessSwitcherKicker": "Erişim kaynağı",
+    "accessSwitcherTitle": "Şuradan aboneliği kullan:",
+    "accessSwitcherHint": "Bu hesabın ücretli erişim için kişisel faturalandırmayı mı yoksa kurumsal lisansı mı kullanacağını seçin.",
+    "currentAccessSource": "Akım"
   },
   "institution": {
     "kicker": "Kurum",
@@ -1086,7 +1109,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "Buraya bir HTTPS resim URL'si yapıştırın veya PNG, JPG veya WebP dosyası yüklemek için web kontrol panelini kullanın.",
     "saveCertificateBranding": "Sertifika logosunu kaydet",
-    "removeCertificateLogo": "Logoyu kaldır"
+    "removeCertificateLogo": "Logoyu kaldır",
+    "progressDashboardKicker": "Öğrenci ilerlemesi",
+    "mastered": "Ustalaşmış",
+    "comfortable": "Rahat",
+    "learning": "Öğrenme",
+    "struggling": "Mücadele etme",
+    "classLessonsStarted": "{{count}} dersler başladı",
+    "sampleCertificateFailed": "Örnek sertifika açılamadı.",
+    "previewSampleCertificate": "Örnek sertifikayı önizleyin"
   },
   "errorBoundary": {
     "title": "Bir şeyler ters gitti",
@@ -1431,7 +1462,7 @@
     "backToProfile": "Profile Geri Dön",
     "kicker": "Kişiselleştirmeyi Öğrenme",
     "title": "Etrafınızda şekillenen dersler",
-    "lockedSubtitle": "Pro ve Ultra, onaylanmış kelimeleri, ifadeleri ve durumları gerçek hayattan kaydedebilir, böylece gelecekteki uygulamalar daha anlamlı hale gelir. Free ve Plus düzenli pratik yapmaya devam edebilir.",
+    "lockedSubtitle": "Pro ve Premium, onaylanmış kelimeleri, ifadeleri ve durumları gerçek hayattan kaydedebilir, böylece gelecekteki uygulamalar daha anlamlı hale gelir. Free ve Plus düzenli pratik yapmaya devam edebilir.",
     "upgradeTitle": "Uygulamayı kişiselleştirmek için yükseltme",
     "upgradeBody": "Derslerin, inceleme istemlerinin ve rol oyunlarının onayladığınız günlük dile uyum sağlamasını istediğinizde yükseltme yapın.",
     "openConversation": "Açık Konuşma",
@@ -1772,7 +1803,8 @@
     "earnFirstMilestone": "İlk kilometre taşını kazanın",
     "repairPlanTitle": "Onarım odağı",
     "repairPlanValue": "Tekrar ziyaret etmeye değer",
-    "repairPlanBody": "Birkaç zayıf veya kontrol noktası öğesi, çok ileri gitmeden önce odaklanmış uygulamaya hazırdır."
+    "repairPlanBody": "Birkaç zayıf veya kontrol noktası öğesi, çok ileri gitmeden önce odaklanmış uygulamaya hazırdır.",
+    "placementLimitReached": "Bu plan için dahil edilen yerleşim kontrollerinizi kullandınız."
   },
   "resetPassword": {
     "title": "Şifre sıfırla",
@@ -1892,6 +1924,63 @@
     "fullNameRequiredBody": "Tam adınızı tam olarak bu sertifikada görünmesi gerektiği gibi girin. Bunu yalnızca sertifika vermeden önce yapmanız gerekir.",
     "fullNameLabel": "Ad Soyad",
     "fullNamePlaceholder": "Tam adınız",
-    "saveNameAndIssue": "Adı kaydedin ve sertifikayı verin"
+    "saveNameAndIssue": "Adı kaydedin ve sertifikayı verin",
+    "proficiencyPaymentRequired": "Bu yeterlilik kontrolü, dahil edilen kontrollerinizden sonra {{price}} olur.",
+    "proficiencyAllowance": "{{remaining}} / {{included}} bu ay kalan yeterlilik kontrollerini içeriyordu. Ekstra kontrollerin her biri {{price}}'dir.",
+    "paymentSetupNeeded": "Ücretli yeterlilik kontrolleri henüz yapılandırılmamıştır.",
+    "paymentStartFailed": "Bu yeterlilik kontrolü için ödeme başlatılamadı.",
+    "proficiencyPaymentTitle": "Ödeme gerekli",
+    "payProficiencyCheck": "Bu çek için {{price}} ödeyin"
+  },
+  "notifications": {
+    "title": "Bildirimler",
+    "empty": "Henüz bildirim yok.",
+    "markAllRead": "Tümünü okundu olarak işaretle",
+    "openAction": "Açık",
+    "dismiss": "Azletmek",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "Kurum erişimi güncellendi",
+    "institutionLearnerAddedBody": "{{organizationName}} grubuna öğrenci olarak eklendiniz.",
+    "institutionAdminAddedBody": "Artık {{organizationName}}'ı kurumunuzun kontrol panelinden yönetebilirsiniz.",
+    "institutionAccessRemovedTitle": "Kurum erişimi kaldırıldı",
+    "institutionAccessRemovedBody": "{{organizationName}} erişiminiz kaldırıldı.",
+    "lowSeatsTitle": "Kurum koltukları azalıyor",
+    "lowSeatsBody": "{{organizationName}}'de {{purchased}} koltuktan {{remaining}} kaldı.",
+    "noSeatsTitle": "Kurum koltuğu kalmadı",
+    "noSeatsBody": "{{organizationName}}'de yer kalmadı.",
+    "seatsAddedTitle": "Kurum koltukları eklendi",
+    "seatsAddedBody": "{{quantity}} koltuklar eklendi. {{remaining}} koltuklar artık mevcut.",
+    "institutionPurchaseTitle": "Kurum aboneliği etkinleştirildi",
+    "institutionPurchaseBody": "{{organizationName}} artık {{quantity}} kurum koltuklarına sahip.",
+    "institutionSeatSuspendedTitle": "Kurum koltuğu askıya alındı",
+    "institutionSeatSuspendedBody": "{{organizationName}} koltuğunuz askıya alındı.",
+    "institutionSeatRestoredTitle": "Kurum koltuğu restore edildi",
+    "institutionSeatRestoredBody": "{{organizationName}} koltuğunuz yeniden aktif.",
+    "suspensionRequestedTitle": "Öğrenci uzaklaştırma talebinde bulundu",
+    "suspensionRequestedBody": "{{email}} kurum koltuğunun askıya alınmasını talep etti.",
+    "institutionRequestAcceptedTitle": "Kurum talebi kabul edildi",
+    "institutionRequestAcceptedBody": "{{organizationName}} isteğiniz kabul edildi.",
+    "institutionRequestDeclinedTitle": "Kurum isteği reddedildi",
+    "institutionRequestDeclinedBody": "{{organizationName}} kurum talebiniz reddedildi.",
+    "institutionSuspendedTitle": "Kurum askıya alındı",
+    "institutionSuspendedBody": "{{organizationName}} askıya alındı.",
+    "institutionReactivatedTitle": "Kurum yeniden etkinleştirildi",
+    "institutionReactivatedBody": "{{organizationName}} tekrar aktif.",
+    "xpDecayTitle": "Antrenman serisine dikkat edilmesi gerekiyor",
+    "xpDecayBody": "{{penalty}} Hareketsizlikten sonra XP azaldı. Şu anki toplamınız {{totalXP}} XP.",
+    "viewProfileAction": "Profili görüntüle",
+    "openInstitutionAction": "Açık kurum",
+    "manageSeatsAction": "Koltukları yönet",
+    "viewPlansAction": "Planları görüntüle",
+    "resumePracticeAction": "Uygulamaya devam et",
+    "unreadCount": "{{count}} okunmamış"
+  },
+  "stepUp": {
+    "verifyFailed": "Şifre doğrulanamadı",
+    "title": "Sen olduğunu doğrula",
+    "message": "Güvenliğiniz için bu işleme devam etmek için lütfen şifrenizi tekrar girin.",
+    "passwordPlaceholder": "Şifre",
+    "confirm": "Onaylamak"
   }
 }

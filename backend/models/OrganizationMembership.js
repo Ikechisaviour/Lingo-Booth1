@@ -35,11 +35,47 @@ const organizationMembershipSchema = new mongoose.Schema({
     type: [String],
     default: [],
   },
+  consumesSeat: {
+    type: Boolean,
+    default: false,
+    index: true,
+  },
   status: {
     type: String,
-    enum: ['invited', 'active', 'removed'],
+    enum: ['invited', 'active', 'suspended', 'removed'],
     default: 'invited',
     index: true,
+  },
+  suspensionReason: {
+    type: String,
+    enum: ['admin', 'pool_empty', null],
+    default: null,
+  },
+  suspendedAt: { type: Date, default: null },
+  suspendedByUserId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    default: null,
+  },
+  suspensionRequest: {
+    note: { type: String, maxlength: 1000, default: '' },
+    requestedAt: { type: Date, default: null },
+    requestedByUserId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
+    },
+    handledAt: { type: Date, default: null },
+    handledByUserId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      default: null,
+    },
+    handledOutcome: {
+      type: String,
+      enum: ['suspended', 'declined', null],
+      default: null,
+    },
   },
   invitedBy: {
     type: mongoose.Schema.Types.ObjectId,

@@ -538,6 +538,21 @@ router.get('/guest', async (req, res) => {
 // --- Authenticated routes ---
 router.use(verifyToken);
 
+// Card IDs the user has added to their Focus deck for the current language pair.
+// Lets the client mark Focus state on any card, even ones not currently loaded.
+router.get('/focus-ids', async (req, res) => {
+  try {
+    const query = { userId: req.userId, focus: true };
+    if (req.query.targetLang) query.targetLang = req.query.targetLang;
+    if (req.query.nativeLang) query.nativeLang = req.query.nativeLang;
+    const prefs = await UserCardPreference.find(query).select('cardId').lean();
+    res.json({ ids: prefs.map(p => p.cardId) });
+  } catch (error) {
+    console.error('Get focus ids error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
 // Get flashcards for user — default deck + user's own cards
 router.get('/user/:userId', isOwner('userId'), async (req, res) => {
   try {
@@ -573,6 +588,7 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
       const c = {
         ...card,
         isDefault: true,
+        focus: pref ? !!pref.focus : false,
         masteryLevel: pref ? pref.masteryLevel : 3,
         correctCount: pref ? pref.correctCount || 0 : 0,
         incorrectCount: pref ? pref.incorrectCount || 0 : 0,
@@ -587,10 +603,24 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
     });
     const normalizedDefaultCards = normalizeFlashcardsForLanguagePair(defaultCardsWithPrefs, targetLang, nativeLang);
 
-    const allCards = [...normalizedDefaultCards, ...normalizedUserCards.map(applyReviewState)];
+    const userCardsWithState = normalizedUserCards.map((c) => {
+      const pref = prefMap.get(String(c._id));
+      return applyReviewState({ ...c, focus: pref ? !!pref.focus : false });
+    });
+    const allCards = [...normalizedDefaultCards, ...userCardsWithState];
+
+    // Scope: 'mine' = user-created cards only, 'focus' = Focus-deck cards only,
+    // anything else = the full deck. Focus/My Cards are per language pair because
+    // allCards is already filtered to this targetLang/nativeLang.
+    const scope = String(req.query.scope || 'all').toLowerCase();
+    const scopedCards = scope === 'mine'
+      ? allCards.filter(c => !c.isDefault)
+      : scope === 'focus'
+        ? allCards.filter(c => c.focus === true)
+        : allCards;
 
     // Apply category filter + weighted shuffle
-    const processed = applyFilterAndShuffle(allCards, { shuffle, seed, categoryFilter });
+    const processed = applyFilterAndShuffle(scopedCards, { shuffle, seed, categoryFilter });
 
     const total = processed.length;
     const start = (page - 1) * limit;
@@ -667,10 +697,67 @@ router.post('/', async (req, res) => {
     });
 
     await flashcard.save();
-    res.status(201).json(flashcard);
+
+    // Optionally drop the new card straight into the user's Focus deck.
+    let focus = false;
+    if (req.body.focus) {
+      await UserCardPreference.findOneAndUpdate(
+        { userId: req.userId, cardId: String(flashcard._id) },
+        {
+          $set: {
+            focus: true,
+            targetLang,
+            nativeLang,
+            conceptId,
+            senseId,
+            updatedAt: new Date(),
+          },
+        },
+        { upsert: true, new: true, setDefaultsOnInsert: true }
+      );
+      focus = true;
+    }
+
+    res.status(201).json({ ...flashcard.toObject(), focus });
   } catch (error) {
     console.error('Create flashcard error:', error);
     res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Toggle whether a card is in the user's per-language-pair "Focus" deck.
+// Works for both default (shared) and user-created cards; the flag lives in
+// UserCardPreference keyed by { userId, cardId } so it never leaks across users
+// or language pairs.
+router.put('/:id/focus', async (req, res) => {
+  try {
+    const value = req.body.value !== false; // default true
+    const flashcard = await Flashcard.findById(req.params.id).lean();
+    if (!flashcard) {
+      return res.status(404).json({ message: 'Flashcard not found' });
+    }
+    // User-created cards may only be flagged by their owner.
+    if (!flashcard.isDefault && flashcard.userId && flashcard.userId.toString() !== req.userId) {
+      return res.status(403).json({ message: 'Not authorized' });
+    }
+    const pref = await UserCardPreference.findOneAndUpdate(
+      { userId: req.userId, cardId: req.params.id },
+      {
+        $set: {
+          focus: value,
+          targetLang: req.body.targetLang || flashcard.targetLang || '',
+          nativeLang: req.body.nativeLang || flashcard.nativeLang || '',
+          conceptId: flashcard.conceptId,
+          senseId: flashcard.senseId,
+          updatedAt: new Date(),
+        },
+      },
+      { upsert: true, new: true, setDefaultsOnInsert: true }
+    ).lean();
+    return res.json({ cardId: req.params.id, focus: !!pref.focus });
+  } catch (error) {
+    console.error('Toggle flashcard focus error:', error);
+    return res.status(500).json({ message: 'Server error' });
   }
 });
 

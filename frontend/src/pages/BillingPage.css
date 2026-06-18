@@ -187,3 +187,88 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ─── Institutional seat widget ─────────────────────────────────────── */
+
+.billing-seat-widget {
+  max-width: 1180px;
+  margin: 0 auto 24px;
+}
+
+.billing-seat-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+}
+
+.billing-seat-card svg {
+  width: 28px;
+  height: 28px;
+  color: var(--primary);
+}
+
+.billing-seat-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.billing-seat-request-pending {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.billing-request-dialog {
+  margin-top: 12px;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--card-shadow);
+}
+
+.billing-request-dialog h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.billing-request-dialog textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font: inherit;
+  resize: vertical;
+}
+
+.billing-request-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .billing-seat-card {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .billing-seat-actions {
+    align-items: flex-start;
+  }
+
+  .billing-request-actions {
+    justify-content: stretch;
+  }
+
+  .billing-request-actions button {
+    flex: 1;
+  }
+}

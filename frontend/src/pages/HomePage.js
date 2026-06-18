@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
 import { learningHubService, userService, quizService } from '../services/api';
 import { getTargetLangName, getTargetLangCode } from '../config/languages';
+import { useCurriculumVersion } from '../hooks/useCurriculumVersion';
 import './HomePage.css';
 
 function pairGoalOptions(t) {
@@ -33,6 +34,7 @@ function HomePage() {
   const username = localStorage.getItem('username');
   const isAdmin = userRole === 'admin';
   const isGuest = localStorage.getItem('guestMode') === 'true';
+  const { isV2: onV2Curriculum } = useCurriculumVersion();
   const [xpStats, setXpStats] = useState(null);
   const [gamification, setGamification] = useState(null);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
@@ -173,6 +175,10 @@ function HomePage() {
   const leagueBadges = { bronze: '🥉', silver: '🥈', gold: '🥇', diamond: '💎' };
 
   const handleContinue = () => {
+    if (onV2Curriculum) {
+      navigate('/learn/v2');
+      return;
+    }
     if (learningHub?.nextAction?.route) {
       navigate(learningHub.nextAction.route);
       return;
@@ -186,6 +192,10 @@ function HomePage() {
   };
 
   const handleLearningAction = (action) => {
+    if (onV2Curriculum) {
+      navigate('/learn/v2');
+      return;
+    }
     if (action?.route) {
       navigate(action.route);
       return;
@@ -223,9 +233,11 @@ function HomePage() {
       : lastActivity?.type === 'flashcard'
         ? t('home.continueFlashcards')
         : t('learningHub.startGuidedClass', 'Start one guided class'));
-  const primaryActionRoute = learningHub?.nextAction?.route
-    || (lastActivity?.type === 'quiz' && lastActivity.quizId ? `/quiz/${lastActivity.quizId}` : '')
-    || (lastActivity?.type === 'flashcard' ? '/flashcards' : '/class');
+  const primaryActionRoute = onV2Curriculum
+    ? '/learn/v2'
+    : (learningHub?.nextAction?.route
+      || (lastActivity?.type === 'quiz' && lastActivity.quizId ? `/quiz/${lastActivity.quizId}` : '')
+      || (lastActivity?.type === 'flashcard' ? '/flashcards' : '/class'));
 
   const dueReviewCount = learningHub?.reviewQueue?.dueSavedItems?.length || 0;
   const totalReviewCount = learningHub?.reviewQueue?.counts?.total || dueReviewCount;
@@ -435,6 +447,14 @@ function HomePage() {
                     <button className="btn btn-primary btn-lg" onClick={() => handleLearningAction({ route: primaryActionRoute })}>
                       {primaryActionLabel} →
                     </button>
+                    {onV2Curriculum && (
+                      <button
+                        className="btn btn-secondary btn-lg"
+                        onClick={() => navigate('/learn/v2/catalog')}
+                      >
+                        {t('home.browseLessons', 'Browse lessons')}
+                      </button>
+                    )}
                   </div>
                 </>
               ) : (
@@ -459,19 +479,23 @@ function HomePage() {
 
           {/* Quick Actions */}
           <section className="quick-actions">
-            <div className="quick-action" onClick={() => navigate('/class')}>
+            <div className="quick-action" onClick={() => navigate(onV2Curriculum ? '/learn/v2' : '/class')}>
               <span className="quick-action-icon">&#127979;</span>
               <div className="quick-action-text">
-                <strong>{t('navbar.class', 'Class')}</strong>
-                <span>{t('home.classDesc', 'Guided tutor lessons')}</span>
+                <strong>{onV2Curriculum ? t('navbar.learn', 'Learn') : t('navbar.class', 'Class')}</strong>
+                <span>{onV2Curriculum
+                  ? t('home.learnDesc', 'Continue your curriculum session')
+                  : t('home.classDesc', 'Guided tutor lessons')}</span>
               </div>
               <span className="quick-action-arrow">→</span>
             </div>
-            <div className="quick-action" onClick={() => navigate('/exercise')}>
+            <div className="quick-action" onClick={() => navigate(onV2Curriculum ? '/learn/v2/catalog' : '/exercise')}>
               <span className="quick-action-icon">&#9997;</span>
               <div className="quick-action-text">
-                <strong>{t('navbar.exercise', 'Exercise')}</strong>
-                <span>{t('home.exerciseDesc', 'Quiz and flashcards')}</span>
+                <strong>{onV2Curriculum ? t('home.browseLessons', 'Browse lessons') : t('navbar.exercise', 'Exercise')}</strong>
+                <span>{onV2Curriculum
+                  ? t('home.catalogDesc', 'Pick a specific concept to study')
+                  : t('home.exerciseDesc', 'Quiz and flashcards')}</span>
               </div>
               <span className="quick-action-arrow">→</span>
             </div>

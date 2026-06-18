@@ -20,6 +20,30 @@ const normalizeCategory = (cat) => {
   return ['uncategorized'];
 };
 
+// 12h shuffle seed (guest fallback when there's no server-side account).
+const SHUFFLE_SEED_TTL_MS = 12 * 60 * 60 * 1000;
+
+// Deterministic seeded shuffle so a category/selection deck shuffles the same
+// way for a given seed — keeps order stable within the 12h window, matching
+// the server-shuffled main deck.
+const seededRng = (seed) => {
+  let s = (seed >>> 0) || 1;
+  return () => {
+    s = (Math.imul(s, 1664525) + 1013904223) >>> 0;
+    return s / 0xFFFFFFFF;
+  };
+};
+
+const seededShuffle = (arr, seed) => {
+  const rng = seededRng(seed);
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+};
+
 function FlashcardsPage() {
   const { t } = useTranslation();
   const [flashcards, setFlashcards] = useState([]);
@@ -37,6 +61,13 @@ function FlashcardsPage() {
     topic: '',
   });
   const [showForm, setShowForm] = useState(false);
+  const [deckScope, setDeckScope] = useState('all'); // 'all' | 'mine' | 'focus'
+  const [addToFocus, setAddToFocus] = useState(false); // "Add to Focus" checkbox on the add form
+  const [focusIds, setFocusIds] = useState(() => new Set()); // client source of truth for Focus membership
+  const [randomCount, setRandomCount] = useState(10); // how many cards the "Study random" button picks
+  const [showSubsetPicker, setShowSubsetPicker] = useState(false); // hand-pick cards from the current deck
+  const [deckMenuOpen, setDeckMenuOpen] = useState(false); // scope dropdown (All / My Cards / Focus)
+  const [studyMenuOpen, setStudyMenuOpen] = useState(false); // "Study random" dropdown (count + select cards)
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [displayMode, setDisplayMode] = useState('target');
   const [showsTargetFirst, setShowsTargetFirst] = useState(true);
@@ -57,7 +88,7 @@ function FlashcardsPage() {
   const [loadingMore, setLoadingMore] = useState(false);
   const [allCategories, setAllCategories] = useState([]); // from metadata endpoint
   const [selectedCategories, setSelectedCategories] = useState(new Set());
-  const [shuffleSeed, setShuffleSeed] = useState(() => Math.floor(Math.random() * 2147483647));
+  const [shuffleSeed, setShuffleSeed] = useState(null); // resolved from the 12h window on mount
   const [retryingTranslation, setRetryingTranslation] = useState(false);
   const autoPlayRef = useRef(false);
   const prefetchEndRef = useRef(0); // highest card index (exclusive) already queued for prefetch
@@ -65,6 +96,8 @@ function FlashcardsPage() {
   const sidebarToggleRef = useRef(null);
   const landscapeSidebarRef = useRef(null);
   const originalOrderRef = useRef(null);
+  const deckMenuRef = useRef(null);
+  const studyMenuRef = useRef(null);
 
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -88,14 +121,60 @@ function FlashcardsPage() {
     }, 500);
   }, [userId]);
 
+  // Resolve the shuffle seed for this session. The seed is held stable for 12h
+  // (server-side for signed-in users so it follows them across devices,
+  // localStorage for guests) so the deck order — and the resume position — stays
+  // put across opens. force=true mints a fresh seed (manual reshuffle).
+  const resolveShuffleSeed = useCallback(async (force = false) => {
+    if (userId) {
+      try {
+        const res = force
+          ? await userService.refreshFlashcardSeed(userId)
+          : await userService.getFlashcardSeed(userId);
+        if (res?.data?.seed) return res.data.seed;
+      } catch (_) { /* fall back to local seed below */ }
+    }
+    const now = Date.now();
+    const storedSeed = parseInt(localStorage.getItem('flashcardShuffleSeed'), 10);
+    const storedAt = parseInt(localStorage.getItem('flashcardShuffleSeedAt'), 10);
+    if (!force && storedSeed && storedAt && (now - storedAt) < SHUFFLE_SEED_TTL_MS) {
+      return storedSeed;
+    }
+    const seed = Math.floor(Math.random() * 2147483646) + 1;
+    localStorage.setItem('flashcardShuffleSeed', String(seed));
+    localStorage.setItem('flashcardShuffleSeedAt', String(now));
+    return seed;
+  }, [userId]);
+
   useEffect(() => {
-    // Fetch category metadata + first page of cards in parallel
+    // Fetch category metadata, then load cards with the 12h-stable seed.
     flashcardService.getCategories()
       .then(res => setAllCategories(res.data.categories || []))
       .catch(() => {});
-    fetchFlashcards();
+    (async () => {
+      const seed = await resolveShuffleSeed(false);
+      setShuffleSeed(seed);
+      fetchFlashcards(1, false, seed);
+    })();
+    if (userId) {
+      flashcardService.getFocusIds()
+        .then(res => setFocusIds(new Set(res.data.ids || [])))
+        .catch(() => {});
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Keep focusIds in sync as cards load — any loaded card flagged focus joins the set.
+  useEffect(() => {
+    setFocusIds((prev) => {
+      let changed = false;
+      const next = new Set(prev);
+      for (const c of flashcards) {
+        if (c.focus && !next.has(c._id)) { next.add(c._id); changed = true; }
+      }
+      return changed ? next : prev;
+    });
+  }, [flashcards]);
 
   // Restore flashcard position from server or show continue prompt for lesson in progress
   useEffect(() => {
@@ -164,6 +243,16 @@ function FlashcardsPage() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  // Close the scope / study-random dropdowns when clicking outside them.
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (deckMenuRef.current && !deckMenuRef.current.contains(e.target)) setDeckMenuOpen(false);
+      if (studyMenuRef.current && !studyMenuRef.current.contains(e.target)) setStudyMenuOpen(false);
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   // Only exclude cards missing the target field when the backend is actually
   // sending that field (i.e. at least one card has it).
   const targetLangField = getLangField(targetLangCode);
@@ -218,8 +307,11 @@ function FlashcardsPage() {
       }
     }
 
-    return result;
-  }, [allLangFilteredCards, categoryCardsCache, selectedCardIds, selectedCategories, targetLangField]);
+    // The no-selection deck is already weighted-shuffled server-side. This
+    // client-side category/selection deck isn't, so shuffle it here (seeded, so
+    // the order stays stable within the 12h window) when shuffle is on.
+    return isShuffled && shuffleSeed ? seededShuffle(result, shuffleSeed) : result;
+  }, [allLangFilteredCards, categoryCardsCache, selectedCardIds, selectedCategories, targetLangField, isShuffled, shuffleSeed]);
 
   const lastSpokenCardRef = useRef(null);
 
@@ -384,7 +476,7 @@ function FlashcardsPage() {
     };
   }, []);
 
-  const fetchFlashcards = async (page = 1, append = false, seedOverride) => {
+  const fetchFlashcards = async (page = 1, append = false, seedOverride, scopeOverride) => {
     try {
       if (append) {
         setLoadingMore(true);
@@ -394,6 +486,7 @@ function FlashcardsPage() {
       const opts = {
         shuffle: isShuffled,
         seed: seedOverride !== undefined ? seedOverride : shuffleSeed,
+        scope: scopeOverride !== undefined ? scopeOverride : deckScope,
       };
       const response = userId
         ? await flashcardService.getFlashcards(userId, page, 50, opts)
@@ -484,9 +577,15 @@ function FlashcardsPage() {
         [nativeField]: newFlashcard[nativeField],
         romanization: newFlashcard.romanization,
         category,
+        focus: addToFocus,
       });
-      setFlashcards([...flashcards, response.data]);
+      const created = response.data;
+      // New cards are always the user's own, so they belong in All and My Cards;
+      // they only belong in the Focus deck if the user opted in.
+      const belongsInScope = deckScope !== 'focus' || created.focus;
+      if (belongsInScope) setFlashcards(prev => [...prev, created]);
       setNewFlashcard({ [targetField]: '', [nativeField]: '', romanization: '', category: ['vocabulary'], topic: '' });
+      setAddToFocus(false);
       setShowForm(false);
     } catch (err) {
       setError('Failed to add flashcard');
@@ -871,6 +970,132 @@ function FlashcardsPage() {
     }
   };
 
+  // --- Focus deck (per language pair) ---
+  // Switch the loaded deck between all cards, only the user's own cards, and
+  // the Focus deck. Scope filtering happens server-side, so we refetch page 1.
+  const changeDeckScope = (scope) => {
+    if (scope === deckScope) return;
+    setDeckScope(scope);
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    setSelectedCategories(new Set());
+    setSelectedCardIds(new Set());
+    requestedPageRef.current = 1;
+    fetchFlashcards(1, false, undefined, scope);
+  };
+
+  // Single entry point for all Focus add/remove (current card, bulk, per-item).
+  // Updates focusIds (display source of truth) + loaded card.focus, then persists.
+  const applyFocus = async (ids, value) => {
+    const list = (Array.isArray(ids) ? ids : [ids]).filter(Boolean);
+    if (!userId || list.length === 0) return;
+    const idSet = new Set(list);
+    setFocusIds((prev) => {
+      const next = new Set(prev);
+      list.forEach(id => (value ? next.add(id) : next.delete(id)));
+      return next;
+    });
+    setFlashcards(prev => prev.map(fc => (idSet.has(fc._id) ? { ...fc, focus: value } : fc)));
+    try {
+      await Promise.all(list.map(id => flashcardService.setCardFocus(id, value)));
+      // Removing from Focus while viewing the Focus deck → drop them from view.
+      if (!value && deckScope === 'focus') {
+        setFlashcards(prev => prev.filter(fc => !idSet.has(fc._id)));
+      }
+    } catch (err) {
+      setFocusIds((prev) => {
+        const next = new Set(prev);
+        list.forEach(id => (value ? next.delete(id) : next.add(id)));
+        return next;
+      });
+      setFlashcards(prev => prev.map(fc => (idSet.has(fc._id) ? { ...fc, focus: !value } : fc)));
+      setError(t('flashcards.focusFailed', 'Could not update your Focus deck.'));
+    }
+  };
+
+  const toggleFocusCurrent = () => {
+    if (!current || current.isReviewSeed) return;
+    applyFocus([current._id], !focusIds.has(current._id));
+  };
+
+  const setFocusForSelected = (value) => applyFocus(Array.from(selectedCardIds), value);
+
+  // --- Study a subset of the current deck (random pick or hand-picked) ---
+  // Both funnel into selectedCardIds, which activeFlashcards already narrows to.
+  const studyRandomSubset = () => {
+    const pool = allLangFilteredCards.filter(c => !c.isReviewSeed);
+    if (pool.length === 0) return;
+    const n = Math.max(1, Math.min(Math.floor(Number(randomCount) || 10), pool.length));
+    const shuffled = [...pool];
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    setSelectedCategories(new Set());
+    setSelectedCardIds(new Set(shuffled.slice(0, n).map(c => c._id)));
+    setCurrentIndex(0);
+    setIsFlipped(false);
+  };
+
+  const toggleSubsetCard = (id) => {
+    setSelectedCategories(new Set());
+    setSelectedCardIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+    setCurrentIndex(0);
+    setIsFlipped(false);
+  };
+
+  const clearSubset = () => {
+    setSelectedCardIds(new Set());
+    setSelectedCategories(new Set());
+    setCurrentIndex(0);
+    setIsFlipped(false);
+  };
+
+  // One card row in an expanded category: selectable for study + a Focus star.
+  const renderSubtopicCard = (card, primary) => {
+    const isChecked = selectedCardIds.has(card._id);
+    const isFocused = focusIds.has(card._id);
+    const target = card[getLangField(targetLangCode)];
+    const native = card[getLangField(nativeLangCode)];
+    return (
+      <div key={card._id} className={`subtopic-item ${isChecked ? 'selected' : ''}`}>
+        <button
+          type="button"
+          className="subtopic-select"
+          onClick={() => {
+            const adding = !selectedCardIds.has(card._id);
+            setSelectedCardIds((prev) => {
+              const next = new Set(prev);
+              if (next.has(card._id)) next.delete(card._id); else next.add(card._id);
+              return next;
+            });
+            if (adding) setSelectedCategories((prev) => { const next = new Set(prev); next.delete(primary); return next; });
+          }}
+        >
+          <span className="category-check">{isChecked ? '✓' : ''}</span>
+          <span className="category-name">
+            {target || native}
+            {native && target && <span className="subtopic-native"> — {native}</span>}
+          </span>
+        </button>
+        {!isGuest && userId && (
+          <button
+            type="button"
+            className={`subtopic-focus-btn ${isFocused ? 'active' : ''}`}
+            aria-pressed={isFocused}
+            onClick={() => applyFocus([card._id], !isFocused)}
+          >
+            {isFocused ? t('flashcards.removeFromFocus', 'Remove from Focus') : t('flashcards.addToFocus', 'Add to Focus')}
+          </button>
+        )}
+      </div>
+    );
+  };
+
   const saveCurrentForReview = async () => {
     if (!userId || !current) return;
     try {
@@ -1022,6 +1247,45 @@ function FlashcardsPage() {
     return <div className="loading">{t('common.loading')}</div>;
   }
 
+  // Segmented control to switch the loaded deck (logged-in users only).
+  const deckScopeOptions = [
+    { id: 'all', label: t('flashcards.deckAll', 'All') },
+    { id: 'mine', label: t('flashcards.deckMine', 'My Cards') },
+    { id: 'focus', label: t('flashcards.deckFocus', 'Focus') },
+  ];
+  const currentScopeLabel = deckScopeOptions.find(o => o.id === deckScope)?.label || deckScopeOptions[0].label;
+  const deckSwitcher = (!isGuest && userId) ? (
+    <div className="deck-scope-dropdown" ref={deckMenuRef}>
+      <button
+        type="button"
+        className="deck-scope-trigger"
+        aria-haspopup="listbox"
+        aria-expanded={deckMenuOpen}
+        aria-label={t('flashcards.deckScopeLabel', 'Which cards to study')}
+        onClick={() => setDeckMenuOpen(o => !o)}
+      >
+        <span>{currentScopeLabel}</span>
+        <span className="dropdown-caret" aria-hidden="true">▾</span>
+      </button>
+      {deckMenuOpen && (
+        <div className="deck-scope-menu" role="listbox">
+          {deckScopeOptions.map(opt => (
+            <button
+              key={opt.id}
+              type="button"
+              role="option"
+              aria-selected={deckScope === opt.id}
+              className={`deck-scope-option ${deckScope === opt.id ? 'active' : ''}`}
+              onClick={() => { changeDeckScope(opt.id); setDeckMenuOpen(false); }}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  ) : null;
+
   return (
     <div className="flashcards-container">
       {continuePrompt && (
@@ -1054,6 +1318,7 @@ function FlashcardsPage() {
                 </h1>
               </div>
               <div className="header-actions">
+                {deckSwitcher}
                 {!isGuest && (
                   <button className="btn btn-primary" onClick={() => setShowForm(!showForm)}>
                     {showForm ? t('common.cancel') : `+ ${t('flashcards.addFlashcard')}`}
@@ -1117,15 +1382,31 @@ function FlashcardsPage() {
                       </datalist>
                     </div>
                   </div>
+                  <label className="add-focus-toggle">
+                    <input type="checkbox" checked={addToFocus} onChange={(e) => setAddToFocus(e.target.checked)} />
+                    {t('flashcards.addToFocusOnCreate', 'Add to my Focus deck')}
+                  </label>
                   <button type="submit" className="btn btn-success">{t('flashcards.addFlashcard')}</button>
                 </form>
               </div>
             )}
 
             <div className="empty-state">
-              <div className="empty-state-icon">🎴</div>
-              <h3>{t('flashcards.noFlashcards')}</h3>
-              <p>{t('flashcards.createFirst')}</p>
+              <div className="empty-state-icon">{deckScope === 'focus' ? '⭐' : '🎴'}</div>
+              <h3>
+                {deckScope === 'focus'
+                  ? t('flashcards.focusEmptyTitle', 'Your Focus deck is empty')
+                  : deckScope === 'mine'
+                    ? t('flashcards.mineEmptyTitle', "You haven't added any cards yet")
+                    : t('flashcards.noFlashcards')}
+              </h3>
+              <p>
+                {deckScope === 'focus'
+                  ? t('flashcards.focusEmptyHint', 'Add cards to Focus from any flashcard to study them intensively here.')
+                  : deckScope === 'mine'
+                    ? t('flashcards.mineEmptyHint', 'Cards you create will appear here.')
+                    : t('flashcards.createFirst')}
+              </p>
               <button className="btn btn-primary" onClick={() => setShowForm(true)}>
                 {t('flashcards.create')}
               </button>
@@ -1145,6 +1426,7 @@ function FlashcardsPage() {
                   </h1>
                 </div>
                 <div className="header-actions">
+                  {deckSwitcher}
                   <button
                     className={`header-tool-btn ${isShuffled ? 'active' : ''}`}
                     title={t('flashcards.shuffle')}
@@ -1155,7 +1437,10 @@ function FlashcardsPage() {
                       setTimeout(async () => {
                         const newShuffled = !isShuffled;
                         setIsShuffled(newShuffled);
-                        const newSeed = newShuffled ? Math.floor(Math.random() * 2147483647) : shuffleSeed;
+                        // Turning shuffle on is a manual reshuffle: mint a fresh
+                        // seed and restart the 12h window. Turning it off keeps
+                        // the current seed (deck is shown in order anyway).
+                        const newSeed = newShuffled ? await resolveShuffleSeed(true) : shuffleSeed;
                         setShuffleSeed(newSeed);
                         setCurrentIndex(0);
                         setIsFlipped(false);
@@ -1228,8 +1513,101 @@ function FlashcardsPage() {
                             category: e.target.value.split(',').map(s => s.trim()).filter(Boolean) })} />
                       </div>
                     </div>
+                    <label className="add-focus-toggle">
+                      <input type="checkbox" checked={addToFocus} onChange={(e) => setAddToFocus(e.target.checked)} />
+                      {t('flashcards.addToFocusOnCreate', 'Add to my Focus deck')}
+                    </label>
                     <button type="submit" className="btn btn-success">{t('flashcards.addFlashcard')}</button>
                   </form>
+                </div>
+              )}
+
+              {/* Study a subset: random pick or hand-picked cards (works in every scope) */}
+              <div className="study-subset-bar">
+                <div className="study-random-dropdown" ref={studyMenuRef}>
+                  <div className="split-button">
+                    <button
+                      type="button"
+                      className="header-tool-btn split-button-main"
+                      onClick={() => { studyRandomSubset(); setStudyMenuOpen(false); }}
+                      title={t('flashcards.studyRandomTitle', 'Study a random set of cards')}
+                    >
+                      <span className="tool-icon">🎲</span>
+                      <span className="tool-label">{t('flashcards.studyRandom', 'Study random')}</span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`header-tool-btn split-button-caret ${studyMenuOpen ? 'active' : ''}`}
+                      aria-haspopup="true"
+                      aria-expanded={studyMenuOpen}
+                      aria-label={t('flashcards.studyRandomOptions', 'Study random options')}
+                      onClick={() => setStudyMenuOpen(o => !o)}
+                    >
+                      <span className="dropdown-caret" aria-hidden="true">▾</span>
+                    </button>
+                  </div>
+                  {studyMenuOpen && (
+                    <div className="study-random-menu">
+                      <label className="study-random-count">
+                        {t('flashcards.randomCountLabel', 'How many cards to study')}
+                        <input
+                          type="number"
+                          className="subset-count-input"
+                          min="1"
+                          value={randomCount}
+                          onChange={(e) => setRandomCount(e.target.value)}
+                        />
+                      </label>
+                      <button
+                        type="button"
+                        className="btn btn-success study-random-go"
+                        onClick={() => { studyRandomSubset(); setStudyMenuOpen(false); }}
+                      >
+                        {t('flashcards.studyNRandom', { count: Math.max(1, Math.floor(Number(randomCount) || 10)), defaultValue: 'Study {{count}} random' })}
+                      </button>
+                      <button
+                        type="button"
+                        className="study-random-select"
+                        onClick={() => { setShowSubsetPicker(v => !v); setStudyMenuOpen(false); }}
+                      >
+                        ☑ {t('flashcards.selectCards', 'Select cards')}
+                      </button>
+                    </div>
+                  )}
+                </div>
+                {(selectedCardIds.size > 0 || selectedCategories.size > 0) && (
+                  <>
+                    <span className="subset-status">
+                      {t('flashcards.studyingSubset', { count: activeFlashcards.length, defaultValue: 'Studying {{count}}' })}
+                    </span>
+                    <button className="category-clear" onClick={clearSubset}>
+                      {t('flashcards.studyAll', 'Study all')}
+                    </button>
+                  </>
+                )}
+              </div>
+              {showSubsetPicker && (
+                <div className="subset-picker">
+                  {allLangFilteredCards.filter(c => !c.isReviewSeed).length === 0 ? (
+                    <span className="card-list-hint">{t('flashcards.noCardsToPick', 'No cards to pick from yet.')}</span>
+                  ) : (
+                    allLangFilteredCards.filter(c => !c.isReviewSeed).map((card) => {
+                      const checked = selectedCardIds.has(card._id);
+                      const label = card[getLangField(targetLangCode)] || card[getLangField(nativeLangCode)] || '';
+                      return (
+                        <button
+                          key={card._id}
+                          type="button"
+                          className={`subset-pick-item ${checked ? 'selected' : ''}`}
+                          onClick={() => toggleSubsetCard(card._id)}
+                        >
+                          <span className="subset-pick-check">{checked ? '✓' : ''}</span>
+                          <span className="subset-pick-text">{label}</span>
+                          {focusIds.has(card._id) && <span className="subset-pick-focus">{t('flashcards.focusBadge', 'Focus')}</span>}
+                        </button>
+                      );
+                    })
+                  )}
                 </div>
               )}
             </div>
@@ -1492,6 +1870,16 @@ function FlashcardsPage() {
                     <span className="card-list-hint">{t('flashcards.clickCategoryHint', 'Select categories to study')}</span>
                   )}
                 </div>
+                {!isGuest && userId && selectedCardIds.size > 0 && (
+                  <div className="card-list-focus-actions">
+                    <button className="btn-focus-bulk" onClick={() => setFocusForSelected(true)}>
+                      {t('flashcards.addSelectedToFocus', 'Add to Focus')}
+                    </button>
+                    <button className="btn-focus-bulk" onClick={() => setFocusForSelected(false)}>
+                      {t('flashcards.removeSelectedFromFocus', 'Remove from Focus')}
+                    </button>
+                  </div>
+                )}
                 <div className="category-list">
                   {sidebarCategories.map(({ name: primary, count: metaCount }) => {
                     const isExpanded = expandedCategories.has(primary);
@@ -1512,25 +1900,7 @@ function FlashcardsPage() {
                         </button>
                         {isExpanded && allCategoryCards.length > 0 && (
                           <div className="subtopic-list">
-                            {allCategoryCards.map(card => {
-                              const isChecked = selectedCardIds.has(card._id);
-                              return (
-                                <button key={card._id} className={`subtopic-item ${isChecked ? 'selected' : ''}`}
-                                  onClick={() => {
-                                    const adding = !selectedCardIds.has(card._id);
-                                    setSelectedCardIds(prev => { const next = new Set(prev); next.has(card._id) ? next.delete(card._id) : next.add(card._id); return next; });
-                                    if (adding) setSelectedCategories(prev => { const next = new Set(prev); next.delete(primary); return next; });
-                                  }}>
-                                  <span className="category-check">{isChecked ? '✓' : ''}</span>
-                                  <span className="category-name">
-                                    {card[getLangField(targetLangCode)] || card[getLangField(nativeLangCode)]}
-                                    {card[getLangField(nativeLangCode)] && card[getLangField(targetLangCode)] && (
-                                      <span className="subtopic-native"> — {card[getLangField(nativeLangCode)]}</span>
-                                    )}
-                                  </span>
-                                </button>
-                              );
-                            })}
+                            {allCategoryCards.map(card => renderSubtopicCard(card, primary))}
                           </div>
                         )}
                       </div>
@@ -1542,6 +1912,15 @@ function FlashcardsPage() {
 
               {!isGuest && (
                 <div className="flashcard-save-row">
+                  <button
+                    className={`btn-save-card btn-focus-card ${focusIds.has(current._id) ? 'active' : ''}`}
+                    onClick={toggleFocusCurrent}
+                    aria-pressed={focusIds.has(current._id)}
+                  >
+                    {focusIds.has(current._id)
+                      ? t('flashcards.removeFromFocus', 'Remove from Focus')
+                      : t('flashcards.addToFocus', 'Add to Focus')}
+                  </button>
                   <button className="btn-save-card" onClick={saveCurrentForReview}>
                     {t('flashcards.saveForReview', 'Save for review')}
                   </button>
@@ -1625,6 +2004,16 @@ function FlashcardsPage() {
                     <span className="card-list-hint">{t('flashcards.clickCategoryHint', 'Select categories to study')}</span>
                   )}
                 </div>
+                {!isGuest && userId && selectedCardIds.size > 0 && (
+                  <div className="card-list-focus-actions">
+                    <button className="btn-focus-bulk" onClick={() => setFocusForSelected(true)}>
+                      {t('flashcards.addSelectedToFocus', 'Add to Focus')}
+                    </button>
+                    <button className="btn-focus-bulk" onClick={() => setFocusForSelected(false)}>
+                      {t('flashcards.removeSelectedFromFocus', 'Remove from Focus')}
+                    </button>
+                  </div>
+                )}
                 <div className="category-list">
                   {sidebarCategories.map(({ name: primary, count: metaCount }) => {
                     const isExpanded = expandedCategories.has(primary);
@@ -1652,32 +2041,7 @@ function FlashcardsPage() {
                         </button>
                         {isExpanded && allCategoryCards.length > 0 && (
                           <div className="subtopic-list">
-                            {allCategoryCards.map(card => {
-                              const isChecked = selectedCardIds.has(card._id);
-                              return (
-                                <button
-                                  key={card._id}
-                                  className={`subtopic-item ${isChecked ? 'selected' : ''}`}
-                                  onClick={() => {
-                                    const adding = !selectedCardIds.has(card._id);
-                                    setSelectedCardIds(prev => {
-                                      const next = new Set(prev);
-                                      next.has(card._id) ? next.delete(card._id) : next.add(card._id);
-                                      return next;
-                                    });
-                                    if (adding) setSelectedCategories(prev => { const next = new Set(prev); next.delete(primary); return next; });
-                                  }}
-                                >
-                                  <span className="category-check">{isChecked ? '✓' : ''}</span>
-                                  <span className="category-name">
-                                    {card[getLangField(targetLangCode)] || card[getLangField(nativeLangCode)]}
-                                    {card[getLangField(nativeLangCode)] && card[getLangField(targetLangCode)] && (
-                                      <span className="subtopic-native"> — {card[getLangField(nativeLangCode)]}</span>
-                                    )}
-                                  </span>
-                                </button>
-                              );
-                            })}
+                            {allCategoryCards.map(card => renderSubtopicCard(card, primary))}
                           </div>
                         )}
                       </div>

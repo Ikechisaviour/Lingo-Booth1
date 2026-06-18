@@ -18,6 +18,9 @@ const verifyToken = async (req, res, next) => {
 
     const decoded = jwt.verify(token, JWT_SECRET);
     req.userId = decoded.userId;
+    // authAt: unix-seconds of the user's last fresh credential proof
+    // (password/OAuth login or /auth/step-up). Used by requireRecentAuth.
+    req.authAt = typeof decoded.authAt === 'number' ? decoded.authAt : decoded.iat;
 
     const user = await User.findById(decoded.userId).select('-password');
     if (!user) {
@@ -33,6 +36,26 @@ const verifyToken = async (req, res, next) => {
   } catch (error) {
     res.status(401).json({ message: 'Token is not valid' });
   }
+};
+
+// Step-up gate: require the user's last fresh credential proof to be within
+// `maxAgeMinutes`. Returns 401 with code STEP_UP_REQUIRED so clients can
+// transparently prompt for a password without treating it as a session expiry.
+//
+// Place AFTER verifyToken in the middleware chain.
+const requireRecentAuth = (maxAgeMinutes = 15) => (req, res, next) => {
+  if (typeof req.authAt !== 'number') {
+    return res.status(401).json({ message: 'Authentication required', code: 'STEP_UP_REQUIRED' });
+  }
+  const ageSec = Math.floor(Date.now() / 1000) - req.authAt;
+  if (ageSec > maxAgeMinutes * 60) {
+    return res.status(401).json({
+      message: 'Please confirm your password to continue',
+      code: 'STEP_UP_REQUIRED',
+      maxAgeMinutes,
+    });
+  }
+  next();
 };
 
 // Optional auth — attaches user if token present, but allows guests through
@@ -73,4 +96,4 @@ const isOwner = (paramName = 'userId') => (req, res, next) => {
   }
 };
 
-module.exports = { verifyToken, optionalAuth, isAdmin, isOwner };
+module.exports = { verifyToken, optionalAuth, isAdmin, isOwner, requireRecentAuth };

@@ -6,6 +6,29 @@ const {
   analyzePracticeContext,
   buildPracticeRecommendations,
 } = require('../utils/practiceContextAnalysis');
+const { matchSingleContext } = require('../utils/contextToConcepts');
+const srs = require('../utils/curriculumV2Srs');
+
+// Fires after a PracticeContext save succeeds. Matches the saved
+// vocabulary to v2 concept IDs and nudges any existing SRS rows for
+// those concepts (treats real-life encounter as a partial review).
+// Failures here MUST NOT block the save — log and move on.
+async function reinforceSrsFromContext(context) {
+  if (!context || !context.userId) return; // anonymous saves don't have SRS state
+  try {
+    const matched = matchSingleContext(context, context.targetLanguage);
+    if (matched.size === 0) return;
+    await Promise.allSettled([...matched.keys()].map((conceptId) =>
+      srs.reinforceFromContext({
+        userId: context.userId,
+        conceptId,
+        skill: 'recognition',
+      })
+    ));
+  } catch (err) {
+    console.warn('Context-to-SRS reinforcement failed (non-fatal):', err.message || err);
+  }
+}
 
 const router = express.Router();
 
@@ -49,7 +72,7 @@ function requirePracticeContextAccess(req, res, next) {
   }
 
   return res.status(403).json({
-    message: 'Real-life context practice is available on Pro and Ultra.',
+    message: 'Real-life context practice is available on Pro and Premium.',
     entitlements,
   });
 }
@@ -153,6 +176,9 @@ router.post('/', async (req, res) => {
       goals: cleanStringList(req.body?.goals, 8),
       transcriptWordCount: Math.max(0, Math.min(Number(req.body?.transcriptWordCount) || 0, 5000)),
     });
+
+    // Fire-and-forget reinforcement — never block the save on this.
+    reinforceSrsFromContext(context);
 
     res.status(201).json(context);
   } catch (error) {

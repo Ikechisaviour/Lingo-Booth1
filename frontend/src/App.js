@@ -9,6 +9,12 @@ import guestActivityTracker from './services/guestActivityTracker';
 import Navbar from './components/Navbar';
 import BrandLogo from './components/BrandLogo';
 import EmailVerificationBanner from './components/EmailVerificationBanner';
+import StepUpModal from './components/StepUpModal';
+import CurriculumVersionModal from './components/CurriculumVersionModal';
+import {
+  clearCurriculumPreferenceCache,
+  hydrateCurriculumPreferences,
+} from './hooks/useCurriculumVersion';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -42,6 +48,9 @@ const PricingPage = lazy(() => import('./pages/PricingPage'));
 const BillingPage = lazy(() => import('./pages/BillingPage'));
 const InstitutionDashboard = lazy(() => import('./pages/InstitutionDashboard'));
 const CertificateVerifyPage = lazy(() => import('./pages/CertificateVerifyPage'));
+const CurriculumV2SessionShellPage = lazy(() => import('./pages/curriculumV2/SessionShellPage'));
+const AlphabetOnboardingPage = lazy(() => import('./pages/curriculumV2/AlphabetOnboardingPage'));
+const LessonCatalogPage = lazy(() => import('./pages/curriculumV2/LessonCatalogPage'));
 
 // Listens for auth changes that should remove the current user from the app.
 function AuthSessionListener({ onSessionEnded }) {
@@ -141,6 +150,82 @@ function GlobalHomeLogo({ hidden }) {
 function RouteLoadingFallback() {
   const { t } = useTranslation();
   return <div className="loading">{t('common.loading', 'Loading...')}</div>;
+}
+
+// One-time prompt on login (or after target-language change) when the learner's
+// current target has v2 available and they haven't yet chosen a version. Persists
+// the choice via PUT /users/:id/curriculum-preference; "decide later" sets a
+// session-scoped dismissal so the modal doesn't keep nagging the same session.
+function CurriculumVersionGate({ isAuthenticated, isGuest }) {
+  const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const [targetLanguage, setTargetLanguage] = useState('');
+  const [saving, setSaving] = useState(false);
+
+  const evaluate = useCallback(async () => {
+    if (!isAuthenticated || isGuest) return;
+    const userId = localStorage.getItem('userId');
+    if (!userId) return;
+    try {
+      const res = await userService.getProfile(userId);
+      const v2 = res.data?.curriculumV2 || {};
+      // Mirror the server's preferences map into localStorage so the Navbar
+      // and HomePage can route conditionally without their own API call.
+      hydrateCurriculumPreferences(v2);
+      if (
+        v2.isV2AvailableForCurrentTarget
+        && !v2.currentVersion
+        && v2.currentTarget
+        && sessionStorage.getItem(`curriculumVersionDismissed:${v2.currentTarget}`) !== '1'
+      ) {
+        setTargetLanguage(v2.currentTarget);
+        setOpen(true);
+      }
+    } catch (_) {
+      // Silent — modal is purely opt-in; failing this check just means no prompt.
+    }
+  }, [isAuthenticated, isGuest]);
+
+  useEffect(() => { evaluate(); }, [evaluate]);
+
+  useEffect(() => {
+    const handler = () => evaluate();
+    window.addEventListener('targetLanguageChanged', handler);
+    return () => window.removeEventListener('targetLanguageChanged', handler);
+  }, [evaluate]);
+
+  const handleChoose = async (version) => {
+    const userId = localStorage.getItem('userId');
+    if (!userId || !targetLanguage) return;
+    setSaving(true);
+    try {
+      const res = await userService.updateCurriculumPreference(userId, { targetLanguage, version });
+      hydrateCurriculumPreferences(res.data?.curriculumV2);
+      setOpen(false);
+      if (version === 'v2') navigate('/learn/v2');
+    } catch (_) {
+      // Leave open so the user can retry.
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDismiss = () => {
+    if (targetLanguage) {
+      sessionStorage.setItem(`curriculumVersionDismissed:${targetLanguage}`, '1');
+    }
+    setOpen(false);
+  };
+
+  return (
+    <CurriculumVersionModal
+      open={open}
+      targetLanguage={targetLanguage}
+      onChoose={handleChoose}
+      onDismiss={handleDismiss}
+      saving={saving}
+    />
+  );
 }
 
 function App() {
@@ -313,6 +398,10 @@ function App() {
   }, [isAuthenticated]);
 
   const handleLogout = () => {
+    // Invalidate the refresh chain server-side before clearing local state.
+    // Fire-and-forget — UI never blocks on this, but it stops a stolen refresh
+    // token from being replayed after the user signs out.
+    authService.logout();
     localStorage.removeItem('token');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('userId');
@@ -328,6 +417,7 @@ function App() {
     localStorage.removeItem('nativeLanguage');
     localStorage.removeItem('targetLanguage');
     localStorage.removeItem('needsLanguageSetup');
+    clearCurriculumPreferenceCache();
     setIsAuthenticated(false);
     setIsGuest(false);
     setChallengeMode(false);
@@ -361,6 +451,8 @@ function App() {
     <GoogleOAuthProvider key={googleLocale} clientId={GOOGLE_CLIENT_ID} locale={googleLocale}>
     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
       <AuthSessionListener onSessionEnded={handleSessionEnded} />
+      <StepUpModal />
+      <CurriculumVersionGate isAuthenticated={isAuthenticated} isGuest={isGuest} />
       <div className={`App${challengeMode ? ' challenge-theme' : ''}`}>
         <GlobalHomeLogo hidden={showAppNavbar || isCertificateRender} />
         {showAppNavbar && (
@@ -552,7 +644,7 @@ function App() {
             }
           />
           <Route
-            path="/profile"
+            path="/profile/:profileTab?"
             element={
               isAuthenticated ? <ProfilePage onLogout={handleLogout} /> : <Navigate to="/login" />
             }
@@ -570,9 +662,32 @@ function App() {
             }
           />
 
+          {/* Curriculum v2 pilot (feature-flag gated inside the component) */}
+          <Route
+            path="/learn/v2"
+            element={
+              isAuthenticated ? <CurriculumV2SessionShellPage /> : <Navigate to="/login" />
+            }
+          />
+          {/* Hangul onboarding for Korean v2 — blocks A1 until completed, then
+              stays reachable any time as a refresher (?mode=refresher). */}
+          <Route
+            path="/learn/v2/hangul"
+            element={
+              isAuthenticated ? <AlphabetOnboardingPage /> : <Navigate to="/login" />
+            }
+          />
+          {/* Lesson catalog — browse + pick a specific concept or lesson. */}
+          <Route
+            path="/learn/v2/catalog"
+            element={
+              isAuthenticated ? <LessonCatalogPage /> : <Navigate to="/login" />
+            }
+          />
+
           {/* Admin Route */}
           <Route
-            path="/admin"
+            path="/admin/:adminTab?"
             element={
               isAuthenticated && localStorage.getItem('userRole') === 'admin' ? (
                 <AdminDashboard />

@@ -15,6 +15,7 @@ type AiEntitlements = {
   billingSource?: string;
   aiMemoryScope?: AIMemoryScope;
   subscription?: Record<string, any>;
+  testing?: Record<string, any>;
   tokenUsage?: {
     quotaExceeded: boolean;
     resetAt: string;
@@ -52,6 +53,7 @@ interface AuthState {
     };
   }) => void;
   setToken: (token: string) => void;
+  setRefreshToken: (refreshToken: string) => void;
   logout: () => void;
   enterGuestMode: () => void;
   exitGuestMode: () => void;
@@ -60,6 +62,7 @@ interface AuthState {
   clearGuestXP: () => void;
   setUsername: (username: string) => void;
   setFullName: (fullName: string | null) => void;
+  setSubscriptionAccess: (subscriptionTier: SubscriptionTier, aiEntitlements: AiEntitlements | null) => void;
   setNeedsLanguageSetup: (val: boolean) => void;
 }
 
@@ -129,6 +132,8 @@ export const useAuthStore = create<AuthState>()(
 
       setToken: (token) => set({ token }),
 
+      setRefreshToken: (refreshToken) => set({ refreshToken }),
+
       logout: () =>
         set({
           token: null,
@@ -164,6 +169,9 @@ export const useAuthStore = create<AuthState>()(
 
       setFullName: (fullName) =>
         set({ fullName }),
+
+      setSubscriptionAccess: (subscriptionTier, aiEntitlements) =>
+        set({ subscriptionTier, aiEntitlements }),
 
       setNeedsLanguageSetup: (val) =>
         set({ needsLanguageSetup: val }),

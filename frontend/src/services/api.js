@@ -151,7 +151,23 @@ api.interceptors.response.use(
   async (error) => {
     const config = error.config;
 
-    // Auto-refresh on 401 (expired access token)
+    // Step-up auth required for a sensitive action — hold the original promise
+    // open while the UI prompts for a password, then transparently retry so
+    // the caller never has to know step-up happened.
+    if (error.response?.status === 401 && error.response?.data?.code === 'STEP_UP_REQUIRED') {
+      return new Promise((resolve, reject) => {
+        window.dispatchEvent(new CustomEvent('stepUpRequired', {
+          detail: {
+            maxAgeMinutes: error.response.data.maxAgeMinutes,
+            onComplete: () => api(config).then(resolve, reject),
+            onCancel: () => reject(error),
+          },
+        }));
+      });
+    }
+
+    // Auto-refresh on 401 (expired access token).
+    // Rotated refresh tokens come back on every successful refresh; store both.
     if (
       error.response?.status === 401 &&
       config &&
@@ -167,7 +183,11 @@ api.interceptors.response.use(
               .post(`${API_URL}/auth/refresh`, { refreshToken })
               .then((res) => {
                 const newToken = res.data.token;
+                const newRefreshToken = res.data.refreshToken;
                 localStorage.setItem('token', newToken);
+                if (newRefreshToken) {
+                  localStorage.setItem('refreshToken', newRefreshToken);
+                }
                 sessionExpiryActive = false;
                 return newToken;
               })
@@ -251,6 +271,17 @@ export const authService = {
     api.post('/auth/reset-password', { token, password }),
   trackActivity: (userId, timeSpent) =>
     api.post('/auth/activity', { userId, timeSpent }),
+  // Server-side logout: invalidates the refresh chain so a stolen refresh
+  // token can't be replayed after the user signs out.
+  logout: () => {
+    const refreshToken = localStorage.getItem('refreshToken');
+    if (!refreshToken) return Promise.resolve();
+    return axios.post(`${API_URL}/auth/logout`, { refreshToken }).catch(() => {});
+  },
+  // Step-up: re-verify the user's password and receive a fresh `authAt` so
+  // they can perform a sensitive action without a full re-login.
+  stepUp: (password) =>
+    api.post('/auth/step-up', { password }),
 };
 
 const getStoredLanguageCode = (key, fallback = '') => {
@@ -272,6 +303,21 @@ export const contactService = {
     api.post('/contact', message, { timeout: 30000 }),
 };
 
+export const notificationService = {
+  list: (params = {}) =>
+    api.get('/notifications', { params }),
+  unreadCount: () =>
+    api.get('/notifications/unread-count'),
+  markRead: (notificationId) =>
+    api.put(`/notifications/${notificationId}/read`),
+  markAllRead: () =>
+    api.put('/notifications/read-all'),
+  archive: (notificationId) =>
+    api.delete(`/notifications/${notificationId}`),
+  adminBroadcast: (payload) =>
+    api.post('/notifications/admin/broadcast', payload),
+};
+
 export const certificateService = {
   list: () =>
     api.get('/certificates'),
@@ -289,11 +335,16 @@ export const certificateService = {
       nativeLanguage,
     }, { expectedStatuses: [402] });
   },
-  verify: (certificateId) =>
-    api.get(`/certificates/verify/${encodeURIComponent(certificateId)}`, { expectedStatuses: [404] }),
-  download: (certificateId, certificateLanguage = 'en') =>
+  verify: (certificateId, params = {}) =>
+    api.get(`/certificates/verify/${encodeURIComponent(certificateId)}`, { params, expectedStatuses: [404] }),
+  institutionSampleLink: (organizationId) =>
+    api.post(`/certificates/institution-samples/${organizationId}/link`),
+  download: (certificateId, certificateLanguage = 'en', params = {}) =>
     api.get(`/certificates/verify/${encodeURIComponent(certificateId)}/download`, {
-      params: { certLang: normalizeLanguageCode(certificateLanguage) || 'en' },
+      params: {
+        certLang: normalizeLanguageCode(certificateLanguage) || 'en',
+        ...params,
+      },
       responseType: 'blob',
       timeout: 45000,
     }),
@@ -304,8 +355,12 @@ export const billingService = {
     api.get('/billing/plans'),
   getAccount: () =>
     api.get('/billing/me', { expectedStatuses: [401] }),
-  createCheckoutSession: ({ planId, interval = 'monthly', successUrl, cancelUrl, discountCode = '' }) =>
-    api.post('/billing/checkout-session', { planId, interval, successUrl, cancelUrl, discountCode }, { timeout: 30000, expectedStatuses: [202] }),
+  switchSubscriptionContext: (payload) =>
+    api.post('/billing/subscription-context', payload),
+  createCheckoutSession: ({ planId, interval = 'monthly', successUrl, cancelUrl, discountCode = '', ...payload }) =>
+    api.post('/billing/checkout-session', { ...payload, planId, interval, successUrl, cancelUrl, discountCode }, { timeout: 30000, expectedStatuses: [202] }),
+  createLevelTestCheckoutSession: ({ successUrl, cancelUrl } = {}) =>
+    api.post('/billing/level-test-checkout-session', { successUrl, cancelUrl }, { timeout: 30000, expectedStatuses: [202] }),
   validateDiscount: ({ planId, discountCode }) =>
     api.post('/billing/discounts/validate', { planId, discountCode }, { expectedStatuses: [404] }),
   openCustomerPortal: (returnUrl) =>
@@ -326,12 +381,18 @@ export const billingService = {
     api.put(`/billing/admin/discounts/${discountId}`, payload),
   assignManualPlan: (payload) =>
     api.post('/billing/admin/manual-plan', payload),
+  getAdminOrganizations: () =>
+    api.get('/billing/admin/organizations'),
   createOrganization: (payload) =>
     api.post('/billing/admin/organizations', payload),
   updateOrganization: (organizationId, payload) =>
     api.put(`/billing/admin/organizations/${organizationId}`, payload),
   addOrganizationMember: (organizationId, payload) =>
     api.post(`/billing/admin/organizations/${organizationId}/members`, payload),
+  assignInstitutionAdmin: (organizationId, payload) =>
+    api.post(`/billing/admin/organizations/${organizationId}/institution-admin`, payload),
+  removeInstitutionAdmin: (organizationId, membershipId) =>
+    api.delete(`/billing/admin/organizations/${organizationId}/institution-admins/${membershipId}`),
   getInstitutionalLeads: (status = '') =>
     api.get('/billing/admin/institutional-leads', { params: status ? { status } : {} }),
   updateInstitutionalLeadStatus: (leadId, status) =>
@@ -350,6 +411,22 @@ export const billingService = {
     api.post(`/billing/institution/organizations/${organizationId}/members`, payload),
   updateInstitutionMember: (organizationId, membershipId, payload) =>
     api.put(`/billing/institution/organizations/${organizationId}/members/${membershipId}`, payload),
+  getSeatWallet: (organizationId) =>
+    api.get(`/billing/institution/organizations/${organizationId}/seat-wallet`),
+  getSeatProjection: (organizationId, horizonDays = 7) =>
+    api.get(`/billing/institution/organizations/${organizationId}/seat-projection`, { params: { horizonDays } }),
+  getMemberSeatHistory: (organizationId, membershipId, limit = 50) =>
+    api.get(`/billing/institution/organizations/${organizationId}/members/${membershipId}/seat-history`, { params: { limit } }),
+  topUpInstitutionSeats: (organizationId, payload) =>
+    api.post(`/billing/institution/organizations/${organizationId}/seats`, payload),
+  suspendInstitutionMember: (organizationId, membershipId) =>
+    api.post(`/billing/institution/organizations/${organizationId}/members/${membershipId}/suspend`),
+  unsuspendInstitutionMember: (organizationId, membershipId) =>
+    api.post(`/billing/institution/organizations/${organizationId}/members/${membershipId}/unsuspend`, {}, { expectedStatuses: [409] }),
+  requestSeatSuspension: (organizationId, membershipId, payload) =>
+    api.post(`/billing/institution/organizations/${organizationId}/members/${membershipId}/request-suspension`, payload),
+  updateAutoRenew: (organizationId, payload) =>
+    api.put(`/billing/institution/organizations/${organizationId}/auto-renew`, payload),
 };
 
 export const levelTestService = {
@@ -504,6 +581,10 @@ export const learningHubService = {
     const { targetLang, nativeLang } = getLanguageParams();
     return api.get('/learning-hub/pair-profile', { params: { targetLang, nativeLang } });
   },
+  startPlacementCheck: () => {
+    const { targetLang: targetLanguage, nativeLang: nativeLanguage } = getLanguageParams();
+    return api.post('/learning-hub/placement-checks/start', { targetLanguage, nativeLanguage });
+  },
   savePairProfile: (payload) => {
     const { targetLang: targetLanguage, nativeLang: nativeLanguage } = getLanguageParams();
     return api.put('/learning-hub/pair-profile', {
@@ -550,6 +631,7 @@ export const flashcardService = {
     if (opts.categories) params.categories = opts.categories;
     if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
     if (opts.seed !== undefined) params.seed = opts.seed;
+    if (opts.scope && opts.scope !== 'all') params.scope = opts.scope;
     return api.get(`/flashcards/user/${userId}`, { params });
   },
   getGuestFlashcards: (page = 1, limit = 50, opts = {}) => {
@@ -560,10 +642,20 @@ export const flashcardService = {
     if (opts.seed !== undefined) params.seed = opts.seed;
     return api.get('/flashcards/guest', { params });
   },
-  createFlashcard: (flashcardData) =>
-    api.post('/flashcards', flashcardData),
+  createFlashcard: (flashcardData) => {
+    const { targetLang, nativeLang } = getLanguageParams();
+    return api.post('/flashcards', { targetLang, nativeLang, ...flashcardData });
+  },
   updateFlashcard: (id, data) =>
     api.put(`/flashcards/${id}`, data),
+  setCardFocus: (id, value) => {
+    const { targetLang, nativeLang } = getLanguageParams();
+    return api.put(`/flashcards/${id}/focus`, { value, targetLang, nativeLang });
+  },
+  getFocusIds: () => {
+    const { targetLang, nativeLang } = getLanguageParams();
+    return api.get('/flashcards/focus-ids', { params: { targetLang, nativeLang } });
+  },
   deleteFlashcard: (id) =>
     api.delete(`/flashcards/${id}`),
 };
@@ -594,6 +686,11 @@ export const userService = {
       invalidateCachedGets((key) => key.includes(`/users/${userId}`));
       return response;
     }),
+  updateCurriculumPreference: (userId, payload) =>
+    api.put(`/users/${userId}/curriculum-preference`, payload).then((response) => {
+      invalidateCachedGets((key) => key.includes(`/users/${userId}`));
+      return response;
+    }),
   changePassword: (userId, data) =>
     api.put(`/users/${userId}/password`, data),
   deleteAccount: (userId) =>
@@ -605,6 +702,12 @@ export const userService = {
     }),
   getActivityState: (userId) =>
     cachedGet(`/users/${userId}/activity-state`, {}, 5000),
+  // Resolve the current 12h-stable flashcard shuffle seed (server-side window).
+  getFlashcardSeed: (userId) =>
+    api.get(`/users/${userId}/flashcard-seed`),
+  // Force a fresh seed and restart the 12h window (manual reshuffle).
+  refreshFlashcardSeed: (userId) =>
+    api.post(`/users/${userId}/flashcard-seed`),
   addXP: (userId, points) =>
     api.post(`/users/${userId}/xp`, { points }).then((response) => {
       invalidateCachedGets((key) => (
@@ -731,6 +834,46 @@ export const aiService = {
     cachedGet('/ai/entitlements', {}, 10000),
   sendConversationTurn: (data) =>
     api.post('/ai/conversation', data, { timeout: 60000 }),
+};
+
+export const curriculumV2Service = {
+  listLessons: () => api.get('/curriculum/v2/lessons'),
+  getLesson: (id) => api.get(`/curriculum/v2/lessons/${encodeURIComponent(id)}`),
+  getPlan: (params = {}) => api.get('/curriculum/v2/plan', { params }),
+  markComplete: (id) => api.post(`/curriculum/v2/lessons/${encodeURIComponent(id)}/complete`),
+  getProgress: () => api.get('/curriculum/v2/progress'),
+  evaluateProduction: ({ lessonId, drillIndex, fillerConceptId, learnerText }) =>
+    api.post('/curriculum/v2/feedback',
+      { lessonId, drillIndex, fillerConceptId, learnerText },
+      { timeout: 30000 }),
+  evaluatePronunciation: ({ target, transcript }) =>
+    api.post('/curriculum/v2/pronunciation-check',
+      { target, transcript },
+      { timeout: 30000 }),
+  recordSrsReview: ({ conceptId, conceptKind, skill, outcome, targetLang }) =>
+    api.post('/curriculum/v2/srs/review',
+      { conceptId, conceptKind, skill, outcome, targetLang },
+      { timeout: 10000 }),
+  recordEvent: ({ conceptId, lessonId, lessonType, outcome, hintUsed, latencyMs, sessionId, targetLang, contextSignal }) =>
+    api.post('/curriculum/v2/events',
+      { conceptId, lessonId, lessonType, outcome, hintUsed, latencyMs, sessionId, targetLang, contextSignal },
+      { timeout: 5000 }),
+  // Korean alphabet (script) onboarding — backend routes unchanged
+  getAlphabetGroups: () => api.get('/curriculum/v2/hangul/groups'),
+  getAlphabetProgress: () => api.get('/curriculum/v2/hangul/progress'),
+  completeAlphabetGroup: (groupId) =>
+    api.post(`/curriculum/v2/hangul/groups/${encodeURIComponent(groupId)}/complete`),
+  skipAlphabet: () => api.post('/curriculum/v2/hangul/skip'),
+  // Catalog (Phase 3)
+  getCatalog: (params = {}) => api.get('/curriculum/v2/catalog', { params }),
+  getConceptLessons: (conceptId, params = {}) =>
+    api.get(`/curriculum/v2/concepts/${encodeURIComponent(conceptId)}/lessons`, { params, expectedStatuses: [404] }),
+  // Server-side ASR (Whisper)
+  getAsrStatus: () => api.get('/curriculum/v2/asr/status'),
+  transcribeAudio: ({ audioBase64, mimeType = 'audio/webm', language = 'ko', prompt = '' }) =>
+    api.post('/curriculum/v2/asr/transcribe',
+      { audioBase64, mimeType, language, prompt },
+      { timeout: 35000, expectedStatuses: [400, 429, 502, 503] }),
 };
 
 export default api;

@@ -1,7 +1,7 @@
 # Implementation Plan: Guest Mode, Profile Page, and Admin Dashboard
 
 ## Overview
-This plan covers three major features for the Lingo Booth Korean learning app:
+This plan covers three major features for the Lingo Booth multi-language learning platform:
 1. Guest Mode - Try the app without logging in
 2. Profile Page - User information and settings
 3. Admin Dashboard - Website administration

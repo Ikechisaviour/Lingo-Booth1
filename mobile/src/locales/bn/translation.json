@@ -452,7 +452,16 @@
     "saveForReviewFailed": "এই মুহূর্তে এই কার্ড সংরক্ষণ করা যায়নি.",
     "bookmarkedReason": "ফ্ল্যাশকার্ড থেকে বুকমার্ক করা হয়েছে।",
     "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য ফ্ল্যাশকার্ড থেকে সংরক্ষিত।",
-    "setFamiliarityLevel": "পরিচিতি {{level}} এ সেট করুন"
+    "setFamiliarityLevel": "পরিচিতি {{level}} এ সেট করুন",
+    "deckAll": "সব",
+    "deckMine": "আমার কার্ড",
+    "deckFocus": "ফোকাস",
+    "addToFocus": "ফোকাসে যোগ করুন",
+    "removeFromFocus": "ফোকাস থেকে সরান",
+    "addToFocusOnCreate": "আমার ফোকাস ডেক যোগ করুন",
+    "focusFailed": "আপনার ফোকাস ডেক আপডেট করা যায়নি.",
+    "randomCountLabel": "কত কার্ড",
+    "studyNRandom": "অধ্যয়ন {{count}} এলোমেলোভাবে"
   },
   "progress": {
     "title": "আপনার অগ্রগতি",
@@ -639,7 +648,8 @@
     "failedToUpdate": "আপডেট করতে ব্যর্থ হয়েছে",
     "fullName": "পুরো নাম",
     "fullNamePlaceholder": "সার্টিফিকেট দেখানোর জন্য নাম",
-    "fullNameMissing": "একটি শংসাপত্র প্রদানের আগে যোগ করুন"
+    "fullNameMissing": "একটি শংসাপত্র প্রদানের আগে যোগ করুন",
+    "activeAccountType": "সক্রিয় অ্যাকাউন্টের ধরন"
   },
   "verifyEmail": {
     "verifying": "আপনার ইমেইল যাচাই করা হচ্ছে...",
@@ -880,7 +890,7 @@
     "recommended": "প্রস্তাবিত",
     "startFree": "বিনামূল্যে শুরু করুন",
     "choosePlan": "বেছে নিন {{plan}}",
-    "checkoutSetupNeeded": "অনলাইন চেকআউট সংযুক্ত করা হচ্ছে. আপনি একটি অনুরোধ পাঠাতে পারেন এবং আমরা আপনাকে চালিয়ে যেতে সাহায্য করব৷",
+    "checkoutSetupNeeded": "অনলাইন চেকআউট বর্তমানে উপলভ্য নয়। আপনি অনুরোধ পাঠাতে পারেন এবং আমরা আপনাকে এগিয়ে যেতে সাহায্য করব।",
     "checkoutFailed": "চেকআউট শুরু করা যায়নি। আবার চেষ্টা করুন.",
     "loadFailed": "প্ল্যান লোড করা যায়নি। আবার চেষ্টা করুন.",
     "institutionalKicker": "প্রতিষ্ঠান",
@@ -932,10 +942,10 @@
       "free": "ফ্রি",
       "plus": "প্লাস",
       "pro": "প্রো",
-      "ultra": "আল্ট্রা",
-      "institution_basic": "ইনস্টিটিউশন বেসিক",
+      "ultra": "প্রিমিয়াম",
+      "institution_basic": "ইনস্টিটিউশন প্লাস",
       "institution_pro": "ইনস্টিটিউশন প্রো",
-      "institution_enterprise": "ইনস্টিটিউশন এন্টারপ্রাইজ"
+      "institution_enterprise": "ইনস্টিটিউশন প্রিমিয়াম"
     },
     "planTaglines": {
       "free": "দৈনিক সীমা সহ শেখার লুপ চেষ্টা করুন.",
@@ -951,7 +961,14 @@
     "discountUnavailable": "এই ডিসকাউন্ট কোড এই প্ল্যানের জন্য উপলব্ধ নয়।",
     "automaticDiscountApplied": "{{discount}} স্বয়ংক্রিয় ছাড় প্রয়োগ হয়েছে",
     "signInToChooseTitle": "চালিয়ে যেতে একটি অ্যাকাউন্ট তৈরি করুন",
-    "signInToChooseBody": "একটি অ্যাকাউন্ট তৈরি করুন বা একটি অর্থপ্রদানের পরিকল্পনা বেছে নেওয়ার আগে সাইন ইন করুন যাতে আপনার অ্যাক্সেস আপনার সাথে সংযুক্ত করা যায়৷"
+    "signInToChooseBody": "একটি অ্যাকাউন্ট তৈরি করুন বা একটি অর্থপ্রদানের পরিকল্পনা বেছে নেওয়ার আগে সাইন ইন করুন যাতে আপনার অ্যাক্সেস আপনার সাথে সংযুক্ত করা যায়৷",
+    "entitlements": {
+      "placementLifetime": "{{count}} প্লেসমেন্ট চেক",
+      "placementMonthly": "{{count}} প্লেসমেন্ট চেক/মাস",
+      "proficiencyIncluded": "{{count}} দক্ষতা পরীক্ষা/মাস অন্তর্ভুক্ত, তারপর {{price}} প্রতিটি",
+      "proficiencyPaid": "দক্ষতা পরীক্ষা {{price}} প্রতিটি",
+      "dailyTokens": "{{count}} দৈনিক কথোপকথনের টোকেন"
+    }
   },
   "billing": {
     "kicker": "বিলিং",
@@ -987,7 +1004,13 @@
       "web": "ওয়েব চেকআউট",
       "ios": "iOS ক্রয়",
       "android": "অ্যান্ড্রয়েড ক্রয়"
-    }
+    },
+    "subscriptionContextUpdated": "সদস্যতা অ্যাক্সেস সুইচ করা হয়েছে.",
+    "subscriptionContextFailed": "সদস্যতা অ্যাক্সেস স্যুইচ করা যায়নি.",
+    "accessSwitcherKicker": "অ্যাক্সেস উত্স",
+    "accessSwitcherTitle": "থেকে সদস্যতা ব্যবহার করুন",
+    "accessSwitcherHint": "এই অ্যাকাউন্টটি ব্যক্তিগত বিলিং ব্যবহার করে নাকি অর্থপ্রদানের অ্যাক্সেসের জন্য একটি প্রতিষ্ঠানের আসন ব্যবহার করে তা চয়ন করুন৷",
+    "currentAccessSource": "কারেন্ট"
   },
   "institution": {
     "kicker": "প্রতিষ্ঠান",
@@ -1086,7 +1109,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "এখানে একটি HTTPS চিত্র URL আটকান, অথবা একটি PNG, JPG, বা WebP ফাইল আপলোড করতে ওয়েব ড্যাশবোর্ড ব্যবহার করুন৷",
     "saveCertificateBranding": "শংসাপত্রের লোগো সংরক্ষণ করুন",
-    "removeCertificateLogo": "লোগো সরান"
+    "removeCertificateLogo": "লোগো সরান",
+    "progressDashboardKicker": "শিক্ষার্থীর অগ্রগতি",
+    "mastered": "আয়ত্ত করেছে",
+    "comfortable": "আরামদায়ক",
+    "learning": "শেখা",
+    "struggling": "সংগ্রাম করছে",
+    "classLessonsStarted": "{{count}} পাঠ শুরু হয়েছে৷",
+    "sampleCertificateFailed": "নমুনা শংসাপত্র খুলতে পারেনি.",
+    "previewSampleCertificate": "প্রাকদর্শন নমুনা শংসাপত্র"
   },
   "errorBoundary": {
     "title": "কিছু ভুল হয়েছে",
@@ -1431,7 +1462,7 @@
     "backToProfile": "প্রোফাইলে ফিরে যান",
     "kicker": "ব্যক্তিগতকরণ শেখা",
     "title": "পাঠ আপনার চারপাশে আকৃতির",
-    "lockedSubtitle": "Pro এবং Ultra বাস্তব জীবন থেকে অনুমোদিত শব্দ, বাক্যাংশ এবং পরিস্থিতি সংরক্ষণ করতে পারে যাতে ভবিষ্যতে অনুশীলন আরও প্রাসঙ্গিক মনে হয়। ফ্রি এবং প্লাস ব্যবহার করে নিয়মিত অনুশীলন চালিয়ে যেতে পারেন।",
+    "lockedSubtitle": "Pro এবং Premium বাস্তব জীবন থেকে অনুমোদিত শব্দ, বাক্যাংশ এবং পরিস্থিতি সংরক্ষণ করতে পারে যাতে ভবিষ্যতে অনুশীলন আরও প্রাসঙ্গিক মনে হয়। ফ্রি এবং প্লাস ব্যবহার করে নিয়মিত অনুশীলন চালিয়ে যেতে পারেন।",
     "upgradeTitle": "ব্যক্তিগতকৃত অনুশীলনে আপগ্রেড করুন",
     "upgradeBody": "যখন আপনি পাঠ, রিভিউ প্রম্পট এবং রোলপ্লে চান তখন আপগ্রেড করুন আপনার অনুমোদিত দৈনন্দিন ভাষার সাথে খাপ খাইয়ে নিতে।",
     "openConversation": "খোলা কথোপকথন",
@@ -1772,7 +1803,8 @@
     "earnFirstMilestone": "প্রথম মাইলফলক অর্জন করুন",
     "repairPlanTitle": "মেরামত ফোকাস",
     "repairPlanValue": "পুনর্বিবেচনা মূল্য",
-    "repairPlanBody": "আপনি খুব বেশি এগিয়ে যাওয়ার আগে কয়েকটি দুর্বল বা চেকপয়েন্ট আইটেম মনোযোগী অনুশীলনের জন্য প্রস্তুত।"
+    "repairPlanBody": "আপনি খুব বেশি এগিয়ে যাওয়ার আগে কয়েকটি দুর্বল বা চেকপয়েন্ট আইটেম মনোযোগী অনুশীলনের জন্য প্রস্তুত।",
+    "placementLimitReached": "আপনি এই পরিকল্পনার জন্য আপনার অন্তর্ভুক্ত প্লেসমেন্ট চেক ব্যবহার করেছেন।"
   },
   "resetPassword": {
     "title": "পাসওয়ার্ড রিসেট করুন",
@@ -1892,6 +1924,63 @@
     "fullNameRequiredBody": "এই শংসাপত্রে আপনার পুরো নামটি ঠিক যেভাবে প্রদর্শিত হবে তা লিখুন। আপনাকে শুধুমাত্র একটি শংসাপত্র প্রদানের আগে এটি করতে হবে।",
     "fullNameLabel": "পুরো নাম",
     "fullNamePlaceholder": "আপনার পুরো নাম",
-    "saveNameAndIssue": "নাম সংরক্ষণ করুন এবং সার্টিফিকেট প্রদান করুন"
+    "saveNameAndIssue": "নাম সংরক্ষণ করুন এবং সার্টিফিকেট প্রদান করুন",
+    "proficiencyPaymentRequired": "আপনার অন্তর্ভুক্ত চেকগুলির পরে এই দক্ষতা পরীক্ষা {{price}} হয়৷",
+    "proficiencyAllowance": "{{included}} এর মধ্যে {{remaining}} এই মাসে বাকি থাকা দক্ষতা যাচাইয়ের অন্তর্ভুক্ত। অতিরিক্ত চেক প্রতিটি {{price}}।",
+    "paymentSetupNeeded": "প্রদত্ত দক্ষতা চেক এখনও কনফিগার করা হয় নি.",
+    "paymentStartFailed": "এই দক্ষতা চেকের জন্য অর্থপ্রদান শুরু করা যায়নি।",
+    "proficiencyPaymentTitle": "পেমেন্ট প্রয়োজন",
+    "payProficiencyCheck": "এই চেকের জন্য {{price}} প্রদান করুন"
+  },
+  "notifications": {
+    "title": "বিজ্ঞপ্তি",
+    "empty": "এখনও কোন বিজ্ঞপ্তি নেই.",
+    "markAllRead": "সব পড়া চিহ্নিত করুন",
+    "openAction": "খোলা",
+    "dismiss": "খারিজ",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "ইনস্টিটিউশন অ্যাক্সেস আপডেট করা হয়েছে",
+    "institutionLearnerAddedBody": "আপনাকে একজন শিক্ষর্থী হিসেবে {{organizationName}} এ যোগ করা হয়েছে।",
+    "institutionAdminAddedBody": "আপনি এখন আপনার প্রতিষ্ঠান ড্যাশবোর্ড থেকে {{organizationName}} পরিচালনা করতে পারেন।",
+    "institutionAccessRemovedTitle": "প্রতিষ্ঠানের প্রবেশাধিকার সরানো হয়েছে",
+    "institutionAccessRemovedBody": "{{organizationName}} এ আপনার অ্যাক্সেস সরানো হয়েছে।",
+    "lowSeatsTitle": "প্রতিষ্ঠানের আসন কম",
+    "lowSeatsBody": "{{organizationName}} এর {{remaining}} এর মধ্যে {{purchased}} আসন বাকি আছে।",
+    "noSeatsTitle": "কোনো প্রতিষ্ঠানের আসন অবশিষ্ট নেই",
+    "noSeatsBody": "{{organizationName}} এর কোনো আসন অবশিষ্ট নেই।",
+    "seatsAddedTitle": "প্রতিষ্ঠানের আসন যোগ করা হয়েছে",
+    "seatsAddedBody": "{{quantity}} আসন যোগ করা হয়েছে। {{remaining}} আসন এখন উপলব্ধ।",
+    "institutionPurchaseTitle": "প্রতিষ্ঠান সাবস্ক্রিপশন সক্রিয়",
+    "institutionPurchaseBody": "{{organizationName}} এখন {{quantity}} প্রতিষ্ঠানের আসন রয়েছে।",
+    "institutionSeatSuspendedTitle": "প্রতিষ্ঠানের আসন স্থগিত",
+    "institutionSeatSuspendedBody": "{{organizationName}} এর জন্য আপনার আসন স্থগিত করা হয়েছে।",
+    "institutionSeatRestoredTitle": "প্রতিষ্ঠানের আসন পুনরুদ্ধার করা হয়েছে",
+    "institutionSeatRestoredBody": "{{organizationName}} এর জন্য আপনার সিট আবার সক্রিয়।",
+    "suspensionRequestedTitle": "শিক্ষার্থী সাসপেনশনের অনুরোধ করেছে",
+    "suspensionRequestedBody": "{{email}} একটি প্রতিষ্ঠানের আসন স্থগিত করার অনুরোধ করেছে৷",
+    "institutionRequestAcceptedTitle": "প্রতিষ্ঠানের অনুরোধ গৃহীত হয়েছে",
+    "institutionRequestAcceptedBody": "{{organizationName}} এর জন্য আপনার অনুরোধ গৃহীত হয়েছে।",
+    "institutionRequestDeclinedTitle": "প্রতিষ্ঠানের অনুরোধ প্রত্যাখ্যান করা হয়েছে",
+    "institutionRequestDeclinedBody": "{{organizationName}} এর জন্য আপনার প্রতিষ্ঠানের অনুরোধ প্রত্যাখ্যান করা হয়েছে।",
+    "institutionSuspendedTitle": "প্রতিষ্ঠান স্থগিত",
+    "institutionSuspendedBody": "{{organizationName}} স্থগিত করা হয়েছে।",
+    "institutionReactivatedTitle": "প্রতিষ্ঠান পুনরায় সক্রিয়",
+    "institutionReactivatedBody": "{{organizationName}} আবার সক্রিয়।",
+    "xpDecayTitle": "অনুশীলন স্ট্রিক মনোযোগ প্রয়োজন",
+    "xpDecayBody": "নিষ্ক্রিয়তার পরে {{penalty}} XP হ্রাস করা হয়েছিল৷ আপনার বর্তমান মোট {{totalXP}} XP।",
+    "viewProfileAction": "প্রোফাইল দেখুন",
+    "openInstitutionAction": "খোলা প্রতিষ্ঠান",
+    "manageSeatsAction": "আসন পরিচালনা করুন",
+    "viewPlansAction": "পরিকল্পনা দেখুন",
+    "resumePracticeAction": "অনুশীলন পুনরায় শুরু করুন",
+    "unreadCount": "{{count}} অপঠিত৷"
+  },
+  "stepUp": {
+    "verifyFailed": "পাসওয়ার্ড যাচাই করা যায়নি",
+    "title": "এটা আপনিই নিশ্চিত করুন",
+    "message": "আপনার নিরাপত্তার জন্য, এই কাজটি চালিয়ে যেতে অনুগ্রহ করে আপনার পাসওয়ার্ড পুনরায় লিখুন।",
+    "passwordPlaceholder": "পাসওয়ার্ড",
+    "confirm": "নিশ্চিত করুন"
   }
 }

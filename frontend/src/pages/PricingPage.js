@@ -23,6 +23,30 @@ const featureKey = (feature) => `pricing.features.${feature}`;
 const planNameKey = (plan) => `pricing.planNames.${plan.id}`;
 const planTaglineKey = (plan) => `pricing.planTaglines.${plan.id}`;
 
+const formatCount = (value) => Number(value || 0).toLocaleString();
+
+const planEntitlementLines = (plan, t) => {
+  const entitlements = plan.entitlements || {};
+  const placement = entitlements.placementTests || {};
+  const proficiency = entitlements.proficiencyTests || {};
+  const lines = [];
+  if (placement.limit) {
+    lines.push(placement.period === 'lifetime'
+      ? t('pricing.entitlements.placementLifetime', '{{count}} placement check', { count: placement.limit })
+      : t('pricing.entitlements.placementMonthly', '{{count}} placement checks/month', { count: placement.limit }));
+  }
+  if (proficiency) {
+    const price = moneyAmount(proficiency.paidPriceCents || 1000);
+    lines.push((proficiency.included || 0) > 0
+      ? t('pricing.entitlements.proficiencyIncluded', '{{count}} proficiency checks/month included, then {{price}} each', { count: proficiency.included, price })
+      : t('pricing.entitlements.proficiencyPaid', 'Proficiency checks {{price}} each', { price }));
+  }
+  if (entitlements.dailyConversationTokens) {
+    lines.push(t('pricing.entitlements.dailyTokens', '{{count}} daily conversation tokens', { count: formatCount(entitlements.dailyConversationTokens) }));
+  }
+  return lines;
+};
+
 const automaticDiscountFor = (plan, interval) => (
   interval === 'annual'
     ? plan.automaticDiscountAnnual
@@ -130,6 +154,42 @@ function PricingPage() {
     }
   };
 
+  const handleInstitutionCheckout = async () => {
+    setLeadStatus('');
+    if (!leadForm.organizationName.trim() || !leadForm.email.trim()) {
+      setLeadStatus(t('pricing.institutionCheckoutDetailsRequired', 'Enter your institution details before checkout.'));
+      return;
+    }
+    if (!isAuthenticated) {
+      navigate(`/select-language?mode=register&plan=${encodeURIComponent(leadForm.planId)}`);
+      return;
+    }
+    try {
+      setBusyPlan(leadForm.planId);
+      const res = await billingService.createCheckoutSession({
+        planId: leadForm.planId,
+        interval,
+        discountCode: discountCode.trim(),
+        organizationName: leadForm.organizationName,
+        organizationType: leadForm.organizationType,
+        seatsRequested: Number(leadForm.seatsRequested) || 1,
+        successUrl: `${window.location.origin}/billing?checkout=success`,
+        cancelUrl: `${window.location.origin}/pricing?checkout=cancelled`,
+      });
+      if (res.data?.checkoutUrl) {
+        window.location.assign(res.data.checkoutUrl);
+        return;
+      }
+      if (res.data?.requiresSetup) {
+        setLeadStatus(t('pricing.checkoutSetupNeeded'));
+      }
+    } catch (error) {
+      setLeadStatus(error.response?.data?.message || t('pricing.checkoutFailed'));
+    } finally {
+      setBusyPlan('');
+    }
+  };
+
   if (loading) {
     return <div className="pricing-page"><div className="loading">{t('common.loading')}</div></div>;
   }
@@ -208,6 +268,9 @@ function PricingPage() {
                 {(plan.features || []).map((feature) => (
                   <li key={feature}><FiCheck /> {t(featureKey(feature), feature)}</li>
                 ))}
+                {planEntitlementLines(plan, t).map((line) => (
+                  <li key={line}><FiCheck /> {line}</li>
+                ))}
               </ul>
               <button
                 type="button"
@@ -229,17 +292,59 @@ function PricingPage() {
           <h2>{t('pricing.institutionalTitle')}</h2>
           <p>{t('pricing.institutionalSubtitle')}</p>
           <div className="pricing-institutional-list">
-            {(plans.institutional || []).map((plan) => (
-              <div key={plan.id}>
-                <FiUsers />
-                <strong>{t(planNameKey(plan), plan.name)}</strong>
-                <span>
-                  {plan.seatPriceMonthlyCents == null
-                    ? t('pricing.customPricing')
-                    : t('pricing.seatPrice', { price: money(plan.seatPriceMonthlyCents, 'monthly', t), seats: plan.minimumSeats })}
-                </span>
-              </div>
-            ))}
+            {(plans.institutional || []).map((plan) => {
+              if (plan.pricePerSeatCents == null) {
+                return (
+                  <div key={plan.id}>
+                    <FiUsers />
+                    <strong>{t(planNameKey(plan), plan.name)}</strong>
+                    <span>{t('pricing.customPricing')}</span>
+                  </div>
+                );
+              }
+              const tiers = Array.isArray(plan.bulkPricing) ? plan.bulkPricing : [];
+              const cheapest = tiers.length
+                ? tiers.reduce((a, b) => (a.pricePerSeatCents <= b.pricePerSeatCents ? a : b))
+                : null;
+              const fromPrice = ((cheapest?.pricePerSeatCents || plan.pricePerSeatCents) / 100).toFixed(2);
+              return (
+                <div key={plan.id}>
+                  <FiUsers />
+                  <strong>{t(planNameKey(plan), plan.name)}</strong>
+                  <span>
+                    {t('pricing.seatPriceFrom', {
+                      defaultValue: 'From USD {{from}}/seat · {{minSeats}}-seat minimum · 30 days each',
+                      from: fromPrice,
+                      minSeats: plan.minimumSeats,
+                    })}
+                  </span>
+                  {tiers.length > 1 && (
+                    <details className="pricing-bulk-details">
+                      <summary>
+                        {t('pricing.viewVolumePricing', {
+                          defaultValue: 'View volume pricing ({{count}} tiers)',
+                          count: tiers.length,
+                        })}
+                      </summary>
+                      <small className="pricing-bulk-tiers">
+                        {tiers.map((tier) => {
+                          const tierPrice = (tier.pricePerSeatCents / 100).toFixed(2);
+                          return (
+                            <em key={tier.minSeats}>
+                              {t('pricing.bulkTier', {
+                                defaultValue: '{{count}}+: USD {{price}}/seat',
+                                count: tier.minSeats,
+                                price: tierPrice,
+                              })}
+                            </em>
+                          );
+                        })}
+                      </small>
+                    </details>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -286,7 +391,10 @@ function PricingPage() {
             {t('pricing.message')}
             <textarea name="message" rows="4" value={leadForm.message} onChange={handleLeadChange} />
           </label>
-          <button type="submit" className="pricing-primary"><FiGlobe /> {t('pricing.sendInstitutionalRequest')}</button>
+          <button type="submit" className="pricing-secondary"><FiGlobe /> {t('pricing.sendInstitutionalRequest')}</button>
+          <button type="button" className="pricing-primary" onClick={handleInstitutionCheckout} disabled={busyPlan === leadForm.planId}>
+            <FiCreditCard /> {busyPlan === leadForm.planId ? t('common.loading') : t('pricing.payInstitutionSubscription', 'Pay and open institution dashboard')}
+          </button>
         </form>
       </section>
 

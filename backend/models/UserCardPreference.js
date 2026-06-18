@@ -51,6 +51,11 @@ const userCardPreferenceSchema = new mongoose.Schema({
     min: 1,
     max: 5,
   },
+  // Whether the user has added this card to their per-language-pair "Focus" deck.
+  focus: {
+    type: Boolean,
+    default: false,
+  },
   correctCount: {
     type: Number,
     default: 0,

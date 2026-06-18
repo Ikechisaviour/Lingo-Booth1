@@ -3,6 +3,7 @@ import {
   ActivityIndicator,
   Alert,
   Image,
+  Linking,
   RefreshControl,
   ScrollView,
   StyleSheet,
@@ -12,11 +13,13 @@ import {
 import { Button, Card, Text, TextInput } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { useTranslation } from 'react-i18next';
-import { billingService } from '../../services/api';
+import { billingService, certificateService } from '../../services/api';
 import LANGUAGES, { getLanguageDisplayName } from '../../config/languages';
 import { shadows, type AppColors, useAppColors } from '../../config/theme';
 
 const roleOptions = ['learner', 'teacher', 'admin', 'owner'];
+const managerRoleOptions = ['teacher', 'admin', 'owner'];
+const managerRoles = ['admin', 'owner'];
 const statusOptions = ['active', 'invited', 'removed'];
 const languageCodes = Object.keys(LANGUAGES);
 
@@ -33,6 +36,9 @@ const asPercent = (value: number | null | undefined, fallback: string) => (
 
 const roleLabel = (t: any, role: string) => t(`institution.roles.${role}`, role);
 const statusLabel = (t: any, status: string) => t(`institution.statuses.${status}`, status);
+const roleOptionsForMember = (member: any) => (
+  managerRoles.includes(member?.role) ? managerRoleOptions : roleOptions
+);
 
 const InstitutionDashboardScreen: React.FC = () => {
   const { t } = useTranslation();
@@ -62,6 +68,7 @@ const InstitutionDashboardScreen: React.FC = () => {
     allowLanguageRequests: true,
   });
   const [certificateLogoValue, setCertificateLogoValue] = useState('');
+  const [selectedMemberId, setSelectedMemberId] = useState('');
 
   const organization = dashboard?.organization;
   const members = dashboard?.members || [];
@@ -161,7 +168,7 @@ const InstitutionDashboardScreen: React.FC = () => {
       } catch (err: any) {
         Alert.alert(
           t('common.error', 'Error'),
-          t('institution.certificateBrandingFailed', 'Could not save certificate branding. Use an HTTPS image URL, or upload a PNG, JPG, or WebP logo under 600 KB from the web dashboard.'),
+          t('institution.certificateBrandingFailed', 'Could not save certificate branding. Use an HTTPS image URL, or upload a PNG, JPG, WebP, GIF, or SVG logo under 600 KB from the web dashboard.'),
         );
       } finally {
         setSaving(false);
@@ -179,11 +186,29 @@ const InstitutionDashboardScreen: React.FC = () => {
       } catch (err: any) {
         Alert.alert(
           t('common.error', 'Error'),
-          t('institution.certificateBrandingFailed', 'Could not save certificate branding. Use an HTTPS image URL, or upload a PNG, JPG, or WebP logo under 600 KB from the web dashboard.'),
+          t('institution.certificateBrandingFailed', 'Could not save certificate branding. Use an HTTPS image URL, or upload a PNG, JPG, WebP, GIF, or SVG logo under 600 KB from the web dashboard.'),
         );
       } finally {
         setSaving(false);
       }
+  };
+
+  const previewSampleCertificate = async () => {
+    if (!organization?._id) return;
+    setSaving(true);
+    try {
+      const res = await certificateService.institutionSampleLink(organization._id);
+      const previewUrl = res.data?.previewUrl || res.data?.previewPath;
+      if (!previewUrl) throw new Error('missing-preview-url');
+      await Linking.openURL(previewUrl);
+    } catch {
+      Alert.alert(
+        t('common.error', 'Error'),
+        t('institution.sampleCertificateFailed', 'Could not open the sample certificate.'),
+      );
+    } finally {
+      setSaving(false);
+    }
   };
 
   const createGroup = async () => {
@@ -422,6 +447,9 @@ const InstitutionDashboardScreen: React.FC = () => {
                     <Text style={[styles.smallChipText, active && styles.choiceChipTextActive]}>
                       {getLanguageDisplayName(code, t)}
                     </Text>
+                    {active && (
+                      <Text style={styles.selectedChipIcon}>✓</Text>
+                    )}
                   </TouchableOpacity>
                 );
               })}
@@ -480,7 +508,7 @@ const InstitutionDashboardScreen: React.FC = () => {
               autoCorrect={false}
             />
             <Text style={styles.memberProgress}>
-              {t('institution.mobileCertificateLogoHelp', 'Paste an HTTPS image URL here, or use the web dashboard to upload a PNG, JPG, or WebP file.')}
+              {t('institution.mobileCertificateLogoHelp', 'Paste an HTTPS image URL here, or use the web dashboard to upload a PNG, JPG, WebP, GIF, or SVG file.')}
             </Text>
             <View style={styles.brandingButtonRow}>
               <Button mode="contained" onPress={saveCertificateBranding} loading={saving} disabled={saving || !certificateLogoValue.trim()}>
@@ -488,6 +516,9 @@ const InstitutionDashboardScreen: React.FC = () => {
               </Button>
               <Button mode="outlined" onPress={removeCertificateBranding} disabled={saving || !organization?.certificateBranding?.logoUrl}>
                 {t('institution.removeCertificateLogo', 'Remove logo')}
+              </Button>
+              <Button mode="outlined" onPress={previewSampleCertificate} disabled={saving || !organization?._id}>
+                {t('institution.previewSampleCertificate', 'Preview sample certificate')}
               </Button>
             </View>
           </Card.Content>
@@ -542,6 +573,9 @@ const InstitutionDashboardScreen: React.FC = () => {
                     <Text style={[styles.smallChipText, active && styles.choiceChipTextActive]}>
                       {getLanguageDisplayName(code, t)}
                     </Text>
+                    {active && (
+                      <Text style={styles.selectedChipIcon}>✓</Text>
+                    )}
                   </TouchableOpacity>
                 );
               })}
@@ -566,15 +600,21 @@ const InstitutionDashboardScreen: React.FC = () => {
           {members.map((member: any) => {
             const displayName = member.user?.username || member.email;
             const email = member.user?.email || member.email;
+            const selected = selectedMemberId === member._id;
+            const summary = member.learnerSummary || {};
             return (
-              <View key={member._id} style={styles.memberCard}>
-                <View style={styles.memberTopRow}>
+              <View key={member._id} style={[styles.memberCard, selected && styles.memberCardSelected]}>
+                <TouchableOpacity
+                  style={styles.memberTopRow}
+                  onPress={() => setSelectedMemberId(selected ? '' : member._id)}
+                  activeOpacity={0.75}
+                >
                   <View style={{ flex: 1, minWidth: 0 }}>
                     <Text style={styles.memberName}>{displayName}</Text>
                     <Text style={styles.memberEmail}>{email}</Text>
                   </View>
                   <Text style={styles.memberStatus}>{statusLabel(t, member.status)}</Text>
-                </View>
+                </TouchableOpacity>
                 <View style={styles.memberSummary}>
                   <Text style={styles.summaryText}>{roleLabel(t, member.role)}</Text>
                   <Text style={styles.summaryText}>
@@ -588,10 +628,31 @@ const InstitutionDashboardScreen: React.FC = () => {
                   {t('institution.completedItemsShort', { count: member.learnerSummary?.completedClassItems || 0 })}
                 </Text>
 
+                {selected && (
+                  <View style={styles.memberProgressPanel}>
+                    <View style={styles.memberTopRow}>
+                      <View style={{ flex: 1, minWidth: 0 }}>
+                        <Text style={styles.memberName}>{t('institution.progressDashboardKicker', 'Learner progress')}</Text>
+                        <Text style={styles.memberEmail}>{member.groupId?.name || t('institution.noGroup', 'No group')}</Text>
+                      </View>
+                      <Text style={styles.progressScore}>{asPercent(summary.averageScore, t('institution.noScore'))}</Text>
+                    </View>
+                    <View style={styles.progressMetricGrid}>
+                      <View style={styles.progressMetric}><Text style={styles.metricLabel}>{t('institution.mastered', 'Mastered')}</Text><Text style={styles.metricValue}>{summary.mastered || 0}</Text></View>
+                      <View style={styles.progressMetric}><Text style={styles.metricLabel}>{t('institution.comfortable', 'Comfortable')}</Text><Text style={styles.metricValue}>{summary.comfortable || 0}</Text></View>
+                      <View style={styles.progressMetric}><Text style={styles.metricLabel}>{t('institution.learning', 'Learning')}</Text><Text style={styles.metricValue}>{summary.learning || 0}</Text></View>
+                      <View style={styles.progressMetric}><Text style={styles.metricLabel}>{t('institution.struggling', 'Struggling')}</Text><Text style={styles.metricValue}>{summary.struggling || 0}</Text></View>
+                    </View>
+                    <Text style={styles.memberProgress}>
+                      {t('institution.progressRecords', { count: summary.progressRecords || 0 })} · {t('institution.completedItemsShort', { count: summary.completedClassItems || 0 })} · {t('institution.classLessonsStarted', '{{count}} lessons started', { count: summary.classLessonsStarted || 0 })}
+                    </Text>
+                  </View>
+                )}
+
                 {canManage && (
                   <>
                     <View style={styles.chipRow}>
-                      {roleOptions.map((role) => (
+                      {roleOptionsForMember(member).map((role) => (
                         <TouchableOpacity
                           key={role}
                           style={[styles.smallChip, member.role === role && styles.choiceChipActive]}
@@ -879,6 +940,9 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
     color: colors.surface,
   },
   smallChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
     paddingVertical: 6,
     paddingHorizontal: 9,
     borderRadius: 999,
@@ -891,6 +955,11 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
     fontSize: 12,
     fontWeight: '800',
   },
+  selectedChipIcon: {
+    color: colors.surface,
+    fontSize: 12,
+    fontWeight: '900',
+  },
   memberCard: {
     gap: 9,
     padding: 13,
@@ -898,6 +967,18 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
     borderWidth: 1,
     borderColor: colors.border,
     backgroundColor: colors.background,
+  },
+  memberCardSelected: {
+    borderColor: colors.primary,
+    backgroundColor: colors.primary + '10',
+  },
+  memberProgressPanel: {
+    gap: 10,
+    padding: 10,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: colors.primary + '35',
+    backgroundColor: colors.surface,
   },
   memberTopRow: {
     flexDirection: 'row',
@@ -917,6 +998,36 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
     color: colors.primary,
     fontWeight: '900',
     fontSize: 12,
+  },
+  progressScore: {
+    color: colors.primary,
+    fontSize: 18,
+    fontWeight: '900',
+  },
+  progressMetricGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  progressMetric: {
+    flexGrow: 1,
+    minWidth: 72,
+    padding: 8,
+    borderRadius: 10,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.border,
+  },
+  metricLabel: {
+    color: colors.textSecondary,
+    fontSize: 11,
+    fontWeight: '800',
+  },
+  metricValue: {
+    color: colors.textPrimary,
+    fontSize: 18,
+    fontWeight: '900',
+    marginTop: 2,
   },
   memberSummary: {
     flexDirection: 'row',

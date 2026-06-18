@@ -117,6 +117,17 @@ const levelTestAttemptSchema = new mongoose.Schema({
     default: '',
     index: true,
   },
+  paymentStatus: {
+    type: String,
+    enum: ['included', 'paid'],
+    default: 'included',
+    index: true,
+  },
+  paidCreditId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'LevelTestCredit',
+    default: null,
+  },
   sourceSummary: {
     lessonsUsed: { type: Number, default: 0 },
     itemsUsed: { type: Number, default: 0 },

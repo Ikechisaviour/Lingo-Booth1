@@ -3,11 +3,19 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 const CompletionCertificate = require('../models/CompletionCertificate');
+const LanguagePairProfile = require('../models/LanguagePairProfile');
 const Lesson = require('../models/Lesson');
 const LevelTestAttempt = require('../models/LevelTestAttempt');
+const LevelTestCredit = require('../models/LevelTestCredit');
 const Organization = require('../models/Organization');
 const { verifyToken } = require('../middleware/auth');
-const { getBillingSource, getEffectiveSubscriptionTier } = require('../utils/subscription');
+const {
+  getBillingSource,
+  getEffectiveSubscriptionTier,
+  getProficiencyTestIncludedLimit,
+  getTestingEntitlements,
+  PROFICIENCY_TEST_PRICE_CENTS,
+} = require('../utils/subscription');
 const { applyTranslation, getOrCreateTranslation } = require('../utils/translationService');
 const {
   listLearningContexts,
@@ -21,16 +29,92 @@ const router = express.Router();
 
 const TEST_MODES = new Set(['completion', 'proficiency']);
 const LEVELS = [1, 2, 3, 4];
+
+// Map a passed proficiency-test level to the LanguagePairProfile.currentLevel
+// string. The curriculum v2 planner uses currentLevel to filter content by
+// difficulty (see backend/curriculum/planner.js).
+function inferCurrentLevelFromAttempt(level) {
+  if (level >= 4) return 'advanced';
+  if (level >= 3) return 'intermediate';
+  return 'beginner';
+}
+
+// Monotonic rank — only ratchet currentLevel up, never down. A learner
+// who passed L4 should not slip back to 'beginner' if they later pass an
+// L1 test for fun.
+const CURRENT_LEVEL_RANK = {
+  '': 0,
+  new: 0,
+  unsure: 0,
+  beginner: 1,
+  intermediate: 2,
+  advanced: 3,
+};
+
+async function syncProfileFromPassedAttempt(attempt) {
+  if (!attempt.passed) return;
+  if (attempt.mode !== 'proficiency') return; // completion tests don't claim proficiency
+
+  const inferred = inferCurrentLevelFromAttempt(attempt.level);
+  const profile = await LanguagePairProfile.findOne({
+    userId: attempt.userId,
+    targetLanguage: attempt.targetLanguage,
+    nativeLanguage: attempt.nativeLanguage,
+  });
+  if (!profile) return; // no profile yet; nothing to update
+
+  const currentRank = CURRENT_LEVEL_RANK[profile.currentLevel] || 0;
+  const inferredRank = CURRENT_LEVEL_RANK[inferred] || 0;
+  if (inferredRank > currentRank) {
+    profile.currentLevel = inferred;
+    await profile.save();
+  }
+}
+
 const PASS_THRESHOLDS = {
   completion: 60,
   proficiency: 80,
 };
 
+function monthStart(date = new Date()) {
+  return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), 1, 0, 0, 0, 0));
+}
+
+async function buildLevelTestEntitlements(user, userId, now = new Date()) {
+  const tier = getEffectiveSubscriptionTier(user);
+  const included = getProficiencyTestIncludedLimit(tier);
+  const periodStart = monthStart(now);
+  const [used, paidCreditsAvailable] = await Promise.all([
+    LevelTestAttempt.countDocuments({
+      userId,
+      mode: 'proficiency',
+      startedAt: { $gte: periodStart },
+    }),
+    LevelTestCredit.countDocuments({
+      userId,
+      creditType: 'proficiency',
+      status: 'available',
+    }),
+  ]);
+  const testing = getTestingEntitlements(tier);
+  return {
+    ...testing,
+    proficiencyTests: {
+      ...testing.proficiencyTests,
+      included,
+      used,
+      remainingIncluded: Math.max(0, included - used),
+      paidCreditsAvailable,
+      periodKey: now.toISOString().slice(0, 7),
+    },
+  };
+}
+
 const SUPPORT_POLICY_BY_LEVEL = {
-  1: 'native-guided',
-  2: 'mixed-guided',
-  3: 'target-first',
-  4: 'immersion-with-help',
+  1: 'native_guided',
+  2: 'mixed',
+  3: 'target_first',
+  4: 'target_dominant',
 };
 
 function cleanMode(mode) {
@@ -110,6 +194,7 @@ function publicAttempt(attempt) {
     weakSkills: plain.weakSkills || [],
     skillScores: plain.skillScores || [],
     certificateId: plain.certificateId,
+    paymentStatus: plain.paymentStatus || 'included',
     user: plain.userId && typeof plain.userId === 'object'
       ? {
         _id: plain.userId._id,
@@ -409,10 +494,13 @@ router.get('/overview', async (req, res) => {
       }).sort({ issuedAt: -1 }).limit(30).lean(),
     ]);
 
+    const testEntitlements = await buildLevelTestEntitlements(req.user, req.userId);
+
     res.json({
       context,
       attempts: attempts.map(publicAttempt),
       certificates: certificates.map(publicCertificate),
+      testEntitlements,
     });
   } catch (error) {
     console.error('Level test overview error:', error);
@@ -424,6 +512,7 @@ router.get('/overview', async (req, res) => {
 });
 
 router.post('/start', async (req, res) => {
+  let reservedCredit = null;
   try {
     const nativeLanguage = normalizeLangCode(req.body?.nativeLanguage || req.user?.nativeLanguage || 'en');
     const targetLanguage = normalizeTargetLanguage(req.body?.targetLanguage || req.user?.targetLanguage || 'ko');
@@ -436,6 +525,36 @@ router.post('/start', async (req, res) => {
       organizationId: req.body?.organizationId,
       targetLanguage,
     });
+
+    let paymentStatus = 'included';
+    if (mode === 'proficiency') {
+      const testEntitlements = await buildLevelTestEntitlements(req.user, req.userId);
+      if (testEntitlements.proficiencyTests.used >= testEntitlements.proficiencyTests.included) {
+        reservedCredit = await LevelTestCredit.findOneAndUpdate({
+          userId: req.userId,
+          creditType: 'proficiency',
+          status: 'available',
+        }, {
+          $set: {
+            status: 'reserved',
+            reservedAt: new Date(),
+          },
+        }, {
+          sort: { purchasedAt: 1 },
+          new: true,
+        });
+        if (!reservedCredit) {
+          return res.status(402).json({
+            code: 'PROFICIENCY_TEST_PAYMENT_REQUIRED',
+            message: 'Payment is required for this proficiency check',
+            priceCents: PROFICIENCY_TEST_PRICE_CENTS,
+            checkoutRequired: true,
+            testEntitlements,
+          });
+        }
+        paymentStatus = 'paid';
+      }
+    }
 
     const { lessons, items } = await loadLevelMaterials({ targetLanguage, nativeLanguage, level });
     if (items.length < 6) {
@@ -457,6 +576,8 @@ router.post('/start', async (req, res) => {
       passThreshold: PASS_THRESHOLDS[mode],
       questionCount: questions.length,
       supportPolicy: SUPPORT_POLICY_BY_LEVEL[level],
+      paymentStatus,
+      paidCreditId: reservedCredit?._id || null,
       questions,
       sourceSummary: {
         lessonCount: lessons.length,
@@ -465,8 +586,36 @@ router.post('/start', async (req, res) => {
       },
     });
 
-    res.status(201).json({ attempt: publicAttempt(attempt) });
+    if (reservedCredit) {
+      await LevelTestCredit.updateOne({
+        _id: reservedCredit._id,
+        status: 'reserved',
+      }, {
+        $set: {
+          status: 'consumed',
+          consumedAt: new Date(),
+          consumedAttemptId: attempt._id,
+        },
+      });
+      reservedCredit = null;
+    }
+
+    res.status(201).json({
+      attempt: publicAttempt(attempt),
+      testEntitlements: await buildLevelTestEntitlements(req.user, req.userId),
+    });
   } catch (error) {
+    if (reservedCredit?._id) {
+      await LevelTestCredit.updateOne({
+        _id: reservedCredit._id,
+        status: 'reserved',
+      }, {
+        $set: {
+          status: 'available',
+          reservedAt: null,
+        },
+      }).catch(() => {});
+    }
     console.error('Level test start error:', error);
     res.status(error.statusCode || 500).json({
       message: error.message || 'Could not start level test',
@@ -503,6 +652,14 @@ router.post('/attempts/:attemptId/submit', async (req, res) => {
     attempt.status = 'submitted';
     attempt.submittedAt = new Date();
     await attempt.save();
+
+    // Ratchet LanguagePairProfile.currentLevel from a passed proficiency
+    // test. Failures here must not block the submit response — log only.
+    try {
+      await syncProfileFromPassedAttempt(attempt);
+    } catch (syncErr) {
+      console.warn('Failed to sync LanguagePairProfile from level test:', syncErr.message || syncErr);
+    }
 
     res.json({ attempt: publicAttempt(attempt) });
   } catch (error) {

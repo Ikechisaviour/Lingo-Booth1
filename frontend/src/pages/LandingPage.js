@@ -664,13 +664,13 @@ function LandingPage() {
               ))}
             </select>
           </label>
-          <button type="button" className="landing-login" onClick={() => navigate('/login')}>
+          <button type="button" className="landing-login landing-login--auth" onClick={() => navigate('/login')}>
             {landing.copy.login}
           </button>
-          <button type="button" className="landing-login" onClick={() => navigate('/contact')}>
+          <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/contact')}>
             {t('contact.navLabel')}
           </button>
-          <button type="button" className="landing-login" onClick={() => navigate('/pricing')}>
+          <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/pricing')}>
             {t('navbar.plans')}
           </button>
           <button type="button" className="landing-primary landing-primary-small" onClick={startFree}>
@@ -694,6 +694,12 @@ function LandingPage() {
                 {landing.copy.tryGuest}
               </button>
             </div>
+            <p className="landing-hero-signin">
+              {landing.copy.alreadyHaveAccount || 'Already have an account?'}{' '}
+              <button type="button" className="landing-hero-signin-link" onClick={() => navigate('/login')}>
+                {landing.copy.login}
+              </button>
+            </p>
           </div>
 
           <div className="landing-hero-visual">

@@ -56,12 +56,13 @@ function findChromeExecutable() {
   return null;
 }
 
-function certificateRenderUrl({ origin, certificateId, certificateLanguage }) {
+function certificateRenderUrl({ origin, certificateId, certificateLanguage, sampleToken = '' }) {
   const url = new URL('/', origin);
   url.searchParams.set('certificateRender', '1');
   url.searchParams.set('certificateId', certificateId);
   url.searchParams.set('certLang', certificateLanguage || 'en');
   url.searchParams.set('pdf', '1');
+  if (sampleToken) url.searchParams.set('sampleToken', sampleToken);
   return url.toString();
 }
 
@@ -82,10 +83,10 @@ function preflightCertificatePage(url) {
   });
 }
 
-async function findReachableCertificateUrl({ certificateId, certificateLanguage }) {
+async function findReachableCertificateUrl({ certificateId, certificateLanguage, sampleToken = '' }) {
   const tried = [];
   for (const origin of frontendOrigins()) {
-    const url = certificateRenderUrl({ origin, certificateId, certificateLanguage });
+    const url = certificateRenderUrl({ origin, certificateId, certificateLanguage, sampleToken });
     tried.push(url);
     // Headless Chrome will happily print its own network-error page. Preflight prevents that.
     if (await preflightCertificatePage(url)) return url;
@@ -137,7 +138,7 @@ async function cleanupPath(targetPath) {
   await fs.promises.rm(targetPath, { recursive: true, force: true }).catch(() => {});
 }
 
-async function renderCertificatePdf({ certificateId, certificateLanguage }) {
+async function renderCertificatePdf({ certificateId, certificateLanguage, sampleToken = '' }) {
   const executable = findChromeExecutable();
   if (!executable) {
     const error = new Error('Certificate PDF rendering requires Chrome or Edge on the server');
@@ -153,7 +154,7 @@ async function renderCertificatePdf({ certificateId, certificateLanguage }) {
   await fs.promises.mkdir(userDataDir, { recursive: true });
 
   try {
-    const url = await findReachableCertificateUrl({ certificateId, certificateLanguage });
+    const url = await findReachableCertificateUrl({ certificateId, certificateLanguage, sampleToken });
     await runChromePrint({
       executable,
       url,

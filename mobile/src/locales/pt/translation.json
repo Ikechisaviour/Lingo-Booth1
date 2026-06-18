@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Não foi possível salvar este cartão no momento.",
     "bookmarkedReason": "Marcado em flashcards.",
     "selfTestReason": "Salvo em flashcards para um autoteste rápido.",
-    "setFamiliarityLevel": "Defina familiaridade como {{level}}"
+    "setFamiliarityLevel": "Defina familiaridade como {{level}}",
+    "deckAll": "Todos",
+    "deckMine": "Meus cartões",
+    "deckFocus": "Foco",
+    "addToFocus": "Adicionar ao foco",
+    "removeFromFocus": "Remover do foco",
+    "addToFocusOnCreate": "Adicionar ao meu deck Focus",
+    "focusFailed": "Não foi possível atualizar seu deck Focus.",
+    "randomCountLabel": "Quantos cartões",
+    "studyNRandom": "Estudo {{count}} aleatório"
   },
   "progress": {
     "title": "Seu progresso",
@@ -623,7 +632,7 @@
     "deleteAccountTitle": "Excluir conta?",
     "deleteButton": "Excluir",
     "personalizationAvailable": "Disponível no seu plano",
-    "personalizationTier": "Pró ou Ultra",
+    "personalizationTier": "Pró ou Premium",
     "personalizationTitle": "Personalização de aprendizagem",
     "personalizationDesc": "Salve palavras, frases e situações aprovadas da vida real para que aulas, conversas, testes, cartões e prática de redação possam se tornar mais relevantes para você.",
     "managePersonalization": "Gerenciar personalização",
@@ -639,7 +648,8 @@
     "failedToUpdate": "Falha ao atualizar",
     "fullName": "Nome completo",
     "fullNamePlaceholder": "Nome a ser exibido nos certificados",
-    "fullNameMissing": "Adicionar antes de emitir um certificado"
+    "fullNameMissing": "Adicionar antes de emitir um certificado",
+    "activeAccountType": "Tipo de conta ativa"
   },
   "verifyEmail": {
     "verifying": "Verificando seu e-mail...",
@@ -880,12 +890,12 @@
     "recommended": "Recomendada",
     "startFree": "Comece gratuitamente",
     "choosePlan": "Escolha {{plan}}",
-    "checkoutSetupNeeded": "A finalização da compra on-line está sendo conectada. Você pode enviar uma solicitação e nós o ajudaremos a continuar.",
+    "checkoutSetupNeeded": "O checkout online não está disponível no momento. Você pode enviar uma solicitação e ajudaremos você a continuar.",
     "checkoutFailed": "Não foi possível iniciar a finalização da compra. Por favor, tente novamente.",
     "loadFailed": "Não foi possível carregar os planos. Por favor, tente novamente.",
     "institutionalKicker": "Instituições",
     "institutionalTitle": "Vagas para escolas, equipes, organizações religiosas e grupos",
-    "institutionalSubtitle": "As assinaturas institucionais ficam ao lado dos planos individuais. Os membros podem receber acesso de nível Plus, Pro ou Ultra por meio de sua organização sem alterar sua conta pessoal.",
+    "institutionalSubtitle": "As assinaturas institucionais ficam ao lado dos planos individuais. Os membros podem receber acesso de nível Plus, Pro ou Premium por meio de sua organização sem alterar sua conta pessoal.",
     "customPricing": "Preços personalizados",
     "seatPrice": "{{price}} por assento, mínimo de {{seats}} assentos",
     "institutionalFormTitle": "Solicite acesso institucional",
@@ -932,10 +942,10 @@
       "free": "Free",
       "plus": "Plus",
       "pro": "Pro",
-      "ultra": "Ultra",
-      "institution_basic": "Institution Basic",
+      "ultra": "Premium",
+      "institution_basic": "Institution Plus",
       "institution_pro": "Institution Pro",
-      "institution_enterprise": "Institution Enterprise"
+      "institution_enterprise": "Institution Premium"
     },
     "planTaglines": {
       "free": "Experimente o ciclo de aprendizagem com limites diários.",
@@ -951,7 +961,14 @@
     "discountUnavailable": "Esse código de desconto não está disponível para este plano.",
     "automaticDiscountApplied": "Desconto automático de {{discount}} aplicado",
     "signInToChooseTitle": "Crie uma conta para continuar",
-    "signInToChooseBody": "Crie uma conta ou faça login antes de escolher um plano pago para que seu acesso possa ser vinculado a você."
+    "signInToChooseBody": "Crie uma conta ou faça login antes de escolher um plano pago para que seu acesso possa ser vinculado a você.",
+    "entitlements": {
+      "placementLifetime": "{{count}} verificação de posicionamento",
+      "placementMonthly": "{{count}} verificações de colocação/mês",
+      "proficiencyIncluded": "{{count}} verificações de proficiência/mês incluídas, depois {{price}} cada",
+      "proficiencyPaid": "Verificações de proficiência {{price}} cada",
+      "dailyTokens": "{{count}} tokens de conversação diária"
+    }
   },
   "billing": {
     "kicker": "Cobrança",
@@ -987,7 +1004,13 @@
       "web": "Check-out pela Web",
       "ios": "Compra iOS",
       "android": "Compra de Android"
-    }
+    },
+    "subscriptionContextUpdated": "Acesso à assinatura alterado.",
+    "subscriptionContextFailed": "Não foi possível alterar o acesso à assinatura.",
+    "accessSwitcherKicker": "Fonte de acesso",
+    "accessSwitcherTitle": "Usar assinatura de",
+    "accessSwitcherHint": "Escolha se esta conta usa faturamento pessoal ou uma licença institucional para acesso pago.",
+    "currentAccessSource": "Atual"
   },
   "institution": {
     "kicker": "Instituição",
@@ -1086,7 +1109,15 @@
     "certificateLogoUrlPlaceholder": "https://example.com/logo.png",
     "mobileCertificateLogoHelp": "Cole um URL de imagem HTTPS aqui ou use o painel da web para fazer upload de um arquivo PNG, JPG ou WebP.",
     "saveCertificateBranding": "Salvar logotipo do certificado",
-    "removeCertificateLogo": "Remover logotipo"
+    "removeCertificateLogo": "Remover logotipo",
+    "progressDashboardKicker": "Progresso do aluno",
+    "mastered": "Dominada",
+    "comfortable": "Confortável",
+    "learning": "Aprendizado",
+    "struggling": "Lutando",
+    "classLessonsStarted": "{{count}} aulas iniciadas",
+    "sampleCertificateFailed": "Não foi possível abrir o certificado de amostra.",
+    "previewSampleCertificate": "Visualizar amostra de certificado"
   },
   "errorBoundary": {
     "title": "Algo deu errado",
@@ -1431,7 +1462,7 @@
     "backToProfile": "Voltar ao perfil",
     "kicker": "Personalização de aprendizagem",
     "title": "Lições moldadas ao seu redor",
-    "lockedSubtitle": "O Pro e o Ultra podem salvar palavras, frases e situações aprovadas da vida real para que a prática futura pareça mais relevante. Free e Plus podem continuar praticando regularmente.",
+    "lockedSubtitle": "O Pro e o Premium podem salvar palavras, frases e situações aprovadas da vida real para que a prática futura pareça mais relevante. Free e Plus podem continuar praticando regularmente.",
     "upgradeTitle": "Atualize para personalizar a prática",
     "upgradeBody": "Atualize quando quiser que as aulas, as instruções de revisão e as dramatizações se adaptem à linguagem cotidiana que você aprova.",
     "openConversation": "Conversa aberta",
@@ -1772,7 +1803,8 @@
     "earnFirstMilestone": "Ganhe o primeiro marco",
     "repairPlanTitle": "Foco no reparo",
     "repairPlanValue": "Vale a pena revisitar",
-    "repairPlanBody": "Alguns itens fracos ou pontos de verificação estão prontos para uma prática focada antes que você avance demais."
+    "repairPlanBody": "Alguns itens fracos ou pontos de verificação estão prontos para uma prática focada antes que você avance demais.",
+    "placementLimitReached": "Você usou os cheques de colocação incluídos neste plano."
   },
   "resetPassword": {
     "title": "Redefinir senha",
@@ -1892,6 +1924,63 @@
     "fullNameRequiredBody": "Digite seu nome completo exatamente como deve aparecer neste certificado. Você só precisa fazer isso antes de emitir um certificado.",
     "fullNameLabel": "Nome completo",
     "fullNamePlaceholder": "Seu nome completo",
-    "saveNameAndIssue": "Salvar nome e emitir certificado"
+    "saveNameAndIssue": "Salvar nome e emitir certificado",
+    "proficiencyPaymentRequired": "Este teste de proficiência é {{price}} após os testes incluídos.",
+    "proficiencyAllowance": "{{remaining}} de {{included}} incluiu verificações de proficiência restantes neste mês. As verificações extras são {{price}} cada.",
+    "paymentSetupNeeded": "As verificações de proficiência pagas ainda não estão configuradas.",
+    "paymentStartFailed": "Não foi possível iniciar o pagamento desta verificação de proficiência.",
+    "proficiencyPaymentTitle": "Pagamento necessário",
+    "payProficiencyCheck": "Pague {{price}} por este cheque"
+  },
+  "notifications": {
+    "title": "Notificações",
+    "empty": "Nenhuma notificação ainda.",
+    "markAllRead": "Marcar tudo como lido",
+    "openAction": "Abrir",
+    "dismiss": "Liberar",
+    "adminBroadcastTitle": "{{title}}",
+    "adminBroadcastBody": "{{message}}",
+    "institutionAccessTitle": "Acesso à instituição atualizado",
+    "institutionLearnerAddedBody": "Você foi adicionado ao {{organizationName}} como aluno.",
+    "institutionAdminAddedBody": "Agora você pode gerenciar {{organizationName}} no painel da sua instituição.",
+    "institutionAccessRemovedTitle": "Acesso à instituição removido",
+    "institutionAccessRemovedBody": "Seu acesso ao {{organizationName}} foi removido.",
+    "lowSeatsTitle": "As vagas nas instituições estão acabando",
+    "lowSeatsBody": "{{organizationName}} tem {{remaining}} de {{purchased}} assentos restantes.",
+    "noSeatsTitle": "Não há vagas restantes na instituição",
+    "noSeatsBody": "{{organizationName}} não tem vagas restantes.",
+    "seatsAddedTitle": "Assentos da instituição adicionados",
+    "seatsAddedBody": "{{quantity}} assentos foram adicionados. As vagas {{remaining}} já estão disponíveis.",
+    "institutionPurchaseTitle": "Assinatura da instituição ativada",
+    "institutionPurchaseBody": "{{organizationName}} agora tem vagas na instituição {{quantity}}.",
+    "institutionSeatSuspendedTitle": "Sede da instituição suspensa",
+    "institutionSeatSuspendedBody": "Sua vaga para {{organizationName}} foi suspensa.",
+    "institutionSeatRestoredTitle": "Sede da instituição restaurada",
+    "institutionSeatRestoredBody": "Sua vaga para {{organizationName}} está ativa novamente.",
+    "suspensionRequestedTitle": "O aluno solicitou suspensão",
+    "suspensionRequestedBody": "{{email}} solicitou suspensão de assento na instituição.",
+    "institutionRequestAcceptedTitle": "Solicitação da instituição aceita",
+    "institutionRequestAcceptedBody": "Sua solicitação de {{organizationName}} foi aceita.",
+    "institutionRequestDeclinedTitle": "Solicitação da instituição recusada",
+    "institutionRequestDeclinedBody": "A solicitação de sua instituição para {{organizationName}} foi recusada.",
+    "institutionSuspendedTitle": "Instituição suspensa",
+    "institutionSuspendedBody": "{{organizationName}} foi suspenso.",
+    "institutionReactivatedTitle": "Instituição reativada",
+    "institutionReactivatedBody": "{{organizationName}} está ativo novamente.",
+    "xpDecayTitle": "Sequência de treino precisa de atenção",
+    "xpDecayBody": "{{penalty}} XP foi reduzido após inatividade. Seu total atual é {{totalXP}} XP.",
+    "viewProfileAction": "Ver perfil",
+    "openInstitutionAction": "Instituição aberta",
+    "manageSeatsAction": "Gerenciar assentos",
+    "viewPlansAction": "Ver planos",
+    "resumePracticeAction": "Retomar a prática",
+    "unreadCount": "{{count}} não lido"
+  },
+  "stepUp": {
+    "verifyFailed": "Não foi possível verificar a senha",
+    "title": "Confirme que é você",
+    "message": "Para sua segurança, digite novamente sua senha para continuar com esta ação.",
+    "passwordPlaceholder": "Senha",
+    "confirm": "Confirmar"
   }
 }

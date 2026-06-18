@@ -13,22 +13,36 @@ const Progress = require('../models/Progress');
 const ClassLessonProgress = require('../models/ClassLessonProgress');
 const InstitutionGroup = require('../models/InstitutionGroup');
 const LevelTestAttempt = require('../models/LevelTestAttempt');
+const LevelTestCredit = require('../models/LevelTestCredit');
 const CompletionCertificate = require('../models/CompletionCertificate');
-const { verifyToken, optionalAuth, isAdmin } = require('../middleware/auth');
+const { verifyToken, optionalAuth, isAdmin, requireRecentAuth } = require('../middleware/auth');
 const { getClientIp } = require('../utils/geo');
 const { ALL_TARGET_LANGUAGES, cleanLanguageList } = require('../utils/learningContext');
+const { setSubscriptionContextForUser, syncInstitutionAccessForUser } = require('../utils/institutionAccess');
 const {
   getAiEntitlements,
   getSubscriptionSummary,
   isActiveStatus,
   normalizeTier,
+  PROFICIENCY_TEST_PRICE_CENTS,
 } = require('../utils/subscription');
+const seats = require('../utils/seats');
+const {
+  createNotification,
+  notifyInstitutionAccess,
+  notifyInstitutionAccessRemoved,
+  notifyInstitutionRequestStatus,
+  notifyInstitutionStatusChanged,
+  notifyOrganizationManagers,
+  notifySeatThresholdIfNeeded,
+} = require('../utils/notifications');
 const {
   BILLING_SOURCES,
   INDIVIDUAL_PLANS,
   INSTITUTIONAL_PLANS,
   getIndividualPlan,
   getInstitutionalPlan,
+  getSeatPackPrice,
   providerPriceFor,
   priceCentsFor,
   applyPlanOverride,
@@ -49,7 +63,11 @@ const DISCOUNT_APPLICATION_MODES = ['code', 'automatic'];
 const CERTIFICATE_LOGO_MAX_BYTES = 600 * 1024;
 const CERTIFICATE_LOGO_URL_MAX_LENGTH = 1200;
 const CERTIFICATE_LOGO_DATA_URL_MAX_LENGTH = 900000;
-const CERTIFICATE_LOGO_MIME_TYPES = new Set(['image/png', 'image/jpeg', 'image/webp']);
+const CERTIFICATE_LOGO_MIME_TYPES = new Set(['image/png', 'image/jpeg', 'image/webp', 'image/gif', 'image/svg+xml']);
+const CERTIFICATE_LOGO_MIME_ALIASES = {
+  'image/x-png': 'image/png',
+  'image/pjpeg': 'image/jpeg',
+};
 
 function cleanText(value, maxLength) {
   return String(value || '').trim().slice(0, maxLength);
@@ -77,13 +95,13 @@ function certificateBrandingPayload(body = {}, userId) {
     throw error;
   }
 
-  const dataUrlMatch = rawLogo.match(/^data:(image\/png|image\/jpeg|image\/webp);base64,([A-Za-z0-9+/=\s]+)$/);
+  const dataUrlMatch = rawLogo.match(/^data:(image\/png|image\/x-png|image\/jpeg|image\/pjpeg|image\/webp|image\/gif|image\/svg\+xml);base64,([A-Za-z0-9+/=\s]+)$/);
   if (dataUrlMatch) {
-    const mimeType = dataUrlMatch[1];
+    const mimeType = CERTIFICATE_LOGO_MIME_ALIASES[dataUrlMatch[1]] || dataUrlMatch[1];
     const base64 = dataUrlMatch[2].replace(/\s+/g, '');
     const byteLength = Buffer.byteLength(base64, 'base64');
     if (!CERTIFICATE_LOGO_MIME_TYPES.has(mimeType) || byteLength > CERTIFICATE_LOGO_MAX_BYTES) {
-      const error = new Error('Certificate logo must be a PNG, JPG, or WebP image under 600 KB');
+      const error = new Error('Certificate logo must be a PNG, JPG, WebP, GIF, or SVG image under 600 KB');
       error.statusCode = 400;
       throw error;
     }
@@ -112,7 +130,7 @@ function certificateBrandingPayload(body = {}, userId) {
     };
   }
 
-  const error = new Error('Certificate logo must be an HTTPS image URL or a PNG, JPG, or WebP data image');
+  const error = new Error('Certificate logo must be an HTTPS image URL or a PNG, JPG, WebP, GIF, or SVG data image');
   error.statusCode = 400;
   throw error;
 }
@@ -364,9 +382,48 @@ async function updateOrganizationSeatCount(organizationId) {
   const seatsUsed = await OrganizationMembership.countDocuments({
     organizationId,
     status: { $in: ['active', 'invited'] },
+    $or: [
+      { consumesSeat: true },
+      { role: 'learner' },
+    ],
   });
   await Organization.findByIdAndUpdate(organizationId, { $set: { seatsUsed } });
   return seatsUsed;
+}
+
+async function repairOwnerLearnerMemberships(userId = null, organizations = []) {
+  const orgList = organizations.filter((org) => org?._id && org.ownerUserId);
+  const ownedOrgIds = orgList
+    .filter((org) => !userId || String(org.ownerUserId) === String(userId))
+    .map((org) => org._id);
+  if (ownedOrgIds.length === 0) return;
+
+  const memberships = await OrganizationMembership.find({
+    organizationId: { $in: ownedOrgIds },
+    ...(userId ? { userId } : {}),
+    role: 'learner',
+    status: 'active',
+  });
+
+  await Promise.all(memberships.map(async (membership) => {
+    const org = orgList.find((candidate) => String(candidate._id) === String(membership.organizationId));
+    if (!org || String(org.ownerUserId) !== String(membership.userId)) return;
+    membership.role = 'admin';
+    membership.consumesSeat = false;
+    await membership.save();
+    await updateOrganizationSeatCount(org._id);
+    await setUserInstitutionalAccess(membership.userId, org, membership);
+  }));
+}
+
+async function syncActiveOrganizationMembers(org) {
+  if (!org?._id) return;
+  const activeMemberships = await OrganizationMembership.find({ organizationId: org._id, status: 'active' });
+  await Promise.all(activeMemberships.map((membership) => (
+    membership.userId
+      ? setUserInstitutionalAccess(membership.userId, org, membership)
+      : Promise.resolve()
+  )));
 }
 
 async function setUserInstitutionalAccess(userId, org, membership) {
@@ -406,6 +463,117 @@ async function clearUserInstitutionalAccess(userId, organizationId) {
       },
     },
   );
+}
+
+async function upsertInstitutionAdminMembership({ org, user, role = 'admin', actorId = null }) {
+  const email = String(user.email || '').toLowerCase();
+  const membership = await OrganizationMembership.findOneAndUpdate(
+    { organizationId: org._id, email },
+    {
+      $set: {
+        userId: user._id,
+        role,
+        status: 'active',
+        invitedBy: actorId || user._id,
+        consumesSeat: false,
+        joinedAt: new Date(),
+      },
+    },
+    { new: true, upsert: true }
+  );
+
+  org.seatsUsed = await updateOrganizationSeatCount(org._id);
+  await setUserInstitutionalAccess(user._id, org, membership);
+  return membership;
+}
+
+async function createOrganizationForInstitution({
+  name,
+  type = 'other',
+  plan,
+  seats,
+  billingEmail = '',
+  ownerUserId = null,
+  status = 'active',
+  billingSource = 'manual',
+  notes = '',
+}) {
+  const orgName = cleanLine(name, 180);
+  if (!orgName) {
+    const error = new Error('Organization name is required');
+    error.statusCode = 400;
+    throw error;
+  }
+  const seatCount = Math.max(parseInt(seats, 10) || plan.minimumSeats || 1, plan.minimumSeats || 1);
+  return Organization.create({
+    name: orgName,
+    slug: `${slugify(orgName)}-${Date.now().toString(36)}`,
+    type: ORG_TYPES.includes(type) ? type : 'other',
+    planId: plan.id,
+    effectiveTier: plan.tier,
+    status,
+    seatsPurchased: seatCount,
+    billingSource,
+    billingEmail: cleanLine(billingEmail, 254).toLowerCase(),
+    ownerUserId,
+    notes: cleanText(notes, 3000),
+  });
+}
+
+async function acceptInstitutionalLead(lead, actorId) {
+  const plan = await effectiveInstitutionalPlan(lead.planId, 'institution_pro');
+  const user = lead.userId
+    ? await User.findById(lead.userId)
+    : await User.findOne({ email: lead.email });
+  if (!user) {
+    const error = new Error('The requester must create an account before this request can be accepted');
+    error.statusCode = 400;
+    throw error;
+  }
+
+  let org = lead.organizationId ? await Organization.findById(lead.organizationId) : null;
+  if (!org) {
+    org = await createOrganizationForInstitution({
+      name: lead.organizationName,
+      type: lead.organizationType,
+      plan,
+      seats: 0, // Seats land in the wallet via topUpSeats below, not at org creation.
+      billingEmail: lead.email,
+      ownerUserId: user._id,
+      status: 'active',
+      billingSource: 'manual',
+      notes: lead.message,
+    });
+    // Reset seatsPurchased: createOrganizationForInstitution still applies
+    // plan.minimumSeats as a floor; in the pack model the wallet starts at 0.
+    await Organization.findByIdAndUpdate(org._id, { $set: { seatsPurchased: 0 } });
+    org = await Organization.findById(org._id);
+  } else {
+    org.status = 'active';
+    org.planId = plan.id;
+    org.effectiveTier = plan.tier;
+    org.ownerUserId = org.ownerUserId || user._id;
+    await org.save();
+  }
+
+  // Grant the requested seat pack as a one-time manual top-up (recorded in history + BillingEvent).
+  const requested = Math.max(parseInt(lead.seatsRequested, 10) || plan.minimumSeats || 1, 1);
+  await seats.topUpSeats({
+    orgId: org._id,
+    quantity: requested,
+    addedByUserId: actorId || user._id,
+    source: 'lead_accept',
+    note: `Granted on lead accept (${lead._id})`,
+  });
+
+  const membership = await upsertInstitutionAdminMembership({ org, user, role: 'admin', actorId });
+  lead.status = 'accepted';
+  lead.organizationId = org._id;
+  lead.userId = user._id;
+  lead.reviewedBy = actorId;
+  lead.reviewedAt = new Date();
+  await lead.save();
+  return { org, user, membership };
 }
 
 async function findInstitutionMembership(userId, organizationId, { requireManager = false } = {}) {
@@ -505,56 +673,95 @@ async function upsertSubscriptionRecord({
   }
 
   if (ownerType === 'organization') {
-    await Organization.findByIdAndUpdate(ownerId, {
-      $set: {
-        planId: plan.id,
-        effectiveTier: plan.tier,
-        status: isActiveStatus(status) ? status : 'past_due',
-        seatsPurchased: seats,
-        billingSource: source,
-        subscriptionId: record._id,
-        expiresAt: currentPeriodEnd,
-      },
-    });
+    // For one-time seat-pack receipts, do NOT overwrite seatsPurchased or
+    // expiresAt — the seat top-up flow has already incremented the wallet
+    // counter via $inc and orgs no longer have a recurring billing period.
+    const orgUpdate = {
+      planId: plan.id,
+      effectiveTier: plan.tier,
+      status: isActiveStatus(status) ? status : 'past_due',
+      billingSource: source,
+      subscriptionId: record._id,
+    };
+    if (interval !== 'one_time') {
+      orgUpdate.seatsPurchased = seats;
+      orgUpdate.expiresAt = currentPeriodEnd;
+    }
+    await Organization.findByIdAndUpdate(ownerId, { $set: orgUpdate });
   }
 
   return record;
 }
 
-async function createStripeCheckoutSession({ user, plan, interval, successUrl, cancelUrl, discount = null }) {
+async function createStripeCheckoutSession({
+  user,
+  plan,
+  interval,
+  successUrl,
+  cancelUrl,
+  discount = null,
+  seats = 1,
+  organization = null,
+}) {
   const secret = process.env.STRIPE_SECRET_KEY;
-  const priceId = providerPriceFor(plan, interval, BILLING_SOURCES.WEB);
-  const amountCents = priceCentsFor(plan, interval);
-  const canUseDynamicPrice = Number.isFinite(amountCents) && amountCents > 0;
-  const overridePriceId = interval === 'annual' ? plan.stripeAnnualPriceId : plan.stripeMonthlyPriceId;
+  const isInstitution = plan.audience === 'institution';
+  const seatQty = isInstitution ? Math.max(parseInt(seats, 10) || 1, 1) : 1;
+  const seatPackPrice = isInstitution ? getSeatPackPrice(plan, seatQty) : null;
+
+  let unitAmountCents;
+  let priceId = '';
+  if (isInstitution) {
+    unitAmountCents = seatPackPrice?.pricePerSeatCents;
+    priceId = ''; // Seat packs are always priced dynamically (bulk-discount tiered).
+  } else {
+    priceId = providerPriceFor(plan, interval, BILLING_SOURCES.WEB);
+    unitAmountCents = priceCentsFor(plan, interval);
+  }
+  const canUseDynamicPrice = Number.isFinite(unitAmountCents) && unitAmountCents > 0;
+  const overridePriceId = !isInstitution
+    ? (interval === 'annual' ? plan.stripeAnnualPriceId : plan.stripeMonthlyPriceId)
+    : '';
   const discountHasStripeLink = !!(discount?.stripePromotionCodeId || discount?.stripeCouponId);
-  const shouldUseDynamicPrice = canUseDynamicPrice && (
-    !priceId
-    || (plan.pricingOverrideActive && !overridePriceId)
-    || (discount && !discountHasStripeLink)
-  );
+  const shouldUseDynamicPrice = isInstitution
+    || (canUseDynamicPrice && (
+      !priceId
+      || (plan.pricingOverrideActive && !overridePriceId)
+      || (discount && !discountHasStripeLink)
+    ));
 
   if (!secret || (!priceId && !shouldUseDynamicPrice)) {
     return {
       requiresSetup: true,
       missing: [
         !secret ? 'STRIPE_SECRET_KEY' : null,
-        !priceId && !shouldUseDynamicPrice ? plan.providerKeys?.[interval === 'annual' ? 'stripeAnnual' : 'stripeMonthly'] : null,
+        !priceId && !shouldUseDynamicPrice && !isInstitution
+          ? plan.providerKeys?.[interval === 'annual' ? 'stripeAnnual' : 'stripeMonthly']
+          : null,
+        isInstitution && !canUseDynamicPrice ? 'pricePerSeatCents' : null,
       ].filter(Boolean),
     };
   }
 
   const body = new URLSearchParams();
-  body.set('mode', 'subscription');
-  body.set('success_url', successUrl || frontendUrl('/billing?checkout=success'));
+  // Institutions buy one-time seat packs. Individuals buy recurring subscriptions.
+  body.set('mode', isInstitution ? 'payment' : 'subscription');
+  body.set('success_url', successUrl || frontendUrl(isInstitution ? '/institution?checkout=success' : '/billing?checkout=success'));
   body.set('cancel_url', cancelUrl || frontendUrl('/pricing?checkout=cancelled'));
   body.set('client_reference_id', String(user._id));
   body.set('customer_email', user.email);
+  if (isInstitution) {
+    // Save the card to a Stripe Customer so auto-renew can off-session it later.
+    // Card data never touches our DB — we only retain the Stripe customer + payment_method IDs.
+    body.set('customer_creation', 'always');
+    body.set('payment_intent_data[setup_future_usage]', 'off_session');
+  }
   if (shouldUseDynamicPrice) {
     body.set('line_items[0][price_data][currency]', 'usd');
-    body.set('line_items[0][price_data][unit_amount]', String(discountedAmountCents(amountCents, discount)));
-    body.set('line_items[0][price_data][recurring][interval]', interval === 'annual' ? 'year' : 'month');
-    body.set('line_items[0][price_data][product_data][name]', plan.name);
+    body.set('line_items[0][price_data][unit_amount]', String(discountedAmountCents(unitAmountCents, discount)));
+    if (!isInstitution) {
+      body.set('line_items[0][price_data][recurring][interval]', interval === 'annual' ? 'year' : 'month');
+    }
+    body.set('line_items[0][price_data][product_data][name]', isInstitution ? `${plan.name} — ${seatQty}-seat pack` : plan.name);
   } else {
     body.set('line_items[0][price]', priceId);
     if (discount?.stripePromotionCodeId) {
@@ -563,14 +770,67 @@ async function createStripeCheckoutSession({ user, plan, interval, successUrl, c
       body.set('discounts[0][coupon]', discount.stripeCouponId);
     }
   }
-  body.set('line_items[0][quantity]', '1');
+  body.set('line_items[0][quantity]', String(seatQty));
   body.set('metadata[userId]', String(user._id));
   body.set('metadata[planId]', plan.id);
   body.set('metadata[tier]', plan.tier);
-  body.set('metadata[interval]', interval);
+  body.set('metadata[interval]', isInstitution ? 'one_time' : interval);
+  body.set('metadata[audience]', plan.audience);
+  body.set('metadata[seats]', String(seatQty));
+  if (isInstitution && seatPackPrice) {
+    body.set('metadata[unitAmountCents]', String(seatPackPrice.pricePerSeatCents));
+    body.set('metadata[bulkTierMinSeats]', String(seatPackPrice.tierApplied || 1));
+  }
+  if (organization?._id) body.set('metadata[organizationId]', String(organization._id));
   if (discount?.code) body.set('metadata[discountCode]', discount.code);
   if (discount?._id) body.set('metadata[discountId]', String(discount._id));
   if (discount?.applicationMode) body.set('metadata[discountApplicationMode]', discount.applicationMode);
+
+  const response = await fetch('https://api.stripe.com/v1/checkout/sessions', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${secret}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body,
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    const detail = data?.error?.message || 'Stripe checkout setup failed';
+    throw new Error(detail);
+  }
+
+  return data;
+}
+
+async function createStripeProficiencyCheckoutSession({
+  user,
+  successUrl,
+  cancelUrl,
+}) {
+  const secret = process.env.STRIPE_SECRET_KEY;
+  if (!secret) {
+    return {
+      requiresSetup: true,
+      missing: ['STRIPE_SECRET_KEY'],
+    };
+  }
+
+  const body = new URLSearchParams();
+  body.set('mode', 'payment');
+  body.set('success_url', successUrl || frontendUrl('/level-tests?checkout=success'));
+  body.set('cancel_url', cancelUrl || frontendUrl('/level-tests?checkout=cancelled'));
+  body.set('client_reference_id', String(user._id));
+  body.set('customer_email', user.email);
+  body.set('line_items[0][price_data][currency]', 'usd');
+  body.set('line_items[0][price_data][unit_amount]', String(PROFICIENCY_TEST_PRICE_CENTS));
+  body.set('line_items[0][price_data][product_data][name]', 'Lingo Booth proficiency check');
+  body.set('line_items[0][quantity]', '1');
+  body.set('metadata[purchaseType]', 'proficiency_test_credit');
+  body.set('metadata[testType]', 'proficiency');
+  body.set('metadata[userId]', String(user._id));
+  body.set('metadata[priceCents]', String(PROFICIENCY_TEST_PRICE_CENTS));
 
   const response = await fetch('https://api.stripe.com/v1/checkout/sessions', {
     method: 'POST',
@@ -614,10 +874,135 @@ async function handleStripeEvent(event) {
   const type = event?.type || '';
   const object = event?.data?.object || {};
   const metadata = object.metadata || {};
-  const plan = getIndividualPlan(metadata.planId || metadata.tier);
+  const plan = getIndividualPlan(metadata.planId || metadata.tier) || getInstitutionalPlan(metadata.planId);
   const userId = metadata.userId;
 
+  if (type === 'checkout.session.completed' && metadata.purchaseType === 'proficiency_test_credit' && userId) {
+    if (!mongoose.isValidObjectId(userId)) return 'ignored';
+    const user = await User.findById(userId).select('_id').lean();
+    if (!user) return 'ignored';
+    const providerSessionId = cleanLine(object.id, 200);
+    const providerPaymentId = cleanLine(object.payment_intent, 200);
+    await LevelTestCredit.findOneAndUpdate({
+      provider: 'stripe',
+      providerSessionId,
+    }, {
+      $setOnInsert: {
+        userId: user._id,
+        creditType: 'proficiency',
+        status: 'available',
+        source: 'stripe',
+        priceCents: cleanCents(metadata.priceCents, { allowNull: false }) || PROFICIENCY_TEST_PRICE_CENTS,
+        currency: cleanLine(object.currency || 'usd', 10).toLowerCase() || 'usd',
+        provider: 'stripe',
+        providerSessionId,
+        providerPaymentId,
+        purchasedAt: new Date(),
+      },
+    }, {
+      upsert: true,
+      new: true,
+    });
+    return 'processed';
+  }
+
   if (type === 'checkout.session.completed' && plan && userId) {
+    if (plan.audience === 'institution') {
+      const org = metadata.organizationId && mongoose.isValidObjectId(metadata.organizationId)
+        ? await Organization.findById(metadata.organizationId)
+        : null;
+      const user = await User.findById(userId);
+      if (!org || !user) return 'ignored';
+
+      // Seat packs are one-time payments. Top up the wallet rather than overwrite it.
+      const qty = Math.max(parseInt(metadata.seats, 10) || plan.minimumSeats || 1, 1);
+      const unitAmountCents = parseInt(metadata.unitAmountCents, 10);
+      await seats.topUpSeats({
+        orgId: org._id,
+        quantity: qty,
+        addedByUserId: user._id,
+        source: 'stripe',
+        note: `Stripe checkout ${object.id || ''}`.trim(),
+        pricePerSeatCents: Number.isFinite(unitAmountCents) ? unitAmountCents : null,
+        totalCents: Number.isFinite(unitAmountCents) ? unitAmountCents * qty : null,
+      });
+
+      // Pull the PaymentIntent to recover the payment_method id — Stripe attaches
+      // it to the Customer automatically when setup_future_usage=off_session was
+      // set on the Checkout Session. We store these tokens (not card data) so
+      // auto-renew can off-session charge later.
+      const stripeCustomerId = object.customer || null;
+      let paymentMethodId = null;
+      if (object.payment_intent && process.env.STRIPE_SECRET_KEY) {
+        try {
+          const pi = await fetch(`https://api.stripe.com/v1/payment_intents/${object.payment_intent}`, {
+            headers: { Authorization: `Bearer ${process.env.STRIPE_SECRET_KEY}` },
+          }).then((r) => r.json());
+          paymentMethodId = pi?.payment_method || null;
+        } catch (err) {
+          console.error('Failed to fetch payment_intent for autoRenew capture:', err);
+        }
+      }
+
+      // If this was the org's first purchase, flip it to active and link its
+      // plan + tier. Subsequent top-ups don't change plan-level settings.
+      const refreshed = await Organization.findById(org._id);
+      const orgUpdate = {
+        planId: plan.id,
+        effectiveTier: plan.tier,
+        billingSource: BILLING_SOURCES.WEB,
+      };
+      if (!['active', 'trialing'].includes(refreshed.status)) orgUpdate.status = 'active';
+      // Capture the Stripe tokens for future off-session charges. We do NOT
+      // auto-enable auto-renew — admin opts in via PUT /auto-renew.
+      if (stripeCustomerId) orgUpdate['autoRenew.stripeCustomerId'] = stripeCustomerId;
+      if (paymentMethodId) orgUpdate['autoRenew.paymentMethodId'] = paymentMethodId;
+      await Organization.findByIdAndUpdate(org._id, { $set: orgUpdate });
+
+      // Receipt-style SubscriptionRecord for audit (interval = one_time).
+      const record = await upsertSubscriptionRecord({
+        ownerType: 'organization',
+        ownerId: org._id,
+        plan,
+        source: BILLING_SOURCES.WEB,
+        provider: 'stripe',
+        status: 'active',
+        interval: 'one_time',
+        seats: qty,
+        providerCustomerId: object.customer || '',
+        providerSubscriptionId: object.payment_intent || object.id || '',
+        providerPriceId: object.display_items?.[0]?.price?.id || '',
+        metadata,
+        lastProviderPayload: object,
+      });
+
+      const activatedOrg = await Organization.findById(org._id);
+      const membership = await upsertInstitutionAdminMembership({ org: activatedOrg || org, user, role: 'admin', actorId: user._id });
+      await notifyInstitutionAccess({
+        userId: user._id,
+        organization: activatedOrg || org,
+        membership,
+        actorUserId: user._id,
+        source: 'paid_institution_purchase',
+      });
+      await notifyOrganizationManagers(org._id, {
+        category: 'institution',
+        severity: 'success',
+        type: 'institution.seats.purchased',
+        titleKey: 'notifications.institutionPurchaseTitle',
+        bodyKey: 'notifications.institutionPurchaseBody',
+        params: { organizationName: (activatedOrg || org).name, quantity: qty },
+        action: { labelKey: 'notifications.openInstitutionAction', route: '/institution' },
+        actorUserId: user._id,
+      });
+      if (metadata.discountId && mongoose.isValidObjectId(metadata.discountId)) {
+        await DiscountCode.updateOne({ _id: metadata.discountId }, { $inc: { redemptions: 1 } });
+      } else if (metadata.discountCode) {
+        await DiscountCode.updateOne({ code: discountCodeValue(metadata.discountCode) }, { $inc: { redemptions: 1 } });
+      }
+      return record ? 'processed' : 'ignored';
+    }
+
     const record = await upsertSubscriptionRecord({
       ownerType: 'user',
       ownerId: userId,
@@ -649,8 +1034,8 @@ async function handleStripeEvent(event) {
 
   if ((type === 'customer.subscription.updated' || type === 'customer.subscription.deleted') && object.id) {
     const existing = await SubscriptionRecord.findOne({ provider: 'stripe', providerSubscriptionId: object.id });
-    const existingPlan = existing ? getIndividualPlan(existing.planId) : null;
-    const nextPlan = getIndividualPlan(metadata.planId || existing?.planId) || existingPlan;
+    const existingPlan = existing ? (getIndividualPlan(existing.planId) || getInstitutionalPlan(existing.planId)) : null;
+    const nextPlan = getIndividualPlan(metadata.planId || existing?.planId) || getInstitutionalPlan(metadata.planId || existing?.planId) || existingPlan;
     if (existing && nextPlan) {
       const status = type === 'customer.subscription.deleted' ? 'cancelled' : (object.status || 'incomplete');
       const record = await upsertSubscriptionRecord({
@@ -673,6 +1058,10 @@ async function handleStripeEvent(event) {
         lastProviderPayload: object,
       });
       if (record.ownerType === 'user') await applySubscriptionRecordToUser(record.ownerId, record);
+      if (record.ownerType === 'organization') {
+        const org = await Organization.findById(record.ownerId);
+        if (org) await syncActiveOrganizationMembers(org);
+      }
       return 'processed';
     }
   }
@@ -778,6 +1167,7 @@ router.post('/institutional-inquiry', optionalAuth, async (req, res) => {
 router.use(verifyToken);
 
 router.get('/me', async (req, res) => {
+  await syncInstitutionAccessForUser(req.user);
   const subscriptions = await SubscriptionRecord.find({ ownerType: 'user', ownerId: req.userId })
     .sort({ createdAt: -1 })
     .limit(10)
@@ -785,28 +1175,145 @@ router.get('/me', async (req, res) => {
   const memberships = await OrganizationMembership.find({ userId: req.userId, status: { $ne: 'removed' } })
     .populate('organizationId')
     .lean();
+
+  let currentSeat = null;
+  const orgId = req.user?.institutionalAccess?.organizationId;
+  if (orgId) {
+    const seat = await seats.currentSeat(req.userId, orgId);
+    if (seat) {
+      currentSeat = {
+        _id: seat._id,
+        state: seat.state,
+        activatedAt: seat.activatedAt,
+        expiresAt: seat.expiresAt,
+        daysRemaining: Math.max(0, Math.ceil((seat.expiresAt.getTime() - Date.now()) / (24 * 60 * 60 * 1000))),
+      };
+    }
+    // Refresh the user-cache so getAiEntitlements/activeInstitutionTier on this very response are coherent.
+    await seats.syncUserSeatCache(req.userId, orgId);
+    req.user.institutionalAccess.seatStatus = seat ? seat.state : 'none';
+    req.user.institutionalAccess.seatExpiresAt = seat ? seat.expiresAt : null;
+  }
+
   res.json({
     entitlements: getAiEntitlements(req.user),
     subscription: getSubscriptionSummary(req.user),
+    subscriptionContext: req.user.subscriptionContext || { type: 'institution', organizationId: req.user.institutionalAccess?.organizationId || null },
     subscriptions,
     memberships,
+    currentSeat,
   });
 });
 
-router.post('/checkout-session', async (req, res) => {
+router.post('/subscription-context', async (req, res) => {
+  try {
+    const contextType = req.body?.contextType === 'institution' ? 'institution' : 'personal';
+    const user = await setSubscriptionContextForUser(req.user, {
+      contextType,
+      organizationId: req.body?.organizationId || '',
+    });
+    res.json({
+      entitlements: getAiEntitlements(user),
+      subscription: getSubscriptionSummary(user),
+      subscriptionContext: user.subscriptionContext || { type: contextType, organizationId: null },
+    });
+  } catch (error) {
+    res.status(error.statusCode || 500).json({ message: error.message || 'Could not switch subscription access' });
+  }
+});
+
+router.post('/level-test-checkout-session', requireRecentAuth(15), async (req, res) => {
+  try {
+    const { successUrl, cancelUrl } = req.body || {};
+    const session = await createStripeProficiencyCheckoutSession({
+      user: req.user,
+      successUrl,
+      cancelUrl,
+    });
+
+    if (session.requiresSetup) {
+      await BillingEvent.create({
+        provider: 'stripe',
+        type: 'level_test_checkout.setup_required',
+        status: 'setup_required',
+        userId: req.userId,
+        message: 'Missing setup for proficiency check checkout',
+        payload: {
+          purchaseType: 'proficiency_test_credit',
+          priceCents: PROFICIENCY_TEST_PRICE_CENTS,
+          missing: session.missing,
+        },
+      });
+      return setupMissingResponse(
+        res,
+        'Paid proficiency checks are ready in the app, but payment provider settings are not configured yet.',
+        session.missing,
+      );
+    }
+
+    await BillingEvent.create({
+      provider: 'stripe',
+      type: 'level_test_checkout.session.created',
+      status: 'processed',
+      userId: req.userId,
+      payload: {
+        id: session.id,
+        purchaseType: 'proficiency_test_credit',
+        priceCents: PROFICIENCY_TEST_PRICE_CENTS,
+      },
+    });
+
+    res.json({ checkoutUrl: session.url, sessionId: session.id });
+  } catch (error) {
+    console.error('Level test checkout session error:', error);
+    res.status(500).json({ message: 'Could not start proficiency check checkout' });
+  }
+});
+
+router.post('/checkout-session', requireRecentAuth(15), async (req, res) => {
   try {
     const { planId, interval = 'monthly', successUrl, cancelUrl, discountCode } = req.body || {};
-    const plan = await effectiveIndividualPlan(planId);
-    if (!plan || plan.id === 'free') {
-      return res.status(400).json({ message: 'Choose a paid individual plan' });
+    const individualPlan = await effectiveIndividualPlan(planId);
+    const institutionalPlan = individualPlan ? null : await effectiveInstitutionalPlan(planId, '');
+    const plan = individualPlan || institutionalPlan;
+    if (!plan || plan.id === 'free' || (plan.audience === 'institution' && priceCentsFor(plan) == null)) {
+      return res.status(400).json({ message: 'Choose a paid plan' });
     }
-    const checkoutInterval = interval === 'annual' ? 'annual' : 'monthly';
+    const isInstitution = plan.audience === 'institution';
+    const checkoutInterval = isInstitution ? 'one_time' : (interval === 'annual' ? 'annual' : 'monthly');
+    // Seat packs are sized by `quantity` (preferred) but accept `seats` / `seatsRequested` for back-compat.
+    const requestedQty = req.body?.quantity ?? req.body?.seats ?? req.body?.seatsRequested;
+    const seatQty = isInstitution
+      ? Math.max(parseInt(requestedQty, 10) || plan.minimumSeats || 1, plan.minimumSeats || 1)
+      : 1;
+    const seatPackPrice = isInstitution ? getSeatPackPrice(plan, seatQty) : null;
     const requestedDiscountCode = discountCodeValue(discountCode);
     const discount = requestedDiscountCode
       ? await validateDiscountForPlan(requestedDiscountCode, plan)
       : await validateAutomaticDiscountForPlan(plan, checkoutInterval);
     if (requestedDiscountCode && !discount) {
       return res.status(400).json({ message: 'Discount code is not available' });
+    }
+
+    let organization = null;
+    if (isInstitution) {
+      // If the user already owns an active org, reuse it (top-up) rather than spawning a new one.
+      organization = await Organization.findOne({ ownerUserId: req.user._id, status: { $in: ['active', 'trialing', 'lead'] } }).sort({ createdAt: -1 });
+      if (!organization) {
+        organization = await createOrganizationForInstitution({
+          name: req.body?.organizationName,
+          type: req.body?.organizationType,
+          plan,
+          seats: seatQty,
+          billingEmail: req.user.email,
+          ownerUserId: req.user._id,
+          status: 'lead',
+          billingSource: BILLING_SOURCES.WEB,
+          notes: 'Created from institution checkout before payment confirmation.',
+        });
+        // Pack-model: seats only enter the wallet on payment success, not at org creation.
+        await Organization.findByIdAndUpdate(organization._id, { $set: { seatsPurchased: 0 } });
+      }
     }
 
     const session = await createStripeCheckoutSession({
@@ -816,9 +1323,14 @@ router.post('/checkout-session', async (req, res) => {
       successUrl,
       cancelUrl,
       discount,
+      seats: seatQty,
+      organization,
     });
 
     if (session.requiresSetup) {
+      if (organization?._id && organization.status === 'lead' && (organization.seatsPurchased || 0) === 0) {
+        await Organization.findByIdAndDelete(organization._id).catch(() => {});
+      }
       await BillingEvent.create({
         provider: 'stripe',
         type: 'checkout.setup_required',
@@ -828,6 +1340,8 @@ router.post('/checkout-session', async (req, res) => {
         payload: {
           planId: plan.id,
           interval: checkoutInterval,
+          seats: seatQty,
+          organizationId: organization?._id ? String(organization._id) : '',
           discountCode: discount?.applicationMode === 'automatic' ? '' : discount?.code || '',
           automaticDiscountId: discount?.applicationMode === 'automatic' ? String(discount._id) : '',
           missing: session.missing,
@@ -849,6 +1363,10 @@ router.post('/checkout-session', async (req, res) => {
         id: session.id,
         planId: plan.id,
         interval: checkoutInterval,
+        seats: seatQty,
+        unitAmountCents: seatPackPrice?.pricePerSeatCents ?? null,
+        bulkTierMinSeats: seatPackPrice?.tierApplied ?? null,
+        organizationId: organization?._id ? String(organization._id) : '',
         discountCode: discount?.applicationMode === 'automatic' ? '' : discount?.code || '',
         automaticDiscountId: discount?.applicationMode === 'automatic' ? String(discount._id) : '',
       },
@@ -861,7 +1379,7 @@ router.post('/checkout-session', async (req, res) => {
   }
 });
 
-router.post('/customer-portal', async (req, res) => {
+router.post('/customer-portal', requireRecentAuth(15), async (req, res) => {
   try {
     const customerId = req.user.personalSubscription?.customerId;
     if (!process.env.STRIPE_SECRET_KEY || !customerId) {
@@ -930,6 +1448,12 @@ router.post('/mobile/verify', async (req, res) => {
 
 router.get('/institution/dashboard', async (req, res) => {
   try {
+    const ownedOrganizations = await Organization.find({
+      ownerUserId: req.userId,
+      status: { $in: ['active', 'trialing'] },
+    });
+    await repairOwnerLearnerMemberships(req.userId, ownedOrganizations);
+
     const memberships = await OrganizationMembership.find({
       userId: req.userId,
       status: 'active',
@@ -940,7 +1464,7 @@ router.get('/institution/dashboard', async (req, res) => {
       .lean();
 
     const availableMemberships = memberships.filter((membership) => (
-      membership.organizationId && ORG_STATUSES.includes(membership.organizationId.status)
+      membership.organizationId && ['active', 'trialing'].includes(membership.organizationId.status)
     ));
 
     if (availableMemberships.length === 0) {
@@ -952,6 +1476,8 @@ router.get('/institution/dashboard', async (req, res) => {
       requestedOrgId && String(membership.organizationId._id) === String(requestedOrgId)
     )) || availableMemberships[0];
     const organization = activeMembership.organizationId;
+    const currentSeatUsage = await updateOrganizationSeatCount(organization._id);
+    organization.seatsUsed = currentSeatUsage;
 
     const [members, subscriptions, groups, testAttempts, certificates] = await Promise.all([
       OrganizationMembership.find({ organizationId: organization._id, status: { $ne: 'removed' } })
@@ -1017,6 +1543,26 @@ router.get('/institution/dashboard', async (req, res) => {
     const progressByUser = new Map(progressStats.map((record) => [String(record._id), record]));
     const classByUser = new Map(classStats.map((record) => [String(record._id), record]));
 
+    // Resolve each member's current seat (lazy-expires any past-due rows along the way).
+    const seatByMember = new Map();
+    await Promise.all(
+      members
+        .filter((member) => member.userId && member.role === 'learner')
+        .map(async (member) => {
+          const userIdRaw = member.userId?._id || member.userId;
+          const seat = await seats.currentSeat(userIdRaw, organization._id);
+          if (seat) {
+            seatByMember.set(String(member._id), {
+              _id: seat._id,
+              state: seat.state,
+              activatedAt: seat.activatedAt,
+              expiresAt: seat.expiresAt,
+              suspendedAt: seat.suspendedAt,
+            });
+          }
+        }),
+    );
+
     const enrichedMembers = members.map((member) => {
       const sanitized = sanitizeMembership(member);
       const userId = sanitized.user?._id ? String(sanitized.user._id) : '';
@@ -1024,6 +1570,9 @@ router.get('/institution/dashboard', async (req, res) => {
       const classProgress = classByUser.get(userId) || {};
       return {
         ...sanitized,
+        currentSeat: seatByMember.get(String(member._id)) || null,
+        suspensionReason: member.suspensionReason || null,
+        suspensionRequest: member.suspensionRequest || null,
         learnerSummary: {
           totalXP: sanitized.user?.totalXP || 0,
           averageScore: progress.averageScore != null ? Math.round(progress.averageScore) : null,
@@ -1096,10 +1645,11 @@ router.get('/institution/dashboard', async (req, res) => {
       },
       seatUsage: {
         purchased: organization.seatsPurchased || 0,
-        used: organization.seatsUsed || (activeMembers.length + invitedMembers.length),
+        used: currentSeatUsage,
         active: activeMembers.length,
         invited: invitedMembers.length,
-        remaining: Math.max((organization.seatsPurchased || 0) - (organization.seatsUsed || activeMembers.length + invitedMembers.length), 0),
+        remaining: Math.max((organization.seatsPurchased || 0) - currentSeatUsage, 0),
+        available: await seats.getSeatsAvailable(organization._id),
       },
       counts: {
         owners: activeMembers.filter((member) => member.role === 'owner').length,
@@ -1299,14 +1849,20 @@ router.post('/institution/organizations/:organizationId/members', async (req, re
     if (!EMAIL_REGEX.test(email)) return res.status(400).json({ message: 'A valid email address is required' });
 
     const existing = await OrganizationMembership.findOne({ organizationId: org._id, email });
-    const occupiesNewSeat = !existing || existing.status === 'removed';
-    const currentSeats = await OrganizationMembership.countDocuments({ organizationId: org._id, status: { $in: ['active', 'invited'] } });
-    if (occupiesNewSeat && currentSeats >= org.seatsPurchased) {
-      return res.status(400).json({ message: 'No seats available' });
+    const role = ORG_ROLES.includes(req.body?.role) ? req.body.role : 'learner';
+    const consumesSeat = role === 'learner';
+    const existingHasLiveSeat = existing && existing.userId
+      ? !!(await seats.currentSeat(existing.userId, org._id))
+      : false;
+    const needsFreshSeat = consumesSeat && !existingHasLiveSeat;
+    if (needsFreshSeat) {
+      const available = await seats.getSeatsAvailable(org._id);
+      if (available <= 0) {
+        return res.status(400).json({ message: 'No seats available', seatsAvailable: 0 });
+      }
     }
 
     const user = await User.findOne({ email });
-    const role = ORG_ROLES.includes(req.body?.role) ? req.body.role : 'learner';
     const groupId = req.body?.groupId && mongoose.Types.ObjectId.isValid(String(req.body.groupId))
       ? req.body.groupId
       : null;
@@ -1318,6 +1874,7 @@ router.post('/institution/organizations/:organizationId/members', async (req, re
           userId: user?._id || null,
           role,
           status: user ? 'active' : 'invited',
+          consumesSeat,
           groupId,
           allowedTargetLanguages,
           invitedBy: req.userId,
@@ -1330,7 +1887,20 @@ router.post('/institution/organizations/:organizationId/members', async (req, re
       .populate('groupId');
 
     if (user) await setUserInstitutionalAccess(user._id, org, member);
+
+    let allocatedSeat = null;
+    if (user && consumesSeat && member.status === 'active') {
+      allocatedSeat = await seats.tryAllocateSeat({
+        userId: user._id,
+        orgId: org._id,
+        membershipId: member._id,
+        trigger: 'admin_add',
+        triggeredByUserId: req.userId,
+      });
+    }
+
     org.seatsUsed = await updateOrganizationSeatCount(org._id);
+    const seatsAvailable = await seats.getSeatsAvailable(org._id);
 
     await BillingEvent.create({
       provider: 'manual',
@@ -1338,10 +1908,31 @@ router.post('/institution/organizations/:organizationId/members', async (req, re
       status: 'processed',
       organizationId: org._id,
       userId: user?._id || null,
-      payload: { email, role, invitedBy: req.userId },
+      payload: { email, role, invitedBy: req.userId, seatAllocated: !!allocatedSeat },
     });
-
-    res.status(201).json({ membership: sanitizeMembership(member), seatsUsed: org.seatsUsed });
+    if (user) {
+      await notifyInstitutionAccess({
+        userId: user._id,
+        organization: org,
+        membership: member,
+        actorUserId: req.userId,
+        source: member.role === 'learner' ? 'learner_added' : 'member_added',
+      });
+    }
+    await notifySeatThresholdIfNeeded(org._id, seatsAvailable, org.seatsPurchased || 0, req.userId);
+    res.status(201).json({
+      membership: sanitizeMembership(member),
+      seatsUsed: org.seatsUsed,
+      seatsAvailable,
+      currentSeat: allocatedSeat
+        ? {
+          _id: allocatedSeat._id,
+          state: allocatedSeat.state,
+          activatedAt: allocatedSeat.activatedAt,
+          expiresAt: allocatedSeat.expiresAt,
+        }
+        : null,
+    });
   } catch (error) {
     console.error('Institution member add error:', error);
     res.status(500).json({ message: 'Could not add institution member' });
@@ -1363,8 +1954,12 @@ router.put('/institution/organizations/:organizationId/members/:membershipId', a
 
     if (!member) return res.status(404).json({ message: 'Member not found' });
 
-    const nextRole = ORG_ROLES.includes(req.body?.role) ? req.body.role : member.role;
+    const requestedRole = ORG_ROLES.includes(req.body?.role) ? req.body.role : member.role;
+    const nextRole = ORG_MANAGER_ROLES.includes(member.role) && requestedRole === 'learner'
+      ? member.role
+      : requestedRole;
     const nextStatus = ['invited', 'active', 'removed'].includes(req.body?.status) ? req.body.status : member.status;
+    const nextConsumesSeat = nextRole === 'learner';
     const removingSelf = String(member.userId?._id || member.userId) === String(req.userId) && nextStatus === 'removed';
 
     if (removingSelf) {
@@ -1379,8 +1974,24 @@ router.put('/institution/organizations/:organizationId/members/:membershipId', a
       }
     }
 
+    const memberUserId = member.userId?._id || member.userId || null;
+    const liveSeat = memberUserId ? await seats.currentSeat(memberUserId, org._id) : null;
+    const willActivateLearner = nextStatus !== 'removed'
+      && nextConsumesSeat
+      && !liveSeat
+      && memberUserId
+      && (member.status === 'removed' || (member.role !== 'learner' && !member.consumesSeat) || nextStatus === 'active');
+    if (willActivateLearner) {
+      const available = await seats.getSeatsAvailable(org._id);
+      if (available <= 0) {
+        return res.status(400).json({ message: 'No seats available', seatsAvailable: 0 });
+      }
+    }
+
+    const wasLearner = member.role === 'learner';
     member.role = nextRole;
     member.status = nextStatus;
+    member.consumesSeat = nextConsumesSeat;
     if (req.body?.groupId !== undefined) {
       member.groupId = req.body.groupId && mongoose.Types.ObjectId.isValid(String(req.body.groupId)) ? req.body.groupId : null;
     }
@@ -1395,6 +2006,20 @@ router.put('/institution/organizations/:organizationId/members/:membershipId', a
       if (nextStatus === 'removed') await clearUserInstitutionalAccess(member.userId._id || member.userId, org._id);
     }
 
+    if (nextStatus === 'removed') {
+      await seats.endLiveSeatForMembership(member, 'removed', req.userId);
+    } else if (wasLearner && !nextConsumesSeat) {
+      await seats.endLiveSeatForMembership(member, 'role_changed', req.userId);
+    } else if (willActivateLearner) {
+      await seats.tryAllocateSeat({
+        userId: memberUserId,
+        orgId: org._id,
+        membershipId: member._id,
+        trigger: 'admin_role_change',
+        triggeredByUserId: req.userId,
+      });
+    }
+
     org.seatsUsed = await updateOrganizationSeatCount(org._id);
 
     await BillingEvent.create({
@@ -1406,10 +2031,286 @@ router.put('/institution/organizations/:organizationId/members/:membershipId', a
       payload: { role: member.role, memberStatus: member.status, updatedBy: req.userId },
     });
 
+    if (memberUserId && nextStatus === 'removed') {
+      await notifyInstitutionAccessRemoved({ userId: memberUserId, organization: org, actorUserId: req.userId });
+    } else if (memberUserId && willActivateLearner) {
+      await notifyInstitutionAccess({
+        userId: memberUserId,
+        organization: org,
+        membership: member,
+        actorUserId: req.userId,
+        source: 'learner_added',
+      });
+    }
+    await notifySeatThresholdIfNeeded(org._id, seatsAvailable, org.seatsPurchased || 0, req.userId);
+
     res.json({ membership: sanitizeMembership(member), seatsUsed: org.seatsUsed });
   } catch (error) {
     console.error('Institution member update error:', error);
     res.status(500).json({ message: 'Could not update institution member' });
+  }
+});
+
+router.post('/institution/organizations/:organizationId/seats', async (req, res) => {
+  try {
+    const membership = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
+    if (!membership) return res.status(403).json({ message: 'Institution manager access is required' });
+
+    const quantity = Math.max(1, Math.floor(Number(req.body?.quantity) || 0));
+    if (!quantity || quantity > 10000) {
+      return res.status(400).json({ message: 'quantity must be a positive integer (max 10000)' });
+    }
+    const note = cleanText(req.body?.note, 500);
+    const result = await seats.topUpSeats({
+      orgId: membership.organizationId._id,
+      quantity,
+      addedByUserId: req.userId,
+      source: 'manual',
+      note,
+    });
+
+    const available = await seats.getSeatsAvailable(membership.organizationId._id);
+    await notifyOrganizationManagers(membership.organizationId._id, {
+      category: 'institution',
+      severity: 'success',
+      type: 'institution.seats.topup',
+      titleKey: 'notifications.seatsAddedTitle',
+      bodyKey: 'notifications.seatsAddedBody',
+      params: { quantity: result.quantity, remaining: available },
+      action: { labelKey: 'notifications.manageSeatsAction', route: '/institution' },
+      actorUserId: req.userId,
+    });
+    res.status(201).json({
+      seatsPurchased: result.organization.seatsPurchased,
+      seatsAvailable: available,
+      quantityAdded: result.quantity,
+    });
+  } catch (error) {
+    console.error('Seat top-up error:', error);
+    res.status(500).json({ message: 'Could not top up seats' });
+  }
+});
+
+router.post('/institution/organizations/:organizationId/members/:membershipId/suspend', async (req, res) => {
+  try {
+    const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
+    if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+
+    const member = await OrganizationMembership.findOne({
+      _id: req.params.membershipId,
+      organizationId: manager.organizationId._id,
+    });
+    if (!member) return res.status(404).json({ message: 'Member not found' });
+    if (String(member.userId || '') === String(req.userId)) {
+      return res.status(400).json({ message: 'Cannot suspend yourself' });
+    }
+
+    const fromRequest = !!(member.suspensionRequest && member.suspensionRequest.requestedAt && !member.suspensionRequest.handledAt);
+    const result = await seats.suspendMembershipSeat({
+      membershipId: member._id,
+      suspendedByUserId: req.userId,
+      source: fromRequest ? 'learner_request_then_admin' : 'admin',
+    });
+    if (!result.ok) return res.status(400).json({ message: result.error });
+
+    const seatsAvailable = await seats.getSeatsAvailable(manager.organizationId._id);
+    if (member.userId) {
+      await createNotification({
+        userId: member.userId,
+        category: 'institution',
+        severity: 'warning',
+        type: 'institution.member.suspended',
+        titleKey: 'notifications.institutionSeatSuspendedTitle',
+        bodyKey: 'notifications.institutionSeatSuspendedBody',
+        params: { organizationName: manager.organizationId.name },
+        action: { labelKey: 'notifications.viewProfileAction', route: '/profile/account' },
+        organizationId: manager.organizationId._id,
+        actorUserId: req.userId,
+      });
+    }
+    res.json({
+      membership: sanitizeMembership(await result.membership.populate('userId', 'username email')),
+      seat: result.seat
+        ? { _id: result.seat._id, state: result.seat.state, activatedAt: result.seat.activatedAt, expiresAt: result.seat.expiresAt }
+        : null,
+      seatsAvailable,
+    });
+  } catch (error) {
+    console.error('Suspend membership error:', error);
+    res.status(500).json({ message: 'Could not suspend membership' });
+  }
+});
+
+router.post('/institution/organizations/:organizationId/members/:membershipId/unsuspend', async (req, res) => {
+  try {
+    const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
+    if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+
+    const member = await OrganizationMembership.findOne({
+      _id: req.params.membershipId,
+      organizationId: manager.organizationId._id,
+    });
+    if (!member) return res.status(404).json({ message: 'Member not found' });
+
+    const result = await seats.unsuspendMembershipSeat({
+      membershipId: member._id,
+      adminUserId: req.userId,
+    });
+    if (!result.ok) {
+      if (result.error === 'pool_empty') {
+        return res.status(409).json({ message: 'No seats available — buy more before unsuspending', seatsAvailable: 0 });
+      }
+      return res.status(400).json({ message: result.error });
+    }
+
+    const seatsAvailable = await seats.getSeatsAvailable(manager.organizationId._id);
+    if (member.userId) {
+      await createNotification({
+        userId: member.userId,
+        category: 'institution',
+        severity: 'success',
+        type: 'institution.member.unsuspended',
+        titleKey: 'notifications.institutionSeatRestoredTitle',
+        bodyKey: 'notifications.institutionSeatRestoredBody',
+        params: { organizationName: manager.organizationId.name },
+        action: { labelKey: 'notifications.viewProfileAction', route: '/profile/account' },
+        organizationId: manager.organizationId._id,
+        actorUserId: req.userId,
+      });
+    }
+    res.json({
+      membership: sanitizeMembership(await result.membership.populate('userId', 'username email')),
+      seat: result.seat
+        ? { _id: result.seat._id, state: result.seat.state, activatedAt: result.seat.activatedAt, expiresAt: result.seat.expiresAt }
+        : null,
+      seatsAvailable,
+    });
+  } catch (error) {
+    console.error('Unsuspend membership error:', error);
+    res.status(500).json({ message: 'Could not unsuspend membership' });
+  }
+});
+
+router.post('/institution/organizations/:organizationId/members/:membershipId/request-suspension', async (req, res) => {
+  try {
+    const member = await OrganizationMembership.findOne({
+      _id: req.params.membershipId,
+      organizationId: req.params.organizationId,
+    });
+    if (!member) return res.status(404).json({ message: 'Member not found' });
+    if (String(member.userId || '') !== String(req.userId)) {
+      return res.status(403).json({ message: 'You can only request suspension on your own membership' });
+    }
+
+    const note = cleanText(req.body?.note, 1000);
+    const result = await seats.recordSuspensionRequest({
+      membershipId: member._id,
+      requestedByUserId: req.userId,
+      note,
+    });
+    if (!result.ok) return res.status(400).json({ message: result.error });
+
+    await notifyOrganizationManagers(req.params.organizationId, {
+      category: 'institution',
+      severity: 'warning',
+      type: 'institution.member.suspension_requested',
+      titleKey: 'notifications.suspensionRequestedTitle',
+      bodyKey: 'notifications.suspensionRequestedBody',
+      params: { email: member.email },
+      action: { labelKey: 'notifications.openInstitutionAction', route: '/institution' },
+      actorUserId: req.userId,
+    });
+
+    res.status(201).json({ suspensionRequest: result.membership.suspensionRequest });
+  } catch (error) {
+    console.error('Request suspension error:', error);
+    res.status(500).json({ message: 'Could not record suspension request' });
+  }
+});
+
+router.get('/institution/organizations/:organizationId/seat-wallet', async (req, res) => {
+  try {
+    const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
+    if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+    const wallet = await seats.getSeatWallet(manager.organizationId._id);
+    res.json(wallet);
+  } catch (error) {
+    console.error('Seat wallet error:', error);
+    res.status(500).json({ message: 'Could not load seat wallet' });
+  }
+});
+
+router.put('/institution/organizations/:organizationId/auto-renew', async (req, res) => {
+  try {
+    const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
+    if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+
+    const body = req.body || {};
+    const autoRenew = await seats.configureAutoRenew({
+      orgId: manager.organizationId._id,
+      enabled: body.enabled,
+      threshold: body.threshold,
+      refillQuantity: body.refillQuantity,
+      planId: typeof body.planId === 'string' ? body.planId : undefined,
+      paymentMethodId: typeof body.paymentMethodId === 'string' ? body.paymentMethodId : undefined,
+      stripeCustomerId: typeof body.stripeCustomerId === 'string' ? body.stripeCustomerId : undefined,
+      updatedByUserId: req.userId,
+    });
+
+    await BillingEvent.create({
+      provider: 'manual',
+      type: 'seats.auto_renew_configured',
+      status: 'processed',
+      organizationId: manager.organizationId._id,
+      userId: req.userId,
+      payload: {
+        enabled: autoRenew?.enabled,
+        threshold: autoRenew?.threshold,
+        refillQuantity: autoRenew?.refillQuantity,
+        planId: autoRenew?.planId,
+        hasPaymentMethod: !!autoRenew?.paymentMethodId,
+      },
+    }).catch(() => null);
+
+    res.json({ autoRenew });
+  } catch (error) {
+    console.error('Configure auto-renew error:', error);
+    res.status(500).json({ message: 'Could not save auto-renew settings' });
+  }
+});
+
+router.get('/institution/organizations/:organizationId/seat-projection', async (req, res) => {
+  try {
+    const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
+    if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+    const horizonDays = Math.min(60, Math.max(1, parseInt(req.query?.horizonDays, 10) || 7));
+    const projection = await seats.getSeatProjection(manager.organizationId._id, horizonDays);
+    res.json(projection);
+  } catch (error) {
+    console.error('Seat projection error:', error);
+    res.status(500).json({ message: 'Could not compute seat projection' });
+  }
+});
+
+router.get('/institution/organizations/:organizationId/members/:membershipId/seat-history', async (req, res) => {
+  try {
+    const member = await OrganizationMembership.findOne({
+      _id: req.params.membershipId,
+      organizationId: req.params.organizationId,
+    });
+    if (!member) return res.status(404).json({ message: 'Member not found' });
+
+    const isOwnHistory = String(member.userId || '') === String(req.userId);
+    if (!isOwnHistory) {
+      const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
+      if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+    }
+    const limit = Math.min(200, Math.max(1, parseInt(req.query?.limit, 10) || 50));
+    const history = await seats.getMembershipSeatHistory(member._id, limit);
+    res.json({ seatAssignments: history });
+  } catch (error) {
+    console.error('Seat history error:', error);
+    res.status(500).json({ message: 'Could not load seat history' });
   }
 });
 
@@ -1478,9 +2379,18 @@ router.put('/admin/plan-overrides/:planId', async (req, res) => {
       update.stripeMonthlyPriceId = cleanLine(body.stripeMonthlyPriceId, 200);
       update.stripeAnnualPriceId = cleanLine(body.stripeAnnualPriceId, 200);
     } else {
-      update.seatPriceMonthlyCents = cleanCents(body.seatPriceMonthlyCents);
-      update.seatPriceAnnualCents = cleanCents(body.seatPriceAnnualCents);
+      update.pricePerSeatCents = cleanCents(body.pricePerSeatCents);
       update.minimumSeats = cleanPositiveInt(body.minimumSeats, null);
+      update.stripeSeatPackPriceId = cleanLine(body.stripeSeatPackPriceId, 200);
+      if (Array.isArray(body.bulkPricing)) {
+        update.bulkPricing = body.bulkPricing
+          .map((tier) => ({
+            minSeats: cleanPositiveInt(tier?.minSeats, 1),
+            pricePerSeatCents: cleanCents(tier?.pricePerSeatCents),
+          }))
+          .filter((tier) => tier.minSeats > 0 && Number.isFinite(tier.pricePerSeatCents) && tier.pricePerSeatCents >= 0)
+          .sort((a, b) => a.minSeats - b.minSeats);
+      }
     }
 
     const override = await BillingPlanOverride.findOneAndUpdate(
@@ -1698,6 +2608,23 @@ router.get('/admin/organizations', async (req, res) => {
       .sort({ createdAt: -1 })
       .limit(200)
       .lean();
+    await repairOwnerLearnerMemberships(null, organizations);
+    const memberships = await OrganizationMembership.find({
+      organizationId: { $in: organizations.map((org) => org._id) },
+      role: { $in: ORG_MANAGER_ROLES },
+      status: 'active',
+    })
+      .populate('userId', 'username email')
+      .lean();
+    const managersByOrg = memberships.reduce((acc, membership) => {
+      const key = String(membership.organizationId);
+      if (!acc[key]) acc[key] = [];
+      acc[key].push(sanitizeMembership(membership));
+      return acc;
+    }, {});
+    organizations.forEach((org) => {
+      org.managers = managersByOrg[String(org._id)] || [];
+    });
     res.json({ organizations });
   } catch (error) {
     res.status(500).json({ message: 'Could not load organizations' });
@@ -1747,6 +2674,7 @@ router.put('/admin/organizations/:organizationId', async (req, res) => {
     const body = req.body || {};
     const org = await Organization.findById(req.params.organizationId);
     if (!org) return res.status(404).json({ message: 'Organization not found' });
+    const previousStatus = org.status;
 
     const plan = body.planId ? await effectiveInstitutionalPlan(body.planId, 'institution_basic') : null;
     if (body.name) org.name = cleanLine(body.name, 180);
@@ -1803,6 +2731,14 @@ router.put('/admin/organizations/:organizationId', async (req, res) => {
       payload: { updatedBy: req.userId },
     });
 
+    if (previousStatus !== org.status && ['suspended', 'active', 'trialing'].includes(org.status)) {
+      await notifyInstitutionStatusChanged({
+        organization: org,
+        status: org.status === 'suspended' ? 'suspended' : 'reactivated',
+        actorUserId: req.userId,
+      });
+    }
+
     res.json({ organization: org });
   } catch (error) {
     res.status(500).json({ message: 'Could not update organization' });
@@ -1813,21 +2749,33 @@ router.post('/admin/organizations/:organizationId/members', async (req, res) => 
   try {
     const org = await Organization.findById(req.params.organizationId);
     if (!org) return res.status(404).json({ message: 'Organization not found' });
-    if (org.seatsUsed >= org.seatsPurchased) {
-      return res.status(400).json({ message: 'No seats available' });
-    }
 
     const email = cleanLine(req.body?.email, 254).toLowerCase();
     if (!EMAIL_REGEX.test(email)) return res.status(400).json({ message: 'A valid email address is required' });
 
     const user = await User.findOne({ email });
+    const role = ['owner', 'admin', 'teacher', 'learner'].includes(req.body?.role) ? req.body.role : 'learner';
+    const consumesSeat = role === 'learner';
+    const existing = await OrganizationMembership.findOne({ organizationId: org._id, email });
+    const existingHasLiveSeat = existing && existing.userId
+      ? !!(await seats.currentSeat(existing.userId, org._id))
+      : false;
+    const needsFreshSeat = consumesSeat && !existingHasLiveSeat;
+    if (needsFreshSeat) {
+      const available = await seats.getSeatsAvailable(org._id);
+      if (available <= 0) {
+        return res.status(400).json({ message: 'No seats available', seatsAvailable: 0 });
+      }
+    }
+
     const membership = await OrganizationMembership.findOneAndUpdate(
       { organizationId: org._id, email },
       {
         $set: {
           userId: user?._id || null,
-          role: ['owner', 'admin', 'teacher', 'learner'].includes(req.body?.role) ? req.body.role : 'learner',
+          role,
           status: user ? 'active' : 'invited',
+          consumesSeat,
           invitedBy: req.userId,
           joinedAt: user ? new Date() : null,
         },
@@ -1852,23 +2800,146 @@ router.post('/admin/organizations/:organizationId/members', async (req, res) => 
       });
     }
 
-    org.seatsUsed = await OrganizationMembership.countDocuments({ organizationId: org._id, status: { $in: ['active', 'invited'] } });
-    await org.save();
+    let allocatedSeat = null;
+    if (user && consumesSeat && membership.status === 'active') {
+      allocatedSeat = await seats.tryAllocateSeat({
+        userId: user._id,
+        orgId: org._id,
+        membershipId: membership._id,
+        trigger: 'admin_add',
+        triggeredByUserId: req.userId,
+      });
+    }
 
-    res.status(201).json({ membership });
+    org.seatsUsed = await updateOrganizationSeatCount(org._id);
+    const seatsAvailable = await seats.getSeatsAvailable(org._id);
+    if (user) {
+      await notifyInstitutionAccess({
+        userId: user._id,
+        organization: org,
+        membership,
+        actorUserId: req.userId,
+        source: membership.role === 'learner' ? 'learner_added' : 'member_added',
+      });
+    }
+    await notifySeatThresholdIfNeeded(org._id, seatsAvailable, org.seatsPurchased || 0, req.userId);
+
+    res.status(201).json({
+      membership,
+      seatsAvailable,
+      currentSeat: allocatedSeat
+        ? { _id: allocatedSeat._id, state: allocatedSeat.state, activatedAt: allocatedSeat.activatedAt, expiresAt: allocatedSeat.expiresAt }
+        : null,
+    });
   } catch (error) {
     res.status(500).json({ message: 'Could not add organization member' });
   }
 });
 
+router.post('/admin/organizations/:organizationId/institution-admin', async (req, res) => {
+  try {
+    const org = await Organization.findById(req.params.organizationId);
+    if (!org) return res.status(404).json({ message: 'Organization not found' });
+
+    const email = cleanLine(req.body?.email, 254).toLowerCase();
+    if (!EMAIL_REGEX.test(email)) return res.status(400).json({ message: 'A valid email address is required' });
+
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ message: 'User not found' });
+
+    const membership = await OrganizationMembership.findOneAndUpdate(
+      { organizationId: org._id, email },
+      {
+        $set: {
+          userId: user._id,
+          role: 'admin',
+          status: 'active',
+          consumesSeat: false,
+          invitedBy: req.userId,
+          joinedAt: new Date(),
+        },
+      },
+      { new: true, upsert: true }
+    );
+
+    await setUserInstitutionalAccess(user._id, org, membership);
+
+    org.seatsUsed = await updateOrganizationSeatCount(org._id);
+
+    await BillingEvent.create({
+      provider: 'manual',
+      type: 'organization.institution_admin.assigned',
+      status: 'processed',
+      organizationId: org._id,
+      userId: user._id,
+      payload: { assignedBy: req.userId, email },
+    });
+
+    await notifyInstitutionAccess({
+      userId: user._id,
+      organization: org,
+      membership,
+      actorUserId: req.userId,
+      source: 'admin_assigned',
+    });
+
+    const sanitized = await User.findById(user._id).select('-password');
+    res.status(200).json({
+      membership,
+      user: sanitized,
+      entitlements: getAiEntitlements(sanitized),
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Could not assign institution admin' });
+  }
+});
+
+router.delete('/admin/organizations/:organizationId/institution-admins/:membershipId', async (req, res) => {
+  try {
+    const org = await Organization.findById(req.params.organizationId);
+    if (!org) return res.status(404).json({ message: 'Organization not found' });
+    const membership = await OrganizationMembership.findOne({
+      _id: req.params.membershipId,
+      organizationId: org._id,
+      role: { $in: ORG_MANAGER_ROLES },
+    });
+    if (!membership) return res.status(404).json({ message: 'Institution admin not found' });
+
+    membership.status = 'removed';
+    await membership.save();
+    if (membership.userId) {
+      await clearUserInstitutionalAccess(membership.userId, org._id);
+    }
+    org.seatsUsed = await updateOrganizationSeatCount(org._id);
+
+    await BillingEvent.create({
+      provider: 'manual',
+      type: 'organization.institution_admin.removed',
+      status: 'processed',
+      organizationId: org._id,
+      userId: membership.userId || null,
+      payload: { removedBy: req.userId, email: membership.email },
+    });
+
+    if (membership.userId) {
+      await notifyInstitutionAccessRemoved({ userId: membership.userId, organization: org, actorUserId: req.userId });
+    }
+
+    res.json({ message: 'Institution admin removed', seatsUsed: org.seatsUsed });
+  } catch (error) {
+    res.status(500).json({ message: 'Could not remove institution admin' });
+  }
+});
+
 router.get('/admin/institutional-leads', async (req, res) => {
   try {
-    const status = ['open', 'contacted', 'converted', 'closed'].includes(req.query?.status) ? req.query.status : undefined;
+    const status = ['open', 'contacted', 'accepted', 'declined', 'converted', 'closed'].includes(req.query?.status) ? req.query.status : undefined;
     const filter = status ? { status } : {};
     const leads = await InstitutionalLead.find(filter)
       .sort({ createdAt: -1 })
       .limit(200)
       .populate('userId', 'username email role')
+      .populate('organizationId', 'name status planId seatsPurchased')
       .lean();
     res.json({ leads });
   } catch (error) {
@@ -1878,16 +2949,49 @@ router.get('/admin/institutional-leads', async (req, res) => {
 
 router.put('/admin/institutional-leads/:leadId/status', async (req, res) => {
   try {
-    const status = ['open', 'contacted', 'converted', 'closed'].includes(req.body?.status) ? req.body.status : 'contacted';
-    const lead = await InstitutionalLead.findByIdAndUpdate(
-      req.params.leadId,
-      { $set: { status } },
-      { new: true }
-    );
+    const status = ['open', 'contacted', 'accepted', 'declined', 'converted', 'closed'].includes(req.body?.status) ? req.body.status : 'contacted';
+    const lead = await InstitutionalLead.findById(req.params.leadId);
     if (!lead) return res.status(404).json({ message: 'Lead not found' });
+
+    if (status === 'accepted' || status === 'converted') {
+      const result = await acceptInstitutionalLead(lead, req.userId);
+      await BillingEvent.create({
+        provider: 'manual',
+        type: 'institution.lead.accepted',
+        status: 'processed',
+        organizationId: result.org._id,
+        userId: result.user._id,
+        payload: { leadId: lead._id, acceptedBy: req.userId },
+      });
+      await notifyInstitutionRequestStatus({
+        userId: result.user._id,
+        organization: result.org,
+        status: 'accepted',
+        actorUserId: req.userId,
+      });
+      return res.json({ lead, organization: result.org, membership: result.membership });
+    }
+
+    lead.status = status === 'closed' ? 'declined' : status;
+    if (lead.status === 'declined') {
+      lead.reviewedBy = req.userId;
+      lead.reviewedAt = new Date();
+    }
+    await lead.save();
+    if (lead.status === 'declined' && lead.userId && lead.organizationId) {
+      const organization = await Organization.findById(lead.organizationId).select('name').lean();
+      if (organization) {
+        await notifyInstitutionRequestStatus({
+          userId: lead.userId,
+          organization,
+          status: 'declined',
+          actorUserId: req.userId,
+        });
+      }
+    }
     res.json({ lead });
   } catch (error) {
-    res.status(500).json({ message: 'Could not update lead' });
+    res.status(error.statusCode || 500).json({ message: error.message || 'Could not update lead' });
   }
 });
 
