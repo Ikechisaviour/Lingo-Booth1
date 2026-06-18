@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Impossibile salvare questa carta in questo momento.",
     "bookmarkedReason": "Aggiunto ai segnalibri dalle flashcard.",
     "selfTestReason": "Salvato dalle flashcard per un rapido autotest.",
-    "setFamiliarityLevel": "Imposta la familiarità su {{level}}"
+    "setFamiliarityLevel": "Imposta la familiarità su {{level}}",
+    "deckAll": "Tutto",
+    "deckMine": "Le mie carte",
+    "deckFocus": "Messa a fuoco",
+    "addToFocus": "Aggiungi al focus",
+    "removeFromFocus": "Rimuovi dal fuoco",
+    "addToFocusOnCreate": "Aggiungi al mio mazzo Focus",
+    "focusFailed": "Impossibile aggiornare il tuo mazzo Focus.",
+    "randomCountLabel": "Quante carte",
+    "studyNRandom": "Studio {{count}} casuale"
   },
   "progress": {
     "title": "I tuoi progressi",

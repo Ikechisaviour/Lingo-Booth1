@@ -447,6 +447,14 @@ function HomePage() {
                     <button className="btn btn-primary btn-lg" onClick={() => handleLearningAction({ route: primaryActionRoute })}>
                       {primaryActionLabel} →
                     </button>
+                    {onV2Curriculum && (
+                      <button
+                        className="btn btn-secondary btn-lg"
+                        onClick={() => navigate('/learn/v2/catalog')}
+                      >
+                        {t('home.browseLessons', 'Browse lessons')}
+                      </button>
+                    )}
                   </div>
                 </>
               ) : (
@@ -471,19 +479,23 @@ function HomePage() {
 
           {/* Quick Actions */}
           <section className="quick-actions">
-            <div className="quick-action" onClick={() => navigate('/class')}>
+            <div className="quick-action" onClick={() => navigate(onV2Curriculum ? '/learn/v2' : '/class')}>
               <span className="quick-action-icon">&#127979;</span>
               <div className="quick-action-text">
-                <strong>{t('navbar.class', 'Class')}</strong>
-                <span>{t('home.classDesc', 'Guided tutor lessons')}</span>
+                <strong>{onV2Curriculum ? t('navbar.learn', 'Learn') : t('navbar.class', 'Class')}</strong>
+                <span>{onV2Curriculum
+                  ? t('home.learnDesc', 'Continue your curriculum session')
+                  : t('home.classDesc', 'Guided tutor lessons')}</span>
               </div>
               <span className="quick-action-arrow">→</span>
             </div>
-            <div className="quick-action" onClick={() => navigate('/exercise')}>
+            <div className="quick-action" onClick={() => navigate(onV2Curriculum ? '/learn/v2/catalog' : '/exercise')}>
               <span className="quick-action-icon">&#9997;</span>
               <div className="quick-action-text">
-                <strong>{t('navbar.exercise', 'Exercise')}</strong>
-                <span>{t('home.exerciseDesc', 'Quiz and flashcards')}</span>
+                <strong>{onV2Curriculum ? t('home.browseLessons', 'Browse lessons') : t('navbar.exercise', 'Exercise')}</strong>
+                <span>{onV2Curriculum
+                  ? t('home.catalogDesc', 'Pick a specific concept to study')
+                  : t('home.exerciseDesc', 'Quiz and flashcards')}</span>
               </div>
               <span className="quick-action-arrow">→</span>
             </div>

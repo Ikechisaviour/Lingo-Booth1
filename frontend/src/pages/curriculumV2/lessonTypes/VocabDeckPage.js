@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import PlayableKorean from '../../../components/PlayableKorean';
 import { curriculumV2Service } from '../../../services/api';
+import { useLessonAudio, prepForSpeech, LessonAudioButton } from '../../../utils/v2Audio';
 
 // Per-card SRS flow:
 //   1. Prompt — show target text, learner mentally recalls the native gloss.
@@ -9,8 +11,9 @@ import { curriculumV2Service } from '../../../services/api';
 //      moves to next card.
 // Cards display in lesson order. Per-card dueAt ordering can come later
 // when the planner can pre-hydrate SRS state per filler.
-export default function VocabDeckPage({ lesson, onComplete, sessionId }) {
+export default function VocabDeckPage({ lesson, onComplete, onBack, sessionId }) {
   const { t } = useTranslation();
+  const audio = useLessonAudio(lesson.targetLang || 'ko');
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [submittingFor, setSubmittingFor] = useState(null);
@@ -65,6 +68,11 @@ export default function VocabDeckPage({ lesson, onComplete, sessionId }) {
         <div className="v2-shell__meta">{t('curriculumV2.vocabDeck.meta', 'Vocab deck')}</div>
         <p>{t('curriculumV2.vocabDeck.empty', 'This deck has no cards to review.')}</p>
         <div className="v2-footer">
+          {onBack && (
+            <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+              ← {t('curriculumV2.back', 'Back')}
+            </button>
+          )}
           <button className="v2-btn v2-btn--primary" onClick={onComplete}>
             {t('curriculumV2.continue', 'Continue')}
           </button>
@@ -73,22 +81,46 @@ export default function VocabDeckPage({ lesson, onComplete, sessionId }) {
     );
   }
 
+  const metaLine = t('curriculumV2.vocabDeck.progress', 'Vocab card {{current}} / {{total}}', {
+    current: idx + 1,
+    total: fillers.length,
+  });
+
+  // Page script: meta + target word; if revealed, also read the native gloss.
+  // Recall prompt is read up-front so the learner knows to retrieve before
+  // tapping Reveal.
+  const pageScript = (() => {
+    const lines = [metaLine + '.'];
+    if (card.target) lines.push(card.target);
+    if (revealed) {
+      if (card.native) lines.push(prepForSpeech(card.native));
+    } else {
+      lines.push(t('curriculumV2.vocabDeck.recallPrompt', 'Recall the meaning, then reveal.'));
+    }
+    return lines;
+  })();
+
   return (
     <div className="v2-card">
-      <div className="v2-shell__meta">
-        {t('curriculumV2.vocabDeck.progress', 'Vocab card {{current}} / {{total}}', {
-          current: idx + 1,
-          total: fillers.length,
-        })}
+      <div className="v2-shell__meta v2-contrast__topbar">
+        <span>{metaLine}</span>
+        <LessonAudioButton
+          audio={audio}
+          scope="page"
+          items={pageScript}
+          variant="primary"
+          label={t('curriculumV2.playPage', 'Play whole lesson')}
+        />
       </div>
 
       <div style={{ padding: '24px 0', textAlign: 'center' }}>
-        <div className="v2-target" style={{ fontSize: 32, minHeight: 40 }}>
+        <div className="v2-target" style={{ fontSize: 32, minHeight: 40, display: 'inline-flex', alignItems: 'center', gap: 12 }}>
           {card.target || (
             <em style={{ color: '#9ca3af', fontSize: 18 }}>
               {t('curriculumV2.vocabDeck.missingTarget', '(no target text)')}
             </em>
           )}
+          {card.target && <PlayableKorean key={card.id} text={card.target} primary ariaLabel={t('curriculumV2.playCard', 'Play card')} />}
         </div>
         <div className="v2-native" style={{ marginTop: 12, minHeight: 22 }}>
           {revealed
@@ -99,6 +131,11 @@ export default function VocabDeckPage({ lesson, onComplete, sessionId }) {
 
       {!revealed && (
         <div className="v2-footer">
+          {onBack && (
+            <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+              ← {t('curriculumV2.back', 'Back')}
+            </button>
+          )}
           <span className="v2-shell__meta">
             {t('curriculumV2.vocabDeck.recallPrompt', 'Recall the meaning, then reveal.')}
           </span>

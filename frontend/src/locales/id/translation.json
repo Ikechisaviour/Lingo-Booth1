@@ -45,7 +45,8 @@
     "notSet": "Tidak disetel",
     "goBack": "Kembali",
     "all": "Semua",
-    "restart": "Mulai ulang"
+    "restart": "Mulai ulang",
+    "previous": "Sebelumnya"
   },
   "languageSelect": {
     "title": "Pilih Bahasa Anda",
@@ -125,7 +126,9 @@
     "plans": "Rencana",
     "exerciseOptions": "Pilihan latihan",
     "institution": "Lembaga",
-    "review": "Tinjauan"
+    "review": "Tinjauan",
+    "learn": "Mempelajari",
+    "curriculumV2": "Kurikulum v2"
   },
   "guestPrompt": {
     "title": "Anda hebat!",
@@ -210,7 +213,10 @@
     "supportAndPlans": "Dukungan dan rencana",
     "decayBannerActive": "XP menurun — kerugian harian {{rate}}%. Jawab pertanyaan untuk menghentikannya.",
     "decayBannerGrace": "Peluruhan XP dimulai pada {{hours}}h — kerugian harian {{rate}}%. Teruslah belajar untuk mencegahnya.",
-    "dashboard": "Dasbor"
+    "dashboard": "Dasbor",
+    "browseLessons": "Telusuri pelajaran",
+    "learnDesc": "Lanjutkan sesi kurikulum Anda",
+    "catalogDesc": "Pilih konsep tertentu untuk dipelajari"
   },
   "lessons": {
     "title": "Pelajaran <1>{{language}}</1>",
@@ -402,7 +408,32 @@
     "saveForReview": "Simpan untuk ditinjau",
     "bookmarkedReason": "Ditandai dari kartu flash.",
     "selfTestReason": "Disimpan dari kartu flash untuk tes mandiri cepat.",
-    "setFamiliarityLevel": "Setel keakraban ke {{level}}"
+    "setFamiliarityLevel": "Setel keakraban ke {{level}}",
+    "deckScopeLabel": "Kartu mana yang harus dipelajari",
+    "deckAll": "Semua",
+    "deckMine": "Kartu saya",
+    "deckFocus": "Fokus",
+    "addToFocus": "Tambahkan ke Fokus",
+    "removeFromFocus": "Hapus dari Fokus",
+    "inFocus": "Dalam Fokus",
+    "focusBadge": "Fokus",
+    "addSelectedToFocus": "Tambahkan ke Fokus",
+    "removeSelectedFromFocus": "Hapus dari Fokus",
+    "addToFocusOnCreate": "Tambahkan ke dek Fokus saya",
+    "focusFailed": "Tidak dapat memperbarui dek Fokus Anda.",
+    "focusEmptyTitle": "Dek Fokus Anda kosong",
+    "focusEmptyHint": "Tambahkan kartu ke Fokus dari kartu flash mana pun untuk mempelajarinya secara intensif di sini.",
+    "mineEmptyTitle": "Anda belum menambahkan kartu apa pun",
+    "mineEmptyHint": "Kartu yang Anda buat akan muncul di sini.",
+    "studyRandom": "Belajar secara acak",
+    "studyNRandom": "Pelajari {{count}} acak",
+    "studyRandomTitle": "Pelajari serangkaian kartu secara acak",
+    "studyRandomOptions": "Pelajari pilihan acak",
+    "randomCountLabel": "Berapa banyak kartu yang harus dipelajari",
+    "selectCards": "Pilih kartu",
+    "studyingSubset": "Mempelajari {{count}}",
+    "studyAll": "Pelajari semuanya",
+    "noCardsToPick": "Belum ada kartu untuk dipilih."
   },
   "progress": {
     "title": "<1>Kemajuan</1> Anda",
@@ -543,7 +574,14 @@
     "fullName": "Nama lengkap",
     "fullNamePlaceholder": "Nama untuk ditampilkan pada sertifikat",
     "fullNameMissing": "Tambahkan sebelum menerbitkan sertifikat",
-    "activeAccountType": "Jenis akun aktif"
+    "activeAccountType": "Jenis akun aktif",
+    "curriculumPreferenceSaved": "Preferensi kurikulum diperbarui.",
+    "curriculumVersion": "Versi kurikulum",
+    "curriculumVersionDesc": "Pilih versi kurikulum yang ingin Anda gunakan untuk setiap bahasa target yang didukung. Anda dapat beralih kapan saja.",
+    "curriculumV2Name": "{{language}} — kurikulum baru",
+    "curriculumV2Desc": "Latihan pola, cerita, cloze, kosakata SRS, pengucapan — diurutkan sesuai perencana.",
+    "curriculumV1Name": "{{language}} — kurikulum klasik",
+    "curriculumV1Desc": "Daftar kosakata dan pelajaran kelas yang sudah Anda ketahui."
   },
   "verifyEmail": {
     "verifying": "Memverifikasi email Anda...",
@@ -2011,7 +2049,9 @@
       "needHint": "Butuh petunjuk?",
       "correct": "Benar",
       "answer": "Jawaban: {{answer}}",
-      "whyHint": "Mengapa:"
+      "whyHint": "Mengapa:",
+      "blank": "kosong",
+      "choices": "Pilihan"
     },
     "finishScore": "Selesai ({{score}}/{{total}})",
     "next": "Berikutnya",
@@ -2021,7 +2061,11 @@
       "inYourLanguage": "Dalam bahasa Anda",
       "inTargetLanguage": "Dalam {{language}}",
       "whyDiffer": "Mengapa mereka berbeda",
-      "commonMistakes": "Kesalahan yang biasa dilakukan oleh penutur bahasa Inggris"
+      "commonMistakes": "Kesalahan yang biasa dilakukan oleh penutur bahasa Inggris",
+      "mistakeN": "Kesalahan {{n}}.",
+      "cultural": "Konteks budaya",
+      "forExample": "Misalnya",
+      "playItem": "Barang mainan"
     },
     "gotIt": "Mengerti",
     "minimalPair": {
@@ -2065,7 +2109,8 @@
       "recoveryTitle": "Mari kita meninjau kembali sebelum melanjutkan.",
       "recoveryAnchors": "Contoh jangkar",
       "recoveryPrompt": "Kalimat bahasa Korea manakah yang cocok dengan bahasa Inggris ini?",
-      "needMore": "Capai {{required}} upaya yang benar untuk menyelesaikan."
+      "needMore": "Capai {{required}} upaya yang benar untuk menyelesaikan.",
+      "exampleN": "Contoh {{n}}."
     },
     "continue": "Melanjutkan",
     "done": "Selesai",
@@ -2087,7 +2132,8 @@
       "listenFirst": "Dengarkan dulu, lalu rekam.",
       "repeatThenContinue": "Ulangi dengan keras, lalu lanjutkan.",
       "tryAgainOrContinue": "Rekam lagi atau lanjutkan.",
-      "recordWhenReady": "Rekam saat siap."
+      "recordWhenReady": "Rekam saat siap.",
+      "rateLimited": "Terlalu banyak pemeriksaan ucapan akhir-akhir ini — jeda sejenak."
     },
     "story": {
       "dialogueMode": "Dialog",
@@ -2096,7 +2142,8 @@
       "showTranslation": "Tampilkan terjemahan",
       "comprehensionQuestions": "Pertanyaan pemahaman",
       "questionInstructions": "Jawab masing-masing di kepala Anda atau dengan suara keras.",
-      "readStory": "Saya sudah membaca ceritanya"
+      "readStory": "Saya sudah membaca ceritanya",
+      "questionN": "Pertanyaan {{n}}."
     },
     "vocabDeck": {
       "meta": "Dek kosakata",
@@ -2121,6 +2168,27 @@
       "good": "Bagus",
       "easy": "Mudah",
       "prompt": "Seberapa baik Anda mengetahuinya?"
+    },
+    "conceptCompleteTitle": "Konsep selesai",
+    "backToCatalog": "Pilih pelajaran lain",
+    "back": "Kembali",
+    "browseLessons": "Jelajahi semua pelajaran",
+    "hangulRefresher": "Tinjau Hangul",
+    "showRomanization": "Tampilkan romanisasi",
+    "listenMode": "Modus mendengarkan",
+    "playPage": "Mainkan seluruh pelajaran",
+    "playSentence": "Mainkan kalimat",
+    "playSection": "Bagian bermain",
+    "playPattern": "Pola bermain",
+    "playExample": "Contoh permainan",
+    "playFiller": "Mainkan pengisi",
+    "playIdeal": "Mainkan jawaban ideal",
+    "playLine": "Mainkan garis",
+    "playCard": "Mainkan kartu",
+    "audio": {
+      "play": "Bermain",
+      "stop": "Berhenti",
+      "stopPlayback": "Hentikan pemutaran"
     }
   },
   "notifications": {
@@ -2196,5 +2264,58 @@
     "passwordPlaceholder": "Kata sandi",
     "verifying": "Memverifikasi...",
     "confirm": "Mengonfirmasi"
+  },
+  "curriculumVersion": {
+    "kicker": "Pembaruan kurikulum tersedia",
+    "title": "Pilih pengalaman {{language}} Anda",
+    "lede": "Kami telah meluncurkan kurikulum {{language}} baru dengan latihan pola, cerita masukan yang dapat dipahami, dan perencana sesi yang menyesuaikan dengan apa yang Anda lupakan.",
+    "recommended": "Direkomendasikan",
+    "v2Title": "Cobalah kurikulum baru",
+    "v2Body": "Pelajaran yang mengutamakan konsep seputar latihan pola, cerita, produksi cloze, SRS kosakata, dan tugas pengucapan — disisipkan oleh perencana sesi.",
+    "tryV2": "Cobalah",
+    "v1Title": "Tetap pada pengalaman klasik",
+    "v1Body": "Gunakan terus daftar kosakata dan pelajaran kelas lho. Anda dapat beralih kapan saja dari Pengaturan.",
+    "stayV1": "Tetap klasik",
+    "decideLater": "Putuskan nanti"
+  },
+  "hangul": {
+    "loadFailed": "Tidak dapat memuat pelajaran Hangul.",
+    "skipConfirm": "Lewati orientasi Hangul? Anda dapat kembali kapan saja dari header sesi.",
+    "saveFailed": "Tidak dapat menyimpan kemajuan.",
+    "empty": "Tidak ada konten Hangul yang tersedia.",
+    "backToLearn": "Kembali ke Belajar",
+    "refresherKicker": "Penyegar Hangul",
+    "onboardingKicker": "orientasi Hangul",
+    "title": "Baca bahasa Korea",
+    "subtitle": "Delapan pelajaran singkat. Dengarkan setiap huruf, pelajari cara balok membentuk suku kata, lalu baca kata sebenarnya.",
+    "alreadyKnow": "Saya sudah membaca Hangul — lewati",
+    "progressLabel": "Kemajuan",
+    "stepN": "Langkah {{step}} dari {{total}}",
+    "stopPage": "Berhenti",
+    "playPage": "Mainkan seluruh halaman",
+    "playLetter": "Putar suara huruf",
+    "stopCard": "Berhenti",
+    "playCard": "Mainkan seluruh kartu",
+    "play": "Bermain",
+    "practiceInstructions": "Bacalah setiap kata dengan lantang sebelum mengintip. Ketuk speaker untuk membandingkan.",
+    "tier": "Tingkat {{tier}}",
+    "reveal": "Mengungkap",
+    "done": "Selesai",
+    "finishAndLearn": "Mulai tata bahasa A1",
+    "next": "Berikutnya"
+  },
+  "catalog": {
+    "done": "Selesai",
+    "inProgress": "Sedang berlangsung",
+    "startConcept": "Mulai konsep ini",
+    "continueConcept": "Lanjutkan konsep",
+    "reviewConcept": "Tinjau konsep",
+    "notEnabled": "Kurikulum v2 belum diaktifkan untuk akun Anda.",
+    "loadFailed": "Tidak dapat memuat katalog.",
+    "empty": "Belum ada pelajaran.",
+    "backToSession": "Lanjutkan sesi Anda",
+    "title": "Jelajahi pelajaran bahasa Korea",
+    "subtitle": "Setiap konsep yang dapat diajarkan oleh perencana. Pilih satu untuk dipelajari, atau biarkan sistem memilihkan untuk Anda di halaman utama Pelajari.",
+    "conceptsMastered": "konsep dikuasai"
   }
 }

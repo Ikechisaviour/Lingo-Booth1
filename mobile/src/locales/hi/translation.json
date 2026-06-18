@@ -452,7 +452,16 @@
     "saveForReviewFailed": "अभी यह कार्ड सहेजा नहीं जा सका.",
     "bookmarkedReason": "फ़्लैशकार्ड से बुकमार्क किया गया.",
     "selfTestReason": "त्वरित स्व-परीक्षण के लिए फ़्लैशकार्ड से सहेजा गया।",
-    "setFamiliarityLevel": "परिचितता को {{level}} पर सेट करें"
+    "setFamiliarityLevel": "परिचितता को {{level}} पर सेट करें",
+    "deckAll": "सभी",
+    "deckMine": "मेरे कार्ड",
+    "deckFocus": "केंद्र",
+    "addToFocus": "फोकस में जोड़ें",
+    "removeFromFocus": "फोकस से हटाएँ",
+    "addToFocusOnCreate": "मेरे फोकस डेक में जोड़ें",
+    "focusFailed": "आपका फोकस डेक अपडेट नहीं किया जा सका.",
+    "randomCountLabel": "कितने कार्ड",
+    "studyNRandom": "अध्ययन {{count}} यादृच्छिक"
   },
   "progress": {
     "title": "आपकी प्रगति",

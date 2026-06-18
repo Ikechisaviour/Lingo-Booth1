@@ -45,7 +45,8 @@
     "notSet": "未設定",
     "goBack": "戻る",
     "all": "全て",
-    "restart": "再起動"
+    "restart": "再起動",
+    "previous": "前の"
   },
   "languageSelect": {
     "title": "言語を選択",
@@ -125,7 +126,9 @@
     "plans": "予定",
     "exerciseOptions": "エクササイズのオプション",
     "institution": "機関",
-    "review": "レビュー"
+    "review": "レビュー",
+    "learn": "学ぶ",
+    "curriculumV2": "カリキュラム v2"
   },
   "guestPrompt": {
     "title": "素晴らしい調子です！",
@@ -210,7 +213,10 @@
     "supportAndPlans": "サポートとプラン",
     "decayBannerActive": "XP は減少しています — 毎日の損失 {{rate}}%。 停止するには質問に答えてください。",
     "decayBannerGrace": "XP の減衰は {{hours}}h で始まります — 1 日あたりの損失 {{rate}}%。 そうならないためにも勉強を続けましょう。",
-    "dashboard": "ダッシュボード"
+    "dashboard": "ダッシュボード",
+    "browseLessons": "レッスンを閲覧する",
+    "learnDesc": "カリキュラムセッションを継続する",
+    "catalogDesc": "学習する特定の概念を選択してください"
   },
   "lessons": {
     "title": "{{language}} <1>レッスン</1>",
@@ -402,7 +408,32 @@
     "saveForReview": "レビュー用に保存する",
     "bookmarkedReason": "フラッシュカードからブックマークしました。",
     "selfTestReason": "簡単なセルフテストのためにフラッシュカードから保存されています。",
-    "setFamiliarityLevel": "親密度を{{level}}に設定"
+    "setFamiliarityLevel": "親密度を{{level}}に設定",
+    "deckScopeLabel": "どのカードを勉強するか",
+    "deckAll": "全て",
+    "deckMine": "私のカード",
+    "deckFocus": "集中",
+    "addToFocus": "焦点に追加",
+    "removeFromFocus": "フォーカスから削除",
+    "inFocus": "焦点が合っている",
+    "focusBadge": "集中",
+    "addSelectedToFocus": "焦点に追加",
+    "removeSelectedFromFocus": "フォーカスから削除",
+    "addToFocusOnCreate": "私のフォーカスデッキに追加",
+    "focusFailed": "フォーカスデッキを更新できませんでした。",
+    "focusEmptyTitle": "フォーカスデッキは空です",
+    "focusEmptyHint": "フラッシュカードからカードをフォーカスに追加して、ここで集中的に学習します。",
+    "mineEmptyTitle": "まだカードを追加していません",
+    "mineEmptyHint": "作成したカードがここに表示されます。",
+    "studyRandom": "ランダムに研究する",
+    "studyNRandom": "研究{{count}} ランダム",
+    "studyRandomTitle": "ランダムなカードのセットを研究する",
+    "studyRandomOptions": "ランダムな選択肢を研究する",
+    "randomCountLabel": "何枚のカードを勉強するか",
+    "selectCards": "カードを選択",
+    "studyingSubset": "勉強中{{count}}",
+    "studyAll": "全部勉強する",
+    "noCardsToPick": "まだ選択できるカードはありません。"
   },
   "progress": {
     "title": "あなたの<1>進捗</1>",
@@ -543,7 +574,14 @@
     "fullName": "フルネーム",
     "fullNamePlaceholder": "証明書に表示する名前",
     "fullNameMissing": "証明書発行前に追加",
-    "activeAccountType": "アクティブなアカウントの種類"
+    "activeAccountType": "アクティブなアカウントの種類",
+    "curriculumPreferenceSaved": "カリキュラム設定が更新されました。",
+    "curriculumVersion": "カリキュラムバージョン",
+    "curriculumVersionDesc": "サポートされているターゲット言語ごとに、使用するカリキュラムのバージョンを選択します。 いつでも切り替えることができます。",
+    "curriculumV2Name": "{{language}} — 新しいカリキュラム",
+    "curriculumV2Desc": "パターンドリル、ストーリー、クローゼ、語彙 SRS、発音 - プランナー順。",
+    "curriculumV1Name": "{{language}} — 古典的なカリキュラム",
+    "curriculumV1Desc": "すでに知っている語彙リストと授業のレッスン。"
   },
   "verifyEmail": {
     "verifying": "メールを確認中...",
@@ -2011,7 +2049,9 @@
       "needHint": "ヒントが必要ですか?",
       "correct": "正しい",
       "answer": "答え: {{answer}}",
-      "whyHint": "なぜ："
+      "whyHint": "なぜ：",
+      "blank": "空白",
+      "choices": "選択肢"
     },
     "finishScore": "終了 ({{score}}/{{total}})",
     "next": "次",
@@ -2021,7 +2061,11 @@
       "inYourLanguage": "あなたの言語で",
       "inTargetLanguage": "{{language}}に",
       "whyDiffer": "なぜ違うのか",
-      "commonMistakes": "英語話者がよく犯す間違い"
+      "commonMistakes": "英語話者がよく犯す間違い",
+      "mistakeN": "間違い{{n}}。",
+      "cultural": "文化的背景",
+      "forExample": "例えば",
+      "playItem": "プレイアイテム"
     },
     "gotIt": "わかった",
     "minimalPair": {
@@ -2065,7 +2109,8 @@
       "recoveryTitle": "先に進む前にもう一度見てみましょう。",
       "recoveryAnchors": "アンカーの例",
       "recoveryPrompt": "この英語に合う韓国語の文はどれですか?",
-      "needMore": "{{required}} に正しく到達して終了します。"
+      "needMore": "{{required}} に正しく到達して終了します。",
+      "exampleN": "例 {{n}}。"
     },
     "continue": "続く",
     "done": "終わり",
@@ -2087,7 +2132,8 @@
       "listenFirst": "まず聞いてから録音してください。",
       "repeatThenContinue": "声に出して繰り返してから続けます。",
       "tryAgainOrContinue": "もう一度録音するか、続行してください。",
-      "recordWhenReady": "準備ができたら録音します。"
+      "recordWhenReady": "準備ができたら録音します。",
+      "rateLimited": "最近スピーチチェックが多すぎます。ちょっと立ち止まってください。"
     },
     "story": {
       "dialogueMode": "対話",
@@ -2096,7 +2142,8 @@
       "showTranslation": "翻訳を表示",
       "comprehensionQuestions": "理解に関する質問",
       "questionInstructions": "それぞれに頭の中で、または声に出して答えてください。",
-      "readStory": "物語を読みました"
+      "readStory": "物語を読みました",
+      "questionN": "質問{{n}}。"
     },
     "vocabDeck": {
       "meta": "語彙デッキ",
@@ -2121,6 +2168,27 @@
       "good": "良い",
       "easy": "簡単",
       "prompt": "どのくらい知っていましたか？"
+    },
+    "conceptCompleteTitle": "コンセプトの完成",
+    "backToCatalog": "別のレッスンを選択してください",
+    "back": "戻る",
+    "browseLessons": "すべてのレッスンを閲覧する",
+    "hangulRefresher": "ハングルを復習する",
+    "showRomanization": "ローマ字表記を表示",
+    "listenMode": "リスニングモード",
+    "playPage": "レッスン全体をプレイする",
+    "playSentence": "文を再生する",
+    "playSection": "プレイセクション",
+    "playPattern": "プレイパターン",
+    "playExample": "プレイ例",
+    "playFiller": "プレイフィラー",
+    "playIdeal": "理想的な答えを再生する",
+    "playLine": "プレイライン",
+    "playCard": "プレイカード",
+    "audio": {
+      "play": "遊ぶ",
+      "stop": "停止",
+      "stopPlayback": "再生を停止する"
     }
   },
   "notifications": {
@@ -2196,5 +2264,58 @@
     "passwordPlaceholder": "パスワード",
     "verifying": "確認中...",
     "confirm": "確認する"
+  },
+  "curriculumVersion": {
+    "kicker": "カリキュラムのアップデートが可能",
+    "title": "{{language}} エクスペリエンスを選択してください",
+    "lede": "私たちは、パターンドリル、理解しやすい入力ストーリー、忘れたことに適応するセッションプランナーを備えた新しい{{language}}カリキュラムを開始しました。",
+    "recommended": "推奨",
+    "v2Title": "新しいカリキュラムを試してみる",
+    "v2Body": "セッションプランナーが織り交ぜた、パターンドリル、ストーリー、クローゼ制作、語彙SRS、発音タスクにわたるコンセプトファーストのレッスン。",
+    "tryV2": "試してみてください",
+    "v1Title": "クラシックな体験をそのままに",
+    "v1Body": "知っている語彙リストやクラスのレッスンを引き続き使用してください。 設定からいつでも切り替えることができます。",
+    "stayV1": "クラシックを維持する",
+    "decideLater": "後で決める"
+  },
+  "hangul": {
+    "loadFailed": "ハングルレッスンをロードできませんでした。",
+    "skipConfirm": "ハングルのオンボーディングをスキップしますか? セッション ヘッダーからいつでも戻ることができます。",
+    "saveFailed": "進行状況を保存できませんでした。",
+    "empty": "ハングルコンテンツはありません。",
+    "backToLearn": "学習に戻る",
+    "refresherKicker": "ハングルの復習",
+    "onboardingKicker": "ハングルのオンボーディング",
+    "title": "韓国語を読む",
+    "subtitle": "8つの短いレッスン。 すべての文字を聞き、ブロックがどのように音節を構築するかを学び、実際の単語を読みましょう。",
+    "alreadyKnow": "ハングルはすでに読みました - 飛ばしてください",
+    "progressLabel": "進捗",
+    "stepN": "{{total}} のステップ {{step}}",
+    "stopPage": "停止",
+    "playPage": "ページ全体を再生する",
+    "playLetter": "文字音を再生する",
+    "stopCard": "停止",
+    "playCard": "カード全体をプレイする",
+    "play": "遊ぶ",
+    "practiceInstructions": "覗く前に各単語を声に出して読んでください。 比較するスピーカーをタップします。",
+    "tier": "層{{tier}}",
+    "reveal": "明らかにする",
+    "done": "終わり",
+    "finishAndLearn": "A1 文法を始める",
+    "next": "次"
+  },
+  "catalog": {
+    "done": "終わり",
+    "inProgress": "進行中",
+    "startConcept": "このコンセプトを始める",
+    "continueConcept": "継続コンセプト",
+    "reviewConcept": "レビューコンセプト",
+    "notEnabled": "あなたのアカウントではカリキュラム v2 がまだ有効になっていません。",
+    "loadFailed": "カタログを読み込めませんでした。",
+    "empty": "まだレッスンはありません。",
+    "backToSession": "セッションを続行してください",
+    "title": "韓国語レッスンを見る",
+    "subtitle": "プランナーが教えることができるあらゆるコンセプト。 どれかを選択して実際に学習するか、メインの [学習] ページでシステムに選択させます。",
+    "conceptsMastered": "マスターした概念"
   }
 }

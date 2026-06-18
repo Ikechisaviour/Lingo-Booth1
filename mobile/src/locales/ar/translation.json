@@ -452,7 +452,16 @@
     "saveForReviewFailed": "تعذر حفظ هذه البطاقة الآن.",
     "bookmarkedReason": "إشارة مرجعية من البطاقات التعليمية.",
     "selfTestReason": "تم الحفظ من البطاقات التعليمية لإجراء اختبار ذاتي سريع.",
-    "setFamiliarityLevel": "اضبط الألفة على {{level}}"
+    "setFamiliarityLevel": "اضبط الألفة على {{level}}",
+    "deckAll": "الجميع",
+    "deckMine": "بطاقاتي",
+    "deckFocus": "ركز",
+    "addToFocus": "أضف إلى التركيز",
+    "removeFromFocus": "إزالة من التركيز",
+    "addToFocusOnCreate": "أضف إلى مجموعة التركيز الخاصة بي",
+    "focusFailed": "تعذر تحديث مجموعة التركيز الخاصة بك.",
+    "randomCountLabel": "كم عدد البطاقات",
+    "studyNRandom": "دراسة {{count}} عشوائية"
   },
   "progress": {
     "title": "تقدمك",

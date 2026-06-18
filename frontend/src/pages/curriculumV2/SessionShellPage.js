@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { curriculumV2Service } from '../../services/api';
 import { isFeatureEnabled, FEATURE_FLAGS } from '../../config/featureFlags';
@@ -27,8 +27,14 @@ const COMPONENT_MAP = {
 
 export default function SessionShellPage() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { t } = useTranslation();
   const enabled = useMemo(() => isFeatureEnabled(FEATURE_FLAGS.CURRICULUM_V2), []);
+  // Single-walkthrough modes — set by the catalog when the learner picks
+  // a specific concept or lesson. Empty = planner-driven (default).
+  const focusConceptId = searchParams.get('concept') || '';
+  const focusLessonId = searchParams.get('lesson') || '';
+  const inFocusMode = !!(focusConceptId || focusLessonId);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -36,6 +42,7 @@ export default function SessionShellPage() {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [doneIds, setDoneIds] = useState(new Set());
   const [showRomanization, setShowRomanization] = useState(() => localStorage.getItem('showRomanization') === 'true');
+  const [listenMode, setListenMode] = useState(() => localStorage.getItem('listenMode') === 'true');
   const sessionId = useMemo(() => makeSessionId(), []);
 
   // Hangul gate — Korean learners must finish onboarding before A1 grammar.
@@ -63,10 +70,33 @@ export default function SessionShellPage() {
     (async () => {
       try {
         setLoading(true);
-        const { data } = await curriculumV2Service.getPlan({ targetMinutes: 30, targetLang: 'ko' });
-        if (!cancelled) {
-          setPlan(data);
-          setLoading(false);
+        // Three modes: ?lesson=<id> → one lesson; ?concept=<id> → one
+        // concept's 7 lessons in pedagogical order; else → planner builds
+        // a 30-min mixed session.
+        if (focusLessonId) {
+          const { data } = await curriculumV2Service.getLesson(focusLessonId);
+          if (!cancelled) {
+            setPlan({ sequence: [data], totalMinutes: data?.estimatedMinutes || 5, reviewsSelected: 0, boostsApplied: [] });
+            setCurrentIdx(0);
+            setDoneIds(new Set());
+            setLoading(false);
+          }
+        } else if (focusConceptId) {
+          const { data } = await curriculumV2Service.getConceptLessons(focusConceptId);
+          if (!cancelled) {
+            const seq = data?.sequence || [];
+            const total = seq.reduce((sum, l) => sum + (l.estimatedMinutes || 5), 0);
+            setPlan({ sequence: seq, totalMinutes: total, reviewsSelected: 0, boostsApplied: [] });
+            setCurrentIdx(0);
+            setDoneIds(new Set());
+            setLoading(false);
+          }
+        } else {
+          const { data } = await curriculumV2Service.getPlan({ targetMinutes: 30, targetLang: 'ko' });
+          if (!cancelled) {
+            setPlan(data);
+            setLoading(false);
+          }
         }
       } catch (err) {
         if (!cancelled) {
@@ -76,7 +106,7 @@ export default function SessionShellPage() {
       }
     })();
     return () => { cancelled = true; };
-  }, [enabled]);
+  }, [enabled, focusConceptId, focusLessonId]);
 
   const toggleRomanization = useCallback(() => {
     setShowRomanization((prev) => {
@@ -84,6 +114,19 @@ export default function SessionShellPage() {
       localStorage.setItem('showRomanization', String(next));
       if (typeof document !== 'undefined') {
         document.documentElement.classList.toggle('show-romanization', next);
+      }
+      return next;
+    });
+  }, []);
+
+  const toggleListenMode = useCallback(() => {
+    setListenMode((prev) => {
+      const next = !prev;
+      localStorage.setItem('listenMode', String(next));
+      window.dispatchEvent(new CustomEvent('listenModeChanged', { detail: { enabled: next } }));
+      // Cancel any currently-running speech when turning off.
+      if (!next && typeof window !== 'undefined' && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
       }
       return next;
     });
@@ -160,7 +203,11 @@ export default function SessionShellPage() {
     return (
       <div className="v2-shell">
         <div className="v2-card">
-          <h2>{t('curriculumV2.sessionCompleteTitle', 'Session complete')}</h2>
+          <h2>
+            {inFocusMode
+              ? t('curriculumV2.conceptCompleteTitle', 'Concept complete')
+              : t('curriculumV2.sessionCompleteTitle', 'Session complete')}
+          </h2>
           <p>
             {t('curriculumV2.sessionCompleteBody', 'You finished {{count}} lessons in about {{minutes}} minutes.', {
               count: plan.sequence.length,
@@ -168,8 +215,18 @@ export default function SessionShellPage() {
             })}
           </p>
           <div className="v2-footer">
-            <button className="v2-btn v2-btn--secondary" onClick={() => navigate('/')}>{t('curriculumV2.home', 'Home')}</button>
-            <button className="v2-btn v2-btn--primary" onClick={() => window.location.reload()}>{t('curriculumV2.startAnother', 'Start another session')}</button>
+            <button className="v2-btn v2-btn--secondary" onClick={() => navigate('/')}>
+              {t('curriculumV2.home', 'Home')}
+            </button>
+            {inFocusMode ? (
+              <button className="v2-btn v2-btn--primary" onClick={() => navigate('/learn/v2/catalog')}>
+                {t('curriculumV2.backToCatalog', 'Pick another lesson')}
+              </button>
+            ) : (
+              <button className="v2-btn v2-btn--primary" onClick={() => window.location.reload()}>
+                {t('curriculumV2.startAnother', 'Start another session')}
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -179,9 +236,31 @@ export default function SessionShellPage() {
   const lesson = plan.sequence[currentIdx];
   const Component = COMPONENT_MAP[lesson.lessonType];
 
+  // Back behavior: if there's a previous lesson in this session, step back
+  // to it (learner reviewing what they just saw). Otherwise fall back to
+  // browser history so it returns to wherever they came from (catalog,
+  // home, etc.) — and if there's no history (cold link load), the catalog
+  // is the safe default.
+  const handleBack = () => {
+    if (currentIdx > 0) {
+      setCurrentIdx((i) => i - 1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    if (window.history.length > 1) navigate(-1);
+    else navigate('/learn/v2/catalog');
+  };
+
   return (
     <div className="v2-shell">
       <div className="v2-shell__header-actions">
+        <button
+          type="button"
+          className="v2-shell__action-btn"
+          onClick={() => navigate('/learn/v2/catalog')}
+        >
+          {t('curriculumV2.browseLessons', 'Browse all lessons')}
+        </button>
         <button
           type="button"
           className="v2-shell__action-btn"
@@ -197,6 +276,14 @@ export default function SessionShellPage() {
             onChange={toggleRomanization}
           />
           <span>{t('curriculumV2.showRomanization', 'Show romanization')}</span>
+        </label>
+        <label className="v2-shell__toggle">
+          <input
+            type="checkbox"
+            checked={listenMode}
+            onChange={toggleListenMode}
+          />
+          <span>{t('curriculumV2.listenMode', 'Listen mode')}</span>
         </label>
       </div>
       <div className="v2-shell__progress">
@@ -233,7 +320,7 @@ export default function SessionShellPage() {
       )}
 
       {Component
-        ? <Component lesson={lesson} onComplete={handleLessonComplete} learnerLevel={plan.learnerLevel} sessionId={sessionId} />
+        ? <Component lesson={lesson} onComplete={handleLessonComplete} onBack={handleBack} learnerLevel={plan.learnerLevel} sessionId={sessionId} />
         : <div className="v2-card">{t('curriculumV2.unknownLessonType', 'Unknown lesson type:')} <code>{lesson.lessonType}</code></div>}
     </div>
   );

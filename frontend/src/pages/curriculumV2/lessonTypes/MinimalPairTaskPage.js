@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SrsRatingBar from '../SrsRatingBar';
+import speechService from '../../../services/speechService';
 import { curriculumV2Service } from '../../../services/api';
+import { useLessonAudio, prepForSpeech, LessonAudioButton } from '../../../utils/v2Audio';
 
 // Two-stage flow per pair:
 //   1. Listen — learner taps A and B to hear each sound. Both must be heard
@@ -16,8 +18,9 @@ function suggestOutcome(correct, total) {
   return 'good';
 }
 
-export default function MinimalPairTaskPage({ lesson, onComplete, sessionId }) {
+export default function MinimalPairTaskPage({ lesson, onComplete, onBack, sessionId }) {
   const { t } = useTranslation();
+  const audio = useLessonAudio(lesson.targetLang || 'ko');
   const [idx, setIdx] = useState(0);
   const [heard, setHeard] = useState({ a: false, b: false });
   const [xChoice, setXChoice] = useState(null); // 'a' | 'b' (what was just played)
@@ -32,11 +35,10 @@ export default function MinimalPairTaskPage({ lesson, onComplete, sessionId }) {
 
   function speak(text) {
     try {
-      if (typeof window !== 'undefined' && window.speechSynthesis) {
-        const utter = new window.SpeechSynthesisUtterance(text);
-        utter.lang = 'ko-KR';
-        window.speechSynthesis.speak(utter);
-      }
+      // Route through speechService so the user's preferred Edge TTS voice
+      // plays — the raw `window.speechSynthesis` path uses the browser's
+      // built-in voices, which sound robotic on most platforms.
+      speechService.speak(text, { lang: 'ko-KR' });
     } catch (err) {
       console.warn('TTS failed:', err);
     }
@@ -80,13 +82,28 @@ export default function MinimalPairTaskPage({ lesson, onComplete, sessionId }) {
     setGuessed(null);
   }
 
+  const metaLine = t('curriculumV2.minimalPair.progress', 'Minimal pair - {{current}} / {{total}}', {
+    current: idx + 1,
+    total: lesson.pairs.length,
+  });
+  const pageScript = useMemo(() => ([
+    `${metaLine}. ${t('curriculumV2.minimalPair.title', 'Hear the difference')}.`,
+    prepForSpeech(pair.contrast || ''),
+    `A.`, pair.a,
+    `B.`, pair.b,
+  ].filter(Boolean)), [pair, t, metaLine]);
+
   return (
     <div className="v2-card">
-      <div className="v2-shell__meta">
-        {t('curriculumV2.minimalPair.progress', 'Minimal pair - {{current}} / {{total}}', {
-          current: idx + 1,
-          total: lesson.pairs.length,
-        })}
+      <div className="v2-shell__meta v2-contrast__topbar">
+        <span>{metaLine}</span>
+        <LessonAudioButton
+          audio={audio}
+          scope="page"
+          items={pageScript}
+          variant="primary"
+          label={t('curriculumV2.playPage', 'Play whole lesson')}
+        />
       </div>
       <h2>{t('curriculumV2.minimalPair.title', 'Hear the difference')}</h2>
       <p className="v2-native">{pair.contrast}</p>
@@ -122,6 +139,11 @@ export default function MinimalPairTaskPage({ lesson, onComplete, sessionId }) {
 
       {bothHeard && xChoice === null && (
         <div className="v2-footer" style={{ marginTop: 12 }}>
+          {onBack && (
+            <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+              ← {t('curriculumV2.back', 'Back')}
+            </button>
+          )}
           <span className="v2-shell__meta">
             {t('curriculumV2.minimalPair.abxReady', 'Ready when you are — listen and pick A or B.')}
           </span>
@@ -170,6 +192,11 @@ export default function MinimalPairTaskPage({ lesson, onComplete, sessionId }) {
 
       {answered && !reviewed && (
         <div className="v2-footer">
+          {onBack && (
+            <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+              ← {t('curriculumV2.back', 'Back')}
+            </button>
+          )}
           <span className="v2-shell__meta">
             {t('curriculumV2.minimalPair.runningScore', 'Score so far: {{score}}', { score })}
           </span>

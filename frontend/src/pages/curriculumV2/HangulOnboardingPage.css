@@ -58,8 +58,8 @@
 }
 
 .hangul-skip:hover:not(:disabled) {
-  border-color: var(--primary, #58cc02);
-  color: var(--primary, #58cc02);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .hangul-skip:disabled {
@@ -68,12 +68,12 @@
 }
 
 .hangul-link:hover {
-  color: var(--primary, #58cc02);
+  color: var(--primary);
 }
 
 .hangul-kicker {
   margin: 0 0 4px;
-  color: var(--primary, #58cc02);
+  color: var(--primary);
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0.06em;
@@ -117,15 +117,15 @@
 .hangul-progress-step:hover { transform: translateY(-1px); }
 
 .hangul-progress-step.active {
-  background: var(--primary, #58cc02);
-  border-color: var(--primary, #58cc02);
+  background: var(--primary);
+  border-color: var(--primary);
   color: #fff;
 }
 
 .hangul-progress-step.done {
   background: rgba(88, 204, 2, 0.12);
-  border-color: var(--primary, #58cc02);
-  color: var(--primary, #58cc02);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .hangul-card {
@@ -141,13 +141,84 @@
 .hangul-card-head {
   margin-bottom: 24px;
   text-align: center;
+  position: relative;
+}
+
+.hangul-play-page {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--primary);
+  color: #fff;
+  border: 0;
+  font: inherit;
+  font-weight: 800;
+  font-size: 0.92rem;
+  cursor: pointer;
+  box-shadow: 0 3px 0 var(--primary-hover, #4ba802);
+  transition: transform 0.12s ease;
+}
+
+.hangul-play-page:hover { transform: translateY(-1px); }
+
+.hangul-play-page svg {
+  width: 18px;
+  height: 18px;
+}
+
+.hangul-play-page.is-playing {
+  background: var(--accent-red, #e85a4f);
+  box-shadow: 0 3px 0 #c44a40;
+  animation: hangul-pulse 1.6s ease-in-out infinite;
+}
+
+@keyframes hangul-pulse {
+  0%, 100% { box-shadow: 0 3px 0 #c44a40, 0 0 0 0 rgba(232, 90, 79, 0.45); }
+  50%      { box-shadow: 0 3px 0 #c44a40, 0 0 0 10px rgba(232, 90, 79, 0); }
+}
+
+.hangul-play-card {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(88, 204, 2, 0.12);
+  color: var(--primary);
+  border: 1px solid rgba(88, 204, 2, 0.4);
+  font: inherit;
+  font-weight: 700;
+  font-size: 0.72rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.hangul-play-card:hover { background: rgba(88, 204, 2, 0.2); }
+
+.hangul-play-card svg {
+  width: 14px;
+  height: 14px;
+}
+
+.hangul-play-card.is-playing {
+  background: var(--accent-red, #e85a4f);
+  border-color: var(--accent-red, #e85a4f);
+  color: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hangul-play-page.is-playing { animation: none; }
 }
 
 .hangul-card-tag {
   display: inline-block;
   padding: 4px 12px;
   background: rgba(88, 204, 2, 0.12);
-  color: var(--primary, #58cc02);
+  color: var(--primary);
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0.04em;
@@ -158,6 +229,18 @@
 .hangul-card-head h2 {
   margin: 0 0 6px;
   font-size: clamp(1.5rem, 3vw, 2rem);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hangul-card-title-ko {
+  font-size: 0.65em;
+  font-weight: 600;
+  color: var(--text-secondary, #5d6875);
+  letter-spacing: 0.01em;
 }
 
 .hangul-card-subtitle {
@@ -206,7 +289,7 @@
   border: 0;
   padding: 6px;
   font-size: 1rem;
-  color: var(--primary, #58cc02);
+  color: var(--primary);
   cursor: pointer;
   border-radius: 999px;
   display: inline-flex;
@@ -223,7 +306,7 @@
   border: 0;
   padding: 2px 6px;
   font-size: 0.9rem;
-  color: var(--primary, #58cc02);
+  color: var(--primary);
   cursor: pointer;
   margin-right: 4px;
 }
@@ -240,23 +323,40 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 8px;
 }
 
 .hangul-jamo-examples li {
   display: flex;
-  align-items: baseline;
-  gap: 8px;
+  flex-direction: column;
+  gap: 2px;
   font-size: 0.95rem;
 }
 
+.hangul-jamo-example-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .hangul-jamo-examples strong {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
 }
 
-.hangul-jamo-examples span {
+.hangul-jamo-example-roman {
+  font-style: italic;
+  font-weight: 500;
   color: var(--text-secondary, #5d6875);
+  font-size: 0.9rem;
+}
+
+.hangul-jamo-example-gloss {
+  margin-left: 36px; /* line up under the Hangul, past the speaker button */
+  color: var(--text-tertiary, #94a3b8);
+  font-size: 0.78rem;
+  font-style: normal;
 }
 
 .hangul-jamo-tips {
@@ -378,7 +478,7 @@
 
 .hangul-practice-tier summary {
   cursor: pointer;
-  color: var(--primary, #58cc02);
+  color: var(--primary);
   font-weight: 700;
 }
 
@@ -404,7 +504,7 @@
 }
 
 .hangul-primary {
-  background: var(--primary, #58cc02);
+  background: var(--primary);
   color: #fff;
   border: 0;
   box-shadow: 0 6px 0 var(--primary-hover, #4ba802);

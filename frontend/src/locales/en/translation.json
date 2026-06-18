@@ -45,7 +45,8 @@
     "notSet": "Not set",
     "goBack": "Go Back",
     "all": "All",
-    "restart": "Restart"
+    "restart": "Restart",
+    "previous": "Previous"
   },
   "languageSelect": {
     "title": "Choose Your Languages",
@@ -125,7 +126,9 @@
     "plans": "Plans",
     "exerciseOptions": "Exercise options",
     "institution": "Institution",
-    "review": "Review"
+    "review": "Review",
+    "learn": "Learn",
+    "curriculumV2": "Curriculum v2"
   },
   "guestPrompt": {
     "title": "You're doing great!",
@@ -210,7 +213,10 @@
     "supportAndPlans": "Support and plans",
     "decayBannerActive": "XP is decaying — daily loss {{rate}}%. Answer a question to stop it.",
     "decayBannerGrace": "XP decay starts in {{hours}}h — daily loss {{rate}}%. Keep studying to prevent it.",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "browseLessons": "Browse lessons",
+    "learnDesc": "Continue your curriculum session",
+    "catalogDesc": "Pick a specific concept to study"
   },
   "lessons": {
     "title": "{{language}} <1>Lessons</1>",
@@ -568,7 +574,14 @@
     "fullName": "Full name",
     "fullNamePlaceholder": "Name to show on certificates",
     "fullNameMissing": "Add before issuing a certificate",
-    "activeAccountType": "Active account type"
+    "activeAccountType": "Active account type",
+    "curriculumPreferenceSaved": "Curriculum preference updated.",
+    "curriculumVersion": "Curriculum version",
+    "curriculumVersionDesc": "Pick the version of the curriculum you want to use for each supported target language. You can switch any time.",
+    "curriculumV2Name": "{{language}} — new curriculum",
+    "curriculumV2Desc": "Pattern drills, stories, cloze, vocab SRS, pronunciation — planner-sequenced.",
+    "curriculumV1Name": "{{language}} — classic curriculum",
+    "curriculumV1Desc": "Vocabulary lists and class lessons you already know."
   },
   "forgotPassword": {
     "title": "Forgot Password",
@@ -2034,7 +2047,9 @@
       "needHint": "Need a hint?",
       "correct": "Correct",
       "answer": "Answer: {{answer}}",
-      "whyHint": "Why:"
+      "whyHint": "Why:",
+      "blank": "blank",
+      "choices": "Choices"
     },
     "finishScore": "Finish ({{score}}/{{total}})",
     "next": "Next",
@@ -2044,7 +2059,11 @@
       "inYourLanguage": "In your language",
       "inTargetLanguage": "In {{language}}",
       "whyDiffer": "Why they differ",
-      "commonMistakes": "Mistakes English speakers commonly make"
+      "commonMistakes": "Mistakes English speakers commonly make",
+      "mistakeN": "Mistake {{n}}.",
+      "cultural": "Cultural context",
+      "forExample": "For example",
+      "playItem": "Play item"
     },
     "gotIt": "Got it",
     "minimalPair": {
@@ -2088,7 +2107,8 @@
       "recoveryTitle": "Let's revisit before you keep going.",
       "recoveryAnchors": "Anchor examples",
       "recoveryPrompt": "Which Korean sentence matches this English?",
-      "needMore": "Reach {{required}} correct attempts to finish."
+      "needMore": "Reach {{required}} correct attempts to finish.",
+      "exampleN": "Example {{n}}."
     },
     "continue": "Continue",
     "done": "Done",
@@ -2110,7 +2130,8 @@
       "listenFirst": "Listen first, then record.",
       "repeatThenContinue": "Repeat aloud, then continue.",
       "tryAgainOrContinue": "Record again or continue.",
-      "recordWhenReady": "Record when ready."
+      "recordWhenReady": "Record when ready.",
+      "rateLimited": "Too many speech checks recently — pause a moment."
     },
     "story": {
       "dialogueMode": "Dialogue",
@@ -2119,7 +2140,8 @@
       "showTranslation": "Show translation",
       "comprehensionQuestions": "Comprehension questions",
       "questionInstructions": "Answer each in your head or out loud.",
-      "readStory": "I've read the story"
+      "readStory": "I've read the story",
+      "questionN": "Question {{n}}."
     },
     "vocabDeck": {
       "meta": "Vocab deck",
@@ -2144,6 +2166,27 @@
       "good": "Good",
       "easy": "Easy",
       "prompt": "How well did you know it?"
+    },
+    "conceptCompleteTitle": "Concept complete",
+    "backToCatalog": "Pick another lesson",
+    "back": "Back",
+    "browseLessons": "Browse all lessons",
+    "hangulRefresher": "Review Hangul",
+    "showRomanization": "Show romanization",
+    "listenMode": "Listen mode",
+    "playPage": "Play whole lesson",
+    "playSentence": "Play sentence",
+    "playSection": "Play section",
+    "playPattern": "Play pattern",
+    "playExample": "Play example",
+    "playFiller": "Play filler",
+    "playIdeal": "Play ideal answer",
+    "playLine": "Play line",
+    "playCard": "Play card",
+    "audio": {
+      "play": "Play",
+      "stop": "Stop",
+      "stopPlayback": "Stop playback"
     }
   },
   "notifications": {
@@ -2219,5 +2262,58 @@
     "passwordPlaceholder": "Password",
     "verifying": "Verifying...",
     "confirm": "Confirm"
+  },
+  "curriculumVersion": {
+    "kicker": "Curriculum update available",
+    "title": "Choose your {{language}} experience",
+    "lede": "We've launched a new {{language}} curriculum with pattern drills, comprehensible-input stories, and a session planner that adapts to what you've forgotten.",
+    "recommended": "Recommended",
+    "v2Title": "Try the new curriculum",
+    "v2Body": "Concept-first lessons across pattern drills, stories, cloze production, vocab SRS, and pronunciation tasks — interleaved by a session planner.",
+    "tryV2": "Try it",
+    "v1Title": "Stay on the classic experience",
+    "v1Body": "Keep using the vocabulary lists and class lessons you know. You can switch any time from Settings.",
+    "stayV1": "Keep classic",
+    "decideLater": "Decide later"
+  },
+  "hangul": {
+    "loadFailed": "Could not load Hangul lessons.",
+    "skipConfirm": "Skip Hangul onboarding? You can come back any time from the session header.",
+    "saveFailed": "Could not save progress.",
+    "empty": "No Hangul content available.",
+    "backToLearn": "Back to Learn",
+    "refresherKicker": "Hangul refresher",
+    "onboardingKicker": "Hangul onboarding",
+    "title": "Read Korean",
+    "subtitle": "Eight short lessons. Hear every letter, learn how blocks build syllables, then read real words.",
+    "alreadyKnow": "I already read Hangul — skip",
+    "progressLabel": "Progress",
+    "stepN": "Step {{step}} of {{total}}",
+    "stopPage": "Stop",
+    "playPage": "Play whole page",
+    "playLetter": "Play letter sound",
+    "stopCard": "Stop",
+    "playCard": "Play whole card",
+    "play": "Play",
+    "practiceInstructions": "Read each word aloud before peeking. Tap the speaker to compare.",
+    "tier": "Tier {{tier}}",
+    "reveal": "Reveal",
+    "done": "Done",
+    "finishAndLearn": "Start A1 grammar",
+    "next": "Next"
+  },
+  "catalog": {
+    "done": "Done",
+    "inProgress": "In progress",
+    "startConcept": "Start this concept",
+    "continueConcept": "Continue concept",
+    "reviewConcept": "Review concept",
+    "notEnabled": "Curriculum v2 is not enabled for your account yet.",
+    "loadFailed": "Could not load the catalog.",
+    "empty": "No lessons yet.",
+    "backToSession": "Continue your session",
+    "title": "Browse Korean lessons",
+    "subtitle": "Every concept the planner can teach. Pick one to dive in, or let the system pick for you on the main Learn page.",
+    "conceptsMastered": "concepts mastered"
   }
 }

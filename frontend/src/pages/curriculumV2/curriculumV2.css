@@ -199,6 +199,56 @@
 }
 .v2-mistake__correct { color: #166534; }
 
+/* ContrastNotePage layout — section headers with inline play buttons,
+   topbar containing the meta label + page-level play button, mistake row
+   that pairs a play icon with its text. */
+.v2-contrast__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.v2-contrast__sectionHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.v2-contrast__sectionHead h3 { margin: 18px 0 6px; }
+.v2-contrast__mistake {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.v2-contrast__mistake .v2-mistake__text { flex: 1; }
+
+.v2-play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+.v2-play-btn:hover { background: #e2e8f0; }
+.v2-play-btn.is-playing { background: #2563eb; border-color: #2563eb; color: #fff; }
+.v2-play-btn--primary {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+  padding: 8px 14px;
+  font-weight: 600;
+}
+.v2-play-btn--primary:hover { background: #1d4ed8; border-color: #1d4ed8; }
+.v2-play-btn--primary.is-playing { background: #1e40af; border-color: #1e40af; }
+
 /* Session-shell header actions: Hangul refresher + romanization toggle. */
 .v2-shell__header-actions {
   display: flex;
@@ -222,9 +272,13 @@
 }
 
 .v2-shell__action-btn:hover {
-  border-color: #58cc02;
-  color: #58cc02;
+  border-color: var(--primary);
+  color: var(--primary);
 }
+
+/* Push the back button to the left edge while the rest of the row stays
+   right-aligned (flex-end). */
+.v2-shell__back-btn { margin-right: auto; }
 
 .v2-shell__toggle {
   display: inline-flex;

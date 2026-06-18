@@ -23,10 +23,26 @@ const path = require('path');
 const router = express.Router();
 
 const { verifyToken } = require('../middleware/auth');
+const { curriculumV2RateLimit } = require('../middleware/curriculumV2RateLimit');
 const { planSession } = require('../curriculum/planner');
 const { CONCEPTS, CONCEPT_INDEX } = require('../curriculum/schema/concepts');
 const { LESSON_TYPES } = require('../curriculum/schema/lessonTypes');
 const { evaluateProduction, evaluatePronunciation, isAiAvailable } = require('../curriculum/ai');
+const whisper = require('../curriculum/whisper');
+
+// AI-bucket caps. Tighter on `feedback` (more expensive prompt) than on
+// pronunciation. Environment variables override either dimension when ops
+// needs to tune live without a deploy.
+const FEEDBACK_LIMITS = {
+  name: 'feedback',
+  perMinute: Number(process.env.CURRICULUM_V2_FEEDBACK_PER_MINUTE) || 12,
+  perDay: Number(process.env.CURRICULUM_V2_FEEDBACK_PER_DAY) || 120,
+};
+const PRONUNCIATION_LIMITS = {
+  name: 'pronunciation',
+  perMinute: Number(process.env.CURRICULUM_V2_PRONUNCIATION_PER_MINUTE) || 20,
+  perDay: Number(process.env.CURRICULUM_V2_PRONUNCIATION_PER_DAY) || 200,
+};
 const CurriculumV2Progress = require('../models/CurriculumV2Progress');
 const CurriculumV2Event = require('../models/CurriculumV2Event');
 const LanguagePairProfile = require('../models/LanguagePairProfile');
@@ -233,7 +249,7 @@ router.post('/lessons/:id/complete', verifyToken, async (req, res) => {
  * grade the learner's production attempt. Returns { correct, feedback, ideal }.
  * If AI is not configured, returns { aiEnabled: false } so the UI can fall back.
  */
-router.post('/feedback', verifyToken, async (req, res) => {
+router.post('/feedback', verifyToken, curriculumV2RateLimit(FEEDBACK_LIMITS), async (req, res) => {
   if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
 
   const { lessonId, drillIndex, fillerConceptId, learnerText } = req.body || {};
@@ -285,7 +301,7 @@ router.post('/feedback', verifyToken, async (req, res) => {
  * Compares an ASR transcript to a target Korean phrase. Returns
  * { accuracy: 'high'|'partial'|'low', feedback }.
  */
-router.post('/pronunciation-check', verifyToken, async (req, res) => {
+router.post('/pronunciation-check', verifyToken, curriculumV2RateLimit(PRONUNCIATION_LIMITS), async (req, res) => {
   if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
 
   const { target, transcript } = req.body || {};
@@ -308,6 +324,169 @@ router.post('/pronunciation-check', verifyToken, async (req, res) => {
     console.error('Curriculum v2 pronunciation-check failed:', err.message || err);
     res.status(502).json({ aiEnabled: true, evaluation: null, message: 'AI provider unavailable.' });
   }
+});
+
+/**
+ * GET /api/curriculum/v2/catalog
+ *
+ * Returns every available concept grouped by function, with per-concept
+ * lesson IDs and completion data joined from CurriculumV2Progress. This is
+ * the data source for the lesson catalog UI. Concepts are sorted within each
+ * function group by CEFR ascending, then by the planner's pedagogical order
+ * (prereqs respected — anything required by another concept comes first).
+ */
+router.get('/catalog', verifyToken, async (req, res) => {
+  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+
+  const targetLang = req.query.targetLang || 'ko';
+  const lessons = loadLessons();
+  const lessonsByConcept = new Map();
+  for (const lesson of lessons) {
+    if (!lesson?.conceptId) continue;
+    const list = lessonsByConcept.get(lesson.conceptId) || [];
+    list.push(lesson);
+    lessonsByConcept.set(lesson.conceptId, list);
+  }
+
+  // Pedagogical lesson-type order — used both for the in-concept walkthrough
+  // and for sorting lessons in the catalog response.
+  const TYPE_ORDER = ['ContrastNote', 'PatternLesson', 'ClozeLesson', 'StoryLesson', 'VocabDeck', 'PronunciationTask', 'MinimalPairTask'];
+  const typeRank = (t) => {
+    const i = TYPE_ORDER.indexOf(t);
+    return i === -1 ? TYPE_ORDER.length : i;
+  };
+
+  const progress = await CurriculumV2Progress.findOne({ userId: req.userId });
+  const completedLessonIds = new Set((progress?.completedLessonIds || []).map(String));
+  const completedConceptIds = new Set((progress?.completedConceptIds || []).map(String));
+
+  // Build concept entries — only patterns are surfaced in the catalog
+  // (lexemes are slot fillers, surfaced via VocabDeck lessons).
+  const conceptCards = [];
+  for (const concept of CONCEPTS) {
+    if (concept.kind !== 'pattern') continue;
+    const conceptLessons = (lessonsByConcept.get(concept.id) || [])
+      .filter((l) => l.targetLang === targetLang)
+      .sort((a, b) => typeRank(a.lessonType) - typeRank(b.lessonType));
+    if (!conceptLessons.length) continue;
+    const lessonsCompleted = conceptLessons.filter((l) => completedLessonIds.has(String(l.id))).length;
+    conceptCards.push({
+      id: concept.id,
+      gloss: concept.gloss,
+      function: concept.function || null,
+      cefr: concept.cefr || null,
+      topik: concept.topik || null,
+      prerequisites: concept.prerequisites || [],
+      requiresConjugation: concept.requiresConjugation || [],
+      lessons: conceptLessons.map((l) => ({
+        id: l.id,
+        lessonType: l.lessonType,
+        estimatedMinutes: l.estimatedMinutes || 5,
+        completed: completedLessonIds.has(String(l.id)),
+      })),
+      progress: {
+        lessonsCompleted,
+        lessonsTotal: conceptLessons.length,
+        allComplete: completedConceptIds.has(String(concept.id))
+          || (lessonsCompleted === conceptLessons.length && conceptLessons.length > 0),
+        notStarted: lessonsCompleted === 0,
+      },
+    });
+  }
+
+  // Topological order respecting prereqs (Kahn). Concepts whose prereqs
+  // aren't in the registry still slot in by their CEFR rank.
+  const cefrRank = { A1: 0, A2: 1, B1: 2, B2: 3, C1: 4, C2: 5 };
+  const conceptById = new Map(conceptCards.map((c) => [c.id, c]));
+  const indegree = new Map(conceptCards.map((c) => [c.id, 0]));
+  for (const c of conceptCards) {
+    for (const p of c.prerequisites) {
+      if (conceptById.has(p)) {
+        indegree.set(c.id, (indegree.get(c.id) || 0) + 1);
+      }
+    }
+  }
+  const queue = conceptCards
+    .filter((c) => (indegree.get(c.id) || 0) === 0)
+    .sort((a, b) => (cefrRank[a.cefr] ?? 99) - (cefrRank[b.cefr] ?? 99));
+  const plannerOrderIndex = new Map();
+  let cursor = 0;
+  while (queue.length) {
+    const next = queue.shift();
+    plannerOrderIndex.set(next.id, cursor++);
+    for (const c of conceptCards) {
+      if (c.prerequisites.includes(next.id)) {
+        const remaining = (indegree.get(c.id) || 1) - 1;
+        indegree.set(c.id, remaining);
+        if (remaining === 0) {
+          // Re-sort the queue so CEFR-ascending order is preserved as
+          // nodes become eligible.
+          queue.push(c);
+          queue.sort((a, b) => (cefrRank[a.cefr] ?? 99) - (cefrRank[b.cefr] ?? 99));
+        }
+      }
+    }
+  }
+
+  // Group by function, sort within each by CEFR-asc → planner index.
+  const groups = new Map();
+  for (const c of conceptCards) {
+    const key = c.function || 'other';
+    const list = groups.get(key) || [];
+    list.push(c);
+    groups.set(key, list);
+  }
+  for (const list of groups.values()) {
+    list.sort((a, b) => {
+      const cefrDiff = (cefrRank[a.cefr] ?? 99) - (cefrRank[b.cefr] ?? 99);
+      if (cefrDiff !== 0) return cefrDiff;
+      return (plannerOrderIndex.get(a.id) ?? Infinity) - (plannerOrderIndex.get(b.id) ?? Infinity);
+    });
+  }
+
+  // Order the function groups themselves. We just preserve the order they
+  // first appeared in CONCEPTS so author-controlled grouping wins; lower
+  // CEFR functions naturally float to the top because their first concept
+  // is registered earliest.
+  const groupOrder = [];
+  for (const c of conceptCards) {
+    const key = c.function || 'other';
+    if (!groupOrder.includes(key)) groupOrder.push(key);
+  }
+
+  res.json({
+    targetLang,
+    groups: groupOrder.map((key) => ({
+      function: key,
+      concepts: groups.get(key),
+    })),
+    totalConcepts: conceptCards.length,
+    totalCompleted: conceptCards.filter((c) => c.progress.allComplete).length,
+  });
+});
+
+/**
+ * GET /api/curriculum/v2/concepts/:conceptId/lessons
+ *
+ * Returns the lessons for a single concept in pedagogical order. Used by the
+ * SessionShell's single-concept walkthrough mode (?concept=… query param)
+ * when a learner picks a specific concept from the catalog.
+ */
+router.get('/concepts/:conceptId/lessons', verifyToken, (req, res) => {
+  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  const conceptId = String(req.params.conceptId || '');
+  const targetLang = req.query.targetLang || 'ko';
+  const TYPE_ORDER = ['ContrastNote', 'PatternLesson', 'ClozeLesson', 'StoryLesson', 'VocabDeck', 'PronunciationTask', 'MinimalPairTask'];
+  const typeRank = (t) => {
+    const i = TYPE_ORDER.indexOf(t);
+    return i === -1 ? TYPE_ORDER.length : i;
+  };
+  const matching = loadLessons()
+    .filter((l) => l.conceptId === conceptId && l.targetLang === targetLang)
+    .map((l) => hydrateLesson(l, targetLang))
+    .sort((a, b) => typeRank(a.lessonType) - typeRank(b.lessonType));
+  if (!matching.length) return res.status(404).json({ message: 'No lessons found for that concept.' });
+  res.json({ conceptId, targetLang, sequence: matching });
 });
 
 router.get('/progress', verifyToken, async (req, res) => {
@@ -426,6 +605,61 @@ router.post('/srs/review', verifyToken, async (req, res) => {
     res.status(500).json({ message: 'Could not record review.' });
   }
 });
+
+// ─── ASR (Whisper) — server-side speech transcription ──────────────────
+// Replaces the browser-only webkitSpeechRecognition path. Accepts a base64
+// audio payload (lets us reuse the JSON body parser; large enough for short
+// pronunciation samples). Pronunciation-grading rate-limit is applied here
+// too — transcription is also AI spend.
+
+router.get('/asr/status', verifyToken, (req, res) => {
+  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  res.json(whisper.getAsrConfig());
+});
+
+router.post(
+  '/asr/transcribe',
+  verifyToken,
+  curriculumV2RateLimit(PRONUNCIATION_LIMITS),
+  express.json({ limit: '5mb' }),
+  async (req, res) => {
+    if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+    if (!whisper.isAsrAvailable()) {
+      return res.status(503).json({
+        message: 'Server-side ASR is not configured. Falling back to browser speech recognition.',
+        code: 'ASR_NOT_CONFIGURED',
+        ...whisper.getAsrConfig(),
+      });
+    }
+    const { audioBase64, mimeType = 'audio/webm', language = 'ko', prompt = '' } = req.body || {};
+    if (!audioBase64 || typeof audioBase64 !== 'string') {
+      return res.status(400).json({ message: 'audioBase64 required.' });
+    }
+    let audioBuffer;
+    try {
+      audioBuffer = Buffer.from(audioBase64, 'base64');
+    } catch (_) {
+      return res.status(400).json({ message: 'audioBase64 could not be decoded.' });
+    }
+    if (audioBuffer.length === 0 || audioBuffer.length > 4 * 1024 * 1024) {
+      return res.status(400).json({ message: 'Audio payload must be > 0 and <= 4 MB.' });
+    }
+    try {
+      const result = await whisper.transcribe({
+        audioBuffer,
+        mimeType,
+        language,
+        // `prompt` is the expected target phrase — Whisper uses it to bias
+        // recognition toward what the learner is supposed to be saying.
+        targetPhrase: typeof prompt === 'string' ? prompt : '',
+      });
+      res.json(result);
+    } catch (err) {
+      console.error('Whisper transcription failed:', err.message || err);
+      res.status(502).json({ message: 'Transcription failed.', code: err.code || 'ASR_ERROR' });
+    }
+  },
+);
 
 // ─── Hangul onboarding ──────────────────────────────────────────────────
 // Korean-only flow that sits outside the regular planner. Runs once before

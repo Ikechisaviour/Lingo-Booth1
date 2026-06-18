@@ -1,7 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { curriculumV2Service } from '../../../services/api';
+import PlayableKorean from '../../../components/PlayableKorean';
 import SrsRatingBar from '../SrsRatingBar';
+import { useLessonAudio, prepForSpeech, LessonAudioButton } from '../../../utils/v2Audio';
 
 const REQUIRED_ATTEMPTS = 3;
 const RECOVERY_TRIGGER_FAILURES = 3;
@@ -110,8 +112,9 @@ function pickRandomDrill(drills) {
   return { drill, drillIndex, filler };
 }
 
-export default function PatternLessonPage({ lesson, onComplete, learnerLevel, sessionId }) {
+export default function PatternLessonPage({ lesson, onComplete, onBack, learnerLevel, sessionId }) {
   const { t } = useTranslation();
+  const audio = useLessonAudio(lesson.targetLang || 'ko');
   // At beginner level we hide the slot-category metalanguage (e.g.,
   // 'agent.human') and just show the example sentences. Higher levels
   // see the chips because the abstraction speeds review.
@@ -195,27 +198,82 @@ export default function PatternLessonPage({ lesson, onComplete, learnerLevel, se
     && lastAttempt.filler.id === currentTask?.filler.id
     && lastAttempt.learnerText === learnerText.trim();
 
+  // Build the play-whole-page script. Includes the meta + pattern gloss +
+  // pattern target, plus whichever stage content is on-screen right now.
+  // Production-stage prompts/feedback are dynamic (learner-typed) and
+  // intentionally NOT in the page sequence — the per-row Play buttons
+  // cover those when they appear.
+  const metaLine = t('curriculumV2.pattern.meta', 'Pattern - {{type}}', {
+    type: lesson.function || t('curriculumV2.pattern.grammarFallback', 'grammar'),
+  });
+  const pageScript = useMemo(() => {
+    const lines = [
+      `${metaLine}. ${lesson.patternGloss || ''}.`,
+      prepForSpeech(lesson.patternTarget || ''),
+    ];
+    if (stage === 'anchors') {
+      lines.push(t('curriculumV2.pattern.anchorExamples', 'Anchor examples') + '.');
+      (lesson.anchors || []).forEach((a, i) => {
+        lines.push(t('curriculumV2.pattern.exampleN', 'Example {{n}}.', { n: i + 1 }));
+        if (a.target) lines.push(a.target);
+        if (a.native) lines.push(a.native);
+        if (a.gloss) lines.push(prepForSpeech(a.gloss));
+      });
+    } else if (stage === 'drills') {
+      lines.push(t('curriculumV2.pattern.practiceSlots', 'Practice slots') + '.');
+      (lesson.drills || []).forEach((d) => {
+        lines.push(prepForSpeech(d.promptTemplate.replace('{filler}', 'blank')));
+        const fillerTexts = (d.fillers || []).map((f) => f.target || f.id).filter(Boolean);
+        if (fillerTexts.length) lines.push(`${t('curriculumV2.pattern.fillers', 'Fillers')}: ${fillerTexts.join(', ')}.`);
+      });
+    } else if (stage === 'production') {
+      lines.push(t('curriculumV2.pattern.productionTask', 'Production task') + '.');
+      if (lesson.productionTask) lines.push(prepForSpeech(lesson.productionTask));
+      if (currentTask && filledPrompt) {
+        lines.push(prepForSpeech(filledPrompt));
+        if (currentTask.filler?.target) lines.push(currentTask.filler.target);
+      }
+    }
+    return lines.filter(Boolean);
+  }, [stage, lesson, currentTask, filledPrompt, t, metaLine]);
+
   return (
     <div className="v2-card">
-      <div className="v2-shell__meta">
-        {t('curriculumV2.pattern.meta', 'Pattern - {{type}}', {
-          type: lesson.function || t('curriculumV2.pattern.grammarFallback', 'grammar'),
-        })}
+      <div className="v2-shell__meta v2-contrast__topbar">
+        <span>{metaLine}</span>
+        <LessonAudioButton
+          audio={audio}
+          scope="page"
+          items={pageScript}
+          variant="primary"
+          label={t('curriculumV2.playPage', 'Play whole lesson')}
+        />
       </div>
       <h2>{lesson.patternGloss}</h2>
-      <p className="v2-target">{lesson.patternTarget}</p>
+      <p className="v2-target">
+        {lesson.patternTarget}{' '}
+        <PlayableKorean text={lesson.patternTarget} voice={audio.voices.targetVoice} lang="ko-KR" primary ariaLabel={t('curriculumV2.playPattern', 'Play pattern')} />
+      </p>
 
       {stage === 'anchors' && (
         <>
           <h3>{t('curriculumV2.pattern.anchorExamples', 'Anchor examples')}</h3>
           {lesson.anchors.map((a, i) => (
             <div key={i} className="v2-anchor-row">
-              <div className="v2-target">{a.target}</div>
+              <div className="v2-target">
+                {a.target}{' '}
+                <PlayableKorean text={a.target} ariaLabel={t('curriculumV2.playExample', 'Play example')} />
+              </div>
               <div className="v2-native">{a.native}</div>
               {a.gloss && <div className="v2-shell__meta" style={{ marginTop: 6 }}>{a.gloss}</div>}
             </div>
           ))}
           <div className="v2-footer">
+            {onBack && (
+              <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+                ← {t('curriculumV2.back', 'Back')}
+              </button>
+            )}
             <span className="v2-shell__meta">{t('curriculumV2.pattern.anchorInstructions', 'Read each example out loud once.')}</span>
             <button className="v2-btn v2-btn--primary" onClick={() => setStage('drills')}>
               {t('curriculumV2.continue', 'Continue')}
@@ -239,6 +297,11 @@ export default function PatternLessonPage({ lesson, onComplete, learnerLevel, se
             </div>
           ))}
           <div className="v2-footer">
+            {onBack && (
+              <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+                ← {t('curriculumV2.back', 'Back')}
+              </button>
+            )}
             <span className="v2-shell__meta">{t('curriculumV2.pattern.drillInstructions', 'For each filler above, produce a full sentence aloud.')}</span>
             <button className="v2-btn v2-btn--primary" onClick={() => setStage('production')}>
               {t('curriculumV2.pattern.practicedEach', "I've practiced each")}
@@ -269,7 +332,8 @@ export default function PatternLessonPage({ lesson, onComplete, learnerLevel, se
                 {filledPrompt}
                 {currentTask.filler.target && (
                   <span style={{ marginLeft: 8, color: '#1e40af', fontWeight: 600 }}>
-                    ({currentTask.filler.target})
+                    ({currentTask.filler.target}){' '}
+                    <PlayableKorean text={currentTask.filler.target} ariaLabel={t('curriculumV2.playFiller', 'Play filler')} />
                   </span>
                 )}
               </p>
@@ -315,7 +379,9 @@ export default function PatternLessonPage({ lesson, onComplete, learnerLevel, se
                   <div style={{ marginTop: 4 }}>{lastAttempt.evaluation.feedback}</div>
                   {lastAttempt.evaluation.ideal && (
                     <div style={{ marginTop: 6, fontStyle: 'italic' }}>
-                      {t('curriculumV2.pattern.idealAnswer', 'Ideal:')} <span className="v2-target">{lastAttempt.evaluation.ideal}</span>
+                      {t('curriculumV2.pattern.idealAnswer', 'Ideal:')}{' '}
+                      <span className="v2-target">{lastAttempt.evaluation.ideal}</span>{' '}
+                      <PlayableKorean text={lastAttempt.evaluation.ideal} ariaLabel={t('curriculumV2.playIdeal', 'Play ideal answer')} />
                     </div>
                   )}
                 </div>
@@ -365,9 +431,16 @@ export default function PatternLessonPage({ lesson, onComplete, learnerLevel, se
 
           <div style={{ marginTop: 16, borderTop: '1px solid #f1f5f9', paddingTop: 16 }}>
             <div className="v2-footer">
-              <button className="v2-btn v2-btn--ghost" onClick={() => setStage('drills')}>
-                {t('curriculumV2.pattern.backToSlots', 'Back to slots')}
-              </button>
+              <div style={{ display: 'flex', gap: 8 }}>
+                {onBack && (
+                  <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+                    ← {t('curriculumV2.back', 'Back')}
+                  </button>
+                )}
+                <button className="v2-btn v2-btn--ghost" onClick={() => setStage('drills')}>
+                  {t('curriculumV2.pattern.backToSlots', 'Back to slots')}
+                </button>
+              </div>
               {!canFinish && (
                 <span className="v2-shell__meta">
                   {t('curriculumV2.pattern.needMore', 'Reach {{required}} correct attempts to finish.', {

@@ -865,7 +865,15 @@ export const curriculumV2Service = {
     api.post(`/curriculum/v2/hangul/groups/${encodeURIComponent(groupId)}/complete`),
   skipHangul: () => api.post('/curriculum/v2/hangul/skip'),
   // Catalog (Phase 3)
-  getCatalog: () => api.get('/curriculum/v2/catalog'),
+  getCatalog: (params = {}) => api.get('/curriculum/v2/catalog', { params }),
+  getConceptLessons: (conceptId, params = {}) =>
+    api.get(`/curriculum/v2/concepts/${encodeURIComponent(conceptId)}/lessons`, { params, expectedStatuses: [404] }),
+  // Server-side ASR (Whisper)
+  getAsrStatus: () => api.get('/curriculum/v2/asr/status'),
+  transcribeAudio: ({ audioBase64, mimeType = 'audio/webm', language = 'ko', prompt = '' }) =>
+    api.post('/curriculum/v2/asr/transcribe',
+      { audioBase64, mimeType, language, prompt },
+      { timeout: 35000, expectedStatuses: [400, 429, 502, 503] }),
 };
 
 export default api;

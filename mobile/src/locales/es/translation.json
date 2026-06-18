@@ -452,7 +452,16 @@
     "saveForReviewFailed": "No se pudo guardar esta tarjeta en este momento.",
     "bookmarkedReason": "Marcado a partir de tarjetas didácticas.",
     "selfTestReason": "Guardado de tarjetas didácticas para una autoevaluación rápida.",
-    "setFamiliarityLevel": "Establezca familiaridad en {{level}}"
+    "setFamiliarityLevel": "Establezca familiaridad en {{level}}",
+    "deckAll": "Toda",
+    "deckMine": "Mis Tarjetas",
+    "deckFocus": "Enfocar",
+    "addToFocus": "Añadir al foco",
+    "removeFromFocus": "Quitar del foco",
+    "addToFocusOnCreate": "Agregar a mi mazo de enfoque",
+    "focusFailed": "No se pudo actualizar tu plataforma Focus.",
+    "randomCountLabel": "cuantas cartas",
+    "studyNRandom": "Estudio {{count}} aleatorio"
   },
   "progress": {
     "title": "Tu progreso",

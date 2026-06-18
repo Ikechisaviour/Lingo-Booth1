@@ -1,122 +1,132 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { FiPause, FiVolume2 } from 'react-icons/fi';
+import speechService from '../services/speechService';
 import './PlayableKorean.css';
 
 /**
- * Play a Korean string aloud via the browser SpeechSynthesis API.
+ * Play a Korean (or other target-language) string aloud.
  *
- * The same component is used in two visual modes:
+ * Delegates to the app's `speechService` so the user's voice preference
+ * (selected from Profile → Settings → Voice settings) is honored — the same
+ * voice the rest of the app uses for class lessons, conversation replies,
+ * and flashcards.
+ *
+ * Visual modes:
  *   variant="button"  — a pill ("▶ Listen") next to a header.
  *   variant="icon"    — a tight speaker icon inline with text. Default.
  *
- * The `text` prop is what gets spoken. If the lesson schema provides a
- * `referenceAudioUrl` (e.g. on PronunciationItem), pass it as `audioUrl` and
- * the component plays that file instead of TTS — TTS is the fallback.
+ * If a lesson provides `audioUrl` (e.g. PronunciationItem.referenceAudioUrl),
+ * the file plays directly via HTMLAudioElement; otherwise speechService
+ * synthesizes the text. The user-picked voice applies to the TTS path; the
+ * pre-recorded path bypasses voice selection by definition.
  *
- * Auto-play: when `autoPlay` is true and SpeechSynthesis is available, the
- * component triggers speak() once on mount. SessionShell's "Listen mode" flips
- * this for the currently-mounted lesson card.
+ * Auto-play: when `autoPlay` is true OR `primary` is true and the session
+ * has Listen mode enabled, the component speaks once on mount. SessionShell
+ * uses the `primary` flag to flip autoplay across the right elements.
  */
 
-let activeUtterance = null;
-let activeAudio = null;
+let activeAudio = null;        // active <audio> for the pre-recorded path
+let activeOwner = null;        // ref to whichever instance currently owns playback
 
-function cancelActive() {
-  try {
-    if (activeUtterance && typeof window !== 'undefined' && window.speechSynthesis) {
-      window.speechSynthesis.cancel();
-    }
-  } catch (_) { /* noop */ }
-  activeUtterance = null;
+function stopActive() {
   if (activeAudio) {
     try { activeAudio.pause(); } catch (_) { /* noop */ }
     activeAudio = null;
   }
+  try { speechService.cancel(); } catch (_) { /* noop */ }
+  activeOwner = null;
 }
 
-export function pickKoreanVoice() {
-  if (typeof window === 'undefined' || !window.speechSynthesis) return null;
-  const voices = window.speechSynthesis.getVoices() || [];
-  // Prefer a Korean-locale voice; some browsers list it as 'ko-KR', others 'ko'.
-  return (
-    voices.find((v) => /^ko(-KR)?$/i.test(v.lang))
-    || voices.find((v) => /korean/i.test(v.name))
-    || null
-  );
+function readListenMode() {
+  if (typeof window === 'undefined') return false;
+  try {
+    return localStorage.getItem('listenMode') === 'true';
+  } catch (_) {
+    return false;
+  }
 }
 
 function PlayableKorean({
   text,
   audioUrl = null,
-  rate = 0.9,
+  lang,                          // optional BCP-47 hint; speechService auto-detects when undefined
+  voice = null,                  // optional explicit voice; bypasses lookup
   variant = 'icon',
   label = null,
   autoPlay = false,
+  primary = false,
   className = '',
   ariaLabel = 'Play',
   stopAriaLabel = 'Stop',
 }) {
   const [playing, setPlaying] = useState(false);
+  const tokenRef = useRef(null);
   const elementRef = useRef(null);
 
   const stop = useCallback(() => {
-    cancelActive();
+    stopActive();
     setPlaying(false);
   }, []);
 
   const play = useCallback(() => {
     if (typeof window === 'undefined') return;
-    cancelActive();
+    stopActive();
+    const token = {};
+    tokenRef.current = token;
+    activeOwner = token;
+
+    // Pre-recorded audio file path. Bypasses voice selection.
     if (audioUrl) {
       try {
         const audio = new Audio(audioUrl);
         activeAudio = audio;
-        audio.addEventListener('ended', () => { if (activeAudio === audio) { activeAudio = null; setPlaying(false); } });
-        audio.addEventListener('error', () => { if (activeAudio === audio) { activeAudio = null; setPlaying(false); } });
-        audio.play().then(() => setPlaying(true)).catch(() => setPlaying(false));
+        const finish = () => {
+          if (activeAudio === audio) activeAudio = null;
+          if (tokenRef.current === token) setPlaying(false);
+        };
+        audio.addEventListener('ended', finish);
+        audio.addEventListener('error', finish);
+        audio.play().then(() => {
+          if (tokenRef.current === token) setPlaying(true);
+        }).catch(() => setPlaying(false));
         return;
       } catch (_) {
-        // Fall through to TTS if file playback errors out.
+        // Fall through to TTS on any HTMLAudio failure.
       }
     }
-    if (!window.speechSynthesis || !text) return;
+
+    if (!text) return;
     try {
-      const utterance = new window.SpeechSynthesisUtterance(text);
-      utterance.lang = 'ko-KR';
-      utterance.rate = rate;
-      const voice = pickKoreanVoice();
-      if (voice) utterance.voice = voice;
-      utterance.addEventListener('end', () => { if (activeUtterance === utterance) { activeUtterance = null; setPlaying(false); } });
-      utterance.addEventListener('error', () => { if (activeUtterance === utterance) { activeUtterance = null; setPlaying(false); } });
-      activeUtterance = utterance;
-      window.speechSynthesis.speak(utterance);
+      const opts = {};
+      if (lang) opts.lang = lang;
+      if (voice) opts.voice = voice;
+      const promise = speechService.speakAsync(text, opts);
       setPlaying(true);
+      Promise.resolve(promise).finally(() => {
+        // Only clear the local state if this instance is still the owner —
+        // a later play() on a sibling component will have flipped activeOwner.
+        if (tokenRef.current === token) setPlaying(false);
+      });
     } catch (_) {
       setPlaying(false);
     }
-  }, [text, audioUrl, rate]);
+  }, [text, audioUrl, lang, voice]);
 
-  // Auto-play once on mount when requested. Skips silently if the API isn't
-  // available so the lesson still renders.
+  // Auto-play once on mount when requested. Skips silently if speech isn't
+  // ready. When `primary` is set AND the session-level "Listen mode" is on,
+  // behave as if `autoPlay` were true.
+  const shouldAutoPlay = autoPlay || (primary && readListenMode());
   useEffect(() => {
-    if (!autoPlay) return undefined;
-    // Defer so the page paints first; some browsers race the speak call
-    // before voices have loaded.
-    const t = setTimeout(() => {
-      if (typeof window !== 'undefined' && (window.speechSynthesis?.getVoices?.()?.length || audioUrl)) {
-        play();
-      } else if (typeof window !== 'undefined' && window.speechSynthesis) {
-        // Voices haven't loaded yet — wait once and retry.
-        const handler = () => { play(); window.speechSynthesis.removeEventListener('voiceschanged', handler); };
-        window.speechSynthesis.addEventListener('voiceschanged', handler);
-      }
-    }, 80);
+    if (!shouldAutoPlay) return undefined;
+    const t = setTimeout(() => play(), 120);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [autoPlay]);
+  }, [shouldAutoPlay]);
 
-  // Always cancel speech on unmount.
-  useEffect(() => () => { if (activeUtterance || activeAudio) cancelActive(); }, []);
+  // Stop any in-flight speech owned by THIS instance when it unmounts.
+  useEffect(() => () => {
+    if (activeOwner === tokenRef.current) stopActive();
+  }, []);
 
   const handleClick = (event) => {
     event.stopPropagation();

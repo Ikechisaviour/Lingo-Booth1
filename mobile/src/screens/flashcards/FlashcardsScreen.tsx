@@ -15,6 +15,7 @@ import {
   PanResponder,
 } from 'react-native';
 import { Text, Button, IconButton, TextInput, FAB, Chip, ProgressBar } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { flashcardService, learningHubService, progressService, userService } from '../../services/api';
@@ -35,6 +36,32 @@ const normalizeCategory = (cat: any): string[] => {
   if (Array.isArray(cat)) return cat.length > 0 ? cat : ['uncategorized'];
   if (typeof cat === 'string' && cat.trim()) return [cat.trim()];
   return ['uncategorized'];
+};
+
+// 12h shuffle seed (guest fallback when there's no server-side account).
+const SHUFFLE_SEED_TTL_MS = 12 * 60 * 60 * 1000;
+const SEED_KEY = 'flashcardShuffleSeed';
+const SEED_AT_KEY = 'flashcardShuffleSeedAt';
+
+// Deterministic seeded shuffle so a category/selection deck shuffles the same
+// way for a given seed — keeps order stable within the 12h window, matching the
+// server-shuffled main deck.
+const seededRng = (seed: number) => {
+  let s = (seed >>> 0) || 1;
+  return () => {
+    s = (Math.imul(s, 1664525) + 1013904223) >>> 0;
+    return s / 0xffffffff;
+  };
+};
+
+const seededShuffle = <T,>(arr: T[], seed: number): T[] => {
+  const rng = seededRng(seed);
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 };
 
 const FlashcardsScreen: React.FC = () => {
@@ -67,7 +94,11 @@ const FlashcardsScreen: React.FC = () => {
   const [showSettings, setShowSettings] = useState(false);
   const [starPulse, setStarPulse] = useState<'up' | 'down' | null>(null);
   const [isShuffled, setIsShuffled] = useState(true);
-  const [shuffleSeed, setShuffleSeed] = useState(() => Math.floor(Math.random() * 2147483647));
+  const [shuffleSeed, setShuffleSeed] = useState<number | null>(null); // resolved from the 12h window on mount
+  const [deckScope, setDeckScope] = useState<'all' | 'mine' | 'focus'>('all');
+  const [focusIds, setFocusIds] = useState<Set<string>>(new Set()); // client source of truth for Focus membership
+  const [randomCount, setRandomCount] = useState('10'); // "Study random" count
+  const [addToFocus, setAddToFocus] = useState(false); // "Add to Focus" toggle on the add form
   const [expandedPrimaries, setExpandedPrimaries] = useState<Set<string>>(new Set());
   const [categoryCardsCache, setCategoryCardsCache] = useState<Record<string, any[]>>({});
   const [selectedCardIds, setSelectedCardIds] = useState<Set<string>>(new Set());
@@ -127,16 +158,17 @@ const FlashcardsScreen: React.FC = () => {
   }, [navigation]);
 
   // Fetch flashcards (paginated, unfiltered — category filtering is done client-side via cache)
-  const fetchFlashcards = useCallback(async (page = 1, append = false) => {
+  const fetchFlashcards = useCallback(async (page = 1, append = false, seedOverride?: number, scopeOverride?: string) => {
     try {
       if (page === 1) setLoading(true);
       else setLoadingMore(true);
 
-      const opts = { shuffle: isShuffled, seed: shuffleSeed };
+      const effectiveSeed = seedOverride !== undefined ? seedOverride : (shuffleSeed ?? undefined);
+      const effectiveScope = scopeOverride !== undefined ? scopeOverride : deckScope;
 
       const response = userId
-        ? await flashcardService.getFlashcards(userId, page, 50, opts)
-        : await flashcardService.getGuestFlashcards(page, 50, opts);
+        ? await flashcardService.getFlashcards(userId, page, 50, { shuffle: isShuffled, seed: effectiveSeed, scope: effectiveScope })
+        : await flashcardService.getGuestFlashcards(page, 50, { shuffle: isShuffled, seed: effectiveSeed });
 
       const data = response.data;
       const cards = Array.isArray(data) ? data : (data.cards || data);
@@ -173,9 +205,38 @@ const FlashcardsScreen: React.FC = () => {
       setLoading(false);
       setLoadingMore(false);
     }
-  }, [userId, targetLanguage, nativeLanguage, t, isShuffled, shuffleSeed, nativeField, seededNative, seededTarget, targetField]);
+  }, [userId, targetLanguage, nativeLanguage, t, isShuffled, shuffleSeed, deckScope, nativeField, seededNative, seededTarget, targetField]);
 
-  // Fetch categories + first page on mount
+  // Resolve the 12h-stable shuffle seed: server-side for signed-in users (so it
+  // follows them across devices), AsyncStorage for guests. force=true mints a
+  // fresh seed (manual reshuffle). Keeps deck order — and the resume position —
+  // stable across opens within the window.
+  const resolveShuffleSeed = useCallback(async (force = false): Promise<number> => {
+    if (userId && !isGuest) {
+      try {
+        const res = force
+          ? await userService.refreshFlashcardSeed(userId)
+          : await userService.getFlashcardSeed(userId);
+        if (res?.data?.seed) return res.data.seed;
+      } catch {}
+    }
+    try {
+      const now = Date.now();
+      const storedSeed = parseInt((await AsyncStorage.getItem(SEED_KEY)) || '', 10);
+      const storedAt = parseInt((await AsyncStorage.getItem(SEED_AT_KEY)) || '', 10);
+      if (!force && storedSeed && storedAt && (now - storedAt) < SHUFFLE_SEED_TTL_MS) {
+        return storedSeed;
+      }
+      const seed = Math.floor(Math.random() * 2147483646) + 1;
+      await AsyncStorage.setItem(SEED_KEY, String(seed));
+      await AsyncStorage.setItem(SEED_AT_KEY, String(now));
+      return seed;
+    } catch {
+      return Math.floor(Math.random() * 2147483646) + 1;
+    }
+  }, [userId, isGuest]);
+
+  // Fetch categories + first page on mount (with the 12h-stable seed)
   useEffect(() => {
     const init = async () => {
       try {
@@ -184,12 +245,33 @@ const FlashcardsScreen: React.FC = () => {
       } catch {}
     };
     init();
-    fetchFlashcards(1, false);
     // Reset selections when language pair changes so stale card IDs don't linger
     setSelectedCategories(new Set());
     setSelectedCardIds(new Set());
     setCurrentIndex(0);
+    (async () => {
+      const seed = await resolveShuffleSeed(false);
+      setShuffleSeed(seed);
+      fetchFlashcards(1, false, seed);
+    })();
+    if (userId && !isGuest) {
+      flashcardService.getFocusIds()
+        .then((res: any) => setFocusIds(new Set(res.data.ids || [])))
+        .catch(() => {});
+    }
   }, [targetLanguage, nativeLanguage]);
+
+  // Keep focusIds in sync as cards load — any loaded card flagged focus joins the set.
+  useEffect(() => {
+    setFocusIds((prev) => {
+      let changed = false;
+      const next = new Set(prev);
+      for (const c of flashcards) {
+        if (c.focus && !next.has(c._id)) { next.add(c._id); changed = true; }
+      }
+      return changed ? next : prev;
+    });
+  }, [flashcards]);
 
   // Reset card position when category selection changes (no API refetch — deck is computed client-side)
   useEffect(() => {
@@ -259,8 +341,11 @@ const FlashcardsScreen: React.FC = () => {
       }
     }
 
-    return result;
-  }, [flashcards, selectedCardIds, selectedCategories, targetField, categoryCardsCache]);
+    // The no-selection deck is already weighted-shuffled server-side. This
+    // client-side category/selection deck isn't, so shuffle it here (seeded, so
+    // the order stays stable within the 12h window) when shuffle is on.
+    return isShuffled && shuffleSeed ? seededShuffle(result, shuffleSeed) : result;
+  }, [flashcards, selectedCardIds, selectedCategories, targetField, categoryCardsCache, isShuffled, shuffleSeed]);
 
   // PiP — enter picture-in-picture when autoplay is active and user leaves the app
   useEffect(() => {
@@ -282,7 +367,7 @@ const FlashcardsScreen: React.FC = () => {
     if (!(cur as any)?._translationPending) return;
     setRetryingTranslation(true);
     try {
-      const opts = { shuffle: false, seed: shuffleSeed };
+      const opts = { shuffle: false, seed: shuffleSeed ?? undefined };
       const response = userId
         ? await flashcardService.getFlashcards(userId, currentPage, 50, opts)
         : await flashcardService.getGuestFlashcards(currentPage, 50, opts);
@@ -338,7 +423,7 @@ const FlashcardsScreen: React.FC = () => {
   }, [selectedCardIds]);
 
   // Toggle shuffle — refetch the default (unfiltered) deck from backend with new order
-  const handleToggleShuffle = useCallback(() => {
+  const handleToggleShuffle = useCallback(async () => {
     const newShuffled = !isShuffled;
     setIsShuffled(newShuffled);
     setCurrentIndex(0);
@@ -348,26 +433,23 @@ const FlashcardsScreen: React.FC = () => {
       setAutoPlay(false);
       speechService.cancel();
     }
-    const newSeed = Math.floor(Math.random() * 2147483647);
+    // Turning shuffle on is a manual reshuffle: mint a fresh seed and restart
+    // the 12h window. Turning it off keeps the current seed (order in sequence).
+    const newSeed = newShuffled ? await resolveShuffleSeed(true) : (shuffleSeed ?? await resolveShuffleSeed(false));
     setShuffleSeed(newSeed);
-    const doRefetch = async () => {
-      try {
-        setLoading(true);
-        const opts = { shuffle: newShuffled, seed: newSeed };
-        const response = userId
-          ? await flashcardService.getFlashcards(userId, 1, 50, opts)
-          : await flashcardService.getGuestFlashcards(1, 50, opts);
-        const data = response.data;
-        const cards = Array.isArray(data) ? data : (data.cards || data);
-        setFlashcards(cards);
-        setTotalCards(data.total || cards.length);
-        setCurrentPage(1);
-        if (data.seed) setShuffleSeed(data.seed);
-      } catch {}
-      finally { setLoading(false); }
-    };
-    doRefetch();
-  }, [isShuffled, autoPlay, userId]);
+    try {
+      setLoading(true);
+      const response = userId
+        ? await flashcardService.getFlashcards(userId, 1, 50, { shuffle: newShuffled, seed: newSeed, scope: deckScope })
+        : await flashcardService.getGuestFlashcards(1, 50, { shuffle: newShuffled, seed: newSeed });
+      const data = response.data;
+      const cards = Array.isArray(data) ? data : (data.cards || data);
+      setFlashcards(cards);
+      setTotalCards(data.total || cards.length);
+      setCurrentPage(1);
+    } catch {}
+    finally { setLoading(false); }
+  }, [isShuffled, autoPlay, userId, shuffleSeed, deckScope, resolveShuffleSeed]);
 
   // Toggle a category filter — loads cards into cache on first select (no backend refetch)
   const toggleCategoryFilter = (categoryName: string) => {
@@ -422,6 +504,63 @@ const FlashcardsScreen: React.FC = () => {
       }
       return next;
     });
+  };
+
+  // --- Deck scope (All / My Cards / Focus) — scope filtering happens server-side ---
+  const changeDeckScope = (scope: 'all' | 'mine' | 'focus') => {
+    if (scope === deckScope) return;
+    setDeckScope(scope);
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    setSelectedCategories(new Set());
+    setSelectedCardIds(new Set());
+    fetchFlashcards(1, false, shuffleSeed ?? undefined, scope);
+  };
+
+  // --- Focus: single entry point for current card, per-item, and bulk ---
+  const applyFocus = async (ids: string[], value: boolean) => {
+    const list = ids.filter(Boolean);
+    if (!userId || isGuest || list.length === 0) return;
+    const idSet = new Set(list);
+    setFocusIds((prev) => {
+      const next = new Set(prev);
+      list.forEach((id) => (value ? next.add(id) : next.delete(id)));
+      return next;
+    });
+    setFlashcards((prev) => prev.map((fc) => (idSet.has(fc._id) ? { ...fc, focus: value } : fc)));
+    try {
+      await Promise.all(list.map((id) => flashcardService.setCardFocus(id, value)));
+      if (!value && deckScope === 'focus') {
+        setFlashcards((prev) => prev.filter((fc) => !idSet.has(fc._id)));
+      }
+    } catch {
+      setFocusIds((prev) => {
+        const next = new Set(prev);
+        list.forEach((id) => (value ? next.delete(id) : next.add(id)));
+        return next;
+      });
+      setFlashcards((prev) => prev.map((fc) => (idSet.has(fc._id) ? { ...fc, focus: !value } : fc)));
+      setSavedNotice(t('flashcards.focusFailed', 'Could not update your Focus deck.'));
+    }
+  };
+
+  // --- Study a random subset of the current deck ---
+  const studyRandomSubset = () => {
+    const hasTgt = flashcards.some((c) => !!c[targetField]);
+    const pool = (hasTgt ? flashcards.filter((c) => !!c[targetField]) : flashcards)
+      .filter((c) => !String(c._id || '').startsWith('review-seed-'));
+    if (pool.length === 0) return;
+    const n = Math.max(1, Math.min(Math.floor(Number(randomCount) || 10), pool.length));
+    const shuffled = [...pool];
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    setSelectedCategories(new Set());
+    setSelectedCardIds(new Set(shuffled.slice(0, n).map((c) => c._id)));
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    setShowCategories(false);
   };
 
   const determineCardDisplay = () => {
@@ -714,9 +853,18 @@ const FlashcardsScreen: React.FC = () => {
         category: newCard.topic.trim() ? [newCard.category, newCard.topic.trim()] : [newCard.category],
         targetLang: targetLanguage,
         nativeLang: nativeLanguage,
+        focus: addToFocus,
       });
-      setFlashcards((prev) => [...prev, response.data]);
+      const created = response.data;
+      if (created?.focus && created._id) {
+        setFocusIds((prev) => new Set(prev).add(created._id));
+      }
+      // New cards are always the user's own (All / My Cards); they only belong
+      // in the Focus deck if the user opted in.
+      const belongsInScope = deckScope !== 'focus' || created?.focus;
+      if (belongsInScope) setFlashcards((prev) => [...prev, created]);
       setNewCard({ [targetField]: '', [nativeField]: '', romanization: '', category: 'vocabulary', topic: '' });
+      setAddToFocus(false);
       setShowAddForm(false);
     } catch {}
   };
@@ -922,6 +1070,27 @@ const FlashcardsScreen: React.FC = () => {
         </View>
       </View>
 
+      {/* Deck scope (All / My Cards / Focus) — signed-in users only */}
+      {!isGuest && !!userId && (
+        <View style={styles.scopeRow}>
+          {[
+            { id: 'all' as const, label: t('flashcards.deckAll', 'All') },
+            { id: 'mine' as const, label: t('flashcards.deckMine', 'My Cards') },
+            { id: 'focus' as const, label: t('flashcards.deckFocus', 'Focus') },
+          ].map((opt) => (
+            <Chip
+              key={opt.id}
+              selected={deckScope === opt.id}
+              onPress={() => changeDeckScope(opt.id)}
+              style={styles.scopeChip}
+              compact
+            >
+              {opt.label}
+            </Chip>
+          ))}
+        </View>
+      )}
+
       {/* Shuffle badge */}
       {!isCompact && isShuffled && (
         <View style={styles.shuffleBadge}>
@@ -1104,6 +1273,16 @@ const FlashcardsScreen: React.FC = () => {
             style={styles.actionBtn}
           />
         )}
+        {!isGuest && !!userId && (
+          <IconButton
+            icon={focusIds.has(card._id) ? 'target' : 'target-variant'}
+            size={isCompact ? 24 : 28}
+            iconColor={focusIds.has(card._id) ? colors.accentYellow : colors.textMuted}
+            accessibilityLabel={focusIds.has(card._id) ? t('flashcards.removeFromFocus', 'Remove from Focus') : t('flashcards.addToFocus', 'Add to Focus')}
+            onPress={() => applyFocus([card._id], !focusIds.has(card._id))}
+            style={styles.actionBtn}
+          />
+        )}
         <IconButton
           icon="message-text-outline"
           size={isCompact ? 24 : 28}
@@ -1168,6 +1347,21 @@ const FlashcardsScreen: React.FC = () => {
             <Text variant="titleMedium" style={styles.modalTitle}>
               {t('flashcards.categories', 'Categories')}
             </Text>
+            {/* Study a random subset of the current deck */}
+            <View style={styles.studyRandomRow}>
+              <TextInput
+                label={t('flashcards.randomCountLabel', 'How many cards')}
+                value={randomCount}
+                onChangeText={(v) => setRandomCount(v.replace(/[^0-9]/g, ''))}
+                keyboardType="number-pad"
+                mode="outlined"
+                dense
+                style={styles.studyRandomInput}
+              />
+              <Button mode="contained" onPress={studyRandomSubset} style={styles.studyRandomBtn}>
+                {t('flashcards.studyNRandom', { count: Math.max(1, Math.floor(Number(randomCount) || 10)), defaultValue: 'Study {{count}} random' })}
+              </Button>
+            </View>
             {/* Header: selection count or hint */}
             <View style={styles.pickerHeader}>
               {selectedCategories.size > 0 ? (
@@ -1181,6 +1375,17 @@ const FlashcardsScreen: React.FC = () => {
                 <Text style={styles.pickerHint}>{t('flashcards.clickCategoryHint', 'Tap a category to filter cards')}</Text>
               )}
             </View>
+            {/* Bulk Focus actions for individually selected cards */}
+            {!isGuest && !!userId && selectedCardIds.size > 0 && (
+              <View style={styles.bulkFocusRow}>
+                <Button compact mode="outlined" onPress={() => applyFocus(Array.from(selectedCardIds), true)} style={styles.bulkFocusBtn}>
+                  {t('flashcards.addToFocus', 'Add to Focus')}
+                </Button>
+                <Button compact mode="outlined" onPress={() => applyFocus(Array.from(selectedCardIds), false)} style={styles.bulkFocusBtn}>
+                  {t('flashcards.removeFromFocus', 'Remove from Focus')}
+                </Button>
+              </View>
+            )}
             <ScrollView style={{ maxHeight: 400 }}>
               {(() => {
                 const loadedMap = buildLoadedCategoryCards();
@@ -1219,25 +1424,41 @@ const FlashcardsScreen: React.FC = () => {
                         <View style={styles.subtopicList}>
                           {allCategoryCards.map((card: any) => {
                             const isChecked = selectedCardIds.has(card._id);
+                            const isFocused = focusIds.has(card._id);
                             return (
-                              <TouchableOpacity
+                              <View
                                 key={card._id}
                                 style={[styles.subtopicItem, isChecked && styles.subtopicSelected]}
-                                onPress={() => {
-                                  const adding = !selectedCardIds.has(card._id);
-                                  setSelectedCardIds((prev) => {
-                                    const next = new Set(prev);
-                                    next.has(card._id) ? next.delete(card._id) : next.add(card._id);
-                                    return next;
-                                  });
-                                  if (adding) setSelectedCategories((prev) => { const next = new Set(prev); next.delete(primary); return next; });
-                                }}
                               >
-                                <Text style={styles.categoryCheck}>{isChecked ? '✓' : ''}</Text>
-                                <Text style={[styles.subtopicName, isChecked && styles.subtopicNameActive]}>
-                                  {card[nativeField] || card[targetField]}
-                                </Text>
-                              </TouchableOpacity>
+                                <TouchableOpacity
+                                  style={styles.subtopicSelect}
+                                  onPress={() => {
+                                    const adding = !selectedCardIds.has(card._id);
+                                    setSelectedCardIds((prev) => {
+                                      const next = new Set(prev);
+                                      next.has(card._id) ? next.delete(card._id) : next.add(card._id);
+                                      return next;
+                                    });
+                                    if (adding) setSelectedCategories((prev) => { const next = new Set(prev); next.delete(primary); return next; });
+                                  }}
+                                >
+                                  <Text style={styles.categoryCheck}>{isChecked ? '✓' : ''}</Text>
+                                  <Text style={[styles.subtopicName, isChecked && styles.subtopicNameActive]}>
+                                    {card[nativeField] || card[targetField]}
+                                  </Text>
+                                </TouchableOpacity>
+                                {!isGuest && !!userId && (
+                                  <TouchableOpacity
+                                    onPress={() => applyFocus([card._id], !isFocused)}
+                                    style={[styles.subtopicFocusBtn, isFocused && styles.subtopicFocusBtnActive]}
+                                    hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+                                  >
+                                    <Text style={[styles.subtopicFocusText, isFocused && styles.subtopicFocusTextActive]}>
+                                      {isFocused ? t('flashcards.removeFromFocus', 'Remove from Focus') : t('flashcards.addToFocus', 'Add to Focus')}
+                                    </Text>
+                                  </TouchableOpacity>
+                                )}
+                              </View>
                             );
                           })}
                         </View>
@@ -1368,6 +1589,16 @@ const FlashcardsScreen: React.FC = () => {
               style={styles.formInput}
               placeholder={t('flashcards.topicPlaceholder', 'e.g. days of the week, 1-10')}
             />
+            {!isGuest && !!userId && (
+              <Chip
+                selected={addToFocus}
+                onPress={() => setAddToFocus((v) => !v)}
+                icon={addToFocus ? 'check' : undefined}
+                style={styles.addFocusChip}
+              >
+                {t('flashcards.addToFocusOnCreate', 'Add to my Focus deck')}
+              </Chip>
+            )}
             <View style={styles.modalActions}>
               <Button onPress={() => setShowAddForm(false)}>{t('common.cancel', 'Cancel')}</Button>
               <Button mode="contained" onPress={handleAddFlashcard}>
@@ -1653,8 +1884,37 @@ const createStyles = (
     marginBottom: 2,
   },
   subtopicSelected: { backgroundColor: colors.primary + '18' },
+  subtopicSelect: { flex: 1, flexDirection: 'row', alignItems: 'center', gap: 8, minWidth: 0 },
   subtopicName: { fontSize: 13, color: colors.textSecondary, textTransform: 'capitalize' },
   subtopicNameActive: { color: colors.primary, fontWeight: '600' },
+  // Per-item Add-to-Focus / Remove-from-Focus (text, not a star — stars are the familiarity rating)
+  subtopicFocusBtn: {
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderRadius: 999,
+    borderWidth: 1,
+    borderColor: colors.border,
+    marginLeft: 8,
+  },
+  subtopicFocusBtnActive: { backgroundColor: colors.accentYellow, borderColor: colors.accentYellow },
+  subtopicFocusText: { fontSize: 11, fontWeight: '600', color: colors.textSecondary },
+  subtopicFocusTextActive: { color: '#fff' },
+  scopeRow: {
+    flexDirection: 'row',
+    gap: 8,
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    backgroundColor: colors.surface,
+  },
+  scopeChip: {},
+  studyRandomRow: { flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 10 },
+  studyRandomInput: { width: 110 },
+  studyRandomBtn: { flex: 1, justifyContent: 'center' },
+  bulkFocusRow: { flexDirection: 'row', gap: 8, marginBottom: 8 },
+  bulkFocusBtn: { flex: 1 },
+  addFocusChip: { alignSelf: 'flex-start', marginTop: 4, marginBottom: 4 },
   translationPending: { alignItems: 'center' as const, gap: 12, paddingVertical: 16 },
   translationPendingText: { fontSize: 14, color: colors.textMuted },
   retryBtn: {

@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Bu kart şu anda kaydedilemedi.",
     "bookmarkedReason": "Bilgi kartlarından yer imlerine eklendi.",
     "selfTestReason": "Hızlı bir kendi kendine test için bilgi kartlarından kaydedildi.",
-    "setFamiliarityLevel": "Tanıdıklığı {{level}} olarak ayarlayın"
+    "setFamiliarityLevel": "Tanıdıklığı {{level}} olarak ayarlayın",
+    "deckAll": "Tüm",
+    "deckMine": "Kartlarım",
+    "deckFocus": "Odak",
+    "addToFocus": "Odak'a Ekle",
+    "removeFromFocus": "Odaktan Kaldır",
+    "addToFocusOnCreate": "Odak desteme ekle",
+    "focusFailed": "Odak desteniz güncellenemedi.",
+    "randomCountLabel": "Kaç kart",
+    "studyNRandom": "{{count}} rastgele çalış"
   },
   "progress": {
     "title": "İlerlemeniz Raporu",

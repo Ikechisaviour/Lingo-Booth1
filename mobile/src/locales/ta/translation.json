@@ -452,7 +452,16 @@
     "saveForReviewFailed": "இப்போது இந்தக் கார்டைச் சேமிக்க முடியவில்லை.",
     "bookmarkedReason": "ஃபிளாஷ் கார்டுகளிலிருந்து புக்மார்க் செய்யப்பட்டது.",
     "selfTestReason": "விரைவான சுய பரிசோதனைக்காக ஃபிளாஷ் கார்டுகளிலிருந்து சேமிக்கப்பட்டது.",
-    "setFamiliarityLevel": "பரிச்சயத்தை {{level}} என அமைக்கவும்"
+    "setFamiliarityLevel": "பரிச்சயத்தை {{level}} என அமைக்கவும்",
+    "deckAll": "அனைத்து",
+    "deckMine": "எனது அட்டைகள்",
+    "deckFocus": "கவனம்",
+    "addToFocus": "ஃபோகஸில் சேர்க்கவும்",
+    "removeFromFocus": "ஃபோகஸிலிருந்து அகற்று",
+    "addToFocusOnCreate": "எனது ஃபோகஸ் டெக்கில் சேர்",
+    "focusFailed": "உங்கள் ஃபோகஸ் டெக்கைப் புதுப்பிக்க முடியவில்லை.",
+    "randomCountLabel": "எத்தனை அட்டைகள்",
+    "studyNRandom": "ஆய்வு {{count}} சீரற்ற"
   },
   "progress": {
     "title": "உங்கள் முன்னேற்றம்",

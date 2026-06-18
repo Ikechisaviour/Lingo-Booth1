@@ -45,7 +45,8 @@
     "notSet": "لم يتم ضبطه",
     "goBack": "عُد",
     "all": "الجميع",
-    "restart": "إعادة تشغيل"
+    "restart": "إعادة تشغيل",
+    "previous": "سابق"
   },
   "languageSelect": {
     "title": "اختر لغاتك",
@@ -125,7 +126,9 @@
     "plans": "الخطط",
     "exerciseOptions": "خيارات التمرين",
     "institution": "مؤسسة",
-    "review": "مراجعة"
+    "review": "مراجعة",
+    "learn": "يتعلم",
+    "curriculumV2": "المنهج v2"
   },
   "guestPrompt": {
     "title": "أداؤك رائع!",
@@ -210,7 +213,10 @@
     "supportAndPlans": "الدعم والخطط",
     "decayBannerActive": "XP تتدهور — خسارة يومية تبلغ {{rate}}%. أجب عن سؤال لإيقافه.",
     "decayBannerGrace": "يبدأ اضمحلال XP خلال {{hours}}h — الخسارة اليومية {{rate}}%. استمر في الدراسة لمنع ذلك.",
-    "dashboard": "لوحة القيادة"
+    "dashboard": "لوحة القيادة",
+    "browseLessons": "تصفح الدروس",
+    "learnDesc": "مواصلة جلسة المنهج الخاص بك",
+    "catalogDesc": "اختر مفهومًا محددًا للدراسة"
   },
   "lessons": {
     "title": "{{language}} <1>دروس</1>",
@@ -402,7 +408,32 @@
     "saveForReview": "حفظ للمراجعة",
     "bookmarkedReason": "إشارة مرجعية من البطاقات التعليمية.",
     "selfTestReason": "تم الحفظ من البطاقات التعليمية لإجراء اختبار ذاتي سريع.",
-    "setFamiliarityLevel": "اضبط الألفة على {{level}}"
+    "setFamiliarityLevel": "اضبط الألفة على {{level}}",
+    "deckScopeLabel": "أي بطاقات للدراسة",
+    "deckAll": "الجميع",
+    "deckMine": "بطاقاتي",
+    "deckFocus": "ركز",
+    "addToFocus": "أضف إلى التركيز",
+    "removeFromFocus": "إزالة من التركيز",
+    "inFocus": "في التركيز",
+    "focusBadge": "ركز",
+    "addSelectedToFocus": "أضف إلى التركيز",
+    "removeSelectedFromFocus": "إزالة من التركيز",
+    "addToFocusOnCreate": "أضف إلى مجموعة التركيز الخاصة بي",
+    "focusFailed": "تعذر تحديث مجموعة التركيز الخاصة بك.",
+    "focusEmptyTitle": "مجموعة التركيز الخاصة بك فارغة",
+    "focusEmptyHint": "أضف بطاقات إلى Focus من أي بطاقة تعليمية لدراستها بشكل مكثف هنا.",
+    "mineEmptyTitle": "لم تقم بإضافة أي بطاقات حتى الآن",
+    "mineEmptyHint": "ستظهر هنا البطاقات التي تنشئها.",
+    "studyRandom": "دراسة عشوائية",
+    "studyNRandom": "دراسة {{count}} عشوائية",
+    "studyRandomTitle": "دراسة مجموعة عشوائية من البطاقات",
+    "studyRandomOptions": "دراسة الخيارات العشوائية",
+    "randomCountLabel": "كم عدد البطاقات للدراسة",
+    "selectCards": "حدد البطاقات",
+    "studyingSubset": "الدراسة {{count}}",
+    "studyAll": "دراسة كل شيء",
+    "noCardsToPick": "لا توجد بطاقات للاختيار من بينها بعد."
   },
   "progress": {
     "title": "<1>تقدمك</1>",
@@ -543,7 +574,14 @@
     "fullName": "الاسم الكامل",
     "fullNamePlaceholder": "الاسم الذي سيظهر على الشهادات",
     "fullNameMissing": "أضف قبل إصدار الشهادة",
-    "activeAccountType": "نوع الحساب النشط"
+    "activeAccountType": "نوع الحساب النشط",
+    "curriculumPreferenceSaved": "تم تحديث تفضيلات المنهج.",
+    "curriculumVersion": "نسخة المنهج",
+    "curriculumVersionDesc": "اختر إصدار المنهج الذي تريد استخدامه لكل لغة مستهدفة مدعومة. يمكنك التبديل في أي وقت.",
+    "curriculumV2Name": "{{language}} — منهج جديد",
+    "curriculumV2Desc": "تدريبات الأنماط، والقصص، والإغلاق، والمفردات SRS، والنطق - متسلسل بالمخطط.",
+    "curriculumV1Name": "{{language}} — المنهج الكلاسيكي",
+    "curriculumV1Desc": "قوائم المفردات والدروس الصفية التي تعرفها بالفعل."
   },
   "verifyEmail": {
     "verifying": "جاري التحقق من بريدك الإلكتروني...",
@@ -2011,7 +2049,9 @@
       "needHint": "هل تحتاج إلى تلميح؟",
       "correct": "صحيح",
       "answer": "الجواب: {{answer}}",
-      "whyHint": "لماذا:"
+      "whyHint": "لماذا:",
+      "blank": "فارغ",
+      "choices": "الاختيارات"
     },
     "finishScore": "النهاية ({{score}}/{{total}})",
     "next": "التالي",
@@ -2021,7 +2061,11 @@
       "inYourLanguage": "في لغتك",
       "inTargetLanguage": "في {{language}}",
       "whyDiffer": "لماذا يختلفون",
-      "commonMistakes": "أخطاء يرتكبها عادة متحدثو اللغة الإنجليزية"
+      "commonMistakes": "أخطاء يرتكبها عادة متحدثو اللغة الإنجليزية",
+      "mistakeN": "خطأ {{n}}.",
+      "cultural": "السياق الثقافي",
+      "forExample": "على سبيل المثال",
+      "playItem": "تشغيل العنصر"
     },
     "gotIt": "فهمتها",
     "minimalPair": {
@@ -2065,7 +2109,8 @@
       "recoveryTitle": "دعنا نعيد النظر قبل أن تستمر.",
       "recoveryAnchors": "أمثلة مرساة",
       "recoveryPrompt": "أي جملة كورية تتطابق مع هذه اللغة الإنجليزية؟",
-      "needMore": "الوصول إلى {{required}} المحاولات الصحيحة للإنهاء."
+      "needMore": "الوصول إلى {{required}} المحاولات الصحيحة للإنهاء.",
+      "exampleN": "مثال {{n}}."
     },
     "continue": "يكمل",
     "done": "منتهي",
@@ -2087,7 +2132,8 @@
       "listenFirst": "استمع أولا ثم سجل.",
       "repeatThenContinue": "كرر بصوت عال، ثم تابع.",
       "tryAgainOrContinue": "قم بالتسجيل مرة أخرى أو تابع.",
-      "recordWhenReady": "سجل عندما تكون جاهزًا."
+      "recordWhenReady": "سجل عندما تكون جاهزًا.",
+      "rateLimited": "تم إجراء عدد كبير جدًا من عمليات التحقق من الكلام مؤخرًا - توقف مؤقتًا للحظة."
     },
     "story": {
       "dialogueMode": "حوار",
@@ -2096,7 +2142,8 @@
       "showTranslation": "عرض الترجمة",
       "comprehensionQuestions": "أسئلة الفهم",
       "questionInstructions": "أجب عن كل سؤال في رأسك أو بصوت عالٍ.",
-      "readStory": "لقد قرأت القصة"
+      "readStory": "لقد قرأت القصة",
+      "questionN": "سؤال {{n}}."
     },
     "vocabDeck": {
       "meta": "سطح المفردات",
@@ -2121,6 +2168,27 @@
       "good": "جيد",
       "easy": "سهل",
       "prompt": "إلى أي مدى عرفت ذلك؟"
+    },
+    "conceptCompleteTitle": "اكتمل المفهوم",
+    "backToCatalog": "اختر درسًا آخر",
+    "back": "خلف",
+    "browseLessons": "تصفح جميع الدروس",
+    "hangulRefresher": "مراجعة الهانغول",
+    "showRomanization": "إظهار الكتابة بالحروف اللاتينية",
+    "listenMode": "وضع الاستماع",
+    "playPage": "لعب الدرس كاملا",
+    "playSentence": "لعب الجملة",
+    "playSection": "قسم اللعب",
+    "playPattern": "نمط اللعب",
+    "playExample": "لعب المثال",
+    "playFiller": "لعب حشو",
+    "playIdeal": "لعب الإجابة المثالية",
+    "playLine": "خط اللعب",
+    "playCard": "لعب البطاقة",
+    "audio": {
+      "play": "يلعب",
+      "stop": "قف",
+      "stopPlayback": "إيقاف التشغيل"
     }
   },
   "notifications": {
@@ -2196,5 +2264,58 @@
     "passwordPlaceholder": "كلمة المرور",
     "verifying": "جارٍ التحقق...",
     "confirm": "يتأكد"
+  },
+  "curriculumVersion": {
+    "kicker": "تحديث المنهج متاح",
+    "title": "اختر تجربتك {{language}}",
+    "lede": "لقد أطلقنا منهجًا جديدًا {{language}} يشتمل على تدريبات على الأنماط وقصص مدخلة مفهومة ومخطط جلسة يتكيف مع ما نسيته.",
+    "recommended": "مُستَحسَن",
+    "v2Title": "جرب المنهج الجديد",
+    "v2Body": "دروس المفهوم الأول عبر تدريبات الأنماط، والقصص، وإنتاج القوالب، والمفردات SRS، ومهام النطق - متداخلة بواسطة مخطط الجلسة.",
+    "tryV2": "جربه",
+    "v1Title": "البقاء على التجربة الكلاسيكية",
+    "v1Body": "استمر في استخدام قوائم المفردات والدروس الصفية التي تعرفها. يمكنك التبديل في أي وقت من الإعدادات.",
+    "stayV1": "حافظ على الكلاسيكية",
+    "decideLater": "قرر لاحقا"
+  },
+  "hangul": {
+    "loadFailed": "تعذر تحميل دروس هانغول.",
+    "skipConfirm": "هل تريد تخطي إعداد Hangul؟ يمكنك العودة في أي وقت من رأس الجلسة.",
+    "saveFailed": "لا يمكن حفظ التقدم.",
+    "empty": "لا يوجد محتوى هانغول متاح.",
+    "backToLearn": "العودة إلى التعلم",
+    "refresherKicker": "تجديد الهانغول",
+    "onboardingKicker": "إعداد الهانغول",
+    "title": "قراءة الكورية",
+    "subtitle": "ثمانية دروس قصيرة. استمع إلى كل حرف، وتعلم كيف تقوم المكعبات ببناء المقاطع، ثم اقرأ الكلمات الحقيقية.",
+    "alreadyKnow": "لقد قرأت بالفعل الهانغول - تخطي",
+    "progressLabel": "تقدم",
+    "stepN": "الخطوة {{step}} من {{total}}",
+    "stopPage": "قف",
+    "playPage": "لعب الصفحة بأكملها",
+    "playLetter": "تشغيل صوت الحروف",
+    "stopCard": "قف",
+    "playCard": "لعب البطاقة بأكملها",
+    "play": "يلعب",
+    "practiceInstructions": "اقرأ كل كلمة بصوت عالٍ قبل إلقاء نظرة خاطفة عليها. اضغط على مكبر الصوت للمقارنة.",
+    "tier": "الطبقة {{tier}}",
+    "reveal": "يكشف",
+    "done": "منتهي",
+    "finishAndLearn": "ابدأ قواعد اللغة A1",
+    "next": "التالي"
+  },
+  "catalog": {
+    "done": "منتهي",
+    "inProgress": "في تَقَدم",
+    "startConcept": "ابدأ هذا المفهوم",
+    "continueConcept": "مواصلة المفهوم",
+    "reviewConcept": "مفهوم المراجعة",
+    "notEnabled": "لم يتم تمكين الإصدار الثاني من المنهج الدراسي لحسابك حتى الآن.",
+    "loadFailed": "تعذر تحميل الكتالوج.",
+    "empty": "لا توجد دروس بعد.",
+    "backToSession": "استمر في جلستك",
+    "title": "تصفح الدروس الكورية",
+    "subtitle": "كل مفهوم يمكن للمخطط تدريسه. اختر واحدة للتعمق فيها، أو دع النظام يختار لك في صفحة التعلم الرئيسية.",
+    "conceptsMastered": "يتقن المفاهيم"
   }
 }

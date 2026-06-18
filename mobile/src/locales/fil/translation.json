@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Hindi ma-save ang card na ito sa ngayon.",
     "bookmarkedReason": "Na-bookmark mula sa mga flashcard.",
     "selfTestReason": "Na-save mula sa mga flashcard para sa isang mabilis na self-test.",
-    "setFamiliarityLevel": "Itakda ang pamilyar sa {{level}}"
+    "setFamiliarityLevel": "Itakda ang pamilyar sa {{level}}",
+    "deckAll": "Lahat",
+    "deckMine": "Aking Mga Kard",
+    "deckFocus": "Focus",
+    "addToFocus": "Idagdag sa Focus",
+    "removeFromFocus": "Alisin sa Focus",
+    "addToFocusOnCreate": "Idagdag sa aking Focus deck",
+    "focusFailed": "Hindi ma-update ang iyong Focus deck.",
+    "randomCountLabel": "Ilang card",
+    "studyNRandom": "Pag-aralan ang {{count}} random"
   },
   "progress": {
     "title": "Ang Iyong Progreso",

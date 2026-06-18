@@ -452,7 +452,16 @@
     "saveForReviewFailed": "지금은 이 카드를 저장할 수 없습니다.",
     "bookmarkedReason": "플래시카드에서 북마크되었습니다.",
     "selfTestReason": "빠른 자체 테스트를 위해 플래시카드에서 저장되었습니다.",
-    "setFamiliarityLevel": "친숙도를 {{level}}로 설정"
+    "setFamiliarityLevel": "친숙도를 {{level}}로 설정",
+    "deckAll": "모두",
+    "deckMine": "내 카드",
+    "deckFocus": "집중하다",
+    "addToFocus": "초점에 추가",
+    "removeFromFocus": "초점에서 제거",
+    "addToFocusOnCreate": "내 포커스 데크에 추가",
+    "focusFailed": "Focus 데크를 업데이트할 수 없습니다.",
+    "randomCountLabel": "카드 몇 장",
+    "studyNRandom": "연구 {{count}} 무작위"
   },
   "progress": {
     "title": "나의 진도",

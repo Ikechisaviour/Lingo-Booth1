@@ -144,6 +144,44 @@ const CONCEPTS = [
     topik: 1,
   },
 
+  // ─── A1 batch 2 — questions + negation ───
+  {
+    id: 'pattern.question.what',
+    kind: 'pattern',
+    gloss: 'Asking "what?" — 뭐 / 무엇',
+    function: FUNCTIONS.INTERROGATIVE,
+    prerequisites: ['pattern.identification.be'],
+    cefr: 'A1',
+    topik: 1,
+  },
+  {
+    id: 'pattern.question.who',
+    kind: 'pattern',
+    gloss: 'Asking "who?" — 누구 / 누가',
+    function: FUNCTIONS.INTERROGATIVE,
+    prerequisites: ['pattern.subject.i_ga'],
+    cefr: 'A1',
+    topik: 1,
+  },
+  {
+    id: 'pattern.negation.an',
+    kind: 'pattern',
+    gloss: 'Short negation — 안 + V/A',
+    function: FUNCTIONS.NEGATION,
+    prerequisites: [],
+    cefr: 'A1',
+    topik: 1,
+  },
+  {
+    id: 'pattern.negation.mot',
+    kind: 'pattern',
+    gloss: 'Impossibility — 못 + V ("cannot do")',
+    function: FUNCTIONS.NEGATION,
+    prerequisites: ['pattern.negation.an'],
+    cefr: 'A1',
+    topik: 1,
+  },
+
   // ─── Lexemes used by the A1 core batch ───
   // People & roles
   { id: 'lexeme.student',  kind: 'lexeme', gloss: 'student',          target: '학생',     native: 'student' },

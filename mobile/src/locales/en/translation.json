@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Could not save this card right now.",
     "bookmarkedReason": "Bookmarked from flashcards.",
     "selfTestReason": "Saved from flashcards for a quick self-test.",
-    "setFamiliarityLevel": "Set familiarity to {{level}}"
+    "setFamiliarityLevel": "Set familiarity to {{level}}",
+    "deckAll": "All",
+    "deckMine": "My Cards",
+    "deckFocus": "Focus",
+    "addToFocus": "Add to Focus",
+    "removeFromFocus": "Remove from Focus",
+    "addToFocusOnCreate": "Add to my Focus deck",
+    "focusFailed": "Could not update your Focus deck.",
+    "randomCountLabel": "How many cards",
+    "studyNRandom": "Study {{count}} random"
   },
   "progress": {
     "title": "Your Progress",

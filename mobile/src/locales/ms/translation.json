@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Tidak dapat menyimpan kad ini sekarang.",
     "bookmarkedReason": "Ditandakan daripada kad imbas.",
     "selfTestReason": "Disimpan daripada kad imbas untuk ujian kendiri yang pantas.",
-    "setFamiliarityLevel": "Tetapkan kebiasaan kepada {{level}}"
+    "setFamiliarityLevel": "Tetapkan kebiasaan kepada {{level}}",
+    "deckAll": "Semua",
+    "deckMine": "Kad Saya",
+    "deckFocus": "Fokus",
+    "addToFocus": "Tambahkan pada Fokus",
+    "removeFromFocus": "Alih keluar daripada Fokus",
+    "addToFocusOnCreate": "Tambahkan pada dek Fokus saya",
+    "focusFailed": "Tidak dapat mengemas kini dek Fokus anda.",
+    "randomCountLabel": "Berapa banyak kad",
+    "studyNRandom": "Kaji {{count}} rawak"
   },
   "progress": {
     "title": "Kemajuan Anda",

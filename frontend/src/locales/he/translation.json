@@ -45,7 +45,8 @@
     "notSet": "לא מוגדר",
     "goBack": "לַחֲזוֹר",
     "all": "כֹּל",
-    "restart": "הפעל מחדש"
+    "restart": "הפעל מחדש",
+    "previous": "קוֹדֵם"
   },
   "languageSelect": {
     "title": "בחר את השפות שלך",
@@ -125,7 +126,9 @@
     "plans": "תוכניות",
     "exerciseOptions": "אפשרויות פעילות גופנית",
     "institution": "מוֹסָד",
-    "review": "סְקִירָה"
+    "review": "סְקִירָה",
+    "learn": "לִלמוֹד",
+    "curriculumV2": "תוכנית לימודים v2"
   },
   "guestPrompt": {
     "title": "אתה מצליח מעולה!",
@@ -210,7 +213,10 @@
     "supportAndPlans": "תמיכה ותוכניות",
     "decayBannerActive": "XP מתכלה - הפסד יומי {{rate}}%. ענה על שאלה כדי להפסיק את זה.",
     "decayBannerGrace": "דעיכת XP מתחילה בעוד {{hours}}h — הפסד יומי {{rate}}%. תמשיך ללמוד כדי למנוע את זה.",
-    "dashboard": "לוּחַ מַחווָנִים"
+    "dashboard": "לוּחַ מַחווָנִים",
+    "browseLessons": "עיין בשיעורים",
+    "learnDesc": "המשך במפגש תוכנית הלימודים שלך",
+    "catalogDesc": "בחר מושג ספציפי ללמוד"
   },
   "lessons": {
     "title": "{{language}} <1>שיעורים</1>",
@@ -402,7 +408,32 @@
     "saveForReview": "שמור לסקירה",
     "bookmarkedReason": "סימניה מכרטיסי פלאש.",
     "selfTestReason": "נשמר מכרטיסי פלאש לבדיקה עצמית מהירה.",
-    "setFamiliarityLevel": "הגדר את היכרות ל-{{level}}"
+    "setFamiliarityLevel": "הגדר את היכרות ל-{{level}}",
+    "deckScopeLabel": "אילו קלפים ללמוד",
+    "deckAll": "כֹּל",
+    "deckMine": "הקלפים שלי",
+    "deckFocus": "מוֹקֵד",
+    "addToFocus": "הוסף לפוקוס",
+    "removeFromFocus": "הסר מפוקוס",
+    "inFocus": "בפוקוס",
+    "focusBadge": "מוֹקֵד",
+    "addSelectedToFocus": "הוסף לפוקוס",
+    "removeSelectedFromFocus": "הסר מפוקוס",
+    "addToFocusOnCreate": "הוסף לחפיסת הפוקוס שלי",
+    "focusFailed": "לא ניתן היה לעדכן את חפיסת הפוקוס שלך.",
+    "focusEmptyTitle": "חפיסת הפוקוס שלך ריקה",
+    "focusEmptyHint": "הוסף כרטיסים לפוקוס מכל כרטיס פלאש כדי ללמוד אותם באופן אינטנסיבי כאן.",
+    "mineEmptyTitle": "עדיין לא הוספת כרטיסים",
+    "mineEmptyHint": "כרטיסים שתיצור יופיעו כאן.",
+    "studyRandom": "לימוד אקראי",
+    "studyNRandom": "מחקר אקראי {{count}}",
+    "studyRandomTitle": "למד סט אקראי של קלפים",
+    "studyRandomOptions": "למד אפשרויות אקראיות",
+    "randomCountLabel": "כמה קלפים ללמוד",
+    "selectCards": "בחר כרטיסים",
+    "studyingSubset": "לומד {{count}}",
+    "studyAll": "למד הכל",
+    "noCardsToPick": "עדיין אין כרטיסים לבחירה."
   },
   "progress": {
     "title": "<1>ההתקדמות</1> שלך",
@@ -543,7 +574,14 @@
     "fullName": "שם מלא",
     "fullNamePlaceholder": "שם שיוצג בתעודות",
     "fullNameMissing": "הוסף לפני הנפקת אישור",
-    "activeAccountType": "סוג חשבון פעיל"
+    "activeAccountType": "סוג חשבון פעיל",
+    "curriculumPreferenceSaved": "העדפת תכנית הלימודים עודכנה.",
+    "curriculumVersion": "גרסת תכנית הלימודים",
+    "curriculumVersionDesc": "בחר את הגרסה של תוכנית הלימודים שבה ברצונך להשתמש עבור כל שפת יעד נתמכת. אתה יכול להחליף בכל עת.",
+    "curriculumV2Name": "{{language}} - תוכנית לימודים חדשה",
+    "curriculumV2Desc": "תרגילי דפוס, סיפורים, קלוז, vocab SRS, הגייה - ברצף המתכנן.",
+    "curriculumV1Name": "{{language}} - תוכנית לימודים קלאסית",
+    "curriculumV1Desc": "רשימות אוצר מילים ושיעורי כיתות שאתה כבר יודע."
   },
   "verifyEmail": {
     "verifying": "מאמת את האימייל שלך...",
@@ -2011,7 +2049,9 @@
       "needHint": "צריך רמז?",
       "correct": "נָכוֹן",
       "answer": "תשובה: {{answer}}",
-      "whyHint": "מַדוּעַ:"
+      "whyHint": "מַדוּעַ:",
+      "blank": "רֵיק",
+      "choices": "בחירות"
     },
     "finishScore": "סיום ({{score}}/{{total}})",
     "next": "הַבָּא",
@@ -2021,7 +2061,11 @@
       "inYourLanguage": "בשפה שלך",
       "inTargetLanguage": "ב{{language}}",
       "whyDiffer": "למה הם שונים",
-      "commonMistakes": "טעויות שדוברי אנגלית עושים בדרך כלל"
+      "commonMistakes": "טעויות שדוברי אנגלית עושים בדרך כלל",
+      "mistakeN": "טעות {{n}}.",
+      "cultural": "הקשר תרבותי",
+      "forExample": "לְדוּגמָה",
+      "playItem": "שחק פריט"
     },
     "gotIt": "הבנתי",
     "minimalPair": {
@@ -2065,7 +2109,8 @@
       "recoveryTitle": "בוא נבדוק שוב לפני שאתה ממשיך.",
       "recoveryAnchors": "דוגמאות עוגן",
       "recoveryPrompt": "איזה משפט קוריאני מתאים לאנגלית הזו?",
-      "needMore": "השג {{required}} ניסיונות נכונים לסיום."
+      "needMore": "השג {{required}} ניסיונות נכונים לסיום.",
+      "exampleN": "דוגמה {{n}}."
     },
     "continue": "לְהַמשִׁיך",
     "done": "נַעֲשָׂה",
@@ -2087,7 +2132,8 @@
       "listenFirst": "תקשיב קודם ואז תקליט.",
       "repeatThenContinue": "חזור בקול ואז המשך.",
       "tryAgainOrContinue": "הקלט שוב ​​או המשך.",
-      "recordWhenReady": "הקלט כשמוכן."
+      "recordWhenReady": "הקלט כשמוכן.",
+      "rateLimited": "יותר מדי בדיקות דיבור לאחרונה - השהה רגע."
     },
     "story": {
       "dialogueMode": "דִיאָלוֹג",
@@ -2096,7 +2142,8 @@
       "showTranslation": "הצג תרגום",
       "comprehensionQuestions": "שאלות הבנה",
       "questionInstructions": "ענה לכל אחד בראש או בקול רם.",
-      "readStory": "קראתי את הסיפור"
+      "readStory": "קראתי את הסיפור",
+      "questionN": "שאלה {{n}}."
     },
     "vocabDeck": {
       "meta": "סיפון ווקאב",
@@ -2121,6 +2168,27 @@
       "good": "טוֹב",
       "easy": "קַל",
       "prompt": "כמה טוב הכרת את זה?"
+    },
+    "conceptCompleteTitle": "הקונספט הושלם",
+    "backToCatalog": "בחר שיעור אחר",
+    "back": "בְּחֲזָרָה",
+    "browseLessons": "עיין בכל השיעורים",
+    "hangulRefresher": "סקירת Hangul",
+    "showRomanization": "הצג רומנטיזציה",
+    "listenMode": "מצב האזנה",
+    "playPage": "שחק שיעור שלם",
+    "playSentence": "שחק משפט",
+    "playSection": "קטע משחק",
+    "playPattern": "תבנית משחק",
+    "playExample": "דוגמה לשחק",
+    "playFiller": "שחק מילוי",
+    "playIdeal": "שחק תשובה אידיאלית",
+    "playLine": "שחק קו",
+    "playCard": "משחק קלף",
+    "audio": {
+      "play": "לְשַׂחֵק",
+      "stop": "לְהַפְסִיק",
+      "stopPlayback": "עצור את ההשמעה"
     }
   },
   "notifications": {
@@ -2196,5 +2264,58 @@
     "passwordPlaceholder": "סִיסמָה",
     "verifying": "מאמת...",
     "confirm": "לְאַשֵׁר"
+  },
+  "curriculumVersion": {
+    "kicker": "עדכון תוכנית הלימודים זמין",
+    "title": "בחר את חוויית {{language}} שלך",
+    "lede": "השקנו תוכנית לימודים חדשה של {{language}} עם תרגילי דפוס, סיפורי קלט מובנים ומתכנן הפעלות שמתאים את עצמו למה ששכחת.",
+    "recommended": "מוּמלָץ",
+    "v2Title": "נסה את תוכנית הלימודים החדשה",
+    "v2Body": "שיעורים ראשונים בקונספט על פני תרגילי דפוס, סיפורים, ייצור קלוז, SRS של ווקאב ומשימות הגייה - משולבים על ידי מתכנן הפעלות.",
+    "tryV2": "נסה את זה",
+    "v1Title": "הישאר על החוויה הקלאסית",
+    "v1Body": "המשיכו להשתמש ברשימות אוצר המילים ובשיעורי הכיתה שאתם מכירים. אתה יכול לעבור בכל עת מההגדרות.",
+    "stayV1": "שמור על קלאסי",
+    "decideLater": "תחליט מאוחר יותר"
+  },
+  "hangul": {
+    "loadFailed": "לא ניתן לטעון שיעורי Hangul.",
+    "skipConfirm": "לדלג על העלאת Hangul? אתה יכול לחזור בכל עת מכותרת הפגישה.",
+    "saveFailed": "לא ניתן לשמור את ההתקדמות.",
+    "empty": "אין תוכן Hangul זמין.",
+    "backToLearn": "חזרה ללימוד",
+    "refresherKicker": "מרענן הנגול",
+    "onboardingKicker": "עליית Hangul",
+    "title": "קרא קוריאנית",
+    "subtitle": "שמונה שיעורים קצרים. שמע כל אות, למד כיצד בלוקים בונים הברות, ואז קרא מילים אמיתיות.",
+    "alreadyKnow": "כבר קראתי את Hangul - דלג",
+    "progressLabel": "הִתקַדְמוּת",
+    "stepN": "שלב {{step}} מתוך {{total}}",
+    "stopPage": "לְהַפְסִיק",
+    "playPage": "הפעל עמוד שלם",
+    "playLetter": "השמעת צליל אותיות",
+    "stopCard": "לְהַפְסִיק",
+    "playCard": "לשחק קלף שלם",
+    "play": "לְשַׂחֵק",
+    "practiceInstructions": "קרא כל מילה בקול לפני ההצצה. הקש על הרמקול כדי להשוות.",
+    "tier": "שכבה {{tier}}",
+    "reveal": "לְגַלוֹת",
+    "done": "נַעֲשָׂה",
+    "finishAndLearn": "התחל דקדוק A1",
+    "next": "הַבָּא"
+  },
+  "catalog": {
+    "done": "נַעֲשָׂה",
+    "inProgress": "בתהליך",
+    "startConcept": "התחל את הרעיון הזה",
+    "continueConcept": "המשך הרעיון",
+    "reviewConcept": "קונספט סקירה",
+    "notEnabled": "תוכנית הלימודים v2 עדיין לא מופעלת עבור החשבון שלך.",
+    "loadFailed": "לא ניתן היה לטעון את הקטלוג.",
+    "empty": "עדיין אין שיעורים.",
+    "backToSession": "המשך במפגש שלך",
+    "title": "עיין בשיעורי קוריאנית",
+    "subtitle": "כל מושג שהמתכנן יכול ללמד. בחר אחד לצלול בו, או תן למערכת לבחור עבורך בדף הלמידה הראשי.",
+    "conceptsMastered": "מושגים ששולטים בהם"
   }
 }

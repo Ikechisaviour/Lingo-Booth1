@@ -141,20 +141,40 @@ async function synthesize(text, lang, voice, rate, res) {
 
   const { MsEdgeTTS, OUTPUT_FORMAT } = await loadTTS();
 
+  // Silently strip denylisted voices: if a learner had saved one as their
+  // preference before it was removed from the picker, fall back to the
+  // language default instead of producing an error.
+  const safeRequestedVoice = voice && !VOICE_DENYLIST.has(voice) ? voice : null;
+
   // Determine voice: explicit voice > default for lang > English fallback
-  const primaryVoice = voice || DEFAULT_VOICES[lang] || DEFAULT_VOICES['en-US'];
+  const primaryVoice = safeRequestedVoice || DEFAULT_VOICES[lang] || DEFAULT_VOICES['en-US'];
   // Extract locale from voice name (e.g. 'ko-KR-SunHiNeural' → 'ko-KR')
-  const voiceLocale = voice
+  const voiceLocale = safeRequestedVoice
     ? primaryVoice.split('-').slice(0, 2).join('-')
     : lang || primaryVoice.split('-').slice(0, 2).join('-');
   const escapedText = escapeXml(text.trim());
 
-  // Build list of voices to try: requested/familiar voice first, female default next.
+  // Build list of voices to try.
+  //
+  // When the caller passed an explicit voice we ONLY retry that same voice on
+  // a transient failure — never substitute a different voice (and especially
+  // not a different-gender one). Mid-sequence gender flips were breaking the
+  // single-voice feel on the Hangul page when the primary occasionally
+  // failed and the silent fallback to a male voice kicked in.
+  //
+  // When no voice is specified (mobile/embed callers letting the backend
+  // pick), keep the original chain so we never go silent.
   const defaultVoice = DEFAULT_VOICES[lang] || DEFAULT_VOICES['en-US'];
   const fallbackVoice = FALLBACK_VOICES[lang];
   const voicesToTry = [primaryVoice];
-  if (defaultVoice && defaultVoice !== primaryVoice) voicesToTry.push(defaultVoice);
-  if (fallbackVoice && fallbackVoice !== primaryVoice && fallbackVoice !== defaultVoice) voicesToTry.push(fallbackVoice);
+  if (safeRequestedVoice) {
+    // One retry with the SAME voice handles flaky network / stream errors
+    // without swapping voice identity.
+    voicesToTry.push(primaryVoice);
+  } else {
+    if (defaultVoice && defaultVoice !== primaryVoice) voicesToTry.push(defaultVoice);
+    if (fallbackVoice && fallbackVoice !== primaryVoice && fallbackVoice !== defaultVoice) voicesToTry.push(fallbackVoice);
+  }
 
   for (const voiceName of voicesToTry) {
     try {
@@ -197,12 +217,23 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Voices we never want to surface in the picker — even though Microsoft
+// ships them in the catalog. Match against the voice ShortName.
+const VOICE_DENYLIST = new Set([
+  'ko-KR-HyunsuMultilingualNeural',
+]);
+
+function isAllowedVoice(voice) {
+  return !VOICE_DENYLIST.has(voice?.ShortName || '');
+}
+
 // GET /api/tts/voices — list available Edge TTS voices
 router.get('/voices', async (req, res) => {
   try {
     const { MsEdgeTTS } = await loadTTS();
     const tts = new MsEdgeTTS();
-    const voices = await tts.getVoices();
+    const allVoices = await tts.getVoices();
+    const voices = allVoices.filter(isAllowedVoice);
 
     // Optional filter by language prefix
     const { lang } = req.query;

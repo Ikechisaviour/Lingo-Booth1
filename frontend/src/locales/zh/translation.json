@@ -45,7 +45,8 @@
     "notSet": "未设置",
     "goBack": "回去",
     "all": "全部",
-    "restart": "重新启动"
+    "restart": "重新启动",
+    "previous": "以前的"
   },
   "languageSelect": {
     "title": "选择你的语言",
@@ -125,7 +126,9 @@
     "plans": "计划",
     "exerciseOptions": "锻炼选项",
     "institution": "机构",
-    "review": "审查"
+    "review": "审查",
+    "learn": "学习",
+    "curriculumV2": "课程v2"
   },
   "guestPrompt": {
     "title": "你做得很棒！",
@@ -210,7 +213,10 @@
     "supportAndPlans": "支持和计划",
     "decayBannerActive": "XP 正在衰减 — 每日损失 {{rate}}%。 回答一个问题来阻止它。",
     "decayBannerGrace": "XP 衰减从 {{hours}}h 开始 — 每日损失 {{rate}}%。 继续学习以预防它。",
-    "dashboard": "仪表板"
+    "dashboard": "仪表板",
+    "browseLessons": "浏览课程",
+    "learnDesc": "继续您的课程",
+    "catalogDesc": "选择一个具体的概念来研究"
   },
   "lessons": {
     "title": "{{language}} <1>课程</1>",
@@ -402,7 +408,32 @@
     "saveForReview": "保存以供审核",
     "bookmarkedReason": "从抽认卡添加书签。",
     "selfTestReason": "从抽认卡中保存以供快速自检。",
-    "setFamiliarityLevel": "将熟悉度设置为{{level}}"
+    "setFamiliarityLevel": "将熟悉度设置为{{level}}",
+    "deckScopeLabel": "学习哪些卡牌",
+    "deckAll": "全部",
+    "deckMine": "我的卡片",
+    "deckFocus": "重点",
+    "addToFocus": "添加到焦点",
+    "removeFromFocus": "从焦点中移除",
+    "inFocus": "聚焦",
+    "focusBadge": "重点",
+    "addSelectedToFocus": "添加到焦点",
+    "removeSelectedFromFocus": "从焦点中移除",
+    "addToFocusOnCreate": "添加到我的焦点组",
+    "focusFailed": "无法更新您的 Focus 牌组。",
+    "focusEmptyTitle": "你的焦点牌组是空的",
+    "focusEmptyHint": "将任何抽认卡中的卡片添加到焦点，以便在此处深入研究它们。",
+    "mineEmptyTitle": "您还没有添加任何卡",
+    "mineEmptyHint": "您创建的卡片将出现在此处。",
+    "studyRandom": "随机学习",
+    "studyNRandom": "研究{{count}}随机",
+    "studyRandomTitle": "研究一组随机卡片",
+    "studyRandomOptions": "研究随机选项",
+    "randomCountLabel": "需要学习多少张卡",
+    "selectCards": "选择卡片",
+    "studyingSubset": "学习{{count}}",
+    "studyAll": "研究全部",
+    "noCardsToPick": "还没有可供选择的卡片。"
   },
   "progress": {
     "title": "你的<1>进度</1>",
@@ -543,7 +574,14 @@
     "fullName": "姓名",
     "fullNamePlaceholder": "证书上显示的姓名",
     "fullNameMissing": "颁发证书前添加",
-    "activeAccountType": "活跃账户类型"
+    "activeAccountType": "活跃账户类型",
+    "curriculumPreferenceSaved": "课程偏好已更新。",
+    "curriculumVersion": "课程版本",
+    "curriculumVersionDesc": "选择您想要用于每种支持的目标语言的课程版本。 您可以随时切换。",
+    "curriculumV2Name": "{{language}} — 新课程",
+    "curriculumV2Desc": "模式练习、故事、完型填空、词汇 SRS、发音 — 按计划顺序排列。",
+    "curriculumV1Name": "{{language}} — 经典课程",
+    "curriculumV1Desc": "您已经知道的词汇表和课程。"
   },
   "verifyEmail": {
     "verifying": "正在验证你的邮箱...",
@@ -2011,7 +2049,9 @@
       "needHint": "需要提示吗？",
       "correct": "正确的",
       "answer": "答案：{{answer}}",
-      "whyHint": "为什么："
+      "whyHint": "为什么：",
+      "blank": "空白的",
+      "choices": "选择"
     },
     "finishScore": "完成 ({{score}}/{{total}})",
     "next": "下一个",
@@ -2021,7 +2061,11 @@
       "inYourLanguage": "用您的语言",
       "inTargetLanguage": "在{{language}}",
       "whyDiffer": "为什么它们不同",
-      "commonMistakes": "说英语的人常犯的错误"
+      "commonMistakes": "说英语的人常犯的错误",
+      "mistakeN": "错误{{n}}。",
+      "cultural": "文化背景",
+      "forExample": "例如",
+      "playItem": "播放项目"
     },
     "gotIt": "知道了",
     "minimalPair": {
@@ -2065,7 +2109,8 @@
       "recoveryTitle": "在继续之前让我们回顾一下。",
       "recoveryAnchors": "锚点示例",
       "recoveryPrompt": "哪个韩语句子与这个英语相符？",
-      "needMore": "达到{{required}}正确尝试完成。"
+      "needMore": "达到{{required}}正确尝试完成。",
+      "exampleN": "示例{{n}}。"
     },
     "continue": "继续",
     "done": "完毕",
@@ -2087,7 +2132,8 @@
       "listenFirst": "先听，再录音。",
       "repeatThenContinue": "大声重复，然后继续。",
       "tryAgainOrContinue": "重新录制或继续。",
-      "recordWhenReady": "准备好后进行记录。"
+      "recordWhenReady": "准备好后进行记录。",
+      "rateLimited": "最近的语音检查太多了——暂停一下。"
     },
     "story": {
       "dialogueMode": "对话",
@@ -2096,7 +2142,8 @@
       "showTranslation": "显示翻译",
       "comprehensionQuestions": "理解题",
       "questionInstructions": "在心里或大声回答每个问题。",
-      "readStory": "我读过这个故事"
+      "readStory": "我读过这个故事",
+      "questionN": "问题{{n}}。"
     },
     "vocabDeck": {
       "meta": "词汇表",
@@ -2121,6 +2168,27 @@
       "good": "好的",
       "easy": "简单的",
       "prompt": "你对它了解多少？"
+    },
+    "conceptCompleteTitle": "概念完成",
+    "backToCatalog": "选择另一节课",
+    "back": "后退",
+    "browseLessons": "浏览所有课程",
+    "hangulRefresher": "复习韩文",
+    "showRomanization": "显示罗马化",
+    "listenMode": "聆听模式",
+    "playPage": "播放整节课",
+    "playSentence": "玩句子",
+    "playSection": "游玩部分",
+    "playPattern": "玩法",
+    "playExample": "播放示例",
+    "playFiller": "玩填充物",
+    "playIdeal": "发挥理想答案",
+    "playLine": "玩线",
+    "playCard": "打牌",
+    "audio": {
+      "play": "玩",
+      "stop": "停止",
+      "stopPlayback": "停止播放"
     }
   },
   "notifications": {
@@ -2196,5 +2264,58 @@
     "passwordPlaceholder": "密码",
     "verifying": "正在验证...",
     "confirm": "确认"
+  },
+  "curriculumVersion": {
+    "kicker": "课程有更新",
+    "title": "选择您的{{language}}经历",
+    "lede": "我们推出了新的 {{language}} 课程，其中包含模式练习、可理解的输入故事以及可适应您遗忘内容的课程规划器。",
+    "recommended": "受到推崇的",
+    "v2Title": "尝试新课程",
+    "v2Body": "概念优先的课程涵盖模式练习、故事、完形填空、词汇 SRS 和发音任务 - 由课程规划者穿插进行。",
+    "tryV2": "尝试一下",
+    "v1Title": "保持经典体验",
+    "v1Body": "继续使用您知道的词汇表和课堂课程。 您可以随时从“设置”进行切换。",
+    "stayV1": "保持经典",
+    "decideLater": "稍后再决定"
+  },
+  "hangul": {
+    "loadFailed": "无法加载韩文课程。",
+    "skipConfirm": "跳过韩文入门？ 您可以随时从会话标头返回。",
+    "saveFailed": "无法保存进度。",
+    "empty": "没有可用的韩文内容。",
+    "backToLearn": "返回学习",
+    "refresherKicker": "韩文复习",
+    "onboardingKicker": "韩文入门",
+    "title": "读韩语",
+    "subtitle": "八个简短的课程。 听到每个字母，了解积木如何构建音节，然后阅读真正的单词。",
+    "alreadyKnow": "我已经读过韩文 — 跳过",
+    "progressLabel": "进步",
+    "stepN": "{{total}} 的步骤 {{step}}",
+    "stopPage": "停止",
+    "playPage": "播放整页",
+    "playLetter": "播放字母声音",
+    "stopCard": "停止",
+    "playCard": "打出整张牌",
+    "play": "玩",
+    "practiceInstructions": "在偷看之前大声朗读每个单词。 点击扬声器进行比较。",
+    "tier": "等级{{tier}}",
+    "reveal": "揭示",
+    "done": "完毕",
+    "finishAndLearn": "开始A1语法",
+    "next": "下一个"
+  },
+  "catalog": {
+    "done": "完毕",
+    "inProgress": "进行中",
+    "startConcept": "开始这个概念",
+    "continueConcept": "继续概念",
+    "reviewConcept": "审查理念",
+    "notEnabled": "您的帐户尚未启用课程 v2。",
+    "loadFailed": "无法加载目录。",
+    "empty": "还没有上课。",
+    "backToSession": "继续您的会话",
+    "title": "浏览韩语课程",
+    "subtitle": "规划师可以教授的每个概念。 选择一个进行深入研究，或者让系统在“学习”主页上为您选择。",
+    "conceptsMastered": "掌握概念"
   }
 }

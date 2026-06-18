@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Kan deze kaart momenteel niet opslaan.",
     "bookmarkedReason": "Bladwijzer gemaakt van flashcards.",
     "selfTestReason": "Opgeslagen van flashcards voor een snelle zelftest.",
-    "setFamiliarityLevel": "Stel bekendheid in op {{level}}"
+    "setFamiliarityLevel": "Stel bekendheid in op {{level}}",
+    "deckAll": "Alle",
+    "deckMine": "Mijn kaarten",
+    "deckFocus": "Focus",
+    "addToFocus": "Toevoegen aan focus",
+    "removeFromFocus": "Verwijderen uit focus",
+    "addToFocusOnCreate": "Voeg toe aan mijn Focus-deck",
+    "focusFailed": "Kan uw Focus-deck niet updaten.",
+    "randomCountLabel": "Hoeveel kaarten",
+    "studyNRandom": "Bestudeer {{count}} willekeurig"
   },
   "progress": {
     "title": "Je voortgang",

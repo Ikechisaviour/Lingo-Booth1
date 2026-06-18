@@ -452,7 +452,16 @@
     "saveForReviewFailed": "現在このカードを保存できませんでした。",
     "bookmarkedReason": "フラッシュカードからブックマークしました。",
     "selfTestReason": "簡単なセルフテストのためにフラッシュカードから保存されています。",
-    "setFamiliarityLevel": "親密度を{{level}}に設定"
+    "setFamiliarityLevel": "親密度を{{level}}に設定",
+    "deckAll": "全て",
+    "deckMine": "私のカード",
+    "deckFocus": "集中",
+    "addToFocus": "焦点に追加",
+    "removeFromFocus": "フォーカスから削除",
+    "addToFocusOnCreate": "私のフォーカスデッキに追加",
+    "focusFailed": "フォーカスデッキを更新できませんでした。",
+    "randomCountLabel": "カードは何枚",
+    "studyNRandom": "研究{{count}} ランダム"
   },
   "progress": {
     "title": "あなたの進捗",

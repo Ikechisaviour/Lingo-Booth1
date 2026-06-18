@@ -28,6 +28,8 @@ const FUNCTIONS = Object.freeze({
   QUANTITY: 'quantity',               // how many, some, all
   TIME_REFERENCE: 'time_reference',   // when something happens
   LOCATION: 'location',               // where something is
+  INTERROGATIVE: 'interrogative',     // asking who / what / where / when / why / how
+  NEGATION: 'negation',               // saying that something isn't / I don't / can't
 });
 
 const FUNCTION_VALUES = Object.freeze(Object.values(FUNCTIONS));

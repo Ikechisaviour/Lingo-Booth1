@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Diese Karte konnte momentan nicht gespeichert werden.",
     "bookmarkedReason": "Von Karteikarten mit Lesezeichen versehen.",
     "selfTestReason": "Von Karteikarten für einen schnellen Selbsttest gespeichert.",
-    "setFamiliarityLevel": "Vertrautheit auf {{level}} setzen"
+    "setFamiliarityLevel": "Vertrautheit auf {{level}} setzen",
+    "deckAll": "Alle",
+    "deckMine": "Meine Karten",
+    "deckFocus": "Fokus",
+    "addToFocus": "Zum Fokus hinzufügen",
+    "removeFromFocus": "Aus Fokus entfernen",
+    "addToFocusOnCreate": "Zu meinem Focus-Deck hinzufügen",
+    "focusFailed": "Dein Focus-Deck konnte nicht aktualisiert werden.",
+    "randomCountLabel": "Wie viele Karten",
+    "studyNRandom": "Studie {{count}} zufällig"
   },
   "progress": {
     "title": "Dein Fortschritt",

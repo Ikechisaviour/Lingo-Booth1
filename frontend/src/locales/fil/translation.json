@@ -45,7 +45,8 @@
     "notSet": "Hindi nakatakda",
     "goBack": "Bumalik ka",
     "all": "Lahat",
-    "restart": "I-restart"
+    "restart": "I-restart",
+    "previous": "Nakaraang"
   },
   "languageSelect": {
     "title": "Piliin ang Iyong mga Wika",
@@ -125,7 +126,9 @@
     "plans": "Mga plano",
     "exerciseOptions": "Mga opsyon sa ehersisyo",
     "institution": "Institusyon",
-    "review": "Balik-aral"
+    "review": "Balik-aral",
+    "learn": "Matuto",
+    "curriculumV2": "Curriculum v2"
   },
   "guestPrompt": {
     "title": "Mahusay ang ginagawa mo!",
@@ -210,7 +213,10 @@
     "supportAndPlans": "Suporta at mga plano",
     "decayBannerActive": "Ang XP ay nabubulok — araw-araw na pagkawala {{rate}}%. Sagutin ang isang tanong upang matigil ito.",
     "decayBannerGrace": "Nagsisimula ang pagkabulok ng XP sa {{hours}}h — araw-araw na pagkawala {{rate}}%. Patuloy na mag-aral para maiwasan ito.",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "browseLessons": "Mag-browse ng mga aralin",
+    "learnDesc": "Ipagpatuloy ang iyong sesyon ng kurikulum",
+    "catalogDesc": "Pumili ng isang partikular na konsepto na pag-aaralan"
   },
   "lessons": {
     "title": "Mga Aralin sa <1>{{language}}</1>",
@@ -402,7 +408,32 @@
     "saveForReview": "I-save para sa pagsusuri",
     "bookmarkedReason": "Na-bookmark mula sa mga flashcard.",
     "selfTestReason": "Na-save mula sa mga flashcard para sa isang mabilis na self-test.",
-    "setFamiliarityLevel": "Itakda ang pamilyar sa {{level}}"
+    "setFamiliarityLevel": "Itakda ang pamilyar sa {{level}}",
+    "deckScopeLabel": "Aling mga kard ang pag-aaralan",
+    "deckAll": "Lahat",
+    "deckMine": "Aking Mga Kard",
+    "deckFocus": "Focus",
+    "addToFocus": "Idagdag sa Focus",
+    "removeFromFocus": "Alisin sa Focus",
+    "inFocus": "Nakatutok",
+    "focusBadge": "Focus",
+    "addSelectedToFocus": "Idagdag sa Focus",
+    "removeSelectedFromFocus": "Alisin sa Focus",
+    "addToFocusOnCreate": "Idagdag sa aking Focus deck",
+    "focusFailed": "Hindi ma-update ang iyong Focus deck.",
+    "focusEmptyTitle": "Walang laman ang iyong Focus deck",
+    "focusEmptyHint": "Magdagdag ng mga card sa Focus mula sa anumang flashcard upang masusing pag-aralan ang mga ito dito.",
+    "mineEmptyTitle": "Hindi ka pa nagdaragdag ng anumang mga card",
+    "mineEmptyHint": "Lalabas dito ang mga card na gagawin mo.",
+    "studyRandom": "Mag-aral nang random",
+    "studyNRandom": "Pag-aralan ang {{count}} random",
+    "studyRandomTitle": "Pag-aralan ang isang random na hanay ng mga card",
+    "studyRandomOptions": "Pag-aralan ang mga random na pagpipilian",
+    "randomCountLabel": "Ilang card ang dapat pag-aralan",
+    "selectCards": "Pumili ng mga card",
+    "studyingSubset": "Nag-aaral {{count}}",
+    "studyAll": "Pag-aralan lahat",
+    "noCardsToPick": "Wala pang mga card na pipiliin."
   },
   "progress": {
     "title": "Ang Iyong <1>Progreso</1>",
@@ -543,7 +574,14 @@
     "fullName": "Buong pangalan",
     "fullNamePlaceholder": "Pangalan na ipapakita sa mga certificate",
     "fullNameMissing": "Magdagdag bago magbigay ng sertipiko",
-    "activeAccountType": "Aktibong uri ng account"
+    "activeAccountType": "Aktibong uri ng account",
+    "curriculumPreferenceSaved": "Na-update ang kagustuhan sa curriculum.",
+    "curriculumVersion": "Bersyon ng kurikulum",
+    "curriculumVersionDesc": "Piliin ang bersyon ng curriculum na gusto mong gamitin para sa bawat sinusuportahang target na wika. Maaari kang lumipat anumang oras.",
+    "curriculumV2Name": "{{language}} — bagong curriculum",
+    "curriculumV2Desc": "Pattern drills, kwento, cloze, vocab SRS, pronunciation — planner-sequenced.",
+    "curriculumV1Name": "{{language}} — klasikong kurikulum",
+    "curriculumV1Desc": "Mga listahan ng bokabularyo at mga aralin sa klase na alam mo na."
   },
   "verifyEmail": {
     "verifying": "Vine-verify ang iyong email...",
@@ -2011,7 +2049,9 @@
       "needHint": "Kailangan mo ng pahiwatig?",
       "correct": "Tama",
       "answer": "Sagot: {{answer}}",
-      "whyHint": "Bakit:"
+      "whyHint": "Bakit:",
+      "blank": "blangko",
+      "choices": "Mga pagpipilian"
     },
     "finishScore": "Tapusin ({{score}}/{{total}})",
     "next": "Susunod",
@@ -2021,7 +2061,11 @@
       "inYourLanguage": "Sa iyong wika",
       "inTargetLanguage": "Sa {{language}}",
       "whyDiffer": "Kung bakit sila magkaiba",
-      "commonMistakes": "Mga pagkakamali na karaniwang ginagawa ng mga nagsasalita ng Ingles"
+      "commonMistakes": "Mga pagkakamali na karaniwang ginagawa ng mga nagsasalita ng Ingles",
+      "mistakeN": "Nagkakamali {{n}}.",
+      "cultural": "Konteksto ng kultura",
+      "forExample": "Halimbawa",
+      "playItem": "I-play ang item"
     },
     "gotIt": "Nakuha ko",
     "minimalPair": {
@@ -2065,7 +2109,8 @@
       "recoveryTitle": "Balikan natin bago ka magpatuloy.",
       "recoveryAnchors": "Mga halimbawa ng anchor",
       "recoveryPrompt": "Aling Korean sentence ang tumutugma sa English na ito?",
-      "needMore": "Abutin ang {{required}} mga tamang pagtatangka upang matapos."
+      "needMore": "Abutin ang {{required}} mga tamang pagtatangka upang matapos.",
+      "exampleN": "Halimbawa {{n}}."
     },
     "continue": "Magpatuloy",
     "done": "Tapos na",
@@ -2087,7 +2132,8 @@
       "listenFirst": "Makinig muna, pagkatapos ay i-record.",
       "repeatThenContinue": "Ulitin nang malakas, pagkatapos ay magpatuloy.",
       "tryAgainOrContinue": "Mag-record muli o magpatuloy.",
-      "recordWhenReady": "I-record kapag handa na."
+      "recordWhenReady": "I-record kapag handa na.",
+      "rateLimited": "Masyadong maraming speech check kamakailan — i-pause sandali."
     },
     "story": {
       "dialogueMode": "Dialogue",
@@ -2096,7 +2142,8 @@
       "showTranslation": "Ipakita ang pagsasalin",
       "comprehensionQuestions": "Mga tanong sa pag-unawa",
       "questionInstructions": "Sagutin ang bawat isa sa iyong ulo o malakas.",
-      "readStory": "Nabasa ko na ang kwento"
+      "readStory": "Nabasa ko na ang kwento",
+      "questionN": "Tanong {{n}}."
     },
     "vocabDeck": {
       "meta": "Vocab deck",
@@ -2121,6 +2168,27 @@
       "good": "Mabuti",
       "easy": "Madali",
       "prompt": "Gaano mo ito kakilala?"
+    },
+    "conceptCompleteTitle": "Kumpleto ang konsepto",
+    "backToCatalog": "Pumili ng isa pang aralin",
+    "back": "Bumalik",
+    "browseLessons": "I-browse ang lahat ng mga aralin",
+    "hangulRefresher": "Suriin ang Hangul",
+    "showRomanization": "Ipakita ang romanisasyon",
+    "listenMode": "Listen mode",
+    "playPage": "Maglaro ng buong aralin",
+    "playSentence": "Maglaro ng pangungusap",
+    "playSection": "Seksyon ng paglalaro",
+    "playPattern": "Pattern ng paglalaro",
+    "playExample": "Halimbawa ng laro",
+    "playFiller": "Maglaro ng tagapuno",
+    "playIdeal": "I-play ang perpektong sagot",
+    "playLine": "Maglaro ng linya",
+    "playCard": "Maglaro ng card",
+    "audio": {
+      "play": "Maglaro",
+      "stop": "Tumigil ka",
+      "stopPlayback": "Ihinto ang pag-playback"
     }
   },
   "notifications": {
@@ -2196,5 +2264,58 @@
     "passwordPlaceholder": "Password",
     "verifying": "Bine-verify...",
     "confirm": "Kumpirmahin"
+  },
+  "curriculumVersion": {
+    "kicker": "Available ang pag-update ng kurikulum",
+    "title": "Piliin ang iyong {{language}} na karanasan",
+    "lede": "Naglunsad kami ng bagong {{language}} curriculum na may pattern drills, comprehensible-input stories, at isang session planner na umaangkop sa kung ano ang nakalimutan mo.",
+    "recommended": "Inirerekomenda",
+    "v2Title": "Subukan ang bagong curriculum",
+    "v2Body": "Concept-first lessons sa mga pattern drills, stories, cloze production, vocab SRS, at mga gawain sa pagbigkas — na pinagsasama ng isang session planner.",
+    "tryV2": "Subukan ito",
+    "v1Title": "Manatili sa klasikong karanasan",
+    "v1Body": "Patuloy na gamitin ang mga listahan ng bokabularyo at mga aralin sa klase na alam mo. Maaari kang lumipat anumang oras mula sa Mga Setting.",
+    "stayV1": "Panatilihin ang klasiko",
+    "decideLater": "Magpasya mamaya"
+  },
+  "hangul": {
+    "loadFailed": "Hindi ma-load ang mga aralin sa Hangul.",
+    "skipConfirm": "Laktawan ang Hangul onboarding? Maaari kang bumalik anumang oras mula sa header ng session.",
+    "saveFailed": "Hindi mai-save ang pag-unlad.",
+    "empty": "Walang available na nilalamang Hangul.",
+    "backToLearn": "Bumalik sa Matuto",
+    "refresherKicker": "Hangul refresher",
+    "onboardingKicker": "Hangul onboarding",
+    "title": "Magbasa ng Korean",
+    "subtitle": "Walong maikling aralin. Pakinggan ang bawat titik, alamin kung paano bumuo ng mga pantig ang mga bloke, pagkatapos ay basahin ang mga totoong salita.",
+    "alreadyKnow": "Nabasa ko na ang Hangul — skip",
+    "progressLabel": "Pag-unlad",
+    "stepN": "Hakbang {{step}} ng {{total}}",
+    "stopPage": "Tumigil ka",
+    "playPage": "I-play ang buong page",
+    "playLetter": "I-play ang tunog ng titik",
+    "stopCard": "Tumigil ka",
+    "playCard": "Maglaro ng buong card",
+    "play": "Maglaro",
+    "practiceInstructions": "Basahin nang malakas ang bawat salita bago sumilip. I-tap ang speaker para ihambing.",
+    "tier": "Tier {{tier}}",
+    "reveal": "Ibunyag",
+    "done": "Tapos na",
+    "finishAndLearn": "Simulan ang A1 grammar",
+    "next": "Susunod"
+  },
+  "catalog": {
+    "done": "Tapos na",
+    "inProgress": "Isinasagawa",
+    "startConcept": "Simulan ang konseptong ito",
+    "continueConcept": "Ipagpatuloy ang konsepto",
+    "reviewConcept": "Repasuhin ang konsepto",
+    "notEnabled": "Ang Curriculum v2 ay hindi pa pinagana para sa iyong account.",
+    "loadFailed": "Hindi ma-load ang catalog.",
+    "empty": "Wala pang lessons.",
+    "backToSession": "Ipagpatuloy ang iyong session",
+    "title": "Mag-browse ng mga aralin sa Korean",
+    "subtitle": "Ang bawat konsepto na maituturo ng tagaplano. Pumili ng isa upang sumisid, o hayaan ang system na pumili para sa iyo sa pangunahing page na Matuto.",
+    "conceptsMastered": "mga konseptong pinagkadalubhasaan"
   }
 }

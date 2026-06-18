@@ -452,7 +452,16 @@
     "saveForReviewFailed": "এই মুহূর্তে এই কার্ড সংরক্ষণ করা যায়নি.",
     "bookmarkedReason": "ফ্ল্যাশকার্ড থেকে বুকমার্ক করা হয়েছে।",
     "selfTestReason": "একটি দ্রুত স্ব-পরীক্ষার জন্য ফ্ল্যাশকার্ড থেকে সংরক্ষিত।",
-    "setFamiliarityLevel": "পরিচিতি {{level}} এ সেট করুন"
+    "setFamiliarityLevel": "পরিচিতি {{level}} এ সেট করুন",
+    "deckAll": "সব",
+    "deckMine": "আমার কার্ড",
+    "deckFocus": "ফোকাস",
+    "addToFocus": "ফোকাসে যোগ করুন",
+    "removeFromFocus": "ফোকাস থেকে সরান",
+    "addToFocusOnCreate": "আমার ফোকাস ডেক যোগ করুন",
+    "focusFailed": "আপনার ফোকাস ডেক আপডেট করা যায়নি.",
+    "randomCountLabel": "কত কার্ড",
+    "studyNRandom": "অধ্যয়ন {{count}} এলোমেলোভাবে"
   },
   "progress": {
     "title": "আপনার অগ্রগতি",

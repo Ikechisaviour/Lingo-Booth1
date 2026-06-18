@@ -50,6 +50,7 @@ const InstitutionDashboard = lazy(() => import('./pages/InstitutionDashboard'));
 const CertificateVerifyPage = lazy(() => import('./pages/CertificateVerifyPage'));
 const CurriculumV2SessionShellPage = lazy(() => import('./pages/curriculumV2/SessionShellPage'));
 const HangulOnboardingPage = lazy(() => import('./pages/curriculumV2/HangulOnboardingPage'));
+const LessonCatalogPage = lazy(() => import('./pages/curriculumV2/LessonCatalogPage'));
 
 // Listens for auth changes that should remove the current user from the app.
 function AuthSessionListener({ onSessionEnded }) {
@@ -674,6 +675,13 @@ function App() {
             path="/learn/v2/hangul"
             element={
               isAuthenticated ? <HangulOnboardingPage /> : <Navigate to="/login" />
+            }
+          />
+          {/* Lesson catalog — browse + pick a specific concept or lesson. */}
+          <Route
+            path="/learn/v2/catalog"
+            element={
+              isAuthenticated ? <LessonCatalogPage /> : <Navigate to="/login" />
             }
           />
 

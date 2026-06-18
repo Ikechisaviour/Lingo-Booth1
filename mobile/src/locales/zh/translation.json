@@ -452,7 +452,16 @@
     "saveForReviewFailed": "目前无法保存此卡。",
     "bookmarkedReason": "从抽认卡添加书签。",
     "selfTestReason": "从抽认卡中保存以供快速自检。",
-    "setFamiliarityLevel": "将熟悉度设置为{{level}}"
+    "setFamiliarityLevel": "将熟悉度设置为{{level}}",
+    "deckAll": "全部",
+    "deckMine": "我的卡片",
+    "deckFocus": "重点",
+    "addToFocus": "添加到焦点",
+    "removeFromFocus": "从焦点中移除",
+    "addToFocusOnCreate": "添加到我的焦点组",
+    "focusFailed": "无法更新您的 Focus 牌组。",
+    "randomCountLabel": "有多少张卡",
+    "studyNRandom": "研究{{count}}随机"
   },
   "progress": {
     "title": "你的进度",

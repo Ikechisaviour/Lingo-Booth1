@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Impossible d'enregistrer cette carte pour le moment.",
     "bookmarkedReason": "Mis en signet à partir de flashcards.",
     "selfTestReason": "Enregistré à partir de cartes mémoire pour un auto-test rapide.",
-    "setFamiliarityLevel": "Réglez la familiarité sur {{level}}"
+    "setFamiliarityLevel": "Réglez la familiarité sur {{level}}",
+    "deckAll": "Toute",
+    "deckMine": "Mes cartes",
+    "deckFocus": "Se concentrer",
+    "addToFocus": "Ajouter au focus",
+    "removeFromFocus": "Supprimer du focus",
+    "addToFocusOnCreate": "Ajouter à mon deck Focus",
+    "focusFailed": "Impossible de mettre à jour votre deck Focus.",
+    "randomCountLabel": "Combien de cartes",
+    "studyNRandom": "Etude {{count}} aléatoire"
   },
   "progress": {
     "title": "Vos progrès",

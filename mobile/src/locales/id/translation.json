@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Tidak dapat menyimpan kartu ini sekarang.",
     "bookmarkedReason": "Ditandai dari kartu flash.",
     "selfTestReason": "Disimpan dari kartu flash untuk tes mandiri cepat.",
-    "setFamiliarityLevel": "Setel keakraban ke {{level}}"
+    "setFamiliarityLevel": "Setel keakraban ke {{level}}",
+    "deckAll": "Semua",
+    "deckMine": "Kartu saya",
+    "deckFocus": "Fokus",
+    "addToFocus": "Tambahkan ke Fokus",
+    "removeFromFocus": "Hapus dari Fokus",
+    "addToFocusOnCreate": "Tambahkan ke dek Fokus saya",
+    "focusFailed": "Tidak dapat memperbarui dek Fokus Anda.",
+    "randomCountLabel": "Berapa banyak kartu",
+    "studyNRandom": "Pelajari {{count}} acak"
   },
   "progress": {
     "title": "Kemajuan Anda",

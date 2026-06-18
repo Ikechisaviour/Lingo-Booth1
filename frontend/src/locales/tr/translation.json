@@ -45,7 +45,8 @@
     "notSet": "Ayarlanmadı",
     "goBack": "Geri gitmek",
     "all": "Tüm",
-    "restart": "Tekrar başlat"
+    "restart": "Tekrar başlat",
+    "previous": "Öncesi"
   },
   "languageSelect": {
     "title": "Dillerinizi Seçin",
@@ -125,7 +126,9 @@
     "plans": "Planlar",
     "exerciseOptions": "Egzersiz seçenekleri",
     "institution": "Kurum",
-    "review": "Gözden geçirmek"
+    "review": "Gözden geçirmek",
+    "learn": "Öğrenmek",
+    "curriculumV2": "Müfredat v2"
   },
   "guestPrompt": {
     "title": "Harika gidiyorsun!",
@@ -210,7 +213,10 @@
     "supportAndPlans": "Destek ve planlar",
     "decayBannerActive": "XP azalıyor; günlük kayıp %{{rate}}. Bunu durdurmak için bir soruyu yanıtlayın.",
     "decayBannerGrace": "XP azalması {{hours}}saatte başlıyor — günlük kayıp %{{rate}}. Bunu önlemek için okumaya devam edin.",
-    "dashboard": "Kontrol Paneli"
+    "dashboard": "Kontrol Paneli",
+    "browseLessons": "Derslere göz at",
+    "learnDesc": "Müfredat oturumunuza devam edin",
+    "catalogDesc": "Çalışmak için belirli bir kavram seçin"
   },
   "lessons": {
     "title": "{{language}} <1>Dersler</1>",
@@ -402,7 +408,32 @@
     "saveForReview": "İnceleme için kaydet",
     "bookmarkedReason": "Bilgi kartlarından yer imlerine eklendi.",
     "selfTestReason": "Hızlı bir kendi kendine test için bilgi kartlarından kaydedildi.",
-    "setFamiliarityLevel": "Tanıdıklığı {{level}} olarak ayarlayın"
+    "setFamiliarityLevel": "Tanıdıklığı {{level}} olarak ayarlayın",
+    "deckScopeLabel": "Hangi kartların çalışılacağı",
+    "deckAll": "Tüm",
+    "deckMine": "Kartlarım",
+    "deckFocus": "Odak",
+    "addToFocus": "Odak'a Ekle",
+    "removeFromFocus": "Odaktan Kaldır",
+    "inFocus": "Odakta",
+    "focusBadge": "Odak",
+    "addSelectedToFocus": "Odak'a Ekle",
+    "removeSelectedFromFocus": "Odaktan Kaldır",
+    "addToFocusOnCreate": "Odak desteme ekle",
+    "focusFailed": "Odak desteniz güncellenemedi.",
+    "focusEmptyTitle": "Odak desteniz boş",
+    "focusEmptyHint": "Burada yoğun bir şekilde çalışmak için herhangi bir bilgi kartından Focus'a kartlar ekleyin.",
+    "mineEmptyTitle": "Henüz kart eklemediniz",
+    "mineEmptyHint": "Oluşturduğunuz kartlar burada görünecek.",
+    "studyRandom": "Rastgele çalış",
+    "studyNRandom": "{{count}} rastgele çalış",
+    "studyRandomTitle": "Rastgele bir kart dizisini inceleyin",
+    "studyRandomOptions": "Rastgele seçenekleri inceleyin",
+    "randomCountLabel": "Kaç tane kart çalışılacak",
+    "selectCards": "Kartları seçin",
+    "studyingSubset": "{{count}} çalışıyor",
+    "studyAll": "Hepsini incele",
+    "noCardsToPick": "Henüz seçilecek kart yok."
   },
   "progress": {
     "title": "İlerlemeniz <1>Raporu</1>",
@@ -543,7 +574,14 @@
     "fullName": "Ad Soyad",
     "fullNamePlaceholder": "Sertifikalarda gösterilecek ad",
     "fullNameMissing": "Sertifika vermeden önce ekleyin",
-    "activeAccountType": "Etkin hesap türü"
+    "activeAccountType": "Etkin hesap türü",
+    "curriculumPreferenceSaved": "Müfredat tercihi güncellendi.",
+    "curriculumVersion": "Müfredat sürümü",
+    "curriculumVersionDesc": "Desteklenen her hedef dil için kullanmak istediğiniz müfredat sürümünü seçin. İstediğiniz zaman geçiş yapabilirsiniz.",
+    "curriculumV2Name": "{{language}} — yeni müfredat",
+    "curriculumV2Desc": "Desen alıştırmaları, hikayeler, tamamlama, kelime SRS'si, telaffuz - planlayıcı sıralı.",
+    "curriculumV1Name": "{{language}} — klasik müfredat",
+    "curriculumV1Desc": "Kelime listeleri ve zaten bildiğiniz sınıf dersleri."
   },
   "verifyEmail": {
     "verifying": "E-postanız doğrulanıyor...",
@@ -2011,7 +2049,9 @@
       "needHint": "Bir ipucuna mı ihtiyacınız var?",
       "correct": "Doğru",
       "answer": "Cevap: {{answer}}",
-      "whyHint": "Neden:"
+      "whyHint": "Neden:",
+      "blank": "boşluk",
+      "choices": "Seçimler"
     },
     "finishScore": "Bitiş ({{score}}/{{total}})",
     "next": "Sonraki",
@@ -2021,7 +2061,11 @@
       "inYourLanguage": "senin dilinde",
       "inTargetLanguage": "{{language}}'da",
       "whyDiffer": "Neden farklılar",
-      "commonMistakes": "İngilizce konuşanların sıklıkla yaptığı hatalar"
+      "commonMistakes": "İngilizce konuşanların sıklıkla yaptığı hatalar",
+      "mistakeN": "Hata {{n}}.",
+      "cultural": "Kültürel bağlam",
+      "forExample": "Örneğin",
+      "playItem": "Öğeyi oynat"
     },
     "gotIt": "Anladım",
     "minimalPair": {
@@ -2065,7 +2109,8 @@
       "recoveryTitle": "Devam etmeden önce tekrar ziyaret edelim.",
       "recoveryAnchors": "Çapa örnekleri",
       "recoveryPrompt": "Hangi Korece cümle bu İngilizceyle eşleşiyor?",
-      "needMore": "Bitirmek için {{required}} doğru denemelere ulaşın."
+      "needMore": "Bitirmek için {{required}} doğru denemelere ulaşın.",
+      "exampleN": "Örnek {{n}}."
     },
     "continue": "Devam etmek",
     "done": "Tamamlamak",
@@ -2087,7 +2132,8 @@
       "listenFirst": "Önce dinleyin, sonra kaydedin.",
       "repeatThenContinue": "Yüksek sesle tekrarlayın, ardından devam edin.",
       "tryAgainOrContinue": "Tekrar kaydedin veya devam edin.",
-      "recordWhenReady": "Hazır olduğunuzda kaydedin."
+      "recordWhenReady": "Hazır olduğunuzda kaydedin.",
+      "rateLimited": "Son zamanlarda çok fazla konuşma kontrolü var; bir an duraklayın."
     },
     "story": {
       "dialogueMode": "Diyalog",
@@ -2096,7 +2142,8 @@
       "showTranslation": "Çeviriyi göster",
       "comprehensionQuestions": "Anlama soruları",
       "questionInstructions": "Her birine kafanızdan veya yüksek sesle cevap verin.",
-      "readStory": "Hikayeyi okudum"
+      "readStory": "Hikayeyi okudum",
+      "questionN": "Soru {{n}}."
     },
     "vocabDeck": {
       "meta": "Kelime destesi",
@@ -2121,6 +2168,27 @@
       "good": "İyi",
       "easy": "Kolay",
       "prompt": "Bunu ne kadar iyi biliyordun?"
+    },
+    "conceptCompleteTitle": "Konsept tamamlandı",
+    "backToCatalog": "Başka bir ders seç",
+    "back": "Geri",
+    "browseLessons": "Tüm derslere göz atın",
+    "hangulRefresher": "Hangul'u inceleyin",
+    "showRomanization": "Latin alfabesini göster",
+    "listenMode": "Dinleme modu",
+    "playPage": "Bütün dersi çal",
+    "playSentence": "Cümleyi çal",
+    "playSection": "Oynatma bölümü",
+    "playPattern": "Oyun deseni",
+    "playExample": "Örnek oyna",
+    "playFiller": "Dolguyu oynat",
+    "playIdeal": "İdeal cevabı oyna",
+    "playLine": "Oyun çizgisi",
+    "playCard": "Oyun kartı",
+    "audio": {
+      "play": "Oynamak",
+      "stop": "Durmak",
+      "stopPlayback": "Oynatmayı durdur"
     }
   },
   "notifications": {
@@ -2196,5 +2264,58 @@
     "passwordPlaceholder": "Şifre",
     "verifying": "Doğrulanıyor...",
     "confirm": "Onaylamak"
+  },
+  "curriculumVersion": {
+    "kicker": "Müfredat güncellemesi mevcut",
+    "title": "{{language}} deneyiminizi seçin",
+    "lede": "Kalıp alıştırmaları, anlaşılır girdi hikayeleri ve unuttuklarınıza uyum sağlayan bir oturum planlayıcı içeren yeni bir {{language}} müfredatı başlattık.",
+    "recommended": "Tavsiye edilen",
+    "v2Title": "Yeni müfredatı deneyin",
+    "v2Body": "Bir oturum planlayıcısı tarafından serpiştirilen kalıp alıştırmaları, hikayeler, sözcük oluşturma, kelime SRS'si ve telaffuz görevlerinden oluşan konsept öncelikli dersler.",
+    "tryV2": "Deneyin",
+    "v1Title": "Klasik deneyime devam edin",
+    "v1Body": "Bildiğiniz kelime listelerini ve sınıf derslerini kullanmaya devam edin. İstediğiniz zaman Ayarlar'dan geçiş yapabilirsiniz.",
+    "stayV1": "Klasik tut",
+    "decideLater": "Daha sonra karar ver"
+  },
+  "hangul": {
+    "loadFailed": "Hangul dersleri yüklenemedi.",
+    "skipConfirm": "Hangul'a katılım atlansın mı? Oturum başlığından istediğiniz zaman geri dönebilirsiniz.",
+    "saveFailed": "İlerleme kaydedilemedi.",
+    "empty": "Hangul içeriği mevcut değil.",
+    "backToLearn": "Öğrenmeye Geri Dön",
+    "refresherKicker": "Hangul tazeleme",
+    "onboardingKicker": "Hangul ilk katılım",
+    "title": "Korece oku",
+    "subtitle": "Sekiz kısa ders. Her harfi duyun, blokların nasıl hece oluşturduğunu öğrenin ve ardından gerçek kelimeleri okuyun.",
+    "alreadyKnow": "Hangul'u zaten okudum - atla",
+    "progressLabel": "İlerlemek",
+    "stepN": "Adım {{step}} / {{total}}",
+    "stopPage": "Durmak",
+    "playPage": "Tüm sayfayı oynat",
+    "playLetter": "Harf sesini çal",
+    "stopCard": "Durmak",
+    "playCard": "Kartın tamamını oyna",
+    "play": "Oynamak",
+    "practiceInstructions": "Göz atmadan önce her kelimeyi yüksek sesle okuyun. Karşılaştırmak için hoparlöre dokunun.",
+    "tier": "Seviye {{tier}}",
+    "reveal": "Ortaya çıkarmak",
+    "done": "Tamamlamak",
+    "finishAndLearn": "A1 dilbilgisini başlat",
+    "next": "Sonraki"
+  },
+  "catalog": {
+    "done": "Tamamlamak",
+    "inProgress": "Devam etmekte",
+    "startConcept": "Bu konsepti başlat",
+    "continueConcept": "Konsepte devam et",
+    "reviewConcept": "Konsepti inceleyin",
+    "notEnabled": "Müfredat v2 henüz hesabınız için etkinleştirilmedi.",
+    "loadFailed": "Katalog yüklenemedi.",
+    "empty": "Henüz ders yok.",
+    "backToSession": "Oturumunuza devam edin",
+    "title": "Korece derslerine göz atın",
+    "subtitle": "Planlayıcının öğretebileceği her kavram. Dalış yapmak için birini seçin veya ana Öğrenim sayfasında sistemin sizin için seçmesine izin verin.",
+    "conceptsMastered": "hakim olunan kavramlar"
   }
 }

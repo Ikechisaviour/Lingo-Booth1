@@ -452,7 +452,16 @@
     "saveForReviewFailed": "לא ניתן לשמור את הכרטיס הזה כרגע.",
     "bookmarkedReason": "סימניה מכרטיסי פלאש.",
     "selfTestReason": "נשמר מכרטיסי פלאש לבדיקה עצמית מהירה.",
-    "setFamiliarityLevel": "הגדר את היכרות ל-{{level}}"
+    "setFamiliarityLevel": "הגדר את היכרות ל-{{level}}",
+    "deckAll": "כֹּל",
+    "deckMine": "הקלפים שלי",
+    "deckFocus": "מוֹקֵד",
+    "addToFocus": "הוסף לפוקוס",
+    "removeFromFocus": "הסר מפוקוס",
+    "addToFocusOnCreate": "הוסף לחפיסת הפוקוס שלי",
+    "focusFailed": "לא ניתן היה לעדכן את חפיסת הפוקוס שלך.",
+    "randomCountLabel": "כמה קלפים",
+    "studyNRandom": "מחקר אקראי {{count}}"
   },
   "progress": {
     "title": "ההתקדמות שלך",

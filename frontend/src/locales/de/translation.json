@@ -45,7 +45,8 @@
     "notSet": "Nicht festgelegt",
     "goBack": "Geh zurück",
     "all": "Alle",
-    "restart": "Neustart"
+    "restart": "Neustart",
+    "previous": "Vorherige"
   },
   "languageSelect": {
     "title": "Wähle deine Sprachen",
@@ -125,7 +126,9 @@
     "plans": "Pläne",
     "exerciseOptions": "Übungsmöglichkeiten",
     "institution": "Institution",
-    "review": "Rezension"
+    "review": "Rezension",
+    "learn": "Lernen",
+    "curriculumV2": "Lehrplan v2"
   },
   "guestPrompt": {
     "title": "Du machst das großartig!",
@@ -210,7 +213,10 @@
     "supportAndPlans": "Unterstützung und Pläne",
     "decayBannerActive": "XP nimmt ab – täglicher Verlust {{rate}} %. Beantworten Sie eine Frage, um es zu stoppen.",
     "decayBannerGrace": "Der XP-Verfall beginnt in {{hours}}h – täglicher Verlust {{rate}} %. Lernen Sie weiter, um dies zu verhindern.",
-    "dashboard": "Armaturenbrett"
+    "dashboard": "Armaturenbrett",
+    "browseLessons": "Durchsuchen Sie die Lektionen",
+    "learnDesc": "Setzen Sie Ihre Lehrplansitzung fort",
+    "catalogDesc": "Wählen Sie ein bestimmtes Konzept aus, das Sie studieren möchten"
   },
   "lessons": {
     "title": "{{language}} <1>Lektionen</1>",
@@ -402,7 +408,32 @@
     "saveForReview": "Zur Überprüfung speichern",
     "bookmarkedReason": "Von Karteikarten mit Lesezeichen versehen.",
     "selfTestReason": "Von Karteikarten für einen schnellen Selbsttest gespeichert.",
-    "setFamiliarityLevel": "Vertrautheit auf {{level}} setzen"
+    "setFamiliarityLevel": "Vertrautheit auf {{level}} setzen",
+    "deckScopeLabel": "Welche Karten man studieren sollte",
+    "deckAll": "Alle",
+    "deckMine": "Meine Karten",
+    "deckFocus": "Fokus",
+    "addToFocus": "Zum Fokus hinzufügen",
+    "removeFromFocus": "Aus Fokus entfernen",
+    "inFocus": "Im Fokus",
+    "focusBadge": "Fokus",
+    "addSelectedToFocus": "Zum Fokus hinzufügen",
+    "removeSelectedFromFocus": "Aus Fokus entfernen",
+    "addToFocusOnCreate": "Zu meinem Focus-Deck hinzufügen",
+    "focusFailed": "Dein Focus-Deck konnte nicht aktualisiert werden.",
+    "focusEmptyTitle": "Dein Focus-Deck ist leer",
+    "focusEmptyHint": "Füge Karten von einer beliebigen Karteikarte zu Focus hinzu, um sie hier intensiv zu studieren.",
+    "mineEmptyTitle": "Sie haben noch keine Karten hinzugefügt",
+    "mineEmptyHint": "Von Ihnen erstellte Karten werden hier angezeigt.",
+    "studyRandom": "Studieren Sie zufällig",
+    "studyNRandom": "Studie {{count}} zufällig",
+    "studyRandomTitle": "Studieren Sie einen zufälligen Kartensatz",
+    "studyRandomOptions": "Studieren Sie zufällige Optionen",
+    "randomCountLabel": "Wie viele Karten müssen studiert werden?",
+    "selectCards": "Karten auswählen",
+    "studyingSubset": "Studieren {{count}}",
+    "studyAll": "Studiere alles",
+    "noCardsToPick": "Noch keine Karten zur Auswahl."
   },
   "progress": {
     "title": "Dein <1>Fortschritt</1>",
@@ -543,7 +574,14 @@
     "fullName": "Vollständiger Name",
     "fullNamePlaceholder": "Name, der auf Zertifikaten angezeigt werden soll",
     "fullNameMissing": "Vor der Ausstellung eines Zertifikats hinzufügen",
-    "activeAccountType": "Aktiver Kontotyp"
+    "activeAccountType": "Aktiver Kontotyp",
+    "curriculumPreferenceSaved": "Lehrplanpräferenz aktualisiert.",
+    "curriculumVersion": "Lehrplanversion",
+    "curriculumVersionDesc": "Wählen Sie für jede unterstützte Zielsprache die Version des Lehrplans aus, die Sie verwenden möchten. Sie können jederzeit wechseln.",
+    "curriculumV2Name": "{{language}} – neuer Lehrplan",
+    "curriculumV2Desc": "Musterübungen, Geschichten, Lückentext, Vokabel-SRS, Aussprache – planerorientiert.",
+    "curriculumV1Name": "{{language}} – klassischer Lehrplan",
+    "curriculumV1Desc": "Vokabellisten und Unterrichtseinheiten, die Sie bereits kennen."
   },
   "verifyEmail": {
     "verifying": "E-Mail wird verifiziert...",
@@ -2011,7 +2049,9 @@
       "needHint": "Benötigen Sie einen Hinweis?",
       "correct": "Richtig",
       "answer": "Antwort: {{answer}}",
-      "whyHint": "Warum:"
+      "whyHint": "Warum:",
+      "blank": "leer",
+      "choices": "Auswahlmöglichkeiten"
     },
     "finishScore": "Fertig stellen ({{score}}/{{total}})",
     "next": "Nächste",
@@ -2021,7 +2061,11 @@
       "inYourLanguage": "In deiner Sprache",
       "inTargetLanguage": "In {{language}}",
       "whyDiffer": "Warum sie sich unterscheiden",
-      "commonMistakes": "Fehler, die Englischsprachige häufig machen"
+      "commonMistakes": "Fehler, die Englischsprachige häufig machen",
+      "mistakeN": "Fehler {{n}}.",
+      "cultural": "Kultureller Kontext",
+      "forExample": "Zum Beispiel",
+      "playItem": "Spielgegenstand"
     },
     "gotIt": "Habe es",
     "minimalPair": {
@@ -2065,7 +2109,8 @@
       "recoveryTitle": "Lassen Sie uns noch einmal darüber nachdenken, bevor Sie weitermachen.",
       "recoveryAnchors": "Ankerbeispiele",
       "recoveryPrompt": "Welcher koreanische Satz passt zu diesem Englisch?",
-      "needMore": "Erreiche {{required}} korrekte Versuche, das Ziel zu erreichen."
+      "needMore": "Erreiche {{required}} korrekte Versuche, das Ziel zu erreichen.",
+      "exampleN": "Beispiel {{n}}."
     },
     "continue": "Weitermachen",
     "done": "Erledigt",
@@ -2087,7 +2132,8 @@
       "listenFirst": "Erst anhören, dann aufnehmen.",
       "repeatThenContinue": "Wiederholen Sie es laut und fahren Sie dann fort.",
       "tryAgainOrContinue": "Erneut aufnehmen oder fortfahren.",
-      "recordWhenReady": "Nehmen Sie auf, wenn Sie bereit sind."
+      "recordWhenReady": "Nehmen Sie auf, wenn Sie bereit sind.",
+      "rateLimited": "Zu viele Sprachtests in letzter Zeit – halten Sie einen Moment inne."
     },
     "story": {
       "dialogueMode": "Dialog",
@@ -2096,7 +2142,8 @@
       "showTranslation": "Übersetzung anzeigen",
       "comprehensionQuestions": "Verständnisfragen",
       "questionInstructions": "Beantworten Sie jede Frage im Kopf oder laut.",
-      "readStory": "Ich habe die Geschichte gelesen"
+      "readStory": "Ich habe die Geschichte gelesen",
+      "questionN": "Frage {{n}}."
     },
     "vocabDeck": {
       "meta": "Vokabeldeck",
@@ -2121,6 +2168,27 @@
       "good": "Gut",
       "easy": "Einfach",
       "prompt": "Wie gut wussten Sie es?"
+    },
+    "conceptCompleteTitle": "Konzept abgeschlossen",
+    "backToCatalog": "Wählen Sie eine andere Lektion",
+    "back": "Zurück",
+    "browseLessons": "Durchsuchen Sie alle Lektionen",
+    "hangulRefresher": "Rezension Hangul",
+    "showRomanization": "Romanisierung anzeigen",
+    "listenMode": "Hörmodus",
+    "playPage": "Spielen Sie die ganze Lektion",
+    "playSentence": "Satz abspielen",
+    "playSection": "Spielbereich",
+    "playPattern": "Spielmuster",
+    "playExample": "Spielbeispiel",
+    "playFiller": "Spielfüller",
+    "playIdeal": "Spielen Sie die ideale Antwort",
+    "playLine": "Spiellinie",
+    "playCard": "Spielkarte",
+    "audio": {
+      "play": "Spielen",
+      "stop": "Stoppen",
+      "stopPlayback": "Stoppen Sie die Wiedergabe"
     }
   },
   "notifications": {
@@ -2196,5 +2264,58 @@
     "passwordPlaceholder": "Passwort",
     "verifying": "Überprüfung...",
     "confirm": "Bestätigen"
+  },
+  "curriculumVersion": {
+    "kicker": "Aktualisierung des Lehrplans verfügbar",
+    "title": "Wählen Sie Ihr {{language}}-Erlebnis",
+    "lede": "Wir haben einen neuen {{language}}-Lehrplan mit Musterübungen, verständlichen Input-Geschichten und einem Sitzungsplaner eingeführt, der sich an das anpasst, was Sie vergessen haben.",
+    "recommended": "Empfohlen",
+    "v2Title": "Probieren Sie den neuen Lehrplan aus",
+    "v2Body": "Konzeptorientierte Lektionen mit Musterübungen, Geschichten, Lückentext, Vokabel-SRS und Ausspracheaufgaben – verschachtelt durch einen Sitzungsplaner.",
+    "tryV2": "Probieren Sie es aus",
+    "v1Title": "Bleiben Sie beim klassischen Erlebnis",
+    "v1Body": "Benutzen Sie weiterhin die Vokabellisten und Unterrichtseinheiten, die Sie kennen. Sie können jederzeit über die Einstellungen wechseln.",
+    "stayV1": "Bleiben Sie klassisch",
+    "decideLater": "Entscheide später"
+  },
+  "hangul": {
+    "loadFailed": "Hangul-Lektionen konnten nicht geladen werden.",
+    "skipConfirm": "Hangul-Onboarding überspringen? Sie können jederzeit aus dem Sitzungsheader zurückkehren.",
+    "saveFailed": "Der Fortschritt konnte nicht gespeichert werden.",
+    "empty": "Keine Hangul-Inhalte verfügbar.",
+    "backToLearn": "Zurück zum Lernen",
+    "refresherKicker": "Hangul-Auffrischung",
+    "onboardingKicker": "Hangul-Onboarding",
+    "title": "Lesen Sie Koreanisch",
+    "subtitle": "Acht kurze Lektionen. Hören Sie jeden Buchstaben, lernen Sie, wie Blöcke Silben bilden, und lesen Sie dann echte Wörter.",
+    "alreadyKnow": "Ich habe Hangul bereits gelesen – überspringen",
+    "progressLabel": "Fortschritt",
+    "stepN": "Schritt {{step}} von {{total}}",
+    "stopPage": "Stoppen",
+    "playPage": "Ganze Seite abspielen",
+    "playLetter": "Buchstabenton abspielen",
+    "stopCard": "Stoppen",
+    "playCard": "Spielen Sie die ganze Karte",
+    "play": "Spielen",
+    "practiceInstructions": "Lesen Sie jedes Wort laut vor, bevor Sie einen Blick darauf werfen. Tippen Sie zum Vergleichen auf den Lautsprecher.",
+    "tier": "Stufe {{tier}}",
+    "reveal": "Aufdecken",
+    "done": "Erledigt",
+    "finishAndLearn": "Beginnen Sie mit der A1-Grammatik",
+    "next": "Nächste"
+  },
+  "catalog": {
+    "done": "Erledigt",
+    "inProgress": "Im Gange",
+    "startConcept": "Starten Sie dieses Konzept",
+    "continueConcept": "Konzept fortsetzen",
+    "reviewConcept": "Review-Konzept",
+    "notEnabled": "Curriculum v2 ist für Ihr Konto noch nicht aktiviert.",
+    "loadFailed": "Der Katalog konnte nicht geladen werden.",
+    "empty": "Noch kein Unterricht.",
+    "backToSession": "Setzen Sie Ihre Sitzung fort",
+    "title": "Durchsuchen Sie Koreanisch-Lektionen",
+    "subtitle": "Jedes Konzept, das der Planer vermitteln kann. Wählen Sie eine aus, in die Sie eintauchen möchten, oder lassen Sie das System auf der Hauptseite „Lernen“ für Sie auswählen.",
+    "conceptsMastered": "Konzepte gemeistert"
   }
 }

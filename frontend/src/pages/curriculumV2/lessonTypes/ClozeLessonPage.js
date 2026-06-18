@@ -1,7 +1,9 @@
 import React, { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import SrsRatingBar from '../SrsRatingBar';
+import PlayableKorean from '../../../components/PlayableKorean';
 import { curriculumV2Service } from '../../../services/api';
+import { useLessonAudio, prepForSpeech, LessonAudioButton } from '../../../utils/v2Audio';
 
 function shuffled(items) {
   const out = [...items];
@@ -20,8 +22,9 @@ function suggestOutcome(score, total, hintUsed) {
   return 'good';
 }
 
-export default function ClozeLessonPage({ lesson, onComplete, sessionId }) {
+export default function ClozeLessonPage({ lesson, onComplete, onBack, sessionId }) {
   const { t } = useTranslation();
+  const audio = useLessonAudio(lesson.targetLang || 'ko');
   const [idx, setIdx] = useState(0);
   const [picked, setPicked] = useState(null);
   const [showHint, setShowHint] = useState(false);
@@ -38,6 +41,33 @@ export default function ClozeLessonPage({ lesson, onComplete, sessionId }) {
   const isLast = idx === lesson.items.length - 1;
   const answered = picked !== null;
   const isCorrect = picked === item.answer;
+  const metaLine = t('curriculumV2.cloze.progress', 'Fill the blank - {{current}} / {{total}}', {
+    current: idx + 1,
+    total: lesson.items.length,
+  });
+
+  // The TTS voice reads "____" as nothing useful, so substitute the
+  // translated word "blank" in the spoken prompt. Once answered, read the
+  // filled-in sentence instead.
+  const blankWord = t('curriculumV2.cloze.blank', 'blank');
+  const pageScript = useMemo(() => {
+    const filled = answered
+      ? item.target.replace('___', picked || item.answer)
+      : item.target.replace('___', ` ${blankWord} `);
+    const lines = [
+      metaLine + '.',
+      prepForSpeech(filled),
+      item.native ? prepForSpeech(item.native) : '',
+      t('curriculumV2.cloze.choices', 'Choices') + ': ' + choices.join(', ') + '.',
+    ];
+    if (answered && !isCorrect) {
+      lines.push(t('curriculumV2.cloze.answer', 'Answer: {{answer}}', { answer: item.answer }) + '.');
+    }
+    if (answered && item.hint) {
+      lines.push(prepForSpeech(item.hint));
+    }
+    return lines.filter(Boolean);
+  }, [item, picked, answered, isCorrect, choices, t, metaLine, blankWord]);
 
   function handlePick(choice) {
     if (answered) return;
@@ -71,17 +101,29 @@ export default function ClozeLessonPage({ lesson, onComplete, sessionId }) {
 
   return (
     <div className="v2-card">
-      <div className="v2-shell__meta">
-        {t('curriculumV2.cloze.progress', 'Fill the blank - {{current}} / {{total}}', {
-          current: idx + 1,
-          total: lesson.items.length,
-        })}
+      <div className="v2-shell__meta v2-contrast__topbar">
+        <span>{metaLine}</span>
+        <LessonAudioButton
+          audio={audio}
+          scope="page"
+          items={pageScript}
+          variant="primary"
+          label={t('curriculumV2.playPage', 'Play whole lesson')}
+        />
       </div>
 
       <div className="v2-cloze-prompt">
         <span>{before}</span>
         <span className={`blank ${answered ? '' : 'empty'}`}>{answered ? picked : '____'}</span>
         <span>{after}</span>
+        {answered && (
+          <span style={{ marginLeft: 8 }}>
+            <PlayableKorean
+              text={item.target.replace('___', picked || item.answer)}
+              ariaLabel={t('curriculumV2.playSentence', 'Play sentence')}
+            />
+          </span>
+        )}
       </div>
       <div className="v2-native">{item.native}</div>
 
@@ -108,8 +150,21 @@ export default function ClozeLessonPage({ lesson, onComplete, sessionId }) {
         </button>
       )}
 
+      {!answered && onBack && (
+        <div className="v2-footer">
+          <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+            ← {t('curriculumV2.back', 'Back')}
+          </button>
+        </div>
+      )}
+
       {answered && (
         <div className="v2-footer">
+          {onBack && (
+            <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+              ← {t('curriculumV2.back', 'Back')}
+            </button>
+          )}
           <span className="v2-shell__meta">
             {isCorrect
               ? t('curriculumV2.cloze.correct', 'Correct')

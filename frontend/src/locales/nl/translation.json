@@ -45,7 +45,8 @@
     "notSet": "Niet ingesteld",
     "goBack": "Ga terug",
     "all": "Alle",
-    "restart": "Opnieuw opstarten"
+    "restart": "Opnieuw opstarten",
+    "previous": "Vorig"
   },
   "languageSelect": {
     "title": "Kies je talen",
@@ -125,7 +126,9 @@
     "plans": "Plannen",
     "exerciseOptions": "Oefening opties",
     "institution": "Instelling",
-    "review": "Beoordeling"
+    "review": "Beoordeling",
+    "learn": "Leren",
+    "curriculumV2": "Leerplan v2"
   },
   "guestPrompt": {
     "title": "Je doet het geweldig!",
@@ -210,7 +213,10 @@
     "supportAndPlans": "Ondersteuning en plannen",
     "decayBannerActive": "XP neemt af: dagelijks verlies {{rate}}%. Beantwoord een vraag om het te stoppen.",
     "decayBannerGrace": "Het verval van XP begint over {{hours}}h – dagelijks verlies {{rate}}%. Blijf studeren om dit te voorkomen.",
-    "dashboard": "Dashboard"
+    "dashboard": "Dashboard",
+    "browseLessons": "Blader door lessen",
+    "learnDesc": "Ga door met uw leerplansessie",
+    "catalogDesc": "Kies een specifiek concept om te bestuderen"
   },
   "lessons": {
     "title": "{{language}} <1>Lessen</1>",
@@ -402,7 +408,32 @@
     "saveForReview": "Bewaar ter beoordeling",
     "bookmarkedReason": "Bladwijzer gemaakt van flashcards.",
     "selfTestReason": "Opgeslagen van flashcards voor een snelle zelftest.",
-    "setFamiliarityLevel": "Stel bekendheid in op {{level}}"
+    "setFamiliarityLevel": "Stel bekendheid in op {{level}}",
+    "deckScopeLabel": "Welke kaarten om te bestuderen",
+    "deckAll": "Alle",
+    "deckMine": "Mijn kaarten",
+    "deckFocus": "Focus",
+    "addToFocus": "Toevoegen aan focus",
+    "removeFromFocus": "Verwijderen uit focus",
+    "inFocus": "In focus",
+    "focusBadge": "Focus",
+    "addSelectedToFocus": "Toevoegen aan focus",
+    "removeSelectedFromFocus": "Verwijderen uit focus",
+    "addToFocusOnCreate": "Voeg toe aan mijn Focus-deck",
+    "focusFailed": "Kan uw Focus-deck niet updaten.",
+    "focusEmptyTitle": "Je focusstapel is leeg",
+    "focusEmptyHint": "Voeg kaarten toe aan Focus vanaf een willekeurige flashcard om ze hier intensief te bestuderen.",
+    "mineEmptyTitle": "Je hebt nog geen kaarten toegevoegd",
+    "mineEmptyHint": "Kaarten die je maakt, verschijnen hier.",
+    "studyRandom": "Studeer willekeurig",
+    "studyNRandom": "Bestudeer {{count}} willekeurig",
+    "studyRandomTitle": "Bestudeer een willekeurige set kaarten",
+    "studyRandomOptions": "Bestudeer willekeurige opties",
+    "randomCountLabel": "Hoeveel kaarten om te bestuderen",
+    "selectCards": "Selecteer kaarten",
+    "studyingSubset": "Studeren {{count}}",
+    "studyAll": "Bestudeer alles",
+    "noCardsToPick": "Er zijn nog geen kaarten om uit te kiezen."
   },
   "progress": {
     "title": "Je <1>voortgang</1>",
@@ -543,7 +574,14 @@
     "fullName": "Volledige naam",
     "fullNamePlaceholder": "Naam die op certificaten moet worden weergegeven",
     "fullNameMissing": "Voeg toe voordat u een certificaat uitgeeft",
-    "activeAccountType": "Actief accounttype"
+    "activeAccountType": "Actief accounttype",
+    "curriculumPreferenceSaved": "Curriculumvoorkeur bijgewerkt.",
+    "curriculumVersion": "Curriculumversie",
+    "curriculumVersionDesc": "Kies de versie van het leerplan dat u voor elke ondersteunde doeltaal wilt gebruiken. Je kunt op elk moment overstappen.",
+    "curriculumV2Name": "{{language}} — nieuw leerplan",
+    "curriculumV2Desc": "Patroonoefeningen, verhalen, cloze, vocabulaire SRS, uitspraak - volgens de planner.",
+    "curriculumV1Name": "{{language}} — klassiek leerplan",
+    "curriculumV1Desc": "Woordenschatlijsten en lessen die u al kent."
   },
   "verifyEmail": {
     "verifying": "Je e-mail verifiëren...",
@@ -2011,7 +2049,9 @@
       "needHint": "Een hint nodig?",
       "correct": "Juist",
       "answer": "Antwoord: {{answer}}",
-      "whyHint": "Waarom:"
+      "whyHint": "Waarom:",
+      "blank": "leeg",
+      "choices": "Keuzes"
     },
     "finishScore": "Voltooien ({{score}}/{{total}})",
     "next": "Volgende",
@@ -2021,7 +2061,11 @@
       "inYourLanguage": "In jouw taal",
       "inTargetLanguage": "In {{language}}",
       "whyDiffer": "Waarom ze verschillen",
-      "commonMistakes": "Fouten die Engelssprekenden vaak maken"
+      "commonMistakes": "Fouten die Engelssprekenden vaak maken",
+      "mistakeN": "Fout {{n}}.",
+      "cultural": "Culturele context",
+      "forExample": "Bijvoorbeeld",
+      "playItem": "Speel item af"
     },
     "gotIt": "Ik heb het",
     "minimalPair": {
@@ -2065,7 +2109,8 @@
       "recoveryTitle": "Laten we het nog eens bekijken voordat je doorgaat.",
       "recoveryAnchors": "Anker voorbeelden",
       "recoveryPrompt": "Welke Koreaanse zin komt overeen met dit Engels?",
-      "needMore": "Bereik {{required}} correcte pogingen om te voltooien."
+      "needMore": "Bereik {{required}} correcte pogingen om te voltooien.",
+      "exampleN": "Voorbeeld {{n}}."
     },
     "continue": "Doorgaan",
     "done": "Klaar",
@@ -2087,7 +2132,8 @@
       "listenFirst": "Eerst luisteren en dan opnemen.",
       "repeatThenContinue": "Herhaal dit hardop en ga dan verder.",
       "tryAgainOrContinue": "Neem opnieuw op of ga door.",
-      "recordWhenReady": "Neem op wanneer u klaar bent."
+      "recordWhenReady": "Neem op wanneer u klaar bent.",
+      "rateLimited": "Te veel spraakcontroles de laatste tijd. Wacht even."
     },
     "story": {
       "dialogueMode": "Dialoog",
@@ -2096,7 +2142,8 @@
       "showTranslation": "Laat vertaling zien",
       "comprehensionQuestions": "Begrip vragen",
       "questionInstructions": "Beantwoord ze allemaal in je hoofd of hardop.",
-      "readStory": "Ik heb het verhaal gelezen"
+      "readStory": "Ik heb het verhaal gelezen",
+      "questionN": "Vraag {{n}}."
     },
     "vocabDeck": {
       "meta": "Woordenboekdek",
@@ -2121,6 +2168,27 @@
       "good": "Goed",
       "easy": "Eenvoudig",
       "prompt": "Hoe goed wist je het?"
+    },
+    "conceptCompleteTitle": "Concept compleet",
+    "backToCatalog": "Kies een andere les",
+    "back": "Rug",
+    "browseLessons": "Blader door alle lessen",
+    "hangulRefresher": "Recensie Hangul",
+    "showRomanization": "Romanisering tonen",
+    "listenMode": "Luistermodus",
+    "playPage": "Speel de hele les",
+    "playSentence": "Speel zin",
+    "playSection": "Speel sectie",
+    "playPattern": "Speel patroon",
+    "playExample": "Speel voorbeeld",
+    "playFiller": "Speel vuller",
+    "playIdeal": "Speel het ideale antwoord",
+    "playLine": "Speel lijn",
+    "playCard": "Speel kaart",
+    "audio": {
+      "play": "Toneelstuk",
+      "stop": "Stop",
+      "stopPlayback": "Stop het afspelen"
     }
   },
   "notifications": {
@@ -2196,5 +2264,58 @@
     "passwordPlaceholder": "Wachtwoord",
     "verifying": "Verifiëren...",
     "confirm": "Bevestigen"
+  },
+  "curriculumVersion": {
+    "kicker": "Curriculumupdate beschikbaar",
+    "title": "Kies jouw {{language}}-ervaring",
+    "lede": "We hebben een nieuw {{language}} curriculum gelanceerd met patroonoefeningen, begrijpelijke verhalen en een sessieplanner die zich aanpast aan wat je bent vergeten.",
+    "recommended": "Aanbevolen",
+    "v2Title": "Probeer het nieuwe lesprogramma",
+    "v2Body": "Concept-eerste lessen over patroonoefeningen, verhalen, cloze-productie, vocabulaire SRS en uitspraaktaken - afgewisseld door een sessieplanner.",
+    "tryV2": "Probeer het",
+    "v1Title": "Blijf bij de klassieke ervaring",
+    "v1Body": "Blijf de woordenlijsten en lessen gebruiken die u kent. U kunt op elk gewenst moment overschakelen via Instellingen.",
+    "stayV1": "Houd klassiek",
+    "decideLater": "Beslis later"
+  },
+  "hangul": {
+    "loadFailed": "Kan Hangul-lessen niet laden.",
+    "skipConfirm": "Hangul-onboarding overslaan? U kunt op elk gewenst moment terugkomen via de sessiekop.",
+    "saveFailed": "Kan de voortgang niet opslaan.",
+    "empty": "Geen Hangul-inhoud beschikbaar.",
+    "backToLearn": "Terug naar Leren",
+    "refresherKicker": "Hangul opfriscursus",
+    "onboardingKicker": "Hangul-onboarding",
+    "title": "Lees Koreaans",
+    "subtitle": "Acht korte lessen. Hoor elke letter, leer hoe blokken lettergrepen vormen en lees vervolgens echte woorden.",
+    "alreadyKnow": "Ik heb Hangul al gelezen – overslaan",
+    "progressLabel": "Voortgang",
+    "stepN": "Stap {{step}} van {{total}}",
+    "stopPage": "Stop",
+    "playPage": "Speel de hele pagina",
+    "playLetter": "Speel lettergeluid af",
+    "stopCard": "Stop",
+    "playCard": "Speel hele kaart",
+    "play": "Toneelstuk",
+    "practiceInstructions": "Lees elk woord hardop voordat u gluurt. Tik op de luidspreker om te vergelijken.",
+    "tier": "Niveau {{tier}}",
+    "reveal": "Onthullen",
+    "done": "Klaar",
+    "finishAndLearn": "Begin met A1-grammatica",
+    "next": "Volgende"
+  },
+  "catalog": {
+    "done": "Klaar",
+    "inProgress": "In uitvoering",
+    "startConcept": "Begin met dit concept",
+    "continueConcept": "Ga door met het concept",
+    "reviewConcept": "Beoordelingsconcept",
+    "notEnabled": "Curriculum v2 is nog niet ingeschakeld voor uw account.",
+    "loadFailed": "Kan de catalogus niet laden.",
+    "empty": "Nog geen lessen.",
+    "backToSession": "Ga door met uw sessie",
+    "title": "Blader door Koreaanse lessen",
+    "subtitle": "Elk concept dat de planner kan leren. Kies er een om in te duiken, of laat het systeem voor u kiezen op de hoofdpagina van Leren.",
+    "conceptsMastered": "concepten onder de knie"
   }
 }

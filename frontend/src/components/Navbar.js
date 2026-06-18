@@ -131,7 +131,7 @@ function Navbar({ isGuest, onGuestExit, userRole, challengeMode }) {
               <span className="nav-text">
                 {useV2 ? t('navbar.learn', 'Learn') : t('navbar.class', 'Class')}
               </span>
-              {useV2 && <span className="nav-v2-badge" aria-label="Curriculum v2">v2</span>}
+              {useV2 && <span className="nav-v2-badge" aria-label={t('navbar.curriculumV2', 'Curriculum v2')}>v2</span>}
             </Link>
           </li>
 

@@ -45,7 +45,8 @@
     "notSet": "Non défini",
     "goBack": "Retourner",
     "all": "Toute",
-    "restart": "Redémarrage"
+    "restart": "Redémarrage",
+    "previous": "Précédente"
   },
   "languageSelect": {
     "title": "Choisissez vos langues",
@@ -125,7 +126,9 @@
     "plans": "Forfaits",
     "exerciseOptions": "Options d'exercice",
     "institution": "Institution",
-    "review": "Revoir"
+    "review": "Revoir",
+    "learn": "Apprendre",
+    "curriculumV2": "Programme d'études v2"
   },
   "guestPrompt": {
     "title": "Vous vous en sortez très bien !",
@@ -210,7 +213,10 @@
     "supportAndPlans": "Accompagnement et plans",
     "decayBannerActive": "L'XP diminue — perte quotidienne {{rate}}%. Répondez à une question pour l'arrêter.",
     "decayBannerGrace": "La diminution de l'XP commence dans {{hours}}h — perte quotidienne {{rate}}%. Continuez à étudier pour l’éviter.",
-    "dashboard": "Tableau de bord"
+    "dashboard": "Tableau de bord",
+    "browseLessons": "Parcourir les leçons",
+    "learnDesc": "Continuez votre session de curriculum",
+    "catalogDesc": "Choisissez un concept spécifique à étudier"
   },
   "lessons": {
     "title": "{{language}} <1>Leçons</1>",
@@ -402,7 +408,32 @@
     "saveForReview": "Enregistrer pour examen",
     "bookmarkedReason": "Mis en signet à partir de flashcards.",
     "selfTestReason": "Enregistré à partir de cartes mémoire pour un auto-test rapide.",
-    "setFamiliarityLevel": "Réglez la familiarité sur {{level}}"
+    "setFamiliarityLevel": "Réglez la familiarité sur {{level}}",
+    "deckScopeLabel": "Quelles cartes étudier",
+    "deckAll": "Toute",
+    "deckMine": "Mes cartes",
+    "deckFocus": "Se concentrer",
+    "addToFocus": "Ajouter au focus",
+    "removeFromFocus": "Supprimer du focus",
+    "inFocus": "Au point",
+    "focusBadge": "Se concentrer",
+    "addSelectedToFocus": "Ajouter au focus",
+    "removeSelectedFromFocus": "Supprimer du focus",
+    "addToFocusOnCreate": "Ajouter à mon deck Focus",
+    "focusFailed": "Impossible de mettre à jour votre deck Focus.",
+    "focusEmptyTitle": "Votre deck Focus est vide",
+    "focusEmptyHint": "Ajoutez des cartes à Focus à partir de n'importe quelle flashcard pour les étudier intensivement ici.",
+    "mineEmptyTitle": "Vous n'avez pas encore ajouté de cartes",
+    "mineEmptyHint": "Les cartes que vous créez apparaîtront ici.",
+    "studyRandom": "Étude aléatoire",
+    "studyNRandom": "Etude {{count}} aléatoire",
+    "studyRandomTitle": "Étudiez un jeu de cartes aléatoire",
+    "studyRandomOptions": "Étudier les options aléatoires",
+    "randomCountLabel": "Combien de cartes étudier",
+    "selectCards": "Sélectionnez les cartes",
+    "studyingSubset": "Étudier {{count}}",
+    "studyAll": "Etudiez tout",
+    "noCardsToPick": "Aucune carte parmi laquelle choisir pour l'instant."
   },
   "progress": {
     "title": "Vos <1>progrès</1>",
@@ -543,7 +574,14 @@
     "fullName": "Nom et prénom",
     "fullNamePlaceholder": "Nom à afficher sur les certificats",
     "fullNameMissing": "Ajouter avant de délivrer un certificat",
-    "activeAccountType": "Type de compte actif"
+    "activeAccountType": "Type de compte actif",
+    "curriculumPreferenceSaved": "Préférence de programme mise à jour.",
+    "curriculumVersion": "Version du programme",
+    "curriculumVersionDesc": "Choisissez la version du programme que vous souhaitez utiliser pour chaque langue cible prise en charge. Vous pouvez changer à tout moment.",
+    "curriculumV2Name": "{{language}} — nouveau programme",
+    "curriculumV2Desc": "Exercices de modèles, histoires, cloze, vocabulaire SRS, prononciation - séquencés par planificateur.",
+    "curriculumV1Name": "{{language}} — programme classique",
+    "curriculumV1Desc": "Listes de vocabulaire et leçons de classe que vous connaissez déjà."
   },
   "verifyEmail": {
     "verifying": "Vérification de votre e-mail...",
@@ -2011,7 +2049,9 @@
       "needHint": "Besoin d'un indice ?",
       "correct": "Correcte",
       "answer": "Réponse : {{answer}}",
-      "whyHint": "Pourquoi:"
+      "whyHint": "Pourquoi:",
+      "blank": "vide",
+      "choices": "Choix"
     },
     "finishScore": "Terminer ({{score}}/{{total}})",
     "next": "Suivante",
@@ -2021,7 +2061,11 @@
       "inYourLanguage": "Dans votre langue",
       "inTargetLanguage": "Dans {{language}}",
       "whyDiffer": "Pourquoi ils diffèrent",
-      "commonMistakes": "Les erreurs que font fréquemment les anglophones"
+      "commonMistakes": "Les erreurs que font fréquemment les anglophones",
+      "mistakeN": "Erreur {{n}}.",
+      "cultural": "Contexte culturel",
+      "forExample": "Par exemple",
+      "playItem": "Lire l'élément"
     },
     "gotIt": "J'ai compris",
     "minimalPair": {
@@ -2065,7 +2109,8 @@
       "recoveryTitle": "Revenons-y avant de continuer.",
       "recoveryAnchors": "Exemples d'ancrage",
       "recoveryPrompt": "Quelle phrase coréenne correspond à cet anglais ?",
-      "needMore": "Atteignez {{required}} tentatives correctes pour terminer."
+      "needMore": "Atteignez {{required}} tentatives correctes pour terminer.",
+      "exampleN": "Exemple {{n}}."
     },
     "continue": "Continuer",
     "done": "Fait",
@@ -2087,7 +2132,8 @@
       "listenFirst": "Écoutez d’abord, puis enregistrez.",
       "repeatThenContinue": "Répétez à haute voix, puis continuez.",
       "tryAgainOrContinue": "Enregistrez à nouveau ou continuez.",
-      "recordWhenReady": "Enregistrez lorsque vous êtes prêt."
+      "recordWhenReady": "Enregistrez lorsque vous êtes prêt.",
+      "rateLimited": "Trop de vérifications de parole récemment – faites une pause un instant."
     },
     "story": {
       "dialogueMode": "Dialogue",
@@ -2096,7 +2142,8 @@
       "showTranslation": "Afficher la traduction",
       "comprehensionQuestions": "Questions de compréhension",
       "questionInstructions": "Répondez à chacun dans votre tête ou à voix haute.",
-      "readStory": "j'ai lu l'histoire"
+      "readStory": "j'ai lu l'histoire",
+      "questionN": "Question {{n}}."
     },
     "vocabDeck": {
       "meta": "Jeu de vocabulaire",
@@ -2121,6 +2168,27 @@
       "good": "Bien",
       "easy": "Facile",
       "prompt": "Dans quelle mesure le saviez-vous ?"
+    },
+    "conceptCompleteTitle": "Concept terminé",
+    "backToCatalog": "Choisissez une autre leçon",
+    "back": "Dos",
+    "browseLessons": "Parcourez toutes les leçons",
+    "hangulRefresher": "Donnez votre avis sur Hangûl",
+    "showRomanization": "Afficher la romanisation",
+    "listenMode": "Mode écoute",
+    "playPage": "Jouer toute la leçon",
+    "playSentence": "Jouer une phrase",
+    "playSection": "Section de lecture",
+    "playPattern": "Modèle de jeu",
+    "playExample": "Exemple de lecture",
+    "playFiller": "Jouer du remplissage",
+    "playIdeal": "Jouer la réponse idéale",
+    "playLine": "Ligne de jeu",
+    "playCard": "Jouer à la carte",
+    "audio": {
+      "play": "Jouer",
+      "stop": "Arrêt",
+      "stopPlayback": "Arrêter la lecture"
     }
   },
   "notifications": {
@@ -2196,5 +2264,58 @@
     "passwordPlaceholder": "Mot de passe",
     "verifying": "Vérification...",
     "confirm": "Confirmer"
+  },
+  "curriculumVersion": {
+    "kicker": "Mise à jour du programme disponible",
+    "title": "Choisissez votre expérience {{language}}",
+    "lede": "Nous avons lancé un nouveau programme {{language}} avec des exercices types, des histoires compréhensibles et un planificateur de session qui s'adapte à ce que vous avez oublié.",
+    "recommended": "Recommandée",
+    "v2Title": "Essayez le nouveau programme",
+    "v2Body": "Leçons conceptuelles comprenant des exercices de modèles, des histoires, la production de cloze, le vocabulaire SRS et les tâches de prononciation - entrelacées par un planificateur de session.",
+    "tryV2": "Essayez-le",
+    "v1Title": "Restez sur l'expérience classique",
+    "v1Body": "Continuez à utiliser les listes de vocabulaire et les leçons que vous connaissez. Vous pouvez changer à tout moment depuis les paramètres.",
+    "stayV1": "Restez classique",
+    "decideLater": "Décidez plus tard"
+  },
+  "hangul": {
+    "loadFailed": "Impossible de charger les leçons de Hangul.",
+    "skipConfirm": "Ignorer l'intégration du Hangul ? Vous pouvez revenir à tout moment depuis l'en-tête de la session.",
+    "saveFailed": "Impossible d'enregistrer la progression.",
+    "empty": "Aucun contenu Hangul disponible.",
+    "backToLearn": "Retour à Apprendre",
+    "refresherKicker": "Rappel du Hangul",
+    "onboardingKicker": "Intégration du Hangul",
+    "title": "Lire le coréen",
+    "subtitle": "Huit courtes leçons. Écoutez chaque lettre, découvrez comment les blocs construisent les syllabes, puis lisez de vrais mots.",
+    "alreadyKnow": "J'ai déjà lu le Hangul — ignorer",
+    "progressLabel": "Progrès",
+    "stepN": "Étape {{step}} de {{total}}",
+    "stopPage": "Arrêt",
+    "playPage": "Lire la page entière",
+    "playLetter": "Jouer le son des lettres",
+    "stopCard": "Arrêt",
+    "playCard": "Jouer toute la carte",
+    "play": "Jouer",
+    "practiceInstructions": "Lisez chaque mot à haute voix avant de jeter un coup d’œil. Appuyez sur le haut-parleur pour comparer.",
+    "tier": "Niveau {{tier}}",
+    "reveal": "Révéler",
+    "done": "Fait",
+    "finishAndLearn": "Commencer la grammaire A1",
+    "next": "Suivante"
+  },
+  "catalog": {
+    "done": "Fait",
+    "inProgress": "En cours",
+    "startConcept": "Démarrer ce concept",
+    "continueConcept": "Continuer le concept",
+    "reviewConcept": "Notion de révision",
+    "notEnabled": "Curriculum v2 n'est pas encore activé pour votre compte.",
+    "loadFailed": "Impossible de charger le catalogue.",
+    "empty": "Pas encore de cours.",
+    "backToSession": "Continuez votre séance",
+    "title": "Parcourir des cours de coréen",
+    "subtitle": "Tous les concepts que le planificateur peut enseigner. Choisissez-en un dans lequel vous plonger ou laissez le système choisir pour vous sur la page principale d'apprentissage.",
+    "conceptsMastered": "notions maîtrisées"
   }
 }

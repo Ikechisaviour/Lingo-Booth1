@@ -493,12 +493,13 @@ export const flashcardService = {
     const { targetLang, nativeLang } = currentLanguageParams();
     return api.get('/flashcards/category-cards', { params: { targetLang, nativeLang, category } });
   },
-  getFlashcards: (userId: string, page = 1, limit = 50, opts: { categories?: string; shuffle?: boolean; seed?: number } = {}) => {
+  getFlashcards: (userId: string, page = 1, limit = 50, opts: { categories?: string; shuffle?: boolean; seed?: number; scope?: string } = {}) => {
     const { targetLang, nativeLang } = currentLanguageParams();
     const params: Record<string, any> = { targetLang, nativeLang, page, limit };
     if (opts.categories) params.categories = opts.categories;
     if (opts.shuffle !== undefined) params.shuffle = opts.shuffle;
     if (opts.seed !== undefined) params.seed = opts.seed;
+    if (opts.scope && opts.scope !== 'all') params.scope = opts.scope;
     return api.get(`/flashcards/user/${userId}`, { params });
   },
   getGuestFlashcards: (page = 1, limit = 50, opts: { categories?: string; shuffle?: boolean; seed?: number } = {}) => {
@@ -515,6 +516,14 @@ export const flashcardService = {
     api.put(`/flashcards/${id}`, data),
   deleteFlashcard: (id: string) =>
     api.delete(`/flashcards/${id}`),
+  setCardFocus: (id: string, value: boolean) => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.put(`/flashcards/${id}/focus`, { value, targetLang, nativeLang });
+  },
+  getFocusIds: () => {
+    const { targetLang, nativeLang } = currentLanguageParams();
+    return api.get('/flashcards/focus-ids', { params: { targetLang, nativeLang } });
+  },
 };
 
 export const progressService = {
@@ -554,6 +563,10 @@ export const userService = {
     }),
   getActivityState: (userId: string) =>
     cachedGet(`/users/${userId}/activity-state`, {}, 5000),
+  getFlashcardSeed: (userId: string) =>
+    api.get(`/users/${userId}/flashcard-seed`),
+  refreshFlashcardSeed: (userId: string) =>
+    api.post(`/users/${userId}/flashcard-seed`),
   addXP: (userId: string, points: number) =>
     api.post(`/users/${userId}/xp`, { points }).then((response) => {
       invalidateCachedGets((key) => (

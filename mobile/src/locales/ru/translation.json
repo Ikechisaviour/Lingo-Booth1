@@ -452,7 +452,16 @@
     "saveForReviewFailed": "Не удалось сохранить эту карту прямо сейчас.",
     "bookmarkedReason": "В закладки из карточек.",
     "selfTestReason": "Сохранено из карточек для быстрой самопроверки.",
-    "setFamiliarityLevel": "Установите знакомство на {{level}}"
+    "setFamiliarityLevel": "Установите знакомство на {{level}}",
+    "deckAll": "Все",
+    "deckMine": "Мои карты",
+    "deckFocus": "Фокус",
+    "addToFocus": "Добавить в фокус",
+    "removeFromFocus": "Удалить из фокуса",
+    "addToFocusOnCreate": "Добавить в мою колоду Фокуса",
+    "focusFailed": "Не удалось обновить колоду Фокуса.",
+    "randomCountLabel": "Сколько карт",
+    "studyNRandom": "Исследование {{count}} случайным образом"
   },
   "progress": {
     "title": "Ваш прогресс",
