@@ -25,6 +25,15 @@ export default function VocabDeckPage({ lesson, onComplete, onBack, sessionId })
   const card = fillers[idx];
   const isLast = idx === fillers.length - 1;
 
+  function handleBackClick() {
+    if (idx > 0) {
+      setIdx((i) => i - 1);
+      setRevealed(false);
+      return;
+    }
+    if (onBack) onBack();
+  }
+
   async function handleRate(outcome) {
     if (submittingFor || !card) return;
     setSubmittingFor(outcome);
@@ -69,7 +78,7 @@ export default function VocabDeckPage({ lesson, onComplete, onBack, sessionId })
         <p>{t('curriculumV2.vocabDeck.empty', 'This deck has no cards to review.')}</p>
         <div className="v2-footer">
           {onBack && (
-            <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+            <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
               ← {t('curriculumV2.back', 'Back')}
             </button>
           )}
@@ -132,7 +141,7 @@ export default function VocabDeckPage({ lesson, onComplete, onBack, sessionId })
       {!revealed && (
         <div className="v2-footer">
           {onBack && (
-            <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+            <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
               ← {t('curriculumV2.back', 'Back')}
             </button>
           )}

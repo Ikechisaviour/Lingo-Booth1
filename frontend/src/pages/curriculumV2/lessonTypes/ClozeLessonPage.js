@@ -69,6 +69,17 @@ export default function ClozeLessonPage({ lesson, onComplete, onBack, sessionId 
     return lines.filter(Boolean);
   }, [item, picked, answered, isCorrect, choices, t, metaLine, blankWord]);
 
+  function handleBackClick() {
+    if (idx > 0) {
+      setIdx((i) => i - 1);
+      setPicked(null);
+      setShowHint(false);
+      setItemStartedAt(Date.now());
+      return;
+    }
+    if (onBack) onBack();
+  }
+
   function handlePick(choice) {
     if (answered) return;
     setPicked(choice);
@@ -152,7 +163,7 @@ export default function ClozeLessonPage({ lesson, onComplete, onBack, sessionId 
 
       {!answered && onBack && (
         <div className="v2-footer">
-          <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+          <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
             ← {t('curriculumV2.back', 'Back')}
           </button>
         </div>
@@ -161,7 +172,7 @@ export default function ClozeLessonPage({ lesson, onComplete, onBack, sessionId 
       {answered && (
         <div className="v2-footer">
           {onBack && (
-            <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+            <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
               ← {t('curriculumV2.back', 'Back')}
             </button>
           )}

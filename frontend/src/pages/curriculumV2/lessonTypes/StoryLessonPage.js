@@ -9,6 +9,14 @@ export default function StoryLessonPage({ lesson, onComplete, onBack }) {
   const [revealedTurns, setRevealedTurns] = useState(new Set());
   const [showQuestions, setShowQuestions] = useState(false);
 
+  function handleBackClick() {
+    if (showQuestions) {
+      setShowQuestions(false);
+      return;
+    }
+    if (onBack) onBack();
+  }
+
   function toggleReveal(idx) {
     setRevealedTurns((prev) => {
       const next = new Set(prev);
@@ -103,7 +111,7 @@ export default function StoryLessonPage({ lesson, onComplete, onBack }) {
           </ul>
           <div className="v2-footer">
             {onBack && (
-              <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+              <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
                 ← {t('curriculumV2.back', 'Back')}
               </button>
             )}
@@ -116,7 +124,7 @@ export default function StoryLessonPage({ lesson, onComplete, onBack }) {
       ) : (
         <div className="v2-footer">
           {onBack && (
-            <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+            <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
               ← {t('curriculumV2.back', 'Back')}
             </button>
           )}

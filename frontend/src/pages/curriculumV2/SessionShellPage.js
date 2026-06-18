@@ -45,14 +45,14 @@ export default function SessionShellPage() {
   const [listenMode, setListenMode] = useState(() => localStorage.getItem('listenMode') === 'true');
   const sessionId = useMemo(() => makeSessionId(), []);
 
-  // Hangul gate — Korean learners must finish onboarding before A1 grammar.
-  // Once finished, the link stays available as a refresher.
+  // Script-onboarding gate — Korean learners must finish onboarding before A1
+  // grammar. Once finished, the link stays available as a refresher.
   useEffect(() => {
     if (!enabled) return;
     let cancelled = false;
     (async () => {
       try {
-        const { data } = await curriculumV2Service.getHangulProgress();
+        const { data } = await curriculumV2Service.getAlphabetProgress();
         if (!cancelled && !data?.onboardingCompletedAt) {
           navigate('/learn/v2/hangul', { replace: true });
         }
@@ -265,9 +265,9 @@ export default function SessionShellPage() {
           type="button"
           className="v2-shell__action-btn"
           onClick={() => navigate('/learn/v2/hangul?mode=refresher')}
-          aria-label={t('curriculumV2.hangulRefresher', 'Review Hangul')}
+          aria-label={t('curriculumV2.hangulRefresher', 'Review the Korean alphabet')}
         >
-          {t('curriculumV2.hangulRefresher', 'Review Hangul')}
+          {t('curriculumV2.hangulRefresher', 'Review the Korean alphabet')}
         </button>
         <label className="v2-shell__toggle">
           <input

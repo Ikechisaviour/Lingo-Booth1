@@ -49,7 +49,7 @@ const BillingPage = lazy(() => import('./pages/BillingPage'));
 const InstitutionDashboard = lazy(() => import('./pages/InstitutionDashboard'));
 const CertificateVerifyPage = lazy(() => import('./pages/CertificateVerifyPage'));
 const CurriculumV2SessionShellPage = lazy(() => import('./pages/curriculumV2/SessionShellPage'));
-const HangulOnboardingPage = lazy(() => import('./pages/curriculumV2/HangulOnboardingPage'));
+const AlphabetOnboardingPage = lazy(() => import('./pages/curriculumV2/AlphabetOnboardingPage'));
 const LessonCatalogPage = lazy(() => import('./pages/curriculumV2/LessonCatalogPage'));
 
 // Listens for auth changes that should remove the current user from the app.
@@ -674,7 +674,7 @@ function App() {
           <Route
             path="/learn/v2/hangul"
             element={
-              isAuthenticated ? <HangulOnboardingPage /> : <Navigate to="/login" />
+              isAuthenticated ? <AlphabetOnboardingPage /> : <Navigate to="/login" />
             }
           />
           {/* Lesson catalog — browse + pick a specific concept or lesson. */}

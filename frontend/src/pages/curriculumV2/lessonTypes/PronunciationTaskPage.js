@@ -269,6 +269,14 @@ export default function PronunciationTaskPage({ lesson, onComplete, onBack, sess
     setIdx((i) => i + 1);
   }
 
+  function handleBackClick() {
+    if (idx > 0) {
+      setIdx((i) => i - 1);
+      return;
+    }
+    if (onBack) onBack();
+  }
+
   const canAdvance = played.has(idx) && (evaluation !== null || !asrSupported || !aiEnabled);
   const metaLine = t('curriculumV2.pronunciation.progress', 'Pronunciation - {{current}} / {{total}}', {
     current: idx + 1,
@@ -384,7 +392,7 @@ export default function PronunciationTaskPage({ lesson, onComplete, onBack, sess
 
       <div className="v2-footer" style={{ marginTop: 16 }}>
         {onBack && (
-          <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+          <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
             ← {t('curriculumV2.back', 'Back')}
           </button>
         )}

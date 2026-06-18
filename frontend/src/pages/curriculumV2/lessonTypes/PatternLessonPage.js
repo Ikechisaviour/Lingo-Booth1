@@ -198,6 +198,22 @@ export default function PatternLessonPage({ lesson, onComplete, onBack, learnerL
     && lastAttempt.filler.id === currentTask?.filler.id
     && lastAttempt.learnerText === learnerText.trim();
 
+  // Back undoes the last forward action *within* this lesson — production
+  // → drills, drills → anchors — and only walks to the previous lesson
+  // (onBack) when we're already at the first stage.
+  function handleBackClick() {
+    if (stage === 'production') {
+      setStage('drills');
+      setRecoveryDone(false);
+      return;
+    }
+    if (stage === 'drills') {
+      setStage('anchors');
+      return;
+    }
+    if (onBack) onBack();
+  }
+
   // Build the play-whole-page script. Includes the meta + pattern gloss +
   // pattern target, plus whichever stage content is on-screen right now.
   // Production-stage prompts/feedback are dynamic (learner-typed) and
@@ -270,7 +286,7 @@ export default function PatternLessonPage({ lesson, onComplete, onBack, learnerL
           ))}
           <div className="v2-footer">
             {onBack && (
-              <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+              <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
                 ← {t('curriculumV2.back', 'Back')}
               </button>
             )}
@@ -298,7 +314,7 @@ export default function PatternLessonPage({ lesson, onComplete, onBack, learnerL
           ))}
           <div className="v2-footer">
             {onBack && (
-              <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+              <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
                 ← {t('curriculumV2.back', 'Back')}
               </button>
             )}
@@ -433,7 +449,7 @@ export default function PatternLessonPage({ lesson, onComplete, onBack, learnerL
             <div className="v2-footer">
               <div style={{ display: 'flex', gap: 8 }}>
                 {onBack && (
-                  <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+                  <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
                     ← {t('curriculumV2.back', 'Back')}
                   </button>
                 )}

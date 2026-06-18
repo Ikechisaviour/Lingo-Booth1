@@ -6,7 +6,7 @@ import { curriculumV2Service, ttsService } from '../../services/api';
 import speechService from '../../services/speechService';
 import { voiceGender } from '../../utils/roleVoices';
 import PlayableKorean from '../../components/PlayableKorean';
-import './HangulOnboardingPage.css';
+import './AlphabetOnboardingPage.css';
 
 // Default voices we'll fall back on when nothing better is available. Picked
 // to be a matched-gender pair: SunHi (F, ko-KR) + Jenny (F, en-US). When the
@@ -47,7 +47,7 @@ function pickSameGenderVoice(catalog, targetLang, gender) {
   return gender === 'M' ? VOICE_DEFAULTS.male.en : VOICE_DEFAULTS.female.en;
 }
 
-async function resolveHangulVoicesAsync() {
+async function resolveAlphabetVoicesAsync() {
   const catalog = await loadVoiceCatalog();
   // Local resolver: tries the static roleVoices map first, then the live
   // Edge catalog. Returns '' when truly unknown.
@@ -88,7 +88,7 @@ function stripParentheticals(text) {
 // Korean voice (because detectLanguage matches on the first Korean char),
 // and the English words come out mispronounced.
 function splitByScript(text) {
-  // Hangul Syllables (U+AC00–U+D7AF) + Hangul Compatibility Jamo (U+3130–U+318F).
+  // Korean syllables (U+AC00–U+D7AF) + compatibility jamo (U+3130–U+318F).
   const koPattern = /[㄰-㆏가-힯]+/g;
   const trim = (s) => s.replace(/^[\s\-—•·.,;:!?()]+|[\s\-—•·.,;:!?()]+$/g, '').trim();
   const out = [];
@@ -132,7 +132,7 @@ function jamoPlayable(jamo) {
   return PLAYABLE_JAMO[jamo] || jamo;
 }
 
-function HangulOnboardingPage() {
+function AlphabetOnboardingPage() {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -153,7 +153,7 @@ function HangulOnboardingPage() {
 
   useEffect(() => {
     let active = true;
-    Promise.all([curriculumV2Service.getHangulGroups(), curriculumV2Service.getHangulProgress()])
+    Promise.all([curriculumV2Service.getAlphabetGroups(), curriculumV2Service.getAlphabetProgress()])
       .then(([groupsRes, progressRes]) => {
         if (!active) return;
         setGroups(groupsRes.data?.groups || []);
@@ -167,7 +167,7 @@ function HangulOnboardingPage() {
         }
       })
       .catch((err) => {
-        if (active) setError(err.response?.data?.message || t('hangul.loadFailed', 'Could not load Hangul lessons.'));
+        if (active) setError(err.response?.data?.message || t('hangul.loadFailed', 'Could not load Korean alphabet lessons.'));
       })
       .finally(() => {
         if (active) setLoading(false);
@@ -196,7 +196,7 @@ function HangulOnboardingPage() {
 
   useEffect(() => {
     let cancelled = false;
-    resolveHangulVoicesAsync().then((v) => { if (!cancelled) setVoices(v); });
+    resolveAlphabetVoicesAsync().then((v) => { if (!cancelled) setVoices(v); });
     return () => { cancelled = true; };
   }, []);
 
@@ -330,14 +330,14 @@ function HangulOnboardingPage() {
     const ok = window.confirm(
       t(
         'hangul.skipConfirm',
-        'Skip Hangul onboarding? You can come back any time from the session header.',
+        'Skip Korean alphabet onboarding? You can come back any time from the session header.',
       ),
     );
     if (!ok) return;
     setSkipping(true);
     setError('');
     try {
-      await curriculumV2Service.skipHangul();
+      await curriculumV2Service.skipAlphabet();
       navigate('/learn/v2');
     } catch (err) {
       setError(err.response?.data?.message || t('hangul.saveFailed', 'Could not save progress.'));
@@ -350,7 +350,7 @@ function HangulOnboardingPage() {
     setSaving(true);
     setError('');
     try {
-      const res = await curriculumV2Service.completeHangulGroup(activeGroup.id);
+      const res = await curriculumV2Service.completeAlphabetGroup(activeGroup.id);
       setProgress({
         completedGroups: res.data?.completedGroups || [],
         onboardingCompletedAt: res.data?.onboardingCompletedAt || null,
@@ -376,7 +376,7 @@ function HangulOnboardingPage() {
   if (!sortedGroups.length) {
     return (
       <div className="hangul-page">
-        <p className="hangul-error">{error || t('hangul.empty', 'No Hangul content available.')}</p>
+        <p className="hangul-error">{error || t('hangul.empty', 'No Korean alphabet content available.')}</p>
       </div>
     );
   }
@@ -388,7 +388,7 @@ function HangulOnboardingPage() {
           <FiChevronLeft /> {t('hangul.backToLearn', 'Back to Learn')}
         </button>
         <p className="hangul-kicker">
-          {refresherMode ? t('hangul.refresherKicker', 'Hangul refresher') : t('hangul.onboardingKicker', 'Hangul onboarding')}
+          {refresherMode ? t('hangul.refresherKicker', 'Korean alphabet refresher') : t('hangul.onboardingKicker', 'Korean alphabet onboarding')}
         </p>
         <h1>{t('hangul.title', 'Read Korean')}</h1>
         <p className="hangul-subtitle">
@@ -403,7 +403,7 @@ function HangulOnboardingPage() {
           >
             <FiSkipForward /> {skipping
               ? t('common.saving', 'Saving…')
-              : t('hangul.alreadyKnow', 'I already read Hangul — skip')}
+              : t('hangul.alreadyKnow', 'I already read the Korean alphabet — skip')}
           </button>
         )}
       </header>
@@ -572,4 +572,4 @@ function HangulOnboardingPage() {
   );
 }
 
-export default HangulOnboardingPage;
+export default AlphabetOnboardingPage;

@@ -82,6 +82,17 @@ export default function MinimalPairTaskPage({ lesson, onComplete, onBack, sessio
     setGuessed(null);
   }
 
+  function handleBackClick() {
+    if (idx > 0) {
+      setIdx((i) => i - 1);
+      setHeard({ a: false, b: false });
+      setXChoice(null);
+      setGuessed(null);
+      return;
+    }
+    if (onBack) onBack();
+  }
+
   const metaLine = t('curriculumV2.minimalPair.progress', 'Minimal pair - {{current}} / {{total}}', {
     current: idx + 1,
     total: lesson.pairs.length,
@@ -140,7 +151,7 @@ export default function MinimalPairTaskPage({ lesson, onComplete, onBack, sessio
       {bothHeard && xChoice === null && (
         <div className="v2-footer" style={{ marginTop: 12 }}>
           {onBack && (
-            <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+            <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
               ← {t('curriculumV2.back', 'Back')}
             </button>
           )}
@@ -193,7 +204,7 @@ export default function MinimalPairTaskPage({ lesson, onComplete, onBack, sessio
       {answered && !reviewed && (
         <div className="v2-footer">
           {onBack && (
-            <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+            <button className="v2-btn v2-btn--secondary" onClick={handleBackClick}>
               ← {t('curriculumV2.back', 'Back')}
             </button>
           )}

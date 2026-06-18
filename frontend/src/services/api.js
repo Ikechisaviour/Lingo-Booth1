@@ -858,12 +858,12 @@ export const curriculumV2Service = {
     api.post('/curriculum/v2/events',
       { conceptId, lessonId, lessonType, outcome, hintUsed, latencyMs, sessionId, targetLang, contextSignal },
       { timeout: 5000 }),
-  // Hangul onboarding
-  getHangulGroups: () => api.get('/curriculum/v2/hangul/groups'),
-  getHangulProgress: () => api.get('/curriculum/v2/hangul/progress'),
-  completeHangulGroup: (groupId) =>
+  // Korean alphabet (script) onboarding — backend routes unchanged
+  getAlphabetGroups: () => api.get('/curriculum/v2/hangul/groups'),
+  getAlphabetProgress: () => api.get('/curriculum/v2/hangul/progress'),
+  completeAlphabetGroup: (groupId) =>
     api.post(`/curriculum/v2/hangul/groups/${encodeURIComponent(groupId)}/complete`),
-  skipHangul: () => api.post('/curriculum/v2/hangul/skip'),
+  skipAlphabet: () => api.post('/curriculum/v2/hangul/skip'),
   // Catalog (Phase 3)
   getCatalog: (params = {}) => api.get('/curriculum/v2/catalog', { params }),
   getConceptLessons: (conceptId, params = {}) =>

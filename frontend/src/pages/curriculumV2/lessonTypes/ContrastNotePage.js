@@ -138,7 +138,7 @@ export default function ContrastNotePage({ lesson, onComplete, onBack }) {
 
       <div className="v2-footer">
         {onBack && (
-          <button className="v2-btn v2-btn--secondary" onClick={onBack}>
+          <button className="v2-btn v2-btn--secondary" onClick={onBack /* single-screen lesson: no intra rewind */}>
             ← {t('curriculumV2.back', 'Back')}
           </button>
         )}
