@@ -1,9 +1,11 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { setLandingLanguagePreference } from '../utils/publicLanguage';
 import { getLanguageDisplayName } from '../config/languages';
+import { reviewService } from '../services/api';
 import {
+  FiArrowRight,
   FiBookOpen,
   FiCheck,
   FiChevronRight,
@@ -18,8 +20,10 @@ import {
   FiPlay,
   FiRefreshCw,
   FiSmartphone,
+  FiStar,
   FiTablet,
   FiVolume2,
+  FiX,
 } from 'react-icons/fi';
 import BrandLogo from '../components/BrandLogo';
 import './LandingPage.css';
@@ -76,6 +80,7 @@ const LANDING_SECTION_COPY = {
     comparisonTitle: 'Built for fluency, not just streaks',
     comparisonAriaLabel: 'Lingo Booth comparison',
     comparisonHeaders: ['Feature', 'Typical apps', 'Lingo Booth'],
+    comparisonDeepDiveCta: 'See the full platform comparison',
     comparisonRows: [
       { feature: 'Lessons', typical: 'Limited or text-heavy', lingo: 'Guided lessons with clear steps and examples' },
       { feature: 'Speaking', typical: 'Mostly typing with limited speaking practice', lingo: 'Hands-free roleplays with voice commands - repeat, slower, stop' },
@@ -90,6 +95,55 @@ const LANDING_SECTION_COPY = {
       { feature: 'Language coverage', typical: 'One language, Latin script only', lingo: 'Many language pairs, RTL scripts, fully localized UI' },
       { feature: 'Progress', typical: 'Streaks only', lingo: 'Skill progress across listening, speaking, reading, and writing' },
     ],
+    statsLabel: 'Lingo Booth at a glance',
+    stats: [
+      { value: '20', label: 'languages to learn' },
+      { value: '380', label: 'native-to-target pairs' },
+      { value: '4', label: 'skills: speak, listen, read, write' },
+      { value: '24/7', label: 'practice partner' },
+    ],
+    aiKicker: 'Your always-on practice partner',
+    aiTitle: 'A patient tutor that never sleeps',
+    aiText: 'Hold a real conversation any time of day. Your practice partner listens to how you speak, corrects you gently, remembers what you struggle with, and turns your real-life situations into roleplays you can rehearse before they happen.',
+    aiPoints: [
+      'Speak out loud and get instant, judgment-free feedback',
+      'Say “repeat”, “slower”, or “stop”, fully hands-free',
+      'Bring your own situation: a trip, an interview, a first date',
+      'It remembers past sessions and your weak spots',
+    ],
+    aiCta: 'Try the tutor free',
+    testimonialsKicker: 'Loved by learners',
+    testimonialsTitle: 'People are actually speaking',
+    testimonials: [
+      { quote: 'What I like so much is the flashcards and the auto-play feature. It lets me keep learning even when I am working on the road with my phone in my bag.', name: 'Loveth', detail: 'Learning German' },
+      { quote: 'The conversation feature is a game changer. I am completely sold.', name: 'Josiah', detail: 'Learning Korean' },
+      { quote: 'I am preparing for the TOPIK exam and this app has been helping a lot in getting ready.', name: 'Mirian', detail: 'Learning Korean' },
+      { quote: 'It felt so easy to start as a personal learner, but now I am getting ready to join the semester program. I want that accountability, I know myself.', name: 'IK', detail: 'Learning Japanese' },
+    ],
+    faqTitle: 'Questions, answered',
+    faq: [
+      { q: 'Is it really free to start?', a: 'Yes. You can start learning for free, and you can even try a lesson as a guest without creating an account. No credit card required.' },
+      { q: 'Which languages can I learn?', a: 'Lingo Booth supports 20 languages as both the language you learn and the language you learn in, up to 380 native-to-target pairs.' },
+      { q: 'I am a total beginner. Is this for me?', a: 'Absolutely. Lessons start from your very first word, with explanations in your own language, and a continuous path takes you from beginner to advanced.' },
+      { q: 'Can it help me prepare for exams?', a: 'Yes. Lingo Booth builds the four core skills and the language principles behind exams like TOPIK, JLPT, HSK, DELE, and IELTS.' },
+      { q: 'Does it work on my phone?', a: 'Yes. One account works across web, mobile, and tablet, and your progress syncs across all of them.' },
+    ],
+    learningPrefix: 'Learning',
+    reviewCta: 'Share your story',
+    reviewModalTitle: 'Leave a review',
+    reviewModalSubtitle: 'Tell other learners what your experience has been like. Approved reviews appear on this page.',
+    reviewNameLabel: 'Your name',
+    reviewNamePlaceholder: 'e.g. Mirian',
+    reviewLanguageLabel: 'Language you are learning',
+    reviewLanguagePlaceholder: 'Select a language',
+    reviewCommentLabel: 'Your review',
+    reviewCommentPlaceholder: 'What do you enjoy most about Lingo Booth?',
+    reviewSubmit: 'Submit review',
+    reviewSubmitting: 'Submitting...',
+    reviewSuccessTitle: 'Thank you!',
+    reviewSuccessText: 'Your review was sent and will appear here once an admin approves it.',
+    reviewErrorText: 'Could not submit your review. Please try again.',
+    reviewClose: 'Close',
   },
   ko: {
     heroImageAlt: 'Lingo Booth 언어 연습을 보여주는 마이크, 말풍선, 기기 이미지',
@@ -235,20 +289,24 @@ const LANDING_COPY = {
   en: {
     login: 'Login',
     startFree: 'Start free',
-    tryGuest: 'Try as guest',
+    tryGuest: 'Try a lesson as guest',
+    exploreFeatures: 'Explore features',
     languageLabel: 'Homepage language',
     pairPrefix: 'Suggested path',
-    heroTitle: 'Build every skill for language learning in one place',
-    heroSubtitle: 'Learn to speak, listen, read, and write with guided lessons, native-aware pronunciation, flashcards, conversation practice, and progress across web, mobile, and tablet.',
+    heroTitle: 'Actually speak your new language, not just collect streaks.',
+    heroSubtitle: 'Practice real conversations with a personal tutor that listens, corrects, and adapts across guided lessons, speaking, writing, and review. 20 languages, taught in your own native language.',
+    heroTrust: ['No credit card needed', 'Free to start', '20 languages'],
+    alreadyHaveAccount: 'Already have an account?',
     previewMessage: 'Great. Let us practice ordering coffee. What would you like to order?',
     guideTitle: 'Practice preview',
-    ctaTitle: 'Start learning with clarity today',
-    ctaText: 'Learn on web, mobile, or tablet.',
+    ctaTitle: 'Start speaking a new language today',
+    ctaText: 'Free to start on web, mobile, and tablet. No credit card required.',
   },
   ko: {
     login: '로그인',
     startFree: '무료로 시작',
     tryGuest: '게스트로 체험',
+    exploreFeatures: '기능 살펴보기',
     languageLabel: '홈페이지 언어',
     pairPrefix: '추천 학습 경로',
     heroTitle: '언어 학습의 말하기, 듣기, 읽기, 쓰기를 한곳에서',
@@ -611,17 +669,92 @@ function LandingPage() {
       native,
       target,
       copy,
+      exploreFeatures: copy.exploreFeatures || LANDING_COPY.en.exploreFeatures,
       sections: sectionCopy,
       highlights: sectionCopy.highlights.map((item, index) => ({ ...item, icon: highlightIcons[index] })),
       loopSteps: sectionCopy.loopSteps.map((label, index) => ({ label, icon: loopIcons[index] })),
       details: sectionCopy.details.map((item, index) => ({ ...item, icon: detailIcons[index] })),
       comparisonRows: sectionCopy.comparisonRows.map((item, index) => ({ ...item, icon: comparisonIcons[index] })),
+      // New marketing sections live only on the English copy for now; other
+      // locales fall back to English until translated.
+      stats: sectionCopy.stats || LANDING_SECTION_COPY.en.stats,
+      aiPoints: sectionCopy.aiPoints || LANDING_SECTION_COPY.en.aiPoints,
+      testimonials: sectionCopy.testimonials || LANDING_SECTION_COPY.en.testimonials,
+      faq: sectionCopy.faq || LANDING_SECTION_COPY.en.faq,
       isRtl: ['ar', 'he'].includes(nativeCode),
       samplePhrases: samplePhrasesFor(nativeCode, targetCode),
     };
   }, [landingLanguage]);
 
   const landingLanguageT = useMemo(() => i18n.getFixedT(landingLanguage), [i18n, landingLanguage]);
+
+  // Approved reviews moderated in by an admin. Until any exist, the page falls
+  // back to the curated seed testimonials in the section copy.
+  const [approvedReviews, setApprovedReviews] = useState([]);
+  const [reviewModalOpen, setReviewModalOpen] = useState(false);
+  const [reviewForm, setReviewForm] = useState({ name: '', targetLanguage: '', comment: '', company: '' });
+  const [reviewSubmitting, setReviewSubmitting] = useState(false);
+  const [reviewStatus, setReviewStatus] = useState(null); // 'success' | 'error' | null
+
+  useEffect(() => {
+    let active = true;
+    reviewService.listApproved()
+      .then((res) => { if (active) setApprovedReviews(res.data?.reviews || []); })
+      .catch(() => { /* keep seed testimonials on failure */ });
+    return () => { active = false; };
+  }, []);
+
+  const sec = (key) => landing.sections[key] || LANDING_SECTION_COPY.en[key];
+
+  const displayedTestimonials = approvedReviews.length
+    ? approvedReviews.map((review) => {
+        const code = String(review.targetLanguage || '');
+        const langName = SUPPORTED_LANGUAGE_CODES.has(code)
+          ? getLanguageDisplayName(code, landingLanguageT)
+          : code;
+        return {
+          id: review._id,
+          quote: review.comment,
+          name: review.name,
+          detail: langName ? `${sec('learningPrefix')} ${langName}` : '',
+        };
+      })
+    : landing.testimonials.map((item, index) => ({ ...item, id: `seed-${index}` }));
+
+  const openReviewModal = () => {
+    setReviewStatus(null);
+    setReviewForm({ name: '', targetLanguage: landing.targetCode, comment: '', company: '' });
+    setReviewModalOpen(true);
+  };
+
+  const closeReviewModal = () => setReviewModalOpen(false);
+
+  const updateReviewField = (field) => (event) => {
+    const { value } = event.target;
+    setReviewForm((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const submitReview = async (event) => {
+    event.preventDefault();
+    if (reviewSubmitting) return;
+    setReviewSubmitting(true);
+    setReviewStatus(null);
+    try {
+      await reviewService.submit({
+        name: reviewForm.name,
+        targetLanguage: reviewForm.targetLanguage,
+        comment: reviewForm.comment,
+        company: reviewForm.company,
+        page: 'landing',
+        source: 'web',
+      });
+      setReviewStatus('success');
+    } catch {
+      setReviewStatus('error');
+    } finally {
+      setReviewSubmitting(false);
+    }
+  };
 
   const handleLandingLanguageChange = (event) => {
     const code = event.target.value;
@@ -645,6 +778,11 @@ function LandingPage() {
     navigate('/select-language?mode=guest');
   };
 
+  const viewFullComparison = () => {
+    setLandingLanguagePreference(landing.nativeCode);
+    navigate('/compare');
+  };
+
   return (
     <div className={`landing-page${landing.isRtl ? ' landing-rtl' : ''}`} lang={landing.nativeCode} dir={landing.isRtl ? 'rtl' : 'ltr'}>
       <header className="landing-nav">
@@ -666,6 +804,9 @@ function LandingPage() {
           </label>
           <button type="button" className="landing-login landing-login--auth" onClick={() => navigate('/login')}>
             {landing.copy.login}
+          </button>
+          <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/features')}>
+            {landing.exploreFeatures}
           </button>
           <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/contact')}>
             {t('contact.navLabel')}
@@ -694,6 +835,14 @@ function LandingPage() {
                 {landing.copy.tryGuest}
               </button>
             </div>
+            <ul className="landing-hero-trust" aria-label={landing.sections.statsLabel || LANDING_SECTION_COPY.en.statsLabel}>
+              {(landing.copy.heroTrust || LANDING_COPY.en.heroTrust).map((item) => (
+                <li key={item}>
+                  <FiCheck aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
             <p className="landing-hero-signin">
               {landing.copy.alreadyHaveAccount || 'Already have an account?'}{' '}
               <button type="button" className="landing-hero-signin-link" onClick={() => navigate('/login')}>
@@ -711,6 +860,15 @@ function LandingPage() {
           </div>
         </section>
 
+        <section className="landing-stats" aria-label={landing.sections.statsLabel || LANDING_SECTION_COPY.en.statsLabel}>
+          {landing.stats.map(({ value, label }) => (
+            <div className="landing-stat" key={label}>
+              <strong>{value}</strong>
+              <span>{label}</span>
+            </div>
+          ))}
+        </section>
+
         <section className="landing-highlights" aria-label={landing.sections.keyStrengthsLabel}>
           {landing.highlights.map(({ icon: Icon, title, text }) => (
             <article key={title}>
@@ -719,6 +877,39 @@ function LandingPage() {
               <p>{text}</p>
             </article>
           ))}
+        </section>
+
+        <section className="landing-ai" aria-label={landing.sections.aiTitle || LANDING_SECTION_COPY.en.aiTitle}>
+          <div className="landing-ai-copy">
+            <p className="landing-kicker">{landing.sections.aiKicker || LANDING_SECTION_COPY.en.aiKicker}</p>
+            <h2>{landing.sections.aiTitle || LANDING_SECTION_COPY.en.aiTitle}</h2>
+            <p className="landing-ai-lead">{landing.sections.aiText || LANDING_SECTION_COPY.en.aiText}</p>
+            <ul className="landing-ai-points">
+              {landing.aiPoints.map((point) => (
+                <li key={point}>
+                  <FiCheck aria-hidden="true" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <button type="button" className="landing-primary" onClick={startFree}>
+              {landing.sections.aiCta || LANDING_SECTION_COPY.en.aiCta}
+            </button>
+          </div>
+          <div className="landing-ai-chat" aria-hidden="true">
+            <div className="landing-ai-bubble landing-ai-bubble--tutor">
+              <FiMessageCircle />
+              <p>{landing.copy.previewMessage}</p>
+            </div>
+            <div className="landing-ai-bubble landing-ai-bubble--you">
+              <p>{landing.samplePhrases[0].target}</p>
+              <FiMic />
+            </div>
+            <div className="landing-ai-bubble landing-ai-bubble--tutor">
+              <FiVolume2 />
+              <p>{landing.samplePhrases[2].target}</p>
+            </div>
+          </div>
         </section>
 
         <section className="landing-loop" id="practice">
@@ -814,6 +1005,52 @@ function LandingPage() {
               </div>
             ))}
           </div>
+          <div className="comparison-more">
+            <button type="button" onClick={viewFullComparison}>
+              {landing.sections.comparisonDeepDiveCta || LANDING_SECTION_COPY.en.comparisonDeepDiveCta}
+              <FiArrowRight aria-hidden="true" />
+            </button>
+          </div>
+        </section>
+
+        <section className="landing-testimonials" aria-label={sec('testimonialsTitle')}>
+          <div className="landing-section-heading">
+            <p className="landing-kicker">{sec('testimonialsKicker')}</p>
+            <h2>{sec('testimonialsTitle')}</h2>
+            <span />
+          </div>
+          <div className="testimonial-grid">
+            {displayedTestimonials.map(({ id, quote, name, detail }) => (
+              <figure className="testimonial-card" key={id}>
+                <blockquote>{quote}</blockquote>
+                <figcaption>
+                  <strong>{name}</strong>
+                  <small>{detail}</small>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <div className="testimonial-cta">
+            <button type="button" className="landing-secondary" onClick={openReviewModal}>
+              <FiStar aria-hidden="true" />
+              {sec('reviewCta')}
+            </button>
+          </div>
+        </section>
+
+        <section className="landing-faq" aria-label={landing.sections.faqTitle || LANDING_SECTION_COPY.en.faqTitle}>
+          <div className="landing-section-heading">
+            <h2>{landing.sections.faqTitle || LANDING_SECTION_COPY.en.faqTitle}</h2>
+            <span />
+          </div>
+          <div className="faq-grid">
+            {landing.faq.map(({ q, a }) => (
+              <article className="faq-item" key={q}>
+                <h3>{q}</h3>
+                <p>{a}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="landing-cta">
@@ -832,6 +1069,93 @@ function LandingPage() {
           <FiHeart className="cta-line-icon" aria-hidden="true" />
         </section>
       </main>
+
+      {reviewModalOpen && (
+        <div className="review-modal-overlay" role="presentation" onClick={closeReviewModal}>
+          <div
+            className="review-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-label={sec('reviewModalTitle')}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button type="button" className="review-modal-close" onClick={closeReviewModal} aria-label={sec('reviewClose')}>
+              <FiX aria-hidden="true" />
+            </button>
+
+            {reviewStatus === 'success' ? (
+              <div className="review-success">
+                <FiStar aria-hidden="true" />
+                <h3>{sec('reviewSuccessTitle')}</h3>
+                <p>{sec('reviewSuccessText')}</p>
+                <button type="button" className="landing-primary" onClick={closeReviewModal}>
+                  {sec('reviewClose')}
+                </button>
+              </div>
+            ) : (
+              <form className="review-form" onSubmit={submitReview}>
+                <h3>{sec('reviewModalTitle')}</h3>
+                <p className="review-form-subtitle">{sec('reviewModalSubtitle')}</p>
+
+                <label className="review-field">
+                  <span>{sec('reviewNameLabel')}</span>
+                  <input
+                    type="text"
+                    value={reviewForm.name}
+                    onChange={updateReviewField('name')}
+                    placeholder={sec('reviewNamePlaceholder')}
+                    maxLength={80}
+                    required
+                  />
+                </label>
+
+                <label className="review-field">
+                  <span>{sec('reviewLanguageLabel')}</span>
+                  <select value={reviewForm.targetLanguage} onChange={updateReviewField('targetLanguage')}>
+                    <option value="">{sec('reviewLanguagePlaceholder')}</option>
+                    {LANGUAGE_OPTIONS.map((language) => (
+                      <option key={language.code} value={language.code}>
+                        {getLanguageDisplayName(language.code, landingLanguageT)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="review-field">
+                  <span>{sec('reviewCommentLabel')}</span>
+                  <textarea
+                    value={reviewForm.comment}
+                    onChange={updateReviewField('comment')}
+                    placeholder={sec('reviewCommentPlaceholder')}
+                    maxLength={600}
+                    rows={4}
+                    required
+                  />
+                </label>
+
+                {/* Honeypot: hidden from people, tempting to bots. */}
+                <input
+                  type="text"
+                  className="review-honeypot"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  value={reviewForm.company}
+                  onChange={updateReviewField('company')}
+                />
+
+                {reviewStatus === 'error' && (
+                  <p className="review-form-error">{sec('reviewErrorText')}</p>
+                )}
+
+                <button type="submit" className="landing-primary" disabled={reviewSubmitting}>
+                  {reviewSubmitting ? sec('reviewSubmitting') : sec('reviewSubmit')}
+                </button>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

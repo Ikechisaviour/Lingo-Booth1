@@ -31,5 +31,5 @@ Thumbs.db
 .idea/
 
 # Local debug / preview artifacts
-.tmp_cert_previews/
+.tmp_*/
 **/*.original.png

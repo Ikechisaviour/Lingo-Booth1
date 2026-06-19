@@ -100,6 +100,21 @@ app.use('/api/contact', rateLimit({
   max: 10,
   handler: (req, res) => res.status(429).json({ message: 'Too many contact attempts, please try again later' }),
 }));
+app.use('/api/semester-interest', rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 10,
+  handler: (req, res) => res.status(429).json({ message: 'Too many requests, please try again later' }),
+}));
+// Only throttle review submissions (POST); the approved-reviews GET is read by
+// every landing-page visitor and must not be rate limited.
+app.use('/api/reviews', (req, res, next) => {
+  if (req.method !== 'POST') return next();
+  return rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 8,
+    handler: (r, response) => response.status(429).json({ message: 'Too many requests, please try again later' }),
+  })(req, res, next);
+});
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/korean-learning', { family: 4 })
@@ -117,6 +132,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/korean-le
 const learningContentRouter = require('./routes/lessons');
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/contact', require('./routes/contact'));
+app.use('/api/semester-interest', require('./routes/semesterInterest'));
+app.use('/api/reviews', require('./routes/reviews'));
 app.use('/api/billing', require('./routes/billing'));
 app.use('/api/certificates', require('./routes/certificates'));
 app.use('/api/level-tests', require('./routes/levelTests'));
