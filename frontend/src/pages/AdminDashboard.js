@@ -6,7 +6,11 @@ import LANGUAGES, { getTargetLangName, getNativeLangName, getTargetLangCode, get
 import AdminSpeakingDemo from './AdminSpeakingDemo';
 import './AdminDashboard.css';
 
-const adminTabs = ['dashboard', 'users', 'activity', 'guests', 'failures', 'messages', 'billing', 'flashcards', 'demo'];
+const adminTabs = ['dashboard', 'users', 'activity', 'guests', 'failures', 'messages', 'semester', 'reviews', 'billing', 'flashcards', 'demo'];
+
+const SEMESTER_LEAD_STATUSES = ['new', 'contacted', 'reminded', 'enrolled', 'closed'];
+
+const REVIEW_STATUSES = ['pending', 'approved', 'rejected'];
 
 function resolveAdminTab(adminTab, search) {
   if (adminTabs.includes(adminTab)) return adminTab;
@@ -66,6 +70,12 @@ function AdminDashboard() {
   });
   const [contactMessages, setContactMessages] = useState({
     messages: [], total: 0, page: 1, totalPages: 1, openCount: 0, registeredCount: 0, guestCount: 0, senderType: 'all',
+  });
+  const [semesterLeads, setSemesterLeads] = useState({
+    leads: [], total: 0, page: 1, totalPages: 1, newCount: 0, status: 'all',
+  });
+  const [reviews, setReviews] = useState({
+    reviews: [], total: 0, page: 1, totalPages: 1, pendingCount: 0, approvedCount: 0, status: 'pending',
   });
   const [billingAdmin, setBillingAdmin] = useState({
     counts: { activeIndividual: 0, activeInstitutional: 0, openInstitutionLeads: 0 },
@@ -142,6 +152,10 @@ function AdminDashboard() {
   const [errorReportsClearing, setErrorReportsClearing] = useState(false);
   const [contactMessagesLoading, setContactMessagesLoading] = useState(false);
   const [contactMessagesClearing, setContactMessagesClearing] = useState(false);
+  const [semesterLeadsLoading, setSemesterLeadsLoading] = useState(false);
+  const [semesterLeadFilter, setSemesterLeadFilter] = useState('all');
+  const [reviewsLoading, setReviewsLoading] = useState(false);
+  const [reviewFilter, setReviewFilter] = useState('pending');
   const [error, setError] = useState('');
   const [activeTab, setActiveTab] = useState(() => resolveAdminTab(adminTab, location.search));
   const [searchTerm, setSearchTerm] = useState('');
@@ -221,6 +235,75 @@ function AdminDashboard() {
     }
   }, [contactSenderFilter]);
 
+  const fetchSemesterLeads = useCallback(async (page = 1) => {
+    try {
+      setSemesterLeadsLoading(true);
+      const res = await adminService.getSemesterInterest({ page, status: semesterLeadFilter });
+      setSemesterLeads(res.data);
+    } catch (err) {
+      console.error('Semester interest fetch error:', err);
+    } finally {
+      setSemesterLeadsLoading(false);
+    }
+  }, [semesterLeadFilter]);
+
+  const updateSemesterLeadStatus = async (leadId, status) => {
+    try {
+      await adminService.updateSemesterInterestStatus(leadId, status);
+      setSemesterLeads(prev => ({
+        ...prev,
+        leads: prev.leads.map(lead => (lead._id === leadId ? { ...lead, status } : lead)),
+      }));
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to update lead');
+    }
+  };
+
+  const fetchReviews = useCallback(async (page = 1) => {
+    try {
+      setReviewsLoading(true);
+      const res = await adminService.getReviews({ page, status: reviewFilter });
+      setReviews(res.data);
+    } catch (err) {
+      console.error('Reviews fetch error:', err);
+    } finally {
+      setReviewsLoading(false);
+    }
+  }, [reviewFilter]);
+
+  const updateReviewStatus = async (reviewId, status) => {
+    try {
+      await adminService.updateReviewStatus(reviewId, status);
+      // Drop the row from the current filtered view and adjust the counters,
+      // since its status no longer matches the active filter.
+      setReviews(prev => ({
+        ...prev,
+        reviews: prev.reviews.filter(review => review._id !== reviewId),
+        total: Math.max((prev.total || 0) - 1, 0),
+        pendingCount: status === 'pending'
+          ? (prev.pendingCount || 0) + 1
+          : Math.max((prev.pendingCount || 0) - (prev.status === 'pending' ? 1 : 0), 0),
+      }));
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to update review');
+    }
+  };
+
+  const deleteReview = async (reviewId) => {
+    if (!window.confirm('Delete this review permanently?')) return;
+    try {
+      await adminService.deleteReview(reviewId);
+      setReviews(prev => ({
+        ...prev,
+        reviews: prev.reviews.filter(review => review._id !== reviewId),
+        total: Math.max((prev.total || 0) - 1, 0),
+        pendingCount: prev.status === 'pending' ? Math.max((prev.pendingCount || 0) - 1, 0) : prev.pendingCount,
+      }));
+    } catch (err) {
+      setError(err.response?.data?.message || 'Failed to delete review');
+    }
+  };
+
   const fetchBillingAdmin = useCallback(async () => {
     try {
       setBillingLoading(true);
@@ -254,8 +337,10 @@ function AdminDashboard() {
     if (activeTab === 'guests') fetchGuests(1);
     if (activeTab === 'failures') fetchErrorReports(1);
     if (activeTab === 'messages') fetchContactMessages(1);
+    if (activeTab === 'semester') fetchSemesterLeads(1);
+    if (activeTab === 'reviews') fetchReviews(1);
     if (activeTab === 'billing' || activeTab === 'dashboard') fetchBillingAdmin();
-  }, [activeTab, fetchGuests, fetchErrorReports, fetchContactMessages, fetchBillingAdmin]);
+  }, [activeTab, fetchGuests, fetchErrorReports, fetchContactMessages, fetchSemesterLeads, fetchReviews, fetchBillingAdmin]);
 
   const billingPlans = [
     ...(billingAdmin.plans?.individual || []),
@@ -927,6 +1012,12 @@ function AdminDashboard() {
           </button>
           <button className={`tab-btn ${activeTab === 'messages' ? 'active' : ''}`} onClick={() => handleTabChange('messages')}>
             <span className="tab-icon">✉</span>{t('admin.messages', 'Messages')} ({contactMessages.openCount || stats?.overview?.openContactMessages || 0})
+          </button>
+          <button className={`tab-btn ${activeTab === 'semester' ? 'active' : ''}`} onClick={() => handleTabChange('semester')}>
+            <span className="tab-icon">🎓</span>{t('admin.semesterInterest', 'Semester interest')} ({semesterLeads.newCount || 0})
+          </button>
+          <button className={`tab-btn ${activeTab === 'reviews' ? 'active' : ''}`} onClick={() => handleTabChange('reviews')}>
+            <span className="tab-icon">⭐</span>{t('admin.reviews', 'Reviews')} ({reviews.pendingCount || 0})
           </button>
         </div>
 
@@ -1838,6 +1929,205 @@ function AdminDashboard() {
                   </button>
                   <span className="page-info">Page {contactMessages.page} of {contactMessages.totalPages}</span>
                   <button className="btn btn-outline" disabled={contactMessages.page >= contactMessages.totalPages || contactMessagesLoading} onClick={() => fetchContactMessages(contactMessages.page + 1)}>
+                    Next
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeTab === 'semester' && (
+            <div className="messages-section">
+              <div className="section-title">
+                <h2>Semester interest</h2>
+              </div>
+              <div className="failure-toolbar">
+                <div>
+                  <strong>{semesterLeads.newCount || 0}</strong> new requests
+                </div>
+                <div className="failure-toolbar-actions">
+                  <button className="btn btn-outline" onClick={() => fetchSemesterLeads(semesterLeads.page || 1)} disabled={semesterLeadsLoading}>
+                    Refresh
+                  </button>
+                </div>
+              </div>
+
+              <div className="contact-message-filters" role="group" aria-label="Semester interest status filter">
+                {['all', ...SEMESTER_LEAD_STATUSES].map(statusId => (
+                  <button
+                    key={statusId}
+                    type="button"
+                    className={`contact-message-filter ${semesterLeadFilter === statusId ? 'active' : ''}`}
+                    onClick={() => {
+                      setSemesterLeadFilter(statusId);
+                      setSemesterLeads(prev => ({ ...prev, leads: [], page: 1, status: statusId }));
+                    }}
+                  >
+                    <span>{statusId}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="card failures-card contact-messages-card">
+                {semesterLeadsLoading ? (
+                  <div className="no-data" style={{ padding: 40 }}>Loading requests...</div>
+                ) : semesterLeads.leads.length > 0 ? (
+                  <div className="failure-list">
+                    {semesterLeads.leads.map((lead) => (
+                      <div key={lead._id} className="failure-item contact-message-item">
+                        <div className="failure-item-header">
+                          <div>
+                            <div className="failure-title contact-message-title">
+                              <span className="contact-message-badge registered">{lead.status || 'new'}</span>
+                              <span>{lead.fullName || 'Unknown'}</span>
+                            </div>
+                            <div className="failure-meta">
+                              {formatDate(lead.createdAt)} | {lead.source || 'web'} | {lead.email || 'No email'}
+                            </div>
+                          </div>
+                          <select
+                            className="btn btn-outline"
+                            value={lead.status || 'new'}
+                            onChange={(e) => updateSemesterLeadStatus(lead._id, e.target.value)}
+                          >
+                            {SEMESTER_LEAD_STATUSES.map(s => (
+                              <option key={s} value={s}>{s}</option>
+                            ))}
+                          </select>
+                        </div>
+
+                        <div className="failure-detail-grid contact-message-grid">
+                          <div><span>Name</span><strong>{lead.fullName || 'Unknown'}</strong></div>
+                          <div><span>Email</span><strong>{lead.email || 'Unknown'}</strong></div>
+                          <div><span>Wants to learn</span><strong>{lead.targetLanguage || '?'}</strong></div>
+                          <div><span>Native language</span><strong>{lead.nativeLanguage || '?'}</strong></div>
+                          <div><span>Level</span><strong>{lead.currentLevel || 'unsure'}</strong></div>
+                          <div><span>Account</span><strong>{lead.userId ? 'Registered' : 'Guest'}</strong></div>
+                        </div>
+
+                        {lead.notes && (
+                          <div className="contact-message-body">
+                            {lead.notes}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="no-results">
+                    <span className="no-results-icon">OK</span>
+                    <p>No semester interest requests yet.</p>
+                  </div>
+                )}
+              </div>
+
+              {semesterLeads.totalPages > 1 && (
+                <div className="pagination-row">
+                  <button className="btn btn-outline" disabled={semesterLeads.page <= 1 || semesterLeadsLoading} onClick={() => fetchSemesterLeads(semesterLeads.page - 1)}>
+                    Previous
+                  </button>
+                  <span className="page-info">Page {semesterLeads.page} of {semesterLeads.totalPages}</span>
+                  <button className="btn btn-outline" disabled={semesterLeads.page >= semesterLeads.totalPages || semesterLeadsLoading} onClick={() => fetchSemesterLeads(semesterLeads.page + 1)}>
+                    Next
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
+
+          {activeTab === 'reviews' && (
+            <div className="messages-section">
+              <div className="section-title">
+                <h2>Reviews</h2>
+              </div>
+              <div className="failure-toolbar">
+                <div>
+                  <strong>{reviews.pendingCount || 0}</strong> pending &nbsp;|&nbsp; <strong>{reviews.approvedCount || 0}</strong> approved (live on landing page)
+                </div>
+                <div className="failure-toolbar-actions">
+                  <button className="btn btn-outline" onClick={() => fetchReviews(reviews.page || 1)} disabled={reviewsLoading}>
+                    Refresh
+                  </button>
+                </div>
+              </div>
+
+              <div className="contact-message-filters" role="group" aria-label="Review status filter">
+                {REVIEW_STATUSES.map(statusId => (
+                  <button
+                    key={statusId}
+                    type="button"
+                    className={`contact-message-filter ${reviewFilter === statusId ? 'active' : ''}`}
+                    onClick={() => {
+                      setReviewFilter(statusId);
+                      setReviews(prev => ({ ...prev, reviews: [], page: 1, status: statusId }));
+                    }}
+                  >
+                    <span>{statusId}</span>
+                  </button>
+                ))}
+              </div>
+
+              <div className="card failures-card contact-messages-card">
+                {reviewsLoading ? (
+                  <div className="no-data" style={{ padding: 40 }}>Loading reviews...</div>
+                ) : reviews.reviews.length > 0 ? (
+                  <div className="failure-list">
+                    {reviews.reviews.map((review) => (
+                      <div key={review._id} className="failure-item contact-message-item">
+                        <div className="failure-item-header">
+                          <div>
+                            <div className="failure-title contact-message-title">
+                              <span className="contact-message-badge registered">{review.status || 'pending'}</span>
+                              <span>{review.name || 'Unknown'}</span>
+                            </div>
+                            <div className="failure-meta">
+                              {formatDate(review.createdAt)} | {review.source || 'web'} | {review.userId ? 'Registered' : 'Guest'}
+                              {review.targetLanguage ? ` | Learning ${review.targetLanguage}` : ''}
+                            </div>
+                          </div>
+                          <div className="failure-toolbar-actions">
+                            {review.status !== 'approved' && (
+                              <button className="btn btn-primary" onClick={() => updateReviewStatus(review._id, 'approved')}>
+                                Approve
+                              </button>
+                            )}
+                            {review.status !== 'rejected' && (
+                              <button className="btn btn-outline" onClick={() => updateReviewStatus(review._id, 'rejected')}>
+                                Reject
+                              </button>
+                            )}
+                            {review.status === 'approved' && (
+                              <button className="btn btn-outline" onClick={() => updateReviewStatus(review._id, 'pending')}>
+                                Unpublish
+                              </button>
+                            )}
+                            <button className="btn btn-danger" onClick={() => deleteReview(review._id)}>
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+
+                        <div className="contact-message-body">
+                          {review.comment}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="no-results">
+                    <span className="no-results-icon">OK</span>
+                    <p>No {reviewFilter} reviews.</p>
+                  </div>
+                )}
+              </div>
+
+              {reviews.totalPages > 1 && (
+                <div className="pagination-row">
+                  <button className="btn btn-outline" disabled={reviews.page <= 1 || reviewsLoading} onClick={() => fetchReviews(reviews.page - 1)}>
+                    Previous
+                  </button>
+                  <span className="page-info">Page {reviews.page} of {reviews.totalPages}</span>
+                  <button className="btn btn-outline" disabled={reviews.page >= reviews.totalPages || reviewsLoading} onClick={() => fetchReviews(reviews.page + 1)}>
                     Next
                   </button>
                 </div>

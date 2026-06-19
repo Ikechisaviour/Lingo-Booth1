@@ -298,6 +298,19 @@ const getLanguageParams = () => ({
   nativeLang: getStoredLanguageCode('nativeLanguage'),
 });
 
+export const semesterInterestService = {
+  submit: (payload) =>
+    api.post('/semester-interest', payload, { timeout: 30000 }),
+};
+
+export const reviewService = {
+  // Public approved reviews for the landing page (lightly cached).
+  listApproved: () =>
+    cachedGet('/reviews/approved', {}, 60000),
+  submit: (payload) =>
+    api.post('/reviews', payload, { timeout: 30000 }),
+};
+
 export const contactService = {
   sendMessage: (message) =>
     api.post('/contact', message, { timeout: 30000 }),
@@ -823,6 +836,16 @@ export const adminService = {
     api.put(`/admin/contact-messages/${messageId}/acknowledge`),
   clearOpenContactMessages: () =>
     api.put('/admin/contact-messages/clear-open'),
+  getSemesterInterest: ({ page = 1, status = 'all' } = {}) =>
+    api.get('/admin/semester-interest', { params: { page, status } }),
+  updateSemesterInterestStatus: (leadId, status) =>
+    api.put(`/admin/semester-interest/${leadId}/status`, { status }),
+  getReviews: ({ page = 1, status = 'pending' } = {}) =>
+    api.get('/admin/reviews', { params: { page, status } }),
+  updateReviewStatus: (reviewId, status) =>
+    api.put(`/admin/reviews/${reviewId}/status`, { status }),
+  deleteReview: (reviewId) =>
+    api.delete(`/admin/reviews/${reviewId}`),
   sendSpeakingDemoTurn: (data) =>
     api.post('/admin/speaking-demo/conversation', data, { timeout: 60000 }),
   sendLocalSpeakingDemoTurn: (data) =>

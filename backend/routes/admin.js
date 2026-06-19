@@ -8,6 +8,8 @@ const Progress = require('../models/Progress');
 const GuestSession = require('../models/GuestSession');
 const ErrorReport = require('../models/ErrorReport');
 const ContactMessage = require('../models/ContactMessage');
+const SemesterInterest = require('../models/SemesterInterest');
+const Review = require('../models/Review');
 const Pronunciation = require('../models/Pronunciation');
 const LearningEvent = require('../models/LearningEvent');
 const StudyItem = require('../models/StudyItem');
@@ -980,6 +982,151 @@ router.put('/contact-messages/clear-open', async (req, res) => {
     });
   } catch (error) {
     console.error('Admin contact messages clear error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Semester interest leads — learners who asked to be reminded when the next
+// semester registration opens. Captured from the public "Join a semester" form.
+router.get('/semester-interest', async (req, res) => {
+  try {
+    const page = Math.max(parseInt(req.query.page, 10) || 1, 1);
+    const limit = Math.min(Math.max(parseInt(req.query.limit, 10) || 50, 1), 100);
+    const status = String(req.query.status || 'all').toLowerCase();
+    const VALID = ['new', 'contacted', 'reminded', 'enrolled', 'closed'];
+
+    const filter = {};
+    if (VALID.includes(status)) filter.status = status;
+
+    const skip = (page - 1) * limit;
+    const [leads, total, newCount] = await Promise.all([
+      SemesterInterest.find(filter)
+        .populate('userId', 'username email')
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .lean(),
+      SemesterInterest.countDocuments(filter),
+      SemesterInterest.countDocuments({ status: 'new' }),
+    ]);
+
+    res.json({
+      leads,
+      total,
+      page,
+      totalPages: Math.max(Math.ceil(total / limit), 1),
+      newCount,
+      status,
+    });
+  } catch (error) {
+    console.error('Admin semester interest fetch error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Update the status of a semester interest lead (e.g. mark contacted/reminded).
+router.put('/semester-interest/:leadId/status', async (req, res) => {
+  try {
+    const VALID = ['new', 'contacted', 'reminded', 'enrolled', 'closed'];
+    const status = String(req.body?.status || '').toLowerCase();
+    if (!VALID.includes(status)) {
+      return res.status(400).json({ message: 'Invalid status' });
+    }
+
+    const lead = await SemesterInterest.findByIdAndUpdate(
+      req.params.leadId,
+      { status, reviewedBy: req.userId, reviewedAt: new Date() },
+      { new: true }
+    );
+
+    if (!lead) {
+      return res.status(404).json({ message: 'Lead not found' });
+    }
+
+    res.json({ message: 'Lead updated', lead });
+  } catch (error) {
+    console.error('Admin semester interest update error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Learner reviews — testimonials submitted from the public landing page. Held
+// as `pending` until an admin approves them; only approved reviews are shown
+// publicly (see GET /api/reviews/approved).
+router.get('/reviews', async (req, res) => {
+  try {
+    const page = Math.max(parseInt(req.query.page, 10) || 1, 1);
+    const limit = Math.min(Math.max(parseInt(req.query.limit, 10) || 50, 1), 100);
+    const status = String(req.query.status || 'pending').toLowerCase();
+    const VALID = ['pending', 'approved', 'rejected'];
+
+    const filter = {};
+    if (VALID.includes(status)) filter.status = status;
+
+    const skip = (page - 1) * limit;
+    const [reviews, total, pendingCount, approvedCount] = await Promise.all([
+      Review.find(filter)
+        .populate('userId', 'username email')
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit)
+        .lean(),
+      Review.countDocuments(filter),
+      Review.countDocuments({ status: 'pending' }),
+      Review.countDocuments({ status: 'approved' }),
+    ]);
+
+    res.json({
+      reviews,
+      total,
+      page,
+      totalPages: Math.max(Math.ceil(total / limit), 1),
+      pendingCount,
+      approvedCount,
+      status,
+    });
+  } catch (error) {
+    console.error('Admin reviews fetch error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Approve / reject / re-queue a review. Approving is what makes it public.
+router.put('/reviews/:reviewId/status', async (req, res) => {
+  try {
+    const VALID = ['pending', 'approved', 'rejected'];
+    const status = String(req.body?.status || '').toLowerCase();
+    if (!VALID.includes(status)) {
+      return res.status(400).json({ message: 'Invalid status' });
+    }
+
+    const review = await Review.findByIdAndUpdate(
+      req.params.reviewId,
+      { status, reviewedBy: req.userId, reviewedAt: new Date() },
+      { new: true }
+    );
+
+    if (!review) {
+      return res.status(404).json({ message: 'Review not found' });
+    }
+
+    res.json({ message: 'Review updated', review });
+  } catch (error) {
+    console.error('Admin review update error:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// Permanently delete a review (e.g. spam).
+router.delete('/reviews/:reviewId', async (req, res) => {
+  try {
+    const review = await Review.findByIdAndDelete(req.params.reviewId);
+    if (!review) {
+      return res.status(404).json({ message: 'Review not found' });
+    }
+    res.json({ message: 'Review deleted' });
+  } catch (error) {
+    console.error('Admin review delete error:', error);
     res.status(500).json({ message: 'Server error' });
   }
 });

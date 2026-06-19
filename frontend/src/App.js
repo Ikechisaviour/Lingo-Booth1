@@ -45,6 +45,9 @@ const ForgotPasswordPage = lazy(() => import('./pages/ForgotPasswordPage'));
 const ResetPasswordPage = lazy(() => import('./pages/ResetPasswordPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
 const PricingPage = lazy(() => import('./pages/PricingPage'));
+const FeaturesPage = lazy(() => import('./pages/FeaturesPage'));
+const ComparisonPage = lazy(() => import('./pages/ComparisonPage'));
+const SemesterInterestPage = lazy(() => import('./pages/SemesterInterestPage'));
 const BillingPage = lazy(() => import('./pages/BillingPage'));
 const InstitutionDashboard = lazy(() => import('./pages/InstitutionDashboard'));
 const CertificateVerifyPage = lazy(() => import('./pages/CertificateVerifyPage'));
@@ -132,11 +135,16 @@ function GuestSignupPrompt({ onClose, onGuestExit }) {
   );
 }
 
+// Public marketing pages that render their own full brand header in a nav.
+// The floating home-logo mark would duplicate that brand, so it stays hidden
+// on these routes (the in-page brand already links back to home).
+const OWN_BRAND_ROUTES = ['/', '/features', '/compare', '/comparison', '/join-semester'];
+
 function GlobalHomeLogo({ hidden }) {
   const { t } = useTranslation();
   const location = useLocation();
 
-  if (hidden || location.pathname === '/') {
+  if (hidden || OWN_BRAND_ROUTES.includes(location.pathname)) {
     return null;
   }
 
@@ -520,6 +528,10 @@ function App() {
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/features" element={<FeaturesPage />} />
+          <Route path="/compare" element={<ComparisonPage />} />
+          <Route path="/comparison" element={<ComparisonPage />} />
+          <Route path="/join-semester" element={<SemesterInterestPage />} />
           <Route path="/certificates/verify/:certificateId" element={<CertificateVerifyPage />} />
           <Route
             path="/demo-preview"

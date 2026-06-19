@@ -1,0 +1,523 @@
+.features-page {
+  --features-ink: #101923;
+  --features-muted: #5d6875;
+  --features-card: rgba(255, 255, 255, 0.92);
+  --features-line: #e7e1d8;
+  --features-green: #1f6d4a;
+  --features-orange: #ff5b1f;
+  --features-orange-dark: #df4915;
+  min-height: 100vh;
+  /* Matches LandingPage.css palette so the two pages feel like one product. */
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.16), transparent 26%),
+    linear-gradient(135deg, var(--challenge-primary) 0%, #a9b72a 48%, var(--primary-gradient-end) 100%);
+  background-attachment: fixed;
+  color: var(--features-ink);
+  overflow-x: hidden;
+}
+
+.features-page button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.features-nav,
+.features-page main {
+  width: min(1100px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+/* ---- Top navigation ---- */
+.features-nav {
+  min-height: 88px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+}
+
+.features-brand {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--features-ink);
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  padding: 0;
+}
+
+.features-brand .brand-logo-unit__mark {
+  width: 44px;
+  height: 44px;
+}
+
+.features-brand .brand-logo-unit__wordmark {
+  width: 164px;
+  max-height: 40px;
+}
+
+.features-nav-actions {
+  display: inline-flex;
+  justify-self: end;
+  align-items: center;
+  gap: 12px;
+}
+
+.features-nav-link {
+  border: 0;
+  background: transparent;
+  color: var(--features-ink);
+  font-size: 0.96rem;
+  font-weight: 650;
+  padding: 10px 12px;
+  border-radius: 999px;
+}
+
+.features-nav-link:hover {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+/* ---- Buttons ---- */
+.features-primary,
+.features-secondary,
+.features-cta-light,
+.features-cta-outline {
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 1rem;
+  padding: 14px 26px;
+  border: 2px solid transparent;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.features-primary,
+.features-primary-small {
+  background: var(--features-orange);
+  color: #fff;
+  box-shadow: 0 14px 30px rgba(223, 73, 21, 0.32);
+}
+
+.features-primary-small {
+  padding: 11px 20px;
+  font-size: 0.94rem;
+}
+
+.features-primary:hover,
+.features-cta-light:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 36px rgba(223, 73, 21, 0.36);
+}
+
+.features-secondary {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--features-ink);
+  border-color: rgba(16, 25, 35, 0.12);
+}
+
+.features-secondary:hover {
+  transform: translateY(-1px);
+  background: #fff;
+}
+
+/* ---- Hero ---- */
+.features-hero {
+  background: var(--features-card);
+  border-radius: 28px;
+  padding: 44px 40px;
+  margin: 8px 0 32px;
+  box-shadow: 0 30px 60px rgba(16, 25, 35, 0.12);
+}
+
+.features-hero h1 {
+  font-size: 2.9rem;
+  line-height: 1.1;
+  margin: 0 0 18px;
+  letter-spacing: 0;
+}
+
+.features-hero p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--features-muted);
+  margin: 0 0 14px;
+  max-width: 70ch;
+}
+
+.features-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+/* ---- Feature blocks ---- */
+.features-block,
+.features-different {
+  background: var(--features-card);
+  border-radius: 24px;
+  padding: 0;
+  margin: 0 0 22px;
+  box-shadow: 0 22px 44px rgba(16, 25, 35, 0.1);
+  overflow: hidden;
+}
+
+.features-block-summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  list-style: none;
+  min-height: 88px;
+  padding: 24px 34px;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.12s ease;
+}
+
+.features-block-summary::-webkit-details-marker {
+  display: none;
+}
+
+.features-block-summary:hover,
+.features-block-summary:focus-visible {
+  background: rgba(255, 255, 255, 0.48);
+}
+
+.features-block-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  border-radius: 14px;
+  background: var(--features-green);
+  color: #fff;
+}
+
+.features-block-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.2;
+}
+
+.features-summary-copy {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.features-summary-title {
+  color: var(--features-ink);
+  display: block;
+  font-size: 1.7rem;
+  font-weight: 850;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.features-summary-meta {
+  color: var(--features-muted);
+  font-size: 0.92rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+/* "Read more" / "Show less" toggle label replacing the bare chevron. The whole
+   summary row stays clickable; this is the visible affordance for it. */
+.features-collapse-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  color: var(--features-green);
+  font-size: 0.92rem;
+  font-weight: 800;
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(31, 109, 74, 0.35);
+  background: rgba(31, 109, 74, 0.06);
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.features-block-summary:hover .features-collapse-cta,
+.features-block-summary:focus-visible .features-collapse-cta {
+  background: rgba(31, 109, 74, 0.12);
+  border-color: rgba(31, 109, 74, 0.55);
+}
+
+.features-collapse-icon {
+  color: var(--features-green);
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.26s ease;
+}
+
+.features-collapse.is-open .features-collapse-icon {
+  transform: rotate(180deg);
+}
+
+/* Animated expand / collapse. The body is a one-row grid that animates between
+   0fr (collapsed) and 1fr (expanded); the inner wrapper clips with
+   overflow:hidden so the content slides smoothly instead of snapping. */
+.features-collapse-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 0.3s ease;
+}
+
+.features-collapse.is-open .features-collapse-body {
+  grid-template-rows: 1fr;
+}
+
+.features-collapse-inner {
+  overflow: hidden;
+  min-height: 0;
+  padding: 0 34px;
+  transition: padding 0.3s ease;
+}
+
+.features-collapse.is-open .features-collapse-inner {
+  border-top: 1px solid rgba(16, 25, 35, 0.08);
+  padding: 20px 34px 32px;
+}
+
+/* Intro/preview paragraph is intentionally hidden; the section header plus the
+   "Read more" toggle stand on their own, and the detail lives in the list. */
+.features-block-intro {
+  display: none;
+}
+
+.features-list {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 28px;
+}
+
+.feature-item {
+  position: relative;
+  padding: 14px 16px 14px 18px;
+  border-radius: 14px;
+  background: rgba(247, 243, 237, 0.75);
+  border: 1px solid var(--features-line);
+  font-size: 0.96rem;
+  line-height: 1.5;
+}
+
+.feature-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--features-green);
+}
+
+.feature-item--strong::before {
+  background: var(--features-orange);
+}
+
+.feature-term {
+  font-weight: 800;
+  color: var(--features-ink);
+}
+
+.feature-term::after {
+  content: ":";
+  font-weight: 800;
+  margin-right: 4px;
+}
+
+.feature-desc {
+  color: var(--features-muted);
+}
+
+/* ---- Closing CTA ---- */
+.features-cta {
+  position: relative;
+  background: linear-gradient(135deg, var(--features-orange) 0%, var(--features-orange-dark) 100%);
+  color: #fff;
+  border-radius: 28px;
+  padding: 40px;
+  margin: 8px 0 56px;
+  text-align: center;
+  box-shadow: 0 28px 56px rgba(223, 73, 21, 0.32);
+  overflow: hidden;
+}
+
+.features-cta h2 {
+  font-size: 2.1rem;
+  margin: 0 0 22px;
+}
+
+.features-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+}
+
+.features-cta-light {
+  background: #fff;
+  color: var(--features-orange-dark);
+}
+
+.features-cta-outline {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.features-cta-outline:hover {
+  background: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+}
+
+.features-cta-icon {
+  position: absolute;
+  right: -10px;
+  bottom: -10px;
+  width: 110px;
+  height: 110px;
+  opacity: 0.16;
+}
+
+/* ---- Responsive: tablet ---- */
+@media (max-width: 880px) {
+  .features-nav,
+  .features-page main {
+    width: min(720px, calc(100% - 40px));
+  }
+
+  .features-list {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .features-hero {
+    padding: 28px 24px;
+  }
+
+  .features-block-summary {
+    min-height: 76px;
+    padding: 22px 24px;
+  }
+
+  .features-collapse-inner {
+    padding: 0 24px;
+  }
+
+  .features-collapse.is-open .features-collapse-inner {
+    padding: 18px 24px 28px;
+  }
+}
+
+/* ---- Responsive: phone ---- */
+@media (max-width: 560px) {
+  .features-nav {
+    min-height: 72px;
+    gap: 12px;
+  }
+
+  .features-nav-link {
+    padding: 8px 8px;
+    font-size: 0.9rem;
+  }
+
+  .features-nav-actions {
+    gap: 6px;
+  }
+
+  .features-hero {
+    padding: 24px 18px;
+    border-radius: 22px;
+  }
+
+  .features-hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .features-list {
+    grid-template-columns: 1fr;
+  }
+
+  .features-block,
+  .features-different {
+    border-radius: 20px;
+  }
+
+  .features-block-summary {
+    min-height: 68px;
+    padding: 18px;
+  }
+
+  .features-summary-title {
+    font-size: 1.3rem;
+  }
+
+  .features-collapse-inner {
+    padding: 0 18px;
+  }
+
+  .features-collapse.is-open .features-collapse-inner {
+    padding: 16px 18px 22px;
+  }
+
+  .features-cta {
+    padding: 30px 20px;
+  }
+
+  .features-primary,
+  .features-secondary,
+  .features-cta-light,
+  .features-cta-outline {
+    width: 100%;
+    text-align: center;
+  }
+
+  .features-hero-actions,
+  .features-cta-actions {
+    flex-direction: column;
+  }
+}
+
+/* RTL: keep the accent bar and colon on the correct side. */
+[dir="rtl"] .feature-item {
+  padding: 14px 18px 14px 16px;
+}
+
+[dir="rtl"] .feature-item::before {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .feature-term::after {
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+[dir="rtl"] .features-cta-icon {
+  right: auto;
+  left: -10px;
+  transform: scaleX(-1);
+}
+
+/* Respect users who prefer less motion: keep the open/close instant. */
+@media (prefers-reduced-motion: reduce) {
+  .features-collapse-body,
+  .features-collapse-inner,
+  .features-collapse-icon,
+  .features-collapse-cta,
+  .features-block-summary {
+    transition: none;
+  }
+}
