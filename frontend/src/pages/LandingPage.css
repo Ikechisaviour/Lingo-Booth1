@@ -14,7 +14,9 @@
   background:
     radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.16), transparent 26%),
     linear-gradient(135deg, #58cc02 0%, #a9b72a 48%, #ff8c5a 100%);
-  background-attachment: fixed;
+  /* NOTE: avoid `background-attachment: fixed` — it causes repaint/tearing
+     ("gitter") on mobile browsers while scrolling. The gradient spans the full
+     page without it. */
   color: var(--landing-ink);
   overflow-x: hidden;
 }
@@ -123,6 +125,21 @@
   padding: 10px 12px;
   font-size: 0.96rem;
   font-weight: 650;
+}
+
+/* The hamburger only appears at mobile widths (see the 640px media query). */
+.landing-nav-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: var(--landing-ink);
+  cursor: pointer;
+}
+
+/* On desktop/tablet the secondary links sit inline in the nav row, so the
+   wrapper is layout-transparent. At mobile widths it becomes a dropdown. */
+.landing-nav-more {
+  display: contents;
 }
 
 .landing-primary,
@@ -1325,18 +1342,68 @@
     max-height: 30px;
   }
 
-  .landing-login--secondary {
-    /* Hide Plans + Contact at narrow widths to keep the row tight. Login
-       (`.landing-login--auth`) stays visible so returning users can sign in. */
-    display: none;
-  }
-
   .landing-nav-actions {
+    position: relative;
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto auto auto;
     width: 100%;
     gap: 10px;
     align-items: center;
+  }
+
+  /* Show the hamburger; collapse Features/Pricing/Contact into a dropdown so
+     they stay reachable on mobile while keeping the header row tight. */
+  .landing-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+    border: 1px solid rgba(16, 25, 35, 0.18);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .landing-nav-more {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 60;
+    min-width: 190px;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+    background: #fff;
+    border: 1px solid var(--landing-line);
+    border-radius: 14px;
+    box-shadow: 0 18px 50px rgba(16, 25, 35, 0.18);
+  }
+
+  .landing-nav-more.is-open {
+    display: flex;
+  }
+
+  .landing-nav-more .landing-login--secondary {
+    width: 100%;
+    padding: 11px 12px;
+    text-align: left;
+    border-radius: 10px;
+    font-weight: 700;
+  }
+
+  .landing-nav-more .landing-login--secondary:hover {
+    background: rgba(16, 25, 35, 0.05);
+  }
+
+  .landing-rtl .landing-nav-more {
+    right: auto;
+    left: 0;
+  }
+
+  .landing-rtl .landing-nav-more .landing-login--secondary {
+    text-align: right;
   }
 
   .landing-login--auth {

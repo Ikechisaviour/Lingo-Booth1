@@ -14,6 +14,7 @@ import {
   FiHeadphones,
   FiHeart,
   FiLayers,
+  FiMenu,
   FiMessageCircle,
   FiMic,
   FiMonitor,
@@ -655,6 +656,7 @@ function LandingPage() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [landingLanguage, setLandingLanguage] = useState(detectLandingLanguage);
+  const [navMenuOpen, setNavMenuOpen] = useState(false);
 
   const landing = useMemo(() => {
     const nativeCode = landingLanguage;
@@ -805,15 +807,26 @@ function LandingPage() {
           <button type="button" className="landing-login landing-login--auth" onClick={() => navigate('/login')}>
             {landing.copy.login}
           </button>
-          <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/features')}>
-            {landing.exploreFeatures}
+          <button
+            type="button"
+            className="landing-nav-toggle"
+            aria-expanded={navMenuOpen}
+            aria-label={navMenuOpen ? t('common.close', 'Close menu') : t('navbar.menu', 'Menu')}
+            onClick={() => setNavMenuOpen(open => !open)}
+          >
+            {navMenuOpen ? <FiX /> : <FiMenu />}
           </button>
-          <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/contact')}>
-            {t('contact.navLabel')}
-          </button>
-          <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/pricing')}>
-            {t('navbar.plans')}
-          </button>
+          <div className={`landing-nav-more ${navMenuOpen ? 'is-open' : ''}`}>
+            <button type="button" className="landing-login landing-login--secondary" onClick={() => { setNavMenuOpen(false); navigate('/features'); }}>
+              {landing.exploreFeatures}
+            </button>
+            <button type="button" className="landing-login landing-login--secondary" onClick={() => { setNavMenuOpen(false); navigate('/contact'); }}>
+              {t('contact.navLabel')}
+            </button>
+            <button type="button" className="landing-login landing-login--secondary" onClick={() => { setNavMenuOpen(false); navigate('/pricing'); }}>
+              {t('navbar.plans')}
+            </button>
+          </div>
           <button type="button" className="landing-primary landing-primary-small" onClick={startFree}>
             {landing.copy.startFree}
           </button>
