@@ -582,7 +582,18 @@
     "curriculumV2Name": "{{language}} — yeni müfredat",
     "curriculumV2Desc": "Desen alıştırmaları, hikayeler, tamamlama, kelime SRS'si, telaffuz - planlayıcı sıralı.",
     "curriculumV1Name": "{{language}} — klasik müfredat",
-    "curriculumV1Desc": "Kelime listeleri ve zaten bildiğiniz sınıf dersleri."
+    "curriculumV1Desc": "Kelime listeleri ve zaten bildiğiniz sınıf dersleri.",
+    "storyCommentRequired": "Göndermeden önce kısa bir hikaye yazın.",
+    "storyFallbackName": "Lingo Booth öğrencisi",
+    "storySubmitted": "Teşekkür ederim. Hikayeniz gönderildi ve incelendikten sonra görünecek.",
+    "storySubmitFailed": "Hikayeniz gönderilemedi. Lütfen tekrar deneyin.",
+    "storyKicker": "Öğrenci referansı",
+    "storyTitle": "Hikayenizi paylaşın",
+    "storyDesc": "Gelecekteki öğrencilere sizin için neyin değiştiğini anlatın. Onaylanan hikayeler, incelendikten sonra herkese açık açılış sayfasında görünebilir.",
+    "storyCommentLabel": "Hikayeniz",
+    "storyCommentPlaceholder": "Konuşmanıza, yazmanıza, incelemenize veya tutarlı kalmanıza ne yardımcı oldu?",
+    "storySubmitting": "Gönderiliyor...",
+    "storySubmit": "Hikaye gönder"
   },
   "verifyEmail": {
     "verifying": "E-postanız doğrulanıyor...",

@@ -582,7 +582,18 @@
     "curriculumV2Name": "{{language}} — kurikulum baharu",
     "curriculumV2Desc": "Latih tubi pola, cerita, kloz, perbendaharaan kata SRS, sebutan — urutan perancang.",
     "curriculumV1Name": "{{language}} — kurikulum klasik",
-    "curriculumV1Desc": "Senarai kosa kata dan pelajaran kelas yang anda sudah tahu."
+    "curriculumV1Desc": "Senarai kosa kata dan pelajaran kelas yang anda sudah tahu.",
+    "storyCommentRequired": "Tulis cerpen sebelum menghantar.",
+    "storyFallbackName": "Pelajar Lingo Booth",
+    "storySubmitted": "terima kasih. Cerita anda telah dihantar dan akan dipaparkan selepas semakan.",
+    "storySubmitFailed": "Tidak dapat menghantar cerita anda. Sila cuba lagi.",
+    "storyKicker": "Testimoni pelajar",
+    "storyTitle": "Kongsi cerita anda",
+    "storyDesc": "Beritahu pelajar akan datang perkara yang berubah untuk anda. Cerita yang diluluskan boleh muncul di halaman pendaratan awam selepas semakan.",
+    "storyCommentLabel": "cerita awak",
+    "storyCommentPlaceholder": "Apakah yang membantu anda bercakap, menulis, menyemak atau kekal konsisten?",
+    "storySubmitting": "Menghantar...",
+    "storySubmit": "Hantar cerita"
   },
   "verifyEmail": {
     "verifying": "Mengesahkan e-mel anda...",

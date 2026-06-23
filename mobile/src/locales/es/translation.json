@@ -649,7 +649,19 @@
     "fullName": "Nombre completo",
     "fullNamePlaceholder": "Nombre para mostrar en los certificados",
     "fullNameMissing": "Agregar antes de emitir un certificado",
-    "activeAccountType": "Tipo de cuenta activa"
+    "activeAccountType": "Tipo de cuenta activa",
+    "storyTitle": "Comparte tu historia",
+    "storyCommentRequired": "Escribe una historia corta antes de enviarla.",
+    "storyFallbackName": "Estudiante del stand de Lingo",
+    "storyThanksTitle": "Gracias",
+    "storySubmitted": "Gracias. Su historia fue enviada y aparecerá después de la revisión.",
+    "storySubmitFailed": "No se pudo enviar tu historia. Por favor inténtalo de nuevo.",
+    "storyKicker": "Testimonio de alumno",
+    "storyDesc": "Cuéntele a los futuros alumnos qué cambió para usted. Las historias aprobadas pueden aparecer en la página de destino pública después de su revisión.",
+    "storyCommentLabel": "tu historia",
+    "storyCommentPlaceholder": "¿Qué te ayudó a hablar, escribir, revisar o mantener la coherencia?",
+    "storySubmitting": "Envío...",
+    "storySubmit": "Enviar historia"
   },
   "verifyEmail": {
     "verifying": "Verificando tu correo...",

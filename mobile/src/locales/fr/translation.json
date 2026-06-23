@@ -649,7 +649,19 @@
     "fullName": "Nom et prénom",
     "fullNamePlaceholder": "Nom à afficher sur les certificats",
     "fullNameMissing": "Ajouter avant de délivrer un certificat",
-    "activeAccountType": "Type de compte actif"
+    "activeAccountType": "Type de compte actif",
+    "storyTitle": "Partagez votre histoire",
+    "storyCommentRequired": "Écrivez une courte histoire avant de la soumettre.",
+    "storyFallbackName": "Apprenant Lingo Booth",
+    "storyThanksTitle": "Merci",
+    "storySubmitted": "Merci. Votre histoire a été envoyée et apparaîtra après examen.",
+    "storySubmitFailed": "Impossible d'envoyer votre histoire. Veuillez réessayer.",
+    "storyKicker": "Témoignage d'apprenant",
+    "storyDesc": "Dites aux futurs apprenants ce qui a changé pour vous. Les histoires approuvées peuvent apparaître sur la page de destination publique après examen.",
+    "storyCommentLabel": "Votre histoire",
+    "storyCommentPlaceholder": "Qu’est-ce qui vous a aidé à parler, à écrire, à réviser ou à rester cohérent ?",
+    "storySubmitting": "Envoi...",
+    "storySubmit": "Envoyer une histoire"
   },
   "verifyEmail": {
     "verifying": "Vérification de votre e-mail...",

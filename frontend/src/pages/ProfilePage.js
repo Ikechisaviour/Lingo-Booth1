@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { billingService, certificateService, classLessonService, learningHubService, userService, progressService } from '../services/api';
+import { billingService, certificateService, classLessonService, learningHubService, reviewService, userService, progressService } from '../services/api';
 import speechService from '../services/speechService';
 import LANGUAGES, {
   getNativeLangCode,
@@ -62,6 +62,8 @@ function ProfilePage({ onLogout }) {
     confirmPassword: '',
   });
   const [saveMessage, setSaveMessage] = useState('');
+  const [storyForm, setStoryForm] = useState({ comment: '', company: '' });
+  const [storySubmitting, setStorySubmitting] = useState(false);
   const [targetVoices, setTargetVoices] = useState([]);
   const [nativeVoices, setNativeVoices] = useState([]);
   const [selectedTargetVoice, setSelectedTargetVoice] = useState(speechService.getSelectedVoiceName(getTargetLangCode()) || '');
@@ -195,6 +197,40 @@ function ProfilePage({ onLogout }) {
           ? t('levelTests.fullNameInvalid', 'Enter at least two characters for your full name.')
           : err.response?.data?.message || t('profilePage.failedToLoad')
       );
+    }
+  };
+
+  const updateStoryField = (field) => (event) => {
+    const { value } = event.target;
+    setStoryForm((current) => ({ ...current, [field]: value }));
+  };
+
+  const submitStory = async (event) => {
+    event.preventDefault();
+    if (storySubmitting) return;
+    const comment = storyForm.comment.trim();
+    if (!comment) {
+      setError(t('profilePage.storyCommentRequired', 'Write a short story before submitting.'));
+      return;
+    }
+    setStorySubmitting(true);
+    setError('');
+    try {
+      await reviewService.submit({
+        name: user?.fullName || user?.username || editData.fullName || editData.username || t('profilePage.storyFallbackName', 'Lingo Booth learner'),
+        targetLanguage: getTargetLangCode(),
+        comment,
+        company: storyForm.company,
+        page: 'profile',
+        source: 'web',
+      });
+      setStoryForm({ comment: '', company: '' });
+      setSaveMessage(t('profilePage.storySubmitted', 'Thank you. Your story was sent and will appear after review.'));
+      setTimeout(() => setSaveMessage(''), 4000);
+    } catch (err) {
+      setError(err.response?.data?.message || t('profilePage.storySubmitFailed', 'Could not send your story. Please try again.'));
+    } finally {
+      setStorySubmitting(false);
     }
   };
 
@@ -414,6 +450,7 @@ function ProfilePage({ onLogout }) {
   const activeInstitutionAccess = billingSummary.institutionalAccess || institutionalAccess || null;
   const activeBillingSource = billingSummary.billingSource || user?.aiEntitlements?.billingSource || storedEntitlements.billingSource || '';
   const activeAccountTier = String(personalizationTier || 'plus').toUpperCase();
+  const activeStoryLanguageName = profileLanguageOptionLabel(getTargetLangCode());
   const activeAccountTypeLabel = user?.role === 'admin'
     ? `${t('profilePage.administrator')} · Pro`
     : activeBillingSource === 'institution'
@@ -630,6 +667,44 @@ function ProfilePage({ onLogout }) {
                 >
                   {canUseLearningPersonalization ? t('profilePage.managePersonalization') : t('profilePage.viewUpgradeDetails')}
                 </button>
+              </div>
+
+              <div className="card story-card">
+                <div className="story-card-header">
+                  <div>
+                    <p className="story-kicker">{t('profilePage.storyKicker', 'Learner testimonial')}</p>
+                    <h2>{t('profilePage.storyTitle', 'Share your story')}</h2>
+                  </div>
+                  <span>{activeStoryLanguageName}</span>
+                </div>
+                <p className="card-description">
+                  {t('profilePage.storyDesc', 'Tell future learners what changed for you. Approved stories can appear on the public landing page after review.')}
+                </p>
+                <form className="story-form" onSubmit={submitStory}>
+                  <label className="story-field">
+                    <span>{t('profilePage.storyCommentLabel', 'Your story')}</span>
+                    <textarea
+                      value={storyForm.comment}
+                      onChange={updateStoryField('comment')}
+                      placeholder={t('profilePage.storyCommentPlaceholder', 'What helped you speak, write, review, or stay consistent?')}
+                      maxLength={600}
+                      rows={4}
+                      required
+                    />
+                  </label>
+                  <input
+                    type="text"
+                    className="story-honeypot"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    value={storyForm.company}
+                    onChange={updateStoryField('company')}
+                  />
+                  <button type="submit" className="btn btn-primary" disabled={storySubmitting}>
+                    {storySubmitting ? t('profilePage.storySubmitting', 'Sending...') : t('profilePage.storySubmit', 'Send story')}
+                  </button>
+                </form>
               </div>
 
               <div className="card">

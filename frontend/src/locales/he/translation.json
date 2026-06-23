@@ -582,7 +582,18 @@
     "curriculumV2Name": "{{language}} - תוכנית לימודים חדשה",
     "curriculumV2Desc": "תרגילי דפוס, סיפורים, קלוז, vocab SRS, הגייה - ברצף המתכנן.",
     "curriculumV1Name": "{{language}} - תוכנית לימודים קלאסית",
-    "curriculumV1Desc": "רשימות אוצר מילים ושיעורי כיתות שאתה כבר יודע."
+    "curriculumV1Desc": "רשימות אוצר מילים ושיעורי כיתות שאתה כבר יודע.",
+    "storyCommentRequired": "כתבו סיפור קצר לפני ההגשה.",
+    "storyFallbackName": "לומד לינגו בות'",
+    "storySubmitted": "תודה לך. הסיפור שלך נשלח ויופיע לאחר בדיקה.",
+    "storySubmitFailed": "לא ניתן לשלוח את הסיפור שלך. אנא נסה שוב.",
+    "storyKicker": "עדות לומד",
+    "storyTitle": "שתף את הסיפור שלך",
+    "storyDesc": "ספר ללומדים עתידיים מה השתנה עבורך. סיפורים שאושרו יכולים להופיע בדף הנחיתה הציבורי לאחר בדיקה.",
+    "storyCommentLabel": "הסיפור שלך",
+    "storyCommentPlaceholder": "מה עזר לך לדבר, לכתוב, לסקור או להישאר עקבי?",
+    "storySubmitting": "שְׁלִיחָה...",
+    "storySubmit": "שלח סיפור"
   },
   "verifyEmail": {
     "verifying": "מאמת את האימייל שלך...",

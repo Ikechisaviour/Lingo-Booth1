@@ -649,7 +649,19 @@
     "fullName": "フルネーム",
     "fullNamePlaceholder": "証明書に表示する名前",
     "fullNameMissing": "証明書発行前に追加",
-    "activeAccountType": "アクティブなアカウントの種類"
+    "activeAccountType": "アクティブなアカウントの種類",
+    "storyTitle": "あなたのストーリーを共有してください",
+    "storyCommentRequired": "投稿する前に短い小説を書いてください。",
+    "storyFallbackName": "Lingo ブース学習者",
+    "storyThanksTitle": "ありがとう",
+    "storySubmitted": "ありがとう。 あなたのストーリーは送信され、レビュー後に表示されます。",
+    "storySubmitFailed": "ストーリーを送信できませんでした。 もう一度試してください。",
+    "storyKicker": "学習者の感想文",
+    "storyDesc": "あなたにとって何が変わったのかをこれから学ぶ人に伝えてください。 承認されたストーリーは、審査後に公開ランディング ページに表示されます。",
+    "storyCommentLabel": "あなたの物語",
+    "storyCommentPlaceholder": "話したり、書いたり、レビューしたり、一貫性を保つのに何が役立ちましたか?",
+    "storySubmitting": "送信中...",
+    "storySubmit": "ストーリーを送信する"
   },
   "verifyEmail": {
     "verifying": "メールを確認中...",

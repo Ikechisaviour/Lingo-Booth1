@@ -582,7 +582,18 @@
     "curriculumV2Name": "{{language}} — nouveau programme",
     "curriculumV2Desc": "Exercices de modèles, histoires, cloze, vocabulaire SRS, prononciation - séquencés par planificateur.",
     "curriculumV1Name": "{{language}} — programme classique",
-    "curriculumV1Desc": "Listes de vocabulaire et leçons de classe que vous connaissez déjà."
+    "curriculumV1Desc": "Listes de vocabulaire et leçons de classe que vous connaissez déjà.",
+    "storyCommentRequired": "Écrivez une courte histoire avant de la soumettre.",
+    "storyFallbackName": "Apprenant Lingo Booth",
+    "storySubmitted": "Merci. Votre histoire a été envoyée et apparaîtra après examen.",
+    "storySubmitFailed": "Impossible d'envoyer votre histoire. Veuillez réessayer.",
+    "storyKicker": "Témoignage d'apprenant",
+    "storyTitle": "Partagez votre histoire",
+    "storyDesc": "Dites aux futurs apprenants ce qui a changé pour vous. Les histoires approuvées peuvent apparaître sur la page de destination publique après examen.",
+    "storyCommentLabel": "Votre histoire",
+    "storyCommentPlaceholder": "Qu’est-ce qui vous a aidé à parler, à écrire, à réviser ou à rester cohérent ?",
+    "storySubmitting": "Envoi...",
+    "storySubmit": "Envoyer une histoire"
   },
   "verifyEmail": {
     "verifying": "Vérification de votre e-mail...",

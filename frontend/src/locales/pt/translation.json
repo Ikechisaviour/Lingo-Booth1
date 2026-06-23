@@ -582,7 +582,18 @@
     "curriculumV2Name": "{{language}} — novo currículo",
     "curriculumV2Desc": "Exercícios de padrões, histórias, cloze, vocabulário SRS, pronúncia - sequenciados pelo planejador.",
     "curriculumV1Name": "{{language}} — currículo clássico",
-    "curriculumV1Desc": "Listas de vocabulário e aulas que você já conhece."
+    "curriculumV1Desc": "Listas de vocabulário e aulas que você já conhece.",
+    "storyCommentRequired": "Escreva um conto antes de enviar.",
+    "storyFallbackName": "Aluno do Lingo Booth",
+    "storySubmitted": "Obrigado. Sua história foi enviada e aparecerá após análise.",
+    "storySubmitFailed": "Não foi possível enviar sua história. Por favor, tente novamente.",
+    "storyKicker": "Depoimento do aluno",
+    "storyTitle": "Compartilhe sua história",
+    "storyDesc": "Diga aos futuros alunos o que mudou para você. As histórias aprovadas podem aparecer na página de destino pública após revisão.",
+    "storyCommentLabel": "Sua história",
+    "storyCommentPlaceholder": "O que o ajudou a falar, escrever, revisar ou permanecer consistente?",
+    "storySubmitting": "Enviando...",
+    "storySubmit": "Enviar história"
   },
   "verifyEmail": {
     "verifying": "Verificando seu e-mail...",

@@ -582,7 +582,18 @@
     "curriculumV2Name": "{{language}} — bagong curriculum",
     "curriculumV2Desc": "Pattern drills, kwento, cloze, vocab SRS, pronunciation — planner-sequenced.",
     "curriculumV1Name": "{{language}} — klasikong kurikulum",
-    "curriculumV1Desc": "Mga listahan ng bokabularyo at mga aralin sa klase na alam mo na."
+    "curriculumV1Desc": "Mga listahan ng bokabularyo at mga aralin sa klase na alam mo na.",
+    "storyCommentRequired": "Sumulat ng maikling kwento bago isumite.",
+    "storyFallbackName": "Nag-aaral ng Lingo Booth",
+    "storySubmitted": "salamat po. Ipinadala ang iyong kuwento at lalabas pagkatapos ng pagsusuri.",
+    "storySubmitFailed": "Hindi maipadala ang iyong kuwento. Pakisubukang muli.",
+    "storyKicker": "Testimonial ng mag-aaral",
+    "storyTitle": "Ibahagi ang iyong kuwento",
+    "storyDesc": "Sabihin sa mga mag-aaral sa hinaharap kung ano ang nagbago para sa iyo. Maaaring lumabas ang mga naaprubahang kwento sa pampublikong landing page pagkatapos ng pagsusuri.",
+    "storyCommentLabel": "Iyong kwento",
+    "storyCommentPlaceholder": "Ano ang nakatulong sa iyo na magsalita, magsulat, magsuri, o manatiling pare-pareho?",
+    "storySubmitting": "Ipinapadala...",
+    "storySubmit": "Magpadala ng kwento"
   },
   "verifyEmail": {
     "verifying": "Vine-verify ang iyong email...",

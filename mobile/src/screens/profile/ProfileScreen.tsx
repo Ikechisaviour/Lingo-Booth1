@@ -16,7 +16,7 @@ import {
 import { Text, Button, TextInput, Card, Divider, SegmentedButtons, Switch } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
-import { authService, billingService, certificateService, classLessonService, learningHubService, notificationService, userService, progressService, ttsService } from '../../services/api';
+import { authService, billingService, certificateService, classLessonService, learningHubService, notificationService, reviewService, userService, progressService, ttsService } from '../../services/api';
 import speechService from '../../services/speechService';
 import {
   getPracticeNotificationStatus,
@@ -75,6 +75,8 @@ const ProfileScreen: React.FC = () => {
   const [editUsername, setEditUsername] = useState(username || '');
   const [editFullName, setEditFullName] = useState(fullName || '');
   const [saveMessage, setSaveMessage] = useState('');
+  const [storyComment, setStoryComment] = useState('');
+  const [storySubmitting, setStorySubmitting] = useState(false);
 
   // Password state
   const [currentPassword, setCurrentPassword] = useState('');
@@ -367,6 +369,41 @@ const ProfileScreen: React.FC = () => {
     }
   };
 
+  const handleSubmitStory = async () => {
+    if (storySubmitting) return;
+    const comment = storyComment.trim();
+    if (!comment) {
+      Alert.alert(
+        t('profilePage.storyTitle', 'Share your story'),
+        t('profilePage.storyCommentRequired', 'Write a short story before submitting.'),
+      );
+      return;
+    }
+    setStorySubmitting(true);
+    try {
+      await reviewService.submit({
+        name: user?.fullName || fullName || user?.username || username || t('profilePage.storyFallbackName', 'Lingo Booth learner'),
+        targetLanguage: targetLanguage || 'ko',
+        comment,
+        company: '',
+        page: 'profile',
+        source: 'mobile',
+      });
+      setStoryComment('');
+      Alert.alert(
+        t('profilePage.storyThanksTitle', 'Thank you'),
+        t('profilePage.storySubmitted', 'Thank you. Your story was sent and will appear after review.'),
+      );
+    } catch (err: any) {
+      Alert.alert(
+        t('common.error', 'Error'),
+        err.response?.data?.message || t('profilePage.storySubmitFailed', 'Could not send your story. Please try again.'),
+      );
+    } finally {
+      setStorySubmitting(false);
+    }
+  };
+
   const handleChangePassword = async () => {
     if (newPassword !== confirmPassword) {
       setPasswordMsg(t('register.passwordsNoMatch'));
@@ -648,6 +685,37 @@ const ProfileScreen: React.FC = () => {
               <Text style={styles.personalizationArrow}>›</Text>
             </View>
           </TouchableOpacity>
+
+          <Card style={styles.card}>
+            <Card.Content>
+              <View style={styles.storyHeaderRow}>
+                <View style={{ flex: 1 }}>
+                  <Text style={styles.storyKicker}>{t('profilePage.storyKicker', 'Learner testimonial')}</Text>
+                  <Text variant="titleMedium" style={styles.cardTitle}>
+                    {t('profilePage.storyTitle', 'Share your story')}
+                  </Text>
+                </View>
+                <Text style={styles.storyLanguagePill}>{languageLabel(targetLanguage)}</Text>
+              </View>
+              <Text style={styles.hintText}>
+                {t('profilePage.storyDesc', 'Tell future learners what changed for you. Approved stories can appear on the public landing page after review.')}
+              </Text>
+              <TextInput
+                label={t('profilePage.storyCommentLabel', 'Your story')}
+                value={storyComment}
+                onChangeText={setStoryComment}
+                mode="outlined"
+                multiline
+                numberOfLines={4}
+                maxLength={600}
+                placeholder={t('profilePage.storyCommentPlaceholder', 'What helped you speak, write, review, or stay consistent?')}
+                style={[styles.input, styles.storyInput]}
+              />
+              <Button mode="contained" onPress={handleSubmitStory} loading={storySubmitting} disabled={storySubmitting}>
+                {storySubmitting ? t('profilePage.storySubmitting', 'Sending...') : t('profilePage.storySubmit', 'Send story')}
+              </Button>
+            </Card.Content>
+          </Card>
 
           <Card style={styles.card}>
             <Card.Content>
@@ -1275,6 +1343,34 @@ const createStyles = (colors: AppColors, isCompact = false) => StyleSheet.create
     fontSize: 24,
     lineHeight: 24,
     fontWeight: '800',
+  },
+  storyHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: 12,
+    marginBottom: 4,
+  },
+  storyKicker: {
+    color: colors.primary,
+    fontSize: 11,
+    fontWeight: '900',
+    textTransform: 'uppercase',
+    marginBottom: 3,
+  },
+  storyLanguagePill: {
+    color: colors.primary,
+    backgroundColor: colors.primary + '18',
+    borderRadius: 999,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    fontSize: 11,
+    fontWeight: '900',
+    overflow: 'hidden',
+  },
+  storyInput: {
+    minHeight: isCompact ? 96 : 118,
+    marginTop: 12,
   },
   successMsg: { color: colors.accentGreen, fontSize: 13, marginBottom: 8 },
 

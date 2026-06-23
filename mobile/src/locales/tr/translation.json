@@ -649,7 +649,19 @@
     "fullName": "Ad Soyad",
     "fullNamePlaceholder": "Sertifikalarda gösterilecek ad",
     "fullNameMissing": "Sertifika vermeden önce ekleyin",
-    "activeAccountType": "Etkin hesap türü"
+    "activeAccountType": "Etkin hesap türü",
+    "storyTitle": "Hikayenizi paylaşın",
+    "storyCommentRequired": "Göndermeden önce kısa bir hikaye yazın.",
+    "storyFallbackName": "Lingo Booth öğrencisi",
+    "storyThanksTitle": "Teşekkür ederim",
+    "storySubmitted": "Teşekkür ederim. Hikayeniz gönderildi ve incelendikten sonra görünecek.",
+    "storySubmitFailed": "Hikayeniz gönderilemedi. Lütfen tekrar deneyin.",
+    "storyKicker": "Öğrenci referansı",
+    "storyDesc": "Gelecekteki öğrencilere sizin için neyin değiştiğini anlatın. Onaylanan hikayeler, incelendikten sonra herkese açık açılış sayfasında görünebilir.",
+    "storyCommentLabel": "Hikayeniz",
+    "storyCommentPlaceholder": "Konuşmanıza, yazmanıza, incelemenize veya tutarlı kalmanıza ne yardımcı oldu?",
+    "storySubmitting": "Gönderiliyor...",
+    "storySubmit": "Hikaye gönder"
   },
   "verifyEmail": {
     "verifying": "E-postanız doğrulanıyor...",

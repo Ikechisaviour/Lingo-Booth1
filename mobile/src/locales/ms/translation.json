@@ -649,7 +649,19 @@
     "fullName": "Nama penuh",
     "fullNamePlaceholder": "Nama untuk ditunjukkan pada sijil",
     "fullNameMissing": "Tambah sebelum mengeluarkan sijil",
-    "activeAccountType": "Jenis akaun aktif"
+    "activeAccountType": "Jenis akaun aktif",
+    "storyTitle": "Kongsi cerita anda",
+    "storyCommentRequired": "Tulis cerpen sebelum menghantar.",
+    "storyFallbackName": "Pelajar Lingo Booth",
+    "storyThanksTitle": "terima kasih",
+    "storySubmitted": "terima kasih. Cerita anda telah dihantar dan akan dipaparkan selepas semakan.",
+    "storySubmitFailed": "Tidak dapat menghantar cerita anda. Sila cuba lagi.",
+    "storyKicker": "Testimoni pelajar",
+    "storyDesc": "Beritahu pelajar akan datang perkara yang berubah untuk anda. Cerita yang diluluskan boleh muncul di halaman pendaratan awam selepas semakan.",
+    "storyCommentLabel": "cerita awak",
+    "storyCommentPlaceholder": "Apakah yang membantu anda bercakap, menulis, mengulas atau kekal konsisten?",
+    "storySubmitting": "Menghantar...",
+    "storySubmit": "Hantar cerita"
   },
   "verifyEmail": {
     "verifying": "Mengesahkan e-mel anda...",

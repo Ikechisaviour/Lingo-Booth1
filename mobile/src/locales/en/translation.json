@@ -649,7 +649,19 @@
     "fullName": "Full name",
     "fullNamePlaceholder": "Name to show on certificates",
     "fullNameMissing": "Add before issuing a certificate",
-    "activeAccountType": "Active account type"
+    "activeAccountType": "Active account type",
+    "storyTitle": "Share your story",
+    "storyCommentRequired": "Write a short story before submitting.",
+    "storyFallbackName": "Lingo Booth learner",
+    "storyThanksTitle": "Thank you",
+    "storySubmitted": "Thank you. Your story was sent and will appear after review.",
+    "storySubmitFailed": "Could not send your story. Please try again.",
+    "storyKicker": "Learner testimonial",
+    "storyDesc": "Tell future learners what changed for you. Approved stories can appear on the public landing page after review.",
+    "storyCommentLabel": "Your story",
+    "storyCommentPlaceholder": "What helped you speak, write, review, or stay consistent?",
+    "storySubmitting": "Sending...",
+    "storySubmit": "Send story"
   },
   "verifyEmail": {
     "verifying": "Verifying your email...",

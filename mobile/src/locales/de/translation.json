@@ -649,7 +649,19 @@
     "fullName": "Vollständiger Name",
     "fullNamePlaceholder": "Name, der auf Zertifikaten angezeigt werden soll",
     "fullNameMissing": "Vor der Ausstellung eines Zertifikats hinzufügen",
-    "activeAccountType": "Aktiver Kontotyp"
+    "activeAccountType": "Aktiver Kontotyp",
+    "storyTitle": "Teilen Sie Ihre Geschichte",
+    "storyCommentRequired": "Schreiben Sie vor dem Absenden eine kurze Geschichte.",
+    "storyFallbackName": "Lingo Booth-Lerner",
+    "storyThanksTitle": "Danke",
+    "storySubmitted": "Danke schön. Ihre Geschichte wurde gesendet und erscheint nach der Überprüfung.",
+    "storySubmitFailed": "Ihre Geschichte konnte nicht gesendet werden. Bitte versuchen Sie es erneut.",
+    "storyKicker": "Erfahrungsbericht eines Lernenden",
+    "storyDesc": "Erzählen Sie zukünftigen Lernenden, was sich für Sie geändert hat. Genehmigte Geschichten können nach der Überprüfung auf der öffentlichen Landingpage erscheinen.",
+    "storyCommentLabel": "Deine Geschichte",
+    "storyCommentPlaceholder": "Was hat Ihnen geholfen, zu sprechen, zu schreiben, zu rezensieren oder konsistent zu bleiben?",
+    "storySubmitting": "Senden...",
+    "storySubmit": "Geschichte senden"
   },
   "verifyEmail": {
     "verifying": "E-Mail wird verifiziert...",

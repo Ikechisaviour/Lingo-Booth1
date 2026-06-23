@@ -582,7 +582,18 @@
     "curriculumV2Name": "{{language}} — nuevo plan de estudios",
     "curriculumV2Desc": "Ejercicios de patrones, historias, cloze, vocabulario SRS, pronunciación: secuenciado por planificador.",
     "curriculumV1Name": "{{language}} — plan de estudios clásico",
-    "curriculumV1Desc": "Listas de vocabulario y lecciones de clase que ya conoces."
+    "curriculumV1Desc": "Listas de vocabulario y lecciones de clase que ya conoces.",
+    "storyCommentRequired": "Escribe una historia corta antes de enviarla.",
+    "storyFallbackName": "Estudiante del stand de Lingo",
+    "storySubmitted": "Gracias. Su historia fue enviada y aparecerá después de la revisión.",
+    "storySubmitFailed": "No se pudo enviar tu historia. Por favor inténtalo de nuevo.",
+    "storyKicker": "Testimonio de alumno",
+    "storyTitle": "Comparte tu historia",
+    "storyDesc": "Cuéntele a los futuros alumnos qué cambió para usted. Las historias aprobadas pueden aparecer en la página de destino pública después de su revisión.",
+    "storyCommentLabel": "tu historia",
+    "storyCommentPlaceholder": "¿Qué te ayudó a hablar, escribir, revisar o mantener la coherencia?",
+    "storySubmitting": "Envío...",
+    "storySubmit": "Enviar historia"
   },
   "verifyEmail": {
     "verifying": "Verificando tu correo...",

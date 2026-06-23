@@ -582,7 +582,18 @@
     "curriculumV2Name": "{{language}} — new curriculum",
     "curriculumV2Desc": "Pattern drills, stories, cloze, vocab SRS, pronunciation — planner-sequenced.",
     "curriculumV1Name": "{{language}} — classic curriculum",
-    "curriculumV1Desc": "Vocabulary lists and class lessons you already know."
+    "curriculumV1Desc": "Vocabulary lists and class lessons you already know.",
+    "storyCommentRequired": "Write a short story before submitting.",
+    "storyFallbackName": "Lingo Booth learner",
+    "storySubmitted": "Thank you. Your story was sent and will appear after review.",
+    "storySubmitFailed": "Could not send your story. Please try again.",
+    "storyKicker": "Learner testimonial",
+    "storyTitle": "Share your story",
+    "storyDesc": "Tell future learners what changed for you. Approved stories can appear on the public landing page after review.",
+    "storyCommentLabel": "Your story",
+    "storyCommentPlaceholder": "What helped you speak, write, review, or stay consistent?",
+    "storySubmitting": "Sending...",
+    "storySubmit": "Send story"
   },
   "forgotPassword": {
     "title": "Forgot Password",

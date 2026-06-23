@@ -236,6 +236,12 @@ export const contactService = {
     api.post('/contact', { ...message, source: message.source || 'mobile' }, { timeout: 30000 }),
 };
 
+export const reviewService = {
+  listApproved: () => cachedGet('/reviews/approved', {}, 60000),
+  submit: (payload: Record<string, any>) =>
+    api.post('/reviews', { ...payload, source: payload.source || 'mobile' }, { timeout: 30000 }),
+};
+
 export const quizService = {
   getQuizzes: (category?: string, difficulty?: string) => {
     const { targetLang, nativeLang } = currentLanguageParams();
