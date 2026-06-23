@@ -46,7 +46,8 @@
     "goBack": "Volver",
     "all": "Toda",
     "restart": "Reanudar",
-    "previous": "Previa"
+    "previous": "Previa",
+    "backToHome": "De vuelta a casa"
   },
   "languageSelect": {
     "title": "Elige tus idiomas",
@@ -695,7 +696,9 @@
     "billing": "Facturación",
     "demo": "Manifestación",
     "failures": "Fallos",
-    "messages": "Mensajes"
+    "messages": "Mensajes",
+    "semesterInterest": "Interés semestral",
+    "reviews": "Reseñas"
   },
   "forgotPassword": {
     "title": "¿Olvidaste tu contraseña?",
@@ -2317,5 +2320,51 @@
     "title": "Explorar lecciones de coreano",
     "subtitle": "Todos los conceptos que el planificador puede enseñar. Elija uno para sumergirse o deje que el sistema elija por usted en la página principal de Aprendizaje.",
     "conceptsMastered": "conceptos dominados"
+  },
+  "landing": {
+    "heroSlides": {
+      "connected": {
+        "title": "Cada sesión de práctica se basa en la anterior.",
+        "subtitle": "Pase de lecciones guiadas a hablar, escribir y repasar en un circuito de aprendizaje conectado."
+      },
+      "cohort": {
+        "title": "Crea una rutina lingüística que te haga avanzar.",
+        "subtitle": "Lleve la conversación, la escritura y la revisión a un ritmo de práctica constante que funcione en todos los dispositivos."
+      },
+      "business": {
+        "title": "Habla el idioma de los negocios.",
+        "subtitle": "Practica frases profesionales para reuniones, viajes y mudanzas para llegar listo para ser entendido."
+      },
+      "connectedLoop": {
+        "title": "Las lecciones, la práctica y la revisión se construyen juntas.",
+        "subtitle": "Pase de tarjetas de lecciones a palabras guardadas, tarjetas didácticas, escritura y conversaciones en un bucle conectado."
+      },
+      "cohortRhythm": {
+        "title": "Aprendan juntos y mantengan el impulso.",
+        "subtitle": "Utilice objetivos compartidos, materiales de escritura y prácticas compatibles con dispositivos para convertir el estudio en una rutina constante."
+      },
+      "conversationPracticeFeature": {
+        "title": "Práctica de conversación para hablar en la vida real.",
+        "subtitle": "Elija escenarios cotidianos, hable en voz alta, use el modo manos libres y obtenga correcciones guiadas que lo ayudarán a sonar más natural."
+      },
+      "connectedReviewFeature": {
+        "title": "Bucle de revisión conectado en toda la aplicación.",
+        "subtitle": "Las lecciones, las palabras guardadas, las tarjetas didácticas, la escritura y la práctica de la conversación permanecen conectadas para que cada actividad refuerce la siguiente."
+      },
+      "semesterCohortFeature": {
+        "title": "Cohortes semestrales para estructura y rendición de cuentas.",
+        "subtitle": "Únase a una ruta de aprendizaje semestral con objetivos compartidos, materiales guiados, ritmo de progreso y una línea de meta clara que lo mantendrá en movimiento."
+      },
+      "businessTravelFeature": {
+        "title": "Práctica de viajes y negocios antes de llegar.",
+        "subtitle": "Ensaye saludos profesionales, frases de reuniones, situaciones de viaje y conversaciones de reubicación en los dispositivos que ya utiliza."
+      }
+    },
+    "heroCarousel": {
+      "controlsLabel": "Controles del carrusel de imágenes de héroe",
+      "previous": "Diapositiva de héroe anterior",
+      "next": "Siguiente diapositiva de héroe",
+      "showSlide": "Mostrar diapositiva de héroe {{number}}"
+    }
   }
 }

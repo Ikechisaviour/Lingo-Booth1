@@ -7,9 +7,9 @@ import AdminSpeakingDemo from './pages/AdminSpeakingDemo';
 import './App.css';
 
 // Admin consoles run on shared/unattended workstations more often than the
-// learner app, so we apply a short idle-timeout policy here — but NOT on the
+// learner app, so we apply an idle-timeout policy here — but NOT on the
 // learner frontend, where forced logouts hurt retention.
-const ADMIN_IDLE_TIMEOUT_MS = 30 * 60 * 1000; // 30 minutes
+const ADMIN_IDLE_TIMEOUT_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 
 const clearAdminSession = () => {
   localStorage.removeItem('adminToken');

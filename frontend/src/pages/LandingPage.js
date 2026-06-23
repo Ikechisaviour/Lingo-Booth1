@@ -8,13 +8,13 @@ import {
   FiArrowRight,
   FiBookOpen,
   FiCheck,
+  FiChevronLeft,
   FiChevronRight,
   FiEdit3,
   FiGlobe,
   FiHeadphones,
   FiHeart,
   FiLayers,
-  FiMenu,
   FiMessageCircle,
   FiMic,
   FiMonitor,
@@ -32,6 +32,14 @@ import './LandingPage.css';
 const highlightIcons = [FiBookOpen, FiMessageCircle, FiVolume2, FiRefreshCw];
 const loopIcons = [FiBookOpen, FiEdit3, FiMic, FiLayers, FiRefreshCw];
 const detailIcons = [FiGlobe, FiHeadphones, FiPlay, FiRefreshCw, FiMonitor];
+
+const HERO_IMAGES = [
+  { id: 'conversation', src: '/images/landing-hero-conversation.png' },
+  { id: 'connected', src: '/images/landing-hero-learning-loop.png' },
+  { id: 'cohort', src: '/images/landing-hero-cohort.png' },
+  { id: 'business', src: '/images/landing-hero-business.png' },
+];
+
 const comparisonIcons = [
   FiBookOpen,
   FiMic,
@@ -49,7 +57,7 @@ const comparisonIcons = [
 
 const LANDING_SECTION_COPY = {
   en: {
-    heroImageAlt: 'Microphone, speech bubbles, and devices for Lingo Booth language practice',
+    heroImageAlt: 'Lingo Booth learner and connected practice activities',
     keyStrengthsLabel: 'Key strengths',
     highlights: [
       { title: 'Clear lessons', text: 'Step-by-step guidance with examples you can actually use.' },
@@ -147,7 +155,7 @@ const LANDING_SECTION_COPY = {
     reviewClose: 'Close',
   },
   ko: {
-    heroImageAlt: 'Lingo Booth 언어 연습을 보여주는 마이크, 말풍선, 기기 이미지',
+    heroImageAlt: 'Lingo Booth 학습자와 연결된 연습 활동',
     keyStrengthsLabel: '주요 장점',
     highlights: [
       { title: '명확한 수업', text: '실제로 쓸 수 있는 예문으로 차근차근 배웁니다.' },
@@ -656,7 +664,8 @@ function LandingPage() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [landingLanguage, setLandingLanguage] = useState(detectLandingLanguage);
-  const [navMenuOpen, setNavMenuOpen] = useState(false);
+  const [heroImageIndex, setHeroImageIndex] = useState(0);
+  const [heroNavigationVersion, setHeroNavigationVersion] = useState(0);
 
   const landing = useMemo(() => {
     const nativeCode = landingLanguage;
@@ -706,6 +715,89 @@ function LandingPage() {
     return () => { active = false; };
   }, []);
 
+  useEffect(() => {
+    const reduceMotion = typeof window !== 'undefined'
+      && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion || HERO_IMAGES.length < 2) return undefined;
+
+    const rotation = window.setInterval(() => {
+      setHeroImageIndex((current) => (current + 1) % HERO_IMAGES.length);
+    }, 8000);
+
+    return () => window.clearInterval(rotation);
+  }, [heroNavigationVersion]);
+
+  const showHeroSlide = (index) => {
+    setHeroImageIndex(index);
+    setHeroNavigationVersion((current) => current + 1);
+  };
+
+  const stepHeroSlide = (direction) => {
+    setHeroImageIndex((current) => (current + direction + HERO_IMAGES.length) % HERO_IMAGES.length);
+    setHeroNavigationVersion((current) => current + 1);
+  };
+
+  const carouselControlLabel = t('landing.heroCarousel.controlsLabel', {
+    lng: landingLanguage,
+    defaultValue: 'Hero image carousel controls',
+  });
+  const previousSlideLabel = t('landing.heroCarousel.previous', {
+    lng: landingLanguage,
+    defaultValue: 'Previous hero slide',
+  });
+  const nextSlideLabel = t('landing.heroCarousel.next', {
+    lng: landingLanguage,
+    defaultValue: 'Next hero slide',
+  });
+
+  const heroSlides = useMemo(() => [
+    {
+      ...HERO_IMAGES[0],
+      title: t('landing.heroSlides.conversationPracticeFeature.title', {
+        lng: landingLanguage,
+        defaultValue: 'Conversation Practice for real-life speaking.',
+      }),
+      subtitle: t('landing.heroSlides.conversationPracticeFeature.subtitle', {
+        lng: landingLanguage,
+        defaultValue: 'Choose everyday scenarios, speak out loud, use hands-free mode, and get guided corrections that help you sound more natural.',
+      }),
+    },
+    {
+      ...HERO_IMAGES[1],
+      title: t('landing.heroSlides.connectedReviewFeature.title', {
+        lng: landingLanguage,
+        defaultValue: 'Connected Review Loop across the whole app.',
+      }),
+      subtitle: t('landing.heroSlides.connectedReviewFeature.subtitle', {
+        lng: landingLanguage,
+        defaultValue: 'Lessons, saved words, flashcards, writing, and conversation practice stay connected so each activity reinforces the next one.',
+      }),
+    },
+    {
+      ...HERO_IMAGES[2],
+      title: t('landing.heroSlides.semesterCohortFeature.title', {
+        lng: landingLanguage,
+        defaultValue: 'Semester Cohorts for structure and accountability.',
+      }),
+      subtitle: t('landing.heroSlides.semesterCohortFeature.subtitle', {
+        lng: landingLanguage,
+        defaultValue: 'Join a semester-style learning path with shared goals, guided materials, progress rhythm, and a clear finish line that keeps you moving.',
+      }),
+    },
+    {
+      ...HERO_IMAGES[3],
+      title: t('landing.heroSlides.businessTravelFeature.title', {
+        lng: landingLanguage,
+        defaultValue: 'Business and Travel Practice before you arrive.',
+      }),
+      subtitle: t('landing.heroSlides.businessTravelFeature.subtitle', {
+        lng: landingLanguage,
+        defaultValue: 'Rehearse professional greetings, meeting phrases, travel situations, and relocation conversations on the devices you already use.',
+      }),
+    },
+  ], [landingLanguage, t]);
+
+  const activeHeroSlide = heroSlides[heroImageIndex];
   const sec = (key) => landing.sections[key] || LANDING_SECTION_COPY.en[key];
 
   const displayedTestimonials = approvedReviews.length
@@ -807,26 +899,15 @@ function LandingPage() {
           <button type="button" className="landing-login landing-login--auth" onClick={() => navigate('/login')}>
             {landing.copy.login}
           </button>
-          <button
-            type="button"
-            className="landing-nav-toggle"
-            aria-expanded={navMenuOpen}
-            aria-label={navMenuOpen ? t('common.close', 'Close menu') : t('navbar.menu', 'Menu')}
-            onClick={() => setNavMenuOpen(open => !open)}
-          >
-            {navMenuOpen ? <FiX /> : <FiMenu />}
+          <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/features')}>
+            {landing.exploreFeatures}
           </button>
-          <div className={`landing-nav-more ${navMenuOpen ? 'is-open' : ''}`}>
-            <button type="button" className="landing-login landing-login--secondary" onClick={() => { setNavMenuOpen(false); navigate('/features'); }}>
-              {landing.exploreFeatures}
-            </button>
-            <button type="button" className="landing-login landing-login--secondary" onClick={() => { setNavMenuOpen(false); navigate('/contact'); }}>
-              {t('contact.navLabel')}
-            </button>
-            <button type="button" className="landing-login landing-login--secondary" onClick={() => { setNavMenuOpen(false); navigate('/pricing'); }}>
-              {t('navbar.plans')}
-            </button>
-          </div>
+          <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/contact')}>
+            {t('contact.navLabel')}
+          </button>
+          <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/pricing')}>
+            {t('navbar.plans')}
+          </button>
           <button type="button" className="landing-primary landing-primary-small" onClick={startFree}>
             {landing.copy.startFree}
           </button>
@@ -834,11 +915,11 @@ function LandingPage() {
       </header>
 
       <main>
-        <section className="landing-hero" id="learn">
-          <div className="landing-hero-copy">
-            <h1>{landing.copy.heroTitle}</h1>
+        <section className={`landing-hero landing-hero--${activeHeroSlide.id}`} id="learn">
+          <div className="landing-hero-copy" key={activeHeroSlide.id}>
+            <h1>{activeHeroSlide.title}</h1>
             <p>
-              {landing.copy.heroSubtitle}
+              {activeHeroSlide.subtitle}
             </p>
             <div className="landing-hero-actions">
               <button type="button" className="landing-primary" onClick={startFree}>
@@ -865,11 +946,49 @@ function LandingPage() {
           </div>
 
           <div className="landing-hero-visual">
-            <img
-              src="/images/landing-hero-hello.png"
-              alt={landing.sections.heroImageAlt}
-              className="landing-hero-image"
-            />
+            {heroSlides.map(({ src }, index) => (
+              <img
+                key={src}
+                src={src}
+                alt={index === heroImageIndex ? landing.sections.heroImageAlt : ''}
+                className={'landing-hero-image' + (index === heroImageIndex ? ' is-active' : '')}
+              />
+            ))}
+          </div>
+
+          <div className="landing-hero-carousel-controls" role="group" aria-label={carouselControlLabel}>
+            <button
+              type="button"
+              className="landing-hero-carousel-arrow"
+              aria-label={previousSlideLabel}
+              onClick={() => stepHeroSlide(-1)}
+            >
+              <FiChevronLeft aria-hidden="true" />
+            </button>
+            <div className="landing-hero-carousel-dots">
+              {heroSlides.map((slide, index) => (
+                <button
+                  key={slide.id}
+                  type="button"
+                  className={'landing-hero-carousel-dot' + (index === heroImageIndex ? ' is-active' : '')}
+                  aria-label={t('landing.heroCarousel.showSlide', {
+                    lng: landingLanguage,
+                    defaultValue: 'Show hero slide {{number}}',
+                    number: index + 1,
+                  })}
+                  aria-current={index === heroImageIndex ? 'true' : undefined}
+                  onClick={() => showHeroSlide(index)}
+                />
+              ))}
+            </div>
+            <button
+              type="button"
+              className="landing-hero-carousel-arrow"
+              aria-label={nextSlideLabel}
+              onClick={() => stepHeroSlide(1)}
+            >
+              <FiChevronRight aria-hidden="true" />
+            </button>
           </div>
         </section>
 

@@ -46,7 +46,8 @@
     "goBack": "Bumalik ka",
     "all": "Lahat",
     "restart": "I-restart",
-    "previous": "Nakaraang"
+    "previous": "Nakaraang",
+    "backToHome": "Bumalik sa bahay"
   },
   "languageSelect": {
     "title": "Piliin ang Iyong mga Wika",
@@ -695,7 +696,9 @@
     "billing": "Pagsingil",
     "demo": "Demo",
     "failures": "Mga kabiguan",
-    "messages": "Mga mensahe"
+    "messages": "Mga mensahe",
+    "semesterInterest": "Interes sa semester",
+    "reviews": "Mga pagsusuri"
   },
   "forgotPassword": {
     "title": "Nakalimutan ang password",
@@ -2317,5 +2320,51 @@
     "title": "Mag-browse ng mga aralin sa Korean",
     "subtitle": "Ang bawat konsepto na maituturo ng tagaplano. Pumili ng isa upang sumisid, o hayaan ang system na pumili para sa iyo sa pangunahing page na Matuto.",
     "conceptsMastered": "mga konseptong pinagkadalubhasaan"
+  },
+  "landing": {
+    "heroSlides": {
+      "connected": {
+        "title": "Ang bawat sesyon ng pagsasanay ay bumubuo sa huling.",
+        "subtitle": "Lumipat mula sa mga ginabayang aralin tungo sa pagsasalita, pagsulat, at pagsusuri sa isang konektadong learning loop."
+      },
+      "cohort": {
+        "title": "Bumuo ng isang regular na wika na nagdadala sa iyo pasulong.",
+        "subtitle": "Dalhin ang pagsasalita, pagsusulat, at pagsusuri sa isang tuluy-tuloy na ritmo ng pagsasanay na gumagana sa bawat device."
+      },
+      "business": {
+        "title": "Magsalita ng wika ng negosyo.",
+        "subtitle": "Magsanay ng mga propesyonal na parirala para sa mga pagpupulong, paglalakbay, at relokasyon upang makarating ka na handa na maunawaan."
+      },
+      "connectedLoop": {
+        "title": "Ang mga aralin, pagsasanay, at pagsusuri ay binuo nang magkasama.",
+        "subtitle": "Lumipat mula sa mga lesson card patungo sa mga naka-save na salita, flashcard, pagsusulat, at pag-uusap sa isang konektadong loop."
+      },
+      "cohortRhythm": {
+        "title": "Matuto nang sama-sama at panatilihin ang iyong momentum.",
+        "subtitle": "Gumamit ng mga ibinahaging layunin, mga materyales sa pagsusulat, at kasanayang madaling gamitin sa device para gawing tuluy-tuloy ang pag-aaral."
+      },
+      "conversationPracticeFeature": {
+        "title": "Pagsasanay sa Pag-uusap para sa pagsasalita sa totoong buhay.",
+        "subtitle": "Pumili ng mga pang-araw-araw na sitwasyon, magsalita nang malakas, gumamit ng hands-free mode, at kumuha ng mga may gabay na pagwawasto na makakatulong sa iyong tunog na mas natural."
+      },
+      "connectedReviewFeature": {
+        "title": "Nakakonektang Review Loop sa buong app.",
+        "subtitle": "Ang mga aralin, naka-save na salita, flashcard, pagsusulat, at pagsasanay sa pag-uusap ay mananatiling konektado upang mapalakas ng bawat aktibidad ang susunod."
+      },
+      "semesterCohortFeature": {
+        "title": "Semester Cohorts para sa istruktura at pananagutan.",
+        "subtitle": "Sumali sa isang semestre-style na landas sa pag-aaral na may mga ibinahaging layunin, mga ginabayang materyales, ritmo ng pag-unlad, at isang malinaw na linya ng pagtatapos na nagpapanatili sa iyong gumagalaw."
+      },
+      "businessTravelFeature": {
+        "title": "Pagsasanay sa Negosyo at Paglalakbay bago ka dumating.",
+        "subtitle": "Magsanay ng mga propesyonal na pagbati, mga parirala sa pagpupulong, mga sitwasyon sa paglalakbay, at mga pag-uusap sa paglilipat sa mga device na ginagamit mo na."
+      }
+    },
+    "heroCarousel": {
+      "controlsLabel": "Mga kontrol sa carousel ng imahe ng bayani",
+      "previous": "Nakaraang hero slide",
+      "next": "Susunod na hero slide",
+      "showSlide": "Ipakita ang hero slide {{number}}"
+    }
   }
 }

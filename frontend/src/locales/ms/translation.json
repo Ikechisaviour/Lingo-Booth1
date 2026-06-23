@@ -46,7 +46,8 @@
     "goBack": "Pergi Balik",
     "all": "Semua",
     "restart": "Mulakan semula",
-    "previous": "Sebelumnya"
+    "previous": "Sebelumnya",
+    "backToHome": "Balik rumah"
   },
   "languageSelect": {
     "title": "Pilih Bahasa Anda",
@@ -695,7 +696,9 @@
     "billing": "Pengebilan",
     "demo": "Demo",
     "failures": "Kegagalan",
-    "messages": "Mesej"
+    "messages": "Mesej",
+    "semesterInterest": "Minat semester",
+    "reviews": "Ulasan"
   },
   "forgotPassword": {
     "title": "Lupa kata laluan",
@@ -2317,5 +2320,51 @@
     "title": "Semak imbas pelajaran bahasa Korea",
     "subtitle": "Setiap konsep yang boleh diajar oleh perancang. Pilih satu untuk menyelami, atau biarkan sistem memilih untuk anda pada halaman Belajar utama.",
     "conceptsMastered": "konsep yang dikuasai"
+  },
+  "landing": {
+    "heroSlides": {
+      "connected": {
+        "title": "Setiap sesi latihan dibina berdasarkan yang terakhir.",
+        "subtitle": "Beralih daripada pelajaran berpandu kepada bertutur, menulis dan mengulang kaji dalam satu gelung pembelajaran yang bersambung."
+      },
+      "cohort": {
+        "title": "Bina rutin bahasa yang membawa anda ke hadapan.",
+        "subtitle": "Bawa pertuturan, penulisan dan ulasan ke dalam irama latihan yang mantap yang berfungsi pada setiap peranti."
+      },
+      "business": {
+        "title": "Bercakap dalam bahasa perniagaan.",
+        "subtitle": "Amalkan frasa profesional untuk mesyuarat, perjalanan dan penempatan semula supaya anda tiba bersedia untuk difahami."
+      },
+      "connectedLoop": {
+        "title": "Pelajaran, latihan, dan ulasan dibina bersama.",
+        "subtitle": "Beralih daripada kad pelajaran kepada perkataan yang disimpan, kad imbas, penulisan dan perbualan dalam satu gelung bersambung."
+      },
+      "cohortRhythm": {
+        "title": "Belajar bersama dan kekalkan momentum anda.",
+        "subtitle": "Gunakan matlamat bersama, bahan penulisan dan amalan mesra peranti untuk menjadikan pengajian sebagai rutin yang mantap."
+      },
+      "conversationPracticeFeature": {
+        "title": "Amalan Perbualan untuk bercakap dalam kehidupan sebenar.",
+        "subtitle": "Pilih senario harian, bercakap dengan lantang, gunakan mod bebas tangan dan dapatkan pembetulan berpandu yang membantu anda berbunyi lebih semula jadi."
+      },
+      "connectedReviewFeature": {
+        "title": "Gelung Semakan Bersambung merentas keseluruhan apl.",
+        "subtitle": "Pelajaran, perkataan yang disimpan, kad imbas, penulisan dan latihan perbualan kekal berhubung supaya setiap aktiviti mengukuhkan aktiviti seterusnya."
+      },
+      "semesterCohortFeature": {
+        "title": "Kohort Semester untuk struktur dan akauntabiliti.",
+        "subtitle": "Sertai laluan pembelajaran gaya semester dengan matlamat yang dikongsi, bahan berpandu, rentak kemajuan dan garisan penamat yang jelas yang membuatkan anda terus bergerak."
+      },
+      "businessTravelFeature": {
+        "title": "Amalan Perniagaan dan Perjalanan sebelum anda tiba.",
+        "subtitle": "Latih ucapan salam profesional, frasa mesyuarat, situasi perjalanan dan perbualan penempatan semula pada peranti yang telah anda gunakan."
+      }
+    },
+    "heroCarousel": {
+      "controlsLabel": "Kawalan karusel imej wira",
+      "previous": "Slaid wira sebelumnya",
+      "next": "Slaid wira seterusnya",
+      "showSlide": "Tunjukkan slaid wira {{number}}"
+    }
   }
 }

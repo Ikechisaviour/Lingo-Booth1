@@ -46,7 +46,8 @@
     "goBack": "回去",
     "all": "全部",
     "restart": "重新启动",
-    "previous": "以前的"
+    "previous": "以前的",
+    "backToHome": "回到家"
   },
   "languageSelect": {
     "title": "选择你的语言",
@@ -695,7 +696,9 @@
     "billing": "计费",
     "demo": "演示",
     "failures": "失败",
-    "messages": "留言"
+    "messages": "留言",
+    "semesterInterest": "学期兴趣",
+    "reviews": "评论"
   },
   "forgotPassword": {
     "title": "忘记密码",
@@ -2317,5 +2320,51 @@
     "title": "浏览韩语课程",
     "subtitle": "规划师可以教授的每个概念。 选择一个进行深入研究，或者让系统在“学习”主页上为您选择。",
     "conceptsMastered": "掌握概念"
+  },
+  "landing": {
+    "heroSlides": {
+      "connected": {
+        "title": "每一次练习都建立在上一次练习的基础上。",
+        "subtitle": "在一个相互关联的学习循环中，从指导课程转向口语、写作和复习。"
+      },
+      "cohort": {
+        "title": "建立一个能够推动你前进的语言习惯。",
+        "subtitle": "将口语、写作和复习纳入稳定的练习节奏中，适用于所有设备。"
+      },
+      "business": {
+        "title": "讲商业语言。",
+        "subtitle": "练习会议、旅行和搬迁时的专业用语，以便您到达时能够被理解。"
+      },
+      "connectedLoop": {
+        "title": "课程、练习和复习结合在一起。",
+        "subtitle": "在一个连接的循环中从课程卡转移到已保存的单词、抽认卡、写作和对话。"
+      },
+      "cohortRhythm": {
+        "title": "一起学习并保持动力。",
+        "subtitle": "使用共同的目标、写作材料和适合设备的练习将学习变成稳定的日常活动。"
+      },
+      "conversationPracticeFeature": {
+        "title": "现实生活中口语的会话练习。",
+        "subtitle": "选择日常场景，大声说话，使用免提模式，并获得指导更正，帮助您听起来更自然。"
+      },
+      "connectedReviewFeature": {
+        "title": "整个应用程序的连接审阅循环。",
+        "subtitle": "课程、已保存的单词、抽认卡、写作和对话练习保持联系，因此每项活动都可以强化下一项活动。"
+      },
+      "semesterCohortFeature": {
+        "title": "学期队列的结构和责任。",
+        "subtitle": "加入具有共同目标、指导材料、进度节奏和清晰终点线的学期式学习路径，让您不断前进。"
+      },
+      "businessTravelFeature": {
+        "title": "抵达前进行商务和旅行练习。",
+        "subtitle": "在您已使用的设备上排练专业问候语、会议短语、旅行情况和搬迁对话。"
+      }
+    },
+    "heroCarousel": {
+      "controlsLabel": "英雄图像轮播控件",
+      "previous": "上一张英雄幻灯片",
+      "next": "下一张英雄幻灯片",
+      "showSlide": "显示英雄幻灯片{{number}}"
+    }
   }
 }
