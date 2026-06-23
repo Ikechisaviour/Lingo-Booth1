@@ -14,7 +14,9 @@
   background:
     radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.16), transparent 26%),
     linear-gradient(135deg, #58cc02 0%, #a9b72a 48%, #ff8c5a 100%);
-  background-attachment: fixed;
+  /* NOTE: avoid `background-attachment: fixed` — it causes repaint/tearing
+     ("gitter") on mobile browsers while scrolling. The gradient spans the full
+     page without it. */
   color: var(--landing-ink);
   overflow-x: hidden;
 }
