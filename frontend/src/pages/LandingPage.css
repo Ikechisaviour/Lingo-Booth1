@@ -3,7 +3,7 @@
   --landing-muted: #5d6875;
   --landing-soft: #f7f3ed;
   --landing-line: #e7e1d8;
-  --landing-green: #1f6d4a;
+  --landing-green: #2a9d68;
   --landing-green-soft: #edf5ef;
   --landing-orange: #ff5b1f;
   --landing-orange-dark: #df4915;
@@ -209,11 +209,11 @@
   margin: 0;
   max-width: 1100px;
   font-family: Georgia, 'Times New Roman', serif;
-  font-weight: 500;
-  /* Single size for every line — bigger than before now that the layout
-     has room to breathe. Reads dramatic on desktop, tight on phone. */
-  font-size: clamp(1.6rem, 2.6vw, 2.35rem);
-  line-height: 1.4;
+  font-weight: 400;
+  /* Single size for every line, scaled down from the original so the block
+     reads calmer and less shouty. */
+  font-size: clamp(1.2rem, 2vw, 1.65rem);
+  line-height: 1.5;
   letter-spacing: -0.01em;
   color: var(--landing-ink);
 }
@@ -222,9 +222,9 @@
   margin-top: 14px;
 }
 
-/* Indictment: three lines stacked tight, full ink weight. */
+/* Indictment: three lines stacked tight. Weight kept normal — no bold. */
 .landing-statement-line--lead {
-  font-weight: 600;
+  font-weight: 400;
 }
 
 /* Bridge: italic only — same size as the lead. The italic carries the
@@ -255,7 +255,7 @@
 .landing-statement-line--verdict {
   margin-top: 44px;
   font-style: italic;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 /* Brand split — matches the wordmark logo: dark "Lingo" + orange "Booth".
@@ -263,7 +263,7 @@
    preserved; only the color and weight differ from surrounding type. */
 .landing-statement-brand {
   white-space: nowrap;
-  font-weight: 700;
+  font-weight: 400;
 }
 .landing-statement-brand__lingo {
   color: var(--landing-ink);
