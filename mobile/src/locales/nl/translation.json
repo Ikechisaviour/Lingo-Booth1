@@ -649,7 +649,19 @@
     "fullName": "Volledige naam",
     "fullNamePlaceholder": "Naam die op certificaten moet worden weergegeven",
     "fullNameMissing": "Voeg toe voordat u een certificaat uitgeeft",
-    "activeAccountType": "Actief accounttype"
+    "activeAccountType": "Actief accounttype",
+    "storyTitle": "Deel uw verhaal",
+    "storyCommentRequired": "Schrijf een kort verhaal voordat u het indient.",
+    "storyFallbackName": "Lingo Booth-leerling",
+    "storyThanksTitle": "Bedankt",
+    "storySubmitted": "Bedankt. Je verhaal is verzonden en verschijnt na beoordeling.",
+    "storySubmitFailed": "Kan je verhaal niet verzenden. Probeer het opnieuw.",
+    "storyKicker": "Getuigenis van een leerling",
+    "storyDesc": "Vertel toekomstige leerlingen wat er voor jou is veranderd. Goedgekeurde verhalen kunnen na beoordeling op de openbare landingspagina verschijnen.",
+    "storyCommentLabel": "Jouw verhaal",
+    "storyCommentPlaceholder": "Wat heeft u geholpen om consistent te spreken, schrijven, recenseren of consistent te blijven?",
+    "storySubmitting": "Verzenden...",
+    "storySubmit": "Verstuur verhaal"
   },
   "verifyEmail": {
     "verifying": "Je e-mail verifiëren...",

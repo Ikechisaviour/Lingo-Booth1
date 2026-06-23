@@ -649,7 +649,19 @@
     "fullName": "שם מלא",
     "fullNamePlaceholder": "שם שיוצג בתעודות",
     "fullNameMissing": "הוסף לפני הנפקת אישור",
-    "activeAccountType": "סוג חשבון פעיל"
+    "activeAccountType": "סוג חשבון פעיל",
+    "storyTitle": "שתף את הסיפור שלך",
+    "storyCommentRequired": "כתבו סיפור קצר לפני ההגשה.",
+    "storyFallbackName": "לומד לינגו בות'",
+    "storyThanksTitle": "תודה לך",
+    "storySubmitted": "תודה לך. הסיפור שלך נשלח ויופיע לאחר בדיקה.",
+    "storySubmitFailed": "לא ניתן לשלוח את הסיפור שלך. אנא נסה שוב.",
+    "storyKicker": "עדות לומד",
+    "storyDesc": "ספר ללומדים עתידיים מה השתנה עבורך. סיפורים שאושרו יכולים להופיע בדף הנחיתה הציבורי לאחר בדיקה.",
+    "storyCommentLabel": "הסיפור שלך",
+    "storyCommentPlaceholder": "מה עזר לך לדבר, לכתוב, לחזור על החומר או לשמור על עקביות?",
+    "storySubmitting": "שְׁלִיחָה...",
+    "storySubmit": "שלח סיפור"
   },
   "verifyEmail": {
     "verifying": "מאמת את האימייל שלך...",
@@ -1998,7 +2010,7 @@
     "settingsTitle": "גרסת תכנית הלימודים",
     "settingsHint": "החלף בין תוכנית הלימודים הקלאסית והחדשה {{language}} בכל עת.",
     "v2ShortLabel": "תכנית לימודים חדשה (v2)",
-    "v1ShortLabel": "Classic curriculum"
+    "v1ShortLabel": "תכנית לימודים קלאסית"
   },
   "curriculumV2": {
     "catalogLoadFailed": "לא ניתן היה לטעון את הקטלוג.",
@@ -2013,7 +2025,7 @@
     "scriptOnboardingBody": "לפני דקדוק A1, תוכנית הלימודים החדשה מבקשת ממך לסיים ספר תסריט קצר. הגרסה המקורית לנייד עדיין בבנייה - לעת עתה אתה יכול לפתוח אותה באינטרנט או לדלג קדימה.",
     "openOnWeb": "Continue on web",
     "skipping": "דילוג...",
-    "skipScriptOnboarding": "Skip and start grammar",
+    "skipScriptOnboarding": "דלג והתחל בדקדוק",
     "loadFailed": "לא ניתן היה לטעון את ההפעלה שלך",
     "kicker": "תכנית לימודים חדשה",
     "homeTitle": "הפגישה שלך",

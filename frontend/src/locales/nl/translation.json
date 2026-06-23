@@ -582,7 +582,18 @@
     "curriculumV2Name": "{{language}} — nieuw leerplan",
     "curriculumV2Desc": "Patroonoefeningen, verhalen, cloze, vocabulaire SRS, uitspraak - volgens de planner.",
     "curriculumV1Name": "{{language}} — klassiek leerplan",
-    "curriculumV1Desc": "Woordenschatlijsten en lessen die u al kent."
+    "curriculumV1Desc": "Woordenschatlijsten en lessen die u al kent.",
+    "storyCommentRequired": "Schrijf een kort verhaal voordat u het indient.",
+    "storyFallbackName": "Lingo Booth-leerling",
+    "storySubmitted": "Bedankt. Je verhaal is verzonden en verschijnt na beoordeling.",
+    "storySubmitFailed": "Kan je verhaal niet verzenden. Probeer het opnieuw.",
+    "storyKicker": "Getuigenis van een leerling",
+    "storyTitle": "Deel uw verhaal",
+    "storyDesc": "Vertel toekomstige leerlingen wat er voor u is veranderd. Goedgekeurde verhalen kunnen na beoordeling op de openbare landingspagina verschijnen.",
+    "storyCommentLabel": "Jouw verhaal",
+    "storyCommentPlaceholder": "Wat heeft u geholpen om consistent te spreken, schrijven, recenseren of consistent te blijven?",
+    "storySubmitting": "Verzenden...",
+    "storySubmit": "Verstuur verhaal"
   },
   "verifyEmail": {
     "verifying": "Je e-mail verifiëren...",

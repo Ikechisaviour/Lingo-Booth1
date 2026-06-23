@@ -649,7 +649,19 @@
     "fullName": "الاسم الكامل",
     "fullNamePlaceholder": "الاسم الذي سيظهر على الشهادات",
     "fullNameMissing": "أضف قبل إصدار الشهادة",
-    "activeAccountType": "نوع الحساب النشط"
+    "activeAccountType": "نوع الحساب النشط",
+    "storyTitle": "شارك قصتك",
+    "storyCommentRequired": "اكتب قصة قصيرة قبل التقديم.",
+    "storyFallbackName": "متعلم لينجو بوث",
+    "storyThanksTitle": "شكرًا لك",
+    "storySubmitted": "شكرًا لك. تم إرسال قصتك وستظهر بعد المراجعة.",
+    "storySubmitFailed": "لا يمكن إرسال قصتك. يرجى المحاولة مرة أخرى.",
+    "storyKicker": "شهادة المتعلم",
+    "storyDesc": "أخبر المتعلمين المستقبليين بما تغير بالنسبة لك. يمكن أن تظهر القصص المعتمدة على الصفحة المقصودة العامة بعد المراجعة.",
+    "storyCommentLabel": "قصتك",
+    "storyCommentPlaceholder": "ما الذي ساعدك على التحدث أو الكتابة أو المراجعة أو البقاء متسقًا؟",
+    "storySubmitting": "إرسال...",
+    "storySubmit": "أرسل القصة"
   },
   "verifyEmail": {
     "verifying": "جاري التحقق من بريدك الإلكتروني...",

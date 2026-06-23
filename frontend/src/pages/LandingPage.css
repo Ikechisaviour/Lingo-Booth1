@@ -119,6 +119,11 @@
   padding: 0 10px;
 }
 
+/* Compact "$" Plans label only shows on small screens — hidden by default. */
+.landing-login-label-icon {
+  display: none;
+}
+
 .landing-login {
   padding: 10px 12px;
   font-size: 0.96rem;
@@ -165,12 +170,214 @@
   transform: translateY(-1px);
 }
 
+/* ────────────────────────────────────────────────────────────────────
+   YC-style opening statement.
+   Lives ABOVE the rotating-image hero. Background is transparent so the
+   page's green→olive→orange gradient shows through. Type is dark ink
+   (--landing-ink) — the densest, highest-contrast color on every zone
+   of the gradient, so the words read sharper than white ever could.
+   "Lingo Booth" mentions pick up the brand split: dark "Lingo" + vivid
+   orange "Booth", matching the wordmark. All lines share a single size;
+   the longer promise paragraphs naturally outweigh the short indictment,
+   so the section reads as the offer first, the critique as setup.
+   ──────────────────────────────────────────────────────────────────── */
+.landing-statement {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+  padding: clamp(72px, 12vh, 140px) clamp(24px, 6vw, 88px) clamp(96px, 14vh, 160px);
+  background: transparent;
+  color: var(--landing-ink);
+  text-align: center;
+}
+
+.landing-statement-inner {
+  /* Wide enough that the longest lines stay on a single row on desktop;
+     content max-width on each line keeps the rag tidy at narrower widths. */
+  width: min(1180px, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.landing-statement-line {
+  margin: 0;
+  max-width: 1100px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  /* Single size for every line — bigger than before now that the layout
+     has room to breathe. Reads dramatic on desktop, tight on phone. */
+  font-size: clamp(1.6rem, 2.6vw, 2.35rem);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--landing-ink);
+}
+
+.landing-statement-line + .landing-statement-line {
+  margin-top: 14px;
+}
+
+/* Indictment: three lines stacked tight, full ink weight. */
+.landing-statement-line--lead {
+  font-weight: 600;
+}
+
+/* Bridge: italic only — same size as the lead. The italic carries the
+   shift in voice; no size change needed. */
+.landing-statement-line--bridge {
+  margin-top: 40px;
+  font-style: italic;
+}
+
+.landing-statement-line--bridge + .landing-statement-line--bridge {
+  margin-top: 8px;
+}
+
+/* Promise: same size as the rest. Each promise paragraph is a full
+   sentence built of three short clauses; the wider max-width keeps it
+   to fewer wrapped lines. */
+.landing-statement-line--promise {
+  max-width: 1100px;
+  margin-top: 40px;
+}
+
+.landing-statement-line--promise + .landing-statement-line--promise {
+  margin-top: 18px;
+}
+
+/* Verdict: italic, same size as the rest. Bookends the indictment's
+   "That is not learning" with a positive close. */
+.landing-statement-line--verdict {
+  margin-top: 44px;
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Brand split — matches the wordmark logo: dark "Lingo" + orange "Booth".
+   Lives inline inside .landing-statement-line so the line cadence is
+   preserved; only the color and weight differ from surrounding type. */
+.landing-statement-brand {
+  white-space: nowrap;
+  font-weight: 700;
+}
+.landing-statement-brand__lingo {
+  color: var(--landing-ink);
+}
+.landing-statement-brand__booth {
+  color: var(--landing-orange);
+}
+
+.landing-statement-cta-wrap {
+  margin-top: 56px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Solid dark CTA — YC's "Apply" treatment. Pops cleanly on the colorful
+   gradient because the surrounding type is dark too; the white label is
+   the only true-white element in the section, so the eye lands here. */
+.landing-statement-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 0 38px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--landing-ink);
+  color: #fff;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: 0 14px 40px rgba(11, 16, 38, 0.22);
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.landing-statement-cta:hover {
+  background: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 18px 46px rgba(11, 16, 38, 0.28);
+}
+
+.landing-statement-cta:focus-visible {
+  outline: 2px solid var(--landing-orange);
+  outline-offset: 4px;
+}
+
+/* Scroll-down cue — dark ink at low opacity so it reads as a hint. */
+.landing-statement-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(28px, 4vh, 48px);
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  color: rgba(11, 16, 38, 0.55);
+  text-decoration: none;
+  font-size: 1.25rem;
+  line-height: 1;
+  animation: landing-statement-scroll-pulse 2.4s ease-in-out infinite;
+}
+
+.landing-statement-scroll:hover,
+.landing-statement-scroll:focus-visible {
+  color: var(--landing-ink);
+}
+
+@keyframes landing-statement-scroll-pulse {
+  0%, 100% { transform: translate(-50%, 0); opacity: 0.5; }
+  50%      { transform: translate(-50%, 6px); opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .landing-statement {
+    min-height: auto;
+    padding: 88px 22px 96px;
+  }
+
+  .landing-statement-line--bridge {
+    margin-top: 28px;
+  }
+
+  .landing-statement-line--promise {
+    margin-top: 32px;
+  }
+
+  .landing-statement-line--verdict {
+    margin-top: 36px;
+  }
+
+  .landing-statement-cta-wrap {
+    margin-top: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing-statement-scroll {
+    animation: none;
+  }
+}
+
 .landing-hero {
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 560px);
   align-items: center;
-  min-height: 560px;
+  /* Lock the hero shape so the visual (positioned inset:0) keeps the same
+     aspect ratio at every viewport width. The 16:9 ratio matches the
+     tablet/phone breakpoint, so the image cropping stays consistent across
+     devices and orientations. (min-height removed so aspect-ratio is the
+     sole authority on the section's height.) */
+  aspect-ratio: 16 / 9;
   margin: 10px 0 34px;
   padding: 42px clamp(44px, 6vw, 88px);
   overflow: hidden;
@@ -189,18 +396,48 @@
 .landing-hero-copy {
   position: relative;
   z-index: 2;
-  animation: landing-hero-copy-in 560ms ease both;
 }
 
-@keyframes landing-hero-copy-in {
-  from {
+/* When the carousel slide changes, React remounts .landing-hero-copy (because
+   its key changes), which replays these animations. We stagger the title,
+   subtitle, actions, and trust list so the text change is unmistakable even
+   while the image slides past behind it. */
+.landing-hero-copy h1 {
+  animation: landing-hero-text-in 720ms cubic-bezier(0.2, 0.85, 0.25, 1.05) both;
+}
+
+.landing-hero-copy p {
+  animation: landing-hero-text-in 720ms 140ms cubic-bezier(0.2, 0.85, 0.25, 1.05) both;
+}
+
+.landing-hero-actions {
+  animation: landing-hero-text-in 680ms 280ms cubic-bezier(0.2, 0.85, 0.25, 1.05) both;
+}
+
+.landing-hero-trust {
+  animation: landing-hero-text-in 680ms 380ms cubic-bezier(0.2, 0.85, 0.25, 1.05) both;
+}
+
+.landing-hero-signin {
+  animation: landing-hero-text-in 680ms 460ms cubic-bezier(0.2, 0.85, 0.25, 1.05) both;
+}
+
+@keyframes landing-hero-text-in {
+  0% {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(28px);
+    filter: blur(6px);
   }
 
-  to {
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+
+  100% {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
@@ -263,23 +500,62 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  /* Pointer events were `none` to let clicks reach the hero copy underneath.
+     We re-enable them on the visual so onMouseEnter/onMouseLeave fire when
+     the cursor hovers the image area, then explicitly disable pointer events
+     on the inner track and the images so they never intercept clicks meant
+     for hero-copy buttons that overlap the image region. */
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+.landing-hero-track,
+.landing-hero-image {
   pointer-events: none;
 }
 
-.landing-hero-image {
+.landing-hero-track {
   position: absolute;
   inset: 0;
-  width: 100%;
+  /* Slides inside use absolute positioning with computed `left` values so the
+     spacing math is direct and not subject to flex/gap percentage-resolution
+     quirks. Each slide is positioned at left = index * (100% - 44px), where
+     100% refers to the track width. */
+  transition: transform 900ms cubic-bezier(0.33, 1, 0.68, 1);
+  will-change: transform;
+}
+
+/* During the wrap-around snap (carousel jumps from the cloned slide back to
+   the real one), suppress transitions on BOTH the track and its child images
+   so the new active slide doesn't visibly fade/scale up from its dim
+   "peek" state after the jump. */
+.landing-hero-track.is-snapping,
+.landing-hero-track.is-snapping .landing-hero-image {
+  transition: none;
+}
+
+.landing-hero-image {
+  /* Each slide is absolutely positioned at the same width (100% of the
+     visual minus 60px). The 60px reserves the right side of every slide
+     position for the next slide's left edge to peek through (44px visible
+     peek + 16px gap between slides = 60px). The `left` value for each
+     slide is set inline based on its index — see the JSX. */
+  position: absolute;
+  top: 0;
   height: 100%;
+  width: calc(100% - 60px);
   display: block;
   object-fit: cover;
   object-position: center;
-  opacity: 0;
-  transition: opacity 700ms ease;
+  border-radius: 12px;
+  opacity: 0.62;
+  transform: scale(0.97);
+  transition: opacity 700ms ease, transform 700ms ease;
 }
 
 .landing-hero-image.is-active {
   opacity: 1;
+  transform: scale(1);
 }
 
 .landing-hero-carousel-controls {
@@ -357,11 +633,21 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .landing-hero-image {
+  .landing-hero-track {
     transition: none;
   }
 
-  .landing-hero-copy {
+  .landing-hero-image {
+    transition: none;
+    transform: none;
+  }
+
+  .landing-hero-copy,
+  .landing-hero-copy h1,
+  .landing-hero-copy p,
+  .landing-hero-actions,
+  .landing-hero-trust,
+  .landing-hero-signin {
     animation: none;
   }
 
@@ -406,9 +692,6 @@
 }
 
 .landing-highlights p,
-.detail-rows p,
-.product-preview p,
-.product-preview em,
 .comparison-row span,
 .landing-cta p {
   color: var(--landing-muted);
@@ -425,7 +708,6 @@
 }
 
 .landing-section-heading h2,
-.landing-details h2,
 .landing-cta h2 {
   margin: 0;
   font-family: Georgia, 'Times New Roman', serif;
@@ -490,14 +772,6 @@
   stroke-width: 1.2;
 }
 
-.landing-details {
-  display: grid;
-  grid-template-columns: minmax(0, 0.88fr) minmax(420px, 1fr);
-  gap: 76px;
-  align-items: center;
-  padding: 8px 0 108px;
-}
-
 .landing-kicker {
   margin: 0 0 12px;
   color: var(--landing-green);
@@ -507,215 +781,13 @@
   text-transform: uppercase;
 }
 
-.detail-rows {
-  display: grid;
-  gap: 18px;
-  margin-top: 36px;
-}
-
-.detail-rows article {
-  display: grid;
-  grid-template-columns: 42px 1fr;
-  gap: 18px;
-  align-items: start;
-}
-
-.detail-rows svg {
-  width: 32px;
-  height: 32px;
-  color: var(--landing-green);
-  stroke-width: 1.55;
-}
-
-.detail-rows h3 {
-  margin: 0 0 5px;
-  font-size: 1.05rem;
-}
-
-.detail-rows p {
-  margin: 0;
-}
-
-.product-preview {
-  border: 1px solid var(--landing-line);
-  border-radius: 18px;
-  padding: 24px;
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 24px 70px rgba(16, 25, 35, 0.1);
-}
-
-.preview-tabs,
-.preview-devices,
-.preview-mode {
-  display: flex;
-  align-items: center;
-}
-
-.preview-tabs {
-  gap: 8px;
-  padding: 6px;
-  border-radius: 12px;
-  background: var(--landing-soft);
-}
-
-.preview-tabs span {
-  flex: 1;
-  padding: 10px 12px;
-  border-radius: 9px;
-  color: var(--landing-muted);
-  font-size: 0.88rem;
-  font-weight: 760;
-  text-align: center;
-}
-
-.preview-tabs .active {
-  background: #fff;
-  color: var(--landing-green);
-  box-shadow: 0 8px 22px rgba(16, 25, 35, 0.06);
-}
-
-.preview-message,
-.preview-pronunciation,
-.preview-pronunciation-grid {
-  margin-top: 22px;
-  padding: 22px;
-  border-radius: 14px;
-  background: #fff;
-  border: 1px solid var(--landing-line);
-}
-
-.preview-message small,
-.preview-pronunciation span,
-.preview-pronunciation-grid > span,
-.preview-mode-label {
-  color: var(--landing-green);
-  font-size: 0.78rem;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.preview-message p {
-  margin: 10px 0 0;
-  color: var(--landing-ink);
-  font-size: 1.06rem;
-}
-
-.preview-pronunciation {
-  display: grid;
-  gap: 8px;
-}
-
-.preview-pronunciation strong {
-  color: var(--landing-ink);
-  font-size: 1.45rem;
-}
-
-.preview-pronunciation em {
-  font-style: normal;
-}
-
-.preview-pronunciation-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.preview-pronunciation-grid > span {
-  grid-column: 1 / -1;
-}
-
-.preview-pronunciation-grid div {
-  display: grid;
-  gap: 6px;
-  min-width: 0;
-  padding: 14px;
-  border-radius: 12px;
-  background: var(--landing-soft);
-}
-
-.preview-pronunciation-grid strong {
-  color: var(--landing-green);
-  font-size: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.preview-pronunciation-grid small {
-  color: var(--landing-muted);
-  font-size: 0.82rem;
-}
 
 .landing-rtl .landing-brand,
 .landing-rtl .landing-nav-actions,
 .landing-rtl .landing-hero-actions,
-.landing-rtl .detail-rows article,
 .landing-rtl .comparison-row strong,
-.landing-rtl .comparison-win,
-.landing-rtl .preview-devices span {
+.landing-rtl .comparison-win {
   direction: rtl;
-}
-
-.preview-mode-label {
-  margin: 20px 0 8px;
-  color: var(--landing-ink);
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-.preview-mode {
-  justify-content: space-between;
-  gap: 8px;
-  margin-top: 22px;
-  padding: 8px;
-  border-radius: 13px;
-  background: var(--landing-green-soft);
-}
-
-.preview-mode span,
-.preview-mode strong {
-  flex: 1;
-  display: grid;
-  gap: 4px;
-  padding: 14px 12px;
-  text-align: center;
-  border-radius: 10px;
-  font-size: 0.92rem;
-}
-
-.preview-mode span {
-  color: var(--landing-green);
-}
-
-.preview-mode strong {
-  background: #fff7f3;
-  color: var(--landing-orange);
-  border: 1px solid var(--landing-orange);
-}
-
-.preview-mode small {
-  color: inherit;
-  font-size: 0.74rem;
-  font-weight: 520;
-}
-
-.preview-devices {
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.preview-devices span {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  padding: 9px 12px;
-  border: 1px solid var(--landing-line);
-  border-radius: 999px;
-  color: var(--landing-muted);
-  font-size: 0.86rem;
-  font-weight: 720;
 }
 
 .comparison-table {
@@ -962,11 +1034,9 @@
 
 /* ---- AI tutor spotlight ---- */
 .landing-ai {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.86fr);
-  gap: 72px;
-  align-items: center;
-  padding: 72px 0 96px;
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 72px 0 86px;
 }
 
 .landing-ai-copy h2 {
@@ -1009,58 +1079,6 @@
   stroke-width: 2.6;
 }
 
-.landing-ai-chat {
-  display: grid;
-  gap: 16px;
-  padding: 26px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.86);
-  box-shadow: 0 24px 70px rgba(16, 25, 35, 0.12);
-}
-
-.landing-ai-bubble {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  max-width: 88%;
-  padding: 16px 18px;
-  border-radius: 16px;
-  font-size: 1.02rem;
-  line-height: 1.45;
-}
-
-.landing-ai-bubble p {
-  margin: 0;
-}
-
-.landing-ai-bubble svg {
-  flex: 0 0 auto;
-  width: 22px;
-  height: 22px;
-}
-
-.landing-ai-bubble--tutor {
-  justify-self: start;
-  background: var(--landing-green-soft);
-  color: var(--landing-ink);
-  border-bottom-left-radius: 4px;
-}
-
-.landing-ai-bubble--tutor svg {
-  color: var(--landing-green);
-}
-
-.landing-ai-bubble--you {
-  justify-self: end;
-  flex-direction: row-reverse;
-  background: #fff1e9;
-  color: var(--landing-ink);
-  border-bottom-right-radius: 4px;
-}
-
-.landing-ai-bubble--you svg {
-  color: var(--landing-orange);
-}
 
 /* ---- Testimonials ---- */
 .landing-testimonials {
@@ -1146,162 +1164,6 @@
   line-height: 1.6;
 }
 
-/* ---- "Share your story" button ---- */
-.testimonial-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: 36px;
-}
-
-.testimonial-cta button {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.testimonial-cta svg {
-  width: 18px;
-  height: 18px;
-  color: var(--landing-orange);
-}
-
-/* ---- Review submission modal ---- */
-.review-modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  background: rgba(16, 25, 35, 0.55);
-  backdrop-filter: blur(2px);
-}
-
-.review-modal {
-  position: relative;
-  width: min(520px, 100%);
-  max-height: calc(100vh - 40px);
-  overflow-y: auto;
-  padding: 32px;
-  border-radius: 18px;
-  background: #fff;
-  box-shadow: 0 40px 90px rgba(16, 25, 35, 0.3);
-}
-
-.review-modal-close {
-  position: absolute;
-  top: 14px;
-  inset-inline-end: 14px;
-  display: grid;
-  place-items: center;
-  width: 38px;
-  height: 38px;
-  border: 0;
-  border-radius: 50%;
-  background: var(--landing-soft);
-  color: var(--landing-ink);
-  cursor: pointer;
-}
-
-.review-modal-close:hover {
-  background: var(--landing-line);
-}
-
-.review-modal-close svg {
-  width: 20px;
-  height: 20px;
-}
-
-.review-form h3,
-.review-success h3 {
-  margin: 0 0 8px;
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.6rem;
-}
-
-.review-form-subtitle {
-  margin: 0 0 22px;
-  color: var(--landing-muted);
-  line-height: 1.55;
-}
-
-.review-field {
-  display: block;
-  margin-bottom: 18px;
-}
-
-.review-field > span {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  font-weight: 750;
-  color: var(--landing-ink);
-}
-
-.review-field input,
-.review-field select,
-.review-field textarea {
-  width: 100%;
-  padding: 12px 14px;
-  border: 1.5px solid var(--landing-line);
-  border-radius: 10px;
-  background: #fff;
-  color: var(--landing-ink);
-  font: inherit;
-  font-size: 1rem;
-}
-
-.review-field textarea {
-  resize: vertical;
-  min-height: 96px;
-}
-
-.review-field input:focus,
-.review-field select:focus,
-.review-field textarea:focus {
-  outline: none;
-  border-color: var(--landing-green);
-  box-shadow: 0 0 0 3px rgba(31, 109, 74, 0.15);
-}
-
-.review-honeypot {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.review-form-error {
-  margin: 0 0 16px;
-  color: var(--landing-orange-dark);
-  font-weight: 650;
-}
-
-.review-form .landing-primary,
-.review-success .landing-primary {
-  width: 100%;
-  margin-top: 6px;
-}
-
-.review-success {
-  text-align: center;
-  padding: 16px 0 6px;
-}
-
-.review-success svg {
-  width: 46px;
-  height: 46px;
-  color: var(--landing-orange);
-}
-
-.review-success p {
-  margin: 10px 0 22px;
-  color: var(--landing-muted);
-  line-height: 1.6;
-}
-
 @media (max-width: 980px) {
   .landing-nav,
   .landing-page main {
@@ -1309,8 +1171,6 @@
   }
 
   .landing-ai {
-    grid-template-columns: 1fr;
-    gap: 36px;
     padding: 48px 0 64px;
   }
 
@@ -1345,10 +1205,6 @@
     justify-content: space-between;
   }
 
-  .landing-details {
-    grid-template-columns: 1fr;
-    gap: 42px;
-  }
 
   .landing-hero {
     display: flex;
@@ -1356,6 +1212,7 @@
     align-items: stretch;
     gap: 38px;
     min-height: 0;
+    aspect-ratio: auto;
     margin: 0 0 44px;
     padding: 48px 0 0;
     overflow: visible;
@@ -1374,6 +1231,9 @@
     position: relative;
     inset: auto;
     order: 1;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto;
     aspect-ratio: 16 / 9;
     overflow: hidden;
     transform: none;
@@ -1381,8 +1241,6 @@
   }
 
   .landing-hero-image {
-    position: absolute;
-    inset: 0;
     object-position: center;
   }
 
@@ -1500,18 +1358,33 @@
     max-height: 30px;
   }
 
-  .landing-login--secondary {
-    /* Hide Plans + Contact at narrow widths to keep the row tight. Login
-       (`.landing-login--auth`) stays visible so returning users can sign in. */
+  .landing-nav-actions .landing-primary-small {
+    /* Hide Start-free at narrow widths — still reachable from the hero CTA. */
     display: none;
   }
 
+  /* Plans button collapses to a "$" glyph on phones; Features stays full. */
+  .landing-login--plans .landing-login-label-full {
+    display: none;
+  }
+
+  .landing-login--plans .landing-login-label-icon {
+    display: inline;
+    font-weight: 800;
+  }
+
+  .landing-login--plans {
+    min-width: 36px;
+    padding-inline: 10px;
+    justify-content: center;
+  }
+
   .landing-nav-actions {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
+    display: flex;
     width: 100%;
     gap: 10px;
     align-items: center;
+    justify-content: flex-end;
   }
 
   .landing-login--auth {
@@ -1525,14 +1398,32 @@
     white-space: nowrap;
   }
 
+  /* Icon-only language picker on phones — the native <select> stays
+     interactive as a transparent overlay so the dropdown still opens. */
   .landing-language-select {
-    min-width: 0;
-    padding-left: 10px;
+    position: relative;
+    width: 44px;
+    min-width: 44px;
+    padding: 0;
+    justify-content: center;
+    overflow: hidden;
   }
 
   .landing-language-select select {
-    max-width: none;
+    position: absolute;
+    inset: 0;
     width: 100%;
+    height: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: transparent;
+    opacity: 0;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
   }
 
   .landing-primary-small {
@@ -1567,8 +1458,6 @@
   }
 
   .landing-hero-image {
-    position: absolute;
-    inset: 0;
     object-position: center;
   }
 
@@ -1637,31 +1526,11 @@
     height: 70px;
   }
 
-  .landing-details,
   .landing-loop,
   .landing-comparison {
     padding-bottom: 66px;
   }
 
-  .product-preview {
-    padding: 16px;
-  }
-
-  .preview-tabs {
-    align-items: stretch;
-  }
-
-  .preview-tabs span {
-    display: grid;
-    place-items: center;
-    min-width: 0;
-    padding-inline: 6px;
-    font-size: 0.74rem;
-  }
-
-  .preview-pronunciation-grid {
-    grid-template-columns: 1fr;
-  }
 
   .landing-cta {
     padding: 34px 24px;

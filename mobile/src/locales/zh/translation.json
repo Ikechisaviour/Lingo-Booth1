@@ -649,7 +649,19 @@
     "fullName": "姓名",
     "fullNamePlaceholder": "证书上显示的姓名",
     "fullNameMissing": "颁发证书前添加",
-    "activeAccountType": "活跃账户类型"
+    "activeAccountType": "活跃账户类型",
+    "storyTitle": "分享你的故事",
+    "storyCommentRequired": "提交之前写一个小故事。",
+    "storyFallbackName": "Lingo Booth 学习者",
+    "storyThanksTitle": "谢谢",
+    "storySubmitted": "谢谢。 您的故事已发送，审核后将显示。",
+    "storySubmitFailed": "无法发送您的故事。 请再试一次。",
+    "storyKicker": "学习者感言",
+    "storyDesc": "告诉未来的学习者你发生了什么变化。 批准的故事经过审核后可以显示在公共登陆页面上。",
+    "storyCommentLabel": "你的故事",
+    "storyCommentPlaceholder": "是什么帮助你说话、写作、复习或保持一致？",
+    "storySubmitting": "正在发送...",
+    "storySubmit": "发送故事"
   },
   "verifyEmail": {
     "verifying": "正在验证你的邮箱...",

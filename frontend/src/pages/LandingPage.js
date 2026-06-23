@@ -12,27 +12,18 @@ import {
   FiChevronRight,
   FiEdit3,
   FiGlobe,
-  FiHeadphones,
   FiHeart,
   FiLayers,
   FiMessageCircle,
   FiMic,
-  FiMonitor,
-  FiPlay,
   FiRefreshCw,
-  FiSmartphone,
-  FiStar,
-  FiTablet,
   FiVolume2,
-  FiX,
 } from 'react-icons/fi';
 import BrandLogo from '../components/BrandLogo';
 import './LandingPage.css';
 
 const highlightIcons = [FiBookOpen, FiMessageCircle, FiVolume2, FiRefreshCw];
 const loopIcons = [FiBookOpen, FiEdit3, FiMic, FiLayers, FiRefreshCw];
-const detailIcons = [FiGlobe, FiHeadphones, FiPlay, FiRefreshCw, FiMonitor];
-
 const HERO_IMAGES = [
   { id: 'conversation', src: '/images/landing-hero-conversation.png' },
   { id: 'connected', src: '/images/landing-hero-learning-loop.png' },
@@ -43,14 +34,8 @@ const HERO_IMAGES = [
 const comparisonIcons = [
   FiBookOpen,
   FiMic,
-  FiVolume2,
-  FiHeadphones,
-  FiEdit3,
-  FiHeart,
   FiRefreshCw,
-  FiChevronRight,
-  FiMonitor,
-  FiPlay,
+  FiEdit3,
   FiGlobe,
   FiLayers,
 ];
@@ -63,7 +48,7 @@ const LANDING_SECTION_COPY = {
       { title: 'Clear lessons', text: 'Step-by-step guidance with examples you can actually use.' },
       { title: 'Real speaking', text: 'Roleplays, voice input, replay, slower replies, and hands-free practice.' },
       { title: 'Sound that fits you', text: 'Pronunciation guidance shaped for your native language and script.' },
-      { title: 'Steady progress', text: 'Choose relaxed learning or challenge mode when you want extra motivation.' },
+      { title: 'Steady progress', text: 'Track growth across speaking, listening, reading, and writing without losing the thread.' },
     ],
     loopTitle: 'The full learning loop, without the clutter',
     loopSteps: ['Learn', 'Practice', 'Speak', 'Write', 'Review'],
@@ -91,18 +76,12 @@ const LANDING_SECTION_COPY = {
     comparisonHeaders: ['Feature', 'Typical apps', 'Lingo Booth'],
     comparisonDeepDiveCta: 'See the full platform comparison',
     comparisonRows: [
-      { feature: 'Lessons', typical: 'Limited or text-heavy', lingo: 'Guided lessons with clear steps and examples' },
-      { feature: 'Speaking', typical: 'Mostly typing with limited speaking practice', lingo: 'Hands-free roleplays with voice commands - repeat, slower, stop' },
-      { feature: 'Pronunciation', typical: 'One Roman-letter spelling', lingo: 'Official, learner-friendly, and audio-first guidance per item' },
-      { feature: 'Voices', typical: 'One stock voice for both languages', lingo: 'Pick separate voices for the target language and your native explanations' },
-      { feature: 'Writing', typical: 'Rarely included', lingo: 'Trace, copy, listen, meanings, stroke order, and self-review' },
-      { feature: 'Personalization', typical: 'Generic content nobody asked for', lingo: 'Real-life words and goals - you approve every item before it saves' },
-      { feature: 'Learning modes', typical: 'One pace for everyone', lingo: 'Relaxed mode for low pressure, Challenge mode with XP decay, streaks, and quests' },
-      { feature: 'Pick up where you left off', typical: 'Start from scratch each session', lingo: 'Quizzes, flashcards, and class lessons resume across devices' },
-      { feature: 'Cross-device', typical: 'Web-only or app-only', lingo: 'One workspace on web, mobile, and tablet' },
-      { feature: 'Background audio', typical: 'Stops the moment the screen locks', lingo: 'Keeps playing on lock screen - learn while walking or commuting' },
-      { feature: 'Language coverage', typical: 'One language, Latin script only', lingo: 'Many language pairs, RTL scripts, fully localized UI' },
-      { feature: 'Progress', typical: 'Streaks only', lingo: 'Skill progress across listening, speaking, reading, and writing' },
+      { feature: 'Language access', typical: 'Usually teaches from English or a small set of interface languages', lingo: '20 supported languages with up to 380 native-to-target learning paths, including non-Latin and RTL scripts' },
+      { feature: 'Speaking practice', typical: 'Short pronunciation checks or typing-first exercises', lingo: 'Hands-free roleplays with voice input, replay, slower replies, and guided corrections for real situations' },
+      { feature: 'Connected review', typical: 'Lessons, flashcards, writing, and conversation stay separate', lingo: 'Saved words, lessons, flashcards, writing, and conversation practice reinforce one another' },
+      { feature: 'Writing support', typical: 'Often missing or limited to recognition', lingo: 'Trace, copy, listen, review meanings, check stroke order, and build writing memory' },
+      { feature: 'Exam readiness', typical: 'Focuses on streaks or isolated drills', lingo: 'Builds speaking, listening, reading, writing, and the language principles behind standard exams' },
+      { feature: 'Cross-device continuity', typical: 'Progress often feels split between web and app', lingo: 'One account continues lessons, quizzes, flashcards, and practice across web, mobile, and tablet' },
     ],
     statsLabel: 'Lingo Booth at a glance',
     stats: [
@@ -120,7 +99,7 @@ const LANDING_SECTION_COPY = {
       'Bring your own situation: a trip, an interview, a first date',
       'It remembers past sessions and your weak spots',
     ],
-    aiCta: 'Try the tutor free',
+    aiCta: 'Start free',
     testimonialsKicker: 'Loved by learners',
     testimonialsTitle: 'People are actually speaking',
     testimonials: [
@@ -138,21 +117,6 @@ const LANDING_SECTION_COPY = {
       { q: 'Does it work on my phone?', a: 'Yes. One account works across web, mobile, and tablet, and your progress syncs across all of them.' },
     ],
     learningPrefix: 'Learning',
-    reviewCta: 'Share your story',
-    reviewModalTitle: 'Leave a review',
-    reviewModalSubtitle: 'Tell other learners what your experience has been like. Approved reviews appear on this page.',
-    reviewNameLabel: 'Your name',
-    reviewNamePlaceholder: 'e.g. Mirian',
-    reviewLanguageLabel: 'Language you are learning',
-    reviewLanguagePlaceholder: 'Select a language',
-    reviewCommentLabel: 'Your review',
-    reviewCommentPlaceholder: 'What do you enjoy most about Lingo Booth?',
-    reviewSubmit: 'Submit review',
-    reviewSubmitting: 'Submitting...',
-    reviewSuccessTitle: 'Thank you!',
-    reviewSuccessText: 'Your review was sent and will appear here once an admin approves it.',
-    reviewErrorText: 'Could not submit your review. Please try again.',
-    reviewClose: 'Close',
   },
   ko: {
     heroImageAlt: 'Lingo Booth 학습자와 연결된 연습 활동',
@@ -209,7 +173,6 @@ const LANDING_SECTION_COPY = {
 /* eslint-disable no-unused-vars */
 const highlights = LANDING_SECTION_COPY.en.highlights.map((item, index) => ({ ...item, icon: highlightIcons[index] }));
 const loopSteps = LANDING_SECTION_COPY.en.loopSteps.map((label, index) => ({ label, icon: loopIcons[index] }));
-const thoughtfulDetails = LANDING_SECTION_COPY.en.details.map((item, index) => ({ ...item, icon: detailIcons[index] }));
 const comparisonRows = LANDING_SECTION_COPY.en.comparisonRows.map((item, index) => ({ ...item, icon: comparisonIcons[index] }));
 /* eslint-enable no-unused-vars */
 
@@ -304,7 +267,7 @@ const LANDING_COPY = {
     pairPrefix: 'Suggested path',
     heroTitle: 'Actually speak your new language, not just collect streaks.',
     heroSubtitle: 'Practice real conversations with a personal tutor that listens, corrects, and adapts across guided lessons, speaking, writing, and review. 20 languages, taught in your own native language.',
-    heroTrust: ['No credit card needed', 'Free to start', '20 languages'],
+    heroTrust: ['No credit card needed', 'Guest lesson available', 'Progress saves with an account'],
     alreadyHaveAccount: 'Already have an account?',
     previewMessage: 'Great. Let us practice ordering coffee. What would you like to order?',
     guideTitle: 'Practice preview',
@@ -660,12 +623,47 @@ function samplePhrasesFor(nativeCode, targetCode) {
   }));
 }
 
+// Splits a translated string on the literal "Lingo Booth" and wraps each
+// occurrence in brand-colored spans (dark "Lingo" + orange "Booth", matching
+// the wordmark). Locales that keep the brand name as-is get the highlight;
+// locales that translate it fall through as plain text.
+function renderWithBrand(text) {
+  const parts = String(text).split(/(Lingo Booth)/g);
+  return parts.map((part, index) =>
+    part === 'Lingo Booth' ? (
+      <span key={`brand-${index}`} className="landing-statement-brand">
+        <span className="landing-statement-brand__lingo">Lingo</span>
+        {' '}
+        <span className="landing-statement-brand__booth">Booth</span>
+      </span>
+    ) : (
+      part
+    )
+  );
+}
+
 function LandingPage() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [landingLanguage, setLandingLanguage] = useState(detectLandingLanguage);
-  const [heroImageIndex, setHeroImageIndex] = useState(0);
+  // Infinite carousel: track displayIndex 0..N+1 where position 0 holds a clone
+  // of the last real slide and position N+1 holds a clone of the first real
+  // slide, so the user always sees the edge of the "next" slide even when
+  // wrapping. The logical heroImageIndex (0..N-1) is derived from displayIndex.
+  const [displayIndex, setDisplayIndex] = useState(1);
+  const [trackTransitionEnabled, setTrackTransitionEnabled] = useState(true);
   const [heroNavigationVersion, setHeroNavigationVersion] = useState(0);
+  // When the user manually advances/picks a slide, keep that slide on screen
+  // for 4x the normal interval (32s instead of 8s) so they have time to read
+  // it. The flag is cleared on the next auto-advance, returning to the 8s
+  // cadence — unless carouselFocused is still true (see below).
+  const [userPickedSlide, setUserPickedSlide] = useState(false);
+  // While the user is hovering (or has keyboard focus on) the carousel image,
+  // use the same 4x cadence so the slide does not change underneath them.
+  const [carouselFocused, setCarouselFocused] = useState(false);
+  const heroImageIndex = HERO_IMAGES.length > 0
+    ? (((displayIndex - 1) % HERO_IMAGES.length) + HERO_IMAGES.length) % HERO_IMAGES.length
+    : 0;
 
   const landing = useMemo(() => {
     const nativeCode = landingLanguage;
@@ -684,7 +682,6 @@ function LandingPage() {
       sections: sectionCopy,
       highlights: sectionCopy.highlights.map((item, index) => ({ ...item, icon: highlightIcons[index] })),
       loopSteps: sectionCopy.loopSteps.map((label, index) => ({ label, icon: loopIcons[index] })),
-      details: sectionCopy.details.map((item, index) => ({ ...item, icon: detailIcons[index] })),
       comparisonRows: sectionCopy.comparisonRows.map((item, index) => ({ ...item, icon: comparisonIcons[index] })),
       // New marketing sections live only on the English copy for now; other
       // locales fall back to English until translated.
@@ -702,11 +699,6 @@ function LandingPage() {
   // Approved reviews moderated in by an admin. Until any exist, the page falls
   // back to the curated seed testimonials in the section copy.
   const [approvedReviews, setApprovedReviews] = useState([]);
-  const [reviewModalOpen, setReviewModalOpen] = useState(false);
-  const [reviewForm, setReviewForm] = useState({ name: '', targetLanguage: '', comment: '', company: '' });
-  const [reviewSubmitting, setReviewSubmitting] = useState(false);
-  const [reviewStatus, setReviewStatus] = useState(null); // 'success' | 'error' | null
-
   useEffect(() => {
     let active = true;
     reviewService.listApproved()
@@ -720,21 +712,71 @@ function LandingPage() {
       && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion || HERO_IMAGES.length < 2) return undefined;
 
+    // Quadruple the cadence (32s instead of 8s) whenever (a) the user just
+    // manually navigated, or (b) the user's mouse/keyboard focus is on the
+    // carousel image — gives plenty of time to read or examine the slide.
+    const intervalMs = (userPickedSlide || carouselFocused) ? 32000 : 8000;
     const rotation = window.setInterval(() => {
-      setHeroImageIndex((current) => (current + 1) % HERO_IMAGES.length);
-    }, 8000);
+      setTrackTransitionEnabled(true);
+      setDisplayIndex((current) => current + 1);
+      // After one auto-advance fires post-manual-nav, return to the normal
+      // 8-second cadence (unless the user is still hovering, in which case
+      // the carouselFocused flag keeps the next interval at 16s).
+      setUserPickedSlide(false);
+    }, intervalMs);
 
     return () => window.clearInterval(rotation);
-  }, [heroNavigationVersion]);
+  }, [heroNavigationVersion, userPickedSlide, carouselFocused]);
+
+  // When the carousel lands on a clone (position 0 or N+1) the transitionEnd
+  // handler disables the transition and snaps to the equivalent real slide.
+  // This effect re-enables the transition on the next frame so future moves
+  // animate normally.
+  useEffect(() => {
+    if (trackTransitionEnabled) return undefined;
+    const id = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => setTrackTransitionEnabled(true));
+    });
+    return () => window.cancelAnimationFrame(id);
+  }, [trackTransitionEnabled]);
 
   const showHeroSlide = (index) => {
-    setHeroImageIndex(index);
+    setTrackTransitionEnabled(true);
+    setDisplayIndex(index + 1);
+    setUserPickedSlide(true);
     setHeroNavigationVersion((current) => current + 1);
   };
 
   const stepHeroSlide = (direction) => {
-    setHeroImageIndex((current) => (current + direction + HERO_IMAGES.length) % HERO_IMAGES.length);
+    setTrackTransitionEnabled(true);
+    setDisplayIndex((current) => current + direction);
+    setUserPickedSlide(true);
     setHeroNavigationVersion((current) => current + 1);
+  };
+
+  const handleTrackTransitionEnd = (event) => {
+    // Only react to the track's OWN transform transition. Child <img>s also
+    // have a `transform: scale(...)` transition (for the active-slide pop)
+    // which is shorter (700ms vs the track's 900ms) and bubbles up to this
+    // handler. Without this guard, the snap-back to the real slide would fire
+    // ~200ms before the track finished sliding, producing a visible jolt on
+    // the wrap from slide 4 → slide 1.
+    if (event.target !== event.currentTarget) return;
+    if (event.propertyName !== 'transform') return;
+    const N = HERO_IMAGES.length;
+    if (N < 2) return;
+    if (displayIndex >= N + 1) {
+      // We just animated onto the clone of the first slide at the end of the
+      // track. Snap back to the real first slide (displayIndex=1) without
+      // animation so the next forward step continues smoothly.
+      setTrackTransitionEnabled(false);
+      setDisplayIndex(1);
+    } else if (displayIndex <= 0) {
+      // We just animated onto the clone of the last slide at the start of the
+      // track. Snap forward to the real last slide (displayIndex=N).
+      setTrackTransitionEnabled(false);
+      setDisplayIndex(N);
+    }
   };
 
   const carouselControlLabel = t('landing.heroCarousel.controlsLabel', {
@@ -798,6 +840,17 @@ function LandingPage() {
   ], [landingLanguage, t]);
 
   const activeHeroSlide = heroSlides[heroImageIndex];
+
+  // Render the hero track as [lastClone, ...slides, firstClone] so we can keep
+  // peeking the "next" slide on both ends and wrap around seamlessly.
+  const heroTrackSlides = useMemo(() => {
+    if (heroSlides.length < 2) return heroSlides;
+    return [
+      heroSlides[heroSlides.length - 1],
+      ...heroSlides,
+      heroSlides[0],
+    ];
+  }, [heroSlides]);
   const sec = (key) => landing.sections[key] || LANDING_SECTION_COPY.en[key];
 
   const displayedTestimonials = approvedReviews.length
@@ -814,41 +867,6 @@ function LandingPage() {
         };
       })
     : landing.testimonials.map((item, index) => ({ ...item, id: `seed-${index}` }));
-
-  const openReviewModal = () => {
-    setReviewStatus(null);
-    setReviewForm({ name: '', targetLanguage: landing.targetCode, comment: '', company: '' });
-    setReviewModalOpen(true);
-  };
-
-  const closeReviewModal = () => setReviewModalOpen(false);
-
-  const updateReviewField = (field) => (event) => {
-    const { value } = event.target;
-    setReviewForm((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const submitReview = async (event) => {
-    event.preventDefault();
-    if (reviewSubmitting) return;
-    setReviewSubmitting(true);
-    setReviewStatus(null);
-    try {
-      await reviewService.submit({
-        name: reviewForm.name,
-        targetLanguage: reviewForm.targetLanguage,
-        comment: reviewForm.comment,
-        company: reviewForm.company,
-        page: 'landing',
-        source: 'web',
-      });
-      setReviewStatus('success');
-    } catch {
-      setReviewStatus('error');
-    } finally {
-      setReviewSubmitting(false);
-    }
-  };
 
   const handleLandingLanguageChange = (event) => {
     const code = event.target.value;
@@ -902,11 +920,9 @@ function LandingPage() {
           <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/features')}>
             {landing.exploreFeatures}
           </button>
-          <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/contact')}>
-            {t('contact.navLabel')}
-          </button>
-          <button type="button" className="landing-login landing-login--secondary" onClick={() => navigate('/pricing')}>
-            {t('navbar.plans')}
+          <button type="button" className="landing-login landing-login--secondary landing-login--plans" onClick={() => navigate('/pricing')}>
+            <span className="landing-login-label-full">{t('navbar.plans')}</span>
+            <span className="landing-login-label-icon" aria-hidden="true">$</span>
           </button>
           <button type="button" className="landing-primary landing-primary-small" onClick={startFree}>
             {landing.copy.startFree}
@@ -915,6 +931,77 @@ function LandingPage() {
       </header>
 
       <main>
+        <section className="landing-statement" id="why">
+          <div className="landing-statement-inner">
+            <p className="landing-statement-line landing-statement-line--lead">
+              {t('landing.statement.proveSerious', {
+                lng: landingLanguage,
+                defaultValue: 'Every day you proved you were serious.',
+              })}
+            </p>
+            <p className="landing-statement-line landing-statement-line--lead">
+              {t('landing.statement.cared', {
+                lng: landingLanguage,
+                defaultValue: 'Every day it proved it only cared about the streak.',
+              })}
+            </p>
+            <p className="landing-statement-line landing-statement-line--lead">
+              {t('landing.statement.notLearning', {
+                lng: landingLanguage,
+                defaultValue: 'That is not learning. That is a counter with a flame on it.',
+              })}
+            </p>
+            <p className="landing-statement-line landing-statement-line--bridge">
+              {t('landing.statement.walkAway', {
+                lng: landingLanguage,
+                defaultValue: 'Walk away from streak-chasing.',
+              })}
+            </p>
+            <p className="landing-statement-line landing-statement-line--bridge">
+              {t('landing.statement.takeSeriousness', {
+                lng: landingLanguage,
+                defaultValue: 'Take that seriousness where it gets results.',
+              })}
+            </p>
+            <p className="landing-statement-line landing-statement-line--promise">
+              {renderWithBrand(t('landing.statement.teaches', {
+                lng: landingLanguage,
+                defaultValue: 'Lingo Booth teaches the principles behind the language. Drills them with exercises. Then bends every example to your real-life needs, at your level.',
+              }))}
+            </p>
+            <p className="landing-statement-line landing-statement-line--promise">
+              {t('landing.statement.curriculum', {
+                lng: landingLanguage,
+                defaultValue: 'A complete curriculum, guided end-to-end. Reading, writing, listening, speaking, review — working together, not stacked apart.',
+              })}
+            </p>
+            <p className="landing-statement-line landing-statement-line--verdict">
+              {t('landing.statement.actuallyUse', {
+                lng: landingLanguage,
+                defaultValue: 'Here you learn what you can actually use.',
+              })}
+            </p>
+            <div className="landing-statement-cta-wrap">
+              <button type="button" className="landing-statement-cta" onClick={startFree}>
+                {t('landing.statement.cta', {
+                  lng: landingLanguage,
+                  defaultValue: 'Start learning.',
+                })}
+              </button>
+            </div>
+            <a
+              href="#learn"
+              className="landing-statement-scroll"
+              aria-label={t('landing.statement.scrollAria', {
+                lng: landingLanguage,
+                defaultValue: 'Scroll for more',
+              })}
+            >
+              <span aria-hidden="true">↓</span>
+            </a>
+          </div>
+        </section>
+
         <section className={`landing-hero landing-hero--${activeHeroSlide.id}`} id="learn">
           <div className="landing-hero-copy" key={activeHeroSlide.id}>
             <h1>{activeHeroSlide.title}</h1>
@@ -945,15 +1032,46 @@ function LandingPage() {
             </p>
           </div>
 
-          <div className="landing-hero-visual">
-            {heroSlides.map(({ src }, index) => (
-              <img
-                key={src}
-                src={src}
-                alt={index === heroImageIndex ? landing.sections.heroImageAlt : ''}
-                className={'landing-hero-image' + (index === heroImageIndex ? ' is-active' : '')}
-              />
-            ))}
+          <div
+            className="landing-hero-visual"
+            onMouseEnter={() => setCarouselFocused(true)}
+            onMouseLeave={() => setCarouselFocused(false)}
+            onFocusCapture={() => setCarouselFocused(true)}
+            onBlurCapture={(event) => {
+              // Only clear focus state when focus leaves the carousel entirely,
+              // not when it moves between child elements (image → next image).
+              if (!event.currentTarget.contains(event.relatedTarget)) {
+                setCarouselFocused(false);
+              }
+            }}
+          >
+            <div
+              className={'landing-hero-track' + (trackTransitionEnabled ? '' : ' is-snapping')}
+              style={{
+                /* Per-index step = slide width + gap = (100% - 60px) + 16px
+                   = 100% - 44px. Pixel-based peek/gap reads correctly next
+                   to the visual's locked 16:9 aspect ratio. */
+                transform: `translateX(calc(${displayIndex} * -1 * (100% - 44px)))`,
+              }}
+              onTransitionEnd={handleTrackTransitionEnd}
+            >
+              {/* Render [lastClone, ...slides, firstClone] so the edge of the
+                  next slide always peeks even when wrapping around. Each
+                  slide is positioned at left = index * (100% - 44px) so
+                  the spacing between slides is exactly (slide width + gap)
+                  = (100% - 60px) + 16px = 100% - 44px at every viewport. */}
+              {heroTrackSlides.map((slide, index) => (
+                <img
+                  key={`${slide.id}-${index}`}
+                  src={slide.src}
+                  alt={index === displayIndex ? landing.sections.heroImageAlt : ''}
+                  className={'landing-hero-image' + (index === displayIndex ? ' is-active' : '')}
+                  loading={index === 1 ? 'eager' : 'lazy'}
+                  aria-hidden={index === displayIndex ? undefined : 'true'}
+                  style={{ left: `calc(${index} * (100% - 44px))` }}
+                />
+              ))}
+            </div>
           </div>
 
           <div className="landing-hero-carousel-controls" role="group" aria-label={carouselControlLabel}>
@@ -1024,23 +1142,6 @@ function LandingPage() {
                 </li>
               ))}
             </ul>
-            <button type="button" className="landing-primary" onClick={startFree}>
-              {landing.sections.aiCta || LANDING_SECTION_COPY.en.aiCta}
-            </button>
-          </div>
-          <div className="landing-ai-chat" aria-hidden="true">
-            <div className="landing-ai-bubble landing-ai-bubble--tutor">
-              <FiMessageCircle />
-              <p>{landing.copy.previewMessage}</p>
-            </div>
-            <div className="landing-ai-bubble landing-ai-bubble--you">
-              <p>{landing.samplePhrases[0].target}</p>
-              <FiMic />
-            </div>
-            <div className="landing-ai-bubble landing-ai-bubble--tutor">
-              <FiVolume2 />
-              <p>{landing.samplePhrases[2].target}</p>
-            </div>
           </div>
         </section>
 
@@ -1059,56 +1160,6 @@ function LandingPage() {
                 {index < landing.loopSteps.length - 1 && <FiChevronRight className="loop-arrow" aria-hidden="true" />}
               </React.Fragment>
             ))}
-          </div>
-        </section>
-
-        <section className="landing-details" id="speak">
-          <div className="detail-list">
-            <p className="landing-kicker">{landing.sections.comfortKicker}</p>
-            <h2>{landing.sections.detailsTitle}</h2>
-            <div className="detail-rows">
-              {landing.details.map(({ icon: Icon, title, text }) => (
-                <article key={title}>
-                  <Icon aria-hidden="true" />
-                  <div>
-                    <h3>{title}</h3>
-                    <p>{text}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-
-          <div className="product-preview" aria-label={landing.sections.productPreviewLabel}>
-            <div className="preview-tabs">
-              <span className="active">{landing.sections.previewTabs[0]}</span>
-              <span>{landing.sections.previewTabs[1]}</span>
-              <span>{landing.sections.previewTabs[2]}</span>
-            </div>
-            <div className="preview-message">
-              <small>{landing.sections.tutorLabel}</small>
-              <p>{landing.copy.previewMessage}</p>
-            </div>
-            <div className="preview-pronunciation-grid">
-              <span>{landing.copy.guideTitle} · {landing.target.name}</span>
-              {landing.samplePhrases.map(({ target, native }) => (
-                <div key={target}>
-                  <strong>{target}</strong>
-                  <small>{native}</small>
-                </div>
-              ))}
-            </div>
-            <p className="preview-mode-label">{landing.sections.learningModeLabel}</p>
-            <div className="preview-mode">
-              <span>{landing.sections.modes.relaxed.title} <small>{landing.sections.modes.relaxed.text}</small></span>
-              <strong>{landing.sections.modes.challenge.title} <small>{landing.sections.modes.challenge.text}</small></strong>
-            </div>
-            <p className="preview-mode-label">{landing.sections.learnAnywhereLabel}</p>
-            <div className="preview-devices">
-              <span><FiMonitor /> {landing.sections.devices[0]}</span>
-              <span><FiSmartphone /> {landing.sections.devices[1]}</span>
-              <span><FiTablet /> {landing.sections.devices[2]}</span>
-            </div>
           </div>
         </section>
 
@@ -1162,12 +1213,6 @@ function LandingPage() {
               </figure>
             ))}
           </div>
-          <div className="testimonial-cta">
-            <button type="button" className="landing-secondary" onClick={openReviewModal}>
-              <FiStar aria-hidden="true" />
-              {sec('reviewCta')}
-            </button>
-          </div>
         </section>
 
         <section className="landing-faq" aria-label={landing.sections.faqTitle || LANDING_SECTION_COPY.en.faqTitle}>
@@ -1201,93 +1246,6 @@ function LandingPage() {
           <FiHeart className="cta-line-icon" aria-hidden="true" />
         </section>
       </main>
-
-      {reviewModalOpen && (
-        <div className="review-modal-overlay" role="presentation" onClick={closeReviewModal}>
-          <div
-            className="review-modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label={sec('reviewModalTitle')}
-            onClick={(event) => event.stopPropagation()}
-          >
-            <button type="button" className="review-modal-close" onClick={closeReviewModal} aria-label={sec('reviewClose')}>
-              <FiX aria-hidden="true" />
-            </button>
-
-            {reviewStatus === 'success' ? (
-              <div className="review-success">
-                <FiStar aria-hidden="true" />
-                <h3>{sec('reviewSuccessTitle')}</h3>
-                <p>{sec('reviewSuccessText')}</p>
-                <button type="button" className="landing-primary" onClick={closeReviewModal}>
-                  {sec('reviewClose')}
-                </button>
-              </div>
-            ) : (
-              <form className="review-form" onSubmit={submitReview}>
-                <h3>{sec('reviewModalTitle')}</h3>
-                <p className="review-form-subtitle">{sec('reviewModalSubtitle')}</p>
-
-                <label className="review-field">
-                  <span>{sec('reviewNameLabel')}</span>
-                  <input
-                    type="text"
-                    value={reviewForm.name}
-                    onChange={updateReviewField('name')}
-                    placeholder={sec('reviewNamePlaceholder')}
-                    maxLength={80}
-                    required
-                  />
-                </label>
-
-                <label className="review-field">
-                  <span>{sec('reviewLanguageLabel')}</span>
-                  <select value={reviewForm.targetLanguage} onChange={updateReviewField('targetLanguage')}>
-                    <option value="">{sec('reviewLanguagePlaceholder')}</option>
-                    {LANGUAGE_OPTIONS.map((language) => (
-                      <option key={language.code} value={language.code}>
-                        {getLanguageDisplayName(language.code, landingLanguageT)}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <label className="review-field">
-                  <span>{sec('reviewCommentLabel')}</span>
-                  <textarea
-                    value={reviewForm.comment}
-                    onChange={updateReviewField('comment')}
-                    placeholder={sec('reviewCommentPlaceholder')}
-                    maxLength={600}
-                    rows={4}
-                    required
-                  />
-                </label>
-
-                {/* Honeypot: hidden from people, tempting to bots. */}
-                <input
-                  type="text"
-                  className="review-honeypot"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  aria-hidden="true"
-                  value={reviewForm.company}
-                  onChange={updateReviewField('company')}
-                />
-
-                {reviewStatus === 'error' && (
-                  <p className="review-form-error">{sec('reviewErrorText')}</p>
-                )}
-
-                <button type="submit" className="landing-primary" disabled={reviewSubmitting}>
-                  {reviewSubmitting ? sec('reviewSubmitting') : sec('reviewSubmit')}
-                </button>
-              </form>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

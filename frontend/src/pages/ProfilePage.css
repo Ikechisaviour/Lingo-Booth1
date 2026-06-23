@@ -186,6 +186,89 @@
   font-weight: 900;
 }
 
+.story-card {
+  border-left: 4px solid var(--primary);
+}
+
+.story-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.story-card-header h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.story-card-header > span {
+  flex-shrink: 0;
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.story-kicker {
+  margin: 0 0 5px;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.story-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.story-field {
+  display: grid;
+  gap: 8px;
+}
+
+.story-field > span {
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.story-field textarea {
+  width: 100%;
+  min-height: 118px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border-light);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text-primary);
+  font: inherit;
+  resize: vertical;
+}
+
+.story-field textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-soft);
+}
+
+.story-form .btn {
+  justify-self: start;
+}
+
+.story-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Info Card */
 .info-card .card-header {
   display: flex;

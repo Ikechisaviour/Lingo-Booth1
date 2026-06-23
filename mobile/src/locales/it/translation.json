@@ -649,7 +649,19 @@
     "fullName": "Nome e cognome",
     "fullNamePlaceholder": "Nome da mostrare sui certificati",
     "fullNameMissing": "Aggiungi prima di emettere un certificato",
-    "activeAccountType": "Tipo di conto attivo"
+    "activeAccountType": "Tipo di conto attivo",
+    "storyTitle": "Condividi la tua storia",
+    "storyCommentRequired": "Scrivi un breve racconto prima di inviarlo.",
+    "storyFallbackName": "Studente di Lingo Booth",
+    "storyThanksTitle": "Grazie",
+    "storySubmitted": "Grazie. La tua storia è stata inviata e verrà visualizzata dopo la revisione.",
+    "storySubmitFailed": "Impossibile inviare la tua storia. Per favore riprova.",
+    "storyKicker": "Testimonianza dello studente",
+    "storyDesc": "Spiega ai futuri studenti cosa è cambiato per te. Le storie approvate possono essere visualizzate sulla pagina di destinazione pubblica dopo la revisione.",
+    "storyCommentLabel": "La tua storia",
+    "storyCommentPlaceholder": "Cosa ti ha aiutato a parlare, scrivere, rivedere o rimanere coerente?",
+    "storySubmitting": "Invio...",
+    "storySubmit": "Invia storia"
   },
   "verifyEmail": {
     "verifying": "Verifica della tua email...",

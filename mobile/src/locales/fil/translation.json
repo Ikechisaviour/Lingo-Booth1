@@ -696,7 +696,19 @@
     "fullName": "Buong pangalan",
     "fullNamePlaceholder": "Pangalan na ipapakita sa mga certificate",
     "fullNameMissing": "Magdagdag bago magbigay ng sertipiko",
-    "activeAccountType": "Aktibong uri ng account"
+    "activeAccountType": "Aktibong uri ng account",
+    "storyTitle": "Ibahagi ang iyong kuwento",
+    "storyCommentRequired": "Sumulat ng maikling kwento bago isumite.",
+    "storyFallbackName": "Nag-aaral ng Lingo Booth",
+    "storyThanksTitle": "salamat po",
+    "storySubmitted": "salamat po. Ipinadala ang iyong kuwento at lalabas pagkatapos ng pagsusuri.",
+    "storySubmitFailed": "Hindi maipadala ang iyong kuwento. Pakisubukang muli.",
+    "storyKicker": "Testimonial ng mag-aaral",
+    "storyDesc": "Sabihin sa mga mag-aaral sa hinaharap kung ano ang nagbago para sa iyo. Maaaring lumabas ang mga naaprubahang kwento sa pampublikong landing page pagkatapos ng pagsusuri.",
+    "storyCommentLabel": "Iyong kwento",
+    "storyCommentPlaceholder": "Ano ang nakatulong sa iyo na magsalita, magsulat, magsuri, o manatiling pare-pareho?",
+    "storySubmitting": "Ipinapadala...",
+    "storySubmit": "Magpadala ng kwento"
   },
   "verifyEmail": {
     "verifying": "Vine-verify ang iyong email...",

@@ -582,7 +582,18 @@
     "curriculumV2Name": "{{language}} — kurikulum baru",
     "curriculumV2Desc": "Latihan pola, cerita, cloze, kosakata SRS, pengucapan — diurutkan sesuai perencana.",
     "curriculumV1Name": "{{language}} — kurikulum klasik",
-    "curriculumV1Desc": "Daftar kosakata dan pelajaran kelas yang sudah Anda ketahui."
+    "curriculumV1Desc": "Daftar kosakata dan pelajaran kelas yang sudah Anda ketahui.",
+    "storyCommentRequired": "Tulis cerita pendek sebelum dikirimkan.",
+    "storyFallbackName": "Pembelajar Lingo Booth",
+    "storySubmitted": "Terima kasih. Cerita Anda telah dikirim dan akan muncul setelah ditinjau.",
+    "storySubmitFailed": "Tidak dapat mengirimkan cerita Anda. Silakan coba lagi.",
+    "storyKicker": "Kesaksian pelajar",
+    "storyTitle": "Bagikan cerita Anda",
+    "storyDesc": "Beri tahu calon pelajar apa yang berubah bagi Anda. Cerita yang disetujui dapat muncul di halaman arahan publik setelah ditinjau.",
+    "storyCommentLabel": "Ceritamu",
+    "storyCommentPlaceholder": "Apa yang membantu Anda berbicara, menulis, mengulas, atau tetap konsisten?",
+    "storySubmitting": "Mengirim...",
+    "storySubmit": "Kirim cerita"
   },
   "verifyEmail": {
     "verifying": "Memverifikasi email Anda...",
