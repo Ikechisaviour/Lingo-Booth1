@@ -46,7 +46,8 @@
     "goBack": "Geh zurück",
     "all": "Alle",
     "restart": "Neustart",
-    "previous": "Vorherige"
+    "previous": "Vorherige",
+    "backToHome": "Zurück nach Hause"
   },
   "languageSelect": {
     "title": "Wähle deine Sprachen",
@@ -695,7 +696,9 @@
     "billing": "Abrechnung",
     "demo": "Demo",
     "failures": "Misserfolge",
-    "messages": "Nachrichten"
+    "messages": "Nachrichten",
+    "semesterInterest": "Semesterinteresse",
+    "reviews": "Rezensionen"
   },
   "forgotPassword": {
     "title": "Passwort vergessen",
@@ -2317,5 +2320,51 @@
     "title": "Durchsuchen Sie Koreanisch-Lektionen",
     "subtitle": "Jedes Konzept, das der Planer vermitteln kann. Wählen Sie eine aus, in die Sie eintauchen möchten, oder lassen Sie das System auf der Hauptseite „Lernen“ für Sie auswählen.",
     "conceptsMastered": "Konzepte gemeistert"
+  },
+  "landing": {
+    "heroSlides": {
+      "connected": {
+        "title": "Jede Übungseinheit baut auf der letzten auf.",
+        "subtitle": "Wechseln Sie vom geführten Unterricht zum Sprechen, Schreiben und Wiederholen in einer zusammenhängenden Lernschleife."
+      },
+      "cohort": {
+        "title": "Bauen Sie eine Sprachroutine auf, die Sie voranbringt.",
+        "subtitle": "Bringen Sie Sprechen, Schreiben und Wiederholen in einen gleichmäßigen Übungsrhythmus, der auf jedem Gerät funktioniert."
+      },
+      "business": {
+        "title": "Sprechen Sie die Geschäftssprache.",
+        "subtitle": "Üben Sie professionelle Ausdrücke für Besprechungen, Reisen und Umzüge, damit Sie verständlich sind."
+      },
+      "connectedLoop": {
+        "title": "Lektionen, Übungen und Wiederholungen bauen zusammen auf.",
+        "subtitle": "Wechseln Sie in einer zusammenhängenden Schleife von Unterrichtskarten zu gespeicherten Wörtern, Lernkarten, Texten und Konversationen."
+      },
+      "cohortRhythm": {
+        "title": "Gemeinsam lernen und den Schwung behalten.",
+        "subtitle": "Nutzen Sie gemeinsame Ziele, Schreibmaterialien und gerätefreundliche Übungen, um das Lernen zu einer festen Routine zu machen."
+      },
+      "conversationPracticeFeature": {
+        "title": "Konversationsübungen für das Sprechen im wirklichen Leben.",
+        "subtitle": "Wählen Sie Alltagsszenarien, sprechen Sie laut, nutzen Sie den Freisprechmodus und erhalten Sie geführte Korrekturen, die Ihnen helfen, natürlicher zu klingen."
+      },
+      "connectedReviewFeature": {
+        "title": "Verbundene Überprüfungsschleife über die gesamte App.",
+        "subtitle": "Lektionen, gespeicherte Wörter, Lernkarten, Schreiben und Konversationsübungen bleiben miteinander verbunden, sodass jede Aktivität die nächste verstärkt."
+      },
+      "semesterCohortFeature": {
+        "title": "Semesterkohorten für Struktur und Verantwortlichkeit.",
+        "subtitle": "Nehmen Sie an einem Lernpfad im Semesterstil mit gemeinsamen Zielen, geführten Materialien, Fortschrittsrhythmus und einer klaren Ziellinie teil, die Sie in Bewegung hält."
+      },
+      "businessTravelFeature": {
+        "title": "Geschäfts- und Reisepraxis vor Ihrer Ankunft.",
+        "subtitle": "Üben Sie professionelle Begrüßungen, Redewendungen für Besprechungen, Reisesituationen und Umzugsgespräche auf den Geräten, die Sie bereits verwenden."
+      }
+    },
+    "heroCarousel": {
+      "controlsLabel": "Steuerelemente für das Heldenbildkarussell",
+      "previous": "Vorherige Heldenfolie",
+      "next": "Nächste Heldenfolie",
+      "showSlide": "Heldenfolie anzeigen {{number}}"
+    }
   }
 }

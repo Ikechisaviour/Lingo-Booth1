@@ -11,7 +11,10 @@
   background:
     radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.16), transparent 26%),
     linear-gradient(135deg, var(--challenge-primary) 0%, #a9b72a 48%, var(--primary-gradient-end) 100%);
-  background-attachment: fixed;
+  /* NOTE: do not use `background-attachment: fixed` here — on mobile browsers
+     (Android Chrome/WebView especially) it triggers severe repaint/tearing
+     artifacts ("gitter") while scrolling. The gradient already spans the full
+     page via min-height/scroll, so a fixed attachment buys nothing. */
   color: var(--features-ink);
   overflow-x: hidden;
 }

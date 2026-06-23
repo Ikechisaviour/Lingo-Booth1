@@ -46,7 +46,8 @@
     "goBack": "돌아가기",
     "all": "모두",
     "restart": "다시 시작",
-    "previous": "이전의"
+    "previous": "이전의",
+    "backToHome": "집으로 돌아가기"
   },
   "languageSelect": {
     "title": "언어를 선택하세요",
@@ -695,7 +696,9 @@
     "billing": "청구",
     "demo": "데모",
     "failures": "실패",
-    "messages": "메시지"
+    "messages": "메시지",
+    "semesterInterest": "학기 관심도",
+    "reviews": "리뷰"
   },
   "forgotPassword": {
     "title": "비밀번호를 잊으셨나요",
@@ -2317,5 +2320,51 @@
     "title": "한국어 수업 찾아보기",
     "subtitle": "기획자가 가르칠 수 있는 모든 개념. 자세히 알아볼 항목을 선택하거나 기본 학습 페이지에서 시스템이 자동으로 선택하도록 하세요.",
     "conceptsMastered": "개념을 익히다"
+  },
+  "landing": {
+    "heroSlides": {
+      "connected": {
+        "title": "모든 연습 세션은 마지막 세션을 기반으로 합니다.",
+        "subtitle": "하나의 연결된 학습 루프를 통해 지도형 수업에서 말하기, 쓰기, 검토로 전환하세요."
+      },
+      "cohort": {
+        "title": "앞으로 나아갈 언어 루틴을 구축하십시오.",
+        "subtitle": "말하기, 쓰기, 복습을 모든 장치에서 작동하는 꾸준한 연습 리듬으로 가져오세요."
+      },
+      "business": {
+        "title": "비즈니스 언어를 사용하세요.",
+        "subtitle": "회의, 여행, 이사에 대한 전문적인 표현을 연습하여 도착할 때 이해할 수 있는 준비를 하세요."
+      },
+      "connectedLoop": {
+        "title": "수업, 연습, 복습이 함께 이루어집니다.",
+        "subtitle": "하나의 연결된 루프를 통해 레슨 카드에서 저장된 단어, 플래시 카드, 쓰기 및 대화로 이동합니다."
+      },
+      "cohortRhythm": {
+        "title": "함께 배우고 추진력을 유지하세요.",
+        "subtitle": "공유된 목표, 작문 자료, 기기 친화적인 연습을 활용하여 공부를 꾸준한 일상으로 바꾸세요."
+      },
+      "conversationPracticeFeature": {
+        "title": "실생활에서 말하기 위한 회화 연습.",
+        "subtitle": "일상적인 시나리오를 선택하고, 큰 소리로 말하고, 핸즈프리 모드를 사용하고, 더 자연스럽게 들리도록 도와주는 수정 안내를 받으세요."
+      },
+      "connectedReviewFeature": {
+        "title": "전체 앱에 걸쳐 연결된 리뷰 루프입니다.",
+        "subtitle": "수업, 저장된 단어, 플래시 카드, 쓰기 및 대화 연습이 계속 연결되어 각 활동이 다음 활동을 강화합니다."
+      },
+      "semesterCohortFeature": {
+        "title": "구조와 책임을 위한 학기 코호트.",
+        "subtitle": "공유된 목표, 안내 자료, 진행 리듬, 계속해서 나아갈 수 있는 명확한 결승선을 갖춘 학기형 학습 경로에 참여하세요."
+      },
+      "businessTravelFeature": {
+        "title": "도착하기 전에 비즈니스 및 여행 연습을 해보세요.",
+        "subtitle": "이미 사용하고 있는 장치에서 전문적인 인사말, 회의 문구, 여행 상황 및 재배치 대화를 연습해 보세요."
+      }
+    },
+    "heroCarousel": {
+      "controlsLabel": "히어로 이미지 캐러셀 컨트롤",
+      "previous": "이전 영웅 슬라이드",
+      "next": "다음 영웅 슬라이드",
+      "showSlide": "히어로 슬라이드 표시 {{number}}"
+    }
   }
 }

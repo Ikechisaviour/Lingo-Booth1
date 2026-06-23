@@ -46,7 +46,8 @@
     "goBack": "Go Back",
     "all": "All",
     "restart": "Restart",
-    "previous": "Previous"
+    "previous": "Previous",
+    "backToHome": "Back to home"
   },
   "languageSelect": {
     "title": "Choose Your Languages",
@@ -723,7 +724,9 @@
     "billing": "Billing",
     "demo": "Demo",
     "failures": "Failures",
-    "messages": "Messages"
+    "messages": "Messages",
+    "semesterInterest": "Semester interest",
+    "reviews": "Reviews"
   },
   "contact": {
     "navLabel": "Contact",
@@ -2315,5 +2318,51 @@
     "title": "Browse Korean lessons",
     "subtitle": "Every concept the planner can teach. Pick one to dive in, or let the system pick for you on the main Learn page.",
     "conceptsMastered": "concepts mastered"
+  },
+  "landing": {
+    "heroSlides": {
+      "connected": {
+        "title": "Every practice session builds on the last.",
+        "subtitle": "Move from guided lessons to speaking, writing, and review in one connected learning loop."
+      },
+      "cohort": {
+        "title": "Build a language routine that carries you forward.",
+        "subtitle": "Bring speaking, writing, and review into a steady practice rhythm that works across every device."
+      },
+      "business": {
+        "title": "Speak the language of business.",
+        "subtitle": "Practice professional phrases for meetings, travel, and relocation so you arrive ready to be understood."
+      },
+      "connectedLoop": {
+        "title": "Lessons, practice, and review build together.",
+        "subtitle": "Move from lesson cards to saved words, flashcards, writing, and conversation in one connected loop."
+      },
+      "cohortRhythm": {
+        "title": "Learn together and keep your momentum.",
+        "subtitle": "Use shared goals, writing materials, and device-friendly practice to turn study into a steady routine."
+      },
+      "conversationPracticeFeature": {
+        "title": "Conversation Practice for real-life speaking.",
+        "subtitle": "Choose everyday scenarios, speak out loud, use hands-free mode, and get guided corrections that help you sound more natural."
+      },
+      "connectedReviewFeature": {
+        "title": "Connected Review Loop across the whole app.",
+        "subtitle": "Lessons, saved words, flashcards, writing, and conversation practice stay connected so each activity reinforces the next one."
+      },
+      "semesterCohortFeature": {
+        "title": "Semester Cohorts for structure and accountability.",
+        "subtitle": "Join a semester-style learning path with shared goals, guided materials, progress rhythm, and a clear finish line that keeps you moving."
+      },
+      "businessTravelFeature": {
+        "title": "Business and Travel Practice before you arrive.",
+        "subtitle": "Rehearse professional greetings, meeting phrases, travel situations, and relocation conversations on the devices you already use."
+      }
+    },
+    "heroCarousel": {
+      "controlsLabel": "Hero image carousel controls",
+      "previous": "Previous hero slide",
+      "next": "Next hero slide",
+      "showSlide": "Show hero slide {{number}}"
+    }
   }
 }

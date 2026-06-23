@@ -46,7 +46,8 @@
     "goBack": "Geri gitmek",
     "all": "Tüm",
     "restart": "Tekrar başlat",
-    "previous": "Öncesi"
+    "previous": "Öncesi",
+    "backToHome": "Eve dön"
   },
   "languageSelect": {
     "title": "Dillerinizi Seçin",
@@ -695,7 +696,9 @@
     "billing": "Faturalandırma",
     "demo": "Demo",
     "failures": "Başarısızlıklar",
-    "messages": "Mesajlar"
+    "messages": "Mesajlar",
+    "semesterInterest": "Dönem faizi",
+    "reviews": "Yorumlar"
   },
   "forgotPassword": {
     "title": "Şifrenizi mi unuttunuz",
@@ -2317,5 +2320,51 @@
     "title": "Korece derslerine göz atın",
     "subtitle": "Planlayıcının öğretebileceği her kavram. Dalış yapmak için birini seçin veya ana Öğrenim sayfasında sistemin sizin için seçmesine izin verin.",
     "conceptsMastered": "hakim olunan kavramlar"
+  },
+  "landing": {
+    "heroSlides": {
+      "connected": {
+        "title": "Her antrenman seansı bir öncekinin üzerine kuruludur.",
+        "subtitle": "Bağlantılı tek bir öğrenme döngüsünde rehberli derslerden konuşma, yazma ve incelemeye geçin."
+      },
+      "cohort": {
+        "title": "Sizi ileriye taşıyacak bir dil rutini oluşturun.",
+        "subtitle": "Konuşmayı, yazmayı ve incelemeyi her cihazda çalışan istikrarlı bir pratik ritmine getirin."
+      },
+      "business": {
+        "title": "İş dilini konuşun.",
+        "subtitle": "Toplantılara, seyahatlere ve yer değiştirmeye ilişkin profesyonel ifadeler uygulayın, böylece anlaşılmaya hazır bir şekilde varırsınız."
+      },
+      "connectedLoop": {
+        "title": "Dersler, pratikler ve incelemeler birlikte oluşturulur.",
+        "subtitle": "Tek bir bağlantılı döngüde ders kartlarından kayıtlı kelimelere, bilgi kartlarına, yazıya ve sohbete geçin."
+      },
+      "cohortRhythm": {
+        "title": "Birlikte öğrenin ve ivmenizi koruyun.",
+        "subtitle": "Çalışmayı istikrarlı bir rutine dönüştürmek için ortak hedefleri, yazı materyallerini ve cihaz dostu uygulamaları kullanın."
+      },
+      "conversationPracticeFeature": {
+        "title": "Gerçek hayatta konuşmak için Konuşma Alıştırması.",
+        "subtitle": "Günlük senaryoları seçin, yüksek sesle konuşun, eller serbest modunu kullanın ve sesinizin daha doğal çıkmasına yardımcı olacak yönlendirmeli düzeltmeler alın."
+      },
+      "connectedReviewFeature": {
+        "title": "Uygulamanın tamamında Bağlantılı İnceleme Döngüsü.",
+        "subtitle": "Dersler, kayıtlı kelimeler, bilgi kartları, yazılar ve konuşma pratikleri birbiriyle bağlantılı kalır, böylece her aktivite bir sonrakini güçlendirir."
+      },
+      "semesterCohortFeature": {
+        "title": "Yapı ve sorumluluk için Dönem Kohortları.",
+        "subtitle": "Paylaşılan hedefler, rehberli materyaller, ilerleme ritmi ve ilerlemenizi sağlayan net bir bitiş çizgisiyle dönem tarzı bir öğrenme yoluna katılın."
+      },
+      "businessTravelFeature": {
+        "title": "Gelmeden önce İş ve Seyahat Uygulaması.",
+        "subtitle": "Halihazırda kullandığınız cihazlarda profesyonel selamlamaların, toplantı ifadelerinin, seyahat durumlarının ve yer değiştirme konuşmalarının provasını yapın."
+      }
+    },
+    "heroCarousel": {
+      "controlsLabel": "Kahraman resim atlıkarınca kontrolleri",
+      "previous": "Önceki kahraman slaytı",
+      "next": "Sonraki kahraman slaytı",
+      "showSlide": "Kahraman slaytını göster {{number}}"
+    }
   }
 }

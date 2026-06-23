@@ -46,7 +46,8 @@
     "goBack": "Ga terug",
     "all": "Alle",
     "restart": "Opnieuw opstarten",
-    "previous": "Vorig"
+    "previous": "Vorig",
+    "backToHome": "Terug naar huis"
   },
   "languageSelect": {
     "title": "Kies je talen",
@@ -695,7 +696,9 @@
     "billing": "Facturering",
     "demo": "Demo",
     "failures": "Mislukkingen",
-    "messages": "Berichten"
+    "messages": "Berichten",
+    "semesterInterest": "Semesterinteresse",
+    "reviews": "Recensies"
   },
   "forgotPassword": {
     "title": "Wachtwoord vergeten",
@@ -2317,5 +2320,51 @@
     "title": "Blader door Koreaanse lessen",
     "subtitle": "Elk concept dat de planner kan leren. Kies er een om in te duiken, of laat het systeem voor u kiezen op de hoofdpagina van Leren.",
     "conceptsMastered": "concepten onder de knie"
+  },
+  "landing": {
+    "heroSlides": {
+      "connected": {
+        "title": "Elke oefensessie bouwt voort op de vorige.",
+        "subtitle": "Ga van begeleide lessen naar spreken, schrijven en recenseren in één verbonden leerlus."
+      },
+      "cohort": {
+        "title": "Bouw een taalroutine op die u vooruit helpt.",
+        "subtitle": "Breng spreken, schrijven en recenseren in een stabiel oefenritme dat op elk apparaat werkt."
+      },
+      "business": {
+        "title": "Spreek de taal van het bedrijfsleven.",
+        "subtitle": "Oefen professionele zinnen voor vergaderingen, reizen en verhuizingen, zodat u klaar bent om begrepen te worden."
+      },
+      "connectedLoop": {
+        "title": "Lessen, oefenen en beoordelen worden samen opgebouwd.",
+        "subtitle": "Ga van leskaarten naar opgeslagen woorden, flashcards, schrijven en gesprekken in één verbonden lus."
+      },
+      "cohortRhythm": {
+        "title": "Leer samen en behoud het momentum.",
+        "subtitle": "Gebruik gedeelde doelen, schrijfmateriaal en apparaatvriendelijke oefeningen om van studeren een vaste routine te maken."
+      },
+      "conversationPracticeFeature": {
+        "title": "Conversatieoefening voor spreken in het echte leven.",
+        "subtitle": "Kies alledaagse scenario's, spreek hardop, gebruik de handsfree modus en ontvang begeleide correcties waardoor u natuurlijker klinkt."
+      },
+      "connectedReviewFeature": {
+        "title": "Verbonden beoordelingslus door de hele app.",
+        "subtitle": "Lessen, opgeslagen woorden, flashcards, schrijven en gespreksoefeningen blijven met elkaar verbonden, zodat elke activiteit de volgende versterkt."
+      },
+      "semesterCohortFeature": {
+        "title": "Semestercohorten voor structuur en verantwoording.",
+        "subtitle": "Sluit je aan bij een leertraject in semesterstijl met gedeelde doelen, begeleide materialen, voortgangsritme en een duidelijke eindstreep die je in beweging houdt."
+      },
+      "businessTravelFeature": {
+        "title": "Zaken- en reisoefeningen voordat u aankomt.",
+        "subtitle": "Oefen professionele begroetingen, zinsneden voor vergaderingen, reissituaties en verhuisgesprekken op de apparaten die u al gebruikt."
+      }
+    },
+    "heroCarousel": {
+      "controlsLabel": "Bedieningselementen voor carrousel voor Hero-afbeeldingen",
+      "previous": "Vorige heldendia",
+      "next": "Volgende helddia",
+      "showSlide": "Toon heldendia {{number}}"
+    }
   }
 }

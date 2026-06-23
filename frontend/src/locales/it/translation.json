@@ -46,7 +46,8 @@
     "goBack": "Torna indietro",
     "all": "Tutto",
     "restart": "Ricomincia",
-    "previous": "Precedente"
+    "previous": "Precedente",
+    "backToHome": "Ritorno a casa"
   },
   "languageSelect": {
     "title": "Scegli le tue lingue",
@@ -695,7 +696,9 @@
     "billing": "Fatturazione",
     "demo": "Dimostrazione",
     "failures": "Fallimenti",
-    "messages": "Messaggi"
+    "messages": "Messaggi",
+    "semesterInterest": "Interesse del semestre",
+    "reviews": "Recensioni"
   },
   "forgotPassword": {
     "title": "Password dimenticata",
@@ -2317,5 +2320,51 @@
     "title": "Sfoglia le lezioni di coreano",
     "subtitle": "Ogni concetto che il pianificatore può insegnare. Scegline uno in cui immergerti o lascia che sia il sistema a sceglierlo per te nella pagina principale di apprendimento.",
     "conceptsMastered": "concetti padroneggiati"
+  },
+  "landing": {
+    "heroSlides": {
+      "connected": {
+        "title": "Ogni sessione di pratica si basa sulla precedente.",
+        "subtitle": "Passa dalle lezioni guidate alla conversazione, alla scrittura e al ripasso in un unico ciclo di apprendimento connesso."
+      },
+      "cohort": {
+        "title": "Costruisci una routine linguistica che ti porti avanti.",
+        "subtitle": "Porta la conversazione, la scrittura e il ripasso a un ritmo di pratica costante che funzioni su ogni dispositivo."
+      },
+      "business": {
+        "title": "Parla il linguaggio degli affari.",
+        "subtitle": "Esercitati con frasi professionali per riunioni, viaggi e trasferimenti in modo da arrivare pronto per essere compreso."
+      },
+      "connectedLoop": {
+        "title": "Lezioni, pratica e ripasso si costruiscono insieme.",
+        "subtitle": "Passa dalle schede delle lezioni alle parole salvate, alle flashcard, alla scrittura e alle conversazioni in un unico ciclo connesso."
+      },
+      "cohortRhythm": {
+        "title": "Imparate insieme e mantenete lo slancio.",
+        "subtitle": "Utilizza obiettivi condivisi, materiali di scrittura e pratiche intuitive per trasformare lo studio in una routine costante."
+      },
+      "conversationPracticeFeature": {
+        "title": "Pratica di conversazione per parlare nella vita reale.",
+        "subtitle": "Scegli gli scenari quotidiani, parla ad alta voce, utilizza la modalità vivavoce e ricevi correzioni guidate che ti aiutano a sembrare più naturale."
+      },
+      "connectedReviewFeature": {
+        "title": "Ciclo di revisione connesso nell'intera app.",
+        "subtitle": "Lezioni, parole salvate, flashcard, scrittura ed esercitazioni di conversazione rimangono collegati in modo che ogni attività rafforzi quella successiva."
+      },
+      "semesterCohortFeature": {
+        "title": "Coorti del semestre per struttura e responsabilità.",
+        "subtitle": "Partecipa a un percorso di apprendimento in stile semestre con obiettivi condivisi, materiali guidati, ritmo di avanzamento e un traguardo chiaro che ti mantiene in movimento."
+      },
+      "businessTravelFeature": {
+        "title": "Pratica di lavoro e di viaggio prima del tuo arrivo.",
+        "subtitle": "Prova saluti professionali, frasi di riunione, situazioni di viaggio e conversazioni di trasferimento sui dispositivi che già utilizzi."
+      }
+    },
+    "heroCarousel": {
+      "controlsLabel": "Controlli del carosello di immagini dell'eroe",
+      "previous": "Diapositiva dell'eroe precedente",
+      "next": "Prossima diapositiva dell'eroe",
+      "showSlide": "Mostra diapositiva eroe {{number}}"
+    }
   }
 }

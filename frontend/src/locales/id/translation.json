@@ -46,7 +46,8 @@
     "goBack": "Kembali",
     "all": "Semua",
     "restart": "Mulai ulang",
-    "previous": "Sebelumnya"
+    "previous": "Sebelumnya",
+    "backToHome": "Kembali ke rumah"
   },
   "languageSelect": {
     "title": "Pilih Bahasa Anda",
@@ -695,7 +696,9 @@
     "billing": "Penagihan",
     "demo": "Demo",
     "failures": "Kegagalan",
-    "messages": "Pesan"
+    "messages": "Pesan",
+    "semesterInterest": "Minat semester",
+    "reviews": "Ulasan"
   },
   "forgotPassword": {
     "title": "Lupa kata sandi",
@@ -2317,5 +2320,51 @@
     "title": "Jelajahi pelajaran bahasa Korea",
     "subtitle": "Setiap konsep yang dapat diajarkan oleh perencana. Pilih satu untuk dipelajari, atau biarkan sistem memilihkan untuk Anda di halaman utama Pelajari.",
     "conceptsMastered": "konsep dikuasai"
+  },
+  "landing": {
+    "heroSlides": {
+      "connected": {
+        "title": "Setiap sesi latihan dibangun berdasarkan sesi terakhir.",
+        "subtitle": "Beralih dari pelajaran terpandu ke berbicara, menulis, dan mengulas dalam satu putaran pembelajaran yang terhubung."
+      },
+      "cohort": {
+        "title": "Bangun rutinitas bahasa yang membawa Anda maju.",
+        "subtitle": "Bawa berbicara, menulis, dan mengulas ke dalam ritme latihan stabil yang dapat digunakan di setiap perangkat."
+      },
+      "business": {
+        "title": "Bicaralah dalam bahasa bisnis.",
+        "subtitle": "Latih frasa profesional untuk rapat, perjalanan, dan relokasi sehingga Anda siap untuk dipahami."
+      },
+      "connectedLoop": {
+        "title": "Pelajaran, latihan, dan ulasan dibangun bersama.",
+        "subtitle": "Beralih dari kartu pelajaran ke kata-kata yang disimpan, kartu flash, tulisan, dan percakapan dalam satu putaran yang terhubung."
+      },
+      "cohortRhythm": {
+        "title": "Belajar bersama dan jaga momentum Anda.",
+        "subtitle": "Gunakan tujuan bersama, materi menulis, dan praktik ramah perangkat untuk mengubah belajar menjadi rutinitas yang stabil."
+      },
+      "conversationPracticeFeature": {
+        "title": "Latihan Percakapan untuk berbicara di kehidupan nyata.",
+        "subtitle": "Pilih skenario sehari-hari, ucapkan dengan lantang, gunakan mode bebas genggam, dan dapatkan koreksi terpandu yang membantu Anda terdengar lebih alami."
+      },
+      "connectedReviewFeature": {
+        "title": "Loop Tinjauan Terhubung di seluruh aplikasi.",
+        "subtitle": "Pelajaran, kata-kata yang disimpan, kartu flash, menulis, dan latihan percakapan tetap terhubung sehingga setiap aktivitas memperkuat aktivitas berikutnya."
+      },
+      "semesterCohortFeature": {
+        "title": "Kelompok Semester untuk struktur dan akuntabilitas.",
+        "subtitle": "Bergabunglah dengan jalur pembelajaran bergaya semester dengan tujuan bersama, materi yang dipandu, ritme kemajuan, dan garis akhir yang jelas yang membuat Anda terus bergerak."
+      },
+      "businessTravelFeature": {
+        "title": "Praktek Bisnis dan Perjalanan sebelum Anda tiba.",
+        "subtitle": "Latih salam profesional, frasa rapat, situasi perjalanan, dan percakapan pindahan di perangkat yang sudah Anda gunakan."
+      }
+    },
+    "heroCarousel": {
+      "controlsLabel": "Kontrol carousel gambar pahlawan",
+      "previous": "Slide pahlawan sebelumnya",
+      "next": "Slide pahlawan berikutnya",
+      "showSlide": "Tampilkan slide pahlawan {{number}}"
+    }
   }
 }

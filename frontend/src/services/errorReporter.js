@@ -1,3 +1,5 @@
+import { isBrowserExtensionRuntimeIssue } from '../utils/browserExtensionErrorGuard';
+
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 const DEVICE_ID_KEY = 'lingoDeviceId';
 const RECENT_WINDOW_MS = 30000;
@@ -150,6 +152,13 @@ export const installGlobalErrorReporting = () => {
   window.__lingoErrorReportingInstalled = true;
 
   window.addEventListener('error', (event) => {
+    if (isBrowserExtensionRuntimeIssue({
+      message: event.message,
+      filename: event.filename,
+      stack: event.error?.stack,
+      reason: event.error,
+    })) return;
+
     reportClientError({
       kind: 'runtime',
       severity: 'error',
@@ -165,6 +174,12 @@ export const installGlobalErrorReporting = () => {
 
   window.addEventListener('unhandledrejection', (event) => {
     const reason = event.reason || {};
+    if (isBrowserExtensionRuntimeIssue({
+      message: reason.message || String(reason || 'Unhandled promise rejection'),
+      stack: reason.stack || '',
+      reason,
+    })) return;
+
     reportClientError({
       kind: 'unhandled-rejection',
       severity: 'error',

@@ -132,6 +132,19 @@
   .notification-center {
     margin-left: auto;
   }
+
+  /* The bell sits mid-left in the navbar on phones, so anchoring the panel to
+     the bell with `right: 0` makes a 380px panel grow leftward and spill off
+     the left edge of the screen. Pin it to the viewport with equal insets
+     instead so it's always fully visible. */
+  .notification-panel {
+    position: fixed;
+    top: 72px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-height: calc(100vh - 96px);
+  }
 }
 
 @media (aspect-ratio > 1/1) {

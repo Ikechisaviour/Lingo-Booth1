@@ -46,12 +46,12 @@ function buildUserResponse(user) {
 const REFRESH_ABSOLUTE_LIFETIME_MS = 30 * 24 * 60 * 60 * 1000; // 30 days
 const REFRESH_ABSOLUTE_LIFETIME_SEC = Math.floor(REFRESH_ABSOLUTE_LIFETIME_MS / 1000);
 
-// Helper: generate short-lived access token (1 hour).
+// Helper: generate access token (30 days).
 // `authAt` is the unix-seconds timestamp of the user's last fresh credential
 // proof (password or OAuth). It's preserved across refresh rotations so
 // step-up middleware can decide whether to demand re-auth for sensitive actions.
 function generateToken(userId, authAt) {
-  return jwt.sign({ userId, authAt }, JWT_SECRET, { expiresIn: '1h' });
+  return jwt.sign({ userId, authAt }, JWT_SECRET, { expiresIn: '30d' });
 }
 
 // Helper: generate refresh token bound to an original-auth-time (oat).
