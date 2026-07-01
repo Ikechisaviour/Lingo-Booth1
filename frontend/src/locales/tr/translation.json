@@ -709,7 +709,25 @@
     "failures": "Başarısızlıklar",
     "messages": "Mesajlar",
     "semesterInterest": "Dönem faizi",
-    "reviews": "Yorumlar"
+    "reviews": "Yorumlar",
+    "sectionsNav": "Yönetici bölümleri",
+    "navGroups": {
+      "overview": "Genel Bakış",
+      "attention": "Dikkat edilmesi gerekiyor",
+      "people": "İnsanlar",
+      "revenue": "Hasılat",
+      "tools": "Aletler",
+      "engagement": "Kullanım"
+    },
+    "communications": "İletişim",
+    "institutions": "Kurumlar",
+    "sendEmailAction": "Send email",
+    "institutionsSubtitle": "Kayıtlı her kurum ve yönetici iletişim bilgilerinin e-postası.",
+    "institutionAdminEmail": "Yönetici e-postası",
+    "noInstitutionAdmin": "Yönetici atanmadı",
+    "emailAdmin": "E-posta yöneticisi",
+    "emailUserTitle": "E-posta {{name}}",
+    "emailUserTo": "Markalı bir e-posta gönderir"
   },
   "forgotPassword": {
     "title": "Şifrenizi mi unuttunuz",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "Açık kurum",
     "manageSeatsAction": "Koltukları yönet",
     "viewPlansAction": "Planları görüntüle",
-    "resumePracticeAction": "Uygulamaya devam et"
+    "resumePracticeAction": "Uygulamaya devam et",
+    "emptyArchived": "Arşivlenmiş bildirim yok.",
+    "restore": "Eski haline getirmek",
+    "inboxTab": "Gelen kutusu",
+    "archivedTab": "Arşivlendi"
   },
   "stepUp": {
     "verifyFailed": "Şifre doğrulanamadı",
@@ -2376,6 +2398,50 @@
       "previous": "Önceki kahraman slaytı",
       "next": "Sonraki kahraman slaytı",
       "showSlide": "Kahraman slaytını göster {{number}}"
+    },
+    "statement": {
+      "proveSerious": "Her gün ciddi olduğunu kanıtladın.",
+      "cared": "Her gün sadece galibiyet serisine önem verdiğini kanıtladı.",
+      "notLearning": "Bu öğrenmek değil. Bu, üzerinde alev olan bir sayaç.",
+      "walkAway": "Seri kovalamacadan uzaklaşın.",
+      "takeSeriousness": "Sonuç aldığı yerde bu ciddiyeti alın.",
+      "teaches": "Lingo Booth dilin arkasındaki ilkeleri öğretir. Onları egzersizlerle eğitir. Daha sonra her örneği sizin seviyenizde gerçek hayattaki ihtiyaçlarınıza göre şekillendirir.",
+      "curriculum": "Uçtan uca yönlendirilen eksiksiz bir müfredat. Okumak, yazmak, dinlemek, konuşmak, gözden geçirmek; birlikte çalışmak, ayrı ayrı çalışmak değil.",
+      "actuallyUse": "Burada gerçekte ne kullanabileceğinizi öğreneceksiniz.",
+      "cta": "Öğrenmeye başlayın.",
+      "scrollAria": "Daha fazlası için kaydırın",
+      "teaser": "Çizgiyi değil dili öğrenin; kendi dilinizde öğretilen tam bir müfredat.",
+      "readMore": "Devamını oku",
+      "showLess": "Daha az göster"
     }
+  },
+  "brand": {
+    "lingo": "Dil",
+    "booth": "Çardak"
+  },
+  "adminEmail": {
+    "confirmAll": "Bu, TÜM kullanıcılara e-posta gönderecektir. Devam etmek istediğinizden emin misiniz?",
+    "sentWithFailures": "{{sent}} kullanıcı(lar)ına gönderilen e-posta; {{failed}} başarısız oldu.",
+    "sent": "{{sent}} kullanıcı(lar)ına gönderilen e-posta.",
+    "failed": "E-posta gönderilemedi.",
+    "composerTitle": "E-posta gönder",
+    "composerHint": "Bir kullanıcıya, tüm kullanıcılara veya kurum üyelerine markalı bir e-posta gönderin. E-posta yoluyla teslim edilir (yalnızca uygulama içi bir bildirim değil).",
+    "verifiedOnly": "Yalnızca doğrulanmış e-posta adresleri",
+    "subject": "Ders",
+    "message": "Mesaj",
+    "actionUrl": "İsteğe bağlı düğme bağlantısı",
+    "actionLabel": "İsteğe bağlı düğme metni",
+    "actionLabelPlaceholder": "Lingo Standını Aç",
+    "sending": "Gönderiliyor…",
+    "send": "E-posta gönder"
+  },
+  "errorBoundary": {
+    "redirecting": "Seni eve götürmek…",
+    "goHome": "Lingo Booth ana sayfasına gidin"
+  },
+  "appLink": {
+    "title": "Lingo Standının Açılışı",
+    "body": "Uygulama açılmazsa tarayıcınızdan devam edin.",
+    "fallbackButton": "Tarayıcıda devam et"
   }
 }

@@ -709,7 +709,25 @@
     "failures": "Fallos",
     "messages": "Mensajes",
     "semesterInterest": "Interés semestral",
-    "reviews": "Reseñas"
+    "reviews": "Reseñas",
+    "sectionsNav": "Secciones de administración",
+    "navGroups": {
+      "overview": "Descripción general",
+      "attention": "necesita atencion",
+      "people": "Gente",
+      "revenue": "Ganancia",
+      "tools": "Herramientas",
+      "engagement": "Uso"
+    },
+    "communications": "Comunicaciones",
+    "institutions": "Instituciones",
+    "sendEmailAction": "Enviar correo electrónico",
+    "institutionsSubtitle": "Cada institución registrada y el correo electrónico de sus contactos administrativos.",
+    "institutionAdminEmail": "correo electrónico de administrador",
+    "noInstitutionAdmin": "No hay administrador asignado",
+    "emailAdmin": "Administrador de correo electrónico",
+    "emailUserTitle": "Correo electrónico {{name}}",
+    "emailUserTo": "Envía un correo electrónico de marca a"
   },
   "forgotPassword": {
     "title": "¿Olvidaste tu contraseña?",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "Institución abierta",
     "manageSeatsAction": "Administrar asientos",
     "viewPlansAction": "Ver planos",
-    "resumePracticeAction": "Reanudar la práctica"
+    "resumePracticeAction": "Reanudar la práctica",
+    "emptyArchived": "No hay notificaciones archivadas.",
+    "restore": "Restaurar",
+    "inboxTab": "Bandeja de entrada",
+    "archivedTab": "Archivada"
   },
   "stepUp": {
     "verifyFailed": "No se pudo verificar la contraseña",
@@ -2376,6 +2398,50 @@
       "previous": "Diapositiva de héroe anterior",
       "next": "Siguiente diapositiva de héroe",
       "showSlide": "Mostrar diapositiva de héroe {{number}}"
+    },
+    "statement": {
+      "proveSerious": "Todos los días demostraste que hablabas en serio.",
+      "cared": "Cada día demostró que sólo le importaba la racha.",
+      "notLearning": "Eso no es aprender. Ese es un mostrador con una llama.",
+      "walkAway": "Aléjate de perseguir rachas.",
+      "takeSeriousness": "Tómate eso en serio cuando obtenga resultados.",
+      "teaches": "Lingo Booth enseña los principios detrás del idioma. Los ejercita con ejercicios. Luego adapta cada ejemplo a tus necesidades de la vida real, a tu nivel.",
+      "curriculum": "Un plan de estudios completo, guiado de principio a fin. Leer, escribir, escuchar, hablar, repasar: trabajar juntos, no separados.",
+      "actuallyUse": "Aquí aprenderá lo que realmente puede utilizar.",
+      "cta": "Empiece a aprender.",
+      "scrollAria": "Desplázate para más",
+      "teaser": "Aprenda el idioma, no la racha: un plan de estudios completo, impartido en su propio idioma.",
+      "readMore": "Leer más",
+      "showLess": "Mostrar menos"
     }
+  },
+  "brand": {
+    "lingo": "Jerga",
+    "booth": "Puesto"
+  },
+  "adminEmail": {
+    "confirmAll": "Esto enviará un correo electrónico a TODOS los usuarios. ¿Estás seguro de que quieres continuar?",
+    "sentWithFailures": "Correo electrónico enviado a los usuarios {{sent}}; {{failed}} falló.",
+    "sent": "Correo electrónico enviado a los usuarios {{sent}}.",
+    "failed": "No se pudo enviar el correo electrónico.",
+    "composerTitle": "Enviar correo electrónico",
+    "composerHint": "Envíe un correo electrónico de marca a un usuario, a todos los usuarios o a miembros de la institución. Entregado por correo electrónico (no solo un aviso en la aplicación).",
+    "verifiedOnly": "Solo direcciones de correo electrónico verificadas",
+    "subject": "Sujeta",
+    "message": "Mensaje",
+    "actionUrl": "Enlace de botón opcional",
+    "actionLabel": "Texto del botón opcional",
+    "actionLabelPlaceholder": "Abrir stand de jerga",
+    "sending": "Envío…",
+    "send": "Enviar correo electrónico"
+  },
+  "errorBoundary": {
+    "redirecting": "Llevándote a casa…",
+    "goHome": "Ir a la página de inicio del stand de Lingo"
+  },
+  "appLink": {
+    "title": "Apertura del stand de Lingo",
+    "body": "Si la aplicación no se abre, continúa en tu navegador.",
+    "fallbackButton": "Continuar en el navegador"
   }
 }

@@ -709,7 +709,25 @@
     "failures": "Mislukkingen",
     "messages": "Berichten",
     "semesterInterest": "Semesterinteresse",
-    "reviews": "Recensies"
+    "reviews": "Recensies",
+    "sectionsNav": "Beheerderssecties",
+    "navGroups": {
+      "overview": "Overzicht",
+      "attention": "Heeft aandacht nodig",
+      "people": "Mensen",
+      "revenue": "Winst",
+      "tools": "Hulpmiddelen",
+      "engagement": "Gebruik"
+    },
+    "communications": "Communicatie",
+    "institutions": "Instellingen",
+    "sendEmailAction": "E-mail verzenden",
+    "institutionsSubtitle": "Elke geregistreerde instelling en het e-mailadres van haar beheerderscontacten.",
+    "institutionAdminEmail": "E-mailadres van beheerder",
+    "noInstitutionAdmin": "Geen beheerder toegewezen",
+    "emailAdmin": "E-mail beheerder",
+    "emailUserTitle": "E-mail {{name}}",
+    "emailUserTo": "Stuurt een merk-e-mail naar"
   },
   "forgotPassword": {
     "title": "Wachtwoord vergeten",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "Open instelling",
     "manageSeatsAction": "Beheer zitplaatsen",
     "viewPlansAction": "Bekijk plannen",
-    "resumePracticeAction": "Hervat de praktijk"
+    "resumePracticeAction": "Hervat de praktijk",
+    "emptyArchived": "Geen gearchiveerde meldingen.",
+    "restore": "Herstellen",
+    "inboxTab": "Postvak IN",
+    "archivedTab": "Gearchiveerd"
   },
   "stepUp": {
     "verifyFailed": "Kan wachtwoord niet verifiëren",
@@ -2376,6 +2398,50 @@
       "previous": "Vorige heldendia",
       "next": "Volgende helddia",
       "showSlide": "Toon heldendia {{number}}"
+    },
+    "statement": {
+      "proveSerious": "Elke dag bewees je dat je het meende.",
+      "cared": "Elke dag bleek dat het alleen maar om de streak ging.",
+      "notLearning": "Dat is niet leren. Dat is een toonbank met een vlam erop.",
+      "walkAway": "Loop weg van streak-jagen.",
+      "takeSeriousness": "Neem die ernst waar het resultaat oplevert.",
+      "teaches": "Lingo Booth leert de principes achter de taal. Oefen ze met oefeningen. Vervolgens wordt elk voorbeeld aangepast aan uw behoeften uit het echte leven, op uw niveau.",
+      "curriculum": "Een compleet curriculum, van begin tot eind begeleid. Lezen, schrijven, luisteren, spreken, beoordelen – samenwerken, niet op elkaar gestapeld.",
+      "actuallyUse": "Hier leer je wat je daadwerkelijk kunt gebruiken.",
+      "cta": "Begin met leren.",
+      "scrollAria": "Scroll voor meer",
+      "teaser": "Leer de taal, niet de streak – een volledig curriculum, onderwezen in uw eigen taal.",
+      "readMore": "Lees meer",
+      "showLess": "Laat minder zien"
     }
+  },
+  "brand": {
+    "lingo": "Taalgebruik",
+    "booth": "Stand"
+  },
+  "adminEmail": {
+    "confirmAll": "Hiermee worden ALLE gebruikers per e-mail verzonden. Weet u zeker dat u wilt doorgaan?",
+    "sentWithFailures": "E-mail verzonden naar {{sent}} gebruiker(s); {{failed}} is mislukt.",
+    "sent": "E-mail verzonden naar {{sent}} gebruiker(s).",
+    "failed": "Kan geen e-mail verzenden.",
+    "composerTitle": "E-mail verzenden",
+    "composerHint": "Stuur een merk-e-mail naar één gebruiker, alle gebruikers of leden van de instelling. Bezorgd via e-mail (niet alleen een in-app-melding).",
+    "verifiedOnly": "Alleen geverifieerde e-mailadressen",
+    "subject": "Onderwerp",
+    "message": "Bericht",
+    "actionUrl": "Optionele knoplink",
+    "actionLabel": "Optionele knoptekst",
+    "actionLabelPlaceholder": "Lingostand openen",
+    "sending": "Verzenden…",
+    "send": "E-mail verzenden"
+  },
+  "errorBoundary": {
+    "redirecting": "Je naar huis brengen…",
+    "goHome": "Ga naar de startpagina van Lingo Booth"
+  },
+  "appLink": {
+    "title": "Opening van de Lingostand",
+    "body": "Als de app niet opent, ga dan verder in uw browser.",
+    "fallbackButton": "Ga verder in de browser"
   }
 }

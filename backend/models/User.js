@@ -194,6 +194,14 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: null,
   },
+  // Persisted flashcard deck selection + study settings so a learner's chosen
+  // deck (scope / categories / hand-picked or random subset) and study mode
+  // follow them across sessions and devices. Shape is validated on write in
+  // routes/users.js (sanitizeFlashcardPrefs). null = never saved.
+  flashcardPrefs: {
+    type: mongoose.Schema.Types.Mixed,
+    default: null,
+  },
   preferredVoice: {
     type: String,
     default: null,
@@ -306,6 +314,20 @@ const userSchema = new mongoose.Schema({
   lastCountry:   { type: String, default: null },
   lastCity:      { type: String, default: null },
   lastIp:        { type: String, default: null },
+  // Devices this account has signed in from (used to detect new-device logins
+  // and send a security email). Keyed by the client's X-Lingo-Device-Id.
+  knownDevices: [{
+    deviceId:  { type: String },
+    userAgent: { type: String, default: null },
+    ip:        { type: String, default: null },
+    country:   { type: String, default: null },
+    city:      { type: String, default: null },
+    firstSeen: { type: Date, default: Date.now },
+    lastSeen:  { type: Date, default: Date.now },
+  }],
+  // When the last "welcome back" login-notification email was sent. Throttled
+  // to at most once per 30 days; other email types are not affected.
+  lastLoginNotificationAt: { type: Date, default: null },
 });
 
 // Index for leaderboard queries

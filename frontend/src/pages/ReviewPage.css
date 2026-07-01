@@ -173,9 +173,9 @@
 
 .review-item-card {
   display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 14px;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 16px;
   border-radius: 12px;
   border: 1px solid var(--border-light);
   background: var(--bg-secondary);
@@ -190,6 +190,7 @@
 
 .review-item-main strong {
   color: var(--text-primary);
+  font-size: 1.02rem;
 }
 
 .review-item-main span {
@@ -232,6 +233,183 @@
 .review-search-class:hover,
 .review-weak-row:hover {
   border-color: var(--primary);
+}
+
+/* Grouped review-item controls: rating scale, practice toolbar, utility icons */
+.review-item-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-light);
+}
+
+/* Tier 1 — spaced-repetition rating (color-coded segmented control) */
+.review-rating {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.review-grade {
+  flex: 1 1 auto;
+  min-width: 68px;
+  min-height: 36px;
+  padding: 6px 14px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.review-grade:hover {
+  transform: translateY(-1px);
+}
+
+.review-grade:disabled {
+  opacity: 0.55;
+  cursor: default;
+  transform: none;
+}
+
+.review-grade-again {
+  background: color-mix(in srgb, var(--accent-red) 12%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent-red) 32%, var(--border));
+  color: color-mix(in srgb, var(--accent-red) 70%, var(--text-primary));
+}
+
+.review-grade-again:hover {
+  background: var(--accent-red);
+  border-color: var(--accent-red);
+  color: #fff;
+}
+
+.review-grade-hard {
+  background: color-mix(in srgb, var(--accent-yellow) 16%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent-yellow) 40%, var(--border));
+  color: color-mix(in srgb, var(--accent-yellow) 55%, var(--text-primary));
+}
+
+.review-grade-hard:hover {
+  background: var(--accent-yellow);
+  border-color: var(--accent-yellow);
+  color: var(--text-primary);
+}
+
+.review-grade-good {
+  background: color-mix(in srgb, var(--accent-green) 12%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent-green) 32%, var(--border));
+  color: color-mix(in srgb, var(--accent-green) 62%, var(--text-primary));
+}
+
+.review-grade-good:hover {
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+  color: #fff;
+}
+
+.review-grade-easy {
+  background: color-mix(in srgb, var(--accent-blue) 12%, var(--surface));
+  border-color: color-mix(in srgb, var(--accent-blue) 32%, var(--border));
+  color: color-mix(in srgb, var(--accent-blue) 62%, var(--text-primary));
+}
+
+.review-grade-easy:hover {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: #fff;
+}
+
+/* Tiers 2 & 3 — practice toolbar (left) and utility icons (right) */
+.review-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.review-practice-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.review-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 6px 11px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.review-action svg {
+  width: 15px;
+  height: 15px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.review-action:hover {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.review-action:hover svg {
+  color: var(--primary);
+}
+
+.review-utility-group {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.review-icon-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 32px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.review-icon-action svg {
+  width: 16px;
+  height: 16px;
+}
+
+.review-icon-action:hover {
+  background: var(--bg);
+  color: var(--text-primary);
+}
+
+.review-icon-action:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.review-icon-danger:hover {
+  background: color-mix(in srgb, var(--accent-red) 12%, var(--surface));
+  color: var(--accent-red);
 }
 
 .review-empty {

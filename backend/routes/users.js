@@ -11,6 +11,7 @@ const { getCurrentMondayUTC } = require('../utils/dateHelpers');
 const { ensureResetsApplied } = require('../utils/gamificationReset');
 const { getAiEntitlements } = require('../utils/subscription');
 const { recordLearningEvent } = require('../utils/xpRewards');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 const { fullNameValidation } = require('../utils/fullName');
 const { syncInstitutionAccessForUser } = require('../utils/institutionAccess');
 const {
@@ -56,8 +57,9 @@ router.get('/:userId', isOwner('userId'), checkInactivityPenalty(), async (req, 
     delete userObj.password;
     res.json(userObj);
   } catch (error) {
-    console.error('Get profile error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_GET_PROFILE_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -73,7 +75,7 @@ router.put('/:userId', isOwner('userId'), async (req, res) => {
         _id: { $ne: req.params.userId }
       });
       if (existingUser) {
-        return res.status(400).json({ message: 'Username already taken' });
+        return sendClientError(res, 400, 'USERS_USERNAME_TAKEN', 'Username already taken');
       }
     }
 
@@ -113,13 +115,14 @@ router.put('/:userId', isOwner('userId'), async (req, res) => {
     ).select('-password');
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
 
     res.json(user);
   } catch (error) {
-    console.error('Update profile error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_UPDATE_PROFILE_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -129,16 +132,16 @@ router.put('/:userId/curriculum-preference', isOwner('userId'), async (req, res)
   try {
     const target = normalizeLang(req.body?.targetLanguage);
     const version = String(req.body?.version || '').toLowerCase();
-    if (!target) return res.status(400).json({ message: 'targetLanguage is required' });
+    if (!target) return sendClientError(res, 400, 'USERS_CURRICULUM_PREF_TARGET_REQUIRED', 'targetLanguage is required');
     if (!['v1', 'v2'].includes(version)) {
-      return res.status(400).json({ message: "version must be 'v1' or 'v2'" });
+      return sendClientError(res, 400, 'USERS_CURRICULUM_PREF_INVALID_VERSION', "version must be 'v1' or 'v2'");
     }
     if (version === 'v2' && !isV2AvailableForTarget(target)) {
-      return res.status(400).json({ message: 'Curriculum v2 is not available for that language yet.' });
+      return sendClientError(res, 400, 'USERS_CURRICULUM_PREF_V2_UNAVAILABLE', 'Curriculum v2 is not available for that language yet.');
     }
 
     const user = await User.findById(req.params.userId);
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     if (!user.curriculumPreferences) user.curriculumPreferences = new Map();
     user.curriculumPreferences.set(target, version);
     await user.save();
@@ -156,8 +159,10 @@ router.put('/:userId/curriculum-preference', isOwner('userId'), async (req, res)
       },
     });
   } catch (error) {
-    console.error('Curriculum preference error:', error);
-    res.status(500).json({ message: 'Could not save curriculum preference' });
+    return sendServerError(req, res, error, 'USERS_CURRICULUM_PREF_SAVE_FAILED', {
+      clientMessage: 'Could not save curriculum preference',
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -168,26 +173,26 @@ router.put('/:userId/password', isOwner('userId'), async (req, res) => {
     const { currentPassword, newPassword } = req.body;
 
     if (!newPassword) {
-      return res.status(400).json({ message: 'New password is required' });
+      return sendClientError(res, 400, 'USERS_PASSWORD_NEW_REQUIRED', 'New password is required');
     }
 
     if (newPassword.length < 6) {
-      return res.status(400).json({ message: 'New password must be at least 6 characters' });
+      return sendClientError(res, 400, 'USERS_PASSWORD_TOO_SHORT', 'New password must be at least 6 characters');
     }
 
     const user = await User.findById(req.params.userId);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
 
     // If user already has a password, verify the current one
     if (user.password) {
       if (!currentPassword) {
-        return res.status(400).json({ message: 'Current password is required' });
+        return sendClientError(res, 400, 'USERS_PASSWORD_CURRENT_REQUIRED', 'Current password is required');
       }
       const isMatch = await bcrypt.compare(currentPassword, user.password);
       if (!isMatch) {
-        return res.status(400).json({ message: 'Current password is incorrect' });
+        return sendClientError(res, 400, 'USERS_PASSWORD_CURRENT_INCORRECT', 'Current password is incorrect');
       }
     }
     // else: Google-only user setting password for the first time — no currentPassword needed
@@ -199,8 +204,9 @@ router.put('/:userId/password', isOwner('userId'), async (req, res) => {
 
     res.json({ message: 'Password updated successfully' });
   } catch (error) {
-    console.error('Change password error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_CHANGE_PASSWORD_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -218,12 +224,13 @@ router.put('/:userId/activity-state', isOwner('userId'), async (req, res) => {
     };
     const user = await User.findByIdAndUpdate(req.params.userId, update, { new: true }).select('-password');
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
     res.json(user);
   } catch (error) {
-    console.error('Save activity state error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_SAVE_ACTIVITY_STATE_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -234,7 +241,7 @@ router.get('/:userId/activity-state', isOwner('userId'), checkInactivityPenalty(
       .select('lastActivityType lastLessonId lastLessonIndex lastFlashcardIndex')
       .populate('lastLessonId', 'title category');
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
     const normalizedActivityType = user.lastActivityType === 'lesson' ? 'quiz' : user.lastActivityType;
     res.json({
@@ -247,8 +254,9 @@ router.get('/:userId/activity-state', isOwner('userId'), checkInactivityPenalty(
       flashcardIndex: user.lastFlashcardIndex,
     });
   } catch (error) {
-    console.error('Get activity state error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_GET_ACTIVITY_STATE_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -265,7 +273,7 @@ function newShuffleSeed() {
 router.get('/:userId/flashcard-seed', isOwner('userId'), async (req, res) => {
   try {
     const user = await User.findById(req.params.userId).select('flashcardShuffleSeed flashcardShuffleSeedAt');
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
 
     const seededAt = user.flashcardShuffleSeedAt ? new Date(user.flashcardShuffleSeedAt).getTime() : 0;
     const valid = user.flashcardShuffleSeed != null && (Date.now() - seededAt) < FLASHCARD_SEED_TTL_MS;
@@ -279,8 +287,9 @@ router.get('/:userId/flashcard-seed', isOwner('userId'), async (req, res) => {
     });
     return res.json({ seed, regenerated: true });
   } catch (error) {
-    console.error('Resolve flashcard seed error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_RESOLVE_FLASHCARD_SEED_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -293,11 +302,61 @@ router.post('/:userId/flashcard-seed', isOwner('userId'), async (req, res) => {
       { flashcardShuffleSeed: seed, flashcardShuffleSeedAt: new Date() },
       { new: true }
     ).select('flashcardShuffleSeed');
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     res.json({ seed: user.flashcardShuffleSeed });
   } catch (error) {
-    console.error('Refresh flashcard seed error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_REFRESH_FLASHCARD_SEED_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
+  }
+});
+
+// --- Flashcard deck selection + study settings (shared across devices) ---
+// Whitelist and clamp incoming prefs so we never persist arbitrary payloads.
+function sanitizeFlashcardPrefs(raw) {
+  if (!raw || typeof raw !== 'object') return null;
+  const pick = (val, allowed, fallback) => (allowed.includes(val) ? val : fallback);
+  const strArray = (val, cap) =>
+    (Array.isArray(val) ? val.filter(x => typeof x === 'string' && x).slice(0, cap) : []);
+  return {
+    deckScope: pick(raw.deckScope, ['all', 'mine', 'focus'], 'all'),
+    selectedCategories: strArray(raw.selectedCategories, 500),
+    selectedCardIds: strArray(raw.selectedCardIds, 2000),
+    randomCount: Math.max(1, Math.min(Math.floor(Number(raw.randomCount) || 10), 2000)),
+    displayMode: pick(raw.displayMode, ['target', 'native', 'random'], 'target'),
+    studyStyle: pick(raw.studyStyle, ['both', 'text', 'audio'], 'both'),
+    isShuffled: raw.isShuffled !== false,
+  };
+}
+
+// GET returns the saved prefs (or null if the learner has never saved any).
+router.get('/:userId/flashcard-prefs', isOwner('userId'), async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId).select('flashcardPrefs');
+    if (!user) return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
+    return res.json({ prefs: user.flashcardPrefs || null });
+  } catch (error) {
+    return sendServerError(req, res, error, 'USERS_GET_FLASHCARD_PREFS_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
+  }
+});
+
+// PUT replaces the saved prefs (client sends the full current selection).
+router.put('/:userId/flashcard-prefs', isOwner('userId'), async (req, res) => {
+  try {
+    const prefs = sanitizeFlashcardPrefs(req.body?.prefs);
+    const user = await User.findByIdAndUpdate(
+      req.params.userId,
+      { flashcardPrefs: prefs },
+      { new: true }
+    ).select('flashcardPrefs');
+    if (!user) return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
+    return res.json({ prefs: user.flashcardPrefs || null });
+  } catch (error) {
+    return sendServerError(req, res, error, 'USERS_SAVE_FLASHCARD_PREFS_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -306,7 +365,7 @@ router.post('/:userId/xp', isOwner('userId'), checkInactivityPenalty(), async (r
   try {
     const { points } = req.body;
     if (!points || typeof points !== 'number' || points <= 0) {
-      return res.status(400).json({ message: 'Valid positive points value required' });
+      return sendClientError(res, 400, 'USERS_ADD_XP_INVALID_POINTS', 'Valid positive points value required');
     }
     const user = await User.findByIdAndUpdate(
       req.params.userId,
@@ -314,12 +373,13 @@ router.post('/:userId/xp', isOwner('userId'), checkInactivityPenalty(), async (r
       { new: true }
     ).select('totalXP');
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
     res.json({ totalXP: user.totalXP });
   } catch (error) {
-    console.error('Add XP error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_ADD_XP_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -328,15 +388,18 @@ router.post('/:userId/learning-events', isOwner('userId'), checkInactivityPenalt
   try {
     const result = await recordLearningEvent(req.params.userId, req.body);
     if (!result) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
     res.json({ ...result, xpPenalty: req.xpPenalty || 0 });
   } catch (error) {
-    if (error.message?.includes('required') || error.message?.includes('Unsupported learning event')) {
-      return res.status(400).json({ message: error.message });
+    // normalizeEvent throws coded AppErrors (<500) for validation/unsupported
+    // types — surface those as coded client errors, not opaque 500s.
+    if (error?.httpStatus && error.httpStatus < 500) {
+      return sendClientError(res, error.httpStatus, error.code, error.message);
     }
-    console.error('Record learning event error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_LEARNING_EVENT_RECORD_FAILED', {
+      metadata: { eventType: req.body?.eventType },
+    });
   }
 });
 
@@ -345,7 +408,7 @@ router.post('/:userId/peek', isOwner('userId'), async (req, res) => {
   try {
     const { lessonId, contentIndex } = req.body;
     if (!lessonId || contentIndex === undefined) {
-      return res.status(400).json({ message: 'lessonId and contentIndex are required' });
+      return sendClientError(res, 400, 'USERS_PEEK_MISSING_FIELDS', 'lessonId and contentIndex are required');
     }
     // Upsert: refresh the cooldown timer if already peeked
     await PeekCooldown.findOneAndUpdate(
@@ -355,8 +418,9 @@ router.post('/:userId/peek', isOwner('userId'), async (req, res) => {
     );
     res.json({ message: 'Peek recorded', cooldownHours: 24 });
   } catch (error) {
-    console.error('Record peek error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_RECORD_PEEK_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -368,7 +432,7 @@ router.post('/:userId/award-xp', isOwner('userId'), checkInactivityPenalty(), as
   try {
     const { lessonId, contentIndex, flashcardId, basePoints } = req.body;
     if (!basePoints || typeof basePoints !== 'number' || basePoints <= 0) {
-      return res.status(400).json({ message: 'Valid positive basePoints value required' });
+      return sendClientError(res, 400, 'USERS_AWARD_XP_INVALID_BASE_POINTS', 'Valid positive basePoints value required');
     }
 
     if (lessonId !== undefined && contentIndex !== undefined) {
@@ -394,11 +458,12 @@ router.post('/:userId/award-xp', isOwner('userId'), checkInactivityPenalty(), as
     }
 
     {
-      return res.status(400).json({ message: 'Must provide lessonId+contentIndex or flashcardId' });
+      return sendClientError(res, 400, 'USERS_AWARD_XP_MISSING_TARGET', 'Must provide lessonId+contentIndex or flashcardId');
     }
   } catch (error) {
-    console.error('Award XP error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_AWARD_XP_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -407,12 +472,12 @@ router.put('/:userId/xp-decay-mode', isOwner('userId'), async (req, res) => {
   try {
     const { enabled } = req.body;
     if (typeof enabled !== 'boolean') {
-      return res.status(400).json({ message: 'enabled must be a boolean' });
+      return sendClientError(res, 400, 'USERS_XP_DECAY_MODE_INVALID_ENABLED', 'enabled must be a boolean');
     }
 
     const user = await User.findById(req.params.userId).select('xpDecayEnabled totalXP');
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
 
     if (user.xpDecayEnabled === enabled) {
@@ -457,8 +522,9 @@ router.put('/:userId/xp-decay-mode', isOwner('userId'), async (req, res) => {
       return res.json({ totalXP: updated.totalXP, xpDecayEnabled: updated.xpDecayEnabled });
     }
   } catch (error) {
-    console.error('Toggle XP decay mode error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_TOGGLE_XP_DECAY_MODE_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -468,7 +534,7 @@ router.get('/:userId/xp-stats', isOwner('userId'), async (req, res) => {
     const user = await User.findById(req.params.userId)
       .select('totalXP lastAnsweredAt penaltyIntervalsApplied xpDecayEnabled');
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
 
     const stats = {
@@ -517,8 +583,9 @@ router.get('/:userId/xp-stats', isOwner('userId'), async (req, res) => {
 
     res.json(stats);
   } catch (error) {
-    console.error('Get XP stats error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_GET_XP_STATS_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -537,12 +604,13 @@ router.post('/:userId/reset-xp', isOwner('userId'), async (req, res) => {
       { new: true }
     ).select('totalXP');
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
     res.json({ message: 'XP and answer history reset', totalXP: 0 });
   } catch (error) {
-    console.error('Reset XP error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_RESET_XP_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -551,7 +619,7 @@ router.get('/:userId/gamification-stats', isOwner('userId'), async (req, res) =>
   try {
     const user = await User.findById(req.params.userId);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
 
     if (!user.xpDecayEnabled) {
@@ -621,8 +689,9 @@ router.get('/:userId/gamification-stats', isOwner('userId'), async (req, res) =>
 
     res.json({ challengeMode: true, streak, quests, league });
   } catch (error) {
-    console.error('Get gamification stats error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_GET_GAMIFICATION_STATS_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -631,15 +700,15 @@ router.post('/:userId/claim-quest-reward', isOwner('userId'), async (req, res) =
   try {
     const { questId } = req.body;
     if (!['xp', 'lessons', 'time'].includes(questId)) {
-      return res.status(400).json({ message: 'Invalid questId' });
+      return sendClientError(res, 400, 'USERS_CLAIM_QUEST_INVALID_QUEST_ID', 'Invalid questId');
     }
 
     const user = await User.findById(req.params.userId);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
     if (!user.xpDecayEnabled) {
-      return res.status(403).json({ message: 'Challenge Mode is not enabled' });
+      return sendClientError(res, 403, 'USERS_CLAIM_QUEST_CHALLENGE_MODE_DISABLED', 'Challenge Mode is not enabled');
     }
 
     // Apply lazy resets
@@ -647,7 +716,7 @@ router.post('/:userId/claim-quest-reward', isOwner('userId'), async (req, res) =
 
     // Check already claimed
     if (user.dailyQuestXpClaimed.includes(questId)) {
-      return res.status(400).json({ message: 'Quest reward already claimed' });
+      return sendClientError(res, 400, 'USERS_CLAIM_QUEST_ALREADY_CLAIMED', 'Quest reward already claimed');
     }
 
     // Check quest is completed
@@ -657,7 +726,7 @@ router.post('/:userId/claim-quest-reward', isOwner('userId'), async (req, res) =
       time: user.dailyTimeSpent >= 15,
     };
     if (!completionChecks[questId]) {
-      return res.status(400).json({ message: 'Quest not yet completed' });
+      return sendClientError(res, 400, 'USERS_CLAIM_QUEST_NOT_COMPLETED', 'Quest not yet completed');
     }
 
     const bonusMap = { xp: 5, lessons: 10, time: 5 };
@@ -671,8 +740,9 @@ router.post('/:userId/claim-quest-reward', isOwner('userId'), async (req, res) =
 
     res.json({ totalXP: user.totalXP, weeklyXP: user.weeklyXP, bonusXP });
   } catch (error) {
-    console.error('Claim quest reward error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_CLAIM_QUEST_REWARD_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -698,8 +768,9 @@ router.get('/:userId/leaderboard', isOwner('userId'), async (req, res) => {
 
     res.json(leaderboard);
   } catch (error) {
-    console.error('Get leaderboard error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_GET_LEADERBOARD_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -708,12 +779,13 @@ router.delete('/:userId', isOwner('userId'), async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.userId);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'USERS_USER_NOT_FOUND', 'User not found');
     }
     res.json({ message: 'Account deleted successfully' });
   } catch (error) {
-    console.error('Delete account error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'USERS_DELETE_ACCOUNT_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 

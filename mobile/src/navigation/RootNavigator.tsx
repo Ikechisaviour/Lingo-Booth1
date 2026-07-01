@@ -16,6 +16,10 @@ import BrandLogo from '../components/BrandLogo';
 import AuthStack from './AuthStack';
 import MainTabs from './MainTabs';
 import LanguageSelectScreen from '../screens/auth/LanguageSelectScreen';
+import VerifyEmailScreen from '../screens/auth/VerifyEmailScreen';
+import ForgotPasswordScreen from '../screens/auth/ForgotPasswordScreen';
+import ResetPasswordScreen from '../screens/auth/ResetPasswordScreen';
+import CertificateVerifyScreen from '../screens/certificates/CertificateVerifyScreen';
 import EmailVerificationBanner from '../components/EmailVerificationBanner';
 import StepUpModal from '../components/StepUpModal';
 import CurriculumVersionModal from '../components/CurriculumVersionModal';
@@ -27,17 +31,23 @@ const linking: LinkingOptions<any> = {
   config: {
     screens: {
       VerifyEmail: 'verify-email/:token',
+      ForgotPassword: 'forgot-password',
       ResetPassword: 'reset-password/:token',
       CertificateVerify: 'certificates/verify/:certificateId',
-      Login: 'login',
-      Contact: 'contact',
-      Pricing: 'pricing',
-      Conversation: 'conversation',
-      Class: 'class',
-      Exercise: 'exercise',
-      Profile: 'profile',
-      Billing: 'billing',
-      Institution: 'institution',
+      AppRoot: {
+        path: '',
+        screens: {
+          Login: 'login',
+          Contact: 'contact',
+          Pricing: 'pricing',
+          Conversation: 'conversation',
+          Class: 'class',
+          Exercise: 'exercise',
+          Profile: 'profile',
+          Billing: 'billing',
+          Institution: 'institution',
+        },
+      },
     },
   },
 };
@@ -47,6 +57,7 @@ export type SetupStackParamList = {
 };
 
 const Stack = createNativeStackNavigator<SetupStackParamList>();
+const RootStack = createNativeStackNavigator();
 
 const SetupStack: React.FC = () => (
   <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -57,6 +68,8 @@ const SetupStack: React.FC = () => (
     />
   </Stack.Navigator>
 );
+
+const RootResetPasswordScreen: React.FC<any> = (props) => <ResetPasswordScreen {...props} />;
 
 const SplashScreen: React.FC = () => (
   <View style={splashStyles.container}>
@@ -76,7 +89,7 @@ const splashStyles = StyleSheet.create({
   spinner: { marginTop: 32 },
 });
 
-const RootNavigator: React.FC = () => {
+const AppRoot: React.FC = () => {
   const hasHydrated = useHasHydrated();
   const { token, userId, isGuest, needsLanguageSetup } = useAuthStore();
   const { nativeLanguage, targetLanguage } = useSettingsStore();
@@ -130,7 +143,7 @@ const RootNavigator: React.FC = () => {
   if (!hasHydrated) return <SplashScreen />;
 
   return (
-    <NavigationContainer linking={linking}>
+    <>
       {!canAccess ? (
         <AuthStack />
       ) : needsLanguageSetup || !languagesReady ? (
@@ -141,6 +154,20 @@ const RootNavigator: React.FC = () => {
           <MainTabs />
         </View>
       )}
+    </>
+  );
+};
+
+const RootNavigator: React.FC = () => {
+  return (
+    <NavigationContainer linking={linking}>
+      <RootStack.Navigator screenOptions={{ headerShown: false }}>
+        <RootStack.Screen name="AppRoot" component={AppRoot} />
+        <RootStack.Screen name="VerifyEmail" component={VerifyEmailScreen} />
+        <RootStack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+        <RootStack.Screen name="ResetPassword" component={RootResetPasswordScreen} />
+        <RootStack.Screen name="CertificateVerify" component={CertificateVerifyScreen} />
+      </RootStack.Navigator>
       <StepUpModal />
       <CurriculumVersionModal />
     </NavigationContainer>

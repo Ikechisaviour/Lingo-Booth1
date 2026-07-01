@@ -709,7 +709,25 @@
     "failures": "Mga kabiguan",
     "messages": "Mga mensahe",
     "semesterInterest": "Interes sa semester",
-    "reviews": "Mga pagsusuri"
+    "reviews": "Mga pagsusuri",
+    "sectionsNav": "Mga seksyon ng admin",
+    "navGroups": {
+      "overview": "Pangkalahatang-ideya",
+      "attention": "Kailangan ng atensyon",
+      "people": "Mga tao",
+      "revenue": "Kita",
+      "tools": "Mga gamit",
+      "engagement": "Paggamit"
+    },
+    "communications": "Komunikasyon",
+    "institutions": "Mga institusyon",
+    "sendEmailAction": "Magpadala ng email",
+    "institutionsSubtitle": "Ang bawat rehistradong institusyon at ang email ng mga contact ng admin nito.",
+    "institutionAdminEmail": "Admin email",
+    "noInstitutionAdmin": "Walang admin na nakatalaga",
+    "emailAdmin": "Email admin",
+    "emailUserTitle": "Email {{name}}",
+    "emailUserTo": "Nagpapadala ng branded na email sa"
   },
   "forgotPassword": {
     "title": "Nakalimutan ang password",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "Buksan ang institusyon",
     "manageSeatsAction": "Pamahalaan ang mga upuan",
     "viewPlansAction": "Tingnan ang mga plano",
-    "resumePracticeAction": "Ipagpatuloy ang pagsasanay"
+    "resumePracticeAction": "Ipagpatuloy ang pagsasanay",
+    "emptyArchived": "Walang naka-archive na notification.",
+    "restore": "Ibalik",
+    "inboxTab": "Inbox",
+    "archivedTab": "Naka-archive"
   },
   "stepUp": {
     "verifyFailed": "Hindi ma-verify ang password",
@@ -2376,6 +2398,50 @@
       "previous": "Nakaraang hero slide",
       "next": "Susunod na hero slide",
       "showSlide": "Ipakita ang hero slide {{number}}"
+    },
+    "statement": {
+      "proveSerious": "Araw-araw mong pinatunayan na seryoso ka.",
+      "cared": "Araw-araw ay pinatunayan nito na nagmamalasakit lamang ito sa streak.",
+      "notLearning": "Hindi yan natututo. Iyon ay isang counter na may apoy.",
+      "walkAway": "Lumayo sa streak-chasing.",
+      "takeSeriousness": "Seryosohin mo kung saan may resulta.",
+      "teaches": "Itinuturo ng Lingo Booth ang mga prinsipyo sa likod ng wika. I-drill sila ng mga pagsasanay. Pagkatapos ay ibaluktot ang bawat halimbawa sa iyong mga pangangailangan sa totoong buhay, sa iyong antas.",
+      "curriculum": "Isang kumpletong kurikulum, ginagabayan hanggang dulo. Pagbasa, pagsusulat, pakikinig, pagsasalita, pagrepaso — nagtutulungan, hindi nakasalansan.",
+      "actuallyUse": "Dito mo malalaman kung ano talaga ang magagamit mo.",
+      "cta": "Simulan ang pag-aaral.",
+      "scrollAria": "Mag-scroll para sa higit pa",
+      "teaser": "Alamin ang wika, hindi ang streak — isang buong kurikulum, na itinuro sa sarili mong wika.",
+      "readMore": "Magbasa pa",
+      "showLess": "Magpakita ng mas kaunti"
     }
+  },
+  "brand": {
+    "lingo": "Lingo",
+    "booth": "Booth"
+  },
+  "adminEmail": {
+    "confirmAll": "Magpapadala ito ng email sa LAHAT ng user. Sigurado ka bang gusto mong magpatuloy?",
+    "sentWithFailures": "Ipinadala ang email sa {{sent}} (mga) user; Nabigo ang {{failed}}.",
+    "sent": "Ipinadala ang email sa {{sent}} (mga) user.",
+    "failed": "Hindi makapagpadala ng email.",
+    "composerTitle": "Magpadala ng email",
+    "composerHint": "Magpadala ng branded na email sa isang user, lahat ng user, o miyembro ng institusyon. Naihatid sa pamamagitan ng email (hindi lang isang in-app na abiso).",
+    "verifiedOnly": "Mga na-verify na email address lamang",
+    "subject": "Paksa",
+    "message": "Mensahe",
+    "actionUrl": "Opsyonal na link ng button",
+    "actionLabel": "Opsyonal na teksto ng pindutan",
+    "actionLabelPlaceholder": "Buksan ang Lingo Booth",
+    "sending": "Ipinapadala…",
+    "send": "Magpadala ng email"
+  },
+  "errorBoundary": {
+    "redirecting": "Hinahatid ka pauwi…",
+    "goHome": "Pumunta sa home page ng Lingo Booth"
+  },
+  "appLink": {
+    "title": "Pagbubukas ng Lingo Booth",
+    "body": "Kung hindi bumukas ang app, magpatuloy sa iyong browser.",
+    "fallbackButton": "Magpatuloy sa browser"
   }
 }

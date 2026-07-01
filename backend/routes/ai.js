@@ -12,7 +12,7 @@ const {
   recordTokenUsage,
   resolveAiIdentity,
 } = require('../utils/tokenUsage');
-const { recordServerError } = require('../utils/errorReporting');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 const {
   buildClassLessonFallbackResult,
   buildLanguagePairRedirect,
@@ -83,8 +83,9 @@ router.get('/entitlements', async (req, res) => {
     const { entitlements } = await getEntitlementsWithUsage(req);
     res.json(entitlements);
   } catch (error) {
-    console.error('Conversation entitlements error:', error.message || error);
-    res.status(500).json({ message: 'Could not load conversation access settings.' });
+    return sendServerError(req, res, error, 'AI_ENTITLEMENTS_FAILED', {
+      clientMessage: 'Could not load conversation access settings.',
+    });
   }
 });
 
@@ -127,11 +128,11 @@ router.post('/conversation', async (req, res) => {
     }
 
     if (!transcript || typeof transcript !== 'string' || transcript.trim().length === 0) {
-      return res.status(400).json({ message: 'Transcript is required' });
+      return sendClientError(res, 400, 'AI_TRANSCRIPT_REQUIRED', 'Transcript is required');
     }
 
     if (transcript.length > 1200) {
-      return res.status(400).json({ message: 'Transcript too long for conversation' });
+      return sendClientError(res, 400, 'AI_TRANSCRIPT_TOO_LONG', 'Transcript too long for conversation');
     }
 
     const estimatedRequestTokens = estimateConversationTurnTokens(req.body);
@@ -292,10 +293,9 @@ router.post('/conversation', async (req, res) => {
       entitlements: updatedEntitlements,
     });
   } catch (error) {
-    console.error('Conversation partner error:', error.message || error);
-    await recordServerError(req, {
-      error,
-      message: error.message || 'Conversation partner route failed',
+    return sendServerError(req, res, error, 'AI_CONVERSATION_FAILED', {
+      clientMessage: 'Conversation partner is temporarily unavailable. Please try again.',
+      logMessage: error.message || 'Conversation partner route failed',
       route: '/api/ai/conversation',
       metadata: {
         scenario: req.body?.scenario,
@@ -303,9 +303,6 @@ router.post('/conversation', async (req, res) => {
         conversationMode: req.body?.conversationMode,
         action: req.body?.action,
       },
-    });
-    res.status(500).json({
-      message: 'Conversation partner is temporarily unavailable. Please try again.',
     });
   }
 });

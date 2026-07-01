@@ -6,6 +6,10 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const User = require('./models/User');
 const ensureCertificateIndexes = require('./utils/ensureCertificateIndexes');
+const { notFoundHandler, errorHandler, installProcessHandlers } = require('./middleware/errorHandler');
+
+// Backstop: surface unhandled rejections / uncaught exceptions to the dashboard.
+installProcessHandlers();
 
 const app = express();
 
@@ -156,6 +160,11 @@ app.use('/api/curriculum/v2', require('./routes/curriculumV2'));
 app.get('/health', (req, res) => {
   res.json({ status: 'API is running' });
 });
+
+// Unmatched routes → coded 404 (distinguishes a bad path from a real failure).
+app.use(notFoundHandler);
+// Global safety-net: anything thrown/next(err)'d lands here with a code + ref.
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

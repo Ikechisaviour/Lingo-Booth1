@@ -19,6 +19,7 @@ const LEARNING_EVENT_TYPES = [
   'speech_input_used',
   'conversation_reply_failed',
   'tutor_reply_failed',
+  'study_heartbeat',
 ];
 
 const learningEventSchema = new mongoose.Schema({

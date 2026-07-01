@@ -38,6 +38,9 @@ const shouldSkip = (key: string) => {
 type ErrorPayload = {
   kind?: 'api' | 'runtime' | 'unhandled-rejection' | 'error-boundary' | 'manual';
   severity?: 'info' | 'warning' | 'error' | 'critical';
+  // Stable operation code + correlation ref from the backend response.
+  code?: string;
+  ref?: string;
   message?: string;
   stack?: string;
   componentStack?: string;
@@ -117,10 +120,15 @@ export const reportApiError = (error: any, metadata: Record<string, unknown> = {
   error.__reportedToAdmin = true;
   const statusCode = error.response?.status;
   const responseMessage = error.response?.data?.message || error.response?.data?.error || error.message;
+  // Backend now returns a stable operation code + correlation ref on failures.
+  const serverCode = error.response?.data?.code;
+  const serverRef = error.response?.data?.ref;
 
   reportClientError({
     kind: 'api',
     severity: statusCode >= 500 || !statusCode ? 'error' : 'warning',
+    code: serverCode,
+    ref: serverRef,
     message: responseMessage || 'API request failed',
     stack: error.stack || '',
     api: {
@@ -131,7 +139,9 @@ export const reportApiError = (error: any, metadata: Record<string, unknown> = {
       responseMessage,
     },
     metadata: {
-      code: error.code || '',
+      serverCode: serverCode || '',
+      serverRef: serverRef || '',
+      axiosCode: error.code || '',
       timeout: config.timeout || '',
       ...metadata,
     },

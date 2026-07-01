@@ -349,7 +349,11 @@ input:focus, textarea:focus, select:focus {
 .gap-2 { gap: 8px; }
 .gap-4 { gap: 16px; }
 
-/* ===== Challenge Mode — Green Theme ===== */
+/* ===== Challenge Mode — Green Theme =====
+   Applied at the document root (html.challenge-theme, set by App.js) so the
+   whole app — including modals rendered outside .App — switches. The .App
+   selector is kept for backward compatibility. */
+:root.challenge-theme,
 .App.challenge-theme {
   --primary: var(--challenge-primary);
   --primary-hover: var(--challenge-primary-hover);

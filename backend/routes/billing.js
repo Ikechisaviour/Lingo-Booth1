@@ -19,6 +19,7 @@ const { verifyToken, optionalAuth, isAdmin, requireRecentAuth } = require('../mi
 const { getClientIp } = require('../utils/geo');
 const { ALL_TARGET_LANGUAGES, cleanLanguageList } = require('../utils/learningContext');
 const { setSubscriptionContextForUser, syncInstitutionAccessForUser } = require('../utils/institutionAccess');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 const {
   getAiEntitlements,
   getSubscriptionSummary,
@@ -1073,20 +1074,19 @@ router.get('/plans', async (req, res) => {
   try {
     res.json(await publicPlansWithOverrides());
   } catch (error) {
-    console.error('Plans load error:', error);
-    res.status(500).json({ message: 'Could not load plans' });
+    return sendServerError(req, res, error, 'BILLING_PLANS_LOAD_FAILED', { clientMessage: 'Could not load plans' });
   }
 });
 
 router.post('/discounts/validate', async (req, res) => {
   try {
     const plan = getIndividualPlan(req.body?.planId) || getInstitutionalPlan(req.body?.planId);
-    if (!plan) return res.status(400).json({ message: 'Choose a valid plan' });
+    if (!plan) return sendClientError(res, 400, 'BILLING_DISCOUNT_VALIDATE_PLAN_INVALID', 'Choose a valid plan');
     const discount = await validateDiscountForPlan(req.body?.discountCode, plan);
-    if (!discount) return res.status(404).json({ message: 'Discount code is not available' });
+    if (!discount) return sendClientError(res, 404, 'BILLING_DISCOUNT_VALIDATE_NOT_AVAILABLE', 'Discount code is not available');
     res.json({ discount: publicDiscount(discount) });
   } catch (error) {
-    res.status(500).json({ message: 'Could not validate discount code' });
+    return sendServerError(req, res, error, 'BILLING_DISCOUNT_VALIDATE_FAILED', { clientMessage: 'Could not validate discount code' });
   }
 });
 
@@ -1119,7 +1119,10 @@ router.post('/webhook', async (req, res) => {
       message: error.message,
       payload: event || {},
     }).catch(() => {});
-    res.status(500).json({ message: 'Could not process billing webhook' });
+    return sendServerError(req, res, error, 'BILLING_WEBHOOK_PROCESS_FAILED', {
+      clientMessage: 'Could not process billing webhook',
+      metadata: { eventType: event?.type || 'unknown', providerEventId: event?.id },
+    });
   }
 });
 
@@ -1132,9 +1135,9 @@ router.post('/institutional-inquiry', optionalAuth, async (req, res) => {
     const seatsRequested = Math.max(parseInt(body.seatsRequested, 10) || 25, 1);
     const plan = getInstitutionalPlan(body.planId) || getInstitutionalPlan('institution_pro');
 
-    if (!organizationName) return res.status(400).json({ message: 'Organization name is required' });
-    if (!contactName) return res.status(400).json({ message: 'Contact name is required' });
-    if (!EMAIL_REGEX.test(email)) return res.status(400).json({ message: 'A valid email address is required' });
+    if (!organizationName) return sendClientError(res, 400, 'BILLING_INSTITUTIONAL_INQUIRY_ORG_NAME_REQUIRED', 'Organization name is required');
+    if (!contactName) return sendClientError(res, 400, 'BILLING_INSTITUTIONAL_INQUIRY_CONTACT_NAME_REQUIRED', 'Contact name is required');
+    if (!EMAIL_REGEX.test(email)) return sendClientError(res, 400, 'BILLING_INSTITUTIONAL_INQUIRY_EMAIL_INVALID', 'A valid email address is required');
 
     const lead = await InstitutionalLead.create({
       organizationName,
@@ -1159,8 +1162,7 @@ router.post('/institutional-inquiry', optionalAuth, async (req, res) => {
 
     res.status(201).json({ message: 'Institutional request received', leadId: lead._id });
   } catch (error) {
-    console.error('Institutional inquiry error:', error);
-    res.status(500).json({ message: 'Could not save institutional request' });
+    return sendServerError(req, res, error, 'BILLING_INSTITUTIONAL_INQUIRY_FAILED', { clientMessage: 'Could not save institutional request' });
   }
 });
 
@@ -1218,7 +1220,10 @@ router.post('/subscription-context', async (req, res) => {
       subscriptionContext: user.subscriptionContext || { type: contextType, organizationId: null },
     });
   } catch (error) {
-    res.status(error.statusCode || 500).json({ message: error.message || 'Could not switch subscription access' });
+    return sendServerError(req, res, error, 'BILLING_SUBSCRIPTION_CONTEXT_FAILED', {
+      httpStatus: error.statusCode || 500,
+      clientMessage: error.message || 'Could not switch subscription access',
+    });
   }
 });
 
@@ -1265,8 +1270,10 @@ router.post('/level-test-checkout-session', requireRecentAuth(15), async (req, r
 
     res.json({ checkoutUrl: session.url, sessionId: session.id });
   } catch (error) {
-    console.error('Level test checkout session error:', error);
-    res.status(500).json({ message: 'Could not start proficiency check checkout' });
+    return sendServerError(req, res, error, 'BILLING_LEVEL_TEST_CHECKOUT_FAILED', {
+      clientMessage: 'Could not start proficiency check checkout',
+      metadata: { userId: req.userId },
+    });
   }
 });
 
@@ -1277,7 +1284,7 @@ router.post('/checkout-session', requireRecentAuth(15), async (req, res) => {
     const institutionalPlan = individualPlan ? null : await effectiveInstitutionalPlan(planId, '');
     const plan = individualPlan || institutionalPlan;
     if (!plan || plan.id === 'free' || (plan.audience === 'institution' && priceCentsFor(plan) == null)) {
-      return res.status(400).json({ message: 'Choose a paid plan' });
+      return sendClientError(res, 400, 'BILLING_CHECKOUT_PLAN_INVALID', 'Choose a paid plan');
     }
     const isInstitution = plan.audience === 'institution';
     const checkoutInterval = isInstitution ? 'one_time' : (interval === 'annual' ? 'annual' : 'monthly');
@@ -1292,7 +1299,7 @@ router.post('/checkout-session', requireRecentAuth(15), async (req, res) => {
       ? await validateDiscountForPlan(requestedDiscountCode, plan)
       : await validateAutomaticDiscountForPlan(plan, checkoutInterval);
     if (requestedDiscountCode && !discount) {
-      return res.status(400).json({ message: 'Discount code is not available' });
+      return sendClientError(res, 400, 'BILLING_CHECKOUT_DISCOUNT_NOT_AVAILABLE', 'Discount code is not available');
     }
 
     let organization = null;
@@ -1374,8 +1381,10 @@ router.post('/checkout-session', requireRecentAuth(15), async (req, res) => {
 
     res.json({ checkoutUrl: session.url, sessionId: session.id });
   } catch (error) {
-    console.error('Checkout session error:', error);
-    res.status(500).json({ message: 'Could not start checkout' });
+    return sendServerError(req, res, error, 'BILLING_CHECKOUT_SESSION_FAILED', {
+      clientMessage: 'Could not start checkout',
+      metadata: { userId: req.userId },
+    });
   }
 });
 
@@ -1405,8 +1414,10 @@ router.post('/customer-portal', requireRecentAuth(15), async (req, res) => {
     if (!response.ok) throw new Error(data?.error?.message || 'Could not open billing portal');
     res.json({ portalUrl: data.url });
   } catch (error) {
-    console.error('Billing portal error:', error);
-    res.status(500).json({ message: 'Could not open billing portal' });
+    return sendServerError(req, res, error, 'BILLING_CUSTOMER_PORTAL_FAILED', {
+      clientMessage: 'Could not open billing portal',
+      metadata: { userId: req.userId },
+    });
   }
 });
 
@@ -1415,10 +1426,10 @@ router.post('/mobile/verify', async (req, res) => {
     const platform = String(req.body?.platform || '').toLowerCase();
     const plan = getIndividualPlan(req.body?.planId);
     if (!['ios', 'android'].includes(platform)) {
-      return res.status(400).json({ message: 'Mobile platform must be ios or android' });
+      return sendClientError(res, 400, 'BILLING_MOBILE_VERIFY_PLATFORM_INVALID', 'Mobile platform must be ios or android');
     }
     if (!plan || plan.id === 'free') {
-      return res.status(400).json({ message: 'Choose a paid individual plan' });
+      return sendClientError(res, 400, 'BILLING_MOBILE_VERIFY_PLAN_INVALID', 'Choose a paid individual plan');
     }
 
     await BillingEvent.create({
@@ -1442,7 +1453,10 @@ router.post('/mobile/verify', async (req, res) => {
         : ['ANDROID_PACKAGE_NAME', 'Google Play service account credentials'],
     );
   } catch (error) {
-    res.status(500).json({ message: 'Could not verify mobile purchase' });
+    return sendServerError(req, res, error, 'BILLING_MOBILE_VERIFY_FAILED', {
+      clientMessage: 'Could not verify mobile purchase',
+      metadata: { userId: req.userId },
+    });
   }
 });
 
@@ -1468,7 +1482,7 @@ router.get('/institution/dashboard', async (req, res) => {
     ));
 
     if (availableMemberships.length === 0) {
-      return res.status(403).json({ message: 'No institution manager access found' });
+      return sendClientError(res, 403, 'BILLING_INSTITUTION_DASHBOARD_NO_MANAGER_ACCESS', 'No institution manager access found');
     }
 
     const requestedOrgId = req.query?.organizationId;
@@ -1702,15 +1716,17 @@ router.get('/institution/dashboard', async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Institution dashboard error:', error);
-    res.status(500).json({ message: 'Could not load institution dashboard' });
+    return sendServerError(req, res, error, 'BILLING_INSTITUTION_DASHBOARD_FAILED', {
+      clientMessage: 'Could not load institution dashboard',
+      metadata: { userId: req.userId },
+    });
   }
 });
 
 router.put('/institution/organizations/:organizationId', async (req, res) => {
   try {
     const membership = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!membership) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!membership) return sendClientError(res, 403, 'BILLING_INSTITUTION_ORG_UPDATE_MANAGER_REQUIRED', 'Institution manager access is required');
 
     const org = membership.organizationId;
     if (req.body?.name) org.name = cleanLine(req.body.name, 180);
@@ -1743,14 +1759,17 @@ router.put('/institution/organizations/:organizationId', async (req, res) => {
 
     res.json({ organization: org });
   } catch (error) {
-    res.status(500).json({ message: 'Could not update institution profile' });
+    return sendServerError(req, res, error, 'BILLING_INSTITUTION_ORG_UPDATE_FAILED', {
+      clientMessage: 'Could not update institution profile',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId },
+    });
   }
 });
 
 router.put('/institution/organizations/:organizationId/certificate-branding', async (req, res) => {
   try {
     const membership = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!membership) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!membership) return sendClientError(res, 403, 'BILLING_INSTITUTION_CERTIFICATE_BRANDING_MANAGER_REQUIRED', 'Institution manager access is required');
 
     const org = membership.organizationId;
     org.certificateBranding = certificateBrandingPayload(req.body, req.userId);
@@ -1774,19 +1793,22 @@ router.put('/institution/organizations/:organizationId/certificate-branding', as
       certificateBranding: org.certificateBranding,
     });
   } catch (error) {
-    console.error('Institution certificate branding update error:', error);
-    res.status(error.statusCode || 500).json({ message: error.message || 'Could not update certificate branding' });
+    return sendServerError(req, res, error, 'BILLING_INSTITUTION_CERTIFICATE_BRANDING_UPDATE_FAILED', {
+      httpStatus: error.statusCode || 500,
+      clientMessage: error.message || 'Could not update certificate branding',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId },
+    });
   }
 });
 
 router.post('/institution/organizations/:organizationId/groups', async (req, res) => {
   try {
     const membership = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!membership) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!membership) return sendClientError(res, 403, 'BILLING_INSTITUTION_GROUP_CREATE_MANAGER_REQUIRED', 'Institution manager access is required');
 
     const org = membership.organizationId;
     const name = cleanLine(req.body?.name, 120);
-    if (!name) return res.status(400).json({ message: 'Group name is required' });
+    if (!name) return sendClientError(res, 400, 'BILLING_INSTITUTION_GROUP_CREATE_NAME_REQUIRED', 'Group name is required');
     const allowedTargetLanguages = cleanLanguageList(req.body?.allowedTargetLanguages);
     const defaultTargetLanguage = cleanLanguageList([req.body?.defaultTargetLanguage])[0]
       || allowedTargetLanguages[0]
@@ -1809,21 +1831,23 @@ router.post('/institution/organizations/:organizationId/groups', async (req, res
 
     res.status(201).json({ group });
   } catch (error) {
-    console.error('Institution group create error:', error);
-    res.status(500).json({ message: 'Could not save institution group' });
+    return sendServerError(req, res, error, 'BILLING_INSTITUTION_GROUP_CREATE_FAILED', {
+      clientMessage: 'Could not save institution group',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId },
+    });
   }
 });
 
 router.put('/institution/organizations/:organizationId/groups/:groupId', async (req, res) => {
   try {
     const membership = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!membership) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!membership) return sendClientError(res, 403, 'BILLING_INSTITUTION_GROUP_UPDATE_MANAGER_REQUIRED', 'Institution manager access is required');
 
     const group = await InstitutionGroup.findOne({
       _id: req.params.groupId,
       organizationId: membership.organizationId._id,
     });
-    if (!group) return res.status(404).json({ message: 'Group not found' });
+    if (!group) return sendClientError(res, 404, 'BILLING_INSTITUTION_GROUP_UPDATE_NOT_FOUND', 'Group not found');
 
     if (req.body?.name) group.name = cleanLine(req.body.name, 120);
     if (req.body?.description !== undefined) group.description = cleanText(req.body.description, 1000);
@@ -1834,19 +1858,21 @@ router.put('/institution/organizations/:organizationId/groups/:groupId', async (
 
     res.json({ group });
   } catch (error) {
-    console.error('Institution group update error:', error);
-    res.status(500).json({ message: 'Could not update institution group' });
+    return sendServerError(req, res, error, 'BILLING_INSTITUTION_GROUP_UPDATE_FAILED', {
+      clientMessage: 'Could not update institution group',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId, groupId: req.params.groupId },
+    });
   }
 });
 
 router.post('/institution/organizations/:organizationId/members', async (req, res) => {
   try {
     const membership = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!membership) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!membership) return sendClientError(res, 403, 'BILLING_INSTITUTION_MEMBER_ADD_MANAGER_REQUIRED', 'Institution manager access is required');
 
     const org = membership.organizationId;
     const email = cleanLine(req.body?.email, 254).toLowerCase();
-    if (!EMAIL_REGEX.test(email)) return res.status(400).json({ message: 'A valid email address is required' });
+    if (!EMAIL_REGEX.test(email)) return sendClientError(res, 400, 'BILLING_INSTITUTION_MEMBER_ADD_EMAIL_INVALID', 'A valid email address is required');
 
     const existing = await OrganizationMembership.findOne({ organizationId: org._id, email });
     const role = ORG_ROLES.includes(req.body?.role) ? req.body.role : 'learner';
@@ -1858,7 +1884,7 @@ router.post('/institution/organizations/:organizationId/members', async (req, re
     if (needsFreshSeat) {
       const available = await seats.getSeatsAvailable(org._id);
       if (available <= 0) {
-        return res.status(400).json({ message: 'No seats available', seatsAvailable: 0 });
+        return res.status(400).json({ message: 'No seats available', code: 'BILLING_INSTITUTION_MEMBER_ADD_NO_SEATS', seatsAvailable: 0 });
       }
     }
 
@@ -1934,15 +1960,17 @@ router.post('/institution/organizations/:organizationId/members', async (req, re
         : null,
     });
   } catch (error) {
-    console.error('Institution member add error:', error);
-    res.status(500).json({ message: 'Could not add institution member' });
+    return sendServerError(req, res, error, 'BILLING_INSTITUTION_MEMBER_ADD_FAILED', {
+      clientMessage: 'Could not add institution member',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId },
+    });
   }
 });
 
 router.put('/institution/organizations/:organizationId/members/:membershipId', async (req, res) => {
   try {
     const managerMembership = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!managerMembership) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!managerMembership) return sendClientError(res, 403, 'BILLING_INSTITUTION_MEMBER_UPDATE_MANAGER_REQUIRED', 'Institution manager access is required');
 
     const org = managerMembership.organizationId;
     const member = await OrganizationMembership.findOne({
@@ -1952,7 +1980,7 @@ router.put('/institution/organizations/:organizationId/members/:membershipId', a
       .populate('userId', 'username email totalXP lastActive lastLogin nativeLanguage targetLanguage subscriptionTier xpDecayEnabled')
       .populate('groupId');
 
-    if (!member) return res.status(404).json({ message: 'Member not found' });
+    if (!member) return sendClientError(res, 404, 'BILLING_INSTITUTION_MEMBER_UPDATE_NOT_FOUND', 'Member not found');
 
     const requestedRole = ORG_ROLES.includes(req.body?.role) ? req.body.role : member.role;
     const nextRole = ORG_MANAGER_ROLES.includes(member.role) && requestedRole === 'learner'
@@ -1970,7 +1998,7 @@ router.put('/institution/organizations/:organizationId/members/:membershipId', a
         status: 'active',
       });
       if (otherManagers === 0) {
-        return res.status(400).json({ message: 'Add another manager before removing yourself' });
+        return sendClientError(res, 400, 'BILLING_INSTITUTION_MEMBER_UPDATE_LAST_MANAGER', 'Add another manager before removing yourself');
       }
     }
 
@@ -1984,7 +2012,7 @@ router.put('/institution/organizations/:organizationId/members/:membershipId', a
     if (willActivateLearner) {
       const available = await seats.getSeatsAvailable(org._id);
       if (available <= 0) {
-        return res.status(400).json({ message: 'No seats available', seatsAvailable: 0 });
+        return res.status(400).json({ message: 'No seats available', code: 'BILLING_INSTITUTION_MEMBER_UPDATE_NO_SEATS', seatsAvailable: 0 });
       }
     }
 
@@ -2046,19 +2074,21 @@ router.put('/institution/organizations/:organizationId/members/:membershipId', a
 
     res.json({ membership: sanitizeMembership(member), seatsUsed: org.seatsUsed });
   } catch (error) {
-    console.error('Institution member update error:', error);
-    res.status(500).json({ message: 'Could not update institution member' });
+    return sendServerError(req, res, error, 'BILLING_INSTITUTION_MEMBER_UPDATE_FAILED', {
+      clientMessage: 'Could not update institution member',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId, membershipId: req.params.membershipId },
+    });
   }
 });
 
 router.post('/institution/organizations/:organizationId/seats', async (req, res) => {
   try {
     const membership = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!membership) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!membership) return sendClientError(res, 403, 'BILLING_SEAT_TOPUP_MANAGER_REQUIRED', 'Institution manager access is required');
 
     const quantity = Math.max(1, Math.floor(Number(req.body?.quantity) || 0));
     if (!quantity || quantity > 10000) {
-      return res.status(400).json({ message: 'quantity must be a positive integer (max 10000)' });
+      return sendClientError(res, 400, 'BILLING_SEAT_TOPUP_QUANTITY_INVALID', 'quantity must be a positive integer (max 10000)');
     }
     const note = cleanText(req.body?.note, 500);
     const result = await seats.topUpSeats({
@@ -2086,23 +2116,25 @@ router.post('/institution/organizations/:organizationId/seats', async (req, res)
       quantityAdded: result.quantity,
     });
   } catch (error) {
-    console.error('Seat top-up error:', error);
-    res.status(500).json({ message: 'Could not top up seats' });
+    return sendServerError(req, res, error, 'BILLING_SEAT_TOPUP_FAILED', {
+      clientMessage: 'Could not top up seats',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId },
+    });
   }
 });
 
 router.post('/institution/organizations/:organizationId/members/:membershipId/suspend', async (req, res) => {
   try {
     const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!manager) return sendClientError(res, 403, 'BILLING_MEMBERSHIP_SUSPEND_MANAGER_REQUIRED', 'Institution manager access is required');
 
     const member = await OrganizationMembership.findOne({
       _id: req.params.membershipId,
       organizationId: manager.organizationId._id,
     });
-    if (!member) return res.status(404).json({ message: 'Member not found' });
+    if (!member) return sendClientError(res, 404, 'BILLING_MEMBERSHIP_SUSPEND_NOT_FOUND', 'Member not found');
     if (String(member.userId || '') === String(req.userId)) {
-      return res.status(400).json({ message: 'Cannot suspend yourself' });
+      return sendClientError(res, 400, 'BILLING_MEMBERSHIP_SUSPEND_SELF', 'Cannot suspend yourself');
     }
 
     const fromRequest = !!(member.suspensionRequest && member.suspensionRequest.requestedAt && !member.suspensionRequest.handledAt);
@@ -2111,7 +2143,7 @@ router.post('/institution/organizations/:organizationId/members/:membershipId/su
       suspendedByUserId: req.userId,
       source: fromRequest ? 'learner_request_then_admin' : 'admin',
     });
-    if (!result.ok) return res.status(400).json({ message: result.error });
+    if (!result.ok) return sendClientError(res, 400, 'BILLING_MEMBERSHIP_SUSPEND_REJECTED', result.error);
 
     const seatsAvailable = await seats.getSeatsAvailable(manager.organizationId._id);
     if (member.userId) {
@@ -2136,21 +2168,23 @@ router.post('/institution/organizations/:organizationId/members/:membershipId/su
       seatsAvailable,
     });
   } catch (error) {
-    console.error('Suspend membership error:', error);
-    res.status(500).json({ message: 'Could not suspend membership' });
+    return sendServerError(req, res, error, 'BILLING_MEMBERSHIP_SUSPEND_FAILED', {
+      clientMessage: 'Could not suspend membership',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId, membershipId: req.params.membershipId },
+    });
   }
 });
 
 router.post('/institution/organizations/:organizationId/members/:membershipId/unsuspend', async (req, res) => {
   try {
     const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!manager) return sendClientError(res, 403, 'BILLING_MEMBERSHIP_UNSUSPEND_MANAGER_REQUIRED', 'Institution manager access is required');
 
     const member = await OrganizationMembership.findOne({
       _id: req.params.membershipId,
       organizationId: manager.organizationId._id,
     });
-    if (!member) return res.status(404).json({ message: 'Member not found' });
+    if (!member) return sendClientError(res, 404, 'BILLING_MEMBERSHIP_UNSUSPEND_NOT_FOUND', 'Member not found');
 
     const result = await seats.unsuspendMembershipSeat({
       membershipId: member._id,
@@ -2158,9 +2192,9 @@ router.post('/institution/organizations/:organizationId/members/:membershipId/un
     });
     if (!result.ok) {
       if (result.error === 'pool_empty') {
-        return res.status(409).json({ message: 'No seats available — buy more before unsuspending', seatsAvailable: 0 });
+        return res.status(409).json({ message: 'No seats available — buy more before unsuspending', code: 'BILLING_MEMBERSHIP_UNSUSPEND_NO_SEATS', seatsAvailable: 0 });
       }
-      return res.status(400).json({ message: result.error });
+      return sendClientError(res, 400, 'BILLING_MEMBERSHIP_UNSUSPEND_REJECTED', result.error);
     }
 
     const seatsAvailable = await seats.getSeatsAvailable(manager.organizationId._id);
@@ -2186,8 +2220,10 @@ router.post('/institution/organizations/:organizationId/members/:membershipId/un
       seatsAvailable,
     });
   } catch (error) {
-    console.error('Unsuspend membership error:', error);
-    res.status(500).json({ message: 'Could not unsuspend membership' });
+    return sendServerError(req, res, error, 'BILLING_MEMBERSHIP_UNSUSPEND_FAILED', {
+      clientMessage: 'Could not unsuspend membership',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId, membershipId: req.params.membershipId },
+    });
   }
 });
 
@@ -2197,9 +2233,9 @@ router.post('/institution/organizations/:organizationId/members/:membershipId/re
       _id: req.params.membershipId,
       organizationId: req.params.organizationId,
     });
-    if (!member) return res.status(404).json({ message: 'Member not found' });
+    if (!member) return sendClientError(res, 404, 'BILLING_SUSPENSION_REQUEST_MEMBER_NOT_FOUND', 'Member not found');
     if (String(member.userId || '') !== String(req.userId)) {
-      return res.status(403).json({ message: 'You can only request suspension on your own membership' });
+      return sendClientError(res, 403, 'BILLING_SUSPENSION_REQUEST_NOT_OWN_MEMBERSHIP', 'You can only request suspension on your own membership');
     }
 
     const note = cleanText(req.body?.note, 1000);
@@ -2208,7 +2244,7 @@ router.post('/institution/organizations/:organizationId/members/:membershipId/re
       requestedByUserId: req.userId,
       note,
     });
-    if (!result.ok) return res.status(400).json({ message: result.error });
+    if (!result.ok) return sendClientError(res, 400, 'BILLING_SUSPENSION_REQUEST_REJECTED', result.error);
 
     await notifyOrganizationManagers(req.params.organizationId, {
       category: 'institution',
@@ -2223,27 +2259,31 @@ router.post('/institution/organizations/:organizationId/members/:membershipId/re
 
     res.status(201).json({ suspensionRequest: result.membership.suspensionRequest });
   } catch (error) {
-    console.error('Request suspension error:', error);
-    res.status(500).json({ message: 'Could not record suspension request' });
+    return sendServerError(req, res, error, 'BILLING_MEMBERSHIP_SUSPENSION_REQUEST_FAILED', {
+      clientMessage: 'Could not record suspension request',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId, membershipId: req.params.membershipId },
+    });
   }
 });
 
 router.get('/institution/organizations/:organizationId/seat-wallet', async (req, res) => {
   try {
     const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!manager) return sendClientError(res, 403, 'BILLING_SEAT_WALLET_MANAGER_REQUIRED', 'Institution manager access is required');
     const wallet = await seats.getSeatWallet(manager.organizationId._id);
     res.json(wallet);
   } catch (error) {
-    console.error('Seat wallet error:', error);
-    res.status(500).json({ message: 'Could not load seat wallet' });
+    return sendServerError(req, res, error, 'BILLING_SEAT_WALLET_FAILED', {
+      clientMessage: 'Could not load seat wallet',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId },
+    });
   }
 });
 
 router.put('/institution/organizations/:organizationId/auto-renew', async (req, res) => {
   try {
     const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!manager) return sendClientError(res, 403, 'BILLING_AUTO_RENEW_CONFIGURE_MANAGER_REQUIRED', 'Institution manager access is required');
 
     const body = req.body || {};
     const autoRenew = await seats.configureAutoRenew({
@@ -2274,21 +2314,25 @@ router.put('/institution/organizations/:organizationId/auto-renew', async (req, 
 
     res.json({ autoRenew });
   } catch (error) {
-    console.error('Configure auto-renew error:', error);
-    res.status(500).json({ message: 'Could not save auto-renew settings' });
+    return sendServerError(req, res, error, 'BILLING_AUTO_RENEW_CONFIGURE_FAILED', {
+      clientMessage: 'Could not save auto-renew settings',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId },
+    });
   }
 });
 
 router.get('/institution/organizations/:organizationId/seat-projection', async (req, res) => {
   try {
     const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-    if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+    if (!manager) return sendClientError(res, 403, 'BILLING_SEAT_PROJECTION_MANAGER_REQUIRED', 'Institution manager access is required');
     const horizonDays = Math.min(60, Math.max(1, parseInt(req.query?.horizonDays, 10) || 7));
     const projection = await seats.getSeatProjection(manager.organizationId._id, horizonDays);
     res.json(projection);
   } catch (error) {
-    console.error('Seat projection error:', error);
-    res.status(500).json({ message: 'Could not compute seat projection' });
+    return sendServerError(req, res, error, 'BILLING_SEAT_PROJECTION_FAILED', {
+      clientMessage: 'Could not compute seat projection',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId },
+    });
   }
 });
 
@@ -2298,19 +2342,21 @@ router.get('/institution/organizations/:organizationId/members/:membershipId/sea
       _id: req.params.membershipId,
       organizationId: req.params.organizationId,
     });
-    if (!member) return res.status(404).json({ message: 'Member not found' });
+    if (!member) return sendClientError(res, 404, 'BILLING_SEAT_HISTORY_MEMBER_NOT_FOUND', 'Member not found');
 
     const isOwnHistory = String(member.userId || '') === String(req.userId);
     if (!isOwnHistory) {
       const manager = await findInstitutionMembership(req.userId, req.params.organizationId, { requireManager: true });
-      if (!manager) return res.status(403).json({ message: 'Institution manager access is required' });
+      if (!manager) return sendClientError(res, 403, 'BILLING_SEAT_HISTORY_MANAGER_REQUIRED', 'Institution manager access is required');
     }
     const limit = Math.min(200, Math.max(1, parseInt(req.query?.limit, 10) || 50));
     const history = await seats.getMembershipSeatHistory(member._id, limit);
     res.json({ seatAssignments: history });
   } catch (error) {
-    console.error('Seat history error:', error);
-    res.status(500).json({ message: 'Could not load seat history' });
+    return sendServerError(req, res, error, 'BILLING_SEAT_HISTORY_FAILED', {
+      clientMessage: 'Could not load seat history',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId, membershipId: req.params.membershipId },
+    });
   }
 });
 
@@ -2354,14 +2400,14 @@ router.get('/admin/pricing', async (req, res) => {
     ]);
     res.json({ plans, planOverrides, discounts: discounts.map(publicDiscount) });
   } catch (error) {
-    res.status(500).json({ message: 'Could not load pricing settings' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_PRICING_LOAD_FAILED', { clientMessage: 'Could not load pricing settings' });
   }
 });
 
 router.put('/admin/plan-overrides/:planId', async (req, res) => {
   try {
     const basePlan = getIndividualPlan(req.params.planId) || getInstitutionalPlan(req.params.planId);
-    if (!basePlan) return res.status(404).json({ message: 'Plan not found' });
+    if (!basePlan) return sendClientError(res, 404, 'BILLING_ADMIN_PLAN_OVERRIDE_PLAN_NOT_FOUND', 'Plan not found');
     const body = req.body || {};
     const update = {
       planId: basePlan.id,
@@ -2409,8 +2455,10 @@ router.put('/admin/plan-overrides/:planId', async (req, res) => {
 
     res.json({ override, plans: await publicPlansWithOverrides() });
   } catch (error) {
-    console.error('Plan override update error:', error);
-    res.status(500).json({ message: 'Could not update plan pricing' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_PLAN_OVERRIDE_UPDATE_FAILED', {
+      clientMessage: 'Could not update plan pricing',
+      metadata: { userId: req.userId, planId: req.params.planId },
+    });
   }
 });
 
@@ -2453,7 +2501,7 @@ router.post('/admin/discounts', async (req, res) => {
   try {
     const payload = discountPayload(req.body || {}, req.userId, true);
     if (payload.applicationMode !== 'automatic' && !payload.code) {
-      return res.status(400).json({ message: 'Discount code is required' });
+      return sendClientError(res, 400, 'BILLING_ADMIN_DISCOUNT_CODE_REQUIRED', 'Discount code is required');
     }
     const discount = await DiscountCode.create(payload);
     await BillingEvent.create({
@@ -2465,9 +2513,11 @@ router.post('/admin/discounts', async (req, res) => {
     });
     res.status(201).json({ discount: publicDiscount(discount) });
   } catch (error) {
-    if (error.code === 11000) return res.status(409).json({ message: 'Discount code already exists' });
-    console.error('Discount create error:', error);
-    res.status(500).json({ message: 'Could not create discount' });
+    if (error.code === 11000) return sendClientError(res, 409, 'BILLING_ADMIN_DISCOUNT_DUPLICATE', 'Discount code already exists');
+    return sendServerError(req, res, error, 'BILLING_ADMIN_DISCOUNT_CREATE_FAILED', {
+      clientMessage: 'Could not create discount',
+      metadata: { userId: req.userId },
+    });
   }
 });
 
@@ -2478,7 +2528,7 @@ router.put('/admin/discounts/:discountId', async (req, res) => {
       { $set: discountPayload(req.body || {}, req.userId, false) },
       { new: true },
     );
-    if (!discount) return res.status(404).json({ message: 'Discount not found' });
+    if (!discount) return sendClientError(res, 404, 'BILLING_ADMIN_DISCOUNT_NOT_FOUND', 'Discount not found');
     await BillingEvent.create({
       provider: 'manual',
       type: 'pricing.discount.updated',
@@ -2488,7 +2538,10 @@ router.put('/admin/discounts/:discountId', async (req, res) => {
     });
     res.json({ discount: publicDiscount(discount) });
   } catch (error) {
-    res.status(500).json({ message: 'Could not update discount' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_DISCOUNT_UPDATE_FAILED', {
+      clientMessage: 'Could not update discount',
+      metadata: { userId: req.userId, discountId: req.params.discountId },
+    });
   }
 });
 
@@ -2501,7 +2554,7 @@ router.get('/admin/subscriptions', async (req, res) => {
       .lean();
     res.json({ subscriptions });
   } catch (error) {
-    res.status(500).json({ message: 'Could not load subscriptions' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_SUBSCRIPTIONS_LOAD_FAILED', { clientMessage: 'Could not load subscriptions' });
   }
 });
 
@@ -2511,14 +2564,14 @@ router.post('/admin/manual-plan', async (req, res) => {
     const status = ['active', 'trialing', 'cancelled'].includes(req.body?.status) ? req.body.status : 'active';
     const userLookup = cleanLine(req.body?.userIdOrEmail || req.body?.email || req.body?.userId, 254);
 
-    if (!plan) return res.status(400).json({ message: 'Invalid individual plan' });
-    if (!userLookup) return res.status(400).json({ message: 'User email or id is required' });
+    if (!plan) return sendClientError(res, 400, 'BILLING_ADMIN_MANUAL_PLAN_PLAN_INVALID', 'Invalid individual plan');
+    if (!userLookup) return sendClientError(res, 400, 'BILLING_ADMIN_MANUAL_PLAN_USER_REQUIRED', 'User email or id is required');
 
     const user = mongoose.isValidObjectId(userLookup)
       ? await User.findById(userLookup)
       : await User.findOne({ email: userLookup.toLowerCase() });
 
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) return sendClientError(res, 404, 'BILLING_ADMIN_MANUAL_PLAN_USER_NOT_FOUND', 'User not found');
 
     user.subscriptionTier = plan.tier;
     user.billingOverride = {
@@ -2558,7 +2611,10 @@ router.post('/admin/manual-plan', async (req, res) => {
     const sanitized = await User.findById(user._id).select('-password');
     res.json({ message: 'Plan updated', user: sanitized, entitlements: getAiEntitlements(sanitized) });
   } catch (error) {
-    res.status(500).json({ message: 'Could not update manual plan' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_MANUAL_PLAN_FAILED', {
+      clientMessage: 'Could not update manual plan',
+      metadata: { userId: req.userId },
+    });
   }
 });
 
@@ -2566,7 +2622,7 @@ router.post('/admin/users/:userId/manual-plan', async (req, res) => {
   try {
     const plan = getIndividualPlan(req.body?.planId || req.body?.tier);
     const status = ['active', 'trialing', 'cancelled'].includes(req.body?.status) ? req.body.status : 'active';
-    if (!plan) return res.status(400).json({ message: 'Invalid individual plan' });
+    if (!plan) return sendClientError(res, 400, 'BILLING_ADMIN_USER_MANUAL_PLAN_PLAN_INVALID', 'Invalid individual plan');
 
     const user = await User.findByIdAndUpdate(
       req.params.userId,
@@ -2586,7 +2642,7 @@ router.post('/admin/users/:userId/manual-plan', async (req, res) => {
       { new: true }
     ).select('-password');
 
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) return sendClientError(res, 404, 'BILLING_ADMIN_USER_MANUAL_PLAN_USER_NOT_FOUND', 'User not found');
 
     await BillingEvent.create({
       provider: 'manual',
@@ -2598,7 +2654,10 @@ router.post('/admin/users/:userId/manual-plan', async (req, res) => {
 
     res.json({ message: 'Plan updated', user, entitlements: getAiEntitlements(user) });
   } catch (error) {
-    res.status(500).json({ message: 'Could not update manual plan' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_USER_MANUAL_PLAN_FAILED', {
+      clientMessage: 'Could not update manual plan',
+      metadata: { userId: req.params.userId, actorId: req.userId },
+    });
   }
 });
 
@@ -2627,7 +2686,7 @@ router.get('/admin/organizations', async (req, res) => {
     });
     res.json({ organizations });
   } catch (error) {
-    res.status(500).json({ message: 'Could not load organizations' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_ORGANIZATIONS_LOAD_FAILED', { clientMessage: 'Could not load organizations' });
   }
 });
 
@@ -2636,7 +2695,7 @@ router.post('/admin/organizations', async (req, res) => {
     const body = req.body || {};
     const plan = await effectiveInstitutionalPlan(body.planId, 'institution_basic');
     const name = cleanLine(body.name, 180);
-    if (!name) return res.status(400).json({ message: 'Organization name is required' });
+    if (!name) return sendClientError(res, 400, 'BILLING_ADMIN_ORGANIZATION_CREATE_NAME_REQUIRED', 'Organization name is required');
 
     const org = await Organization.create({
       name,
@@ -2665,7 +2724,10 @@ router.post('/admin/organizations', async (req, res) => {
 
     res.status(201).json({ organization: org });
   } catch (error) {
-    res.status(500).json({ message: 'Could not create organization' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_ORGANIZATION_CREATE_FAILED', {
+      clientMessage: 'Could not create organization',
+      metadata: { userId: req.userId },
+    });
   }
 });
 
@@ -2673,7 +2735,7 @@ router.put('/admin/organizations/:organizationId', async (req, res) => {
   try {
     const body = req.body || {};
     const org = await Organization.findById(req.params.organizationId);
-    if (!org) return res.status(404).json({ message: 'Organization not found' });
+    if (!org) return sendClientError(res, 404, 'BILLING_ADMIN_ORGANIZATION_UPDATE_NOT_FOUND', 'Organization not found');
     const previousStatus = org.status;
 
     const plan = body.planId ? await effectiveInstitutionalPlan(body.planId, 'institution_basic') : null;
@@ -2741,17 +2803,20 @@ router.put('/admin/organizations/:organizationId', async (req, res) => {
 
     res.json({ organization: org });
   } catch (error) {
-    res.status(500).json({ message: 'Could not update organization' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_ORGANIZATION_UPDATE_FAILED', {
+      clientMessage: 'Could not update organization',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId },
+    });
   }
 });
 
 router.post('/admin/organizations/:organizationId/members', async (req, res) => {
   try {
     const org = await Organization.findById(req.params.organizationId);
-    if (!org) return res.status(404).json({ message: 'Organization not found' });
+    if (!org) return sendClientError(res, 404, 'BILLING_ADMIN_ORGANIZATION_MEMBER_ADD_ORG_NOT_FOUND', 'Organization not found');
 
     const email = cleanLine(req.body?.email, 254).toLowerCase();
-    if (!EMAIL_REGEX.test(email)) return res.status(400).json({ message: 'A valid email address is required' });
+    if (!EMAIL_REGEX.test(email)) return sendClientError(res, 400, 'BILLING_ADMIN_ORGANIZATION_MEMBER_ADD_EMAIL_INVALID', 'A valid email address is required');
 
     const user = await User.findOne({ email });
     const role = ['owner', 'admin', 'teacher', 'learner'].includes(req.body?.role) ? req.body.role : 'learner';
@@ -2764,7 +2829,7 @@ router.post('/admin/organizations/:organizationId/members', async (req, res) => 
     if (needsFreshSeat) {
       const available = await seats.getSeatsAvailable(org._id);
       if (available <= 0) {
-        return res.status(400).json({ message: 'No seats available', seatsAvailable: 0 });
+        return res.status(400).json({ message: 'No seats available', code: 'BILLING_ADMIN_ORGANIZATION_MEMBER_ADD_NO_SEATS', seatsAvailable: 0 });
       }
     }
 
@@ -2832,20 +2897,23 @@ router.post('/admin/organizations/:organizationId/members', async (req, res) => 
         : null,
     });
   } catch (error) {
-    res.status(500).json({ message: 'Could not add organization member' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_ORGANIZATION_MEMBER_ADD_FAILED', {
+      clientMessage: 'Could not add organization member',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId },
+    });
   }
 });
 
 router.post('/admin/organizations/:organizationId/institution-admin', async (req, res) => {
   try {
     const org = await Organization.findById(req.params.organizationId);
-    if (!org) return res.status(404).json({ message: 'Organization not found' });
+    if (!org) return sendClientError(res, 404, 'BILLING_ADMIN_INSTITUTION_ADMIN_ASSIGN_ORG_NOT_FOUND', 'Organization not found');
 
     const email = cleanLine(req.body?.email, 254).toLowerCase();
-    if (!EMAIL_REGEX.test(email)) return res.status(400).json({ message: 'A valid email address is required' });
+    if (!EMAIL_REGEX.test(email)) return sendClientError(res, 400, 'BILLING_ADMIN_INSTITUTION_ADMIN_ASSIGN_EMAIL_INVALID', 'A valid email address is required');
 
     const user = await User.findOne({ email });
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) return sendClientError(res, 404, 'BILLING_ADMIN_INSTITUTION_ADMIN_ASSIGN_USER_NOT_FOUND', 'User not found');
 
     const membership = await OrganizationMembership.findOneAndUpdate(
       { organizationId: org._id, email },
@@ -2890,20 +2958,23 @@ router.post('/admin/organizations/:organizationId/institution-admin', async (req
       entitlements: getAiEntitlements(sanitized),
     });
   } catch (error) {
-    res.status(500).json({ message: 'Could not assign institution admin' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_INSTITUTION_ADMIN_ASSIGN_FAILED', {
+      clientMessage: 'Could not assign institution admin',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId },
+    });
   }
 });
 
 router.delete('/admin/organizations/:organizationId/institution-admins/:membershipId', async (req, res) => {
   try {
     const org = await Organization.findById(req.params.organizationId);
-    if (!org) return res.status(404).json({ message: 'Organization not found' });
+    if (!org) return sendClientError(res, 404, 'BILLING_ADMIN_INSTITUTION_ADMIN_REMOVE_ORG_NOT_FOUND', 'Organization not found');
     const membership = await OrganizationMembership.findOne({
       _id: req.params.membershipId,
       organizationId: org._id,
       role: { $in: ORG_MANAGER_ROLES },
     });
-    if (!membership) return res.status(404).json({ message: 'Institution admin not found' });
+    if (!membership) return sendClientError(res, 404, 'BILLING_ADMIN_INSTITUTION_ADMIN_REMOVE_NOT_FOUND', 'Institution admin not found');
 
     membership.status = 'removed';
     await membership.save();
@@ -2927,7 +2998,10 @@ router.delete('/admin/organizations/:organizationId/institution-admins/:membersh
 
     res.json({ message: 'Institution admin removed', seatsUsed: org.seatsUsed });
   } catch (error) {
-    res.status(500).json({ message: 'Could not remove institution admin' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_INSTITUTION_ADMIN_REMOVE_FAILED', {
+      clientMessage: 'Could not remove institution admin',
+      metadata: { userId: req.userId, organizationId: req.params.organizationId, membershipId: req.params.membershipId },
+    });
   }
 });
 
@@ -2943,7 +3017,7 @@ router.get('/admin/institutional-leads', async (req, res) => {
       .lean();
     res.json({ leads });
   } catch (error) {
-    res.status(500).json({ message: 'Could not load institutional leads' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_INSTITUTIONAL_LEADS_LOAD_FAILED', { clientMessage: 'Could not load institutional leads' });
   }
 });
 
@@ -2951,7 +3025,7 @@ router.put('/admin/institutional-leads/:leadId/status', async (req, res) => {
   try {
     const status = ['open', 'contacted', 'accepted', 'declined', 'converted', 'closed'].includes(req.body?.status) ? req.body.status : 'contacted';
     const lead = await InstitutionalLead.findById(req.params.leadId);
-    if (!lead) return res.status(404).json({ message: 'Lead not found' });
+    if (!lead) return sendClientError(res, 404, 'BILLING_ADMIN_INSTITUTIONAL_LEAD_NOT_FOUND', 'Lead not found');
 
     if (status === 'accepted' || status === 'converted') {
       const result = await acceptInstitutionalLead(lead, req.userId);
@@ -2991,7 +3065,11 @@ router.put('/admin/institutional-leads/:leadId/status', async (req, res) => {
     }
     res.json({ lead });
   } catch (error) {
-    res.status(error.statusCode || 500).json({ message: error.message || 'Could not update lead' });
+    return sendServerError(req, res, error, 'BILLING_ADMIN_INSTITUTIONAL_LEAD_STATUS_FAILED', {
+      httpStatus: error.statusCode || 500,
+      clientMessage: error.message || 'Could not update lead',
+      metadata: { userId: req.userId, leadId: req.params.leadId },
+    });
   }
 });
 

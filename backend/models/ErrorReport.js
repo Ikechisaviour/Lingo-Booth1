@@ -19,6 +19,20 @@ const errorReportSchema = new mongoose.Schema({
     default: 'error',
     index: true,
   },
+  // Stable, greppable identifier for the failing operation (see
+  // utils/errorCodes.js). Primary key for grouping/filtering the dashboard.
+  code: {
+    type: String,
+    maxlength: 120,
+    index: true,
+  },
+  // Short human-quotable correlation id (e.g. "A1B2C3D4"). Shown to the user so
+  // a report of "I saw error A1B2C3D4" maps to this exact record.
+  ref: {
+    type: String,
+    maxlength: 40,
+    index: true,
+  },
   message: {
     type: String,
     required: true,

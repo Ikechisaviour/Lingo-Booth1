@@ -11,6 +11,7 @@ const OrganizationMembership = require('../models/OrganizationMembership');
 const { verifyToken } = require('../middleware/auth');
 const { getBillingSource, getEffectiveSubscriptionTier } = require('../utils/subscription');
 const { renderCertificatePdf } = require('../utils/certificatePdfRenderer');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const CLASS_LESSON_TRACK = 'textbook';
 const INCLUDED_CERTIFICATE_TIERS = new Set(['pro', 'ultra']);
@@ -398,8 +399,9 @@ router.get('/', verifyToken, async (req, res) => {
     }).sort({ issuedAt: -1 }).lean();
     res.json({ certificates: certificates.map(publicCertificate) });
   } catch (error) {
-    console.error('List certificates error:', error);
-    res.status(500).json({ message: 'Could not load certificates' });
+    return sendServerError(req, res, error, 'CERTIFICATES_LIST_FAILED', {
+      clientMessage: 'Could not load certificates',
+    });
   }
 });
 
@@ -413,7 +415,7 @@ router.post('/institution-samples/:organizationId/link', verifyToken, async (req
     }).populate('organizationId');
 
     if (!membership?.organizationId) {
-      return res.status(403).json({ message: 'Institution manager access is required' });
+      return sendClientError(res, 403, 'CERTIFICATES_INSTITUTION_MANAGER_REQUIRED', 'Institution manager access is required');
     }
 
     const token = createInstitutionSampleToken(membership.organizationId._id);
@@ -432,8 +434,10 @@ router.post('/institution-samples/:organizationId/link', verifyToken, async (req
       expiresInSeconds: Math.floor(SAMPLE_TOKEN_MAX_AGE_MS / 1000),
     });
   } catch (error) {
-    console.error('Institution sample certificate link error:', error);
-    res.status(500).json({ message: 'Could not prepare sample certificate' });
+    return sendServerError(req, res, error, 'CERTIFICATES_INSTITUTION_SAMPLE_LINK_FAILED', {
+      clientMessage: 'Could not prepare sample certificate',
+      metadata: { organizationId: req.params.organizationId },
+    });
   }
 });
 
@@ -458,8 +462,11 @@ router.get('/class-lessons/:classLessonId/status', verifyToken, async (req, res)
       certificate: publicCertificate(status.certificate),
     });
   } catch (error) {
-    console.error('Certificate status error:', error);
-    res.status(error.statusCode || 500).json({ message: error.message || 'Could not load certificate status' });
+    return sendServerError(req, res, error, 'CERTIFICATES_STATUS_FAILED', {
+      httpStatus: error.statusCode || 500,
+      clientMessage: error.message || 'Could not load certificate status',
+      metadata: { classLessonId: req.params.classLessonId },
+    });
   }
 });
 
@@ -479,6 +486,7 @@ router.post('/class-lessons/:classLessonId/issue', verifyToken, async (req, res)
     if (!status.complete) {
       return res.status(400).json({
         message: 'Complete every class item before issuing a certificate',
+        code: 'CERTIFICATES_ISSUE_INCOMPLETE',
         completionPercent: status.completionPercent,
         completedItemCount: status.completedItemCount,
         totalItemCount: status.totalItemCount,
@@ -488,6 +496,7 @@ router.post('/class-lessons/:classLessonId/issue', verifyToken, async (req, res)
     if (!access.included) {
       return res.status(402).json({
         message: 'Completion certificates are available after certificate purchase or plan upgrade',
+        code: 'CERTIFICATES_ISSUE_PAYMENT_REQUIRED',
         access,
       });
     }
@@ -506,8 +515,11 @@ router.post('/class-lessons/:classLessonId/issue', verifyToken, async (req, res)
       access,
     });
   } catch (error) {
-    console.error('Issue certificate error:', error);
-    res.status(error.statusCode || 500).json({ message: error.message || 'Could not issue certificate' });
+    return sendServerError(req, res, error, 'CERTIFICATES_ISSUE_FAILED', {
+      httpStatus: error.statusCode || 500,
+      clientMessage: error.message || 'Could not issue certificate',
+      metadata: { classLessonId: req.params.classLessonId },
+    });
   }
 });
 
@@ -525,9 +537,10 @@ router.get('/verify/:certificateId/download', async (req, res) => {
     res.setHeader('Cache-Control', 'private, no-store');
     return res.send(pdf);
   } catch (error) {
-    console.error('Download certificate error:', error);
-    return res.status(error.statusCode || 500).json({
-      message: error.message || 'Could not prepare certificate download',
+    return sendServerError(req, res, error, 'CERTIFICATES_DOWNLOAD_FAILED', {
+      httpStatus: error.statusCode || 500,
+      clientMessage: error.message || 'Could not prepare certificate download',
+      metadata: { certificateId: req.params.certificateId },
     });
   }
 });
@@ -539,10 +552,11 @@ router.get('/verify/:certificateId', async (req, res) => {
     });
     res.json({ valid: true, sample, certificate });
   } catch (error) {
-    console.error('Verify certificate error:', error);
-    res.status(error.statusCode || 500).json({
-      valid: false,
-      message: error.message || 'Could not verify certificate',
+    return sendServerError(req, res, error, 'CERTIFICATES_VERIFY_FAILED', {
+      httpStatus: error.statusCode || 500,
+      clientMessage: error.message || 'Could not verify certificate',
+      extra: { valid: false },
+      metadata: { certificateId: req.params.certificateId },
     });
   }
 });

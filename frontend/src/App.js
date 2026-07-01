@@ -8,6 +8,7 @@ import { installStudyHeartbeat } from './services/studyHeartbeat';
 import guestActivityTracker from './services/guestActivityTracker';
 import Navbar from './components/Navbar';
 import BrandLogo from './components/BrandLogo';
+import ErrorBoundary from './components/ErrorBoundary';
 import EmailVerificationBanner from './components/EmailVerificationBanner';
 import StepUpModal from './components/StepUpModal';
 import CurriculumVersionModal from './components/CurriculumVersionModal';
@@ -19,6 +20,7 @@ import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import LanguageSelectPage from './pages/LanguageSelectPage';
+import AppLinkPage from './pages/AppLinkPage';
 import { getPreferredPublicLanguage, googleLocaleForPublicLanguage } from './utils/publicLanguage';
 import './App.css';
 
@@ -335,6 +337,13 @@ function App() {
     return () => window.removeEventListener('xpModeChanged', handleModeChange);
   }, []);
 
+  // Apply the learning-mode theme at the document root so the WHOLE app switches
+  // faithfully — including anything rendered outside the .App tree (modals,
+  // portals) — and independent of the .App div's render timing.
+  useEffect(() => {
+    document.documentElement.classList.toggle('challenge-theme', challengeMode);
+  }, [challengeMode]);
+
   // Listen for email verification events
   useEffect(() => {
     const handler = () => {
@@ -482,6 +491,7 @@ function App() {
             onGuestExit={handleGuestExit}
           />
         )}
+        <ErrorBoundary>
         <Suspense fallback={<RouteLoadingFallback />}>
         <Routes>
           {/* Auth Routes */}
@@ -523,6 +533,7 @@ function App() {
           />
 
           {/* Email verification — always public */}
+          <Route path="/app-link" element={<AppLinkPage />} />
           <Route path="/verify-email" element={<VerifyEmailPage />} />
           <Route path="/forgot-password" element={<ForgotPasswordPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
@@ -708,8 +719,12 @@ function App() {
               )
             }
           />
+
+          {/* Fallback: any unknown/removed path (e.g. a stale email link) → home */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
         </Suspense>
+        </ErrorBoundary>
         </div>
       </div>
     </Router>

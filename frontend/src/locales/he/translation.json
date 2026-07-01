@@ -709,7 +709,25 @@
     "failures": "כשלים",
     "messages": "הודעות",
     "semesterInterest": "עניין סמסטר",
-    "reviews": "ביקורות"
+    "reviews": "ביקורות",
+    "sectionsNav": "קטעי ניהול",
+    "navGroups": {
+      "overview": "סקירה כללית",
+      "attention": "זקוק לתשומת לב",
+      "people": "אֲנָשִׁים",
+      "revenue": "הַכנָסָה",
+      "tools": "כְּלֵי עֲבוֹדָה",
+      "engagement": "נוֹהָג"
+    },
+    "communications": "תקשורת",
+    "institutions": "מוסדות",
+    "sendEmailAction": "שלח אימייל",
+    "institutionsSubtitle": "כל מוסד רשום והאימייל של אנשי הקשר המנהליים שלו.",
+    "institutionAdminEmail": "דוא\"ל מנהל",
+    "noInstitutionAdmin": "לא הוקצה מנהל",
+    "emailAdmin": "מנהל דוא\"ל",
+    "emailUserTitle": "דוא\"ל {{name}}",
+    "emailUserTo": "שולח מייל ממותג אל"
   },
   "forgotPassword": {
     "title": "שכחת סיסמה",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "מוסד פתוח",
     "manageSeatsAction": "ניהול מושבים",
     "viewPlansAction": "צפה בתוכניות",
-    "resumePracticeAction": "המשך להתאמן"
+    "resumePracticeAction": "המשך להתאמן",
+    "emptyArchived": "אין הודעות בארכיון.",
+    "restore": "לְשַׁחְזֵר",
+    "inboxTab": "תיבת דואר נכנס",
+    "archivedTab": "בארכיון"
   },
   "stepUp": {
     "verifyFailed": "לא ניתן היה לאמת את הסיסמה",
@@ -2376,6 +2398,50 @@
       "previous": "שקופית גיבורים קודמת",
       "next": "שקופית הגיבורים הבאה",
       "showSlide": "הצג שקופית גיבורים {{number}}"
+    },
+    "statement": {
+      "proveSerious": "כל יום הוכחת שאתה רציני.",
+      "cared": "כל יום זה הוכיח שאכפת לו רק מהרצף.",
+      "notLearning": "זה לא למידה. זה דלפק עם להבה עליו.",
+      "walkAway": "התרחק מרדיפת פסים.",
+      "takeSeriousness": "קחו את הרצינות הזו איפה שהיא משיגה תוצאות.",
+      "teaches": "לינגו בות' מלמד את העקרונות מאחורי השפה. קודח אותם עם תרגילים. ואז מכופף כל דוגמה לצרכי החיים האמיתיים שלך, ברמה שלך.",
+      "curriculum": "תכנית לימודים מלאה, מודרכת מקצה לקצה. קריאה, כתיבה, האזנה, דיבור, ביקורת - עובדים יחד, לא מוערמים זה מזה.",
+      "actuallyUse": "כאן אתה לומד במה אתה באמת יכול להשתמש.",
+      "cta": "תתחיל ללמוד.",
+      "scrollAria": "גלול לעוד",
+      "teaser": "למד את השפה, לא את הרצף - תוכנית לימודים מלאה, הנלמדת בשפה שלך.",
+      "readMore": "קרא עוד",
+      "showLess": "הצג פחות"
     }
+  },
+  "brand": {
+    "lingo": "לָשׁוֹן",
+    "booth": "תָא"
+  },
+  "adminEmail": {
+    "confirmAll": "זה ישלח אימייל לכל המשתמשים. האם אתה בטוח שאתה רוצה להמשיך?",
+    "sentWithFailures": "דוא\"ל נשלח למשתמש(ים) {{sent}}; {{failed}} נכשל.",
+    "sent": "דוא\"ל נשלח למשתמש(ים) {{sent}}.",
+    "failed": "לא ניתן לשלוח מייל.",
+    "composerTitle": "שלח אימייל",
+    "composerHint": "שלח אימייל ממותג למשתמש אחד, לכל המשתמשים או לחברי המוסד. נמסר באמצעות דואר אלקטרוני (לא רק הודעה בתוך האפליקציה).",
+    "verifiedOnly": "רק כתובות אימייל מאומתות",
+    "subject": "נוֹשֵׂא",
+    "message": "הוֹדָעָה",
+    "actionUrl": "קישור לחצן אופציונלי",
+    "actionLabel": "טקסט כפתור אופציונלי",
+    "actionLabelPlaceholder": "פתח את ביתן לינגו",
+    "sending": "שְׁלִיחָה…",
+    "send": "שלח אימייל"
+  },
+  "errorBoundary": {
+    "redirecting": "לוקח אותך הביתה…",
+    "goHome": "עבור לדף הבית של לינגו Booth"
+  },
+  "appLink": {
+    "title": "פתיחת דוכן לינגו",
+    "body": "אם האפליקציה לא נפתחת, המשך בדפדפן שלך.",
+    "fallbackButton": "המשך בדפדפן"
   }
 }

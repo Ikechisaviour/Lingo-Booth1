@@ -6,6 +6,7 @@ const OrganizationMembership = require('../models/OrganizationMembership');
 const seats = require('./seats');
 const { getTodayUTC, getDayIndex } = require('./dateHelpers');
 const { ensureResetsApplied } = require('./gamificationReset');
+const { AppError } = require('./AppError');
 
 const QUIZ_POINTS_BY_DIFFICULTY = {
   beginner: 3,
@@ -115,7 +116,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
 
   switch (eventType) {
     case 'quiz_correct':
-      if (!lessonId || contentIndex === null) throw new Error('lessonId and contentIndex are required');
+      if (!lessonId || contentIndex === null) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'lessonId and contentIndex are required' });
       return {
         eventType,
         dedupeKey: `daily:${today}:quiz:${lessonId}:${contentIndex}`,
@@ -125,7 +126,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { lessonId, contentIndex, difficulty },
       };
     case 'quiz_high_score':
-      if (!lessonId) throw new Error('lessonId is required');
+      if (!lessonId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'lessonId is required' });
       return {
         eventType,
         dedupeKey: `daily:${today}:quiz-high-score:${lessonId}`,
@@ -135,7 +136,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { lessonId },
       };
     case 'flashcard_recall':
-      if (!flashcardId) throw new Error('flashcardId is required');
+      if (!flashcardId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'flashcardId is required' });
       return {
         eventType,
         dedupeKey: `daily:${today}:flashcard:${flashcardId}`,
@@ -145,7 +146,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { flashcardId },
       };
     case 'class_item_complete':
-      if (!classLessonId || itemIndex === null) throw new Error('classLessonId and itemIndex are required');
+      if (!classLessonId || itemIndex === null) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'classLessonId and itemIndex are required' });
       return {
         eventType,
         dedupeKey: `lifetime:class-item:${classLessonId}:${itemIndex}`,
@@ -155,7 +156,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { classLessonId, itemIndex },
       };
     case 'class_activity_complete':
-      if (!classLessonId || !activityId) throw new Error('classLessonId and activityId are required');
+      if (!classLessonId || !activityId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'classLessonId and activityId are required' });
       return {
         eventType,
         dedupeKey: `lifetime:class-activity:${classLessonId}:${activityId}`,
@@ -165,7 +166,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { classLessonId, activityId },
       };
     case 'class_lesson_complete':
-      if (!classLessonId) throw new Error('classLessonId is required');
+      if (!classLessonId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'classLessonId is required' });
       return {
         eventType,
         dedupeKey: `lifetime:class-lesson:${classLessonId}`,
@@ -175,7 +176,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { classLessonId },
       };
     case 'conversation_turn':
-      if (!sessionId || !turnId) throw new Error('sessionId and turnId are required');
+      if (!sessionId || !turnId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'sessionId and turnId are required' });
       return {
         eventType,
         dedupeKey: `daily:${today}:conversation:${sessionId}:${turnId}`,
@@ -185,7 +186,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { sessionId, turnId },
       };
     case 'roleplay_complete':
-      if (!sessionId || !roleplayId) throw new Error('sessionId and roleplayId are required');
+      if (!sessionId || !roleplayId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'sessionId and roleplayId are required' });
       return {
         eventType,
         dedupeKey: `daily:${today}:roleplay:${sessionId}:${roleplayId}`,
@@ -195,7 +196,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { sessionId, roleplayId },
       };
     case 'writing_complete':
-      if (!itemId || !writingMode) throw new Error('itemId and writingMode are required');
+      if (!itemId || !writingMode) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'itemId and writingMode are required' });
       return {
         eventType,
         dedupeKey: `daily:${today}:writing:${itemId}:${writingMode}:${fromMemory ? 'memory' : 'guided'}`,
@@ -205,7 +206,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { itemId, writingMode, fromMemory },
       };
     case 'speaking_practice_complete':
-      if (!promptId) throw new Error('promptId is required');
+      if (!promptId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'promptId is required' });
       return {
         eventType,
         dedupeKey: `daily:${today}:speaking:${promptId}`,
@@ -215,7 +216,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { promptId },
       };
     case 'class_item_viewed':
-      if (!classLessonId || itemIndex === null) throw new Error('classLessonId and itemIndex are required');
+      if (!classLessonId || itemIndex === null) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'classLessonId and itemIndex are required' });
       return {
         eventType,
         dedupeKey: `daily:${today}:class-view:${classLessonId}:${itemIndex}`,
@@ -225,7 +226,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { classLessonId, itemIndex },
       };
     case 'saved_item_created':
-      if (!itemId) throw new Error('itemId is required');
+      if (!itemId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'itemId is required' });
       return {
         eventType,
         dedupeKey: `lifetime:saved-item:${itemId}:created`,
@@ -235,7 +236,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { itemId },
       };
     case 'saved_item_reviewed':
-      if (!itemId) throw new Error('itemId is required');
+      if (!itemId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'itemId is required' });
       return {
         eventType,
         dedupeKey: `lifetime:saved-item:${itemId}:review:${reviewCount || today}`,
@@ -245,7 +246,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { itemId, reviewCount },
       };
     case 'review_session_complete':
-      if (!sessionId) throw new Error('sessionId is required');
+      if (!sessionId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'sessionId is required' });
       return {
         eventType,
         dedupeKey: `daily:${today}:review-session:${sessionId}`,
@@ -256,7 +257,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
       };
     case 'voice_played':
       if (!itemId && !promptId && !classLessonId && !sessionId) {
-        throw new Error('itemId, promptId, classLessonId, or sessionId is required');
+        throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'itemId, promptId, classLessonId, or sessionId is required' });
       }
       return {
         eventType,
@@ -267,7 +268,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
         refs: { itemId, promptId, classLessonId, sessionId },
       };
     case 'speech_input_used':
-      if (!sessionId && !promptId && !itemId) throw new Error('sessionId, promptId, or itemId is required');
+      if (!sessionId && !promptId && !itemId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'sessionId, promptId, or itemId is required' });
       return {
         eventType,
         dedupeKey: `daily:${today}:speech-input:${sessionId || promptId || itemId}:${turnId || reviewCount || 'turn'}`,
@@ -278,7 +279,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
       };
     case 'conversation_reply_failed':
     case 'tutor_reply_failed':
-      if (!sessionId && !classLessonId) throw new Error('sessionId or classLessonId is required');
+      if (!sessionId && !classLessonId) throw new AppError('LEARN_EVENT_MISSING_FIELDS', { message: 'sessionId or classLessonId is required' });
       return {
         eventType,
         dedupeKey: `daily:${today}:${eventType}:${sessionId || classLessonId}:${turnId || Date.now()}`,
@@ -302,7 +303,7 @@ function normalizeEvent(body = {}, today = getTodayUTC()) {
       };
     }
     default:
-      throw new Error('Unsupported learning event type');
+      throw new AppError('LEARN_EVENT_UNSUPPORTED_TYPE');
   }
 }
 

@@ -8,11 +8,18 @@ const User = require('../models/User');
 const GuestSession = require('../models/GuestSession');
 const { ensureResetsApplied } = require('../utils/gamificationReset');
 const { getClientIp, getGeoInfo } = require('../utils/geo');
-const { sendVerificationEmail, sendPasswordResetEmail } = require('../utils/emailService');
+const {
+  sendVerificationEmail,
+  sendPasswordResetEmail,
+  sendWelcomeEmail,
+  sendLoginNotificationEmail,
+  sendNewDeviceEmail,
+} = require('../utils/emailService');
 const { verifyToken } = require('../middleware/auth');
 const { getAiEntitlements } = require('../utils/subscription');
 const { cleanFullName, fullNameValidation } = require('../utils/fullName');
 const { syncInstitutionAccessForUser } = require('../utils/institutionAccess');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -90,21 +97,109 @@ function setVerificationToken(user) {
   return token;
 }
 
+const DEVICE_HEADER = 'x-lingo-device-id';
+// The "welcome back" login email is throttled to at most once per 30 days.
+// This throttle is specific to that email — verification, reset, new-device,
+// and admin emails are never affected by it.
+const LOGIN_EMAIL_THROTTLE_MS = 30 * 24 * 60 * 60 * 1000;
+
+// Human-friendly device label from a User-Agent string.
+function summarizeUserAgent(ua) {
+  if (!ua) return 'Unknown device';
+  const os = /Windows/i.test(ua) ? 'Windows'
+    : /iPhone|iPad|iPod/i.test(ua) ? 'iOS'
+    : /Android/i.test(ua) ? 'Android'
+    : /Mac OS X|Macintosh/i.test(ua) ? 'macOS'
+    : /Linux/i.test(ua) ? 'Linux' : '';
+  const browser = /Edg\//i.test(ua) ? 'Edge'
+    : /OPR\/|Opera/i.test(ua) ? 'Opera'
+    : /Chrome\//i.test(ua) ? 'Chrome'
+    : /Firefox\//i.test(ua) ? 'Firefox'
+    : (/Safari\//i.test(ua) && !/Chrome/i.test(ua)) ? 'Safari' : '';
+  const parts = [browser, os].filter(Boolean);
+  return parts.length ? parts.join(' on ') : ua.slice(0, 80);
+}
+
+// Record the current device and trigger the appropriate login-related email.
+// Mutates `user` (knownDevices / lastLoginNotificationAt); the caller persists
+// via a later save() (issueTokens or an explicit save). All email sends are
+// fire-and-forget so they never block or fail the auth response.
+//
+// Rules:
+//   - New account (isNewUser): seed the sign-up device as known and set the
+//     login-email clock so we don't immediately send "welcome back". The
+//     welcome email itself is sent by the route.
+//   - Login from an unrecognized device: send the new-device security email
+//     (never throttled) and record the device. (Exception: if the account has
+//     NO known devices yet — e.g. pre-existing users on first login after this
+//     feature ships — seed silently to avoid alerting everyone once.)
+//   - Login from a known device: send the "welcome back" email only if at least
+//     30 days have passed since the last one.
+function processLoginNotifications(user, req, { isNewUser = false } = {}) {
+  const deviceId = String(req.headers[DEVICE_HEADER] || '').trim().slice(0, 200);
+  const ua = String(req.headers['user-agent'] || '').slice(0, 300);
+  const ip = user.lastIp || getClientIp(req);
+  const geo = getGeoInfo(ip) || {};
+  const where = [geo.city, geo.country].filter(Boolean).join(', ') || 'Unknown location';
+  const when = new Date().toUTCString();
+  const device = summarizeUserAgent(ua);
+  const lang = user.nativeLanguage || 'en';
+  const now = new Date();
+
+  if (!Array.isArray(user.knownDevices)) user.knownDevices = [];
+
+  if (isNewUser) {
+    if (deviceId) {
+      user.knownDevices.push({ deviceId, userAgent: ua, ip, country: geo.country, city: geo.city, firstSeen: now, lastSeen: now });
+    }
+    user.lastLoginNotificationAt = now; // don't "welcome back" right after sign-up
+    return;
+  }
+
+  const existing = deviceId ? user.knownDevices.find((d) => d.deviceId === deviceId) : null;
+
+  if (deviceId && !existing) {
+    const isFirstEverDevice = user.knownDevices.length === 0;
+    user.knownDevices.push({ deviceId, userAgent: ua, ip, country: geo.country, city: geo.city, firstSeen: now, lastSeen: now });
+    if (!isFirstEverDevice) {
+      // Unrecognized device on an established account → security alert.
+      sendNewDeviceEmail(user.email, user.username, lang, { when, where, device }).catch((err) => {
+        console.error('Failed to send new-device email:', err.message);
+      });
+      return; // new-device and welcome-back are mutually exclusive per login
+    }
+    // else: baseline-seed silently, then fall through to welcome-back logic
+  } else if (existing) {
+    existing.lastSeen = now;
+    existing.ip = ip;
+    existing.country = geo.country;
+    existing.city = geo.city;
+  }
+
+  const last = user.lastLoginNotificationAt ? user.lastLoginNotificationAt.getTime() : 0;
+  if (now.getTime() - last >= LOGIN_EMAIL_THROTTLE_MS) {
+    user.lastLoginNotificationAt = now;
+    sendLoginNotificationEmail(user.email, user.username, lang).catch((err) => {
+      console.error('Failed to send login notification email:', err.message);
+    });
+  }
+}
+
 // Register
 router.post('/register', async (req, res) => {
   try {
     const { username, email, password, guestXP, nativeLanguage, targetLanguage, fullName } = req.body;
 
     if (!username || !email || !password) {
-      return res.status(400).json({ message: 'All fields are required' });
+      return sendClientError(res, 400, 'AUTH_REGISTER_MISSING_FIELDS', 'All fields are required');
     }
 
     if (!EMAIL_REGEX.test(email)) {
-      return res.status(400).json({ message: 'Please enter a valid email address' });
+      return sendClientError(res, 400, 'AUTH_REGISTER_INVALID_EMAIL', 'Please enter a valid email address');
     }
 
     if (password.length < 6) {
-      return res.status(400).json({ message: 'Password must be at least 6 characters' });
+      return sendClientError(res, 400, 'AUTH_REGISTER_PASSWORD_TOO_SHORT', 'Password must be at least 6 characters');
     }
 
     const fullNameCheck = fullNameValidation(fullName);
@@ -117,7 +212,7 @@ router.post('/register', async (req, res) => {
 
     let user = await User.findOne({ $or: [{ email }, { username }] });
     if (user) {
-      return res.status(400).json({ message: 'User already exists' });
+      return sendClientError(res, 400, 'AUTH_EMAIL_ALREADY_EXISTS', 'User already exists');
     }
 
     // New accounts default to decay off, so guest XP can be applied
@@ -157,6 +252,12 @@ router.post('/register', async (req, res) => {
       console.error('Failed to send verification email:', err.message);
     });
 
+    // Seed the sign-up device as known, then send a welcome email (fire-and-forget)
+    processLoginNotifications(user, req, { isNewUser: true });
+    sendWelcomeEmail(user.email, user.username, user.nativeLanguage || 'en').catch(err => {
+      console.error('Failed to send welcome email:', err.message);
+    });
+
     // Mark today's guest session as converted (fire-and-forget)
     try {
       const today = new Date(); today.setHours(0, 0, 0, 0);
@@ -176,8 +277,7 @@ router.post('/register', async (req, res) => {
       guestXPTransferred: transferXP,
     });
   } catch (error) {
-    console.error('Registration error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'AUTH_REGISTER_FAILED', { metadata: { email: req.body?.email } });
   }
 });
 
@@ -187,34 +287,35 @@ router.post('/login', async (req, res) => {
     const { email, password, guestXP } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ message: 'Email and password are required' });
+      return sendClientError(res, 400, 'AUTH_LOGIN_MISSING_FIELDS', 'Email and password are required');
     }
 
     if (!EMAIL_REGEX.test(email)) {
-      return res.status(400).json({ message: 'Please enter a valid email address' });
+      return sendClientError(res, 400, 'AUTH_LOGIN_INVALID_EMAIL', 'Please enter a valid email address');
     }
 
     const user = await User.findOne({ email });
     if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return sendClientError(res, 400, 'AUTH_LOGIN_INVALID_CREDENTIALS', 'Invalid credentials');
     }
 
     // Check if user is suspended
     if (user.status === 'suspended') {
       return res.status(403).json({
         message: 'Your account has been suspended',
+        code: 'AUTH_ACCOUNT_SUSPENDED',
         reason: user.suspendReason || 'Contact support for more information',
       });
     }
 
     // Google-only users have no password
     if (!user.password) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return sendClientError(res, 400, 'AUTH_LOGIN_INVALID_CREDENTIALS', 'Invalid credentials');
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return sendClientError(res, 400, 'AUTH_LOGIN_INVALID_CREDENTIALS', 'Invalid credentials');
     }
 
     // Transfer guest XP only if decay is off (Relaxed Mode)
@@ -234,6 +335,9 @@ router.post('/login', async (req, res) => {
     user.lastCountry = loginGeo.country;
     user.lastCity = loginGeo.city;
 
+    // Device check + welcome-back email (persisted by issueTokens' save())
+    processLoginNotifications(user, req, { isNewUser: false });
+
     await syncInstitutionAccessForUser(user);
     const { token, refreshToken } = await issueTokens(user);
 
@@ -244,8 +348,7 @@ router.post('/login', async (req, res) => {
       guestXPTransferred,
     });
   } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'AUTH_LOGIN_FAILED', { metadata: { email: req.body?.email } });
   }
 });
 
@@ -254,7 +357,7 @@ router.get('/verify-email', async (req, res) => {
   try {
     const { token } = req.query;
     if (!token) {
-      return res.status(400).json({ message: 'Verification token is required' });
+      return sendClientError(res, 400, 'AUTH_VERIFY_EMAIL_TOKEN_REQUIRED', 'Verification token is required');
     }
 
     // Try to find user by active token
@@ -271,10 +374,9 @@ router.get('/verify-email', async (req, res) => {
       return res.json({ message: 'Email verified successfully' });
     }
 
-    return res.status(400).json({ message: 'Invalid or expired verification link' });
+    return sendClientError(res, 400, 'AUTH_VERIFY_EMAIL_INVALID_TOKEN', 'Invalid or expired verification link');
   } catch (error) {
-    console.error('Email verification error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'AUTH_VERIFY_EMAIL_FAILED');
   }
 });
 
@@ -284,7 +386,7 @@ router.post('/resend-verification', verifyToken, async (req, res) => {
     const user = req.user;
 
     if (user.emailVerified) {
-      return res.status(400).json({ message: 'Email is already verified' });
+      return sendClientError(res, 400, 'AUTH_RESEND_VERIFICATION_ALREADY_VERIFIED', 'Email is already verified');
     }
 
     // Rate limit: 60-second cooldown
@@ -292,7 +394,7 @@ router.post('/resend-verification', verifyToken, async (req, res) => {
       const elapsed = Date.now() - user.lastVerificationSent.getTime();
       if (elapsed < 60000) {
         const wait = Math.ceil((60000 - elapsed) / 1000);
-        return res.status(429).json({ message: `Please wait ${wait} seconds before requesting another email` });
+        return sendClientError(res, 429, 'AUTH_RESEND_VERIFICATION_RATE_LIMITED', `Please wait ${wait} seconds before requesting another email`);
       }
     }
 
@@ -303,8 +405,7 @@ router.post('/resend-verification', verifyToken, async (req, res) => {
 
     res.json({ message: 'Verification email sent' });
   } catch (error) {
-    console.error('Resend verification error:', error);
-    res.status(500).json({ message: 'Failed to send verification email' });
+    return sendServerError(req, res, error, 'AUTH_RESEND_VERIFICATION_FAILED', { clientMessage: 'Failed to send verification email' });
   }
 });
 
@@ -314,11 +415,11 @@ router.post('/google', async (req, res) => {
     const { credential, guestXP, nativeLanguage, targetLanguage } = req.body;
 
     if (!credential) {
-      return res.status(400).json({ message: 'Google credential is required' });
+      return sendClientError(res, 400, 'AUTH_GOOGLE_CREDENTIAL_REQUIRED', 'Google credential is required');
     }
 
     if (!GOOGLE_CLIENT_ID) {
-      return res.status(500).json({ message: 'Google OAuth is not configured' });
+      return sendServerError(req, res, new Error('GOOGLE_CLIENT_ID is not configured'), 'AUTH_GOOGLE_NOT_CONFIGURED', { clientMessage: 'Google OAuth is not configured' });
     }
 
     // Verify the Google ID token
@@ -331,13 +432,13 @@ router.post('/google', async (req, res) => {
       });
       payload = ticket.getPayload();
     } catch (err) {
-      return res.status(401).json({ message: 'Invalid Google token' });
+      return sendClientError(res, 401, 'AUTH_GOOGLE_TOKEN_INVALID', 'Invalid Google token');
     }
 
     const { sub: googleId, email, name, picture } = payload;
 
     if (!email) {
-      return res.status(400).json({ message: 'Google account has no email' });
+      return sendClientError(res, 400, 'AUTH_GOOGLE_NO_EMAIL', 'Google account has no email');
     }
 
     const loginIp = getClientIp(req);
@@ -352,6 +453,7 @@ router.post('/google', async (req, res) => {
       if (user.status === 'suspended') {
         return res.status(403).json({
           message: 'Your account has been suspended',
+          code: 'AUTH_ACCOUNT_SUSPENDED',
           reason: user.suspendReason || 'Contact support for more information',
         });
       }
@@ -387,6 +489,8 @@ router.post('/google', async (req, res) => {
       user.lastIp = loginIp;
       user.lastCountry = loginGeo.country;
       user.lastCity = loginGeo.city;
+      // Device check + welcome-back email (persisted by the save below)
+      processLoginNotifications(user, req, { isNewUser: false });
       await user.save();
     } else {
       // New user — create account
@@ -428,6 +532,12 @@ router.post('/google', async (req, res) => {
 
       await user.save();
 
+      // Seed the sign-up device as known, then send a welcome email (fire-and-forget)
+      processLoginNotifications(user, req, { isNewUser: true });
+      sendWelcomeEmail(user.email, user.username, user.nativeLanguage || 'en').catch(err => {
+        console.error('Failed to send welcome email:', err.message);
+      });
+
       // Mark guest session as converted
       try {
         const today = new Date(); today.setHours(0, 0, 0, 0);
@@ -449,8 +559,7 @@ router.post('/google', async (req, res) => {
       isNewUser,
     });
   } catch (error) {
-    console.error('Google auth error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'AUTH_GOOGLE_FAILED');
   }
 });
 
@@ -463,29 +572,29 @@ router.post('/refresh', async (req, res) => {
   try {
     const { refreshToken } = req.body;
     if (!refreshToken) {
-      return res.status(400).json({ message: 'Refresh token is required' });
+      return sendClientError(res, 400, 'AUTH_REFRESH_TOKEN_REQUIRED', 'Refresh token is required');
     }
 
     let decoded;
     try {
       decoded = jwt.verify(refreshToken, JWT_SECRET);
     } catch (err) {
-      return res.status(401).json({ message: 'Invalid or expired refresh token' });
+      return sendClientError(res, 401, 'AUTH_REFRESH_TOKEN_INVALID', 'Invalid or expired refresh token');
     }
 
     if (decoded.type !== 'refresh') {
-      return res.status(401).json({ message: 'Invalid token type' });
+      return sendClientError(res, 401, 'AUTH_REFRESH_TOKEN_WRONG_TYPE', 'Invalid token type');
     }
 
     const user = await User.findById(decoded.userId);
     if (!user || user.refreshToken !== refreshToken) {
       // Either the user is gone, has logged out, or this token was already
       // rotated (potential replay). Reject and force re-login.
-      return res.status(401).json({ message: 'Invalid refresh token' });
+      return sendClientError(res, 401, 'AUTH_REFRESH_TOKEN_INVALID', 'Invalid refresh token');
     }
 
     if (user.status === 'suspended') {
-      return res.status(403).json({ message: 'Account suspended' });
+      return sendClientError(res, 403, 'AUTH_ACCOUNT_SUSPENDED', 'Account suspended');
     }
 
     const nowSec = Math.floor(Date.now() / 1000);
@@ -512,8 +621,7 @@ router.post('/refresh', async (req, res) => {
 
     res.json({ token: newToken, refreshToken: newRefreshToken });
   } catch (error) {
-    console.error('Token refresh error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'AUTH_REFRESH_FAILED');
   }
 });
 
@@ -538,8 +646,7 @@ router.post('/logout', async (req, res) => {
     }
     res.json({ ok: true });
   } catch (error) {
-    console.error('Logout error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'AUTH_LOGOUT_FAILED');
   }
 });
 
@@ -550,7 +657,7 @@ router.post('/step-up', verifyToken, async (req, res) => {
   try {
     const { password } = req.body || {};
     const user = await User.findById(req.userId);
-    if (!user) return res.status(404).json({ message: 'User not found' });
+    if (!user) return sendClientError(res, 404, 'AUTH_STEP_UP_USER_NOT_FOUND', 'User not found');
 
     if (!user.password) {
       // Google-only accounts can't step up via password yet.
@@ -560,11 +667,11 @@ router.post('/step-up', verifyToken, async (req, res) => {
       });
     }
     if (!password) {
-      return res.status(400).json({ message: 'Password is required' });
+      return sendClientError(res, 400, 'AUTH_STEP_UP_PASSWORD_REQUIRED', 'Password is required');
     }
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Incorrect password' });
+      return sendClientError(res, 400, 'AUTH_STEP_UP_INCORRECT_PASSWORD', 'Incorrect password');
     }
 
     // Mint a new access+refresh pair with authAt = now. Preserve the existing
@@ -586,8 +693,7 @@ router.post('/step-up', verifyToken, async (req, res) => {
 
     res.json({ token, refreshToken });
   } catch (error) {
-    console.error('Step-up error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'AUTH_STEP_UP_FAILED');
   }
 });
 
@@ -596,7 +702,7 @@ router.post('/forgot-password', async (req, res) => {
   try {
     const { email } = req.body;
     if (!email || !EMAIL_REGEX.test(email)) {
-      return res.status(400).json({ message: 'Please enter a valid email address' });
+      return sendClientError(res, 400, 'AUTH_FORGOT_PASSWORD_INVALID_EMAIL', 'Please enter a valid email address');
     }
 
     const user = await User.findOne({ email });
@@ -629,8 +735,7 @@ router.post('/forgot-password', async (req, res) => {
 
     res.json({ message: 'If an account with that email exists, a reset link has been sent.' });
   } catch (error) {
-    console.error('Forgot password error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'AUTH_FORGOT_PASSWORD_FAILED', { metadata: { email: req.body?.email } });
   }
 });
 
@@ -639,11 +744,11 @@ router.post('/reset-password', async (req, res) => {
   try {
     const { token, password } = req.body;
     if (!token || !password) {
-      return res.status(400).json({ message: 'Token and new password are required' });
+      return sendClientError(res, 400, 'AUTH_RESET_PASSWORD_MISSING_FIELDS', 'Token and new password are required');
     }
 
     if (password.length < 6) {
-      return res.status(400).json({ message: 'Password must be at least 6 characters' });
+      return sendClientError(res, 400, 'AUTH_RESET_PASSWORD_TOO_SHORT', 'Password must be at least 6 characters');
     }
 
     const user = await User.findOne({
@@ -652,7 +757,7 @@ router.post('/reset-password', async (req, res) => {
     });
 
     if (!user) {
-      return res.status(400).json({ message: 'Invalid or expired reset link' });
+      return sendClientError(res, 400, 'AUTH_RESET_PASSWORD_INVALID_TOKEN', 'Invalid or expired reset link');
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -663,8 +768,7 @@ router.post('/reset-password', async (req, res) => {
 
     res.json({ message: 'Password reset successfully' });
   } catch (error) {
-    console.error('Reset password error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'AUTH_RESET_PASSWORD_FAILED');
   }
 });
 
@@ -674,12 +778,12 @@ router.post('/activity', async (req, res) => {
     const { userId, timeSpent } = req.body; // timeSpent in minutes
 
     if (!userId) {
-      return res.status(400).json({ message: 'userId is required' });
+      return sendClientError(res, 400, 'AUTH_ACTIVITY_USER_ID_REQUIRED', 'userId is required');
     }
 
     const user = await User.findById(userId);
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'AUTH_ACTIVITY_USER_NOT_FOUND', 'User not found');
     }
 
     user.lastActive = new Date();
@@ -695,8 +799,7 @@ router.post('/activity', async (req, res) => {
 
     res.json({ message: 'Activity tracked' });
   } catch (error) {
-    console.error('Activity tracking error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'AUTH_ACTIVITY_FAILED', { metadata: { userId: req.body?.userId } });
   }
 });
 
@@ -744,8 +847,7 @@ router.post('/guest-activity', async (req, res) => {
 
     res.json({ ok: true });
   } catch (error) {
-    console.error('Guest activity tracking error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'AUTH_GUEST_ACTIVITY_FAILED');
   }
 });
 

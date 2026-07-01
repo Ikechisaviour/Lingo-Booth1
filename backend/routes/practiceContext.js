@@ -8,6 +8,7 @@ const {
 } = require('../utils/practiceContextAnalysis');
 const { matchSingleContext } = require('../utils/contextToConcepts');
 const srs = require('../utils/curriculumV2Srs');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 // Fires after a PracticeContext save succeeds. Matches the saved
 // vocabulary to v2 concept IDs and nudges any existing SRS rows for
@@ -73,6 +74,7 @@ function requirePracticeContextAccess(req, res, next) {
 
   return res.status(403).json({
     message: 'Real-life context practice is available on Pro and Premium.',
+    code: 'PRACTICE_CONTEXT_ACCESS_FORBIDDEN',
     entitlements,
   });
 }
@@ -84,10 +86,10 @@ router.post('/analyze', async (req, res) => {
   try {
     const transcript = String(req.body?.transcript || '').trim();
     if (!transcript) {
-      return res.status(400).json({ message: 'Transcript is required.' });
+      return sendClientError(res, 400, 'PRACTICE_CONTEXT_TRANSCRIPT_REQUIRED', 'Transcript is required.');
     }
     if (transcript.length > 6000) {
-      return res.status(400).json({ message: 'Transcript is too long for one context session.' });
+      return sendClientError(res, 400, 'PRACTICE_CONTEXT_TRANSCRIPT_TOO_LONG', 'Transcript is too long for one context session.');
     }
 
     const analysis = analyzePracticeContext({
@@ -105,8 +107,9 @@ router.post('/analyze', async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Analyze practice context error:', error);
-    res.status(500).json({ message: 'Could not analyze this context session.' });
+    return sendServerError(req, res, error, 'PRACTICE_CONTEXT_ANALYZE_FAILED', {
+      clientMessage: 'Could not analyze this context session.',
+    });
   }
 });
 
@@ -124,8 +127,9 @@ router.get('/', async (req, res) => {
 
     res.json(contexts);
   } catch (error) {
-    console.error('Get practice context error:', error);
-    res.status(500).json({ message: 'Could not load saved context.' });
+    return sendServerError(req, res, error, 'PRACTICE_CONTEXT_LIST_FAILED', {
+      clientMessage: 'Could not load saved context.',
+    });
   }
 });
 
@@ -142,8 +146,9 @@ router.get('/recommendations', async (req, res) => {
 
     res.json(buildPracticeRecommendations(contexts));
   } catch (error) {
-    console.error('Get practice context recommendations error:', error);
-    res.status(500).json({ message: 'Could not load practice recommendations.' });
+    return sendServerError(req, res, error, 'PRACTICE_CONTEXT_RECOMMENDATIONS_FAILED', {
+      clientMessage: 'Could not load practice recommendations.',
+    });
   }
 });
 
@@ -151,7 +156,7 @@ router.post('/', async (req, res) => {
   try {
     const id = deviceId(req);
     if (!req.userId && !id) {
-      return res.status(400).json({ message: 'A device id is required to save context.' });
+      return sendClientError(res, 400, 'PRACTICE_CONTEXT_DEVICE_ID_REQUIRED', 'A device id is required to save context.');
     }
 
     const topics = cleanItems(req.body?.topics);
@@ -159,7 +164,7 @@ router.post('/', async (req, res) => {
     const phrases = cleanItems(req.body?.phrases);
     const environmentTags = cleanStringList(req.body?.environmentTags);
     if (!topics.length && !vocabulary.length && !phrases.length && !environmentTags.length) {
-      return res.status(400).json({ message: 'Select at least one useful item before saving.' });
+      return sendClientError(res, 400, 'PRACTICE_CONTEXT_NO_ITEMS_TO_SAVE', 'Select at least one useful item before saving.');
     }
 
     const context = await PracticeContext.create({
@@ -182,8 +187,9 @@ router.post('/', async (req, res) => {
 
     res.status(201).json(context);
   } catch (error) {
-    console.error('Save practice context error:', error);
-    res.status(500).json({ message: 'Could not save context.' });
+    return sendServerError(req, res, error, 'PRACTICE_CONTEXT_SAVE_FAILED', {
+      clientMessage: 'Could not save context.',
+    });
   }
 });
 
@@ -194,12 +200,13 @@ router.delete('/:id', async (req, res) => {
       ...ownerFilter(req),
     });
     if (!deleted) {
-      return res.status(404).json({ message: 'Saved context not found.' });
+      return sendClientError(res, 404, 'PRACTICE_CONTEXT_NOT_FOUND', 'Saved context not found.');
     }
     res.json({ message: 'Saved context deleted.' });
   } catch (error) {
-    console.error('Delete practice context error:', error);
-    res.status(500).json({ message: 'Could not delete saved context.' });
+    return sendServerError(req, res, error, 'PRACTICE_CONTEXT_DELETE_FAILED', {
+      clientMessage: 'Could not delete saved context.',
+    });
   }
 });
 

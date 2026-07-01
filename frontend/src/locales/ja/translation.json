@@ -709,7 +709,25 @@
     "failures": "失敗",
     "messages": "メッセージ",
     "semesterInterest": "学期の関心",
-    "reviews": "レビュー"
+    "reviews": "レビュー",
+    "sectionsNav": "管理セクション",
+    "navGroups": {
+      "overview": "概要",
+      "attention": "注意が必要です",
+      "people": "人々",
+      "revenue": "収益",
+      "tools": "ツール",
+      "engagement": "使用法"
+    },
+    "communications": "コミュニケーション",
+    "institutions": "機関",
+    "sendEmailAction": "電子メールを送信する",
+    "institutionsSubtitle": "すべての登録された機関とその管理者の連絡先の電子メール。",
+    "institutionAdminEmail": "管理者のメールアドレス",
+    "noInstitutionAdmin": "管理者が割り当てられていません",
+    "emailAdmin": "メール管理者",
+    "emailUserTitle": "メール{{name}}",
+    "emailUserTo": "ブランドの電子メールを送信します"
   },
   "forgotPassword": {
     "title": "パスワードをお忘れですか",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "開かれた機関",
     "manageSeatsAction": "座席の管理",
     "viewPlansAction": "プランを見る",
-    "resumePracticeAction": "練習を再開する"
+    "resumePracticeAction": "練習を再開する",
+    "emptyArchived": "アーカイブされた通知はありません。",
+    "restore": "復元する",
+    "inboxTab": "受信箱",
+    "archivedTab": "アーカイブ済み"
   },
   "stepUp": {
     "verifyFailed": "パスワードを確認できませんでした",
@@ -2376,6 +2398,50 @@
       "previous": "前のヒーロー スライド",
       "next": "次のヒーロースライド",
       "showSlide": "ヒーロー スライドを表示 {{number}}"
+    },
+    "statement": {
+      "proveSerious": "毎日あなたは自分が真剣であることを証明しました。",
+      "cared": "毎日、記録のことだけを気にしていることが証明されました。",
+      "notLearning": "それは学びではありません。 それは炎がついたカウンターです。",
+      "walkAway": "ストリークの追跡から離れてください。",
+      "takeSeriousness": "結果が得られるところには真剣さを持ちましょう。",
+      "teaches": "リンゴ・ブースは言語の背後にある原則を教えます。 演習で訓練します。 次に、すべての例をあなたのレベルで実際のニーズに合わせて変更します。",
+      "curriculum": "エンドツーエンドで指導される完全なカリキュラム。 読む、書く、聞く、話す、復習する — バラバラではなく、一緒に作業します。",
+      "actuallyUse": "ここでは実際に使えるものを学びます。",
+      "cta": "学習を始めましょう。",
+      "scrollAria": "さらにスクロールしてください",
+      "teaser": "連続的に学ぶのではなく、言語を学びましょう。完全なカリキュラムが母国語で教えられます。",
+      "readMore": "続きを読む",
+      "showLess": "表示を少なくする"
     }
+  },
+  "brand": {
+    "lingo": "リンゴ",
+    "booth": "ブース"
+  },
+  "adminEmail": {
+    "confirmAll": "これにより、すべてのユーザーにメールが送信されます。 続行してもよろしいですか?",
+    "sentWithFailures": "{{sent}} ユーザーに電子メールが送信されました。 {{failed}} が失敗しました。",
+    "sent": "電子メールは {{sent}} ユーザーに送信されました。",
+    "failed": "電子メールを送信できませんでした。",
+    "composerTitle": "電子メールを送信する",
+    "composerHint": "ブランドの電子メールを 1 人のユーザー、すべてのユーザー、または教育機関のメンバーに送信します。 電子メールで配信されます (アプリ内通知だけではありません)。",
+    "verifiedOnly": "認証済みのメールアドレスのみ",
+    "subject": "主題",
+    "message": "メッセージ",
+    "actionUrl": "オプションのボタンリンク",
+    "actionLabel": "オプションのボタンテキスト",
+    "actionLabelPlaceholder": "Lingoブースをオープン",
+    "sending": "送信中…",
+    "send": "電子メールを送信する"
+  },
+  "errorBoundary": {
+    "redirecting": "あなたを家に連れて帰ります…",
+    "goHome": "Lingoブースのホームページへ"
+  },
+  "appLink": {
+    "title": "リンゴブース出店",
+    "body": "アプリが開かない場合は、ブラウザで続行してください。",
+    "fallbackButton": "ブラウザで続行"
   }
 }

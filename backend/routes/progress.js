@@ -7,6 +7,7 @@ const { getTodayUTC } = require('../utils/dateHelpers');
 const { verifyToken, isOwner } = require('../middleware/auth');
 const { checkInactivityPenalty } = require('../middleware/xpPenalty');
 const { ensureResetsApplied } = require('../utils/gamificationReset');
+const { sendServerError } = require('../utils/sendError');
 
 // All progress routes require authentication
 router.use(verifyToken);
@@ -29,8 +30,9 @@ router.get('/user/:userId', isOwner('userId'), checkInactivityPenalty(), async (
     const progress = await Progress.find(await progressFilterForUser(userId, req.query.targetLang));
     res.json(progress);
   } catch (error) {
-    console.error('Get progress error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'PROGRESS_GET_PROGRESS_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -90,8 +92,9 @@ router.get('/summary/:userId', isOwner('userId'), checkInactivityPenalty(), asyn
       totalXP: user?.totalXP || 0,
     });
   } catch (error) {
-    console.error('Get progress summary error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'PROGRESS_GET_SUMMARY_FAILED', {
+      metadata: { userId: req.params.userId },
+    });
   }
 });
 
@@ -178,8 +181,9 @@ router.post('/', async (req, res) => {
 
     res.status(201).json(progress);
   } catch (error) {
-    console.error('Record progress error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'PROGRESS_RECORD_FAILED', {
+      metadata: { userId: req.userId },
+    });
   }
 });
 

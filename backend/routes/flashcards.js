@@ -10,6 +10,7 @@ const { languageField, normalizeFlashcardsForLanguagePair } = require('../utils/
 const { enrichFlashcardsWithPronunciation } = require('../utils/pronunciationService');
 const { clampRating, reviewStateForCard, scheduleFlashcardReview } = require('../utils/reviewScheduler');
 const { buildDefaultFlashcardSourceForLanguage } = require('../utils/targetAuthoredPracticeContent');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 // Normalize category: handles old string format and new array format
 const normalizeCategory = (cat) => {
@@ -406,8 +407,7 @@ router.get('/categories', async (req, res) => {
       .sort((a, b) => a.name.localeCompare(b.name));
     res.json({ categories, total: defaultCards.length });
   } catch (error) {
-    console.error('Get categories error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'FLASHCARDS_GET_CATEGORIES_FAILED');
   }
 });
 
@@ -417,7 +417,7 @@ router.get('/category-cards', async (req, res) => {
     const targetLang = req.query.targetLang || 'ko';
     const nativeLang = req.query.nativeLang || 'en';
     const category = (req.query.category || '').toLowerCase();
-    if (!category) return res.status(400).json({ message: 'category is required' });
+    if (!category) return sendClientError(res, 400, 'FLASHCARDS_CATEGORY_CARDS_CATEGORY_REQUIRED', 'category is required');
 
     const defaultCards = normalizeFlashcardsForLanguagePair(
       (await getDefaultCards(targetLang)).map(card => ({ ...card })),
@@ -454,8 +454,7 @@ router.get('/category-cards', async (req, res) => {
 
     res.json({ cards });
   } catch (error) {
-    console.error('Get category cards error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'FLASHCARDS_CATEGORY_CARDS_FAILED');
   }
 });
 
@@ -500,7 +499,7 @@ router.get('/guest', async (req, res) => {
     const targetLang = req.query.targetLang;
     const nativeLang = req.query.nativeLang;
     if (!targetLang || !nativeLang) {
-      return res.status(400).json({ message: 'nativeLang and targetLang query parameters are required' });
+      return sendClientError(res, 400, 'FLASHCARDS_GUEST_MISSING_LANGS', 'nativeLang and targetLang query parameters are required');
     }
     const page = Math.max(1, parseInt(req.query.page) || 1);
     const limit = Math.min(200, Math.max(1, parseInt(req.query.limit) || 50));
@@ -530,8 +529,7 @@ router.get('/guest', async (req, res) => {
 
     res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });
   } catch (error) {
-    console.error('Get guest flashcards error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'FLASHCARDS_GUEST_FAILED');
   }
 });
 
@@ -548,8 +546,7 @@ router.get('/focus-ids', async (req, res) => {
     const prefs = await UserCardPreference.find(query).select('cardId').lean();
     res.json({ ids: prefs.map(p => p.cardId) });
   } catch (error) {
-    console.error('Get focus ids error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'FLASHCARDS_FOCUS_IDS_FAILED');
   }
 });
 
@@ -560,7 +557,7 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
     const targetLang = req.query.targetLang;
     const nativeLang = req.query.nativeLang;
     if (!targetLang || !nativeLang) {
-      return res.status(400).json({ message: 'nativeLang and targetLang query parameters are required' });
+      return sendClientError(res, 400, 'FLASHCARDS_USER_MISSING_LANGS', 'nativeLang and targetLang query parameters are required');
     }
     const page = Math.max(1, parseInt(req.query.page) || 1);
     const limit = Math.min(200, Math.max(1, parseInt(req.query.limit) || 50));
@@ -632,8 +629,7 @@ router.get('/user/:userId', isOwner('userId'), async (req, res) => {
 
     res.json({ cards: pageCards, total, page, limit, hasMore: start + limit < total, seed });
   } catch (error) {
-    console.error('Get flashcards error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'FLASHCARDS_USER_LIST_FAILED', { metadata: { userId: req.params.userId } });
   }
 });
 
@@ -655,7 +651,7 @@ router.post('/', async (req, res) => {
     } = req.body;
 
     if (!targetLang || !nativeLang) {
-      return res.status(400).json({ message: 'targetLang and nativeLang are required' });
+      return sendClientError(res, 400, 'FLASHCARDS_CREATE_MISSING_LANGS', 'targetLang and nativeLang are required');
     }
 
     // Accept any recognised language field names from the body
@@ -666,7 +662,7 @@ router.post('/', async (req, res) => {
 
     // Require at least one target and one native field
     if (Object.keys(langData).length < 2) {
-      return res.status(400).json({ message: 'Target and native text fields are required' });
+      return sendClientError(res, 400, 'FLASHCARDS_CREATE_MISSING_TEXT_FIELDS', 'Target and native text fields are required');
     }
     const targetField = languageField(targetLang);
     const nativeField = languageField(nativeLang);
@@ -720,8 +716,7 @@ router.post('/', async (req, res) => {
 
     res.status(201).json({ ...flashcard.toObject(), focus });
   } catch (error) {
-    console.error('Create flashcard error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'FLASHCARDS_CREATE_FAILED');
   }
 });
 
@@ -734,11 +729,11 @@ router.put('/:id/focus', async (req, res) => {
     const value = req.body.value !== false; // default true
     const flashcard = await Flashcard.findById(req.params.id).lean();
     if (!flashcard) {
-      return res.status(404).json({ message: 'Flashcard not found' });
+      return sendClientError(res, 404, 'FLASHCARDS_FOCUS_NOT_FOUND', 'Flashcard not found');
     }
     // User-created cards may only be flagged by their owner.
     if (!flashcard.isDefault && flashcard.userId && flashcard.userId.toString() !== req.userId) {
-      return res.status(403).json({ message: 'Not authorized' });
+      return sendClientError(res, 403, 'FLASHCARDS_FOCUS_NOT_AUTHORIZED', 'Not authorized');
     }
     const pref = await UserCardPreference.findOneAndUpdate(
       { userId: req.userId, cardId: req.params.id },
@@ -756,8 +751,7 @@ router.put('/:id/focus', async (req, res) => {
     ).lean();
     return res.json({ cardId: req.params.id, focus: !!pref.focus });
   } catch (error) {
-    console.error('Toggle flashcard focus error:', error);
-    return res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'FLASHCARDS_FOCUS_TOGGLE_FAILED', { metadata: { cardId: req.params.id } });
   }
 });
 
@@ -767,11 +761,11 @@ router.put('/:id', async (req, res) => {
 
   try {
     if (typeof isCorrect !== 'boolean' && masteryLevel === undefined) {
-      return res.status(400).json({ message: 'isCorrect or masteryLevel is required' });
+      return sendClientError(res, 400, 'FLASHCARDS_UPDATE_MISSING_FIELDS', 'isCorrect or masteryLevel is required');
     }
     const flashcard = await Flashcard.findById(req.params.id).lean();
     if (!flashcard) {
-      return res.status(404).json({ message: 'Flashcard not found' });
+      return sendClientError(res, 404, 'FLASHCARDS_UPDATE_NOT_FOUND', 'Flashcard not found');
     }
 
     // Default cards — persist masteryLevel in UserCardPreference
@@ -816,7 +810,7 @@ router.put('/:id', async (req, res) => {
 
     // User-created card — verify ownership and update directly
     if (flashcard.userId.toString() !== req.userId && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Access denied' });
+      return sendClientError(res, 403, 'FLASHCARDS_UPDATE_ACCESS_DENIED', 'Access denied');
     }
 
     const scheduled = scheduleFlashcardReview({
@@ -844,8 +838,7 @@ router.put('/:id', async (req, res) => {
     const updated = await Flashcard.findByIdAndUpdate(req.params.id, update, { new: true }).lean();
     res.json(applyReviewState(updated));
   } catch (error) {
-    console.error('Update flashcard error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'FLASHCARDS_UPDATE_FAILED', { metadata: { cardId: req.params.id } });
   }
 });
 
@@ -854,24 +847,23 @@ router.delete('/:id', async (req, res) => {
   try {
     const flashcard = await Flashcard.findById(req.params.id);
     if (!flashcard) {
-      return res.status(404).json({ message: 'Flashcard not found' });
+      return sendClientError(res, 404, 'FLASHCARDS_DELETE_NOT_FOUND', 'Flashcard not found');
     }
 
     // Prevent deletion of default cards
     if (flashcard.isDefault) {
-      return res.status(403).json({ message: 'Cannot delete default flashcards' });
+      return sendClientError(res, 403, 'FLASHCARDS_DELETE_DEFAULT_FORBIDDEN', 'Cannot delete default flashcards');
     }
 
     // Verify ownership
     if (flashcard.userId.toString() !== req.userId && req.user.role !== 'admin') {
-      return res.status(403).json({ message: 'Access denied' });
+      return sendClientError(res, 403, 'FLASHCARDS_DELETE_ACCESS_DENIED', 'Access denied');
     }
 
     await Flashcard.findByIdAndDelete(req.params.id);
     res.json({ message: 'Flashcard deleted' });
   } catch (error) {
-    console.error('Delete flashcard error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'FLASHCARDS_DELETE_FAILED', { metadata: { cardId: req.params.id } });
   }
 });
 

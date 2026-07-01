@@ -709,7 +709,25 @@
     "failures": "Fallimenti",
     "messages": "Messaggi",
     "semesterInterest": "Interesse del semestre",
-    "reviews": "Recensioni"
+    "reviews": "Recensioni",
+    "sectionsNav": "Sezioni di amministrazione",
+    "navGroups": {
+      "overview": "Panoramica",
+      "attention": "Ha bisogno di attenzione",
+      "people": "Persone",
+      "revenue": "Reddito",
+      "tools": "Utensili",
+      "engagement": "Utilizzo"
+    },
+    "communications": "Comunicazioni",
+    "institutions": "Istituzioni",
+    "sendEmailAction": "Invia e-mail",
+    "institutionsSubtitle": "Ogni istituzione registrata e l'e-mail dei suoi contatti amministrativi.",
+    "institutionAdminEmail": "E-mail dell'amministratore",
+    "noInstitutionAdmin": "Nessun amministratore assegnato",
+    "emailAdmin": "Email amministratore",
+    "emailUserTitle": "E-mail {{name}}",
+    "emailUserTo": "Invia un'e-mail con marchio a"
   },
   "forgotPassword": {
     "title": "Password dimenticata",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "Istituzione aperta",
     "manageSeatsAction": "Gestisci i posti",
     "viewPlansAction": "Visualizza i piani",
-    "resumePracticeAction": "Riprendere la pratica"
+    "resumePracticeAction": "Riprendere la pratica",
+    "emptyArchived": "Nessuna notifica archiviata.",
+    "restore": "Ripristinare",
+    "inboxTab": "Posta in arrivo",
+    "archivedTab": "Archiviata"
   },
   "stepUp": {
     "verifyFailed": "Impossibile verificare la password",
@@ -2376,6 +2398,50 @@
       "previous": "Diapositiva dell'eroe precedente",
       "next": "Prossima diapositiva dell'eroe",
       "showSlide": "Mostra diapositiva eroe {{number}}"
+    },
+    "statement": {
+      "proveSerious": "Ogni giorno dimostravi che eri serio.",
+      "cared": "Ogni giorno dimostrava che gli importava solo della serie di vittorie consecutive.",
+      "notLearning": "Questo non è imparare. Questo è un segnalino con una fiamma sopra.",
+      "walkAway": "Allontanati dalla caccia alle vittorie.",
+      "takeSeriousness": "Prendi quella serietà dove ottieni risultati.",
+      "teaches": "Lingo Booth insegna i principi alla base della lingua. Li addestra con esercizi. Quindi adatta ogni esempio alle tue esigenze di vita reale, al tuo livello.",
+      "curriculum": "Un curriculum completo, guidato end-to-end. Leggere, scrivere, ascoltare, parlare, rivedere: lavorare insieme, non accatastati.",
+      "actuallyUse": "Qui impari cosa puoi effettivamente utilizzare.",
+      "cta": "Inizia ad imparare.",
+      "scrollAria": "Scorri per ulteriori informazioni",
+      "teaser": "Impara la lingua, non la sequenza: un programma completo, insegnato nella tua lingua.",
+      "readMore": "Per saperne di più",
+      "showLess": "Mostra meno"
     }
+  },
+  "brand": {
+    "lingo": "Gergo",
+    "booth": "Stand"
+  },
+  "adminEmail": {
+    "confirmAll": "Questo invierà un'e-mail a TUTTI gli utenti. Sei sicuro di voler continuare?",
+    "sentWithFailures": "Email inviata a {{sent}} utente(i); {{failed}} fallito.",
+    "sent": "Email inviata agli utenti {{sent}}.",
+    "failed": "Impossibile inviare e-mail.",
+    "composerTitle": "Invia e-mail",
+    "composerHint": "Invia un'e-mail brandizzata a un utente, a tutti gli utenti o ai membri dell'istituzione. Consegnato via e-mail (non solo un avviso in-app).",
+    "verifiedOnly": "Solo indirizzi email verificati",
+    "subject": "Soggetta",
+    "message": "Messaggio",
+    "actionUrl": "Collegamento pulsante opzionale",
+    "actionLabel": "Testo del pulsante opzionale",
+    "actionLabelPlaceholder": "Apri lo stand Lingo",
+    "sending": "Invio…",
+    "send": "Invia e-mail"
+  },
+  "errorBoundary": {
+    "redirecting": "Ti porto a casa…",
+    "goHome": "Vai alla home page di Lingo Booth"
+  },
+  "appLink": {
+    "title": "Apertura dello stand Lingo",
+    "body": "Se l'app non si apre, continua nel browser.",
+    "fallbackButton": "Continua nel browser"
   }
 }

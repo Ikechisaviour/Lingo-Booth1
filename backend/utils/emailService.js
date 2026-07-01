@@ -1,4 +1,5 @@
 const { Resend } = require('resend');
+const { getEmailStrings, getFooter } = require('./emailStrings');
 
 // Lazily instantiated so a missing key only fails when email is actually sent,
 // not at server startup (allows local dev without email credentials).
@@ -8,7 +9,73 @@ function getResend() {
   return _resend;
 }
 
-const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3001';
+const FRONTEND_URL = (process.env.FRONTEND_URL || 'http://localhost:3001').replace(/\/+$/, '');
+const MOBILE_APP_SCHEME = (process.env.MOBILE_APP_SCHEME || 'lingobooth').replace(/:\/+$/, '');
+
+// Emails render in real inboxes, so logo URLs must be absolute and public.
+// Never emit a localhost asset URL into a sent email: prefer an explicit
+// override, then a non-localhost FRONTEND_URL, then the production domain.
+const EMAIL_ASSET_BASE = (
+  process.env.EMAIL_ASSET_BASE
+  || (FRONTEND_URL && !FRONTEND_URL.includes('localhost') ? FRONTEND_URL : 'https://lingobooth.com')
+).replace(/\/+$/, '');
+const LOGO_URL = `${EMAIL_ASSET_BASE}/images/brand/logo-wordmark.png`;
+
+function frontendUrl(path = '/') {
+  const cleanPath = String(path || '/').startsWith('/') ? String(path || '/') : `/${path}`;
+  return `${FRONTEND_URL}${cleanPath}`;
+}
+
+function mobileAppUrl(path = '/') {
+  const cleanPath = String(path || '/').replace(/^\/+/, '');
+  return `${MOBILE_APP_SCHEME}://${cleanPath}`;
+}
+
+function appLinkUrl({ mobilePath = '/', fallbackPath = '/' } = {}) {
+  return frontendUrl(`/app-link?mobile=${encodeURIComponent(mobileAppUrl(mobilePath))}&fallback=${encodeURIComponent(frontendUrl(fallbackPath))}`);
+}
+
+function frontendPathForUrl(url) {
+  try {
+    const parsed = new URL(String(url || ''), FRONTEND_URL);
+    const frontend = new URL(FRONTEND_URL);
+    const isKnownFrontend = parsed.origin === frontend.origin || parsed.hostname === 'lingobooth.com';
+    if (!isKnownFrontend) return '';
+    return `${parsed.pathname || '/'}${parsed.search || ''}${parsed.hash || ''}`;
+  } catch (_) {
+    return '';
+  }
+}
+
+function emailActionUrlForPath(path) {
+  return appLinkUrl({ mobilePath: path, fallbackPath: path });
+}
+
+function emailActionUrlForUrl(url) {
+  const frontendPath = frontendPathForUrl(url);
+  return frontendPath ? emailActionUrlForPath(frontendPath) : url;
+}
+
+// Brand header shared by every transactional email. The two-cell accent bar
+// guarantees the green + orange brand colors render in every client (no reliance
+// on CSS gradient support), above the full-colour Lingo Booth wordmark. Alt text
+// keeps the brand visible when a client blocks images by default.
+function brandHeaderRows() {
+  return `
+        <tr>
+          <td style="padding:0;font-size:0;line-height:0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+              <td width="50%" height="8" style="height:8px;line-height:8px;font-size:0;background-color:#0e7a3a;">&nbsp;</td>
+              <td width="50%" height="8" style="height:8px;line-height:8px;font-size:0;background-color:#ff6b35;">&nbsp;</td>
+            </tr></table>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="background:#ffffff;padding:30px 40px 22px;">
+            <img src="${LOGO_URL}" width="180" alt="Lingo Booth" style="display:block;margin:0 auto;border:0;outline:none;text-decoration:none;width:180px;max-width:70%;height:auto;" />
+          </td>
+        </tr>`;
+}
 
 // Localized email strings keyed by language code
 const EMAIL_STRINGS = {
@@ -238,7 +305,7 @@ function getStrings(lang) {
   return EMAIL_STRINGS[lang] || EMAIL_STRINGS.en;
 }
 
-function buildVerificationTemplate(username, verifyUrl, lang) {
+function buildVerificationTemplate(username, buttonUrl, fallbackUrl, lang) {
   const s = getStrings(lang);
   const dir = (lang === 'ar' || lang === 'he') ? 'rtl' : 'ltr';
   return `
@@ -249,22 +316,17 @@ function buildVerificationTemplate(username, verifyUrl, lang) {
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#faf7f2;padding:40px 20px;">
     <tr><td align="center">
       <table width="520" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
-        <!-- Header -->
-        <tr>
-          <td style="background:linear-gradient(135deg,#ff6b35,#ff8f5e);padding:32px 40px;text-align:center;">
-            <h1 style="margin:0;color:#ffffff;font-size:24px;font-weight:700;">Lingo Booth</h1>
-          </td>
-        </tr>
+        <!-- Header -->${brandHeaderRows()}
         <!-- Body -->
         <tr>
-          <td style="padding:40px;">
+          <td style="padding:8px 40px 40px;">
             <h2 style="margin:0 0 8px;color:#1a1a2e;font-size:22px;">${s.heading}</h2>
             <p style="margin:0 0 24px;color:#6b7280;font-size:15px;line-height:1.6;">
               ${s.greeting(username)}
             </p>
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr><td align="center" style="padding:8px 0 32px;">
-                <a href="${verifyUrl}" style="display:inline-block;background:#ff6b35;color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:10px;font-size:16px;font-weight:600;">
+                <a href="${escapeHtml(buttonUrl)}" style="display:inline-block;background:#ff6b35;color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:10px;font-size:16px;font-weight:600;">
                   ${s.button}
                 </a>
               </td></tr>
@@ -273,7 +335,7 @@ function buildVerificationTemplate(username, verifyUrl, lang) {
               ${s.copyLink}
             </p>
             <p style="margin:0 0 24px;color:#ff6b35;font-size:13px;word-break:break-all;">
-              ${verifyUrl}
+              ${escapeHtml(fallbackUrl)}
             </p>
             <p style="margin:0;color:#9ca3af;font-size:13px;">
               ${s.expiry}
@@ -297,8 +359,12 @@ function buildVerificationTemplate(username, verifyUrl, lang) {
 
 async function sendVerificationEmail(to, username, token, lang = 'en') {
   const s = getStrings(lang);
-  const verifyUrl = `${FRONTEND_URL}/verify-email?token=${token}`;
-  const html = buildVerificationTemplate(username, verifyUrl, lang);
+  const verifyUrl = frontendUrl(`/verify-email?token=${encodeURIComponent(token)}`);
+  const verifyButtonUrl = appLinkUrl({
+    mobilePath: `/verify-email/${encodeURIComponent(token)}`,
+    fallbackPath: `/verify-email?token=${encodeURIComponent(token)}`,
+  });
+  const html = buildVerificationTemplate(username, verifyButtonUrl, verifyUrl, lang);
   const text = `${s.textGreeting(username)}\n\n${verifyUrl}\n\n${s.textExpiry}\n\n— Lingo Booth`;
 
   const { error } = await getResend().emails.send({
@@ -316,56 +382,44 @@ async function sendVerificationEmail(to, username, token, lang = 'en') {
   }
 }
 
-// --- Password Reset Email ---
+// --- Shared localized email helpers ---
 
-const RESET_STRINGS = {
-  en: {
-    subject: 'Reset your Lingo Booth password',
-    heading: 'Reset your password',
-    greeting: (name) => `Hi <strong>${name}</strong>, we received a request to reset your password. Click the button below to choose a new one.`,
-    button: 'Reset Password',
-    copyLink: 'Or copy and paste this link into your browser:',
-    expiry: "This link expires in 1 hour. If you didn't request a password reset, you can safely ignore this email.",
-  },
-};
-
-function getResetStrings(lang) {
-  return RESET_STRINGS[lang] || RESET_STRINGS.en;
+function fillName(str, name) {
+  return String(str == null ? '' : str).replace(/\{name\}/g, name == null ? '' : name);
 }
 
-function buildResetTemplate(username, resetUrl, lang) {
-  const s = getResetStrings(lang);
+function paragraph(text, color = '#374151') {
+  return `<p style="margin:0 0 16px;color:${color};font-size:15px;line-height:1.6;">${escapeHtml(text)}</p>`;
+}
+
+function ctaButton(url, label) {
+  if (!url) return '';
+  return `<table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:16px 0 8px;">
+    <a href="${escapeHtml(url)}" style="display:inline-block;background:#ff6b35;color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:10px;font-size:16px;font-weight:600;">${escapeHtml(label)}</a>
+  </td></tr></table>`;
+}
+
+// Branded shell shared by all localized transactional emails.
+function wrapEmailShell(lang, heading, innerHtml) {
   const dir = (lang === 'ar' || lang === 'he') ? 'rtl' : 'ltr';
   return `
 <!DOCTYPE html>
-<html dir="${dir}" lang="${lang}">
+<html dir="${dir}" lang="${escapeHtml(lang || 'en')}">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
 <body style="margin:0;padding:0;background:#faf7f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#faf7f2;padding:40px 20px;">
     <tr><td align="center">
       <table width="520" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        ${brandHeaderRows()}
         <tr>
-          <td style="background:linear-gradient(135deg,#ff6b35,#ff8f5e);padding:32px 40px;text-align:center;">
-            <h1 style="margin:0;color:#ffffff;font-size:24px;font-weight:700;">Lingo Booth</h1>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding:40px;">
-            <h2 style="margin:0 0 8px;color:#1a1a2e;font-size:22px;">${s.heading}</h2>
-            <p style="margin:0 0 24px;color:#6b7280;font-size:15px;line-height:1.6;">${s.greeting(username)}</p>
-            <table width="100%" cellpadding="0" cellspacing="0">
-              <tr><td align="center" style="padding:8px 0 32px;">
-                <a href="${resetUrl}" style="display:inline-block;background:#ff6b35;color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:10px;font-size:16px;font-weight:600;">${s.button}</a>
-              </td></tr>
-            </table>
-            <p style="margin:0 0 8px;color:#9ca3af;font-size:13px;">${s.copyLink}</p>
-            <p style="margin:0 0 24px;color:#ff6b35;font-size:13px;word-break:break-all;">${resetUrl}</p>
-            <p style="margin:0;color:#9ca3af;font-size:13px;">${s.expiry}</p>
+          <td style="padding:8px 40px 40px;">
+            <h2 style="margin:0 0 16px;color:#1a1a2e;font-size:22px;">${escapeHtml(heading)}</h2>
+            ${innerHtml}
           </td>
         </tr>
         <tr>
           <td style="padding:20px 40px;background:#f9fafb;text-align:center;border-top:1px solid #f0f0f0;">
-            <p style="margin:0;color:#9ca3af;font-size:12px;">&copy; ${new Date().getFullYear()} Lingo Booth</p>
+            <p style="margin:0;color:#9ca3af;font-size:12px;">&copy; ${new Date().getFullYear()} Lingo Booth &mdash; ${escapeHtml(getFooter(lang))}</p>
           </td>
         </tr>
       </table>
@@ -375,25 +429,203 @@ function buildResetTemplate(username, resetUrl, lang) {
 </html>`;
 }
 
-async function sendPasswordResetEmail(to, username, token, lang = 'en') {
-  const s = getResetStrings(lang);
-  const resetUrl = `${FRONTEND_URL}/reset-password?token=${token}`;
-  const html = buildResetTemplate(username, resetUrl, lang);
-  const text = `${s.textGreeting ? s.textGreeting(username) : `Hi ${username},\n\nWe received a request to reset your Lingo Booth password. Visit this link:`}\n\n${resetUrl}\n\nThis link expires in 1 hour.\n\n— Lingo Booth`;
-
+// Single-recipient send via Resend.
+async function sendOne({ to, subject, html, text }) {
   const { error } = await getResend().emails.send({
     from: 'Lingo Booth <info@lingobooth.com>',
     reply_to: 'info@lingobooth.com',
     to,
-    subject: s.subject,
+    subject,
     html,
     text,
   });
-
   if (error) {
     console.error('Resend email error:', error);
-    throw new Error(error.message || 'Failed to send password reset email');
+    throw new Error(error.message || 'Failed to send email');
   }
 }
 
-module.exports = { sendVerificationEmail, sendPasswordResetEmail };
+// --- Password Reset Email (localized) ---
+
+async function sendPasswordResetEmail(to, username, token, lang = 'en') {
+  const s = getEmailStrings('reset', lang);
+  const resetUrl = frontendUrl(`/reset-password?token=${encodeURIComponent(token)}`);
+  const resetButtonUrl = appLinkUrl({
+    mobilePath: `/reset-password/${encodeURIComponent(token)}`,
+    fallbackPath: `/reset-password?token=${encodeURIComponent(token)}`,
+  });
+  const inner =
+    paragraph(fillName(s.greeting, username), '#6b7280') +
+    ctaButton(resetButtonUrl, s.button) +
+    `<p style="margin:16px 0 8px;color:#9ca3af;font-size:13px;">${escapeHtml(s.copyLink)}</p>` +
+    `<p style="margin:0 0 24px;color:#ff6b35;font-size:13px;word-break:break-all;">${escapeHtml(resetUrl)}</p>` +
+    `<p style="margin:0;color:#9ca3af;font-size:13px;">${escapeHtml(s.expiry)}</p>`;
+  const html = wrapEmailShell(lang, s.heading, inner);
+  const text = `${fillName(s.textIntro, username)}\n\n${resetUrl}\n\n${s.textExpiry}\n\n— Lingo Booth`;
+  await sendOne({ to, subject: s.subject, html, text });
+}
+
+// --- Welcome (sign-up) Email ---
+
+async function sendWelcomeEmail(to, username, lang = 'en') {
+  const s = getEmailStrings('welcome', lang);
+  const url = frontendUrl('/');
+  const buttonUrl = emailActionUrlForPath('/');
+  const inner = paragraph(fillName(s.greeting, username)) + paragraph(s.body) + ctaButton(buttonUrl, s.button);
+  const html = wrapEmailShell(lang, s.heading, inner);
+  const text = `${fillName(s.greeting, username)}\n\n${s.body}\n\n${s.button}: ${url}\n\n— Lingo Booth`;
+  await sendOne({ to, subject: s.subject, html, text });
+}
+
+// --- Login "welcome back" Email (caller throttles to once per 30 days) ---
+
+async function sendLoginNotificationEmail(to, username, lang = 'en') {
+  const s = getEmailStrings('login', lang);
+  const url = frontendUrl('/');
+  const buttonUrl = emailActionUrlForPath('/');
+  const inner = paragraph(fillName(s.greeting, username)) + paragraph(s.body) + ctaButton(buttonUrl, s.button);
+  const html = wrapEmailShell(lang, s.heading, inner);
+  const text = `${fillName(s.greeting, username)}\n\n${s.body}\n\n${s.button}: ${url}\n\n— Lingo Booth`;
+  await sendOne({ to, subject: s.subject, html, text });
+}
+
+// --- New-device sign-in security Email (never throttled) ---
+
+function detailRow(label, value) {
+  return `<tr>
+    <td style="padding:6px 12px 6px 0;color:#9ca3af;font-size:13px;white-space:nowrap;vertical-align:top;">${escapeHtml(label)}</td>
+    <td style="padding:6px 0;color:#374151;font-size:13px;">${escapeHtml(value || '—')}</td>
+  </tr>`;
+}
+
+async function sendNewDeviceEmail(to, username, lang = 'en', { when = '', where = '', device = '' } = {}) {
+  const s = getEmailStrings('newDevice', lang);
+  const url = frontendUrl('/forgot-password');
+  const buttonUrl = emailActionUrlForPath('/forgot-password');
+  const rows = detailRow(s.labelWhen, when) + detailRow(s.labelWhere, where) + detailRow(s.labelDevice, device);
+  const inner =
+    paragraph(fillName(s.greeting, username)) +
+    `<p style="margin:0 0 8px;color:#374151;font-size:15px;">${escapeHtml(s.detailsIntro)}</p>` +
+    `<table cellpadding="0" cellspacing="0" style="margin:0 0 20px;">${rows}</table>` +
+    paragraph(s.reassure, '#6b7280') +
+    `<p style="margin:0 0 8px;color:#b45309;font-size:14px;line-height:1.6;font-weight:600;">${escapeHtml(s.warn)}</p>` +
+    ctaButton(buttonUrl, s.button);
+  const html = wrapEmailShell(lang, s.heading, inner);
+  const text = `${fillName(s.greeting, username)}\n\n${s.detailsIntro}\n${s.labelWhen}: ${when || '—'}\n${s.labelWhere}: ${where || '—'}\n${s.labelDevice}: ${device || '—'}\n\n${s.reassure}\n${s.warn}\n\n${s.button}: ${url}\n\n— Lingo Booth`;
+  await sendOne({ to, subject: s.subject, html, text });
+}
+
+// --- Admin Broadcast Email ---
+
+function escapeHtml(str) {
+  return String(str == null ? '' : str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// Turn a plain-text admin message into escaped HTML paragraphs (blank line = new
+// paragraph, single newline = <br>). Prevents any HTML injection from the input.
+function messageToHtml(message) {
+  return String(message || '')
+    .split(/\n{2,}/)
+    .map((para) => `<p style="margin:0 0 16px;color:#374151;font-size:15px;line-height:1.6;">${escapeHtml(para).replace(/\n/g, '<br>')}</p>`)
+    .join('');
+}
+
+function buildAdminEmailTemplate(username, subject, message, actionUrl, actionLabel, lang) {
+  const dir = (lang === 'ar' || lang === 'he') ? 'rtl' : 'ltr';
+  const greetingName = escapeHtml(username || 'there');
+  const bodyHtml = messageToHtml(message);
+  const buttonUrl = actionUrl ? emailActionUrlForUrl(actionUrl) : '';
+  const actionButton = actionUrl
+    ? `<table width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:16px 0 8px;">
+         <a href="${escapeHtml(buttonUrl)}" style="display:inline-block;background:#ff6b35;color:#ffffff;text-decoration:none;padding:14px 40px;border-radius:10px;font-size:16px;font-weight:600;">${escapeHtml(actionLabel || 'Open Lingo Booth')}</a>
+       </td></tr></table>`
+    : '';
+  return `
+<!DOCTYPE html>
+<html dir="${dir}" lang="${escapeHtml(lang || 'en')}">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#faf7f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#faf7f2;padding:40px 20px;">
+    <tr><td align="center">
+      <table width="520" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
+        ${brandHeaderRows()}
+        <tr>
+          <td style="padding:8px 40px 40px;">
+            <h2 style="margin:0 0 16px;color:#1a1a2e;font-size:22px;">${escapeHtml(subject)}</h2>
+            <p style="margin:0 0 16px;color:#374151;font-size:15px;line-height:1.6;">Hi <strong>${greetingName}</strong>,</p>
+            ${bodyHtml}
+            ${actionButton}
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:20px 40px;background:#f9fafb;text-align:center;border-top:1px solid #f0f0f0;">
+            <p style="margin:0;color:#9ca3af;font-size:12px;">&copy; ${new Date().getFullYear()} Lingo Booth &mdash; Learn languages for real conversations</p>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+
+/**
+ * Send a branded admin email to many recipients. Uses Resend's batch API so
+ * recipients never see each other, with per-recipient name and language.
+ * @param {Array<{email:string, username?:string, nativeLanguage?:string}>} recipients
+ * @param {{subject:string, message:string, actionUrl?:string, actionLabel?:string}} content
+ * @returns {Promise<{sent:number, failed:number, errors:string[]}>}
+ */
+async function sendAdminEmails(recipients, { subject, message, actionUrl = '', actionLabel = '' } = {}) {
+  const from = 'Lingo Booth <info@lingobooth.com>';
+  const cleanSubject = String(subject || '').trim();
+  const cleanMessage = String(message || '');
+  const cleanActionUrl = String(actionUrl || '').trim();
+  const cleanActionLabel = String(actionLabel || '').trim();
+
+  let sent = 0;
+  let failed = 0;
+  const errors = [];
+  const CHUNK = 100; // Resend batch API caps at 100 emails per request.
+
+  for (let i = 0; i < recipients.length; i += CHUNK) {
+    const chunk = recipients.slice(i, i + CHUNK);
+    const entries = chunk.map((r) => {
+      const lang = r.nativeLanguage || 'en';
+      const html = buildAdminEmailTemplate(r.username, cleanSubject, cleanMessage, cleanActionUrl, cleanActionLabel, lang);
+      const text = `${cleanMessage}${cleanActionUrl ? `\n\n${cleanActionLabel || 'Open'}: ${cleanActionUrl}` : ''}\n\n— Lingo Booth`;
+      return { from, to: r.email, subject: cleanSubject, html, text };
+    });
+
+    try {
+      const { error } = await getResend().batch.send(entries);
+      if (error) {
+        failed += chunk.length;
+        errors.push(error.message || 'Batch send failed');
+        console.error('Resend admin batch error:', error);
+      } else {
+        sent += chunk.length;
+      }
+    } catch (err) {
+      failed += chunk.length;
+      errors.push(err.message || 'Batch send threw');
+      console.error('Resend admin batch threw:', err);
+    }
+  }
+
+  return { sent, failed, errors };
+}
+
+module.exports = {
+  sendVerificationEmail,
+  sendPasswordResetEmail,
+  sendAdminEmails,
+  sendWelcomeEmail,
+  sendLoginNotificationEmail,
+  sendNewDeviceEmail,
+};

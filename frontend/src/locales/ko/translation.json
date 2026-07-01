@@ -709,7 +709,25 @@
     "failures": "실패",
     "messages": "메시지",
     "semesterInterest": "학기 관심도",
-    "reviews": "리뷰"
+    "reviews": "리뷰",
+    "sectionsNav": "관리 섹션",
+    "navGroups": {
+      "overview": "개요",
+      "attention": "주의가 필요함",
+      "people": "사람들",
+      "revenue": "수익",
+      "tools": "도구",
+      "engagement": "용법"
+    },
+    "communications": "연락",
+    "institutions": "기관",
+    "sendEmailAction": "이메일 보내기",
+    "institutionsSubtitle": "등록된 모든 기관 및 해당 기관의 관리자 연락처 이메일.",
+    "institutionAdminEmail": "관리자 이메일",
+    "noInstitutionAdmin": "할당된 관리자가 없습니다.",
+    "emailAdmin": "이메일 관리자",
+    "emailUserTitle": "이메일 {{name}}",
+    "emailUserTo": "다음으로 브랜드 이메일을 보냅니다."
   },
   "forgotPassword": {
     "title": "비밀번호를 잊으셨나요",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "개방형 기관",
     "manageSeatsAction": "좌석 관리",
     "viewPlansAction": "계획 보기",
-    "resumePracticeAction": "연습 재개"
+    "resumePracticeAction": "연습 재개",
+    "emptyArchived": "보관된 알림이 없습니다.",
+    "restore": "복원하다",
+    "inboxTab": "받은편지함",
+    "archivedTab": "보관됨"
   },
   "stepUp": {
     "verifyFailed": "비밀번호를 확인할 수 없습니다.",
@@ -2376,6 +2398,50 @@
       "previous": "이전 영웅 슬라이드",
       "next": "다음 영웅 슬라이드",
       "showSlide": "히어로 슬라이드 표시 {{number}}"
+    },
+    "statement": {
+      "proveSerious": "당신은 매일 당신이 진지하다는 것을 증명했습니다.",
+      "cared": "매일 그것은 연속 기록에만 관심이 있다는 것을 증명했습니다.",
+      "notLearning": "그것은 배우는 것이 아닙니다. 그것은 불꽃이 있는 카운터입니다.",
+      "walkAway": "연속 추적에서 벗어나십시오.",
+      "takeSeriousness": "결과가 나오면 진지하게 받아들이십시오.",
+      "teaches": "Lingo Booth는 언어 뒤에 숨은 원리를 가르칩니다. 연습으로 훈련하십시오. 그런 다음 모든 예를 귀하의 수준에 맞게 실제 요구 사항에 맞게 조정합니다.",
+      "curriculum": "처음부터 끝까지 안내되는 완전한 커리큘럼입니다. 읽기, 쓰기, 듣기, 말하기, 검토 - 서로 겹쳐지지 않고 함께 작업합니다.",
+      "actuallyUse": "여기에서는 실제로 사용할 수 있는 내용을 알아봅니다.",
+      "cta": "학습을 시작하세요.",
+      "scrollAria": "더 보려면 스크롤하세요.",
+      "teaser": "연속 학습이 아닌 언어를 배우십시오. 전체 커리큘럼을 자신의 언어로 배우십시오.",
+      "readMore": "더 읽어보세요",
+      "showLess": "간략히 보기"
     }
+  },
+  "brand": {
+    "lingo": "뜻 모를 말",
+    "booth": "노점"
+  },
+  "adminEmail": {
+    "confirmAll": "그러면 모든 사용자에게 이메일이 전송됩니다. 계속하시겠습니까?",
+    "sentWithFailures": "{{sent}} 사용자에게 이메일이 전송되었습니다. {{failed}} 실패했습니다.",
+    "sent": "{{sent}} 사용자에게 이메일이 전송되었습니다.",
+    "failed": "이메일을 보낼 수 없습니다.",
+    "composerTitle": "이메일 보내기",
+    "composerHint": "한 명의 사용자, 모든 사용자 또는 기관 구성원에게 브랜드 이메일을 보냅니다. 이메일을 통해 전달됩니다(단순한 인앱 알림이 아님).",
+    "verifiedOnly": "확인된 이메일 주소만",
+    "subject": "주제",
+    "message": "메시지",
+    "actionUrl": "선택적 버튼 링크",
+    "actionLabel": "선택적 버튼 텍스트",
+    "actionLabelPlaceholder": "링고 부스 오픈",
+    "sending": "배상…",
+    "send": "이메일 보내기"
+  },
+  "errorBoundary": {
+    "redirecting": "집에 데려가는 중…",
+    "goHome": "Lingo 부스 홈페이지로 이동"
+  },
+  "appLink": {
+    "title": "링고 부스 오픈",
+    "body": "앱이 열리지 않으면 브라우저에서 계속하세요.",
+    "fallbackButton": "브라우저에서 계속"
   }
 }

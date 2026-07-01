@@ -48,6 +48,7 @@ const CurriculumV2Event = require('../models/CurriculumV2Event');
 const LanguagePairProfile = require('../models/LanguagePairProfile');
 const srs = require('../utils/curriculumV2Srs');
 const { getContextBoosts } = require('../utils/contextToConcepts');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const SRS_CONCEPT_KINDS = ['vocab', 'pattern', 'contrast', 'story'];
 const SRS_SKILLS = ['recognition', 'production', 'listening', 'pronunciation'];
@@ -135,21 +136,21 @@ function isV2Enabled(req) {
 }
 
 router.get('/lessons', verifyToken, (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
   const targetLang = req.query.targetLang || 'ko';
   res.json({ lessons: loadLessons().map((l) => hydrateLesson(l, targetLang)) });
 });
 
 router.get('/lessons/:id', verifyToken, (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
   const lesson = loadLessons().find((l) => l.id === req.params.id);
-  if (!lesson) return res.status(404).json({ message: 'Lesson not found.' });
+  if (!lesson) return sendClientError(res, 404, 'CURRICULUM_V2_LESSON_NOT_FOUND', 'Lesson not found.');
   const targetLang = req.query.targetLang || lesson.targetLang || 'ko';
   res.json({ lesson: hydrateLesson(lesson, targetLang) });
 });
 
 router.get('/plan', verifyToken, async (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
   const progress = await CurriculumV2Progress.findOne({ userId: req.userId }) || {
     completedLessonIds: [],
     completedConceptIds: [],
@@ -222,9 +223,9 @@ router.get('/plan', verifyToken, async (req, res) => {
 });
 
 router.post('/lessons/:id/complete', verifyToken, async (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
   const lesson = loadLessons().find((l) => l.id === req.params.id);
-  if (!lesson) return res.status(404).json({ message: 'Lesson not found.' });
+  if (!lesson) return sendClientError(res, 404, 'CURRICULUM_V2_COMPLETE_LESSON_NOT_FOUND', 'Lesson not found.');
 
   const progress = await CurriculumV2Progress.findOneAndUpdate(
     { userId: req.userId },
@@ -250,21 +251,21 @@ router.post('/lessons/:id/complete', verifyToken, async (req, res) => {
  * If AI is not configured, returns { aiEnabled: false } so the UI can fall back.
  */
 router.post('/feedback', verifyToken, curriculumV2RateLimit(FEEDBACK_LIMITS), async (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
 
   const { lessonId, drillIndex, fillerConceptId, learnerText } = req.body || {};
   if (!lessonId || typeof drillIndex !== 'number' || !fillerConceptId || !learnerText) {
-    return res.status(400).json({ message: 'lessonId, drillIndex, fillerConceptId, learnerText required.' });
+    return sendClientError(res, 400, 'CURRICULUM_V2_FEEDBACK_MISSING_FIELDS', 'lessonId, drillIndex, fillerConceptId, learnerText required.');
   }
 
   const lesson = loadLessons().find((l) => l.id === lessonId);
   if (!lesson || lesson.lessonType !== LESSON_TYPES.PATTERN) {
-    return res.status(404).json({ message: 'Pattern lesson not found.' });
+    return sendClientError(res, 404, 'CURRICULUM_V2_FEEDBACK_PATTERN_LESSON_NOT_FOUND', 'Pattern lesson not found.');
   }
   const drill = (lesson.drills || [])[drillIndex];
-  if (!drill) return res.status(404).json({ message: 'Drill not found at that index.' });
+  if (!drill) return sendClientError(res, 404, 'CURRICULUM_V2_FEEDBACK_DRILL_NOT_FOUND', 'Drill not found at that index.');
   if (!drill.fillerConceptIds.includes(fillerConceptId)) {
-    return res.status(400).json({ message: 'Filler concept is not part of this drill.' });
+    return sendClientError(res, 400, 'CURRICULUM_V2_FEEDBACK_FILLER_NOT_IN_DRILL', 'Filler concept is not part of this drill.');
   }
 
   const fillerConcept = CONCEPT_INDEX[fillerConceptId];
@@ -302,10 +303,10 @@ router.post('/feedback', verifyToken, curriculumV2RateLimit(FEEDBACK_LIMITS), as
  * { accuracy: 'high'|'partial'|'low', feedback }.
  */
 router.post('/pronunciation-check', verifyToken, curriculumV2RateLimit(PRONUNCIATION_LIMITS), async (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
 
   const { target, transcript } = req.body || {};
-  if (!target) return res.status(400).json({ message: 'target required.' });
+  if (!target) return sendClientError(res, 400, 'CURRICULUM_V2_PRONUNCIATION_TARGET_REQUIRED', 'target required.');
 
   if (!isAiAvailable()) {
     return res.json({ aiEnabled: false, evaluation: null });
@@ -336,7 +337,7 @@ router.post('/pronunciation-check', verifyToken, curriculumV2RateLimit(PRONUNCIA
  * (prereqs respected — anything required by another concept comes first).
  */
 router.get('/catalog', verifyToken, async (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
 
   const targetLang = req.query.targetLang || 'ko';
   const lessons = loadLessons();
@@ -473,7 +474,7 @@ router.get('/catalog', verifyToken, async (req, res) => {
  * when a learner picks a specific concept from the catalog.
  */
 router.get('/concepts/:conceptId/lessons', verifyToken, (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
   const conceptId = String(req.params.conceptId || '');
   const targetLang = req.query.targetLang || 'ko';
   const TYPE_ORDER = ['ContrastNote', 'PatternLesson', 'ClozeLesson', 'StoryLesson', 'VocabDeck', 'PronunciationTask', 'MinimalPairTask'];
@@ -485,12 +486,12 @@ router.get('/concepts/:conceptId/lessons', verifyToken, (req, res) => {
     .filter((l) => l.conceptId === conceptId && l.targetLang === targetLang)
     .map((l) => hydrateLesson(l, targetLang))
     .sort((a, b) => typeRank(a.lessonType) - typeRank(b.lessonType));
-  if (!matching.length) return res.status(404).json({ message: 'No lessons found for that concept.' });
+  if (!matching.length) return sendClientError(res, 404, 'CURRICULUM_V2_CONCEPT_LESSONS_NOT_FOUND', 'No lessons found for that concept.');
   res.json({ conceptId, targetLang, sequence: matching });
 });
 
 router.get('/progress', verifyToken, async (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
   const progress = await CurriculumV2Progress.findOne({ userId: req.userId });
   res.json({
     progress: progress || { completedLessonIds: [], completedConceptIds: [], lastSessionAt: null },
@@ -508,7 +509,7 @@ router.get('/progress', verifyToken, async (req, res) => {
  * malformed event than lose the signal.
  */
 router.post('/events', verifyToken, async (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
 
   const {
     conceptId,
@@ -523,13 +524,13 @@ router.post('/events', verifyToken, async (req, res) => {
   const targetLang = req.body?.targetLang || 'ko';
 
   if (!conceptId || typeof conceptId !== 'string') {
-    return res.status(400).json({ message: 'conceptId required.' });
+    return sendClientError(res, 400, 'CURRICULUM_V2_EVENT_CONCEPT_ID_REQUIRED', 'conceptId required.');
   }
   if (!EVENT_LESSON_TYPES.includes(lessonType)) {
-    return res.status(400).json({ message: `lessonType must be one of ${EVENT_LESSON_TYPES.join(', ')}.` });
+    return sendClientError(res, 400, 'CURRICULUM_V2_EVENT_INVALID_LESSON_TYPE', `lessonType must be one of ${EVENT_LESSON_TYPES.join(', ')}.`);
   }
   if (!EVENT_OUTCOMES.includes(outcome)) {
-    return res.status(400).json({ message: `outcome must be one of ${EVENT_OUTCOMES.join(', ')}.` });
+    return sendClientError(res, 400, 'CURRICULUM_V2_EVENT_INVALID_OUTCOME', `outcome must be one of ${EVENT_OUTCOMES.join(', ')}.`);
   }
 
   try {
@@ -572,22 +573,22 @@ router.post('/events', verifyToken, async (req, res) => {
  * advances stability/difficulty/dueAt per the FSRS-lite scheduler.
  */
 router.post('/srs/review', verifyToken, async (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
 
   const { conceptId, conceptKind, skill, outcome } = req.body || {};
   const targetLang = req.body?.targetLang || 'ko';
 
   if (!conceptId || typeof conceptId !== 'string') {
-    return res.status(400).json({ message: 'conceptId required.' });
+    return sendClientError(res, 400, 'CURRICULUM_V2_SRS_CONCEPT_ID_REQUIRED', 'conceptId required.');
   }
   if (!SRS_CONCEPT_KINDS.includes(conceptKind)) {
-    return res.status(400).json({ message: `conceptKind must be one of ${SRS_CONCEPT_KINDS.join(', ')}.` });
+    return sendClientError(res, 400, 'CURRICULUM_V2_SRS_INVALID_CONCEPT_KIND', `conceptKind must be one of ${SRS_CONCEPT_KINDS.join(', ')}.`);
   }
   if (!SRS_SKILLS.includes(skill)) {
-    return res.status(400).json({ message: `skill must be one of ${SRS_SKILLS.join(', ')}.` });
+    return sendClientError(res, 400, 'CURRICULUM_V2_SRS_INVALID_SKILL', `skill must be one of ${SRS_SKILLS.join(', ')}.`);
   }
   if (!srs.OUTCOMES.includes(outcome)) {
-    return res.status(400).json({ message: `outcome must be one of ${srs.OUTCOMES.join(', ')}.` });
+    return sendClientError(res, 400, 'CURRICULUM_V2_SRS_INVALID_OUTCOME', `outcome must be one of ${srs.OUTCOMES.join(', ')}.`);
   }
 
   try {
@@ -601,8 +602,10 @@ router.post('/srs/review', verifyToken, async (req, res) => {
     });
     res.json({ state });
   } catch (err) {
-    console.error('Curriculum v2 SRS review failed:', err.message || err);
-    res.status(500).json({ message: 'Could not record review.' });
+    return sendServerError(req, res, err, 'CURRICULUM_V2_SRS_REVIEW_FAILED', {
+      clientMessage: 'Could not record review.',
+      metadata: { conceptId, conceptKind, skill },
+    });
   }
 });
 
@@ -613,7 +616,7 @@ router.post('/srs/review', verifyToken, async (req, res) => {
 // too — transcription is also AI spend.
 
 router.get('/asr/status', verifyToken, (req, res) => {
-  if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+  if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
   res.json(whisper.getAsrConfig());
 });
 
@@ -623,7 +626,7 @@ router.post(
   curriculumV2RateLimit(PRONUNCIATION_LIMITS),
   express.json({ limit: '5mb' }),
   async (req, res) => {
-    if (!isV2Enabled(req)) return res.status(403).json({ message: 'Curriculum v2 not enabled for this user.' });
+    if (!isV2Enabled(req)) return sendClientError(res, 403, 'CURRICULUM_V2_NOT_ENABLED', 'Curriculum v2 not enabled for this user.');
     if (!whisper.isAsrAvailable()) {
       return res.status(503).json({
         message: 'Server-side ASR is not configured. Falling back to browser speech recognition.',
@@ -633,16 +636,16 @@ router.post(
     }
     const { audioBase64, mimeType = 'audio/webm', language = 'ko', prompt = '' } = req.body || {};
     if (!audioBase64 || typeof audioBase64 !== 'string') {
-      return res.status(400).json({ message: 'audioBase64 required.' });
+      return sendClientError(res, 400, 'CURRICULUM_V2_ASR_AUDIO_REQUIRED', 'audioBase64 required.');
     }
     let audioBuffer;
     try {
       audioBuffer = Buffer.from(audioBase64, 'base64');
     } catch (_) {
-      return res.status(400).json({ message: 'audioBase64 could not be decoded.' });
+      return sendClientError(res, 400, 'CURRICULUM_V2_ASR_AUDIO_DECODE_FAILED', 'audioBase64 could not be decoded.');
     }
     if (audioBuffer.length === 0 || audioBuffer.length > 4 * 1024 * 1024) {
-      return res.status(400).json({ message: 'Audio payload must be > 0 and <= 4 MB.' });
+      return sendClientError(res, 400, 'CURRICULUM_V2_ASR_AUDIO_SIZE_INVALID', 'Audio payload must be > 0 and <= 4 MB.');
     }
     try {
       const result = await whisper.transcribe({
@@ -683,8 +686,9 @@ router.get('/hangul/progress', verifyToken, async (req, res) => {
       onboardingComplete: Hangul.isOnboardingComplete(progress),
     });
   } catch (err) {
-    console.error('Hangul progress fetch failed:', err.message || err);
-    res.status(500).json({ message: 'Could not load Hangul progress.' });
+    return sendServerError(req, res, err, 'CURRICULUM_V2_HANGUL_PROGRESS_FETCH_FAILED', {
+      clientMessage: 'Could not load Hangul progress.',
+    });
   }
 });
 
@@ -694,7 +698,7 @@ router.get('/hangul/progress', verifyToken, async (req, res) => {
 router.post('/hangul/skip', verifyToken, async (req, res) => {
   try {
     const user = await User.findById(req.userId);
-    if (!user) return res.status(404).json({ message: 'User not found.' });
+    if (!user) return sendClientError(res, 404, 'CURRICULUM_V2_HANGUL_SKIP_USER_NOT_FOUND', 'User not found.');
     user.hangulProgress = user.hangulProgress || { completedGroups: [], onboardingCompletedAt: null, lastVisitedAt: null };
     if (!user.hangulProgress.onboardingCompletedAt) {
       user.hangulProgress.onboardingCompletedAt = new Date();
@@ -708,19 +712,20 @@ router.post('/hangul/skip', verifyToken, async (req, res) => {
       skipped: true,
     });
   } catch (err) {
-    console.error('Hangul skip failed:', err.message || err);
-    res.status(500).json({ message: 'Could not skip onboarding.' });
+    return sendServerError(req, res, err, 'CURRICULUM_V2_HANGUL_SKIP_FAILED', {
+      clientMessage: 'Could not skip onboarding.',
+    });
   }
 });
 
 router.post('/hangul/groups/:groupId/complete', verifyToken, async (req, res) => {
   const groupId = String(req.params.groupId || '');
   if (!Hangul.getGroup(groupId)) {
-    return res.status(404).json({ message: 'Unknown Hangul group.' });
+    return sendClientError(res, 404, 'CURRICULUM_V2_HANGUL_GROUP_UNKNOWN', 'Unknown Hangul group.');
   }
   try {
     const user = await User.findById(req.userId);
-    if (!user) return res.status(404).json({ message: 'User not found.' });
+    if (!user) return sendClientError(res, 404, 'CURRICULUM_V2_HANGUL_COMPLETE_USER_NOT_FOUND', 'User not found.');
     user.hangulProgress = user.hangulProgress || { completedGroups: [], onboardingCompletedAt: null, lastVisitedAt: null };
     const completed = new Set(user.hangulProgress.completedGroups || []);
     completed.add(groupId);
@@ -736,8 +741,10 @@ router.post('/hangul/groups/:groupId/complete', verifyToken, async (req, res) =>
       onboardingComplete: Hangul.isOnboardingComplete(user.hangulProgress),
     });
   } catch (err) {
-    console.error('Hangul group complete failed:', err.message || err);
-    res.status(500).json({ message: 'Could not save progress.' });
+    return sendServerError(req, res, err, 'CURRICULUM_V2_HANGUL_GROUP_COMPLETE_FAILED', {
+      clientMessage: 'Could not save progress.',
+      metadata: { groupId },
+    });
   }
 });
 

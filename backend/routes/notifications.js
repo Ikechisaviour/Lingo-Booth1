@@ -5,6 +5,7 @@ const {
   notifyUsers,
   resolveAdminBroadcastRecipients,
 } = require('../utils/notifications');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const router = express.Router();
 
@@ -22,6 +23,7 @@ function serialize(notification) {
     action: notification.action || {},
     organizationId: notification.organizationId || null,
     readAt: notification.readAt || null,
+    archivedAt: notification.archivedAt || null,
     createdAt: notification.createdAt,
   };
 }
@@ -30,18 +32,22 @@ router.get('/', async (req, res) => {
   try {
     const limit = Math.min(Math.max(parseInt(req.query.limit, 10) || 30, 1), 100);
     const unreadOnly = req.query.unread === 'true';
-    const filter = {
-      userId: req.userId,
-      archivedAt: null,
-    };
-    if (unreadOnly) filter.readAt = null;
+    const archivedOnly = req.query.archived === 'true';
+    const filter = { userId: req.userId };
+    if (archivedOnly) {
+      // History view: dismissed notifications the user can come back to.
+      filter.archivedAt = { $ne: null };
+    } else {
+      filter.archivedAt = null;
+      if (unreadOnly) filter.readAt = null;
+    }
     const [notifications, unreadCount] = await Promise.all([
       Notification.find(filter).sort({ createdAt: -1 }).limit(limit).lean(),
       Notification.countDocuments({ userId: req.userId, archivedAt: null, readAt: null }),
     ]);
     res.json({ notifications: notifications.map(serialize), unreadCount });
   } catch (error) {
-    res.status(500).json({ message: 'Could not load notifications' });
+    return sendServerError(req, res, error, 'NOTIFICATIONS_LIST_FAILED', { clientMessage: 'Could not load notifications' });
   }
 });
 
@@ -50,7 +56,7 @@ router.get('/unread-count', async (req, res) => {
     const unreadCount = await Notification.countDocuments({ userId: req.userId, archivedAt: null, readAt: null });
     res.json({ unreadCount });
   } catch (error) {
-    res.status(500).json({ message: 'Could not load notification count' });
+    return sendServerError(req, res, error, 'NOTIFICATIONS_UNREAD_COUNT_FAILED', { clientMessage: 'Could not load notification count' });
   }
 });
 
@@ -61,10 +67,24 @@ router.put('/:notificationId/read', async (req, res) => {
       { $set: { readAt: new Date() } },
       { new: true },
     ).lean();
-    if (!notification) return res.status(404).json({ message: 'Notification not found' });
+    if (!notification) return sendClientError(res, 404, 'NOTIFICATIONS_READ_NOT_FOUND', 'Notification not found');
     res.json({ notification: serialize(notification) });
   } catch (error) {
-    res.status(500).json({ message: 'Could not update notification' });
+    return sendServerError(req, res, error, 'NOTIFICATIONS_MARK_READ_FAILED', { clientMessage: 'Could not update notification', metadata: { notificationId: req.params?.notificationId } });
+  }
+});
+
+router.put('/:notificationId/restore', async (req, res) => {
+  try {
+    const notification = await Notification.findOneAndUpdate(
+      { _id: req.params.notificationId, userId: req.userId },
+      { $set: { archivedAt: null } },
+      { new: true },
+    ).lean();
+    if (!notification) return sendClientError(res, 404, 'NOTIFICATIONS_RESTORE_NOT_FOUND', 'Notification not found');
+    res.json({ notification: serialize(notification) });
+  } catch (error) {
+    return sendServerError(req, res, error, 'NOTIFICATIONS_RESTORE_FAILED', { clientMessage: 'Could not restore notification', metadata: { notificationId: req.params?.notificationId } });
   }
 });
 
@@ -76,7 +96,7 @@ router.put('/read-all', async (req, res) => {
     );
     res.json({ ok: true, unreadCount: 0 });
   } catch (error) {
-    res.status(500).json({ message: 'Could not update notifications' });
+    return sendServerError(req, res, error, 'NOTIFICATIONS_MARK_ALL_READ_FAILED', { clientMessage: 'Could not update notifications' });
   }
 });
 
@@ -87,10 +107,10 @@ router.delete('/:notificationId', async (req, res) => {
       { $set: { archivedAt: new Date(), readAt: new Date() } },
       { new: true },
     ).lean();
-    if (!notification) return res.status(404).json({ message: 'Notification not found' });
+    if (!notification) return sendClientError(res, 404, 'NOTIFICATIONS_ARCHIVE_NOT_FOUND', 'Notification not found');
     res.json({ ok: true });
   } catch (error) {
-    res.status(500).json({ message: 'Could not archive notification' });
+    return sendServerError(req, res, error, 'NOTIFICATIONS_ARCHIVE_FAILED', { clientMessage: 'Could not archive notification', metadata: { notificationId: req.params?.notificationId } });
   }
 });
 
@@ -105,7 +125,7 @@ router.post('/admin/broadcast', isAdmin, async (req, res) => {
       organizationId: req.body?.organizationId,
       roles: Array.isArray(req.body?.roles) ? req.body.roles : [],
     });
-    if (!recipientIds.length) return res.status(404).json({ message: 'No notification recipients found' });
+    if (!recipientIds.length) return sendClientError(res, 404, 'NOTIFICATIONS_BROADCAST_NO_RECIPIENTS', 'No notification recipients found');
 
     await notifyUsers(recipientIds, {
       category: 'system',
@@ -126,7 +146,7 @@ router.post('/admin/broadcast', isAdmin, async (req, res) => {
 
     res.status(201).json({ sent: recipientIds.length });
   } catch (error) {
-    res.status(500).json({ message: 'Could not send notification' });
+    return sendServerError(req, res, error, 'NOTIFICATIONS_BROADCAST_FAILED', { clientMessage: 'Could not send notification', metadata: { target: req.body?.target } });
   }
 });
 

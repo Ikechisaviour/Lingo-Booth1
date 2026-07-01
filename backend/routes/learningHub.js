@@ -16,6 +16,7 @@ const {
   searchLearningItems,
 } = require('../utils/learningHub');
 const { recordLearningEvent } = require('../utils/xpRewards');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const router = express.Router();
 router.use(verifyToken);
@@ -34,7 +35,7 @@ function languagePair(req) {
 function validatePair(req, res) {
   const pair = languagePair(req);
   if (!pair.targetLanguage || !pair.nativeLanguage) {
-    res.status(400).json({ message: 'targetLang/nativeLang are required' });
+    sendClientError(res, 400, 'LEARNING_HUB_LANGUAGE_PAIR_REQUIRED', 'targetLang/nativeLang are required');
     return null;
   }
   return pair;
@@ -84,8 +85,9 @@ router.get('/overview', async (req, res) => {
     );
     res.json({ ...overview, pairProfile });
   } catch (error) {
-    console.error('Learning hub overview error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LEARNING_HUB_OVERVIEW_FAILED', {
+      metadata: { targetLanguage: req.query.targetLang, nativeLanguage: req.query.nativeLang },
+    });
   }
 });
 
@@ -99,8 +101,7 @@ router.get('/saved-items', async (req, res) => {
     }).sort({ updatedAt: -1 }).lean();
     res.json(items);
   } catch (error) {
-    console.error('List saved items error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LEARNING_HUB_LIST_SAVED_ITEMS_FAILED');
   }
 });
 
@@ -109,7 +110,7 @@ router.post('/saved-items', async (req, res) => {
     const pair = validatePair(req, res);
     if (!pair) return;
     const targetText = compact(req.body.targetText, 600);
-    if (!targetText) return res.status(400).json({ message: 'targetText is required' });
+    if (!targetText) return sendClientError(res, 400, 'LEARNING_HUB_TARGET_TEXT_REQUIRED', 'targetText is required');
 
     const payload = {
       userId: req.userId,
@@ -158,8 +159,7 @@ router.post('/saved-items', async (req, res) => {
     });
     res.status(201).json(item);
   } catch (error) {
-    console.error('Save study item error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LEARNING_HUB_SAVE_ITEM_FAILED');
   }
 });
 
@@ -167,7 +167,7 @@ router.put('/saved-items/:itemId/review', async (req, res) => {
   try {
     const result = ['again', 'hard', 'good', 'easy'].includes(req.body.result) ? req.body.result : 'good';
     const item = await StudyItem.findOne({ _id: req.params.itemId, userId: req.userId });
-    if (!item) return res.status(404).json({ message: 'Study item not found' });
+    if (!item) return sendClientError(res, 404, 'LEARNING_HUB_REVIEW_ITEM_NOT_FOUND', 'Study item not found');
     item.reviewCount += 1;
     item.lastReviewedAt = new Date();
     item.ease = reviewEase(item.ease || 2.5, result);
@@ -187,19 +187,21 @@ router.put('/saved-items/:itemId/review', async (req, res) => {
     });
     res.json(item);
   } catch (error) {
-    console.error('Review study item error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LEARNING_HUB_REVIEW_ITEM_FAILED', {
+      metadata: { itemId: req.params.itemId },
+    });
   }
 });
 
 router.delete('/saved-items/:itemId', async (req, res) => {
   try {
     const item = await StudyItem.findOneAndDelete({ _id: req.params.itemId, userId: req.userId });
-    if (!item) return res.status(404).json({ message: 'Study item not found' });
+    if (!item) return sendClientError(res, 404, 'LEARNING_HUB_DELETE_ITEM_NOT_FOUND', 'Study item not found');
     res.json({ message: 'Study item deleted' });
   } catch (error) {
-    console.error('Delete study item error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LEARNING_HUB_DELETE_ITEM_FAILED', {
+      metadata: { itemId: req.params.itemId },
+    });
   }
 });
 
@@ -210,8 +212,7 @@ router.get('/search', async (req, res) => {
     const result = await searchLearningItems(req.userId, pair.targetLanguage, pair.nativeLanguage, req.query.q);
     res.json(result);
   } catch (error) {
-    console.error('Learning search error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LEARNING_HUB_SEARCH_FAILED');
   }
 });
 
@@ -222,8 +223,7 @@ router.get('/pair-profile', async (req, res) => {
     const profile = await findPairProfile(req.userId, pair);
     res.json(profile || null);
   } catch (error) {
-    console.error('Get pair profile error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LEARNING_HUB_GET_PAIR_PROFILE_FAILED');
   }
 });
 
@@ -272,8 +272,9 @@ router.post('/placement-checks/start', async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Start placement check error:', error);
-    res.status(500).json({ message: 'Could not start placement check' });
+    return sendServerError(req, res, error, 'LEARNING_HUB_START_PLACEMENT_CHECK_FAILED', {
+      clientMessage: 'Could not start placement check',
+    });
   }
 });
 
@@ -294,8 +295,7 @@ router.put('/pair-profile', async (req, res) => {
     );
     res.json(profile);
   } catch (error) {
-    console.error('Save pair profile error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LEARNING_HUB_SAVE_PAIR_PROFILE_FAILED');
   }
 });
 

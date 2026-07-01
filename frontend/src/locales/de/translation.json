@@ -709,7 +709,25 @@
     "failures": "Misserfolge",
     "messages": "Nachrichten",
     "semesterInterest": "Semesterinteresse",
-    "reviews": "Rezensionen"
+    "reviews": "Rezensionen",
+    "sectionsNav": "Admin-Bereiche",
+    "navGroups": {
+      "overview": "Überblick",
+      "attention": "Braucht Aufmerksamkeit",
+      "people": "Menschen",
+      "revenue": "Einnahmen",
+      "tools": "Werkzeuge",
+      "engagement": "Verwendung"
+    },
+    "communications": "Kommunikation",
+    "institutions": "Institutionen",
+    "sendEmailAction": "E-Mail senden",
+    "institutionsSubtitle": "Jede registrierte Institution und die E-Mail-Adresse ihrer Administratorkontakte.",
+    "institutionAdminEmail": "Admin-E-Mail",
+    "noInstitutionAdmin": "Kein Administrator zugewiesen",
+    "emailAdmin": "E-Mail-Administrator",
+    "emailUserTitle": "E-Mail {{name}}",
+    "emailUserTo": "Sendet eine Marken-E-Mail an"
   },
   "forgotPassword": {
     "title": "Passwort vergessen",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "Offene Institution",
     "manageSeatsAction": "Sitze verwalten",
     "viewPlansAction": "Pläne ansehen",
-    "resumePracticeAction": "Nehmen Sie das Training wieder auf"
+    "resumePracticeAction": "Nehmen Sie das Training wieder auf",
+    "emptyArchived": "Keine archivierten Benachrichtigungen.",
+    "restore": "Wiederherstellen",
+    "inboxTab": "Posteingang",
+    "archivedTab": "Archiviert"
   },
   "stepUp": {
     "verifyFailed": "Das Passwort konnte nicht überprüft werden",
@@ -2376,6 +2398,50 @@
       "previous": "Vorherige Heldenfolie",
       "next": "Nächste Heldenfolie",
       "showSlide": "Heldenfolie anzeigen {{number}}"
+    },
+    "statement": {
+      "proveSerious": "Jeden Tag hast du bewiesen, dass du es ernst meinst.",
+      "cared": "Jeden Tag bewies es, dass es ihm nur um die Serie ging.",
+      "notLearning": "Das ist kein Lernen. Das ist ein Tresen mit einer Flamme darauf.",
+      "walkAway": "Vermeiden Sie Streak-Chasing.",
+      "takeSeriousness": "Nehmen Sie das ernst, wo es Ergebnisse bringt.",
+      "teaches": "Lingo Booth vermittelt die Prinzipien hinter der Sprache. Trainiert sie mit Übungen. Passt dann jedes Beispiel auf Ihre realen Bedürfnisse auf Ihrer Ebene an.",
+      "curriculum": "Ein vollständiger Lehrplan, der durchgängig geführt wird. Lesen, schreiben, zuhören, sprechen, rezensieren – zusammenarbeiten, nicht getrennt gestapelt.",
+      "actuallyUse": "Hier erfahren Sie, was Sie tatsächlich nutzen können.",
+      "cta": "Fangen Sie an zu lernen.",
+      "scrollAria": "Scrollen Sie für mehr",
+      "teaser": "Lernen Sie die Sprache, nicht die Ader – ein vollständiger Lehrplan, der in Ihrer eigenen Sprache unterrichtet wird.",
+      "readMore": "Mehr lesen",
+      "showLess": "Weniger anzeigen"
     }
+  },
+  "brand": {
+    "lingo": "Jargon",
+    "booth": "Verkaufsstand"
+  },
+  "adminEmail": {
+    "confirmAll": "Dadurch werden ALLE Benutzer per E-Mail benachrichtigt. Sind Sie sicher, dass Sie fortfahren möchten?",
+    "sentWithFailures": "E-Mail an {{sent}}-Benutzer gesendet; {{failed}} fehlgeschlagen.",
+    "sent": "E-Mail an {{sent}}-Benutzer gesendet.",
+    "failed": "E-Mail konnte nicht gesendet werden.",
+    "composerTitle": "E-Mail senden",
+    "composerHint": "Senden Sie eine Marken-E-Mail an einen Benutzer, alle Benutzer oder Institutionsmitglieder. Wird per E-Mail zugestellt (nicht nur eine In-App-Benachrichtigung).",
+    "verifiedOnly": "Nur verifizierte E-Mail-Adressen",
+    "subject": "Thema",
+    "message": "Nachricht",
+    "actionUrl": "Optionaler Button-Link",
+    "actionLabel": "Optionaler Schaltflächentext",
+    "actionLabelPlaceholder": "Öffnen Sie den Lingo-Stand",
+    "sending": "Senden…",
+    "send": "E-Mail senden"
+  },
+  "errorBoundary": {
+    "redirecting": "Ich bringe dich nach Hause…",
+    "goHome": "Gehen Sie zur Homepage von Lingo Booth"
+  },
+  "appLink": {
+    "title": "Eröffnung des Lingo-Standes",
+    "body": "Wenn sich die App nicht öffnet, fahren Sie in Ihrem Browser fort.",
+    "fallbackButton": "Weiter im Browser"
   }
 }

@@ -24,6 +24,7 @@ const {
 } = require('../utils/learningContext');
 const { normalizeLangCode } = require('../utils/languageMetadata');
 const { fullNameValidation } = require('../utils/fullName');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const router = express.Router();
 
@@ -459,8 +460,9 @@ router.get('/contexts', async (req, res) => {
     const contexts = await listLearningContexts(req.userId);
     res.json({ contexts });
   } catch (error) {
-    console.error('Level test contexts error:', error);
-    res.status(500).json({ message: 'Could not load learning contexts' });
+    return sendServerError(req, res, error, 'LEVEL_TEST_CONTEXTS_FAILED', {
+      clientMessage: 'Could not load learning contexts',
+    });
   }
 });
 
@@ -503,10 +505,10 @@ router.get('/overview', async (req, res) => {
       testEntitlements,
     });
   } catch (error) {
-    console.error('Level test overview error:', error);
-    res.status(error.statusCode || 500).json({
-      message: error.message || 'Could not load level tests',
-      allowedTargetLanguages: error.allowedTargetLanguages || undefined,
+    return sendServerError(req, res, error, 'LEVEL_TEST_OVERVIEW_FAILED', {
+      httpStatus: error.statusCode || 500,
+      clientMessage: error.message || 'Could not load level tests',
+      extra: { allowedTargetLanguages: error.allowedTargetLanguages || undefined },
     });
   }
 });
@@ -558,7 +560,7 @@ router.post('/start', async (req, res) => {
 
     const { lessons, items } = await loadLevelMaterials({ targetLanguage, nativeLanguage, level });
     if (items.length < 6) {
-      return res.status(404).json({ message: 'This level does not have enough test material yet' });
+      return sendClientError(res, 404, 'LEVEL_TEST_INSUFFICIENT_MATERIAL', 'This level does not have enough test material yet');
     }
 
     const seed = `${req.userId}:${contextType}:${context.organization?._id || 'personal'}:${targetLanguage}:${nativeLanguage}:${level}:${mode}:${Date.now()}`;
@@ -616,10 +618,10 @@ router.post('/start', async (req, res) => {
         },
       }).catch(() => {});
     }
-    console.error('Level test start error:', error);
-    res.status(error.statusCode || 500).json({
-      message: error.message || 'Could not start level test',
-      allowedTargetLanguages: error.allowedTargetLanguages || undefined,
+    return sendServerError(req, res, error, 'LEVEL_TEST_START_FAILED', {
+      httpStatus: error.statusCode || 500,
+      clientMessage: error.message || 'Could not start level test',
+      extra: { allowedTargetLanguages: error.allowedTargetLanguages || undefined },
     });
   }
 });
@@ -627,17 +629,20 @@ router.post('/start', async (req, res) => {
 router.get('/attempts/:attemptId', async (req, res) => {
   try {
     const attempt = await LevelTestAttempt.findOne({ _id: req.params.attemptId, userId: req.userId });
-    if (!attempt) return res.status(404).json({ message: 'Level test not found' });
+    if (!attempt) return sendClientError(res, 404, 'LEVEL_TEST_ATTEMPT_NOT_FOUND', 'Level test not found');
     res.json({ attempt: publicAttempt(attempt) });
   } catch (error) {
-    res.status(500).json({ message: 'Could not load level test' });
+    return sendServerError(req, res, error, 'LEVEL_TEST_LOAD_ATTEMPT_FAILED', {
+      clientMessage: 'Could not load level test',
+      metadata: { attemptId: req.params.attemptId },
+    });
   }
 });
 
 router.post('/attempts/:attemptId/submit', async (req, res) => {
   try {
     const attempt = await LevelTestAttempt.findOne({ _id: req.params.attemptId, userId: req.userId });
-    if (!attempt) return res.status(404).json({ message: 'Level test not found' });
+    if (!attempt) return sendClientError(res, 404, 'LEVEL_TEST_SUBMIT_ATTEMPT_NOT_FOUND', 'Level test not found');
     if (attempt.status === 'submitted') {
       return res.json({ attempt: publicAttempt(attempt) });
     }
@@ -663,17 +668,19 @@ router.post('/attempts/:attemptId/submit', async (req, res) => {
 
     res.json({ attempt: publicAttempt(attempt) });
   } catch (error) {
-    console.error('Level test submit error:', error);
-    res.status(500).json({ message: 'Could not submit level test' });
+    return sendServerError(req, res, error, 'LEVEL_TEST_SUBMIT_FAILED', {
+      clientMessage: 'Could not submit level test',
+      metadata: { attemptId: req.params.attemptId },
+    });
   }
 });
 
 router.post('/attempts/:attemptId/certificate', async (req, res) => {
   try {
     const attempt = await LevelTestAttempt.findOne({ _id: req.params.attemptId, userId: req.userId });
-    if (!attempt) return res.status(404).json({ message: 'Level test not found' });
+    if (!attempt) return sendClientError(res, 404, 'LEVEL_TEST_CERTIFICATE_ATTEMPT_NOT_FOUND', 'Level test not found');
     if (attempt.status !== 'submitted' || !attempt.passed) {
-      return res.status(400).json({ message: 'Pass the level test before issuing a certificate' });
+      return sendClientError(res, 400, 'LEVEL_TEST_CERTIFICATE_NOT_PASSED', 'Pass the level test before issuing a certificate');
     }
 
     const certificateType = certificateTypeForAttempt(attempt);
@@ -758,8 +765,10 @@ router.post('/attempts/:attemptId/certificate', async (req, res) => {
 
     res.status(201).json({ certificate: publicCert, attempt: publicAttempt(attempt) });
   } catch (error) {
-    console.error('Level test certificate error:', error);
-    res.status(500).json({ message: 'Could not issue certificate' });
+    return sendServerError(req, res, error, 'LEVEL_TEST_CERTIFICATE_FAILED', {
+      clientMessage: 'Could not issue certificate',
+      metadata: { attemptId: req.params.attemptId },
+    });
   }
 });
 
@@ -773,7 +782,7 @@ router.get('/institution/:organizationId/report', async (req, res) => {
       targetLanguage,
     });
     if (!context.canOversee) {
-      return res.status(403).json({ message: 'Institution teacher access is required' });
+      return sendClientError(res, 403, 'LEVEL_TEST_INSTITUTION_ACCESS_DENIED', 'Institution teacher access is required');
     }
 
     const attempts = await LevelTestAttempt.find({
@@ -798,8 +807,11 @@ router.get('/institution/:organizationId/report', async (req, res) => {
       certificates: certificates.map(publicCertificate),
     });
   } catch (error) {
-    console.error('Institution test report error:', error);
-    res.status(error.statusCode || 500).json({ message: error.message || 'Could not load institution test report' });
+    return sendServerError(req, res, error, 'LEVEL_TEST_INSTITUTION_REPORT_FAILED', {
+      httpStatus: error.statusCode || 500,
+      clientMessage: error.message || 'Could not load institution test report',
+      metadata: { organizationId: req.params.organizationId },
+    });
   }
 });
 

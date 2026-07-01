@@ -709,7 +709,25 @@
     "failures": "Échecs",
     "messages": "Messages",
     "semesterInterest": "Intérêt semestriel",
-    "reviews": "Avis"
+    "reviews": "Avis",
+    "sectionsNav": "Sections d'administration",
+    "navGroups": {
+      "overview": "Aperçu",
+      "attention": "A besoin d'attention",
+      "people": "Personnes",
+      "revenue": "Revenu",
+      "tools": "Outils",
+      "engagement": "Usage"
+    },
+    "communications": "Communications",
+    "institutions": "Établissements",
+    "sendEmailAction": "Envoyer un e-mail",
+    "institutionsSubtitle": "Chaque institution enregistrée et l'e-mail de ses contacts administratifs.",
+    "institutionAdminEmail": "E-mail de l'administrateur",
+    "noInstitutionAdmin": "Aucun administrateur affecté",
+    "emailAdmin": "Administrateur de courrier électronique",
+    "emailUserTitle": "E-mail {{name}}",
+    "emailUserTo": "Envoie un e-mail de marque à"
   },
   "forgotPassword": {
     "title": "Mot de passe oublié",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "Établissement ouvert",
     "manageSeatsAction": "Gérer les sièges",
     "viewPlansAction": "Voir les forfaits",
-    "resumePracticeAction": "Reprendre la pratique"
+    "resumePracticeAction": "Reprendre la pratique",
+    "emptyArchived": "Aucune notification archivée.",
+    "restore": "Restaurer",
+    "inboxTab": "Boîte de réception",
+    "archivedTab": "Archivé"
   },
   "stepUp": {
     "verifyFailed": "Impossible de vérifier le mot de passe",
@@ -2376,6 +2398,50 @@
       "previous": "Diapositive du héros précédent",
       "next": "Diapositive suivante du héros",
       "showSlide": "Afficher la diapositive du héros {{number}}"
+    },
+    "statement": {
+      "proveSerious": "Chaque jour, tu as prouvé que tu étais sérieux.",
+      "cared": "Chaque jour, cela prouvait qu'il ne se souciait que de la séquence.",
+      "notLearning": "Ce n’est pas cela apprendre. C'est un comptoir avec une flamme dessus.",
+      "walkAway": "Éloignez-vous de la poursuite des séquences.",
+      "takeSeriousness": "Prenez ce sérieux là où cela donne des résultats.",
+      "teaches": "Lingo Booth enseigne les principes de la langue. Les entraîne avec des exercices. Adaptez ensuite chaque exemple à vos besoins réels, à votre niveau.",
+      "curriculum": "Un cursus complet, guidé de bout en bout. Lire, écrire, écouter, parler, réviser – travailler ensemble, pas empilés.",
+      "actuallyUse": "Ici, vous apprenez ce que vous pouvez réellement utiliser.",
+      "cta": "Commencez à apprendre.",
+      "scrollAria": "Faites défiler pour en savoir plus",
+      "teaser": "Apprenez la langue, pas la séquence - un programme complet, enseigné dans votre propre langue.",
+      "readMore": "En savoir plus",
+      "showLess": "Afficher moins"
     }
+  },
+  "brand": {
+    "lingo": "Jargon",
+    "booth": "Stand"
+  },
+  "adminEmail": {
+    "confirmAll": "Cela enverra un e-mail à TOUS les utilisateurs. Êtes-vous sûr de vouloir continuer ?",
+    "sentWithFailures": "E-mail envoyé aux utilisateurs {{sent}} ; {{failed}} a échoué.",
+    "sent": "E-mail envoyé aux utilisateurs {{sent}}.",
+    "failed": "Impossible d'envoyer l'e-mail.",
+    "composerTitle": "Envoyer un e-mail",
+    "composerHint": "Envoyez un e-mail de marque à un utilisateur, à tous les utilisateurs ou aux membres de l'institution. Livré par e-mail (pas seulement un avis dans l'application).",
+    "verifiedOnly": "Uniquement les adresses e-mail vérifiées",
+    "subject": "Sujette",
+    "message": "Message",
+    "actionUrl": "Lien du bouton facultatif",
+    "actionLabel": "Texte du bouton facultatif",
+    "actionLabelPlaceholder": "Stand Lingo ouvert",
+    "sending": "Envoi…",
+    "send": "Envoyer un e-mail"
+  },
+  "errorBoundary": {
+    "redirecting": "Vous ramener à la maison…",
+    "goHome": "Accédez à la page d'accueil de Lingo Booth"
+  },
+  "appLink": {
+    "title": "Ouverture du stand Lingo",
+    "body": "Si l'application ne s'ouvre pas, continuez dans votre navigateur.",
+    "fallbackButton": "Continuer dans le navigateur"
   }
 }
