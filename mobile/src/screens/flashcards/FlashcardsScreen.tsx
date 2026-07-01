@@ -75,10 +75,11 @@ const FlashcardsScreen: React.FC = () => {
   const colors = useAppColors();
   const { width: winWidth, height: winHeight } = useWindowDimensions();
   const layout = getResponsiveLayout(winWidth, winHeight);
-  const isCompact = layout.isCompact;
+  const isSplitPaneWidth = winWidth < 620;
+  const isCompact = layout.isCompact || isSplitPaneWidth;
   const styles = useMemo(
-    () => createStyles(colors, winWidth, winHeight, isCompact, layout),
-    [colors, winWidth, winHeight, isCompact, layout.isWide, layout.isFoldable, layout.isTablet, layout.isWideShort],
+    () => createStyles(colors, winWidth, winHeight, isCompact, isSplitPaneWidth, layout),
+    [colors, winWidth, winHeight, isCompact, isSplitPaneWidth, layout.isWide, layout.isFoldable, layout.isTablet, layout.isWideShort],
   );
 
   const [flashcards, setFlashcards] = useState<any[]>([]);
@@ -1742,18 +1743,20 @@ const createStyles = (
   winWidth: number,
   winHeight: number,
   isCompact: boolean,
+  isSplitPaneWidth: boolean,
   layout: ResponsiveLayout,
 ) => {
-  const isLargeHandheld = layout.isWide || layout.isFoldable || layout.isTablet;
-  const horizontalPadding = isLargeHandheld ? layout.pageGutter : isCompact ? 10 : 20;
+  const isLargeHandheld = !isSplitPaneWidth && (layout.isWide || layout.isFoldable || layout.isTablet);
+  const horizontalPadding = isLargeHandheld ? layout.pageGutter : isCompact ? 8 : 20;
   const availableCardWidth = Math.max(1, winWidth - horizontalPadding * 2);
   const maxCardWidth = layout.isTablet ? 760 : layout.isFoldable || layout.isWide ? 680 : availableCardWidth;
   const cardWidth = Math.min(availableCardWidth, maxCardWidth);
   const cardHeight = isCompact
-    ? Math.max(Math.min(winHeight * 0.42, 260), 120)
+    ? Math.max(Math.min(winHeight * (isSplitPaneWidth ? 0.36 : 0.42), isSplitPaneWidth ? 220 : 260), 132)
     : isLargeHandheld
       ? Math.min(Math.max(winHeight * 0.34, 220), 320)
       : 280;
+  const compactIconButtonSize = isSplitPaneWidth ? 34 : 38;
 
   return StyleSheet.create({
   screen: { flex: 1, backgroundColor: colors.background },
@@ -1770,12 +1773,12 @@ const createStyles = (
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: isLargeHandheld ? horizontalPadding : isCompact ? 8 : 16,
-    paddingTop: isLargeHandheld ? 18 : isCompact ? 8 : 48,
+    paddingTop: isLargeHandheld ? 18 : isCompact ? 6 : 48,
     paddingBottom: isCompact ? 4 : 8,
     backgroundColor: colors.surface,
   },
   counter: { fontSize: isCompact ? 14 : 16, fontWeight: '700', color: colors.textPrimary },
-  headerActions: { flexDirection: 'row' },
+  headerActions: { flexDirection: 'row', flexShrink: 0 },
 
   shuffleBadge: {
     backgroundColor: '#eff6ff',
@@ -1795,7 +1798,7 @@ const createStyles = (
     justifyContent: isLargeHandheld ? 'flex-start' : 'center',
     alignItems: 'center',
     paddingHorizontal: horizontalPadding,
-    paddingTop: isLargeHandheld ? 28 : isCompact ? 4 : 0,
+    paddingTop: isLargeHandheld ? 28 : isCompact ? 6 : 0,
     paddingBottom: isCompact ? 4 : 0,
   },
   cardTouchable: {
@@ -1807,7 +1810,7 @@ const createStyles = (
     width: '100%',
     height: '100%',
     borderRadius: isCompact ? 14 : 20,
-    padding: isCompact ? 14 : 24,
+    padding: isSplitPaneWidth ? 12 : isCompact ? 14 : 24,
     justifyContent: 'center',
     alignItems: 'center',
     backfaceVisibility: 'hidden',
@@ -1829,7 +1832,7 @@ const createStyles = (
     fontWeight: '600',
     textTransform: 'uppercase',
   },
-  cardText: { fontSize: isCompact ? 22 : 28, fontWeight: '700', color: colors.textPrimary, textAlign: 'center' },
+  cardText: { fontSize: isSplitPaneWidth ? 20 : isCompact ? 22 : 28, fontWeight: '700', color: colors.textPrimary, textAlign: 'center' },
   romanization: { fontSize: isCompact ? 13 : 16, color: colors.textSecondary, marginTop: isCompact ? 4 : 8 },
   tapHint: {
     position: 'absolute',
@@ -1850,16 +1853,22 @@ const createStyles = (
   actionRow: {
     flexDirection: 'row',
     justifyContent: 'center',
-    gap: isLargeHandheld ? 14 : isCompact ? 8 : 24,
+    gap: isLargeHandheld ? 14 : isCompact ? 4 : 24,
+    paddingHorizontal: horizontalPadding,
     paddingVertical: isCompact ? 2 : 4,
     flexWrap: 'wrap',
     alignSelf: 'center',
-    maxWidth: isLargeHandheld ? 760 : undefined,
+    maxWidth: isLargeHandheld ? 760 : winWidth,
   },
   actionBtn: {
     backgroundColor: colors.surface,
     elevation: 2,
-    ...(isCompact ? { margin: 0 } : {}),
+    ...(isCompact ? {
+      margin: 0,
+      width: compactIconButtonSize,
+      height: compactIconButtonSize,
+      borderRadius: compactIconButtonSize / 2,
+    } : {}),
   },
   savedNotice: {
     alignSelf: 'center',
@@ -2024,11 +2033,11 @@ const createStyles = (
   subtopicFocusTextActive: { color: '#fff' },
   scopeRow: {
     flexDirection: 'row',
-    gap: 8,
+    gap: isCompact ? 6 : 8,
     justifyContent: 'center',
     flexWrap: 'wrap',
-    paddingHorizontal: 12,
-    paddingVertical: 6,
+    paddingHorizontal: horizontalPadding,
+    paddingVertical: isCompact ? 4 : 6,
     backgroundColor: colors.surface,
   },
   scopeChip: {},

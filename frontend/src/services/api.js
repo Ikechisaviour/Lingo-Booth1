@@ -77,7 +77,7 @@ const isCurrentUserProfileRequest = (config) => {
   const userId = localStorage.getItem('userId');
   if (!userId || !config?.url) return false;
   const url = config.url.split('?')[0];
-  return url === `/users/${userId}` || url.startsWith(`/users/${userId}/`);
+  return (config.method || 'get').toLowerCase() === 'get' && url === `/users/${userId}`;
 };
 
 const isProtectedRequest = (url = '') => {

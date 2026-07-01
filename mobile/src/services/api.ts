@@ -83,6 +83,13 @@ const isExpectedStatus = (config: any, status?: number) => {
   return Array.isArray(expected) && status != null && expected.includes(status);
 };
 
+const isCurrentUserProfileRequest = (config: any) => {
+  const currentUserId = useAuthStore.getState().userId;
+  if (!currentUserId || !config?.url) return false;
+  const cleanUrl = String(config.url).split('?')[0];
+  return String(config.method || 'get').toLowerCase() === 'get' && cleanUrl === `/users/${currentUserId}`;
+};
+
 // Step-up auth handler — UI registers this to prompt the user for their password
 // and resolve/reject the held request. Falls back to rejection if no handler
 // is registered (e.g., before the navigator mounts).
@@ -179,13 +186,12 @@ api.interceptors.response.use(
       useAuthStore.getState().logout();
       error._forcedLogout = true;
     }
-    // Detect deleted current account only from the current user's profile endpoints.
-    const currentUserId = useAuthStore.getState().userId;
-    const cleanUrl = String(config?.url || '').split('?')[0];
+    // Detect deleted current account only from the actual profile endpoint.
+    // User subresources such as /users/:id/flashcard-prefs may 404 on an older
+    // backend or for missing optional data; those must not force a logout loop.
     if (
       error.response?.status === 404 &&
-      currentUserId &&
-      (cleanUrl === `/users/${currentUserId}` || cleanUrl.startsWith(`/users/${currentUserId}/`)) &&
+      isCurrentUserProfileRequest(config) &&
       useAuthStore.getState().token
     ) {
       useAuthStore.getState().logout();
