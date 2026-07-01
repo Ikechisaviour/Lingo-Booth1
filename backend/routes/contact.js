@@ -3,6 +3,7 @@ const ContactMessage = require('../models/ContactMessage');
 const { optionalAuth } = require('../middleware/auth');
 const { getClientIp } = require('../utils/geo');
 const { getAiEntitlements } = require('../utils/subscription');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const router = express.Router();
 
@@ -36,15 +37,15 @@ router.post('/', optionalAuth, async (req, res) => {
     }
 
     if (!name || name.length < 2) {
-      return res.status(400).json({ message: 'Name is required' });
+      return sendClientError(res, 400, 'CONTACT_NAME_REQUIRED', 'Name is required');
     }
 
     if (!email || !EMAIL_REGEX.test(email)) {
-      return res.status(400).json({ message: 'A valid email address is required' });
+      return sendClientError(res, 400, 'CONTACT_EMAIL_INVALID', 'A valid email address is required');
     }
 
     if (!message || message.length < 10) {
-      return res.status(400).json({ message: 'Message must be at least 10 characters' });
+      return sendClientError(res, 400, 'CONTACT_MESSAGE_TOO_SHORT', 'Message must be at least 10 characters');
     }
 
     await ContactMessage.create({
@@ -80,8 +81,9 @@ router.post('/', optionalAuth, async (req, res) => {
 
     res.json({ message: 'Message received' });
   } catch (error) {
-    console.error('Contact form error:', error);
-    res.status(500).json({ message: 'Could not save your message right now' });
+    return sendServerError(req, res, error, 'CONTACT_SUBMIT_FAILED', {
+      clientMessage: 'Could not save your message right now',
+    });
   }
 });
 

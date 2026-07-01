@@ -105,6 +105,9 @@ function FlashcardsPage() {
   const isGuest = localStorage.getItem('guestMode') === 'true';
   const saveTimerRef = useRef(null);
   const transitioningRef = useRef(false);
+  const savePrefsTimerRef = useRef(null);      // debounces prefs writes
+  const prefsReadyRef = useRef(false);          // true once saved prefs are resolved+applied; gates saving
+  const pendingRestoreRef = useRef(null);       // subset selection to reapply after the first page loads
   const nativeLangCode = getNativeLangCode();
   const targetLangCode = getTargetLangCode();
   const seededTarget = String(searchParams.get('savedText') || '').trim();
@@ -146,6 +149,37 @@ function FlashcardsPage() {
     return seed;
   }, [userId]);
 
+  // Resolve the learner's saved deck selection + study settings. Server-side for
+  // signed-in users (follows them across devices), localStorage for guests.
+  // Returns null when nothing has been saved yet.
+  const resolveFlashcardPrefs = useCallback(async () => {
+    if (userId) {
+      try {
+        const res = await userService.getFlashcardPrefs(userId);
+        if (res?.data?.prefs) return res.data.prefs;
+      } catch (_) { /* fall through — no saved prefs */ }
+      return null;
+    }
+    try {
+      const raw = localStorage.getItem('flashcardPrefs');
+      return raw ? JSON.parse(raw) : null;
+    } catch (_) { return null; }
+  }, [userId]);
+
+  // Persist the current selection + settings (debounced). Server-side for
+  // signed-in users, localStorage for guests. Mirrors the shuffle-seed storage.
+  const persistFlashcardPrefs = useCallback((prefs) => {
+    if (savePrefsTimerRef.current) clearTimeout(savePrefsTimerRef.current);
+    savePrefsTimerRef.current = setTimeout(() => {
+      if (userId) {
+        userService.saveFlashcardPrefs(userId, prefs)
+          .catch(err => console.error('Failed to save flashcard prefs:', err));
+      } else {
+        try { localStorage.setItem('flashcardPrefs', JSON.stringify(prefs)); } catch (_) { /* quota */ }
+      }
+    }, 600);
+  }, [userId]);
+
   useEffect(() => {
     // Fetch category metadata, then load cards with the 12h-stable seed.
     flashcardService.getCategories()
@@ -154,7 +188,32 @@ function FlashcardsPage() {
     (async () => {
       const seed = await resolveShuffleSeed(false);
       setShuffleSeed(seed);
-      fetchFlashcards(1, false, seed);
+      // Restore the saved deck selection + study settings. Scalar settings and
+      // scope apply now (scope drives the initial fetch); the subset selection
+      // (categories / individual cards) is reapplied once the deck has loaded.
+      const prefs = await resolveFlashcardPrefs();
+      let scope;
+      if (prefs) {
+        if (prefs.displayMode) {
+          setDisplayMode(prefs.displayMode);
+          setShowsTargetFirst(prefs.displayMode !== 'native');
+        }
+        if (prefs.studyStyle) setStudyStyle(prefs.studyStyle);
+        if (typeof prefs.isShuffled === 'boolean') setIsShuffled(prefs.isShuffled);
+        if (prefs.randomCount) setRandomCount(prefs.randomCount);
+        if (['all', 'mine', 'focus'].includes(prefs.deckScope)) {
+          scope = prefs.deckScope;
+          if (scope !== 'all') setDeckScope(scope);
+        }
+        pendingRestoreRef.current = {
+          selectedCategories: Array.isArray(prefs.selectedCategories) ? prefs.selectedCategories : [],
+          selectedCardIds: Array.isArray(prefs.selectedCardIds) ? prefs.selectedCardIds : [],
+        };
+      } else {
+        // Nothing saved — still mark ready once the deck loads so future edits save.
+        pendingRestoreRef.current = { selectedCategories: [], selectedCardIds: [] };
+      }
+      fetchFlashcards(1, false, seed, scope);
     })();
     if (userId) {
       flashcardService.getFocusIds()
@@ -212,6 +271,52 @@ function FlashcardsPage() {
       saveActivityState(currentIndex);
     }
   }, [currentIndex, flashcards.length, saveActivityState, readyToSave]);
+
+  // Reapply the saved subset selection once the first page of cards has loaded.
+  // Categories are reselected (their cards lazy-load into the cache); individual
+  // card IDs are kept only if they're already loaded — per design, IDs living on
+  // not-yet-loaded pages are dropped rather than resurrected later. Runs once,
+  // then flips prefsReadyRef so subsequent changes are persisted.
+  useEffect(() => {
+    const pending = pendingRestoreRef.current;
+    if (!pending || flashcards.length === 0) return;
+    pendingRestoreRef.current = null;
+
+    if (pending.selectedCategories.length > 0) {
+      setSelectedCategories(new Set(pending.selectedCategories));
+      pending.selectedCategories.forEach(cat => {
+        if (!categoryCardsCache[cat]) {
+          flashcardService.getCategoryCards(cat)
+            .then(res => setCategoryCardsCache(p => ({ ...p, [cat]: res.data.cards || [] })))
+            .catch(() => setCategoryCardsCache(p => ({ ...p, [cat]: [] })));
+        }
+      });
+    }
+
+    if (pending.selectedCardIds.length > 0) {
+      const loadedIds = new Set(allLangFilteredCards.map(c => c._id));
+      const keep = pending.selectedCardIds.filter(id => loadedIds.has(id));
+      if (keep.length > 0) setSelectedCardIds(new Set(keep));
+    }
+
+    prefsReadyRef.current = true;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [flashcards.length]);
+
+  // Persist the current selection + study settings whenever they change (after
+  // the initial restore). Debounced; server-side for signed-in users, else local.
+  useEffect(() => {
+    if (!prefsReadyRef.current) return;
+    persistFlashcardPrefs({
+      deckScope,
+      selectedCategories: Array.from(selectedCategories),
+      selectedCardIds: Array.from(selectedCardIds),
+      randomCount: Math.floor(Number(randomCount) || 10),
+      displayMode,
+      studyStyle,
+      isShuffled,
+    });
+  }, [deckScope, selectedCategories, selectedCardIds, randomCount, displayMode, studyStyle, isShuffled, persistFlashcardPrefs]);
 
   // Auto-load next batch when 49 cards remaining (after viewing 1st card of batch)
   useEffect(() => {
@@ -405,13 +510,37 @@ function FlashcardsPage() {
       await speechService.waitAudio(readingPause);
       if (cancelled) return;
 
-      // Check if last card (only stop if no more pages to load)
+      // End of the current deck.
       if (currentIndex >= activeFlashcards.length - 1) {
-        if (!hasMore) {
+        // A selected subset ("Study random", hand-picked cards, or categories) is
+        // a fixed, fully in-memory deck — its length is unrelated to the main
+        // deck's pagination, so loop back to the top instead of stopping (and
+        // ignore hasMore, which tracks the paginated full deck). When shuffle is
+        // on, mint a fresh transient seed first so the same cards come back in a
+        // new order; the activeFlashcards memo is seed-driven, and the persisted
+        // 12h seed is left untouched.
+        const isSubsetDeck = selectedCardIds.size > 0 || selectedCategories.size > 0;
+        if (isSubsetDeck || !hasMore) {
+          if (isSubsetDeck && activeFlashcards.length > 1) {
+            transitioningRef.current = true;
+            setCardAnim('slide-out');
+            await speechService.waitAudio(300);
+            if (cancelled) return;
+            if (isShuffled) setShuffleSeed(Math.floor(Math.random() * 2147483646) + 1);
+            setCurrentIndex(0);
+            setIsFlipped(false);
+            setShowsTargetFirst(determineCardDisplay());
+            setCardAnim('slide-in');
+            setTimeout(() => {
+              setCardAnim('');
+              transitioningRef.current = false;
+            }, 400);
+            return;
+          }
           setAutoPlay(false);
           return;
         }
-        // Wait for next batch to load
+        // Full deck with more pages: wait for the next batch to load
         await new Promise(resolve => {
           const check = setInterval(() => {
             if (cancelled) { clearInterval(check); resolve(); }

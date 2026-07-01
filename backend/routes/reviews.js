@@ -2,6 +2,7 @@ const express = require('express');
 const Review = require('../models/Review');
 const { optionalAuth } = require('../middleware/auth');
 const { getClientIp } = require('../utils/geo');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const router = express.Router();
 
@@ -28,8 +29,9 @@ router.get('/approved', async (req, res) => {
 
     res.json({ reviews });
   } catch (error) {
-    console.error('Public reviews fetch error:', error);
-    res.status(500).json({ message: 'Could not load reviews right now' });
+    return sendServerError(req, res, error, 'REVIEWS_APPROVED_FETCH_FAILED', {
+      clientMessage: 'Could not load reviews right now',
+    });
   }
 });
 
@@ -52,11 +54,11 @@ router.post('/', optionalAuth, async (req, res) => {
     const source = ['web', 'mobile'].includes(body.source) ? body.source : 'web';
 
     if (!name || name.length < 2) {
-      return res.status(400).json({ message: 'Your name is required' });
+      return sendClientError(res, 400, 'REVIEWS_NAME_REQUIRED', 'Your name is required');
     }
 
     if (!comment || comment.length < 10) {
-      return res.status(400).json({ message: 'Please share a few more words about your experience' });
+      return sendClientError(res, 400, 'REVIEWS_COMMENT_TOO_SHORT', 'Please share a few more words about your experience');
     }
 
     await Review.create({
@@ -81,8 +83,9 @@ router.post('/', optionalAuth, async (req, res) => {
 
     res.json({ message: 'Review received' });
   } catch (error) {
-    console.error('Review submission error:', error);
-    res.status(500).json({ message: 'Could not save your review right now' });
+    return sendServerError(req, res, error, 'REVIEWS_SUBMIT_FAILED', {
+      clientMessage: 'Could not save your review right now',
+    });
   }
 });
 

@@ -14,8 +14,10 @@ const Pronunciation = require('../models/Pronunciation');
 const LearningEvent = require('../models/LearningEvent');
 const StudyItem = require('../models/StudyItem');
 const { verifyToken, isAdmin } = require('../middleware/auth');
+const { sendAdminEmails } = require('../utils/emailService');
+const { resolveAdminBroadcastRecipients } = require('../utils/notifications');
 const { getAiEntitlements } = require('../utils/subscription');
-const { recordServerError } = require('../utils/errorReporting');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 const { normalizeTextKey } = require('../utils/pronunciationService');
 
 const DEEPSEEK_API_URL = 'https://api.deepseek.com/chat/completions';
@@ -285,11 +287,11 @@ async function handleSpeakingDemoConversation(req, res) {
     const { scenario, targetLanguage, nativeLanguage, inputLanguage, transcript, history, difficulty } = req.body || {};
 
     if (!transcript || typeof transcript !== 'string' || transcript.trim().length === 0) {
-      return res.status(400).json({ message: 'Transcript is required' });
+      return sendClientError(res, 400, 'ADMIN_SPEAKING_DEMO_TRANSCRIPT_REQUIRED', 'Transcript is required');
     }
 
     if (transcript.length > 1200) {
-      return res.status(400).json({ message: 'Transcript too long for demo conversation' });
+      return sendClientError(res, 400, 'ADMIN_SPEAKING_DEMO_TRANSCRIPT_TOO_LONG', 'Transcript too long for demo conversation');
     }
 
     const result = await callDeepSeekConversation({
@@ -304,10 +306,8 @@ async function handleSpeakingDemoConversation(req, res) {
 
     return res.json(result);
   } catch (error) {
-    console.error('Admin speaking demo conversation error:', error.message || error);
-    await recordServerError(req, {
-      error,
-      message: error.message || 'Admin speaking demo conversation failed',
+    return sendServerError(req, res, error, 'ADMIN_SPEAKING_DEMO_CONVERSATION_FAILED', {
+      clientMessage: 'Conversation partner is temporarily unavailable. Please try again.',
       route: req.originalUrl || '/api/admin/speaking-demo/conversation',
       metadata: {
         scenario: req.body?.scenario,
@@ -315,14 +315,13 @@ async function handleSpeakingDemoConversation(req, res) {
         nativeLanguage: req.body?.nativeLanguage,
       },
     });
-    return res.status(500).json({ message: 'Conversation partner is temporarily unavailable. Please try again.' });
   }
 }
 
 // Temporary local-only demo bypass. Remove this route when the demo no longer needs no-login access.
 router.post('/local-demo/speaking-demo/conversation', async (req, res) => {
   if (!isLocalDemoRequest(req)) {
-    return res.status(404).json({ message: 'Not found' });
+    return sendClientError(res, 404, 'ADMIN_LOCAL_DEMO_NOT_FOUND', 'Not found');
   }
   return handleSpeakingDemoConversation(req, res);
 });
@@ -383,8 +382,7 @@ router.get('/pronunciation-audit', async (req, res) => {
       weak,
     });
   } catch (error) {
-    console.error('Admin pronunciation audit error:', error);
-    res.status(500).json({ message: 'Server error', error: error.message });
+    return sendServerError(req, res, error, 'ADMIN_PRONUNCIATION_AUDIT_FAILED');
   }
 });
 
@@ -784,8 +782,7 @@ router.get('/stats', async (req, res) => {
       learningAnalytics,
     });
   } catch (error) {
-    console.error('Admin stats error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_STATS_FAILED');
   }
 });
 
@@ -826,8 +823,7 @@ router.get('/error-reports', async (req, res) => {
       criticalOpenCount,
     });
   } catch (error) {
-    console.error('Admin error reports fetch error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_ERROR_REPORTS_FETCH_FAILED');
   }
 });
 
@@ -845,13 +841,14 @@ router.put('/error-reports/:reportId/acknowledge', async (req, res) => {
     );
 
     if (!report) {
-      return res.status(404).json({ message: 'Error report not found' });
+      return sendClientError(res, 404, 'ADMIN_ERROR_REPORT_NOT_FOUND', 'Error report not found');
     }
 
     res.json({ message: 'Failure acknowledged', report });
   } catch (error) {
-    console.error('Admin error report acknowledge error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_ERROR_REPORT_ACKNOWLEDGE_FAILED', {
+      metadata: { reportId: req.params.reportId },
+    });
   }
 });
 
@@ -875,8 +872,7 @@ router.put('/error-reports/clear-open', async (req, res) => {
       acknowledgedCount: result.modifiedCount || 0,
     });
   } catch (error) {
-    console.error('Admin error reports clear error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_ERROR_REPORTS_CLEAR_FAILED');
   }
 });
 
@@ -932,8 +928,7 @@ router.get('/contact-messages', async (req, res) => {
       senderType,
     });
   } catch (error) {
-    console.error('Admin contact messages fetch error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_CONTACT_MESSAGES_FETCH_FAILED');
   }
 });
 
@@ -951,13 +946,14 @@ router.put('/contact-messages/:messageId/acknowledge', async (req, res) => {
     );
 
     if (!message) {
-      return res.status(404).json({ message: 'Contact message not found' });
+      return sendClientError(res, 404, 'ADMIN_CONTACT_MESSAGE_NOT_FOUND', 'Contact message not found');
     }
 
     res.json({ message: 'Contact message marked as read', contactMessage: message });
   } catch (error) {
-    console.error('Admin contact message acknowledge error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_CONTACT_MESSAGE_ACKNOWLEDGE_FAILED', {
+      metadata: { messageId: req.params.messageId },
+    });
   }
 });
 
@@ -981,8 +977,7 @@ router.put('/contact-messages/clear-open', async (req, res) => {
       acknowledgedCount: result.modifiedCount || 0,
     });
   } catch (error) {
-    console.error('Admin contact messages clear error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_CONTACT_MESSAGES_CLEAR_FAILED');
   }
 });
 
@@ -1019,8 +1014,7 @@ router.get('/semester-interest', async (req, res) => {
       status,
     });
   } catch (error) {
-    console.error('Admin semester interest fetch error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_SEMESTER_INTEREST_FETCH_FAILED');
   }
 });
 
@@ -1030,7 +1024,7 @@ router.put('/semester-interest/:leadId/status', async (req, res) => {
     const VALID = ['new', 'contacted', 'reminded', 'enrolled', 'closed'];
     const status = String(req.body?.status || '').toLowerCase();
     if (!VALID.includes(status)) {
-      return res.status(400).json({ message: 'Invalid status' });
+      return sendClientError(res, 400, 'ADMIN_SEMESTER_INTEREST_INVALID_STATUS', 'Invalid status');
     }
 
     const lead = await SemesterInterest.findByIdAndUpdate(
@@ -1040,13 +1034,14 @@ router.put('/semester-interest/:leadId/status', async (req, res) => {
     );
 
     if (!lead) {
-      return res.status(404).json({ message: 'Lead not found' });
+      return sendClientError(res, 404, 'ADMIN_SEMESTER_INTEREST_NOT_FOUND', 'Lead not found');
     }
 
     res.json({ message: 'Lead updated', lead });
   } catch (error) {
-    console.error('Admin semester interest update error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_SEMESTER_INTEREST_UPDATE_FAILED', {
+      metadata: { leadId: req.params.leadId },
+    });
   }
 });
 
@@ -1086,8 +1081,7 @@ router.get('/reviews', async (req, res) => {
       status,
     });
   } catch (error) {
-    console.error('Admin reviews fetch error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_REVIEWS_FETCH_FAILED');
   }
 });
 
@@ -1097,7 +1091,7 @@ router.put('/reviews/:reviewId/status', async (req, res) => {
     const VALID = ['pending', 'approved', 'rejected'];
     const status = String(req.body?.status || '').toLowerCase();
     if (!VALID.includes(status)) {
-      return res.status(400).json({ message: 'Invalid status' });
+      return sendClientError(res, 400, 'ADMIN_REVIEW_INVALID_STATUS', 'Invalid status');
     }
 
     const review = await Review.findByIdAndUpdate(
@@ -1107,13 +1101,14 @@ router.put('/reviews/:reviewId/status', async (req, res) => {
     );
 
     if (!review) {
-      return res.status(404).json({ message: 'Review not found' });
+      return sendClientError(res, 404, 'ADMIN_REVIEW_NOT_FOUND', 'Review not found');
     }
 
     res.json({ message: 'Review updated', review });
   } catch (error) {
-    console.error('Admin review update error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_REVIEW_UPDATE_FAILED', {
+      metadata: { reviewId: req.params.reviewId },
+    });
   }
 });
 
@@ -1122,12 +1117,13 @@ router.delete('/reviews/:reviewId', async (req, res) => {
   try {
     const review = await Review.findByIdAndDelete(req.params.reviewId);
     if (!review) {
-      return res.status(404).json({ message: 'Review not found' });
+      return sendClientError(res, 404, 'ADMIN_REVIEW_DELETE_NOT_FOUND', 'Review not found');
     }
     res.json({ message: 'Review deleted' });
   } catch (error) {
-    console.error('Admin review delete error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_REVIEW_DELETE_FAILED', {
+      metadata: { reviewId: req.params.reviewId },
+    });
   }
 });
 
@@ -1145,8 +1141,7 @@ router.get('/users', async (req, res) => {
       .sort({ createdAt: -1 });
     res.json(users.map(withEffectiveSubscription));
   } catch (error) {
-    console.error('Admin get users error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_GET_USERS_FAILED');
   }
 });
 
@@ -1155,7 +1150,7 @@ router.get('/users/:userId', async (req, res) => {
   try {
     const user = await User.findById(req.params.userId).select('-password');
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'ADMIN_GET_USER_NOT_FOUND', 'User not found');
     }
 
     const [progressCount, flashcardCount, progressBreakdown, recentProgress] = await Promise.all([
@@ -1184,8 +1179,9 @@ router.get('/users/:userId', async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Admin get user error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_GET_USER_FAILED', {
+      metadata: { targetUserId: req.params.userId },
+    });
   }
 });
 
@@ -1202,17 +1198,17 @@ router.put('/users/:userId/suspend', async (req, res) => {
     const user = await User.findById(req.params.userId);
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'ADMIN_SUSPEND_USER_NOT_FOUND', 'User not found');
     }
 
     // Prevent suspending self
     if (user._id.toString() === req.userId) {
-      return res.status(400).json({ message: 'Cannot suspend your own account' });
+      return sendClientError(res, 400, 'ADMIN_SUSPEND_USER_SELF', 'Cannot suspend your own account');
     }
 
     // Prevent suspending other admins
     if (user.role === 'admin') {
-      return res.status(400).json({ message: 'Cannot suspend an admin account' });
+      return sendClientError(res, 400, 'ADMIN_SUSPEND_USER_ADMIN', 'Cannot suspend an admin account');
     }
 
     user.status = 'suspended';
@@ -1232,8 +1228,9 @@ router.put('/users/:userId/suspend', async (req, res) => {
       }
     });
   } catch (error) {
-    console.error('Admin suspend user error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_SUSPEND_USER_FAILED', {
+      metadata: { targetUserId: req.params.userId },
+    });
   }
 });
 
@@ -1243,7 +1240,7 @@ router.put('/users/:userId/unsuspend', async (req, res) => {
     const user = await User.findById(req.params.userId);
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'ADMIN_UNSUSPEND_USER_NOT_FOUND', 'User not found');
     }
 
     user.status = 'active';
@@ -1261,8 +1258,9 @@ router.put('/users/:userId/unsuspend', async (req, res) => {
       }
     });
   } catch (error) {
-    console.error('Admin unsuspend user error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_UNSUSPEND_USER_FAILED', {
+      metadata: { targetUserId: req.params.userId },
+    });
   }
 });
 
@@ -1272,12 +1270,12 @@ router.put('/users/:userId/role', async (req, res) => {
     const { role } = req.body;
 
     if (!['user', 'admin'].includes(role)) {
-      return res.status(400).json({ message: 'Invalid role' });
+      return sendClientError(res, 400, 'ADMIN_UPDATE_ROLE_INVALID', 'Invalid role');
     }
 
     // Prevent demoting self
     if (req.params.userId === req.userId && role !== 'admin') {
-      return res.status(400).json({ message: 'Cannot demote your own account' });
+      return sendClientError(res, 400, 'ADMIN_UPDATE_ROLE_SELF_DEMOTE', 'Cannot demote your own account');
     }
 
     const user = await User.findByIdAndUpdate(
@@ -1287,7 +1285,7 @@ router.put('/users/:userId/role', async (req, res) => {
     ).select('-password');
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'ADMIN_UPDATE_ROLE_USER_NOT_FOUND', 'User not found');
     }
 
     res.json({
@@ -1295,8 +1293,9 @@ router.put('/users/:userId/role', async (req, res) => {
       user
     });
   } catch (error) {
-    console.error('Admin update role error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_UPDATE_ROLE_FAILED', {
+      metadata: { targetUserId: req.params.userId },
+    });
   }
 });
 
@@ -1310,7 +1309,7 @@ router.put('/users/:userId/reset-rate-limit', async (req, res) => {
     ).select('-password');
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'ADMIN_RESET_RATE_LIMIT_USER_NOT_FOUND', 'User not found');
     }
 
     res.json({
@@ -1318,8 +1317,9 @@ router.put('/users/:userId/reset-rate-limit', async (req, res) => {
       user,
     });
   } catch (error) {
-    console.error('Admin reset rate limit error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_RESET_RATE_LIMIT_FAILED', {
+      metadata: { targetUserId: req.params.userId },
+    });
   }
 });
 
@@ -1330,17 +1330,17 @@ router.delete('/users/:userId', async (req, res) => {
     const user = await User.findById(req.params.userId);
 
     if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+      return sendClientError(res, 404, 'ADMIN_DELETE_USER_NOT_FOUND', 'User not found');
     }
 
     // Prevent deleting self
     if (user._id.toString() === req.userId) {
-      return res.status(400).json({ message: 'Cannot delete your own account from admin panel' });
+      return sendClientError(res, 400, 'ADMIN_DELETE_USER_SELF', 'Cannot delete your own account from admin panel');
     }
 
     // Prevent deleting other admins
     if (user.role === 'admin') {
-      return res.status(400).json({ message: 'Cannot delete an admin account' });
+      return sendClientError(res, 400, 'ADMIN_DELETE_USER_ADMIN', 'Cannot delete an admin account');
     }
 
     session = await mongoose.startSession();
@@ -1352,10 +1352,84 @@ router.delete('/users/:userId', async (req, res) => {
 
     res.json({ message: `User ${user.username} and all associated data deleted successfully` });
   } catch (error) {
-    console.error('Admin delete user error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_DELETE_USER_FAILED', {
+      metadata: { targetUserId: req.params.userId },
+    });
   } finally {
     if (session) session.endSession();
+  }
+});
+
+// Send a branded email to users (all / one user / institution members)
+router.post('/send-email', async (req, res) => {
+  try {
+    const target = ['all', 'user', 'organization', 'institution_admins'].includes(req.body?.target)
+      ? req.body.target
+      : 'all';
+    const subject = String(req.body?.subject || '').trim();
+    const message = String(req.body?.message || '').trim();
+    const actionUrl = String(req.body?.actionUrl || '').trim().slice(0, 500);
+    const actionLabel = String(req.body?.actionLabel || '').trim().slice(0, 80);
+    const verifiedOnly = req.body?.verifiedOnly !== false; // default: only verified emails
+
+    if (!subject) return sendClientError(res, 400, 'ADMIN_SEND_EMAIL_SUBJECT_REQUIRED', 'Subject is required');
+    if (!message) return sendClientError(res, 400, 'ADMIN_SEND_EMAIL_MESSAGE_REQUIRED', 'Message is required');
+    if (subject.length > 200) return sendClientError(res, 400, 'ADMIN_SEND_EMAIL_SUBJECT_TOO_LONG', 'Subject is too long (max 200 characters)');
+    if (message.length > 5000) return sendClientError(res, 400, 'ADMIN_SEND_EMAIL_MESSAGE_TOO_LONG', 'Message is too long (max 5000 characters)');
+    if (actionUrl && !/^https?:\/\//i.test(actionUrl)) {
+      return sendClientError(res, 400, 'ADMIN_SEND_EMAIL_INVALID_ACTION_URL', 'Action URL must start with http:// or https://');
+    }
+    if ((target === 'organization' || target === 'institution_admins') && !req.body?.organizationId) {
+      return sendClientError(res, 400, 'ADMIN_SEND_EMAIL_ORGANIZATION_REQUIRED', 'An institution must be selected for this target');
+    }
+    if (target === 'user' && !req.body?.userEmail) {
+      return sendClientError(res, 400, 'ADMIN_SEND_EMAIL_USER_EMAIL_REQUIRED', 'A user email is required for this target');
+    }
+
+    const recipientIds = await resolveAdminBroadcastRecipients({
+      target,
+      userEmail: req.body?.userEmail,
+      organizationId: req.body?.organizationId,
+      roles: Array.isArray(req.body?.roles) ? req.body.roles : [],
+    });
+    if (!recipientIds.length) {
+      return sendClientError(res, 404, 'ADMIN_SEND_EMAIL_NO_RECIPIENTS', 'No recipients found for that target');
+    }
+
+    const filter = { _id: { $in: recipientIds }, email: { $ne: null } };
+    if (verifiedOnly) filter.emailVerified = true;
+    const recipients = await User.find(filter)
+      .select('email username nativeLanguage')
+      .lean();
+
+    if (!recipients.length) {
+      return sendClientError(
+        res,
+        404,
+        'ADMIN_SEND_EMAIL_NO_EMAIL_RECIPIENTS',
+        verifiedOnly
+          ? 'No recipients with a verified email address were found. Uncheck "verified only" to include everyone.'
+          : 'No recipients with an email address were found'
+      );
+    }
+
+    const { sent, failed, errors } = await sendAdminEmails(recipients, {
+      subject,
+      message,
+      actionUrl,
+      actionLabel,
+    });
+
+    res.status(201).json({
+      sent,
+      failed,
+      total: recipients.length,
+      ...(errors.length ? { errors: errors.slice(0, 5) } : {}),
+    });
+  } catch (error) {
+    return sendServerError(req, res, error, 'ADMIN_SEND_EMAIL_FAILED', {
+      clientMessage: 'Failed to send email',
+    });
   }
 });
 
@@ -1367,8 +1441,7 @@ router.get('/flashcards', async (req, res) => {
       .sort({ createdAt: -1 });
     res.json(flashcards);
   } catch (error) {
-    console.error('Admin get flashcards error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_GET_FLASHCARDS_FAILED');
   }
 });
 
@@ -1377,13 +1450,14 @@ router.delete('/flashcards/:flashcardId', async (req, res) => {
   try {
     const flashcard = await Flashcard.findById(req.params.flashcardId);
     if (!flashcard) {
-      return res.status(404).json({ message: 'Flashcard not found' });
+      return sendClientError(res, 404, 'ADMIN_DELETE_FLASHCARD_NOT_FOUND', 'Flashcard not found');
     }
     await Flashcard.findByIdAndDelete(req.params.flashcardId);
     res.json({ message: 'Flashcard deleted' });
   } catch (error) {
-    console.error('Admin delete flashcard error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_DELETE_FLASHCARD_FAILED', {
+      metadata: { flashcardId: req.params.flashcardId },
+    });
   }
 });
 
@@ -1465,8 +1539,7 @@ router.get('/guests', async (req, res) => {
       },
     });
   } catch (error) {
-    console.error('Admin guests error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'ADMIN_GUESTS_FAILED');
   }
 });
 
@@ -1555,8 +1628,7 @@ router.post('/seed-lessons', async (req, res) => {
       existingLangs,
     });
   } catch (error) {
-    console.error('Admin seed-lessons error:', error);
-    res.status(500).json({ message: 'Server error', error: error.message });
+    return sendServerError(req, res, error, 'ADMIN_SEED_LESSONS_FAILED');
   }
 });
 
@@ -1599,8 +1671,7 @@ router.post('/seed-flashcards', async (req, res) => {
       normalizedCounts,
     });
   } catch (error) {
-    console.error('Admin seed-flashcards error:', error);
-    res.status(500).json({ message: 'Server error', error: error.message });
+    return sendServerError(req, res, error, 'ADMIN_SEED_FLASHCARDS_FAILED');
   }
 });
 

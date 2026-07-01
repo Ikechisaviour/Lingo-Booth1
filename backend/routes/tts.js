@@ -1,4 +1,5 @@
 const express = require('express');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 const router = express.Router();
 
 // Dynamic import for ESM msedge-tts package
@@ -130,13 +131,13 @@ async function attemptSynth(MsEdgeTTS, OUTPUT_FORMAT, voiceName, voiceLocale, es
 }
 
 // Shared synthesis logic used by both GET and POST routes
-async function synthesize(text, lang, voice, rate, res) {
+async function synthesize(text, lang, voice, rate, res, req) {
   if (!text || typeof text !== 'string' || text.trim().length === 0) {
-    return res.status(400).json({ message: 'Text is required' });
+    return sendClientError(res, 400, 'TTS_TEXT_REQUIRED', 'Text is required');
   }
 
   if (text.length > 2000) {
-    return res.status(400).json({ message: 'Text too long (max 2000 characters)' });
+    return sendClientError(res, 400, 'TTS_TEXT_TOO_LONG', 'Text too long (max 2000 characters)');
   }
 
   const { MsEdgeTTS, OUTPUT_FORMAT } = await loadTTS();
@@ -190,7 +191,10 @@ async function synthesize(text, lang, voice, rate, res) {
     }
   }
 
-  res.status(500).json({ message: 'Text-to-speech synthesis failed' });
+  return sendServerError(req, res, new Error('All TTS voices failed to synthesize audio'), 'TTS_SYNTHESIS_FAILED', {
+    clientMessage: 'Text-to-speech synthesis failed',
+    metadata: { lang: lang || 'auto', textLen: text.length, voicesTried: voicesToTry.length },
+  });
 }
 
 // GET /api/tts?text=...&lang=...&voice=... — mobile-friendly route.
@@ -199,10 +203,12 @@ async function synthesize(text, lang, voice, rate, res) {
 router.get('/', async (req, res) => {
   try {
     const { text, lang, voice, rate } = req.query;
-    await synthesize(text, lang, voice, rate, res);
+    await synthesize(text, lang, voice, rate, res, req);
   } catch (err) {
-    console.error(`TTS route error [GET lang=${req.query.lang}]:`, err.message || err);
-    if (!res.headersSent) res.status(500).json({ message: 'Text-to-speech synthesis failed' });
+    return sendServerError(req, res, err, 'TTS_GET_ROUTE_FAILED', {
+      clientMessage: 'Text-to-speech synthesis failed',
+      metadata: { lang: req.query.lang },
+    });
   }
 });
 
@@ -210,10 +216,12 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { text, lang, voice, rate } = req.body;
-    await synthesize(text, lang, voice, rate, res);
+    await synthesize(text, lang, voice, rate, res, req);
   } catch (err) {
-    console.error(`TTS route error [POST lang=${req.body?.lang}]:`, err.message || err);
-    if (!res.headersSent) res.status(500).json({ message: 'Text-to-speech synthesis failed' });
+    return sendServerError(req, res, err, 'TTS_POST_ROUTE_FAILED', {
+      clientMessage: 'Text-to-speech synthesis failed',
+      metadata: { lang: req.body?.lang },
+    });
   }
 });
 
@@ -244,8 +252,9 @@ router.get('/voices', async (req, res) => {
 
     res.json(voices);
   } catch (err) {
-    console.error('Voice list error:', err.message || err);
-    res.status(500).json({ message: 'Failed to fetch voice list' });
+    return sendServerError(req, res, err, 'TTS_VOICE_LIST_FAILED', {
+      clientMessage: 'Failed to fetch voice list',
+    });
   }
 });
 

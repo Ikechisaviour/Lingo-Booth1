@@ -627,14 +627,14 @@ function samplePhrasesFor(nativeCode, targetCode) {
 // occurrence in brand-colored spans (dark "Lingo" + orange "Booth", matching
 // the wordmark). Locales that keep the brand name as-is get the highlight;
 // locales that translate it fall through as plain text.
-function renderWithBrand(text) {
+function renderWithBrand(text, brandParts) {
   const parts = String(text).split(/(Lingo Booth)/g);
   return parts.map((part, index) =>
     part === 'Lingo Booth' ? (
       <span key={`brand-${index}`} className="landing-statement-brand">
-        <span className="landing-statement-brand__lingo">Lingo</span>
+        <span className="landing-statement-brand__lingo">{brandParts.lingo}</span>
         {' '}
-        <span className="landing-statement-brand__booth">Booth</span>
+        <span className="landing-statement-brand__booth">{brandParts.booth}</span>
       </span>
     ) : (
       part
@@ -646,6 +646,17 @@ function LandingPage() {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const [landingLanguage, setLandingLanguage] = useState(detectLandingLanguage);
+  // First-time visitors see the full opening manifesto; returning visitors get a
+  // one-line teaser with a "Read more" toggle (they've already read the pitch).
+  // Read the flag synchronously on first render so returning users render
+  // collapsed immediately — no flash of the full text before it hides.
+  const [isReturningVisitor] = useState(() => {
+    try { return window.localStorage.getItem('lb_landing_seen') === '1'; } catch { return false; }
+  });
+  const [manifestoOpen, setManifestoOpen] = useState(false);
+  useEffect(() => {
+    try { window.localStorage.setItem('lb_landing_seen', '1'); } catch { /* private mode */ }
+  }, []);
   // Infinite carousel: track displayIndex 0..N+1 where position 0 holds a clone
   // of the last real slide and position N+1 holds a clone of the first real
   // slide, so the user always sees the edge of the "next" slide even when
@@ -695,6 +706,10 @@ function LandingPage() {
   }, [landingLanguage]);
 
   const landingLanguageT = useMemo(() => i18n.getFixedT(landingLanguage), [i18n, landingLanguage]);
+  const brandParts = useMemo(() => ({
+    lingo: t('brand.lingo', { lng: landingLanguage, defaultValue: 'Lingo' }),
+    booth: t('brand.booth', { lng: landingLanguage, defaultValue: 'Booth' }),
+  }), [landingLanguage, t]);
 
   // Approved reviews moderated in by an admin. Until any exist, the page falls
   // back to the curated seed testimonials in the section copy.
@@ -898,10 +913,11 @@ function LandingPage() {
   return (
     <div className={`landing-page${landing.isRtl ? ' landing-rtl' : ''}`} lang={landing.nativeCode} dir={landing.isRtl ? 'rtl' : 'ltr'}>
       <header className="landing-nav">
-        <button type="button" className="landing-brand" onClick={() => navigate('/')} aria-label={t('common.backToHome')}>
-          <BrandLogo variant="lockup" decorative />
-        </button>
-        <div className="landing-nav-actions">
+        <div className="landing-nav-inner">
+          <button type="button" className="landing-brand" onClick={() => navigate('/')} aria-label={t('common.backToHome')}>
+            <BrandLogo variant="lockup" decorative />
+          </button>
+          <div className="landing-nav-actions">
           <label className="landing-language-select">
             <span className="landing-language-icon" aria-hidden="true">
               <FiGlobe />
@@ -924,15 +940,30 @@ function LandingPage() {
             <span className="landing-login-label-full">{t('navbar.plans')}</span>
             <span className="landing-login-label-icon" aria-hidden="true">$</span>
           </button>
-          <button type="button" className="landing-primary landing-primary-small" onClick={startFree}>
-            {landing.copy.startFree}
-          </button>
+          </div>
         </div>
       </header>
 
       <main>
-        <section className="landing-statement" id="why">
+        <section className={`landing-statement${isReturningVisitor && !manifestoOpen ? ' landing-statement--collapsed' : ''}`} id="why">
           <div className="landing-statement-inner">
+            <p className="landing-statement-teaser">
+              {t('landing.statement.teaser', {
+                lng: landingLanguage,
+                defaultValue: 'Learn the language, not the streak — a full curriculum, taught in your own language.',
+              })}
+              <button
+                type="button"
+                className="landing-statement-toggle"
+                aria-expanded={manifestoOpen}
+                aria-controls="landing-manifesto"
+                onClick={() => setManifestoOpen(true)}
+              >
+                {t('landing.statement.readMore', { lng: landingLanguage, defaultValue: 'Read more' })}{' '}
+                <span aria-hidden="true">▾</span>
+              </button>
+            </p>
+            <div className="landing-statement-full" id="landing-manifesto">
             <p className="landing-statement-line landing-statement-line--lead">
               {t('landing.statement.proveSerious', {
                 lng: landingLanguage,
@@ -967,7 +998,7 @@ function LandingPage() {
               {renderWithBrand(t('landing.statement.teaches', {
                 lng: landingLanguage,
                 defaultValue: 'Lingo Booth teaches the principles behind the language. Drills them with exercises. Then bends every example to your real-life needs, at your level.',
-              }))}
+              }), brandParts)}
             </p>
             <p className="landing-statement-line landing-statement-line--promise">
               {t('landing.statement.curriculum', {
@@ -989,6 +1020,18 @@ function LandingPage() {
                 })}
               </button>
             </div>
+            {isReturningVisitor && (
+              <button
+                type="button"
+                className="landing-statement-toggle landing-statement-toggle--less"
+                aria-expanded={manifestoOpen}
+                aria-controls="landing-manifesto"
+                onClick={() => setManifestoOpen(false)}
+              >
+                {t('landing.statement.showLess', { lng: landingLanguage, defaultValue: 'Show less' })}{' '}
+                <span aria-hidden="true">▴</span>
+              </button>
+            )}
             <a
               href="#learn"
               className="landing-statement-scroll"
@@ -999,6 +1042,7 @@ function LandingPage() {
             >
               <span aria-hidden="true">↓</span>
             </a>
+            </div>
           </div>
         </section>
 

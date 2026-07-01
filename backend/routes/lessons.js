@@ -26,6 +26,7 @@ const {
   containsTargetScript,
   normalizeTargetLayerForDisplay,
 } = require('../utils/targetLayerPolicy');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const { LESSON_CATEGORIES } = Lesson;
 const VALID_CATEGORIES = LESSON_CATEGORIES;
@@ -973,7 +974,7 @@ router.get('/', optionalAuth, async (req, res) => {
       filter.track = { $ne: CLASS_LESSON_TRACK };
     }
     if (!targetLang) {
-      return res.status(400).json({ message: 'targetLang query parameter is required' });
+      return sendClientError(res, 400, 'LESSONS_LIST_TARGET_LANG_REQUIRED', 'targetLang query parameter is required');
     }
     const normalizedTargetLang = normalizeLang(targetLang);
     const normalizedNativeLang = normalizeLang(nativeLang || req.user?.nativeLanguage || 'en');
@@ -1052,8 +1053,7 @@ router.get('/', optionalAuth, async (req, res) => {
 
     res.json(lessonsJson);
   } catch (error) {
-    console.error('Get lessons error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LESSONS_LIST_FAILED');
   }
 });
 
@@ -1062,12 +1062,12 @@ router.get('/', optionalAuth, async (req, res) => {
 router.post('/prepare-pair', optionalAuth, async (req, res) => {
   try {
     if (routeContentKind(req) !== 'classLesson') {
-      return res.status(404).json({ message: 'Class lesson pair preparation not found' });
+      return sendClientError(res, 404, 'LESSONS_PREPARE_PAIR_NOT_FOUND', 'Class lesson pair preparation not found');
     }
     const targetLang = normalizeLang(req.body?.targetLang || req.query.targetLang || req.user?.targetLanguage || 'ko');
     const nativeLang = normalizeLang(req.body?.nativeLang || req.query.nativeLang || req.user?.nativeLanguage || 'en');
     if (!targetLang || !nativeLang || targetLang === nativeLang) {
-      return res.status(400).json({ message: 'A distinct nativeLang and targetLang are required' });
+      return sendClientError(res, 400, 'LESSONS_PREPARE_PAIR_INVALID_LANGS', 'A distinct nativeLang and targetLang are required');
     }
 
     setImmediate(() => {
@@ -1078,8 +1078,7 @@ router.post('/prepare-pair', optionalAuth, async (req, res) => {
 
     res.status(202).json({ queued: true, targetLang, nativeLang });
   } catch (error) {
-    console.error('Prepare class lesson pair error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LESSONS_PREPARE_PAIR_FAILED');
   }
 });
 
@@ -1088,21 +1087,21 @@ router.post('/prepare-pair', optionalAuth, async (req, res) => {
 router.get('/:id/bootstrap', optionalAuth, async (req, res) => {
   try {
     if (routeContentKind(req) !== 'classLesson') {
-      return res.status(404).json({ message: 'Class lesson bootstrap not found' });
+      return sendClientError(res, 404, 'LESSONS_BOOTSTRAP_NOT_CLASS_LESSON', 'Class lesson bootstrap not found');
     }
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      return res.status(404).json({ message: 'Class lesson not found' });
+      return sendClientError(res, 404, 'LESSONS_BOOTSTRAP_INVALID_ID', 'Class lesson not found');
     }
 
     const lesson = await Lesson.findById(req.params.id);
     if (!lesson || lesson.track !== CLASS_LESSON_TRACK) {
-      return res.status(404).json({ message: 'Class lesson not found' });
+      return sendClientError(res, 404, 'LESSONS_BOOTSTRAP_NOT_FOUND', 'Class lesson not found');
     }
 
     const nativeLanguage = normalizeLang(req.query.nativeLang, req.user?.nativeLanguage || 'en');
     const targetLanguage = normalizeLang(req.query.targetLang, req.user?.targetLanguage || lesson.targetLang || 'ko');
     if (normalizeLang(lesson.targetLang || 'ko') !== targetLanguage) {
-      return res.status(404).json({ message: 'Class lesson not found for this language pair' });
+      return sendClientError(res, 404, 'LESSONS_BOOTSTRAP_LANGUAGE_PAIR_MISMATCH', 'Class lesson not found for this language pair');
     }
 
     const progressPayload = await loadClassLessonProgress(req, req.params.id, nativeLanguage, targetLanguage);
@@ -1119,29 +1118,28 @@ router.get('/:id/bootstrap', optionalAuth, async (req, res) => {
       progress: progressPayload.progress,
     });
   } catch (error) {
-    console.error('Get class lesson bootstrap error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LESSONS_BOOTSTRAP_FAILED', { metadata: { lessonId: req.params.id } });
   }
 });
 
 router.get('/:id/items', optionalAuth, async (req, res) => {
   try {
     if (routeContentKind(req) !== 'classLesson') {
-      return res.status(404).json({ message: 'Class lesson items not found' });
+      return sendClientError(res, 404, 'LESSONS_ITEMS_NOT_CLASS_LESSON', 'Class lesson items not found');
     }
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      return res.status(404).json({ message: 'Class lesson not found' });
+      return sendClientError(res, 404, 'LESSONS_ITEMS_INVALID_ID', 'Class lesson not found');
     }
 
     const lesson = await Lesson.findById(req.params.id);
     if (!lesson || lesson.track !== CLASS_LESSON_TRACK) {
-      return res.status(404).json({ message: 'Class lesson not found' });
+      return sendClientError(res, 404, 'LESSONS_ITEMS_NOT_FOUND', 'Class lesson not found');
     }
 
     const nativeLanguage = normalizeLang(req.query.nativeLang, req.user?.nativeLanguage || 'en');
     const targetLanguage = normalizeLang(req.query.targetLang, req.user?.targetLanguage || lesson.targetLang || 'ko');
     if (normalizeLang(lesson.targetLang || 'ko') !== targetLanguage) {
-      return res.status(404).json({ message: 'Class lesson not found for this language pair' });
+      return sendClientError(res, 404, 'LESSONS_ITEMS_LANGUAGE_PAIR_MISMATCH', 'Class lesson not found for this language pair');
     }
 
     const center = sanitizeIndex(req.query.center, 0);
@@ -1149,8 +1147,7 @@ router.get('/:id/items', optionalAuth, async (req, res) => {
     const lessonObj = await localizeLessonForPair(lesson, 'classLesson', nativeLanguage);
     res.json(classLessonWindow(lessonObj, center, windowSize));
   } catch (error) {
-    console.error('Get class lesson items error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LESSONS_ITEMS_FAILED', { metadata: { lessonId: req.params.id } });
   }
 });
 
@@ -1160,10 +1157,10 @@ router.get('/:id/items', optionalAuth, async (req, res) => {
 router.get('/:id/progress', optionalAuth, async (req, res) => {
   try {
     if (routeContentKind(req) !== 'classLesson') {
-      return res.status(404).json({ message: 'Class lesson progress not found' });
+      return sendClientError(res, 404, 'LESSONS_GET_PROGRESS_NOT_CLASS_LESSON', 'Class lesson progress not found');
     }
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      return res.status(404).json({ message: 'Class lesson not found' });
+      return sendClientError(res, 404, 'LESSONS_GET_PROGRESS_INVALID_ID', 'Class lesson not found');
     }
 
     const nativeLanguage = normalizeLang(req.query.nativeLang, req.user?.nativeLanguage || 'en');
@@ -1182,8 +1179,7 @@ router.get('/:id/progress', optionalAuth, async (req, res) => {
 
     res.json({ canSync: true, progress });
   } catch (error) {
-    console.error('Get class lesson progress error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LESSONS_GET_PROGRESS_FAILED', { metadata: { lessonId: req.params.id } });
   }
 });
 
@@ -1191,10 +1187,10 @@ router.get('/:id/progress', optionalAuth, async (req, res) => {
 router.put('/:id/progress', optionalAuth, async (req, res) => {
   try {
     if (routeContentKind(req) !== 'classLesson') {
-      return res.status(404).json({ message: 'Class lesson progress not found' });
+      return sendClientError(res, 404, 'LESSONS_SAVE_PROGRESS_NOT_CLASS_LESSON', 'Class lesson progress not found');
     }
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      return res.status(404).json({ message: 'Class lesson not found' });
+      return sendClientError(res, 404, 'LESSONS_SAVE_PROGRESS_INVALID_ID', 'Class lesson not found');
     }
 
     const nativeLanguage = normalizeLang(req.body?.nativeLanguage || req.query.nativeLang, req.user?.nativeLanguage || 'en');
@@ -1206,7 +1202,7 @@ router.put('/:id/progress', optionalAuth, async (req, res) => {
 
     const lesson = await Lesson.findById(req.params.id).select('track targetLang').lean();
     if (!lesson || lesson.track !== CLASS_LESSON_TRACK || lesson.targetLang !== targetLanguage) {
-      return res.status(404).json({ message: 'Class lesson not found' });
+      return sendClientError(res, 404, 'LESSONS_SAVE_PROGRESS_NOT_FOUND', 'Class lesson not found');
     }
 
     const payload = sanitizeProgressPayload(req.body || {});
@@ -1233,27 +1229,26 @@ router.put('/:id/progress', optionalAuth, async (req, res) => {
 
     res.json({ canSync: true, progress });
   } catch (error) {
-    console.error('Save class lesson progress error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LESSONS_SAVE_PROGRESS_FAILED', { metadata: { lessonId: req.params.id } });
   }
 });
 
 router.get('/:id', optionalAuth, async (req, res) => {
   try {
     if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
-      return res.status(404).json({ message: `${notFoundLabel(req)} not found` });
+      return sendClientError(res, 404, 'LESSONS_GET_INVALID_ID', `${notFoundLabel(req)} not found`);
     }
     const lesson = await Lesson.findById(req.params.id);
     if (!lesson) {
-      return res.status(404).json({ message: `${notFoundLabel(req)} not found` });
+      return sendClientError(res, 404, 'LESSONS_GET_NOT_FOUND', `${notFoundLabel(req)} not found`);
     }
 
     const contentKind = routeContentKind(req);
     if (contentKind === 'classLesson' && lesson.track !== CLASS_LESSON_TRACK) {
-      return res.status(404).json({ message: 'Class lesson not found' });
+      return sendClientError(res, 404, 'LESSONS_GET_CLASS_LESSON_NOT_FOUND', 'Class lesson not found');
     }
     if (contentKind === 'quiz' && lesson.track === CLASS_LESSON_TRACK) {
-      return res.status(404).json({ message: 'Quiz not found' });
+      return sendClientError(res, 404, 'LESSONS_GET_QUIZ_NOT_FOUND', 'Quiz not found');
     }
 
     const { nativeLang, targetLang: requestedTargetLang } = req.query;
@@ -1261,13 +1256,12 @@ router.get('/:id', optionalAuth, async (req, res) => {
     const normalizedNativeLang = normalizeLang(nativeLang || req.user?.nativeLanguage || 'en');
     const normalizedRequestedTargetLang = requestedTargetLang ? normalizeLang(requestedTargetLang) : '';
     if (normalizedRequestedTargetLang && targetLang !== normalizedRequestedTargetLang) {
-      return res.status(404).json({ message: `${notFoundLabel(req)} not found for this language pair` });
+      return sendClientError(res, 404, 'LESSONS_GET_LANGUAGE_PAIR_MISMATCH', `${notFoundLabel(req)} not found for this language pair`);
     }
     const lessonObj = await localizeLessonForPair(lesson, contentKind, normalizedNativeLang);
     res.json(lessonObj);
   } catch (error) {
-    console.error('Get lesson error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LESSONS_GET_FAILED', { metadata: { lessonId: req.params.id } });
   }
 });
 
@@ -1277,7 +1271,7 @@ router.post('/', verifyToken, isAdmin, async (req, res) => {
     const { title, category, difficulty, content, targetLang, nativeLang } = req.body;
 
     if (!title || !category || !content || !targetLang) {
-      return res.status(400).json({ message: 'Title, category, content, and targetLang are required' });
+      return sendClientError(res, 400, 'LESSONS_CREATE_MISSING_FIELDS', 'Title, category, content, and targetLang are required');
     }
 
     const lesson = new Lesson({
@@ -1292,8 +1286,7 @@ router.post('/', verifyToken, isAdmin, async (req, res) => {
     await lesson.save();
     res.status(201).json(lesson);
   } catch (error) {
-    console.error('Create lesson error:', error);
-    res.status(500).json({ message: 'Server error' });
+    return sendServerError(req, res, error, 'LESSONS_CREATE_FAILED');
   }
 });
 

@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
-import { Button, Card, Text, TextInput } from 'react-native-paper';
+import { Button, Card, IconButton, Text, TextInput } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -12,6 +12,13 @@ import { getLangTtsLocale } from '../../config/languages';
 import { useAppColors, type AppColors } from '../../config/theme';
 
 const REVIEW_RESULTS = ['again', 'hard', 'good', 'easy'] as const;
+
+const GRADE_COLOR: Record<typeof REVIEW_RESULTS[number], keyof AppColors> = {
+  again: 'accentRed',
+  hard: 'accentYellow',
+  good: 'accentGreen',
+  easy: 'accentBlue',
+};
 
 const classResultMeta = (lesson: any, t: (key: string, options?: any) => string) => {
   if (lesson?.category) return lesson.category;
@@ -215,40 +222,75 @@ const ReviewScreen: React.FC = () => {
       <Text style={styles.itemTarget}>{item.targetText}</Text>
       {!!item.nativeText && <Text style={styles.itemNative}>{item.nativeText}</Text>}
       <Text style={styles.itemReason}>{item.reason || item.sourceLabel || t('learningHub.savedForPractice', 'Saved for later practice')}</Text>
-      <View style={styles.actionRow}>
-        {reviewable && REVIEW_RESULTS.map((result) => (
-          <Button key={result} mode="outlined" compact disabled={busyId === item._id} onPress={() => reviewItem(item._id, result)}>
-            {t(`learningHub.reviewResults.${result}`, result)}
-          </Button>
-        ))}
-        <Button mode="outlined" compact onPress={() => openAskTutor(item)}>
-          {t('learningHub.askTutor', 'Ask tutor')}
-        </Button>
-        <Button mode="outlined" compact onPress={() => hearTarget(item)}>
-          {t('learningHub.practicePronunciation', 'Listen')}
-        </Button>
-        <Button mode="outlined" compact onPress={() => openPracticeSurface(item, 'writing')}>
-          {t('learningHub.practiceWriting', 'Write')}
-        </Button>
-        <Button mode="outlined" compact onPress={() => openPracticeSurface(item, 'flashcard')}>
-          {t('learningHub.practiceFlashcard', 'Flashcard')}
-        </Button>
-        <Button mode="outlined" compact onPress={() => openQuickQuiz(item)}>
-          {t('learningHub.practiceQuiz', 'Self-test')}
-        </Button>
-        {item.itemType === 'roleplay' && (
-          <Button mode="outlined" compact onPress={() => reuseRoleplay(item)}>
-            {t('learningHub.useRoleplayAgain', 'Use again')}
-          </Button>
+      <View style={styles.controls}>
+        {reviewable && (
+          <View style={styles.ratingRow}>
+            {REVIEW_RESULTS.map((result) => {
+              const tone = colors[GRADE_COLOR[result]];
+              return (
+                <Button
+                  key={result}
+                  mode="outlined"
+                  compact
+                  disabled={busyId === item._id}
+                  textColor={tone}
+                  buttonColor={tone + '14'}
+                  style={[styles.gradeButton, { borderColor: tone + '66' }]}
+                  onPress={() => reviewItem(item._id, result)}
+                >
+                  {t(`learningHub.reviewResults.${result}`, result)}
+                </Button>
+              );
+            })}
+          </View>
         )}
-        {!!sourceRouteFor(item) && (
-          <Button mode="outlined" compact onPress={() => openSource(item)}>
-            {t('learningHub.openSource', 'Open source')}
-          </Button>
-        )}
-        <Button mode="outlined" compact disabled={busyId === item._id} onPress={() => deleteItem(item._id)}>
-          {t('common.delete')}
-        </Button>
+        <View style={styles.actionBar}>
+          <View style={styles.practiceGroup}>
+            <Button mode="text" compact icon="volume-high" textColor={colors.textSecondary} onPress={() => hearTarget(item)}>
+              {t('learningHub.practicePronunciation', 'Listen')}
+            </Button>
+            <Button mode="text" compact icon="message-outline" textColor={colors.textSecondary} onPress={() => openAskTutor(item)}>
+              {t('learningHub.askTutor', 'Ask tutor')}
+            </Button>
+            <Button mode="text" compact icon="pencil-outline" textColor={colors.textSecondary} onPress={() => openPracticeSurface(item, 'writing')}>
+              {t('learningHub.practiceWriting', 'Write')}
+            </Button>
+            <Button mode="text" compact icon="cards-outline" textColor={colors.textSecondary} onPress={() => openPracticeSurface(item, 'flashcard')}>
+              {t('learningHub.practiceFlashcard', 'Flashcard')}
+            </Button>
+            <Button mode="text" compact icon="check-circle-outline" textColor={colors.textSecondary} onPress={() => openQuickQuiz(item)}>
+              {t('learningHub.practiceQuiz', 'Self-test')}
+            </Button>
+          </View>
+          <View style={styles.utilityGroup}>
+            {item.itemType === 'roleplay' && (
+              <IconButton
+                icon="repeat"
+                size={18}
+                iconColor={colors.textMuted}
+                accessibilityLabel={String(t('learningHub.useRoleplayAgain', 'Use again'))}
+                onPress={() => reuseRoleplay(item)}
+              />
+            )}
+            {!!sourceRouteFor(item) && (
+              <IconButton
+                icon="open-in-new"
+                size={18}
+                iconColor={colors.textMuted}
+                accessibilityLabel={String(t('learningHub.openSource', 'Open source'))}
+                onPress={() => openSource(item)}
+              />
+            )}
+            <IconButton
+              icon="trash-can-outline"
+              size={18}
+              iconColor={colors.error}
+              disabled={busyId === item._id}
+              accessibilityLabel={String(t('common.delete'))}
+              onPress={() => deleteItem(item._id)}
+            />
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -328,13 +370,18 @@ const ReviewScreen: React.FC = () => {
                 <Text style={styles.itemNative}>
                   {quickQuizItem.nativeText || t('learningHub.quickQuizNoAnswer', 'Recall the meaning, then grade yourself honestly.')}
                 </Text>
-                <View style={styles.actionRow}>
-                  {REVIEW_RESULTS.map((result) => (
+                <View style={styles.ratingRow}>
+                  {REVIEW_RESULTS.map((result) => {
+                    const tone = colors[GRADE_COLOR[result]];
+                    return (
                     <Button
                       key={`quick-${result}`}
                       mode="outlined"
                       compact
                       disabled={busyId === quickQuizItem._id}
+                      textColor={tone}
+                      buttonColor={tone + '14'}
+                      style={[styles.gradeButton, { borderColor: tone + '66' }]}
                       onPress={() => {
                         reviewItem(quickQuizItem._id, result);
                         setQuickQuizItem(null);
@@ -342,7 +389,8 @@ const ReviewScreen: React.FC = () => {
                     >
                       {t(`learningHub.reviewResults.${result}`, result)}
                     </Button>
-                  ))}
+                    );
+                  })}
                 </View>
               </>
             ) : (
@@ -620,6 +668,12 @@ const createStyles = (colors: AppColors) => StyleSheet.create({
   itemNative: { color: colors.textSecondary },
   itemReason: { color: colors.textMuted, fontSize: 12 },
   actionRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 8, marginTop: 4 },
+  controls: { gap: 10, marginTop: 8, paddingTop: 10, borderTopWidth: 1, borderTopColor: colors.border },
+  ratingRow: { flexDirection: 'row', flexWrap: 'wrap', gap: 6 },
+  gradeButton: { flexGrow: 1, minWidth: 74 },
+  actionBar: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 4 },
+  practiceGroup: { flexDirection: 'row', flexWrap: 'wrap', flexShrink: 1 },
+  utilityGroup: { flexDirection: 'row', alignItems: 'center' },
   emptyText: { color: colors.textSecondary, lineHeight: 20 },
   offlineNotice: { color: colors.textSecondary, lineHeight: 20 },
   reviewBeforeSleep: {

@@ -1,7 +1,19 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FiBookmark, FiClock, FiMessageCircle, FiSearch, FiTrash2 } from 'react-icons/fi';
+import {
+  FiBookmark,
+  FiCheckCircle,
+  FiClock,
+  FiEdit3,
+  FiExternalLink,
+  FiLayers,
+  FiMessageCircle,
+  FiRepeat,
+  FiSearch,
+  FiTrash2,
+  FiVolume2,
+} from 'react-icons/fi';
 import { learningHubService } from '../services/api';
 import speechService from '../services/speechService';
 import { getTargetTtsLocale } from '../config/languages';
@@ -206,47 +218,80 @@ function ReviewPage() {
             {item.reason || item.sourceLabel || t('learningHub.savedForPractice', 'Saved for later practice')}
           </small>
         </div>
-        <div className="review-item-actions">
-          {reviewable && REVIEW_RESULTS.map((result) => (
-            <button
-              type="button"
-              key={result}
-              onClick={() => reviewItem(item._id, result)}
-              disabled={busyItemId === item._id}
-            >
-              {t(`learningHub.reviewResults.${result}`, result)}
-            </button>
-          ))}
-          <button type="button" onClick={() => askTutor(item)}>
-            <FiMessageCircle aria-hidden="true" />
-            {t('learningHub.askTutor', 'Ask tutor')}
-          </button>
-          <button type="button" onClick={() => hearTarget(item)}>
-            {t('learningHub.practicePronunciation', 'Listen')}
-          </button>
-          <button type="button" onClick={() => openPracticeSurface(item, 'writing')}>
-            {t('learningHub.practiceWriting', 'Write')}
-          </button>
-          <button type="button" onClick={() => openPracticeSurface(item, 'flashcard')}>
-            {t('learningHub.practiceFlashcard', 'Flashcard')}
-          </button>
-          <button type="button" onClick={() => openQuickQuiz(item)}>
-            {t('learningHub.practiceQuiz', 'Self-test')}
-          </button>
-          {item.itemType === 'roleplay' && (
-            <button type="button" onClick={() => reuseRoleplay(item)}>
-              {t('learningHub.useRoleplayAgain', 'Use again')}
-            </button>
+        <div className="review-item-controls">
+          {reviewable && (
+            <div className="review-rating" role="group">
+              {REVIEW_RESULTS.map((result) => (
+                <button
+                  type="button"
+                  key={result}
+                  className={`review-grade review-grade-${result}`}
+                  onClick={() => reviewItem(item._id, result)}
+                  disabled={busyItemId === item._id}
+                >
+                  {t(`learningHub.reviewResults.${result}`, result)}
+                </button>
+              ))}
+            </div>
           )}
-          {route && (
-            <button type="button" onClick={() => navigate(route)}>
-              {t('learningHub.openSource', 'Open source')}
-            </button>
-          )}
-          <button type="button" onClick={() => deleteItem(item._id)} disabled={busyItemId === item._id}>
-            <FiTrash2 aria-hidden="true" />
-            {t('common.delete')}
-          </button>
+          <div className="review-action-bar">
+            <div className="review-practice-group">
+              <button type="button" className="review-action" onClick={() => hearTarget(item)}>
+                <FiVolume2 aria-hidden="true" />
+                {t('learningHub.practicePronunciation', 'Listen')}
+              </button>
+              <button type="button" className="review-action" onClick={() => askTutor(item)}>
+                <FiMessageCircle aria-hidden="true" />
+                {t('learningHub.askTutor', 'Ask tutor')}
+              </button>
+              <button type="button" className="review-action" onClick={() => openPracticeSurface(item, 'writing')}>
+                <FiEdit3 aria-hidden="true" />
+                {t('learningHub.practiceWriting', 'Write')}
+              </button>
+              <button type="button" className="review-action" onClick={() => openPracticeSurface(item, 'flashcard')}>
+                <FiLayers aria-hidden="true" />
+                {t('learningHub.practiceFlashcard', 'Flashcard')}
+              </button>
+              <button type="button" className="review-action" onClick={() => openQuickQuiz(item)}>
+                <FiCheckCircle aria-hidden="true" />
+                {t('learningHub.practiceQuiz', 'Self-test')}
+              </button>
+            </div>
+            <div className="review-utility-group">
+              {item.itemType === 'roleplay' && (
+                <button
+                  type="button"
+                  className="review-icon-action"
+                  title={t('learningHub.useRoleplayAgain', 'Use again')}
+                  aria-label={t('learningHub.useRoleplayAgain', 'Use again')}
+                  onClick={() => reuseRoleplay(item)}
+                >
+                  <FiRepeat aria-hidden="true" />
+                </button>
+              )}
+              {route && (
+                <button
+                  type="button"
+                  className="review-icon-action"
+                  title={t('learningHub.openSource', 'Open source')}
+                  aria-label={t('learningHub.openSource', 'Open source')}
+                  onClick={() => navigate(route)}
+                >
+                  <FiExternalLink aria-hidden="true" />
+                </button>
+              )}
+              <button
+                type="button"
+                className="review-icon-action review-icon-danger"
+                title={t('common.delete')}
+                aria-label={t('common.delete')}
+                onClick={() => deleteItem(item._id)}
+                disabled={busyItemId === item._id}
+              >
+                <FiTrash2 aria-hidden="true" />
+              </button>
+            </div>
+          </div>
         </div>
       </article>
     );
@@ -316,11 +361,12 @@ function ReviewPage() {
           {quickQuizRevealed ? (
             <>
               <span>{quickQuizItem.nativeText || t('learningHub.quickQuizNoAnswer', 'Recall the meaning, then grade yourself honestly.')}</span>
-              <div className="review-item-actions">
+              <div className="review-rating" role="group">
                 {REVIEW_RESULTS.map((result) => (
                   <button
                     type="button"
                     key={`quick-${result}`}
+                    className={`review-grade review-grade-${result}`}
                     onClick={() => {
                       reviewItem(quickQuizItem._id, result);
                       setQuickQuizItem(null);

@@ -92,6 +92,11 @@ const AdminFailureQueue: React.FC<Props> = ({
               </View>
 
               <View style={styles.detailGrid}>
+                {!!report.code && (
+                  <Text style={styles.detailText}>
+                    {t('admin.code', 'Code')}: {report.code}{report.ref ? ` · ${t('admin.ref', 'Ref')} ${report.ref}` : ''}
+                  </Text>
+                )}
                 <Text style={styles.detailText}>
                   {t('admin.page', 'Page')}: {report.route || report.screen || t('admin.unknown', 'Unknown')}
                 </Text>

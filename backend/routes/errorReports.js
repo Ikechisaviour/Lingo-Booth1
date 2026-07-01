@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const ErrorReport = require('../models/ErrorReport');
 const { optionalAuth } = require('../middleware/auth');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const router = express.Router();
 
@@ -49,7 +50,7 @@ router.post('/', async (req, res) => {
     const message = trimString(body.message || body.api?.responseMessage || 'Client failure reported', 2000);
 
     if (!message || message.trim().length === 0) {
-      return res.status(400).json({ message: 'Error message is required' });
+      return sendClientError(res, 400, 'ERROR_REPORTS_MESSAGE_REQUIRED', 'Error message is required');
     }
 
     const reportedUserId = trimString(body.userId, 120);
@@ -68,6 +69,11 @@ router.post('/', async (req, res) => {
       source,
       kind,
       severity,
+      // Stable operation code + correlation ref forwarded from the backend
+      // response (see clients' errorReporter). Lets the client-side (api-kind)
+      // record line up with the server-side record for the same failure.
+      code: trimString(body.code, 120),
+      ref: trimString(body.ref, 40),
       message,
       stack: trimString(body.stack, 12000),
       componentStack: trimString(body.componentStack, 12000),
@@ -107,8 +113,9 @@ router.post('/', async (req, res) => {
 
     return res.status(201).json({ id: report._id });
   } catch (error) {
-    console.error('Error report create failed:', error.message || error);
-    return res.status(500).json({ message: 'Could not record error report' });
+    return sendServerError(req, res, error, 'ERROR_REPORTS_CREATE_FAILED', {
+      clientMessage: 'Could not record error report',
+    });
   }
 });
 

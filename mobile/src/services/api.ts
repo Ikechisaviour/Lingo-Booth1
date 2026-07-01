@@ -210,7 +210,7 @@ export const authService = {
   guestActivity: (data: object) =>
     api.post('/auth/guest-activity', data),
   verifyEmail: (token: string) =>
-    api.get(`/auth/verify-email/${token}`),
+    api.get('/auth/verify-email', { params: { token } }),
   googleLogin: (credential: string, guestXP: number, nativeLanguage: string, targetLanguage: string) =>
     api.post('/auth/google', { credential, guestXP, nativeLanguage, targetLanguage }),
   forgotPassword: (email: string) =>
@@ -584,6 +584,12 @@ export const userService = {
     api.get(`/users/${userId}/flashcard-seed`),
   refreshFlashcardSeed: (userId: string) =>
     api.post(`/users/${userId}/flashcard-seed`),
+  // Persisted flashcard deck selection + study settings (server-side, follows
+  // the learner across devices). Guests fall back to AsyncStorage in the screen.
+  getFlashcardPrefs: (userId: string) =>
+    api.get(`/users/${userId}/flashcard-prefs`),
+  saveFlashcardPrefs: (userId: string, prefs: object) =>
+    api.put(`/users/${userId}/flashcard-prefs`, { prefs }),
   addXP: (userId: string, points: number) =>
     api.post(`/users/${userId}/xp`, { points }).then((response) => {
       invalidateCachedGets((key) => (

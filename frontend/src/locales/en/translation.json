@@ -737,7 +737,25 @@
     "failures": "Failures",
     "messages": "Messages",
     "semesterInterest": "Semester interest",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "sectionsNav": "Admin sections",
+    "navGroups": {
+      "overview": "Overview",
+      "attention": "Needs attention",
+      "people": "People",
+      "engagement": "Usage",
+      "revenue": "Revenue",
+      "tools": "Tools"
+    },
+    "communications": "Communications",
+    "institutions": "Institutions",
+    "sendEmailAction": "Send email",
+    "institutionsSubtitle": "Every registered institution and the email of its admin contacts.",
+    "institutionAdminEmail": "Admin email",
+    "noInstitutionAdmin": "No admin assigned",
+    "emailAdmin": "Email admin",
+    "emailUserTitle": "Email {{name}}",
+    "emailUserTo": "Sends a branded email to"
   },
   "contact": {
     "navLabel": "Contact",
@@ -2208,7 +2226,11 @@
     "title": "Notifications",
     "markAllRead": "Mark all read",
     "empty": "No notifications yet.",
+    "emptyArchived": "No archived notifications.",
     "dismiss": "Dismiss",
+    "restore": "Restore",
+    "inboxTab": "Inbox",
+    "archivedTab": "Archived",
     "adminBroadcastSent": "Notification sent to {{count}} users.",
     "adminBroadcastFailed": "Could not send notification.",
     "adminComposerTitle": "Send in-app notice",
@@ -2374,6 +2396,50 @@
       "previous": "Previous hero slide",
       "next": "Next hero slide",
       "showSlide": "Show hero slide {{number}}"
+    },
+    "statement": {
+      "proveSerious": "Every day you proved you were serious.",
+      "cared": "Every day it proved it only cared about the streak.",
+      "notLearning": "That is not learning. That is a counter with a flame on it.",
+      "walkAway": "Walk away from streak-chasing.",
+      "takeSeriousness": "Take that seriousness where it gets results.",
+      "teaches": "Lingo Booth teaches the principles behind the language. Drills them with exercises. Then bends every example to your real-life needs, at your level.",
+      "curriculum": "A complete curriculum, guided end-to-end. Reading, writing, listening, speaking, review — working together, not stacked apart.",
+      "actuallyUse": "Here you learn what you can actually use.",
+      "cta": "Start learning.",
+      "scrollAria": "Scroll for more",
+      "teaser": "Learn the language, not the streak — a full curriculum, taught in your own language.",
+      "readMore": "Read more",
+      "showLess": "Show less"
     }
+  },
+  "brand": {
+    "lingo": "Lingo",
+    "booth": "Booth"
+  },
+  "adminEmail": {
+    "confirmAll": "This will email ALL users. Are you sure you want to continue?",
+    "sentWithFailures": "Email sent to {{sent}} user(s); {{failed}} failed.",
+    "sent": "Email sent to {{sent}} user(s).",
+    "failed": "Could not send email.",
+    "composerTitle": "Send email",
+    "composerHint": "Send a branded email to one user, all users, or institution members. Delivered via email (not just an in-app notice).",
+    "verifiedOnly": "Only verified email addresses",
+    "subject": "Subject",
+    "message": "Message",
+    "actionUrl": "Optional button link",
+    "actionLabel": "Optional button text",
+    "actionLabelPlaceholder": "Open Lingo Booth",
+    "sending": "Sending…",
+    "send": "Send email"
+  },
+  "errorBoundary": {
+    "redirecting": "Taking you home…",
+    "goHome": "Go to the Lingo Booth home page"
+  },
+  "appLink": {
+    "title": "Opening Lingo Booth",
+    "body": "If the app does not open, continue in your browser.",
+    "fallbackButton": "Continue in browser"
   }
 }

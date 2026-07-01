@@ -327,6 +327,8 @@ export const notificationService = {
     api.put('/notifications/read-all'),
   archive: (notificationId) =>
     api.delete(`/notifications/${notificationId}`),
+  restore: (notificationId) =>
+    api.put(`/notifications/${notificationId}/restore`),
   adminBroadcast: (payload) =>
     api.post('/notifications/admin/broadcast', payload),
 };
@@ -721,6 +723,12 @@ export const userService = {
   // Force a fresh seed and restart the 12h window (manual reshuffle).
   refreshFlashcardSeed: (userId) =>
     api.post(`/users/${userId}/flashcard-seed`),
+  // Persisted flashcard deck selection + study settings (server-side, follows
+  // the learner across devices). Guests fall back to localStorage client-side.
+  getFlashcardPrefs: (userId) =>
+    api.get(`/users/${userId}/flashcard-prefs`),
+  saveFlashcardPrefs: (userId, prefs) =>
+    api.put(`/users/${userId}/flashcard-prefs`, { prefs }),
   addXP: (userId, points) =>
     api.post(`/users/${userId}/xp`, { points }).then((response) => {
       invalidateCachedGets((key) => (
@@ -846,6 +854,8 @@ export const adminService = {
     api.put(`/admin/reviews/${reviewId}/status`, { status }),
   deleteReview: (reviewId) =>
     api.delete(`/admin/reviews/${reviewId}`),
+  sendEmail: (payload) =>
+    api.post('/admin/send-email', payload, { timeout: 120000 }),
   sendSpeakingDemoTurn: (data) =>
     api.post('/admin/speaking-demo/conversation', data, { timeout: 60000 }),
   sendLocalSpeakingDemoTurn: (data) =>

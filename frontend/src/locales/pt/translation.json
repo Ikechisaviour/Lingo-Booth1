@@ -709,7 +709,25 @@
     "failures": "Falhas",
     "messages": "Mensagens",
     "semesterInterest": "Interesse semestral",
-    "reviews": "Avaliações"
+    "reviews": "Avaliações",
+    "sectionsNav": "Seções administrativas",
+    "navGroups": {
+      "overview": "Visão geral",
+      "attention": "Precisa de atenção",
+      "people": "Pessoas",
+      "revenue": "Receita",
+      "tools": "Ferramentas",
+      "engagement": "Uso"
+    },
+    "communications": "Comunicações",
+    "institutions": "Instituições",
+    "sendEmailAction": "Enviar e-mail",
+    "institutionsSubtitle": "Cada instituição cadastrada e o email de seus contatos administrativos.",
+    "institutionAdminEmail": "E-mail do administrador",
+    "noInstitutionAdmin": "Nenhum administrador atribuído",
+    "emailAdmin": "Administrador de e-mail",
+    "emailUserTitle": "E-mail {{name}}",
+    "emailUserTo": "Envia um e-mail com a marca para"
   },
   "forgotPassword": {
     "title": "Esqueceu a senha",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "Instituição aberta",
     "manageSeatsAction": "Gerenciar assentos",
     "viewPlansAction": "Ver planos",
-    "resumePracticeAction": "Retomar a prática"
+    "resumePracticeAction": "Retomar a prática",
+    "emptyArchived": "Nenhuma notificação arquivada.",
+    "restore": "Restaurar",
+    "inboxTab": "Caixa de entrada",
+    "archivedTab": "Arquivada"
   },
   "stepUp": {
     "verifyFailed": "Não foi possível verificar a senha",
@@ -2376,6 +2398,50 @@
       "previous": "Slide anterior do herói",
       "next": "Próximo slide de herói",
       "showSlide": "Mostrar slide do herói {{number}}"
+    },
+    "statement": {
+      "proveSerious": "Todos os dias você provou que estava falando sério.",
+      "cared": "Todos os dias provava que só se importava com a sequência.",
+      "notLearning": "Isso não é aprender. Esse é um balcão com uma chama.",
+      "walkAway": "Afaste-se da perseguição.",
+      "takeSeriousness": "Leve essa seriedade onde ela obtém resultados.",
+      "teaches": "Lingo Booth ensina os princípios por trás do idioma. Treine-os com exercícios. Em seguida, adapta cada exemplo às suas necessidades da vida real, no seu nível.",
+      "curriculum": "Um currículo completo, guiado de ponta a ponta. Ler, escrever, ouvir, falar, revisar – trabalhando juntos, não separados.",
+      "actuallyUse": "Aqui você aprende o que pode realmente usar.",
+      "cta": "Comece a aprender.",
+      "scrollAria": "Role para mais",
+      "teaser": "Aprenda o idioma, não o traço — um currículo completo, ministrado em seu próprio idioma.",
+      "readMore": "Leia mais",
+      "showLess": "Mostrar menos"
     }
+  },
+  "brand": {
+    "lingo": "Linguagem",
+    "booth": "Cabine"
+  },
+  "adminEmail": {
+    "confirmAll": "Isso enviará um e-mail para TODOS os usuários. Tem certeza de que deseja continuar?",
+    "sentWithFailures": "Email enviado para usuário(s) {{sent}}; {{failed}} falhou.",
+    "sent": "E-mail enviado para usuário(s) {{sent}}.",
+    "failed": "Não foi possível enviar e-mail.",
+    "composerTitle": "Enviar e-mail",
+    "composerHint": "Envie um e-mail de marca para um usuário, todos os usuários ou membros da instituição. Entregue por e-mail (não apenas um aviso no aplicativo).",
+    "verifiedOnly": "Somente endereços de e-mail verificados",
+    "subject": "Assunto",
+    "message": "Mensagem",
+    "actionUrl": "Link de botão opcional",
+    "actionLabel": "Texto do botão opcional",
+    "actionLabelPlaceholder": "Abra a cabine do Lingo",
+    "sending": "Enviando…",
+    "send": "Enviar e-mail"
+  },
+  "errorBoundary": {
+    "redirecting": "Levando você para casa…",
+    "goHome": "Vá para a página inicial do Lingo Booth"
+  },
+  "appLink": {
+    "title": "Abrindo o Lingo Booth",
+    "body": "Se o aplicativo não abrir, continue no seu navegador.",
+    "fallbackButton": "Continuar no navegador"
   }
 }

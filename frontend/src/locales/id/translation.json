@@ -709,7 +709,25 @@
     "failures": "Kegagalan",
     "messages": "Pesan",
     "semesterInterest": "Minat semester",
-    "reviews": "Ulasan"
+    "reviews": "Ulasan",
+    "sectionsNav": "Bagian Admin",
+    "navGroups": {
+      "overview": "Ringkasan",
+      "attention": "Perlu perhatian",
+      "people": "Rakyat",
+      "revenue": "Pendapatan",
+      "tools": "Peralatan",
+      "engagement": "Penggunaan"
+    },
+    "communications": "Komunikasi",
+    "institutions": "Institusi",
+    "sendEmailAction": "Kirim email",
+    "institutionsSubtitle": "Setiap institusi yang terdaftar dan email kontak adminnya.",
+    "institutionAdminEmail": "email admin",
+    "noInstitutionAdmin": "Tidak ada admin yang ditugaskan",
+    "emailAdmin": "Admin email",
+    "emailUserTitle": "Surel {{name}}",
+    "emailUserTo": "Mengirim email bermerek ke"
   },
   "forgotPassword": {
     "title": "Lupa kata sandi",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "Institusi terbuka",
     "manageSeatsAction": "Kelola kursi",
     "viewPlansAction": "Lihat rencana",
-    "resumePracticeAction": "Lanjutkan latihan"
+    "resumePracticeAction": "Lanjutkan latihan",
+    "emptyArchived": "Tidak ada notifikasi yang diarsipkan.",
+    "restore": "Memulihkan",
+    "inboxTab": "Kotak masuk",
+    "archivedTab": "Diarsipkan"
   },
   "stepUp": {
     "verifyFailed": "Tidak dapat memverifikasi kata sandi",
@@ -2376,6 +2398,50 @@
       "previous": "Slide pahlawan sebelumnya",
       "next": "Slide pahlawan berikutnya",
       "showSlide": "Tampilkan slide pahlawan {{number}}"
+    },
+    "statement": {
+      "proveSerious": "Setiap hari Anda membuktikan bahwa Anda serius.",
+      "cared": "Setiap hari terbukti mereka hanya peduli pada pukulannya.",
+      "notLearning": "Itu bukan pembelajaran. Itu adalah counter dengan nyala api di atasnya.",
+      "walkAway": "Menjauhlah dari kejar-kejaran.",
+      "takeSeriousness": "Ambillah keseriusan itu di mana hal itu akan membuahkan hasil.",
+      "teaches": "Lingo Booth mengajarkan prinsip-prinsip di balik bahasa tersebut. Latih mereka dengan latihan. Kemudian sesuaikan setiap contoh dengan kebutuhan kehidupan nyata Anda, sesuai level Anda.",
+      "curriculum": "Kurikulum yang lengkap, dipandu secara end-to-end. Membaca, menulis, mendengarkan, berbicara, mengulas — bekerja sama, tidak bertumpuk-tumpuk.",
+      "actuallyUse": "Di sini Anda mempelajari apa yang sebenarnya dapat Anda gunakan.",
+      "cta": "Mulailah belajar.",
+      "scrollAria": "Gulir untuk mengetahui lebih lanjut",
+      "teaser": "Pelajari bahasanya, bukan coretannya — kurikulum lengkap, diajarkan dalam bahasa Anda sendiri.",
+      "readMore": "Baca selengkapnya",
+      "showLess": "Tampilkan lebih sedikit"
     }
+  },
+  "brand": {
+    "lingo": "Bahasa yg aneh",
+    "booth": "Stan"
+  },
+  "adminEmail": {
+    "confirmAll": "Ini akan mengirim email ke SEMUA pengguna. Apakah Anda yakin ingin melanjutkan?",
+    "sentWithFailures": "Email dikirim ke {{sent}} pengguna; {{failed}} gagal.",
+    "sent": "Email dikirim ke {{sent}} pengguna.",
+    "failed": "Tidak dapat mengirim email.",
+    "composerTitle": "Kirim email",
+    "composerHint": "Kirim email bermerek ke satu pengguna, semua pengguna, atau anggota institusi. Dikirim melalui email (bukan hanya pemberitahuan dalam aplikasi).",
+    "verifiedOnly": "Hanya alamat email terverifikasi",
+    "subject": "Subjek",
+    "message": "Pesan",
+    "actionUrl": "Tautan tombol opsional",
+    "actionLabel": "Teks tombol opsional",
+    "actionLabelPlaceholder": "Buka Stan Lingo",
+    "sending": "Mengirim…",
+    "send": "Kirim email"
+  },
+  "errorBoundary": {
+    "redirecting": "Mengantarmu pulang…",
+    "goHome": "Buka halaman beranda Lingo Booth"
+  },
+  "appLink": {
+    "title": "Membuka Stan Lingo",
+    "body": "Jika aplikasi tidak terbuka, lanjutkan di browser Anda.",
+    "fallbackButton": "Lanjutkan di browser"
   }
 }

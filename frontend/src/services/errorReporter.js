@@ -105,6 +105,10 @@ export const reportClientError = (payload = {}) => {
   sendReport({
     kind: payload.kind || 'manual',
     severity: payload.severity || 'error',
+    // Stable operation code + correlation ref from the backend response, so the
+    // client-side record lines up with the server-side one in the dashboard.
+    code: payload.code || undefined,
+    ref: payload.ref || undefined,
     message,
     stack: payload.stack || payload.error?.stack || '',
     componentStack: payload.componentStack || '',
@@ -125,11 +129,16 @@ export const reportApiError = (error, metadata = {}) => {
   error.__reportedToAdmin = true;
   const statusCode = error.response?.status;
   const responseMessage = error.response?.data?.message || error.response?.data?.error || error.message;
+  // Backend now returns a stable operation code + correlation ref on failures.
+  const serverCode = error.response?.data?.code;
+  const serverRef = error.response?.data?.ref;
   const severity = statusCode >= 500 || !statusCode ? 'error' : 'warning';
 
   reportClientError({
     kind: 'api',
     severity,
+    code: serverCode,
+    ref: serverRef,
     message: responseMessage || 'API request failed',
     stack: error.stack || '',
     api: {
@@ -140,7 +149,9 @@ export const reportApiError = (error, metadata = {}) => {
       responseMessage,
     },
     metadata: {
-      code: error.code || '',
+      serverCode: serverCode || '',
+      serverRef: serverRef || '',
+      axiosCode: error.code || '',
       timeout: config.timeout || '',
       ...metadata,
     },

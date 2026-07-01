@@ -3,10 +3,9 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { adminService, billingService, notificationService } from '../services/api';
 import LANGUAGES, { getTargetLangName, getNativeLangName, getTargetLangCode, getNativeLangCode, getTargetField, getNativeField } from '../config/languages';
-import AdminSpeakingDemo from './AdminSpeakingDemo';
 import './AdminDashboard.css';
 
-const adminTabs = ['dashboard', 'users', 'activity', 'guests', 'failures', 'messages', 'semester', 'reviews', 'billing', 'flashcards', 'demo'];
+const adminTabs = ['dashboard', 'users', 'activity', 'guests', 'failures', 'messages', 'semester', 'reviews', 'billing', 'institutions', 'flashcards', 'comms'];
 
 const SEMESTER_LEAD_STATUSES = ['new', 'contacted', 'reminded', 'enrolled', 'closed'];
 
@@ -146,6 +145,17 @@ function AdminDashboard() {
     message: '',
     actionRoute: '',
   });
+  const [emailForm, setEmailForm] = useState({
+    target: 'user',
+    userEmail: '',
+    organizationId: '',
+    verifiedOnly: true,
+    subject: '',
+    message: '',
+    actionUrl: '',
+    actionLabel: '',
+  });
+  const [emailSending, setEmailSending] = useState(false);
   const [loading, setLoading] = useState(true);
   const [guestsLoading, setGuestsLoading] = useState(false);
   const [errorReportsLoading, setErrorReportsLoading] = useState(false);
@@ -162,6 +172,8 @@ function AdminDashboard() {
   const [filterStatus, setFilterStatus] = useState('all');
   const [contactSenderFilter, setContactSenderFilter] = useState('all');
   const [suspendModal, setSuspendModal] = useState({ show: false, user: null, reason: '' });
+  const [emailModal, setEmailModal] = useState({ show: false, email: '', name: '', subject: '', message: '' });
+  const [emailModalSending, setEmailModalSending] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [selectedUser, setSelectedUser] = useState(null);
   const [userDetail, setUserDetail] = useState(null);
@@ -196,6 +208,65 @@ function AdminDashboard() {
       setBroadcastForm((current) => ({ ...current, title: '', message: '', actionRoute: '' }));
     } catch (err) {
       setError(err.response?.data?.message || t('notifications.adminBroadcastFailed', 'Could not send notification.'));
+    }
+  };
+
+  const handleSendEmailSubmit = async (event) => {
+    event.preventDefault();
+    if (emailForm.target === 'all') {
+      const confirmed = window.confirm(t('adminEmail.confirmAll', 'This will email ALL users. Are you sure you want to continue?'));
+      if (!confirmed) return;
+    }
+    setError('');
+    setEmailSending(true);
+    try {
+      const res = await adminService.sendEmail(emailForm);
+      const { sent = 0, failed = 0 } = res.data || {};
+      if (failed > 0) {
+        showSuccess(t('adminEmail.sentWithFailures', 'Email sent to {{sent}} user(s); {{failed}} failed.', { sent, failed }));
+      } else {
+        showSuccess(t('adminEmail.sent', 'Email sent to {{sent}} user(s).', { sent }));
+      }
+      setEmailForm((current) => ({ ...current, subject: '', message: '', actionUrl: '', actionLabel: '' }));
+    } catch (err) {
+      setError(err.response?.data?.message || t('adminEmail.failed', 'Could not send email.'));
+    } finally {
+      setEmailSending(false);
+    }
+  };
+
+  // Open the single-recipient email composer (used from the users table and the
+  // institutions list). Reuses the same /admin/send-email endpoint as the
+  // Communications tab, targeted at one address.
+  const openEmailComposer = ({ email, name }) => {
+    if (!email) return;
+    setEmailModal({ show: true, email, name: name || email, subject: '', message: '' });
+  };
+
+  const handleEmailModalSubmit = async (event) => {
+    event.preventDefault();
+    if (!emailModal.subject.trim() || !emailModal.message.trim()) return;
+    setError('');
+    setEmailModalSending(true);
+    try {
+      const res = await adminService.sendEmail({
+        target: 'user',
+        userEmail: emailModal.email,
+        subject: emailModal.subject,
+        message: emailModal.message,
+        verifiedOnly: false,
+      });
+      const { sent = 0, failed = 0 } = res.data || {};
+      if (failed > 0) {
+        showSuccess(t('adminEmail.sentWithFailures', 'Email sent to {{sent}} user(s); {{failed}} failed.', { sent, failed }));
+      } else {
+        showSuccess(t('adminEmail.sent', 'Email sent to {{sent}} user(s).', { sent }));
+      }
+      setEmailModal({ show: false, email: '', name: '', subject: '', message: '' });
+    } catch (err) {
+      setError(err.response?.data?.message || t('adminEmail.failed', 'Could not send email.'));
+    } finally {
+      setEmailModalSending(false);
     }
   };
 
@@ -339,7 +410,7 @@ function AdminDashboard() {
     if (activeTab === 'messages') fetchContactMessages(1);
     if (activeTab === 'semester') fetchSemesterLeads(1);
     if (activeTab === 'reviews') fetchReviews(1);
-    if (activeTab === 'billing' || activeTab === 'dashboard') fetchBillingAdmin();
+    if (activeTab === 'billing' || activeTab === 'institutions' || activeTab === 'dashboard') fetchBillingAdmin();
   }, [activeTab, fetchGuests, fetchErrorReports, fetchContactMessages, fetchSemesterLeads, fetchReviews, fetchBillingAdmin]);
 
   const billingPlans = [
@@ -992,40 +1063,86 @@ function AdminDashboard() {
         {successMessage && <div className="success-banner">{successMessage}</div>}
         {error && <div className="error-banner">{error}</div>}
 
-        {/* Tabs */}
-        <div className="admin-tabs">
-          {[
-            { id: 'dashboard', icon: '📊', label: t('admin.dashboard') },
-            { id: 'users', icon: '👥', label: `${t('admin.users')} (${users.length})` },
-            { id: 'activity', icon: '📈', label: t('admin.activity') },
-            { id: 'guests', icon: '👤', label: `${t('admin.guests', 'Guests')} (${guests.total})` },
-            { id: 'flashcards', icon: '🎴', label: `${t('admin.userFlashcards')} (${userFlashcards.length})` },
-            { id: 'billing', icon: '$', label: `${t('admin.billing', 'Billing')} (${billingAdmin.counts.openInstitutionLeads || 0})` },
-            { id: 'demo', icon: '▶', label: t('admin.demo', 'Demo') },
-          ].map(tab => (
-            <button key={tab.id} className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`} onClick={() => handleTabChange(tab.id)}>
-              <span className="tab-icon">{tab.icon}</span>{tab.label}
-            </button>
-          ))}
-          <button className={`tab-btn ${activeTab === 'failures' ? 'active' : ''}`} onClick={() => handleTabChange('failures')}>
-            <span className="tab-icon">!</span>{t('admin.failures', 'Failures')} ({errorReports.openCount || stats?.overview?.openErrorReports || 0})
-          </button>
-          <button className={`tab-btn ${activeTab === 'messages' ? 'active' : ''}`} onClick={() => handleTabChange('messages')}>
-            <span className="tab-icon">✉</span>{t('admin.messages', 'Messages')} ({contactMessages.openCount || stats?.overview?.openContactMessages || 0})
-          </button>
-          <button className={`tab-btn ${activeTab === 'semester' ? 'active' : ''}`} onClick={() => handleTabChange('semester')}>
-            <span className="tab-icon">🎓</span>{t('admin.semesterInterest', 'Semester interest')} ({semesterLeads.newCount || 0})
-          </button>
-          <button className={`tab-btn ${activeTab === 'reviews' ? 'active' : ''}`} onClick={() => handleTabChange('reviews')}>
-            <span className="tab-icon">⭐</span>{t('admin.reviews', 'Reviews')} ({reviews.pendingCount || 0})
-          </button>
-        </div>
+        {/* Sidebar nav + content */}
+        <div className="admin-layout">
+          <nav className="admin-sidebar" aria-label={t('admin.sectionsNav', 'Admin sections')}>
+            {[
+              {
+                id: 'overview',
+                title: t('admin.navGroups.overview', 'Overview'),
+                items: [
+                  { id: 'dashboard', icon: '📊', label: t('admin.dashboard') },
+                ],
+              },
+              {
+                id: 'attention',
+                title: t('admin.navGroups.attention', 'Needs attention'),
+                items: [
+                  { id: 'messages', icon: '✉', label: t('admin.messages', 'Messages'), count: contactMessages.openCount || stats?.overview?.openContactMessages || 0, tone: 'attention' },
+                  { id: 'failures', icon: '!', label: t('admin.failures', 'Failures'), count: errorReports.openCount || stats?.overview?.openErrorReports || 0, tone: 'urgent' },
+                  { id: 'reviews', icon: '⭐', label: t('admin.reviews', 'Reviews'), count: reviews.pendingCount || 0, tone: 'attention' },
+                  { id: 'semester', icon: '🎓', label: t('admin.semesterInterest', 'Semester interest'), count: semesterLeads.newCount || 0, tone: 'attention' },
+                ],
+              },
+              {
+                id: 'people',
+                title: t('admin.navGroups.people', 'People'),
+                items: [
+                  { id: 'users', icon: '👥', label: t('admin.users'), count: users.length, tone: 'neutral' },
+                  { id: 'guests', icon: '👤', label: t('admin.guests', 'Guests'), count: guests.total, tone: 'neutral' },
+                ],
+              },
+              {
+                id: 'engagement',
+                title: t('admin.navGroups.engagement', 'Usage'),
+                items: [
+                  { id: 'activity', icon: '📈', label: t('admin.activity') },
+                  { id: 'flashcards', icon: '🎴', label: t('admin.userFlashcards'), count: userFlashcards.length, tone: 'neutral' },
+                ],
+              },
+              {
+                id: 'revenue',
+                title: t('admin.navGroups.revenue', 'Revenue'),
+                items: [
+                  { id: 'billing', icon: '$', label: t('admin.billing', 'Billing'), count: billingAdmin.counts.openInstitutionLeads || 0, tone: 'neutral' },
+                  { id: 'institutions', icon: '🏛', label: t('admin.institutions', 'Institutions'), count: billingAdmin.organizations.length, tone: 'neutral' },
+                ],
+              },
+              {
+                id: 'tools',
+                title: t('admin.navGroups.tools', 'Tools'),
+                items: [
+                  { id: 'comms', icon: '📣', label: t('admin.communications', 'Communications') },
+                ],
+              },
+            ].map(group => (
+              <div key={group.id} className="admin-nav-group">
+                <p className="admin-nav-group-title">{group.title}</p>
+                {group.items.map(tab => (
+                  <button
+                    key={tab.id}
+                    className={`admin-nav-item ${activeTab === tab.id ? 'active' : ''}`}
+                    onClick={() => handleTabChange(tab.id)}
+                    aria-current={activeTab === tab.id ? 'page' : undefined}
+                  >
+                    <span className="admin-nav-icon" aria-hidden="true">{tab.icon}</span>
+                    <span className="admin-nav-label">{tab.label}</span>
+                    {typeof tab.count === 'number' && (tab.count > 0 || tab.tone === 'neutral') && (
+                      <span className={`admin-nav-badge ${tab.tone || 'neutral'}${tab.count > 0 ? ' has-count' : ''}`}>
+                        {tab.count}
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            ))}
+          </nav>
 
         {/* Tab Content */}
         <div className="tab-content">
 
-          {/* ── Dashboard Tab ── */}
-          {activeTab === 'dashboard' && (
+          {/* ── Communications Tab ── */}
+          {activeTab === 'comms' && (
             <div className="dashboard-section">
               <form className="card billing-admin-form" onSubmit={handleBroadcastSubmit}>
                 <h2>{t('notifications.adminComposerTitle', 'Send in-app notice')}</h2>
@@ -1111,6 +1228,107 @@ function AdminDashboard() {
                   {t('notifications.sendNotice', 'Send notice')}
                 </button>
               </form>
+
+              <form className="card billing-admin-form" onSubmit={handleSendEmailSubmit}>
+                <h2>{t('adminEmail.composerTitle', 'Send email')}</h2>
+                <p className="card-description">
+                  {t('adminEmail.composerHint', 'Send a branded email to one user, all users, or institution members. Delivered via email (not just an in-app notice).')}
+                </p>
+                <div className="billing-admin-grid">
+                  <label>
+                    {t('notifications.target', 'Target')}
+                    <select
+                      value={emailForm.target}
+                      onChange={(event) => setEmailForm((current) => ({ ...current, target: event.target.value }))}
+                    >
+                      <option value="user">{t('notifications.targets.user', 'One user')}</option>
+                      <option value="all">{t('notifications.targets.all', 'All users')}</option>
+                      <option value="organization">{t('notifications.targets.organization', 'Institution members')}</option>
+                      <option value="institution_admins">{t('notifications.targets.institutionAdmins', 'Institution admins')}</option>
+                    </select>
+                  </label>
+                  {emailForm.target === 'user' && (
+                    <label>
+                      {t('adminBilling.userEmailOrId')}
+                      <input
+                        type="email"
+                        value={emailForm.userEmail}
+                        onChange={(event) => setEmailForm((current) => ({ ...current, userEmail: event.target.value }))}
+                        required
+                      />
+                    </label>
+                  )}
+                  {(emailForm.target === 'organization' || emailForm.target === 'institution_admins') && (
+                    <label>
+                      {t('adminBilling.organizations')}
+                      <select
+                        value={emailForm.organizationId}
+                        onChange={(event) => setEmailForm((current) => ({ ...current, organizationId: event.target.value }))}
+                        required
+                      >
+                        <option value="">{t('adminBilling.chooseInstitution', 'Choose an institution')}</option>
+                        {billingAdmin.organizations.map((org) => (
+                          <option key={org._id} value={org._id}>{org.name}</option>
+                        ))}
+                      </select>
+                    </label>
+                  )}
+                  <label className="admin-email-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={emailForm.verifiedOnly}
+                      onChange={(event) => setEmailForm((current) => ({ ...current, verifiedOnly: event.target.checked }))}
+                    />
+                    {t('adminEmail.verifiedOnly', 'Only verified email addresses')}
+                  </label>
+                </div>
+                <label>
+                  {t('adminEmail.subject', 'Subject')}
+                  <input
+                    value={emailForm.subject}
+                    onChange={(event) => setEmailForm((current) => ({ ...current, subject: event.target.value }))}
+                    maxLength={200}
+                    required
+                  />
+                </label>
+                <label>
+                  {t('adminEmail.message', 'Message')}
+                  <textarea
+                    value={emailForm.message}
+                    onChange={(event) => setEmailForm((current) => ({ ...current, message: event.target.value }))}
+                    rows={6}
+                    maxLength={5000}
+                    required
+                  />
+                </label>
+                <div className="billing-admin-grid">
+                  <label>
+                    {t('adminEmail.actionUrl', 'Optional button link')}
+                    <input
+                      value={emailForm.actionUrl}
+                      onChange={(event) => setEmailForm((current) => ({ ...current, actionUrl: event.target.value }))}
+                      placeholder="https://lingobooth.com/..."
+                    />
+                  </label>
+                  <label>
+                    {t('adminEmail.actionLabel', 'Optional button text')}
+                    <input
+                      value={emailForm.actionLabel}
+                      onChange={(event) => setEmailForm((current) => ({ ...current, actionLabel: event.target.value }))}
+                      placeholder={t('adminEmail.actionLabelPlaceholder', 'Open Lingo Booth')}
+                    />
+                  </label>
+                </div>
+                <button className="btn btn-primary" type="submit" disabled={emailSending}>
+                  {emailSending ? t('adminEmail.sending', 'Sending…') : t('adminEmail.send', 'Send email')}
+                </button>
+              </form>
+            </div>
+          )}
+
+          {/* ── Dashboard Tab ── */}
+          {activeTab === 'dashboard' && (
+            <div className="dashboard-section">
               <div className="stats-row">
                 <div className="stat-card large primary">
                   <div className="stat-icon-wrapper"><span className="stat-emoji">👥</span></div>
@@ -1448,6 +1666,14 @@ function AdminDashboard() {
                           <td className="date-cell">{formatDateShort(user.createdAt)}</td>
                           <td onClick={(e) => e.stopPropagation()}>
                             <div className="actions-cell">
+                              {user.email && (
+                                <button
+                                  className="action-btn email"
+                                  onClick={() => openEmailComposer({ email: user.email, name: user.username })}
+                                  title={t('admin.sendEmailAction', 'Send email')}
+                                  aria-label={t('admin.sendEmailAction', 'Send email')}
+                                >✉️</button>
+                              )}
                               {user.role !== 'admin' && (
                                 <>
                                   {user.status === 'active' ? (
@@ -1783,10 +2009,15 @@ function AdminDashboard() {
                         </div>
 
                         <div className="failure-detail-grid">
+                          <div><span>Code</span><strong>{report.code || '—'}</strong></div>
+                          <div><span>Ref</span><strong>{report.ref || '—'}</strong></div>
                           <div><span>Page</span><strong>{report.route || report.screen || 'Unknown'}</strong></div>
                           <div><span>Device</span><strong>{report.deviceId || 'Unknown'}</strong></div>
                           <div><span>Language Pair</span><strong>{report.session?.nativeLanguage || '?'} -> {report.session?.targetLanguage || '?'}</strong></div>
                           <div><span>Status</span><strong>{report.api?.statusCode || 'Client'} {report.api?.statusText || ''}</strong></div>
+                          {report.metadata?.causeCode && (
+                            <div><span>Cause</span><strong>{report.metadata.causeCode}</strong></div>
+                          )}
                         </div>
 
                         {report.api?.url && (
@@ -2790,7 +3021,79 @@ function AdminDashboard() {
             </div>
           )}
 
-          {activeTab === 'demo' && <AdminSpeakingDemo />}
+          {/* ── Institutions Tab ── */}
+          {activeTab === 'institutions' && (
+            <div className="dashboard-section">
+              <div className="card">
+                <div className="institutions-header">
+                  <div>
+                    <h2>{t('admin.institutions', 'Institutions')}</h2>
+                    <p className="card-description">{t('admin.institutionsSubtitle', 'Every registered institution and the email of its admin contacts.')}</p>
+                  </div>
+                  <button className="btn btn-outline" onClick={fetchBillingAdmin} disabled={billingLoading}>
+                    {billingLoading ? t('common.loading') : t('admin.refreshData')}
+                  </button>
+                </div>
+                {billingLoading && billingAdmin.organizations.length === 0 ? (
+                  <p className="no-data">{t('common.loading')}</p>
+                ) : billingAdmin.organizations.length === 0 ? (
+                  <div className="no-results">
+                    <span className="no-results-icon">🏛</span>
+                    <p>{t('adminBilling.noOrganizations', 'No institutions registered yet.')}</p>
+                  </div>
+                ) : (
+                  <div className="institutions-grid">
+                    {billingAdmin.organizations.map((org) => {
+                      const admins = (org.managers || []).filter((manager) => manager.user?.email || manager.email);
+                      return (
+                        <div key={org._id} className="institution-card">
+                          <div className="institution-card-head">
+                            <div className="institution-identity">
+                              <strong className="institution-name">{org.name}</strong>
+                              <span className="institution-type">{adminOrgTypeLabel(org.type)}</span>
+                            </div>
+                            <span className={`status-badge ${org.status === 'suspended' ? 'suspended' : 'active'}`}>
+                              {org.status === 'suspended' ? t('admin.suspended') : t('admin.active')}
+                            </span>
+                          </div>
+                          <div className="institution-admins">
+                            <span className="institution-admins-label">{t('admin.institutionAdminEmail', 'Admin email')}</span>
+                            {admins.length === 0 ? (
+                              <span className="institution-no-admin">{t('admin.noInstitutionAdmin', 'No admin assigned')}</span>
+                            ) : (
+                              admins.map((manager) => {
+                                const email = manager.user?.email || manager.email;
+                                const name = manager.user?.username || org.name;
+                                return (
+                                  <div key={manager._id || email} className="institution-admin-row">
+                                    <div className="institution-admin-identity">
+                                      {manager.user?.username && <span className="institution-admin-name">{manager.user.username}</span>}
+                                      <a className="institution-admin-email" href={`mailto:${email}`}>{email}</a>
+                                    </div>
+                                    <button
+                                      type="button"
+                                      className="btn btn-outline btn-sm"
+                                      onClick={() => openEmailComposer({ email, name })}
+                                    >
+                                      ✉️ {t('admin.emailAdmin', 'Email admin')}
+                                    </button>
+                                  </div>
+                                );
+                              })
+                            )}
+                          </div>
+                          <div className="institution-footer">
+                            {t('adminBilling.seatsUsedCount', { used: org.seatsUsed || 0, purchased: org.seatsPurchased || 0 })}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
         </div>
 
         {/* ── Suspend Modal ── */}
@@ -2818,6 +3121,48 @@ function AdminDashboard() {
                 <button className="btn btn-outline" onClick={() => setSuspendModal({ show: false, user: null, reason: '' })}>{t('common.cancel')}</button>
                 <button className="btn btn-danger" onClick={handleSuspendUser}>{t('admin.suspendButton')}</button>
               </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── Email Composer Modal ── */}
+        {emailModal.show && (
+          <div className="modal-overlay" onClick={() => setEmailModal({ show: false, email: '', name: '', subject: '', message: '' })}>
+            <div className="modal" onClick={(e) => e.stopPropagation()}>
+              <form onSubmit={handleEmailModalSubmit}>
+                <div className="modal-header">
+                  <h3>{t('admin.emailUserTitle', 'Email {{name}}', { name: emailModal.name })}</h3>
+                  <button type="button" className="modal-close" onClick={() => setEmailModal({ show: false, email: '', name: '', subject: '', message: '' })}>×</button>
+                </div>
+                <div className="modal-body">
+                  <p className="modal-sub">{t('admin.emailUserTo', 'Sends a branded email to')} <strong>{emailModal.email}</strong></p>
+                  <div className="form-group">
+                    <label>{t('adminEmail.subject', 'Subject')}</label>
+                    <input
+                      value={emailModal.subject}
+                      onChange={(e) => setEmailModal((current) => ({ ...current, subject: e.target.value }))}
+                      maxLength={200}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>{t('adminEmail.message', 'Message')}</label>
+                    <textarea
+                      value={emailModal.message}
+                      onChange={(e) => setEmailModal((current) => ({ ...current, message: e.target.value }))}
+                      rows={6}
+                      maxLength={5000}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-outline" onClick={() => setEmailModal({ show: false, email: '', name: '', subject: '', message: '' })}>{t('common.cancel')}</button>
+                  <button type="submit" className="btn btn-primary" disabled={emailModalSending}>
+                    {emailModalSending ? t('adminEmail.sending', 'Sending…') : t('adminEmail.send', 'Send email')}
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         )}

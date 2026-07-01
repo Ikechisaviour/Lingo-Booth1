@@ -2,6 +2,7 @@ const express = require('express');
 const SemesterInterest = require('../models/SemesterInterest');
 const { optionalAuth } = require('../middleware/auth');
 const { getClientIp } = require('../utils/geo');
+const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const router = express.Router();
 
@@ -38,11 +39,11 @@ router.post('/', optionalAuth, async (req, res) => {
     const source = ['web', 'mobile'].includes(body.source) ? body.source : 'web';
 
     if (!fullName || fullName.length < 2) {
-      return res.status(400).json({ message: 'Your name is required' });
+      return sendClientError(res, 400, 'SEMESTER_INTEREST_NAME_REQUIRED', 'Your name is required');
     }
 
     if (!email || !EMAIL_REGEX.test(email)) {
-      return res.status(400).json({ message: 'A valid email address is required' });
+      return sendClientError(res, 400, 'SEMESTER_INTEREST_EMAIL_INVALID', 'A valid email address is required');
     }
 
     await SemesterInterest.create({
@@ -68,8 +69,9 @@ router.post('/', optionalAuth, async (req, res) => {
 
     res.json({ message: 'Interest received' });
   } catch (error) {
-    console.error('Semester interest form error:', error);
-    res.status(500).json({ message: 'Could not save your interest right now' });
+    return sendServerError(req, res, error, 'SEMESTER_INTEREST_SUBMIT_FAILED', {
+      clientMessage: 'Could not save your interest right now',
+    });
   }
 });
 

@@ -71,13 +71,16 @@ const notificationSchema = new mongoose.Schema({
   archivedAt: {
     type: Date,
     default: null,
-    index: true,
   },
 }, {
   timestamps: true,
 });
 
 notificationSchema.index({ userId: 1, readAt: 1, createdAt: -1 });
+// Auto-purge archived (dismissed) notifications 365 days after they were archived.
+// TTL indexes ignore documents whose field is not a date, so non-archived
+// notifications (archivedAt: null) are never expired — only dismissed ones age out.
+notificationSchema.index({ archivedAt: 1 }, { expireAfterSeconds: 365 * 24 * 60 * 60 });
 notificationSchema.index(
   { userId: 1, dedupeKey: 1 },
   { unique: true, partialFilterExpression: { dedupeKey: { $type: 'string', $gt: '' } } },

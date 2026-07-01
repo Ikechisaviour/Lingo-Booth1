@@ -709,7 +709,25 @@
     "failures": "失败",
     "messages": "留言",
     "semesterInterest": "学期兴趣",
-    "reviews": "评论"
+    "reviews": "评论",
+    "sectionsNav": "管理部分",
+    "navGroups": {
+      "overview": "概述",
+      "attention": "需要注意",
+      "people": "人们",
+      "revenue": "收入",
+      "tools": "工具",
+      "engagement": "用法"
+    },
+    "communications": "通讯",
+    "institutions": "机构",
+    "sendEmailAction": "发送电子邮件",
+    "institutionsSubtitle": "每个注册机构及其管理联系人的电子邮件。",
+    "institutionAdminEmail": "管理员邮箱",
+    "noInstitutionAdmin": "没有分配管理员",
+    "emailAdmin": "电子邮件管理员",
+    "emailUserTitle": "邮箱{{name}}",
+    "emailUserTo": "发送一封品牌电子邮件至"
   },
   "forgotPassword": {
     "title": "忘记密码",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "开放机构",
     "manageSeatsAction": "管理座位",
     "viewPlansAction": "查看计划",
-    "resumePracticeAction": "恢复练习"
+    "resumePracticeAction": "恢复练习",
+    "emptyArchived": "没有存档的通知。",
+    "restore": "恢复",
+    "inboxTab": "收件箱",
+    "archivedTab": "已存档"
   },
   "stepUp": {
     "verifyFailed": "无法验证密码",
@@ -2376,6 +2398,50 @@
       "previous": "上一张英雄幻灯片",
       "next": "下一张英雄幻灯片",
       "showSlide": "显示英雄幻灯片{{number}}"
+    },
+    "statement": {
+      "proveSerious": "每一天你都证明你是认真的。",
+      "cared": "每一天它都证明它只关心连胜。",
+      "notLearning": "那不是学习。 那是一个柜台，上面有火焰。",
+      "walkAway": "远离连续追逐。",
+      "takeSeriousness": "认真对待才能取得成果。",
+      "teaches": "Lingo Booth 教授该语言背后的原理。 通过练习来训练他们。 然后将每个示例根据您的实际需求、您的水平进行调整。",
+      "curriculum": "完整的课程，端到端的指导。 读、写、听、说、复习——一起工作，而不是分开。",
+      "actuallyUse": "在这里您可以了解实际可以使用的内容。",
+      "cta": "开始学习。",
+      "scrollAria": "滚动查看更多",
+      "teaser": "学习语言，而不是连续学习——完整的课程，用您自己的语言教授。",
+      "readMore": "阅读更多",
+      "showLess": "显示较少"
     }
+  },
+  "brand": {
+    "lingo": "行话",
+    "booth": "展位"
+  },
+  "adminEmail": {
+    "confirmAll": "这将向所有用户发送电子邮件。 您确定要继续吗？",
+    "sentWithFailures": "电子邮件发送给{{sent}}用户； {{failed}} 失败。",
+    "sent": "电子邮件已发送至 {{sent}} 用户。",
+    "failed": "无法发送电子邮件。",
+    "composerTitle": "发送电子邮件",
+    "composerHint": "向一个用户、所有用户或机构成员发送一封品牌电子邮件。 通过电子邮件发送（不仅仅是应用内通知）。",
+    "verifiedOnly": "仅经过验证的电子邮件地址",
+    "subject": "主题",
+    "message": "信息",
+    "actionUrl": "可选按钮链接",
+    "actionLabel": "可选按钮文本",
+    "actionLabelPlaceholder": "开放 Lingo 展位",
+    "sending": "正在发送...",
+    "send": "发送电子邮件"
+  },
+  "errorBoundary": {
+    "redirecting": "带你回家…",
+    "goHome": "前往 Lingo Booth 主页"
+  },
+  "appLink": {
+    "title": "开设 Lingo 展位",
+    "body": "如果应用程序未打开，请在浏览器中继续。",
+    "fallbackButton": "在浏览器中继续"
   }
 }

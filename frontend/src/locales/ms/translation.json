@@ -709,7 +709,25 @@
     "failures": "Kegagalan",
     "messages": "Mesej",
     "semesterInterest": "Minat semester",
-    "reviews": "Ulasan"
+    "reviews": "Ulasan",
+    "sectionsNav": "Bahagian pentadbir",
+    "navGroups": {
+      "overview": "Gambaran keseluruhan",
+      "attention": "Perlu perhatian",
+      "people": "Orang ramai",
+      "revenue": "Hasil",
+      "tools": "Alatan",
+      "engagement": "Penggunaan"
+    },
+    "communications": "Komunikasi",
+    "institutions": "Institusi",
+    "sendEmailAction": "Hantar e-mel",
+    "institutionsSubtitle": "Setiap institusi berdaftar dan e-mel kenalan pentadbirnya.",
+    "institutionAdminEmail": "E-mel pentadbir",
+    "noInstitutionAdmin": "Tiada pentadbir ditugaskan",
+    "emailAdmin": "E-mel admin",
+    "emailUserTitle": "E-mel {{name}}",
+    "emailUserTo": "Menghantar e-mel berjenama kepada"
   },
   "forgotPassword": {
     "title": "Lupa kata laluan",
@@ -2269,7 +2287,11 @@
     "openInstitutionAction": "Institusi terbuka",
     "manageSeatsAction": "Uruskan tempat duduk",
     "viewPlansAction": "Lihat rancangan",
-    "resumePracticeAction": "Sambung semula latihan"
+    "resumePracticeAction": "Sambung semula latihan",
+    "emptyArchived": "Tiada pemberitahuan yang diarkibkan.",
+    "restore": "Pulihkan",
+    "inboxTab": "Peti masuk",
+    "archivedTab": "Diarkibkan"
   },
   "stepUp": {
     "verifyFailed": "Tidak dapat mengesahkan kata laluan",
@@ -2376,6 +2398,50 @@
       "previous": "Slaid wira sebelumnya",
       "next": "Slaid wira seterusnya",
       "showSlide": "Tunjukkan slaid wira {{number}}"
+    },
+    "statement": {
+      "proveSerious": "Setiap hari awak buktikan awak serius.",
+      "cared": "Setiap hari ia membuktikan ia hanya mengambil berat tentang coretan itu.",
+      "notLearning": "Itu bukan belajar. Itu adalah kaunter dengan nyalaan di atasnya.",
+      "walkAway": "Berjalan jauh dari mengejar streak.",
+      "takeSeriousness": "Ambil kesungguhan itu di mana ia mendapat hasil.",
+      "teaches": "Lingo Booth mengajar prinsip di sebalik bahasa. Latih mereka dengan latihan. Kemudian bengkokkan setiap contoh kepada keperluan kehidupan sebenar anda, pada tahap anda.",
+      "curriculum": "Kurikulum yang lengkap, berpandukan hujung ke hujung. Membaca, menulis, mendengar, bercakap, mengulang kaji — bekerja bersama-sama, tidak bertindan.",
+      "actuallyUse": "Di sini anda belajar perkara yang sebenarnya anda boleh gunakan.",
+      "cta": "Mula belajar.",
+      "scrollAria": "Tatal untuk lebih lanjut",
+      "teaser": "Belajar bahasa, bukan coretan — kurikulum penuh, diajar dalam bahasa anda sendiri.",
+      "readMore": "Baca lagi",
+      "showLess": "Tunjukkan lebih sedikit"
     }
+  },
+  "brand": {
+    "lingo": "Lingo",
+    "booth": "Gerai"
+  },
+  "adminEmail": {
+    "confirmAll": "Ini akan menghantar e-mel kepada SEMUA pengguna. Adakah anda pasti mahu meneruskan?",
+    "sentWithFailures": "E-mel dihantar kepada {{sent}} pengguna; {{failed}} gagal.",
+    "sent": "E-mel dihantar kepada {{sent}} pengguna.",
+    "failed": "Tidak dapat menghantar e-mel.",
+    "composerTitle": "Hantar e-mel",
+    "composerHint": "Hantar e-mel berjenama kepada seorang pengguna, semua pengguna atau ahli institusi. Dihantar melalui e-mel (bukan hanya notis dalam apl).",
+    "verifiedOnly": "Hanya alamat e-mel yang disahkan",
+    "subject": "Subjek",
+    "message": "Mesej",
+    "actionUrl": "Pautan butang pilihan",
+    "actionLabel": "Teks butang pilihan",
+    "actionLabelPlaceholder": "Buka Gerai Lingo",
+    "sending": "Menghantar…",
+    "send": "Hantar e-mel"
+  },
+  "errorBoundary": {
+    "redirecting": "Membawa awak pulang…",
+    "goHome": "Pergi ke halaman utama Booth Lingo"
+  },
+  "appLink": {
+    "title": "Membuka Gerai Lingo",
+    "body": "Jika apl tidak dibuka, teruskan dalam penyemak imbas anda.",
+    "fallbackButton": "Teruskan dalam penyemak imbas"
   }
 }

@@ -104,15 +104,16 @@ function NotificationCenter({ isGuest }) {
   const [loading, setLoading] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [view, setView] = useState('inbox');
 
   const canLoad = !isGuest && !!localStorage.getItem('token');
 
-  const loadNotifications = useCallback(async ({ list = false } = {}) => {
+  const loadNotifications = useCallback(async ({ list = false, view: listView = 'inbox' } = {}) => {
     if (!canLoad) return;
     try {
       if (list) setLoading(true);
       const res = list
-        ? await notificationService.list({ limit: 30 })
+        ? await notificationService.list(listView === 'archived' ? { limit: 30, archived: true } : { limit: 30 })
         : await notificationService.unreadCount();
       if (list) setNotifications(res.data.notifications || []);
       setUnreadCount(res.data.unreadCount || 0);
@@ -130,8 +131,8 @@ function NotificationCenter({ isGuest }) {
   }, [loadNotifications]);
 
   useEffect(() => {
-    if (open) loadNotifications({ list: true });
-  }, [open, loadNotifications]);
+    if (open) loadNotifications({ list: true, view });
+  }, [open, view, loadNotifications]);
 
   const label = useMemo(() => (
     unreadCount > 0
@@ -163,12 +164,26 @@ function NotificationCenter({ isGuest }) {
     setUnreadCount(0);
   };
 
+  const handleDismiss = async (notification) => {
+    await notificationService.archive(notification._id).catch(() => null);
+    setNotifications((items) => items.filter((item) => item._id !== notification._id));
+    if (!notification.readAt) setUnreadCount((count) => Math.max(count - 1, 0));
+  };
+
+  const handleRestore = async (notification) => {
+    await notificationService.restore(notification._id).catch(() => null);
+    setNotifications((items) => items.filter((item) => item._id !== notification._id));
+  };
+
   return (
     <div className="notification-center">
       <button
         type="button"
         className={`notification-bell ${unreadCount > 0 ? 'has-unread' : ''}`}
-        onClick={() => setOpen((value) => !value)}
+        onClick={() => setOpen((value) => {
+          if (value) setView('inbox');
+          return !value;
+        })}
         aria-label={label}
       >
         <span aria-hidden="true">&#128276;</span>
@@ -178,13 +193,37 @@ function NotificationCenter({ isGuest }) {
         <div className="notification-panel">
           <div className="notification-panel-head">
             <h2>{t('notifications.title', 'Notifications')}</h2>
-            {unreadCount > 0 && (
+            {view === 'inbox' && unreadCount > 0 && (
               <button type="button" onClick={handleMarkAll}>{t('notifications.markAllRead', 'Mark all read')}</button>
             )}
           </div>
+          <div className="notification-tabs" role="tablist">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={view === 'inbox'}
+              className={view === 'inbox' ? 'is-active' : ''}
+              onClick={() => setView('inbox')}
+            >
+              {t('notifications.inboxTab', 'Inbox')}
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={view === 'archived'}
+              className={view === 'archived' ? 'is-active' : ''}
+              onClick={() => setView('archived')}
+            >
+              {t('notifications.archivedTab', 'Archived')}
+            </button>
+          </div>
           {loading && <p className="notification-empty">{t('common.loading', 'Loading...')}</p>}
           {!loading && notifications.length === 0 && (
-            <p className="notification-empty">{t('notifications.empty', 'No notifications yet.')}</p>
+            <p className="notification-empty">
+              {view === 'archived'
+                ? t('notifications.emptyArchived', 'No archived notifications.')
+                : t('notifications.empty', 'No notifications yet.')}
+            </p>
           )}
           {!loading && notifications.map((notification) => (
             <article key={notification._id} className={`notification-item ${notification.readAt ? '' : 'is-unread'} ${notification.severity || 'info'}`}>
@@ -199,16 +238,15 @@ function NotificationCenter({ isGuest }) {
                     {notificationText(t, notification.action.labelKey || 'notifications.openAction', notification.params)}
                   </button>
                 )}
-                <button
-                  type="button"
-                  onClick={async () => {
-                    await notificationService.archive(notification._id);
-                    setNotifications((items) => items.filter((item) => item._id !== notification._id));
-                    if (!notification.readAt) setUnreadCount((count) => Math.max(count - 1, 0));
-                  }}
-                >
-                  {t('notifications.dismiss', 'Dismiss')}
-                </button>
+                {view === 'archived' ? (
+                  <button type="button" onClick={() => handleRestore(notification)}>
+                    {t('notifications.restore', 'Restore')}
+                  </button>
+                ) : (
+                  <button type="button" onClick={() => handleDismiss(notification)}>
+                    {t('notifications.dismiss', 'Dismiss')}
+                  </button>
+                )}
               </div>
             </article>
           ))}
