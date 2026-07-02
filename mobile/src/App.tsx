@@ -10,7 +10,13 @@ import RootNavigator from './navigation/RootNavigator';
 import ErrorBoundary from './components/common/ErrorBoundary';
 import GuestSignupPrompt from './components/common/GuestSignupPrompt';
 import { installStudyHeartbeat, markStudyInteraction } from './services/studyHeartbeat';
+import { installGlobalErrorHandler } from './services/globalErrorHandler';
 import './i18n';
+
+// Capture uncaught JS errors / unhandled rejections app-wide (the ErrorBoundary
+// only covers render errors). Installed at module load so it's active before
+// any screen mounts.
+installGlobalErrorHandler();
 
 const App: React.FC = () => {
   const challengeMode = useAuthStore((state) => state.challengeMode);

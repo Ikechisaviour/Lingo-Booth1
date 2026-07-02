@@ -65,7 +65,7 @@
         {
           "icon": "./assets/icon.png",
           "color": "#58cc02",
-          "defaultChannel": "flashcards"
+          "defaultChannel": "lingo_booth_notifications"
         }
       ],
       "./plugins/withPictureInPicture",

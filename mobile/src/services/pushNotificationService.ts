@@ -7,7 +7,7 @@ import { useAuthStore } from '../stores/authStore';
 
 const DEVICE_ID_KEY = 'lingoDeviceId';
 const PUSH_TOKEN_KEY = 'serverPushToken';
-const CHANNEL_ID = 'server_notifications';
+const CHANNEL_ID = 'lingo_booth_notifications';
 
 const createDeviceId = () => `mobile-${Date.now()}-${Math.random().toString(36).slice(2, 14)}`;
 
@@ -30,11 +30,12 @@ function getExpoProjectId() {
 async function configureChannel() {
   if (Platform.OS !== 'android') return;
   await Notifications.setNotificationChannelAsync(CHANNEL_ID, {
-    name: 'Lingo Booth',
-    importance: Notifications.AndroidImportance.DEFAULT,
+    name: 'Lingo Booth notifications',
+    importance: Notifications.AndroidImportance.HIGH,
     sound: 'default',
     vibrationPattern: [0, 180, 120, 180],
     lightColor: '#58cc02',
+    lockscreenVisibility: Notifications.AndroidNotificationVisibility.PUBLIC,
   });
 }
 
