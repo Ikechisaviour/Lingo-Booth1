@@ -4,7 +4,11 @@ import { useTranslation, Trans } from 'react-i18next';
 import { learningHubService, userService, quizService } from '../services/api';
 import { getTargetLangName, getTargetLangCode } from '../config/languages';
 import { useCurriculumVersion } from '../hooks/useCurriculumVersion';
+import { FaAndroid } from 'react-icons/fa';
+import { ANDROID_APK_URL, ANDROID_APK_FILENAME } from '../config/appDownload';
 import './HomePage.css';
+
+const ANDROID_BANNER_DISMISS_KEY = 'androidAppBannerDismissed';
 
 function pairGoalOptions(t) {
   return [
@@ -47,7 +51,15 @@ function HomePage() {
   const [pairProfileNotice, setPairProfileNotice] = useState('');
   const [editingPairProfile, setEditingPairProfile] = useState(false);
   const [usingOfflinePack, setUsingOfflinePack] = useState(false);
+  const [showAndroidBanner, setShowAndroidBanner] = useState(
+    () => localStorage.getItem(ANDROID_BANNER_DISMISS_KEY) !== 'true'
+  );
   const goalOptions = pairGoalOptions(t);
+
+  const dismissAndroidBanner = () => {
+    localStorage.setItem(ANDROID_BANNER_DISMISS_KEY, 'true');
+    setShowAndroidBanner(false);
+  };
 
   const fetchXpStats = useCallback(async () => {
     if (!userId) return;
@@ -398,7 +410,18 @@ function HomePage() {
   // Show a slim decay-warning banner above the welcome card when the user is
   // about to lose XP or already is. Hidden in the safe / off states so the
   // page stays calm when nothing's wrong.
-  const showDecayBanner = !!xpStats && (xpStats.status === 'decaying' || xpStats.status === 'grace');
+  //
+  // The backend reports `grace` for the ENTIRE 48h grace window, and the study
+  // heartbeat refreshes `lastAnsweredAt` every minute while the learner is
+  // active — so an active user sits permanently near 48h. Showing the grace
+  // banner for the whole window means it never clears no matter how much you
+  // study, which contradicts its own "keep studying to prevent it" copy. So we
+  // only surface the grace warning once decay is actually imminent (within the
+  // final stretch of the window); recent studying pushes it back out of view.
+  const DECAY_WARN_THRESHOLD_HOURS = 24;
+  const graceImminent = xpStats?.status === 'grace'
+    && (xpStats.hoursUntilDecay ?? Infinity) <= DECAY_WARN_THRESHOLD_HOURS;
+  const showDecayBanner = !!xpStats && (xpStats.status === 'decaying' || graceImminent);
 
   return (
     <div className="home-container">
@@ -425,6 +448,31 @@ function HomePage() {
               </span>
               <span className="xp-decay-cta">{t('home.xpTracker')} →</span>
             </button>
+          )}
+          {showAndroidBanner && (
+            <div className="android-app-banner" role="note">
+              <span className="android-app-banner-icon" aria-hidden="true"><FaAndroid /></span>
+              <div className="android-app-banner-text">
+                <strong>{t('appDownload.homeTitle', 'Learn on the go')}</strong>
+                <span>{t('appDownload.homeText', 'Get the Lingo Booth Android app.')}</span>
+              </div>
+              <a
+                className="android-app-banner-btn"
+                href={ANDROID_APK_URL}
+                download={ANDROID_APK_FILENAME}
+                aria-label={t('appDownload.androidAria', 'Download the Lingo Booth Android app (APK)')}
+              >
+                {t('appDownload.download', 'Download')}
+              </a>
+              <button
+                type="button"
+                className="android-app-banner-dismiss"
+                onClick={dismissAndroidBanner}
+                aria-label={t('common.dismiss', 'Dismiss')}
+              >
+                ×
+              </button>
+            </div>
           )}
           {/* Hero Section */}
           <section className="hero-section">

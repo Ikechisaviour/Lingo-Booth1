@@ -19,7 +19,9 @@ import {
   FiRefreshCw,
   FiVolume2,
 } from 'react-icons/fi';
+import { FaAndroid } from 'react-icons/fa';
 import BrandLogo from '../components/BrandLogo';
+import { ANDROID_APK_URL, ANDROID_APK_FILENAME } from '../config/appDownload';
 import './LandingPage.css';
 
 const highlightIcons = [FiBookOpen, FiMessageCircle, FiVolume2, FiRefreshCw];
@@ -940,6 +942,15 @@ function LandingPage() {
             <span className="landing-login-label-full">{t('navbar.plans')}</span>
             <span className="landing-login-label-icon" aria-hidden="true">$</span>
           </button>
+          <a
+            className="landing-login landing-login--download"
+            href={ANDROID_APK_URL}
+            download={ANDROID_APK_FILENAME}
+            aria-label={t('appDownload.androidAria', 'Download the Lingo Booth Android app (APK)')}
+          >
+            <FaAndroid aria-hidden="true" />
+            <span className="landing-login-label-full">{t('appDownload.android', 'Android App')}</span>
+          </a>
           </div>
         </div>
       </header>

@@ -193,6 +193,32 @@ body:has(.landing-page),
   font-weight: 650;
 }
 
+/* Download Android app — the one accented action in the nav. */
+.landing-login--download {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: var(--landing-green, #0e7a3a);
+  color: #fff;
+  font-weight: 800;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow: 0 10px 26px rgba(14, 122, 58, 0.22);
+}
+
+.landing-login--download:hover {
+  filter: brightness(1.06);
+}
+
+.landing-login--download svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+}
+
 .landing-primary,
 .landing-secondary,
 .landing-cta-light,
@@ -1521,6 +1547,17 @@ body:has(.landing-page),
     flex: 0 0 36px;
     min-width: 36px;
     padding-inline: 10px;
+    justify-content: center;
+  }
+
+  /* Download button collapses to the Android glyph on phones. */
+  .landing-login--download .landing-login-label-full {
+    display: none;
+  }
+
+  .landing-login--download {
+    flex: 0 0 auto;
+    padding-inline: 12px;
     justify-content: center;
   }
 
