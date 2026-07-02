@@ -2,7 +2,7 @@ import React, { Suspense, lazy, useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import { guestXPHelper, authService, userService } from './services/api';
+import { guestXPHelper, authService, userService, referralService } from './services/api';
 import { installGlobalErrorReporting } from './services/errorReporter';
 import { installStudyHeartbeat } from './services/studyHeartbeat';
 import guestActivityTracker from './services/guestActivityTracker';
@@ -414,6 +414,18 @@ function App() {
     };
   }, [isAuthenticated]);
 
+  // Campaign attribution: when a visitor lands with ?ref=<code>, store the code
+  // (so it survives navigation until they sign up) and record the visit. Runs
+  // once on mount. Failures are swallowed so tracking never blocks page load.
+  useEffect(() => {
+    const ref = new URLSearchParams(window.location.search).get('ref');
+    if (!ref) return;
+    const code = ref.trim().toLowerCase().slice(0, 64);
+    if (!code) return;
+    localStorage.setItem('referralCode', code);
+    referralService.recordHit(code).catch(() => {});
+  }, []);
+
   const handleLogout = () => {
     // Invalidate the refresh chain server-side before clearing local state.
     // Fire-and-forget — UI never blocks on this, but it stops a stolen refresh
@@ -712,7 +724,7 @@ function App() {
           <Route
             path="/admin/:adminTab?"
             element={
-              isAuthenticated && localStorage.getItem('userRole') === 'admin' ? (
+              isAuthenticated && ['admin', 'marketing'].includes(localStorage.getItem('userRole')) ? (
                 <AdminDashboard />
               ) : (
                 <Navigate to="/" />

@@ -11,6 +11,10 @@ import {
   refreshPracticeReminderSchedule,
   registerPracticeNotificationResponseHandler,
 } from '../services/practicePromptService';
+import {
+  registerServerPushResponseHandler,
+  registerServerPushToken,
+} from '../services/pushNotificationService';
 import { colors } from '../config/theme';
 import BrandLogo from '../components/BrandLogo';
 import AuthStack from './AuthStack';
@@ -133,14 +137,23 @@ const AppRoot: React.FC = () => {
 
   useEffect(() => {
     const cleanup = registerPracticeNotificationResponseHandler();
+    const cleanupServerPush = registerServerPushResponseHandler();
     initializePracticeNotifications().catch(() => {});
-    return cleanup;
+    return () => {
+      cleanup();
+      cleanupServerPush();
+    };
   }, []);
 
   useEffect(() => {
     if (!canAccess || !languagesReady) return;
     refreshPracticeReminderSchedule().catch(() => {});
   }, [canAccess, languagesReady, nativeLanguage, targetLanguage]);
+
+  useEffect(() => {
+    if (!token || !userId || isGuest) return;
+    registerServerPushToken().catch(() => {});
+  }, [token, userId, isGuest]);
 
   if (!hasHydrated) return <SplashScreen />;
 

@@ -90,6 +90,16 @@ const isAdmin = (req, res, next) => {
   }
 };
 
+// Allow full admins OR the dedicated 'marketing' role. Used to gate the
+// referral/campaign-link management endpoints. Place AFTER verifyToken.
+const canManageReferrals = (req, res, next) => {
+  if (req.user && (req.user.role === 'admin' || req.user.role === 'marketing')) {
+    next();
+  } else {
+    res.status(403).json({ message: 'Access denied. Marketing or admin only.', code: 'AUTH_MARKETING_ONLY' });
+  }
+};
+
 // Check if user is accessing their own resource
 const isOwner = (paramName = 'userId') => (req, res, next) => {
   const resourceUserId = req.params[paramName] || req.body.userId;
@@ -100,4 +110,4 @@ const isOwner = (paramName = 'userId') => (req, res, next) => {
   }
 };
 
-module.exports = { verifyToken, optionalAuth, isAdmin, isOwner, requireRecentAuth };
+module.exports = { verifyToken, optionalAuth, isAdmin, canManageReferrals, isOwner, requireRecentAuth };

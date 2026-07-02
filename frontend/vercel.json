@@ -14,6 +14,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    { "source": "/((?!static/).*)", "destination": "/" }
   ]
 }

@@ -330,6 +330,38 @@ router.post('/local-demo/speaking-demo/conversation', async (req, res) => {
 router.use(verifyToken);
 router.use(isAdmin);
 
+// Assign a role to a user by email. Used to grant the 'marketing' role that can
+// manage referral/campaign links. Admin-only (guarded above).
+router.patch('/users/role', async (req, res) => {
+  try {
+    const ASSIGNABLE_ROLES = ['user', 'admin', 'marketing'];
+    const email = (req.body?.email || '').toString().trim().toLowerCase();
+    const role = (req.body?.role || '').toString().trim();
+
+    if (!email) return sendClientError(res, 400, 'ADMIN_ROLE_EMAIL_REQUIRED', 'An email is required');
+    if (!ASSIGNABLE_ROLES.includes(role)) {
+      return sendClientError(res, 400, 'ADMIN_ROLE_INVALID', 'Invalid role');
+    }
+
+    const user = await User.findOne({ email });
+    if (!user) return sendClientError(res, 404, 'ADMIN_ROLE_USER_NOT_FOUND', 'No user with that email');
+
+    // Guard against removing the last admin.
+    if (user.role === 'admin' && role !== 'admin') {
+      const adminCount = await User.countDocuments({ role: 'admin' });
+      if (adminCount <= 1) {
+        return sendClientError(res, 400, 'ADMIN_ROLE_LAST_ADMIN', 'Cannot remove the last admin');
+      }
+    }
+
+    user.role = role;
+    await user.save();
+    return res.json({ ok: true, user: { id: user._id, email: user.email, username: user.username, role: user.role } });
+  } catch (error) {
+    return sendServerError(req, res, error, 'ADMIN_ROLE_ASSIGN_FAILED');
+  }
+});
+
 router.get('/pronunciation-audit', async (req, res) => {
   try {
     const targetLang = String(req.query.targetLang || 'ko').trim().toLowerCase();

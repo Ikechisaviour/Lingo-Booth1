@@ -27,6 +27,15 @@ function isProOrUltraTier(tier) {
   return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
 }
 
+function asArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function getMembershipOrganization(membership) {
+  const organization = membership?.organizationId;
+  return organization && typeof organization === 'object' ? organization : null;
+}
+
 function effectiveSubscriptionTier(user) {
   if (user?.role === 'admin') return 'pro';
   return user?.aiEntitlements?.subscriptionTier
@@ -125,7 +134,7 @@ function ProfilePage({ onLogout }) {
       setUser(userResponse.data);
       setProgress(progressResponse.data);
       setLearningHub(learningHubResponse.data);
-      setCertificates(certificateResponse.data?.certificates || []);
+      setCertificates(asArray(certificateResponse.data?.certificates));
       setBillingAccount(billingResponse.data || null);
       setEditData({ username: userResponse.data.username, fullName: userResponse.data.fullName || '' });
       localStorage.setItem('userFullName', userResponse.data.fullName || '');
@@ -421,7 +430,7 @@ function ProfilePage({ onLogout }) {
     || user?.aiEntitlements?.canUsePracticeContext
     || isProOrUltraTier(personalizationTier),
   );
-  const voicePracticeHistory = (learningHub?.recentEvents || [])
+  const voicePracticeHistory = asArray(learningHub?.recentEvents)
     .filter((event) => (
       ['conversation_turn', 'speaking_practice_complete'].includes(event.eventType)
       && event.metadata?.transcript
@@ -460,7 +469,7 @@ function ProfilePage({ onLogout }) {
         activeAccountTier,
       ].filter(Boolean).join(' · ')
       : `${t('profilePage.standardUser')} · ${activeAccountTier}`;
-  const billingMemberships = billingAccount?.memberships || [];
+  const billingMemberships = asArray(billingAccount?.memberships);
   const activeAccessKey = billingSummary.billingSource === 'institution' && billingSummary.institutionalAccess?.organizationId
     ? `institution:${billingSummary.institutionalAccess.organizationId}`
     : 'personal';
@@ -474,14 +483,27 @@ function ProfilePage({ onLogout }) {
         : t('billing.noPaidSubscription'),
     },
     ...billingMemberships
-      .filter((membership) => membership.organizationId && ['active', 'trialing'].includes(String(membership.organizationId.status || membership.status || '').toLowerCase()))
-      .map((membership) => ({
-        key: `institution:${membership.organizationId._id}`,
-        contextType: 'institution',
-        organizationId: membership.organizationId._id,
-        label: membership.organizationId.name,
-        detail: `${String(membership.organizationId.effectiveTier || '').toUpperCase()} · ${t(`institution.roles.${membership.role}`, membership.role)}`,
-      })),
+      .map((membership) => {
+        const organization = getMembershipOrganization(membership);
+        const organizationId = organization?._id || (typeof membership?.organizationId === 'string' ? membership.organizationId : '');
+        return {
+          membership,
+          organization,
+          organizationId,
+          status: String(organization?.status || membership?.status || '').toLowerCase(),
+        };
+      })
+      .filter(({ organizationId, status }) => organizationId && ['active', 'trialing'].includes(status))
+      .map(({ membership, organization, organizationId }) => {
+        const role = membership?.role || 'learner';
+        return {
+          key: `institution:${organizationId}`,
+          contextType: 'institution',
+          organizationId,
+          label: organization?.name || t('billing.institutionAccess', 'Institution access'),
+          detail: `${String(organization?.effectiveTier || membership?.effectiveTier || '').toUpperCase()} · ${t(`institution.roles.${role}`, role)}`,
+        };
+      }),
   ];
   const switchAccessContext = async (option) => {
     setSwitchingAccess(option.key);

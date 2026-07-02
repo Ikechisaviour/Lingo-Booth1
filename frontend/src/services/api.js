@@ -873,6 +873,28 @@ export const adminService = {
     api.post('/admin/local-demo/speaking-demo/conversation', data, { timeout: 60000 }),
 };
 
+export const referralService = {
+  // Public: fire-and-forget visit + signup attribution.
+  recordHit: (code) =>
+    api.post('/referrals/hit', { code }),
+  attributeSignup: (code) =>
+    api.post('/referrals/attribute-signup', { code }),
+  // Admin / marketing: manage links.
+  list: () =>
+    api.get('/referrals'),
+  create: (payload) =>
+    api.post('/referrals', payload),
+  update: (id, payload) =>
+    api.patch(`/referrals/${id}`, payload),
+  remove: (id) =>
+    api.delete(`/referrals/${id}`),
+  getStats: (id, days = 30) =>
+    api.get(`/referrals/${id}/stats`, { params: { days } }),
+  // Admin only: grant/revoke the marketing role by email.
+  assignRole: (email, role) =>
+    api.patch('/admin/users/role', { email, role }),
+};
+
 export const aiService = {
   getEntitlements: () =>
     cachedGet('/ai/entitlements', {}, 10000),

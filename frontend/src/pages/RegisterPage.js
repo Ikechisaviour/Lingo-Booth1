@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { GoogleLogin } from '@react-oauth/google';
-import { authService, guestXPHelper } from '../services/api';
+import { authService, guestXPHelper, referralService } from '../services/api';
 import { applyPublicLanguage, getPreferredPublicLanguage, googleLocaleForPublicLanguage } from '../utils/publicLanguage';
 import BrandLogo from '../components/BrandLogo';
 import './Auth.css';
@@ -96,6 +96,12 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
         setIsAuthenticated(true);
         setEmailVerified(!!user.emailVerified);
         localStorage.setItem('needsLanguageSetup', 'true');
+        // Credit the campaign link this new user arrived through, if any.
+        const refCode = localStorage.getItem('referralCode');
+        if (refCode) {
+          referralService.attributeSignup(refCode).catch(() => {});
+          localStorage.removeItem('referralCode');
+        }
         navigate('/select-language?mode=google-setup');
         return;
       }
@@ -186,6 +192,12 @@ function RegisterPage({ setIsAuthenticated, setIsGuest, setEmailVerified }) {
       setIsAuthenticated(true);
       setIsGuest(false);
       setEmailVerified(!!user.emailVerified);
+      // Credit the campaign link this new user arrived through, if any.
+      const refCode = localStorage.getItem('referralCode');
+      if (refCode) {
+        referralService.attributeSignup(refCode).catch(() => {});
+        localStorage.removeItem('referralCode');
+      }
       navigate('/');
     } catch (err) {
       setError(
