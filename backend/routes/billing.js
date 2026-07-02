@@ -15,6 +15,7 @@ const InstitutionGroup = require('../models/InstitutionGroup');
 const LevelTestAttempt = require('../models/LevelTestAttempt');
 const LevelTestCredit = require('../models/LevelTestCredit');
 const CompletionCertificate = require('../models/CompletionCertificate');
+const ReferralLink = require('../models/ReferralLink');
 const { verifyToken, optionalAuth, isAdmin, requireRecentAuth } = require('../middleware/auth');
 const { getClientIp } = require('../utils/geo');
 const { ALL_TARGET_LANGUAGES, cleanLanguageList } = require('../utils/learningContext');
@@ -613,7 +614,22 @@ async function applySubscriptionRecordToUser(userId, record) {
     update.subscriptionTier = 'plus';
   }
 
-  return User.findByIdAndUpdate(userId, { $set: update }, { new: true }).select('-password');
+  const updated = await User.findByIdAndUpdate(userId, { $set: update }, { new: true }).select('-password');
+
+  // Referral attribution: the first time a referred user becomes a paying
+  // customer, credit their originating campaign link. Guarded by
+  // referralPayingCounted so renewals / re-activations never double-count.
+  if (active && updated?.referralCode && !updated.referralPayingCounted) {
+    try {
+      await ReferralLink.updateOne({ code: updated.referralCode }, { $inc: { payingCustomers: 1 } });
+      await User.updateOne({ _id: updated._id }, { $set: { referralPayingCounted: true } });
+      updated.referralPayingCounted = true;
+    } catch (err) {
+      console.error('Referral paying attribution failed:', err.message);
+    }
+  }
+
+  return updated;
 }
 
 async function upsertSubscriptionRecord({

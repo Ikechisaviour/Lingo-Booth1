@@ -34,10 +34,18 @@ const userSchema = new mongoose.Schema({
     providerId: { type: String },
   }],
   role: {
+    // 'marketing' can manage referral/campaign links (and nothing else in the
+    // admin panel); 'admin' can do everything, including assigning roles.
     type: String,
-    enum: ['user', 'admin'],
+    enum: ['user', 'admin', 'marketing'],
     default: 'user',
   },
+  // Referral/campaign attribution: which link (?ref=<code>) this user arrived
+  // through, and whether their paying conversion has already been counted so we
+  // never double-count it on subscription renewals.
+  referralCode: { type: String, default: null },
+  referralAttributedAt: { type: Date, default: null },
+  referralPayingCounted: { type: Boolean, default: false },
   subscriptionTier: {
     type: String,
     enum: SUBSCRIPTION_TIERS,
@@ -323,6 +331,13 @@ const userSchema = new mongoose.Schema({
     country:   { type: String, default: null },
     city:      { type: String, default: null },
     firstSeen: { type: Date, default: Date.now },
+    lastSeen:  { type: Date, default: Date.now },
+  }],
+  pushTokens: [{
+    token:     { type: String, required: true },
+    deviceId:  { type: String, default: '' },
+    platform:  { type: String, enum: ['ios', 'android', 'unknown'], default: 'unknown' },
+    createdAt: { type: Date, default: Date.now },
     lastSeen:  { type: Date, default: Date.now },
   }],
   // When the last "welcome back" login-notification email was sent. Throttled

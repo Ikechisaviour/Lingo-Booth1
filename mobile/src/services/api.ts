@@ -430,6 +430,10 @@ export const notificationService = {
     api.get('/notifications', { params }),
   unreadCount: () =>
     api.get('/notifications/unread-count'),
+  registerPushToken: (payload: { token: string; deviceId?: string; platform?: string }) =>
+    api.post('/notifications/push-token', payload),
+  unregisterPushToken: (payload: { token?: string; deviceId?: string }) =>
+    api.delete('/notifications/push-token', { data: payload }),
   markRead: (notificationId: string) =>
     api.put(`/notifications/${notificationId}/read`),
   markAllRead: () =>

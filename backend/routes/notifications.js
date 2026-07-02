@@ -1,10 +1,12 @@
 const express = require('express');
 const Notification = require('../models/Notification');
+const User = require('../models/User');
 const { verifyToken, isAdmin } = require('../middleware/auth');
 const {
   notifyUsers,
   resolveAdminBroadcastRecipients,
 } = require('../utils/notifications');
+const { isExpoPushToken, sendPushToUsers } = require('../utils/pushNotifications');
 const { sendServerError, sendClientError } = require('../utils/sendError');
 
 const router = express.Router();
@@ -57,6 +59,57 @@ router.get('/unread-count', async (req, res) => {
     res.json({ unreadCount });
   } catch (error) {
     return sendServerError(req, res, error, 'NOTIFICATIONS_UNREAD_COUNT_FAILED', { clientMessage: 'Could not load notification count' });
+  }
+});
+
+router.post('/push-token', async (req, res) => {
+  try {
+    const token = String(req.body?.token || '').trim();
+    const deviceId = String(req.body?.deviceId || '').trim().slice(0, 160);
+    const platform = ['ios', 'android'].includes(req.body?.platform) ? req.body.platform : 'unknown';
+
+    if (!isExpoPushToken(token)) {
+      return sendClientError(res, 400, 'NOTIFICATIONS_PUSH_TOKEN_INVALID', 'Invalid push token');
+    }
+
+    await User.updateOne({ _id: req.userId }, { $pull: { pushTokens: { token } } });
+    if (deviceId) {
+      await User.updateOne({ _id: req.userId }, { $pull: { pushTokens: { deviceId } } });
+    }
+    await User.updateOne(
+      { _id: req.userId },
+      {
+        $push: {
+          pushTokens: {
+            $each: [{ token, deviceId, platform, createdAt: new Date(), lastSeen: new Date() }],
+            $slice: -10,
+          },
+        },
+      },
+    );
+
+    res.json({ ok: true });
+  } catch (error) {
+    return sendServerError(req, res, error, 'NOTIFICATIONS_PUSH_TOKEN_REGISTER_FAILED', { clientMessage: 'Could not enable push notifications' });
+  }
+});
+
+router.delete('/push-token', async (req, res) => {
+  try {
+    const token = String(req.body?.token || '').trim();
+    const deviceId = String(req.body?.deviceId || '').trim().slice(0, 160);
+    if (!token && !deviceId) return res.json({ ok: true });
+
+    if (token) {
+      await User.updateOne({ _id: req.userId }, { $pull: { pushTokens: { token } } });
+    }
+    if (deviceId) {
+      await User.updateOne({ _id: req.userId }, { $pull: { pushTokens: { deviceId } } });
+    }
+
+    res.json({ ok: true });
+  } catch (error) {
+    return sendServerError(req, res, error, 'NOTIFICATIONS_PUSH_TOKEN_UNREGISTER_FAILED', { clientMessage: 'Could not disable push notifications' });
   }
 });
 
@@ -127,6 +180,10 @@ router.post('/admin/broadcast', isAdmin, async (req, res) => {
     });
     if (!recipientIds.length) return sendClientError(res, 404, 'NOTIFICATIONS_BROADCAST_NO_RECIPIENTS', 'No notification recipients found');
 
+    const title = String(req.body?.title || '').trim().slice(0, 120) || 'Lingo Booth';
+    const message = String(req.body?.message || '').trim().slice(0, 600);
+    const actionRoute = String(req.body?.actionRoute || '').trim().slice(0, 300);
+
     await notifyUsers(recipientIds, {
       category: 'system',
       severity: ['info', 'success', 'warning', 'critical'].includes(req.body?.severity) ? req.body.severity : 'info',
@@ -134,17 +191,26 @@ router.post('/admin/broadcast', isAdmin, async (req, res) => {
       titleKey: 'notifications.adminBroadcastTitle',
       bodyKey: 'notifications.adminBroadcastBody',
       params: {
-        title: String(req.body?.title || '').trim().slice(0, 120) || 'Lingo Booth',
-        message: String(req.body?.message || '').trim().slice(0, 600),
+        title,
+        message,
       },
       action: {
-        labelKey: req.body?.actionRoute ? 'notifications.openAction' : '',
-        route: String(req.body?.actionRoute || '').trim().slice(0, 300),
+        labelKey: actionRoute ? 'notifications.openAction' : '',
+        route: actionRoute,
       },
       actorUserId: req.userId,
     });
+    const pushResult = await sendPushToUsers(recipientIds, {
+      title,
+      body: message,
+      data: {
+        kind: 'serverNotification',
+        route: actionRoute,
+        type: 'admin.broadcast',
+      },
+    });
 
-    res.status(201).json({ sent: recipientIds.length });
+    res.status(201).json({ sent: recipientIds.length, pushSent: pushResult.sent });
   } catch (error) {
     return sendServerError(req, res, error, 'NOTIFICATIONS_BROADCAST_FAILED', { clientMessage: 'Could not send notification', metadata: { target: req.body?.target } });
   }

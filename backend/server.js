@@ -159,6 +159,7 @@ app.use('/api/error-reports', require('./routes/errorReports'));
 app.use('/api/practice-context', require('./routes/practiceContext'));
 app.use('/api/learning-hub', require('./routes/learningHub'));
 app.use('/api/admin', require('./routes/admin'));
+app.use('/api/referrals', require('./routes/referrals'));
 app.use('/api/tts', require('./routes/tts'));
 app.use('/api/ai', require('./routes/ai'));
 app.use('/api/curriculum/v2', require('./routes/curriculumV2'));

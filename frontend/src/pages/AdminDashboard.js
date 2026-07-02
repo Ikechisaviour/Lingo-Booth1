@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { adminService, billingService, notificationService } from '../services/api';
+import { adminService, billingService, notificationService, referralService } from '../services/api';
 import LANGUAGES, { getTargetLangName, getNativeLangName, getTargetLangCode, getNativeLangCode, getTargetField, getNativeField } from '../config/languages';
 import './AdminDashboard.css';
 
-const adminTabs = ['dashboard', 'users', 'activity', 'guests', 'failures', 'messages', 'semester', 'reviews', 'billing', 'institutions', 'flashcards', 'comms'];
+const adminTabs = ['dashboard', 'users', 'activity', 'guests', 'failures', 'messages', 'semester', 'reviews', 'billing', 'institutions', 'flashcards', 'comms', 'referrals'];
 
 const SEMESTER_LEAD_STATUSES = ['new', 'contacted', 'reminded', 'enrolled', 'closed'];
 
@@ -16,6 +16,48 @@ function resolveAdminTab(adminTab, search) {
   const params = new URLSearchParams(search);
   const queryTab = params.get('tab');
   return adminTabs.includes(queryTab) ? queryTab : 'dashboard';
+}
+
+// A small single-series bar chart of daily visits for one referral link.
+// Inline SVG, no chart library. One accent hue (title names the series, so no
+// legend), recessive baseline, per-bar hover tooltip. Colors come from CSS
+// variables so light/dark follow the admin theme.
+function ReferralVisitsChart({ series }) {
+  if (!series || !series.length) return null;
+  const width = 640;
+  const height = 160;
+  const padX = 10;
+  const padTop = 14;
+  const baseline = height - 24;
+  const max = Math.max(1, ...series.map((d) => d.visits || 0));
+  const slot = (width - padX * 2) / series.length;
+  const barW = Math.max(2, Math.min(slot - 2, 24));
+  const labelEvery = Math.max(1, Math.ceil(series.length / 6));
+  return (
+    <div className="referral-chart" role="img" aria-label="Visits over time">
+      <svg viewBox={`0 0 ${width} ${height}`} className="referral-chart-svg">
+        <line x1={padX} y1={baseline} x2={width - padX} y2={baseline} className="referral-chart-axis" />
+        {series.map((d, i) => {
+          const visits = d.visits || 0;
+          const h = visits === 0 ? 0 : Math.max(2, ((baseline - padTop) * visits) / max);
+          const x = padX + i * slot + (slot - barW) / 2;
+          const y = baseline - h;
+          return (
+            <g key={d.day}>
+              <rect x={x} y={y} width={barW} height={h} rx={3} className="referral-bar">
+                <title>{`${d.day}: ${visits} visit${visits === 1 ? '' : 's'}${d.unique ? `, ${d.unique} unique` : ''}`}</title>
+              </rect>
+              {i % labelEvery === 0 && (
+                <text x={x + barW / 2} y={height - 8} textAnchor="middle" className="referral-chart-label">
+                  {d.day.slice(5)}
+                </text>
+              )}
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
 }
 
 // Country code → flag emoji
@@ -167,7 +209,11 @@ function AdminDashboard() {
   const [reviewsLoading, setReviewsLoading] = useState(false);
   const [reviewFilter, setReviewFilter] = useState('pending');
   const [error, setError] = useState('');
-  const [activeTab, setActiveTab] = useState(() => resolveAdminTab(adminTab, location.search));
+  const [activeTab, setActiveTab] = useState(() => (
+    (localStorage.getItem('userRole') || '') === 'marketing'
+      ? 'referrals'
+      : resolveAdminTab(adminTab, location.search)
+  ));
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('all');
   const [contactSenderFilter, setContactSenderFilter] = useState('all');
@@ -179,8 +225,21 @@ function AdminDashboard() {
   const [userDetail, setUserDetail] = useState(null);
   const [detailLoading, setDetailLoading] = useState(false);
   const [selectedGuest, setSelectedGuest] = useState(null);
+  const [referrals, setReferrals] = useState([]);
+  const [referralsLoading, setReferralsLoading] = useState(false);
+  const [referralForm, setReferralForm] = useState({ name: '', code: '', destination: '/' });
+  const [referralCreating, setReferralCreating] = useState(false);
+  const [referralStats, setReferralStats] = useState(null);
+  const [referralStatsFor, setReferralStatsFor] = useState(null);
+  const [roleForm, setRoleForm] = useState({ email: '', role: 'marketing' });
+
+  // The 'marketing' role can manage referral links but nothing else in the admin
+  // panel — restrict its view to just the Referrals tab.
+  const isMarketingOnly = (localStorage.getItem('userRole') || '') === 'marketing';
 
   useEffect(() => {
+    // Marketing-only users are pinned to the Referrals tab (handled below).
+    if (isMarketingOnly) return;
     if (adminTab && !adminTabs.includes(adminTab)) {
       setActiveTab('dashboard');
       navigate('/admin', { replace: true });
@@ -191,9 +250,17 @@ function AdminDashboard() {
     if (location.search) {
       navigate(tab === 'dashboard' ? '/admin' : `/admin/${tab}`, { replace: true });
     }
-  }, [adminTab, location.search, navigate]);
+  }, [adminTab, location.search, navigate, isMarketingOnly]);
 
-  useEffect(() => { fetchData(); }, []);
+  useEffect(() => { if (!isMarketingOnly) fetchData(); }, [isMarketingOnly]);
+
+  // Marketing-only users have no dashboard/stats access — keep them on Referrals.
+  useEffect(() => {
+    if (isMarketingOnly && activeTab !== 'referrals') {
+      setActiveTab('referrals');
+      navigate('/admin/referrals', { replace: true });
+    }
+  }, [isMarketingOnly, activeTab, navigate]);
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -404,14 +471,102 @@ function AdminDashboard() {
     }
   }, [institutionAdminForm.organizationId]);
 
+  const fetchReferrals = useCallback(async () => {
+    setReferralsLoading(true);
+    try {
+      const res = await referralService.list();
+      setReferrals(res.data?.links || []);
+    } catch (err) {
+      setError(err.response?.data?.message || t('referrals.loadFailed', 'Could not load referral links.'));
+    } finally {
+      setReferralsLoading(false);
+    }
+  }, [t]);
+
+  const buildReferralUrl = (link) => {
+    const dest = link.destination && link.destination.startsWith('/') ? link.destination : '/';
+    const sep = dest.includes('?') ? '&' : '?';
+    return `${window.location.origin}${dest}${sep}ref=${encodeURIComponent(link.code)}`;
+  };
+
+  const copyReferralUrl = async (link) => {
+    try {
+      await navigator.clipboard.writeText(buildReferralUrl(link));
+      showSuccess(t('referrals.copied', 'Link copied to clipboard.'));
+    } catch (_) {
+      // Clipboard may be unavailable (insecure context) — silently ignore.
+    }
+  };
+
+  const handleCreateReferral = async (event) => {
+    event.preventDefault();
+    setError('');
+    setReferralCreating(true);
+    try {
+      await referralService.create(referralForm);
+      setReferralForm({ name: '', code: '', destination: '/' });
+      showSuccess(t('referrals.created', 'Referral link created.'));
+      fetchReferrals();
+    } catch (err) {
+      setError(err.response?.data?.message || t('referrals.createFailed', 'Could not create link.'));
+    } finally {
+      setReferralCreating(false);
+    }
+  };
+
+  const handleToggleReferral = async (link) => {
+    try {
+      await referralService.update(link.id, { active: !link.active });
+      fetchReferrals();
+    } catch (err) {
+      setError(err.response?.data?.message || t('referrals.updateFailed', 'Could not update link.'));
+    }
+  };
+
+  const handleDeleteReferral = async (link) => {
+    if (!window.confirm(t('referrals.confirmDelete', 'Delete this link? Its visit history will be removed. Anyone who already has the link will no longer be tracked.'))) return;
+    try {
+      await referralService.remove(link.id);
+      if (referralStatsFor === link.id) { setReferralStats(null); setReferralStatsFor(null); }
+      fetchReferrals();
+    } catch (err) {
+      setError(err.response?.data?.message || t('referrals.deleteFailed', 'Could not delete link.'));
+    }
+  };
+
+  const handleViewReferralStats = async (link) => {
+    if (referralStatsFor === link.id) { setReferralStats(null); setReferralStatsFor(null); return; }
+    setReferralStatsFor(link.id);
+    setReferralStats(null);
+    try {
+      const res = await referralService.getStats(link.id, 30);
+      setReferralStats(res.data);
+    } catch (err) {
+      setError(err.response?.data?.message || t('referrals.statsFailed', 'Could not load link stats.'));
+    }
+  };
+
+  const handleAssignRole = async (event) => {
+    event.preventDefault();
+    setError('');
+    try {
+      const res = await referralService.assignRole(roleForm.email.trim(), roleForm.role);
+      showSuccess(t('referrals.roleAssigned', 'Set {{email}} to {{role}}.', { email: res.data?.user?.email || roleForm.email, role: roleForm.role }));
+      setRoleForm({ email: '', role: 'marketing' });
+    } catch (err) {
+      setError(err.response?.data?.message || t('referrals.roleFailed', 'Could not assign role.'));
+    }
+  };
+
   useEffect(() => {
     if (activeTab === 'guests') fetchGuests(1);
     if (activeTab === 'failures') fetchErrorReports(1);
     if (activeTab === 'messages') fetchContactMessages(1);
     if (activeTab === 'semester') fetchSemesterLeads(1);
     if (activeTab === 'reviews') fetchReviews(1);
-    if (activeTab === 'billing' || activeTab === 'institutions' || activeTab === 'dashboard') fetchBillingAdmin();
-  }, [activeTab, fetchGuests, fetchErrorReports, fetchContactMessages, fetchSemesterLeads, fetchReviews, fetchBillingAdmin]);
+    if (activeTab === 'referrals') fetchReferrals();
+    if (!isMarketingOnly && (activeTab === 'billing' || activeTab === 'institutions' || activeTab === 'dashboard')) fetchBillingAdmin();
+  }, [activeTab, isMarketingOnly, fetchGuests, fetchErrorReports, fetchContactMessages, fetchSemesterLeads, fetchReviews, fetchReferrals, fetchBillingAdmin]);
 
   const billingPlans = [
     ...(billingAdmin.plans?.individual || []),
@@ -1113,9 +1268,13 @@ function AdminDashboard() {
                 title: t('admin.navGroups.tools', 'Tools'),
                 items: [
                   { id: 'comms', icon: '📣', label: t('admin.communications', 'Communications') },
+                  { id: 'referrals', icon: '🔗', label: t('admin.referrals', 'Referral links') },
                 ],
               },
-            ].map(group => (
+            ]
+              .filter(group => !isMarketingOnly || group.id === 'tools')
+              .map(group => (isMarketingOnly ? { ...group, items: group.items.filter(item => item.id === 'referrals') } : group))
+              .map(group => (
               <div key={group.id} className="admin-nav-group">
                 <p className="admin-nav-group-title">{group.title}</p>
                 {group.items.map(tab => (
@@ -1323,6 +1482,159 @@ function AdminDashboard() {
                   {emailSending ? t('adminEmail.sending', 'Sending…') : t('adminEmail.send', 'Send email')}
                 </button>
               </form>
+            </div>
+          )}
+
+          {/* ── Referral / Campaign Links Tab ── */}
+          {activeTab === 'referrals' && (
+            <div className="dashboard-section">
+              <form className="card billing-admin-form" onSubmit={handleCreateReferral}>
+                <h2>{t('referrals.title', 'Referral links')}</h2>
+                <p className="card-description">
+                  {t('referrals.hint', 'Create a trackable link for each post or channel, share it, then see how many visitors, signups, and paying customers it brought in.')}
+                </p>
+                <div className="billing-admin-grid">
+                  <label>
+                    {t('referrals.name', 'Name')}
+                    <input
+                      value={referralForm.name}
+                      onChange={(event) => setReferralForm((current) => ({ ...current, name: event.target.value }))}
+                      placeholder={t('referrals.namePlaceholder', 'Instagram bio – July')}
+                      required
+                    />
+                  </label>
+                  <label>
+                    {t('referrals.code', 'Code (optional)')}
+                    <input
+                      value={referralForm.code}
+                      onChange={(event) => setReferralForm((current) => ({ ...current, code: event.target.value }))}
+                      placeholder={t('referrals.codePlaceholder', 'insta-july')}
+                    />
+                  </label>
+                  <label>
+                    {t('referrals.destination', 'Lands on')}
+                    <input
+                      value={referralForm.destination}
+                      onChange={(event) => setReferralForm((current) => ({ ...current, destination: event.target.value }))}
+                      placeholder="/"
+                    />
+                  </label>
+                </div>
+                <button className="btn btn-primary" type="submit" disabled={referralCreating}>
+                  {referralCreating ? t('referrals.creating', 'Creating…') : t('referrals.create', 'Create link')}
+                </button>
+              </form>
+
+              {referralsLoading ? (
+                <div className="card">{t('common.loading', 'Loading…')}</div>
+              ) : referrals.length === 0 ? (
+                <div className="card">{t('referrals.empty', 'No links yet — create your first one above.')}</div>
+              ) : (
+                <div className="card referral-table-card">
+                  <div className="referral-table-scroll">
+                    <table className="referral-table">
+                      <thead>
+                        <tr>
+                          <th>{t('referrals.name', 'Name')}</th>
+                          <th>{t('referrals.link', 'Link')}</th>
+                          <th className="referral-num">{t('referrals.visits', 'Visits')}</th>
+                          <th className="referral-num">{t('referrals.unique', 'Unique')}</th>
+                          <th className="referral-num">{t('referrals.signups', 'Signups')}</th>
+                          <th className="referral-num">{t('referrals.paying', 'Paying')}</th>
+                          <th aria-label={t('referrals.actions', 'Actions')} />
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {referrals.map((link) => (
+                          <React.Fragment key={link.id}>
+                            <tr className={link.active ? '' : 'referral-inactive'}>
+                              <td>
+                                <span className="referral-name">{link.name}</span>
+                                {!link.active && <span className="referral-paused">{t('referrals.paused', 'Paused')}</span>}
+                              </td>
+                              <td>
+                                <div className="referral-link-cell">
+                                  <code className="referral-code">{buildReferralUrl(link)}</code>
+                                  <button type="button" className="btn btn-outline btn-sm" onClick={() => copyReferralUrl(link)}>
+                                    {t('referrals.copy', 'Copy')}
+                                  </button>
+                                </div>
+                              </td>
+                              <td className="referral-num">{link.totalVisits}</td>
+                              <td className="referral-num">{link.uniqueVisits}</td>
+                              <td className="referral-num">
+                                {link.signups}{link.signupRate ? <span className="referral-rate"> {link.signupRate}%</span> : null}
+                              </td>
+                              <td className="referral-num">
+                                {link.payingCustomers}{link.payingRate ? <span className="referral-rate"> {link.payingRate}%</span> : null}
+                              </td>
+                              <td className="referral-actions">
+                                <button type="button" className="btn btn-outline btn-sm" onClick={() => handleViewReferralStats(link)}>
+                                  {referralStatsFor === link.id ? t('referrals.hide', 'Hide') : t('referrals.trend', 'Trend')}
+                                </button>
+                                <button type="button" className="btn btn-outline btn-sm" onClick={() => handleToggleReferral(link)}>
+                                  {link.active ? t('referrals.pause', 'Pause') : t('referrals.resume', 'Resume')}
+                                </button>
+                                <button type="button" className="btn btn-danger btn-sm" onClick={() => handleDeleteReferral(link)}>
+                                  {t('referrals.delete', 'Delete')}
+                                </button>
+                              </td>
+                            </tr>
+                            {referralStatsFor === link.id && (
+                              <tr className="referral-stats-row">
+                                <td colSpan={7}>
+                                  {referralStats && referralStats.link?.id === link.id ? (
+                                    <div>
+                                      <p className="referral-chart-title">
+                                        {t('referrals.trendTitle', 'Visits — last {{days}} days', { days: referralStats.days })}
+                                      </p>
+                                      <ReferralVisitsChart series={referralStats.series} />
+                                    </div>
+                                  ) : (
+                                    <div className="referral-chart-loading">{t('common.loading', 'Loading…')}</div>
+                                  )}
+                                </td>
+                              </tr>
+                            )}
+                          </React.Fragment>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {!isMarketingOnly && (
+                <form className="card billing-admin-form" onSubmit={handleAssignRole}>
+                  <h2>{t('referrals.teamTitle', 'Marketing access')}</h2>
+                  <p className="card-description">
+                    {t('referrals.teamHint', 'Give a teammate the marketing role so they can manage these links without full admin access. Only admins can change roles.')}
+                  </p>
+                  <div className="billing-admin-grid">
+                    <label>
+                      {t('referrals.teamEmail', 'User email')}
+                      <input
+                        type="email"
+                        value={roleForm.email}
+                        onChange={(event) => setRoleForm((current) => ({ ...current, email: event.target.value }))}
+                        required
+                      />
+                    </label>
+                    <label>
+                      {t('referrals.teamRole', 'Role')}
+                      <select
+                        value={roleForm.role}
+                        onChange={(event) => setRoleForm((current) => ({ ...current, role: event.target.value }))}
+                      >
+                        <option value="marketing">{t('referrals.roleMarketing', 'Marketing (links only)')}</option>
+                        <option value="admin">{t('referrals.roleAdmin', 'Admin (full access)')}</option>
+                        <option value="user">{t('referrals.roleUser', 'User (revoke access)')}</option>
+                      </select>
+                    </label>
+                  </div>
+                  <button className="btn btn-primary" type="submit">{t('referrals.assign', 'Assign role')}</button>
+                </form>
+              )}
             </div>
           )}
 

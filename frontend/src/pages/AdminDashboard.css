@@ -2170,3 +2170,264 @@
   }
 }
 
+/* ── Referral / campaign links ─────────────────────────────────────────── */
+.referral-table-card {
+  padding: 0;
+  overflow: hidden;
+}
+.referral-table-scroll {
+  overflow-x: auto;
+}
+.referral-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.referral-table th,
+.referral-table td {
+  padding: 0.65rem 0.85rem;
+  text-align: left;
+  border-bottom: 1px solid #eef0f4;
+  vertical-align: middle;
+}
+.referral-table th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #6b7280;
+  background: #f9fafb;
+}
+.referral-table th.referral-num,
+.referral-table td.referral-num {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.referral-table tr.referral-inactive td {
+  opacity: 0.55;
+}
+.referral-name {
+  font-weight: 600;
+  color: #111827;
+}
+.referral-paused {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.05rem 0.4rem;
+  font-size: 0.7rem;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #b91c1c;
+  vertical-align: middle;
+}
+.referral-link-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.referral-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.8rem;
+  background: #f3f4f6;
+  padding: 0.2rem 0.45rem;
+  border-radius: 6px;
+  color: #374151;
+  max-width: 22rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.referral-rate {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+.referral-actions {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: flex-end;
+  white-space: nowrap;
+}
+.referral-stats-row td {
+  background: #fafbfc;
+}
+.referral-chart-title {
+  margin: 0 0 0.35rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+.referral-chart-loading {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+.referral-chart-svg {
+  width: 100%;
+  height: auto;
+  /* Single-series accent hue for the visit bars. */
+  --referral-bar: #6366f1;
+}
+.referral-bar {
+  fill: var(--referral-bar);
+}
+.referral-bar:hover {
+  fill: #4f46e5;
+}
+.referral-chart-axis {
+  stroke: #d1d5db;
+  stroke-width: 1;
+}
+.referral-chart-label {
+  fill: #9ca3af;
+  font-size: 10px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .referral-table th { background: #1f2430; color: #9ca3af; }
+  .referral-table th, .referral-table td { border-bottom-color: #2a2f3a; }
+  .referral-name { color: #f3f4f6; }
+  .referral-code { background: #232833; color: #d1d5db; }
+  .referral-stats-row td { background: #1b1f27; }
+  .referral-chart-svg { --referral-bar: #818cf8; }
+  .referral-bar:hover { fill: #a5b4fc; }
+  .referral-chart-axis { stroke: #3a4150; }
+}
+
+@media (max-width: 640px) {
+  .referral-code { max-width: 11rem; }
+  .referral-actions { flex-wrap: wrap; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ADMIN UI ENHANCEMENT LAYER
+   Everything here is scoped under .admin-container so the rest of the app is
+   untouched. It refines the shared primitives (header, sidebar, stat cards,
+   tables, cards, buttons, banners) on top of the existing token system, which
+   lifts every admin tab at once. Kept on-brand: cream surfaces, green accent.
+   ═══════════════════════════════════════════════════════════════════════ */
+.admin-container {
+  --admin-radius: 18px;
+  --admin-radius-sm: 12px;
+  --admin-shadow: 0 1px 2px rgba(26, 26, 46, 0.04), 0 6px 20px rgba(26, 26, 46, 0.05);
+  --admin-shadow-hover: 0 12px 34px rgba(26, 26, 46, 0.10);
+}
+
+/* — Header: give it a hairline separator and tighter type — */
+.admin-container .admin-header {
+  padding-bottom: 22px;
+  margin-bottom: 26px;
+  border-bottom: 1px solid var(--border-light);
+}
+.admin-container .admin-header h1 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.admin-container .admin-header p {
+  font-size: 1rem;
+}
+
+/* — Banners: match the softer card language — */
+.admin-container .success-banner,
+.admin-container .error-banner {
+  border-radius: var(--admin-radius-sm);
+  box-shadow: var(--admin-shadow);
+}
+
+/* — Sidebar: float it as a surface panel with a left accent bar on active — */
+.admin-container .admin-sidebar {
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--admin-radius);
+  box-shadow: var(--admin-shadow);
+  padding: 16px 12px;
+  gap: 20px;
+}
+.admin-container .admin-nav-item {
+  position: relative;
+  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.admin-container .admin-nav-item:hover:not(.active) {
+  background: var(--bg-secondary);
+}
+.admin-container .admin-nav-item.active {
+  background: var(--primary-soft);
+  border-color: transparent;
+  box-shadow: inset 3px 0 0 var(--primary);
+}
+
+/* — Cards: unify radius / elevation across all tabs — */
+.admin-container .card {
+  border-radius: var(--admin-radius);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--admin-shadow);
+}
+
+/* — Stat cards: rounder, softer elevation, punchier numbers, tinted tiles — */
+.admin-container .stat-card {
+  border-radius: var(--admin-radius);
+  border-color: var(--border-light);
+  box-shadow: var(--admin-shadow);
+}
+.admin-container .stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--admin-shadow-hover);
+}
+.admin-container .stat-number {
+  font-size: 2.2rem;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.admin-container .stat-icon-wrapper {
+  border-radius: 16px;
+  background: var(--primary-soft);
+}
+.admin-container .stat-card.large.success .stat-icon-wrapper { background: rgba(88, 204, 2, 0.14); }
+.admin-container .stat-card.large.warning .stat-icon-wrapper { background: rgba(255, 150, 0, 0.15); }
+.admin-container .stat-card.large.danger  .stat-icon-wrapper { background: rgba(255, 75, 75, 0.13); }
+
+/* — Tables: unified header treatment + row hover across activity/users/referral — */
+.admin-container .activity-table th,
+.admin-container .users-table th,
+.admin-container .referral-table th {
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+.admin-container .activity-table tbody tr,
+.admin-container .users-table tbody tr,
+.admin-container .referral-table tbody tr {
+  transition: background 0.14s ease;
+}
+.admin-container .activity-table tbody tr:hover,
+.admin-container .referral-table tbody tr:hover {
+  background: var(--bg-secondary);
+}
+.admin-container .activity-table tbody tr:last-child td,
+.admin-container .users-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* — Buttons: rounded small buttons + a clear keyboard focus ring — */
+.admin-container .btn.btn-sm {
+  border-radius: 9px;
+}
+.admin-container .btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+/* — On the mobile strip, drop the sidebar panel chrome so it reads as tabs — */
+@media (max-width: 980px) {
+  .admin-container .admin-sidebar {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0 0 6px;
+  }
+  .admin-container .admin-nav-item.active {
+    box-shadow: none;
+  }
+}
+

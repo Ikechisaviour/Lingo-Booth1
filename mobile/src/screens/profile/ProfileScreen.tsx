@@ -36,6 +36,15 @@ function isProOrUltraTier(tier?: string | null) {
   return ['pro', 'ultra'].includes(String(tier || '').toLowerCase());
 }
 
+function asArray<T = any>(value: unknown): T[] {
+  return Array.isArray(value) ? value as T[] : [];
+}
+
+function getMembershipOrganization(membership: any) {
+  const organization = membership?.organizationId;
+  return organization && typeof organization === 'object' ? organization : null;
+}
+
 const ProfileScreen: React.FC = () => {
   const { t, i18n } = useTranslation();
   const navigation = useNavigation<any>();
@@ -151,7 +160,7 @@ const ProfileScreen: React.FC = () => {
         activeAccountTier,
       ].filter(Boolean).join(' · ')
       : `${t('profilePage.standardUser', 'Standard User')} · ${activeAccountTier}`;
-  const billingMemberships = billingAccount?.memberships || [];
+  const billingMemberships = asArray(billingAccount?.memberships);
   const activeAccessKey = billingSummary.billingSource === 'institution' && billingSummary.institutionalAccess?.organizationId
     ? `institution:${billingSummary.institutionalAccess.organizationId}`
     : 'personal';
@@ -165,14 +174,27 @@ const ProfileScreen: React.FC = () => {
         : t('billing.noPaidSubscription', 'No paid subscription'),
     },
     ...billingMemberships
-      .filter((membership: any) => membership.organizationId && ['active', 'trialing'].includes(String(membership.organizationId.status || membership.status || '').toLowerCase()))
-      .map((membership: any) => ({
-        key: `institution:${membership.organizationId._id}`,
-        contextType: 'institution',
-        organizationId: membership.organizationId._id,
-        label: membership.organizationId.name,
-        detail: `${String(membership.organizationId.effectiveTier || '').toUpperCase()} · ${String(t(`institution.roles.${membership.role}`, membership.role))}`,
-      })),
+      .map((membership: any) => {
+        const organization = getMembershipOrganization(membership);
+        const organizationId = organization?._id || (typeof membership?.organizationId === 'string' ? membership.organizationId : '');
+        return {
+          membership,
+          organization,
+          organizationId,
+          status: String(organization?.status || membership?.status || '').toLowerCase(),
+        };
+      })
+      .filter(({ organizationId, status }: any) => organizationId && ['active', 'trialing'].includes(status))
+      .map(({ membership, organization, organizationId }: any) => {
+        const role = membership?.role || 'learner';
+        return {
+          key: `institution:${organizationId}`,
+          contextType: 'institution',
+          organizationId,
+          label: organization?.name || t('billing.institutionAccess', 'Institution access'),
+          detail: `${String(organization?.effectiveTier || membership?.effectiveTier || '').toUpperCase()} · ${String(t(`institution.roles.${role}`, role))}`,
+        };
+      }),
   ];
 
   const fetchData = useCallback(async () => {
@@ -190,7 +212,7 @@ const ProfileScreen: React.FC = () => {
       setUser(userRes.data);
       setProgress(progRes.data);
       setLearningHub(hubRes.data);
-      setCertificates(certRes.data?.certificates || []);
+      setCertificates(asArray(certRes.data?.certificates));
       setBillingAccount(billingRes.data || null);
       setUnreadNotifications(notificationRes.data?.unreadCount || 0);
       setEditUsername(userRes.data.username);
@@ -498,7 +520,7 @@ const ProfileScreen: React.FC = () => {
     try { await GoogleSignin.signOut(); } catch {}
     logout();
   };
-  const voicePracticeHistory = (learningHub?.recentEvents || [])
+  const voicePracticeHistory = asArray(learningHub?.recentEvents)
     .filter((event: any) => (
       ['conversation_turn', 'speaking_practice_complete'].includes(event.eventType)
       && event.metadata?.transcript

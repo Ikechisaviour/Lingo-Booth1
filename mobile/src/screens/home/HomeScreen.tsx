@@ -385,7 +385,16 @@ const HomeScreen: React.FC = () => {
     return t('learningHub.firstThreeDayLearnBody', 'Begin with one small guided lesson so the pair has a clear starting point.');
   };
 
-  const showDecayBanner = !!xpStats && (xpStats.status === 'decaying' || xpStats.status === 'grace');
+  // The backend reports `grace` for the ENTIRE 48h grace window, and the study
+  // heartbeat refreshes `lastAnsweredAt` every minute while the learner is
+  // active — so an active user sits permanently near 48h and the grace banner
+  // would never clear, contradicting its own "keep studying to prevent it"
+  // copy. Only surface the grace warning once decay is actually imminent;
+  // recent studying pushes it back out of view.
+  const DECAY_WARN_THRESHOLD_HOURS = 24;
+  const graceImminent = xpStats?.status === 'grace'
+    && (xpStats.hoursUntilDecay ?? Infinity) <= DECAY_WARN_THRESHOLD_HOURS;
+  const showDecayBanner = !!xpStats && (xpStats.status === 'decaying' || graceImminent);
 
   return (
     <ScrollView
