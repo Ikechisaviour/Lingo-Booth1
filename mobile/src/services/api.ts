@@ -78,6 +78,22 @@ api.interceptors.request.use(async (config) => {
 // Track whether a token refresh is already in progress to avoid concurrent refreshes
 let refreshPromise: Promise<string> | null = null;
 
+// Guard so concurrent 401s from a single stale token don't each end the session.
+// Reset on any successful response or refresh.
+let sessionExpiryActive = false;
+
+// End an unrecoverable session exactly once: log out so the navigator returns
+// the user to sign-in, instead of leaving every in-flight request to 401 in a
+// loop. Benign auth-expiry codes are filtered inside reportApiError, so this
+// never floods the failures dashboard.
+const endExpiredSession = (error: any, phase: string) => {
+  if (sessionExpiryActive) return;
+  sessionExpiryActive = true;
+  reportApiError(error, { phase });
+  useAuthStore.getState().logout();
+  if (error) error._forcedLogout = true;
+};
+
 const isExpectedStatus = (config: any, status?: number) => {
   const expected = config?.expectedStatuses;
   return Array.isArray(expected) && status != null && expected.includes(status);
@@ -110,7 +126,10 @@ export const registerStepUpHandler = (handler: StepUpHandler | null) => {
 
 // Retry logic for GET 5xx / network errors + auto-refresh on 401 + suspension detection
 api.interceptors.response.use(
-  (response) => response,
+  (response) => {
+    sessionExpiryActive = false;
+    return response;
+  },
   async (error) => {
     const config = error.config;
 
@@ -152,6 +171,7 @@ api.interceptors.response.use(
                 if (newRefreshToken) {
                   useAuthStore.getState().setRefreshToken(newRefreshToken);
                 }
+                sessionExpiryActive = false;
                 return newToken;
               })
               .finally(() => { refreshPromise = null; });
@@ -163,13 +183,19 @@ api.interceptors.response.use(
           // Only a definitive refresh rejection should end the 30-day session.
           // Network/server hiccups after inactivity must leave the stored
           // refresh token intact so the next retry can recover.
-          reportApiError(refreshError || error, { phase: 'auth-refresh-failed' });
           if (shouldEndSessionAfterRefreshFailure(refreshError)) {
-            useAuthStore.getState().logout();
-            error._forcedLogout = true;
+            endExpiredSession(refreshError, 'auth-refresh-failed');
+          } else {
+            reportApiError(refreshError || error, { phase: 'auth-refresh-failed' });
           }
           return Promise.reject(error);
         }
+      }
+      // No refresh token, but the user still holds an access token: the session
+      // can't be recovered, so end it cleanly instead of letting every request
+      // 401 in a loop (and flood the failures dashboard).
+      if (useAuthStore.getState().token) {
+        endExpiredSession(error, 'auth-expired');
       }
     }
 

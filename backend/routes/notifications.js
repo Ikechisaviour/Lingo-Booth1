@@ -199,6 +199,8 @@ router.post('/admin/broadcast', isAdmin, async (req, res) => {
         route: actionRoute,
       },
       actorUserId: req.userId,
+      // We push once below in a single batched call across all recipients.
+      sendPush: false,
     });
     const pushResult = await sendPushToUsers(recipientIds, {
       title,

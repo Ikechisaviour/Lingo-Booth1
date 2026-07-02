@@ -2,6 +2,8 @@ const Notification = require('../models/Notification');
 const User = require('../models/User');
 const Organization = require('../models/Organization');
 const OrganizationMembership = require('../models/OrganizationMembership');
+const { sendPushToUsers } = require('./pushNotifications');
+const { resolveNotificationText } = require('./notificationText');
 
 const SEAT_WARNING_THRESHOLDS = [0, 5, 10, 20];
 
@@ -12,6 +14,25 @@ function cleanParams(params = {}) {
       value === undefined || value === null ? '' : value,
     ]),
   );
+}
+
+// Fire a native push (best-effort, non-blocking) for a freshly created
+// notification. In-app text is localized on the client from titleKey/bodyKey,
+// so we resolve display text server-side here. Unknown keys resolve to '' and
+// are skipped rather than pushing a raw i18n key.
+function pushForNotification({ userId, type, titleKey, bodyKey, params, action }) {
+  const title = resolveNotificationText(titleKey, params);
+  if (!title) return;
+  const body = resolveNotificationText(bodyKey, params);
+  sendPushToUsers([userId], {
+    title,
+    body,
+    data: {
+      kind: 'serverNotification',
+      route: action?.route || '',
+      type,
+    },
+  }).catch(() => null);
 }
 
 async function createNotification({
@@ -26,6 +47,9 @@ async function createNotification({
   organizationId = null,
   actorUserId = null,
   dedupeKey = '',
+  // Bulk callers (e.g. admin broadcast) push once in a single batched call, so
+  // they pass sendPush: false to avoid a per-recipient push here.
+  sendPush = true,
 }) {
   if (!userId || !type || !titleKey || !bodyKey) return null;
   const payload = {
@@ -45,15 +69,27 @@ async function createNotification({
     dedupeKey,
   };
 
+  let notification;
+  let isNew;
   if (dedupeKey) {
-    return Notification.findOneAndUpdate(
+    const result = await Notification.findOneAndUpdate(
       { userId, dedupeKey },
       { $setOnInsert: payload },
-      { new: true, upsert: true },
+      { new: true, upsert: true, includeResultMetadata: true },
     ).catch(() => null);
+    notification = result?.value || null;
+    // Only a first-time upsert should push; a matched existing doc must not.
+    isNew = !!result && result.lastErrorObject?.updatedExisting === false;
+  } else {
+    notification = await Notification.create(payload).catch(() => null);
+    isNew = !!notification;
   }
 
-  return Notification.create(payload).catch(() => null);
+  if (notification && isNew && sendPush) {
+    pushForNotification({ userId, type, titleKey, bodyKey, params: payload.params, action: payload.action });
+  }
+
+  return notification;
 }
 
 async function notifyUsers(userIds = [], payload = {}) {
