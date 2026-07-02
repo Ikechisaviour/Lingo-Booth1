@@ -707,12 +707,14 @@ router.post('/forgot-password', async (req, res) => {
 
     const user = await User.findOne({ email });
     if (!user) {
-      // Don't reveal whether email exists
+      // Don't reveal whether email exists (but log why nothing was sent)
+      console.warn(`[forgot-password] no reset sent — no account for ${email}`);
       return res.json({ message: 'If an account with that email exists, a reset link has been sent.' });
     }
 
     // Google-only users have no password to reset
     if (!user.password) {
+      console.warn(`[forgot-password] no reset sent — ${email} is a Google sign-in account (no password)`);
       return res.json({ message: 'If an account with that email exists, a reset link has been sent.' });
     }
 
@@ -720,6 +722,7 @@ router.post('/forgot-password', async (req, res) => {
     if (user.passwordResetExpires && user.passwordResetToken) {
       const tokenAge = Date.now() - (user.passwordResetExpires.getTime() - 60 * 60 * 1000);
       if (tokenAge < 60000) {
+        console.warn(`[forgot-password] no reset sent — ${email} within 60s cooldown`);
         return res.json({ message: 'If an account with that email exists, a reset link has been sent.' });
       }
     }
@@ -729,9 +732,12 @@ router.post('/forgot-password', async (req, res) => {
     user.passwordResetExpires = new Date(Date.now() + 60 * 60 * 1000); // 1 hour
     await user.save();
 
-    sendPasswordResetEmail(user.email, user.username, resetToken, user.nativeLanguage || 'en').catch(err => {
-      console.error('Failed to send password reset email:', err.message);
-    });
+    console.log(`[forgot-password] sending reset email to ${email}`);
+    sendPasswordResetEmail(user.email, user.username, resetToken, user.nativeLanguage || 'en')
+      .then(() => console.log(`[forgot-password] reset email accepted by Resend for ${email}`))
+      .catch(err => {
+        console.error(`[forgot-password] Resend send FAILED for ${email}:`, err.message);
+      });
 
     res.json({ message: 'If an account with that email exists, a reset link has been sent.' });
   } catch (error) {

@@ -90,6 +90,11 @@ const isCurrentUserProfileRequest = (config: any) => {
   return String(config.method || 'get').toLowerCase() === 'get' && cleanUrl === `/users/${currentUserId}`;
 };
 
+const shouldEndSessionAfterRefreshFailure = (refreshError: any) => (
+  refreshError?.response?.status === 401 ||
+  refreshError?.response?.status === 403
+);
+
 // Step-up auth handler — UI registers this to prompt the user for their password
 // and resolve/reject the held request. Falls back to rejection if no handler
 // is registered (e.g., before the navigator mounts).
@@ -154,11 +159,15 @@ api.interceptors.response.use(
           const newToken = await refreshPromise;
           config.headers.Authorization = `Bearer ${newToken}`;
           return api(config);
-        } catch {
-          // Refresh failed — force logout
-          reportApiError(error, { phase: 'auth-refresh-failed' });
-          useAuthStore.getState().logout();
-          error._forcedLogout = true;
+        } catch (refreshError: any) {
+          // Only a definitive refresh rejection should end the 30-day session.
+          // Network/server hiccups after inactivity must leave the stored
+          // refresh token intact so the next retry can recover.
+          reportApiError(refreshError || error, { phase: 'auth-refresh-failed' });
+          if (shouldEndSessionAfterRefreshFailure(refreshError)) {
+            useAuthStore.getState().logout();
+            error._forcedLogout = true;
+          }
           return Promise.reject(error);
         }
       }

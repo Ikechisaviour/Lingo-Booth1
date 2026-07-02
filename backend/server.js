@@ -46,6 +46,13 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions));
+// Safety net: guarantee every error response (from ANY middleware/route/library
+// downstream) carries a code + ref, and record uncoded 5xx. Mounted as early as
+// possible — before body parsing — so even a malformed-JSON parse error (thrown
+// inside express.json) still gets tagged when it reaches the error handler.
+const { tagErrorResponses } = require('./middleware/responseTagger');
+app.use(tagErrorResponses);
+
 app.use('/api/billing/webhook', express.raw({ type: 'application/json', limit: '1mb' }));
 app.use(express.json({ limit: '2mb' }));
 
@@ -73,7 +80,7 @@ const generalLimiter = rateLimit({
   max: 1000,
   handler: async (req, res, next, options) => {
     await trackRateLimitHit(req);
-    res.status(options.statusCode).json({ message: 'Too many requests, please try again later' });
+    res.status(options.statusCode).json({ message: 'Too many requests, please try again later', code: 'RATE_LIMITED' });
   },
 });
 
@@ -82,7 +89,7 @@ const authLimiter = rateLimit({
   max: 20,
   handler: async (req, res, next, options) => {
     await trackRateLimitHit(req);
-    res.status(options.statusCode).json({ message: 'Too many authentication attempts, please try again later' });
+    res.status(options.statusCode).json({ message: 'Too many authentication attempts, please try again later', code: 'AUTH_RATE_LIMITED' });
   },
 });
 
@@ -97,17 +104,17 @@ app.use('/api/auth/reset-password', authLimiter);
 app.use('/api/auth/refresh', rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 60,
-  handler: (req, res) => res.status(429).json({ message: 'Too many refresh attempts' }),
+  handler: (req, res) => res.status(429).json({ message: 'Too many refresh attempts', code: 'AUTH_RATE_LIMITED' }),
 }));
 app.use('/api/contact', rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 10,
-  handler: (req, res) => res.status(429).json({ message: 'Too many contact attempts, please try again later' }),
+  handler: (req, res) => res.status(429).json({ message: 'Too many contact attempts, please try again later', code: 'RATE_LIMITED' }),
 }));
 app.use('/api/semester-interest', rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 10,
-  handler: (req, res) => res.status(429).json({ message: 'Too many requests, please try again later' }),
+  handler: (req, res) => res.status(429).json({ message: 'Too many requests, please try again later', code: 'RATE_LIMITED' }),
 }));
 // Only throttle review submissions (POST); the approved-reviews GET is read by
 // every landing-page visitor and must not be rate limited.
@@ -116,7 +123,7 @@ app.use('/api/reviews', (req, res, next) => {
   return rateLimit({
     windowMs: 15 * 60 * 1000,
     max: 8,
-    handler: (r, response) => response.status(429).json({ message: 'Too many requests, please try again later' }),
+    handler: (r, response) => response.status(429).json({ message: 'Too many requests, please try again later', code: 'RATE_LIMITED' }),
   })(req, res, next);
 });
 

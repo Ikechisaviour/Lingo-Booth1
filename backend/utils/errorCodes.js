@@ -39,10 +39,35 @@ const ERROR_CODES = {
   NOT_FOUND: { httpStatus: 404, clientMessage: 'Not found' },
   DB_UNAVAILABLE: { httpStatus: 503, clientMessage: 'Service temporarily unavailable' },
 
+  // --- Auth / access middleware (the highest-frequency uncoded errors) -----
+  AUTH_NO_TOKEN: { httpStatus: 401, clientMessage: 'No token, authorization denied' },
+  AUTH_TOKEN_INVALID: { httpStatus: 401, clientMessage: 'Token is not valid' },
+  AUTH_TOKEN_EXPIRED: { httpStatus: 401, clientMessage: 'Token is not valid' },
+  AUTH_USER_NOT_FOUND: { httpStatus: 401, clientMessage: 'User not found' },
+  AUTH_ACCOUNT_SUSPENDED: { httpStatus: 403, clientMessage: 'Account suspended' },
+  AUTH_ADMIN_ONLY: { httpStatus: 403, clientMessage: 'Access denied. Admin only.' },
+  AUTH_OWNERSHIP_DENIED: { httpStatus: 403, clientMessage: 'Access denied. You can only access your own resources.' },
+
+  // --- Rate limiting -------------------------------------------------------
+  RATE_LIMITED: { httpStatus: 429, clientMessage: 'Too many requests, please try again later' },
+  AUTH_RATE_LIMITED: { httpStatus: 429, clientMessage: 'Too many authentication attempts, please try again later' },
+
+  // --- Request parsing -----------------------------------------------------
+  REQUEST_BODY_INVALID_JSON: { httpStatus: 400, clientMessage: 'Malformed JSON in request body' },
+  REQUEST_PAYLOAD_TOO_LARGE: { httpStatus: 413, clientMessage: 'Request payload too large' },
+
   // --- Learning events (the class of bug that motivated this) --------------
   LEARN_EVENT_MISSING_FIELDS: { httpStatus: 400, clientMessage: 'Missing required fields for learning event' },
   LEARN_EVENT_UNSUPPORTED_TYPE: { httpStatus: 400, clientMessage: 'Unsupported learning event type' },
 };
+
+// Fallback code for an error response that reached the wire WITHOUT an explicit
+// code (e.g. from a library, a hand-written middleware, or a site not yet
+// migrated). Low-cardinality by design (HTTP_<status>) so the dashboard can
+// group "all uncoded 401s" at a glance; the route/stack pin down the exact one.
+function httpFallbackCode(status) {
+  return `HTTP_${status || 500}`;
+}
 
 const DEFAULT = { httpStatus: 500, clientMessage: 'Server error' };
 
@@ -55,4 +80,4 @@ function resolveCode(code) {
   return { code: code || 'UNKNOWN', ...DEFAULT };
 }
 
-module.exports = { ERROR_CODES, DEFAULT, resolveCode };
+module.exports = { ERROR_CODES, DEFAULT, resolveCode, httpFallbackCode };

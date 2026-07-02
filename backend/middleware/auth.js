@@ -13,7 +13,7 @@ const verifyToken = async (req, res, next) => {
     const token = req.header('Authorization')?.replace('Bearer ', '');
 
     if (!token) {
-      return res.status(401).json({ message: 'No token, authorization denied' });
+      return res.status(401).json({ message: 'No token, authorization denied', code: 'AUTH_NO_TOKEN' });
     }
 
     const decoded = jwt.verify(token, JWT_SECRET);
@@ -24,17 +24,21 @@ const verifyToken = async (req, res, next) => {
 
     const user = await User.findById(decoded.userId).select('-password');
     if (!user) {
-      return res.status(401).json({ message: 'User not found' });
+      return res.status(401).json({ message: 'User not found', code: 'AUTH_USER_NOT_FOUND' });
     }
 
     if (user.status === 'suspended') {
-      return res.status(403).json({ message: 'Account suspended' });
+      return res.status(403).json({ message: 'Account suspended', code: 'AUTH_ACCOUNT_SUSPENDED' });
     }
 
     req.user = user;
     next();
   } catch (error) {
-    res.status(401).json({ message: 'Token is not valid' });
+    // Distinguish an expired token from a malformed/invalid one — both were
+    // previously an uncoded "Token is not valid" 401, the single most common
+    // uncoded entry in the failure dashboard.
+    const code = error?.name === 'TokenExpiredError' ? 'AUTH_TOKEN_EXPIRED' : 'AUTH_TOKEN_INVALID';
+    res.status(401).json({ message: 'Token is not valid', code });
   }
 };
 
@@ -82,7 +86,7 @@ const isAdmin = (req, res, next) => {
   if (req.user && req.user.role === 'admin') {
     next();
   } else {
-    res.status(403).json({ message: 'Access denied. Admin only.' });
+    res.status(403).json({ message: 'Access denied. Admin only.', code: 'AUTH_ADMIN_ONLY' });
   }
 };
 
@@ -92,7 +96,7 @@ const isOwner = (paramName = 'userId') => (req, res, next) => {
   if (req.user.role === 'admin' || req.userId === resourceUserId) {
     next();
   } else {
-    res.status(403).json({ message: 'Access denied. You can only access your own resources.' });
+    res.status(403).json({ message: 'Access denied. You can only access your own resources.', code: 'AUTH_OWNERSHIP_DENIED' });
   }
 };
 

@@ -11,7 +11,7 @@
 // body of { message, code, ref } so the code/ref propagate to the client and
 // show up end-to-end.
 
-const { recordServerError } = require('./errorReporting');
+const { recordServerError, makeRef } = require('./errorReporting');
 const { resolveCode } = require('./errorCodes');
 
 // Use inside a catch block for genuine server failures (500s). Awaitable so the
@@ -49,14 +49,17 @@ async function sendServerError(req, res, error, code, opts = {}) {
   return res.status(httpStatus).json(body);
 }
 
-// Use for expected client errors (400/401/403/404). Attaches a code but does
-// NOT create a dashboard record. Synchronous.
+// Use for expected client errors (400/401/403/404). Attaches a code + ref but
+// does NOT create a dashboard record (4xx are client mistakes, not server
+// failures — recording them would flood the dashboard). The ref still lets a
+// user quote it, and the client-side error report stores it. Synchronous.
 function sendClientError(res, httpStatus, code, message, extra) {
   if (res.headersSent) return res;
   const resolved = resolveCode(code);
   const body = {
     message: message || resolved.clientMessage || 'Request failed',
     code: resolved.code,
+    ref: makeRef(),
   };
   if (extra && typeof extra === 'object') Object.assign(body, extra);
   return res.status(httpStatus || resolved.httpStatus || 400).json(body);

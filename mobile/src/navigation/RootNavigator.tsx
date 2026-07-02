@@ -109,8 +109,10 @@ const AppRoot: React.FC = () => {
         }
       })
       .catch((err) => {
-        // Account deleted or token invalid — force logout
-        if (err.response?.status === 404 || err.response?.status === 401) {
+        // Account deleted — force logout. 401s are handled by the API
+        // interceptor so expired access tokens can refresh without this
+        // foreground check clearing a valid 30-day session.
+        if (err.response?.status === 404) {
           useAuthStore.getState().logout();
         }
       });
