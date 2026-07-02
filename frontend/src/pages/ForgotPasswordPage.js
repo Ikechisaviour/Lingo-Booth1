@@ -11,6 +11,7 @@ function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [sent, setSent] = useState(false);
+  const [googleNotice, setGoogleNotice] = useState('');
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -20,10 +21,16 @@ function ForgotPasswordPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
+    setGoogleNotice('');
     setLoading(true);
     try {
-      await authService.forgotPassword(email.trim());
-      setSent(true);
+      const res = await authService.forgotPassword(email.trim());
+      if (res?.data?.provider === 'google') {
+        // Google sign-in account — no password to reset; guide them to sign in.
+        setGoogleNotice(res.data.message || t('forgotPassword.googleMessage', 'This account was created with Google sign-in, so there is no password to reset. Please use “Continue with Google” to sign in.'));
+      } else {
+        setSent(true);
+      }
     } catch (err) {
       setError(err.response?.data?.message || t('forgotPassword.error', 'Something went wrong. Please try again.'));
     } finally {
@@ -42,7 +49,20 @@ function ForgotPasswordPage() {
 
         {error && <div className="error">{error}</div>}
 
-        {sent ? (
+        {googleNotice ? (
+          <div style={{ textAlign: 'center', padding: '20px 0' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🔑</div>
+            <p style={{ color: 'var(--text-primary)', fontWeight: 600, marginBottom: '8px' }}>
+              {t('forgotPassword.googleTitle', 'Use Google sign-in')}
+            </p>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '16px' }}>
+              {googleNotice}
+            </p>
+            <Link className="btn btn-primary" to="/login">
+              {t('forgotPassword.goToSignIn', 'Go to sign in')}
+            </Link>
+          </div>
+        ) : sent ? (
           <div style={{ textAlign: 'center', padding: '20px 0' }}>
             <div style={{ fontSize: '3rem', marginBottom: '16px' }}>📧</div>
             <p style={{ color: 'var(--text-primary)', fontWeight: 600, marginBottom: '8px' }}>
