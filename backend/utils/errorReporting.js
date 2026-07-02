@@ -29,7 +29,9 @@ async function recordServerError(req = {}, options = {}) {
     const route = trimString(options.route || req.originalUrl || req.url, 1000);
     // Prefer an explicit operation code; fall back to a thrown AppError's code.
     const code = trimString(options.code || error?.code, 120);
-    const ref = makeRef();
+    // Caller may supply a ref (to match one already put in the response body);
+    // otherwise mint a fresh one.
+    const ref = trimString(options.ref, 40) || makeRef();
 
     // If the origin threw an AppError with its own code, keep it as the cause.
     const metadata = { ...(options.metadata || {}) };

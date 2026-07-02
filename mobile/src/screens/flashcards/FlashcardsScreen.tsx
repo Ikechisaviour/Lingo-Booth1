@@ -1195,7 +1195,7 @@ const FlashcardsScreen: React.FC = () => {
       </View>
 
       {/* Deck scope (All / My Cards / Focus) — signed-in users only */}
-      {!isGuest && !!userId && (
+      {!isCompact && !isGuest && !!userId && (
         <View style={styles.scopeRow}>
           {[
             { id: 'all' as const, label: t('flashcards.deckAll', 'All') },
@@ -1379,7 +1379,20 @@ const FlashcardsScreen: React.FC = () => {
           onPress={handleCorrect}
           style={styles.actionBtn}
         />
-        {!isGuest && !!userId && (
+        {isCompact && (
+          <IconButton
+            icon="dice-multiple-outline"
+            size={24}
+            iconColor={colors.primary}
+            accessibilityLabel={t('flashcards.studyNRandom', {
+              count: Math.max(1, Math.floor(Number(randomCount) || 10)),
+              defaultValue: 'Study {{count}} random',
+            })}
+            onPress={studyRandomSubset}
+            style={styles.actionBtn}
+          />
+        )}
+        {!isCompact && !isGuest && !!userId && (
           <IconButton
             icon="content-save-outline"
             size={isCompact ? 24 : 28}
@@ -1388,7 +1401,7 @@ const FlashcardsScreen: React.FC = () => {
             style={styles.actionBtn}
           />
         )}
-        {!isGuest && !!userId && (
+        {!isCompact && !isGuest && !!userId && (
           <IconButton
             icon="bookmark-outline"
             size={isCompact ? 24 : 28}
@@ -1407,20 +1420,24 @@ const FlashcardsScreen: React.FC = () => {
             style={styles.actionBtn}
           />
         )}
-        <IconButton
-          icon="message-text-outline"
-          size={isCompact ? 24 : 28}
-          iconColor={colors.textSecondary}
-          onPress={askTutorAboutCurrent}
-          style={styles.actionBtn}
-        />
-        <IconButton
-          icon="pencil-outline"
-          size={isCompact ? 24 : 28}
-          iconColor={colors.textSecondary}
-          onPress={writeCurrent}
-          style={styles.actionBtn}
-        />
+        {!isCompact && (
+          <IconButton
+            icon="message-text-outline"
+            size={28}
+            iconColor={colors.textSecondary}
+            onPress={askTutorAboutCurrent}
+            style={styles.actionBtn}
+          />
+        )}
+        {!isCompact && (
+          <IconButton
+            icon="pencil-outline"
+            size={28}
+            iconColor={colors.textSecondary}
+            onPress={writeCurrent}
+            style={styles.actionBtn}
+          />
+        )}
         {!isGuest && !!userId && (
           <IconButton
             icon="clipboard-text-outline"
@@ -1609,6 +1626,30 @@ const FlashcardsScreen: React.FC = () => {
             <Text variant="titleMedium" style={styles.modalTitle}>
               {t('flashcards.settings', 'Settings')}
             </Text>
+
+            {isCompact && !isGuest && !!userId && (
+              <>
+                <View style={styles.chipRow}>
+                  {[
+                    { id: 'all' as const, label: t('flashcards.deckAll', 'All') },
+                    { id: 'mine' as const, label: t('flashcards.deckMine', 'My Cards') },
+                    { id: 'focus' as const, label: t('flashcards.deckFocus', 'Focus') },
+                  ].map((opt) => (
+                    <Chip
+                      key={opt.id}
+                      selected={deckScope === opt.id}
+                      onPress={() => {
+                        changeDeckScope(opt.id);
+                        setShowSettings(false);
+                      }}
+                      style={styles.chip}
+                    >
+                      {opt.label}
+                    </Chip>
+                  ))}
+                </View>
+              </>
+            )}
 
             <Text style={styles.settingLabel}>{t('flashcards.displayMode', 'Card Display')}</Text>
             <View style={styles.chipRow}>

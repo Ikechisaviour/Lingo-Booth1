@@ -1420,6 +1420,19 @@ router.post('/send-email', async (req, res) => {
       actionLabel,
     });
 
+    // If nothing went out (e.g. a missing/invalid RESEND_API_KEY or an
+    // unverified sending domain in this environment), surface the provider's
+    // actual reason instead of a silent "0 sent" so the cause is visible.
+    if (sent === 0 && failed > 0) {
+      return res.status(502).json({
+        message: `Email provider rejected the send: ${errors[0] || 'unknown error'}`,
+        sent,
+        failed,
+        total: recipients.length,
+        errors: errors.slice(0, 5),
+      });
+    }
+
     res.status(201).json({
       sent,
       failed,

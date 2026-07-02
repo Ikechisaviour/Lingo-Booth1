@@ -20,6 +20,7 @@ const EMAIL_ASSET_BASE = (
   || (FRONTEND_URL && !FRONTEND_URL.includes('localhost') ? FRONTEND_URL : 'https://lingobooth.com')
 ).replace(/\/+$/, '');
 const LOGO_URL = `${EMAIL_ASSET_BASE}/images/brand/logo-wordmark.png`;
+const LOGO_MARK_URL = `${EMAIL_ASSET_BASE}/images/brand/logo-mark.png`;
 
 function frontendUrl(path = '/') {
   const cleanPath = String(path || '/').startsWith('/') ? String(path || '/') : `/${path}`;
@@ -58,8 +59,10 @@ function emailActionUrlForUrl(url) {
 
 // Brand header shared by every transactional email. The two-cell accent bar
 // guarantees the green + orange brand colors render in every client (no reliance
-// on CSS gradient support), above the full-colour Lingo Booth wordmark. Alt text
-// keeps the brand visible when a client blocks images by default.
+// on CSS gradient support), above the full brand lockup: the LB mark centered
+// over the Lingo Booth wordmark. The mark is decorative (alt="") since the
+// wordmark carries the accessible name and keeps the brand visible when a client
+// blocks images by default.
 function brandHeaderRows() {
   return `
         <tr>
@@ -71,8 +74,9 @@ function brandHeaderRows() {
           </td>
         </tr>
         <tr>
-          <td align="center" style="background:#ffffff;padding:30px 40px 22px;">
-            <img src="${LOGO_URL}" width="180" alt="Lingo Booth" style="display:block;margin:0 auto;border:0;outline:none;text-decoration:none;width:180px;max-width:70%;height:auto;" />
+          <td align="center" style="background:#ffffff;padding:28px 40px 22px;">
+            <img src="${LOGO_MARK_URL}" width="52" height="58" alt="" style="display:block;margin:0 auto 12px;border:0;outline:none;text-decoration:none;width:52px;height:auto;" />
+            <img src="${LOGO_URL}" width="164" alt="Lingo Booth" style="display:block;margin:0 auto;border:0;outline:none;text-decoration:none;width:164px;max-width:64%;height:auto;" />
           </td>
         </tr>`;
 }

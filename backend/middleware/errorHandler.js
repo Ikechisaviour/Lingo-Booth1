@@ -4,7 +4,7 @@
 // unhandled promise rejection at the process level) is caught here so it is
 // never a silent/uncoded 500.
 
-const { recordServerError } = require('../utils/errorReporting');
+const { recordServerError, makeRef } = require('../utils/errorReporting');
 const { resolveCode } = require('../utils/errorCodes');
 
 // 404 for unmatched API routes — coded, so "route typo vs real bug" is obvious.
@@ -16,31 +16,43 @@ function notFoundHandler(req, res) {
   });
 }
 
+// Map well-known library error shapes (that have no `code` of their own) to a
+// meaningful code so they don't all collapse into UNHANDLED_ERROR.
+function deriveCode(err) {
+  if (err?.code) return err.code;
+  if (err?.type === 'entity.parse.failed') return 'REQUEST_BODY_INVALID_JSON';
+  if (err?.type === 'entity.too.large') return 'REQUEST_PAYLOAD_TOO_LARGE';
+  return 'UNHANDLED_ERROR';
+}
+
 // Express error middleware (must have 4 args). Mount LAST, after all routes.
 // eslint-disable-next-line no-unused-vars
 async function errorHandler(err, req, res, next) {
-  const resolved = resolveCode(err?.code || 'UNHANDLED_ERROR');
+  const resolved = resolveCode(deriveCode(err));
   const httpStatus = err?.httpStatus || err?.status || resolved.httpStatus || 500;
 
   console.error(`[${resolved.code}] unhandled in ${req?.method} ${req?.originalUrl}:`, err?.stack || err);
 
-  let ref;
+  // Always mint a ref so the response is quotable even for 4xx that were thrown
+  // (e.g. malformed JSON). For 5xx we reuse the recorded report's ref.
+  let ref = makeRef();
   if (httpStatus >= 500) {
     const report = await recordServerError(req, {
       error: err,
       code: resolved.code,
+      ref,
       statusCode: httpStatus,
       metadata: { unhandled: true },
     });
-    ref = report?.ref;
+    if (report?.ref) ref = report.ref;
   }
 
   if (res.headersSent) return next(err);
   const body = {
     message: err?.clientMessage || resolved.clientMessage || 'Server error',
     code: resolved.code,
+    ref,
   };
-  if (ref) body.ref = ref;
   res.status(httpStatus).json(body);
 }
 

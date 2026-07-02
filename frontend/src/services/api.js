@@ -137,6 +137,11 @@ const endExpiredSession = (error, phase) => {
   window.dispatchEvent(new CustomEvent('sessionExpired'));
 };
 
+const shouldEndSessionAfterRefreshFailure = (refreshError) => (
+  refreshError?.response?.status === 401 ||
+  refreshError?.response?.status === 403
+);
+
 const isExpectedStatus = (config, status) => {
   const expected = config?.expectedStatuses;
   return Array.isArray(expected) && status != null && expected.includes(status);
@@ -196,9 +201,15 @@ api.interceptors.response.use(
           const newToken = await refreshPromise;
           config.headers.Authorization = `Bearer ${newToken}`;
           return api(config);
-        } catch {
-          // Refresh failed — force logout (deduped across concurrent 401s)
-          endExpiredSession(error, 'auth-refresh-failed');
+        } catch (refreshError) {
+          // Only a definitive refresh rejection should end the 30-day session.
+          // Network/server hiccups after inactivity must leave the stored
+          // refresh token intact so the next retry can recover.
+          if (shouldEndSessionAfterRefreshFailure(refreshError)) {
+            endExpiredSession(refreshError, 'auth-refresh-failed');
+          } else {
+            reportApiError(refreshError || error, { phase: 'auth-refresh-failed' });
+          }
           return Promise.reject(error);
         }
       }
