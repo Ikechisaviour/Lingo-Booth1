@@ -712,10 +712,14 @@ router.post('/forgot-password', async (req, res) => {
       return res.json({ message: 'If an account with that email exists, a reset link has been sent.' });
     }
 
-    // Google-only users have no password to reset
+    // Google-only users have no password to reset — tell them how to sign in
+    // instead of silently pretending a reset email went out.
     if (!user.password) {
       console.warn(`[forgot-password] no reset sent — ${email} is a Google sign-in account (no password)`);
-      return res.json({ message: 'If an account with that email exists, a reset link has been sent.' });
+      return res.json({
+        message: 'This account was created with Google sign-in, so there is no password to reset. Please use “Continue with Google” to sign in.',
+        provider: 'google',
+      });
     }
 
     // Rate limit: 60-second cooldown
