@@ -3,6 +3,7 @@ const User = require('../models/User');
 const EXPO_PUSH_URL = 'https://exp.host/--/api/v2/push/send';
 const EXPO_TOKEN_PREFIX = 'ExponentPushToken[';
 const EXPO_TOKEN_PREFIX_MODERN = 'ExpoPushToken[';
+const ANDROID_CHANNEL_ID = 'lingo_booth_notifications';
 
 function isExpoPushToken(token = '') {
   return (
@@ -87,6 +88,7 @@ async function sendPushToUsers(userIds = [], { title = '', body = '', data = {} 
         title: String(title).slice(0, 120),
         body: String(body || '').slice(0, 600),
         sound: 'default',
+        channelId: ANDROID_CHANNEL_ID,
         priority: 'high',
         data,
       });

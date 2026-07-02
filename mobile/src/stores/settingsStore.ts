@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
+import { useShallow } from 'zustand/react/shallow';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import i18n from '../i18n';
 import { normalizeLanguageCode } from '../utils/languagePairPolicy';
@@ -108,15 +109,22 @@ export const useLanguagesReady = () =>
 // Read the active target language's curriculum version with derived flags.
 // `isUnset` means the learner has never picked — the chooser modal should
 // fire (when v2 is available for that target).
+// NOTE: this selector returns a fresh object, so it MUST be wrapped in
+// useShallow. Zustand v5 uses useSyncExternalStore; a selector that returns a
+// new reference on every call makes React re-render forever ("Maximum update
+// depth exceeded"). useShallow compares the object's fields and keeps a stable
+// reference while they're unchanged.
 export const useCurriculumVersion = () =>
-  useSettingsStore((s) => {
-    const target = (s.targetLanguage || '').toLowerCase();
-    const version = target ? s.curriculumPreferences[target] || null : null;
-    return {
-      target,
-      version,
-      isV2: version === 'v2',
-      isV1: version === 'v1',
-      isUnset: !version,
-    };
-  });
+  useSettingsStore(
+    useShallow((s) => {
+      const target = (s.targetLanguage || '').toLowerCase();
+      const version = target ? s.curriculumPreferences[target] || null : null;
+      return {
+        target,
+        version,
+        isV2: version === 'v2',
+        isV1: version === 'v1',
+        isUnset: !version,
+      };
+    })
+  );
