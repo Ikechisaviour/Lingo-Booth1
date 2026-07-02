@@ -118,6 +118,13 @@ export const reportClientError = (payload = {}) => {
   });
 };
 
+// Expected session-lifecycle 401s: the access token expired, no token was sent
+// yet, or the 30-day session ended. The client silently refreshes or sends the
+// user to sign in again — none of these are defects, and one stale token fans
+// out to a 401 on every in-flight request, so reporting them floods the admin
+// failures dashboard. Genuine token problems (AUTH_TOKEN_INVALID) still report.
+const BENIGN_AUTH_CODES = new Set(['AUTH_TOKEN_EXPIRED', 'SESSION_EXPIRED', 'AUTH_NO_TOKEN']);
+
 export const reportApiError = (error, metadata = {}) => {
   if (!error || error.__reportedToAdmin) return;
   if (error.code === 'ERR_CANCELED' || error.name === 'CanceledError') return;
@@ -125,6 +132,11 @@ export const reportApiError = (error, metadata = {}) => {
   const config = error.config || {};
   const url = config.url || '';
   if (url.includes('/error-reports')) return;
+
+  if (error.response?.status === 401 && BENIGN_AUTH_CODES.has(error.response?.data?.code)) {
+    error.__reportedToAdmin = true;
+    return;
+  }
 
   error.__reportedToAdmin = true;
   const statusCode = error.response?.status;
